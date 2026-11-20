@@ -20,4 +20,6 @@ Publication checker quét toàn bộ Git index trước commit, không báo vi p
 
 Giới hạn: không chạy toàn bộ regression/live E2E, không cài lại từ đầu trên Windows mới, không chạy Docker setup/rollout, không chứng nhận RAG/performance/production. Giữ nguyên whitespace có sẵn trong source và báo cáo lịch sử, thay vì format lại hàng nghìn file. Các báo cáo lịch sử đã lọc credential có thể không còn khớp byte/hash gốc; không dùng chúng như artifact nguyên bản để xác minh lại deployment cũ.
 
-CI trên GitHub chạy lại các suite offline và frontend từ dependencies/lockfile. Kết quả GitHub Actions là nguồn xác minh riêng cho môi trường Linux, không được suy ra từ local PASS.
+CI trên GitHub đã chạy lại các suite offline và frontend từ dependencies/lockfile trên Linux: cả hai jobs `python` và `frontend` PASS cho initial commit `7035f7312d8401e7a48107e4809fa1365f18e0fd`. [Workflow run](https://github.com/Luim3141/Open-Project-AI-Agent-system/actions/runs/44772674252). Mỗi commit tiếp theo có kết quả CI riêng.
+
+Repository đã bật private vulnerability reporting, auto-merge (cần bật cho từng PR) và tự xóa branch sau merge. `main` yêu cầu PR, hai checks `python`/`frontend` và giải quyết conversations; chặn force-push và xóa branch. Chủ repository vẫn có quyền admin bypass; không dùng quyền đó để né check trong lần xuất bản này.
