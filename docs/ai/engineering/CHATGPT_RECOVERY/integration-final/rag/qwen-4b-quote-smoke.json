@@ -1,0 +1,86 @@
+{
+  "model": "qwen3:4b",
+  "data": "synthetic fixtures only",
+  "rows": [
+    {
+      "case": "en-open-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 31.815,
+      "answer": {
+        "answer": "14",
+        "quote": "Books are kept for 14 days before they must be returned."
+      }
+    },
+    {
+      "case": "en-open-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 1.491,
+      "answer": {
+        "answer": "null",
+        "quote": "null"
+      }
+    },
+    {
+      "case": "en-yes-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 1.792,
+      "answer": {
+        "answer": "yes",
+        "quote": "A registered member can reserve books online."
+      }
+    },
+    {
+      "case": "en-yes-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 1.196,
+      "answer": {
+        "answer": null,
+        "quote": null
+      }
+    },
+    {
+      "case": "vi-open-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 2.231,
+      "answer": {
+        "answer": "14",
+        "quote": "Sách được mượn trong 14 ngày trước khi phải trả."
+      }
+    },
+    {
+      "case": "vi-open-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 2.088,
+      "answer": {
+        "answer": null,
+        "quote": null
+      }
+    },
+    {
+      "case": "vi-yes-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 2.227,
+      "answer": {
+        "answer": "yes",
+        "quote": "Thành viên đã đăng ký được đặt trước sách trực tuyến."
+      }
+    },
+    {
+      "case": "vi-yes-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 2.092,
+      "answer": {
+        "answer": null,
+        "quote": null
+      }
+    }
+  ]
+}

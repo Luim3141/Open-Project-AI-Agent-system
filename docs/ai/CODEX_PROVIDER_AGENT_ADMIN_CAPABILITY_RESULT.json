@@ -1,0 +1,244 @@
+{
+  "at": "2026-10-26T03:22:34.530202+00:00",
+  "status": "PASS_SUPPORTED_READ_INTERFACES_ADMIN_MUTATORS_NOT_IMPLEMENTED",
+  "checks": [
+    {
+      "actor": 18,
+      "action": "get_assistant_status",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "action": "get_control_center",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "action": "get_configuration",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "action": "get_assistant_status",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "action": "get_control_center",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "action": "get_configuration",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 20,
+      "action": "get_assistant_status",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 20,
+      "action": "get_control_center",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 20,
+      "action": "get_configuration",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 21,
+      "action": "get_assistant_status",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 21,
+      "action": "get_control_center",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 21,
+      "action": "get_configuration",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 22,
+      "action": "get_assistant_status",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 22,
+      "action": "get_control_center",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 22,
+      "action": "get_configuration",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 23,
+      "action": "get_assistant_status",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 23,
+      "action": "get_control_center",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 23,
+      "action": "get_configuration",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 18,
+      "action": "set_provider_configuration",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 18,
+      "action": "set_agent_configuration",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    }
+  ],
+  "agent_registry": [
+    {
+      "name": "supervisor",
+      "provider": "Gemini analysis / local deterministic",
+      "allowed_tools": [
+        "plan_request",
+        "aggregate_proposal",
+        "dispatch_agent"
+      ],
+      "shares_central_quota": true
+    },
+    {
+      "name": "pm",
+      "provider": "Gemini analysis / local deterministic",
+      "allowed_tools": [
+        "analyze_overdue",
+        "analyze_blockers",
+        "analyze_workload",
+        "analyze_sprint_risks"
+      ],
+      "shares_central_quota": true
+    },
+    {
+      "name": "ba",
+      "provider": "Gemini analysis / local deterministic",
+      "allowed_tools": [
+        "draft_user_story",
+        "draft_ac",
+        "detect_ambiguity",
+        "draft_dependencies"
+      ],
+      "shares_central_quota": true
+    },
+    {
+      "name": "fe",
+      "provider": "Gemini analysis / local deterministic",
+      "allowed_tools": [
+        "get_work_package",
+        "knowledge_search"
+      ],
+      "shares_central_quota": true
+    },
+    {
+      "name": "be",
+      "provider": "Gemini analysis / local deterministic",
+      "allowed_tools": [
+        "get_work_package",
+        "knowledge_search"
+      ],
+      "shares_central_quota": true
+    },
+    {
+      "name": "dev",
+      "provider": "Gemini analysis / local deterministic",
+      "allowed_tools": [
+        "breakdown_fe_be",
+        "identify_dependencies",
+        "evaluate_technical_risks"
+      ],
+      "shares_central_quota": true
+    },
+    {
+      "name": "qa",
+      "provider": "Gemini analysis / local deterministic",
+      "allowed_tools": [
+        "generate_test_cases",
+        "detect_regression_gaps",
+        "triage_bug",
+        "evaluate_test_attestation"
+      ],
+      "shares_central_quota": true
+    },
+    {
+      "name": "reviewer",
+      "provider": "local_deterministic",
+      "allowed_tools": [
+        "verify_evidence",
+        "detect_conflicts",
+        "check_rbac"
+      ],
+      "shares_central_quota": false
+    }
+  ],
+  "configuration_read": "Owner18/PM19 authorized; BA/BE/FE/QA403",
+  "provider_policy": "FREE_ONLY",
+  "billing_checked_live": false,
+  "remaining_provider_quota": "unavailable",
+  "configuration_and_key_hashes_unchanged": {
+    "gemini.json": "49b6c51e8cd349280f3ed2c10df60247d94aa28861ae932dd9f4619007d05d6c",
+    "gemini.key": "41f2cb531d4e9e991cb533b758e411faa7699dbbed8dd852fd2b6cfee35815e3",
+    "config.json": "faf137df1163661844a1b5ac00469c8249a4976b3f28c08705002b660120e781"
+  },
+  "ledger_unchanged": {
+    "gemini_call_receipts": 127,
+    "gemini_usage": 132,
+    "proposals": 54,
+    "knowledge_sync": 12,
+    "qa_evidence_reviews": 0
+  },
+  "supported": [
+    "Six-role actor-scoped provider/agent/usage monitoring",
+    "Manager Native workflow/type/field configuration readback",
+    "Host-only deployment/configuration procedure; exact artifacts and separate secret policy retained"
+  ],
+  "not_implemented": [
+    "In-app/API provider/model/quota/key mutation",
+    "In-app/API mutable Agent configuration registry",
+    "General automatic billing or paid fallback"
+  ],
+  "no_new_model_call": true,
+  "main_native_writes": 0,
+  "main_human_decisions": 0,
+  "staging_operations": false,
+  "limits": [
+    "Existing local policy/receipt readback only, not new live provider generation or live billing proof",
+    "No new configuration editor or undocumented endpoint invented",
+    "Unknown set_* actions rejected by current typed Command schema422"
+  ]
+}

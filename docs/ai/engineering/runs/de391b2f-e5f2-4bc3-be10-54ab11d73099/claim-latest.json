@@ -1,0 +1,49 @@
+{
+  "id": "de391b2f-e5f2-4bc3-be10-54ab11d73099",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": "045c95a4f5b73b32b90d65966c19c97c873f8e8f",
+  "budget": {
+    "attempt_calls": 12,
+    "auto_continue": false,
+    "cooldown_seconds": 60,
+    "max_continuations": 5,
+    "task_calls": 72
+  },
+  "deadline": 1793965566.2720528,
+  "definition": {
+    "acceptance": {
+      "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+      "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+      "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+      "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+      "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+      "F1": "AC1: Các regression tests cho HTTP methods bị từ chối tại /healthz được thêm thành công vào test file.",
+      "F2": "AC2: Chạy pytest vượt qua tất cả các test case mới mà không làm ảnh hưởng đến các AC cũ.",
+      "F3": "AC3: Không có thay đổi mã nguồn ứng dụng, chỉ có file test được bổ sung."
+    },
+    "acceptance_file": "test_crud_web.py",
+    "base_branch": "codex/openclaw-feedback-d8b7006b5cff1bc4",
+    "base_unit": "feedback-d8b7006b5cff1bc4",
+    "feedback": "Owner-approved Agent Studio V2 stabilization live demo, ceiling14: tạo đúng một unit mới chỉ thêm regression tests cho HTTP methods bị từ chối tại endpoint /healthz của mini-task-manager.\nBA đọc implementation thực tế để xác định method/status/contract hiện tại. Không đổi app hoặc thêm endpoint; tests chỉ xác minh methods thực sự bị từ chối và không gây side effects lên Task data.\nPM tạo đúng một Task mới, title mô tả rejected HTTP methods /healthz, scope tests-only. Không replay391/397 hoặc unit cũ.\nDev viết tests thật; Reviewer độc lập kiểm diff; QA chạy tests và lưu exit code, revision, artifacts.\nGiữ model gemini-3.5-flash-lite, provider/key/call caps/quota/gates/runner hiện có. Không merge/deploy sản phẩm; chỉ READY FOR RELEASE, không tự Owner DONE.",
+    "kind": "development",
+    "native_id": 398,
+    "plan_id": "76f13288-6055-400b-a615-e3f7600a3344",
+    "title": "Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung."
+  },
+  "engine": "openclaw",
+  "kind": "development",
+  "native_id": 398,
+  "project_id": 6,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "studio-methods-run-20261106",
+  "source_version": 1,
+  "spec": "QLDAPM PM/BA engineering plan 76f13288-6055-400b-a615-e3f7600a3344\nUnit: feedback-faf8797c2a8d1f4f\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-d8b7006b5cff1bc4\"],\"objective\":\"Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung.\",\"priority\":1,\"unit\":\"feedback-faf8797c2a8d1f4f\"},\"functional_specification\":{\"acceptance\":[\"AC1: Các regression tests cho HTTP methods bị từ chối tại /healthz được thêm thành công vào test file.\",\"AC2: Chạy pytest vượt qua tất cả các test case mới mà không làm ảnh hưởng đến các AC cũ.\",\"AC3: Không có thay đổi mã nguồn ứng dụng, chỉ có file test được bổ sung.\"],\"api_behavior\":[\"Endpoint /healthz chỉ chấp nhận method được định nghĩa (ví dụ GET), các method khác (như POST, PUT, DELETE, PATCH) phải trả về mã lỗi HTTP phù hợp (như 405 Method Not Allowed hoặc 404 tùy cấu hình hiện tại).\",\"Không làm thay đổi schema hoặc dữ liệu trả về của các API /tasks hiện hữu.\"],\"citations\":[379],\"edge_cases\":[\"Gửi request với các HTTP methods lạ hoặc ít dùng tới /healthz.\",\"Kiểm tra xem dữ liệu trong SQLite có giữ nguyên vẹn sau khi gọi các method bị từ chối hay không.\"],\"limitations\":[\"Không tự động merge hoặc deploy code.\",\"Chỉ thực hiện trong phạm vi repository Luim3141/mini-task-manager và không tạo endpoint mới.\"],\"scope\":[\"Xác định các HTTP methods không được hỗ trợ tại endpoint /healthz.\",\"Viết các unit tests kiểm tra việc từ chối đúng mã lỗi cho các method không hợp lệ tại /healthz.\",\"Đảm bảo các tests này không gây side-effects lên dữ liệu Task hiện có.\",\"Không thay đổi ứng dụng hay thêm endpoint mới, chỉ bổ sung test file độc lập.\"],\"summary\":\"Phân tích yêu cầu và định nghĩa phạm vi, hành vi API, các trường hợp biên và tiêu chí chấp nhận cho đơn vị kỹ thuật mới: bổ sung các regression tests cho các HTTP methods bị từ chối tại endpoint /healthz của mini-task-manager.\"},\"reviewers\":[\"reviewer\",\"qa\"],\"virtual_executor\":\"dev\"}",
+  "spec_sha256": "9ddcd94f3333a4be2566f1a2c3acf1930c6aafc8abc23c55e89bda8be1d525dc",
+  "stage": "ADMITTED",
+  "unit": "feedback-faf8797c2a8d1f4f",
+  "write_scope_ids": [],
+  "worker_id": "bb1fc653-b2d7-48ab-bb17-cc71649c64fc",
+  "claim_token": "cff8c619-d2a9-4375-ae29-cad96aec2cfc",
+  "claim_generation": 155
+}

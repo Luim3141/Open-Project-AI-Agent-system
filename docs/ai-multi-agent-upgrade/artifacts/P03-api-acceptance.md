@@ -1,0 +1,15 @@
+# P03-08 — read-only own-run progress, trace and recovery guidance
+
+Accepted staging Gateway `sha256:6e221f6688acc9dd03a4b802872b4102a8dd6fd3eaef360d57af11683dc420a7`. Authenticated REST GET list/ownrun/owntrace and corresponding three MCP tools use fresh native actor/project/role checks. PM also cannot read another actor's runs.20default/50max page, bounded integer offsets; typed metadata excludes task instructions, narratives, business content and credentials. Only canonical own AI receipt is linked. can_replay=false; failed progress requests receipt inspection and a new request. There is no POST retry/reconcile execution endpoint. No native write/approval/queue mutation from these reads. One additive actor/project metadata index; no table/column migration. OpenAPI schemas and refs plus catalog/static exports synchronized.
+
+Executed:
+
+-6new API tests plus export check7PASS2.096s: pagination/actor/project isolation, metadata privacy/canonicalreceipt/no retry, scoped trace pages, anonymous/current-role denial, malformed IDs/pages/extra scope/coercion, actual MCP readOnlyHint/call and OpenAPI ref resolution. Initial test expected409 instead of existing422 and was corrected; no runtime workaround.
+-248full Windows tests PASS95.227s, exit0+finalOK before deployment: P03-api-regression.log/P03-api-test-exit.json.
+-82Linux candidate tests PASS3.962s, readonly/non-root/networknone: P03-api-linux.log.
+-Actual5native identities on private cold clone: REST+MCP own progress, pagedtrace, crossactor403 (includingPM), no narrative/instruction/key output, no retry route; no SDK/provider key in clone, native GETonly,471usage retained. Fixture task completion records are explicitly local deterministic test metadata, not real model output. P03-api-clone.json; tests/container_agent_api.py.
+-Actual staging9source hashes/privateconfig+keys match, cachedREADY, metadataempty,79done/11failed receipts and471usage unchanged, scopeindex present. Anonymous actual REST request401. P03-api-live-check.json.
+-Verified readonly cold comparison: all previous Gateway values and columns retained; exactly one new access_denied audit row from anonymous REST smoke, with expected target/code. P03-api-row-preservation.json. SQLite source never opened hot from Windows or mutated by checker.
+-Inventories and qualified comparison PASS:19selected containers,7active stagehealthy/4HTTP200; native schema/roles/counts/legacy Gatewaystates/ledger/mounts/ports unchanged except image and declared index. P03-api-after.json/P03-api-preservation-check.json.
+
+Previous73 image, source/static exports operator/p03-api-before-20261016 and cold pre-provision snapshot local-runtime/before-provision-1792142426582563000 retained. No core/UI fork edit/main promotion/Desktop/CSDLDPT/billing or real Google call. Primary has no actual agent tasks yet; Supervisor submission and dashboards follow later phases. Next P03-09 actual signed native bridge/read role checks plus isolated consent/nonce/receipt tests, then P04.

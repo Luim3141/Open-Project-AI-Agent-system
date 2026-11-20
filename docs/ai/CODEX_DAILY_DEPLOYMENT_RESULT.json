@@ -1,0 +1,119 @@
+{
+  "workflow_id": "BpCQrGR866vg4BqQ",
+  "previous_version": "0325527a-a37d-4996-859e-45003bd7fc80",
+  "candidate_sha256": "73f9ac1588902830c2adde7eaf04a3fa7ba5bf9919cc4ddf7ea065e46a1b4ca4",
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "n8n_backup_sha256": "dba5eb611087ef0df8f247761002a53e204427910dcb5fe34622b1e48ba91cfc",
+  "scope": "Only WF07 nodes/connections/settings: fixed signed daily_brief, existing machine credential refs,08:00Asia/Bangkok; Gateway image/Core/WF16 unchanged",
+  "qualification": "Temporarily set WF07 cron to a single upcoming date/minute, wait for real scheduled receipt and five actor reports, then always restore08:00daily; no manual webhook before scheduled run",
+  "tests_passed": 23,
+  "credential_changes": false,
+  "native_business_writes": false,
+  "staging_operations": false,
+  "rollback": "Restore private old WF07 snapshot/activate returned version; keep Gateway daily reports/receipts, never replay Native writes",
+  "limitations": [
+    "Daily summaries deterministic, zero LLM",
+    "No external notifications authorized/sent",
+    "Partial/failure receipt is durable and not automatically re-collected same day"
+  ],
+  "scheduled_at": "2026-10-23T13:54:00+07:00",
+  "probe_version": "4ea70724-b3e5-4cb6-a07b-0d0b6f4436d0",
+  "receipt": {
+    "actor_id": null,
+    "authority": "machine",
+    "component": "gateway",
+    "kind": "daily_brief",
+    "model_calls": 0,
+    "native_write_allowed": false,
+    "project_id": 5,
+    "ready": 5,
+    "request_key": "daily:2026-10-23",
+    "run_id": "b08431e7-ac4b-4386-8f8d-50c67d9c8326",
+    "state": "COMPLETED",
+    "status": "READY",
+    "targets": 5,
+    "trace_id": "b08431e7-ac4b-4386-8f8d-50c67d9c8326",
+    "unavailable": 0
+  },
+  "actor_reports": [
+    {
+      "actor": 19,
+      "role": "PM",
+      "state": "READY",
+      "count": 333,
+      "fingerprint": "bfd6f65fa7decdc4295292105b53caaf5053cdd18354918411f18b8ddc434928"
+    },
+    {
+      "actor": 20,
+      "role": "BA",
+      "state": "READY",
+      "count": 333,
+      "fingerprint": "c3b6c78bb581b48a213e410b97571bd13d697fd3438c58bf62831d13dbb1ba61"
+    },
+    {
+      "actor": 21,
+      "role": "BE",
+      "state": "READY",
+      "count": 333,
+      "fingerprint": "3bec77a5322e867196fc18869f414195b0695b9e5efe4dccbbb52e38227a52d5"
+    },
+    {
+      "actor": 22,
+      "role": "FE",
+      "state": "READY",
+      "count": 333,
+      "fingerprint": "3c67943fc1e6bef8ad6ebced33b59c1a125ca2fd70d0fd265789bdebfbd50eea"
+    },
+    {
+      "actor": 23,
+      "role": "QA",
+      "state": "READY",
+      "count": 333,
+      "fingerprint": "2439dc3db316ba20a91f67083dbd4ef5d04b38680777b1281df40296d39e893f"
+    }
+  ],
+  "actual_cron_proof": "No manual/webhook invocation; first daily receipt and five persisted Native reports appeared after configured cron time, nonce binds n8n workflow/execution",
+  "workflow_version": "15216ba8-75a6-43a5-a939-308f6d14b957",
+  "active": true,
+  "daily_schedule_restored": "0 0 8 * * *",
+  "gateway_image": "sha256:0245c6ffeced965d6f6048c47132c7de28247e9db1f045d8837606f0e9a64614",
+  "native_fingerprint_unchanged": true,
+  "status": "SCHEDULED_NATIVE_DAILY_BRIEF_VERIFIED",
+  "notification_delivery": "NOT_CONFIGURED_NO_EXTERNAL_MESSAGE_SENT",
+  "live_readback_tests": [
+    {
+      "test": "authenticated_daily_brief_readback",
+      "actor": 19,
+      "role": "PM",
+      "http_status": 200,
+      "state": "READY",
+      "count": 333,
+      "run_id": "b08431e7-ac4b-4386-8f8d-50c67d9c8326"
+    },
+    {
+      "test": "authenticated_daily_brief_readback",
+      "actor": 20,
+      "role": "BA",
+      "http_status": 200,
+      "state": "READY",
+      "count": 333,
+      "run_id": "b08431e7-ac4b-4386-8f8d-50c67d9c8326"
+    },
+    {
+      "test": "same_day_webhook_replay_and_caller_body_not_authority",
+      "http_status": 200,
+      "same_durable_receipt": true
+    },
+    {
+      "test": "missing_transport_secret",
+      "http_status": 403
+    }
+  ],
+  "persistent_counts_after_replay": {
+    "daily_receipts": 1,
+    "actor_reports": 5,
+    "gemini_call_receipts": 96,
+    "gemini_usage": 101
+  },
+  "native_333_unchanged": true
+}

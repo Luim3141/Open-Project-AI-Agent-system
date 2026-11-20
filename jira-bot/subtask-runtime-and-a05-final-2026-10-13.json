@@ -1,0 +1,66 @@
+{
+  "recordedDateLocal": "2026-10-13",
+  "site": "https://luimjiraqldapm.atlassian.net",
+  "cloudId": "560ef0cc-d24b-4613-98d3-d541afe8f32b",
+  "projectKey": "QAG3",
+  "environment": "development",
+  "deployedVersion": "2.19.0",
+  "approvedManifestSha256": "98d21c680ca1c387d7e14f1e53e95b5c02c75a27d5e794de6cfded07b5025e54",
+  "forgeLint": "PASS",
+  "moduleCount": 11,
+  "newScopesFunctionsStorageEgressBilling": false,
+  "subtaskWorkflowVersion": 8,
+  "subtaskWorkflowVersionId": "e6aa1eac-47ea-40d4-966c-976e2267178a",
+  "subtaskCompanionApprovedHash": "d48a8f29aab199acad9d9c2d0c223d27a7a9ed0f03babdb1291b4586e55d328c",
+  "readOnlyCandidate": {
+    "valid": true,
+    "type": "Boolean",
+    "staticExpensiveOperations": "6",
+    "fixture336Value": true,
+    "fixture336ExpensiveOperations": 9,
+    "nativeProof": false
+  },
+  "nativeSubtask": {
+    "businessFixture": "QAG3-335",
+    "businessApproveAndReopen": "PASS under prior approved 2.17/2.18",
+    "businessFinalReadback": {"status": "Done", "resolution": "Done"},
+    "developmentFixture": "QAG3-336",
+    "developmentApprove4": "FAIL",
+    "httpStatus": 400,
+    "errorLocation": "originalIssue.changelogs",
+    "error": "Expression executed too many expensive operations (limit: 10)",
+    "finalStatus": "REVIEW",
+    "unchangedRetryPerformed": false
+  },
+  "automation": {
+    "A01": "ENABLED unchanged",
+    "A02": "ENABLED qag3-test only",
+    "A03": "ENABLED qag3-test only",
+    "A04": "ENABLED qag3-test only",
+    "A05": "ENABLED qag3-test only",
+    "savedConfigurationVerifierExitCode": 0,
+    "projectWideQualified": false,
+    "a05": {
+      "commentActions": 2,
+      "emailActions": 0,
+      "nativeIssueOnceGuard": false,
+      "frozenEventGuard": true,
+      "eventKeyDedupGuard": true,
+      "suppressionAuditId": "a97ed01b-ea9f-43a3-9207-6bc07390b3b4",
+      "newEventCommentsAfterFix": [
+        {"issue": "QAG3-335", "commentId": "10009", "eventKey": "qag3-a05-10012-20261012195513108"},
+        {"issue": "QAG3-332", "commentId": "10010", "eventKey": "qag3-a05-10016-20261012195529190"}
+      ],
+      "fixture332CommentsRead": {"total": 3, "isLast": true, "author": "Automation for Jira"},
+      "markerIsDeliveryProof": false,
+      "atomicExactlyOnceVerified": false,
+      "inboxDeliveryVerified": false
+    }
+  },
+  "localRegressionRerun": {"predicateAndConjunction": "PASS", "taskFreshness": "PASS"},
+  "preserved": ["329 WBS", "timelines", "first three Epic Done", "KAN", "SAM1", "monitor PAUSED", "billing"],
+  "simulationOnly": true,
+  "fullNativeQualification": false,
+  "nextStep": "Bounded history-query redesign preserving policy; obtain exact preview/hash approval before any new deployment.",
+  "proofImage": "QAG3-A05-event-dedup-final-2026-10-13.png"
+}

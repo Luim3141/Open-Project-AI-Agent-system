@@ -1,0 +1,332 @@
+--- before/gateway/ai_worker.py
++++ after/gateway/ai_worker.py
+@@ -15,9 +15,17 @@
+                "allow_routine_writes": allow_routine_writes, "write_scope_ids": write_scope_ids or []}
+     if engine != 'gemini':
+         payload['engine'] = engine
++    timeout=RUN_TIMEOUT_SECONDS
++    consent=Path(root)/'business-acceptance.json'
++    if engine=='gemini' and consent.exists() and json.loads(consent.read_text()).get('actor')==actor:
++        import sqlite3,time
++        with sqlite3.connect('file:'+str(Path(root)/'gateway.sqlite')+'?mode=ro',uri=True) as db:
++            row=db.execute('select created from ai_runs where id=? and actor=?',(identifier,actor)).fetchone()
++        if not row:raise ProviderError('OWNER_STORED_RUN_REQUIRED')
++        timeout=max(0.01,min(180,180-(time.time()-row[0])))
+     try:
+         response = subprocess.run([sys.executable, "-m", "gateway.ai_worker"],
+-            input=json.dumps(payload), capture_output=True, text=True, encoding="utf-8", timeout=RUN_TIMEOUT_SECONDS,
++            input=json.dumps(payload), capture_output=True, text=True, encoding="utf-8", timeout=timeout,
+             cwd=Path(__file__).resolve().parents[1])
+     except subprocess.TimeoutExpired:
+         # subprocess.run kills and waits for this child; partial tool receipts remain UNKNOWN, never replayed.
+@@ -65,12 +73,15 @@
+         permissions = service.execute_actor(payload["actor"], {"action": "get_permissions"})["result"]
+         if payload["allow_routine_writes"] and service.mode != "native":
+             raise PermissionError("NATIVE_MODE_REQUIRED_FOR_RUN_WRITE_CONSENT")
++        from .business_acceptance import BusinessAcceptance
++        acceptance=BusinessAcceptance.load(service,payload)
+         index = 0
+         allowed_ids = set(payload["write_scope_ids"])
+         business = service.gemini.settings().get("data_scope") == "project-business-content"
+         def execute(action, arguments):
+             nonlocal index
+             index += 1
++            if acceptance:arguments=acceptance.command(action,arguments)
+             auto = payload["allow_routine_writes"] and action in {"create_work_package", "update_work_package", "comment", "transition"}
+             if auto and business and not action_requested(payload["prompt"], action):
+                 raise PermissionError("AI_WRITE_ACTION_NOT_REQUESTED")
+@@ -86,7 +97,7 @@
+             if business and action == "create_work_package":
+                 arguments = {"source_id": f"ai-{payload['id']}-{index}", **arguments}
+             result = service.execute_actor(payload["actor"], {"action": action, "arguments": arguments,
+-                "idempotency_key": f"ai-{payload['id']}-{index}", "auto_execute": auto})
++                "idempotency_key": acceptance.create_key if acceptance and action=='create_work_package' else f"ai-{payload['id']}-{index}", "auto_execute": auto})
+             if auto and action == "create_work_package" and type(result.get("result", {}).get("id")) is int:
+                 allowed_ids.add(result["result"]["id"])
+             return result
+@@ -94,7 +105,8 @@
+                 max_rounds=RUN_ROUND_LIMITS[service.store.run_class(payload["actor"], payload["id"])],
+                 actor_role=identity["role"],
+                 permitted_tools=[tool["name"] for tool in permissions["tools"] if tool["allowed"]],
+-                write_scope_ids=payload["write_scope_ids"], progress=lambda result: service.store.progress_run(payload["actor"], payload["id"], result))}
++                write_scope_ids=payload["write_scope_ids"], progress=lambda result: service.store.progress_run(payload["actor"], payload["id"], result),
++                **({'acceptance':acceptance} if acceptance else {}))}
+     except ProviderError as error:
+         document = {"error": str(error)}
+     except Exception:
+--- before/gateway/gemini.py
++++ after/gateway/gemini.py
+@@ -64,6 +64,7 @@
+         request.extensions["timeout"] = {name: min(30, remaining) for name in ("connect", "read", "write", "pool")}
+         kwargs["stream"] = True
+         response = super().send(request, **kwargs)
++        self.last_status = response.status_code
+         try:
+             data = bytearray()
+             for chunk in response.iter_bytes():
+@@ -251,7 +252,7 @@
+         except (OSError, ValueError, TypeError, AttributeError):
+             return {"state": "READINESS_NOT_VERIFIED", "network_checked_now": False}
+ 
+-    def run(self, prompt, execute, transport=None, allow_routine_writes=False, write_scope_ids=None, progress=None, actor_role=None, permitted_tools=None, max_rounds=32):
++    def run(self, prompt, execute, transport=None, allow_routine_writes=False, write_scope_ids=None, progress=None, actor_role=None, permitted_tools=None, max_rounds=32, acceptance=None):
+         if type(max_rounds) is not int or not 1 <= max_rounds <= 32:
+             raise ValueError("AI_ROUND_LIMIT_INVALID")
+         policy = self.validate_prompt(prompt)
+@@ -264,6 +265,9 @@
+         allowed_tools = tuple(name for name in allowed_tools if allowed(actor_role, name))
+         if permitted_tools is not None:
+             allowed_tools = tuple(name for name in allowed_tools if name in permitted_tools)
++        if acceptance:
++            allowed_tools = tuple(name for name in allowed_tools if name in {
++                'identity','get_project_options','get_work_package','list_work_packages','analyze','create_work_package'})
+         if not allowed_tools:
+             raise PermissionError("AUTHENTICATED_ROLE_REQUIRED")
+         declaration = {"name": "qldapm", "description": "Read project data or request a routine change. The host decides execution versus proposal from explicit run-scoped user consent; tools never grant consent.",
+@@ -272,7 +276,7 @@
+                 "required": ["action", "arguments_json"]}}
+         declarations = [{"name": name, "description": ARGUMENTS[name], "parameters": BUSINESS_PARAMETERS[name]}
+                         for name in allowed_tools] if business else [declaration]
+-        deadline = time.monotonic() + RUN_TIMEOUT_SECONDS
++        deadline = min(time.monotonic() + RUN_TIMEOUT_SECONDS, acceptance.budget.deadline) if acceptance else time.monotonic() + RUN_TIMEOUT_SECONDS
+         calls, usage = [], []
+         write_uncertain = False
+         store = Store(self.root)
+@@ -281,7 +285,7 @@
+                 progress({"tools": calls, "usage": usage, **execution_report(calls, in_progress=True),
+                           "message": queue_state + " — " + message if message else None,
+                           "retry_at": retry_at, "queue_state": queue_state if message else "EXECUTING"})
+-        with self.sdk_client(transport, timeout=RUN_TIMEOUT_SECONDS) as client:
++        with self.sdk_client(transport, timeout=max(1,deadline-time.monotonic())) as client:
+             for _ in range(max_rounds):
+                 remaining = deadline - time.monotonic()
+                 if remaining <= 0:
+@@ -313,7 +317,12 @@
+                     "For a requested work breakdown/backlog, propose tasks using the create/update tools and role selectors; proposals are not completed work. "
+                     "Tool argument contracts: " + json.dumps({name: ARGUMENTS[name] for name in allowed_tools}, ensure_ascii=False)}]},
+                     "contents": contents, "tools": [{"functionDeclarations": declarations}],
+-                    "generationConfig": {"maxOutputTokens": 4096, "thinkingConfig": {"thinkingLevel": "medium"}}}
++                    "generationConfig": {"maxOutputTokens": 1500 if acceptance else 4096, "thinkingConfig": {"thinkingLevel": "medium"}}}
++                if acceptance:
++                    payload['systemInstruction']['parts'][0]['text'] += (' Owner host policy permits exactly one create: '+
++                        json.dumps(acceptance.document['create'],ensure_ascii=False)+'. All other mutations are denied. '+
++                        'Host checks duplicate children and Native authorization immediately before create. '+
++                        'The create result already contains an independent Native readback. Finish within 3 generations; batch necessary reads.')
+                 if not policy.get("model", MODEL).startswith("gemini-3."):
+                     payload["generationConfig"].pop("thinkingConfig")
+                 else:
+@@ -322,7 +331,7 @@
+                 try:
+                     self.reserve_budget(store, policy, 0, deadline, waiting)
+                     count_payload = {'generateContentRequest': {'model': 'models/' + MODEL, **payload}}
+-                    token_document = self.post_with_retry(client, store, policy, 'countTokens', count_payload, 0, deadline, waiting)
++                    token_document = acceptance.post(self,client,store,policy,'countTokens',count_payload) if acceptance else self.post_with_retry(client, store, policy, 'countTokens', count_payload, 0, deadline, waiting)
+                     tokens = token_document.get('totalTokens')
+                     if type(tokens) is not int or tokens <= 0:
+                         raise ProviderError('GEMINI_INVALID_TOKEN_COUNT')
+@@ -333,7 +342,7 @@
+                     remaining = deadline - time.monotonic()
+                     if remaining <= 0:
+                         raise ProviderError('GEMINI_RUN_DEADLINE')
+-                    document = self.post_with_retry(client, store, policy, 'generateContent', payload, tokens, deadline, waiting)
++                    document = acceptance.post(self,client,store,policy,'generateContent',payload) if acceptance else self.post_with_retry(client, store, policy, 'generateContent', payload, tokens, deadline, waiting)
+                 except ValueError as error:
+                     if str(error).startswith('GEMINI_'):
+                         raise ProviderError(str(error) + '; stopped, no paid fallback') from None
+@@ -365,6 +374,7 @@
+                     explanation = json.loads(text).get("explanation", "") if business else ""
+                     report = execution_report(calls, explanation, claims)
+                     return {**report, "claims": claims, "tools": calls, "usage": usage, "model": policy.get("model", MODEL),
++                            **({'business_acceptance':acceptance.metadata(),'model_used':not getattr(client[1],'is_mock_transport',False)} if acceptance else {}),
+                             "notice": "Execution is verified from native receipts. Business analysis is model interpretation; not test or personnel evidence."}
+                 replies = []
+                 for call in function_calls:
+@@ -509,6 +519,7 @@
+     @contextmanager
+     def sdk_client(self, transport=None, timeout=120):
+         with BoundedClient(transport=transport, trust_env=False, follow_redirects=False, timeout=30) as http:
++            http.is_mock_transport = isinstance(transport,httpx.MockTransport)
+             http.deadline = time.monotonic() + timeout
+             with genai.Client(api_key=(self.root / "gemini.key").read_text().strip(), vertexai=False,
+                 http_options=types.HttpOptions(base_url="https://generativelanguage.googleapis.com", api_version="v1beta", timeout=30000,
+--- before/gateway/native.py
++++ after/gateway/native.py
+@@ -32,7 +32,9 @@
+             raise NativeError(503, "REQUEST_DEADLINE_EXCEEDED")
+         trace_event("native", method)
+         try:
+-            with httpx.stream(method, self.base + path, json=payload, timeout=min(30, remaining), follow_redirects=False,
++            # Native scheduling may finish CREATE after 30s; keep its existing 90s overall deadline, never retry POST.
++            timeout = remaining if method == 'POST' and path == '/api/v3/work_packages' else min(30, remaining)
++            with httpx.stream(method, self.base + path, json=payload, timeout=timeout, follow_redirects=False,
+                                      trust_env=False, headers={"Authorization": "Basic " + auth, "Host": "localhost:8088",
+                                                               "X-Forwarded-Proto": "https", **getattr(self, "mutation_headers", {})}) as response:
+                 if response.is_redirect:
+--- before/gateway/service.py
++++ after/gateway/service.py
+@@ -822,7 +822,8 @@
+                     if call.get("result", {}).get("error"):
+                         call["result"]["message"] = "Thao tác đã bị từ chối ở lượt này; chưa có xác nhận ghi thành công. Xem receipt để kiểm tra lý do."
+                 run["result"] = {**result, **execution_report(calls, result.get("text", ""), result.get("claims", []))}
+-            return run
++            from .business_acceptance import BusinessAcceptance
++            return BusinessAcceptance.recovered_view(self.store,actor,run,native)
+         if action == "get_insights":
+             self.keys(args, {"user_id", "days"})
+             target = int(args.get("user_id", actor))
+@@ -928,7 +929,6 @@
+             previous, arguments = pending["action"], pending["arguments"]
+             marker = "QLDAPM-request-" + digest(f"{actor}:{args['key']}")
+             found = None
+-            # shortcut: create timeout remains UNKNOWN until native creation has an actor-bound receipt.
+             if previous == "change_gate":
+                 native.package(arguments["id"])
+                 gate = native.call(f"/api/v3/qldapm/gates/{int(arguments['id'])}")
+@@ -941,6 +941,23 @@
+                            item.get("_links", {}).get("user", {}).get("href") == f"/api/v3/users/{actor}"]
+                 if len(matches) == 1:
+                     found = matches[0]
++            elif previous == 'create_work_package':
++                field = self.config['source_field']
++                source = arguments.get('source_id')
++                matches = [item for item in native.packages() if source and item.get(field) == source]
++                if len(matches) == 1:
++                    item = native.package(matches[0]['id'])
++                    expected = {'project': f"/api/v3/projects/{self.config['project_id']}",
++                                'type': f"/api/v3/types/{arguments['type_id']}", 'author': f'/api/v3/users/{actor}',
++                                'parent': f"/api/v3/work_packages/{arguments['parent_id']}" if arguments.get('parent_id') else None,
++                                'assignee': None}
++                    assignee = arguments.get('assignee_id')
++                    if 'assignee_role' in arguments:assignee = self.role_assignee(arguments['assignee_role'])
++                    if assignee:expected['assignee'] = f'/api/v3/users/{assignee}'
++                    if (item.get(field) == source and item.get('subject') == arguments['subject'] and
++                            item.get('description', {}).get('raw', '') == arguments.get('description', '') and
++                            all(item.get('_links', {}).get(name, {}).get('href') == href for name,href in expected.items())):
++                        found = item
+             elif previous == "write_code":
+                 current = self.workspace.read(actor, arguments["path"])
+                 if current["sha256"] == digest(arguments["content"]):
+--- before/gateway/business_acceptance.py
++++ after/gateway/business_acceptance.py
+@@ -0,0 +1,121 @@
++"""Private one-shot Owner consent: exact create only, durable claim, bounded provider calls."""
++import json
++import math
++import time
++import uuid
++from pathlib import Path
++
++from .gemini import ProviderError
++from .store import canonical, digest
++
++
++class BusinessAcceptance:
++    def __init__(self, service, payload):
++        self.service, self.payload = service, payload
++        self.document = json.loads((service.store.root/'business-acceptance.json').read_text())
++        d = self.document
++        if (set(d) != {'id','actor','project','prompt_sha256','scope','create','expires'} or
++                str(uuid.UUID(d['id'])) != d['id'] or d['actor'] != payload['actor'] or
++                d['project'] != service.config['project_id'] or d['scope'] != payload['write_scope_ids'] or
++                d['prompt_sha256'] != digest(payload['prompt']) or payload['allow_routine_writes'] is not True or
++                type(d['expires']) not in (int,float) or not math.isfinite(d['expires']) or not time.time() < d['expires'] or
++                set(d['create']) != {'subject','type_id','parent_id','assignee_id'} or
++                not isinstance(d['create']['subject'],str) or not d['create']['subject'].strip() or
++                any(type(d['create'][k]) is not int or d['create'][k]<=0 for k in ('type_id','parent_id','assignee_id')) or
++                d['scope'] != [d['create']['parent_id']]):
++            raise ProviderError('OWNER_BUSINESS_CONSENT_MISMATCH')
++        with service.store.connect() as db:
++            row = db.execute('select created from ai_runs where id=? and actor=?',(payload['id'],payload['actor'])).fetchone()
++        if not row:raise ProviderError('OWNER_STORED_RUN_REQUIRED')
++        from .live_agents import LiveBudget, LiveConfig
++        self.budget = LiveBudget(LiveConfig(enabled=True,max_model_calls=3,max_http_attempts=6,
++            max_output_tokens=1500,timeout_seconds=180,call_timeout_seconds=90,retry_limit=0))
++        self.budget.deadline=min(self.budget.deadline,time.monotonic()+180-(time.time()-row['created']),
++                                 time.monotonic()+d['expires']-time.time())
++        key='owner-run-'+d['id']
++        claimed=service.store.begin(payload['actor'],key,{'run':payload['id'],'consent_sha256':digest(canonical(d))})
++        if claimed is not None:raise ProviderError('OWNER_BUSINESS_REQUEST_ALREADY_CLAIMED')
++        service.store.finish(payload['actor'],key,{'run':payload['id'],'state':'CLAIMED_NO_AUTOMATIC_REPLAY'})
++        self.create_key='owner-create-'+d['id']
++
++    @classmethod
++    def load(cls,service,payload):
++        path=service.store.root/'business-acceptance.json'
++        if not path.exists():return None
++        document=json.loads(path.read_text())
++        return cls(service,payload) if document.get('actor')==payload['actor'] else None
++
++    def command(self,action,arguments):
++        self.budget.check_cancel()
++        if time.monotonic()>=self.budget.deadline:raise ProviderError('GEMINI_RUN_DEADLINE')
++        if action not in {'identity','get_project_options','get_work_package','list_work_packages','analyze','create_work_package'}:
++            raise PermissionError('OWNER_ONLY_EXACT_CREATE_AUTHORIZED')
++        if action=='get_work_package' and arguments.get('id') not in self.document['scope']:
++            # Readback of a newly created item remains valid, but cannot expand mutation consent.
++            try:r=self.service.store.request_status(self.payload['actor'],self.create_key)
++            except ValueError:r={}
++            if arguments.get('id')!=(r.get('result') or {}).get('result',{}).get('id'):
++                raise PermissionError('OWNER_READ_TARGET_OUTSIDE_SCOPE')
++        if action!='create_work_package':return arguments
++        args=dict(arguments)
++        if args.get('assignee_role')=='QA' and self.service.role_assignee('QA')==self.document['create']['assignee_id']:
++            args.pop('assignee_role');args['assignee_id']=self.document['create']['assignee_id']
++        args.pop('source_id',None)
++        if args.get('description')=='':args.pop('description')
++        if canonical(args)!=canonical(self.document['create']):raise PermissionError('OWNER_CREATE_FIELDS_MISMATCH')
++        native,_=self.service.native_actor(self.payload['actor']);native.package(args['parent_id'])
++        matches=[p for p in native.packages() if p.get('_links',{}).get('parent',{}).get('href')==f"/api/v3/work_packages/{args['parent_id']}"
++                 and ' '.join(p['subject'].split()).casefold()==' '.join(args['subject'].split()).casefold()]
++        if matches:
++            try:r=self.service.store.request_status(self.payload['actor'],self.create_key)
++            except ValueError:r={}
++            if len(matches)!=1 or r.get('state')!='done' or (r.get('result') or {}).get('result',{}).get('id')!=matches[0]['id']:
++                raise PermissionError('OWNER_SUBTASK_ALREADY_EXISTS_RECONCILE')
++        return {**args,'source_id':'owner-'+self.document['id']}
++
++    def post(self,gemini,client,store,policy,phase,body):
++        self.budget.before_attempt(phase)
++        receipt={'id':str(uuid.uuid4()),'project':policy['project'],'native_project_id':self.document['project'],
++            'actor':self.payload['actor'],'run_id':self.payload['id'],'agent':'business_worker','phase':phase,
++            'model':policy['model'],'at':time.time(),'state':'ATTEMPTING','attempt':0,'usage':None,'http_status':None}
++        store.provider_receipt(receipt)
++        try:
++            answer=gemini.sdk_post(client,policy,phase,body)
++            receipt.update(state='MOCK_SUCCESS' if getattr(client[1],'is_mock_transport',False) else 'LIVE_SUCCESS',
++                http_status=getattr(client[1],'last_status',200),usage=answer.get('usageMetadata'),
++                input_tokens=answer.get('totalTokens') if phase=='countTokens' else None)
++            return answer
++        except Exception as error:
++            receipt.update(state='FAILED',http_status=getattr(client[1],'last_status',None),error_type=type(error).__name__)
++            raise
++        finally:store.provider_receipt(receipt)
++
++    def metadata(self):
++        return {'approval_id':self.document['id'],'max_http':6,'max_generations':3,'max_output_tokens':1500,
++                'timeout_seconds':180,'http_attempts':self.budget.http_attempts,'generations':self.budget.generations,
++                'native_create_request_key':self.create_key}
++
++    @staticmethod
++    def recovered_view(store,actor,run,native):
++        """Show proven recovery without rewriting the failed worker or inventing a model summary."""
++        if run.get('state')!='failed_or_unknown':return run
++        with store.connect() as db:
++            rows=db.execute("""SELECT r.result FROM requests c JOIN requests r ON r.actor=c.actor
++                AND r.key='owner-create-'||substr(c.key,11) WHERE c.actor=? AND c.key LIKE 'owner-run-%'
++                AND json_extract(c.payload,'$.run')=? AND c.state='done' AND r.state='done'""",(actor,run['id'])).fetchall()
++        if len(rows)!=1:return run
++        receipt=json.loads(rows[0]['result'])
++        if receipt.get('reconciled') is not True:return run
++        native.package(receipt['result']['id'])  # A historical receipt never bypasses current Native visibility.
++        from .gemini import Gemini
++        from .presentation import execution_report
++        result=json.loads(json.dumps(run.get('result') or {}));calls=result.get('tools',[])
++        unknown=[c for c in calls if c.get('action')=='create_work_package' and c.get('result',{}).get('outcome_unknown')]
++        if len(unknown)!=1:return run
++        unknown[0]['result']=Gemini.business_result('create_work_package',receipt)
++        result.update(execution_report(calls))
++        result.update(tools=calls,native_reconciled=True,provider_report_completed=False,
++            original_worker_state=run['state'],status='partial',
++            heading='Native đã xác nhận sau timeout — không gửi lại yêu cầu',
++            message='Subtask đã được đối soát bằng source marker và author. Gemini đã dừng trong ngân sách; không có bản tổng hợp model mới.')
++        return {**run,'result':result}

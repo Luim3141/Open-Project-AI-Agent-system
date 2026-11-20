@@ -1,0 +1,81 @@
+{
+  "started_utc": "2026-11-02T09:36:09.353035+00:00",
+  "ended_utc": "2026-11-02T09:38:29.371582+00:00",
+  "status": "OPERATIONAL_REFRESH_CLONE_FAILED",
+  "checks": {
+    "stale_exact_lookups_empty": false,
+    "exactly9_project6_refreshes": true,
+    "only_project6_actor20_jobs": true,
+    "all9_verified_within_bound": true,
+    "no_project5_or_native_proposals": true,
+    "settled_scan_no_new_jobs": true,
+    "all10_frozen_current_source_hashes_and_metadata": true,
+    "current_actor_chunk_payloads_readback": true,
+    "pm_owner_exact_citations_current": false,
+    "actual_qdrant_acl_prefilters": true,
+    "native_business_writes_zero": true,
+    "warm_exact_p95_at_most5sec": true
+  },
+  "scan_native_ids": [
+    380,
+    381,
+    382,
+    383,
+    384,
+    386,
+    387,
+    389,
+    390
+  ],
+  "drained_jobs": 9,
+  "baseline_exact_hit_counts": {
+    "384": 1,
+    "390": 1
+  },
+  "acl_checks": {
+    "wrong_project": true,
+    "wrong_role": true,
+    "wrong_actor": true,
+    "empty_document_scope": true
+  },
+  "current_actor_sources": 10,
+  "verified_actor_chunks": 161,
+  "warm_exact_query_p95_seconds": 2.752956327996799,
+  "model_digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+  "snapshot_sha256": "b126f57943622ad7c5b0ed0c3dcbe641f11cf31b6d188a1b54b8e0e34395375e",
+  "predeclared_gate_sha256": "6aa691688b99af784a0576e18f581ded47b6d06f95e344bc74c5d5a337bd5159",
+  "canonical_snapshot_sha256": "b4a1829d156d4ae3a6d608f4536b20784e33f80a63f6e4bae499fb3973ed0665",
+  "ollama_resident_models": {
+    "models": [
+      {
+        "name": "bge-m3:latest",
+        "model": "bge-m3:latest",
+        "size": 689187061,
+        "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "bert",
+          "families": [
+            "bert"
+          ],
+          "parameter_size": "566.70M",
+          "quantization_level": "F16"
+        },
+        "expires_at": "2026-11-02T16:43:28.0823307+07:00",
+        "size_vram": 689187061,
+        "context_length": 4096,
+        "runner": "llamacpp"
+      }
+    ]
+  },
+  "source_hashes": {
+    "service.py": "99804a0702ca565d3a4d77741ea5a8d28ede5e182740fc77ac956fb8a701db7f",
+    "native_incremental.py": "23a8eb4f822938ddd4cd3d59906471c3af15e83e140d94f582984705f1bcea8b",
+    "knowledge_search.py": "6dce36043c90d8ccdb55bd21b8ce0f92f46f0a48d16c3eaebad2a0d30cfcf69c",
+    "knowledge_ingestion.py": "5a8ac18cf75fd3f595b9082a7afb06624a643e60efadde54fc612d60e2140133",
+    "vector_client.py": "53e4f97b13d6871e4aec206f4bdf66097f9f546848c85fa1c1d48cba7b2166f9"
+  },
+  "command": "openproject/ai/.venv/Scripts/python.exe docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/rag/qualify_refresh.py",
+  "limits": "Frozen Native fixture after independently authenticated current read. Real local BGE and disposable Qdrant. No Main Native/index/config mutation. Not semantic accuracy/human benchmark or browser Owner UAT. Qdrant cap excludes existing Ollama model/GPU memory; sequential warm timing not concurrent SLA."
+}

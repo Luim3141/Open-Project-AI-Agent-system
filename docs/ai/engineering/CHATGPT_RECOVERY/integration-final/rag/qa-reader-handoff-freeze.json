@@ -1,0 +1,39 @@
+{
+  "utc": "2026-11-03T13:38:58.161017+00:00",
+  "status": "REJECTED_DEV_CANDIDATE_FROZEN_FOR_HANDOFF_NOT_FINAL_QUALIFICATION",
+  "source_files": {
+    "openproject/ai/gateway/knowledge_answer.py": "a77c760fea779d4797a1af80a8dcfd1523ef153bc1fe12da23005dd9e26d8402",
+    "openproject/ai/tests/test_knowledge_answer.py": "ba5b61fe5772807570517f89f1e6ccc0b5a925c0421e0b39bff1d4504c0daee5",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/download_qa_reader.py": "e5ebed9e3ca800128cb781a93b5576e3d42837fa11ee56aefb774370592c0fe4",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/qa_span_decode.py": "44f7fd946df2580bf198ac293b035fd79224219ad5fe54ee55bca314007edebf",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/test_qa_span_decode.py": "2c032e03659bec505b050dfcd8cb6d15286b8a37105c31ac510c0895d201af0d",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/qa_reader_offline.py": "c964e6c2e0771f7d1aa3ee5e739d7251b82323fde7c97a9ed852dd33f0205445",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/run_qa_reader_smoke.py": "901b6cd155992975efd2c23357f5dbd0bff09ccab6657c4e2ac1f43b68c5d9ee",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/qa_reader_dev.py": "064125b3f38668dab123d280f44435f3b1c44bdcc1c17f793108434aae9b599b",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/prepare_owner_review_packet.py": "2560a4eaa008c3daffd480be7b9d5ebbf0c3324d3eedc71be584d920aff0e852",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/OWNER_REVIEW_PACKET_V2.json": "4a8c97e6f63abdd7a061adce174ae6ca8d36d945e2424b64a9cf11b7874311cf",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/QA_READER_EXPERIMENT.md": "d1973c89ef8f2cb00210af65331d72efe1d50a947396b943be168c861ff7e949",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/qa-reader-dev.json": "9788962d018677f6a5b625767f188b651db7366b7bff91d49b7898851c2f169c",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/qa-reader-synthetic.json": "6a5320bff1ea657cb84779b61d39d88f5fcf6ee926082764543ba9be92ec1428",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/rag/qa-reader-synthetic-unpadded.json": "29da3eede2f3dacf4c6e0674673febf8cce625a18de810b91e71b35fa713bf5a"
+  },
+  "validation": {
+    "focused_rag_unittests": {
+      "run": true,
+      "passed": 23,
+      "new_decoder_tests": 4
+    },
+    "knowledge_answer_boundary_unittests": {
+      "run": true,
+      "passed": 3
+    },
+    "new_scripts_py_compile": "PASS",
+    "review_packet_offset_hash_assertions": "PASS"
+  },
+  "dev_sha256": "085c0036415c0be33868515a7839887a2dbea079197e960251bb585bedc4ddd1",
+  "holdout_questions_or_labels_opened": false,
+  "heavy_experiments_stopped": true,
+  "main_mutations": false,
+  "production_rag_candidate_deployed": false,
+  "next_qualification_requires": "Independent new dev/locked holdout, intent splitting, approved answerability candidate and source/config/test freeze before one run; do not use this post-diagnosis freeze as proof of a prior final qualification."
+}

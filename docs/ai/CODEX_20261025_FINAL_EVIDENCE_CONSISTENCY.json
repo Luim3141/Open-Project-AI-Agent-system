@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-10-25T03:17:32.760038+00:00",
+  "status": "PASS",
+  "gateway_image": "sha256:c0f328216654478cb58dc01dad737958416882f0352c450a0ae5a80438ca6372",
+  "native_visible_packages": 338,
+  "workflow_inventory": 16,
+  "required_json_artifacts_verified": [
+    "CODEX_WF09_FULL_BUG_LIFECYCLE_RESULT.json",
+    "CODEX_WF10_WBS_SCHEDULING_RESULT.json",
+    "CODEX_WF02_DELETE_SYNC_QUALIFICATION.json",
+    "CODEX_WF14_RECOVERY_QUALIFICATION.json",
+    "CODEX_WF15_LEGACY_POINT_OWNERSHIP.json",
+    "CODEX_FINAL_MAIN_REGRESSION_MATRIX.json"
+  ],
+  "immutable_approval_hash_verified": true,
+  "approval_consumed": true,
+  "public_secret_scan": "PASS",
+  "known_business_blockers": [
+    "WF09/WF11: genuine Main QA Native evidence and actual fix/retest/review/valid closure not performed; actual Native form rejects current transition. Manual ledger implemented/qualified; automated trusted runner NOT_IMPLEMENTED; unsupported custom gate422 unchanged.",
+    "WF10: Native dependency writes need versioned relation/derived scheduling contract; new model-generated complete tree and date-driven ancestor effects beyond old qualified first-child proof remain unqualified.",
+    "WF02: trusted permanent-delete producer and recovery absent;404/visibility cannot authorize physical delete. Independent external-client mutation not exercised.",
+    "WF14: two historical unknown comment outcomes held; full Qdrant restore previously blocked by automatic tool review, no workaround/outage injection.",
+    "WF15: three historical unmatched points ownership producer NOT_PROVEN; retained/excluded, no deletion.",
+    "WF07/WF16: external delivery BLOCKED_CONFIGURATION. Local metadata sink source-only tested, not wired/deployed. Unsupported provider/agent/quota administration NOT_IMPLEMENTED."
+  ],
+  "overall_release": "PARTIAL",
+  "no_remaining_native_write_authorization": true,
+  "current_core_image": "sha256:1bbe160472068a64d3a965fe2bbbd280c2095d17ce285785a3ad0df40825a61f",
+  "core_ui_checks": "PASS_API_RUBY_AND_OWNER_SELECTOR_HUMAN_UAT",
+  "current_final_readonly": "CODEX_CORE_AI_TOOLS_READONLY_RESULT.json",
+  "owner_selector_uat": "CODEX_OWNER_NEW_TOOLS_HUMAN_UAT_RESULT.json"
+}

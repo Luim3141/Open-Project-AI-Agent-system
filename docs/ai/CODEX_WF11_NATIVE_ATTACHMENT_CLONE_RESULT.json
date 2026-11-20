@@ -1,0 +1,84 @@
+{
+  "at": "2026-10-25T04:09:57.201671+00:00",
+  "status": "PASS_ISOLATED_NATIVE_READBACK_AND_ATTACHMENT_POLICY",
+  "scope": "Actual HTTP OpenProject Main clone, own existing Native identities; simulated isolated proposal decision, not human Main approval",
+  "clone_id": "5e90eec3-6b96-4dcc-86fc-39dfd3a9eb9a",
+  "core_image": "sha256:175c337834cabb5e56689432cbb913e5dc4ef622d77b7e3e49d16333cdab85e2",
+  "native_id": 376,
+  "identities": {
+    "18": "AI_SYSTEM_OWNER",
+    "19": "PM",
+    "20": "BA",
+    "21": "BE",
+    "22": "FE",
+    "23": "QA"
+  },
+  "automated_run": {
+    "id": "b756a549-e485-5993-a8ac-63f190b70149",
+    "verdict": "PASSED",
+    "verification_kind": "AUTOMATED_NATIVE_READBACK",
+    "binding": {
+      "assignee": "/api/v3/users/21",
+      "criteria_sha256": "69f8c6cb7cdb210949524962bfae2050bd0e50eb736ee51fe51b7c9a8a0b4155",
+      "native_id": 376,
+      "snapshot_sha256": "73d69a6248b0f97f42913c3204d20a3cbab78f7f726e5326dea47f735b66796b",
+      "version": 0
+    },
+    "producer": {
+      "code_sha256": "2324de87034702dda83391175318dc0fc5ed0f59307fd3efc2fe154a9f67e62b",
+      "id": "qldapm-native-readback-v1"
+    },
+    "artifact_sha256": "83a51917946d5d4b8124fdc6eed08603393b70fbc367b150b551e7c034fb8fd7",
+    "started_at": 1792901395.920148,
+    "finished_at": 1792901396.3314352
+  },
+  "test_cases": [
+    {
+      "actual": "\"2026-10-26\"",
+      "criterion_id": "AC1",
+      "expected": "\"2026-10-26\"",
+      "observed_at": 1792901396.0200505,
+      "outcome": "PASSED",
+      "reference": "qldapm-native-readback-v1:AC1"
+    },
+    {
+      "actual": "\"2026-10-27\"",
+      "criterion_id": "AC2",
+      "expected": "\"2026-10-27\"",
+      "observed_at": 1792901396.121319,
+      "outcome": "PASSED",
+      "reference": "qldapm-native-readback-v1:AC2"
+    },
+    {
+      "actual": "21",
+      "criterion_id": "AC3",
+      "expected": "21",
+      "observed_at": 1792901396.2267468,
+      "outcome": "PASSED",
+      "reference": "qldapm-native-readback-v1:AC3"
+    }
+  ],
+  "attachment_checks": {
+    "anonymous_upload_http": 401,
+    "qa_upload_http": 403,
+    "owner_upload_http": 201,
+    "attachment_id": 3,
+    "file_size": 1006,
+    "content_type": "application/json",
+    "author": 18,
+    "container_native_id": 376,
+    "artifact_sha256": "83a51917946d5d4b8124fdc6eed08603393b70fbc367b150b551e7c034fb8fd7",
+    "fixed_native_content": "PASS_EXACT_BYTES_SHA256",
+    "version_before_attachment": 0,
+    "version_after_attachment": 0
+  },
+  "main_native_writes": 0,
+  "clone_create_count": 1,
+  "clone_attachment_count": 1,
+  "staging_operations": false,
+  "official_contract_source": "https://www.openproject.org/docs/api/endpoints/attachments/",
+  "limitations": [
+    "Automated proof is limited to exact fixed Native readback predicates, not arbitrary application or UI test criteria",
+    "No human Main QA review or Native transition performed"
+  ]
+}

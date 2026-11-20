@@ -1,0 +1,60 @@
+{
+  "target": "staging",
+  "services": [
+    {
+      "service": "db",
+      "running": false,
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "unhealthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": true
+    },
+    {
+      "service": "staging-web",
+      "running": false,
+      "status": "exited",
+      "exit_code": 1,
+      "oom_killed": false,
+      "health": "unhealthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": true
+    },
+    {
+      "service": "staging-gateway",
+      "running": false,
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "unhealthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": true
+    },
+    {
+      "service": "n8n",
+      "running": false,
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "unhealthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": true
+    },
+    {
+      "service": "n8n-editor",
+      "running": false,
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "unhealthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": true
+    }
+  ],
+  "all_healthy": false,
+  "provider": "CONFIGURED_DISABLED",
+  "key_present": true,
+  "provider_network_checked": false,
+  "stopped_note": "Docker cannot distinguish every operator stop from an exit; use exit/OOM and private logs. Repair explicitly restores stopped containers."
+}

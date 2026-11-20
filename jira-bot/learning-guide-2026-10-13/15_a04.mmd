@@ -1,0 +1,6 @@
+flowchart LR
+  a0["Cha mới REVIEW hoặc Done"] -->|"Có Task chuyển đến chưa Done"| b0["In Progress"]
+  a1["Cha mới READY"] -->|"Task chuyển đến đã bắt đầu"| b1["In Progress"]
+  a2["Cha cũ hoặc mới In Progress"] -->|"Có Task và tất cả Task Done"| b2["REVIEW"]
+  a3["Cha cũ hoặc mới REVIEW"] -->|"Rỗng hoặc có Task chưa Done"| b3["In Progress"]
+  a4["Cha cũ Done"] -->|"Chỉ chuyển Task ra khỏi cha"| b4["Giữ Done"]

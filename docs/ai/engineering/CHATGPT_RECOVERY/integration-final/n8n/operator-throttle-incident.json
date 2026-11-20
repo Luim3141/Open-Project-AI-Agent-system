@@ -1,0 +1,46 @@
+{
+  "utc": "2026-11-03T12:55:56.610253+00:00",
+  "cause": "operator drain exceeded shared automation30/min; producer worker itself remains paced",
+  "action": "operator drain ended; future script paced5sec; no further manual drain or quota change",
+  "dead_event_execution_checks": [
+    {
+      "id": "00c987be-6b83-55bb-91c8-fa8bb725a8e7",
+      "workflow": "WF13",
+      "attempts": 5,
+      "executions": [
+        {
+          "id": 3184,
+          "status": "error",
+          "http429": false
+        },
+        {
+          "id": 3174,
+          "status": "error",
+          "http429": false
+        },
+        {
+          "id": 3167,
+          "status": "error",
+          "http429": false
+        },
+        {
+          "id": 3163,
+          "status": "error",
+          "http429": false
+        },
+        {
+          "id": 3161,
+          "status": "error",
+          "http429": false
+        }
+      ]
+    }
+  ],
+  "dead_source_readback": {
+    "native_id": 385,
+    "cursor_visible": 0,
+    "native_http": 404,
+    "action": "PRESERVED_DEAD_NO_REQUEUE_NO_PERMISSION_BYPASS"
+  },
+  "limits": "429 errors remain in retained history; no attempt/event identity reset performed"
+}

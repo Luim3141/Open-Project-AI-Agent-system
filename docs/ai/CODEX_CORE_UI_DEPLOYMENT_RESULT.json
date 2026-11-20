@@ -1,0 +1,38 @@
+{
+  "old_image": "sha256:a3214219127e61ff934d33b0c45031df8a315e6a5f44ff9754c7985e2adcbcbb",
+  "candidate_image": "sha256:660b9878ba51196c4d772894d2b849d0bf8f5296351912338cfde5ac50ac30bf",
+  "candidate_tag": "qldapm-core:codex-six-role-ui-20261023",
+  "files_sha256": {
+    "app/views/qldapm_ai/_execution_client.html.erb": "0088a4244c858eb1f228801b0f717973a0cd50641b660b8b8e8815c9a313d43e",
+    "app/views/qldapm_ai/_execution_style.html.erb": "79921472b417e42648d4aae52fa5dfe5a191f6cce6a19e06a7ad9dc6983905da",
+    "app/views/qldapm_ai/show.html.erb": "daaef610274cdff6e64dd23a03f0c9a9a5204d3b71b386cdbad48774e4dc488c",
+    "app/controllers/qldapm_ai_controller.rb": "5ea6311574c5afd9c2f9cf223ec2b320d7b41bffb711c87e6ea524ee67eddc61"
+  },
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "postgres_backup_sha256": "ea0d3e9f758519d9a160b775f3451d92f58e0b4e4c7874eda8c17068cb3f03ce",
+  "postgres_archive_list_verified": true,
+  "assets_backup_sha256": "135933a9675e3e55f4fa7c95b3737d360b6e96c444470d7c177b1f218c58cad0",
+  "gateway_sqlite_backup_sha256": "56b4f517d44796d9afead4f3556130321b9c5216c7f9edd28f5519f27b61361e",
+  "bridge_before_sha256": "246c3b4b51b7ffcf5c1ddb63acf622af76e21726fb8c38374d93cae29ea7090e",
+  "scope": "Main Core web only: four files; FE/BE report segmentation/colors, obsolete automatic-write options removed, forced proposal-only bridge. No migration, no worker/cron/seeder restart. No Native write, new model call, credentials or Staging change.",
+  "validation": {
+    "actual_rails_erb_compiled": 3,
+    "controller_ruby_syntax": true,
+    "windows_execution_monitor_tests_passed": 21
+  },
+  "rollback": "Restore exact private ui-bridge.yml bytes and recreate web only on previous image; retain PostgreSQL/assets/Gateway state; never replay writes or restore DB automatically.",
+  "browser_uat": "PM_MAIN_UI_VERIFIED_WITH_LIMITS",
+  "status": "DEPLOYED_AND_PM_UI_VERIFIED_WITH_LIMITS",
+  "health_http": 200,
+  "serving_four_files_sha256_verified": true,
+  "native_333_unchanged": true,
+  "nine_other_main_containers_unchanged": true,
+  "credentials_and_native_security_hashes_unchanged": true,
+  "provider_usage_proposals_and_knowledge_jobs_unchanged": true,
+  "initial_attempt": {
+    "status": "ROLLED_BACK_ON_PREMATURE_READINESS_TIMEOUT",
+    "previous_image_recovery_http": 200,
+    "correction": "Readiness bounded240seconds matching existing120second start_period; same source/image candidate succeeded"
+  },
+  "browser_uat_evidence": "CODEX_MAIN_UI_UAT_RESULT.json"
+}

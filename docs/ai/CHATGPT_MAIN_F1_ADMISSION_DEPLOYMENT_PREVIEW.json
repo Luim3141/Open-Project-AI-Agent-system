@@ -1,0 +1,27 @@
+{
+  "status": "QUALIFIED_TECHNICAL_DEPLOYMENT_NOT_APPLIED",
+  "scope": "Owner-only admission of signed application proof into existing QA metadata, independent QA/PM review UI, source-current checks and safe rollback",
+  "gateway": "sha256:bf983de5ae315dbe752df65de13c5a7393fc9c6d12f2395cd7da80a9b0cfe295",
+  "core": "sha256:5e2182bb450729f03dfe415ac5d46662dac28d5e0b64fbfdca599d8c7d8dd8b5",
+  "rollback_gateway": "sha256:211f5d8be726ec3225727dd0c957e0992f184e08a2a5e5d4d1ca19bac5efb911",
+  "rollback_core": "sha256:7af1e238e722f49915f222bdea43892ddc8e96db85d633be46bdea62ca73bc48",
+  "qualification": {
+    "windows_affected": 58,
+    "candidate_linux": 68,
+    "host_role_fixture": 5,
+    "fallback_linux": 18,
+    "actual_native_clone": "PASS_ACTUAL_NATIVE_CLONE_APPLICATION_ADMISSION_REVIEW_BOUNDARIES",
+    "same_metadata_rollback": "PASS_ROLLBACK_UNKNOWN_APPLICATION_METADATA_PRESERVED_READ_ONLY",
+    "core_controller_and_view_fixtures": "PASS",
+    "source_match": "8 Gateway modules and 2 Core files exact; other bytes inherited from current pinned images"
+  },
+  "native_application_transition": "NOT_IMPLEMENTED; preparation returns explicit422 and evidence ready=false even after QA/PM review",
+  "schema_changes": false,
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\qa-admission-deploy-backup",
+  "rollback": "Use the qualified compatibility pair and retain databases, application records and review history; no database restore",
+  "authorization": "PUBLICATION_REDACTED"
+}

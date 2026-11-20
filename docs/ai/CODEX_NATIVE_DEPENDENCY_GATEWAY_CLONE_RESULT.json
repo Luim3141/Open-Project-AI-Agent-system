@@ -1,0 +1,142 @@
+{
+  "at": "2026-10-25T20:15:26.454428+00:00",
+  "status": "PASS_ACTUAL_ISOLATED_GATEWAY_NATIVE_DEPENDENCY_AND_DURABLE_OUTBOX",
+  "scope": "Real exact-image Gateway Service/Store and cloned Core Native HTTP; simulated isolated fixture decisions only, no human Main approval",
+  "images": {
+    "database": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+    "web": "sha256:4495d944cd6ea5ab7a1fb50173310a787793f4398118f6b858333ac62a80a6a2"
+  },
+  "gateway_image": "sha256:89777ef1ddf5c84f1758756bca620599fb49b906ae77cf961249bf1f2726f0fa",
+  "created_ids": [
+    376,
+    377,
+    378,
+    379,
+    380,
+    381,
+    382,
+    383,
+    384
+  ],
+  "checks": [
+    {
+      "actor": 20,
+      "result": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 21,
+      "result": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 22,
+      "result": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 23,
+      "result": "PASS_POLICY_ENFORCED"
+    }
+  ],
+  "receipts": [
+    {
+      "id": 377,
+      "readback": [
+        {
+          "id": 376,
+          "dueDate": "2026-10-27",
+          "startDate": "2026-10-26",
+          "lockVersion": 0,
+          "scheduleManually": true
+        },
+        {
+          "id": 377,
+          "dueDate": "2026-10-29",
+          "startDate": "2026-10-28",
+          "lockVersion": 1,
+          "scheduleManually": false
+        }
+      ],
+      "relation": {
+        "id": 353,
+        "lag": 0,
+        "type": "follows",
+        "successor_id": 377,
+        "predecessor_id": 376
+      },
+      "provenance": "ai_gateway",
+      "request_id": "QLDAPM-request-25a7ff408ee412c96cee58df4f657f0a34f4943b3c67a568a60a4507c66cca11",
+      "scope_hash": "b68519b936300e8cefbbd85791023966e65640ebbc0b46867aa4356515582455",
+      "changed_ids": [
+        377
+      ],
+      "lockVersion": 1,
+      "proposal_id": "523dd68d-b5d9-48ca-8a18-83a00481cca2",
+      "proposal_hash": "21192660f943e90597675be84fef1afa08f9d52b2362281fd61b0745ce2fab9f"
+    },
+    {
+      "id": 384,
+      "lockVersion": 1,
+      "request_id": "QLDAPM-request-4a5e8cb4b9ece1817f6f84d5bd0212eace3e000e8942ad07a5b4485f8c8314db",
+      "provenance": "ai_gateway",
+      "proposal_id": "75839ae1-d832-462b-bc95-11526ca107d9",
+      "proposal_hash": "64d90d96705922bb3a612b844c0ba70ddd3988f8998a07c607e181478c2b1ae8",
+      "scope_hash": "32821010e118419a3587934f66b8c70e06ba0321abb5cedb2a6be5884abd03e0",
+      "relation": {
+        "id": 354,
+        "type": "follows",
+        "predecessor_id": 383,
+        "successor_id": 384,
+        "lag": 2
+      },
+      "changed_ids": [
+        380,
+        382,
+        384
+      ],
+      "readback": [
+        {
+          "id": 380,
+          "lockVersion": 2,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-11-02",
+          "scheduleManually": false
+        },
+        {
+          "id": 382,
+          "lockVersion": 2,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "scheduleManually": false
+        },
+        {
+          "id": 383,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "scheduleManually": true
+        },
+        {
+          "id": 384,
+          "lockVersion": 1,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "scheduleManually": false
+        }
+      ]
+    }
+  ],
+  "actual_native_dependency_posts": 2,
+  "lost_reply_reconciled_without_second_post": true,
+  "pending_rag_jobs": 6,
+  "main_native_writes": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "limits": [
+    "Vector indexing not run in this clone; six durable pending WP/canonical-sync jobs, not RAG completion",
+    "Native relation graph is read from Native API, not added as a new semantic corpus source",
+    "No Main dependency approval/write",
+    "WBS depends_on remains sequencing; dependency proposals are explicit separate operations",
+    "No full business WBS closure"
+  ],
+  "original375_wp_rows_preserved": true,
+  "source_dump_sha256": "2e1e39e02552ec4cfdb22f2e85b7120f2124c31629660b1aa9448d9e6a12b354"
+}

@@ -1,0 +1,393 @@
+{
+  "status": "OBSERVED_DEV_DIAGNOSIS_NOT_ACCEPTANCE",
+  "dev_sha256": "085c0036415c0be33868515a7839887a2dbea079197e960251bb585bedc4ddd1",
+  "reader_sha256": "c964e6c2e0771f7d1aa3ee5e739d7251b82323fde7c97a9ed852dd33f0205445",
+  "decoder_sha256": "44f7fd946df2580bf198ac293b035fd79224219ad5fe54ee55bca314007edebf",
+  "model_revision": "00e1042302c6444d04fea71f5785a539b599ad73",
+  "selector": "top2 nontruncated reranker spans per retrieved document; at most5documents",
+  "null_margin": 0,
+  "pairs": 330,
+  "positive": 13,
+  "negative": 20,
+  "document_hit5": 6,
+  "support_span_hit5": 3,
+  "false_positive_count": 4,
+  "hit_at_5": 0.46153846153846156,
+  "false_positive_rate": 0.2,
+  "warm_p95_lower_bound_seconds": 2.8070367840682233,
+  "peak_memory_bytes": 830402560,
+  "reader_model_load_seconds": 4.200942536990624,
+  "container_wall_seconds": 23.88290739999502,
+  "citation_span_identity_errors": 0,
+  "rows": [
+    {
+      "case": "dev:create_list:vi",
+      "kind": "positive",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [
+        384
+      ],
+      "seconds_lower_bound": 14.230406280977075,
+      "answers_returned": 1
+    },
+    {
+      "case": "dev:create_list:en",
+      "kind": "positive",
+      "language": "en",
+      "rank": 1,
+      "support_span_contained": true,
+      "ids": [
+        380
+      ],
+      "seconds_lower_bound": 2.566955619999593,
+      "answers_returned": 1
+    },
+    {
+      "case": "dev:preserved_failure:vi",
+      "kind": "positive",
+      "language": "vi",
+      "rank": 3,
+      "support_span_contained": false,
+      "ids": [
+        391,
+        387,
+        380,
+        379
+      ],
+      "seconds_lower_bound": 2.749703264995076,
+      "answers_returned": 4
+    },
+    {
+      "case": "dev:preserved_failure:en",
+      "kind": "positive",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 2.044048772019152,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:crud_unit:vi",
+      "kind": "positive",
+      "language": "vi",
+      "rank": 2,
+      "support_span_contained": false,
+      "ids": [
+        383,
+        381
+      ],
+      "seconds_lower_bound": 1.659150793047324,
+      "answers_returned": 2
+    },
+    {
+      "case": "dev:crud_unit:en",
+      "kind": "positive",
+      "language": "en",
+      "rank": 1,
+      "support_span_contained": false,
+      "ids": [
+        381
+      ],
+      "seconds_lower_bound": 1.6820482140644901,
+      "answers_returned": 1
+    },
+    {
+      "case": "dev:parent_review:vi",
+      "kind": "positive",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.6674379239121246,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:parent_review:en",
+      "kind": "positive",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.5636609709550702,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:recovery_history:vi",
+      "kind": "positive",
+      "language": "vi",
+      "rank": 1,
+      "support_span_contained": true,
+      "ids": [
+        388
+      ],
+      "seconds_lower_bound": 1.9856749409383256,
+      "answers_returned": 1
+    },
+    {
+      "case": "dev:recovery_history:en",
+      "kind": "positive",
+      "language": "en",
+      "rank": 1,
+      "support_span_contained": true,
+      "ids": [
+        388
+      ],
+      "seconds_lower_bound": 1.5551073849994168,
+      "answers_returned": 1
+    },
+    {
+      "case": "dev:dependency:vi",
+      "kind": "positive",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.539891777921783,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:dependency:en",
+      "kind": "positive",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.7769603320302572,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:pagination:vi",
+      "kind": "negative",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.8707389719947856,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:pagination:en",
+      "kind": "negative",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 2.420275783059921,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:grpc:vi",
+      "kind": "negative",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.940271742955407,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:grpc:en",
+      "kind": "negative",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 2.2193913830490706,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:jwt:vi",
+      "kind": "negative",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [
+        386,
+        389,
+        387,
+        391
+      ],
+      "seconds_lower_bound": 2.452484358014893,
+      "answers_returned": 4
+    },
+    {
+      "case": "dev:jwt:en",
+      "kind": "negative",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [
+        386,
+        389
+      ],
+      "seconds_lower_bound": 2.89179654802363,
+      "answers_returned": 2
+    },
+    {
+      "case": "dev:cache:vi",
+      "kind": "negative",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.734930051051004,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:cache:en",
+      "kind": "negative",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.710302164999906,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:subtasks:vi",
+      "kind": "negative",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 2.2436274319610705,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:subtasks:en",
+      "kind": "negative",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [
+        380,
+        387
+      ],
+      "seconds_lower_bound": 2.8070367840682233,
+      "answers_returned": 2
+    },
+    {
+      "case": "dev:priority_field:vi",
+      "kind": "negative",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 2.081643099004384,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:priority_field:en",
+      "kind": "negative",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 2.1509804399835284,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:ical:vi",
+      "kind": "negative",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [
+        383,
+        386
+      ],
+      "seconds_lower_bound": 1.8505246199625096,
+      "answers_returned": 2
+    },
+    {
+      "case": "dev:ical:en",
+      "kind": "negative",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 2.0817857869497125,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:openid:vi",
+      "kind": "negative",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 2.1388290790477305,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:openid:en",
+      "kind": "negative",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 2.199671027017727,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:s3:vi",
+      "kind": "negative",
+      "language": "vi",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.5505821860126852,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:s3:en",
+      "kind": "negative",
+      "language": "en",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.7685398379612398,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:mixed-dependency",
+      "kind": "positive",
+      "language": "mixed",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.9267249389971028,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:mixed-s3",
+      "kind": "negative",
+      "language": "mixed",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.7105115310428478,
+      "answers_returned": 0
+    },
+    {
+      "case": "dev:mixed-pages",
+      "kind": "negative",
+      "language": "mixed",
+      "rank": null,
+      "support_span_contained": false,
+      "ids": [],
+      "seconds_lower_bound": 1.6569899410204738,
+      "answers_returned": 0
+    }
+  ],
+  "limitations": [
+    "previously observed dev and correlated VN/EN pairs",
+    "labels author-reviewed, not independent/human adjudication",
+    "cached frozen retrieval/reranking; summed lower-bound timings exclude IPC/concurrency",
+    "raw extracted strings are not assessed as a complete answer; literal support containment is reported separately",
+    "no MAIN writes, no heldout questions/labels opened, no live ACL/freshness qualification"
+  ]
+}

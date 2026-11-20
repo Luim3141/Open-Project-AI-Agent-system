@@ -1,0 +1,101 @@
+{
+  "at": "2026-10-26T06:56:00.508698+00:00",
+  "status": "QUALIFIED_PRIVATE_BACKUP_MAIN_READONLY_PREFLIGHT",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-dependency-change-v2-20261026",
+      "image": "sha256:b8355ce3ca610e58defd38f2c7632bb7c3d71fcb6e4524ea80d823e6436fa1b1"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-dependency-change-v2-20261026",
+      "image": "sha256:e5ec2d6426fd2fdc523a64b5d867140d63fd4265f3a8766cac5f728caac9c2a8"
+    }
+  },
+  "files": {
+    "openproject/ai/gateway/service.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/service.py",
+      "sha256": "5fee71db8bf20a4a58f3495d2127611412651122b982877f4030f2078b513dcf"
+    },
+    "openproject/ai/gateway/store.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/store.py",
+      "sha256": "63a9ae17504e5943096c298892175f799f69444e97b640778f5d9dbb316a4dc5"
+    },
+    "openproject/ai/gateway/permissions.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/permissions.py",
+      "sha256": "7dcfd0112a02eab25586c74719b59cb086dab90dd4f99ea339ef317c88fea413"
+    },
+    "openproject/ai/gateway/catalog.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/catalog.py",
+      "sha256": "2cf0598fa03308e67685a5fe1b5ee4df4614ffacc27e7991114ec28fda489cde"
+    },
+    "openproject/ai/gateway/presentation.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/presentation.py",
+      "sha256": "7375ca9016c979d10664b9fe12ed8c64587872db5df998335a95214303262c59"
+    },
+    "openproject/ai/gateway/native_dependency_change.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_dependency_change.py",
+      "sha256": "389d6d636241912e00a111d7a3f6d8e675c63a1933fcd1ce8fb32ee2f953714c"
+    },
+    "openproject/ai/core/overlay/app/services/qldapm/dependency_change.rb": {
+      "kind": "core",
+      "target": "/app/app/services/qldapm/dependency_change.rb",
+      "sha256": "443f7502c20cae3fa755c3d204514ccd3448480527aae85d712615f0996bebee"
+    },
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": {
+      "kind": "core",
+      "target": "/app/app/controllers/qldapm_ai_controller.rb",
+      "sha256": "2d0bfcf9cbc21029a12010ed13fca17f63791c049ffa6bd51ca86f2a9eaa48a8"
+    },
+    "openproject/ai/core/overlay/app/helpers/qldapm_ai_helper.rb": {
+      "kind": "core",
+      "target": "/app/app/helpers/qldapm_ai_helper.rb",
+      "sha256": "517e7a29d895091ab96349f554e0e8310efb1f37785a731d6b9a090d31ae2961"
+    },
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": {
+      "kind": "core",
+      "target": "/app/lib/api/v3/qldapm/gates_api.rb",
+      "sha256": "1e060c7e8177f7e88951ef1a093b08cc841bbd985d1bfb3960a8a762199bd77d"
+    }
+  },
+  "qualification": {
+    "windows": {
+      "run": 507,
+      "passed": 507
+    },
+    "linux": {
+      "run": 507,
+      "passed": 492,
+      "skipped": 15
+    },
+    "ruby": {
+      "programs": 14,
+      "failed": 0
+    },
+    "actual_native_clone": "CODEX_NATIVE_DEPENDENCY_CHANGE_CLONE_RESULT.json",
+    "red_evidence": [
+      "dependency-change-red.log",
+      "dependency-change-workflow-red.log",
+      "dependency-unset-lag-red.log"
+    ],
+    "candidate_failures": "Native UpdateService send_notifications incompatibility fixed; Windows Daily Brief route fixture isolated from unrelated RAG worker; failure logs retained"
+  },
+  "workflow_id": "tOY7QUa9SrWPOe9e",
+  "workflow_before": "7951e328-b410-47fb-a501-3187b98f97b8",
+  "workflow_changes": 1,
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "schema_changes": 0,
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\dependency-change-deployment",
+  "rollback_images": {
+    "gateway": "sha256:7e1df78efa229e5c0d97bb92714e5dd81ae8a3ca23ed71b0be741cc218fadcc7",
+    "web": "sha256:26ed4964d63eb48dfe52f4f05776e062d09c51b6972cb142c3c8be1d88e75c82"
+  },
+  "rollback_policy": "Prior app image selectors and exact prior WF10 definition only; never restore old DB over new history"
+}

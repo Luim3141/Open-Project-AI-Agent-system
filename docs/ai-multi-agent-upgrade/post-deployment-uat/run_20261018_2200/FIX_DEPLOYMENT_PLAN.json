@@ -1,0 +1,27 @@
+{
+  "target": "qldapm-ai-stage",
+  "bug": "UAT-01",
+  "gateway_image": "sha256:47751dc25b5d8a091946a5371452a07f599f02f15357d2a8ba40626a8b452219",
+  "previous_gateway_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea",
+  "core_image_unchanged": "sha256:3b09393d123464a7baf4726daf69806de4754a0b1911173e6dbe58ecb3ac2f99",
+  "up_services": [
+    "staging-gateway"
+  ],
+  "restart_other_services": false,
+  "main_mutations": false,
+  "native_business_mutations": false,
+  "credential_or_role_changes": false,
+  "google_calls": false,
+  "fresh_backup_before_apply": true,
+  "operator_source_sha256": "bd933bc9a61c43084964465a5569121efa829bfab0577ed5e4aa4bbca3dbfb81",
+  "targeted_windows_linux_tests": 41,
+  "gateway_operator_tests": 19,
+  "browser_qualified": true,
+  "docker_dry_run_passed": true,
+  "dry_run_planned_services": [
+    "staging-gateway"
+  ],
+  "dry_run_orphan_warning": "Existing retired Radmin proxy is untouched; never --remove-orphans",
+  "approval_sha256": "af53a2f8f8ce29096e111901877a3bfdc47bc1ed2b4a63c8dc48f46bf678db1f",
+  "owner_approval": "APPROVED"
+}

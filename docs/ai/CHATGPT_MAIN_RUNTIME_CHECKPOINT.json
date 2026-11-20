@@ -1,0 +1,1709 @@
+{
+  "at": "2026-10-27T12:55:40.284006+00:00",
+  "milestone": "PORT_MIGRATION_F1_F3",
+  "status": "PARTIAL_PORTS_STABLE_F1_PROOF_VERIFIER_DEPLOYED_ADMISSION_NEXT",
+  "branch": "codex/local-multi-agent-upgrade",
+  "head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+  "git": {
+    "status_entries": 4011,
+    "tracked_changes": 0,
+    "untracked_paths": 4011,
+    "reset_clean_commit_performed": false
+  },
+  "writer": {
+    "source_hash_stable_during_preflight": true,
+    "competing_writer_observed": false,
+    "basis": "Latest user handoff releases predecessor; source snapshot stable across runtime/workflow/backup inspection; no legacy deployment job continued",
+    "limit": "Process presence alone cannot prove writer ownership; future changes must recheck source hashes"
+  },
+  "runtime": {
+    "qldapm-openproject-db-1": {
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "tag": "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started_at": "2026-10-26T11:47:27.716126957Z",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "5432/tcp": null
+      }
+    },
+    "qldapm-openproject-cache-1": {
+      "id": "ac27388285fbadbf7a0f81f2f1d6c141d9fb79483d186d469d5bb324a0818115",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "tag": "memcached@sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "started_at": "2026-10-26T11:47:27.536067954Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "11211/tcp": null
+      }
+    },
+    "qldapm-qdrant": {
+      "id": "6cacb6b0f1b07f061bab32497bd92d2e31a01a639da747cab17d7be689ccca8f",
+      "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "tag": "qdrant/qdrant:latest",
+      "started_at": "2026-10-26T11:47:27.519764304Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "6333/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "6333"
+          }
+        ],
+        "6334/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "6334"
+          }
+        ]
+      }
+    },
+    "qldapm-openproject-hocuspocus-1": {
+      "id": "a9e13d59ae711266f599d5a1d1d7ed33345c2450e3457003684625fb3b39a584",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "tag": "openproject/hocuspocus@sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "started_at": "2026-10-26T11:47:27.755411474Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "1234/tcp": null
+      }
+    },
+    "qldapm-openproject-web-1": {
+      "id": "39452c05a6b1943bc161108d9e3de03638774b9dffd6b8028f0779a2c72ecce6",
+      "image": "sha256:062282b33276dd2af79ae0d97f8043c482acbafdc14bb19bf83bbc401b02101c",
+      "tag": "qldapm-core:chatgpt-native-subtask-v1-20261027",
+      "started_at": "2026-10-27T04:22:07.718266451Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    "qldapm-openproject-worker-1": {
+      "id": "040cd049f638f3348bf452d5c764b8ba2a297b8f539ffd61892bc22a1acbf84d",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "tag": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started_at": "2026-10-26T11:47:27.658612339Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-openproject-cron-1": {
+      "id": "34d1f577c67b837eb236636706188be7e7bb6f1b48ebe6bce1f3d20870661579",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "tag": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started_at": "2026-10-26T11:47:27.67055301Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-ai-gateway-1": {
+      "id": "b5ebf52f68cea7f23b679a1d48ffcb6ff1221c826479e96ec74d65de84c1fd44",
+      "image": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0",
+      "tag": "qldapm-ai:chatgpt-provider-timeout-v1-20261027",
+      "started_at": "2026-10-27T04:01:28.072603602Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    "qldapm-n8n-main": {
+      "id": "247e20941d0ba377c50e1d3d0ab79ebfb49630cf4e6499ff3424adc7a65b9b7f",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "tag": "docker.n8n.io/n8nio/n8n:2.43.6",
+      "started_at": "2026-10-26T11:47:27.544484506Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "5678/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "5679"
+          }
+        ]
+      }
+    },
+    "qldapm-openproject-proxy-1": {
+      "id": "752ba4082a0465eaa358590b4c8844bf6075f454406355e9280bea9803b292eb",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "tag": "caddy@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started_at": "2026-10-26T11:47:27.36924635Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8088"
+          }
+        ]
+      }
+    }
+  },
+  "gateway_source": {
+    "files": 85,
+    "mismatched_paths": [
+      "openproject/ai/gateway/e2e_demo.py",
+      "openproject/ai/gateway/intent_evals.py",
+      "openproject/ai/gateway/n8n_indexing_hook.py",
+      "openproject/ai/gateway/proposal_aggregation.py",
+      "openproject/ai/gateway/proposal_ux.py",
+      "openproject/ai/gateway/scheduler_registry.py",
+      "openproject/ai/gateway/supervisor_isolation.py"
+    ],
+    "host_sha256": {
+      "openproject/ai/gateway/agent_models.py": "23d01813e618e07470c057726200b5bc37c0af32aeb8169f2eae1e5fa45aee71",
+      "openproject/ai/gateway/agent_registry.py": "def0e8f74d135c1916f20019c7fcf2a1cd966cb5f5831792a44caa182fba9a16",
+      "openproject/ai/gateway/agent_status.py": "774fc625c95dab1514d1666274ce185efb02fcf53abf8ca1999a030347e5a524",
+      "openproject/ai/gateway/agent_trace.py": "823b0d9b7955a958e380f38de8cb2033c0b528c1febbe60022d2b59c97b26c84",
+      "openproject/ai/gateway/ai_worker.py": "fa078049399caed58000483e350871f39225776f67f74919d1d302dcd3195eff",
+      "openproject/ai/gateway/app.py": "4cfb47c98fd9b80ae4ebdf74b016c994d517a14a9d10bf5740e6dabbfb2fe6db",
+      "openproject/ai/gateway/automation.py": "65b0b249a0739049cb61872a9b6e094aef072b303571cfd3974b44902ec99798",
+      "openproject/ai/gateway/ba_agent.py": "bf79889ece1feca597574a137892a3fdc613b5bacb44cff27122bdb636e623a1",
+      "openproject/ai/gateway/bridge.py": "ca94c22e4e1d80eb57c02175dbc9808d382df9165d850c05766df2ce80e759e3",
+      "openproject/ai/gateway/bug_lifecycle.py": "f978e1626481e8445da7d02d1cfbb5f4f483400c0a0f2f796949b7ed28b261c1",
+      "openproject/ai/gateway/business_acceptance.py": "5d94990f82036e23948a48e86c8ef1f2e2040e8ccdb9468d29d94ea22d52fd91",
+      "openproject/ai/gateway/business_runs.py": "af1e8cfecc1ade840b32d22b6c5b92d1c700c2d13237c7d0e49c8dc04e142c00",
+      "openproject/ai/gateway/catalog.py": "7e283814581b7407a893dc9425cf890e99819ef3622a23914f65ba3ad5f95666",
+      "openproject/ai/gateway/control_center_state.py": "a677f2d1580a10938b132a43cd7d45528729dc0940b2fd519f14918c9d9962ba",
+      "openproject/ai/gateway/conversation_memory.py": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e",
+      "openproject/ai/gateway/daily_brief.py": "065208e8ccfb38e72e42a3d23b21c89339f9b75bad34f590d3874c46616b160d",
+      "openproject/ai/gateway/decision_memory.py": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df",
+      "openproject/ai/gateway/dev_agent.py": "12fc846f44e42a623d520e16b1bec5483ceea11210777cc5b01806979c8a6ce4",
+      "openproject/ai/gateway/e2e_demo.py": "0e9fb36ce68a26df3a2a4f9213b2af92d4d820686b0433082c8f1c29090c366c",
+      "openproject/ai/gateway/execution_events.py": "e10e8247f81fc4e0285ccb947e0f2e9324fe561311b6d1135d6353cc28457975",
+      "openproject/ai/gateway/execution_monitor.py": "84a726ffa545bec54b49f9f1c80c444316ba45081f07fd82d33933ac07181b6b",
+      "openproject/ai/gateway/file_knowledge.py": "4dbfc5800410250d7fc12ee7c7cb29613279a963fcbd18b983601dd719fee44e",
+      "openproject/ai/gateway/gemini.py": "8c7ff074c2fc4335821d6e7fe5dd5c4baaae8730600c5627fbbb934e0cfae402",
+      "openproject/ai/gateway/intent_evals.py": "19f534aab5dc8f77755b01388670549485cddd651b2536290dbb1ff9a579d03c",
+      "openproject/ai/gateway/knowledge_classifier.py": "6c22928025a430f76451e2a26f72c3a6ddbcdc3425a2a6d4933fbf96e8358e8e",
+      "openproject/ai/gateway/knowledge_feedback.py": "b2aa826227f604d16755e18d398d43ca94ed9b82422bb16422f361d7a66713ae",
+      "openproject/ai/gateway/knowledge_ingestion.py": "c4283da4f9db19f9b32c020113e825ad9586ced44f06a6a9b9d093bb4fab05f3",
+      "openproject/ai/gateway/knowledge_integrity.py": "5c55025e47fa4be1ceccde2299ed23b0642020d40775d7922e893498a38be21b",
+      "openproject/ai/gateway/knowledge_lock.py": "ea7bd614ca39f62d2ab3e79ec540359f18455c64bb18a9733dd86ce5c7631cf4",
+      "openproject/ai/gateway/knowledge_points.py": "223373e5e9c63e0cd82fd2a21dda5432f83a3bbf8bb013a4c250844353fea37b",
+      "openproject/ai/gateway/knowledge_retrieval.py": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d",
+      "openproject/ai/gateway/knowledge_search.py": "35498ed3fd230c8d18847666b9a57d2680fdc1f9159dda8a9e5b5e1aed8607f1",
+      "openproject/ai/gateway/knowledge_storage.py": "ad0ef83d1234ce4d992b2d459ad40ab63f19c712fd1bba304c3a58deb4aa5c60",
+      "openproject/ai/gateway/knowledge_ui_answer.py": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08",
+      "openproject/ai/gateway/live_agents.py": "fc69c6d200d0af81b02ef286bdd2fb57da308953e233ee689d7ae9188f71b6e0",
+      "openproject/ai/gateway/local_loaders.py": "bc6afd80b965d544545b193d033da7a1a7caa268500b4fd86ef4099df072c3c5",
+      "openproject/ai/gateway/local_operator.py": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18",
+      "openproject/ai/gateway/local_queries.py": "f64ed8447454358534228381941b883e9dcf2b238a7fc70141b5b5d78b4fc797",
+      "openproject/ai/gateway/monitoring.py": "1f5eecb223014229093b978f4b887e8429db40082bc89b979adc06800cb2181f",
+      "openproject/ai/gateway/n8n_indexing_hook.py": "d81cf39420981f8b2f29b8a6e0c0259688a649ebeb0fe882613538cfe5b7edae",
+      "openproject/ai/gateway/native.py": "a4262c8a6d3a6c20306a879efc483d68713d5f33a860270e8e7d55d53d717cbd",
+      "openproject/ai/gateway/native_deletion.py": "0b94c8f1953831cb967281cdbd79aaf2ada7103819ee6ea28bb1d5fbff7d3f7a",
+      "openproject/ai/gateway/native_dependency.py": "9b781062fc918b2604f02bc8336a57e041cfd849af92cbeff9c3c34915b4b9d2",
+      "openproject/ai/gateway/native_dependency_change.py": "389d6d636241912e00a111d7a3f6d8e675c63a1933fcd1ce8fb32ee2f953714c",
+      "openproject/ai/gateway/native_incremental.py": "a5b490f21c5b0bd11a7129a4b3805fcf614a335574ac5f91fc96e01c628994af",
+      "openproject/ai/gateway/native_phase.py": "468c967a718916ffed95ef907a6eb0b493d654e9fa81a194d00b14197849b656",
+      "openproject/ai/gateway/native_phase_bridge.py": "be9543089eae87c30ffb8fcbbd22ccb0a55f333bee80cef264ff481cb4ab0116",
+      "openproject/ai/gateway/native_qa.py": "b81b723a9b2c45788eab49d3c96ee2a60dae63d1933deac8d1687d30e3e10020",
+      "openproject/ai/gateway/native_qa_bridge.py": "e8b7869270efbc451eae9f3d6e83468cf558adb40fe89fd8276c054902957b5d",
+      "openproject/ai/gateway/native_qa_runs.py": "96fefd36103e28be3d92a0373559299e98e8077855afe8b93d7bed3e484d3287",
+      "openproject/ai/gateway/native_wbs.py": "dc3605f9af52cabf9d57609926ab3fc7a1e8ba1417be4e8df851d551002266c9",
+      "openproject/ai/gateway/native_wbs_hierarchy.py": "184247c963c09aeab9804328f8d82e95766ffe99b62b8ed288d6aacfe77f1782",
+      "openproject/ai/gateway/native_wbs_relations.py": "5b340673c1e87c38b5a068dc51e182313b49d5eea9dedfddc82892ac538d79e4",
+      "openproject/ai/gateway/notification_delivery.py": "c26307c78a5adbcfdb9c898df4e1dca74fedd938e10b5d09bbb848d947ceaf7b",
+      "openproject/ai/gateway/openproject_loader.py": "acacb7f9957f25d580aae93551ba463bb68ba9a9f99787397140a2bd85b84c12",
+      "openproject/ai/gateway/permissions.py": "948ad80f30799b685d5b5d995580b086b3ceee0f5cfa0afcffc320b682ca7cc8",
+      "openproject/ai/gateway/planner.py": "2c578c35f51f09c2e82b48dcd88d4b6ec4bfbdc6562461fc0e81bd539efff71e",
+      "openproject/ai/gateway/pm_agent.py": "b059338e04ac40e3fc3fdb0b0905132651c0f61b7844a892cac88195c5a46d95",
+      "openproject/ai/gateway/presentation.py": "6cd70fb1ee038437bd028893f5ecfdf89d7236b95b859ccf0ca09383f6d948b4",
+      "openproject/ai/gateway/proposal_aggregation.py": "dc89e3a1ee3a95817c0e56ef2e08694de66a502a4bd1a8fd9ffb7f16a766af26",
+      "openproject/ai/gateway/proposal_ux.py": "3458917e8e5b8c1e8d0c97745e4e3e6d09c53297ec3c65aa2e3b6b527be4dbda",
+      "openproject/ai/gateway/qa_agent.py": "6ea0960c8c77960f321f7e29bdbbb3d0ac93b320ae7ecdfbb6bbca055769f617",
+      "openproject/ai/gateway/qa_change_workflow.py": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd",
+      "openproject/ai/gateway/quota_panel.py": "8965f532a58a250ed93f2629a0f88a84a0b6b89ff3274d119b1f29af0dca0071",
+      "openproject/ai/gateway/reviewer_agent.py": "e58d39d1ae8d54938f8dd540786b7d8b3e719134277a294d863b79f745ba64bb",
+      "openproject/ai/gateway/role_alerts.py": "e548fce01bacce3d740ff29903aec864ef011f395aba908005aa0f0eecd19778",
+      "openproject/ai/gateway/run_ingest_all.py": "5284a11de773106bbd6abc65c09a880ec637438540c7ae9fefae68fb85f07599",
+      "openproject/ai/gateway/scheduler_registry.py": "be7c2efd59ec41f734dab9e278f3c37f36eab153184ef8f5d2c6e7c05eac0d42",
+      "openproject/ai/gateway/service.py": "623e49e60afe6390ff7dfefa7db8428bdde2c4168897c1386d54e69e306f5ca9",
+      "openproject/ai/gateway/sprint_readiness.py": "d300f4408d6c7778566fd5a21b04efdb2df925356de6761392a2f735e10706ff",
+      "openproject/ai/gateway/sprint_report.py": "749b3a7ed8613e8facf3db10722d0a4da9afafb105e2ce0846685a81fef1a3f9",
+      "openproject/ai/gateway/stdio.py": "e22d1b414510085582ddd542a16faa6149ff6846f5eb7919057a02fb445c0345",
+      "openproject/ai/gateway/store.py": "eb16bee6471b92b100ae32b62ccc62dabd296adee1c95304cf28e81b443459f8",
+      "openproject/ai/gateway/supervisor.py": "e9c6d8624877ec02f0795ba3cba5cd667a0f0cfad2d17f633afb5380aca1eef3",
+      "openproject/ai/gateway/supervisor_isolation.py": "a3cfb03a49c66b4d396472bd9d983e2efc04b7a5fd3c30b28a5c7093f9b47fdf",
+      "openproject/ai/gateway/tasks_progress.py": "aa0363e4611b7a8f3785598a1fe4df35f6f143334c39bcd6468331f99a841b5a",
+      "openproject/ai/gateway/vector_client.py": "ed70c922d763c61e7d6c6934629b38700d9da340d3dfc1b05e721d4f43b90b29",
+      "openproject/ai/gateway/wbs_analysis.py": "32dbec1aa66502980d8addf37d822191d7f7f0858382b589a216a444ca1c5413",
+      "openproject/ai/gateway/weekly_report.py": "95f155aefcdd6567bbdd7afafe14433d48aa30d2d447b57ca3822db9f01fa6d6",
+      "openproject/ai/gateway/workflow_errors.py": "9758bb44d3a53829a6d0b7f3707fe15a04a3eb816ed4c443a037652e5827ae06",
+      "openproject/ai/gateway/workflow_pause.py": "5b1753c2b0262d008ef3f7409ea64df14d981e3500e8bfc58283f86f55988b20",
+      "openproject/ai/gateway/workflow_timeline.py": "3786d94d32cb54874a2d234fb274a0dbc5c0c32b8f8df22f73fcffbcac0c30f3",
+      "openproject/ai/gateway/workload_detector.py": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5",
+      "openproject/ai/gateway/workspace.py": "088fc84bba3ddf23149b110e9c3be0cb6c2fd263cda3976ba6047a454e849285",
+      "openproject/ai/gateway/__init__.py": "0aad176a746f300417621f9fa15f27e59272cb11861a31f94f25ced375edebc1"
+    },
+    "runtime_sha256": {
+      "gateway/workspace.py": "088fc84bba3ddf23149b110e9c3be0cb6c2fd263cda3976ba6047a454e849285",
+      "gateway/ai_worker.py": "fa078049399caed58000483e350871f39225776f67f74919d1d302dcd3195eff",
+      "gateway/__init__.py": "0aad176a746f300417621f9fa15f27e59272cb11861a31f94f25ced375edebc1",
+      "gateway/local_operator.py": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18",
+      "gateway/bridge.py": "ca94c22e4e1d80eb57c02175dbc9808d382df9165d850c05766df2ce80e759e3",
+      "gateway/stdio.py": "e22d1b414510085582ddd542a16faa6149ff6846f5eb7919057a02fb445c0345",
+      "gateway/app.py": "4cfb47c98fd9b80ae4ebdf74b016c994d517a14a9d10bf5740e6dabbfb2fe6db",
+      "gateway/native.py": "a4262c8a6d3a6c20306a879efc483d68713d5f33a860270e8e7d55d53d717cbd",
+      "gateway/catalog.py": "7e283814581b7407a893dc9425cf890e99819ef3622a23914f65ba3ad5f95666",
+      "gateway/service.py": "623e49e60afe6390ff7dfefa7db8428bdde2c4168897c1386d54e69e306f5ca9",
+      "gateway/store.py": "eb16bee6471b92b100ae32b62ccc62dabd296adee1c95304cf28e81b443459f8",
+      "gateway/gemini.py": "8c7ff074c2fc4335821d6e7fe5dd5c4baaae8730600c5627fbbb934e0cfae402",
+      "gateway/sprint_readiness.py": "d300f4408d6c7778566fd5a21b04efdb2df925356de6761392a2f735e10706ff",
+      "gateway/sprint_report.py": "749b3a7ed8613e8facf3db10722d0a4da9afafb105e2ce0846685a81fef1a3f9",
+      "gateway/knowledge_retrieval.py": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d",
+      "gateway/ba_agent.py": "bf79889ece1feca597574a137892a3fdc613b5bacb44cff27122bdb636e623a1",
+      "gateway/knowledge_ingestion.py": "c4283da4f9db19f9b32c020113e825ad9586ced44f06a6a9b9d093bb4fab05f3",
+      "gateway/openproject_loader.py": "acacb7f9957f25d580aae93551ba463bb68ba9a9f99787397140a2bd85b84c12",
+      "gateway/knowledge_search.py": "35498ed3fd230c8d18847666b9a57d2680fdc1f9159dda8a9e5b5e1aed8607f1",
+      "gateway/pm_agent.py": "b059338e04ac40e3fc3fdb0b0905132651c0f61b7844a892cac88195c5a46d95",
+      "gateway/native_qa.py": "b81b723a9b2c45788eab49d3c96ee2a60dae63d1933deac8d1687d30e3e10020",
+      "gateway/native_qa_bridge.py": "e8b7869270efbc451eae9f3d6e83468cf558adb40fe89fd8276c054902957b5d",
+      "gateway/file_knowledge.py": "4dbfc5800410250d7fc12ee7c7cb29613279a963fcbd18b983601dd719fee44e",
+      "gateway/notification_delivery.py": "c26307c78a5adbcfdb9c898df4e1dca74fedd938e10b5d09bbb848d947ceaf7b",
+      "gateway/knowledge_storage.py": "ad0ef83d1234ce4d992b2d459ad40ab63f19c712fd1bba304c3a58deb4aa5c60",
+      "gateway/live_agents.py": "fc69c6d200d0af81b02ef286bdd2fb57da308953e233ee689d7ae9188f71b6e0",
+      "gateway/qa_change_workflow.py": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd",
+      "gateway/tasks_progress.py": "aa0363e4611b7a8f3785598a1fe4df35f6f143334c39bcd6468331f99a841b5a",
+      "gateway/native_deletion.py": "0b94c8f1953831cb967281cdbd79aaf2ada7103819ee6ea28bb1d5fbff7d3f7a",
+      "gateway/agent_status.py": "774fc625c95dab1514d1666274ce185efb02fcf53abf8ca1999a030347e5a524",
+      "gateway/conversation_memory.py": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e",
+      "gateway/weekly_report.py": "95f155aefcdd6567bbdd7afafe14433d48aa30d2d447b57ca3822db9f01fa6d6",
+      "gateway/local_queries.py": "f64ed8447454358534228381941b883e9dcf2b238a7fc70141b5b5d78b4fc797",
+      "gateway/control_center_state.py": "a677f2d1580a10938b132a43cd7d45528729dc0940b2fd519f14918c9d9962ba",
+      "gateway/native_wbs_relations.py": "5b340673c1e87c38b5a068dc51e182313b49d5eea9dedfddc82892ac538d79e4",
+      "gateway/presentation.py": "6cd70fb1ee038437bd028893f5ecfdf89d7236b95b859ccf0ca09383f6d948b4",
+      "gateway/knowledge_classifier.py": "6c22928025a430f76451e2a26f72c3a6ddbcdc3425a2a6d4933fbf96e8358e8e",
+      "gateway/native_qa_runs.py": "96fefd36103e28be3d92a0373559299e98e8077855afe8b93d7bed3e484d3287",
+      "gateway/workload_detector.py": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5",
+      "gateway/quota_panel.py": "8965f532a58a250ed93f2629a0f88a84a0b6b89ff3274d119b1f29af0dca0071",
+      "gateway/bug_lifecycle.py": "f978e1626481e8445da7d02d1cfbb5f4f483400c0a0f2f796949b7ed28b261c1",
+      "gateway/execution_events.py": "e10e8247f81fc4e0285ccb947e0f2e9324fe561311b6d1135d6353cc28457975",
+      "gateway/qa_agent.py": "6ea0960c8c77960f321f7e29bdbbb3d0ac93b320ae7ecdfbb6bbca055769f617",
+      "gateway/monitoring.py": "1f5eecb223014229093b978f4b887e8429db40082bc89b979adc06800cb2181f",
+      "gateway/native_wbs.py": "dc3605f9af52cabf9d57609926ab3fc7a1e8ba1417be4e8df851d551002266c9",
+      "gateway/reviewer_agent.py": "e58d39d1ae8d54938f8dd540786b7d8b3e719134277a294d863b79f745ba64bb",
+      "gateway/wbs_analysis.py": "32dbec1aa66502980d8addf37d822191d7f7f0858382b589a216a444ca1c5413",
+      "gateway/agent_trace.py": "823b0d9b7955a958e380f38de8cb2033c0b528c1febbe60022d2b59c97b26c84",
+      "gateway/workflow_pause.py": "5b1753c2b0262d008ef3f7409ea64df14d981e3500e8bfc58283f86f55988b20",
+      "gateway/dev_agent.py": "12fc846f44e42a623d520e16b1bec5483ceea11210777cc5b01806979c8a6ce4",
+      "gateway/native_phase.py": "468c967a718916ffed95ef907a6eb0b493d654e9fa81a194d00b14197849b656",
+      "gateway/role_alerts.py": "e548fce01bacce3d740ff29903aec864ef011f395aba908005aa0f0eecd19778",
+      "gateway/agent_models.py": "23d01813e618e07470c057726200b5bc37c0af32aeb8169f2eae1e5fa45aee71",
+      "gateway/native_phase_bridge.py": "be9543089eae87c30ffb8fcbbd22ccb0a55f333bee80cef264ff481cb4ab0116",
+      "gateway/supervisor.py": "e9c6d8624877ec02f0795ba3cba5cd667a0f0cfad2d17f633afb5380aca1eef3",
+      "gateway/execution_monitor.py": "84a726ffa545bec54b49f9f1c80c444316ba45081f07fd82d33933ac07181b6b",
+      "gateway/knowledge_ui_answer.py": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08",
+      "gateway/native_wbs_hierarchy.py": "184247c963c09aeab9804328f8d82e95766ffe99b62b8ed288d6aacfe77f1782",
+      "gateway/permissions.py": "948ad80f30799b685d5b5d995580b086b3ceee0f5cfa0afcffc320b682ca7cc8",
+      "gateway/agent_registry.py": "def0e8f74d135c1916f20019c7fcf2a1cd966cb5f5831792a44caa182fba9a16",
+      "gateway/workflow_errors.py": "9758bb44d3a53829a6d0b7f3707fe15a04a3eb816ed4c443a037652e5827ae06",
+      "gateway/run_ingest_all.py": "5284a11de773106bbd6abc65c09a880ec637438540c7ae9fefae68fb85f07599",
+      "gateway/daily_brief.py": "065208e8ccfb38e72e42a3d23b21c89339f9b75bad34f590d3874c46616b160d",
+      "gateway/knowledge_integrity.py": "5c55025e47fa4be1ceccde2299ed23b0642020d40775d7922e893498a38be21b",
+      "gateway/native_dependency_change.py": "389d6d636241912e00a111d7a3f6d8e675c63a1933fcd1ce8fb32ee2f953714c",
+      "gateway/native_incremental.py": "a5b490f21c5b0bd11a7129a4b3805fcf614a335574ac5f91fc96e01c628994af",
+      "gateway/local_loaders.py": "bc6afd80b965d544545b193d033da7a1a7caa268500b4fd86ef4099df072c3c5",
+      "gateway/business_acceptance.py": "5d94990f82036e23948a48e86c8ef1f2e2040e8ccdb9468d29d94ea22d52fd91",
+      "gateway/native_dependency.py": "9b781062fc918b2604f02bc8336a57e041cfd849af92cbeff9c3c34915b4b9d2",
+      "gateway/vector_client.py": "ed70c922d763c61e7d6c6934629b38700d9da340d3dfc1b05e721d4f43b90b29",
+      "gateway/planner.py": "2c578c35f51f09c2e82b48dcd88d4b6ec4bfbdc6562461fc0e81bd539efff71e",
+      "gateway/decision_memory.py": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df",
+      "gateway/knowledge_lock.py": "ea7bd614ca39f62d2ab3e79ec540359f18455c64bb18a9733dd86ce5c7631cf4",
+      "gateway/automation.py": "65b0b249a0739049cb61872a9b6e094aef072b303571cfd3974b44902ec99798",
+      "gateway/business_runs.py": "af1e8cfecc1ade840b32d22b6c5b92d1c700c2d13237c7d0e49c8dc04e142c00",
+      "gateway/knowledge_points.py": "223373e5e9c63e0cd82fd2a21dda5432f83a3bbf8bb013a4c250844353fea37b",
+      "gateway/knowledge_feedback.py": "b2aa826227f604d16755e18d398d43ca94ed9b82422bb16422f361d7a66713ae",
+      "gateway/workflow_timeline.py": "3786d94d32cb54874a2d234fb274a0dbc5c0c32b8f8df22f73fcffbcac0c30f3"
+    },
+    "undeployed_host_modules": [
+      "openproject/ai/gateway/e2e_demo.py",
+      "openproject/ai/gateway/intent_evals.py",
+      "openproject/ai/gateway/n8n_indexing_hook.py",
+      "openproject/ai/gateway/proposal_aggregation.py",
+      "openproject/ai/gateway/proposal_ux.py",
+      "openproject/ai/gateway/scheduler_registry.py",
+      "openproject/ai/gateway/supervisor_isolation.py"
+    ],
+    "changed_deployed_modules": []
+  },
+  "native": {
+    "physical_work_packages": 375,
+    "wp371": {
+      "id": 371,
+      "lock_version": 4,
+      "status_id": 37,
+      "assigned_to_id": 21,
+      "gate_revision": "3"
+    },
+    "migrations": [
+      "1000016",
+      "1001015",
+      "1002015",
+      "1003016",
+      "1004015",
+      "1005015",
+      "1006015",
+      "1007015",
+      "1008015",
+      "1009016",
+      "1010015",
+      "1011015",
+      "1012015",
+      "1013015",
+      "1014015",
+      "1015015",
+      "1016015",
+      "1017016",
+      "1018016",
+      "1019015",
+      "1020015",
+      "1021015",
+      "1022015",
+      "20240123151246",
+      "20240123151247",
+      "20240123151248",
+      "20240123151249",
+      "20240123151250",
+      "20240123151251",
+      "20240123151252",
+      "20240306154734",
+      "20240306154735",
+      "20240306154736",
+      "20240306154737",
+      "20241202112406",
+      "20241202112407",
+      "20241202112408",
+      "20241202112409",
+      "20250210184018",
+      "20250403150639",
+      "20250404060850",
+      "20250404061503",
+      "20250411104802",
+      "20250416095154",
+      "20250416112143",
+      "20250416141059",
+      "20250422072119",
+      "20250423123519",
+      "20250428114958",
+      "20250428135623",
+      "20250512114003",
+      "20250526155610",
+      "20250605133700",
+      "20250610111413",
+      "20250612133700",
+      "20250613141234",
+      "20250624155721",
+      "20250627121119",
+      "20250703143214",
+      "20250709090813",
+      "20250709103506",
+      "20250710133700",
+      "20250711133700",
+      "20250714142919",
+      "20250731144436",
+      "20250804083253",
+      "20250804133700",
+      "20250806132912",
+      "20250808062421",
+      "20250811102200",
+      "20250818133654",
+      "20250819152511",
+      "20250820131839",
+      "20250821092618",
+      "20250905204438",
+      "20250908072653",
+      "20250908151957",
+      "20250908172222",
+      "20250910085916",
+      "20250923064241",
+      "20250923120330",
+      "20250923142124",
+      "20250927215339",
+      "20250929070310",
+      "20251017111720",
+      "20251021133601",
+      "20251022114752",
+      "20251024140438",
+      "20251029134217",
+      "20251031071403",
+      "20251103123548",
+      "20251104151450",
+      "20251105082400",
+      "20251105082430",
+      "20251107114245",
+      "20251111145039",
+      "20251111155829",
+      "20251114174545",
+      "20251115211211",
+      "20251117102116",
+      "20251119095014",
+      "20251121073442",
+      "20251125000000",
+      "20251126092758",
+      "20251204100529",
+      "20251204134427",
+      "20251209191935",
+      "20251211160744",
+      "20251216155857",
+      "20251217105019",
+      "20251218100700",
+      "20251218100721",
+      "20251218100741",
+      "20251218133700",
+      "20260105090537",
+      "20260105092419",
+      "20260105093056",
+      "20260105093729",
+      "20260105095152",
+      "20260105095917",
+      "20260105100429",
+      "20260105101148",
+      "20260106151226",
+      "20260108111032",
+      "20260122130916",
+      "20260129120330",
+      "20260130105057",
+      "20260202093215",
+      "20260202150252",
+      "20260202150253",
+      "20260203171223",
+      "20260212133700",
+      "20260212145213",
+      "20260218095806",
+      "20260218122039",
+      "20260219151850",
+      "20260219152519",
+      "20260223142025",
+      "20260226133700",
+      "20260227143618",
+      "20260227164504",
+      "20260302152255",
+      "20260303172517",
+      "20260304160505",
+      "20260304164536",
+      "20260305175656",
+      "20260309105243",
+      "20260309130829",
+      "20260311183000",
+      "20260312121938",
+      "20260313120000",
+      "20260313163122",
+      "20260313164539",
+      "20260313170000",
+      "20260318133701",
+      "20260318133702",
+      "20260319120000",
+      "20260325101553",
+      "20260325133701",
+      "20260327140627",
+      "20260328120000",
+      "20260330100000",
+      "20260330134729",
+      "20260402094525",
+      "20260410100000",
+      "20260410100001",
+      "20260415182824",
+      "20260415211819",
+      "20260416213200",
+      "20260420160236",
+      "20260422081417",
+      "20260422081810",
+      "20260422084824",
+      "20260422110809",
+      "20260422131715",
+      "20260424094655",
+      "20260427125502",
+      "20260428133700",
+      "20260504154415",
+      "20260505120000",
+      "20260505143842",
+      "20260505143843",
+      "20260505143844",
+      "20260505143845",
+      "20260505143846",
+      "20260505143847",
+      "20260505143848",
+      "20260505143849",
+      "20260505143850",
+      "20260505143851",
+      "20260506000001",
+      "20260506120000",
+      "20260507141533",
+      "20260513120000",
+      "20260514103000",
+      "20260515101148",
+      "20260518000000",
+      "20260519120000",
+      "20260519144514",
+      "20260528120000",
+      "20260528144922",
+      "20260601081943",
+      "20260602152805",
+      "20260602152807",
+      "20260602170908",
+      "20260603112259",
+      "20260604120001",
+      "20260605094204",
+      "20260608120000",
+      "20260609120000",
+      "20260615000000",
+      "20260615120000",
+      "20260617073806",
+      "20260622100448",
+      "20260622144833",
+      "20260622150055",
+      "20260622151245",
+      "20260623113435",
+      "20260624101934",
+      "20260624120000",
+      "20260624135703",
+      "20260625073349",
+      "20260625120000",
+      "20260626095803",
+      "20260629134641",
+      "20260703151859",
+      "20260706065400",
+      "20260706104133",
+      "20260707090000",
+      "20260707120000",
+      "20260708100831",
+      "20260708203257",
+      "20260720142222",
+      "20260727111530",
+      "20260727142001",
+      "20260728120000",
+      "20260730133700",
+      "20260804123419",
+      "20260804123449",
+      "20260805122307",
+      "20260807100000",
+      "20260813120000",
+      "20260817133900",
+      "20260819090000",
+      "20260819140000",
+      "20260820101109",
+      "20260820101159",
+      "20260824132100",
+      "20260825103847",
+      "20260831120000",
+      "20260902070000",
+      "20260903090000",
+      "20260903120000",
+      "20260907120000",
+      "20260909140000",
+      "20260910120000",
+      "20260917165643",
+      "20261009160000",
+      "20261010180000",
+      "20261010190000",
+      "20261026000000"
+    ],
+    "table_fingerprints": {
+      "work_packages": "375|18951f8f958ded09e9aa50a8e4c0dddb",
+      "relations": "352|8efb5973160c91ae1bb5b8451e5979e2",
+      "users": "10|299132886d39212bb41f00caa0ddef68",
+      "user_passwords": "7|1c8c563bc72ffd2e539f6d7e4c2f7db8",
+      "tokens": "9|d2504324eea35a15febd4ed0566b1d9c",
+      "two_factor_authentication_devices": "4|9fa7990ca991c85a663ee79f4ce78107",
+      "members": "7|635e9c9c13bfb9cf0f4d56e42a07e623",
+      "member_roles": "7|a401407caf4c539024415c1944cea659",
+      "grids": "14|73584dda2abf1c9b7548f298801abbcd",
+      "journals": "1026|6e674a2a57551ec52af3a0e41452dfe3",
+      "qldapm_mutation_receipts": "1|2e60f9244b63949ce96d16c5309ff43e",
+      "qldapm_native_deletion_events": "0|"
+    }
+  },
+  "gateway_counts": {
+    "requests": 285,
+    "proposals": 56,
+    "knowledge_sync": 14,
+    "ai_runs": 87,
+    "gemini_call_receipts": 129,
+    "gemini_usage": 134,
+    "native_phase_documents": 1,
+    "native_phase_reviews": 1,
+    "qa_evidence": 1,
+    "qa_evidence_reviews": 2
+  },
+  "gateway_states": {
+    "requests": {
+      "done": 257,
+      "pending": 28
+    },
+    "ai_runs": {
+      "done": 80,
+      "failed_or_unknown": 7
+    },
+    "proposals": {
+      "done": 16,
+      "executing": 2,
+      "pending": 30,
+      "rejected": 8
+    },
+    "knowledge_sync": {
+      "verified": 14
+    }
+  },
+  "workflows": {
+    "WF04": {
+      "id": "elfapV5D2PTnLiHW",
+      "version": "4a8ddd7c-763a-45dc-adb1-99633047b62e",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "b59cdfb918f3c1fe2cd2ee801e208c1537fdafbe769884a6e694fca5723e5688"
+    },
+    "WF05": {
+      "id": "xCZFw45fmDQG5gNq",
+      "version": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "ac4751c50204271f24cda1294e9b39f70398ec6f5fbd8cdf35d19064dd875113"
+    },
+    "WF06": {
+      "id": "Jq18aFSqfuUybEic",
+      "version": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c",
+      "active": true,
+      "nodes_count": 3,
+      "sha256": "a7d74bed5b8cac09714c719c32891964987c54651bb5fc2f780b4b7f740da949"
+    },
+    "WF15": {
+      "id": "NLugfE3U8dBS88Wg",
+      "version": "3f8520e1-15f5-48d4-b61d-c0df8a19cae9",
+      "active": true,
+      "nodes_count": 3,
+      "sha256": "39156d6bedb3511ceee801885b6ccb144deb250da264ee733e206736fef1c761"
+    },
+    "WF12": {
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "version": "68ced74a-6dcf-46df-92c3-201febb5341a",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "d933e289cde2b3e5e4bf6c486330666857fd489c40134f007bcdd5e72eb101bf"
+    },
+    "WF14": {
+      "id": "8ycOUQy9gtT60nkN",
+      "version": "e07912bb-c40c-4e18-a016-2f16ff7a38a1",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "a56a6caded89765d2bbf99ef3ec7da7c2ecd302274a0ddf6d15051223eec31b2"
+    },
+    "WF07": {
+      "id": "BpCQrGR866vg4BqQ",
+      "version": "15216ba8-75a6-43a5-a939-308f6d14b957",
+      "active": true,
+      "nodes_count": 5,
+      "sha256": "73f9ac1588902830c2adde7eaf04a3fa7ba5bf9919cc4ddf7ea065e46a1b4ca4"
+    },
+    "WF16": {
+      "id": "5FRYNPSot18UDpKa",
+      "version": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "active": true,
+      "nodes_count": 3,
+      "sha256": "5bf55def99915eb372a8bcc7f9c0a9649703caca8e9c40fc2aee2acaf10f50b6"
+    },
+    "WF03": {
+      "id": "XoP4M520TMG3WgeY",
+      "version": "9af87910-b23c-4bcb-9589-4b09e614d3cf",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "d4ba221ff5a997c8574953669f633f7c9160ee2dfa67028032fc10b2ee8e61e2"
+    },
+    "WF08": {
+      "id": "RXWjVUL8ozqhjY4w",
+      "version": "830871f2-9ac5-487f-b4de-b2e0922e9e36",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "7628373ef865c4ae1bb2ab6c1f173877a654fbe0a2308d3a5cbcf55a73311639"
+    },
+    "WF01": {
+      "id": "X2O2QdPY6QLOrWqL",
+      "version": "c7409a2f-c90b-4715-a24f-66ee3234af28",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "0a6a4d1fae6c385960127006a71145ddeb96c43c2542c8272a301469e91ad4af"
+    },
+    "WF02": {
+      "id": "Anl8LNdN4NNTKRpe",
+      "version": "95f5fbd7-f849-4a4a-9467-4fe8348b6387",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "307bbea8d5062232a101b2be3a6b9c2fce293a6bd68910fd73d36b8520378a5d"
+    },
+    "WF13": {
+      "id": "2tr0jpqaaAiq9IOU",
+      "version": "bf7f89b1-07a4-42a9-b6e2-98fa3c15d694",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "6c4c6a3c7807ccaa7086a5e2285118ef7e8938e1fb34c959a6ada8c580c72c91"
+    },
+    "WF09": {
+      "id": "tOyBIPw6sGjgzjtU",
+      "version": "56995a8f-14dd-41be-835f-24045297c7ea",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "9eed2f91db28bdba94133fef13a3cb7f080ea8744902eaddd632ef250146013d"
+    },
+    "WF11": {
+      "id": "LeRVT3LWNBkJ2iz3",
+      "version": "3de06022-1bff-4a65-9152-414fe690beb8",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "a042b470745c7a4fa34390ec728351ab83877cf1ba089a57d2a6a69a46470ec6"
+    },
+    "WF10": {
+      "id": "tOY7QUa9SrWPOe9e",
+      "version": "142d0a0d-0c12-4b6d-b1f5-c91033fc854e",
+      "active": true,
+      "nodes_count": 4,
+      "sha256": "78b94f6c48b88fe53e0e720c00f2dedbd7932f306b22269312235eb654219fc3"
+    }
+  },
+  "qdrant": {
+    "points": 1742,
+    "vectors": {
+      "size": 1024,
+      "distance": "Cosine"
+    }
+  },
+  "ollama": {
+    "models": [
+      "bge-m3:latest"
+    ]
+  },
+  "existing_token_lifecycle": [
+    {
+      "actor": 19,
+      "location": "incident-secrets.json existing reference",
+      "registered": true,
+      "role": "PM",
+      "expires_at_utc": "2026-10-28T03:23:46.51168+07:00",
+      "revoked": false,
+      "expired": false,
+      "issued_at": "NOT_STORED_IN_TOKEN_TABLE; cannot infer exact from24h claim"
+    },
+    {
+      "actor": 20,
+      "location": "incident-secrets.json existing reference",
+      "registered": true,
+      "role": "BA",
+      "expires_at_utc": "2026-10-28T03:23:48.001854+07:00",
+      "revoked": false,
+      "expired": false,
+      "issued_at": "NOT_STORED_IN_TOKEN_TABLE; cannot infer exact from24h claim"
+    }
+  ],
+  "documents": {
+    "GEMINI_FLASH_MAIN_CHECKPOINT.json": {
+      "exists": true,
+      "sha256": "49c8e60861bb49275fa78dcaab5388a7f5cf108234dd5ac2102b8e8385acd940",
+      "bytes": 3221
+    },
+    "GEMINI_FLASH_MAIN_HANDOFF_TO_CODEX.md": {
+      "exists": true,
+      "sha256": "a4e387c32ac7148158c39af6d02c4775c00c936b0fcc7ebb3ca87ab318fa4a5c",
+      "bytes": 7869
+    },
+    "GEMINI_FLASH_SOURCE_DEPENDENCY_MAP.md": {
+      "exists": true,
+      "sha256": "109ec9d501d41a60c8cbe58a82dd27166aac7c331d2039d70ddf579ddc3163ec",
+      "bytes": 9146
+    },
+    "GEMINI_FLASH_INTEGRATION_MATRIX.json": {
+      "exists": true,
+      "sha256": "c0e08463df2216c86e4e2ce8b3903ec8907a8bca03d7553cec55208fb80506bc",
+      "bytes": 3621
+    },
+    "CLAUDE_AI_AUTOMATION_INTEGRATION_MATRIX.json": {
+      "exists": true,
+      "sha256": "be1cc11eca16e1d032accb07461aa035a85380ebf3d45973a76b658c2b1bca9d",
+      "bytes": 3294
+    },
+    "CLAUDE_AI_PROMPT_TO_RESULT_E2E.json": {
+      "exists": true,
+      "sha256": "9301350db4ceeca6e29a53f97c4f5464e50a291f351e500d97b109576f7be68b",
+      "bytes": 6162
+    },
+    "CLAUDE_SUPERVISOR_TOOL_ROUTING_RESULT.json": {
+      "exists": true,
+      "sha256": "6445c0e34c1cd4fa357ab003cfa80ddca496082562d0e348af605984310f4a39",
+      "bytes": 2253
+    },
+    "CLAUDE_AI_INTEGRATION_RELEASE_READINESS.md": {
+      "exists": true,
+      "sha256": "19a188ff9eca438a0df4e3a53c9921d5d451fcf816aace3c4943422adad061ba",
+      "bytes": 5740
+    },
+    "CLAUDE_N8N_AI_INTEGRATION_RESULT.json": {
+      "exists": true,
+      "sha256": "4804dbd0bc5ded8cccf16a5329150467c8fbbee939deaff2f936dca648e4deec",
+      "bytes": 2870
+    },
+    "CLAUDE_OLLAMA_EMBEDDING_RESULT.json": {
+      "exists": true,
+      "sha256": "192e5e91b9570529b1e16e7ad949f34192c8b767ed381f40cea2bc3111b0fb26",
+      "bytes": 403
+    },
+    "CLAUDE_RAG_INGEST_RETRIEVE_E2E_RESULT.json": {
+      "exists": true,
+      "sha256": "15384133b0ff582ced81e35b7f0c917d523ddc35e8aa9c8cd4b658fe0a177118",
+      "bytes": 468
+    },
+    "GEMINI_GATEWAY_DEPLOY_EVIDENCE_20261027.json": {
+      "exists": true,
+      "sha256": "dbcc48a6c1784fb256f6c545c25a8d0c8a865806f7e252e07e2caf1a7f66b791",
+      "bytes": 1324
+    },
+    "CODEX_MAIN_READONLY_EVIDENCE_20261027.json": {
+      "exists": true,
+      "sha256": "cd757b9a0b01cc6bd26bb430b05fd30df1696f27e07b3e37d772be97181848a4",
+      "bytes": 8337
+    },
+    "CODEX_MAIN_WORKFLOW_ACCEPTANCE_MATRIX.json": {
+      "exists": true,
+      "sha256": "3ac4072d926598512da69ef5628249ce7f5da154e2abe446676a2d93116a21f7",
+      "bytes": 13322
+    },
+    "CODEX_MAIN_CONTINUATION_CHECKPOINT.json": {
+      "exists": true,
+      "sha256": "9905bfeb0b8ded86dea7f7cb193d98228dcb244b80b0fcdf187f9d16b68bc9eb",
+      "bytes": 30925
+    },
+    "CODEX_MAIN_APPROVAL_CONSUMPTION_LEDGER.json": {
+      "exists": true,
+      "sha256": "de52dc4c75fa1ed53ba50c923b6b86d4685cee9e8b864e010eafab9b5d8c569d",
+      "bytes": 3962
+    },
+    "CODEX_FINAL_PROJECT_READINESS.md": {
+      "exists": true,
+      "sha256": "ca55734e30ce4ab1e3e9738186a6da56760ade4d0ebe45621eb03f9bdaecb4d9",
+      "bytes": 2158
+    },
+    "CODEX_PENDING_EXTERNAL_ACCEPTANCE.md": {
+      "exists": true,
+      "sha256": "3de031b2bda2b4ffa6143b7dc0b594f0261bc78657a0067fe07b3b1b4351f37f",
+      "bytes": 2477
+    },
+    "CLAUDE_SONNET_HANDOFF_TO_CODEX.md": {
+      "exists": true,
+      "sha256": "34900846c64463d98476453f1b6c03e83dd618d8e6f6ed0040b26b6913f675d2",
+      "bytes": 3794
+    },
+    "AGENTS.md": {
+      "exists": true,
+      "sha256": "abeb9dc8472f9deea1f503b2e865ef3c760da38626e6bab42abdc378e6ec700d",
+      "bytes": 20709
+    },
+    "architecture.md": {
+      "exists": true,
+      "sha256": "4c3041530337d0ddcd81df47eae961011427776536a3b5b979c0f6b305a171d1",
+      "bytes": 345572
+    }
+  },
+  "old_codex_checkpoint_is_current_runtime": false,
+  "native_writes": 0,
+  "model_calls": 0,
+  "credential_changes": 0,
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\baseline-backup",
+  "prior_operator_jobs_completed": true,
+  "core_source": {
+    "files": 58,
+    "mismatched_paths": [],
+    "hashes": {
+      "openproject\\ai\\core\\overlay\\config\\routes.rb": {
+        "host": "76b54436ad702b7e80a080db6e4c6e513aa29a578639ad6614c213c7f185f75d",
+        "runtime": "76b54436ad702b7e80a080db6e4c6e513aa29a578639ad6614c213c7f185f75d"
+      },
+      "openproject\\ai\\core\\overlay\\lib\\api\\v3\\root.rb": {
+        "host": "f1a2ec3dbd3d0dd3e48cfd630b32d1cfe37b573a7804efbb62ab5db442b0de58",
+        "runtime": "f1a2ec3dbd3d0dd3e48cfd630b32d1cfe37b573a7804efbb62ab5db442b0de58"
+      },
+      "openproject\\ai\\core\\overlay\\lib\\api\\v3\\qldapm\\gates_api.rb": {
+        "host": "ea3035c594f7935e66e1074b6002e65b6e0dbe6856b57d6d30241fe8620b268d",
+        "runtime": "ea3035c594f7935e66e1074b6002e65b6e0dbe6856b57d6d30241fe8620b268d"
+      },
+      "openproject\\ai\\core\\overlay\\db\\migrate\\20261009160000_add_qldapm_gate_to_work_packages.rb": {
+        "host": "0a93924c62dbcf6333c1ae245676d9c8c780d92a927435a2b66018bf241ebe32",
+        "runtime": "0a93924c62dbcf6333c1ae245676d9c8c780d92a927435a2b66018bf241ebe32"
+      },
+      "openproject\\ai\\core\\overlay\\db\\migrate\\20261010180000_create_qldapm_insight_snapshots.rb": {
+        "host": "954c3b6f1fb19fd4a7d33ae402cef1db74559d3edcec4ca20a6938cefd2affe0",
+        "runtime": "954c3b6f1fb19fd4a7d33ae402cef1db74559d3edcec4ca20a6938cefd2affe0"
+      },
+      "openproject\\ai\\core\\overlay\\db\\migrate\\20261010190000_create_qldapm_mutation_receipts.rb": {
+        "host": "ff4675ae036217f9a98ae166a675902b51880763e0a4f7599957d9e965aa4811",
+        "runtime": "ff4675ae036217f9a98ae166a675902b51880763e0a4f7599957d9e965aa4811"
+      },
+      "openproject\\ai\\core\\overlay\\db\\migrate\\20261026000000_create_qldapm_native_deletion_events.rb": {
+        "host": "14727aabc578a9d0aa9d371fd9e1895b5167919eac941cac90e852e62529947e",
+        "runtime": "14727aabc578a9d0aa9d371fd9e1895b5167919eac941cac90e852e62529947e"
+      },
+      "openproject\\ai\\core\\overlay\\config\\initializers\\qldapm_gates.rb": {
+        "host": "a3859744f1a27cb905605983e6f719d34f550ad93db5098ae9b64b7cfbc7636b",
+        "runtime": "a3859744f1a27cb905605983e6f719d34f550ad93db5098ae9b64b7cfbc7636b"
+      },
+      "openproject\\ai\\core\\overlay\\config\\initializers\\zz_qldapm_inflections.rb": {
+        "host": "f6c192fd72837c407074e6db364041108f9b1f0dfd9dbdaef40ea22a184bd174",
+        "runtime": "f6c192fd72837c407074e6db364041108f9b1f0dfd9dbdaef40ea22a184bd174"
+      },
+      "openproject\\ai\\core\\overlay\\app\\controllers\\qldapm_ai_controller.rb": {
+        "host": "09cdf404f18a825e59f2cb237fd3e002a9203215efe1a4ca845ac04cb6bda5fb",
+        "runtime": "09cdf404f18a825e59f2cb237fd3e002a9203215efe1a4ca845ac04cb6bda5fb"
+      },
+      "openproject\\ai\\core\\overlay\\app\\controllers\\qldapm_gates_controller.rb": {
+        "host": "2d890c2ab18017ddb2132c28acbac10d63cdea62271053eff2fbc97896f0ec1f",
+        "runtime": "2d890c2ab18017ddb2132c28acbac10d63cdea62271053eff2fbc97896f0ec1f"
+      },
+      "openproject\\ai\\core\\overlay\\app\\helpers\\qldapm_ai_helper.rb": {
+        "host": "965563da6f7877782ff05696de0c957d6a3ab644ad564c6fa172b0e46bc0968c",
+        "runtime": "965563da6f7877782ff05696de0c957d6a3ab644ad564c6fa172b0e46bc0968c"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\qldapm_work_package_tree_hook.rb": {
+        "host": "20d33217d0050e01a5dcf68d60c7082d926aa18c3ef8cf43989affea5510e089",
+        "runtime": "20d33217d0050e01a5dcf68d60c7082d926aa18c3ef8cf43989affea5510e089"
+      },
+      "openproject\\ai\\core\\overlay\\app\\workers\\qldapm\\insight_snapshot_job.rb": {
+        "host": "5b9b077b197c3b8ce4798717ce05a4238fddb6b99f492bc17593adcbe8dc8942",
+        "runtime": "5b9b077b197c3b8ce4798717ce05a4238fddb6b99f492bc17593adcbe8dc8942"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\execution.html.erb": {
+        "host": "8e19937d67b81f5e2a60df18b56b1d9fca7d7164516b3fd0007bbdf10cc40dc9",
+        "runtime": "8e19937d67b81f5e2a60df18b56b1d9fca7d7164516b3fd0007bbdf10cc40dc9"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\executions.html.erb": {
+        "host": "b986b0f42decfaf78b00f91cde25f9075ea74d48ef7f195087f2836f3ea57c92",
+        "runtime": "b986b0f42decfaf78b00f91cde25f9075ea74d48ef7f195087f2836f3ea57c92"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\insights.html.erb": {
+        "host": "96ba8c18122f98e774740860e0699ebf5a4f7024b5ff7e0dd98e1e67805a4757",
+        "runtime": "96ba8c18122f98e774740860e0699ebf5a4f7024b5ff7e0dd98e1e67805a4757"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\permissions.html.erb": {
+        "host": "934dfc3b2872adcc486f0d952e567d2b3b1b474fa35db7472316c09d31126442",
+        "runtime": "934dfc3b2872adcc486f0d952e567d2b3b1b474fa35db7472316c09d31126442"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\phases.html.erb": {
+        "host": "837b8af70395e463bec1bb46a379a97036f0f9fc3cf2a5afc5d77fb2e0d070c4",
+        "runtime": "837b8af70395e463bec1bb46a379a97036f0f9fc3cf2a5afc5d77fb2e0d070c4"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\qa_evidence.html.erb": {
+        "host": "79a3830d4ef865cd6350890234a59f3789e2b43b1cf7e16e95ec3dad83b22b9c",
+        "runtime": "79a3830d4ef865cd6350890234a59f3789e2b43b1cf7e16e95ec3dad83b22b9c"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\show.html.erb": {
+        "host": "34ccae44941d6782f57656a1805e9b974a340c95ca272878b9c636d127561594",
+        "runtime": "34ccae44941d6782f57656a1805e9b974a340c95ca272878b9c636d127561594"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_control_center.html.erb": {
+        "host": "daa9e75fe60bc2658fd3804fc1315dd4e460112feb60af0b1e01967983cdca19",
+        "runtime": "daa9e75fe60bc2658fd3804fc1315dd4e460112feb60af0b1e01967983cdca19"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_daily_brief.html.erb": {
+        "host": "c19432aed8146eac70e9719b5ddcae5f08502b8ecde42763b4622bab44750b40",
+        "runtime": "c19432aed8146eac70e9719b5ddcae5f08502b8ecde42763b4622bab44750b40"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_execution_client.html.erb": {
+        "host": "0088a4244c858eb1f228801b0f717973a0cd50641b660b8b8e8815c9a313d43e",
+        "runtime": "0088a4244c858eb1f228801b0f717973a0cd50641b660b8b8e8815c9a313d43e"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_execution_style.html.erb": {
+        "host": "79921472b417e42648d4aae52fa5dfe5a191f6cce6a19e06a7ad9dc6983905da",
+        "runtime": "79921472b417e42648d4aae52fa5dfe5a191f6cce6a19e06a7ad9dc6983905da"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_result.html.erb": {
+        "host": "a3da01d66e82e380831a491aea4deabd4ce7f86f0ada00d97910a06c8e2f6a4a",
+        "runtime": "a3da01d66e82e380831a491aea4deabd4ce7f86f0ada00d97910a06c8e2f6a4a"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_gates\\index.html.erb": {
+        "host": "0f0d84a338d52fb4038c892c35910cd27a108ef63f506d97543707aa19e3f232",
+        "runtime": "0f0d84a338d52fb4038c892c35910cd27a108ef63f506d97543707aa19e3f232"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_gates\\show.html.erb": {
+        "host": "e0ed99f9cded478dde19138c4bb7f135d88411b61f4cfa4272879cb14f582948",
+        "runtime": "e0ed99f9cded478dde19138c4bb7f135d88411b61f4cfa4272879cb14f582948"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_work_packages\\index.html.erb": {
+        "host": "b26620ea0b8db867f553c6ef23429b6fe2598632b9d16269142329287f03fc4c",
+        "runtime": "b26620ea0b8db867f553c6ef23429b6fe2598632b9d16269142329287f03fc4c"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_work_packages\\_navigation.html.erb": {
+        "host": "5c947a5a1fb37c97a87a924c81c5881b7281079180c00c33f877127073b6543e",
+        "runtime": "5c947a5a1fb37c97a87a924c81c5881b7281079180c00c33f877127073b6543e"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_work_packages\\_node.html.erb": {
+        "host": "7539338e8334a26402dc587b87d4f729e61ac80a6b2e0bad435c7dd06a3e0d9f",
+        "runtime": "7539338e8334a26402dc587b87d4f729e61ac80a6b2e0bad435c7dd06a3e0d9f"
+      },
+      "openproject\\ai\\core\\overlay\\app\\views\\qldapm_work_packages\\_row.html.erb": {
+        "host": "fcce5414b218be39bc86cc500dde6b749240a29be0020af85454d94cfbab82a1",
+        "runtime": "fcce5414b218be39bc86cc500dde6b749240a29be0020af85454d94cfbab82a1"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\ai_bridge.rb": {
+        "host": "050e18d2c6578cbee4639ac3d840d6d010a0c96a5bbda97b07bb982eb483a163",
+        "runtime": "050e18d2c6578cbee4639ac3d840d6d010a0c96a5bbda97b07bb982eb483a163"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\dependency_change.rb": {
+        "host": "443f7502c20cae3fa755c3d204514ccd3448480527aae85d712615f0996bebee",
+        "runtime": "443f7502c20cae3fa755c3d204514ccd3448480527aae85d712615f0996bebee"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\dependency_mutation.rb": {
+        "host": "35a20a498fefb2351efda3d4821f0d48317479108c817f3cbe35cca180c558f5",
+        "runtime": "35a20a498fefb2351efda3d4821f0d48317479108c817f3cbe35cca180c558f5"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\gate_actions.rb": {
+        "host": "34e2e3b7959d5613cc2c7414217bd54941c545b21de4e8798aa7a59852b85052",
+        "runtime": "34e2e3b7959d5613cc2c7414217bd54941c545b21de4e8798aa7a59852b85052"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\hierarchy_readback.rb": {
+        "host": "3cb44e0ce54cbc06f62ef4c56679b620b42f117684725ec9965c400651c55c89",
+        "runtime": "3cb44e0ce54cbc06f62ef4c56679b620b42f117684725ec9965c400651c55c89"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\insights.rb": {
+        "host": "5fb2a2aefabd08b68b8ae43c9db9b0f7275388d32ce6f6268459a2fcc9e5bc25",
+        "runtime": "5fb2a2aefabd08b68b8ae43c9db9b0f7275388d32ce6f6268459a2fcc9e5bc25"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\insight_metrics.rb": {
+        "host": "f26158ef4a514a12e6f41bbe421b3812aad102c188539f8c2c6be296b3480851",
+        "runtime": "f26158ef4a514a12e6f41bbe421b3812aad102c188539f8c2c6be296b3480851"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\mutations.rb": {
+        "host": "3b161a0bdb798b179e7d6bd4d41f50ee09d8d65014198b9585aa0cc76dcab864",
+        "runtime": "3b161a0bdb798b179e7d6bd4d41f50ee09d8d65014198b9585aa0cc76dcab864"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\native_deletion.rb": {
+        "host": "1663269c0afdd149dd59bce5b2e700d76ee795abbb28f40a175d0bbb34afd457",
+        "runtime": "1663269c0afdd149dd59bce5b2e700d76ee795abbb28f40a175d0bbb34afd457"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\native_phase_receipt.rb": {
+        "host": "b9ad2e9d2078be9476793e1ab015328371c6fab1cd4de0884fb625cc880f29c6",
+        "runtime": "b9ad2e9d2078be9476793e1ab015328371c6fab1cd4de0884fb625cc880f29c6"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\qa_evidence_receipt.rb": {
+        "host": "ed06971cc8ddca3cf2d67f4a911b943244e631cfd0c4db0f2c316ed713754627",
+        "runtime": "ed06971cc8ddca3cf2d67f4a911b943244e631cfd0c4db0f2c316ed713754627"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\test_receipt.rb": {
+        "host": "9e00e3cc4e59c1eec2917c46b560444804b415b050001f2e2807c1274b5724ab",
+        "runtime": "9e00e3cc4e59c1eec2917c46b560444804b415b050001f2e2807c1274b5724ab"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\work_packages\\create_service.rb": {
+        "host": "e9e358fa7d6d2d55346198875e9505b02802ec9010b8eee181e56cca733bbc67",
+        "runtime": "e9e358fa7d6d2d55346198875e9505b02802ec9010b8eee181e56cca733bbc67"
+      },
+      "openproject\\ai\\core\\overlay\\app\\services\\work_packages\\set_attributes_service\\derive_progress_values_status_based.rb": {
+        "host": "91f7faeb19b94e2aec078f7bb796226f95d3da7826b8397779ad43ec58fcaba4",
+        "runtime": "91f7faeb19b94e2aec078f7bb796226f95d3da7826b8397779ad43ec58fcaba4"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\concerns\\qldapm_board_write.rb": {
+        "host": "dafcc357827f4ff498d37e1f38ebbe5598b9906fe5ec976404f4b80ecbea4947",
+        "runtime": "dafcc357827f4ff498d37e1f38ebbe5598b9906fe5ec976404f4b80ecbea4947"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\concerns\\qldapm_gate_write.rb": {
+        "host": "8e53e8f6145f58f5f2714436bd5cb22bf7edbf0de8ef2cb0bf7adcbfd782ba06",
+        "runtime": "8e53e8f6145f58f5f2714436bd5cb22bf7edbf0de8ef2cb0bf7adcbfd782ba06"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\concerns\\qldapm_relation_write.rb": {
+        "host": "a5c0664d737683e578ba35a479d6613026cb316bdb01dfda6b47ab5579bb1863",
+        "runtime": "a5c0664d737683e578ba35a479d6613026cb316bdb01dfda6b47ab5579bb1863"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\qldapm\\board_permissions.rb": {
+        "host": "72e5b4da061b08829958bfca6bcb435133eb759cd2266fa425363295034a2ba7",
+        "runtime": "72e5b4da061b08829958bfca6bcb435133eb759cd2266fa425363295034a2ba7"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\qldapm\\gate_policy.rb": {
+        "host": "e40f5fdbe37adcee90e3a5ccdccbe1992a0799a57d11c133b0ba973ffd4bcf2e",
+        "runtime": "e40f5fdbe37adcee90e3a5ccdccbe1992a0799a57d11c133b0ba973ffd4bcf2e"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\qldapm\\insight_response.rb": {
+        "host": "6054aab05f6e9fe2cdbdeee5ed069112c5107398e51c9af87da0202aa299c028",
+        "runtime": "6054aab05f6e9fe2cdbdeee5ed069112c5107398e51c9af87da0202aa299c028"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\qldapm\\insight_snapshot.rb": {
+        "host": "0caefe162c1ee56da06def327cf02c0f8b5eb0fc8eeb8724a12240c77a0f5cdc",
+        "runtime": "0caefe162c1ee56da06def327cf02c0f8b5eb0fc8eeb8724a12240c77a0f5cdc"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\qldapm\\mutation_receipt.rb": {
+        "host": "39d9cba1a247daf76a992a617c169e2f27f60a075dc7b3261363813dac1f7c7a",
+        "runtime": "39d9cba1a247daf76a992a617c169e2f27f60a075dc7b3261363813dac1f7c7a"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\qldapm\\native_deletion_event.rb": {
+        "host": "f934353dfa696fa976ac8442f84b6cf0bb0daaa35b402193556dde4b351d2c1d",
+        "runtime": "f934353dfa696fa976ac8442f84b6cf0bb0daaa35b402193556dde4b351d2c1d"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\qldapm\\permission_ceiling.rb": {
+        "host": "1f2f8e52deff368e7d80c8cbe2ab6f7c75cdd9d93726766c62ab5b84a301deca",
+        "runtime": "1f2f8e52deff368e7d80c8cbe2ab6f7c75cdd9d93726766c62ab5b84a301deca"
+      },
+      "openproject\\ai\\core\\overlay\\app\\models\\qldapm\\rbac.rb": {
+        "host": "fa3eaa032ddefb1f4adece8e7fa994bdefe7f973abda65723536f28aad36fba4",
+        "runtime": "fa3eaa032ddefb1f4adece8e7fa994bdefe7f973abda65723536f28aad36fba4"
+      },
+      "openproject\\ai\\core\\overlay\\app\\controllers\\concerns\\qldapm_work_package_tree.rb": {
+        "host": "b7b8cb5b9566705620b2e87554d0e02d62697ec0b0b9ce29a182682fe0b58433",
+        "runtime": "b7b8cb5b9566705620b2e87554d0e02d62697ec0b0b9ce29a182682fe0b58433"
+      }
+    }
+  },
+  "reported_source_map": {
+    "gateway/ai_worker.py": "EXISTS",
+    "gateway/app.py": "EXISTS",
+    "gateway/catalog.py": "EXISTS",
+    "gateway/knowledge.py": "MISSING",
+    "gateway/knowledge_ui_answer.py": "EXISTS",
+    "gateway/live_agents.py": "EXISTS",
+    "gateway/local_queries.py": "EXISTS",
+    "gateway/native_phases.py": "MISSING",
+    "gateway/native_proposals.py": "MISSING",
+    "gateway/native_qa.py": "EXISTS",
+    "gateway/native_rest.py": "MISSING",
+    "gateway/planner.py": "EXISTS",
+    "gateway/proposals.py": "MISSING",
+    "gateway/qa_engine.py": "MISSING",
+    "gateway/service.py": "EXISTS",
+    "gateway/supervisor.py": "EXISTS",
+    "gateway/ui_bridge.py": "MISSING",
+    "gateway/vector_client.py": "EXISTS",
+    "tests/test_ai_worker.py": "EXISTS",
+    "tests/test_catalog.py": "MISSING",
+    "tests/test_gateway_contract.py": "MISSING",
+    "tests/test_knowledge.py": "MISSING",
+    "tests/test_knowledge_ui_answer.py": "EXISTS",
+    "tests/test_live_agents.py": "EXISTS",
+    "tests/test_local_queries.py": "EXISTS",
+    "tests/test_n8n_integration.py": "MISSING",
+    "tests/test_native_phases.py": "MISSING",
+    "tests/test_native_qa.py": "MISSING",
+    "tests/test_native_rest.py": "MISSING",
+    "tests/test_planner.py": "EXISTS",
+    "tests/test_proposals.py": "MISSING",
+    "tests/test_service.py": "MISSING",
+    "tests/test_supervisor.py": "EXISTS",
+    "tests/test_vector_client.py": "MISSING"
+  },
+  "regression_manifests": {
+    "prior_module_count": 79,
+    "gemini_subset_module_count": 40,
+    "union_module_count": 105,
+    "prior_only_module_count": 65,
+    "evidence": "private regression-module-manifest.json",
+    "union_execution": {
+      "windows": {
+        "run": 730,
+        "passed": 730,
+        "failures": 0
+      },
+      "linux": {
+        "run": 730,
+        "passed": 713,
+        "skipped": 15,
+        "failures": 2,
+        "classification": "Two host Git prerequisites absent; raw FAILED logs retained; both pass on actual Windows host"
+      },
+      "native_clone_checks": 30,
+      "main_role_checks": 73,
+      "main_contract_checks": 48,
+      "main_readonly_checks": 13
+    }
+  },
+  "evidence_archive": {
+    "name": "ai.zip",
+    "bytes": 117938,
+    "sha256": "1f65b184a5f3f30de826ce8f16c21f5b7b21973876e129c21b358f6d27be0b9b",
+    "entries": 60,
+    "extracted_over_source": false
+  },
+  "milestones": {
+    "C0": "VERIFIED_BASELINE_WITH_UNDEPLOYED_HOST_MODULES",
+    "C1": "CLAIMS_AUDITED_OVERALL_PARTIAL",
+    "C2": "PASS_SCOPED_NATIVE_COUNTS_RAG_CONTEXT_AND_REAL_GEMINI_MULTI_AGENT",
+    "C3": "PASS_EXISTING_WF03_START_POLL_TERMINAL_AND_FAILURE_IDEMPOTENCY; FULL_FAULT_MATRIX_PARTIAL",
+    "C4": "ACTUAL_WBS_APPLICATION_CLONE_PASS_NATIVE_SUBTASK_COMPATIBILITY_CANDIDATE_TESTING",
+    "C5": "SCOPED730_WINDOWS_PASS_LINUX713_PASS15_SKIP2_HOST_GIT_ENV_FAILURES",
+    "C6": "PARTIAL_NOT_FULL_GO",
+    "C2b": "PASS_DEPLOYED_SCOPE_AND_REGRESSION",
+    "C2c": "PASS_DEPLOYED_TIMEOUT_FIX_WINDOWS739_TARGETED69_ROLE73_CONTRACT48_READONLY13_PRESERVATION",
+    "C4a": "PASS_CORE20_ACTUAL_NATIVE_CLONE_DEPLOY_ROLE73_CONTRACT48_READONLY13_DATA_PRESERVATION"
+  },
+  "c0_baseline_runtime": {
+    "qldapm-openproject-db-1": {
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "tag": "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started_at": "2026-10-26T11:47:27.716126957Z",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "5432/tcp": null
+      }
+    },
+    "qldapm-openproject-cache-1": {
+      "id": "ac27388285fbadbf7a0f81f2f1d6c141d9fb79483d186d469d5bb324a0818115",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "tag": "memcached@sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "started_at": "2026-10-26T11:47:27.536067954Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "11211/tcp": null
+      }
+    },
+    "qldapm-qdrant": {
+      "id": "6cacb6b0f1b07f061bab32497bd92d2e31a01a639da747cab17d7be689ccca8f",
+      "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "tag": "qdrant/qdrant:latest",
+      "started_at": "2026-10-26T11:47:27.519764304Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "6333/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "6333"
+          }
+        ],
+        "6334/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "6334"
+          }
+        ]
+      }
+    },
+    "qldapm-openproject-hocuspocus-1": {
+      "id": "a9e13d59ae711266f599d5a1d1d7ed33345c2450e3457003684625fb3b39a584",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "tag": "openproject/hocuspocus@sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "started_at": "2026-10-26T11:47:27.755411474Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "1234/tcp": null
+      }
+    },
+    "qldapm-openproject-web-1": {
+      "id": "6907ce9e40655da12026a490cc13cfae25b40aba295b94443b36decc57f68890",
+      "image": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0",
+      "tag": "qldapm-core:codex-wbs-scheduled-parent-v2-20261027",
+      "started_at": "2026-10-26T17:57:26.873481675Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    "qldapm-openproject-worker-1": {
+      "id": "040cd049f638f3348bf452d5c764b8ba2a297b8f539ffd61892bc22a1acbf84d",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "tag": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started_at": "2026-10-26T11:47:27.658612339Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-openproject-cron-1": {
+      "id": "34d1f577c67b837eb236636706188be7e7bb6f1b48ebe6bce1f3d20870661579",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "tag": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started_at": "2026-10-26T11:47:27.67055301Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-ai-gateway-1": {
+      "id": "4d527b3bb6c1d4b2903c84e9447a9fa239ee5472a521ba9276211dc164593cf1",
+      "image": "sha256:9bdb2bc0ab99e08959ed67b3e7ea5dff8327a4c7b418799d9d09934bf2ff6d68",
+      "tag": "qldapm-ai:chatgpt-native-open-count-v1-20261027",
+      "started_at": "2026-10-27T03:17:55.112734789Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    "qldapm-n8n-main": {
+      "id": "247e20941d0ba377c50e1d3d0ab79ebfb49630cf4e6499ff3424adc7a65b9b7f",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "tag": "docker.n8n.io/n8nio/n8n:2.43.6",
+      "started_at": "2026-10-26T11:47:27.544484506Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "5678/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "5679"
+          }
+        ]
+      }
+    },
+    "qldapm-openproject-proxy-1": {
+      "id": "752ba4082a0465eaa358590b4c8844bf6075f454406355e9280bea9803b292eb",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "tag": "caddy@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started_at": "2026-10-26T11:47:27.36924635Z",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8088"
+          }
+        ]
+      }
+    }
+  },
+  "last_completed_operation": "Application proof verification deployed and Main Owner18/PM19/BA20/auth, existingQA375, WF03, crossactor and persisted records verified. No new Native write or human review.",
+  "current_gateway_counts": {
+    "ai_runs": 97,
+    "requests": 295,
+    "proposals": 56,
+    "knowledge_sync": 14,
+    "qa_evidence": 1,
+    "qa_evidence_reviews": 2,
+    "native_phase_documents": 1,
+    "native_phase_reviews": 1,
+    "gemini_call_receipts": 129,
+    "gemini_usage": 134
+  },
+  "overall_release": "PARTIAL_NOT_FULL_GO",
+  "native_side_effects": 0,
+  "new_provider_calls": 0,
+  "changed_files": "CHATGPT_MAIN_CHANGED_FILES.json",
+  "pending_approvals": [],
+  "next_safe_action": "Implement application evidence admission into existing QA records/review, preserve old readback proofs and rollback compatibility. No Main Native write or QA/PM human decision by agent.",
+  "milestone_history": [
+    {
+      "at": "2026-10-27T10:27:13.896207+07:00",
+      "milestone": "C2a",
+      "gateway": "sha256:9bdb2bc0ab99e08959ed67b3e7ea5dff8327a4c7b418799d9d09934bf2ff6d68",
+      "status": "PASS_SCOPED_DEPLOYMENT_MAIN_COUNT_ROLE_CONTRACT_READBACK_PRESERVED",
+      "native_writes": 0,
+      "model_calls": 0
+    }
+  ],
+  "tests_not_executed": [
+    "Fresh real multi-specialist generation after Gemini handoff",
+    "New WF03 asynchronous start-to-terminal acceptance",
+    "Full application fix/build/QA/retest/closure Native chain",
+    "New visual browser UAT",
+    "Full Qdrant restore"
+  ],
+  "consumed_receipts": {
+    "native371": {
+      "proposal_id": "79fa436a-a171-4c46-bd64-ccb1a4cd1a48",
+      "state": "CONSUMED_DO_NOT_REPLAY",
+      "current_version": 4,
+      "current_status": "IN ANALYSIS"
+    },
+    "ba20_run": "f04b5c59-26dc-40af-b999-00298b298ca0 CONSUMED_DO_NOT_REGENERATE",
+    "scenario_f": "19efe751-4af7-4cb4-96f0-0836ee504948 CONSUMED_DO_NOT_REPLAY"
+  },
+  "pending_deployments": [
+    {
+      "milestone": "C2b",
+      "images": {
+        "gateway": "sha256:0b47537e22d4e72af448be6c6bd6a8b37103d1a55507aee9b56c2fbdf8ef57a6",
+        "core": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+      },
+      "status": "44_TARGETED_PASS_FULL736_AND_ISOLATED_NATIVE_QUALIFICATION_PENDING",
+      "source_changes": [
+        {
+          "path": "openproject/ai/gateway/service.py",
+          "before_sha256": "e42c685b7d3b1d2a59de5b1728f50cffcc775ed4f2f86f7936a240a48d9202b7",
+          "after_sha256": "313c51c7b7c83ed3a1e954f203a1ff1eb8b8b89a21e554fdd457784b7c9be5d2"
+        },
+        {
+          "path": "openproject/ai/gateway/local_queries.py",
+          "before_sha256": "0c1535f1c5ba9d08242051049fc95bf9ee651e2252341cc6849b7b88eca16e8e",
+          "after_sha256": "702661e826794fd920fb2ba6ff63c0324ee03753fa8b5f457ede06bbdc2a6500"
+        }
+      ]
+    }
+  ],
+  "current_gateway_image": "sha256:ba6db8ec9a7bf1e107f74c81bbb2671b3f7a5b14b171c7c823d5dcdc488e2155",
+  "c2b": {
+    "runtime": {
+      "gateway": {
+        "tag": "qldapm-ai:chatgpt-supervisor-scope-v1-20261027",
+        "image": "sha256:0b47537e22d4e72af448be6c6bd6a8b37103d1a55507aee9b56c2fbdf8ef57a6"
+      },
+      "web": {
+        "tag": "qldapm-core:codex-wbs-scheduled-parent-v2-20261027",
+        "image": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+      }
+    },
+    "tests": {
+      "windows_pass": 736,
+      "linux_pass": 719,
+      "linux_skip": 15,
+      "linux_fail": 2,
+      "linux_fail_reason": "Same two host Git prerequisites absent in runtime image; raw failures retained, both pass Windows",
+      "targeted_pass": 44,
+      "actual_native_clone_roles": 6,
+      "main_roles": 73,
+      "main_contract": 48,
+      "main_readonly": 13,
+      "count_reads": 10,
+      "local_supervisor": "10/338; ten source IDs; fresh receipt"
+    },
+    "preservation": "CHATGPT_MAIN_C2B_DATA_PRESERVATION_RESULT.json",
+    "rollback_image": "sha256:9bdb2bc0ab99e08959ed67b3e7ea5dff8327a4c7b418799d9d09934bf2ff6d68",
+    "native_writes": 0,
+    "new_model_calls": 0
+  },
+  "pending_c2b": "COMPLETED",
+  "fresh_provider_attempt": {
+    "run_id": "ccd6dcde-fbc3-411e-8135-1d92b229bd07",
+    "actor": 19,
+    "project": 5,
+    "state": "failed_or_unknown",
+    "successful_count_tokens": 1,
+    "generation_attempts": 1,
+    "successful_generations": 0,
+    "http_attempts": 2,
+    "replayed": false,
+    "native_writes": 0,
+    "failure_evidence": "CHATGPT_MAIN_C2C_WF03_PROVIDER_TIMEOUT_RESULT.json",
+    "google_generation_outcome": "UNKNOWN_AFTER_READ_TIMEOUT"
+  },
+  "c2c": {
+    "runtime": {
+      "gateway": {
+        "tag": "qldapm-ai:chatgpt-provider-timeout-v1-20261027",
+        "image": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0"
+      },
+      "web": {
+        "tag": "qldapm-core:codex-wbs-scheduled-parent-v2-20261027",
+        "image": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+      }
+    },
+    "tests": {
+      "windows_pass": 739,
+      "linux_pass": 722,
+      "linux_skip": 15,
+      "linux_fail_host_git": 2,
+      "targeted_pass": 69,
+      "main_role_pass": 73,
+      "main_contract_pass": 48,
+      "main_readonly_pass": 13
+    },
+    "main_preservation": "CHATGPT_MAIN_C2C_DATA_PRESERVATION_RESULT.json",
+    "rollback_image": "sha256:0b47537e22d4e72af448be6c6bd6a8b37103d1a55507aee9b56c2fbdf8ef57a6",
+    "old_provider_timeout_replayed": false
+  },
+  "fresh_live_success": {
+    "run_id": "bcebcbcb-35c2-496d-a7d0-af7d82ba3c51",
+    "actor": 19,
+    "project": 5,
+    "source": "375v0",
+    "model": "gemini-3.5-flash-lite",
+    "generations": 3,
+    "receipts": 6,
+    "reviewer_local": true,
+    "native_writes": 0,
+    "evidence": "CHATGPT_MAIN_C3_FRESH_LIVE_MULTI_AGENT_RESULT.json",
+    "preservation": "CHATGPT_MAIN_C3_POST_LIVE_PRESERVATION_RESULT.json"
+  },
+  "ledger": {
+    "ai_runs": 121,
+    "requests": 319,
+    "gemini_call_receipts": 137,
+    "gemini_usage": 142,
+    "proposals": 56,
+    "knowledge_sync": 14,
+    "qa_evidence": 1,
+    "qa_evidence_reviews": 2,
+    "native_phase_documents": 1,
+    "native_phase_reviews": 1
+  },
+  "undeployed_core_changes": {
+    "files": [
+      "openproject/ai/core/overlay/app/models/qldapm/gate_policy.rb",
+      "openproject/ai/core/overlay/app/models/concerns/qldapm_gate_write.rb"
+    ],
+    "test": "openproject/ai/core/test_native_subtask_policy.rb",
+    "state": "DEPLOYED_VERIFIED",
+    "main_core_unchanged": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0",
+    "no_main_mutation_approval": true,
+    "images": {
+      "core": "sha256:062282b33276dd2af79ae0d97f8043c482acbafdc14bb19bf83bbc401b02101c",
+      "gateway": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0"
+    },
+    "rollback_reference": "native-subtask-source-before-hashes.json and exact Core46bf image"
+  },
+  "current_core_image": "sha256:919e843524236b6f9536155ac9b7f56964c60261d51694f85b3afcf922e59da2",
+  "c4a": {
+    "runtime": {
+      "gateway": {
+        "tag": "qldapm-ai:chatgpt-provider-timeout-v1-20261027",
+        "image": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0"
+      },
+      "web": {
+        "tag": "qldapm-core:chatgpt-native-subtask-v1-20261027",
+        "image": "sha256:062282b33276dd2af79ae0d97f8043c482acbafdc14bb19bf83bbc401b02101c"
+      }
+    },
+    "core_programs": 20,
+    "actual_native_clone": "CHATGPT_MAIN_C4_NATIVE_SUBTASK_CLONE_RESULT.json",
+    "main_roles": 73,
+    "main_contracts": 48,
+    "main_readonly": 13,
+    "preservation": "CHATGPT_MAIN_C4A_DATA_PRESERVATION_RESULT.json",
+    "rollback_core": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0",
+    "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\native-subtask-deployment",
+    "main_native_writes": 0,
+    "new_model_calls": 0
+  },
+  "runtime_after_port_migration": {
+    "qldapm-openproject-db-1": {
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "5432/tcp": null
+      }
+    },
+    "qldapm-openproject-cache-1": {
+      "id": "ac27388285fbadbf7a0f81f2f1d6c141d9fb79483d186d469d5bb324a0818115",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "11211/tcp": null
+      }
+    },
+    "qldapm-qdrant": {
+      "id": "6cacb6b0f1b07f061bab32497bd92d2e31a01a639da747cab17d7be689ccca8f",
+      "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "6333/tcp": [],
+        "6334/tcp": []
+      }
+    },
+    "qldapm-openproject-hocuspocus-1": {
+      "id": "a9e13d59ae711266f599d5a1d1d7ed33345c2450e3457003684625fb3b39a584",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "1234/tcp": null
+      }
+    },
+    "qldapm-openproject-web-1": {
+      "id": "c1a8c237f1d77b1b45845f54641009157b4d26972686a75bbf1cb1f0437c8bb1",
+      "image": "sha256:919e843524236b6f9536155ac9b7f56964c60261d51694f85b3afcf922e59da2",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-openproject-worker-1": {
+      "id": "90c2405c94731fcdb46e6e802f265d95b2614d26787c7be24b686b8111c60d25",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-openproject-cron-1": {
+      "id": "c7171eb92f9a34d2f7b50b7e1894cbfd3dd92207ca41105fd152060eb86de2b7",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-ai-gateway-1": {
+      "id": "7899fc16a68b4a6412ce6567df3247778c53817c2dde90075a97cf8d760ed4a8",
+      "image": "sha256:ba6db8ec9a7bf1e107f74c81bbb2671b3f7a5b14b171c7c823d5dcdc488e2155",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "8090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18089"
+          }
+        ]
+      }
+    },
+    "qldapm-n8n-main": {
+      "id": "247e20941d0ba377c50e1d3d0ab79ebfb49630cf4e6499ff3424adc7a65b9b7f",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "5678/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "5679"
+          }
+        ]
+      }
+    },
+    "qldapm-openproject-proxy-1": {
+      "id": "575c0693814f0f5463e7b07d58e965a7225452ca09e76c87ac70091ebad2a21f",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18088"
+          }
+        ]
+      }
+    }
+  },
+  "port_migration": "QLDAPM_MAIN_PORT_MIGRATION_CHECKPOINT.json",
+  "application_qa_producer": {
+    "v4": "QUALIFIED_PRIVATE_NOT_IMPORTED_NOT_HUMAN_REVIEWED",
+    "v5": "QUALIFIED_PRIVATE_NOT_IMPORTED_NOT_HUMAN_REVIEWED",
+    "v5_sha256": "5456a4eb666df2dea90c7a088acd22b1353949770368b42985b8fd74311e4a52",
+    "note": "v6 qualified Gateway c525/Core e382; Gateway later changed only WBS negation routing. Requalify current build before proof admission.",
+    "v6": "QUALIFIED_PRIVATE_PRIOR_PLANNER_FIX_NOT_IMPORTED_OR_REVIEWED",
+    "main_qa_rows_created": 0,
+    "intake_candidate": "VERIFICATION_COMMAND_DEPLOYED_NO_ADMISSION",
+    "core_source_capability": "DEPLOYED_CURRENT_SOURCE_FINGERPRINTS",
+    "v6_id": "0caf70c4-7718-4e64-b4ce-bd05fbcfcb4b",
+    "v6_sha256": "46930c6637933082695913ce2f112c5a301880538927ff3aea333384290bd4c5",
+    "main_verify": "CHATGPT_MAIN_F1_VERIFY_DEPLOYMENT_RESULT.json"
+  },
+  "natural_wbs": {
+    "runtime_image": "sha256:7380c4fb471bdce54e5066a2aded7ad903a8d27fafad6ff79a27c0bb53d594b4",
+    "embedded_in_current_gateway": true,
+    "tests_windows": 73,
+    "tests_candidate_linux": 57,
+    "live_gemini_generation": "NOT_TESTED_NO_NEW_MODEL_CALL",
+    "rollback_image": "sha256:c1fb8f59b763032c34cd76c1f04be4731736094d5ed77f418b3c8452ca7df3b5",
+    "negated_request_fix": {
+      "status": "DEPLOYED_TARGETED_44_WINDOWS_44_LINUX",
+      "rollback": "sha256:c525fcc64b9f51998fd4bde365b08f02ebd557e092091081e516bd008a14dab1",
+      "image": "sha256:baa54ac0dc54775873db08a9497a938358f5b4a75dc99d68f945530ae77579b9"
+    }
+  },
+  "qa_compatibility": {
+    "gateway": "sha256:c525fcc64b9f51998fd4bde365b08f02ebd557e092091081e516bd008a14dab1",
+    "core": "sha256:e3826b3c2f8b0d1ccb401280e81f6cbb4fb50b1abadbadbb78c8258eeec68b5b",
+    "tests_windows": 32,
+    "tests_candidate_linux": 33,
+    "actual_actionview": "PASS",
+    "existing_QA375": "PASS_PM19_READ_QA23_PM19_REVIEWS_CURRENT",
+    "foreign_BA20_http": 403,
+    "application_evidence_admitted": false,
+    "rollback_gateway": "sha256:7380c4fb471bdce54e5066a2aded7ad903a8d27fafad6ff79a27c0bb53d594b4",
+    "rollback_core": "sha256:062282b33276dd2af79ae0d97f8043c482acbafdc14bb19bf83bbc401b02101c"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "at": "2026-10-26T07:55:45.524026+00:00",
+  "status": "DEPLOYED_HEALTHY_SOURCE_DATA_AND_SCOPED_RUNTIME_REGRESSION_PASS",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-trusted-delete-candidate-20261026",
+      "image": "sha256:b2f2db5659d5936ea621aae68b0e04a269741b163f2f35276245d15902ddbea6"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-trusted-delete-candidate-20261026",
+      "image": "sha256:e0a840b57fac8031f2d20f8c7bc07e8f618560ec34bf1d81e14608de2d552dfd"
+    }
+  },
+  "files": {
+    "openproject/ai/gateway/native_deletion.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_deletion.py",
+      "sha256": "0b94c8f1953831cb967281cdbd79aaf2ada7103819ee6ea28bb1d5fbff7d3f7a"
+    },
+    "openproject/ai/gateway/service.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/service.py",
+      "sha256": "40daed21fe4759328f3757f6a39986552b2144fbf3bd81e805770582f3c55ab6"
+    },
+    "openproject/ai/gateway/store.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/store.py",
+      "sha256": "027eb69958199e56fb75afa12975ec54fd3a5a653d9c2cd304e414e5b1b79a87"
+    },
+    "openproject/ai/gateway/vector_client.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/vector_client.py",
+      "sha256": "4c496acd4760c8650aac73691e42517b6baed17f1fd79d635ef7eb33621b2fac"
+    },
+    "openproject/ai/gateway/permissions.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/permissions.py",
+      "sha256": "b4329952ec146c530785f726fe688306f78f1cd3661cd26d39ca080f58ebf551"
+    },
+    "openproject/ai/gateway/catalog.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/catalog.py",
+      "sha256": "08c03e8ee8fc491972fef82c8efb2cfddd469c72e46bb9baf6197f5fa0734056"
+    },
+    "openproject/ai/gateway/presentation.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/presentation.py",
+      "sha256": "6cd70fb1ee038437bd028893f5ecfdf89d7236b95b859ccf0ca09383f6d948b4"
+    },
+    "openproject/ai/core/overlay/app/services/qldapm/native_deletion.rb": {
+      "kind": "core",
+      "target": "/app/app/services/qldapm/native_deletion.rb",
+      "sha256": "1663269c0afdd149dd59bce5b2e700d76ee795abbb28f40a175d0bbb34afd457"
+    },
+    "openproject/ai/core/overlay/app/models/qldapm/native_deletion_event.rb": {
+      "kind": "core",
+      "target": "/app/app/models/qldapm/native_deletion_event.rb",
+      "sha256": "f934353dfa696fa976ac8442f84b6cf0bb0daaa35b402193556dde4b351d2c1d"
+    },
+    "openproject/ai/core/overlay/db/migrate/20261026000000_create_qldapm_native_deletion_events.rb": {
+      "kind": "core",
+      "target": "/app/db/migrate/20261026000000_create_qldapm_native_deletion_events.rb",
+      "sha256": "14727aabc578a9d0aa9d371fd9e1895b5167919eac941cac90e852e62529947e"
+    },
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": {
+      "kind": "core",
+      "target": "/app/lib/api/v3/qldapm/gates_api.rb",
+      "sha256": "a9b7d8e0e45153fd6117009b4e2dfffe0bc327e7265bade7d26779b4142f66ad"
+    },
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": {
+      "kind": "core",
+      "target": "/app/app/controllers/qldapm_ai_controller.rb",
+      "sha256": "65c753319ef5484c4ac68c6b9a85a48a42464d06abdb4f5442e2732c060d5069"
+    },
+    "openproject/ai/core/overlay/app/helpers/qldapm_ai_helper.rb": {
+      "kind": "core",
+      "target": "/app/app/helpers/qldapm_ai_helper.rb",
+      "sha256": "965563da6f7877782ff05696de0c957d6a3ab644ad564c6fa172b0e46bc0968c"
+    }
+  },
+  "qualification": {
+    "windows": {
+      "run": 518,
+      "passed": 518
+    },
+    "linux": {
+      "run": 518,
+      "passed": 503,
+      "skipped": 15
+    },
+    "ruby": {
+      "programs": 15,
+      "failed": 0
+    },
+    "actual_native_clone": "CODEX_WF02_TRUSTED_DELETE_CLONE_RESULT.json",
+    "limits": "Synthetic fixture embedding values; no new Ollama/Gemini call or Main Native mutation"
+  },
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "schema_changes": {
+    "version": "20261026000000",
+    "operation": "ADD_EMPTY_NATIVE_DELETE_EVENT_LEDGER_AND_INDEXES",
+    "work_package_fk": false,
+    "existing_tables_altered": false,
+    "rollback": "App-only rollback retains ledger; populated migration down is prohibited"
+  },
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\trusted-delete-deployment",
+  "rollback_images": {
+    "gateway": "sha256:b8355ce3ca610e58defd38f2c7632bb7c3d71fcb6e4524ea80d823e6436fa1b1",
+    "web": "sha256:e5ec2d6426fd2fdc523a64b5d867140d63fd4265f3a8766cac5f728caac9c2a8"
+  },
+  "authorization": "PUBLICATION_REDACTED",
+  "policy": "Owner18 Native delete permission true; PM19 false is preserved; both fresh Native authorization and new exact human proposal decision required for any later write",
+  "unchanged_other_workflows": 16,
+  "unchanged_other_main_containers": 8,
+  "native_delete_events": 0,
+  "two_real_qa_reviews_preserved": true,
+  "native_security_board_relations_preserved": true,
+  "final_readback": "CODEX_WF02_TRUSTED_DELETE_FINAL_READBACK.json"
+}

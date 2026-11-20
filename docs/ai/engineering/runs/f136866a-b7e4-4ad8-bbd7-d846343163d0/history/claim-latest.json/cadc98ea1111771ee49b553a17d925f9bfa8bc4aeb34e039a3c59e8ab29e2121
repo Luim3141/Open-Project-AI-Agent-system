@@ -1,0 +1,42 @@
+{
+  "id": "f136866a-b7e4-4ad8-bbd7-d846343163d0",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": "0498ceeda97cd3e856a975129129e71f6c94a3dd",
+  "cancel_requested": false,
+  "deadline": 1793549751.188405,
+  "definition": {
+    "acceptance": {
+      "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+      "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+      "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+      "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+      "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+      "F1": "AC1: GET /tasks/{id} tra ve HTTP 200 va thong tin task gom id, title, status khi ID ton tai",
+      "F2": "AC2: GET /tasks/{id} tra ve HTTP 404 khi ID khong ton tai trong CSDL",
+      "F3": "AC3: GET /tasks/{id} tra ve HTTP 422 khi ID khong phai la kieu so nguyen hop le",
+      "F4": "AC4: Tat ca cac tinh nang cu nhu GET /tasks/summary, /healthz, CRUD, search va schema SQLite giu nguyen khong thay doi"
+    },
+    "acceptance_file": "test_crud_web.py",
+    "base_branch": "codex/openclaw-feedback-bb9a628fe5b7be67",
+    "base_unit": "feedback-bb9a628fe5b7be67",
+    "feedback": "QLDAPM-E2E-20261101-POST-ROLLOUT-001: Add GET /tasks/{task_id} to retrieve one existing task by numeric ID. Return the existing id, title and status fields, or HTTP 404 if the task is absent. Add focused automated tests including persistence and invalid or absent IDs. Preserve GET /tasks/summary, /healthz, CRUD and search; do not change the database schema. Produce one isolated feature branch and PR, do not merge.",
+    "kind": "development",
+    "native_id": 387,
+    "plan_id": "3376cdf8-94e0-4587-b656-dfadc61d4071",
+    "title": "Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu "
+  },
+  "engine": "openclaw",
+  "kind": "development",
+  "native_id": 387,
+  "project_id": 6,
+  "recovery_count": 1,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "QLDAPM-E2E-20261101-POST-ROLLOUT-001-DEV",
+  "source_version": 1,
+  "spec": "QLDAPM PM/BA engineering plan 3376cdf8-94e0-4587-b656-dfadc61d4071\nUnit: feedback-20c2a94109f4e78f\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-bb9a628fe5b7be67\"],\"objective\":\"Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu tu dong va giu nguyen cac API cu.\",\"priority\":1,\"unit\":\"feedback-20c2a94109f4e78f\"},\"functional_specification\":{\"acceptance\":[\"AC1: GET /tasks/{id} tra ve HTTP 200 va thong tin task gom id, title, status khi ID ton tai\",\"AC2: GET /tasks/{id} tra ve HTTP 404 khi ID khong ton tai trong CSDL\",\"AC3: GET /tasks/{id} tra ve HTTP 422 khi ID khong phai la kieu so nguyen hop le\",\"AC4: Tat ca cac tinh nang cu nhu GET /tasks/summary, /healthz, CRUD, search va schema SQLite giu nguyen khong thay doi\"],\"api_behavior\":[\"GET /tasks/{task_id} tra ve ma 200 kem JSON chua id, title va status neu task ton tai\",\"GET /tasks/{task_id} tra ve ma 404 neu task_id khong ton tai trong CSDL\",\"GET /tasks/{task_id} tra ve ma 422 neu task_id khong phai la so hop le\"],\"citations\":[379],\"edge_cases\":[\"Truy van voi task_id la chuoi chu cai hoac ky tu dac biet tra ve ma loi 422\",\"Truy van task_id co gia tri so am hoac qua lon khong co trong CSDL tra ve ma loi 404\"],\"limitations\":[\"Khong thay doi schema co so du lieu SQLite\",\"Khong tu dong merge nhanh hoac pull request\"],\"scope\":[\"Them phuong thuc GET /tasks/{task_id} tren ung dung FastAPI\",\"Bosung bai kiem thu tu dong cho viec lay chi tiet task va xu ly ID khong ton tai hoac khong hop le\",\"Dam bao khong thay doi schema co so du lieu SQLite hien tai\"],\"summary\":\"Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu tu dong va giu nguyen cac API cu.\"},\"reviewers\":[\"reviewer\",\"qa\"],\"virtual_executor\":\"dev\"}",
+  "spec_sha256": "dfb97e89338a045c22ccf6a46dd50f95b2014cb5d006d22078f6b72f537005e5",
+  "stage": "ADMITTED",
+  "unit": "feedback-20c2a94109f4e78f",
+  "write_scope_ids": []
+}

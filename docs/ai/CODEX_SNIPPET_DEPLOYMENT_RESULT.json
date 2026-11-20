@@ -1,0 +1,23 @@
+{
+  "old_image": "sha256:40137d60217439175b5b7e6dcbf2a501606134df378c231c32ee6c11bdb72e45",
+  "candidate_image": "sha256:0245c6ffeced965d6f6048c47132c7de28247e9db1f045d8837606f0e9a64614",
+  "module_sha256": "c17dc6a988092dc7db2151116d0e0bd614b0b77a857b0afc983a8f4da2cb532c",
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "backup_sha256": {
+    "gateway": "455f180a84e65d98d32353c030c6664c2250d58d1c19b091770465338660da54",
+    "knowledge": "7ea546d1c4b13670731ec008f987996bb6b46c53d9b438423e7ae7332adb407f"
+  },
+  "scope": "Only knowledge_search.py: exact query snippet in validated dense chunk; short Gateway restart, no Native write/provider call/credential/Staging change",
+  "tests": {
+    "windows_rag": 15,
+    "linux_related": 43,
+    "regression_red_before_fix": true,
+    "broader_harness": "202PASS/1NodeSKIP/1ERROR missing host-only provision_member_tokens import; not claimed fully PASS"
+  },
+  "rollback": "Restore previous AI_IMAGE only, keep all Native records/receipts/outbox/cache data; never replay mutations",
+  "health_http": 200,
+  "serving_module_hash_verified": true,
+  "native_333_unchanged_by_deploy": true,
+  "native_mutations_during_deploy": 0,
+  "staging_operations": false
+}

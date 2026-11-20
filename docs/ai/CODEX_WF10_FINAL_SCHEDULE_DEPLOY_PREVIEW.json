@@ -1,0 +1,169 @@
+{
+  "at": "2026-10-26T17:56:18.921241+00:00",
+  "status": "QUALIFIED_BACKUP_MAIN_READONLY_PREFLIGHT",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-wbs-scheduled-parent-v2-20261027",
+      "image": "sha256:8bed9ad9ebfc62fd4ca3992482a74af3a9fb0458ba8e23c36642aa32493f76c3"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-wbs-scheduled-parent-v2-20261027",
+      "image": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+    }
+  },
+  "source_before": {
+    "openproject/ai/gateway/store.py": "eb16bee6471b92b100ae32b62ccc62dabd296adee1c95304cf28e81b443459f8",
+    "openproject/ai/gateway/service.py": "7806476e276fe2cf60233a0b9c8caea44da7aa38b896898c611ba160defafb21",
+    "openproject/ai/gateway/native_phase.py": "ebe40fdef770fbbe388d84bc8aa1a68c09e44d1be63a216baa97233ea6e77ad8",
+    "openproject/ai/gateway/native_phase_bridge.py": "be9543089eae87c30ffb8fcbbd22ccb0a55f333bee80cef264ff481cb4ab0116",
+    "openproject/ai/gateway/app.py": "4cfb47c98fd9b80ae4ebdf74b016c994d517a14a9d10bf5740e6dabbfb2fe6db",
+    "openproject/ai/gateway/bridge.py": "ca94c22e4e1d80eb57c02175dbc9808d382df9165d850c05766df2ce80e759e3",
+    "openproject/ai/gateway/permissions.py": "948ad80f30799b685d5b5d995580b086b3ceee0f5cfa0afcffc320b682ca7cc8",
+    "openproject/ai/gateway/catalog.py": "7e283814581b7407a893dc9425cf890e99819ef3622a23914f65ba3ad5f95666",
+    "openproject/ai/core/overlay/app/services/qldapm/native_phase_receipt.rb": "b9ad2e9d2078be9476793e1ab015328371c6fab1cd4de0884fb625cc880f29c6",
+    "openproject/ai/core/overlay/app/services/qldapm/mutations.rb": "3b161a0bdb798b179e7d6bd4d41f50ee09d8d65014198b9585aa0cc76dcab864",
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": "ea3035c594f7935e66e1074b6002e65b6e0dbe6856b57d6d30241fe8620b268d",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "09cdf404f18a825e59f2cb237fd3e002a9203215efe1a4ca845ac04cb6bda5fb",
+    "openproject/ai/core/overlay/config/routes.rb": "76b54436ad702b7e80a080db6e4c6e513aa29a578639ad6614c213c7f185f75d",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/phases.html.erb": "837b8af70395e463bec1bb46a379a97036f0f9fc3cf2a5afc5d77fb2e0d070c4",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_control_center.html.erb": "daa9e75fe60bc2658fd3804fc1315dd4e460112feb60af0b1e01967983cdca19",
+    "openproject/ai/gateway/native_wbs.py": "ffd9a103cd280bc4902539835563a42d8731360341213974e53110d0523f5a56",
+    "openproject/ai/gateway/wbs_analysis.py": "8fb3e49005494e02ee6a7b274dcb29705c5993b9ca159c997167fad2e9557a59",
+    "openproject/ai/gateway/native_wbs_hierarchy.py": "89c94e03610157370ec92cd1c53a9e09cace06dcd478183ae018a3af1eb02786",
+    "openproject/ai/core/overlay/app/services/qldapm/hierarchy_readback.rb": "b2a3e01602b74b10e03a485bc44960f43a53e45ae98aebd1520afe4c96c26683"
+  },
+  "files": {
+    "openproject/ai/gateway/store.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/store.py",
+      "sha256": "eb16bee6471b92b100ae32b62ccc62dabd296adee1c95304cf28e81b443459f8"
+    },
+    "openproject/ai/gateway/service.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/service.py",
+      "sha256": "7806476e276fe2cf60233a0b9c8caea44da7aa38b896898c611ba160defafb21"
+    },
+    "openproject/ai/gateway/native_phase.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_phase.py",
+      "sha256": "ebe40fdef770fbbe388d84bc8aa1a68c09e44d1be63a216baa97233ea6e77ad8"
+    },
+    "openproject/ai/gateway/native_phase_bridge.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_phase_bridge.py",
+      "sha256": "be9543089eae87c30ffb8fcbbd22ccb0a55f333bee80cef264ff481cb4ab0116"
+    },
+    "openproject/ai/gateway/app.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/app.py",
+      "sha256": "4cfb47c98fd9b80ae4ebdf74b016c994d517a14a9d10bf5740e6dabbfb2fe6db"
+    },
+    "openproject/ai/gateway/bridge.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/bridge.py",
+      "sha256": "ca94c22e4e1d80eb57c02175dbc9808d382df9165d850c05766df2ce80e759e3"
+    },
+    "openproject/ai/gateway/permissions.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/permissions.py",
+      "sha256": "948ad80f30799b685d5b5d995580b086b3ceee0f5cfa0afcffc320b682ca7cc8"
+    },
+    "openproject/ai/gateway/catalog.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/catalog.py",
+      "sha256": "7e283814581b7407a893dc9425cf890e99819ef3622a23914f65ba3ad5f95666"
+    },
+    "openproject/ai/core/overlay/app/services/qldapm/native_phase_receipt.rb": {
+      "kind": "core",
+      "target": "/app/app/services/qldapm/native_phase_receipt.rb",
+      "sha256": "b9ad2e9d2078be9476793e1ab015328371c6fab1cd4de0884fb625cc880f29c6"
+    },
+    "openproject/ai/core/overlay/app/services/qldapm/mutations.rb": {
+      "kind": "core",
+      "target": "/app/app/services/qldapm/mutations.rb",
+      "sha256": "3b161a0bdb798b179e7d6bd4d41f50ee09d8d65014198b9585aa0cc76dcab864"
+    },
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": {
+      "kind": "core",
+      "target": "/app/lib/api/v3/qldapm/gates_api.rb",
+      "sha256": "ea3035c594f7935e66e1074b6002e65b6e0dbe6856b57d6d30241fe8620b268d"
+    },
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": {
+      "kind": "core",
+      "target": "/app/app/controllers/qldapm_ai_controller.rb",
+      "sha256": "09cdf404f18a825e59f2cb237fd3e002a9203215efe1a4ca845ac04cb6bda5fb"
+    },
+    "openproject/ai/core/overlay/config/routes.rb": {
+      "kind": "core",
+      "target": "/app/config/routes.rb",
+      "sha256": "76b54436ad702b7e80a080db6e4c6e513aa29a578639ad6614c213c7f185f75d"
+    },
+    "openproject/ai/core/overlay/app/views/qldapm_ai/phases.html.erb": {
+      "kind": "core",
+      "target": "/app/app/views/qldapm_ai/phases.html.erb",
+      "sha256": "837b8af70395e463bec1bb46a379a97036f0f9fc3cf2a5afc5d77fb2e0d070c4"
+    },
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_control_center.html.erb": {
+      "kind": "core",
+      "target": "/app/app/views/qldapm_ai/_control_center.html.erb",
+      "sha256": "daa9e75fe60bc2658fd3804fc1315dd4e460112feb60af0b1e01967983cdca19"
+    },
+    "openproject/ai/gateway/native_wbs.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_wbs.py",
+      "sha256": "dc3605f9af52cabf9d57609926ab3fc7a1e8ba1417be4e8df851d551002266c9"
+    },
+    "openproject/ai/gateway/wbs_analysis.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/wbs_analysis.py",
+      "sha256": "32dbec1aa66502980d8addf37d822191d7f7f0858382b589a216a444ca1c5413"
+    },
+    "openproject/ai/gateway/native_wbs_hierarchy.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_wbs_hierarchy.py",
+      "sha256": "184247c963c09aeab9804328f8d82e95766ffe99b62b8ed288d6aacfe77f1782"
+    },
+    "openproject/ai/core/overlay/app/services/qldapm/hierarchy_readback.rb": {
+      "kind": "core",
+      "target": "/app/app/services/qldapm/hierarchy_readback.rb",
+      "sha256": "3cb44e0ce54cbc06f62ef4c56679b620b42f117684725ec9965c400651c55c89"
+    }
+  },
+  "qualification": {
+    "windows": {
+      "run": 604,
+      "passed": 604,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "linux": {
+      "run": 604,
+      "passed": 589,
+      "skipped": 15,
+      "errors": 0,
+      "failures": 0
+    },
+    "ruby_programs": 19,
+    "actual_native_clone": "CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json",
+    "rollback_read_compatibility": "CODEX_WF10_DATED_PARENT_ROLLBACK_COMPATIBILITY.json"
+  },
+  "changed_workflows": [],
+  "unchanged_workflows": 16,
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "new_model_calls": 0,
+  "schema_changes": {
+    "native": false,
+    "gateway": "Existing empty additive phase metadata tables retained from prior app-only rollback; Native schema unchanged"
+  },
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\wbs-final-schedule-deployment",
+  "rollback_images": {
+    "gateway": "sha256:3aeb3203bfdb4b91c95f858ee9a948701abea4c572668bb2b87712c2e6327144",
+    "web": "sha256:81f535ba3f8f37c0523b5e957c31cd14e4dc2a233856a832fd4b432708e135d3"
+  },
+  "authorization": "PUBLICATION_REDACTED",
+  "rollback": "App-only prior two image/config references, retain all databases and phase receipts. Old Gateway reads populated phase metadata but cannot execute/reconcile new phase commands; pause these paths and prefer forward fix.",
+  "scope": "Fresh model WBS identifier adapter and exact dated-parent proof; full fix/build/application QA closure remains PARTIAL"
+}

@@ -1,0 +1,395 @@
+{
+  "name": "qldapm-ai-stage",
+  "resolved_using_saved_runtime_manifest": true,
+  "services": {
+    "db": {
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "restart": "unless-stopped",
+      "command": null,
+      "entrypoint": null,
+      "ports": null,
+      "networks": {
+        "stage": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "stage-db",
+          "target": "/var/lib/postgresql/data",
+          "volume": {}
+        }
+      ]
+    },
+    "local-backup": {
+      "image": "sha256:9713d54aad003b084e58035965156902f86c0ba7a638e41ab880d119ba9cbba8",
+      "restart": "unless-stopped",
+      "command": [
+        "watch"
+      ],
+      "entrypoint": [
+        "python3",
+        "-u",
+        "/trusted/local_backup.py"
+      ],
+      "ports": null,
+      "networks": {
+        "stage": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\local_backup.py",
+          "target": "/trusted/local_backup.py",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\jira_sync_backup.py",
+          "target": "/trusted/jira_sync_backup.py",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-backups",
+          "target": "/backup",
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "target": "/gateway",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/radmin-caddy",
+          "target": "/radmin",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "target": "/native-private",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/.env",
+          "target": "/secrets/runtime.env",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/n8n-stage/encryption.key",
+          "target": "/secrets/n8n.key",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/n8n-owner",
+          "target": "/n8n-owner",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "target": "/secrets/provider-proof.json",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free",
+          "target": "/provider-policy",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-runtime/stage-runtime.json",
+          "target": "/secrets/stage-runtime.json",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "volume",
+          "source": "n8n-data",
+          "target": "/n8n",
+          "read_only": true,
+          "volume": {}
+        },
+        {
+          "type": "volume",
+          "source": "stage-assets",
+          "target": "/assets",
+          "read_only": true,
+          "volume": {}
+        }
+      ]
+    },
+    "n8n": {
+      "image": "docker.n8n.io/n8nio/n8n:2.43.6@sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "restart": "unless-stopped",
+      "command": null,
+      "entrypoint": null,
+      "ports": null,
+      "networks": {
+        "automation": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "n8n-data",
+          "target": "/home/node/.n8n",
+          "volume": {}
+        }
+      ]
+    },
+    "n8n-editor": {
+      "image": "caddy@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "restart": "unless-stopped",
+      "command": null,
+      "entrypoint": null,
+      "ports": [
+        {
+          "mode": "ingress",
+          "host_ip": "127.0.0.1",
+          "target": 5678,
+          "published": "5678",
+          "protocol": "tcp"
+        },
+        {
+          "mode": "ingress",
+          "host_ip": "127.0.0.1",
+          "target": 18090,
+          "published": "18090",
+          "protocol": "tcp"
+        }
+      ],
+      "networks": {
+        "automation": null,
+        "editor": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\Quick.Caddyfile",
+          "target": "/etc/caddy/Caddyfile",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "target": "/qldapm-access",
+          "read_only": true,
+          "bind": {}
+        }
+      ]
+    },
+    "quick-tunnel": {
+      "image": "qldapm-quick-tunnel:candidate",
+      "restart": "unless-stopped",
+      "command": null,
+      "entrypoint": null,
+      "ports": null,
+      "networks": {
+        "stage-front": null
+      },
+      "volumes": null
+    },
+    "seeder": {
+      "image": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "restart": null,
+      "command": [
+        "./docker/prod/seeder"
+      ],
+      "entrypoint": null,
+      "ports": null,
+      "networks": {
+        "stage": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "stage-assets",
+          "target": "/var/openproject/assets",
+          "volume": {}
+        }
+      ]
+    },
+    "staging-gateway": {
+      "image": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233",
+      "restart": "unless-stopped",
+      "command": [
+        "uvicorn",
+        "gateway.app:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090"
+      ],
+      "entrypoint": null,
+      "ports": [
+        {
+          "mode": "ingress",
+          "host_ip": "127.0.0.1",
+          "target": 8090,
+          "published": "18092",
+          "protocol": "tcp"
+        }
+      ],
+      "networks": {
+        "automation": {
+          "aliases": [
+            "gateway"
+          ]
+        },
+        "stage-front": {
+          "aliases": [
+            "gateway"
+          ]
+        }
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "target": "/state",
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai-workspaces",
+          "target": "/workspaces",
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "target": "/qldapm-policy/free-tier-proof.json",
+          "read_only": true,
+          "bind": {
+            "create_host_path": false
+          }
+        }
+      ]
+    },
+    "staging-web": {
+      "image": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "restart": "unless-stopped",
+      "command": [
+        "ruby",
+        "/qldapm-operator/quick_tunnel_web.rb"
+      ],
+      "entrypoint": null,
+      "ports": [
+        {
+          "mode": "ingress",
+          "host_ip": "127.0.0.1",
+          "target": 8080,
+          "published": "18091",
+          "protocol": "tcp"
+        }
+      ],
+      "networks": {
+        "stage": null,
+        "stage-front": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "stage-assets",
+          "target": "/var/openproject/assets",
+          "volume": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "target": "/private",
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\scripts",
+          "target": "/qldapm",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\core",
+          "target": "/qldapm-core",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai/ui.key",
+          "target": "/qldapm-ui/ui.key",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage/deep-test-receipt.key",
+          "target": "/qldapm-ui/test-receipt.key",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\quick_tunnel_web.rb",
+          "target": "/qldapm-operator/quick_tunnel_web.rb",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "target": "/qldapm-access",
+          "bind": {}
+        }
+      ]
+    }
+  },
+  "volumes": {
+    "n8n-data": {
+      "name": "qldapm-ai-stage_n8n-data"
+    },
+    "stage-assets": {
+      "name": "qldapm-ai-stage_stage-assets"
+    },
+    "stage-db": {
+      "name": "qldapm-ai-stage_stage-db"
+    }
+  },
+  "networks": {
+    "automation": {
+      "name": "qldapm-ai-stage_automation",
+      "ipam": {},
+      "internal": true
+    },
+    "editor": {
+      "name": "qldapm-ai-stage_editor",
+      "ipam": {}
+    },
+    "stage": {
+      "name": "qldapm-ai-stage_stage",
+      "ipam": {},
+      "internal": true
+    },
+    "stage-front": {
+      "name": "qldapm-ai-stage_stage-front",
+      "ipam": {}
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-25T12:47:17.722456+00:00",
+  "status": "PASS",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-local-delivery-20261025",
+      "image": "sha256:8aed99f096aca8b2a8176b5c68b5a256bf095a6e2b03ab3d26bcb135015c71bd"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-local-delivery-20261025",
+      "image": "sha256:a56b834fd146a384ce1294095e95bdffd4048c2ad7045be177c0b471010b5e4c"
+    }
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/store.py": "ef592e6282a271509992b319aad62def5d5839ffc05913ff58fff7c30cbd08b3",
+    "openproject/ai/gateway/service.py": "cd126991c73d441f79c4c1bc1f11a714e527d3b9c0d234ea6e272cce05284523",
+    "openproject/ai/gateway/monitoring.py": "1f5eecb223014229093b978f4b887e8429db40082bc89b979adc06800cb2181f",
+    "openproject/ai/gateway/control_center_state.py": "a677f2d1580a10938b132a43cd7d45528729dc0940b2fd519f14918c9d9962ba",
+    "openproject/ai/gateway/notification_delivery.py": "c26307c78a5adbcfdb9c898df4e1dca74fedd938e10b5d09bbb848d947ceaf7b",
+    "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_control_center.html.erb": "4d7a5992a117659417a8c40237d2b14f3a5c9985774bac09e9d54597c68087ba"
+  },
+  "source_mismatches": [],
+  "native_count": 338,
+  "physical_rows_unchanged": "375|04ec20a24a553f3cea4deab0015c29ef",
+  "native_fingerprint": "c6f4373b58951e17e0d8b766b393dc8358fa99337d724be4e5826ff82787108b",
+  "ledger": {
+    "gemini_call_receipts": 127,
+    "gemini_usage": 132,
+    "proposals": 54,
+    "knowledge_sync": 12,
+    "qa_test_runs": 1,
+    "qa_evidence": 1,
+    "qa_evidence_reviews": 0
+  },
+  "metadata_delta": "Exactly one automated read-only test run and one pending_qa evidence; zero independent decisions",
+  "scenario_f_exact_audit_rows": 61,
+  "consumed_scenario_f_proposal_and_original_report_unchanged": true,
+  "historical_ids_retained": {
+    "audit": {
+      "prior": 9767,
+      "missing": 0
+    },
+    "ai_runs": {
+      "prior": 71,
+      "missing": 0
+    },
+    "agent_runs": {
+      "prior": 57,
+      "missing": 0
+    },
+    "agent_tasks": {
+      "prior": 58,
+      "missing": 0
+    },
+    "proposals": {
+      "prior": 54,
+      "missing": 0
+    },
+    "operational_reports": {
+      "prior": 76,
+      "missing": 0
+    },
+    "gemini_call_receipts": {
+      "prior": 127,
+      "missing": 0
+    }
+  },
+  "all_28_historical_pending_request_rows_exactly_preserved": true,
+  "new_unknown_requests": 0,
+  "native_writes": 0,
+  "model_calls": 0,
+  "main_human_decisions": 0,
+  "staging_operations": false,
+  "ui": "Actual source controller/ActionView tests PASS; new visual automated-run/inbox flow NOT_TESTED_BROWSER_POLICY_BLOCKED"
+}

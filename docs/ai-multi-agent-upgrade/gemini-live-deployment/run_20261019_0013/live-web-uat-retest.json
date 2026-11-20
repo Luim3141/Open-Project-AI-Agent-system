@@ -1,0 +1,155 @@
+{
+  "method": "PLAYWRIGHT_REAL_STAGING_UI_AND_VISIBLE_RECEIPTS",
+  "checks": [
+    {
+      "id": "LIVE-A",
+      "status": "PASS",
+      "execution_id": "322d10da-c17f-4724-a8f9-fe71ae2e43d7",
+      "actor": 7,
+      "role": "PM",
+      "agents": [
+        "pm",
+        "reviewer"
+      ],
+      "provider": "Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "at": "2026-10-19T00:04:40.969153+00:00",
+      "provider_status": "LIVE_SUCCESS",
+      "model_calls": 1,
+      "usage": [
+        {
+          "candidatesTokenCount": 328,
+          "promptTokenCount": 5319,
+          "thoughtsTokenCount": 1044,
+          "totalTokenCount": 6691
+        }
+      ],
+      "response_summary": "Phân tích Sprint/rủi ro từ context Native",
+      "response_characters": 1173,
+      "native_source_ids": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "receipt_ids": [
+        "2aea0f5f-0fe8-4e8f-ad4f-8620db1e85b2"
+      ],
+      "duration_seconds": 5.363,
+      "evidence": "retest-live-A-visible-result.png (private)"
+    },
+    {
+      "id": "LIVE-B",
+      "status": "PASS",
+      "execution_id": "b9c5bfbe-9659-446c-b92a-94fa48b77528",
+      "actor": 6,
+      "role": "BA-PM",
+      "agents": [
+        "ba",
+        "reviewer"
+      ],
+      "provider": "Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "at": "2026-10-19T00:05:22.810719+00:00",
+      "provider_status": "LIVE_SUCCESS",
+      "model_calls": 1,
+      "usage": [
+        {
+          "candidatesTokenCount": 498,
+          "promptTokenCount": 4247,
+          "totalTokenCount": 4745
+        }
+      ],
+      "response_summary": "BA phân tích yêu cầu/acceptance criteria trong phạm vi hiện có",
+      "response_characters": 1612,
+      "native_source_ids": [
+        102,
+        107,
+        112,
+        117,
+        122,
+        127,
+        132,
+        137,
+        142,
+        147
+      ],
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "receipt_ids": [
+        "4875f3e8-0961-4de4-8a5c-70d6c4958ff7"
+      ],
+      "duration_seconds": 3.354,
+      "evidence": "retest-live-B-visible-result.png (private)"
+    },
+    {
+      "id": "LIVE-C",
+      "status": "PASS",
+      "execution_id": "603a991e-fbd7-4743-aff6-443508c2500c",
+      "actor": 10,
+      "role": "QA",
+      "agents": [
+        "qa",
+        "reviewer"
+      ],
+      "provider": "Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "at": "2026-10-19T00:06:07.630017+00:00",
+      "provider_status": "LIVE_SUCCESS",
+      "model_calls": 1,
+      "usage": [
+        {
+          "candidatesTokenCount": 386,
+          "promptTokenCount": 756,
+          "totalTokenCount": 1142
+        }
+      ],
+      "response_summary": "QA đề xuất test cases và trường hợp biên",
+      "response_characters": 1440,
+      "native_source_ids": [
+        38
+      ],
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "receipt_ids": [
+        "ddbf2dd7-7d50-47b9-bbd1-ef1a902749f4"
+      ],
+      "duration_seconds": 2.822,
+      "evidence": "retest-live-C-visible-result.png (private)"
+    },
+    {
+      "id": "LIVE-D",
+      "status": "FAIL",
+      "actor": 7,
+      "role": "PM",
+      "execution_id": "c763e4d7-f4da-4c73-a78a-65c12e042acb",
+      "error_type": "AssertionError",
+      "ui_confirmed": false,
+      "no_automatic_retry": true
+    },
+    {
+      "id": "LIVE-E",
+      "status": "PASS",
+      "actor": 9,
+      "role": "FE",
+      "at": "2026-10-19T00:07:13.727244+00:00",
+      "provider_status": "POLICY_DENIED_BEFORE_PROVIDER",
+      "model_calls": 0,
+      "usage": null,
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "evidence": "retest-live-E-permission-denied.png (private)"
+    }
+  ],
+  "serving_native_business_mutations": 0,
+  "provider": "Gemini",
+  "model": "gemini-3.5-flash-lite"
+}

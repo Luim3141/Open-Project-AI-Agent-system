@@ -1,0 +1,21 @@
+{
+  "status": "QUALIFIED_TECHNICAL_DEPLOYMENT",
+  "scope": "Main Gateway proof verification and fixed Core source fingerprints only; no evidence import/review or Native write",
+  "gateway": "sha256:ba6db8ec9a7bf1e107f74c81bbb2671b3f7a5b14b171c7c823d5dcdc488e2155",
+  "core": "sha256:919e843524236b6f9536155ac9b7f56964c60261d51694f85b3afcf922e59da2",
+  "rollback_gateway": "sha256:baa54ac0dc54775873db08a9497a938358f5b4a75dc99d68f945530ae77579b9",
+  "rollback_core": "sha256:e3826b3c2f8b0d1ccb401280e81f6cbb4fb50b1abadbadbb78c8258eeec68b5b",
+  "qualification": {
+    "windows_affected_tests": 57,
+    "candidate_linux_tests": 41,
+    "additive_build_metadata_tests": 5,
+    "actual_native_clone": "PASS_ISOLATED_CLONE_NATIVE_SOURCE_OWNER_VERIFY",
+    "core_view_and_fixed_source_fixtures": "PASS",
+    "human_decisions": 0,
+    "main_native_writes": 0
+  },
+  "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\qa-verify-deploy-backup",
+  "authorization": "PUBLICATION_REDACTED",
+  "rollback": "Restore only prior Gateway image env and Core UI bridge image; keep current ports, all volumes and database history",
+  "staging_operations": false
+}

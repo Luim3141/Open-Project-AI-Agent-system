@@ -1,0 +1,13 @@
+# Native QA gate — design and observed limits
+
+Status BLOCKED, not implemented or accepted as a Native QA gate. `get_gate/change_gate` in Main Native mode continue returning422 `CUSTOM_GATE_UNSUPPORTED_IN_NATIVE_MODE`. No custom field, migration, permission change, comment, attachment or transition was applied.
+
+`CODEX_NATIVE_QA_SCHEMA_AUDIT.json` records real read-only form qualification on test370v2: Owner18 and PM19 form200 with no validation errors and no QA/test-named schema fields; QA23 form403. Version remained2 before and after. This does not grant QA an edit permission or justify bypassing Native policy.
+
+A compatible design should separate evidence from execution: an authenticated QA evidence record binds exact Main WP/version and acceptance criteria to an immutable test artifact/checksum; verification resolves a trusted execution receipt rather than a caller's `verified`, `runner_executed` or `PASS` flag. Reviewer checks must use an independent authenticated identity. PM/Owner decision must create/consume an own exact proposal, recheck the evidence/artifact/current Native version and validate the target status with the Native form immediately before execution. Readback, RAG sync and audit remain required. Stale, edited, unverified, self-approved or inaccessible evidence blocks readiness.
+
+Native comments/attachments can carry evidence references where the actor has Native permission, while a verified operational evidence record can preserve provenance without requiring a custom field. A comment saying PASS alone is not test execution proof. Manual attestation must be labelled manual and must not be shown as an automated test run. Physical Native evidence publication and transition require a fresh approved test resource/package; neither an old approval nor WP370 may be reused.
+
+Qualification still required: exact Native activity author/version/comment/attachment binding, trusted receipt verification, reviewer independence, changed-evidence/hash rejection, revoked access, stale WP lock, invalid Native transition, duplicate decision409, readback/RAG/audit chain and partial failure recovery. Positive tests must run first on isolated fixtures/clone. Adding schema or changing business permissions would require a separate migration/policy preview.
+
+Primary references: [OpenProject Forms](https://www.openproject.org/docs/api/forms/), [Activities](https://www.openproject.org/docs/api/endpoints/activities/), [Work Packages](https://www.openproject.org/docs/api/endpoints/work-packages/). Forms support preflight validation; successful HTTP alone is not equivalent to a valid form. Current Main observations above take precedence over assumptions from a different OpenProject version.

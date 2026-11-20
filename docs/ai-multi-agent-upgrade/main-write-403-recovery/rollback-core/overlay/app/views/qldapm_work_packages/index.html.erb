@@ -1,0 +1,57 @@
+<% html_title("Work Packages — Epic / Task / Subtask") %>
+<style>
+  .qldapm-tree { --tree-line: #dce4ed; margin-top: 1rem; }
+  .qldapm-tree-toolbar { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .qldapm-tree-head, .qldapm-tree-row { display: grid; grid-template-columns: minmax(15rem, 1fr) 6rem 8rem 6rem; align-items: center; gap: .75rem; }
+  .qldapm-tree-head { padding: .75rem 1rem .75rem 2rem; background: #f3f6fa; font-weight: 600; border-bottom: 1px solid var(--tree-line); }
+  .qldapm-tree-node { margin: 0; border-bottom: 1px solid var(--tree-line); }
+  .qldapm-tree-node > summary { position: relative; list-style: none; cursor: pointer; padding: .8rem 1rem .8rem 2rem; }
+  .qldapm-tree-node > summary::-webkit-details-marker { display: none; }
+  .qldapm-tree-node > summary::before { content: "▸"; position: absolute; left: .65rem; color: #356184; }
+  .qldapm-tree-node[open] > summary::before { content: "▾"; }
+  .qldapm-tree-node > summary:hover { background: #f5f8fc; }
+  .qldapm-tree-node > summary:focus-visible { outline: 2px solid #1a67a5; outline-offset: -2px; }
+  .qldapm-tree-children { margin-left: 1.4rem; border-left: 2px solid var(--tree-line); }
+  .qldapm-tree-leaf { padding: .7rem 1rem .7rem 2rem; }
+  .qldapm-tree-title { overflow-wrap: anywhere; }
+  .qldapm-tree-id { color: #5b6c80; font-size: .9em; margin-right: .4rem; }
+  .qldapm-tree-type { font-size: .85em; color: #356184; }
+  .qldapm-tree-pages { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; margin: 1rem 0; }
+  .qldapm-tree-pages a, .qldapm-tree-pages strong { padding: .4rem .75rem; border: 1px solid var(--tree-line); border-radius: .25rem; }
+  .qldapm-tree-pages strong { background: #e7f1fb; }
+  @media (max-width: 700px) {
+    .qldapm-tree-head { display: none; }
+    .qldapm-tree-row { grid-template-columns: minmax(0, 1fr) auto; gap: .4rem; }
+    .qldapm-tree-title { grid-column: 1 / -1; }
+    .qldapm-tree-children { margin-left: .7rem; }
+  }
+</style>
+<h2>Work Packages</h2>
+<p>Mở Epic để xem Task, mở Task để xem Subtask. Mỗi trang giữ trọn một nhánh; thứ tự theo danh sách nguồn đã nhập từ Jira.</p>
+<div class="qldapm-tree-toolbar">
+  <strong><%= @tree_items.count { |item| item.type.name == "Epic" } %> Epic · <%= @tree_items.count { |item| item.type.name == "Task" } %> Task · <%= @tree_items.count { |item| item.type.name == "Subtask" } %> Subtask</strong>
+  <%= link_to "Bảng / bộ lọc nâng cao", project_work_packages_path(@project, native_table: "1"), class: "button" %>
+</div>
+<section class="qldapm-tree" aria-label="Cây Epic, Task và Subtask">
+  <div class="qldapm-tree-head" aria-hidden="true"><span>Công việc</span><span>Loại</span><span>Trạng thái</span><span>Chi tiết</span></div>
+  <% if @tree_roots.empty? %><p>Chưa có công việc theo quyền đọc của bạn.</p><% end %>
+  <% @tree_roots.each do |item| %>
+    <%= render "qldapm_work_packages/node", item: item, level: 0 %>
+  <% end %>
+</section>
+<nav class="qldapm-tree-pages" aria-label="Phân trang theo Epic và nhánh gốc">
+  <span>Trang <%= @tree_page %>/<%= @tree_page_count %> · <%= @tree_root_count %> nhánh gốc</span>
+  <% (1..@tree_page_count).each do |page| %>
+    <% if page == @tree_page %><strong aria-current="page"><%= page %></strong><% else %>
+      <%= link_to page, project_work_packages_path(@project, page: page, per_page: @tree_per_page), aria: {label: "Trang #{page}"} %>
+    <% end %>
+  <% end %>
+</nav>
+<nav class="qldapm-tree-pages" aria-label="Số nhánh mỗi trang">
+  <span>Mỗi trang:</span>
+  <% [5, 10, 20].each do |size| %>
+    <% if size == @tree_per_page %><strong aria-current="true"><%= size %></strong><% else %>
+      <%= link_to size, project_work_packages_path(@project, per_page: size), aria: {label: "Hiển thị #{size} nhánh mỗi trang"} %>
+    <% end %>
+  <% end %>
+</nav>

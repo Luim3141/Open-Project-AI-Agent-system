@@ -1,0 +1,69 @@
+services:
+  db:
+    image: postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3
+    restart: "no"
+    environment:
+      POSTGRES_PASSWORD: qual_password
+      POSTGRES_DB: openproject
+    volumes:
+      - qual-pgdata:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d openproject"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  cache:
+    image: memcached@sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf
+    restart: "no"
+    networks:
+      - backend
+
+  web:
+    image: qldapm-openproject:main-candidate
+    restart: "no"
+    ports:
+      - "127.0.0.1:18088:8080"
+    environment:
+      DATABASE_URL: postgres://postgres:qual_password@db/openproject?pool=20&encoding=unicode
+      SECRET_KEY_BASE: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+      OPENPROJECT_HOST__NAME: localhost:18088
+      OPENPROJECT_ADDITIONAL__HOST__NAMES: '["localhost:18088", "127.0.0.1:18088", "web"]'
+      OPENPROJECT_HTTPS: "false"
+      OPENPROJECT_HSTS: "false"
+      OPENPROJECT_RAILS__CACHE__STORE: memcache
+      OPENPROJECT_CACHE__MEMCACHE__SERVER: cache:11211
+      OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL: ""
+      OPENPROJECT_WEB_WORKERS: 1
+      RAILS_MIN_THREADS: 2
+      RAILS_MAX_THREADS: 4
+      RAILS_ENV: production
+      IMAP_ENABLED: "false"
+    volumes:
+      - qual-opdata:/var/openproject/assets
+      - ../scripts:/qldapm:ro
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/health_checks/default"]
+      interval: 10s
+      timeout: 5s
+      retries: 25
+      start_period: 60s
+
+volumes:
+  qual-pgdata:
+  qual-opdata:
+
+networks:
+  backend:
+    internal: true
+  frontend:

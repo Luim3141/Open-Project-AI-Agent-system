@@ -1,0 +1,265 @@
+{
+  "scope": "REAL GEMINI SDK + REAL Gateway/Native; isolated conversation; live shared budget/audit; no Telegram transport",
+  "at": 1794472627.641739,
+  "cases": [
+    {
+      "id": "TG-R01",
+      "question": "QLDAPM đang hoạt động bình thường không? Gọi get_system_health để kiểm tra mới.",
+      "answer": {
+        "text": "Chào bạn! Tôi đã kiểm tra hệ thống thông qua `get_system_health`. Tình trạng tổng quan hiện tại như sau:\n\n* **Trạng thái điều khiển (Control):** Hệ thống đang ở chế độ **OFF**, trạng thái hiệu lực cũng là **OFF** (state revision 84), với lý do chặn hiện tại là `NO_ELIGIBLE_WORK`. Worker đang hoạt động bình thường (`ALIVE`).\n* **Các tích hợp (Integrations):**\n  * **UP:** OpenProject Community, QLDAPM AI Gateway, n8n Orchestration, Qdrant Vector Database, Ollama Local Models.\n  * **DOWN:** OpenClaw Gateway (lỗi kết nối `CONNECTIVITY_CHECK_FAILED`, WSL OpenClaw đang dừng) và Demo App (lỗi kết nối `CONNECTIVITY_CHECK_FAILED`).\n\nNhìn chung, các dịch vụ cốt lõi như OpenProject, Gateway, n8n, Qdrant và Ollama đều đang hoạt động ổn định (UP), tuy nhiên OpenClaw Gateway và Demo App đang gặp sự cố kết nối (DOWN)."
+      },
+      "read_tools": [
+        {
+          "arguments": {},
+          "correlation_id": "c2eae7b0-961b-4662-9c40-26a636aa02a6",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": null,
+          "tool": "get_system_health"
+        },
+        {
+          "arguments": {},
+          "correlation_id": "c8568a33-01c6-455e-811d-ffd2cdf4ea8d",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": null,
+          "tool": "get_system_health"
+        }
+      ],
+      "gemini_receipts": [
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 5458,
+          "latency_seconds": 1.538,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 12,
+          "request_id": "e58431412ae84b3480b56cb89a64f0cf",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 1
+        },
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 8597,
+          "latency_seconds": 1.771,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 235,
+          "request_id": "281ced8b83034d6cafabcaa8a40d4a17",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 0
+        }
+      ],
+      "seconds": 15.248788595199585
+    },
+    {
+      "id": "TG-R06",
+      "question": "Agent nào đang chạy?",
+      "answer": {
+        "text": "Đã chạm giới hạn xử lý. Đã truy vấn: list_projects, search_tasks, get_task_details, get_task_progress, get_task_agent_runs. Phần còn lại chưa được xác minh; không có lệnh được tự xác nhận."
+      },
+      "read_tools": [
+        {
+          "arguments": {},
+          "correlation_id": "fc4a5e05-54d2-49b7-a651-3c93fd38c53d",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": null,
+          "tool": "get_system_health"
+        },
+        {
+          "arguments": {
+            "query": ""
+          },
+          "correlation_id": "7fd995e3-106c-4f28-8291-e2e8b6b21126",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": null,
+          "tool": "search_tasks"
+        },
+        {
+          "arguments": {
+            "task_id": 379
+          },
+          "correlation_id": "3cdcc5ba-288c-4537-a3c1-f4aba793f19b",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": null,
+          "tool": "get_task_details"
+        },
+        {
+          "arguments": {
+            "task_id": 379
+          },
+          "correlation_id": "50e411bf-9565-4d4d-823f-9ab21356f945",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": "956e1dd0c85c36746e332d69440581fc734e516c36c96dc358d1f879c14ceee4",
+          "tool": "get_task_progress"
+        },
+        {
+          "arguments": {
+            "task_id": 379
+          },
+          "correlation_id": "ed80f213-2265-4e85-bd1b-738d50be3a39",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": null,
+          "tool": "get_task_agent_runs"
+        }
+      ],
+      "gemini_receipts": [
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 5438,
+          "latency_seconds": 0.987,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 10,
+          "request_id": "e1fe8a36c794426da4128802eef18710",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 1
+        },
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 5567,
+          "latency_seconds": 1.181,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 15,
+          "request_id": "9d0e555d920b476abf21a8814762af2c",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 1
+        },
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 8206,
+          "latency_seconds": 1.202,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 20,
+          "request_id": "26002e4b08764b2fa00b3cce2822072f",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 1
+        },
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 11107,
+          "latency_seconds": 1.504,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 20,
+          "request_id": "b274980354ee4403940a2f895f607d90",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 1
+        },
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 15170,
+          "latency_seconds": 1.157,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 22,
+          "request_id": "bfb35b2dc84b46dea70f94ac8cc553d6",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 1
+        }
+      ],
+      "seconds": 17.741886377334595
+    },
+    {
+      "id": "TG-R07",
+      "question": "Có Task nào đang BLOCKED không?",
+      "answer": {
+        "text": "Dựa trên dữ liệu hiện tại từ hệ thống:\n\n- **Work Package #379** (\"Develop Mini Task Manager Application\") trong Project #6 đang ở trạng thái **IN PROGRESS**.\n- Về trạng thái hàng đợi và run, Gateway ghi nhận `blocked_reason: \"NO_ELIGIBLE_WORK\"` và queue backlog chưa được đánh giá đầy đủ (`BACKLOG_NOT_EVALUATED`). \n\nHiện tại không có task nào bị ghi nhận ở trạng thái BLOCKED trong hệ thống; tuy nhiên, queue đang ở trạng thái không có công việc khả dụng (`NO_ELIGIBLE_WORK`)."
+      },
+      "read_tools": [
+        {
+          "arguments": {},
+          "correlation_id": "68d2adf1-736a-4282-a49d-704ee6c30ca0",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": null,
+          "tool": "get_system_health"
+        },
+        {
+          "arguments": {
+            "query": ""
+          },
+          "correlation_id": "1f665b6e-f9ad-4fb4-9e16-3957870e8fc4",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": null,
+          "tool": "search_tasks"
+        },
+        {
+          "arguments": {
+            "task_id": 379
+          },
+          "correlation_id": "a3fa9dec-e011-45dd-8e4f-21693ef7839a",
+          "event": "READ_TOOL",
+          "project_id": 6,
+          "source_revision": null,
+          "tool": "get_task_details"
+        }
+      ],
+      "gemini_receipts": [
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 5441,
+          "latency_seconds": 1.446,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 15,
+          "request_id": "655464e3501f4d0287c341ee7e906464",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 1
+        },
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 8080,
+          "latency_seconds": 1.584,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 20,
+          "request_id": "19e0de1654b141209b60282015ab093f",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 1
+        },
+        {
+          "attempt": 1,
+          "error_type": null,
+          "event": "GEMINI_REQUEST",
+          "http_status": null,
+          "input_tokens": 10981,
+          "latency_seconds": 1.882,
+          "model_id": "gemini-3.5-flash-lite",
+          "output_tokens": 129,
+          "request_id": "d18a55d97a8e4c71a190b24f2c0af5b2",
+          "resolved_model_version": "gemini-3.5-flash-lite",
+          "tool_calls_count": 0
+        }
+      ],
+      "seconds": 5.939365863800049
+    }
+  ],
+  "generate_rounds": 10
+}

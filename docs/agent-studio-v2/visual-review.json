@@ -1,0 +1,9 @@
+{
+  "method": "Manual visual inspection via local view_image, after final MAIN rollout",
+  "status": "PASS",
+  "main_images_reviewed": ["main397-desktop.png", "main397-laptop.png", "main397-tablet.png", "main397-mobile.png", "main397-edge-hover.png", "main-command-center.png"],
+  "fixture_images_reviewed": ["fixture-hover.png", "fixture-desktop.png", "fixture-mobile.png", "fixture-running.png", "fixture-blocked.png", "fixture-failed.png"],
+  "findings_fixed": ["Hover tooltip clipped by graph viewport: portal into Studio overlay", "Legacy Command Center tab handler prevented navigation anchor", "Viewport width did not account for OpenProject sidebar: use container queries and ResizeObserver", "Native select palette caused pale text on white: scoped important palette", "Inner OpenProject scroll pane cropped viewport screenshots: capture full content at unchanged width"],
+  "final_checks": ["All three real stage nodes and directed arrows visible", "Readable dark native Project select", "Mobile vertical Dagre layout; no horizontal Studio overflow", "Inspector uses structured work/review/QA evidence", "Fixtures visibly labelled; no claim that they are real running tasks"],
+  "capture_note": "Main interactions tested at standard four viewport sizes; full-content images temporarily grow height at the same width because OpenProject uses an inner scroll pane. Inspector and timeline retain their own scroll regions."
+}

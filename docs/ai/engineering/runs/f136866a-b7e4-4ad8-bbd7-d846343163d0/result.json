@@ -1,0 +1,72 @@
+{
+  "status": "succeeded",
+  "text": "Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu  delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "0498ceeda97cd3e856a975129129e71f6c94a3dd",
+  "head_sha": "a150f3d690288ff95451c2667954f09661aa9604",
+  "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/7",
+  "delivery": {
+    "baseRefName": "codex/openclaw-feedback-bb9a628fe5b7be67",
+    "headRefName": "codex/openclaw-feedback-20c2a94109f4e78f",
+    "headRefOid": "a150f3d690288ff95451c2667954f09661aa9604",
+    "state": "OPEN",
+    "url": "https://github.com/Luim3141/mini-task-manager/pull/7"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\f136866a-b7e4-4ad8-bbd7-d846343163d0\\acceptance-0.xml",
+    "log_sha256": "cb959eb99b9e0b8939a78a69d5fc061bdadc6143b84293d84ca159bf1c96cc92"
+  },
+  "review_evidence": {
+    "revision": "04fc6371df90be5aa161a81607e2b8081259e3e7bf0e4bdc14c9f1cc75bf8ad4",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-20c2a94109f4e78f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC1",
+        "AC2",
+        "AC3",
+        "AC4",
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\f136866a-b7e4-4ad8-bbd7-d846343163d0",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_tasks.py"
+  ],
+  "native_readback": {
+    "child_id": 387,
+    "child_version": 2,
+    "parent": {
+      "id": 379,
+      "version": 4
+    },
+    "project_id": 6,
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/7"
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "child_id": 387,
+    "retrieval_count": 1,
+    "references": [
+      {
+        "native_id": 379,
+        "citation": "/work_packages/379"
+      }
+    ]
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "at": "2026-10-18T15:06:10.967447+00:00",
+  "method": "MOCK_OFFLINE_UNIT",
+  "modules": [
+    "tests.test_free_tier",
+    "tests.test_provider_wait",
+    "tests.test_provider_readiness",
+    "tests.test_quota_reset",
+    "tests.test_quota_classes",
+    "tests.test_daily_brief",
+    "tests.test_n8n_daily_workflow",
+    "tests.test_n8n_machine"
+  ],
+  "tests_run": 58,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": true,
+  "provider_network_calls": 0,
+  "cases": [
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_atomic_rpm_tpm_daily_budget_and_no_reset_on_reverification",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_auth_quota_redirect_timeout_stop_without_retry_or_fallback",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_configure_model_keeps_existing_key_usage_and_requires_new_matching_proof",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_continuous_authorization_has_no_expiry_but_off_key_and_environment_still_apply",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_continuous_quota_cooldown_and_status_do_not_claim_a_current_free_billing_check",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_continuous_transient_cooldown_survives_restart_without_replaying_or_clearing_usage",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_enrollment_rejects_truncated_key_without_overwriting_existing_key",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_enrollment_reuses_existing_key_and_keeps_off",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_exact_historical_continuous_billing_proof_is_denied_before_sdk",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_fixed_prompt_no_tools_and_usage_survives_restart",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_free_only_defaults_deny_config_and_unknown_matching_model_before_sdk",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_http_diagnostics_keep_phase_status_and_never_echo_upstream_secrets",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_invalid_count_never_generates_and_malformed_output_is_safe",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_legacy_cost_authorization_route_refuses_before_any_private_write",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_liveness_and_authenticated_status_never_call_llm_or_consume_quota",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_metadata_tool_results_drop_private_text_and_cannot_be_approvals",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_new_enrollment_rejects_one_character_key_before_saving",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_paid_or_billing_enabled_never_accepted_even_with_persistent_free_consent",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_paid_unknown_expired_key_mismatch_and_production_fail_closed",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_production_requires_its_own_target_binding_and_keeps_cost_guards",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_project_metadata_loop_reads_counts_without_sending_people_or_source_text",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_public_demo_answers_without_project_data_or_tools_and_requires_its_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_replace_key_uses_hidden_prompt_not_environment_and_invalidates_proof",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_rest_and_mcp_reject_project_or_secret_prompts_before_creating_a_run",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_rest_deadline_reports_unknown_and_never_retries_the_worker",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_rest_mcp_polling_fixed_smoke_and_safe_quota_error",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_saved_503_is_reported_as_open_circuit_not_a_new_google_failure",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_status_reports_valid_proof_and_circuit_even_when_off_without_outbound",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_verify_reprompts_project_number_without_losing_existing_key",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_free_tier.FreeTierTests.test_wizard_manual_stages_never_launch_default_browser",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_provider_wait.ProviderWaitTests.test_minute_tpm_circuit_and_reset_are_advisory_not_new_reservations",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_provider_wait.ProviderWaitTests.test_pending_five_users_wait_daily_quota_without_worker_and_survive_reopen",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_provider_wait.ProviderWaitTests.test_permanent_errors_unknown_transport_and_timeout_never_retry",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_provider_wait.ProviderWaitTests.test_real_sdk_transport_retries_only_rejected_phase_after_a_confirmed_write",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_provider_wait.ProviderWaitTests.test_retry_cannot_cross_deadline_or_daily_reset",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_provider_wait.ProviderWaitTests.test_retry_is_bounded_exponential_jitter_and_reserves_each_attempt",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_provider_wait.ProviderWaitTests.test_retry_rechecks_policy_and_does_not_refund_or_bypass_quota",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_provider_readiness.ReadinessTests.test_persisted_probe_bound_to_exact_policy_and_no_sdk_on_status",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_quota_reset.PacificQuotaTests.test_dst_days_are_23_and_25_hours",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_quota_reset.PacificQuotaTests.test_exact_midnight_is_counted_and_reset_keeps_history",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_quota_classes.QuotaClassTests.test_all_classes_can_reuse_full_idle_project_budget_without_reserving_slices",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_quota_classes.QuotaClassTests.test_authenticated_rest_classes_share_actor_scope_and_do_not_grant_business_write",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_quota_classes.QuotaClassTests.test_model_round_ceiling_keeps_tool_receipts_and_stops_before_next_provider_call",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_quota_classes.QuotaClassTests.test_public_class_validation_default_and_contract_match",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_quota_classes.QuotaClassTests.test_worker_uses_persisted_class_bound_without_expanding_consent",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_daily_brief.DailyBriefTests.test_caller_actor_date_namespace_and_non_five_user_config_denied_before_outbound",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_daily_brief.DailyBriefTests.test_changed_visibility_yields_stale_without_snapshot_and_other_actor_project_are_not_exposed",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_daily_brief.DailyBriefTests.test_five_scoped_native_snapshots_zero_provider_and_same_day_duplicates_do_not_recollect",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_daily_brief.DailyBriefTests.test_role_revocation_and_native_outage_make_per_actor_empty_failures",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_daily_brief.DailyBriefTests.test_startup_marks_incomplete_collection_failed_and_never_replays_native_reads",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_daily_brief.DailyBriefTests.test_unexpected_failure_cannot_leave_partial_reports_or_retry_collection",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_n8n_daily_workflow.N8nDailyWorkflowTests.test_fixed_clock_startup_scope_and_secretless_export",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_n8n_daily_workflow.N8nDailyWorkflowTests.test_partial_report_never_publishes_or_claims_all_five_ready",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_n8n_daily_workflow.N8nDailyWorkflowTests.test_publish_uses_exact_version_checksum_and_does_not_republish_active_workflow",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_n8n_machine.N8nMachineTests.test_enrollment_reuses_key_and_denies_replacing_existing_credentials_or_invalid_key",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_n8n_machine.N8nMachineTests.test_existing_credential_without_local_key_and_wrong_directory_cannot_generate_or_overwrite",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_n8n_machine.N8nMachineTests.test_only_expected_absent_fixed_credential_export_allows_cli_nonzero",
+      "status": "PASS"
+    },
+    {
+      "id": "tests.test_n8n_machine.N8nMachineTests.test_signing_credential_is_derived_reused_and_never_overwrites_a_mismatch",
+      "status": "PASS"
+    }
+  ]
+}

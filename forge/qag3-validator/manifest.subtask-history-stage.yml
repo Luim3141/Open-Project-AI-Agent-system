@@ -1,0 +1,231 @@
+modules:
+  jira:workflowValidator:
+    - key: qag3-pm-only
+      name: QAG3 PM approval
+      description: Only the two approved PM accounts may perform this QAG3 transition.
+      projectTypes:
+        - company-managed
+      expression: >-
+        issue.project.id == 10002 && issue.project.key == 'QAG3' && user != null
+        && user.active && ['712020:0d04982c-00bf-46af-b3a7-446d0f44edfb',
+         '712020:47b24428-aa71-4363-b68f-29ed2285aad8'].includes(user.accountId)
+      errorMessage: Only an approved QAG3 PM may perform this transition.
+    - key: qag3-epic-children-done
+      name: QAG3 Epic child Tasks complete
+      description: Reject empty Epics and Epics containing a child Task not in Done.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let project = issue.project;
+        let children = issue.childIssues;
+        let subtaskLists = children == null ? [] : children.map(child => child == null ? null : child.childIssues);
+        project.id == 10002 && project.key == 'QAG3' && issue.issueType.id == 10000 &&
+        children != null && children.length > 0 && children.every(child => child != null &&
+        child.key.indexOf('QAG3-') == 0 && child.issueType.id == 10011 && child.status.id == 10009) &&
+        subtaskLists.every(subtasks => subtasks != null && subtasks.every(subtask => subtask != null &&
+        subtask.key.indexOf('QAG3-') == 0 && subtask.issueType.id == 10010 && subtask.status.id == 10009))
+      errorMessage: An Epic must contain at least one QAG3 Task, and all its child
+        Tasks must be Done.
+    - key: qag3-fresh-change-reason
+      name: QAG3 fresh change reason
+      description: Require a nonblank reason changed on this transition, not a previously saved reason.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let current = issue.customfield_10043;
+        let previous = originalIssue.customfield_10043;
+        let reason = typeof current == 'Map' ? new RichText(current).plainText : typeof current == 'RichText' ? current.plainText : current;
+        let oldReason = typeof previous == 'Map' ? new RichText(previous).plainText : typeof previous == 'RichText' ? previous.plainText : previous;
+        issue.project.id == 10002 && issue.project.key == 'QAG3' &&
+        [10000, 10011, 10010].includes(issue.issueType.id) &&
+        typeof reason == 'string' && reason.trim().length > 0 &&
+        (oldReason == null || (typeof oldReason == 'string' && reason.trim() != oldReason.trim()))
+      errorMessage: Enter a new nonblank change reason on this transition; a previously saved reason is not sufficient.
+    - key: qag3-task-subtasks-done
+      name: QAG3 Task subtasks complete
+      description: Require every current Subtask to be Done before accepting a Task.
+      projectTypes:
+        - company-managed
+      expression: >-
+        issue.project.id == 10002 && issue.project.key == 'QAG3' &&
+        issue.issueType.id == 10011 && issue.childIssues != null &&
+        issue.childIssues.every(child => child != null &&
+        child.project.id == 10002 && child.issueType.id == 10010 && child.status.id == 10009)
+      errorMessage: Every current QAG3 Subtask must be Done before this Task can be accepted.
+    - key: qag3-task-delivery-checklist
+      name: QAG3 Task delivery checklist
+      description: Require delivery checklist and evidence text; does not authenticate reviewers or attest retest results.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let choices = issue.customfield_10044;
+        let evidenceValue = issue.customfield_10045;
+        let evidence = typeof evidenceValue == 'Map' ? new RichText(evidenceValue).plainText : evidenceValue;
+        issue.project.id == 10002 && issue.project.key == 'QAG3' &&
+        issue.issueType.id == 10011 && choices != null &&
+        ['10020', '10021', '10022', '10025', '10026', '10027'].every(id => choices.some(option => option != null && option.id == id)) &&
+        choices.some(option => option != null && option.id == '10023') != choices.some(option => option != null && option.id == '10024') &&
+        typeof evidence == 'string' && evidence.trim().length > 0
+      errorMessage: Complete the delivery checklist, choose exactly one retest outcome, and provide review/test/deployment evidence.
+    - key: qag3-qa-attest
+      name: QAG3 QA test attestation
+      description: QA submits PASS; the named QAG3 owner may submit SIMULATED PASS on simulation-labelled work only.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let plain = value => typeof value == 'Map' ? new RichText(value).plainText : value;
+        let evidence = plain(issue.customfield_10045);
+        let previous = plain(originalIssue.customfield_10045);
+        let lines = typeof evidence == 'string' ? evidence.split('\n').map(line => line.trim()) : [];
+        let prefixes = ['Revision:', 'Environment:', 'Test scope:', 'Result:', 'Evidence:', 'Retest:', 'Bug references / retest rationale:'];
+        let value = prefix => lines.filter(line => line.indexOf(prefix) == 0).map(line => line.slice(prefix.length).trim());
+        let choices = issue.customfield_10044;
+        let checked = id => choices != null && choices.some(option => option != null && option.id == id);
+        issue.project.id == 10002 && issue.project.key == 'QAG3' &&
+        [10011, 10010].includes(issue.issueType.id) && originalIssue.status.id == 10018 &&
+        user != null && user.active &&
+        typeof evidence == 'string' && (previous == null || (typeof previous == 'string' && evidence.trim() != previous.trim())) &&
+        prefixes.every(prefix => value(prefix).length == 1 && value(prefix)[0].length > 0) &&
+        ((user.accountId == '712020:94d1f95d-9618-4f25-8284-41105336b942' && value('Result:')[0] == 'PASS') ||
+        (user.accountId == '712020:0d04982c-00bf-46af-b3a7-446d0f44edfb' && issue.labels.includes('qag3-simulation') && originalIssue.labels.includes('qag3-simulation') && value('Result:')[0] == 'SIMULATED PASS')) &&
+        value('Environment:')[0].indexOf('Test - ') == 0 && value('Environment:')[0].length > 7 &&
+        checked('10022') && checked('10023') != checked('10024') &&
+        ((value('Retest:')[0] == 'PASSED' && checked('10023')) || (value('Retest:')[0] == 'NOT REQUIRED' && checked('10024')))
+      errorMessage: QA requires fresh PASS; the named owner requires a pre-existing qag3-simulation label and SIMULATED PASS. Revision, Test scope, evidence and consistent retest are mandatory.
+    - key: qag3-qa-current
+      name: QAG3 current QA attestation
+      description: Authenticate committed QA provenance and unchanged pending fields. Task Approve/Deploy must also run QA freshness companion; Subtask legacy checks remain.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let task = issue.issueType.id == 10011;
+        let plain = value => task && typeof value == 'Map' ?
+        (value.type == 'doc' && value.content != null && value.content.every(block => block.type == 'paragraph' &&
+        (block.content == null || block.content.every(node => node.type == 'text' || node.type == 'hardBreak'))) ?
+        value.content.map(block => block.content == null ? '' : block.content.map(node => node.type == 'hardBreak' ? '\n' : node.text).join('')).join('\n') : null) :
+        (typeof value == 'Map' ? new RichText(value).plainText : value);
+        let project = issue.project;
+        let evidence = plain(issue.customfield_10045);
+        let previous = plain(originalIssue.customfield_10045);
+        let history = task ? [] : originalIssue.changelogs;
+        let passes = history.filter(change => change.items.some(item => item.fieldId == 'status' && item.from == '10018' && item.to == '10012'));
+        let pass = task ? originalIssue.getNewestChangelog('status', {from: '10018', to: '10012'}) : (passes.length > 0 ? passes[0] : null);
+        let signature = task ? originalIssue.getNewestChangelog('customfield_10045') : pass;
+        let author = pass == null ? null : pass.author;
+        let parent = task ? null : issue.parent;
+        let originalParent = task ? null : originalIssue.parent;
+        let assignee = task ? null : issue.assignee;
+        let originalAssignee = task ? null : originalIssue.assignee;
+        let description = issue.description;
+        let originalDescription = originalIssue.description;
+        let newer = pass != null ? history.slice(0, history.map(change => change.id).indexOf(pass.id)) : [];
+        let lines = typeof evidence == 'string' ? evidence.split('\n').map(line => line.trim()) : [];
+        let value = prefix => lines.filter(line => line.indexOf(prefix) == 0).map(line => line.slice(prefix.length).trim());
+        let choices = issue.customfield_10044;
+        let checked = id => choices != null && choices.some(option => option != null && option.id == id);
+        project.id == 10002 && project.key == 'QAG3' &&
+        [10011, 10010].includes(issue.issueType.id) && [10012, 10019].includes(originalIssue.status.id) &&
+        pass != null && author != null && author.active &&
+        signature != null && signature.id == pass.id && signature.items.some(item => item.fieldId == 'customfield_10045' && item.fromString != item.toString && item.toString == evidence) &&
+        typeof evidence == 'string' && evidence == previous &&
+        ['Revision:', 'Environment:', 'Test scope:', 'Result:', 'Evidence:', 'Retest:', 'Bug references / retest rationale:'].every(prefix => value(prefix).length == 1 && value(prefix)[0].length > 0) &&
+        ((author.accountId == '712020:94d1f95d-9618-4f25-8284-41105336b942' && value('Result:')[0] == 'PASS') ||
+        (author.accountId == '712020:0d04982c-00bf-46af-b3a7-446d0f44edfb' && issue.labels.includes('qag3-simulation') && originalIssue.labels.includes('qag3-simulation') && value('Result:')[0] == 'SIMULATED PASS')) &&
+        value('Environment:')[0].indexOf('Test - ') == 0 && value('Environment:')[0].length > 7 &&
+        checked('10022') && checked('10023') != checked('10024') &&
+        ((value('Retest:')[0] == 'PASSED' && checked('10023')) || (value('Retest:')[0] == 'NOT REQUIRED' && checked('10024'))) &&
+        issue.summary == originalIssue.summary && (description == null ? null : description.plainText) == (originalDescription == null ? null : originalDescription.plainText) &&
+        (parent == null ? originalParent == null : originalParent != null && parent.id == originalParent.id) &&
+        (assignee == null ? originalAssignee == null : originalAssignee != null && assignee.accountId == originalAssignee.accountId) &&
+        (task || newer.every(change => change.items.every(item => item != null && typeof item.fieldId == 'string' && item.fieldId.length > 0 &&
+        !['summary', 'description', 'parent', 'assignee', 'customfield_10045'].includes(item.fieldId) &&
+        (item.fieldId != 'status' || (issue.issueType.id == 10011 && item.from == '10012' && item.to == '10019')))))
+      errorMessage: QA evidence is missing or stale. Return to testing and obtain a fresh QA PASS for the current revision before approval; do not edit the QA evidence after it is signed.
+    - key: qag3-subtask-acceptance
+      name: QAG3 independent Subtask acceptance
+      description: Independent PM acceptance, or named-owner simulation acceptance with explicit evidence and label; development still requires current QA evidence.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let committedAssignee = originalIssue.assignee; let plain = value => typeof value == 'Map' ? (value.type == 'doc' && value.content != null && value.content.every(block => block.type == 'paragraph' && (block.content == null || block.content.every(node => node.type == 'text' || node.type == 'hardBreak'))) ? value.content.map(block => block.content == null ? '' : block.content.map(node => node.type == 'hardBreak' ? '\n' : node.text).join('')).join('\n') : null) : value; let evidence = plain(issue.customfield_10045); let history = originalIssue.changelogs.map(change => ({id:change.id,author:change.author,created:change.created,items:change.items.map(item => ({fieldId:item.fieldId,from:item.from,to:item.to,fromString:item.fromString,toString:item.toString}))})); let passes = history.filter(change => change.items.some(item => item.fieldId == 'status' && item.from == '10018' && item.to == '10012')); let pass = passes.length > 0 ? passes[0] : null; let newer = pass != null ? history.slice(0, history.map(change => change.id).indexOf(pass.id)) : []; let lines = typeof evidence == 'string' ? evidence.split('\n').map(line => line.trim()) : []; let value = prefix => lines.filter(line => line.indexOf(prefix) == 0).map(line => line.slice(prefix.length).trim()); let developers = ['712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a', '712020:da12735c-4da8-46d6-801d-46c9898c681d']; let business = ['712020:0d04982c-00bf-46af-b3a7-446d0f44edfb', '712020:94d1f95d-9618-4f25-8284-41105336b942', '712020:47b24428-aa71-4363-b68f-29ed2285aad8']; let development = committedAssignee != null && developers.includes(committedAssignee.accountId) || history.some(change => change.items.some(item => (item.fieldId == 'status' && ['10016', '10017', '10018'].includes(item.to)) || (item.fieldId == 'assignee' && (developers.includes(item.from) || developers.includes(item.to))))); let previous = plain(originalIssue.customfield_10045); let simulation = user != null && user.accountId == '712020:0d04982c-00bf-46af-b3a7-446d0f44edfb' && issue.labels.includes('qag3-simulation') && originalIssue.labels.includes('qag3-simulation') && ((value('Result:').length == 1 && value('Result:')[0] == 'SIMULATED PASS') || (value('Review result:').length == 1 && value('Review result:')[0] == 'SIMULATED ACCEPTED')); (committedAssignee != null && committedAssignee != null && (simulation || committedAssignee.accountId != user.accountId) && history.every(change => change.items.every(item => item != null && typeof item.fieldId == 'string' && (simulation || item.fieldId != 'assignee' || (item.from != user.accountId && item.to != user.accountId)))) && (development ? (pass != null && pass.author != null && pass.author.active && pass.items.some(item => item.fieldId == 'customfield_10045' && item.fromString != item.toString && item.toString == evidence) && typeof evidence == 'string' && evidence == previous && ['Revision:', 'Environment:', 'Test scope:', 'Result:', 'Evidence:', 'Retest:', 'Bug references / retest rationale:'].every(prefix => value(prefix).length == 1 && value(prefix)[0].length > 0) && ((pass.author.accountId == '712020:94d1f95d-9618-4f25-8284-41105336b942' && value('Result:')[0] == 'PASS') || (pass.author.accountId == '712020:0d04982c-00bf-46af-b3a7-446d0f44edfb' && issue.labels.includes('qag3-simulation') && originalIssue.labels.includes('qag3-simulation') && value('Result:')[0] == 'SIMULATED PASS')) && value('Environment:')[0].indexOf('Test - ') == 0 && value('Environment:')[0].length > 7 && newer.every(change => change.items.every(item => item != null && typeof item.fieldId == 'string' && item.fieldId.length > 0 && !['summary', 'description', 'parent', 'assignee', 'customfield_10045'].includes(item.fieldId) && (item.fieldId != 'status' || (issue.issueType.id == 10011 && item.from == '10012' && item.to == '10019'))))) : (business.includes(committedAssignee.accountId) && typeof evidence == 'string' && (previous == null || (typeof previous == 'string' && evidence.trim() != previous.trim())) && ['Revision:', 'Review scope:', 'Review result:', 'Evidence:'].every(prefix => value(prefix).length == 1 && value(prefix)[0].length > 0) && (simulation ? value('Review result:')[0] == 'SIMULATED ACCEPTED' : value('Review result:')[0] == 'ACCEPTED')))) == true
+      errorMessage: Independent PM approval or labelled named-owner simulation is required. Development requires current QA; business requires fresh structured review. Simulation evidence must remain explicitly simulated.
+    - key: qag3-epic-readiness
+      name: QAG3 Epic scope readiness
+      description: PM approval requires an owner, acceptance criteria and an exact current Task scope declaration.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let plain = value => typeof value == 'Map' ? new RichText(value).plainText : value;
+        let evidence = plain(issue.customfield_10045);
+        let previous = plain(originalIssue.customfield_10045);
+        let description = issue.description == null ? null : issue.description.plainText;
+        let lines = typeof evidence == 'string' ? evidence.split('\n').map(line => line.trim()) : [];
+        let value = prefix => lines.filter(line => line.indexOf(prefix) == 0).map(line => line.slice(prefix.length).trim());
+        let scope = value('Scope tasks:').length == 1 ? value('Scope tasks:')[0].split(',').map(key => key.trim()) : [];
+        issue.project.id == 10002 && issue.project.key == 'QAG3' && issue.issueType.id == 10000 && originalIssue.status.id == 10010 &&
+        user != null && user.active && ['712020:0d04982c-00bf-46af-b3a7-446d0f44edfb', '712020:47b24428-aa71-4363-b68f-29ed2285aad8'].includes(user.accountId) &&
+        issue.assignee != null && issue.assignee.active && typeof description == 'string' && description.trim().length > 0 &&
+        typeof evidence == 'string' && (previous == null || (typeof previous == 'string' && evidence.trim() != previous.trim())) &&
+        ['Scope version:', 'Scope tasks:', 'Acceptance criteria:', 'Scope result:', 'Evidence:'].every(prefix => value(prefix).length == 1 && value(prefix)[0].length > 0) &&
+        value('Scope result:')[0] == 'APPROVED' && issue.childIssues != null && issue.childIssues.length > 0 &&
+        scope.length == issue.childIssues.length && issue.childIssues.every(child => child != null && child.project.id == 10002 && child.issueType.id == 10011 &&
+        scope.filter(key => key == child.key).length == 1)
+      errorMessage: An approved PM must enter fresh scope version, exact comma-separated child Task keys, acceptance criteria, APPROVED result and evidence. The Epic must have an active owner and description.
+    - key: qag3-epic-acceptance
+      name: QAG3 Epic delivery acceptance
+      description: PM acceptance requires fresh current scope and integration/handover evidence, checklist and completed descendants.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let plain = value => typeof value == 'Map' ?
+        (value.type == 'doc' && value.content != null && value.content.every(block => block.type == 'paragraph' &&
+        (block.content == null || block.content.every(node => node.type == 'text' || node.type == 'hardBreak'))) ?
+        value.content.map(block => block.content == null ? '' : block.content.map(node => node.type == 'hardBreak' ? '\n' : node.text).join('')).join('\n') : null) : value;
+        let evidence = plain(issue.customfield_10045);
+        let originalEvidence = originalIssue.customfield_10045;
+        let previous = plain(originalEvidence);
+        let lines = typeof evidence == 'string' ? evidence.split('\n').map(line => line.trim()) : [];
+        let value = prefix => lines.filter(line => line.indexOf(prefix) == 0).map(line => line.slice(prefix.length).trim());
+        let scope = value('Scope tasks:').length == 1 ? value('Scope tasks:')[0].split(',').map(key => key.trim()) : [];
+        let choices = issue.customfield_10044;
+        let checked = id => choices != null && choices.some(option => option != null && option.id == id);
+        let project = issue.project;
+        let children = issue.childIssues;
+        let owner = issue.assignee;
+        let originalOwner = originalIssue.assignee;
+        let description = issue.description;
+        let originalDescription = originalIssue.description;
+        project.id == 10002 && project.key == 'QAG3' && issue.issueType.id == 10000 && originalIssue.status.id == 10012 &&
+        user != null && user.active && ['712020:0d04982c-00bf-46af-b3a7-446d0f44edfb', '712020:47b24428-aa71-4363-b68f-29ed2285aad8'].includes(user.accountId) &&
+        owner != null && owner.active &&
+        issue.summary == originalIssue.summary && (description == null ? null : description.plainText) == (originalDescription == null ? null : originalDescription.plainText) &&
+        originalOwner != null && owner.accountId == originalOwner.accountId &&
+        typeof evidence == 'string' && (originalEvidence == null || (typeof previous == 'string' && evidence.trim() != previous.trim())) &&
+        ['Scope version:', 'Scope tasks:', 'Integration result:', 'Handover result:', 'Evidence:', 'Retest:', 'Bug references / retest rationale:'].every(prefix => value(prefix).length == 1 && value(prefix)[0].length > 0) &&
+        value('Integration result:')[0] == 'PASS' && value('Handover result:')[0] == 'COMPLETE' &&
+        ['10020', '10022', '10025', '10026', '10027'].every(id => checked(id)) && checked('10023') != checked('10024') &&
+        ((value('Retest:')[0] == 'PASSED' && checked('10023')) || (value('Retest:')[0] == 'NOT REQUIRED' && checked('10024'))) &&
+        children != null && children.length > 0 && scope.length == children.length &&
+        children.every(child => child != null && child.key.indexOf('QAG3-') == 0 && child.issueType.id == 10011 && child.status.id == 10009 &&
+        scope.filter(key => key == child.key).length == 1)
+      errorMessage: PM acceptance requires fresh exact scope, PASS integration, COMPLETE handover, evidence and consistent checklist/retest outcome; every current Task and Subtask must be Done. Scope or owner cannot change during acceptance.
+    - key: qag3-qa-freshness
+      name: QAG3 QA freshness companion
+      description: Require the latest signed QA entry to remain valid for current relevant fields; use together with current QA attestation, never alone.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let subtaskGate = ignored => {let scopeProject = issue.project; let currentAssignee = issue.assignee; let previousAssignee = originalIssue.assignee; let currentParent = issue.parent; let previousParent = originalIssue.parent; let currentDescription = issue.description; let previousDescription = originalIssue.description; let plain = value => typeof value == 'Map' ? (value.type == 'doc' && value.content != null && value.content.every(block => block.type == 'paragraph' && (block.content == null || block.content.every(node => node.type == 'text' || node.type == 'hardBreak'))) ? value.content.map(block => block.content == null ? '' : block.content.map(node => node.type == 'hardBreak' ? '\n' : node.text).join('')).join('\n') : null) : value; let pass = originalIssue.getNewestChangelog('status', {from: '10018', to: '10012'}); let choices = issue.customfield_10044; let evidence = plain(issue.customfield_10045); let lines = typeof evidence == 'string' ? evidence.split('\n').map(line => line.trim()) : []; let value = prefix => lines.filter(line => line.indexOf(prefix) == 0).map(line => line.slice(prefix.length).trim()); let checked = id => choices != null && choices.some(option => option != null && option.id == id); return scopeProject.id == 10002 && scopeProject.key == 'QAG3' && user != null && user.active && ['712020:0d04982c-00bf-46af-b3a7-446d0f44edfb', '712020:47b24428-aa71-4363-b68f-29ed2285aad8'].includes(user.accountId) && currentAssignee != null && currentAssignee.active && issue.key.indexOf('QAG3-') == 0 && originalIssue.status.id == 10012 && issue.summary == originalIssue.summary && (currentDescription == null ? null : currentDescription.plainText) == (previousDescription == null ? null : previousDescription.plainText) && (currentParent == null ? previousParent == null : previousParent != null && currentParent.id == previousParent.id) && (currentAssignee == null ? previousAssignee == null : previousAssignee != null && currentAssignee.accountId == previousAssignee.accountId) && (pass == null || (checked('10022') && checked('10023') != checked('10024') && ((value('Retest:')[0] == 'PASSED' && checked('10023')) || (value('Retest:')[0] == 'NOT REQUIRED' && checked('10024'))) ));}; let taskGate = ignored => {let lastStatus = originalIssue.getNewestChangelog('status'); let edits = ['summary', 'description', 'parent', 'assignee', 'customfield_10045'].map(field => originalIssue.getNewestChangelog(field)); let pass = edits[4]; let parent = issue.parent; let originalParent = originalIssue.parent; let assignee = issue.assignee; let originalAssignee = originalIssue.assignee; return issue.key.indexOf('QAG3-') == 0 && [10011, 10010].includes(issue.issueType.id) && [10012, 10019].includes(originalIssue.status.id) && pass != null && lastStatus != null && (parent == null ? originalParent == null : originalParent != null && parent.id == originalParent.id) && (assignee == null ? originalAssignee == null : originalAssignee != null && assignee.accountId == originalAssignee.accountId) && edits.every(change => change == null || change.id == pass.id || change.created < pass.created) && ((lastStatus.id == pass.id && lastStatus.items.some(item => item.fieldId == 'status' && item.from == '10018' && item.to == '10012')) || (issue.issueType.id == 10011 && lastStatus.created > pass.created && lastStatus.items.some(item => item.fieldId == 'status' && item.from == '10012' && item.to == '10019')));}; issue.issueType.id == 10010 ? subtaskGate(true) : taskGate(true)
+      errorMessage: QA is stale after relevant edits or rework. Return to testing and submit fresh QA evidence; this companion does not replace authenticated QA attestation.
+    - key: qag3-subtask-history
+      name: QAG3 Subtask history and QA provenance
+      description: Complete assignment and QA history policy; use with acceptance and freshness, never alone.
+      projectTypes:
+        - company-managed
+      expression: >-
+        let scope = issue.project; scope.id == 10002 && scope.key == 'QAG3' && issue.issueType.id == 10010 && (ignored => {let committedAssignee = originalIssue.assignee; let plain = value => typeof value == 'Map' ? (value.type == 'doc' && value.content != null && value.content.every(block => block.type == 'paragraph' && (block.content == null || block.content.every(node => node.type == 'text' || node.type == 'hardBreak'))) ? value.content.map(block => block.content == null ? '' : block.content.map(node => node.type == 'hardBreak' ? '\n' : node.text).join('')).join('\n') : null) : value; let evidence = plain(issue.customfield_10045); let history = originalIssue.changelogs.map(change => ({id:change.id,author:change.author,created:change.created,items:change.items.map(item => ({fieldId:item.fieldId,from:item.from,to:item.to,fromString:item.fromString,toString:item.toString}))})); let passes = history.filter(change => change.items.some(item => item.fieldId == 'status' && item.from == '10018' && item.to == '10012')); let pass = passes.length > 0 ? passes[0] : null; let newer = pass != null ? history.slice(0, history.map(change => change.id).indexOf(pass.id)) : []; let lines = typeof evidence == 'string' ? evidence.split('\n').map(line => line.trim()) : []; let value = prefix => lines.filter(line => line.indexOf(prefix) == 0).map(line => line.slice(prefix.length).trim()); let developers = ['712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a', '712020:da12735c-4da8-46d6-801d-46c9898c681d']; let business = ['712020:0d04982c-00bf-46af-b3a7-446d0f44edfb', '712020:94d1f95d-9618-4f25-8284-41105336b942', '712020:47b24428-aa71-4363-b68f-29ed2285aad8']; let development = committedAssignee != null && developers.includes(committedAssignee.accountId) || history.some(change => change.items.some(item => (item.fieldId == 'status' && ['10016', '10017', '10018'].includes(item.to)) || (item.fieldId == 'assignee' && (developers.includes(item.from) || developers.includes(item.to))))); let simulation = user != null && user.accountId == '712020:0d04982c-00bf-46af-b3a7-446d0f44edfb' && ((value('Result:').length == 1 && value('Result:')[0] == 'SIMULATED PASS') || (value('Review result:').length == 1 && value('Review result:')[0] == 'SIMULATED ACCEPTED')); return (committedAssignee != null && committedAssignee != null && (simulation || committedAssignee.accountId != user.accountId) && history.every(change => change.items.every(item => item != null && typeof item.fieldId == 'string' && (simulation || item.fieldId != 'assignee' || (item.from != user.accountId && item.to != user.accountId)))) && (development ? (pass != null && pass.author != null && pass.author.active && pass.items.some(item => item.fieldId == 'customfield_10045' && item.fromString != item.toString && item.toString == evidence) && typeof evidence == 'string' && ['Revision:', 'Environment:', 'Test scope:', 'Result:', 'Evidence:', 'Retest:', 'Bug references / retest rationale:'].every(prefix => value(prefix).length == 1 && value(prefix)[0].length > 0) && ((pass.author.accountId == '712020:94d1f95d-9618-4f25-8284-41105336b942' && value('Result:')[0] == 'PASS') || (pass.author.accountId == '712020:0d04982c-00bf-46af-b3a7-446d0f44edfb' && value('Result:')[0] == 'SIMULATED PASS')) && value('Environment:')[0].indexOf('Test - ') == 0 && value('Environment:')[0].length > 7 && newer.every(change => change.items.every(item => item != null && typeof item.fieldId == 'string' && item.fieldId.length > 0 && !['summary', 'description', 'parent', 'assignee', 'customfield_10045'].includes(item.fieldId) && (item.fieldId != 'status' || (issue.issueType.id == 10011 && item.from == '10012' && item.to == '10019'))))) : true)) == true; })(true)
+      errorMessage: Full Subtask history, independent acceptance and authenticated current QA provenance are required.
+app:
+  runtime:
+    name: nodejs24.x
+  id: ari:cloud:ecosystem::app/f6f77ef8-978a-4e85-a3df-b30d3ef38d06

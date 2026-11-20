@@ -1,0 +1,72 @@
+{
+  "status": "DIAGNOSTIC_STOPPED",
+  "reason": "INVALID_RESPONSE_ValueError",
+  "rows": [
+    {
+      "case": "dev:create_list:vi",
+      "kind": "positive",
+      "seconds": 7.683,
+      "done_reason": "stop",
+      "prompt_tokens": 1724,
+      "output_tokens": 48,
+      "model_load_seconds": 5.9282023,
+      "matches": [
+        {
+          "native_id": 380,
+          "span_id": 10,
+          "answer": "Unit: create-list-persistence-v1",
+          "quote": "Unit: create-list-persistence-v1"
+        }
+      ],
+      "citations": [
+        {
+          "native_id": 380,
+          "document_id": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+          "start": 1775,
+          "end": 1807,
+          "sha256": "4e23aa5996f71f2c9859584e0954aea57e484ff63d0382fa6f87df4ac8cd7ac0"
+        }
+      ],
+      "supporting_span_selected": false,
+      "diagnostic_correct": false
+    },
+    {
+      "case": "dev:create_list:en",
+      "kind": "positive",
+      "seconds": 1.422,
+      "done_reason": "stop",
+      "prompt_tokens": 1636,
+      "output_tokens": 42,
+      "model_load_seconds": 0.0108781,
+      "matches": [
+        {
+          "native_id": 380,
+          "span_id": 0,
+          "answer": "AI unit",
+          "quote": "[AI unit] Create/list tasks + SQLite persistence"
+        }
+      ],
+      "citations": [
+        {
+          "native_id": 380,
+          "document_id": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+          "start": 0,
+          "end": 48,
+          "sha256": "b68667e41c050c9111fc7d348c12c853d8bfb025b5278eb186c6cb02766bc9f9"
+        }
+      ],
+      "supporting_span_selected": true,
+      "diagnostic_correct": true
+    }
+  ],
+  "elapsed_seconds": 10.336,
+  "all_six_diagnostic_correct": false,
+  "holdout_access": false,
+  "main_changed": false,
+  "limits": [
+    "Observed correlated DEV, not independent acceptance.",
+    "Cached retrieval/ranking excluded.",
+    "No hard memory cap.",
+    "Generated answer correctness still requires independent review; exact quote alone is insufficient."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-26T17:18:14.518863+00:00",
+  "status": "APP_ONLY_ROLLBACK_HEALTHY_OPERATOR_SCAN_COMPARISON_CORRECTED",
+  "cause": "Cron observation timestamps/generation compared as immutable content",
+  "observed_delta": {
+    "content_version_visibility_exact": true,
+    "scan_semantics_exact": true,
+    "observation_only_delta": [
+      {
+        "actor": 18,
+        "project": 5,
+        "generation_before": 2586,
+        "generation_after": 2589,
+        "inventory_sha256": "fdd8d63c6df047767c033ec472f1dad519896f489567aa3582fa1a3ff5e5c140",
+        "changed": 0,
+        "visible": 338,
+        "native_writes": 0
+      },
+      {
+        "actor": 19,
+        "project": 5,
+        "generation_before": 1,
+        "generation_after": 1,
+        "inventory_sha256": "2bbb759dd3608f7db9b52e48e158e9cee3b167926fb40715c3f53fb686d77e71",
+        "changed": 0,
+        "visible": 333,
+        "native_writes": 0
+      }
+    ]
+  },
+  "source_hash_negative_check": "PASS_DRIFT_REJECTED",
+  "native_and_rag_data_preserved_before_failed_check": true,
+  "database_restore": false,
+  "next": "New exact current manifest and fresh backup before third scoped deployment"
+}

@@ -1,0 +1,32 @@
+{
+  "old_image": "sha256:277408024c5ec10fcce0077b1d3ecaceff4be5a9ff461026ae0a2ebb8b5cd090",
+  "candidate_image": "sha256:8040deec28fc7b4591ba931c280038e471ecbf93d465bda5fb570fa64c433ada",
+  "candidate_tag": "qldapm-ai:codex-supervisor-planner-20261023",
+  "module_sha256": {
+    "planner.py": "2c578c35f51f09c2e82b48dcd88d4b6ec4bfbdc6562461fc0e81bd539efff71e"
+  },
+  "gateway_backup_sha256": "c1a0a348fa22efb9c74de819717ef6a9396b4e59cf4a8e4b0c181511c6154390",
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "scope": "Main Gateway planner.py only. Explicit PM/Supervisor remains the combined coordinator when later prose mentions PM approval; no fifthPM specialist. Explicit requested_agent=pm and separate BA+PM requests remain compatible. No credentials/config/schema/Nativewrite/Core/n8n/Staging change.",
+  "tests": {
+    "linux_run": 46,
+    "linux_passed": 46,
+    "linux_node_skipped": 0,
+    "windows_related_passed": 46,
+    "regression": "RED5specialists -> GREEN4; explicitPMagent and separateBA+PM preserved"
+  },
+  "rollback": "Restore exact private pre-planner-routing.env and recreateGatewayonly on previous image; keep additive receipt JSON/SQLite/proposals/jobs and existing Core hostname; never replay Native writes.",
+  "limits": [
+    "Historical runs/receipts are not retrofitted or rerun",
+    "Source/snippet hashes prove supplied context and request correlation, not semantic model correctness",
+    "No fresh model/write-chain acceptance until separately executed and read back"
+  ],
+  "fresh_probe": "Read-only scoped knowledge query + legacy stored run readback; no new model call during deployment",
+  "status": "DEPLOYED_PLANNER_AND_PRESERVATION_VERIFIED_FRESH_PROPOSAL_PENDING",
+  "health_http": 200,
+  "serving_planner_sha256_verified": true,
+  "native_333_unchanged": true,
+  "six_sensitive_files_and_security_hashes_unchanged": true,
+  "nine_other_main_containers_unchanged": true,
+  "provider_usage_proposals_and_knowledge_jobs_unchanged": true
+}

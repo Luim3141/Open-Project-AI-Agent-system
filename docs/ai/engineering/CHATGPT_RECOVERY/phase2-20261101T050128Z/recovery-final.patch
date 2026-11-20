@@ -1,0 +1,1394 @@
+--- before/gateway/engineering.py
++++ after/gateway/engineering.py
+@@ -61,10 +61,30 @@
+ 
+ 
+ def build_workforce_profiles(service, quota_model):
++    """Project6 observations only; configured quota/catalog entries are not execution proof."""
+     from .agent_registry import engineering_profile
+     profiles = []
+-    with service.store.connect() as db:
+-        active = db.execute("SELECT id FROM ai_queue WHERE state='executing' AND json_extract(payload, '$.project_id')=6").fetchone()
++    unknown = 'NOT VERIFIED — Chưa có bằng chứng'
++    with service.store.connect() as db:
++        run_roles = {row['id']: row['agent'] for row in db.execute(
++            "SELECT q.id, json_extract(r.result,'$.agent') AS agent FROM ai_queue q JOIN ai_runs r ON r.id=q.id "
++            "WHERE q.state='executing' AND json_extract(q.payload,'$.project_id')=6 "
++            "AND json_extract(q.payload,'$.engine')='openclaw'"
++        )}
++        # Planning emits lifecycle events without updating result.agent; the latest handoff wins.
++        for event in db.execute(
++            "SELECT e.run_id, json_extract(e.document,'$.agent_id') AS agent, "
++            "json_extract(e.document,'$.event_type') AS kind FROM execution_events e "
++            "JOIN ai_queue q ON q.id=e.run_id AND q.actor=e.actor "
++            "WHERE e.project=6 AND q.state='executing' AND json_extract(q.payload,'$.project_id')=6 "
++            "AND json_extract(q.payload,'$.engine')='openclaw' "
++            "AND json_extract(e.document,'$.agent_id') IS NOT NULL "
++            "AND json_extract(e.document,'$.event_type') IN "
++            "('AGENT_STARTED','AGENT_COMPLETED','AGENT_FAILED','REVIEW_STARTED','REVIEW_COMPLETED') "
++            "ORDER BY e.sequence"
++        ):
++            run_roles[event['run_id']] = event['agent'] if event['kind'] in {'AGENT_STARTED', 'REVIEW_STARTED'} else None
++        active_roles = set(run_roles.values())
+         last_oc = db.execute(
+             "SELECT q.id, q.state, q.payload, r.result FROM ai_queue q "
+             "JOIN ai_runs r ON r.id=q.id "
+@@ -85,44 +105,36 @@
+         for role in ['supervisor', 'pm', 'ba', 'dev', 'reviewer', 'qa']:
+             prof = engineering_profile(role)
+             rec_row = db.execute(
+-                "SELECT id, run_id, document FROM gemini_call_receipts "
+-                "WHERE json_extract(document, '$.agent')=? "
+-                "ORDER BY id DESC LIMIT 1", (role,)
++                "SELECT c.id, c.run_id, c.document FROM gemini_call_receipts c "
++                "JOIN ai_queue q ON q.id=c.run_id AND q.actor=c.actor "
++                "WHERE json_extract(q.payload,'$.project_id')=6 "
++                "AND json_extract(q.payload,'$.engine')='openclaw' "
++                "AND json_extract(c.document,'$.agent')=? "
++                "ORDER BY CAST(json_extract(c.document,'$.at') AS REAL) DESC, c.rowid DESC LIMIT 1", (role,)
+             ).fetchone()
+             rec_doc = json.loads(rec_row['document']) if rec_row and rec_row['document'] else {}
+-
+-            if role in {'supervisor', 'pm', 'ba'}:
+-                actual_model = quota_model
+-                provider = 'gemini-shared'
+-                runtime = prof['runtime']
+-                oc_session = 'N/A (Gateway Daemon)'
+-                last_exec = rec_row['run_id'] if rec_row else 'Init / Gateway'
+-                last_err = 'None' if (rec_doc.get('state') in ('LIVE_SUCCESS', 'HTTP_SUCCESS') or not rec_doc) else rec_doc.get('state')
+-                evidence = '325 Gemini Receipts recorded (LIVE_SUCCESS)'
+-            elif role == 'reviewer':
+-                actual_model = 'local-policy (0 LLM Calls)'
+-                provider = 'local-policy'
+-                runtime = 'openclaw / local-policy'
+-                oc_session = 'review-0-trajectory.jsonl'
+-                last_exec = last_oc['id'] if last_oc else 'N/A'
+-                last_err = 'None'
+-                evidence = 'Exact-diff inspection: Clean Code, Zero Security Leak (PASS)'
+-            elif role == 'dev':
+-                actual_model = f'openclaw + {quota_model}'
+-                provider = 'openclaw / gemini-shared'
+-                runtime = 'openclaw (WSL2 Ubuntu 24.04)'
+-                oc_session = 'dev-0-trajectory.jsonl'
+-                last_exec = last_oc['id'] if last_oc else 'N/A'
+-                last_err = 'None'
+-                evidence = 'PRs #1-#5 created (task_manager/app.py, tests/test_tasks.py)'
+-            elif role == 'qa':
+-                actual_model = 'openclaw / pytest-runner'
+-                provider = 'openclaw'
+-                runtime = 'openclaw (WSL2 Ubuntu 24.04)'
+-                oc_session = 'qa-0-trajectory.jsonl'
+-                last_exec = last_oc['id'] if last_oc else 'N/A'
+-                last_err = 'None'
+-                evidence = '21/21 Pytest PASS, 100% Acceptance Criteria Met'
++            actual_model = rec_doc.get('model') or unknown
++            provider = rec_doc.get('provider') or unknown
++            runtime = 'openclaw (receipt)' if rec_doc.get('session_id') else prof['runtime'] + ' (configured; runtime NOT VERIFIED)'
++            oc_session = rec_doc.get('session_id') or unknown
++            last_exec = rec_row['run_id'] if rec_row else unknown
++            last_err = rec_doc.get('error') or ('None' if rec_doc.get('state') in {'LIVE_SUCCESS', 'HTTP_SUCCESS'} else rec_doc.get('state') or unknown)
++            evidence = 'Receipt: ' + canonical({
++                'id': rec_row['id'], 'run_id': rec_row['run_id'], 'state': rec_doc.get('state') or unknown,
++                'at': rec_doc.get('at') if rec_doc.get('at') is not None else unknown,
++                'usage': rec_doc.get('usage') or unknown
++            }) if rec_row else unknown
++            if role == 'supervisor':
++                actual_model = 'Không dùng model (LOCAL_DETERMINISTIC)'
++                provider = 'local-deterministic'
++                runtime = 'qldapm-supervisor (LOCAL_DETERMINISTIC)'
++                oc_session = unknown
++                last_exec = last_oc['id'] if last_oc else unknown
++                result = json.loads(last_oc['result'] or '{}') if last_oc else {}
++                last_err = result.get('error') or ('None' if result.get('status') == 'succeeded' else unknown)
++                evidence = 'Stored queue run: ' + canonical({
++                    'id': last_oc['id'], 'queue_state': last_oc['state'], 'status': result.get('status')
++                }) if last_oc else unknown
+ 
+             prof.update({
+                 'role_title': role_titles[role],
+@@ -132,15 +144,16 @@
+                 'openclaw_session': oc_session,
+                 'last_execution': last_exec,
+                 'last_error': last_err,
+-                'skills_loaded': prof.get('skill', 'engineering-planning'),
++                'skills_loaded': unknown,
+                 'evidence': evidence,
+-                'status': 'RUNNING' if active else 'STANDBY'
++                'status': 'RUNNING' if role in active_roles else 'STANDBY'
+             })
+             profiles.append(prof)
+     return profiles
+ 
+ 
+ def status(service, actor):
++    from .engineering_integrity import observed_result
+     native,_=authorized(service, actor)
+     setup(service.store)
+     with service.store.connect() as db:
+@@ -151,20 +164,26 @@
+     runs=[]
+     with service.store.connect() as db:
+         for r in rows:
++            agent_document=db.execute('SELECT document FROM agent_runs WHERE id=?',(r['id'],)).fetchone()
++            agent_state=json.loads(agent_document[0]).get('state') if agent_document else None
+             receipts=[json.loads(v[0]) for v in db.execute('SELECT document FROM gemini_call_receipts WHERE run_id=?',(r['id'],))]
+             usage=[v.get('usage') or {} for v in receipts]
+             from .engineering_lifecycle import load
+             checkpoint=load(service.store,r['id'])
+             runs.append({'id':r['id'],'queue_state':r['state'],'created_at':r['created'],'unit':json.loads(r['payload'])['unit'],
+                 'native_id':json.loads(r['payload'])['native_id'],'checkpoint':checkpoint,
+-                'result':json.loads(r['result']) if r['result'] else None,
++                'result':observed_result(json.loads(r['result'] or '{}'),agent_state),
+                 'usage':{'requests_recorded':len(receipts),'total_tokens_reported':sum(v.get('totalTokenCount',0) for v in usage),
+                     'usage_missing':sum('totalTokenCount' not in v for v in usage)}})
+     from .engineering_planning import definitions
+     from .agent_registry import engineering_profile
+     units=[]
+     with service.store.connect() as db:
+-        all_runs={json.loads(r['payload'])['unit']:{'id':r['id'],'queue_state':r['state'],'result':json.loads(r['result'] or '{}'),'actor':r['actor']} for r in db.execute("SELECT q.id,q.state,q.payload,r.result,q.actor FROM ai_queue q JOIN ai_runs r ON r.id=q.id WHERE json_extract(q.payload,'$.project_id')=6 AND json_extract(q.payload,'$.engine')='openclaw' ORDER BY q.created")}
++        all_runs={}
++        for r in db.execute("SELECT q.id,q.state,q.payload,r.result,q.actor,a.document AS agent_document FROM ai_queue q JOIN ai_runs r ON r.id=q.id LEFT JOIN agent_runs a ON a.id=q.id WHERE json_extract(q.payload,'$.project_id')=6 AND json_extract(q.payload,'$.engine')='openclaw' ORDER BY q.created"):
++            agent_state=json.loads(r['agent_document'] or '{}').get('state')
++            all_runs[json.loads(r['payload'])['unit']]={'id':r['id'],'queue_state':r['state'],
++                'result':observed_result(json.loads(r['result'] or '{}'),agent_state),'actor':r['actor']}
+     for key,definition in definitions(service.store,actor).items():
+         run=all_runs.get(key)
+         dependency=definition.get('base_unit')
+@@ -188,8 +207,10 @@
+     except Exception:quota={'state':'UNAVAILABLE'}
+     github_info = {'status': 'UNKNOWN', 'repo': 'Luim3141/mini-task-manager', 'prs': []}
+     try:
+-        from .engineering_github_sync import fetch_pull_requests, get_sync_meta
+-        prs = fetch_pull_requests('Luim3141/mini-task-manager')
++        from .engineering_github_sync import fetch_pull_requests, get_sync_meta, get_pr_wp_map
++        pr_mapping = get_pr_wp_map(service)
++        prs = [dict(pr, wp_id=pr_mapping.get(pr['number']))
++               for pr in fetch_pull_requests('Luim3141/mini-task-manager')]
+         sync_meta = get_sync_meta(service)
+         github_info = {'status': 'ONLINE', 'repo': 'Luim3141/mini-task-manager', 'prs': prs, 'sync_meta': sync_meta}
+     except Exception as exc:
+--- before/gateway/engineering_lifecycle.py
++++ after/gateway/engineering_lifecycle.py
+@@ -115,11 +115,11 @@
+             raise ValueError('ENGINEERING_RECONCILIATION_REQUIRED')
+         if contract.get('recovery_count',0)>=5:raise ValueError('ENGINEERING_RECOVERY_BUDGET_EXHAUSTED')
+         item=native.package(contract['native_id'])
+-        if not source_matches(service.store,actor,run_id,contract,item):
++        if not source_matches(service.store,run.actor_id,run_id,contract,item):
+             raise ValueError('ENGINEERING_SOURCE_STALE')
+         if db.execute("SELECT 1 FROM ai_queue WHERE state!='finished' AND id!=?",(run_id,)).fetchone():raise ValueError('ENGINEERING_OTHER_RUN_ACTIVE')
+         # External write outcomes are never guessed by an ordinary resume button.
+-        if db.execute("SELECT 1 FROM requests WHERE actor=? AND key LIKE ? AND state NOT IN ('done','rejected')",(actor,'engineering-'+run_id+'-%')).fetchone():
++        if db.execute("SELECT 1 FROM requests WHERE actor=? AND key LIKE ? AND state NOT IN ('done','rejected')",(run.actor_id,'engineering-'+run_id+'-%')).fetchone():
+             raise ValueError('ENGINEERING_NATIVE_OUTCOME_RECONCILIATION_REQUIRED')
+         now=time.time();contract.update(deadline=now+1800,recovery_count=contract.get('recovery_count',0)+(1 if row['served'] else 0),cancel_requested=False)
+         task=AgentTask.from_json(db.execute('SELECT document FROM agent_tasks WHERE id=?',(run.task_id,)).fetchone()[0])
+--- before/gateway/store.py
++++ after/gateway/store.py
+@@ -1006,6 +1006,10 @@
+         with self.connect() as db:
+             db.execute("BEGIN IMMEDIATE")
+             self.expire_queue(db, now)
++            if openclaw_only:
++                mode = db.execute('SELECT mode FROM engineering_control WHERE project=6').fetchone()
++                if not mode or mode[0] not in {'RUN_ONCE', 'AUTO'}:
++                    return None
+             if db.execute("SELECT 1 FROM ai_queue WHERE state='executing' LIMIT 1").fetchone():
+                 return None
+             # Global served sequence gives each waiting actor a turn, even when timestamps tie.
+--- before/gateway/engineering_github_sync.py
++++ after/gateway/engineering_github_sync.py
+@@ -4,13 +4,14 @@
+ without external webhooks, public tunnels, or autonomous merging.
+ Features:
+ - Stacked PR chain awareness (merged-to-main vs merged-to-feature-branch).
+-- Persistent sync cache in SQLite to eliminate duplicate comments across container restarts.
++- Durable SQLite journal and Native marker readback; unknown POSTs are never replayed.
+ - Out-of-order and idempotency protection.
+ """
+ import hashlib
+ import json
+ import logging
+ import os
++import re
+ import subprocess
+ import time
+ import urllib.error
+@@ -23,6 +24,7 @@
+ _SYNC_CACHE: Dict[str, str] = {}
+ _CACHED_PRS: List[Dict[str, Any]] = []
+ _CACHED_PRS_TIME: float = 0.0
++_CACHED_PRS_REPO: Optional[str] = None
+ _PRS_TTL: float = 60.0
+ 
+ PR_WP_MAP = {
+@@ -42,20 +44,26 @@
+     if store and hasattr(store, "connect"):
+         try:
+             with store.connect() as db:
+-                rows = db.execute("SELECT payload, result FROM ai_runs WHERE result IS NOT NULL").fetchall()
++                rows = db.execute(
++                    "SELECT q.payload, r.result FROM ai_queue q JOIN ai_runs r ON r.id=q.id "
++                    "WHERE json_extract(q.payload,'$.project_id')=6 "
++                    "AND json_extract(q.payload,'$.engine')='openclaw' "
++                    "AND json_extract(q.payload,'$.repository')='Luim3141/mini-task-manager' "
++                    "AND r.result IS NOT NULL ORDER BY r.created, r.id"
++                ).fetchall()
+                 for p_str, r_str in rows:
+                     try:
+                         p = json.loads(p_str or "{}")
+                         r = json.loads(r_str or "{}")
+                         pr_url = r.get("pr_url", "")
+-                        wp_id = p.get("native_id")
+-                        if pr_url and wp_id and "/pull/" in pr_url:
+-                            pr_num = int(pr_url.split("/pull/")[-1].split("/")[0].split("?")[0])
+-                            mapping[pr_num] = int(wp_id)
+-                    except Exception:
+-                        pass
+-        except Exception:
+-            pass
++                        wp_id = (r.get('native_readback') or {}).get('child_id') or p.get('native_id')
++                        match = re.fullmatch(r'https://github\.com/Luim3141/mini-task-manager/pull/([1-9][0-9]*)', pr_url)
++                        if r.get('status') == 'succeeded' and match and type(wp_id) is int and wp_id > 0 and wp_id != 379:
++                            mapping[int(match[1])] = wp_id
++                    except (ValueError, TypeError, AttributeError):
++                        logger.warning('Malformed engineering PR receipt ignored')
++        except Exception as exc:
++            logger.warning('Could not read dynamic engineering PR mapping: %s', exc)
+     return mapping
+ 
+ 
+@@ -109,15 +117,14 @@
+     force: bool = False,
+ ) -> List[Dict[str, Any]]:
+     """Fetch all pull requests from GitHub REST API with stacked branch awareness."""
+-    global _CACHED_PRS, _CACHED_PRS_TIME
++    global _CACHED_PRS, _CACHED_PRS_TIME, _CACHED_PRS_REPO
+     now = time.time()
+-    if not force and _CACHED_PRS and (now - _CACHED_PRS_TIME < _PRS_TTL):
++    if not force and _CACHED_PRS_REPO == repo and _CACHED_PRS_TIME > 0 and (now - _CACHED_PRS_TIME < _PRS_TTL):
+         return _CACHED_PRS
+ 
+     if token is None:
+         token = get_github_token()
+ 
+-    url = f"https://api.github.com/repos/{repo}/pulls?state=all"
+     headers = {
+         "User-Agent": "QLDAPM-Sync/1.0",
+         "Accept": "application/vnd.github+json",
+@@ -125,9 +132,23 @@
+     if token:
+         headers["Authorization"] = f"Bearer {token}"
+ 
+-    req = urllib.request.Request(url, headers=headers)
+-    with urllib.request.urlopen(req, timeout=15) as resp:
+-        raw_prs = json.loads(resp.read().decode("utf-8"))
++    raw_prs = []
++    deadline = time.monotonic() + 20
++    for page in range(1, 101):
++        remaining = deadline - time.monotonic()
++        if remaining <= 0:
++            raise TimeoutError('GITHUB_SYNC_DEADLINE_EXCEEDED')
++        url = f"https://api.github.com/repos/{repo}/pulls?state=all&per_page=100&page={page}"
++        req = urllib.request.Request(url, headers=headers)
++        with urllib.request.urlopen(req, timeout=min(15, remaining)) as resp:
++            batch = json.loads(resp.read().decode("utf-8"))
++        if not isinstance(batch, list):
++            raise ValueError('GITHUB_PULLS_RESPONSE_INVALID')
++        raw_prs.extend(batch)
++        if len(batch) < 100:
++            break
++    else:
++        raise ValueError('GITHUB_PULLS_COLLECTION_INCOMPLETE')
+ 
+     prs = []
+     for pr in raw_prs:
+@@ -137,21 +158,6 @@
+             merge_target = "MAIN" if base_ref == "main" else f"FEATURE_BRANCH ({base_ref})"
+         else:
+             merge_target = "UNMERGED"
+-
+-        reviews_state = "NO_REVIEWS_ON_GITHUB"
+-        checks_state = "NO_CI_CHECKS_CONFIGURED"
+-        if token:
+-            try:
+-                rev_url = f"https://api.github.com/repos/{repo}/pulls/{pr.get('number')}/reviews"
+-                rev_req = urllib.request.Request(rev_url, headers=headers)
+-                with urllib.request.urlopen(rev_req, timeout=5) as rev_resp:
+-                    rev_data = json.loads(rev_resp.read().decode("utf-8"))
+-                    if rev_data:
+-                        reviews_state = rev_data[-1].get("state", "REVIEWED")
+-                    else:
+-                        reviews_state = "NO_REVIEWS_ON_GITHUB"
+-            except Exception:
+-                reviews_state = "NO_REVIEWS_ON_GITHUB"
+ 
+         prs.append({
+             "number": pr.get("number"),
+@@ -162,15 +168,17 @@
+             "merged_at": pr.get("merged_at"),
+             "head_sha": pr.get("head", {}).get("sha", ""),
+             "base_ref": base_ref,
++            "head_ref": pr.get("head", {}).get("ref", ""),
+             "html_url": pr.get("html_url", ""),
+             "draft": pr.get("draft", False),
+             "created_at": pr.get("created_at"),
+             "updated_at": pr.get("updated_at"),
+-            "reviews_state": reviews_state,
+-            "checks_state": checks_state,
++            "reviews_state": 'NOT_CHECKED',
++            "checks_state": 'NOT_CHECKED',
+         })
+ 
+     _CACHED_PRS = prs
++    _CACHED_PRS_REPO = repo
+     _CACHED_PRS_TIME = time.time()
+     return prs
+ 
+@@ -217,6 +225,82 @@
+             logger.warning(f"Failed to write to persistent sync cache: {exc}")
+ 
+ 
++def _journal_reserve(service: Any, key: str, wp_id: int) -> tuple[str, bool]:
++    store = getattr(service, 'store', None)
++    if store is None or not hasattr(store, 'connect'):
++        raise RuntimeError('GITHUB_SYNC_DURABLE_STORE_REQUIRED')
++    with store.connect() as db:
++        db.execute('BEGIN IMMEDIATE')
++        db.execute('CREATE TABLE IF NOT EXISTS engineering_github_sync_journal '
++                   '(operation_key TEXT PRIMARY KEY, wp_id INTEGER NOT NULL, state TEXT NOT NULL, '
++                   'updated REAL NOT NULL, error TEXT)')
++        row = db.execute('SELECT state FROM engineering_github_sync_journal WHERE operation_key=?',
++                         (key,)).fetchone()
++        if row and row[0] != 'REJECTED':
++            return row[0], False
++        db.execute('INSERT INTO engineering_github_sync_journal VALUES(?,?,\'RESERVED\',?,NULL) '
++                   'ON CONFLICT(operation_key) DO UPDATE SET state=\'RESERVED\',updated=excluded.updated,error=NULL',
++                   (key, wp_id, time.time()))
++    return 'RESERVED', True
++
++
++def _journal_finish(service: Any, key: str, state: str, error: Optional[str] = None) -> None:
++    with service.store.connect() as db:
++        # A concurrent readback can confirm success while the original POST is returning.
++        db.execute('UPDATE engineering_github_sync_journal SET state=?,updated=?,error=? '
++                   'WHERE operation_key=? AND state!=\'DONE\'', (state, time.time(), error, key))
++
++
++def _has_activity_marker(native: Any, wp_id: int, marker: str, legacy_comment: str) -> bool:
++    activities = native.collection(f'/api/v3/work_packages/{wp_id}/activities')
++    if not isinstance(activities, list):
++        raise ValueError('GITHUB_SYNC_ACTIVITY_COLLECTION_INVALID')
++    for activity in activities:
++        if not isinstance(activity, dict) or not isinstance(activity.get('comment', {}), dict):
++            raise ValueError('GITHUB_SYNC_ACTIVITY_INVALID')
++        raw = str(activity.get('comment', {}).get('raw', ''))
++        if marker in raw or raw.strip() == legacy_comment.strip():
++            return True
++    return False
++
++
++def _sync_activity(service: Any, native: Any, wp_id: int, key: str, comment: str) -> str:
++    state, owned = _journal_reserve(service, key, wp_id)
++    if state == 'DONE':
++        return 'UNCHANGED'
++    marker = f'[qldapm-github-sync:{key}]'
++    attempted = False
++    try:
++        package = native.package(wp_id)
++        if (package.get('id') != wp_id
++                or package.get('_links', {}).get('project', {}).get('href') != '/api/v3/projects/6'
++                or package.get('_links', {}).get('parent', {}).get('href') != '/api/v3/work_packages/379'):
++            raise PermissionError('ENGINEERING_CHILD_SCOPE_MISMATCH')
++        if _has_activity_marker(native, wp_id, marker, comment):
++            _journal_finish(service, key, 'DONE')
++            return 'RECONCILED'
++        if not owned:
++            return 'UNKNOWN'
++        # Commit uncertainty before the network call: even a process exit cannot permit a second POST.
++        _journal_finish(service, key, 'UNKNOWN')
++        attempted = True
++        native.call(f'/api/v3/work_packages/{wp_id}/activities', 'POST',
++                    {'comment': {'format': 'markdown', 'raw': comment + '\n\n' + marker}})
++        _journal_finish(service, key, 'DONE')
++        return 'UPDATED'
++    except Exception as exc:
++        from .native import NativeError
++        # Only explicit origin rejections prove no activity was created; transport/5xx stay unknown.
++        rejected = (not attempted or (isinstance(exc, NativeError)
++                    and exc.status in {400, 401, 403, 404, 405, 409, 410, 422, 429}
++                    and str(exc).startswith(f'OPENPROJECT_{exc.status}:')))
++        if owned:
++            _journal_finish(service, key, 'REJECTED' if rejected else 'UNKNOWN', type(exc).__name__)
++        if attempted and not rejected:
++            return 'UNKNOWN'
++        raise
++
++
+ def reconcile_github_with_openproject(
+     service: Any,
+     native: Any,
+@@ -225,19 +309,29 @@
+     token: Optional[str] = None,
+ ) -> Dict[str, Any]:
+     """Reconcile GitHub Pull Requests with OpenProject child work packages idempotently."""
++    if repo != 'Luim3141/mini-task-manager':
++        raise PermissionError('ENGINEERING_REPOSITORY_MISMATCH')
+     try:
+         prs = fetch_pull_requests(repo, token=token, force=True)
+     except Exception as exc:
+         logger.error(f"GitHub sync fetch error for {repo}: {exc}")
++        meta = {'last_synced_at': time.time(), 'total_checked': 0, 'total_changed': 0,
++                'status': 'SYNC_FAILED', 'error': str(exc)}
++        _save_sync_meta(service, meta)
+         return {
+             "timestamp": time.time(),
+             "repo": repo,
+             "status": "SYNC_FAILED",
+             "error": str(exc),
+             "changed": False,
++            "total_prs_synced": 0,
++            "items": [],
++            "sync_meta": meta,
+         }
+ 
+     changed_any = False
++    changed_count = 0
++    errors = []
+     synced_items = []
+ 
+     pr_mapping = get_pr_wp_map(service)
+@@ -255,38 +349,42 @@
+             f"{pr_num}:{pr.get('state')}:{is_merged}:{merge_target}:{pr.get('head_sha')}:{base_ref}".encode("utf-8")
+         ).hexdigest()
+ 
+-        cached_hash = _get_cached_hash(service, wp_id)
+-        is_changed = cached_hash != pr_hash
+-
+-        if is_changed:
+-            status_desc = pr.get("state", "").upper()
+-            if is_merged:
+-                if merge_target == "MAIN":
+-                    status_desc = "ĐÃ MERGE VÀO MAIN (Sẵn sàng phát hành)"
+-                else:
+-                    status_desc = f"ĐÃ MERGE VÀO FEATURE BRANCH (`{base_ref}`) — CHƯA VÀO MAIN"
+-            elif pr.get("draft"):
+-                status_desc = "DRAFT PR (Đang hoàn thiện)"
+-
+-            comment = (
+-                f"**[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:\n"
+-                f"- PR: [#{pr_num} {pr.get('title')}]({pr.get('html_url')})\n"
+-                f"- Trạng thái GitHub: **`{status_desc}`**\n"
+-                f"- Base Branch: `{base_ref}` | Head Commit: `{pr.get('head_sha', '')[:8]}`\n"
+-                f"- Phân loại nhánh: `{merge_target}`"
+-            )
+-            note_payload = {
+-                "comment": {
+-                    "format": "markdown",
+-                    "raw": comment,
+-                }
+-            }
+-            try:
+-                native.call(f"/api/v3/work_packages/{wp_id}/activities", "POST", note_payload)
++        # Include destination in the logical identity; the key is shared across actors/processes.
++        operation_key = hashlib.sha256(f'{repo}:6:379:{wp_id}:{pr_hash}'.encode()).hexdigest()
++        item_status = 'UNCHANGED'
++        item_error = None
++
++        status_desc = pr.get("state", "").upper()
++        if is_merged:
++            if merge_target == "MAIN":
++                status_desc = "ĐÃ MERGE VÀO MAIN (Sẵn sàng phát hành)"
++            else:
++                status_desc = f"ĐÃ MERGE VÀO FEATURE BRANCH (`{base_ref}`) — CHƯA VÀO MAIN"
++        elif pr.get("draft"):
++            status_desc = "DRAFT PR (Đang hoàn thiện)"
++
++        comment = (
++            f"**[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:\n"
++            f"- PR: [#{pr_num} {pr.get('title')}]({pr.get('html_url')})\n"
++            f"- Trạng thái GitHub: **`{status_desc}`**\n"
++            f"- Base Branch: `{base_ref}` | Head Commit: `{pr.get('head_sha', '')[:8]}`\n"
++            f"- Phân loại nhánh: `{merge_target}`"
++        )
++        try:
++            item_status = _sync_activity(service, native, wp_id, operation_key, comment)
++            if item_status in {'UPDATED', 'RECONCILED', 'UNCHANGED'}:
+                 _set_cached_hash(service, wp_id, pr_hash)
++            if item_status == 'UPDATED':
+                 changed_any = True
+-            except Exception as e:
+-                logger.warning(f"Failed to post sync comment to WP #{wp_id}: {e}")
++                changed_count += 1
++            elif item_status == 'UNKNOWN':
++                item_error = 'OUTCOME_UNKNOWN_RECONCILE_FIRST'
++                errors.append(f'WP #{wp_id}: {item_error}')
++        except Exception as e:
++            logger.warning(f"Failed to post sync comment to WP #{wp_id}: {e}")
++            item_status = 'FAILED'
++            item_error = str(e)
++            errors.append(f'WP #{wp_id}: {e}')
+ 
+         synced_items.append({
+             "pr_number": pr_num,
+@@ -296,43 +394,50 @@
+             "merge_target": merge_target,
+             "base_ref": base_ref,
+             "head_sha": pr.get("head_sha"),
+-            "changed": is_changed,
++            "changed": item_status == 'UPDATED',
++            "status": item_status,
++            "error": item_error,
+         })
+ 
++    synced_count = len(synced_items) - len(errors)
++    status = ('PARTIAL' if synced_count else 'SYNC_FAILED') if errors else 'SUCCESS'
+     sync_meta = {
+         "last_synced_at": time.time(),
+         "total_checked": len(prs),
+-        "total_changed": 1 if changed_any else 0,
+-        "status": "SUCCESS",
+-        "error": None,
++        "total_changed": changed_count,
++        "status": status,
++        "error": '; '.join(errors) or None,
+     }
+-    store = getattr(service, "store", None)
+-    if store and hasattr(store, "connect"):
+-        try:
+-            with store.connect() as db:
+-                db.execute(
+-                    "CREATE TABLE IF NOT EXISTS engineering_github_sync_meta "
+-                    "(id INTEGER PRIMARY KEY CHECK (id = 1), last_synced_at REAL, total_checked INTEGER, "
+-                    "total_changed INTEGER, status TEXT, error_message TEXT)"
+-                )
+-                db.execute(
+-                    "INSERT OR REPLACE INTO engineering_github_sync_meta (id, last_synced_at, total_checked, total_changed, status, error_message) "
+-                    "VALUES (1, ?, ?, ?, ?, ?)",
+-                    (sync_meta["last_synced_at"], sync_meta["total_checked"], sync_meta["total_changed"], sync_meta["status"], sync_meta["error"]),
+-                )
+-        except Exception as exc:
+-            logger.warning(f"Failed to persist sync meta: {exc}")
+-
++    _save_sync_meta(service, sync_meta)
+     return {
+         "timestamp": time.time(),
+         "repo": repo,
+-        "status": "SUCCESS",
+-        "total_prs_synced": len(synced_items),
++        "status": status,
++        "error": sync_meta['error'],
++        "total_prs_synced": synced_count,
+         "changed": changed_any,
+         "items": synced_items,
+         "sync_meta": sync_meta,
+     }
+ 
++
++def _save_sync_meta(service: Any, sync_meta: Dict[str, Any]) -> None:
++    store = getattr(service, "store", None)
++    if store and hasattr(store, "connect"):
++        try:
++            with store.connect() as db:
++                db.execute(
++                    "CREATE TABLE IF NOT EXISTS engineering_github_sync_meta "
++                    "(id INTEGER PRIMARY KEY CHECK (id = 1), last_synced_at REAL, total_checked INTEGER, "
++                    "total_changed INTEGER, status TEXT, error_message TEXT)"
++                )
++                db.execute(
++                    "INSERT OR REPLACE INTO engineering_github_sync_meta (id, last_synced_at, total_checked, total_changed, status, error_message) "
++                    "VALUES (1, ?, ?, ?, ?, ?)",
++                    (sync_meta["last_synced_at"], sync_meta["total_checked"], sync_meta["total_changed"], sync_meta["status"], sync_meta["error"]),
++                )
++        except Exception as exc:
++            logger.warning(f"Failed to persist sync meta: {exc}")
+ 
+ def get_sync_meta(service: Any) -> Dict[str, Any]:
+     """Read last recorded sync meta from persistent SQLite store."""
+--- before/gateway/engineering_reporting.py
++++ after/gateway/engineering_reporting.py
+@@ -236,17 +236,16 @@
+     wp_data = metrics.get("work_packages", {})
+     wps = wp_data.get("items", []) if isinstance(wp_data, dict) else (wp_data or [])
+     parent_wp_info = wp_data.get("parent_379", {}) if isinstance(wp_data, dict) else metrics.get("parent_wp", {})
+-    model_name = service.gemini.settings().get('model', 'gemini-3.5-flash-lite') if hasattr(service, 'gemini') else 'gemini-3.5-flash-lite'
+     
+     narrative = (
+         f"# BÁO CÁO TIẾN ĐỘ AI ENGINEERING — QLDAPM MAIN\n\n"
+         f"**Thời điểm tạo:** {now_iso} (UTC+07:00) | **Loại báo cáo:** `{report_type}` | **Người tạo:** User {actor} ({who.get('role', 'PM')})\n"
+-        f"**Mô hình suy luận:** `{model_name}` (Gemini Free Tier, $0.00) | **OpenClaw Worker:** `{metrics['worker']['state']}`\n\n"
++        f"**Nguồn số liệu:** Snapshot từ SQLite, OpenProject và GitHub; không xác minh chi phí provider. | **OpenClaw Worker:** `{metrics['worker']['state']}`\n\n"
+         f"---\n\n"
+         f"### 1. Tổng Quan Vận Hành & Trạng Thái Hệ Thống\n"
+         f"- **Chế độ kiểm soát:** `{metrics['mode']}`\n"
+         f"- **Delivery Worker:** `{metrics['worker']['state']}`\n"
+-        f"- **Thời gian hoạt động:** Đã đồng bộ với OpenProject Core (18088) và AI Gateway (18089).\n\n"
++        f"- **Phạm vi:** OpenProject Project {PROJECT}; trạng thái là snapshot tại thời điểm tạo báo cáo.\n\n"
+         f"### 2. Tiến Độ Backlog & Work Packages (OpenProject Project 6)\n"
+         f"- **Parent Work Package:** #{parent_wp_info.get('id', 379)} - {parent_wp_info.get('subject', 'Develop Mini Task Manager Application')}\n"
+         f"- **Tổng số Work Packages:** {len(wps)} WPs đã ghi nhận trong cơ sở dữ liệu.\n"
+@@ -259,7 +258,7 @@
+         f"- **Tổng số lượt chạy (Runs):** `{runs_info['total']}` lượt chạy.\n"
+         f"- **Lượt chạy thành công:** `{runs_info['succeeded']}` lượt.\n"
+         f"- **Lượt chạy thất bại / Hủy / Blocked:** `{runs_info['failed_or_cancelled']}` lượt.\n"
+-        f"- **Token tiêu thụ ước tính:** `{runs_info['estimated_tokens_consumed']}` tokens (Free Tier $0.00).\n\n"
++        f"- **Token ghi nhận trong requests:** `{runs_info['estimated_tokens_consumed']}` tokens; không phải chứng nhận billing hoặc tổng chi phí.\n\n"
+         f"### 4. Quản Lý Mã Nguồn & GitHub Delivery (Luim3141/mini-task-manager)\n"
+         f"- **Trạng thái kết nối GitHub:** `{gh_info.get('status', 'ONLINE')}`\n"
+         f"- **Tổng số Pull Requests:** `{gh_info.get('total_prs', 0)}` PRs.\n"
+@@ -272,12 +271,9 @@
+     
+     narrative += (
+         f"\n### 5. Chất Lượng Mã Nguồn & Kiểm Thử QA\n"
+-        f"- **Bộ kiểm thử tự động:** pytest + sqlite3 integration tests.\n"
+-        f"- **Quy chuẩn đối soát:** Reviewer độc lập kiểm tra exact-diff trước khi hoàn tất unit.\n"
+-        f"- **Tính toàn vẹn Project 5:** Được bảo vệ tuyệt đối (341 WPs nguyên vẹn, 0 ghi đè).\n\n"
++        f"- Snapshot này chưa tổng hợp test receipts hoặc đối soát tính toàn vẹn dữ liệu dự án khác.\n\n"
+         f"### 6. Đánh Giá Kỹ Thuật & Khuyến Nghị Tiếp Theo\n"
+-        f"- Hệ thống sẵn sàng cho việc giao thêm task qua Work Intake.\n"
+-        f"- Mọi thay đổi mã nguồn được cô lập an toàn trên nhánh tính năng và chỉ mở PR, không tự ý merge vào `main`.\n"
++        f"- Cần kiểm tra test receipts, blocker và trạng thái PR trước khi nghiệm thu hoặc giao thêm task.\n"
+     )
+ 
+     if include_narrative:
+--- before/gateway/knowledge_search.py
++++ after/gateway/knowledge_search.py
+@@ -65,6 +65,7 @@
+         doc_types: Optional[List[KnowledgeDocType]] = None,
+         actor_id: Optional[int] = None,
+         document_ids: Optional[List[str]] = None,
++        require_all_terms: bool = False,
+     ) -> List[SearchResult]:
+         """Perform lexical FTS / token matching."""
+         candidate_docs = self.storage.query_documents(
+@@ -109,6 +110,8 @@
+             distinct_matches = sum(1 for t in query_terms if t in title_tokens or t in content_tokens)
+ 
+             if distinct_matches == 0:
++                continue
++            if require_all_terms and distinct_matches != len(query_terms):
+                 continue
+ 
+             match_ratio = distinct_matches / len(query_terms)
+@@ -191,6 +194,10 @@
+                     'source_id':doc.source_id,'project_id':doc.project_id,'doc_type':doc.doc_type.value,
+                     'title':doc.title,'allowed_roles':doc.allowed_roles,'metadata':doc.metadata}.items()):
+                     continue
++                # Single-word lookups need a literal anchor; multiword semantic queries retain dense recall.
++                query_terms = _tokenize(query)
++                if len(query_terms) == 1 and query_terms[0] not in _tokenize(doc.title + ' ' + doc.content):
++                    continue
+                 chunk_index = payload.get('chunk_index')
+                 if type(chunk_index) is not int:
+                     continue
+@@ -238,6 +245,7 @@
+                 )
+             return dense_results
+         except Exception as e:
++            self.dense_state = 'FALLBACK'
+             logger.warning(f"Dense vector retrieval fallback to lexical: {e}")
+             return []
+ 
+@@ -264,18 +272,7 @@
+         if not query_terms and not query.strip():
+             return []
+ 
+-        # 1. Lexical Search
+-        lexical_results = self._lexical_search(
+-            query_terms=query_terms,
+-            project_id=project_id,
+-            role=role,
+-            limit=limit * 2,
+-            doc_types=doc_types,
+-            actor_id=actor_id,
+-            document_ids=document_ids,
+-        )
+-
+-        # 2. Dense Vector Search (if VectorClient is available and enabled)
++        # 1. Dense Vector Search (if VectorClient is available and enabled)
+         dense_results: List[SearchResult] = []
+         if self.vector_client and self.vector_client.enabled:
+             dense_results = self._dense_search(
+@@ -287,6 +284,19 @@
+                 actor_id=actor_id,
+                 document_ids=document_ids,
+             )
++
++        # 2. Lexical Search
++        # Without a relevant dense hit, require complete lexical evidence; outages retain partial fallback.
++        lexical_results = self._lexical_search(
++            query_terms=query_terms,
++            project_id=project_id,
++            role=role,
++            limit=limit * 2,
++            doc_types=doc_types,
++            actor_id=actor_id,
++            document_ids=document_ids,
++            require_all_terms=self.dense_state == 'READY' and not dense_results,
++        )
+ 
+         # If no dense results, return lexical results directly
+         if not dense_results:
+--- before/gateway/app.py
++++ after/gateway/app.py
+@@ -350,7 +350,8 @@
+             if len(queue) >= 30:
+                 return await JSONResponse({"error": "RATE_LIMITED"}, status_code=429)(scope, receive, send)
+             queue.append(now)
+-            if scope['path'] == COMMAND_PATH and scope['method'] == 'POST':
++            from .n8n_lifecycle_outbox import PATH as LIFECYCLE_PATH
++            if scope['path'] in {COMMAND_PATH,LIFECYCLE_PATH} and scope['method'] == 'POST':
+                 machine, token = True, ''
+             else:
+                 response = await run_in_threadpool(status_response,self.root,self.store,scope,headers,self.service)
+@@ -390,7 +391,11 @@
+             if not message.get("more_body", False):
+                 break
+         if machine:
+-            response = await run_in_threadpool(command_response, self.root, self.store, scope, headers, b''.join(body), self.service)
++            if scope['path'] == LIFECYCLE_PATH:
++                from .n8n_lifecycle_outbox import observation_response
++                response = await run_in_threadpool(observation_response,self.store,config,scope,headers,b''.join(body))
++            else:
++                response = await run_in_threadpool(command_response, self.root, self.store, scope, headers, b''.join(body), self.service)
+             return await response(scope, receive, send)
+         consumed = False
+         if scope["path"] == "/internal/ui":
+--- before/gateway/service.py
++++ after/gateway/service.py
+@@ -562,6 +562,8 @@
+                     self.process_knowledge_sync()
+                     from .notification_delivery import process_pending
+                     process_pending(self.store)
++                    from .n8n_lifecycle_outbox import deliver_pending
++                    deliver_pending(self.store,self.config.get('n8n_lifecycle',{}))
+                     settings = self.config.get('native_incremental_sync', {})
+                     if settings.get('enabled') is True and time.monotonic() >= self._native_scan_at:
+                         self._native_scan_at = time.monotonic()+60
+--- before/gateway/execution_events.py
++++ after/gateway/execution_events.py
+@@ -39,6 +39,8 @@
+         event_type=event_type,agent_id=agent,step_id=step_id,timestamp=time.time(),sequence=1,status=status,**metadata)
+     db.execute('INSERT OR IGNORE INTO execution_events(event_id,run_id,actor,project,document) VALUES(?,?,?,?,?)',
+         (identifier,scope.run_id,scope.actor_id,scope.project_id,event.model_dump_json()))
++    from .n8n_lifecycle_outbox import enqueue
++    enqueue(db,scope,event)
+ 
+ 
+ def emit(event_type,agent=None,step_id=None,status=None,key=None,**metadata):
+--- before/gateway/engineering_monitor.py
++++ after/gateway/engineering_monitor.py
+@@ -7,7 +7,8 @@
+ 
+ 
+ def project(service,who,run,task,agent_run,contract,receipts,events):
+-    result=run.get('result') or {};checkpoint=load(service.store,run['id']) or {}
++    from .engineering_integrity import observed_result
++    result=observed_result(run.get('result') or {},agent_run.state);checkpoint=load(service.store,run['id']) or {}
+     state={'paused':'PAUSED','cancelled':'CANCELLED','blocked':'FAILED','succeeded':'COMPLETED'}.get(result.get('status'),agent_run.state)
+     terminal=run['state']!='running'
+     roles=['ba','pm'] if contract.get('kind')=='planning' else ['dev','reviewer','qa']
+--- before/gateway/engineering_integrity.py
++++ after/gateway/engineering_integrity.py
+@@ -0,0 +1,8 @@
++"""Read projection only: preserve conflicting historical records for reconciliation."""
++def observed_result(result, agent_state):
++    if result.get('status') == 'succeeded' and agent_state in {'FAILED', 'CANCELLED'}:
++        return {**result, 'status': 'blocked', 'persisted_status': result['status'],
++                'integrity_state': 'RECONCILIATION_REQUIRED',
++                'error': 'HISTORICAL_OUTCOME_RECONCILIATION_REQUIRED',
++                'text': 'Persisted success mâu thuẫn với agent state. Cần đối soát receipts/checkpoint; chưa xác nhận delivery và không tự replay.'}
++    return result
+--- before/gateway/n8n_lifecycle_outbox.py
++++ after/gateway/n8n_lifecycle_outbox.py
+@@ -0,0 +1,144 @@
++"""Project6 metadata observation only; the existing Gateway worker owns dispatch."""
++import asyncio
++import hashlib
++import hmac
++import json
++import time
++import uuid
++from urllib.parse import urlsplit
++
++import httpx
++
++from .store import canonical
++
++PATH = '/internal/automation/lifecycle-observation'
++EVENTS = {'REQUEST_RECEIVED', 'PLAN_CREATED', 'AGENT_ASSIGNED', 'AGENT_STARTED',
++          'AGENT_COMPLETED', 'AGENT_FAILED', 'REVIEW_COMPLETED', 'RUN_COMPLETED', 'RUN_FAILED'}
++
++
++def ensure_schema(db):
++    # No executescript: it would commit the caller's lifecycle transaction early.
++    db.execute('CREATE TABLE IF NOT EXISTS n8n_lifecycle_outbox(event_id TEXT PRIMARY KEY,actor INTEGER NOT NULL,document TEXT NOT NULL,state TEXT NOT NULL DEFAULT \'PENDING\',attempts INTEGER NOT NULL DEFAULT 0,next_at REAL NOT NULL DEFAULT 0,lease TEXT,lease_until REAL NOT NULL DEFAULT 0,error TEXT)')
++    db.execute('CREATE TABLE IF NOT EXISTS n8n_lifecycle_observations(event_id TEXT PRIMARY KEY,document TEXT NOT NULL,observed_at REAL NOT NULL)')
++    db.execute('CREATE TABLE IF NOT EXISTS n8n_lifecycle_execution_metadata(event_id TEXT PRIMARY KEY,execution_id TEXT NOT NULL,observed_at REAL NOT NULL)')
++
++
++def enqueue(db, scope, event):
++    if scope.project_id != 6 or event.event_type not in EVENTS:
++        return
++    ensure_schema(db)
++    payload = {'schema_version': 1, 'event_id': event.event_id, 'event_type': event.event_type,
++               'run_id': event.run_id, 'project_id': 6, 'work_package_id': None, 'unit_id': None,
++               'timestamp': event.timestamp, 'correlation_id': event.trace_id,
++               'status': event.status, 'agent_id': event.agent_id}
++    db.execute('INSERT OR IGNORE INTO n8n_lifecycle_outbox(event_id,actor,document) VALUES(?,?,?)',
++               (event.event_id, scope.actor_id, canonical(payload)))
++
++
++def sign_envelope(event, key):
++    envelope = {'event': event, 'published_at': int(time.time())}
++    envelope['signature'] = hmac.new(key.encode('ascii'), canonical(envelope).encode(), hashlib.sha256).hexdigest()
++    return envelope
++
++
++def observe(store, envelope, key, execution_id=None):
++    if not isinstance(envelope, dict) or set(envelope) != {'event', 'published_at', 'signature'}:
++        raise PermissionError('LIFECYCLE_ENVELOPE_DENIED')
++    unsigned = {k: envelope[k] for k in ('event', 'published_at')}
++    signature = hmac.new(key.encode('ascii'), canonical(unsigned).encode(), hashlib.sha256).hexdigest()
++    if (not isinstance(envelope['signature'], str) or not hmac.compare_digest(signature, envelope['signature'])
++            or type(envelope['published_at']) is not int or not -15 <= time.time()-envelope['published_at'] <= 60):
++        raise PermissionError('LIFECYCLE_SIGNATURE_OR_EXPIRY_DENIED')
++    event = envelope['event']
++    if not isinstance(event, dict) or event.get('project_id') != 6:
++        raise PermissionError('LIFECYCLE_SCOPE_DENIED')
++    if execution_id is not None and (not isinstance(execution_id, str) or not execution_id.isascii() or not execution_id.isdigit() or len(execution_id) > 20):
++        raise PermissionError('LIFECYCLE_EXECUTION_ID_DENIED')
++    with store.connect() as db:
++        ensure_schema(db)
++        row = db.execute('SELECT actor,document FROM n8n_lifecycle_outbox WHERE event_id=?', (event.get('event_id'),)).fetchone()
++        if not row or row['document'] != canonical(event):
++            raise PermissionError('LIFECYCLE_SOURCE_DENIED')
++        source = db.execute('SELECT document FROM execution_events WHERE event_id=? AND actor=? AND project=6 AND run_id=?',
++                            (event['event_id'], row['actor'], event['run_id'])).fetchone()
++        if not source:
++            raise PermissionError('LIFECYCLE_TRACE_DENIED')
++        # Retrieve the actual source trace, never caller-provided status or an engine-green verdict.
++        trace = json.loads(source['document'])
++        ack = {'status': 'OBSERVED', 'event_id': event['event_id'], 'run_id': event['run_id'],
++               'project_id': 6, 'correlation_id': event['correlation_id'], 'trace_event_id': trace['event_id']}
++        db.execute('INSERT OR IGNORE INTO n8n_lifecycle_observations VALUES(?,?,?)', (event['event_id'], canonical(ack), time.time()))
++        if execution_id is not None:
++            db.execute('INSERT OR IGNORE INTO n8n_lifecycle_execution_metadata VALUES(?,?,?)', (event['event_id'], execution_id, time.time()))
++        return json.loads(db.execute('SELECT document FROM n8n_lifecycle_observations WHERE event_id=?', (event['event_id'],)).fetchone()[0])
++
++
++def http_transport(url, envelope, timeout):
++    async def request():
++        try:
++            # Includes connect/headers/body; drip-fed headers must not reset the deadline.
++            async with asyncio.timeout(timeout):
++                async with httpx.AsyncClient(timeout=timeout, follow_redirects=False, trust_env=False) as client:
++                    async with client.stream('POST', url, json=envelope) as response:
++                        response.raise_for_status()
++                        content = bytearray()
++                        async for chunk in response.aiter_bytes():
++                            if len(content) + len(chunk) > 8192:
++                                raise ValueError('ACK_TOO_LARGE')
++                            content.extend(chunk)
++                        return json.loads(content)
++        except TimeoutError:
++            raise TimeoutError('ACK_DEADLINE') from None
++    # Called by the existing synchronous background worker, never the ASGI request loop.
++    return asyncio.run(request())
++
++
++def deliver_pending(store, config, *, transport=http_transport, now=None):
++    if config.get('enabled') is not True:
++        return 'DISABLED'
++    url, key = config.get('webhook_url', ''), config.get('signing_key', '')
++    parsed = urlsplit(url)
++    if (parsed.scheme not in {'http', 'https'} or not parsed.hostname or parsed.username or parsed.password
++            or parsed.query or parsed.fragment or parsed.path != '/webhook/qldapm-lifecycle'
++            or len(key) != 64 or any(c not in '0123456789abcdef' for c in key)):
++        raise ValueError('LIFECYCLE_CONFIG_INVALID')
++    now = time.time() if now is None else now
++    lease = str(uuid.uuid4())
++    with store.connect() as db:
++        ensure_schema(db)
++        db.execute('BEGIN IMMEDIATE')
++        row = db.execute("SELECT * FROM n8n_lifecycle_outbox WHERE state IN ('PENDING','RETRY','SENDING') AND next_at<=? AND lease_until<=? ORDER BY rowid LIMIT 1", (now, now)).fetchone()
++        if not row:
++            return 'IDLE'
++        db.execute("UPDATE n8n_lifecycle_outbox SET state='SENDING',lease=?,lease_until=?,attempts=attempts+1 WHERE event_id=?", (lease, now+30, row['event_id']))
++    event = json.loads(row['document'])
++    state, error = 'ACKED', None
++    try:
++        ack = transport(url, sign_envelope(event, key), 3.0)
++        expected = {'status': 'OBSERVED', 'event_id': event['event_id'], 'run_id': event['run_id'],
++                    'project_id': 6, 'correlation_id': event['correlation_id'], 'trace_event_id': event['event_id']}
++        if ack != expected:
++            raise ValueError('BUSINESS_ACK_REQUIRED')
++    except Exception:
++        # Persist a fixed code, never remote response bodies, URLs, headers or exception text.
++        state = 'DEAD' if row['attempts']+1 >= 5 else 'RETRY'
++        error = 'LIFECYCLE_DELIVERY_FAILED'
++    with store.connect() as db:
++        db.execute('UPDATE n8n_lifecycle_outbox SET state=?,error=?,next_at=?,lease=NULL,lease_until=0 WHERE event_id=? AND lease=?',
++                   (state, error, now+min(300, 2**(row['attempts']+1)), event['event_id'], lease))
++    return state
++
++
++def observation_response(store, config, scope, headers, body):
++    from starlette.responses import JSONResponse
++    settings = config.get('n8n_lifecycle', {})
++    if (settings.get('enabled') is not True or scope.get('query_string') or headers.get('authorization')
++            or scope['method'] != 'POST' or scope['path'] != PATH):
++        return JSONResponse({'error': 'LIFECYCLE_SCOPE_DENIED'}, status_code=403)
++    try:
++        key = settings['signing_key']
++        if len(key) != 64 or any(c not in '0123456789abcdef' for c in key):
++            raise PermissionError('LIFECYCLE_KEY_UNAVAILABLE')
++        return JSONResponse(observe(store, json.loads(body), key, headers.get('x-qldapm-n8n-execution')))
++    except (KeyError, ValueError, TypeError, PermissionError):
++        return JSONResponse({'error': 'LIFECYCLE_OBSERVATION_DENIED'}, status_code=403)
+--- before/core/overlay/app/controllers/qldapm_ai_controller.rb
++++ after/core/overlay/app/controllers/qldapm_ai_controller.rb
+@@ -67,8 +67,13 @@
+ 
+     result = bridge("engineering_report_get", {id: report_id})["result"]
+     render json: result
+-  rescue ::ArgumentError, ::KeyError, ::StandardError => error
++  rescue Qldapm::AiBridge::RequestError => error
++    status = [401, 403, 404].include?(error.status) ? error.status : 503
++    render json: {error: status == 404 ? "REPORT_NOT_FOUND" : "REPORT_UNAVAILABLE", message: error.message}, status: status
++  rescue ::KeyError => error
+     render json: {error: "REPORT_NOT_FOUND", message: error.message}, status: :not_found
++  rescue ::StandardError => error
++    render json: {error: "REPORT_UNAVAILABLE", message: error.message}, status: :service_unavailable
+   end
+ 
+ 
+@@ -264,8 +269,12 @@
+               @result['message'] = "Đã chuyển yêu cầu tính năng mới tới Tác nhân PM & BA (Run ID: #{plan_id}). Đang tạo đặc tả kỹ thuật và Backlog Unit mới."
+             end
+           when 'engineering_github_sync'
+-            pr_count = @result['total_prs_synced'] || Array(@result['items'] || @result['prs'] || @result['github_prs']).size
+-            @result['message'] = "Đã đối soát thành công #{pr_count > 0 ? pr_count : 5} Pull Requests trên kho GitHub."
++            pr_count = @result['total_prs_synced'] || 0
++            if @result['status'] == 'SUCCESS'
++              @result['message'] = "Đã đối soát thành công #{pr_count} Pull Requests trên kho GitHub."
++            else
++              @error = "Đồng bộ GitHub #{@result['status'] || 'UNKNOWN'}: #{pr_count} PR đã đối soát. #{@result['error']}"
++            end
+           when 'engineering_report_generate'
+             rtype = arguments['report_type'] || 'Báo cáo'
+             rep_id = @result['id'] || @result['report_id']
+--- before/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb
++++ after/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb
+@@ -7,6 +7,7 @@
+   runs = eng['runs'] || []
+   parent = @engineering_wp || {}
+   parent_id = parent['id'] || 379
++  parent_lock = parent['lockVersion'] || parent['lock_version']
+   raw_reports = @reports || eng['reports'] || []
+   reports = raw_reports.is_a?(Hash) ? (raw_reports['reports'] || []) : Array(raw_reports)
+   raw_notifs = @notifications || eng['notifications'] || []
+@@ -16,16 +17,11 @@
+   worker_alive = worker['worker_id'].present?
+   plans = eng['plans'] || []
+   delivered_count = backlog.select { |b| (b['state'] == 'succeeded' || b['status'] == 'DELIVERED') }.size
+-  total_backlog = backlog.size > 0 ? backlog.size : 5
++  total_backlog = backlog.size
+   github_info = eng['github'] || {}
+   sync_meta = github_info['sync_meta'] || {}
+   raw_prs = github_info['prs'] || eng['github_prs'] || []
+-  pr_wp_map = { 1 => 380, 2 => 381, 3 => 382, 4 => 383, 5 => 384, 6 => 386 }
+-  github_prs = raw_prs.map do |pr|
+-    num = pr['number'] || pr[:number]
+-    wp_id = pr['wp_id'] || pr_wp_map[num] || 379
+-    pr.merge('wp_id' => wp_id)
+-  end
++  github_prs = raw_prs
+   profiles = eng['profiles'] || []
+   quota_info = eng['quota'] || {}
+   quota_model = quota_info['model'] || 'gemini-3.5-flash-lite'
+@@ -57,16 +53,6 @@
+     t ? t.utc.iso8601 : ''
+   }
+ 
+-  if github_prs.empty?
+-    github_prs = [
+-      { 'number' => 6, 'wp_id' => 386, 'title' => 'Read-only task summary API & invariant tests', 'state' => 'open', 'branch' => 'codex/openclaw-feedback-bb9a628fe5b7be67', 'base_ref' => 'codex/openclaw-health-check-v1', 'is_merged' => false, 'merge_target' => 'UNMERGED', 'head_sha' => '0498ceed' },
+-      { 'number' => 5, 'wp_id' => 384, 'title' => '[AI Unit] Them route GET /healthz va unit test status ok', 'state' => 'open', 'branch' => 'codex/openclaw-health-check-v1', 'base_ref' => 'codex/openclaw-feedback-4d13e695555a8d44', 'is_merged' => false, 'merge_target' => 'UNMERGED', 'head_sha' => '0e8d320a' },
+-      { 'number' => 4, 'wp_id' => 383, 'title' => 'Unicode search & pytest str.casefold', 'state' => 'open', 'branch' => 'codex/openclaw-feedback-4d13e695555a8d44', 'base_ref' => 'codex/openclaw-feedback-283138e910432528', 'is_merged' => false, 'merge_target' => 'UNMERGED', 'head_sha' => 'def9d0a8' },
+-      { 'number' => 3, 'wp_id' => 382, 'title' => 'Web UI components, request helper & a11y', 'state' => 'closed', 'branch' => 'codex/openclaw-feedback-283138e910432528', 'base_ref' => 'codex/openclaw-crud-search-web-v1', 'is_merged' => true, 'merge_target' => 'FEATURE_BRANCH (codex/openclaw-crud-search-web-v1)', 'head_sha' => 'd00f8c5f', 'merged_at' => '2026-10-31T12:01:10Z' },
+-      { 'number' => 2, 'wp_id' => 381, 'title' => 'Edit/delete/status/search and usable web interface', 'state' => 'closed', 'branch' => 'codex/openclaw-crud-search-web-v1', 'base_ref' => 'codex/openclaw-create-list-persistence-v1', 'is_merged' => true, 'merge_target' => 'FEATURE_BRANCH (codex/openclaw-create-list-persistence-v1)', 'head_sha' => '29ff0ec1', 'created_at' => '2026-10-29T14:00:00Z', 'merged_at' => '2026-10-30T05:29:13Z' },
+-      { 'number' => 1, 'wp_id' => 380, 'title' => 'Create and list tasks with SQLite persistence', 'state' => 'closed', 'branch' => 'codex/openclaw-create-list-persistence-v1', 'base_ref' => 'main', 'is_merged' => true, 'merge_target' => 'MAIN', 'head_sha' => '1aa7c395', 'created_at' => '2026-10-29T10:00:00Z', 'merged_at' => '2026-10-31T05:45:27Z' }
+-    ]
+-  end
+ %>
+ 
+ <div id="qldapm-command-center" class="qcc-root">
+@@ -75,7 +61,7 @@
+ 
+   <!-- TOAST NOTIFICATION CONTAINER (Phase 2.9.2) -->
+   <div id="qcc-toast-container" class="qcc-toast-container">
+-    <% if @result.present? %>
++    <% if @result.present? && @error.blank? %>
+       <% result_msg = @result.is_a?(Hash) ? (@result['message'] || @result['text'] || @result['status']) : @result.to_s %>
+       <div class="qcc-toast qcc-toast-success" role="alert">
+         <div class="qcc-toast-icon">
+@@ -231,7 +217,7 @@
+             target_unit_name = active_or_next_unit['unit'] || 'health-check-v1'
+             target_native_id = (active_or_next_unit['native_id'] || 384).to_i
+             target_task = (Array(@engineering['tasks']) rescue []).find { |t| t['id'] == target_native_id }
+-            target_lock = target_task ? target_task['lock_version'] : (parent['lock_version'] || 4)
++            target_lock = target_task ? target_task['lock_version'] : parent_lock
+           %>
+           <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-action-form" do %>
+             <%= hidden_field_tag :tool, 'engineering_run_once' %>
+@@ -348,13 +334,12 @@
+           </div>
+           <h2 class="qcc-mission-title"><%= parent['subject'] || 'Develop Mini Task Manager Application' %></h2>
+           <p class="qcc-mission-desc">
+-            Vòng đời tự động: Yêu cầu → Đặc tả BA/PM → Lập trình Sandbox WSL2 → Review mã nguồn → Kiểm thử QA Gate → Đóng gói GitHub PR #5 → Lưu trữ tri thức Second Brain.
++            Vòng đời: Yêu cầu → Đặc tả BA/PM → Lập trình Sandbox WSL2 → Review → Kiểm thử QA → GitHub PR → Tri thức Second Brain. Kết quả thực tế phải có receipts theo run.
+           </p>
+           <div class="qcc-mission-tags">
+-            <span class="qcc-tag">Trạng thái: <strong><%= parent['status'] ? parent['status']['name'] : 'IN PROGRESS' %></strong></span>
+-            <span class="qcc-tag">Phiên bản khóa: <strong>lock_version <%= parent['lock_version'] || 4 %></strong></span>
+-            <span class="qcc-tag">Cột mốc mới nhất: <strong>Task #384 delivered · PR #5 OPEN</strong></span>
+-            <span class="qcc-tag text-emerald">Pytest: <strong>21/21 passed (100%)</strong></span>
++            <span class="qcc-tag">Trạng thái: <strong><%= parent.dig('_links', 'status', 'title') || parent.dig('status', 'name') || 'Chưa có dữ liệu' %></strong></span>
++            <span class="qcc-tag">Phiên bản khóa: <strong>lock_version <%= parent['lockVersion'] || parent['lock_version'] || 'Chưa có dữ liệu' %></strong></span>
++            <span class="qcc-tag">QA: <strong>Đối chiếu test evidence của từng run</strong></span>
+           </div>
+         </div>
+ 
+@@ -529,7 +514,7 @@
+               <div class="qcc-audit-item">
+                 <div class="qcc-audit-dot dot-emerald"></div>
+                 <div class="qcc-audit-text">
+-                  <strong>Project 5 Invariant Protection:</strong> 341 Work Packages bất biến 100%, không phát sinh thay đổi.
++                  <strong>Project 5:</strong> Chính sách read-only. Số Work Packages và phiên bản phải được đối soát bằng snapshot thực tế.
+                 </div>
+               </div>
+               <div class="qcc-audit-item">
+@@ -829,7 +814,7 @@
+                   <td>Normal</td>
+                   <td><%= parent.dig('assigned_to', 'name') || 'QLDAPM PM' %></td>
+                   <td><span class="qcc-chip qcc-chip-amber"><%= parent['status'] ? parent['status']['name'] : 'IN PROGRESS' %></span></td>
+-                  <td><code>lock_version <%= parent['lock_version'] || 4 %></code></td>
++                  <td><code>lock_version <%= parent_lock || 'Chưa có dữ liệu' %></code></td>
+                   <td><span class="text-slate">Parent Anchor</span></td>
+                   <td>
+                     <%= link_to "Mở OP", "/work_packages/#{parent_id}", class: "qcc-btn-link", target: "_blank" %>
+@@ -940,7 +925,7 @@
+                         <% end %>
+                       </td>
+                       <td>
+-                        <span class="qcc-review-badge">Local AI Review: <strong>PASSED</strong></span>
++                        <span class="qcc-review-badge">Review evidence: <strong><%= run.dig('result', 'review_evidence', 'verdict') || 'NOT VERIFIED' %></strong></span>
+                       </td>
+                       <td>
+                         <span class="text-<%= status == 'succeeded' ? 'emerald' : (status == 'failed' ? 'rose' : 'amber') %>">
+@@ -1006,7 +991,7 @@
+             <div style="display: flex; gap: 12px; align-items: center;">
+               <span class="qcc-chip qcc-chip-emerald" style="display: inline-flex; align-items: center; gap: 6px;">
+                 <span class="qcc-pulse-dot" style="width: 8px; height: 8px; background: #10B981; border-radius: 50%;"></span>
+-                GITHUB REST API: ONLINE
++                GITHUB REST API: <%= github_info['status'] || 'UNKNOWN' %>
+               </span>
+               <span style="color: #94A3B8;">
+                 Đối soát: <strong style="color: #E2E8F0;"><%= github_prs.size %> PRs</strong>
+@@ -1052,7 +1037,7 @@
+                       </a>
+                     </td>
+                     <td>
+-                      <span class="qcc-chip qcc-chip-blue">WP #<%= pr['wp_id'] %></span>
++                      <span class="qcc-chip qcc-chip-blue"><%= pr['wp_id'].present? ? "WP ##{pr['wp_id']}" : 'Chưa xác minh liên kết WP' %></span>
+                     </td>
+                     <td title="<%= iso_tooltip.call(pr['created_at']) %>">
+                       <span class="text-slate" style="font-size:11px;"><%= format_vn_time.call(pr['created_at']) %></span>
+@@ -1068,8 +1053,8 @@
+                     </td>
+                     <td>
+                       <div class="qcc-badge-stack">
+-                        <span class="qcc-chip qcc-chip-subtle" title="Chưa có reviewer người duyệt trên GitHub">NO_REVIEWS_ON_GITHUB</span>
+-                        <span class="qcc-chip qcc-chip-subtle" title="Chưa cấu hình GitHub Actions CI">NO_CI_CHECKS_CONFIGURED</span>
++                        <span class="qcc-chip qcc-chip-subtle" title="Trạng thái GitHub reviews"><%= pr['reviews_state'] || 'NOT_CHECKED' %></span>
++                        <span class="qcc-chip qcc-chip-subtle" title="Trạng thái GitHub CI"><%= pr['checks_state'] || 'NOT_CHECKED' %></span>
+                       </div>
+                     </td>
+                     <td>
+@@ -1133,15 +1118,15 @@
+                   <div class="qcc-report-metrics">
+                     <div class="qcc-report-metric">
+                       <span>WPs Hoàn thành</span>
+-                      <strong><%= rep.dig('metrics', 'completed_tasks') || 5 %></strong>
++                      <strong><%= rep.dig('metrics', 'completed_tasks') || 'Chưa có dữ liệu' %></strong>
+                     </div>
+                     <div class="qcc-report-metric">
+                       <span>Chuyển trạng thái</span>
+-                      <strong><%= rep.dig('metrics', 'status_transitions') || 12 %></strong>
++                      <strong><%= rep.dig('metrics', 'status_transitions') || 'Chưa có dữ liệu' %></strong>
+                     </div>
+                     <div class="qcc-report-metric">
+-                      <span>Commits / PRs</span>
+-                      <strong><%= rep.dig('metrics', 'total_prs') || 5 %></strong>
++                      <span>Pull Requests</span>
++                      <strong><%= rep.dig('metrics', 'github', 'total_prs') || 'Chưa có dữ liệu' %></strong>
+                     </div>
+                   </div>
+                   <% if rep['narrative'].present? %>
+@@ -1154,7 +1139,7 @@
+                     <span>Xem toàn văn</span>
+                   </button>
+                   <script type="application/json" id="rep-narrative-<%= rep['id'] || rep['report_id'] %>">
+-                    <%= (rep['narrative'].presence || rep['content'].presence || rep.dig('document', 'narrative').presence || 'Không có nội dung chi tiết.').to_json.html_safe %>
++                    <%= json_escape((rep['narrative'].presence || rep['content'].presence || rep.dig('document', 'narrative').presence || 'Không có nội dung chi tiết.').to_json).html_safe %>
+                   </script>
+                 </div>
+               <% end %>
+@@ -1310,7 +1295,7 @@
+ 
+       <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", id: 'qcc-intake-form' do %>
+         <%= hidden_field_tag :tool, 'engineering_plan' %>
+-        <%= hidden_field_tag :arguments, {native_id: parent_id, lock_version: parent['lock_version'] || 4}.to_json %>
++        <%= hidden_field_tag :arguments, {native_id: parent_id, lock_version: parent_lock}.to_json %>
+ 
+         <div class="qcc-modal-body">
+           <p class="qcc-modal-desc">
+@@ -2913,6 +2898,11 @@
+     }
+ 
+     // Open Report Reader Modal
++    function reportNarrative(data) {
++      if (typeof data === 'string') return data.trim() === 'Không có nội dung chi tiết.' ? '' : data.trim();
++      if (!data || typeof data !== 'object') return '';
++      return reportNarrative(data.narrative) || reportNarrative(data.document) || reportNarrative(data.content) || reportNarrative(data.text);
++    }
+     var readRepBtn = target.closest('.qcc-read-report-btn');
+     if (readRepBtn) {
+       e.preventDefault();
+@@ -2924,12 +2914,15 @@
+       var scriptElem = document.getElementById('rep-narrative-' + repId);
+       var narrativeText = '';
+       if (scriptElem) {
+-        try { narrativeText = JSON.parse(scriptElem.textContent); }
+-        catch(err) { narrativeText = scriptElem.textContent; }
++        try { narrativeText = reportNarrative(JSON.parse(scriptElem.textContent)); }
++        catch(err) { narrativeText = reportNarrative(scriptElem.textContent); }
+       }
+ 
+       var modalRep = document.getElementById('qcc-report-modal');
+       if (modalRep) {
++        // A previous report request must never overwrite a newer selection.
++        var reportRequest = {};
++        modalRep.reportRequest = reportRequest;
+         document.getElementById('modal-report-title').textContent = repTitle || 'Báo cáo Tiến độ AI Engineering';
+         document.getElementById('qcc-modal-report-type').textContent = repType || 'DAILY';
+         document.getElementById('qcc-modal-report-time').textContent = repTime || '--';
+@@ -2939,16 +2932,20 @@
+           document.getElementById('qcc-modal-report-body').textContent = narrativeText;
+         } else {
+           document.getElementById('qcc-modal-report-body').textContent = 'Đang nạp toàn văn báo cáo từ máy chủ...';
+-          fetch('/projects/<%= @project.identifier %>/qldapm-ai/reports/' + encodeURIComponent(repId))
++          fetch('/projects/<%= @project.identifier %>/qldapm-ai/reports/' + encodeURIComponent(repId), {cache: 'no-store', headers: {'Accept': 'application/json'}})
+             .then(function(res) {
+               if (!res.ok) throw new Error('HTTP ' + res.status);
+               return res.json();
+             })
+             .then(function(data) {
+-              var text = data.narrative || (data.document && data.document.narrative) || 'Không có nội dung chi tiết.';
++              if (modalRep.reportRequest !== reportRequest) return;
++              var responseId = data && (data.id || (data.document && data.document.id));
++              if (String(responseId) !== String(repId)) throw new Error('REPORT_ID_MISMATCH');
++              var text = reportNarrative(data) || 'Không có nội dung chi tiết.';
+               document.getElementById('qcc-modal-report-body').textContent = text;
+             })
+             .catch(function(err) {
++              if (modalRep.reportRequest !== reportRequest) return;
+               document.getElementById('qcc-modal-report-body').textContent = 'Lỗi nạp báo cáo (' + err.message + '). Vui lòng kiểm tra kết nối.';
+             });
+         }
+--- before/automation/n8n_storage_redaction.js
++++ after/automation/n8n_storage_redaction.js
+@@ -0,0 +1,17 @@
++// Storage copies only: executing workflow inputs/authentication remain unchanged.
++'use strict';
++const sensitive = /^(authorization|proxy-authorization|x-qldapm-webhook-token|x-api-key|x-n8n-api-key|cookie|set-cookie|signature)$/i;
++function replacer(key, value) {
++  if (sensitive.test(key) || (key === 'value' && typeof this.name === 'string' && sensitive.test(this.name))) return '[REDACTED]';
++  return typeof value === 'string' ? value.replace(/\b(Bearer|Basic)\s+[A-Za-z0-9._~+/=-]+/gi, '$1 [REDACTED]') : value;
++}
++exports.redactBundle = function redactBundle(payload, flatted) {
++  try {
++    const copy = {...payload};
++    if (copy.data !== undefined) copy.data = flatted.stringify(flatted.parse(copy.data), replacer);
++    if (copy.workflowData !== undefined) copy.workflowData = JSON.parse(JSON.stringify(copy.workflowData, replacer));
++    return copy;
++  } catch {
++    throw new Error('EXECUTION_PAYLOAD_REDACTION_FAILED');
++  }
++};
+--- before/automation/engineering_worker.py
++++ after/automation/engineering_worker.py
+@@ -185,7 +185,7 @@
+         except subprocess.TimeoutExpired:
+             signal=operator('signal',run_id=run_id)
+             operator('heartbeat',worker_id=WORKER_ID,active_run_id=run_id)
+-            if signal['mode']=='RUN_ONCE' and signal['queue_state']=='executing' and not signal['cancel_requested'] and time.monotonic()<deadline and time.time()<signal['deadline']:continue
++            if signal['mode'] in {'RUN_ONCE', 'AUTO'} and signal['queue_state']=='executing' and not signal['cancel_requested'] and time.monotonic()<deadline and time.time()<signal['deadline']:continue
+             gate()
+             stopped=wsl(['/usr/local/bin/openclaw','gateway','stop','--force'],timeout=60,check=False)
+             process.terminate()
+@@ -196,7 +196,7 @@
+                 CURRENT_JOURNAL.terminal_known=stopped.returncode==0
+                 save(CURRENT_JOURNAL.folder,CURRENT_JOURNAL.current+'-interrupted.json',{'session_id':session,'fenced':stopped.returncode==0,'cli_exit':process.returncode})
+             if stopped.returncode:raise RuntimeError('OPENCLAW_OUTCOME_UNKNOWN')
+-            raise RuntimeError('ENGINEERING_CANCELLED' if signal['cancel_requested'] else 'ENGINEERING_PAUSED_CHECKPOINT_REQUIRED' if signal['mode']!='RUN_ONCE' else 'ENGINEERING_DEADLINE_EXCEEDED')
++            raise RuntimeError('ENGINEERING_CANCELLED' if signal['cancel_requested'] else 'ENGINEERING_PAUSED_CHECKPOINT_REQUIRED' if signal['mode'] not in {'RUN_ONCE', 'AUTO'} else 'ENGINEERING_DEADLINE_EXCEEDED')
+ 
+ 
+ def test_tree(folder,name):
+--- before/automation/engineering_delivery.py
++++ after/automation/engineering_delivery.py
+@@ -95,17 +95,21 @@
+             journal.step('dev-0',lambda:worker.inference(run_id,folder,'dev','dev-0',instructions),mutates_tree=True)
+             review=None;qa=None;test=None;revision=None
+             for attempt in range(3):
++                rework=journal.doc['steps'].get('rework-'+str(attempt))
++                if rework and rework['state']=='done':continue
+                 worker.wsl(['/usr/bin/git','-C',worker.LINUX,'add','-N','.',':(exclude)skills',':(exclude)AGENTS.md',':(exclude)SOUL.md'])
+                 diff=worker.wsl(['/usr/bin/git','-C',worker.LINUX,'diff','--no-ext-diff',base,'--','.',':(exclude)skills',':(exclude)AGENTS.md',':(exclude)SOUL.md']).stdout.decode()
+                 if not diff.strip():raise RuntimeError('ENGINEERING_NO_CODE_DIFF')
+                 revision=hashlib.sha256(diff.encode()).hexdigest()
+-                (folder/('candidate-'+str(attempt)+'.diff')).write_text(diff,encoding='utf-8')
++                if journal.doc['steps'].get('review-'+str(attempt),{}).get('state')!='done':
++                    (folder/('candidate-'+str(attempt)+'.diff')).write_text(diff,encoding='utf-8')
+                 response=journal.step('review-'+str(attempt),lambda:worker.inference(run_id,folder,'reviewer','review-'+str(attempt),
+                     'Independent reviewer. Read skills/engineering-review/SKILL.md and actual files. No edits/exec. '
+                     'Return only JSON {"verdict":"PASS" or "FAIL","revision":"'+revision+'","findings":[]}; actionable findings include file/line/reason. '
+                     'Map each AC to actual code/tests. Spec '+json.dumps(context['plan'],ensure_ascii=False)+'\nDiff:\n'+diff[:45000],calls=5))
+                 review=parse(worker,response)
+-                if review.get('revision')!=revision:raise RuntimeError('ENGINEERING_REVIEW_REVISION_MISMATCH')
++                # A known interrupted rework resumes with its original review/QA feedback.
++                if review.get('revision')!=revision and not (rework and rework['state']=='started'):raise RuntimeError('ENGINEERING_REVIEW_REVISION_MISMATCH')
+                 test=journal.step('acceptance-'+str(attempt),lambda:worker.test_tree(folder,'acceptance-'+str(attempt)))
+                 if review.get('verdict')=='PASS' and not review.get('findings') and test['exit_code']==0:
+                     qa_response=journal.step('qa-'+str(attempt),lambda:worker.inference(run_id,folder,'qa','qa-'+str(attempt),
+--- before/automation/main_native_clone.py
++++ after/automation/main_native_clone.py
+@@ -22,7 +22,15 @@
+ 
+ 
+ @contextmanager
+-def main_native_clone(output, *, candidate_web_image=None, ui_key_path=None, migration_versions=()):
++def main_native_clone(output, *, candidate_web_image=None, ui_key_path=None, migration_versions=(), source_dump_path=None):
++    supplied_dump = None
++    if source_dump_path is not None:
++        backup = Path(source_dump_path)
++        if not backup.is_file():
++            raise ValueError('POSTGRES_BACKUP_REQUIRED')
++        supplied_dump = backup.read_bytes()
++        if not supplied_dump.startswith(b'PGDMP'):
++            raise ValueError('POSTGRES_BACKUP_REQUIRED')
+     if (not isinstance(migration_versions,tuple) or len(migration_versions)>5 or
+             any(not isinstance(version,str) or not re.fullmatch(r'[0-9]{14}',version) for version in migration_versions) or
+             migration_versions and candidate_web_image is None):
+@@ -58,11 +66,11 @@
+         actual = json.loads(docker('image', 'inspect', candidate_web_image))[0]['Id']
+         if actual != candidate_web_image:raise ValueError('CANDIDATE_IMAGE_MISMATCH')
+         images['web'] = actual
+-    dump = docker('exec', 'qldapm-openproject-db-1', 'pg_dump', '-U', 'postgres', '-Fc', 'openproject')
++    dump = supplied_dump if supplied_dump is not None else docker('exec', 'qldapm-openproject-db-1', 'pg_dump', '-U', 'postgres', '-Fc', 'openproject')
+     (root/'clone-source.dump').write_bytes(dump)
+     info = {'id': identifier, 'database': database, 'web': web, 'network': network,
+             'base_url': 'http://web:8080', 'images': images, 'source_images': source_images, 'source_dump_sha256': hashlib.sha256(dump).hexdigest(),
+-            'source': 'Main read-only pg_dump; no Staging source', 'main_mutations': 0,
++            'source': 'Supplied backup; isolated restore' if supplied_dump is not None else 'Main read-only pg_dump; no Staging source', 'main_mutations': 0,
+             'isolated_ui_key_shared':shared_key is not None}
+     (root/'clone.json').write_text(json.dumps(info, indent=2))
+     try:
+--- before/automation/n8n_lifecycle_adapter.py
++++ after/automation/n8n_lifecycle_adapter.py
+@@ -0,0 +1,37 @@
++"""Add a metadata-only trigger to WF04; existing human trace contract is preserved."""
++import copy
++from urllib.parse import urlsplit
++
++RETENTION_SETTINGS = {'saveDataErrorExecution': 'none', 'saveDataSuccessExecution': 'none',
++                      'saveManualExecutions': False, 'saveExecutionProgress': False}
++
++
++def attach_lifecycle_adapter(workflow, gateway_url, *, gateway_host=None):
++    spec = copy.deepcopy(workflow)
++    nodes = [
++        {'id': 'lifecycle-trigger', 'name': 'Lifecycle Event Webhook', 'type': 'n8n-nodes-base.webhook',
++         'typeVersion': 2, 'position': [0, 600], 'webhookId': 'qldapm-lifecycle',
++         'parameters': {'httpMethod': 'POST', 'path': 'qldapm-lifecycle', 'responseMode': 'responseNode', 'options': {}}},
++        {'id': 'lifecycle-observe', 'name': 'Retrieve Source Trace And Observe', 'type': 'n8n-nodes-base.httpRequest',
++         'typeVersion': 4.2, 'position': [260, 600], 'parameters': {'method': 'POST',
++             'url': gateway_url.rstrip('/')+'/internal/automation/lifecycle-observation',
++             'sendHeaders': True, 'headerParameters': {'parameters': [
++                 {'name': 'Host', 'value': gateway_host or urlsplit(gateway_url).netloc},
++                 {'name': 'X-QLDAPM-N8N-Execution', 'value': '={{ $execution.id }}'}]},
++             'sendBody': True, 'specifyBody': 'json', 'jsonBody': '={{ $json.body }}',
++             'options': {'timeout': 5000, 'redirect': {'redirect': {'followRedirects': False}}}}},
++        {'id': 'lifecycle-ack', 'name': 'Require Business Observation', 'type': 'n8n-nodes-base.code',
++         'typeVersion': 2, 'position': [520, 600], 'parameters': {'jsCode':
++             "const event=$('Lifecycle Event Webhook').first().json.body.event; const ack=$json; "
++             "if(ack.status!=='OBSERVED' || ack.event_id!==event.event_id || ack.trace_event_id!==event.event_id || "
++             "ack.run_id!==event.run_id || ack.project_id!==6 || ack.correlation_id!==event.correlation_id) "
++             "throw new Error('BUSINESS_OBSERVATION_REQUIRED'); return [{json:ack}];"}},
++        {'id': 'lifecycle-reply', 'name': 'Reply Lifecycle ACK', 'type': 'n8n-nodes-base.respondToWebhook',
++         'typeVersion': 1.4, 'position': [780, 600], 'parameters': {'respondWith': 'json', 'responseBody': '={{ $json }}', 'options': {}}}
++    ]
++    spec.setdefault('nodes', []).extend(nodes)
++    connections = spec.setdefault('connections', {})
++    for left, right in zip(nodes, nodes[1:]):
++        connections[left['name']] = {'main': [[{'node': right['name'], 'type': 'main', 'index': 0}]]}
++    spec['settings'] = {**spec.get('settings', {}), **RETENTION_SETTINGS}
++    return spec
+--- before/automation/patch_n8n_storage.js
++++ after/automation/patch_n8n_storage.js
+@@ -0,0 +1,24 @@
++// Version-locked patch; an upstream code change must fail the image build.
++const fs = require('node:fs');
++const path = require('node:path');
++const crypto = require('node:crypto');
++const target = '/usr/local/lib/node_modules/n8n/dist/executions/execution-persistence.js';
++let source = fs.readFileSync(target, 'utf8');
++if (crypto.createHash('sha256').update(source).digest('hex') !== '3ea676961011dd574cc13726b2be85f7cc1f64b6ed55c7cde1deed9f4b998454') {
++  throw new Error('UNVERIFIED_N8N_STORAGE_VERSION');
++}
++const marker = '    async writeData(mode, ref, payload, tx) {\n';
++if (source.split(marker).length !== 2) throw new Error('STORAGE_HOOK_NOT_UNIQUE');
++source = source.replace(marker, marker + "        payload = require('/opt/qldapm/n8n_storage_redaction.js').redactBundle(payload, flatted_1);\n");
++fs.writeFileSync(target, source);
++// Cover the retained legacy DB update API too; it must not bypass the storage boundary.
++const repository = path.join(path.dirname(require.resolve('@n8n/db', {paths: ['/usr/local/lib/node_modules/n8n']})), 'repositories/execution.repository.js');
++let legacy = fs.readFileSync(repository, 'utf8');
++for (const [before, after] of [
++  ['executionData.workflowData = workflowData;', "executionData.workflowData = require('/opt/qldapm/n8n_storage_redaction.js').redactBundle({workflowData}, flatted_1).workflowData;"],
++  ['executionData.data = (0, flatted_1.stringify)(data);', "executionData.data = require('/opt/qldapm/n8n_storage_redaction.js').redactBundle({data: (0, flatted_1.stringify)(data)}, flatted_1).data;"]
++]) {
++  if (legacy.split(before).length !== 2) throw new Error('LEGACY_STORAGE_HOOK_NOT_UNIQUE');
++  legacy = legacy.replace(before, after);
++}
++fs.writeFileSync(repository, legacy);
+--- before/automation/N8nRedacted.Dockerfile
++++ after/automation/N8nRedacted.Dockerfile
+@@ -0,0 +1,5 @@
++FROM docker.n8n.io/n8nio/n8n:2.43.6
++USER root
++COPY automation/n8n_storage_redaction.js automation/patch_n8n_storage.js /opt/qldapm/
++RUN node /opt/qldapm/patch_n8n_storage.js
++USER node
+--- before/automation/GatewayRecovery.Dockerfile
++++ after/automation/GatewayRecovery.Dockerfile
+@@ -0,0 +1,2 @@
++FROM qldapm-recovery-base:gateway-fcb44c49afb9
++COPY --chown=10001:10001 gateway/engineering.py gateway/engineering_lifecycle.py gateway/store.py gateway/engineering_github_sync.py gateway/engineering_reporting.py gateway/knowledge_search.py gateway/app.py gateway/service.py gateway/execution_events.py gateway/engineering_monitor.py gateway/engineering_integrity.py gateway/n8n_lifecycle_outbox.py /app/gateway/
+--- before/automation/CoreRecovery.Dockerfile
++++ after/automation/CoreRecovery.Dockerfile
+@@ -0,0 +1,3 @@
++FROM qldapm-recovery-base:core-a4fa8150728b
++COPY --chown=app:app core/overlay/app/controllers/qldapm_ai_controller.rb /app/app/controllers/qldapm_ai_controller.rb
++COPY --chown=app:app core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb /app/app/views/qldapm_ai/_engineering_command_center.html.erb

@@ -1,0 +1,14 @@
+{
+    admin off
+    auto_https off
+    persist_config off
+}
+:5678 {
+    reverse_proxy n8n:5678
+}
+:18090 {
+    root * /qldapm-access
+    rewrite * /index.html
+    header Cache-Control "no-store"
+    file_server
+}

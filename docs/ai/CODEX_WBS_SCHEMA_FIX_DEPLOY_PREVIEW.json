@@ -1,0 +1,28 @@
+{
+  "observed_at": "2026-10-24T22:01:57.155408+00:00",
+  "status": "PREPARED_NOT_DEPLOYED",
+  "candidate_tag": "qldapm-ai:codex-wbs-schema-20261025",
+  "candidate_image": "sha256:c0f328216654478cb58dc01dad737958416882f0352c450a0ae5a80438ca6372",
+  "parent_image": "sha256:e549e3df34f2a6791e78e4d7ca1cd98980b5b2d80ab2cb39f3bd512301595667",
+  "rollback_tag": "qldapm-ai:codex-wbs-analysis-20261025",
+  "changed_gateway_files": {
+    "gemini.py": {
+      "before_sha256": "285ad098d973c398a9e761929c1eec3b3f3b08ae50b536bb0214079f6ba3d9a8",
+      "after_sha256": "8c7ff074c2fc4335821d6e7fe5dd5c4baaae8730600c5627fbbb934e0cfae402"
+    },
+    "live_agents.py": {
+      "before_sha256": "c313ea1d1a7a3e0a924969660799378e0f5f35c50496cd8e2ae828bf2a35202f",
+      "after_sha256": "b709dafd6b112d7b81fbcacabacc5bf43e1e710854efd76f40dcfae74e100290"
+    },
+    "wbs_analysis.py": {
+      "before_sha256": "cf578880be2deeda9a66ef1b3a616359c818f420b5f2c37183ebbf9a0c55c41a",
+      "after_sha256": "ed57bf4702fdc1fad5148aa2dcc9f9d7527351021aeef2da2f028d02a1bcc8f1"
+    }
+  },
+  "changed_workflows": [],
+  "database_schema_changes": false,
+  "native_writes": 0,
+  "staging_operations": false,
+  "runtime_circuit_repair": "Only the exact INVALID_ARGUMENT circuit created by run164d4f54, after code qualification; preserve receipts/reservations/config/key/model/quota",
+  "rollback": "Gateway image/app config only; do not restore database or old workflow versions"
+}

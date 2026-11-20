@@ -1,0 +1,62 @@
+{
+  "workflow_id": "XoP4M520TMG3WgeY",
+  "workflow_version": "4f603437-adb8-46a9-99be-490427dafbba",
+  "active": true,
+  "gateway_image_unchanged": true,
+  "live_tests": [
+    {
+      "test": "PM_deterministic_native_start",
+      "http_status": 200,
+      "run_id": "62bad4a3-f1da-42a9-8131-2a39eac11e20",
+      "state": "done",
+      "model_used": false
+    },
+    {
+      "test": "same_request_replay",
+      "http_status": 200,
+      "same_run_id": true
+    },
+    {
+      "test": "PM_persisted_poll",
+      "http_status": 200,
+      "source": "native",
+      "model_used": false
+    },
+    {
+      "test": "BA_poll_PM",
+      "http_status": 403
+    },
+    {
+      "test": "invalid_request_id",
+      "http_status": 422
+    },
+    {
+      "test": "missing_bearer",
+      "http_status": 401
+    },
+    {
+      "test": "missing_transport",
+      "http_status": 403
+    },
+    {
+      "test": "unknown_operation",
+      "http_status": 422
+    },
+    {
+      "test": "request_key_reused_with_other_prompt",
+      "http_status": 422
+    }
+  ],
+  "provider_counts_before": [
+    96,
+    101
+  ],
+  "provider_counts_after": [
+    96,
+    101
+  ],
+  "native_fingerprint": "57d64095ee75637a873e5d2b337c5d51d03ca82e2eb3bf2e4f2cf947cfa3c863",
+  "native_mutations_performed": false,
+  "staging_operations": false,
+  "limitation": "Deterministic Native routing and persisted polling verified; no fresh Gemini/Supervisor model chain in this probe"
+}

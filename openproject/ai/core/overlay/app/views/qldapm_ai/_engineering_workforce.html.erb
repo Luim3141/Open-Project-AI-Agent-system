@@ -1,0 +1,24 @@
+<div class="qcc-section-header"><div><h2 class="qcc-section-title">Agent Workforce</h2><p class="qcc-section-sub">Current State tách biệt Last Activity. Worker ALIVE là process availability; chỉ run đang thực thi mới chứng minh Agent RUNNING.</p></div></div>
+<div class="qcc-agent-grid">
+  <% titles = {'supervisor'=>'AI Supervisor','pm'=>'Product Manager','ba'=>'Business Analyst','dev'=>'Senior Developer','reviewer'=>'Code Reviewer','qa'=>'QA Automation'} %>
+  <% profiles.each do |p| %>
+    <% role = p['agent'] || 'unknown'; current = p['current_state'] || p['status'] || 'UNKNOWN'; last = p['last_activity'] || {}; budget = last['budget'] || {}; failure = last['failure'] || {}; checkpoint = last['checkpoint'] || {}; active_run = p['current_run'] || {} %>
+    <article class="qcc-agent-card" data-agent-role="<%= role %>">
+      <div class="qcc-agent-top"><div class="qcc-agent-info"><h4 class="qcc-agent-name"><%= titles[role] || role %></h4><div class="qcc-agent-role">Current State</div></div><span class="qcc-chip <%= current == 'RUNNING' ? 'qcc-chip-cyan' : (%w[BLOCKED UNAVAILABLE].include?(current) ? 'qcc-chip-rose' : 'qcc-chip-slate') %>"><%= current %></span></div>
+      <% if current == 'RUNNING' %><p><strong>Đang thực thi WP #<%= active_run['native_id'] %></strong> · <%= active_run['stage'] || 'UNKNOWN' %> · Run <%= (active_run['id'] || active_run['run_id']).to_s.first(8) %></p><% end %>
+      <div class="qcc-agent-details"><h5>Last Activity</h5>
+        <% if last.present? %>
+          <p><strong>Lượt thực thi gần nhất: WP #<%= last['native_id'] %></strong><br><%= last['title'] %></p>
+          <dl class="qcc-summary-grid"><div><dt>Run / stage</dt><dd><%= last['run_id'].to_s.first(8) %> · <%= last['stage'] || 'UNKNOWN' %></dd></div><div><dt>Kết quả</dt><dd><%= last['result'] || last['status'] || 'UNKNOWN' %></dd></div><div><dt>Bắt đầu</dt><dd><%= format_vn_time.call(last['started_at']) %></dd></div><div><dt>Kết thúc</dt><dd><%= format_vn_time.call(last['ended_at']) %></dd></div></dl>
+          <p><strong>Nguyên nhân / last error:</strong> <%= failure['message'] || last['error'] || 'Không ghi nhận' %></p>
+          <% if budget['calls_used'] %><p>Budget <strong><%= budget['calls_used'] %> / <%= budget['call_cap'] || '?' %></strong> · Provider responses <%= budget['provider_response_count'] || 'UNKNOWN' %> · Tích lũy <%= budget['cumulative_calls'] || 'UNKNOWN' %></p><% end %>
+          <p>Checkpoint: <%= last.dig('resume','eligible') == true ? 'Có thể yêu cầu Resume' : (checkpoint['resumable'] ? 'Đã lưu; xem điều kiện Resume' : 'Chưa xác minh') %></p>
+          <% if last['run_id'].present? %><button type="button" class="qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn" data-run-id="<%= last['run_id'] %>">Mở last run / evidence</button><% end %>
+        <% else %><p>Chưa có activity phù hợp role trong dữ liệu trả về. Không suy luận từ configured runtime.</p><% end %>
+      </div>
+      <p class="qcc-text-muted">Configured model: <%= p['configured_model_id'] || quota_model %><br>Verified historical runtime: <%= p['actual_model_id'] || 'chưa có receipt' %><br>Current session: <%= current == 'RUNNING' ? 'xem current run evidence' : 'không có active session được xác minh' %></p>
+      <details data-preserve-key="agent-<%= role %>"><summary>Runtime · receipts · tools · full IDs</summary><button type="button" class="qcc-btn-xs qcc-btn-secondary" data-qcc-copy="<%= last['run_id'] %>" <%= 'disabled' if last['run_id'].blank? %>>Copy Full Run ID</button><% if last['run_id'].blank? %><p class="qcc-text-muted">Chưa có Run ID được xác minh cho role này.</p><% end %><pre><%= JSON.pretty_generate(p) %></pre></details>
+    </article>
+  <% end %>
+  <% if profiles.empty? %><p>UNKNOWN · Workforce projection chưa có dữ liệu.</p><% end %>
+</div>

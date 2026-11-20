@@ -1,0 +1,30 @@
+{
+  "id": "6b091c81-4a91-440b-b402-b926dbbedc30",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": null,
+  "deadline": 1793446278.2436926,
+  "definition": {
+    "acceptance": {},
+    "acceptance_file": null,
+    "base_branch": "main",
+    "base_unit": null,
+    "feedback": "Thêm endpoint GET /tasks/summary trả về tổng hợp số lượng công việc (total, active, completed) từ SQLite database theo thẻ QLDAPM-E2E-20261031-FRESH-FEATURE.\nYêu cầu AC:\n- AC13: GET /tasks/summary trả về JSON: {\"total\": int, \"active\": int, \"completed\": int}.\n- AC14: Logic: total là tổng số tasks; active là số tasks có status in ('todo', 'in_progress'); completed là số tasks có status == 'done'. Luôn bảo đảm total == active + completed.\n- AC15: Trả về {\"total\": 0, \"active\": 0, \"completed\": 0} khi database chưa có dữ liệu.\n- AC16: Focused pytest trong tests/test_tasks.py bao phủ AC13, AC14, AC15 và không làm đứt gãy 13 tests hiện có.",
+    "kind": "planning",
+    "native_id": 379,
+    "source_hash": "bb9a628fe5b7be67d0734bd2f17ad7a143ff643fc48027e0edda530c95fa2d1a",
+    "title": "PM/BA requirements and engineering backlog"
+  },
+  "engine": "openclaw",
+  "kind": "planning",
+  "native_id": 379,
+  "project_id": 6,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "51b96df2-91d4-4c39-9362-bce4429d7fcf",
+  "source_version": 4,
+  "spec": "**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n\n*   Backend: Python FastAPI\n    \n*   Database: SQLite\n    \n*   Frontend: HTML, CSS, JavaScript\n    \n*   Testing: pytest\n    \n*   Version Control: Git and GitHub\n    \n\n**Functional Requirements**\n\n1.  Create new tasks.\n    \n2.  View a list of tasks.\n    \n3.  Edit task information.\n    \n4.  Delete tasks.\n    \n5.  Update task status.\n    \n6.  Search and filter tasks.\n    \n7.  Persist data in SQLite.\n    \n8.  Provide a usable web interface.\n    \n\n**AI Development Workflow**\n\nThe AI team should:\n\n1.  Analyze requirements and define acceptance criteria.\n    \n2.  Break down the project into development tasks.\n    \n3.  Establish dependencies and propose a development schedule.\n    \n4.  Implement source code in the Git repository.\n    \n5.  Build and execute automated tests.\n    \n6.  Review the implementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[https://github.com/Luim3141/mini-task-manager](https://github.com/Luim3141/mini-task-manager)\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.",
+  "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+  "stage": "ADMITTED",
+  "unit": "requirements-planning-v1-bb9a628fe5b7be67",
+  "write_scope_ids": []
+}

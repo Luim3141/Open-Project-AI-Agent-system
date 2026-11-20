@@ -1,0 +1,161 @@
+--- before/openproject/ai/gateway/ai_worker.py
++++ after/openproject/ai/gateway/ai_worker.py
+@@ -77,6 +77,8 @@
+             if auto and action != "create_work_package" and arguments.get("id") not in allowed_ids:
+                 service.store.record(payload["actor"], "ai_scope_denied", "request_scope", "outside_user_scope")
+                 raise PermissionError("AI_WRITE_TARGET_OUTSIDE_USER_SCOPE")
++            if auto and action == "create_work_package" and arguments.get("parent_id") is not None and arguments['parent_id'] not in allowed_ids:
++                raise PermissionError("AI_CREATE_PARENT_OUTSIDE_USER_SCOPE")
+             if business and action == "get_work_package":
+                 arguments = {**arguments, "include_context": True}
+             if business and action == "list_work_packages":
+--- before/openproject/ai/gateway/service.py
++++ after/openproject/ai/gateway/service.py
+@@ -16,7 +16,7 @@
+ from .workspace import Workspace
+ from .gemini import Gemini, ProviderError
+ from .ai_worker import run_isolated
+-from .presentation import requested_ids, error_info, execution_report, safe_text
++from .presentation import requested_ids, action_requested, error_info, execution_report, safe_text
+ from .permissions import require, allowed, NATIVE_PERMISSIONS, SANDBOX_ONLY
+ from . import RUN_ROUND_LIMITS
+ from .local_queries import match_query, read_result
+@@ -274,10 +274,22 @@
+             raise PermissionError("RUN_WRITE_CONSENT_REQUIRES_NATIVE_MODE_AND_BOOLEAN")
+         if not isinstance(args["prompt"], str) or not 1 <= len(args["prompt"]) <= 8000:
+             raise ValueError("PROMPT_REQUIRED_MAX_8000")
+-        live_requested=(engine=='gemini' and self.mode=='native' and self.gemini.multi_agent_settings().enabled
++        from .planner import is_write_intent
++        business_write = is_write_intent(args['prompt'])
++        if engine == 'gemini' and business_write and who['role'] != 'PM' and any(
++                action_requested(args['prompt'], action) for action in ('create_work_package', 'update_work_package', 'transition')):
++            raise PermissionError('PM_ONLY_BUSINESS_WRITE_REQUIRED')
++        if allow and not scope:
++            scope = requested_ids(args['prompt'])
++        if engine == 'gemini' and scope:
++            if native is None:
++                raise ValueError('NATIVE_CONTEXT_REQUIRED')
++            for identifier in scope:
++                native.package(identifier)
++        # Analysis-only agents cannot execute business tools; writes retain the existing consent/proposal worker.
++        live_requested=(engine=='gemini' and not (allow or scope or business_write) and self.mode=='native' and self.gemini.multi_agent_settings().enabled
+                         and not match_query(args['prompt']) and not {'context_task_id','conversation_id'} & args.keys())
+         if live_requested:
+-            from .planner import is_write_intent
+             if is_write_intent(args['prompt']) and who['role']!='PM':
+                 raise PermissionError('PM_ONLY_BUSINESS_WRITE_REQUIRED')
+             policy=self.gemini.validate_prompt(args['prompt'])
+@@ -327,8 +339,6 @@
+             route, current = self.context_read(who, native, context)
+             result = {**read_result(who, self.config["project_id"], route, current), "context_reference": context}
+             return self.store.complete_read_run(who["user_id"], result, command)
+-        if allow and not scope:
+-            scope = requested_ids(args["prompt"])
+         route = match_query(args["prompt"])
+         if route:
+             if native is None:
+--- before/openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb
++++ after/openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb
+@@ -105,7 +105,7 @@
+     raise ::ArgumentError, "Tool không được phép" unless %w[get_assistant_status get_action_history analyze list_work_packages start_ai_run get_proposal get_ai_run get_job identity get_work_package get_project_options get_gate create_work_package update_work_package comment transition change_gate knowledge_ingest knowledge_search knowledge_deindex cancel_agent_run].include?(action)
+ 
+     arguments = params[:prompt].present? ? {"prompt" => params[:prompt], "allow_routine_writes" => params[:allow_routine_writes] == "1",
+-      "write_scope_ids" => params[:write_scope_ids].to_s.scan(/\d+/).map(&:to_i)} : JSON.parse(params.fetch(:arguments))
++      "write_scope_ids" => parse_write_scope(params[:write_scope_ids])} : JSON.parse(params.fetch(:arguments))
+ 
+     arguments["engine"] = params[:engine].presence || "gemini" if action == "start_ai_run"
+ 
+@@ -115,9 +115,12 @@
+ 
+     raise ::ArgumentError, "Arguments JSON phải là object" unless arguments.is_a?(Hash)
+ 
++    request_key = params[:request_id].presence || SecureRandom.uuid
++    raise ::ArgumentError, "Mã yêu cầu không hợp lệ" unless request_key.match?(/\A[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}\z/i)
++
+     @result = Qldapm::AiBridge.call(@project, User.current, "command", {action:, arguments:,
+ 
+-        idempotency_key: SecureRandom.uuid, auto_execute: params[:auto_execute] == "1"})
++        idempotency_key: request_key, auto_execute: params[:auto_execute] == "1"})
+ 
+     @proposal = @result["result"] if @result.dig("result", "human_confirmation_required")
+ 
+@@ -137,7 +140,9 @@
+ 
+   rescue ::ArgumentError, ::KeyError => error
+     @error = error.message
+-    status = if error.message.match?(/từ chối|không có quyền|403/)
++    status = if error.is_a?(Qldapm::AiBridge::RequestError)
++               error.status
++             elsif error.message.match?(/từ chối|không có quyền|403/)
+                :forbidden
+              elsif error.message.match?(/chưa sẵn sàng|gián đoạn|503|Timeout/)
+                :service_unavailable
+@@ -290,5 +295,12 @@
+ 
+   end
+ 
++  def parse_write_scope(value)
++    text = value.to_s.strip
++    return [] if text.empty?
++    raise ::ArgumentError, "Phạm vi chỉ nhận ID nguyên dương, cách nhau bằng dấu phẩy hoặc khoảng trắng." unless text.match?(/\A#?[1-9]\d*(?:[\s,]+#?[1-9]\d*)*[\s,]*\z/)
++    text.scan(/\d+/).map(&:to_i).uniq
++  end
++
+ end
+ 
+--- before/openproject/ai/core/overlay/app/views/qldapm_ai/show.html.erb
++++ after/openproject/ai/core/overlay/app/views/qldapm_ai/show.html.erb
+@@ -50,6 +50,7 @@
+ <p>Gemini đọc mô tả nghiệp vụ, bình luận và liên kết công việc theo quyền của bạn để hiểu yêu cầu. API key và thông tin xác thực được giữ ở backend. Phân tích của AI là gợi ý; kết quả thao tác được xác nhận bằng dữ liệu OpenProject.</p>
+ <p>Ví dụ: “Giải thích nghiệp vụ công việc 58 và các điểm còn thiếu”, “Thêm comment vào công việc 58: Đã kiểm tra trên staging”, “Đề xuất chia công việc 58 thành các Subtask”. <%= link_to "Xem Insights local", project_qldapm_insights_path(@project.identifier) %>.</p>
+ <%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
++  <%= hidden_field_tag :request_id, params[:request_id].presence || SecureRandom.uuid %>
+   <%= label_tag :engine, "Chế độ xử lý" %>
+   <%= select_tag :engine, options_for_select([["Gemini — cấu hình Free Tier đã lưu", "gemini"], ["Supervisor local — bản phân tích/dự thảo, không dùng model", "supervisor"]], params[:engine]) %>
+   <%= label_tag :prompt, "Yêu cầu phân tích" %>
+@@ -57,7 +58,7 @@
+   <p><%= check_box_tag :allow_routine_writes, "1", false %> <%= label_tag :allow_routine_writes, @role == "PM" ? "Cho phép Gemini thực hiện thao tác nghiệp vụ thông thường tôi yêu cầu trong lượt này." : "Cho phép Gemini đăng bình luận tôi yêu cầu trong lượt này." %></p>
+   <p>Không bật: chỉ tạo đề xuất để bạn duyệt. Quyền này chỉ áp dụng cho yêu cầu vừa gửi; không cho phép xóa, đổi quyền hoặc deploy.</p>
+   <%= label_tag :write_scope_ids, "Giới hạn ID công việc (tùy chọn, cách nhau bằng dấu phẩy)" %>
+-  <%= text_field_tag :write_scope_ids, "", placeholder: "Ví dụ: 35, 38" %>
++  <%= text_field_tag :write_scope_ids, params[:write_scope_ids], placeholder: "Ví dụ: 35, 38" %>
+   <p>Có thể để trống: hệ thống nhận ID được ghi rõ trong câu lệnh, ví dụ “công việc 58”. Nếu nhập ô này, chỉ các ID bạn chọn được phép sửa; AI vẫn kiểm tra quyền và phiên bản.</p>
+   <%= submit_tag "Gửi yêu cầu", class: "button -primary" %>
+ <% end %>
+--- before/openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb
++++ after/openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb
+@@ -4,6 +4,13 @@
+ 
+ module Qldapm
+   class AiBridge
++    class RequestError < ArgumentError
++      attr_reader :status
++      def initialize(message, status)
++        @status = status
++        super(message)
++      end
++    end
+     ERRORS = {
+       "GEMINI_DISABLED_PENDING_LOCAL_CREDENTIAL_COST_AND_DATA_VERIFICATION" => "Gemini OFF: cấu hình, key hoặc quyền sử dụng chưa hợp lệ. Chưa gọi Google; cần kiểm tra local.",
+       "GEMINI_FREE_DATA_SCOPE_DENIED" => "Câu hỏi ngoài phạm vi Gemini được cho phép hoặc chứa thông tin cá nhân/key. Hãy bỏ thông tin đó trước khi gửi.",
+@@ -24,6 +31,10 @@
+       "STALE_EXPIRED_OR_CONSUMED_PROPOSAL" => "Đề xuất đã hết hạn, đã xử lý hoặc phiên bản/hash không còn khớp. Không thực hiện lại.",
+       "PROPOSAL_NOT_FOUND" => "Không tìm thấy đề xuất của tài khoản này. Chưa thực hiện thao tác.",
+       "RUN_WRITE_SCOPE_POSITIVE_IDS" => "Phạm vi chỉ nhận ID công việc là số nguyên dương.",
++      "SUPERVISOR_READ_ONLY_EXPLICIT_IDS_REQUIRED" => "Supervisor local chỉ phân tích/dự thảo. Hãy chọn Gemini để yêu cầu thao tác nghiệp vụ; quyền ghi vẫn được kiểm tra theo tài khoản và scope.",
++      "PM_ONLY_BUSINESS_WRITE_REQUIRED" => "Chỉ PM được tạo, sửa hoặc chuyển trạng thái công việc. Checkbox không cấp thêm quyền.",
++      "AI_CREATE_PARENT_OUTSIDE_USER_SCOPE" => "Công việc cha nằm ngoài phạm vi được phép trong lượt này. Chọn đúng ID cha rồi gửi yêu cầu mới.",
++      "NATIVE_READ_DENIED" => "Không có quyền đọc công việc trong phạm vi đã chọn.",
+       "AI_BUSY" => "Một yêu cầu Gemini đang chạy. Chờ kết quả hiện tại trước khi gửi yêu cầu mới."
+     }.freeze
+ 
+@@ -50,7 +61,8 @@
+             document = JSON.parse(response_body)
+             code = document.is_a?(Hash) ? document["error"].to_s[/\A(?:OPENPROJECT_[0-9]+|[A-Z][A-Z0-9_]+)/] : nil
+             # Only known codes become UI messages; never echo upstream text or credentials.
+-            raise ArgumentError, ERRORS.fetch(code) { "AI gateway từ chối hoặc chưa sẵn sàng (#{response.code}); không tự gửi lại thao tác ghi" }
++            message = ERRORS.fetch(code) { "AI gateway trả HTTP #{response.code}; chưa xác nhận thao tác. Kiểm tra quyền, dữ liệu và receipt trước khi gửi lại." }
++            raise RequestError.new(message, response.code.to_i)
+           end
+         end
+       end

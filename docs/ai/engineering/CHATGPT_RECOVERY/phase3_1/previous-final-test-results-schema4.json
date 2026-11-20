@@ -1,0 +1,193 @@
+{
+  "schema_version": 4,
+  "snapshot_utc": "2026-11-02T10:27:06.538856+00:00",
+  "overall_status": "P0_DEPLOYED_API_CLONE_VERIFIED_OWNER_UAT_PENDING; P1_BLOCKERS_REMAIN",
+  "current_images": {
+    "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+    "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2",
+    "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+  },
+  "current_serving_source_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+  "current_host_source_manifest": "phase3-owner/final-source-manifest.json",
+  "historical_phase2_index": "phase3-owner/historical-test-index-phase2.json",
+  "source_git_head_note": "Historical HEAD does not identify authoritative untracked source; exact file/image digests govern claims.",
+  "aggregation_policy": "Never sum overlapping suites/revisions. Host162 tests matched Gateway serving sources but full manifest changed while Core was edited; current Core acceptance is the final7649 Rails clone plus final NodeVM/Native version tests. Candidate74 is network-none; adapter/MAIN/historical coding evidence distinct.",
+  "checks": [
+    {
+      "record": "phase3-owner/checks/final-engineering-20261102T095807146946Z.json",
+      "record_sha256": "eadaabd31b2f6ef61db4773ebe65758dbf72baa215f2eb0730946a09b599335b",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "started_utc": "2026-11-02T09:58:07.845208+00:00",
+      "finished_utc": "2026-11-02T09:58:09.096564+00:00",
+      "environment": "host-current-source-immutable-images-qualified-separately",
+      "tested_images": [],
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "source_changed_during_check": false,
+      "current_complete_manifest_matches": false,
+      "current_gateway_serving_module_hashes_match": true,
+      "current_core_serving_file_hashes_match": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/checks/final-engineering-20261102T095807146946Z.log",
+      "scope_note": "Counts and PASS apply only to this exact command; matching files do not imply test exercised every matching component."
+    },
+    {
+      "record": "phase3-owner/checks/final-engineering-qualified-20261102T095817010629Z.json",
+      "record_sha256": "3bdbf7fcfd3ba0344f98f588dbda2870d51f5000b86d4191e33b678c5f67e5f7",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "started_utc": "2026-11-02T09:58:17.640817+00:00",
+      "finished_utc": "2026-11-02T09:59:50.327441+00:00",
+      "environment": "host-current-source-PYTHONPATH-project-ai-fixtures",
+      "tested_images": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": true,
+      "current_complete_manifest_matches": false,
+      "current_gateway_serving_module_hashes_match": true,
+      "current_core_serving_file_hashes_match": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/checks/final-engineering-qualified-20261102T095817010629Z.log",
+      "scope_note": "Counts and PASS apply only to this exact command; matching files do not imply test exercised every matching component."
+    },
+    {
+      "record": "phase3-owner/checks/ui-final-20261102T095133627948Z.json",
+      "record_sha256": "1dff63c81fb2c03f1e76a332f94933209f009bd1b3b8d38265f7ff9cd8ebea3b",
+      "command": [
+        "python",
+        "-c",
+        "import subprocess; [subprocess.run(['node','openproject/ai/tests/'+t],check=True) for t in ['test_owner_live_transport.js','test_execution_inspector_render.js','test_report_reader.js','test_run_inspector_request.js']]"
+      ],
+      "started_utc": "2026-11-02T09:51:35.554554+00:00",
+      "finished_utc": "2026-11-02T09:51:36.502898+00:00",
+      "environment": "actual-template-node-vm-not-browser",
+      "tested_images": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "current_complete_manifest_matches": false,
+      "current_gateway_serving_module_hashes_match": true,
+      "current_core_serving_file_hashes_match": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/checks/ui-final-20261102T095133627948Z.log",
+      "scope_note": "Counts and PASS apply only to this exact command; matching files do not imply test exercised every matching component."
+    },
+    {
+      "record": "phase3-owner/checks/ui-final-7649-20261102T101524588928Z.json",
+      "record_sha256": "05f36f9e336e070d6a713bd9bc07c936aaccce3b1a71dbc0bc3c322a91d5a73d",
+      "command": [
+        "python",
+        "-c",
+        "import subprocess; [subprocess.run(['node','openproject/ai/tests/'+t],check=True) for t in ['test_owner_live_transport.js','test_execution_inspector_render.js','test_report_reader.js','test_run_inspector_request.js']]"
+      ],
+      "started_utc": "2026-11-02T10:15:26.132455+00:00",
+      "finished_utc": "2026-11-02T10:15:27.397743+00:00",
+      "environment": "actual-ERB-Node-VM-current-production-7649-no-browser",
+      "tested_images": [
+        "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      ],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "current_complete_manifest_matches": true,
+      "current_gateway_serving_module_hashes_match": true,
+      "current_core_serving_file_hashes_match": true,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/checks/ui-final-7649-20261102T101524588928Z.log",
+      "scope_note": "Counts and PASS apply only to this exact command; matching files do not imply test exercised every matching component."
+    },
+    {
+      "record": "phase3-owner/checks/ui-release-final-20261102T100652232251Z.json",
+      "record_sha256": "be7d129366d63cacd7922fca8bb6fdeeec68249a734bbfd1bb31555051d463ad",
+      "command": [
+        "python",
+        "-c",
+        "import subprocess; [subprocess.run(['node','openproject/ai/tests/'+t],check=True) for t in ['test_owner_live_transport.js','test_execution_inspector_render.js','test_report_reader.js','test_run_inspector_request.js']]"
+      ],
+      "started_utc": "2026-11-02T10:06:54.909804+00:00",
+      "finished_utc": "2026-11-02T10:06:56.781515+00:00",
+      "environment": "actual-ERB-Node-VM-all-final-source-no-browser",
+      "tested_images": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "current_complete_manifest_matches": false,
+      "current_gateway_serving_module_hashes_match": true,
+      "current_core_serving_file_hashes_match": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/checks/ui-release-final-20261102T100652232251Z.log",
+      "scope_note": "Counts and PASS apply only to this exact command; matching files do not imply test exercised every matching component."
+    }
+  ],
+  "authoritative_evidence": {
+    "runtime_source_images_pins": "phase3-owner/final-live-verification.json",
+    "latest_signed_status_and_measured_provider_delta": "phase3-owner/final-signed-status.json",
+    "gateway_immutable_candidate_74": "phase3-owner/gateway-candidate-final.json",
+    "gateway_startup_rollback": "phase3-owner/gateway-owner-startup-rollback.json",
+    "core_final_actual_rails_auth_csrf_json_knowledge_render": "phase3-owner/core-clone-result.json",
+    "main_github_sync_twice_same_key_replay_historical_telemetry": "phase3-owner/main-bridge-readback.json",
+    "main_exact_citations": "phase3-owner/main-exact-knowledge.json",
+    "project5_13_tables_after_both_rollouts": "phase3-owner/native-after-final.json",
+    "rag_currentness_10_sources": "phase3-owner/rag/post-rollout-currentness.json",
+    "rag_operational_original_gate_failed": "phase3-owner/rag/operational-clone-result.json",
+    "rag_gate_diagnostic_not_regraded": "phase3-owner/rag/exact-gate-diagnostic.json",
+    "rag_experiment_cleanup": "phase3-owner/rag/cleanup.json",
+    "n8n_principal_security_and_ciphertext_copy_checks": "phase3-owner/n8n/checks.json",
+    "n8n_current_published_metadata": "phase3-owner/n8n/n8n-readback.json",
+    "n8n_vendor_filesystem_leak_canary": "phase3-owner/n8n/RESULT.md",
+    "main_journals_no_new_unknown_receipt": "phase3-owner/final-journal-readback.json",
+    "demo_current_release": "phase3-owner/demo-readback.json",
+    "review_findings_fixed": "phase3-owner/REVIEW.md",
+    "acceptance_matrix_43_rows": "phase3-owner/ACCEPTANCE_MATRIX.json"
+  },
+  "artifact_sha256": {
+    "runtime_source_images_pins": "c27001dde9a7f24c0518957ef3d25d51c5694f36516966caed0a2cf1c31a4a39",
+    "latest_signed_status_and_measured_provider_delta": "dcd2dd48653f2c734b5b79b1819042dcee14546cf4272d28f549a473f3769217",
+    "gateway_immutable_candidate_74": "0de07611ef158f656623f636f5be1a1474d23c888489734bc90ab8c3e8c86640",
+    "gateway_startup_rollback": "0c8788401cafc666abb3ce3def6e4f285f2166dee64898b967067086a5301292",
+    "core_final_actual_rails_auth_csrf_json_knowledge_render": "36e9f48d9bcff34dd0f5fab858dec351956770ec6d2c8d969226d5fdb3f36fe9",
+    "main_github_sync_twice_same_key_replay_historical_telemetry": "df768f483bcfdf67f7b0e0b1aedd9c60a3d845e85dc8facec70fc1d48a02f230",
+    "main_exact_citations": "3384f836f97fe005d49542e940363a97398c1fc63cd092b0cab436ddcb3af544",
+    "project5_13_tables_after_both_rollouts": "aa11e40943a14a3a6baad2c3d0e114babf8250fcd76bb835d992701e28383d1c",
+    "rag_currentness_10_sources": "8cfd3a5af112af4b37cdb36d61c914e08659a1e07af419d3b966ce93d2c860f7",
+    "rag_operational_original_gate_failed": "4a645e7097f0149903f09fc50c91c500bf85db1b43408cf28f43343643493599",
+    "rag_gate_diagnostic_not_regraded": "305ed40463ecffad41b75f83996efd9a9de5804bc031ebaadd9323f7abe995e7",
+    "rag_experiment_cleanup": "6131c05e4bc458fa397962ae5a6e4c565cf36cb541aa8e580537eab8e16dcc71",
+    "n8n_principal_security_and_ciphertext_copy_checks": "47e77640b09a2c5ea1d0f71b79cca6166bec7abbd1d9be0ca66eeeae32e50273",
+    "n8n_current_published_metadata": "ad94748d719d6abc5824f69359484da6982bcd7b569c20b98d9b9a2abdb79711",
+    "n8n_vendor_filesystem_leak_canary": "ac8b3f2cac3c619a1e4c41e123769f7a8fc2ac6dd2119b3cf09ec86c9be9a656",
+    "main_journals_no_new_unknown_receipt": "5e313ccaa8484924a36d556fcd377ef0c20b44b3111cb3f0637645f3011f0ac5",
+    "demo_current_release": "6728b84730c83216af224c6142364664b32c34c36e16408a696898eab8fcccb5",
+    "review_findings_fixed": "fcc00e5afd7767d6cb9323854001a48435156ac4af00b519ec5e26ca8d2fb129",
+    "acceptance_matrix_43_rows": "a6edc486f31d6e502af306573f3081bc4a89a8a80107b01fa698d16aa868c855"
+  },
+  "runtime_evidence_boundaries": {
+    "coding_e2e390": "Historical Phase2 bca/Corea6; Phase3 reprojects persisted artifacts only",
+    "main_bridge_sync": "Gatewayce047/Coreb2 at initial read; final7649 differs only knowledge version label, signed status reverified on exact final images",
+    "final_core_clone": "actual Native clone + Rails routes/session/CSRF; Gateway boundary synthetic; production MFA unchanged",
+    "n8n_adapter49": "Prior unchanged n8n392 published definitions, not16businessE2E",
+    "rag_gate": "Strict operational gate FAILED preserved; read-only diagnostic explains canonical source assumptions; MAIN10current/exact verified separately, semantic benchmark remainsPARTIAL"
+  },
+  "new_phase3_coding_tasks": 0,
+  "owner_accepted": false,
+  "remaining": {
+    "semantic_quality": "FAILED/PARTIAL; no new model or threshold candidate deployed",
+    "n8n_key_history_persistence": "BLOCKED; WF04 retentionOFF, arbitrary nested/free-text leak reproduced",
+    "WF07_WF12": "PARTIAL/DENIED admin19 designed; no RBAC weakening",
+    "offhost_custody_physical_dr": "PENDING OWNER / NOT TESTED",
+    "browser_uat": "PENDING OWNER",
+    "unknown_outcomes": "No new Phase3 pending owner receipts; historical generic pending set unchanged; never auto replay"
+  }
+}

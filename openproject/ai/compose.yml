@@ -1,0 +1,77 @@
+name: qldapm-ai
+services:
+  gateway:
+    image: ${AI_IMAGE:?Run Setup}
+    restart: unless-stopped
+    ports: ["127.0.0.1:18089:8090"]
+    volumes:
+      - ${AI_RUNTIME}/gateway:/state
+      - ${AI_RUNTIME}/workspaces:/workspaces
+    networks: [ai, openproject]
+    read_only: true
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 384m
+    cpus: 2
+    pids_limit: 128
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health',timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    logging: {driver: json-file, options: {max-size: "10m", max-file: "3"}}
+  telegram-ai:
+    image: ${TELEGRAM_AI_IMAGE:-qldapm-telegram-ai:local}
+    build:
+      context: ./telegram-ai
+    restart: unless-stopped
+    env_file:
+      - path: ${AI_RUNTIME}/telegram-ai/.env
+        required: false
+    environment:
+      TELEGRAM_AI_DB_PATH: /state/telegram.sqlite
+      GEMINI_API_KEY_FILE: /run/qldapm-gemini.key
+      QLDAPM_GATEWAY_INTERNAL_URL: http://gateway:8090
+      QLDAPM_SERVICE_CREDENTIAL_REF: /run/secrets/gateway.token
+      QLDAPM_ALLOWED_PROJECT_IDS: "5,6"
+      TELEGRAM_AI_INTERNAL_SECRET_FILE: /run/secrets/notification.key
+      TELEGRAM_AI_N8N_WEBHOOK_SECRET_FILE: /run/secrets/notification.key
+      TELEGRAM_AI_N8N_WEBHOOK_URL: http://qldapm-n8n-main:5678/webhook/qldapm-telegram-agent-notifications
+      TZ: Asia/Bangkok
+    depends_on:
+      gateway:
+        condition: service_healthy
+    volumes:
+      - ${AI_RUNTIME}/telegram-ai/state:/state
+      - ${AI_RUNTIME}/telegram-ai/secrets:/run/secrets:ro
+      - ${AI_RUNTIME}/gateway/gemini.key:/run/qldapm-gemini.key:ro
+    networks: [ai]
+    read_only: true
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 64
+    healthcheck:
+      test: [CMD, python, -m, app.main, health]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    logging: {driver: json-file, options: {max-size: "5m", max-file: "3"}}
+  tunnel:
+    image: ${CLOUDFLARED_IMAGE}
+    profiles: [public]
+    command: [tunnel, --no-autoupdate, --url, "http://gateway:8090"]
+    restart: "no"
+    networks: [ai]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    logging: {driver: json-file, options: {max-size: "5m", max-file: "2"}}
+networks:
+  ai:
+  openproject:
+    external: true
+    name: qldapm-openproject_frontend

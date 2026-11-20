@@ -1,0 +1,33 @@
+{
+  "id": "2f7cba6e-666f-4e94-b7f2-124dd7e153e8",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": null,
+  "deadline": 1793619199.7195966,
+  "definition": {
+    "acceptance": {},
+    "acceptance_file": null,
+    "base_branch": "main",
+    "base_unit": null,
+    "feedback": "Mã yêu cầu: OWNER-TEST-CSV-20261102-01\r\n\r\nTrong Mini Task Manager của Project 6, bổ sung tính năng xuất danh sách công việc ra CSV qua:\r\n\r\nGET /tasks/export.csv\r\n\r\nGiữ phạm vi một engineering unit và một Pull Request.\r\n\r\nAcceptance criteria:\r\n1. Trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\r\n2. CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\r\n3. Hỗ trợ q và status với cùng hành vi lọc của GET /tasks hiện có. Status không hợp lệ trả HTTP 422.\r\n4. Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\r\n5. Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title bằng thư viện csv chuẩn.\r\n6. Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm và trả 422.\r\n7. Thêm tests dùng SQLite tạm, bao phủ dữ liệu thường, Unicode/ký tự đặc biệt, bộ lọc, danh sách rỗng và status không hợp lệ. Chạy cả regression tests hiện có.\r\n\r\nTiếp nối source đã bàn giao gần nhất của PR #9; không làm mất các tính năng cũ.\r\nKhông đổi database schema, không ghi Project 5, không dùng provider trả phí, không tự merge hoặc deploy demo.\r\n\r\nHoàn thành theo pipeline PM/BA → Dev → Reviewer → QA.\r\nBàn giao WP/run ID, kết quả tests, reviewed diff hash, commit và PR URL.",
+    "kind": "planning",
+    "native_id": 379,
+    "source_hash": "2ec52f6742aa972fc39a908f94242adbf4d82b7ddd4330fd903053ad6e3df689",
+    "title": "PM/BA requirements and engineering backlog"
+  },
+  "engine": "openclaw",
+  "kind": "planning",
+  "native_id": 379,
+  "project_id": 6,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "7f3d7430-e1fe-459b-bcad-0e42ec83933b",
+  "source_version": 4,
+  "spec": "**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n\n*   Backend: Python FastAPI\n    \n*   Database: SQLite\n    \n*   Frontend: HTML, CSS, JavaScript\n    \n*   Testing: pytest\n    \n*   Version Control: Git and GitHub\n    \n\n**Functional Requirements**\n\n1.  Create new tasks.\n    \n2.  View a list of tasks.\n    \n3.  Edit task information.\n    \n4.  Delete tasks.\n    \n5.  Update task status.\n    \n6.  Search and filter tasks.\n    \n7.  Persist data in SQLite.\n    \n8.  Provide a usable web interface.\n    \n\n**AI Development Workflow**\n\nThe AI team should:\n\n1.  Analyze requirements and define acceptance criteria.\n    \n2.  Break down the project into development tasks.\n    \n3.  Establish dependencies and propose a development schedule.\n    \n4.  Implement source code in the Git repository.\n    \n5.  Build and execute automated tests.\n    \n6.  Review the implementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[https://github.com/Luim3141/mini-task-manager](https://github.com/Luim3141/mini-task-manager)\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.",
+  "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+  "stage": "ADMITTED",
+  "unit": "requirements-planning-v1-2ec52f6742aa972f",
+  "write_scope_ids": [],
+  "worker_id": "8b7a6302-fb7f-4eb3-8e39-ed69c92c97de",
+  "claim_token": "880b4883-1c91-4db9-82fe-8dd8fe31a921",
+  "claim_generation": 134
+}

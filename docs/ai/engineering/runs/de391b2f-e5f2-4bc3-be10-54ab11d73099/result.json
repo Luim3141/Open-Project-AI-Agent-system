@@ -1,0 +1,66 @@
+{
+  "status": "succeeded",
+  "text": "Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung. delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "045c95a4f5b73b32b90d65966c19c97c873f8e8f",
+  "head_sha": "7ceac4e6b2b9103b18e1a8be37e15f3c05b8de70",
+  "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/15",
+  "delivery": {
+    "baseRefName": "codex/openclaw-feedback-d8b7006b5cff1bc4",
+    "headRefName": "codex/openclaw-feedback-faf8797c2a8d1f4f",
+    "headRefOid": "7ceac4e6b2b9103b18e1a8be37e15f3c05b8de70",
+    "state": "OPEN",
+    "url": "https://github.com/Luim3141/mini-task-manager/pull/15"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\de391b2f-e5f2-4bc3-be10-54ab11d73099\\acceptance-0.xml",
+    "log_sha256": "9a2d94a02f21b773be1f63e8567ee8db0d20a345d9653d6f71e93a47512b20f5"
+  },
+  "review_evidence": {
+    "revision": "f98e682ccf8d16a0adba6518983152c16221778fa0c6fd07e5e1720a5680a22e",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-faf8797c2a8d1f4f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\de391b2f-e5f2-4bc3-be10-54ab11d73099",
+  "files_changed": [
+    "tests/test_health_regression.py"
+  ],
+  "native_readback": {
+    "child_id": 398,
+    "child_version": 8,
+    "parent": {
+      "id": 379,
+      "version": 4
+    },
+    "project_id": 6,
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/15"
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "child_id": 398,
+    "retrieval_count": 1,
+    "references": [
+      {
+        "native_id": 398,
+        "citation": "/work_packages/398"
+      }
+    ]
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "timestamp": "2026-10-26T20:53:35.449628+00:00",
+  "gateway_url": "http://127.0.0.1:8090",
+  "n8n_url": "http://localhost:5679",
+  "scenarios_tested": 10,
+  "scenarios_passed": 10,
+  "scenarios_failed": 0,
+  "results": {
+    "E2E-01": {
+      "scenario": "Prompt A: Deterministic Native Lookup",
+      "prompt": "dự án đang có bao nhiêu task chưa hoàn thành",
+      "status": "PASS",
+      "duration_seconds": 22.695,
+      "model_used": false,
+      "source": "native",
+      "response_text": "Dự án có 338 công việc chưa hoàn thành bạn được phép xem.",
+      "metrics": {
+        "by_status": {
+          "IN ANALYSIS": 1,
+          "NEW": 337
+        },
+        "count": 338,
+        "overdue_count": 32,
+        "overdue_ids": [
+          49,
+          50,
+          51,
+          54,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          137,
+          142,
+          182,
+          367,
+          368,
+          369
+        ]
+      }
+    },
+    "E2E-02": {
+      "scenario": "Prompt B: RAG Project Knowledge Query",
+      "query": "Tài khoản & Role",
+      "status": "PASS",
+      "duration_seconds": 14.154,
+      "hits_count": 5,
+      "citation_evidence": [
+        "[Epic] #38 - Tài khoản & Role",
+        "[Task] #57 - PRJ-04 — Thêm thành viên vào Project",
+        "[Task] #49 - AUTH-01 — Đăng ký bằng email và mật khẩu"
+      ],
+      "top_score": 0.03202,
+      "dense_state": "READY",
+      "match_type": "HYBRID_RRF"
+    },
+    "E2E-03": {
+      "scenario": "Prompt C: WBS Structure Analysis & Work Package Detail",
+      "target_id": 49,
+      "status": "PASS",
+      "duration_seconds": 11.144,
+      "total_work_packages": 338,
+      "overdue_count": 32,
+      "wp49_subject": "AUTH-01 — Đăng ký bằng email và mật khẩu",
+      "wp49_status": "NEW",
+      "has_workload_detector": true,
+      "has_sprint_readiness": true
+    },
+    "E2E-04": {
+      "scenario": "Prompt D: QA Evidence and Attestation",
+      "target_id": 49,
+      "status": "PASS",
+      "duration_seconds": 1.893,
+      "evidence_count": 1,
+      "items": [
+        {
+          "id": "d4d5aa97-a716-550d-88e9-de04b9caf9c9",
+          "actor": 18,
+          "state": "accepted",
+          "verification_kind": "AUTOMATED_NATIVE_READBACK",
+          "source_current": true,
+          "ready": true,
+          "native_id": 375,
+          "version": 0
+        }
+      ]
+    },
+    "E2E-05": {
+      "scenario": "Prompt E: n8n Operations Webhook Forwarding (WF03)",
+      "webhook_url": "http://localhost:5679/webhook/qldapm-agent-request",
+      "status": "PASS",
+      "duration_seconds": 2.88,
+      "response_status_code": 200,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "result_status": null
+    },
+    "E2E-06": {
+      "scenario": "Prompt F: Backlog & Recommendation Query",
+      "prompt": "thống kê trạng thái công việc",
+      "status": "PASS",
+      "duration_seconds": 26.236,
+      "state": "done",
+      "summary_text": "Phân tích local trên 10/10 công việc trong phạm vi phân tích; tối đa 10 mục/lượt.\nKết quả là bản phân tích/dự thảo, chưa thay đổi dữ liệu native.\n### ĐÁNH GIÁ TỔNG THỂ RỦI RO SPRINT (Mức độ: THẤP)\n- **Tổng số công việc:** 10 (Hoàn thành: 0, Đang mở: 10)\n- **Công việc quá hạn:** 0\n- **Công việc bị chặn (Blocker):** 0\n\n#### Chi tiết rủi ro và bằng chứng:\n\n#### Khuyến nghị hành động:\n1. Ưu tiên giải tỏa blocker cho các công việc có mức độ ưu tiên cao.\n2. Điều chỉnh phân bổ nguồn lực hoặc đàm phán phạm vi cho các mục trễ hạn.\n\n---\n### BÁO CÁO ĐỐI CHIẾU VÀ KIỂM ĐỊNH TÍNH NHẤT QUÁN (REVIEWER REPORT)\n#### 1. Kết quả đối chiếu bằng chứng native:\n- Tác vụ 1: **TRÍCH DẪN HỢP LỆ** — Chưa có trích dẫn cụ thể để đối chiếu; nội dung phân tích/dự thảo vẫn cần người dùng thẩm định.\n\n#### 2. Kiểm tra xung đột đa tác nhân: Nhất quán, không phát hiện mâu thuẫn.\n\n#### 3. Rà soát ranh giới thẩm quyền RBAC:\n- Các tác vụ đều thuộc phạm vi ĐỌC (Read-Only) hợp lệ, tuân thủ đúng phân quyền của vai trò.\n\n#### 4. Kết luận kiểm định (Final Verdict):\n**KẾT QUẢ: ĐÃ KIỂM TRA THAM CHIẾU/PHẠM VI; NỘI DUNG DỰ THẢO CHƯA ĐƯỢC CON NGƯỜI NGHIỆM THU.**"
+    },
+    "E2E-07": {
+      "scenario": "Idempotency & Replay Protection",
+      "idempotency_key": "e2e-idemp-1793047981",
+      "status": "PASS",
+      "run_id_call_1": "5d30c3c0-e8c9-4cf8-9f27-ae607c1587d2",
+      "run_id_call_2": "5d30c3c0-e8c9-4cf8-9f27-ae607c1587d2",
+      "replay_payload_mismatch_status": 422,
+      "idempotent_match": true
+    },
+    "E2E-08": {
+      "scenario": "RBAC Enforcement",
+      "actor_role": "BA",
+      "attempted_action": "get_configuration (PM-only)",
+      "status": "PASS",
+      "expected_code": 403,
+      "observed_code": 403,
+      "error_message": "PM_REQUIRED: role BA không có quyền get_configuration; chỉ được đọc, phân tích và bình luận"
+    },
+    "E2E-09": {
+      "scenario": "Fault Tolerance & Graceful Empty Search",
+      "query": "xyznonexistentqueryxyz12345",
+      "status": "PASS",
+      "hits_count": 0,
+      "graceful_response": true
+    },
+    "E2E-10": {
+      "scenario": "Audit Ledger Verification",
+      "status": "PASS",
+      "database_file": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\gateway.sqlite",
+      "total_persisted_requests": 285,
+      "persisted_usage_records": 134,
+      "audit_integrity": true
+    }
+  }
+}

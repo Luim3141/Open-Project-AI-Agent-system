@@ -1,0 +1,75 @@
+{
+  "utc": "2026-11-02T10:14:03.779764+00:00",
+  "status": "RUNTIME_AND_PARITY_VERIFIED_WITH_KNOWN_FUNCTIONAL_BLOCKERS",
+  "route": "CLI/read-only SQLite/Native metadata; no GUI",
+  "containers": {
+    "gateway": {
+      "image": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+      "state": "running",
+      "health": "healthy"
+    },
+    "core": {
+      "image": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2",
+      "state": "running",
+      "health": "healthy"
+    },
+    "n8n": {
+      "image": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+      "state": "running",
+      "health": "NOT_CONFIGURED"
+    }
+  },
+  "engineering": {
+    "mode": "OFF",
+    "active": 0,
+    "executing": 0,
+    "worker": {
+      "worker_id": "8b7a6302-fb7f-4eb3-8e39-ed69c92c97de",
+      "run_id": null,
+      "heartbeat_age_seconds": 0.143
+    },
+    "project6_knowledge_jobs": {
+      "verified": 59
+    }
+  },
+  "provider_gate": {
+    "active": false
+  },
+  "image_pins_match": true,
+  "runtime_source_sha256": {
+    "openproject/ai/gateway/engineering.py": "347aaece8f53051156b96322e908fc59f416795959926c4e16c812f6b6dcb13b",
+    "openproject/ai/gateway/engineering_auto.py": "6b7a5cc21033a8b4debc6e1bf01a95c0db1f480f18a02b89c33976ea6d5927b4",
+    "openproject/ai/gateway/engineering_fencing.py": "c344f736e77dc486bcf807550a69e224e38d52bb6a25878819fc2ce62be48a94",
+    "openproject/ai/gateway/engineering_github_sync.py": "cb1dac432b28c8ebe8a15c5c527fab2ac021058b330929a4fca3395506293ae2",
+    "openproject/ai/gateway/engineering_operator.py": "ed95cb2590ee70bf3f7c87c3b8a2993c910ce8bd8db0808f906802a06e6dc698",
+    "openproject/ai/gateway/engineering_owner_control.py": "3bd0d63ec9750ab0f375e275e9a2e43ebf989fd902580beb53fca0027b0ba069",
+    "openproject/ai/gateway/engineering_reporting.py": "ae885f02a5a06adbe1ccd7d2e2e9c4e38cdcc3059713d9b7813f9a2118867f4e",
+    "openproject/ai/gateway/engineering_telemetry.py": "1ca29312f528b098faa0611d82337cd4b5c193903f0fff7b37c7850fc6460a08",
+    "openproject/ai/gateway/knowledge_ingestion.py": "5a8ac18cf75fd3f595b9082a7afb06624a643e60efadde54fc612d60e2140133",
+    "openproject/ai/gateway/knowledge_search.py": "6dce36043c90d8ccdb55bd21b8ce0f92f46f0a48d16c3eaebad2a0d30cfcf69c",
+    "openproject/ai/gateway/knowledge_storage.py": "c7cdb9c330324aab42d5ef4b2e24ebe764c7d9303d0d2d778bf3b5aefc484cab",
+    "openproject/ai/gateway/service.py": "99804a0702ca565d3a4d77741ea5a8d28ede5e182740fc77ac956fb8a701db7f",
+    "openproject/ai/gateway/store.py": "dedf44ec918dcdb21ff1127ca17e4bfbdfe6a53379c4c33f2ef8e18b08dfb320",
+    "openproject/ai/gateway/vector_client.py": "53e4f97b13d6871e4aec206f4bdf66097f9f546848c85fa1c1d48cba7b2166f9",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "374e218a7e3068bd70bf2fc51d879112997d76202f04444545802ac2d1f0ddd4",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "0ff61391d6c31aae417bb44668cfba881a19c4b947f0c13421dcd2b677817b35",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": "fc50dc33e7d6dd28c35c074e63ce3d9997f9c00d9e9dc7727c08e1d022443cd0"
+  },
+  "n8n": {
+    "active": 16,
+    "published": 16,
+    "draft_matches_published": 15,
+    "readiness_http": 200,
+    "wf04_retention": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "none",
+      "saveDataSuccessExecution": "none",
+      "saveExecutionProgress": false,
+      "saveManualExecutions": false
+    }
+  },
+  "new_phase3_coding_tasks_created": 0,
+  "whole_image_coding_e2e": "NOT_RUN; Phase2#390 artifacts replayed read-only for telemetry, no new coding acceptance claimed",
+  "owner_uat": "PENDING OWNER"
+}

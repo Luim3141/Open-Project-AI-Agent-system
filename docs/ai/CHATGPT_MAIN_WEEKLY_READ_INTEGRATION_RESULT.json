@@ -1,0 +1,90 @@
+{
+  "at": "2026-10-27T13:29:29.727773+00:00",
+  "status": "PASS_MAIN_SIX_ACTOR_WEEKLY_READ",
+  "checks": [
+    {
+      "actor": 18,
+      "role": "AI_SYSTEM_OWNER",
+      "run_id": "9a0f1396-0a16-46b5-84b7-4a97449c45e7",
+      "status": "PASS",
+      "open_total": 338,
+      "model_used": false,
+      "same_request_same_run": true,
+      "cross_actor_http": 403,
+      "member_scope": "project"
+    },
+    {
+      "actor": 19,
+      "role": "PM",
+      "run_id": "1395f9da-6ac1-488f-abc3-aeb521586cc0",
+      "status": "PASS",
+      "open_total": 338,
+      "model_used": false,
+      "same_request_same_run": true,
+      "cross_actor_http": 403,
+      "member_scope": "project"
+    },
+    {
+      "actor": 20,
+      "role": "BA",
+      "run_id": "b1e46de0-c329-422f-9096-6f5ffa2ffd97",
+      "status": "PASS",
+      "open_total": 338,
+      "model_used": false,
+      "same_request_same_run": true,
+      "cross_actor_http": 403,
+      "member_scope": "self"
+    },
+    {
+      "actor": 21,
+      "role": "BE",
+      "run_id": "0a094777-799e-4bcb-87b5-a8dd510f8b86",
+      "status": "PASS",
+      "open_total": 338,
+      "model_used": false,
+      "same_request_same_run": true,
+      "cross_actor_http": 403,
+      "member_scope": "self"
+    },
+    {
+      "actor": 22,
+      "role": "FE",
+      "run_id": "cb0545ab-1f19-427c-a0f8-9585d3bdd0ff",
+      "status": "PASS",
+      "open_total": 338,
+      "model_used": false,
+      "same_request_same_run": true,
+      "cross_actor_http": 403,
+      "member_scope": "self"
+    },
+    {
+      "actor": 23,
+      "role": "QA",
+      "run_id": "e6713793-4e01-4a98-a03b-13d109ed8ee8",
+      "status": "PASS",
+      "open_total": 338,
+      "model_used": false,
+      "same_request_same_run": true,
+      "cross_actor_http": 403,
+      "member_scope": "self"
+    }
+  ],
+  "preserved_tables": [
+    "qa_evidence",
+    "qa_test_runs",
+    "qa_evidence_reviews",
+    "proposals",
+    "knowledge_sync",
+    "gemini_usage",
+    "gemini_call_receipts",
+    "native_phase_documents",
+    "native_phase_reviews",
+    "wbs_documents",
+    "operational_reports"
+  ],
+  "new_native_writes": 0,
+  "new_provider_calls": 0,
+  "new_saved_reports": 0,
+  "new_ai_runs": 6,
+  "verification_correction": "All six live API loops completed before an operator snapshot check referenced nonexistent reports table. Corrected to actual operational_reports and reconciled the same saved before/after SQLite snapshots; no new runs or expected-value changes."
+}

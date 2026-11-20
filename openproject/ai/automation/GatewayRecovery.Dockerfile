@@ -1,0 +1,2 @@
+FROM qldapm-recovery-base:gateway-fcb44c49afb9
+COPY --chown=10001:10001 gateway/engineering.py gateway/engineering_lifecycle.py gateway/store.py gateway/engineering_github_sync.py gateway/engineering_reporting.py gateway/knowledge_search.py gateway/app.py gateway/service.py gateway/execution_events.py gateway/engineering_monitor.py gateway/engineering_integrity.py gateway/n8n_lifecycle_outbox.py /app/gateway/

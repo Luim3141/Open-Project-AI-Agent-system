@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-26T12:01:17.446681+00:00",
+  "status": "QUALIFIED_BACKUP_MAIN_READONLY_PREFLIGHT",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-wbs-hierarchy-v3-20261026",
+      "image": "sha256:73aaf0c0cf8ea575eddbae2914db14e157e0c756cd58e225d70a5baeeba6f818"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-wbs-hierarchy-v3-20261026",
+      "image": "sha256:545e498a70a7d61103f6356cc726d12defab7df90da2c41bb9a2d97f6982e22c"
+    }
+  },
+  "files": {
+    "openproject/ai/gateway/native_wbs.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_wbs.py",
+      "sha256": "ffd9a103cd280bc4902539835563a42d8731360341213974e53110d0523f5a56"
+    },
+    "openproject/ai/gateway/native_wbs_relations.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_wbs_relations.py",
+      "sha256": "5b340673c1e87c38b5a068dc51e182313b49d5eea9dedfddc82892ac538d79e4"
+    },
+    "openproject/ai/gateway/native_wbs_hierarchy.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_wbs_hierarchy.py",
+      "sha256": "89c94e03610157370ec92cd1c53a9e09cace06dcd478183ae018a3af1eb02786"
+    },
+    "openproject/ai/gateway/wbs_analysis.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/wbs_analysis.py",
+      "sha256": "8fb3e49005494e02ee6a7b274dcb29705c5993b9ca159c997167fad2e9557a59"
+    },
+    "openproject/ai/gateway/live_agents.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/live_agents.py",
+      "sha256": "fc69c6d200d0af81b02ef286bdd2fb57da308953e233ee689d7ae9188f71b6e0"
+    },
+    "openproject/ai/gateway/catalog.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/catalog.py",
+      "sha256": "a2b82ac1b18384bc1e580833930013ae14a75a419d87a108083b387228ba9bc6"
+    },
+    "openproject/ai/core/overlay/app/services/qldapm/hierarchy_readback.rb": {
+      "kind": "core",
+      "target": "/app/app/services/qldapm/hierarchy_readback.rb",
+      "sha256": "b2a3e01602b74b10e03a485bc44960f43a53e45ae98aebd1520afe4c96c26683"
+    },
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": {
+      "kind": "core",
+      "target": "/app/lib/api/v3/qldapm/gates_api.rb",
+      "sha256": "30b836cf89a161d01af6ac35ef1198131021a0a9fc2caac4f086229c6a31f69c"
+    }
+  },
+  "qualification": {
+    "windows": {
+      "run": 536,
+      "passed": 536,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "linux": {
+      "run": 536,
+      "passed": 521,
+      "skipped": 15,
+      "errors": 0,
+      "failures": 0
+    },
+    "ruby_programs": 16,
+    "actual_native_clone": "CODEX_WF10_EXPLICIT_RELATIONS_NATIVE_CLONE_RESULT.json"
+  },
+  "changed_workflows": {
+    "WF10": {
+      "id": "tOY7QUa9SrWPOe9e",
+      "previous_version": "fd4c6f3d-8cf5-4290-9092-a5a88d04b6fe",
+      "changed_nodes": 1,
+      "change": "Forward explicit relations draft field only"
+    }
+  },
+  "unchanged_workflows": 15,
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "new_model_calls": 0,
+  "schema_changes": false,
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\wbs-hierarchy-deployment",
+  "rollback_images": {
+    "gateway": "sha256:b2f2db5659d5936ea621aae68b0e04a269741b163f2f35276245d15902ddbea6",
+    "web": "sha256:e0a840b57fac8031f2d20f8c7bc07e8f618560ec34bf1d81e14608de2d552dfd"
+  },
+  "authorization": "PUBLICATION_REDACTED",
+  "rollback": "Restore two app configuration references and exact prior WF10 definition; retain all databases and histories"
+}

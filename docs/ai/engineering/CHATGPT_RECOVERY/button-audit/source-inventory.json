@@ -1,0 +1,426 @@
+{
+  "scope": "Button template sites, not dynamic row instances; classic UI excluded",
+  "count": 70,
+  "rows": [
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 76,
+      "label_template": "&times;",
+      "source": "<button type=\"button\" class=\"qcc-toast-close\" data-action=\"close-toast\">&times;</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 89,
+      "label_template": "&times;",
+      "source": "<button type=\"button\" class=\"qcc-toast-close\" data-action=\"close-toast\">&times;</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 122,
+      "label_template": "Mission Control",
+      "source": "<button class=\"qcc-nav-item active\" data-tab=\"tab-mission\" role=\"tab\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polygon points=\"12 6 12 12 16 14\"></polygon></svg>\n          <span>Mission Control</span>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 126,
+      "label_template": "AI Pipeline · business + execution",
+      "source": "<button class=\"qcc-nav-item\" data-tab=\"tab-pipeline\" role=\"tab\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polyline points=\"22 12 18 12 15 21 9 3 6 12 2 12\"></polyline></svg>\n          <span>AI Pipeline · business + execution</span>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 130,
+      "label_template": "Agent Workforce 6",
+      "source": "<button class=\"qcc-nav-item\" data-tab=\"tab-workforce\" role=\"tab\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path></svg>\n          <span>Agent Workforce</span>\n          <span class=\"qcc-nav-pill\">6</span>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 135,
+      "label_template": "Backlog & Tasks [dynamic]",
+      "source": "<button class=\"qcc-nav-item\" data-tab=\"tab-backlog\" role=\"tab\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"></path><polyline points=\"14 2 14 8 20 8\"></polyline><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"></line><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"></line><polyline points=\"10 9 9 9 8 9\"></polyline></svg>\n          <span>Backlog & Tasks</span>\n          <span class=\"qcc-nav-pill\"><%= tasks.size %></span>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 140,
+      "label_template": "Execution Center [dynamic]",
+      "source": "<button class=\"qcc-nav-item\" data-tab=\"tab-execution\" role=\"tab\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"></rect><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"></line><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"></line></svg>\n          <span>Execution Center</span>\n          <span class=\"qcc-nav-pill\"><%= runs.size %></span>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 145,
+      "label_template": "GitHub & Delivery [dynamic] PRs",
+      "source": "<button class=\"qcc-nav-item\" data-tab=\"tab-github\" role=\"tab\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"18\" cy=\"18\" r=\"3\"></circle><circle cx=\"6\" cy=\"6\" r=\"3\"></circle><path d=\"M13 6h3a2 2 0 0 1 2 2v7\"></path><line x1=\"6\" y1=\"9\" x2=\"6\" y2=\"21\"></line></svg>\n          <span>GitHub & Delivery</span>\n          <span class=\"qcc-nav-pill\"><%= github_prs.size %> PRs</span>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 150,
+      "label_template": "Reports & Analytics",
+      "source": "<button class=\"qcc-nav-item\" data-tab=\"tab-reports\" role=\"tab\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><line x1=\"18\" y1=\"20\" x2=\"18\" y2=\"10\"></line><line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"4\"></line><line x1=\"6\" y1=\"20\" x2=\"6\" y2=\"14\"></line></svg>\n          <span>Reports & Analytics</span>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 154,
+      "label_template": "Knowledge / RAG",
+      "source": "<button class=\"qcc-nav-item\" data-tab=\"tab-knowledge\" role=\"tab\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"></path><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"></path></svg>\n          <span>Knowledge / RAG</span>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 158,
+      "label_template": "System Integrations",
+      "source": "<button class=\"qcc-nav-item\" data-tab=\"tab-integrations\" role=\"tab\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polygon points=\"12 2 2 7 12 12 22 7 12 2\"></polygon><polyline points=\"2 17 12 22 22 17\"></polyline><polyline points=\"2 12 12 17 22 12\"></polyline></svg>\n          <span>System Integrations</span>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 245,
+      "label_template": "RUN ONCE",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-primary\" title=\"Chạy một lượt đơn lẻ có kiểm soát (Unit: <%= target_unit_name %>)\">\n              <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><polygon points=\"5 3 19 12 5 21 5 3\"></polygon></svg>\n              <span>RUN ONCE</span>\n            </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 251,
+      "label_template": "RUN ONCE · NO ELIGIBLE WORK",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-primary\" title=\"Gateway kiểm tra lại work eligibility; không chạy lại unit đã hoàn tất\"><span>RUN ONCE · NO ELIGIBLE WORK</span></button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 259,
+      "label_template": "BẬT AUTO",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-emerald\">\n                <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M13 2 3 14h9l-1 8 10-12h-9l1-8z\"/></svg>\n                <span>BẬT AUTO</span>\n              </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 268,
+      "label_template": "OFF",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-slate\">\n                <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"4.93\" y1=\"4.93\" x2=\"19.07\" y2=\"19.07\"></line></svg>\n                <span>OFF</span>\n              </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 279,
+      "label_template": "TẮT PAUSE",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-slate\"><span>TẮT PAUSE</span></button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 285,
+      "label_template": "PAUSE",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-amber\"><span>PAUSE</span></button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 293,
+      "label_template": "Sync GitHub",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-secondary\" title=\"Đọc lại PR từ GitHub và đối soát Native\">\n              <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67\"/></svg>\n              <span>Sync GitHub</span>\n            </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 300,
+      "label_template": "Cấu hình lịch",
+      "source": "<button type=\"button\" id=\"btn-open-schedule-modal\" class=\"qcc-btn qcc-btn-secondary\" >\n            <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 6 12 12 16 14\"></polyline></svg>\n            <span>Cấu hình lịch</span>\n          </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 309,
+      "label_template": "Snapshot Tức Thời (+AI)",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-secondary\" title=\"Sinh báo cáo tổng hợp tức thời kèm nhận định AI\">\n              <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"></path><polyline points=\"14 2 14 8 20 8\"></polyline><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"></line><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"></line></svg>\n              <span>Snapshot Tức Thời (+AI)</span>\n            </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 316,
+      "label_template": "Giao việc mới cho AI",
+      "source": "<button type=\"button\" id=\"btn-open-intake-modal\" class=\"qcc-btn qcc-btn-primary qcc-open-intake-btn\" title=\"Giao tính năng / yêu cầu mới cho Tác nhân PM & BA\">\n            <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\"></line><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line></svg>\n            <span>Giao việc mới cho AI</span>\n          </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 401,
+      "label_template": "Xem pipeline / receipts",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-secondary\" data-qcc-open-tab=\"tab-pipeline\">Xem pipeline / receipts</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 598,
+      "label_template": "Xem rủi ro Sprint",
+      "source": "<button type=\"submit\" class=\"qcc-btn\">Xem rủi ro Sprint</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 599,
+      "label_template": "Đọc Bug context",
+      "source": "<button type=\"submit\" class=\"qcc-btn\">Đọc Bug context</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 644,
+      "label_template": "[dynamic] ...",
+      "source": "<button type=\"button\" class=\"qcc-run-inspector-btn\" data-run-id=\"<%= run['id'] %>\" style=\"background:none; border:none; padding:0; cursor:pointer; display:inline-flex; align-items:center; gap:4px;\" title=\"Xem chi tiết thực thi & sơ đồ tương tác Agent\">\n                          <code class=\"text-cyan\"><%= run['id'] ? run['id'][0..7] : 'N/A' %>...</code>\n                          <svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#38BDF8\" stroke-width=\"2\"><path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>\n                        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 678,
+      "label_template": "Hủy",
+      "source": "<button type=\"submit\" class=\"qcc-btn-xs qcc-btn-rose\" data-confirm=\"Xác nhận thao tác?\">Hủy</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 685,
+      "label_template": "Yêu cầu Resume",
+      "source": "<button type=\"submit\" class=\"qcc-btn-xs qcc-btn-emerald\" title=\"Gateway xác minh budget/checkpoint; cùng run, attempt liên kết\">Yêu cầu Resume</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 688,
+      "label_template": "Chi tiết",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn\" data-run-id=\"<%= run['id'] %>\" title=\"Xem sơ đồ DAG và tiến trình Agent\">\n                            <svg width=\"10\" height=\"10\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg>\n                            <span>Chi tiết</span>\n                          </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 722,
+      "label_template": "Đồng bộ GitHub ngay",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-primary\" title=\"Đối soát trực tiếp với GitHub REST API\">\n                  <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67\"/></svg>\n                  <span>Đồng bộ GitHub ngay</span>\n                </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 844,
+      "label_template": "Cấu hình lịch tự động",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-primary\" data-open-schedule>\n              <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 6 12 12 16 14\"></polyline></svg>\n              <span>Cấu hình lịch tự động</span>\n            </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 885,
+      "label_template": "Xem toàn văn",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-primary qcc-read-report-btn\" data-report-id=\"<%= rep['id'] || rep['report_id'] %>\" data-report-title=\"<%= rep['title'] || 'Báo cáo Tiến độ Phát triển AI Engineering' %>\" data-report-type=\"<%= rep['report_type'] || 'DAILY' %>\" data-report-time=\"<%= rep['created_iso'] || rep['created_at'] || 'Vừa xong' %>\">\n                    <svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg>\n                    <span>Xem toàn văn</span>\n                  </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 917,
+      "label_template": "Nạp / kiểm tra index nguồn",
+      "source": "<button type=\"submit\" class=\"qcc-btn\" <%= 'disabled' if sources.empty? %>>Nạp / kiểm tra index nguồn</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 925,
+      "label_template": "Tìm kiếm Tri thức",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-primary\">Tìm kiếm Tri thức</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 934,
+      "label_template": "Tìm evidence trong tài liệu đã đăng ký",
+      "source": "<button type=\"submit\" class=\"qcc-btn\">Tìm evidence trong tài liệu đã đăng ký</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 960,
+      "label_template": "Đóng modal",
+      "source": "<button type=\"button\" class=\"qcc-modal-close\" data-action=\"close-modal\" aria-label=\"Đóng modal\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 990,
+      "label_template": "Đóng",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-slate\" data-action=\"close-modal\">Đóng</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 991,
+      "label_template": "Gửi tới PM/BA Agent",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-primary\" id=\"btn-submit-intake\">\n            <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><line x1=\"22\" y1=\"2\" x2=\"11\" y2=\"13\"></line><polygon points=\"22 2 15 22 11 13 2 9 22 2\"></polygon></svg>\n            <span>Gửi tới PM/BA Agent</span>\n          </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1011,
+      "label_template": "Đóng modal",
+      "source": "<button type=\"button\" class=\"qcc-modal-close\" data-action=\"close-modal\" aria-label=\"Đóng modal\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1029,
+      "label_template": "Sơ đồ Tương tác DAG",
+      "source": "<button type=\"button\" class=\"qcc-subnav-btn active\" data-subtab=\"subtab-dag\">Sơ đồ Tương tác DAG</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1030,
+      "label_template": "Dòng sự kiện (Timeline)",
+      "source": "<button type=\"button\" class=\"qcc-subnav-btn\" data-subtab=\"subtab-events\">Dòng sự kiện (Timeline)</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1031,
+      "label_template": "Mã nguồn & Diff",
+      "source": "<button type=\"button\" class=\"qcc-subnav-btn\" data-subtab=\"subtab-diff\">Mã nguồn & Diff</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1032,
+      "label_template": "Bằng chứng QA & Test",
+      "source": "<button type=\"button\" class=\"qcc-subnav-btn\" data-subtab=\"subtab-qa\">Bằng chứng QA & Test</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1033,
+      "label_template": "Raw Telemetry",
+      "source": "<button type=\"button\" class=\"qcc-subnav-btn\" data-subtab=\"subtab-raw\">Raw Telemetry</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1084,
+      "label_template": "Đóng",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-slate\" data-action=\"close-modal\">Đóng</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1097,
+      "label_template": "Đóng modal",
+      "source": "<button type=\"button\" class=\"qcc-modal-close\" data-action=\"close-modal\" aria-label=\"Đóng modal\">\n          <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg>\n        </button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1153,
+      "label_template": "Đóng",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-slate\" data-action=\"close-modal\">Đóng</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 1154,
+      "label_template": "Lưu cấu hình",
+      "source": "<button type=\"submit\" class=\"qcc-btn qcc-btn-primary\" id=\"btn-save-schedule\" data-action=\"save-schedule\">Lưu cấu hình</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_command_center.html.erb",
+      "line": 2479,
+      "label_template": "&times;",
+      "source": "<button type=\"button\" class=\"qcc-toast-close\" data-action=\"close-toast\">&times;</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_delegated.html.erb",
+      "line": 10,
+      "label_template": "[dynamic]",
+      "source": "<button type=\"submit\" class=\"qcc-btn\"><%= delegated['enabled'] ? 'Tắt delegated demo' : 'Bật delegated demo Project6' %></button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_delegated.html.erb",
+      "line": 21,
+      "label_template": "[dynamic] · WF05 → WF06",
+      "source": "<button type=\"submit\" class=\"qcc-btn\"><%= label %> · WF05 → WF06</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_knowledge_results.html.erb",
+      "line": 18,
+      "label_template": "Đọc nội dung đúng source pin",
+      "source": "<button type=\"submit\" class=\"qcc-btn\">Đọc nội dung đúng source pin</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_live_activity.html.erb",
+      "line": 14,
+      "label_template": "Copy Full Run ID",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary\" data-qcc-copy=\"<%= r['id'] %>\">Copy Full Run ID</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_live_activity.html.erb",
+      "line": 15,
+      "label_template": "Xem run / receipts / reviewer / QA",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-secondary qcc-run-inspector-btn\" data-run-id=\"<%= r['id'] %>\">Xem run / receipts / reviewer / QA</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_live_activity.html.erb",
+      "line": 22,
+      "label_template": "[dynamic]",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn\" data-run-id=\"<%= event['run_id'] %>\"><%= event['run_id'].to_s.first(8) %></button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_notifications.html.erb",
+      "line": 6,
+      "label_template": "Mở run [dynamic]",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn\" data-run-id=\"<%= notice['run_id'] %>\">Mở run <%= notice['run_id'].to_s.first(8) %></button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_notifications.html.erb",
+      "line": 8,
+      "label_template": "Đánh dấu đã đọc",
+      "source": "<button type=\"submit\" class=\"qcc-btn-xs qcc-btn-secondary\">Đánh dấu đã đọc</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_plans.html.erb",
+      "line": 2,
+      "label_template": "+ Giao việc PM/BA",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-primary qcc-open-intake-btn\">+ Giao việc PM/BA</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_plans.html.erb",
+      "line": 16,
+      "label_template": "Related run [dynamic]",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn\" data-run-id=\"<%= plan['run_id'] || plan['id'] %>\">Related run <%= (plan['run_id'] || plan['id']).to_s.first(8) %></button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_plans.html.erb",
+      "line": 22,
+      "label_template": "Copy Full Plan ID",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary\" data-qcc-copy=\"<%= plan['id'] %>\">Copy Full Plan ID</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_report_reader.html.erb",
+      "line": 27,
+      "label_template": "Raw Markdown",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-secondary\" id=\"qcc-report-raw-toggle\" aria-pressed=\"false\">Raw Markdown</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_report_reader.html.erb",
+      "line": 27,
+      "label_template": "Thu gọn sections",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-secondary\" id=\"qcc-report-sections-toggle\">Thu gọn sections</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_report_reader.html.erb",
+      "line": 27,
+      "label_template": "Export .md",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-secondary\" id=\"qcc-report-export\">Export .md</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_report_reader.html.erb",
+      "line": 29,
+      "label_template": "×",
+      "source": "<button type=\"button\" class=\"qcc-modal-close\" data-action=\"close-modal\" aria-label=\"Đóng báo cáo\">×</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_report_reader.html.erb",
+      "line": 38,
+      "label_template": "Sao chép Markdown gốc",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-secondary\" id=\"btn-copy-report\">Sao chép Markdown gốc</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_report_reader.html.erb",
+      "line": 38,
+      "label_template": "Đóng",
+      "source": "<button type=\"button\" class=\"qcc-btn qcc-btn-slate\" data-action=\"close-modal\">Đóng</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_work_list.html.erb",
+      "line": 35,
+      "label_template": "Run [dynamic] · Xem chi tiết",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn\" data-run-id=\"<%= run_id %>\">Run <%= run_id.to_s.first(8) %> · Xem chi tiết</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_work_list.html.erb",
+      "line": 37,
+      "label_template": "Copy Full ID",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary\" data-qcc-copy=\"<%= run_id %>\" <%= 'disabled' if run_id.blank? %>>Copy Full ID</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_workflows.html.erb",
+      "line": 30,
+      "label_template": "Xem nghiệp vụ / bằng chứng liên quan",
+      "source": "<button type=\"button\" class=\"qcc-btn\" data-qcc-open-tab=\"<%= wf['action_tab'] %>\">Xem nghiệp vụ / bằng chứng liên quan</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_workforce.html.erb",
+      "line": 16,
+      "label_template": "Mở last run / evidence",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn\" data-run-id=\"<%= last['run_id'] %>\">Mở last run / evidence</button>"
+    },
+    {
+      "file": "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_engineering_workforce.html.erb",
+      "line": 20,
+      "label_template": "Copy Full Run ID",
+      "source": "<button type=\"button\" class=\"qcc-btn-xs qcc-btn-secondary\" data-qcc-copy=\"<%= last['run_id'] %>\" <%= 'disabled' if last['run_id'].blank? %>>Copy Full Run ID</button>"
+    }
+  ]
+}

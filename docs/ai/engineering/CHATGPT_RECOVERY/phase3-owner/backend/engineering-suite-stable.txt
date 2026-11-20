@@ -1,0 +1,278 @@
+.........D:\AI project\QLDAPM chat\openproject\ai\tests\test_engineering.py:110: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient
+[11/02/26 16:34:56] INFO     HTTP Request: GET                  _client.py:1025
+                             http://testserver/api/v1/agent-run                
+                             s/bb5cd31e-6f40-4ba0-9df5-df6c078a                
+                             0f22/trace "HTTP/1.1 200 OK"                      
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://testserver/api/v1/agent-run                
+                             s/bb5cd31e-6f40-4ba0-9df5-df6c078a                
+                             0f22/trace "HTTP/1.1 403                          
+                             Forbidden"                                        
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://testserver/api/v1/agent-run                
+                             s/bb5cd31e-6f40-4ba0-9df5-df6c078a                
+                             0f22/trace "HTTP/1.1 403                          
+                             Forbidden"                                        
+.......................................................[11/02/26 16:36:13] WARNING  Vector indexing         knowledge_ingestion.py:147
+                             pending: ValueError                               
+......[11/02/26 16:36:18] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:6333/collections/                
+                             qldapm_knowledge_dense "HTTP/1.1                  
+                             200 OK"                                           
+                    ERROR    Qdrant upsert error:          vector_client.py:164
+                             ENGINEERING_CLAIM_LOST                            
+.....[11/02/26 16:36:23] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:8992/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:8992/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:36:24] INFO     HTTP Request: POST                 _client.py:1025
+                             http://127.0.0.1:8992/api/v3/work_                
+                             packages/380/activities "HTTP/1.0                 
+                             201 Created"                                      
+[11/02/26 16:36:25] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:8992/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:8992/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=2 "HTTP/1.0 200 OK"                     
+[11/02/26 16:36:26] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:8992/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:8992/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:36:27] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:8992/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=2 "HTTP/1.0 200 OK"                     
+.[11/02/26 16:36:28] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:9013/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+[11/02/26 16:36:29] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:9013/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:9013/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=2 "HTTP/1.0 200 OK"                     
+.[11/02/26 16:36:32] ERROR    GitHub sync fetch   engineering_github_sync.py:324
+                             failed:                                           
+                             GITHUB_HTTP_403                                   
+                    ERROR    GitHub sync fetch   engineering_github_sync.py:324
+                             failed:                                           
+                             GITHUB_HTTP_429                                   
+                    ERROR    GitHub sync fetch   engineering_github_sync.py:324
+                             failed:                                           
+                             GITHUB_SYNC_TIMEOUT                               
+.[11/02/26 16:36:34] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:9039/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+[11/02/26 16:36:35] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:9039/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:36:36] INFO     HTTP Request: POST                 _client.py:1025
+                             http://127.0.0.1:9039/api/v3/work_                
+                             packages/380/activities "HTTP/1.0                 
+                             403 Forbidden"                                    
+                    WARNING  Failed GitHub sync  engineering_github_sync.py:392
+                             activity WP 380:                                  
+                             OPENPROJECT_403                                   
+[11/02/26 16:36:37] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:9039/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:9039/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:36:38] INFO     HTTP Request: POST                 _client.py:1025
+                             http://127.0.0.1:9039/api/v3/work_                
+                             packages/380/activities "HTTP/1.0                 
+                             201 Created"                                      
+[11/02/26 16:36:39] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:9039/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:36:40] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:9039/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=2 "HTTP/1.0 200 OK"                     
+.[11/02/26 16:36:42] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380 "HTTP/1.0 200 OK"                   
+[11/02/26 16:36:43] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380/activities?pageSize=                
+                             100&offset=1 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: POST                 _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380/activities "HTTP/1.0                
+                             201 Created"                                      
+[11/02/26 16:36:44] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380/activities?pageSize=                
+                             100&offset=1 "HTTP/1.0 200 OK"                    
+[11/02/26 16:36:45] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380/activities?pageSize=                
+                             100&offset=2 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380 "HTTP/1.0 200 OK"                   
+[11/02/26 16:36:46] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380/activities?pageSize=                
+                             100&offset=1 "HTTP/1.0 200 OK"                    
+[11/02/26 16:36:47] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380/activities?pageSize=                
+                             100&offset=2 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: POST                 _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380/activities "HTTP/1.0                
+                             201 Created"                                      
+[11/02/26 16:36:48] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380/activities?pageSize=                
+                             100&offset=1 "HTTP/1.0 200 OK"                    
+[11/02/26 16:36:49] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:11290/api/v3/work                
+                             _packages/380/activities?pageSize=                
+                             100&offset=2 "HTTP/1.0 200 OK"                    
+.[11/02/26 16:36:50] WARNING  Failed GitHub sync  engineering_github_sync.py:392
+                             activity WP 380:                                  
+                             GITHUB_SYNC_DURABLE                               
+                             _STORE_REQUIRED                                   
+.[11/02/26 16:36:51] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:4987/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+[11/02/26 16:36:52] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:4987/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 403                         
+                             Forbidden"                                        
+                    WARNING  Failed GitHub sync  engineering_github_sync.py:392
+                             activity WP 380:                                  
+                             OPENPROJECT_403                                   
+[11/02/26 16:36:53] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:4987/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+[11/02/26 16:36:54] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:4987/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+                    INFO     HTTP Request: POST                 _client.py:1025
+                             http://127.0.0.1:4987/api/v3/work_                
+                             packages/380/activities "HTTP/1.0                 
+                             201 Created"                                      
+[11/02/26 16:36:55] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:4987/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:4987/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=2 "HTTP/1.0 200 OK"                     
+.[11/02/26 16:36:57] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5162/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5162/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:36:59] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5162/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5162/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:37:00] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5162/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=2 "HTTP/1.0 200 OK"                     
+.[11/02/26 16:37:02] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5198/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+[11/02/26 16:37:03] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5198/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:37:04] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5198/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+[11/02/26 16:37:05] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5198/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:37:06] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5198/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=2 "HTTP/1.0 200 OK"                     
+                    INFO     HTTP Request: POST                 _client.py:1025
+                             http://127.0.0.1:5198/api/v3/work_                
+                             packages/380/activities "HTTP/1.0                 
+                             201 Created"                                      
+[11/02/26 16:37:07] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5198/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:37:08] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5198/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=2 "HTTP/1.0 200 OK"                     
+.[11/02/26 16:37:10] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5149/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5149/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+[11/02/26 16:37:11] INFO     HTTP Request: POST                 _client.py:1025
+                             http://127.0.0.1:5149/api/v3/work_                
+                             packages/380/activities "HTTP/1.0                 
+                             503 Service Unavailable"                          
+[11/02/26 16:37:13] INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5149/api/v3/work_                
+                             packages/380 "HTTP/1.0 200 OK"                    
+                    INFO     HTTP Request: GET                  _client.py:1025
+                             http://127.0.0.1:5149/api/v3/work_                
+                             packages/380/activities?pageSize=1                
+                             00&offset=1 "HTTP/1.0 200 OK"                     
+...[11/02/26 16:37:15] ERROR    GitHub sync fetch   engineering_github_sync.py:324
+                             failed:                                           
+                             GITHUB_SYNC_TIMEOUT                               
+..[11/02/26 16:37:16] WARNING  Failed GitHub sync  engineering_github_sync.py:392
+                             activity WP 380:                                  
+                             OPENPROJECT_403                                   
+..[11/02/26 16:37:17] ERROR    GitHub sync fetch   engineering_github_sync.py:324
+                             failed:                                           
+                             GITHUB_SYNC_NETWORK                               
+                             _ERROR                                            
+..                    WARNING  Failed GitHub sync  engineering_github_sync.py:392
+                             activity WP 381:                                  
+                             OPENPROJECT_403                                   
+.[11/02/26 16:37:18] WARNING  Failed GitHub sync  engineering_github_sync.py:392
+                             activity WP 380:                                  
+                             ENGINEERING_CHILD_S                               
+                             COPE_MISMATCH                                     
+......[11/02/26 16:37:22] ERROR    GitHub sync fetch   engineering_github_sync.py:324
+                             failed:                                           
+                             GITHUB_SYNC_NETWORK                               
+                             _ERROR                                            
+...........................................[11/02/26 16:37:45] WARNING  Native report source  engineering_reporting.py:190
+                             unavailable:                                      
+                             RuntimeError                                      
+..................
+----------------------------------------------------------------------
+Ran 161 tests in 207.345s
+
+OK

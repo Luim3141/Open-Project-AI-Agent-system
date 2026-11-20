@@ -1,0 +1,23 @@
+{
+  "request_id": "7ab70d33-db05-4e1a-aae6-46ebcfd01ddf",
+  "prompt": "PM/Supervisor điều phối BA FE BE QA cho tài nguyên test Work Package #370. Mục tiêu: chỉ tạo đề xuất cập nhật mô tả công việc370, chờ PM duyệt riêng. BA kiểm tra acceptance criteria và giới hạn test. FE chỉ phân tích cách hiển thị approval và accessibility. BE là agent DUY NHẤT được điền proposed_operations: đúng1 update_work_package cho work_package_id370, chỉ đặt description bằng nguyên văn chuỗi JSON bên dưới, subject=null, status_id=null. BA, FE và QA bắt buộc proposed_operations=[]; QA kiểm tra idempotency, Native readback, RAGsync và không được khẳng định đã chạy test. Đọc Native và retrieved_knowledge trong context; trích dẫn #370, không gọi tên ID ngoài phạm vi. Reviewer kiểm tra citation/phạm vi. Không thực thi ghi Native, không transition, không comment, không tạo tài nguyên mới. description JSON: \"Test-only resource for the owner-approved Main Native API E2E.\\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\\nThis is a test resource, not a business milestone or personnel assessment.\\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635\\n\\nCODEX_SCENARIO_F_RAG_20261023_aa98fa81d022\"",
+  "target_native_id": 370,
+  "actor_id": 19,
+  "project_id": 5,
+  "route": "WF03 caller-bound PM -> Gateway durable run -> RAG/Native -> Gemini Supervisor/BA/FE/BE/QA -> local Reviewer",
+  "proposals_only": true,
+  "native_write_approved": false,
+  "max_model_calls": 5,
+  "max_http_attempts": 12,
+  "policy": "Existing verified continuous FREE_ONLY/business-content consent; billing disabled, no key/model/paidpolicy change",
+  "provider_counts_before": {
+    "provider_receipts": 106,
+    "usage": 111,
+    "proposals": 42,
+    "knowledge_jobs": 3,
+    "active_queue": 0
+  },
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "core_ui_deployment": false,
+  "staging_operations": false
+}

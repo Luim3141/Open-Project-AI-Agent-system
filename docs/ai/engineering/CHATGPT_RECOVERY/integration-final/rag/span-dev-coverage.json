@@ -1,0 +1,94 @@
+{
+  "utc": "2026-11-03T07:25:27.373182+00:00",
+  "dev_sha256": "085c0036415c0be33868515a7839887a2dbea079197e960251bb585bedc4ddd1",
+  "extractor_sha256": "98918229c8eada895178d233a6788d05f4ef4296a6db1547e7f59f30c17a0060",
+  "positive": 13,
+  "support_span_contained": 13,
+  "rows": [
+    {
+      "case": "dev:create_list:vi",
+      "source_id": "actor:20:wp:380",
+      "support_found": true,
+      "span_kind": "text"
+    },
+    {
+      "case": "dev:create_list:en",
+      "source_id": "actor:20:wp:380",
+      "support_found": true,
+      "span_kind": "text"
+    },
+    {
+      "case": "dev:preserved_failure:vi",
+      "source_id": "actor:20:wp:380",
+      "support_found": true,
+      "span_kind": "json_scalar"
+    },
+    {
+      "case": "dev:preserved_failure:en",
+      "source_id": "actor:20:wp:380",
+      "support_found": true,
+      "span_kind": "json_scalar"
+    },
+    {
+      "case": "dev:crud_unit:vi",
+      "source_id": "actor:20:wp:381",
+      "support_found": true,
+      "span_kind": "text"
+    },
+    {
+      "case": "dev:crud_unit:en",
+      "source_id": "actor:20:wp:381",
+      "support_found": true,
+      "span_kind": "text"
+    },
+    {
+      "case": "dev:parent_review:vi",
+      "source_id": "actor:20:wp:381",
+      "support_found": true,
+      "span_kind": "json:text"
+    },
+    {
+      "case": "dev:parent_review:en",
+      "source_id": "actor:20:wp:381",
+      "support_found": true,
+      "span_kind": "json:text"
+    },
+    {
+      "case": "dev:recovery_history:vi",
+      "source_id": "actor:20:wp:388",
+      "support_found": true,
+      "span_kind": "text"
+    },
+    {
+      "case": "dev:recovery_history:en",
+      "source_id": "actor:20:wp:388",
+      "support_found": true,
+      "span_kind": "text"
+    },
+    {
+      "case": "dev:dependency:vi",
+      "source_id": "actor:20:wp:388",
+      "support_found": true,
+      "span_kind": "text"
+    },
+    {
+      "case": "dev:dependency:en",
+      "source_id": "actor:20:wp:388",
+      "support_found": true,
+      "span_kind": "text"
+    },
+    {
+      "case": "dev:mixed-dependency",
+      "source_id": "actor:20:wp:388",
+      "support_found": true,
+      "span_kind": "text"
+    }
+  ],
+  "status": "EXTRACTION_ONLY_NOT_RETRIEVAL_OR_ANSWERABILITY",
+  "limitations": [
+    "snapshot PM actor20 only; not live ACL or freshness",
+    "source spans are untrusted and not secret-scrubbed",
+    "source/queries previously seen during dev; no document-unseen claim",
+    "no holdout access or model inference"
+  ]
+}

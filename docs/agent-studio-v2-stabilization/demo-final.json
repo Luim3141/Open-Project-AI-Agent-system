@@ -1,0 +1,846 @@
+{
+  "runs": [
+    {
+      "run_id": "76f13288-6055-400b-a615-e3f7600a3344",
+      "actor": 20,
+      "queue_state": "finished",
+      "created_at": 1793962787.639034,
+      "native_id": 379,
+      "unit": "requirements-planning-v1-faf8797c2a8d1f4f",
+      "budget": {
+        "attempt_calls": 12,
+        "auto_continue": false,
+        "cooldown_seconds": 60,
+        "max_continuations": 5,
+        "task_calls": 72
+      },
+      "agent_state": "COMPLETED",
+      "result": {
+        "knowledge_readback": {
+          "project_id": 6,
+          "retrieval_count": 1
+        },
+        "native_readback": {
+          "create-list-persistence-v1": {
+            "agent": "dev",
+            "dependencies": [],
+            "id": 380,
+            "lock_version": 8,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "crud-search-web-v1": {
+            "agent": "dev",
+            "dependencies": [
+              "create-list-persistence-v1"
+            ],
+            "id": 381,
+            "lock_version": 9,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-20c2a94109f4e78f": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-bb9a628fe5b7be67"
+            ],
+            "id": 387,
+            "lock_version": 10,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-283138e910432528": {
+            "agent": "dev",
+            "dependencies": [
+              "crud-search-web-v1"
+            ],
+            "id": 382,
+            "lock_version": 9,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-2ec52f6742aa972f": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-9d0ff35386a63183"
+            ],
+            "id": 391,
+            "lock_version": 10,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-4d13e695555a8d44": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-283138e910432528"
+            ],
+            "id": 383,
+            "lock_version": 9,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-9d0ff35386a63183": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-e44b47e2e8610c4f"
+            ],
+            "id": 390,
+            "lock_version": 10,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-a51b2f686861716c": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-2ec52f6742aa972f"
+            ],
+            "id": 394,
+            "lock_version": 10,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-bb9a628fe5b7be67": {
+            "agent": "dev",
+            "dependencies": [
+              "health-check-v1"
+            ],
+            "id": 386,
+            "lock_version": 10,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-d8b7006b5cff1bc4": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-e0408cbf553ca0ba"
+            ],
+            "id": 397,
+            "lock_version": 11,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-e0408cbf553ca0ba": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-a51b2f686861716c"
+            ],
+            "id": 396,
+            "lock_version": 10,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-e44b47e2e8610c4f": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-20c2a94109f4e78f"
+            ],
+            "id": 389,
+            "lock_version": 10,
+            "priority": 3,
+            "state": "DELIVERED"
+          },
+          "feedback-faf8797c2a8d1f4f": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-d8b7006b5cff1bc4"
+            ],
+            "id": 398,
+            "lock_version": 0,
+            "priority": 1,
+            "state": "PLANNED"
+          },
+          "health-check-v1": {
+            "agent": "dev",
+            "dependencies": [
+              "feedback-4d13e695555a8d44"
+            ],
+            "id": 384,
+            "lock_version": 2,
+            "priority": 3,
+            "state": "DELIVERED"
+          }
+        },
+        "plan_id": "76f13288-6055-400b-a615-e3f7600a3344",
+        "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\76f13288-6055-400b-a615-e3f7600a3344",
+        "status": "succeeded",
+        "text": "PM/BA specification, Native backlog và dependencies đã đồng bộ. UAT deferred."
+      },
+      "receipts": [
+        {
+          "id": "1507b2ca-88df-49dc-92af-10e100f35818",
+          "agent": "ba",
+          "phase": "countTokens",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793962827.9101794,
+          "completed_at": null
+        },
+        {
+          "id": "42e8be99-e8d2-4800-8c53-a9746b6dc0f9",
+          "agent": "ba",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": "gemini-3.5-flash-lite",
+          "at": 1793962828.5670743,
+          "completed_at": null
+        },
+        {
+          "id": "8efa9d2e-8035-4f39-b190-4f54dde0a6a0",
+          "agent": "pm",
+          "phase": "countTokens",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793962836.8229403,
+          "completed_at": null
+        },
+        {
+          "id": "7e0bf3b2-2336-4d71-8ed1-67c805114570",
+          "agent": "pm",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": "gemini-3.5-flash-lite",
+          "at": 1793962837.2153718,
+          "completed_at": null
+        }
+      ],
+      "events": [
+        {
+          "event_id": "0888e58a-6be5-5448-bb62-ccb32d50c927",
+          "event_type": "REQUEST_RECEIVED",
+          "agent_id": null,
+          "status": "QUEUED",
+          "timestamp": 1793962787.648929,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "f937b1f1-2602-58f2-a8c0-d1e4e83f0c53",
+          "event_type": "AUTHORIZED",
+          "agent_id": null,
+          "status": "QUEUED",
+          "timestamp": 1793962787.6552086,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "bf2062cc-46ca-5a86-ad9d-b255a3279269",
+          "event_type": "QUEUED",
+          "agent_id": null,
+          "status": "QUEUED",
+          "timestamp": 1793962787.6559052,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "069ede81-71e8-56e2-8996-aa20bac405f1",
+          "event_type": "AGENT_ASSIGNED",
+          "agent_id": "ba",
+          "status": "QUEUED",
+          "timestamp": 1793962804.4827425,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "113292cd-4255-5006-b0c1-f1677457282f",
+          "event_type": "AGENT_STARTED",
+          "agent_id": "ba",
+          "status": "RUNNING",
+          "timestamp": 1793962804.4880295,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "3e470e61-e205-494c-ad90-ffc0e954dc21",
+          "event_type": "AGENT_STARTED",
+          "agent_id": "ba",
+          "status": "RUNNING",
+          "timestamp": 1793962827.7225232,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "acd5ce37-dd38-5b04-8f0f-8ae712eff1fd",
+          "event_type": "MODEL_REQUEST_STARTED",
+          "agent_id": "ba",
+          "status": null,
+          "timestamp": 1793962827.9684103,
+          "sequence": 1,
+          "phase": "countTokens"
+        },
+        {
+          "event_id": "3e5383d8-1ea8-5c66-a8d8-2efdff558226",
+          "event_type": "MODEL_RESPONSE_RECEIVED",
+          "agent_id": "ba",
+          "status": null,
+          "timestamp": 1793962828.4136379,
+          "sequence": 1,
+          "phase": "countTokens"
+        },
+        {
+          "event_id": "9af656be-99f4-5e98-9cac-dd5fb3e6e08f",
+          "event_type": "MODEL_REQUEST_STARTED",
+          "agent_id": "ba",
+          "status": null,
+          "timestamp": 1793962828.6280882,
+          "sequence": 1,
+          "phase": "generateContent"
+        },
+        {
+          "event_id": "eecccaab-d39f-5ddc-ad1e-a5668cae3c77",
+          "event_type": "MODEL_RESPONSE_RECEIVED",
+          "agent_id": "ba",
+          "status": null,
+          "timestamp": 1793962836.4193273,
+          "sequence": 1,
+          "phase": "generateContent"
+        },
+        {
+          "event_id": "7f6c9e47-2d36-407b-baa5-4fe761542528",
+          "event_type": "AGENT_COMPLETED",
+          "agent_id": "ba",
+          "status": "COMPLETED",
+          "timestamp": 1793962836.5986738,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "6be5b63a-f7bc-4871-bd95-e8e08187aad8",
+          "event_type": "AGENT_STARTED",
+          "agent_id": "pm",
+          "status": "RUNNING",
+          "timestamp": 1793962836.6752667,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "fef6a942-0135-59dd-bded-397a0326416b",
+          "event_type": "MODEL_REQUEST_STARTED",
+          "agent_id": "pm",
+          "status": null,
+          "timestamp": 1793962836.8506138,
+          "sequence": 1,
+          "phase": "countTokens"
+        },
+        {
+          "event_id": "3341889a-64b5-56af-aaeb-964f11674505",
+          "event_type": "MODEL_RESPONSE_RECEIVED",
+          "agent_id": "pm",
+          "status": null,
+          "timestamp": 1793962837.1103096,
+          "sequence": 1,
+          "phase": "countTokens"
+        },
+        {
+          "event_id": "055caa90-028c-55ad-b523-8ace4797e8c0",
+          "event_type": "MODEL_REQUEST_STARTED",
+          "agent_id": "pm",
+          "status": null,
+          "timestamp": 1793962837.2525105,
+          "sequence": 1,
+          "phase": "generateContent"
+        },
+        {
+          "event_id": "7a9d4ad0-b35c-5d78-aef7-d856bf0dda01",
+          "event_type": "MODEL_RESPONSE_RECEIVED",
+          "agent_id": "pm",
+          "status": null,
+          "timestamp": 1793962842.341736,
+          "sequence": 1,
+          "phase": "generateContent"
+        },
+        {
+          "event_id": "cc41998a-df4b-480c-a893-98b1bc3be132",
+          "event_type": "AGENT_COMPLETED",
+          "agent_id": "pm",
+          "status": "COMPLETED",
+          "timestamp": 1793962842.5476825,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "66d5fb91-c21b-4127-8792-7cee937a8e1d",
+          "event_type": "PLAN_CREATED",
+          "agent_id": "supervisor",
+          "status": "COMPLETED",
+          "timestamp": 1793962866.537902,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "880b1001-e709-58dc-958d-fd848f435844",
+          "event_type": "AGENT_ASSIGNED",
+          "agent_id": "supervisor",
+          "status": "QUEUED",
+          "timestamp": 1793962914.476782,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "8927950f-41de-5ac1-a586-f94d91cd1662",
+          "event_type": "AGENT_STARTED",
+          "agent_id": "supervisor",
+          "status": "RUNNING",
+          "timestamp": 1793962914.4836495,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "a2ac0f62-b0fe-5022-aa77-f33e08c1595f",
+          "event_type": "RESULT_AVAILABLE",
+          "agent_id": null,
+          "status": "COMPLETED",
+          "timestamp": 1793962960.6703033,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "6d1aec1b-4636-50a3-b228-559b36721312",
+          "event_type": "RUN_COMPLETED",
+          "agent_id": null,
+          "status": "COMPLETED",
+          "timestamp": 1793962960.6760163,
+          "sequence": 1,
+          "phase": null
+        }
+      ]
+    },
+    {
+      "run_id": "de391b2f-e5f2-4bc3-be10-54ab11d73099",
+      "actor": 20,
+      "queue_state": "finished",
+      "created_at": 1793963766.2720528,
+      "native_id": 398,
+      "unit": "feedback-faf8797c2a8d1f4f",
+      "budget": {
+        "attempt_calls": 12,
+        "auto_continue": false,
+        "cooldown_seconds": 60,
+        "max_continuations": 5,
+        "task_calls": 72
+      },
+      "agent_state": "COMPLETED",
+      "result": {
+        "base_sha": "045c95a4f5b73b32b90d65966c19c97c873f8e8f",
+        "delivery": {
+          "baseRefName": "codex/openclaw-feedback-d8b7006b5cff1bc4",
+          "headRefName": "codex/openclaw-feedback-faf8797c2a8d1f4f",
+          "headRefOid": "7ceac4e6b2b9103b18e1a8be37e15f3c05b8de70",
+          "state": "OPEN",
+          "url": "https://github.com/Luim3141/mini-task-manager/pull/15"
+        },
+        "files_changed": [
+          "tests/test_health_regression.py"
+        ],
+        "head_sha": "7ceac4e6b2b9103b18e1a8be37e15f3c05b8de70",
+        "knowledge_readback": {
+          "child_id": 398,
+          "project_id": 6,
+          "references": [
+            {
+              "citation": "/work_packages/398",
+              "native_id": 398
+            }
+          ],
+          "retrieval_count": 1
+        },
+        "native_readback": {
+          "child_id": 398,
+          "child_version": 8,
+          "parent": {
+            "id": 379,
+            "version": 4
+          },
+          "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/15",
+          "project_id": 6
+        },
+        "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/15",
+        "review_evidence": {
+          "findings": [],
+          "qa": {
+            "acceptance": [
+              "AC5",
+              "AC6",
+              "AC7",
+              "AC8",
+              "AC9",
+              "F1",
+              "F2",
+              "F3"
+            ],
+            "command": "cd /home/openclaw/engineering/feedback-faf8797c2a8d1f4f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+            "exit_code": 0,
+            "failures": [],
+            "status": "PASS"
+          },
+          "revision": "f98e682ccf8d16a0adba6518983152c16221778fa0c6fd07e5e1720a5680a22e",
+          "verdict": "PASS"
+        },
+        "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\de391b2f-e5f2-4bc3-be10-54ab11d73099",
+        "status": "succeeded",
+        "test_evidence": {
+          "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\de391b2f-e5f2-4bc3-be10-54ab11d73099\\acceptance-0.xml",
+          "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+          "exit_code": 0,
+          "log_sha256": "9a2d94a02f21b773be1f63e8567ee8db0d20a345d9653d6f71e93a47512b20f5"
+        },
+        "text": "Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung. delivered; WP379 chưa Done. UAT deferred."
+      },
+      "receipts": [
+        {
+          "id": "f3a28506-2332-4e96-ba28-a5f20058e64b",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964022.8769927,
+          "completed_at": 1793964024.7485127
+        },
+        {
+          "id": "fef0e8d2-fc02-4809-ae62-4e079e31b28e",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964035.9724407,
+          "completed_at": 1793964038.895923
+        },
+        {
+          "id": "3e08f7ea-5e56-499b-8a64-b980aa4ec265",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964040.8239489,
+          "completed_at": 1793964041.9554157
+        },
+        {
+          "id": "6ac1965c-c3d8-49a7-be36-01bb4415ced3",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964047.7000432,
+          "completed_at": 1793964048.951704
+        },
+        {
+          "id": "86f1b22a-e67b-4351-8e0b-8ad18a3f0c45",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964051.0193954,
+          "completed_at": 1793964054.71272
+        },
+        {
+          "id": "6fca8094-2230-47ee-974e-7b83b13cf434",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964068.4730058,
+          "completed_at": 1793964069.5860093
+        },
+        {
+          "id": "39810fe4-8595-48d7-a90b-7b3887edc76e",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964071.9688537,
+          "completed_at": 1793964073.331047
+        },
+        {
+          "id": "f875b5b6-24ba-413f-8675-0f49e243dfb9",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964077.3897097,
+          "completed_at": 1793964078.7028513
+        },
+        {
+          "id": "d59c6bfe-d6a6-4726-85ed-fbd0a72f929b",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964096.3573127,
+          "completed_at": 1793964098.484589
+        },
+        {
+          "id": "8f152197-f24e-4584-91e7-930e9f512171",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964108.3796506,
+          "completed_at": 1793964110.0772662
+        },
+        {
+          "id": "c0a1b097-0044-4f6b-8a44-3b4f65d3b43f",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964113.4894786,
+          "completed_at": 1793964115.551875
+        },
+        {
+          "id": "23795c84-b15f-4f06-b49d-b077706a3c62",
+          "agent": "dev",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964118.700827,
+          "completed_at": 1793964120.9477563
+        },
+        {
+          "id": "01901f64-ab89-48f0-9ff9-15c02e9bce38",
+          "agent": "reviewer",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964287.8338807,
+          "completed_at": 1793964289.1145303
+        },
+        {
+          "id": "e35943d6-b71e-45d9-9e20-d9a9dda9bebb",
+          "agent": "qa",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964495.365424,
+          "completed_at": 1793964496.4653952
+        },
+        {
+          "id": "0b9dc502-c110-4d75-a322-38a095e4599e",
+          "agent": "qa",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964501.7821562,
+          "completed_at": 1793964503.209712
+        },
+        {
+          "id": "caf13c61-9868-402d-bca3-946e81e9729e",
+          "agent": "qa",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964518.258808,
+          "completed_at": 1793964519.500256
+        },
+        {
+          "id": "188e9611-1884-4783-92d0-c25f82d74b1b",
+          "agent": "qa",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964522.3213844,
+          "completed_at": 1793964523.291046
+        },
+        {
+          "id": "22bfd786-5c73-4cc4-90d4-baf31c2691bf",
+          "agent": "qa",
+          "phase": "generateContent",
+          "state": "LIVE_SUCCESS",
+          "http_status": 200,
+          "model": "gemini-3.5-flash-lite",
+          "provider_model_version": null,
+          "at": 1793964529.2954512,
+          "completed_at": 1793964532.7135987
+        }
+      ],
+      "events": [
+        {
+          "event_id": "a5f09acb-0cf7-5c93-8d2b-ad292dfc3f65",
+          "event_type": "REQUEST_RECEIVED",
+          "agent_id": null,
+          "status": "QUEUED",
+          "timestamp": 1793963766.2800932,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "1eff9e0d-1ded-50db-9f26-7283e422ca89",
+          "event_type": "AUTHORIZED",
+          "agent_id": null,
+          "status": "QUEUED",
+          "timestamp": 1793963766.2856944,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "36386182-be88-5ee2-a41d-7b019f22e9c7",
+          "event_type": "QUEUED",
+          "agent_id": null,
+          "status": "QUEUED",
+          "timestamp": 1793963766.287163,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "eda26ba6-8a38-55a6-9a2a-851ac14dc97c",
+          "event_type": "AGENT_ASSIGNED",
+          "agent_id": "dev",
+          "status": "QUEUED",
+          "timestamp": 1793963957.6502416,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "f80cf53d-0551-550c-b5c1-589fe8c6e026",
+          "event_type": "AGENT_STARTED",
+          "agent_id": "dev",
+          "status": "RUNNING",
+          "timestamp": 1793963957.6573505,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "65753ae9-82e4-5a72-914f-e23ba96f3f4e",
+          "event_type": "AGENT_COMPLETED",
+          "agent_id": "dev",
+          "status": "COMPLETED",
+          "timestamp": 1793964216.6585383,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "2e0723f6-4fd3-5fb4-8b8d-53d51268a896",
+          "event_type": "AGENT_ASSIGNED",
+          "agent_id": "reviewer",
+          "status": "QUEUED",
+          "timestamp": 1793964238.19176,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "d23de4b9-5270-57aa-892a-8f6bb31c3b92",
+          "event_type": "AGENT_STARTED",
+          "agent_id": "reviewer",
+          "status": "RUNNING",
+          "timestamp": 1793964238.2014055,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "461363d3-c6be-5507-b3ce-01cbd6a9f4a7",
+          "event_type": "AGENT_COMPLETED",
+          "agent_id": "reviewer",
+          "status": "COMPLETED",
+          "timestamp": 1793964331.6838746,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "1c3735b0-87bc-5074-83cb-fd8c215405bc",
+          "event_type": "AGENT_ASSIGNED",
+          "agent_id": "qa",
+          "status": "QUEUED",
+          "timestamp": 1793964395.211712,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "edbaa714-0c8c-50bb-a0a5-77ad107d6e9c",
+          "event_type": "AGENT_STARTED",
+          "agent_id": "qa",
+          "status": "RUNNING",
+          "timestamp": 1793964395.2272754,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "2d6ac9ed-2e8c-596d-812f-43e9d2a93cf2",
+          "event_type": "AGENT_COMPLETED",
+          "agent_id": "qa",
+          "status": "COMPLETED",
+          "timestamp": 1793964616.9795425,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "7a227a7e-e19c-5eae-b503-018b49beca35",
+          "event_type": "AGENT_ASSIGNED",
+          "agent_id": "supervisor",
+          "status": "QUEUED",
+          "timestamp": 1793964671.7964873,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "fc43343a-b5f2-5586-b0e5-fc46f4a96f67",
+          "event_type": "AGENT_STARTED",
+          "agent_id": "supervisor",
+          "status": "RUNNING",
+          "timestamp": 1793964671.8059006,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "8d995bee-5a7a-55e2-a5fa-7c9ff862a5e0",
+          "event_type": "RESULT_AVAILABLE",
+          "agent_id": null,
+          "status": "COMPLETED",
+          "timestamp": 1793964867.9679656,
+          "sequence": 1,
+          "phase": null
+        },
+        {
+          "event_id": "144a1465-9611-5fc5-986c-5b1cf044559f",
+          "event_type": "RUN_COMPLETED",
+          "agent_id": null,
+          "status": "COMPLETED",
+          "timestamp": 1793964867.9740293,
+          "sequence": 1,
+          "phase": null
+        }
+      ]
+    }
+  ],
+  "mode": "OFF",
+  "active": 0
+}

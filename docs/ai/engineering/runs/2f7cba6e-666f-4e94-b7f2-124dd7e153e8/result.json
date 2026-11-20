@@ -1,0 +1,110 @@
+{
+  "status": "succeeded",
+  "text": "PM/BA specification, Native backlog và dependencies đã đồng bộ. UAT deferred.",
+  "plan_id": "2f7cba6e-666f-4e94-b7f2-124dd7e153e8",
+  "native_readback": {
+    "create-list-persistence-v1": {
+      "id": 380,
+      "lock_version": 8,
+      "priority": 3,
+      "dependencies": [],
+      "agent": "dev",
+      "state": "DELIVERED"
+    },
+    "crud-search-web-v1": {
+      "id": 381,
+      "lock_version": 9,
+      "priority": 3,
+      "dependencies": [
+        "create-list-persistence-v1"
+      ],
+      "agent": "dev",
+      "state": "DELIVERED"
+    },
+    "feedback-283138e910432528": {
+      "id": 382,
+      "lock_version": 9,
+      "priority": 3,
+      "dependencies": [
+        "crud-search-web-v1"
+      ],
+      "agent": "dev",
+      "state": "DELIVERED"
+    },
+    "feedback-4d13e695555a8d44": {
+      "id": 383,
+      "lock_version": 9,
+      "priority": 3,
+      "dependencies": [
+        "feedback-283138e910432528"
+      ],
+      "agent": "dev",
+      "state": "DELIVERED"
+    },
+    "health-check-v1": {
+      "id": 384,
+      "lock_version": 2,
+      "priority": 3,
+      "dependencies": [
+        "feedback-4d13e695555a8d44"
+      ],
+      "agent": "dev",
+      "state": "DELIVERED"
+    },
+    "feedback-bb9a628fe5b7be67": {
+      "id": 386,
+      "lock_version": 2,
+      "priority": 3,
+      "dependencies": [
+        "health-check-v1"
+      ],
+      "agent": "dev",
+      "state": "DELIVERED"
+    },
+    "feedback-20c2a94109f4e78f": {
+      "id": 387,
+      "lock_version": 2,
+      "priority": 3,
+      "dependencies": [
+        "feedback-bb9a628fe5b7be67"
+      ],
+      "agent": "dev",
+      "state": "DELIVERED"
+    },
+    "feedback-e44b47e2e8610c4f": {
+      "id": 389,
+      "lock_version": 2,
+      "priority": 3,
+      "dependencies": [
+        "feedback-20c2a94109f4e78f"
+      ],
+      "agent": "dev",
+      "state": "DELIVERED"
+    },
+    "feedback-9d0ff35386a63183": {
+      "id": 390,
+      "lock_version": 2,
+      "priority": 3,
+      "dependencies": [
+        "feedback-e44b47e2e8610c4f"
+      ],
+      "agent": "dev",
+      "state": "DELIVERED"
+    },
+    "feedback-2ec52f6742aa972f": {
+      "id": 391,
+      "lock_version": 0,
+      "priority": 1,
+      "dependencies": [
+        "feedback-9d0ff35386a63183"
+      ],
+      "agent": "dev",
+      "state": "PLANNED"
+    }
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "retrieval_count": 1
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\2f7cba6e-666f-4e94-b7f2-124dd7e153e8"
+}

@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-25T13:52:58.124930+00:00",
+  "scope": "Main project5; isolated fixture decisions explicitly distinguished from human Main decisions",
+  "gateway_image": "sha256:994b2efdd85274db99197a82c6554a76c4d5d22be4873a63292eff02c19b6d0b",
+  "core_image": "sha256:edc9f2b23db00a25fa73acbbd3dafb1f609b17d37ea0790fde9db9778b37e8fa",
+  "main_native_writes": 0,
+  "new_main_human_decisions": 0,
+  "new_model_calls": 0,
+  "staging_operations": false,
+  "status": "PARTIAL",
+  "qualified": {
+    "status": "PASS",
+    "tests": 9,
+    "module": "test_native_incremental_sync",
+    "scope": "Real temporary SQLite cursor/outbox/ingester and isolated Native/vector fixtures",
+    "checks": [
+      "create/update/version/hash change",
+      "duplicate event",
+      "retry/backoff survives restart",
+      "complete pagination required",
+      "visibility withdrawal retains vectors",
+      "source reappears after restart",
+      "caller tombstone/delete proof denied",
+      "failed/partial inventory cannot withdraw sources"
+    ]
+  },
+  "historical_real_parent_update": "CODEX_WF02_NATIVE_PARENT_UPDATE_E2E_RESULT.json",
+  "current_integrity": "CODEX_ATOMIC_QA_RAG_RESULT.json",
+  "trusted_physical_delete": "BLOCKED_TRUSTED_NATIVE_DELETE_PRODUCER_AND_RECOVERY",
+  "preservation": "No 404/visibility inferred as physical delete; no Native DELETE guard disabled or thread flag forged"
+}

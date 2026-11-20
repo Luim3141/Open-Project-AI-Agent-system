@@ -1,0 +1,921 @@
+[
+  {
+    "workflow": "WF01",
+    "published_version": "c7409a2f-c90b-4715-a24f-66ee3234af28",
+    "draft_version": "c7409a2f-c90b-4715-a24f-66ee3234af28",
+    "published_definition_sha256": "2a59c4d15bb6091dee78799e873c65e01c3a3e8e4479140d361e21e4f089c43b",
+    "trigger": [
+      {
+        "path": "qldapm-ingest",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Webhook Trigger",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Return Actual Gateway Result",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF02",
+    "published_version": "95f5fbd7-f849-4a4a-9467-4fe8348b6387",
+    "draft_version": "95f5fbd7-f849-4a4a-9467-4fe8348b6387",
+    "published_definition_sha256": "4797f4f8529101be00a8e95ca2d9d0b320c194f80a73fc0178d9fb9325a89301",
+    "trigger": [
+      {
+        "path": "qldapm-op-sync",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "WP Event Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Return Actual Gateway Result",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF03",
+    "published_version": "9af87910-b23c-4bcb-9589-4b09e614d3cf",
+    "draft_version": "9af87910-b23c-4bcb-9589-4b09e614d3cf",
+    "published_definition_sha256": "40738682807c78cc12b19a6e8f5bd3d5b8fcd4706a6da6c77a725b146d840571",
+    "trigger": [
+      {
+        "path": "qldapm-agent-request",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "User Request Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Start Or Poll Persisted Caller Run",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF04",
+    "published_version": "b79f33b6-97d1-4340-b844-32b1cc2d030c",
+    "draft_version": "b79f33b6-97d1-4340-b844-32b1cc2d030c",
+    "published_definition_sha256": "28a05e05d6f7e1d6cea4ad2a6d84982c63a1ab87a4079dc228ab229c354dd6c9",
+    "trigger": [
+      {
+        "path": "qldapm-agent-trace",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      },
+      {
+        "path": "qldapm-lifecycle",
+        "authentication": null,
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Agent Trace Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Fetch Gateway Agent Trace",
+        "url": "=http://qldapm-ai-gateway-1:8090/api/v1/agent-runs/{{ ($json.body && $json.body.run_id) || $json.run_id }}/trace",
+        "retryOnFail": false,
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          },
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      {
+        "node": "Retrieve Source Trace And Observe",
+        "url": "http://host.docker.internal:18089/internal/automation/lifecycle-observation",
+        "retryOnFail": false,
+        "options": {
+          "timeout": 5000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "none",
+      "saveDataSuccessExecution": "none",
+      "saveExecutionProgress": false,
+      "saveManualExecutions": false
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF05",
+    "published_version": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8",
+    "draft_version": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8",
+    "published_definition_sha256": "a97757124af21ca31ddb39f806489e40b8db5f6274873aa82bfafdad2b872c42",
+    "trigger": [
+      {
+        "path": "qldapm-approval",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Approval Request Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Fetch Gateway Proposal",
+        "url": "=http://qldapm-ai-gateway-1:8090/api/v1/proposals/{{ ($json.body && $json.body.proposal_id) || $json.proposal_id }}",
+        "retryOnFail": false,
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          },
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF06",
+    "published_version": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c",
+    "draft_version": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c",
+    "published_definition_sha256": "ff077b1e6740a13e450b5d6cc8e3c42cbc7f40ae3ecaa4d524e1d8be83dd6bf9",
+    "trigger": [
+      {
+        "path": "qldapm-execute-mutation",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Execute Mutation Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Authenticated Gateway PM Decision",
+        "url": "=http://qldapm-ai-gateway-1:8090/api/v1/proposals/{{ /^[0-9a-f-]{36}$/i.test($json.body?.proposal_id || '') ? $json.body.proposal_id : 'invalid' }}/decision",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF07",
+    "published_version": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+    "draft_version": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+    "published_definition_sha256": "3887fa2dca7b358ad554ca53dae8024e93c882dcb31694c8c91098f475bfbd50",
+    "trigger": [
+      {
+        "path": "qldapm-daily-brief",
+        "authentication": "headerAuth",
+        "responseMode": "lastNode"
+      }
+    ],
+    "schedules": [
+      {
+        "disabled": false,
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 0 8 * * *"
+            }
+          ]
+        }
+      }
+    ],
+    "credentials": [
+      {
+        "node": "Daily Trigger Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      },
+      {
+        "node": "Sign command",
+        "types": [
+          "crypto"
+        ]
+      },
+      {
+        "node": "Gateway status",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Gateway status",
+        "url": "http://qldapm-ai-gateway-1:8090/internal/automation/commands",
+        "retryOnFail": false,
+        "options": {
+          "timeout": 45000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF08",
+    "published_version": "830871f2-9ac5-487f-b4de-b2e0922e9e36",
+    "draft_version": "830871f2-9ac5-487f-b4de-b2e0922e9e36",
+    "published_definition_sha256": "b0da45abc725b7dd3884c2c0120fd5de1b3d24064b172c6351422646a65657ea",
+    "trigger": [
+      {
+        "path": "qldapm-sprint-risk",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Sprint Risk Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Analyze Native Relations And Persist Risk Snapshot",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF09",
+    "published_version": "56995a8f-14dd-41be-835f-24045297c7ea",
+    "draft_version": "56995a8f-14dd-41be-835f-24045297c7ea",
+    "published_definition_sha256": "74b8c317d71ddcf1dcc24a5252120433b85bf1ff016b9053595abaf5f0196bc8",
+    "trigger": [
+      {
+        "path": "qldapm-bug-lifecycle",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Bug Event Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Return Actual Gateway Result",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF10",
+    "published_version": "142d0a0d-0c12-4b6d-b1f5-c91033fc854e",
+    "draft_version": "142d0a0d-0c12-4b6d-b1f5-c91033fc854e",
+    "published_definition_sha256": "dddbdd9f1ab961f91965249d9110c92892118da62a0baed649dfdc82ac17b3a5",
+    "trigger": [
+      {
+        "path": "qldapm-task-orchestration",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Task Event Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Return Actual Gateway Result",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF11",
+    "published_version": "65f31f4c-186a-4950-8178-f50204bc261c",
+    "draft_version": "65f31f4c-186a-4950-8178-f50204bc261c",
+    "published_definition_sha256": "03c9e6aaae17b92f53101c32aedbb6eaf4d8f744a19d49c3d0bd528f9711c5e7",
+    "trigger": [
+      {
+        "path": "qldapm-qa-gate",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "QA Gate Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Read Native Evidence And Transition Errors",
+        "url": "={{ $json.qa_decision ? \"http://qldapm-ai-gateway-1:8090/api/v1/qa-evidence/\" + $json.evidence_id + '/decision' : \"http://qldapm-ai-gateway-1:8090/api/v1/commands\" }}",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF12",
+    "published_version": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+    "draft_version": "d753e6f3-e941-4fe6-afe3-8452f0bc59b4",
+    "published_definition_sha256": "ac945be7b3d518856304897c11ed86f82f374f740f57c104411db70bb58eed82",
+    "trigger": [
+      {
+        "path": "qldapm-weekly-summary",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [
+      {
+        "disabled": false,
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 0 17 * * 5"
+            }
+          ]
+        }
+      }
+    ],
+    "credentials": [
+      {
+        "node": "Weekly Summary Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      },
+      {
+        "node": "Weekly Sign command",
+        "types": [
+          "crypto"
+        ]
+      },
+      {
+        "node": "Weekly Gateway status",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Generate And Persist Native Weekly Summary",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      },
+      {
+        "node": "Weekly Gateway status",
+        "url": "http://qldapm-ai-gateway-1:8090/internal/automation/commands",
+        "retryOnFail": false,
+        "options": {
+          "timeout": 100000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true,
+      "executionTimeout": 120,
+      "binaryMode": "separate"
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF13",
+    "published_version": "bf7f89b1-07a4-42a9-b6e2-98fa3c15d694",
+    "draft_version": "bf7f89b1-07a4-42a9-b6e2-98fa3c15d694",
+    "published_definition_sha256": "c389e1644eff3ee34b2e9682e67741c2979241e498a4a97c97a0b231031ba046",
+    "trigger": [
+      {
+        "path": "qldapm-rag-reindex",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Reindex Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Return Actual Gateway Result",
+        "url": "={{ $json.feedback_decision ? \"http://qldapm-ai-gateway-1:8090/api/v1/knowledge-feedback/\" + $json.feedback_id + '/decision' : \"http://qldapm-ai-gateway-1:8090/api/v1/commands\" }}",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF14",
+    "published_version": "e07912bb-c40c-4e18-a016-2f16ff7a38a1",
+    "draft_version": "e07912bb-c40c-4e18-a016-2f16ff7a38a1",
+    "published_definition_sha256": "f3a3f029c6c90aad45b5584bd9f0a786980bb03fa7a8bc8af116d963837d2a79",
+    "trigger": [
+      {
+        "path": "qldapm-error-handler",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Error Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Read Or Requeue Own Persisted RAG Job",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF15",
+    "published_version": "3f8520e1-15f5-48d4-b61d-c0df8a19cae9",
+    "draft_version": "3f8520e1-15f5-48d4-b61d-c0df8a19cae9",
+    "published_definition_sha256": "65a15c375ebeadcf74463f0883240b58c479360d210c69f61021478c054e631c",
+    "trigger": [
+      {
+        "path": "qldapm-reconciliation",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode"
+      }
+    ],
+    "schedules": [],
+    "credentials": [
+      {
+        "node": "Reconciliation Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Reconcile Exact Native SQLite Qdrant Identity",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "retryOnFail": false,
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  },
+  {
+    "workflow": "WF16",
+    "published_version": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+    "draft_version": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+    "published_definition_sha256": "a9f9ed5708ca3fead225925ec760fa5742375b2f6b3088c0e34a2fa529ad30d8",
+    "trigger": [
+      {
+        "path": "qldapm-monitoring",
+        "authentication": "headerAuth",
+        "responseMode": "lastNode"
+      }
+    ],
+    "schedules": [
+      {
+        "disabled": false,
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 */15 * * * *"
+            }
+          ]
+        }
+      }
+    ],
+    "credentials": [
+      {
+        "node": "Summary Webhook",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      },
+      {
+        "node": "Probe And Persist Main Health",
+        "types": [
+          "httpHeaderAuth"
+        ]
+      }
+    ],
+    "gateway_calls": [
+      {
+        "node": "Probe And Persist Main Health",
+        "url": "http://qldapm-ai-gateway-1:8090/internal/automation/monitor",
+        "retryOnFail": false,
+        "options": {
+          "timeout": 30000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    ],
+    "effective_settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true
+    },
+    "wiring": "NO_DANGLING_EDGES"
+  }
+]

@@ -1,0 +1,173 @@
+{
+  "project_id": 5,
+  "actors": [
+    {
+      "actor": 18,
+      "registry_role": "AI_SYSTEM_OWNER",
+      "native_user": {
+        "id": 18,
+        "login": "op-owner",
+        "admin": true,
+        "status": "active"
+      },
+      "identity_role": "AI_SYSTEM_OWNER",
+      "registry_matches": true
+    },
+    {
+      "actor": 19,
+      "registry_role": "PM",
+      "native_user": {
+        "id": 19,
+        "login": "ba-pm",
+        "admin": true,
+        "status": "active"
+      },
+      "error_class": "PermissionError",
+      "error": "IDENTITY_MISMATCH_OR_ADMIN_TOKEN"
+    },
+    {
+      "actor": 20,
+      "registry_role": "BA",
+      "native_user": {
+        "id": 20,
+        "login": "pm",
+        "admin": null,
+        "status": "active"
+      },
+      "identity_role": "BA",
+      "registry_matches": true,
+      "summary": {
+        "count": 341,
+        "by_status": {
+          "NEW": 340,
+          "IN ANALYSIS": 1
+        }
+      }
+    },
+    {
+      "actor": 21,
+      "registry_role": "BE",
+      "native_user": {
+        "id": 21,
+        "login": "be",
+        "admin": null,
+        "status": "active"
+      },
+      "identity_role": "BE",
+      "registry_matches": true,
+      "summary": {
+        "count": 341,
+        "by_status": {
+          "NEW": 340,
+          "IN ANALYSIS": 1
+        }
+      }
+    },
+    {
+      "actor": 22,
+      "registry_role": "FE",
+      "native_user": {
+        "id": 22,
+        "login": "fe",
+        "admin": null,
+        "status": "active"
+      },
+      "identity_role": "FE",
+      "registry_matches": true,
+      "summary": {
+        "count": 341,
+        "by_status": {
+          "NEW": 340,
+          "IN ANALYSIS": 1
+        }
+      }
+    },
+    {
+      "actor": 23,
+      "registry_role": "QA",
+      "native_user": {
+        "id": 23,
+        "login": "qa",
+        "admin": null,
+        "status": "active"
+      },
+      "identity_role": "QA",
+      "registry_matches": true,
+      "summary": {
+        "count": 341,
+        "by_status": {
+          "NEW": 340,
+          "IN ANALYSIS": 1
+        }
+      }
+    }
+  ],
+  "collectors": [
+    {
+      "kind": "daily_brief",
+      "run_id": "3f90801a-ada9-4e86-9715-e9888c446181",
+      "state": "COMPLETED",
+      "status": "PARTIAL",
+      "targets": 5,
+      "ready": 4,
+      "unavailable": 1,
+      "project_id": 5,
+      "reports": null
+    },
+    {
+      "kind": "weekly_summary",
+      "run_id": "4149212b-18c2-4463-937c-59f5d397db28",
+      "state": "COMPLETED",
+      "status": "PARTIAL",
+      "targets": 5,
+      "ready": 4,
+      "unavailable": 1,
+      "project_id": 5,
+      "reports": [
+        {
+          "actor": 19,
+          "state": "DENIED"
+        },
+        {
+          "actor": 20,
+          "report_id": "78bafe64-4948-5dc6-8190-e35ebc704f0b",
+          "report_sha256": "238999289d495fb02057c16315f956d5e8b09d21e14f553908af10b60c8c710e",
+          "state": "READY"
+        },
+        {
+          "actor": 21,
+          "report_id": "34414c18-abba-5528-b2a9-d7a2796debd7",
+          "report_sha256": "554cf7eda02d4b157f6f58051c6fa8708ea0c350e658e1d27bb1ae1ca150e23d",
+          "state": "READY"
+        },
+        {
+          "actor": 22,
+          "report_id": "099ae3f4-ee4c-5a2f-a67d-cd3bcc58f953",
+          "report_sha256": "e97d0497daa9ba2545ad4982a26d0af7fa07f7500c8d691c1ce62d53eb1f8e9c",
+          "state": "READY"
+        },
+        {
+          "actor": 23,
+          "report_id": "26089c6a-7f1b-5b8c-8e86-51b011a398cb",
+          "report_sha256": "922c6d50bb6f9f4ee6d3a548fa8e94e82a57ff99a518449a904f36475a48d5ea",
+          "state": "READY"
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "native.py": "88f6dd6c083de5874a5175e1a247820b75490ca10eb8c6e726362859eeb887e0",
+    "daily_brief.py": "065208e8ccfb38e72e42a3d23b21c89339f9b75bad34f590d3874c46616b160d",
+    "weekly_report.py": "a827773969cc26d8710965f9b22c0e8533a4027b1e8ddf57ec9975950acffdfa"
+  },
+  "utc": "2026-11-02T03:45:15Z",
+  "command": "openproject/ai/.venv/Scripts/python.exe docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/workflows/read_main.py",
+  "route": "Native HTTP GET + SQLite mode=ro; credential values never exported",
+  "environment": "MAIN read-only business diagnostic",
+  "business_writes": 0,
+  "images": {
+    "qldapm-ai-gateway-1": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+    "qldapm-n8n-main": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+    "qldapm-openproject-web-1": "sha256:00f1e372ded7dc3ee0bcb02275233e0baad08990893f8d1c27511b5a66cb9cd8"
+  }
+}

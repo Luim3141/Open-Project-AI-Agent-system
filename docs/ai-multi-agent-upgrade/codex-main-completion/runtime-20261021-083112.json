@@ -1,0 +1,1026 @@
+{
+  "at": "2026-10-21T01:31:11.613245+00:00",
+  "containers": [
+    {
+      "name": "/qldapm-openproject-web-1",
+      "id": "5101c314d2fcef95c9e949e45e2645d652f8abf9ca943f57690c953deb78b83d",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started": "2026-10-21T01:23:47.938912493Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway/ui.key",
+          "Destination": "/qldapm-ui/ui.key",
+          "RW": false
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/test-receipt.key",
+          "Destination": "/qldapm-ui/test-receipt.key",
+          "RW": false
+        },
+        {
+          "Source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        },
+        {
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        }
+      ],
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ]
+    },
+    {
+      "name": "/qldapm-openproject-worker-1",
+      "id": "040cd049f638f3348bf452d5c764b8ba2a297b8f539ffd61892bc22a1acbf84d",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started": "2026-10-21T01:23:48.209854136Z",
+      "health": null,
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        },
+        {
+          "Source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        }
+      ],
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ]
+    },
+    {
+      "name": "/qldapm-openproject-cron-1",
+      "id": "34d1f577c67b837eb236636706188be7e7bb6f1b48ebe6bce1f3d20870661579",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started": "2026-10-21T01:23:47.696609842Z",
+      "health": null,
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        },
+        {
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        }
+      ],
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ]
+    },
+    {
+      "name": "/qldapm-codex-main-20261020-browser",
+      "id": "db9f0f528c593405664686fc581ab4fcc4302cdcd6bb594adf6048d1747b864c",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started": "2026-10-20T19:59:59.336689681Z",
+      "health": null,
+      "restart_count": 0,
+      "policy": "no",
+      "mounts": [
+        {
+          "Source": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-main-completion\\qualification",
+          "Destination": "/qa-private",
+          "RW": true
+        },
+        {
+          "Source": "/var/lib/docker/volumes/d504b5d1235551594f9e8538c9c6d4541e7e93ad051ba0dfb410a4eb91f74b94/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        }
+      ],
+      "networks": [
+        "qldapm-codex-main-20261020-front",
+        "qldapm-codex-main-20261020-internal"
+      ]
+    },
+    {
+      "name": "/qldapm-ai-gateway-1",
+      "id": "afe4a32f0f44500f6185a39313e1d75d1901a65d4c310f5a449e2cfa79b5cfc6",
+      "image": "sha256:456c38f6a9a936048892bdb2d97fd855eb63c6321fbaceab88de6f8aa56fe70b",
+      "started": "2026-10-20T19:12:32.875448023Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway",
+          "Destination": "/state",
+          "RW": true
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/workspaces",
+          "Destination": "/workspaces",
+          "RW": true
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-main/free-tier-proof.json",
+          "Destination": "/qldapm-policy/free-tier-proof.json",
+          "RW": false
+        }
+      ],
+      "networks": [
+        "qldapm-ai_ai",
+        "qldapm-openproject_frontend"
+      ]
+    },
+    {
+      "name": "/qldapm-codex-main-20261020-db",
+      "id": "02fa4d91c68b4b9f94dcc5c7a2da1099b2865e69300801ac597d9e15cd76f0a7",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started": "2026-10-20T19:06:26.716314832Z",
+      "health": null,
+      "restart_count": 0,
+      "policy": "no",
+      "mounts": [
+        {
+          "Source": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-main-completion\\backup-20261020-220429/database.dump",
+          "Destination": "/backup.dump",
+          "RW": false
+        },
+        {
+          "Source": "/var/lib/docker/volumes/0fd7080e1049b6a3d123588d7274ca3ca82f0fb52fbbf4f5c4af8e3b7ba88a98/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        }
+      ],
+      "networks": [
+        "qldapm-codex-main-20261020-internal"
+      ]
+    },
+    {
+      "name": "/qldapm-ai-stage-staging-web-1",
+      "id": "1769afbd23e43fe5374a569349d07ce2c0e20578d92e7249e8fc3099c4333153",
+      "image": "sha256:79a90c2083727e3355bb7957a0c704bcc51973f3711d3599970690eafac1eff2",
+      "started": "2026-10-20T18:41:59.937378187Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\quick_tunnel_web.rb",
+          "Destination": "/qldapm-operator/quick_tunnel_web.rb",
+          "RW": false
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage/deep-test-receipt.key",
+          "Destination": "/qldapm-ui/test-receipt.key",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai/ui.key",
+          "Destination": "/qldapm-ui/ui.key",
+          "RW": false
+        },
+        {
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-assets/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "Destination": "/private",
+          "RW": true
+        },
+        {
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "Destination": "/qldapm-access",
+          "RW": true
+        },
+        {
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/core",
+          "Destination": "/qldapm-core",
+          "RW": false
+        }
+      ],
+      "networks": [
+        "qldapm-ai-stage_stage",
+        "qldapm-ai-stage_stage-front"
+      ]
+    },
+    {
+      "name": "/qldapm-ai-stage-quick-tunnel-1",
+      "id": "18e3960e896abecfbbff2cdaabc4ea3242ba477cc577d7f27269b96cf5531b84",
+      "image": "sha256:a80f54e29918ec66c82cdc7ad8fd9a65e3082e59825c0356d5737916959884c6",
+      "started": "2026-10-20T18:41:59.874300448Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [],
+      "networks": [
+        "qldapm-ai-stage_stage-front"
+      ]
+    },
+    {
+      "name": "/qldapm-ai-stage-staging-gateway-1",
+      "id": "61689602da51f704618cc5786b8a221bce6b86a0f8d033226cf553d399312ade",
+      "image": "sha256:456c38f6a9a936048892bdb2d97fd855eb63c6321fbaceab88de6f8aa56fe70b",
+      "started": "2026-10-20T18:42:00.026381861Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "Destination": "/qldapm-policy/free-tier-proof.json",
+          "RW": false
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "Destination": "/state",
+          "RW": true
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai-workspaces",
+          "Destination": "/workspaces",
+          "RW": true
+        }
+      ],
+      "networks": [
+        "qldapm-ai-stage_automation",
+        "qldapm-ai-stage_stage-front"
+      ]
+    },
+    {
+      "name": "/qldapm-ai-stage-local-backup-1",
+      "id": "c605252d63bd85dfce7747b889c7a0b1c36bb353cdaa0e397c7e846dd19201a3",
+      "image": "sha256:9713d54aad003b084e58035965156902f86c0ba7a638e41ab880d119ba9cbba8",
+      "started": "2026-10-20T18:41:59.976484914Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/n8n-owner",
+          "Destination": "/n8n-owner",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "Destination": "/secrets/provider-proof.json",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/jira_sync_backup.py",
+          "Destination": "/trusted/jira_sync_backup.py",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/local_backup.py",
+          "Destination": "/trusted/local_backup.py",
+          "RW": false
+        },
+        {
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-assets/_data",
+          "Destination": "/assets",
+          "RW": false
+        },
+        {
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_n8n-data/_data",
+          "Destination": "/n8n",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "Destination": "/native-private",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free",
+          "Destination": "/provider-policy",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-runtime/stage-runtime.json",
+          "Destination": "/secrets/stage-runtime.json",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-backups",
+          "Destination": "/backup",
+          "RW": true
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "Destination": "/gateway",
+          "RW": false
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/n8n-stage/encryption.key",
+          "Destination": "/secrets/n8n.key",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/.env",
+          "Destination": "/secrets/runtime.env",
+          "RW": false
+        },
+        {
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/radmin-caddy",
+          "Destination": "/radmin",
+          "RW": false
+        },
+        {
+          "Source": "/var/lib/docker/volumes/d9df6fbd073b8269faf0286639886d8bf249263e381bf3d1dccb2c3eb5c57fc0/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        }
+      ],
+      "networks": [
+        "qldapm-ai-stage_stage"
+      ]
+    },
+    {
+      "name": "/qldapm-ai-stage-n8n-1",
+      "id": "5729a0af261d458d8c83f0a7eb6c6287c1280ce5bce3fe20bb04d0abbf616326",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "started": "2026-10-20T18:41:59.799709663Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_n8n-data/_data",
+          "Destination": "/home/node/.n8n",
+          "RW": true
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/n8n-stage/encryption.key",
+          "Destination": "/run/secrets/n8n_encryption_key",
+          "RW": false
+        }
+      ],
+      "networks": [
+        "qldapm-ai-stage_automation"
+      ]
+    },
+    {
+      "name": "/birdsong-retrieval-api-1",
+      "id": "4933f46a17ed294c6024df7785188efbf66501cc0f15a5eb0731728a56e70dd5",
+      "image": "sha256:5373e09aa12fe46f877dc616123ae1682f0e4684876d727ce7ab8da0bdd485d3",
+      "started": "2026-10-20T18:41:59.995543835Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "D:\\AI project\\CSDLDPT\\data",
+          "Destination": "/app/data",
+          "RW": true
+        }
+      ],
+      "networks": [
+        "birdsong-retrieval_default"
+      ]
+    },
+    {
+      "name": "/qldapm-ai-stage-n8n-editor-1",
+      "id": "fbc052639a323dc346cc1d6ace98bee9d1303db73ac5673ff040fe7aa8f334a4",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started": "2026-10-20T18:41:59.675957789Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\Quick.Caddyfile",
+          "Destination": "/etc/caddy/Caddyfile",
+          "RW": false
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "Destination": "/qldapm-access",
+          "RW": false
+        }
+      ],
+      "networks": [
+        "qldapm-ai-stage_automation",
+        "qldapm-ai-stage_editor"
+      ]
+    },
+    {
+      "name": "/qldapm-ai-stage-db-1",
+      "id": "0775f1163e682dea6e1df59f306ae89dfbe7ba0a8c38031d09604501b0ca3505",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started": "2026-10-20T18:41:59.963378073Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-db/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        }
+      ],
+      "networks": [
+        "qldapm-ai-stage_stage"
+      ]
+    },
+    {
+      "name": "/qldapm-openproject-proxy-1",
+      "id": "752ba4082a0465eaa358590b4c8844bf6075f454406355e9280bea9803b292eb",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started": "2026-10-20T18:41:59.709296515Z",
+      "health": null,
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\Caddyfile",
+          "Destination": "/etc/caddy/Caddyfile",
+          "RW": false
+        },
+        {
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject/gate",
+          "Destination": "/gate",
+          "RW": false
+        }
+      ],
+      "networks": [
+        "qldapm-openproject_frontend"
+      ]
+    },
+    {
+      "name": "/qldapm-openproject-hocuspocus-1",
+      "id": "a9e13d59ae711266f599d5a1d1d7ed33345c2450e3457003684625fb3b39a584",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "started": "2026-10-20T18:41:59.9871771Z",
+      "health": null,
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [],
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ]
+    },
+    {
+      "name": "/qldapm-openproject-db-1",
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started": "2026-10-20T18:42:00.004582136Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "/var/lib/docker/volumes/qldapm-openproject_pgdata/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        }
+      ],
+      "networks": [
+        "qldapm-openproject_backend"
+      ]
+    },
+    {
+      "name": "/qldapm-openproject-cache-1",
+      "id": "ac27388285fbadbf7a0f81f2f1d6c141d9fb79483d186d469d5bb324a0818115",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "started": "2026-10-20T18:41:59.824721178Z",
+      "health": null,
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [],
+      "networks": [
+        "qldapm-openproject_backend"
+      ]
+    },
+    {
+      "name": "/birdsong-retrieval-web-1",
+      "id": "f4a5af81b68b60a227b3202302cea40fa9538ef40758930f059d8c6e5c274fc4",
+      "image": "sha256:dc282f66bcbfc80ed190657477d0a1bf42de6cee9a40770a5ed01e9cde5bd7fc",
+      "started": "2026-10-20T18:41:59.845852929Z",
+      "health": null,
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [],
+      "networks": [
+        "birdsong-retrieval_default"
+      ]
+    },
+    {
+      "name": "/birdsong-retrieval-db-1",
+      "id": "946f80aece3e0cc4f3337bb518c52f777ce7e09fac43088f7c81cced7a3f4861",
+      "image": "sha256:cf134a767f474095eeba57e0117be8e568e011a63f33fbf252f14c9b760f8e6f",
+      "started": "2026-10-20T18:42:00.015211782Z",
+      "health": "healthy",
+      "restart_count": 0,
+      "policy": "unless-stopped",
+      "mounts": [
+        {
+          "Source": "/var/lib/docker/volumes/birdsong-retrieval_postgres_data/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        }
+      ],
+      "networks": [
+        "birdsong-retrieval_default"
+      ]
+    }
+  ],
+  "gateways": {
+    "main": {
+      "config": {
+        "project_id": 5,
+        "users": {
+          "19": "PM",
+          "20": "BA",
+          "21": "BE",
+          "22": "FE",
+          "23": "QA"
+        },
+        "openproject_url": "http://web:8080",
+        "gateway_mode": "native",
+        "hosts": [
+          "127.0.0.1:8090",
+          "localhost:8090",
+          "gateway:8090"
+        ],
+        "type_ids": [
+          5,
+          1,
+          10
+        ],
+        "status_ids": [
+          1,
+          33,
+          7,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          9,
+          41
+        ]
+      },
+      "files": {
+        "ui.key": {
+          "exists": true,
+          "bytes": 64
+        },
+        "credentials.json": {
+          "exists": true,
+          "bytes": 400
+        },
+        "gemini.key": {
+          "exists": true,
+          "bytes": 53
+        },
+        "gemini.json": {
+          "exists": true,
+          "bytes": 465
+        },
+        "gateway.sqlite": {
+          "exists": true,
+          "bytes": 225280
+        },
+        "knowledge.sqlite": {
+          "exists": false,
+          "bytes": null
+        }
+      },
+      "gemini.json": {
+        "enabled": true,
+        "model": "gemini-3.5-flash-lite",
+        "project_id": null,
+        "free_only": null,
+        "provider": null,
+        "multi_agent": {
+          "enabled": true,
+          "max_model_calls": 5,
+          "max_http_attempts": 12,
+          "max_agents": 3,
+          "max_output_tokens": 3000,
+          "max_context_chars": 32000,
+          "timeout_seconds": 300,
+          "call_timeout_seconds": 90,
+          "retry_limit": 1,
+          "max_knowledge_items": 3
+        },
+        "policy_file": null
+      },
+      "tables": {
+        "tokens": 2,
+        "audit": 141,
+        "requests": 3,
+        "jobs": 2,
+        "proposals": 0,
+        "ai_runs": 1,
+        "ui_nonces": 3,
+        "ai_queue": 1,
+        "agent_tasks": 1,
+        "agent_runs": 1,
+        "automation_runs": 0,
+        "automation_nonces": 0,
+        "daily_briefs": 0,
+        "gemini_usage": 2,
+        "gemini_blocks": 0,
+        "gemini_recovery": 0,
+        "gemini_call_receipts": 0,
+        "execution_events": 14
+      },
+      "audit_schema": [
+        "id",
+        "at",
+        "actor",
+        "action",
+        "target",
+        "outcome",
+        "version",
+        "project_id",
+        "run_id",
+        "task_id",
+        "trace_id"
+      ],
+      "audit_recent": [
+        {
+          "at": 1792525928.19949,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792525927.620501,
+          "actor": 19,
+          "action": "analyze",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792525918.4978795,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792525918.4248004,
+          "actor": 19,
+          "action": "get_action_history",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792525917.924837,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792525917.856476,
+          "actor": 19,
+          "action": "get_assistant_status",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792525260.872238,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792525260.820017,
+          "actor": 19,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792525244.333074,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792525244.2679207,
+          "actor": 19,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792525034.8450449,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792525034.7831964,
+          "actor": 19,
+          "action": "list_execution_monitors",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792524968.840863,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792524968.6981263,
+          "actor": 19,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792524960.9910603,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792524960.931746,
+          "actor": 19,
+          "action": "list_execution_monitors",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792524957.2141633,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792524957.162559,
+          "actor": 19,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792524894.6717324,
+          "actor": 19,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792524894.5892375,
+          "actor": 19,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        }
+      ]
+    },
+    "staging": {
+      "config": {
+        "project_id": 3,
+        "users": {
+          "10": "QA",
+          "6": "BA-PM",
+          "7": "PM",
+          "8": "BE",
+          "9": "FE",
+          "5": "PM"
+        },
+        "openproject_url": "http://staging-web:8080",
+        "gateway_mode": "native",
+        "hosts": [
+          "gateway:8090",
+          "127.0.0.1:18092",
+          "localhost:18092"
+        ],
+        "type_ids": [
+          5,
+          1,
+          8
+        ],
+        "status_ids": [
+          1,
+          15,
+          7,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          9,
+          23
+        ]
+      },
+      "files": {
+        "ui.key": {
+          "exists": true,
+          "bytes": 64
+        },
+        "credentials.json": {
+          "exists": true,
+          "bytes": 475
+        },
+        "gemini.key": {
+          "exists": true,
+          "bytes": 53
+        },
+        "gemini.json": {
+          "exists": true,
+          "bytes": 465
+        },
+        "gateway.sqlite": {
+          "exists": true,
+          "bytes": 4665344
+        },
+        "knowledge.sqlite": {
+          "exists": true,
+          "bytes": 53248
+        }
+      },
+      "gemini.json": {
+        "enabled": true,
+        "model": "gemini-3.5-flash-lite",
+        "project_id": null,
+        "free_only": null,
+        "provider": null,
+        "multi_agent": {
+          "enabled": true,
+          "max_model_calls": 5,
+          "max_http_attempts": 12,
+          "max_agents": 3,
+          "max_output_tokens": 3000,
+          "max_context_chars": 32000,
+          "timeout_seconds": 300,
+          "call_timeout_seconds": 90,
+          "retry_limit": 1,
+          "max_knowledge_items": 3
+        },
+        "policy_file": null
+      },
+      "tables": {
+        "tokens": 50,
+        "audit": 6593,
+        "requests": 371,
+        "jobs": 0,
+        "proposals": 34,
+        "ai_runs": 113,
+        "ui_nonces": 2,
+        "gemini_usage": 517,
+        "gemini_blocks": 1,
+        "gemini_recovery": 1,
+        "ai_queue": 23,
+        "agent_tasks": 23,
+        "agent_runs": 23,
+        "automation_runs": 19,
+        "automation_nonces": 1,
+        "daily_briefs": 26,
+        "gemini_call_receipts": 44,
+        "execution_events": 0
+      },
+      "audit_schema": [
+        "id",
+        "at",
+        "actor",
+        "action",
+        "target",
+        "outcome",
+        "version",
+        "project_id",
+        "run_id",
+        "task_id",
+        "trace_id"
+      ],
+      "audit_recent": [
+        {
+          "at": 1792521776.5403419,
+          "actor": 10,
+          "action": "daily_brief_snapshot",
+          "outcome": "READY"
+        },
+        {
+          "at": 1792521776.5392776,
+          "actor": 9,
+          "action": "daily_brief_snapshot",
+          "outcome": "READY"
+        },
+        {
+          "at": 1792521776.5390282,
+          "actor": 8,
+          "action": "daily_brief_snapshot",
+          "outcome": "READY"
+        },
+        {
+          "at": 1792521776.5382676,
+          "actor": 7,
+          "action": "daily_brief_snapshot",
+          "outcome": "READY"
+        },
+        {
+          "at": 1792521776.5372143,
+          "actor": 6,
+          "action": "daily_brief_snapshot",
+          "outcome": "READY"
+        },
+        {
+          "at": 1792521776.5364656,
+          "actor": 5,
+          "action": "daily_brief_snapshot",
+          "outcome": "DENIED"
+        },
+        {
+          "at": 1792521773.333079,
+          "actor": null,
+          "action": "automation_command",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792474873.54565,
+          "actor": 7,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792474873.4646063,
+          "actor": 7,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792474864.08749,
+          "actor": 7,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792474864.0119898,
+          "actor": 7,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792474690.9855545,
+          "actor": 7,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792474690.891998,
+          "actor": 7,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792474546.9351535,
+          "actor": 7,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792474546.8472357,
+          "actor": 7,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792474537.6713643,
+          "actor": 7,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792474537.4944422,
+          "actor": 7,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792474112.9347935,
+          "actor": 7,
+          "action": "transport",
+          "outcome": "200"
+        },
+        {
+          "at": 1792474112.8871083,
+          "actor": 7,
+          "action": "get_execution_monitor",
+          "outcome": "ok"
+        },
+        {
+          "at": 1792473633.1943436,
+          "actor": 7,
+          "action": "transport",
+          "outcome": "200"
+        }
+      ]
+    }
+  }
+}

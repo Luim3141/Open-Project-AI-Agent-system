@@ -1,0 +1,248 @@
+{
+  "passed": true,
+  "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+  "backup_id": "4acc3ccd-ebb7-4525-a9ad-e22942285ee8",
+  "isolated_bootstrap": true,
+  "login_after_restart": true,
+  "credential_and_encryption_key_unchanged": true,
+  "existing_owner_not_replaced": true,
+  "loopback_only": true,
+  "primary_data_mounted": false,
+  "license_activation": false,
+  "actual_workflow_restart_restore": true,
+  "credential_encrypted_at_rest": true,
+  "credential_decrypted_after_restore": true,
+  "primary_fixture_writes": 0,
+  "restored_machine_credential_key_pair": true,
+  "restored_purpose_derived_hmac_credential": true,
+  "manual_product_workflow_before_after_restore": [
+    {
+      "passed": true,
+      "workflow_id": "qldapmManualStatus",
+      "execution_id": "2",
+      "run_id": "f1bd2ab1-7da3-46aa-8409-5c239ce11f14",
+      "trace_id": "f1bd2ab1-7da3-46aa-8409-5c239ce11f14",
+      "execution_history_saved": true,
+      "model_calls": 0,
+      "native_writes": 0,
+      "workflow_created_now": false,
+      "editor_only_manual": true,
+      "kind": "status",
+      "state": "COMPLETED",
+      "status": "ok"
+    },
+    {
+      "passed": true,
+      "workflow_id": "qldapmManualStatus",
+      "execution_id": "55",
+      "run_id": "d5d47c91-9008-45b0-9fe7-740d5fc4cf32",
+      "trace_id": "d5d47c91-9008-45b0-9fe7-740d5fc4cf32",
+      "execution_history_saved": true,
+      "model_calls": 0,
+      "native_writes": 0,
+      "workflow_created_now": false,
+      "editor_only_manual": true,
+      "kind": "status",
+      "state": "COMPLETED",
+      "status": "ok"
+    }
+  ],
+  "actual_daily_workflow_and_five_native_roles": [
+    {
+      "passed": true,
+      "manual": {
+        "passed": true,
+        "workflow_id": "qldapmDailyBrief",
+        "execution_id": "3",
+        "run_id": "58287e2e-c645-4d36-a200-57e9c3c5f106",
+        "trace_id": "58287e2e-c645-4d36-a200-57e9c3c5f106",
+        "execution_history_saved": true,
+        "model_calls": 0,
+        "native_writes": 0,
+        "workflow_created_now": true,
+        "editor_only_manual": false,
+        "kind": "daily_brief",
+        "state": "COMPLETED",
+        "status": "READY",
+        "targets": 5,
+        "ready": 5,
+        "unavailable": 0,
+        "published_now": true,
+        "schedule": "09:00 Asia/Bangkok and current-day startup catch-up; one receipt/day"
+      },
+      "actual_scheduled_execution_id": "4",
+      "scheduled_mode": "trigger",
+      "same_daily_receipt": true,
+      "product_schedule": "09:00 Asia/Bangkok",
+      "test_only_accelerated_schedule_seconds": 5,
+      "after_restore": false,
+      "startup_catchup_observed": false
+    },
+    {
+      "passed": true,
+      "actual_native_roles": [
+        {
+          "actor": 6,
+          "role": "BA-PM",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 7,
+          "role": "PM",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 8,
+          "role": "BE",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 9,
+          "role": "FE",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 10,
+          "role": "QA",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        }
+      ],
+      "one_daily_receipt_five_reports": true,
+      "five_actor_collection_seconds": 6.231,
+      "provider_calls": 0,
+      "native_writes": 0,
+      "primary_gateway_data_mounted": false
+    },
+    {
+      "passed": true,
+      "manual": {
+        "passed": true,
+        "workflow_id": "qldapmDailyBrief",
+        "execution_id": "61",
+        "run_id": "58287e2e-c645-4d36-a200-57e9c3c5f106",
+        "trace_id": "58287e2e-c645-4d36-a200-57e9c3c5f106",
+        "execution_history_saved": true,
+        "model_calls": 0,
+        "native_writes": 0,
+        "workflow_created_now": false,
+        "editor_only_manual": false,
+        "kind": "daily_brief",
+        "state": "COMPLETED",
+        "status": "READY",
+        "targets": 5,
+        "ready": 5,
+        "unavailable": 0,
+        "published_now": false,
+        "schedule": "09:00 Asia/Bangkok and current-day startup catch-up; one receipt/day"
+      },
+      "actual_scheduled_execution_id": "63",
+      "scheduled_mode": "trigger",
+      "same_daily_receipt": true,
+      "product_schedule": "09:00 Asia/Bangkok",
+      "test_only_accelerated_schedule_seconds": 5,
+      "after_restore": true,
+      "startup_catchup_observed": true
+    },
+    {
+      "passed": true,
+      "actual_native_roles": [
+        {
+          "actor": 6,
+          "role": "BA-PM",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 7,
+          "role": "PM",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 8,
+          "role": "BE",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 9,
+          "role": "FE",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 10,
+          "role": "QA",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        }
+      ],
+      "one_daily_receipt_five_reports": true,
+      "five_actor_collection_seconds": 6.231,
+      "provider_calls": 0,
+      "native_writes": 0,
+      "primary_gateway_data_mounted": false
+    }
+  ],
+  "candidate_gateway": "sha256:6b4caf880d7a0f2e2d2789247e969cbdea365c9c21dafcea84811fc6452ea359",
+  "candidate_core": "sha256:29ec871dd8e4a5571554b4068733647cc70b369b688388f1965b9228ffff7dee",
+  "candidate_core_database_readonly_verified": true,
+  "primary_core_replaced": false,
+  "qualification_events": [
+    {
+      "phase": "backup_verified",
+      "at": 1792178631.8598394
+    },
+    {
+      "phase": "daily_schedule_and_five_native_roles_passed",
+      "at": 1792178962.3506942
+    },
+    {
+      "phase": "clone_restarted",
+      "at": 1792178993.2513855
+    },
+    {
+      "phase": "fresh_directory_restore_ready",
+      "at": 1792179094.5018358
+    },
+    {
+      "phase": "startup_catchup_and_restored_five_native_roles_passed",
+      "at": 1792179257.3510773
+    }
+  ]
+}

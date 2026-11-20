@@ -1,0 +1,44 @@
+{
+  "status": "GITHUB_PROJECTION_SOURCE_FROZEN_PENDING_ROOT_DEPLOY",
+  "utc": "2026-11-03T02:29:16.072005+00:00",
+  "files": {
+    "openproject/ai/gateway/engineering_github_sync.py": "08075df59ea0f62db358c8ae945a3c0fb408fc05935eacf476bc80a7a33dec46",
+    "openproject/ai/gateway/engineering_github_details.py": "8180cd27d90a74caac9cffdd64f3239ac7bac13c6730f2360d048a8ef255dd9b",
+    "openproject/ai/gateway/engineering.py": "65ae24a23dad3c8e4f1dfea689d34b70e2b39977cbe83fc21ccc2a1d3c38737c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "144f2748375374c02c908d03b1555aa77a065c81e5108cee647af2e13e81450e",
+    "openproject/ai/tests/test_github_integration_projection.py": "448695f4fc0297f88d9cc3f8b68ae69ed3c6c221179dd67ebe76344d92c551b0"
+  },
+  "runtime_modified": false,
+  "scope": [
+    "opt-in review/CI fetching and cachevariant",
+    "current-commit review/checkhashes",
+    "durable event after verifiedNativejournal readback",
+    "unmappedintegrationPR readonlyevent",
+    "safe fixedHTTP release identity",
+    "GitHub API ancestryproof boundcurrenthead/releaseSHA",
+    "GitHubtabreleasecardandperPRdeploymentlabel"
+  ],
+  "limitations": [
+    "No liveNative mutation bythisscope",
+    "NoMAINdeployment bythisscope",
+    "Review/CI deadline20s; incomplete fetch explicitpartial",
+    "Releasecandidate remains unmerged",
+    "AncestryGitHubcalls onlypoller/manualsync; UIreadproof",
+    "NoComputerUseUATbyagent"
+  ],
+  "test_command": "PYTHONPATH=openproject/ai;openproject/ai/tests python -m unittest test_github_integration_projection test_engineering_github_sync test_engineering_github_owner_contract test_engineering_github_journal test_engineering_github_recovery test_engineering_auto_mode test_owner_uat_recovery",
+  "tests": {
+    "count": 73,
+    "seconds": 47.479,
+    "outcome": "PASS",
+    "environment": "Windows local unittest + real loopback Native HTTP fixture, no GitHub/model outbound in tests"
+  },
+  "real_api_readback": {
+    "path": "compare/1914f10d3bd0b2b05459914100c53549f63d0bc5...01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+    "status": "ahead",
+    "base_sha": "1914f10d3bd0b2b05459914100c53549f63d0bc5",
+    "merge_base_sha": "1914f10d3bd0b2b05459914100c53549f63d0bc5",
+    "ahead_by": 4,
+    "behind_by": 0
+  }
+}

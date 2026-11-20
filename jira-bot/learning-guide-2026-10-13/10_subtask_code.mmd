@@ -1,0 +1,16 @@
+flowchart LR
+  n0["TẠO MỚI"]
+  n1["NEW"]
+  n2["In Progress"]
+  n3["CODE REVIEW"]
+  n4["READY FOR TEST"]
+  n5["IN TESTING"]
+  n6["REVIEW"]
+  n7["Done"]
+  n0 -->|"1  Create"| n1
+  n1 -->|"2  Start work"| n2
+  n2 -->|"7  Submit code"| n3
+  n3 -->|"9  Approve code"| n4
+  n4 -->|"10  Start test"| n5
+  n5 -->|"12  Pass testing"| n6
+  n6 -->|"4  Approve work"| n7

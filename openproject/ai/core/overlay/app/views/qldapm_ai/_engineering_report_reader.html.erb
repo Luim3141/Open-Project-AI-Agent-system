@@ -1,0 +1,125 @@
+<style>
+  #qcc-report-modal .qcc-report-box{width:min(1100px,96vw);max-width:1100px;max-height:92vh;display:flex;flex-direction:column;min-width:0}
+  #qcc-report-modal .qcc-modal-header,#qcc-report-modal .qcc-modal-footer{flex-shrink:0;gap:12px;flex-wrap:wrap}
+  .qcc-report-scroll{overflow:auto;min-height:0;padding:24px;scroll-behavior:smooth}
+  .qcc-report-meta{display:flex;gap:8px;flex-wrap:wrap;color:#cbd5e1;margin-top:8px;font-size:13px}
+  .qcc-report-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .qcc-report-toc{padding:14px;background:#111827;border:1px solid #334155;border-radius:8px;margin-bottom:24px}
+  .qcc-report-toc ol{margin:8px 0;padding-left:24px}.qcc-report-toc a{color:#93c5fd}
+  .qcc-report-document{max-width:82ch;margin:auto;line-height:1.75;font-size:16px;color:#e5e7eb;overflow-wrap:anywhere;min-width:0}
+  .qcc-report-document h1{font-size:1.85em;line-height:1.3;margin:1.4em 0 .65em}.qcc-report-document h2{font-size:1.5em;margin:1.5em 0 .65em;padding-bottom:.35em;border-bottom:1px solid #334155}.qcc-report-document h3{font-size:1.2em;margin:1.3em 0 .5em}
+  .qcc-report-document h4,.qcc-report-document h5,.qcc-report-document h6{font-size:1.05em;margin:1.2em 0 .5em}.qcc-report-document [id]{scroll-margin-top:18px}
+  .qcc-report-document p,.qcc-report-document ul,.qcc-report-document ol{margin:.75em 0}.qcc-report-document ul,.qcc-report-document ol{padding-left:1.8em}.qcc-report-document li{margin:.35em 0}
+  .qcc-report-document a{color:#93c5fd;text-decoration:underline}.qcc-report-document blockquote{border-left:3px solid #60a5fa;padding:4px 18px;margin:18px 0;color:#cbd5e1}
+  .qcc-report-document pre,.qcc-report-raw{white-space:pre-wrap;overflow-wrap:anywhere;background:#030712;padding:16px;border:1px solid #334155;border-radius:6px;font:14px/1.65 monospace;max-width:100%;overflow:auto}
+  .qcc-report-document code{font-family:monospace;background:#0f172a}.qcc-report-document table{display:block;max-width:100%;overflow:auto;border-collapse:collapse;margin:20px 0}.qcc-report-document th,.qcc-report-document td{padding:9px 13px;border:1px solid #475569;text-align:left}.qcc-report-document th{background:#1e293b}.qcc-report-document hr{border:0;border-top:1px solid #475569;margin:28px 0}
+  .qcc-report-section{border:0;margin-bottom:16px}.qcc-report-section>summary{cursor:pointer;font-weight:650;font-size:1.5em;line-height:1.4;margin:1.3em 0 .6em}.qcc-report-section>summary h2,.qcc-report-section>summary h3{display:inline;border:0;font:inherit;margin:0;padding:0}
+  #qcc-report-modal button:focus-visible,#qcc-report-modal a:focus-visible,#qcc-report-modal summary:focus-visible{outline:2px solid #93c5fd;outline-offset:4px}
+  #qcc-modal-report-status{min-height:1.5em;color:#cbd5e1;font-size:13px}
+  @media(max-width:700px){#qcc-report-modal{padding:0}#qcc-report-modal .qcc-report-box{width:100vw;height:100dvh;max-height:100dvh;border-radius:0}.qcc-report-scroll{padding:16px}.qcc-report-document{font-size:16px}#qcc-report-modal .qcc-modal-header{align-items:flex-start}}
+</style>
+<div id="qcc-report-modal" class="qcc-modal-backdrop" style="display:none" role="dialog" aria-modal="true" aria-labelledby="modal-report-title">
+  <div class="qcc-modal-box qcc-report-box">
+    <div class="qcc-modal-header">
+      <div style="min-width:0;flex:1">
+        <h3 id="modal-report-title" class="qcc-modal-title">Báo cáo Tiến độ AI Engineering</h3>
+        <div class="qcc-report-meta"><span id="qcc-modal-report-type" class="qcc-chip qcc-chip-blue">UNKNOWN</span><span>Tạo lúc: <span id="qcc-modal-report-time">UNKNOWN</span> · Asia/Ho_Chi_Minh</span><span id="qcc-report-source-status"></span><span id="qcc-report-ai-status"></span></div>
+        <div class="qcc-report-toolbar"><button type="button" class="qcc-btn qcc-btn-secondary" id="qcc-report-raw-toggle" aria-pressed="false">Raw Markdown</button><button type="button" class="qcc-btn qcc-btn-secondary" id="qcc-report-sections-toggle">Thu gọn sections</button><button type="button" class="qcc-btn qcc-btn-secondary" id="qcc-report-export">Export .md</button></div>
+      </div>
+      <button type="button" class="qcc-modal-close" data-action="close-modal" aria-label="Đóng báo cáo">×</button>
+    </div>
+    <div class="qcc-report-scroll" id="qcc-report-scroll">
+      <p id="qcc-modal-report-status" role="status" aria-live="polite"></p>
+      <section class="qcc-report-document" id="qcc-report-summary" aria-label="Tóm tắt snapshot"></section>
+      <details class="qcc-report-toc" id="qcc-report-toc" open><summary>Mục lục</summary><ol id="qcc-report-toc-list"></ol></details>
+      <article id="qcc-modal-report-body" class="qcc-report-document"></article>
+      <pre id="qcc-report-raw" class="qcc-report-raw" hidden></pre>
+    </div>
+    <div class="qcc-modal-footer"><button type="button" class="qcc-btn qcc-btn-secondary" id="btn-copy-report">Sao chép Markdown gốc</button><button type="button" class="qcc-btn qcc-btn-slate" data-action="close-modal">Đóng</button></div>
+  </div>
+</div>
+<%= nonced_javascript_tag do %>
+window.qccReportReader = (function() {
+  function node(id) { return document.getElementById(id); }
+  function date(value) {
+    if (!value) return 'UNKNOWN';
+    var epoch=typeof value==='number'||(/^\d+(?:\.\d+)?$/).test(value);
+    var parsed = new Date(epoch ? Number(value) * 1000 : value);
+    if (isNaN(parsed.getTime())) return 'UNKNOWN';
+    return new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).format(parsed).replace(',','');
+  }
+  function setStatus(message) { node('qcc-modal-report-status').textContent = message; }
+  function documentActions(enabled) {
+    ['btn-copy-report','qcc-report-export','qcc-report-raw-toggle','qcc-report-sections-toggle'].forEach(function(id){node(id).disabled=!enabled;});
+  }
+  function render(data) {
+    var reader = data.reader;
+    if (!reader || reader.rendering !== 'COMMONMARK_SANITIZED' || typeof reader.rendered_html !== 'string' || typeof reader.raw_markdown !== 'string') throw new Error('REPORT_RENDERING_UNAVAILABLE');
+    var report = data.document || data;
+    node('qcc-report-modal').reportMarkdown = reader.raw_markdown;
+    documentActions(reader.raw_markdown.length>0);
+    node('qcc-report-raw').textContent = reader.raw_markdown;
+    // HTML comes only from the authenticated Rails CommonMark + sanitizer endpoint.
+    node('qcc-modal-report-body').innerHTML = reader.rendered_html;
+    node('qcc-report-source-status').textContent = 'Nguồn hiện tại: ' + (report.source_state || 'UNKNOWN') + ' · Snapshot: ' + (report.source_status || 'UNKNOWN');
+    node('qcc-report-ai-status').textContent = report.ai_narrative_status === 'GENERATED' ? 'AI narrative: chưa xác minh' : 'AI narrative: ' + (report.ai_narrative_status || 'UNKNOWN');
+    if(report.title)node('modal-report-title').textContent=report.title;
+    if(report.report_type)node('qcc-modal-report-type').textContent=report.report_type;
+    if (report.generated_at || report.created_at) node('qcc-modal-report-time').textContent = date(report.generated_at || report.created_at);
+    var summary=node('qcc-report-summary');summary.replaceChildren();
+    function summaryLine(label,value){var p=document.createElement('p');p.textContent=label+': '+value;summary.appendChild(p);}
+    var summaryTitle=document.createElement('h2');summaryTitle.textContent='Tóm tắt snapshot';summary.appendChild(summaryTitle);
+    if(report.summary||report.executive_summary)summaryLine('Executive summary',report.summary||report.executive_summary);
+    var metrics=report.metrics||{},runs=metrics.runs||{},wp=metrics.work_packages||{},github=metrics.github||{};
+    [['Work Packages',wp.total_items],['Runs',runs.total],['Runs succeeded',runs.succeeded],['Runs failed/cancelled',runs.failed_or_cancelled],['Pull Requests',github.total_prs]].forEach(function(pair){if(pair[1]!==null && pair[1]!==undefined)summaryLine(pair[0],pair[1]);});
+    ['critical_findings','unresolved_issues'].forEach(function(key){var label=key==='critical_findings'?'Critical findings':'Unresolved issues',values=report[key];if(Array.isArray(values)&&values.length)values.forEach(function(value){summaryLine(label,typeof value==='string'?value:JSON.stringify(value));});else summaryLine(label,'Không có trường tổng hợp trong snapshot; xem toàn văn và bằng chứng.');});
+    var body=node('qcc-modal-report-body'), toc=node('qcc-report-toc-list');toc.replaceChildren();
+    body.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(function(heading) {
+      var item=document.createElement('li'),link=document.createElement('a');
+      link.href='#'+heading.id;link.textContent=heading.textContent;
+      link.addEventListener('click',function(event){event.preventDefault();var section=heading.closest('details');if(section)section.open=true;heading.scrollIntoView({block:'start'});});
+      item.appendChild(link);toc.appendChild(item);
+    });
+    Array.from(body.querySelectorAll('h2,h3')).forEach(function(heading) {
+      var section=document.createElement('details'),summary=document.createElement('summary');section.className='qcc-report-section';section.open=true;
+      if(heading.parentElement!==body)return;
+      body.insertBefore(section,heading);summary.appendChild(heading);section.appendChild(summary);
+      while(section.nextSibling && !(section.nextSibling.nodeType===1 && /^H[1-6]$/.test(section.nextSibling.tagName) && Number(section.nextSibling.tagName.slice(1))<=Number(heading.tagName.slice(1))))section.appendChild(section.nextSibling);
+    });
+    node('qcc-report-toc').hidden=!toc.children.length;
+    setStatus(report.data_hidden ? 'Nội dung đã ẩn vì nguồn không còn khả dụng với quyền hiện tại.' : reader.raw_markdown ? 'Nội dung và provenance giữ nguyên từ báo cáo đã lưu.' : 'Không có nội dung chi tiết.');
+  }
+  function open(button) {
+    var id=button.getAttribute('data-report-id'), modal=node('qcc-report-modal'), token={};
+    if(modal.reportController)modal.reportController.abort();
+    var controller=modal.reportController=new AbortController();
+    var timeout=setTimeout(function(){controller.abort();},15000);
+    modal.reportRequest=token;modal.reportMarkdown='';modal.reportId=id;
+    documentActions(false);
+    node('modal-report-title').textContent=button.getAttribute('data-report-title')||'Báo cáo Tiến độ AI Engineering';
+    node('qcc-modal-report-type').textContent=button.getAttribute('data-report-type')||'UNKNOWN';
+    node('qcc-modal-report-time').textContent=date(button.getAttribute('data-report-time'));
+    ['qcc-modal-report-body','qcc-report-summary','qcc-report-raw','qcc-report-toc-list','qcc-report-source-status','qcc-report-ai-status'].forEach(function(id){node(id).textContent='';});
+    node('qcc-modal-report-body').hidden=false;node('qcc-report-raw').hidden=true;node('qcc-report-raw-toggle').setAttribute('aria-pressed','false');node('qcc-report-sections-toggle').textContent='Thu gọn sections';node('qcc-report-toc').hidden=true;
+    if(window.qccShowModal)window.qccShowModal(modal,button);else modal.style.display='flex';
+    setStatus('Đang nạp và định dạng báo cáo…');
+    fetch('/projects/<%= @project.identifier %>/qldapm-ai/reports/'+encodeURIComponent(id),{signal:controller.signal,cache:'no-store',credentials:'same-origin',headers:{'Accept':'application/json'}})
+      .then(function(response){if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
+      .then(function(data){if(modal.reportRequest!==token || modal.style.display!=='flex')return;var responseId=data&&(data.id||(data.document&&data.document.id));if(String(responseId)!==String(id))throw new Error('REPORT_ID_MISMATCH');render(data);})
+      .catch(function(error){if(modal.reportRequest===token && modal.style.display==='flex')setStatus('Lỗi nạp báo cáo ('+(error.name==='AbortError'?'hết thời gian chờ 15 giây':error.message)+'). Có thể đóng và mở lại để đọc; không tạo báo cáo mới.');})
+      .finally(function(){clearTimeout(timeout);});
+  }
+  function handleClick(event) {
+    var target=event.target, button=target.closest('.qcc-read-report-btn');
+    if(button){event.preventDefault();open(button);return true;}
+    if(!target.closest('#qcc-report-modal'))return false;
+    var action=target.closest('button');if(!action)return false;var modal=node('qcc-report-modal');
+    if(action.id==='qcc-report-raw-toggle'){var raw=node('qcc-report-raw');raw.hidden=!raw.hidden;node('qcc-modal-report-body').hidden=!raw.hidden;node('qcc-report-toc').hidden=!raw.hidden;action.setAttribute('aria-pressed',String(!raw.hidden));return true;}
+    if(action.id==='qcc-report-sections-toggle'){var sections=node('qcc-modal-report-body').querySelectorAll('details'),expand=Array.from(sections).some(function(section){return !section.open;});sections.forEach(function(section){section.open=expand;});action.textContent=expand?'Thu gọn sections':'Mở rộng sections';return true;}
+    if(action.id==='btn-copy-report'){if(navigator.clipboard)navigator.clipboard.writeText(modal.reportMarkdown||'').then(function(){setStatus('Đã sao chép Markdown gốc.');},function(){setStatus('Clipboard không khả dụng; chọn và sao chép trong Raw Markdown.');});else setStatus('Clipboard không khả dụng; chọn và sao chép trong Raw Markdown.');return true;}
+    if(action.id==='qcc-report-export'){var url=URL.createObjectURL(new Blob([modal.reportMarkdown||''],{type:'text/markdown;charset=utf-8'})),link=document.createElement('a');link.href=url;link.download='engineering-report.md';link.click();URL.revokeObjectURL(url);return true;}
+    return false;
+  }
+  return {handleClick:handleClick,render:render,date:date};
+})();
+<% end %>

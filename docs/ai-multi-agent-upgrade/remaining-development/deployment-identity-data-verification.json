@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-18T14:48:11.647442+00:00",
+  "passed": true,
+  "native_tables_fingerprints_checked": 221,
+  "unchanged_fingerprints": 217,
+  "changed_access_metadata_tables": [
+    "sessions",
+    "two_factor_authentication_devices",
+    "users",
+    "$sequences"
+  ],
+  "protected_identity_projections_unchanged": true,
+  "projection_tables": [
+    "users",
+    "two_factor_authentication_devices",
+    "tokens"
+  ],
+  "access_metadata_excluded": [
+    "users.last_login_on",
+    "users.updated_at",
+    "two_factor_authentication_devices.last_used_at",
+    "two_factor_authentication_devices.updated_at"
+  ],
+  "work_packages_preserved": 372,
+  "accounts_passwords_roles_totp_keys_unchanged": true,
+  "new_native_business_writes": 0,
+  "new_native_devices": 0,
+  "main_db_read": false,
+  "after_five_real_supervisor_runs": true
+}

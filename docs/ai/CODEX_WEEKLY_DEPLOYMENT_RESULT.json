@@ -1,0 +1,58 @@
+{
+  "gateway_image": "sha256:e70f3bb7f1a8f0567074def02f5fe7348f5c8d4b9a779436595c8d2311874fb4",
+  "workflow_id": "ZkgS8RZbPRA2zbhQ",
+  "workflow_version": "68ced74a-6dcf-46df-92c3-201febb5341a",
+  "workflow_name": "WF12: Weekly Summary",
+  "active": true,
+  "live_tests": [
+    {
+      "role": "PM",
+      "actor_id": 19,
+      "http_status": 200,
+      "report_id": "53fd6306-86d8-5794-b089-0e6a5590f8e5",
+      "report_sha256": "95264946e4f84489aac7912f77ca2c338736643c28d69d6d93df98ff486e513c",
+      "member_ids": [
+        "19",
+        "20",
+        "21",
+        "22",
+        "23"
+      ],
+      "raw_counts": {
+        "closed_this_week": null,
+        "closed_updated_in_window": 0,
+        "open_total": 332,
+        "overdue_count": 22,
+        "upcoming_deadlines_7d": 25,
+        "throughput_velocity": null
+      },
+      "data_quality": "PARTIAL_STATUS_HISTORY_UNAVAILABLE",
+      "model_used": false,
+      "persisted_readback_verified": true
+    },
+    {
+      "role": "BA",
+      "actor_id": 20,
+      "http_status": 200,
+      "report_id": "c7a171a0-2477-57d1-a470-fdf0433f5a07",
+      "report_sha256": "2a596e4da5205a5072ae41dbd77ab94e28825ffe467c3e905d72cc0259ee70c1",
+      "member_ids": [
+        "20"
+      ],
+      "raw_counts": {
+        "closed_this_week": null,
+        "closed_updated_in_window": 0,
+        "open_total": 332,
+        "overdue_count": 22,
+        "upcoming_deadlines_7d": 25,
+        "throughput_velocity": null
+      },
+      "data_quality": "PARTIAL_STATUS_HISTORY_UNAVAILABLE",
+      "model_used": false,
+      "persisted_readback_verified": true
+    }
+  ],
+  "native_mutations_performed": false,
+  "staging_operations": false,
+  "limitation": "Weekly close-transition throughput is not inferred from updatedAt; null until status history is available"
+}

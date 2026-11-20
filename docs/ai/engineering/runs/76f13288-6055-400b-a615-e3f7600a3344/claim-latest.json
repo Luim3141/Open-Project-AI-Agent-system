@@ -1,0 +1,40 @@
+{
+  "id": "76f13288-6055-400b-a615-e3f7600a3344",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": null,
+  "budget": {
+    "attempt_calls": 12,
+    "auto_continue": false,
+    "cooldown_seconds": 60,
+    "max_continuations": 5,
+    "task_calls": 72
+  },
+  "deadline": 1793964587.639034,
+  "definition": {
+    "acceptance": {},
+    "acceptance_file": null,
+    "base_branch": "main",
+    "base_unit": null,
+    "feedback": "Owner-approved Agent Studio V2 stabilization live demo, ceiling14: tạo đúng một unit mới chỉ thêm regression tests cho HTTP methods bị từ chối tại endpoint /healthz của mini-task-manager.\nBA đọc implementation thực tế để xác định method/status/contract hiện tại. Không đổi app hoặc thêm endpoint; tests chỉ xác minh methods thực sự bị từ chối và không gây side effects lên Task data.\nPM tạo đúng một Task mới, title mô tả rejected HTTP methods /healthz, scope tests-only. Không replay391/397 hoặc unit cũ.\nDev viết tests thật; Reviewer độc lập kiểm diff; QA chạy tests và lưu exit code, revision, artifacts.\nGiữ model gemini-3.5-flash-lite, provider/key/call caps/quota/gates/runner hiện có. Không merge/deploy sản phẩm; chỉ READY FOR RELEASE, không tự Owner DONE.",
+    "kind": "planning",
+    "native_id": 379,
+    "source_hash": "faf8797c2a8d1f4fc3d19afb4b1d395dfe31e203b086a601d4bcd7ada8c59cc8",
+    "title": "PM/BA requirements and engineering backlog"
+  },
+  "engine": "openclaw",
+  "kind": "planning",
+  "native_id": 379,
+  "project_id": 6,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "studio-methods-plan-20261106",
+  "source_version": 4,
+  "spec": "**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n\n*   Backend: Python FastAPI\n    \n*   Database: SQLite\n    \n*   Frontend: HTML, CSS, JavaScript\n    \n*   Testing: pytest\n    \n*   Version Control: Git and GitHub\n    \n\n**Functional Requirements**\n\n1.  Create new tasks.\n    \n2.  View a list of tasks.\n    \n3.  Edit task information.\n    \n4.  Delete tasks.\n    \n5.  Update task status.\n    \n6.  Search and filter tasks.\n    \n7.  Persist data in SQLite.\n    \n8.  Provide a usable web interface.\n    \n\n**AI Development Workflow**\n\nThe AI team should:\n\n1.  Analyze requirements and define acceptance criteria.\n    \n2.  Break down the project into development tasks.\n    \n3.  Establish dependencies and propose a development schedule.\n    \n4.  Implement source code in the Git repository.\n    \n5.  Build and execute automated tests.\n    \n6.  Review the implementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[https://github.com/Luim3141/mini-task-manager](https://github.com/Luim3141/mini-task-manager)\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.",
+  "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+  "stage": "ADMITTED",
+  "unit": "requirements-planning-v1-faf8797c2a8d1f4f",
+  "write_scope_ids": [],
+  "worker_id": "53b89ba5-4503-4c93-a6fe-095fb93d62c8",
+  "claim_token": "caf50f4a-d651-4c99-94df-6c8d883c5213",
+  "claim_generation": 154
+}

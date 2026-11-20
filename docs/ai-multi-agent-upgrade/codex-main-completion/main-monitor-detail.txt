@@ -1,0 +1,272 @@
+- generic: Mở liên kết trong tab mới
+- banner:
+  - link "Nhấn vào đây để bỏ qua menu và đi tới nội dung":
+    - /url: ""
+    - text: Chuyển đến nội dung
+  - navigation "Trình đơn trên cùng":
+    - button "Mô-đun toàn cầu":
+    - link "Trang chủ":
+      - /url: http://localhost:8088/
+  - search "Tìm kiếm trong OpenProject":
+    - button "tìm kiếm":
+      - generic: 
+    - generic: Tìm kiếm trong OpenProject
+    - combobox "Tìm kiếm trong OpenProject"
+    - status
+  - button "Thêm vào…":
+    - img "Thêm vào…"
+  - link "thông báo":
+    - /url: /notifications
+  - button "Trợ giúp":
+  - button "Trình đơn người dùng":
+    - img "Trình đơn người dùng": QB
+- navigation "Menu bên":
+  - button "Thu gọn menu dự án" [expanded]:
+  - button "QLDAPM — Local Community":
+    - generic: QLDAPM — Local Community
+  - button "Thu gọn menu dự án" [expanded]:
+  - separator
+  - list:
+    - link "dự án nhà":
+      - /url: http://localhost:8088/projects/qldapm-local
+      - generic: dự án nhà
+    - link "hoạt động":
+      - /url: http://localhost:8088/projects/qldapm-local/activity
+      - generic: hoạt động
+    - button "Mở menu phụ hoạt động":
+    - link "Work Packages":
+      - /url: http://localhost:8088/projects/qldapm-local/work_packages
+      - generic: Work Packages
+    - button "Mở menu phụ Work Packages":
+    - link "AI Assistant":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-ai
+      - generic: AI Assistant
+    - link "Insights":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-insights
+      - generic: Insights
+    - link "biểu đồ Gantt":
+      - /url: http://localhost:8088/projects/qldapm-local/gantt
+      - generic: biểu đồ Gantt
+    - button "Mở menu phụ biểu đồ Gantt":
+    - link "bảng":
+      - /url: http://localhost:8088/projects/qldapm-local/boards
+      - generic: bảng
+    - button "Mở menu phụ bảng":
+    - link "Backlog":
+      - /url: http://localhost:8088/projects/qldapm-local/backlogs/backlog
+      - generic: Backlog
+    - button "Mở menu phụ Backlog":
+    - link "thành viên":
+      - /url: http://localhost:8088/projects/qldapm-local/members
+      - generic: thành viên
+    - button "Mở menu phụ thành viên":
+    - link "Workflow gates":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-gates
+      - generic: Workflow gates
+    - link "Thiết lập dự án":
+      - /url: http://localhost:8088/projects/qldapm-local/settings/versions
+      - generic: Thiết lập dự án
+    - button "Mở menu phụ Thiết lập dự án":
+- main:
+  - heading "Nội dung" [level=1]
+  - navigation "Điều hướng giám sát":
+    - link "AI Assistant":
+      - /url: /projects/qldapm-local/qldapm-ai
+    - generic: /
+    - link "Lịch sử xử lý":
+      - /url: /projects/qldapm-local/qldapm-ai/executions
+    - generic: /
+    - generic: Chi tiết Execution
+  - generic: AI Multi-Agent Execution Monitor
+  - heading "Giám sát điều phối AI Multi-Agent" [level=2]
+  - generic: Yêu cầu người dùng
+  - paragraph: "UAT Main 2026-10-21: chỉ đọc; không ghi thay đổi. Phân tích tiến độ và rủi ro dự án theo dữ liệu hiện có, tổng hợp kết quả trên giao diện."
+  - generic: Hoàn thành
+  - generic: LOCAL_DETERMINISTIC
+  - button "Chế độ trình chiếu":
+    - generic: Chế độ trình chiếu
+  - status: Đã đọc bản ghi đã lưu. Không gọi Gemini và không tự chạy lại execution.
+  - term: "Run ID:"
+  - definition: 87803ca8-72a1-4643-b00f-8fda05a06266
+  - term: "Trace ID:"
+  - definition: 45f86df7-745e-48dd-abc0-ea6fbee36681
+  - term: "Người yêu cầu:"
+  - definition: "#19 · PM"
+  - term: "Dự án:"
+  - definition: "5"
+  - term: "Được tạo:"
+  - definition: 02:32:27 21/10/26
+  - term: "Mô hình AI:"
+  - definition: Không khả dụng
+  - region "Chỉ số thực thi":
+    - generic: Agent tham gia
+    - strong: "3"
+    - generic: Agent hoàn thành
+    - strong: "3"
+    - generic: Node đang xử lý
+    - strong: "0"
+    - generic: Bước trong plan
+    - strong: "2"
+    - generic: Gemini calls đã ghi nhận
+    - strong: "0"
+    - generic: Token quan sát
+    - strong: "0"
+    - generic: Duration đã ghi nhận
+    - strong: 11,16s
+    - generic: Provider errors / retries
+    - strong: 0 / 0
+  - region "Sơ đồ điều phối Multi-Agent":
+    - heading "Sơ đồ điều phối Multi-Agent" [level=3]
+    - paragraph: "Đường nét đứt: Supervisor giao việc · Đường liền: Phụ thuộc dữ liệu hoàn tất"
+    - button "Phóng to sơ đồ": +
+    - button "Thu nhỏ sơ đồ": −
+    - button "Vừa màn hình"
+    - button "Tự động sắp xếp"
+    - button "Đặt lại bố cục"
+    - button "Thu gọn node"
+    - group "Sơ đồ agent tương tác. Chọn node bằng chuột hoặc bàn phím.":
+      - button "Supervisor · Hoàn thành":
+        - generic: SV
+        - generic: Supervisor
+        - generic: ✓ Hoàn thành
+        - generic: Lập kế hoạch và điều phối các nh…
+        - generic: 0 calls · Chưa có dữ liệu token
+        - generic: LOCAL_DETERMINISTIC
+      - button "PM Agent · Hoàn thành" [active] [pressed]:
+        - generic: PM
+        - generic: PM Agent
+        - generic: ✓ Hoàn thành
+        - generic: execute_pm_domain_task
+        - generic: 0 calls · Chưa có dữ liệu token
+        - generic: LOCAL_DETERMINISTIC
+      - button "Reviewer · Hoàn thành":
+        - generic: RV
+        - generic: Reviewer
+        - generic: ✓ Hoàn thành
+        - generic: verify_consistency_and_rbac
+        - generic: 0 calls · Chưa có dữ liệu token
+        - generic: LOCAL_DETERMINISTIC
+      - button "Báo cáo tổng hợp · Hoàn thành":
+        - generic: Σ
+        - generic: Báo cáo tổng hợp
+        - generic: ✓ Hoàn thành
+        - generic: Tổng hợp kết quả đã lưu; không g…
+        - generic: 0 calls · Chưa có dữ liệu token
+        - generic: LOCAL_DETERMINISTIC
+    - generic: Supervisor giao việc
+    - generic: Phụ thuộc dữ liệu
+    - generic: Luồng node đang chọn
+    - generic: Hoàn tất
+    - generic "Xem dạng bảng danh sách node (Hỗ trợ trình đọc màn hình)"
+  - complementary "PM Agent":
+    - heading "PM Agent" [level=3]
+    - paragraph: execute_pm_domain_task
+    - tablist:
+      - tab "Thông tin chính" [selected]
+      - tab "Kết quả xử lý"
+      - tab "Tất cả thông số"
+    - tabpanel:
+      - term: "Vai trò chuyên môn:"
+      - definition: PM
+      - term: "Trạng thái hiện tại:"
+      - definition: Hoàn thành
+      - term: "Phụ thuộc:"
+      - definition: Không có
+      - term: "Gemini Calls:"
+      - definition: "0"
+      - term: "Token ghi nhận:"
+      - definition: Chưa có dữ liệu
+      - term: "Thời gian xử lý:"
+      - definition: 0,057s
+      - term: "Chế độ thực thi:"
+      - definition: LOCAL_DETERMINISTIC
+      - term: "Mô hình AI:"
+      - definition: Không khả dụng
+    - text: ": : : : : : : : : : : : : : : : : : :"
+  - region "Timeline thực thi và phát lại":
+    - heading "Timeline thực thi và phát lại" [level=3]
+    - paragraph: Chỉ hiển thị các sự kiện đã ghi nhận trong trace; không ước lượng thời gian cho agent thiếu telemetry.
+    - text: "Lọc agent:"
+    - combobox "Lọc agent:":
+      - option "Tất cả" [selected]
+      - option "supervisor"
+      - option "pm"
+      - option "reviewer"
+    - group "Phát lại lịch sử (Readonly replay · Không gọi AI)":
+      - generic: Phát lại lịch sử (Readonly replay · Không gọi AI)
+      - button "Phát lại (1 sự kiện/giây)"
+      - generic: "Vị trí sự kiện:"
+      - slider "Vị trí sự kiện:": "14"
+      - generic: 14 / 14
+      - button "Về kết quả cuối"
+    - list:
+      - time: 02:32:27
+      - strong: Đã nhận yêu cầu
+      - generic: QUEUED
+      - time: 02:32:27
+      - strong: Đã xác thực quyền
+      - generic: QUEUED
+      - time: 02:32:27
+      - strong: Đã xếp hàng
+      - generic: QUEUED
+      - time: 02:32:36
+      - strong: Supervisor bắt đầu lập kế hoạch
+      - generic: supervisor · PLANNING
+      - time: 02:32:37
+      - strong: Đã lưu execution plan
+      - generic: supervisor · COMPLETED
+      - time: 02:32:37
+      - strong: Supervisor giao nhiệm vụ
+      - generic: pm · QUEUED
+      - time: 02:32:37
+      - strong: Supervisor giao nhiệm vụ
+      - generic: reviewer · QUEUED
+      - time: 02:32:38
+      - strong: Agent bắt đầu xử lý
+      - generic: pm · RUNNING
+      - time: 02:32:38
+      - strong: Agent hoàn thành
+      - generic: pm · COMPLETED
+      - time: 02:32:38
+      - strong: Reviewer bắt đầu kiểm định
+      - generic: reviewer · REVIEWING
+      - time: 02:32:38
+      - strong: Reviewer kết thúc kiểm định
+      - generic: reviewer · COMPLETED
+      - time: 02:32:38
+      - strong: Đã tổng hợp kết quả
+      - generic: supervisor · COMPLETED
+      - time: 02:32:39
+      - strong: Kết quả có thể đọc
+      - generic: COMPLETED
+      - time: 02:32:39
+      - strong: Execution hoàn tất
+      - generic: COMPLETED
+  - region "Tổng hợp báo cáo cuối cùng":
+    - heading "Tổng hợp báo cáo cuối cùng" [level=3]
+    - paragraph: Phân tích và giải pháp hoàn chỉnh từ Multi-Agent · Reviewer local xác thực tham chiếu và ranh giới nghiệp vụ.
+    - button "Báo cáo phân tách"
+    - button "Nội dung nguyên bản"
+    - generic: Tóm tắt chung
+    - generic: "Phân tích local trên 10/329 công việc trong phạm vi phân tích; tối đa 10 mục/lượt. Kết quả là bản phân tích/dự thảo, chưa thay đổi dữ liệu native. ### ĐÁNH GIÁ TỔNG THỂ RỦI RO SPRINT (Mức độ: THẤP) - **Tổng số công việc:** 10 (Hoàn thành: 0, Đang mở: 10) - **Công việc quá hạn:** 0 - **Công việc bị chặn (Blocker):** 0 #### Chi tiết rủi ro và bằng chứng: #### Khuyến nghị hành động: 1. Ưu tiên giải tỏa blocker cho các công việc có mức độ ưu tiên cao. 2. Điều chỉnh phân bổ nguồn lực hoặc đàm phán phạm vi cho các mục trễ hạn. --- ### BÁO CÁO ĐỐI CHIẾU VÀ KIỂM ĐỊNH TÍNH NHẤT QUÁN (REVIEWER REPORT) #### 1. Kết quả đối chiếu bằng chứng native: - Tác vụ 1: **TRÍCH DẪN HỢP LỆ** — Chưa có trích dẫn cụ thể để đối chiếu; nội dung phân tích/dự thảo vẫn cần người dùng thẩm định. #### 2. Kiểm tra xung đột đa tác nhân: Nhất quán, không phát hiện mâu thuẫn. #### 3. Rà soát ranh giới thẩm quyền RBAC: - Các tác vụ đều thuộc phạm vi ĐỌC (Read-Only) hợp lệ, tuân thủ đúng phân quyền của vai trò. #### 4. Kết luận kiểm định (Final Verdict): **KẾT QUẢ: ĐÃ KIỂM TRA THAM CHIẾU/PHẠM VI; NỘI DUNG DỰ THẢO CHƯA ĐƯỢC CON NGƯỜI NGHIỆM THU.**"
+    - heading "Dữ liệu nguồn xác thực" [level=4]
+    - link "#38 · v1":
+      - /url: /work_packages/38
+    - link "#39 · v1":
+      - /url: /work_packages/39
+    - link "#40 · v1":
+      - /url: /work_packages/40
+    - link "#41 · v1":
+      - /url: /work_packages/41
+    - link "#42 · v1":
+      - /url: /work_packages/42
+    - link "#43 · v1":
+      - /url: /work_packages/43
+    - link "#44 · v1":
+      - /url: /work_packages/44
+    - link "#45 · v1":
+      - /url: /work_packages/45
+    - link "#46 · v1":
+      - /url: /work_packages/46
+    - link "#47 · v1":
+      - /url: /work_packages/47

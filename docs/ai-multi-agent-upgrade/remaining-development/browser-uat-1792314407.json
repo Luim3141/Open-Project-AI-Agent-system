@@ -1,0 +1,67 @@
+{
+  "scope": "ISOLATED_NEW_FIXTURE_USERS_ONLY",
+  "images": {
+    "gateway": {
+      "tag": "qldapm-rd-gateway:20261018-be02fca8ac",
+      "image": "sha256:f46ca63ecd0efcd4fc9c09ab32890d3fee059d1d73d1568bcabb77e819ec5e89",
+      "exit_code": 0,
+      "source_sha256": "be02fca8ac93fb295c0e47b846f55b65d9bcc3008cce3bba3f3ed3c1388b5115",
+      "base": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233"
+    },
+    "core": {
+      "tag": "qldapm-rd-core:20261018-56a6cc1ea0",
+      "exit_code": 0,
+      "source_sha256": null,
+      "base": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "image": "sha256:f0da1eb62e44a9050f35f424c8d9876b7857eabb1212e1060ce1db24ef8d6bf7"
+    },
+    "quick-tunnel": {
+      "tag": "qldapm-rd-quick-tunnel:20261018-56a6cc1ea0",
+      "exit_code": 0,
+      "source_sha256": null,
+      "base": null,
+      "image": "sha256:eb4cb5b6f52946912fec82300c8a79df44059081d1c99710948fe0ca133d95df"
+    }
+  },
+  "started_at": 1792314407.8485084,
+  "checks": [
+    {
+      "id": "UAT-PM-LOGIN",
+      "expected": "Native login/TOTP identifies synthetic actor",
+      "status": "PASS",
+      "actual": {
+        "http": 200,
+        "id": 13
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-CONTROL-CENTER",
+      "expected": "Real Core renders Control Center",
+      "status": "FAIL",
+      "actual": null,
+      "exit_code": 1
+    },
+    {
+      "id": "UAT-PM-FLOW",
+      "expected": "Complete isolated browser workflow",
+      "status": "FAIL",
+      "actual": {
+        "error_type": "TimeoutError"
+      },
+      "exit_code": 1
+    },
+    {
+      "id": "UAT-BA-PM-LOGIN",
+      "expected": "Native login/TOTP identifies synthetic actor",
+      "status": "PASS",
+      "actual": {
+        "http": 200,
+        "id": 14
+      },
+      "exit_code": 0
+    }
+  ],
+  "provider_calls_requested": 0,
+  "serving_native_mutations": 0
+}

@@ -1,0 +1,735 @@
+- generic: Mở liên kết trong tab mới
+- banner:
+  - link "Nhấn vào đây để bỏ qua menu và đi tới nội dung":
+    - /url: ""
+    - text: Chuyển đến nội dung
+  - navigation "Trình đơn trên cùng":
+    - button "Mô-đun toàn cầu":
+    - link "Trang chủ":
+      - /url: http://localhost:8088/
+  - search "Tìm kiếm trong OpenProject":
+    - button "tìm kiếm":
+      - generic: 
+    - generic: Tìm kiếm trong OpenProject
+    - combobox "Tìm kiếm trong OpenProject"
+    - status
+  - button "Thêm vào…":
+    - img "Thêm vào…"
+  - link "thông báo":
+    - /url: /notifications
+  - button "Trợ giúp":
+  - button "Trình đơn người dùng":
+    - img "Trình đơn người dùng": QB
+- navigation "Menu bên":
+  - button "Thu gọn menu dự án" [expanded]:
+  - button "QLDAPM — Local Community":
+    - generic: QLDAPM — Local Community
+  - button "Thu gọn menu dự án" [expanded]:
+  - separator
+  - list:
+    - link "dự án nhà":
+      - /url: http://localhost:8088/projects/qldapm-local
+      - generic: dự án nhà
+    - link "hoạt động":
+      - /url: http://localhost:8088/projects/qldapm-local/activity
+      - generic: hoạt động
+    - button "Mở menu phụ hoạt động":
+    - link "Lộ trình":
+      - /url: http://localhost:8088/projects/qldapm-local/roadmap
+      - generic: Lộ trình
+    - link "Work Packages":
+      - /url: http://localhost:8088/projects/qldapm-local/work_packages
+      - generic: Work Packages
+    - button "Mở menu phụ Work Packages":
+    - link "AI Assistant":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-ai
+      - generic: AI Assistant
+    - link "Insights":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-insights
+      - generic: Insights
+    - link "biểu đồ Gantt":
+      - /url: http://localhost:8088/projects/qldapm-local/gantt
+      - generic: biểu đồ Gantt
+    - button "Mở menu phụ biểu đồ Gantt":
+    - link "bảng":
+      - /url: http://localhost:8088/projects/qldapm-local/boards
+      - generic: bảng
+    - button "Mở menu phụ bảng":
+    - link "Backlog":
+      - /url: http://localhost:8088/projects/qldapm-local/backlogs/backlog
+      - generic: Backlog
+    - button "Mở menu phụ Backlog":
+    - link "thành viên":
+      - /url: http://localhost:8088/projects/qldapm-local/members
+      - generic: thành viên
+    - button "Mở menu phụ thành viên":
+    - link "Workflow gates":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-gates
+      - generic: Workflow gates
+    - link "Thiết lập dự án":
+      - /url: http://localhost:8088/projects/qldapm-local/settings/versions
+      - generic: Thiết lập dự án
+    - button "Mở menu phụ Thiết lập dự án":
+- main:
+  - heading "Nội dung" [level=1]
+  - heading "QLDAPM Workflow gates" [level=2]
+  - paragraph: Server-side gates apply to UI, native API and AI. No automatic approval or completion.
+  - list:
+    - link "#38 Tài khoản & Role — NEW":
+      - /url: /qldapm/gates/38
+    - link "#39 Quản lý Project — NEW":
+      - /url: /qldapm/gates/39
+    - link "#40 Backlog — NEW":
+      - /url: /qldapm/gates/40
+    - link "#41 Sprint — NEW":
+      - /url: /qldapm/gates/41
+    - link "#42 Task / User Story — NEW":
+      - /url: /qldapm/gates/42
+    - link "#43 Kanban — NEW":
+      - /url: /qldapm/gates/43
+    - link "#44 Gantt / Timeline — NEW":
+      - /url: /qldapm/gates/44
+    - link "#45 Issue / Bug — NEW":
+      - /url: /qldapm/gates/45
+    - link "#46 Comment — NEW":
+      - /url: /qldapm/gates/46
+    - link "#47 Dashboard — NEW":
+      - /url: /qldapm/gates/47
+    - link "#48 Notification — NEW":
+      - /url: /qldapm/gates/48
+    - link "#49 AUTH-01 — Đăng ký bằng email và mật khẩu — NEW":
+      - /url: /qldapm/gates/49
+    - link "#50 AUTH-02 — Đăng nhập — NEW":
+      - /url: /qldapm/gates/50
+    - link "#51 AUTH-03 — Đăng xuất — NEW":
+      - /url: /qldapm/gates/51
+    - link "#52 AUTH-04 — Gán hoặc thay đổi Role của thành viên — NEW":
+      - /url: /qldapm/gates/52
+    - link "#53 AUTH-05 — Chỉ thấy menu, dữ liệu và hành động đúng Role — NEW":
+      - /url: /qldapm/gates/53
+    - link "#54 PRJ-01 — Tạo Project với tên, mô tả và thời gian dự kiến — NEW":
+      - /url: /qldapm/gates/54
+    - link "#55 PRJ-02 — Xem danh sách và chi tiết Project — NEW":
+      - /url: /qldapm/gates/55
+    - link "#56 PRJ-03 — Chỉnh sửa thông tin Project — NEW":
+      - /url: /qldapm/gates/56
+    - link "#57 PRJ-04 — Thêm thành viên vào Project — NEW":
+      - /url: /qldapm/gates/57
+    - link "#58 PRJ-05 — Gỡ thành viên khỏi Project — NEW":
+      - /url: /qldapm/gates/58
+    - link "#59 PRJ-06 — Xóa Project không còn sử dụng — NEW":
+      - /url: /qldapm/gates/59
+    - link "#60 BLG-01 — Xem Backlog — NEW":
+      - /url: /qldapm/gates/60
+    - link "#61 BLG-02 — Tạo User Story hoặc Task trực tiếp trong Backlog — NEW":
+      - /url: /qldapm/gates/61
+    - link "#62 BLG-03 — Sắp xếp thứ tự Backlog — NEW":
+      - /url: /qldapm/gates/62
+    - link "#63 BLG-04 — Tìm kiếm và lọc Backlog — NEW":
+      - /url: /qldapm/gates/63
+    - link "#64 BLG-05 — Đưa item từ Backlog vào Sprint lập kế hoạch — NEW":
+      - /url: /qldapm/gates/64
+    - link "#65 SPR-01 — Tạo Sprint với tên, thời gian và mục tiêu — NEW":
+      - /url: /qldapm/gates/65
+    - link "#66 SPR-02 — Chỉnh sửa Sprint đang lập kế hoạch — NEW":
+      - /url: /qldapm/gates/66
+    - link "#67 SPR-03 — Bắt đầu Sprint — NEW":
+      - /url: /qldapm/gates/67
+    - link "#68 SPR-04 — Xem thông tin Sprint — NEW":
+      - /url: /qldapm/gates/68
+    - link "#69 SPR-05 — Đóng Sprint — NEW":
+      - /url: /qldapm/gates/69
+    - link "#70 TSK-01 — Tạo Task/User Story — NEW":
+      - /url: /qldapm/gates/70
+    - link "#71 TSK-02 — Xem chi tiết Task/User Story — NEW":
+      - /url: /qldapm/gates/71
+    - link "#72 TSK-03 — Chỉnh sửa Task/User Story — NEW":
+      - /url: /qldapm/gates/72
+    - link "#73 TSK-04 — Gán Task/User Story cho thành viên — NEW":
+      - /url: /qldapm/gates/73
+    - link "#74 TSK-05 — Xóa Task/User Story không còn giá trị — NEW":
+      - /url: /qldapm/gates/74
+    - link "#75 KAN-01 — Xem Kanban board của Sprint — NEW":
+      - /url: /qldapm/gates/75
+    - link "#76 KAN-02 — Kéo-thả card giữa các cột — NEW":
+      - /url: /qldapm/gates/76
+    - link "#77 KAN-03 — Lọc Kanban board — NEW":
+      - /url: /qldapm/gates/77
+    - link "#78 KAN-04 — Tạo nhanh item từ Kanban board — NEW":
+      - /url: /qldapm/gates/78
+    - link "#79 GNT-01 — Xem Gantt/Timeline của Project — NEW":
+      - /url: /qldapm/gates/79
+    - link "#80 GNT-02 — Đặt ngày bắt đầu và ngày kết thúc cho Task — NEW":
+      - /url: /qldapm/gates/80
+    - link "#81 GNT-03 — Tạo quan hệ trước-sau giữa các Task — NEW":
+      - /url: /qldapm/gates/81
+    - link "#82 GNT-04 — Nhận diện Task trễ hạn hoặc xung đột lịch — NEW":
+      - /url: /qldapm/gates/82
+    - link "#83 BUG-01 — Tạo Bug với thông tin tái hiện — NEW":
+      - /url: /qldapm/gates/83
+    - link "#84 BUG-02 — Tìm kiếm và lọc Bug — NEW":
+      - /url: /qldapm/gates/84
+    - link "#85 BUG-03 — Phân loại Severity và Priority của Bug — NEW":
+      - /url: /qldapm/gates/85
+    - link "#86 BUG-04 — Gán Bug cho Dev phụ trách — NEW":
+      - /url: /qldapm/gates/86
+    - link "#87 BUG-05 — Cập nhật trạng thái Bug — NEW":
+      - /url: /qldapm/gates/87
+    - link "#88 CMT-01 — Thêm comment trên Task/Issue — NEW":
+      - /url: /qldapm/gates/88
+    - link "#89 CMT-02 — Xem lịch sử comment — NEW":
+      - /url: /qldapm/gates/89
+    - link "#90 CMT-03 — Chỉnh sửa comment của mình — NEW":
+      - /url: /qldapm/gates/90
+    - link "#91 CMT-04 — Xóa comment không còn phù hợp — NEW":
+      - /url: /qldapm/gates/91
+    - link "#92 CMT-05 — Mention đồng đội trong comment — NEW":
+      - /url: /qldapm/gates/92
+    - link "#93 DSH-01 — Xem tỷ lệ hoàn thành Project — NEW":
+      - /url: /qldapm/gates/93
+    - link "#94 DSH-02 — Xem số Task theo từng trạng thái — NEW":
+      - /url: /qldapm/gates/94
+    - link "#95 DSH-03 — Xem khối lượng Task theo từng thành viên — NEW":
+      - /url: /qldapm/gates/95
+    - link "#96 DSH-04 — Lọc Dashboard theo Sprint hoặc trạng thái — NEW":
+      - /url: /qldapm/gates/96
+    - link "#97 NOT-01 — Nhận thông báo khi được gán Task/User Story — NEW":
+      - /url: /qldapm/gates/97
+    - link "#98 NOT-02 — Nhận thông báo khi trạng thái Task hoặc Bug thay đổi — NEW":
+      - /url: /qldapm/gates/98
+    - link "#99 NOT-03 — Nhận thông báo khi được mention hoặc có comment liên quan — NEW":
+      - /url: /qldapm/gates/99
+    - link "#100 NOT-04 — Xem trung tâm Notification — NEW":
+      - /url: /qldapm/gates/100
+    - link "#101 NOT-05 — Cấu hình kênh và loại Notification — NEW":
+      - /url: /qldapm/gates/101
+    - link "#102 Đặc tả và AC cho AUTH-01 — NEW":
+      - /url: /qldapm/gates/102
+    - link "#103 Backend cho AUTH-01 — NEW":
+      - /url: /qldapm/gates/103
+    - link "#104 Frontend cho AUTH-01 — NEW":
+      - /url: /qldapm/gates/104
+    - link "#105 Kiểm thử và retest cho AUTH-01 — NEW":
+      - /url: /qldapm/gates/105
+    - link "#106 Nghiệm thu và bàn giao AUTH-01 — NEW":
+      - /url: /qldapm/gates/106
+    - link "#107 Đặc tả và AC cho AUTH-02 — NEW":
+      - /url: /qldapm/gates/107
+    - link "#108 Backend cho AUTH-02 — NEW":
+      - /url: /qldapm/gates/108
+    - link "#109 Frontend cho AUTH-02 — NEW":
+      - /url: /qldapm/gates/109
+    - link "#110 Kiểm thử và retest cho AUTH-02 — NEW":
+      - /url: /qldapm/gates/110
+    - link "#111 Nghiệm thu và bàn giao AUTH-02 — NEW":
+      - /url: /qldapm/gates/111
+    - link "#112 Đặc tả và AC cho AUTH-03 — NEW":
+      - /url: /qldapm/gates/112
+    - link "#113 Backend cho AUTH-03 — NEW":
+      - /url: /qldapm/gates/113
+    - link "#114 Frontend cho AUTH-03 — NEW":
+      - /url: /qldapm/gates/114
+    - link "#115 Kiểm thử và retest cho AUTH-03 — NEW":
+      - /url: /qldapm/gates/115
+    - link "#116 Nghiệm thu và bàn giao AUTH-03 — NEW":
+      - /url: /qldapm/gates/116
+    - link "#117 Đặc tả và AC cho AUTH-04 — NEW":
+      - /url: /qldapm/gates/117
+    - link "#118 Backend cho AUTH-04 — NEW":
+      - /url: /qldapm/gates/118
+    - link "#119 Frontend cho AUTH-04 — NEW":
+      - /url: /qldapm/gates/119
+    - link "#120 Kiểm thử và retest cho AUTH-04 — NEW":
+      - /url: /qldapm/gates/120
+    - link "#121 Nghiệm thu và bàn giao AUTH-04 — NEW":
+      - /url: /qldapm/gates/121
+    - link "#122 Đặc tả và AC cho AUTH-05 — NEW":
+      - /url: /qldapm/gates/122
+    - link "#123 Backend cho AUTH-05 — NEW":
+      - /url: /qldapm/gates/123
+    - link "#124 Frontend cho AUTH-05 — NEW":
+      - /url: /qldapm/gates/124
+    - link "#125 Kiểm thử và retest cho AUTH-05 — NEW":
+      - /url: /qldapm/gates/125
+    - link "#126 Nghiệm thu và bàn giao AUTH-05 — NEW":
+      - /url: /qldapm/gates/126
+    - link "#127 Đặc tả và AC cho PRJ-01 — NEW":
+      - /url: /qldapm/gates/127
+    - link "#128 Backend cho PRJ-01 — NEW":
+      - /url: /qldapm/gates/128
+    - link "#129 Frontend cho PRJ-01 — NEW":
+      - /url: /qldapm/gates/129
+    - link "#130 Kiểm thử và retest cho PRJ-01 — NEW":
+      - /url: /qldapm/gates/130
+    - link "#131 Nghiệm thu và bàn giao PRJ-01 — NEW":
+      - /url: /qldapm/gates/131
+    - link "#132 Đặc tả và AC cho PRJ-02 — NEW":
+      - /url: /qldapm/gates/132
+    - link "#133 Backend cho PRJ-02 — NEW":
+      - /url: /qldapm/gates/133
+    - link "#134 Frontend cho PRJ-02 — NEW":
+      - /url: /qldapm/gates/134
+    - link "#135 Kiểm thử và retest cho PRJ-02 — NEW":
+      - /url: /qldapm/gates/135
+    - link "#136 Nghiệm thu và bàn giao PRJ-02 — NEW":
+      - /url: /qldapm/gates/136
+    - link "#137 Đặc tả và AC cho PRJ-03 — NEW":
+      - /url: /qldapm/gates/137
+    - link "#138 Backend cho PRJ-03 — NEW":
+      - /url: /qldapm/gates/138
+    - link "#139 Frontend cho PRJ-03 — NEW":
+      - /url: /qldapm/gates/139
+    - link "#140 Kiểm thử và retest cho PRJ-03 — NEW":
+      - /url: /qldapm/gates/140
+    - link "#141 Nghiệm thu và bàn giao PRJ-03 — NEW":
+      - /url: /qldapm/gates/141
+    - link "#142 Đặc tả và AC cho PRJ-04 — NEW":
+      - /url: /qldapm/gates/142
+    - link "#143 Backend cho PRJ-04 — NEW":
+      - /url: /qldapm/gates/143
+    - link "#144 Frontend cho PRJ-04 — NEW":
+      - /url: /qldapm/gates/144
+    - link "#145 Kiểm thử và retest cho PRJ-04 — NEW":
+      - /url: /qldapm/gates/145
+    - link "#146 Nghiệm thu và bàn giao PRJ-04 — NEW":
+      - /url: /qldapm/gates/146
+    - link "#147 Đặc tả và AC cho PRJ-05 — NEW":
+      - /url: /qldapm/gates/147
+    - link "#148 Backend cho PRJ-05 — NEW":
+      - /url: /qldapm/gates/148
+    - link "#149 Frontend cho PRJ-05 — NEW":
+      - /url: /qldapm/gates/149
+    - link "#150 Kiểm thử và retest cho PRJ-05 — NEW":
+      - /url: /qldapm/gates/150
+    - link "#151 Nghiệm thu và bàn giao PRJ-05 — NEW":
+      - /url: /qldapm/gates/151
+    - link "#152 Đặc tả và AC cho PRJ-06 — NEW":
+      - /url: /qldapm/gates/152
+    - link "#153 Backend cho PRJ-06 — NEW":
+      - /url: /qldapm/gates/153
+    - link "#154 Frontend cho PRJ-06 — NEW":
+      - /url: /qldapm/gates/154
+    - link "#155 Kiểm thử và retest cho PRJ-06 — NEW":
+      - /url: /qldapm/gates/155
+    - link "#156 Nghiệm thu và bàn giao PRJ-06 — NEW":
+      - /url: /qldapm/gates/156
+    - link "#157 Đặc tả và AC cho BLG-01 — NEW":
+      - /url: /qldapm/gates/157
+    - link "#158 Backend cho BLG-01 — NEW":
+      - /url: /qldapm/gates/158
+    - link "#159 Frontend cho BLG-01 — NEW":
+      - /url: /qldapm/gates/159
+    - link "#160 Kiểm thử và retest cho BLG-01 — NEW":
+      - /url: /qldapm/gates/160
+    - link "#161 Nghiệm thu và bàn giao BLG-01 — NEW":
+      - /url: /qldapm/gates/161
+    - link "#162 Đặc tả và AC cho BLG-02 — NEW":
+      - /url: /qldapm/gates/162
+    - link "#163 Backend cho BLG-02 — NEW":
+      - /url: /qldapm/gates/163
+    - link "#164 Frontend cho BLG-02 — NEW":
+      - /url: /qldapm/gates/164
+    - link "#165 Kiểm thử và retest cho BLG-02 — NEW":
+      - /url: /qldapm/gates/165
+    - link "#166 Nghiệm thu và bàn giao BLG-02 — NEW":
+      - /url: /qldapm/gates/166
+    - link "#167 Đặc tả và AC cho BLG-03 — NEW":
+      - /url: /qldapm/gates/167
+    - link "#168 Backend cho BLG-03 — NEW":
+      - /url: /qldapm/gates/168
+    - link "#169 Frontend cho BLG-03 — NEW":
+      - /url: /qldapm/gates/169
+    - link "#170 Kiểm thử và retest cho BLG-03 — NEW":
+      - /url: /qldapm/gates/170
+    - link "#171 Nghiệm thu và bàn giao BLG-03 — NEW":
+      - /url: /qldapm/gates/171
+    - link "#172 Đặc tả và AC cho BLG-04 — NEW":
+      - /url: /qldapm/gates/172
+    - link "#173 Backend cho BLG-04 — NEW":
+      - /url: /qldapm/gates/173
+    - link "#174 Frontend cho BLG-04 — NEW":
+      - /url: /qldapm/gates/174
+    - link "#175 Kiểm thử và retest cho BLG-04 — NEW":
+      - /url: /qldapm/gates/175
+    - link "#176 Nghiệm thu và bàn giao BLG-04 — NEW":
+      - /url: /qldapm/gates/176
+    - link "#177 Đặc tả và AC cho BLG-05 — NEW":
+      - /url: /qldapm/gates/177
+    - link "#178 Backend cho BLG-05 — NEW":
+      - /url: /qldapm/gates/178
+    - link "#179 Frontend cho BLG-05 — NEW":
+      - /url: /qldapm/gates/179
+    - link "#180 Kiểm thử và retest cho BLG-05 — NEW":
+      - /url: /qldapm/gates/180
+    - link "#181 Nghiệm thu và bàn giao BLG-05 — NEW":
+      - /url: /qldapm/gates/181
+    - link "#182 Đặc tả và AC cho SPR-01 — NEW":
+      - /url: /qldapm/gates/182
+    - link "#183 Backend cho SPR-01 — NEW":
+      - /url: /qldapm/gates/183
+    - link "#184 Frontend cho SPR-01 — NEW":
+      - /url: /qldapm/gates/184
+    - link "#185 Kiểm thử và retest cho SPR-01 — NEW":
+      - /url: /qldapm/gates/185
+    - link "#186 Nghiệm thu và bàn giao SPR-01 — NEW":
+      - /url: /qldapm/gates/186
+    - link "#187 Đặc tả và AC cho SPR-02 — NEW":
+      - /url: /qldapm/gates/187
+    - link "#188 Backend cho SPR-02 — NEW":
+      - /url: /qldapm/gates/188
+    - link "#189 Frontend cho SPR-02 — NEW":
+      - /url: /qldapm/gates/189
+    - link "#190 Kiểm thử và retest cho SPR-02 — NEW":
+      - /url: /qldapm/gates/190
+    - link "#191 Nghiệm thu và bàn giao SPR-02 — NEW":
+      - /url: /qldapm/gates/191
+    - link "#192 Đặc tả và AC cho SPR-03 — NEW":
+      - /url: /qldapm/gates/192
+    - link "#193 Backend cho SPR-03 — NEW":
+      - /url: /qldapm/gates/193
+    - link "#194 Frontend cho SPR-03 — NEW":
+      - /url: /qldapm/gates/194
+    - link "#195 Kiểm thử và retest cho SPR-03 — NEW":
+      - /url: /qldapm/gates/195
+    - link "#196 Nghiệm thu và bàn giao SPR-03 — NEW":
+      - /url: /qldapm/gates/196
+    - link "#197 Đặc tả và AC cho SPR-04 — NEW":
+      - /url: /qldapm/gates/197
+    - link "#198 Backend cho SPR-04 — NEW":
+      - /url: /qldapm/gates/198
+    - link "#199 Frontend cho SPR-04 — NEW":
+      - /url: /qldapm/gates/199
+    - link "#200 Kiểm thử và retest cho SPR-04 — NEW":
+      - /url: /qldapm/gates/200
+    - link "#201 Nghiệm thu và bàn giao SPR-04 — NEW":
+      - /url: /qldapm/gates/201
+    - link "#202 Đặc tả và AC cho SPR-05 — NEW":
+      - /url: /qldapm/gates/202
+    - link "#203 Backend cho SPR-05 — NEW":
+      - /url: /qldapm/gates/203
+    - link "#204 Frontend cho SPR-05 — NEW":
+      - /url: /qldapm/gates/204
+    - link "#205 Kiểm thử và retest cho SPR-05 — NEW":
+      - /url: /qldapm/gates/205
+    - link "#206 Nghiệm thu và bàn giao SPR-05 — NEW":
+      - /url: /qldapm/gates/206
+    - link "#207 Đặc tả và AC cho TSK-01 — NEW":
+      - /url: /qldapm/gates/207
+    - link "#208 Backend cho TSK-01 — NEW":
+      - /url: /qldapm/gates/208
+    - link "#209 Frontend cho TSK-01 — NEW":
+      - /url: /qldapm/gates/209
+    - link "#210 Kiểm thử và retest cho TSK-01 — NEW":
+      - /url: /qldapm/gates/210
+    - link "#211 Nghiệm thu và bàn giao TSK-01 — NEW":
+      - /url: /qldapm/gates/211
+    - link "#212 Đặc tả và AC cho TSK-02 — NEW":
+      - /url: /qldapm/gates/212
+    - link "#213 Backend cho TSK-02 — NEW":
+      - /url: /qldapm/gates/213
+    - link "#214 Frontend cho TSK-02 — NEW":
+      - /url: /qldapm/gates/214
+    - link "#215 Kiểm thử và retest cho TSK-02 — NEW":
+      - /url: /qldapm/gates/215
+    - link "#216 Nghiệm thu và bàn giao TSK-02 — NEW":
+      - /url: /qldapm/gates/216
+    - link "#217 Đặc tả và AC cho TSK-03 — NEW":
+      - /url: /qldapm/gates/217
+    - link "#218 Backend cho TSK-03 — NEW":
+      - /url: /qldapm/gates/218
+    - link "#219 Frontend cho TSK-03 — NEW":
+      - /url: /qldapm/gates/219
+    - link "#220 Kiểm thử và retest cho TSK-03 — NEW":
+      - /url: /qldapm/gates/220
+    - link "#221 Nghiệm thu và bàn giao TSK-03 — NEW":
+      - /url: /qldapm/gates/221
+    - link "#222 Đặc tả và AC cho TSK-04 — NEW":
+      - /url: /qldapm/gates/222
+    - link "#223 Backend cho TSK-04 — NEW":
+      - /url: /qldapm/gates/223
+    - link "#224 Frontend cho TSK-04 — NEW":
+      - /url: /qldapm/gates/224
+    - link "#225 Kiểm thử và retest cho TSK-04 — NEW":
+      - /url: /qldapm/gates/225
+    - link "#226 Nghiệm thu và bàn giao TSK-04 — NEW":
+      - /url: /qldapm/gates/226
+    - link "#227 Đặc tả và AC cho TSK-05 — NEW":
+      - /url: /qldapm/gates/227
+    - link "#228 Backend cho TSK-05 — NEW":
+      - /url: /qldapm/gates/228
+    - link "#229 Frontend cho TSK-05 — NEW":
+      - /url: /qldapm/gates/229
+    - link "#230 Kiểm thử và retest cho TSK-05 — NEW":
+      - /url: /qldapm/gates/230
+    - link "#231 Nghiệm thu và bàn giao TSK-05 — NEW":
+      - /url: /qldapm/gates/231
+    - link "#232 Đặc tả và AC cho KAN-01 — NEW":
+      - /url: /qldapm/gates/232
+    - link "#233 Backend cho KAN-01 — NEW":
+      - /url: /qldapm/gates/233
+    - link "#234 Frontend cho KAN-01 — NEW":
+      - /url: /qldapm/gates/234
+    - link "#235 Kiểm thử và retest cho KAN-01 — NEW":
+      - /url: /qldapm/gates/235
+    - link "#236 Nghiệm thu và bàn giao KAN-01 — NEW":
+      - /url: /qldapm/gates/236
+    - link "#237 Đặc tả và AC cho KAN-02 — NEW":
+      - /url: /qldapm/gates/237
+    - link "#238 Backend cho KAN-02 — NEW":
+      - /url: /qldapm/gates/238
+    - link "#239 Frontend cho KAN-02 — NEW":
+      - /url: /qldapm/gates/239
+    - link "#240 Kiểm thử và retest cho KAN-02 — NEW":
+      - /url: /qldapm/gates/240
+    - link "#241 Nghiệm thu và bàn giao KAN-02 — NEW":
+      - /url: /qldapm/gates/241
+    - link "#242 Đặc tả và AC cho KAN-03 — NEW":
+      - /url: /qldapm/gates/242
+    - link "#243 Backend cho KAN-03 — NEW":
+      - /url: /qldapm/gates/243
+    - link "#244 Frontend cho KAN-03 — NEW":
+      - /url: /qldapm/gates/244
+    - link "#245 Kiểm thử và retest cho KAN-03 — NEW":
+      - /url: /qldapm/gates/245
+    - link "#246 Nghiệm thu và bàn giao KAN-03 — NEW":
+      - /url: /qldapm/gates/246
+    - link "#247 Đặc tả và AC cho KAN-04 — NEW":
+      - /url: /qldapm/gates/247
+    - link "#248 Backend cho KAN-04 — NEW":
+      - /url: /qldapm/gates/248
+    - link "#249 Frontend cho KAN-04 — NEW":
+      - /url: /qldapm/gates/249
+    - link "#250 Kiểm thử và retest cho KAN-04 — NEW":
+      - /url: /qldapm/gates/250
+    - link "#251 Nghiệm thu và bàn giao KAN-04 — NEW":
+      - /url: /qldapm/gates/251
+    - link "#252 Đặc tả và AC cho GNT-01 — NEW":
+      - /url: /qldapm/gates/252
+    - link "#253 Backend cho GNT-01 — NEW":
+      - /url: /qldapm/gates/253
+    - link "#254 Frontend cho GNT-01 — NEW":
+      - /url: /qldapm/gates/254
+    - link "#255 Kiểm thử và retest cho GNT-01 — NEW":
+      - /url: /qldapm/gates/255
+    - link "#256 Nghiệm thu và bàn giao GNT-01 — NEW":
+      - /url: /qldapm/gates/256
+    - link "#257 Đặc tả và AC cho GNT-02 — NEW":
+      - /url: /qldapm/gates/257
+    - link "#258 Backend cho GNT-02 — NEW":
+      - /url: /qldapm/gates/258
+    - link "#259 Frontend cho GNT-02 — NEW":
+      - /url: /qldapm/gates/259
+    - link "#260 Kiểm thử và retest cho GNT-02 — NEW":
+      - /url: /qldapm/gates/260
+    - link "#261 Nghiệm thu và bàn giao GNT-02 — NEW":
+      - /url: /qldapm/gates/261
+    - link "#262 Đặc tả và AC cho GNT-03 — NEW":
+      - /url: /qldapm/gates/262
+    - link "#263 Backend cho GNT-03 — NEW":
+      - /url: /qldapm/gates/263
+    - link "#264 Frontend cho GNT-03 — NEW":
+      - /url: /qldapm/gates/264
+    - link "#265 Kiểm thử và retest cho GNT-03 — NEW":
+      - /url: /qldapm/gates/265
+    - link "#266 Nghiệm thu và bàn giao GNT-03 — NEW":
+      - /url: /qldapm/gates/266
+    - link "#267 Đặc tả và AC cho GNT-04 — NEW":
+      - /url: /qldapm/gates/267
+    - link "#268 Backend cho GNT-04 — NEW":
+      - /url: /qldapm/gates/268
+    - link "#269 Frontend cho GNT-04 — NEW":
+      - /url: /qldapm/gates/269
+    - link "#270 Kiểm thử và retest cho GNT-04 — NEW":
+      - /url: /qldapm/gates/270
+    - link "#271 Nghiệm thu và bàn giao GNT-04 — NEW":
+      - /url: /qldapm/gates/271
+    - link "#272 Đặc tả và AC cho BUG-01 — NEW":
+      - /url: /qldapm/gates/272
+    - link "#273 Backend cho BUG-01 — NEW":
+      - /url: /qldapm/gates/273
+    - link "#274 Frontend cho BUG-01 — NEW":
+      - /url: /qldapm/gates/274
+    - link "#275 Kiểm thử và retest cho BUG-01 — NEW":
+      - /url: /qldapm/gates/275
+    - link "#276 Nghiệm thu và bàn giao BUG-01 — NEW":
+      - /url: /qldapm/gates/276
+    - link "#277 Đặc tả và AC cho BUG-02 — NEW":
+      - /url: /qldapm/gates/277
+    - link "#278 Backend cho BUG-02 — NEW":
+      - /url: /qldapm/gates/278
+    - link "#279 Frontend cho BUG-02 — NEW":
+      - /url: /qldapm/gates/279
+    - link "#280 Kiểm thử và retest cho BUG-02 — NEW":
+      - /url: /qldapm/gates/280
+    - link "#281 Nghiệm thu và bàn giao BUG-02 — NEW":
+      - /url: /qldapm/gates/281
+    - link "#282 Đặc tả và AC cho BUG-03 — NEW":
+      - /url: /qldapm/gates/282
+    - link "#283 Backend cho BUG-03 — NEW":
+      - /url: /qldapm/gates/283
+    - link "#284 Frontend cho BUG-03 — NEW":
+      - /url: /qldapm/gates/284
+    - link "#285 Kiểm thử và retest cho BUG-03 — NEW":
+      - /url: /qldapm/gates/285
+    - link "#286 Nghiệm thu và bàn giao BUG-03 — NEW":
+      - /url: /qldapm/gates/286
+    - link "#287 Đặc tả và AC cho BUG-04 — NEW":
+      - /url: /qldapm/gates/287
+    - link "#288 Backend cho BUG-04 — NEW":
+      - /url: /qldapm/gates/288
+    - link "#289 Frontend cho BUG-04 — NEW":
+      - /url: /qldapm/gates/289
+    - link "#290 Kiểm thử và retest cho BUG-04 — NEW":
+      - /url: /qldapm/gates/290
+    - link "#291 Nghiệm thu và bàn giao BUG-04 — NEW":
+      - /url: /qldapm/gates/291
+    - link "#292 Đặc tả và AC cho BUG-05 — NEW":
+      - /url: /qldapm/gates/292
+    - link "#293 Backend cho BUG-05 — NEW":
+      - /url: /qldapm/gates/293
+    - link "#294 Frontend cho BUG-05 — NEW":
+      - /url: /qldapm/gates/294
+    - link "#295 Kiểm thử và retest cho BUG-05 — NEW":
+      - /url: /qldapm/gates/295
+    - link "#296 Nghiệm thu và bàn giao BUG-05 — NEW":
+      - /url: /qldapm/gates/296
+    - link "#297 Đặc tả và AC cho CMT-01 — NEW":
+      - /url: /qldapm/gates/297
+    - link "#298 Backend cho CMT-01 — NEW":
+      - /url: /qldapm/gates/298
+    - link "#299 Frontend cho CMT-01 — NEW":
+      - /url: /qldapm/gates/299
+    - link "#300 Kiểm thử và retest cho CMT-01 — NEW":
+      - /url: /qldapm/gates/300
+    - link "#301 Nghiệm thu và bàn giao CMT-01 — NEW":
+      - /url: /qldapm/gates/301
+    - link "#302 Đặc tả và AC cho CMT-02 — NEW":
+      - /url: /qldapm/gates/302
+    - link "#303 Backend cho CMT-02 — NEW":
+      - /url: /qldapm/gates/303
+    - link "#304 Frontend cho CMT-02 — NEW":
+      - /url: /qldapm/gates/304
+    - link "#305 Kiểm thử và retest cho CMT-02 — NEW":
+      - /url: /qldapm/gates/305
+    - link "#306 Nghiệm thu và bàn giao CMT-02 — NEW":
+      - /url: /qldapm/gates/306
+    - link "#307 Đặc tả và AC cho CMT-03 — NEW":
+      - /url: /qldapm/gates/307
+    - link "#308 Backend cho CMT-03 — NEW":
+      - /url: /qldapm/gates/308
+    - link "#309 Frontend cho CMT-03 — NEW":
+      - /url: /qldapm/gates/309
+    - link "#310 Kiểm thử và retest cho CMT-03 — NEW":
+      - /url: /qldapm/gates/310
+    - link "#311 Nghiệm thu và bàn giao CMT-03 — NEW":
+      - /url: /qldapm/gates/311
+    - link "#312 Đặc tả và AC cho CMT-04 — NEW":
+      - /url: /qldapm/gates/312
+    - link "#313 Backend cho CMT-04 — NEW":
+      - /url: /qldapm/gates/313
+    - link "#314 Frontend cho CMT-04 — NEW":
+      - /url: /qldapm/gates/314
+    - link "#315 Kiểm thử và retest cho CMT-04 — NEW":
+      - /url: /qldapm/gates/315
+    - link "#316 Nghiệm thu và bàn giao CMT-04 — NEW":
+      - /url: /qldapm/gates/316
+    - link "#317 Đặc tả và AC cho CMT-05 — NEW":
+      - /url: /qldapm/gates/317
+    - link "#318 Backend cho CMT-05 — NEW":
+      - /url: /qldapm/gates/318
+    - link "#319 Frontend cho CMT-05 — NEW":
+      - /url: /qldapm/gates/319
+    - link "#320 Kiểm thử và retest cho CMT-05 — NEW":
+      - /url: /qldapm/gates/320
+    - link "#321 Nghiệm thu và bàn giao CMT-05 — NEW":
+      - /url: /qldapm/gates/321
+    - link "#322 Đặc tả và AC cho DSH-01 — NEW":
+      - /url: /qldapm/gates/322
+    - link "#323 Backend cho DSH-01 — NEW":
+      - /url: /qldapm/gates/323
+    - link "#324 Frontend cho DSH-01 — NEW":
+      - /url: /qldapm/gates/324
+    - link "#325 Kiểm thử và retest cho DSH-01 — NEW":
+      - /url: /qldapm/gates/325
+    - link "#326 Nghiệm thu và bàn giao DSH-01 — NEW":
+      - /url: /qldapm/gates/326
+    - link "#327 Đặc tả và AC cho DSH-02 — NEW":
+      - /url: /qldapm/gates/327
+    - link "#328 Backend cho DSH-02 — NEW":
+      - /url: /qldapm/gates/328
+    - link "#329 Frontend cho DSH-02 — NEW":
+      - /url: /qldapm/gates/329
+    - link "#330 Kiểm thử và retest cho DSH-02 — NEW":
+      - /url: /qldapm/gates/330
+    - link "#331 Nghiệm thu và bàn giao DSH-02 — NEW":
+      - /url: /qldapm/gates/331
+    - link "#332 Đặc tả và AC cho DSH-03 — NEW":
+      - /url: /qldapm/gates/332
+    - link "#333 Backend cho DSH-03 — NEW":
+      - /url: /qldapm/gates/333
+    - link "#334 Frontend cho DSH-03 — NEW":
+      - /url: /qldapm/gates/334
+    - link "#335 Kiểm thử và retest cho DSH-03 — NEW":
+      - /url: /qldapm/gates/335
+    - link "#336 Nghiệm thu và bàn giao DSH-03 — NEW":
+      - /url: /qldapm/gates/336
+    - link "#337 Đặc tả và AC cho DSH-04 — NEW":
+      - /url: /qldapm/gates/337
+    - link "#338 Backend cho DSH-04 — NEW":
+      - /url: /qldapm/gates/338
+    - link "#339 Frontend cho DSH-04 — NEW":
+      - /url: /qldapm/gates/339
+    - link "#340 Kiểm thử và retest cho DSH-04 — NEW":
+      - /url: /qldapm/gates/340
+    - link "#341 Nghiệm thu và bàn giao DSH-04 — NEW":
+      - /url: /qldapm/gates/341
+    - link "#342 Đặc tả và AC cho NOT-01 — NEW":
+      - /url: /qldapm/gates/342
+    - link "#343 Backend cho NOT-01 — NEW":
+      - /url: /qldapm/gates/343
+    - link "#344 Frontend cho NOT-01 — NEW":
+      - /url: /qldapm/gates/344
+    - link "#345 Kiểm thử và retest cho NOT-01 — NEW":
+      - /url: /qldapm/gates/345
+    - link "#346 Nghiệm thu và bàn giao NOT-01 — NEW":
+      - /url: /qldapm/gates/346
+    - link "#347 Đặc tả và AC cho NOT-02 — NEW":
+      - /url: /qldapm/gates/347
+    - link "#348 Backend cho NOT-02 — NEW":
+      - /url: /qldapm/gates/348
+    - link "#349 Frontend cho NOT-02 — NEW":
+      - /url: /qldapm/gates/349
+    - link "#350 Kiểm thử và retest cho NOT-02 — NEW":
+      - /url: /qldapm/gates/350
+    - link "#351 Nghiệm thu và bàn giao NOT-02 — NEW":
+      - /url: /qldapm/gates/351
+    - link "#352 Đặc tả và AC cho NOT-03 — NEW":
+      - /url: /qldapm/gates/352
+    - link "#353 Backend cho NOT-03 — NEW":
+      - /url: /qldapm/gates/353
+    - link "#354 Frontend cho NOT-03 — NEW":
+      - /url: /qldapm/gates/354
+    - link "#355 Kiểm thử và retest cho NOT-03 — NEW":
+      - /url: /qldapm/gates/355
+    - link "#356 Nghiệm thu và bàn giao NOT-03 — NEW":
+      - /url: /qldapm/gates/356
+    - link "#357 Đặc tả và AC cho NOT-04 — NEW":
+      - /url: /qldapm/gates/357
+    - link "#358 Backend cho NOT-04 — NEW":
+      - /url: /qldapm/gates/358
+    - link "#359 Frontend cho NOT-04 — NEW":
+      - /url: /qldapm/gates/359
+    - link "#360 Kiểm thử và retest cho NOT-04 — NEW":
+      - /url: /qldapm/gates/360
+    - link "#361 Nghiệm thu và bàn giao NOT-04 — NEW":
+      - /url: /qldapm/gates/361
+    - link "#362 Đặc tả và AC cho NOT-05 — NEW":
+      - /url: /qldapm/gates/362
+    - link "#363 Backend cho NOT-05 — NEW":
+      - /url: /qldapm/gates/363
+    - link "#364 Frontend cho NOT-05 — NEW":
+      - /url: /qldapm/gates/364
+    - link "#365 Kiểm thử và retest cho NOT-05 — NEW":
+      - /url: /qldapm/gates/365
+    - link "#366 Nghiệm thu và bàn giao NOT-05 — NEW":
+      - /url: /qldapm/gates/366

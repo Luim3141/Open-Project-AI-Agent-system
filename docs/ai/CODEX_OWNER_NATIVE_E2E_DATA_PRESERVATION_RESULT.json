@@ -1,0 +1,119 @@
+{
+  "scope": "Original Main333/all old370 instance WP rows and security fields vs pre-Owner archive; only two exact approved new Owner18 IDs371/372 permitted; this verification performs no write/restore",
+  "status": "PASS",
+  "results": {
+    "member_roles": {
+      "status": "PASS",
+      "before_count": 7,
+      "after_count": 7,
+      "changed_column_names": {},
+      "columns_compared": [
+        "id",
+        "member_id",
+        "role_id",
+        "inherited_from"
+      ]
+    },
+    "members": {
+      "status": "PASS",
+      "before_count": 7,
+      "after_count": 7,
+      "changed_column_names": {},
+      "columns_compared": [
+        "id",
+        "user_id",
+        "project_id",
+        "created_at",
+        "updated_at",
+        "entity_type",
+        "entity_id"
+      ],
+      "owner18_memberships": 0
+    },
+    "tokens": {
+      "status": "PASS",
+      "native_api_tokens_before": 6,
+      "native_api_tokens_after": 6,
+      "security_columns_compared": [
+        "id",
+        "user_id",
+        "type",
+        "value",
+        "created_at"
+      ]
+    },
+    "two_factor_authentication_devices": {
+      "status": "PASS",
+      "count_before": 3,
+      "count_after": 3,
+      "changed_column_names": {
+        "1": [
+          "last_used_at"
+        ]
+      },
+      "non_access_metadata_changes": {},
+      "schema_columns": [
+        "id",
+        "type",
+        "default",
+        "active",
+        "channel",
+        "phone_number",
+        "identifier",
+        "created_at",
+        "updated_at",
+        "last_used_at",
+        "otp_secret",
+        "user_id",
+        "webauthn_external_id",
+        "webauthn_public_key",
+        "webauthn_sign_count"
+      ]
+    },
+    "user_passwords": {
+      "status": "PASS",
+      "before_count": 7,
+      "after_count": 7,
+      "changed_column_names": {},
+      "columns_compared": [
+        "id",
+        "user_id",
+        "hashed_password",
+        "salt",
+        "created_at",
+        "updated_at",
+        "type"
+      ]
+    },
+    "users": {
+      "status": "PASS",
+      "security_columns_compared": [
+        "login",
+        "mail",
+        "admin",
+        "status",
+        "type",
+        "force_password_change"
+      ],
+      "security_changed_columns": {},
+      "count": 10
+    },
+    "work_packages": {
+      "status": "PASS",
+      "before_count": 370,
+      "after_count": 372,
+      "main_before_count": 333,
+      "main_after_count": 335,
+      "all_previous_instance_rows_unchanged": true,
+      "original332_changed_columns": {},
+      "test370_changed_columns": [],
+      "added_ids": [
+        "371",
+        "372"
+      ],
+      "removed_ids": [],
+      "original332_full_row_sha256": "be39b7dcaf1433ecd01c12b095286fbe23938b55cc85b74dd73fe18e175d62ac"
+    }
+  },
+  "raw_secrets_exported_to_public": false
+}

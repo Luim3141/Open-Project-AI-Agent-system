@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "identity": 18,
+  "project": 6,
+  "native_http": "PASS",
+  "anonymous_denied": true,
+  "owner_login_json_csrf_command": "PASS",
+  "invalid_csrf_rejected_before_gateway": true,
+  "full_template": "PASS",
+  "live_regions": [
+    "qcc-live-controls",
+    "tab-mission",
+    "tab-pipeline",
+    "tab-workforce",
+    "tab-backlog",
+    "tab-execution",
+    "tab-github",
+    "tab-reports",
+    "tab-integrations",
+    "qcc-live-notifications"
+  ],
+  "ui_auth_fixture": "clone-only password and disabled clone TOTP; production MFA unchanged",
+  "gateway_transport": "fixture at actual Rails bridge boundary; Gateway integration verified separately",
+  "started_utc": "2026-11-03T13:53:53.976278+00:00",
+  "finished_utc": "2026-11-03T13:55:20.142307+00:00",
+  "image": "sha256:91afae9c6855417dcc14828d0bd16b3a5b780439d7d1fbbfede64c64241d83d4",
+  "command": [
+    "python",
+    "docs\\ai\\engineering\\CHATGPT_RECOVERY\\integration-final\\functional-completion\\qualify_core.py"
+  ],
+  "environment": "isolated Native clone + actual Rails routing/session/CSRF + synthetic Gateway boundary"
+}

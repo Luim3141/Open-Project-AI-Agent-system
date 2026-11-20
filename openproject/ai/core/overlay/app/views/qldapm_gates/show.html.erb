@@ -1,0 +1,102 @@
+<h2><%= @item.subject %> — <%= @item.status.name %></h2>
+<p>Revision <%= @item.qldapm_gate["revision"] %>. Evidence is supplied by its actor, not independently certified.</p>
+<% if Qldapm::Rbac.pm?(@project, User.current) %>
+<h3>Checklist</h3>
+<% @item.qldapm_gate.fetch("checklist", []).each do |entry| %>
+  <%= form_tag qldapm_gate_path(@item.id), method: :post do %>
+    <%= hidden_field_tag :lock_version, @item.lock_version %>
+    <%= hidden_field_tag :operation, "checklist" %>
+    <%= hidden_field_tag "value[id]", entry["id"] %>
+    <%= hidden_field_tag "value[done]", entry["done"] ? "false" : "true" %>
+    <p><%= entry["done"] ? "✓" : "☐" %> <%= entry["text"] %></p>
+    <%= label_tag "reference_#{entry['id']}", "Evidence reference" %>
+    <%= text_field_tag "value[reference]", entry["reference"], id: "reference_#{entry['id']}", required: true %>
+    <%= submit_tag entry["done"] ? "Reset unchecked" : "Mark complete" %>
+  <% end %>
+<% end %>
+<%= form_tag qldapm_gate_path(@item.id), method: :post do %>
+  <%= hidden_field_tag :lock_version, @item.lock_version %>
+  <%= hidden_field_tag :operation, "checklist_add" %>
+  <%= label_tag "checklist_text", "New checklist item" %>
+  <%= text_field_tag "value[text]", nil, id: "checklist_text", required: true %>
+  <%= submit_tag "Add unchecked item" %>
+<% end %>
+<h3>Evidence / approval</h3>
+<%= form_tag qldapm_gate_path(@item.id), method: :post do %>
+  <%= hidden_field_tag :lock_version, @item.lock_version %>
+  <%= label_tag :evidence_action, "Action" %>
+  <%= select_tag :operation, options_for_select(["evidence", "approve"]), id: "evidence_action" %>
+  <%= label_tag "value_key", "Kind" %>
+  <%= select_tag "value[key]", options_for_select((Qldapm::GateActions::EVIDENCE + Qldapm::GatePolicy::APPROVERS.keys).uniq), id: "value_key" %>
+  <%= label_tag "value_reference", "Reference / justification" %>
+  <%= text_area_tag "value[reference]", nil, id: "value_reference", required: true %>
+  <%= label_tag "evidence_result", "Test / retest / smoke result" %>
+  <%= select_tag "value[result]", options_for_select(%w[passed failed]), id: "evidence_result" %>
+  <%= label_tag "test_verification", "Test evidence source" %>
+  <%= select_tag "value[verification]", options_for_select(%w[manual automatic]), id: "test_verification" %>
+  <%= label_tag "test_snapshot", "Automatic receipt snapshot SHA256" %>
+  <%= text_field_tag "value[snapshot_hash]", nil, id: "test_snapshot" %>
+  <%= label_tag "test_receipt", "Automatic signed job receipt JSON (from completed broker test)" %>
+  <%= text_area_tag "value[job_receipt]", nil, id: "test_receipt" %>
+  <%= label_tag "deployment_environment", "Deployment environment" %>
+  <%= select_tag "value[environment]", options_for_select(%w[Test Staging Production]), id: "deployment_environment" %>
+  <%= submit_tag "Record as current user" %>
+<% end %>
+<h3>Reviewer (PM / AI System Owner)</h3>
+<p>Approvals require an independent member. Reassign ownership when the only eligible approver is also the assignee.</p>
+<%= form_tag qldapm_gate_path(@item.id), method: :post do %>
+  <%= hidden_field_tag :lock_version, @item.lock_version %>
+  <%= hidden_field_tag :operation, "reviewer" %>
+  <%= label_tag "reviewer_user_id", "Reviewer user ID" %>
+  <%= number_field_tag "value[user_id]", @item.qldapm_gate["reviewer_id"], id: "reviewer_user_id", required: true %>
+  <%= submit_tag "Assign reviewer" %>
+<% end %>
+<h3>Acceptance criteria (BA-PM / PM)</h3>
+<%= form_tag qldapm_gate_path(@item.id), method: :post do %>
+  <%= hidden_field_tag :lock_version, @item.lock_version %>
+  <%= hidden_field_tag :operation, "acceptance_criteria" %>
+  <%= label_tag "acceptance_text", "Acceptance criteria for this revision" %>
+  <%= text_area_tag "value[text]", @item.qldapm_gate["acceptance_criteria"], id: "acceptance_text", required: true %>
+  <%= submit_tag "Update criteria and invalidate approvals" %>
+<% end %>
+<h3>Workstream (PM)</h3>
+<%= form_tag qldapm_gate_path(@item.id), method: :post do %>
+  <%= hidden_field_tag :lock_version, @item.lock_version %>
+  <%= hidden_field_tag :operation, "classification" %>
+  <%= label_tag "stream", "Stable workstream" %>
+  <%= select_tag "value[stream]", options_for_select(%w[development business], @item.qldapm_gate["stream"]), id: "stream" %>
+  <%= label_tag "kind", "Work kind" %>
+  <%= select_tag "value[kind]", options_for_select(%w[work qa fix_bug], @item.qldapm_gate["kind"]), id: "kind" %>
+  <%= label_tag "classification_reference", "Reason / evidence" %>
+  <%= text_field_tag "value[reference]", nil, id: "classification_reference", required: true %>
+  <%= submit_tag "Approve classification" %>
+<% end %>
+<h3>Change reason</h3>
+<%= form_tag qldapm_gate_path(@item.id), method: :post do %>
+  <%= hidden_field_tag :lock_version, @item.lock_version %>
+  <%= hidden_field_tag :operation, "reason" %>
+  <%= label_tag "reason_to", "Target status" %>
+  <%= text_field_tag "value[to]", nil, id: "reason_to", required: true %>
+  <%= label_tag "reason_text", "Reason" %>
+  <%= text_area_tag "value[text]", nil, id: "reason_text", required: true %>
+  <%= label_tag "reason_reference", "Evidence for this change" %>
+  <%= text_field_tag "value[reference]", nil, id: "reason_reference", required: true %>
+  <%= submit_tag "Prepare transition reason" %>
+<% end %>
+<h3>Transition preview</h3>
+<% @policy.edges(@snapshot).keys.each do |from, to| %>
+  <% next unless from == @item.status.name %>
+  <p><%= to %>: <%= @policy.errors(@snapshot, @item.qldapm_actor, from, to).join(", ") %></p>
+  <%= form_tag qldapm_gate_path(@item.id), method: :post do %>
+    <%= hidden_field_tag :lock_version, @item.lock_version %>
+    <%= hidden_field_tag :operation, "transition" %>
+    <%= hidden_field_tag :status_id, Status.find_by!(name: to).id %>
+    <%= submit_tag "Move to #{to}" %>
+  <% end %>
+<% end %>
+<h3>Receipts</h3>
+<pre><%= JSON.pretty_generate(@item.qldapm_gate) %></pre>
+<% else %>
+ <p role="status">Chỉ PM/AI System Owner được sửa workflow gates và trạng thái. Gửi kết quả hoặc đề xuất bằng bình luận trong công việc.</p>
+ <pre><%= JSON.pretty_generate(@item.qldapm_gate) %></pre>
+<% end %>

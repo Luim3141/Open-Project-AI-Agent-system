@@ -1,0 +1,132 @@
+{
+  "utc": "2026-11-03T13:01:10.834734+00:00",
+  "http": 200,
+  "result": {
+    "result": {
+      "actor_id": null,
+      "authority": "machine",
+      "checks": {
+        "backlog": {
+          "counts": {
+            "ai_queue": {
+              "finished": 121
+            },
+            "knowledge_sync": {
+              "verified": 172
+            }
+          },
+          "state": "OK"
+        },
+        "business_integration": {
+          "health": "NO_FAILED_OBSERVATIONS",
+          "state": "OK",
+          "workflows": []
+        },
+        "demo": {
+          "checked_at": 1793710802.5786684,
+          "health": "UP",
+          "last_error": null,
+          "latency_ms": 25.7,
+          "state": "OK"
+        },
+        "gateway": {
+          "checked_at": 1793710802.5753825,
+          "health": "UP",
+          "last_error": null,
+          "latency_ms": 21.7,
+          "state": "OK"
+        },
+        "n8n": {
+          "checked_at": 1793710802.57624,
+          "health": "UP",
+          "last_error": null,
+          "latency_ms": 14.3,
+          "state": "OK"
+        },
+        "ollama": {
+          "http_status": 200,
+          "latency_ms": 40.7,
+          "model": "bge-m3",
+          "state": "OK"
+        },
+        "openclaw": {
+          "checked_at": 1793710802.5812166,
+          "health": "READY",
+          "last_error": null,
+          "latency_ms": 22.3,
+          "state": "OK"
+        },
+        "openproject": {
+          "http_status": 200,
+          "latency_ms": 11.9,
+          "scope": "OpenProject web health; not full Native permission check",
+          "state": "OK"
+        },
+        "provider": {
+          "engineering_limits": {
+            "rpd": 450,
+            "rpm": 10,
+            "tpm": 175000
+          },
+          "health": "PROVIDER_READINESS_STALE",
+          "last_provider_http": 200,
+          "last_successful_probe": 1793655260.9349873,
+          "model": "gemini-3.5-flash-lite",
+          "network_checked_now": false,
+          "project_limits": {
+            "rpd": 500,
+            "rpm": 15,
+            "tpm": 250000
+          },
+          "retry_at": null,
+          "scope": "Persisted provider evidence; no inference health probe",
+          "source": "PERSISTED_PROJECT_QUOTA_AND_PROVIDER_RECEIPTS",
+          "state": "NOT_CHECKED"
+        },
+        "qdrant": {
+          "collection_status": "green",
+          "dimensions": 1024,
+          "http_status": 200,
+          "latency_ms": 4.4,
+          "points": 2326,
+          "state": "OK"
+        },
+        "resources": {
+          "cpu_cumulative": {
+            "burst_usec": 0,
+            "nice_usec": 0,
+            "nr_bursts": 0,
+            "nr_periods": 8306,
+            "nr_throttled": 3569,
+            "system_usec": 74876280,
+            "throttled_usec": 335397983,
+            "usage_usec": 508484299,
+            "user_usec": 433608018
+          },
+          "latency_ms": 1.4,
+          "memory_bytes": 193732608,
+          "memory_limit_bytes": 402653184,
+          "pids": 7,
+          "scope": "Gateway cgroup and mounted state filesystem; CPU cumulative counters, not utilization",
+          "state": "OK",
+          "state_storage_free_bytes": 40786972672
+        },
+        "worker": {
+          "health": "WORKER_ALIVE",
+          "run_id": null,
+          "seen": 1793710801.7915363,
+          "state": "OK"
+        }
+      },
+      "model_calls": 0,
+      "native_write_allowed": false,
+      "observed_at": 1793710802.918627,
+      "project_id": 5,
+      "scope": "Main HTTP readiness, resources, queues, Worker and persisted provider evidence; zero embedding/model inference",
+      "state": "HEALTHY"
+    },
+    "sha256": "5f962d34f5b96e7aed2d86b191242675ba049d5b996ca27d5744f80f54de203b",
+    "correlation_id": "5c35d495-c46e-4274-9964-9f01b0d6687d",
+    "cached": true
+  }
+}

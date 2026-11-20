@@ -1,0 +1,673 @@
+{
+  "utc": "2026-11-04T23:29:04.390692+00:00",
+  "images": {
+    "gateway": "sha256:77213702ef933943a1fbee6feffc0d410062b8f16928dd3d1621f9489e581a12",
+    "core": "sha256:5ee7a24482be81dd7312e8c4560773aede32ec9f8bc2f6da9593c9f223e1b822"
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/store.py": "c83575171c72b2b0b9e93d8463e04ac99bcd8ba67e8bd98c0df4e254be6cbb91",
+    "openproject/ai/gateway/service.py": "f0ccdb6093cd457c6dc0494cef8451cccfc86c4ddaacc992246f6e1352991a54",
+    "openproject/ai/gateway/engineering.py": "1ca23e13175eb125c3d1ba8c8cb8c2925a21a6d7264e5a967a5bde4524a026d2",
+    "openproject/ai/gateway/engineering_operator.py": "ce72e13a3caa1cebbc7f054041da9dc5136407200aef20d9086ab89180227947",
+    "openproject/ai/gateway/engineering_lifecycle.py": "dee3b6d96f6b51249bbda104a9e1e28a51506571aa2361a37d2f20e73104d487",
+    "openproject/ai/gateway/engineering_health.py": "7fee86280e4d1ccdcfb54be8fbecb35d27ba1e17bed2fb0333bf808741051589",
+    "openproject/ai/gateway/engineering_observability.py": "7178dcea64e67260b98c99f7f4263cae688a47cdada221928a9ea0473c9743d4",
+    "openproject/ai/gateway/engineering_owner_control.py": "3c8140376ecf9bc784784a5b105defe063688a870c4c4a5d49f5767c8c1c6c28",
+    "openproject/ai/gateway/engineering_reporting.py": "63481b1382c919308c3c54cacca10f1fce6a574f9f95d561bec6ea5c05b83d1c",
+    "openproject/ai/gateway/workflow_status.py": "644e522760137f71d0cbe24bd36efcbf8d91adb4a69ce57ce03d579eee97083a",
+    "openproject/ai/gateway/delegated_approval.py": "c75218fbcd3c88bd3d8d0b836f756665ebac27865ed8e7d161eca6ef994724eb",
+    "openproject/ai/gateway/engineering_github_sync.py": "1fe18136c051e5a0a728231e05777eca0326c0c3fb481620a1656c74684a3050",
+    "openproject/ai/gateway/engineering_github_operations.py": "ee411ad0b4da32c7f8666f8b3c9e19a124719132d72f745a683d874802db716f",
+    "openproject/ai/gateway/engineering_github_poll.py": "4d11671184b108c61431ad9e23dfe5146a09ffa11b7ad1bb911c1652bacef255",
+    "openproject/ai/gateway/engineering_status_sync.py": "0e44359372a8f3f774ef5224325c9a564e63b249d0a3f78e7d034d3f33da5e46",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "cfaa9495b8e1fe1338fa40c0144459a504cbe05082f7b784a21fe715043856c4",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "2af01d0f56f14cd5be331a45c5133576134ffe59ca36c3108f0ae5b3beb14c3e",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": "e0ec90f28ca17d26f9cfb5139f8a6bae1405496d153dee05c20288501254aa2c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": "7a9d35f1828a7d3f749414856a9aa30021d766c7ae03779976865542b7e8b7a5",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": "4b3e4f9f4357434f26f47ecb24a2aee08a52e5f0248befb446bfe02334ca8f15",
+    "openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb": "ab54203e11302b2cb7b24ec3c03efb8eec2a7a1ec2fbbfa16db478e6390e70fe",
+    "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": "43ff4c9b83561f0a9efaef0f557c1c6364a80578f43fe5024e83a4b1d34ae66e",
+    "openproject/ai/core/overlay/config/initializers/qldapm_gates.rb": "f11d389af09782866137e2b50e130ba13ec188d633f1f4e453f5865b58c0d7f5",
+    "openproject/ai/gateway/catalog.py": "2b38b77d09b2ea2e31ad8c789fe7f0338a4c569dfb527f00c7f79e76540dc6ab",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": "1347c598a5b001f8014c915f0b40e331bfa4bc73bc70084506ab910b8a964766"
+  },
+  "control": {
+    "desired_mode": "PAUSED",
+    "effective_state": "PAUSED",
+    "state_revision": 44,
+    "last_command": {
+      "accepted": true,
+      "affected_run_id": null,
+      "command_id": "c9a542e9-9e3e-4be9-8db6-677efecee1d4",
+      "current_state": "PAUSED",
+      "desired_state": "PAUSED",
+      "reason_code": "COMMAND_ACCEPTED",
+      "request_id": "55c31e5e-cb50-474a-a68b-c4e74ea5682a",
+      "requested_action": "REPORT_SCHEDULE_UPDATE",
+      "server_timestamp": 1793834306.579676,
+      "state_revision": 44
+    },
+    "recent_commands": [
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "c9a542e9-9e3e-4be9-8db6-677efecee1d4",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "55c31e5e-cb50-474a-a68b-c4e74ea5682a",
+        "requested_action": "REPORT_SCHEDULE_UPDATE",
+        "server_timestamp": 1793834306.579676,
+        "state_revision": 44
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "6d7304ba-04f3-444e-b96f-1fc87fd4520a",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "8445a7ea-9afb-4bb5-90dc-dfc267b92d8b",
+        "requested_action": "REPORT_SCHEDULE_UPDATE",
+        "server_timestamp": 1793834247.840597,
+        "state_revision": 44
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "39e811df-df82-421b-af09-c24f2fa2ff07",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "operation_id": "5299b58a-e835-5ec8-a652-626e2751450c",
+        "operation_state": "QUEUED",
+        "reason_code": "QUEUED",
+        "request_id": "477e99a6-4cf8-4280-81b7-f32b7f312f45",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793834129.660887,
+        "state_revision": 44
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "9de252f1-c6c8-422d-8872-058c3d44850b",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "operation_id": "c7597777-1a75-535c-9b00-65f57e36d87d",
+        "operation_state": "QUEUED",
+        "reason_code": "QUEUED",
+        "request_id": "5ee4a69c-cb75-4319-bb67-aafe76be8f9c",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793834024.809133,
+        "state_revision": 44
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "7ef3939c-ddf8-439f-855e-7833d856d066",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "e2544835-0396-43aa-84b9-a722da1e31b5",
+        "requested_action": "PAUSED",
+        "server_timestamp": 1793834008.2935276,
+        "state_revision": 44
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "0b97a39a-2df2-4343-9f00-27050d200a46",
+        "current_state": "OFF",
+        "desired_state": "OFF",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "90f5f7d2-fafd-491c-b335-d5fc0970f8f4",
+        "requested_action": "OFF",
+        "server_timestamp": 1793834000.7870429,
+        "state_revision": 43
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "46fd0910-cc3f-4af0-8647-765f97dd79fd",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "201b801c-11f0-443d-8d5b-566ed8f1992b",
+        "requested_action": "PAUSED",
+        "server_timestamp": 1793833959.7956145,
+        "state_revision": 42
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "a723da3e-d831-48bc-87f0-476b1dbb8dfa",
+        "current_state": "AUTO_IDLE",
+        "desired_state": "AUTO",
+        "reason_code": "ALL_DELIVERED",
+        "request_id": "4899c349-4fbd-484a-82f4-101303936368",
+        "requested_action": "AUTO",
+        "server_timestamp": 1793833950.9888587,
+        "state_revision": 41
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "127145e2-7710-431f-8bea-6fa3916130db",
+        "current_state": "OFF",
+        "desired_state": "OFF",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "c7d35c63-120c-4d39-b3b0-0daf0ab4d34c",
+        "requested_action": "OFF",
+        "server_timestamp": 1793833935.137498,
+        "state_revision": 40
+      },
+      {
+        "accepted": false,
+        "affected_run_id": null,
+        "command_id": "90aeda88-0baa-4a4a-a1da-9f14dfac72a7",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "NO_ELIGIBLE_WORK",
+        "request_id": "89cdabe8-ffe3-4135-ab08-112e4b2877a1",
+        "requested_action": "RUN_ONCE",
+        "server_timestamp": 1793833925.195747,
+        "state_revision": 39
+      }
+    ],
+    "active_run_id": null,
+    "server_timestamp": 1793834946.2414834,
+    "blocked_reason": "NO_ELIGIBLE_WORK",
+    "scheduler_policy": {
+      "blocked_default": "STOP_AUTO_REQUIRE_OWNER",
+      "auto_continuation_enabled": false
+    }
+  },
+  "queue": {
+    "state": "EMPTY",
+    "ready": 0,
+    "active": 0,
+    "blocked": 0,
+    "eligible_unit": null,
+    "reason_code": "NO_ELIGIBLE_WORK"
+  },
+  "worker": {
+    "worker_id": "dddac74a-8984-452a-976a-d70c282990e0",
+    "seen": 1793834942.3738558,
+    "run_id": null,
+    "state": "ALIVE",
+    "heartbeat_age_seconds": 3.8676276206970215
+  },
+  "schedule": {
+    "project": 6,
+    "daily_enabled": 1,
+    "daily_hour": 8,
+    "daily_minute": 0,
+    "weekly_enabled": 1,
+    "weekly_day": 1,
+    "weekly_hour": 9,
+    "weekly_minute": 0,
+    "last_daily_run": 1793754027.0598722,
+    "last_weekly_run": 1793584815.184244,
+    "timezone": "Asia/Ho_Chi_Minh",
+    "updated": 1793834306.292257,
+    "last_daily_run_iso": "2026-11-04T08:00:27+07:00",
+    "last_weekly_run_iso": "2026-11-02T09:00:15+07:00"
+  },
+  "delegation": false,
+  "native": [
+    {
+      "id": 379,
+      "lock_version": 4,
+      "subject": "Develop Mini Task Manager Application",
+      "created_at": "2026-10-29T12:59:23.828Z",
+      "updated_at": "2026-11-03T19:49:38.842Z",
+      "project": 6,
+      "status": "IN PROGRESS",
+      "status_sync": null
+    },
+    {
+      "id": 382,
+      "lock_version": 9,
+      "subject": "[AI backlog] Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.",
+      "created_at": "2026-10-30T03:42:57.679Z",
+      "updated_at": "2026-11-03T14:07:35.681Z",
+      "project": 6,
+      "status": "REVIEW",
+      "status_sync": {
+        "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+        "engineering_state": "succeeded",
+        "native_id": 382,
+        "reason": "HUMAN_OR_SOURCE_CHANGED",
+        "run_id": "a43376cf-e70a-478d-a28e-067964a5a218",
+        "source_event_id": "d70ff941bce7d38dcdac971102f15d9401d6e719bf857c704aa133b080d15f94",
+        "source_sequence": 1793332248576451,
+        "state": "STATUS_SYNC_BLOCKED",
+        "checked_at": 1793794486.6537573
+      }
+    },
+    {
+      "id": 383,
+      "lock_version": 9,
+      "subject": "[AI backlog] Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.",
+      "created_at": "2026-10-30T04:43:22.539Z",
+      "updated_at": "2026-11-03T14:07:36.265Z",
+      "project": 6,
+      "status": "REVIEW",
+      "status_sync": {
+        "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+        "engineering_state": "succeeded",
+        "native_id": 383,
+        "reason": "HUMAN_OR_SOURCE_CHANGED",
+        "run_id": "3066ed0b-fadb-47c8-8d31-349590b3301b",
+        "source_event_id": "0c1f4487ee66b9430eafb1d20e248cd4cbc794c80204a15e05723103cbf59189",
+        "source_sequence": 1793335504036957,
+        "state": "STATUS_SYNC_BLOCKED",
+        "checked_at": 1793794484.4563375
+      }
+    },
+    {
+      "id": 384,
+      "lock_version": 2,
+      "subject": "[AI backlog] Them route GET /healthz va unit test status ok",
+      "created_at": "2026-10-30T13:12:10.687Z",
+      "updated_at": "2026-11-03T14:07:36.744Z",
+      "project": 6,
+      "status": "IN PROGRESS",
+      "status_sync": {
+        "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+        "engineering_state": "succeeded",
+        "native_id": 384,
+        "reason": "HUMAN_OR_SOURCE_CHANGED",
+        "run_id": "99dd5576-afff-47b3-b5d1-f80eb3a3eb2d",
+        "source_event_id": "72b8cec64761b574464ba6138881e8e93e0e69764da3de19537dea9d503537bf",
+        "source_sequence": 1793366502312319,
+        "state": "STATUS_SYNC_BLOCKED",
+        "checked_at": 1793794484.0599988
+      }
+    },
+    {
+      "id": 386,
+      "lock_version": 10,
+      "subject": "[AI backlog] Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14, ",
+      "created_at": "2026-10-31T11:05:34.439Z",
+      "updated_at": "2026-11-04T12:16:56.326Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 386,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "72a36697-da92-45ca-b549-2cb8e7c780b3",
+        "source_event_id": "4fde257f4d57d1af3a434294e91684057804fb4ae9bbd8132c1f99d6fd3820c2",
+        "source_sequence": 1793445908656756,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804564.186464
+      }
+    },
+    {
+      "id": 387,
+      "lock_version": 10,
+      "subject": "[AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu ",
+      "created_at": "2026-11-01T15:39:01.942Z",
+      "updated_at": "2026-11-04T12:16:55.147Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 387,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "f136866a-b7e4-4ad8-bbd7-d846343163d0",
+        "source_event_id": "07eabc5ad4873abf80048c009e4f3b69ac422334cc2358440b61d61190977d92",
+        "source_sequence": 1793547615423384,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804559.2727203
+      }
+    },
+    {
+      "id": 389,
+      "lock_version": 10,
+      "subject": "[AI backlog] Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và",
+      "created_at": "2026-11-01T20:50:35.423Z",
+      "updated_at": "2026-11-04T12:16:50.597Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 389,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "814f7a28-6c1a-4d2e-82d6-f0d118e2081c",
+        "source_event_id": "68a44c7f71baa65baf704eea55e5183b8f95d10400c9a84367c8dbce9e7c238e",
+        "source_sequence": 1793566293829776,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804551.8659756
+      }
+    },
+    {
+      "id": 390,
+      "lock_version": 10,
+      "subject": "[AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit",
+      "created_at": "2026-11-02T04:43:57.954Z",
+      "updated_at": "2026-11-04T12:16:48.723Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 390,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "447d4fd9-fd03-4a41-9468-09bad8629d48",
+        "source_event_id": "c439a6aa0b834c498ccdf31ca749c100db12bbaa84c19a896286b6d0301b347b",
+        "source_sequence": 1793594783397099,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804544.985458
+      }
+    },
+    {
+      "id": 391,
+      "lock_version": 10,
+      "subject": "[AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện",
+      "created_at": "2026-11-02T11:04:41.250Z",
+      "updated_at": "2026-11-04T12:16:45.029Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 391,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+        "source_event_id": "fb21ad26cc293caad3b3f5418e6f77b336c63cf8f0cac97411156e8607e21fa0",
+        "source_sequence": 1793617536952737,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804544.0980659
+      }
+    },
+    {
+      "id": 394,
+      "lock_version": 10,
+      "subject": "[AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da",
+      "created_at": "2026-11-03T14:07:42.573Z",
+      "updated_at": "2026-11-04T12:16:43.684Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "PR_OPEN",
+        "engineering_state": "succeeded",
+        "native_id": 394,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+        "source_event_id": "4206eed331de2884c4a156c7660bb9980945b7a7b4c0a2e169875a617c95de98",
+        "source_sequence": 1793731824604237,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793794630.3600893
+      }
+    }
+  ],
+  "github_operations": [],
+  "integration_health": [
+    {
+      "key": "openproject",
+      "name": "OpenProject Community",
+      "url": "http://web:8080",
+      "health": "UP",
+      "checked_at": 1793834927.529381,
+      "check_type": "HTTP GET /health_check",
+      "latency_ms": 59.4,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    },
+    {
+      "key": "gateway",
+      "name": "QLDAPM AI Gateway",
+      "url": "http://127.0.0.1:8090",
+      "health": "UP",
+      "checked_at": 1793834927.5303636,
+      "check_type": "HTTP GET /health",
+      "latency_ms": 53.0,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    },
+    {
+      "key": "openclaw",
+      "name": "OpenClaw Gateway",
+      "url": "http://host.docker.internal:18789",
+      "health": "DOWN",
+      "checked_at": 1793834927.555034,
+      "check_type": "HTTP GET /readyz",
+      "latency_ms": 27.8,
+      "last_error": "CONNECTIVITY_CHECK_FAILED",
+      "process_health": "NOT CHECKED",
+      "api_readiness": "UNKNOWN",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED — Gateway availability không chứng minh Dev đang chạy",
+      "cli_status": {
+        "checked_at": 1793834865.9818413,
+        "check_type": "WSL OpenClaw health --json + gateway status --json",
+        "health": "DOWN",
+        "wsl_distro": "OpenClawGateway",
+        "wsl_running": true,
+        "gateway_rpc_ok": false,
+        "process_state": "stopped",
+        "child_runtime_available": null,
+        "last_error": "OPENCLAW_NOT_READY",
+        "latency_ms": 8239.6
+      }
+    },
+    {
+      "key": "n8n",
+      "name": "n8n Orchestration",
+      "url": "http://qldapm-n8n-main:5678",
+      "health": "UP",
+      "checked_at": 1793834927.5320282,
+      "check_type": "HTTP GET /healthz/readiness",
+      "latency_ms": 39.5,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED — API readiness không chứng minh workflows PASS"
+    },
+    {
+      "key": "qdrant",
+      "name": "Qdrant Vector Database",
+      "url": "http://qldapm-qdrant:6333",
+      "health": "UP",
+      "checked_at": 1793834927.5540073,
+      "check_type": "HTTP GET /collections",
+      "latency_ms": 24.4,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    },
+    {
+      "key": "ollama",
+      "name": "Ollama Local Models",
+      "url": "http://host.docker.internal:11434",
+      "health": "UP",
+      "checked_at": 1793834927.55473,
+      "check_type": "HTTP GET /api/tags",
+      "latency_ms": 151.6,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    },
+    {
+      "key": "demo",
+      "name": "Demo App",
+      "url": "http://host.docker.internal:18791",
+      "health": "UP",
+      "checked_at": 1793834927.5561385,
+      "check_type": "HTTP GET /healthz",
+      "latency_ms": 45.0,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    }
+  ],
+  "counters": {
+    "provider_receipts": 531,
+    "coding_runs": 21,
+    "runs": [
+      {
+        "id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+        "status": "succeeded"
+      },
+      {
+        "id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+        "status": "succeeded"
+      }
+    ]
+  },
+  "n8n_image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+  "workflow_metadata": {
+    "checked_at": 1793834934.35,
+    "age_seconds": 15.645644426345825,
+    "workflows": [
+      {
+        "code": "WF01",
+        "id": "X2O2QdPY6QLOrWqL",
+        "active": true,
+        "published_version_id": "9e815254-7b30-4740-b57f-5dbf87a7d945",
+        "definition_sha256": "4bd0804297b3be8d5724b56ea639d0ab5995bf759299d3b3552dd492e0905de2"
+      },
+      {
+        "code": "WF02",
+        "id": "Anl8LNdN4NNTKRpe",
+        "active": true,
+        "published_version_id": "a6590c2d-23fe-49fc-bdb0-49179cecd309",
+        "definition_sha256": "2b7fa98adffa2af5187e773be2b8ec63fa6336149382b5c6c0c28cbaba1e6e15"
+      },
+      {
+        "code": "WF03",
+        "id": "XoP4M520TMG3WgeY",
+        "active": true,
+        "published_version_id": "18fbb3ad-0e1c-4835-96a5-623a6f8606d3",
+        "definition_sha256": "0085f1f34b9e838b9e9618f92e80a7bef62b7dcc7702852d941fc7c156b6771b"
+      },
+      {
+        "code": "WF04",
+        "id": "elfapV5D2PTnLiHW",
+        "active": true,
+        "published_version_id": "7b409c28-5271-4d69-98f9-c55100b3c871",
+        "definition_sha256": "4ebb0a3dc54088c5e732e1bad9bdc0f150f18b3a2fec69204dd93faea23d4ad5"
+      },
+      {
+        "code": "WF05",
+        "id": "xCZFw45fmDQG5gNq",
+        "active": true,
+        "published_version_id": "688ebfd0-f5ed-442f-a29a-d244f5b574d7",
+        "definition_sha256": "1ac7259265593f62664e924b3d2a0280363215b99ef78fc1d5dddbf2dd619184"
+      },
+      {
+        "code": "WF06",
+        "id": "Jq18aFSqfuUybEic",
+        "active": true,
+        "published_version_id": "dcca7091-a57d-4017-9714-26202018daaf",
+        "definition_sha256": "da4d596c0ecab38e6f150dc349aa2a13ad69ced427a15541b771b606f0b04f05"
+      },
+      {
+        "code": "WF07",
+        "id": "BpCQrGR866vg4BqQ",
+        "active": true,
+        "published_version_id": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+        "definition_sha256": "db5bcdcfc2310b6d4e96debea244bfde19b908da5af8e98fa7a6553441ecf43d"
+      },
+      {
+        "code": "WF08",
+        "id": "RXWjVUL8ozqhjY4w",
+        "active": true,
+        "published_version_id": "a27ba585-d38b-4df7-bbcf-9a51643f1d98",
+        "definition_sha256": "2ea2337b48f55716c9ca4a274d4d37afe0588da023024a4f9dda2c678861a5c7"
+      },
+      {
+        "code": "WF09",
+        "id": "tOyBIPw6sGjgzjtU",
+        "active": true,
+        "published_version_id": "41d0d315-c2b4-4de7-b237-7a45a382c6ed",
+        "definition_sha256": "c50ff420fc51e9731450b9b28597175dc7c3f3cff743914712d0acf9b243f7c6"
+      },
+      {
+        "code": "WF10",
+        "id": "tOY7QUa9SrWPOe9e",
+        "active": true,
+        "published_version_id": "e5790af4-215a-44a7-8ad4-cca03ffdbe05",
+        "definition_sha256": "a041c64213c766b710c61c8019cc219732613930129397cb7347b30fbfe52967"
+      },
+      {
+        "code": "WF11",
+        "id": "LeRVT3LWNBkJ2iz3",
+        "active": true,
+        "published_version_id": "cf9b7590-f6b1-44ea-8740-0bb48049c261",
+        "definition_sha256": "46326bdc3611bf257f1f12ee9f9fbdb5470e723bebdda3436d030bcbf27cfcdc"
+      },
+      {
+        "code": "WF12",
+        "id": "ZkgS8RZbPRA2zbhQ",
+        "active": true,
+        "published_version_id": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+        "definition_sha256": "2c92262e2d22a2a497d8fce394818e35562dc33b16e53adfefde79e8f6021287"
+      },
+      {
+        "code": "WF13",
+        "id": "2tr0jpqaaAiq9IOU",
+        "active": true,
+        "published_version_id": "0243c9f0-b9d4-465b-b90b-c0f27efd9ebe",
+        "definition_sha256": "96d96261cabe99c9b696db173ce486be625d322841c5ca9a0ccf21db87f81079"
+      },
+      {
+        "code": "WF14",
+        "id": "8ycOUQy9gtT60nkN",
+        "active": true,
+        "published_version_id": "cfa65447-b5b9-48fb-8d51-a8469820a650",
+        "definition_sha256": "1f52e4f7fb2f40977de6db649c7958cadfaa8b7482e66712d12e9af77d437ff0"
+      },
+      {
+        "code": "WF15",
+        "id": "NLugfE3U8dBS88Wg",
+        "active": true,
+        "published_version_id": "dde4ea90-39ea-4e8b-803c-a968b4766c39",
+        "definition_sha256": "30750a83eb06214421fe3343aa671c7400bb0b03ae3c91f7ba698e9aae371e81"
+      },
+      {
+        "code": "WF16",
+        "id": "5FRYNPSot18UDpKa",
+        "active": true,
+        "published_version_id": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+        "definition_sha256": "0399242cea3b193ccdf399eed82cd0b29fca6666df35e847a6718301f0003eeb"
+      }
+    ]
+  },
+  "status": "SOURCE_HEALTH_IDLE_COUNTERS_VERIFIED_NOT_FULL_ACCEPTANCE"
+}

@@ -1,0 +1,32 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--tmpfs",
+    "/tmp:rw,size=256m",
+    "--env",
+    "QLDAPM_AI_RUNTIME=",
+    "--env",
+    "PYTHONPATH=/app",
+    "--mount",
+    "type=bind,src=D:\\AI project\\QLDAPM chat\\openproject\\ai\\tests,dst=/app/tests,readonly",
+    "--entrypoint",
+    "python",
+    "sha256:bbbf7da46629157b62dfc126b491e4a22ee8768b771cf9d37254de408a4f1148",
+    "-m",
+    "unittest",
+    "tests.test_remaining_integration",
+    "tests.test_second_brain_persistence",
+    "tests.test_main_business_mode",
+    "tests.test_execution_monitor",
+    "tests.test_live_agents"
+  ],
+  "image": "sha256:bbbf7da46629157b62dfc126b491e4a22ee8768b771cf9d37254de408a4f1148",
+  "exit_code": 0,
+  "provider_network": "NONE",
+  "scope": "REAL_SQLITE_ASGI_WITH_NATIVE_PROVIDER_FIXTURES"
+}

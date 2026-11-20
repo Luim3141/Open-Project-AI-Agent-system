@@ -1,0 +1,53 @@
+<section class="qldapm-ai-card" aria-labelledby="control-center-title">
+ <h3 id="control-center-title">AI Control Center</h3>
+ <p>Registry là năng lực được cấu hình. Trạng thái hoạt động và phản hồi model gần nhất được hiển thị riêng; chỉ Monitor của từng run thể hiện các bước thực thi.</p>
+ <%= link_to "Execution Monitor / Lịch sử xử lý", project_qldapm_ai_executions_path(@project.identifier), class: "button -primary" %>
+ <% if %w[PM AI_SYSTEM_OWNER BA BA-PM].include?(@role) %>
+  <%= link_to "Scope / Analysis — Review nguồn", project_qldapm_ai_phases_path(@project.identifier), class: "button" %>
+ <% end %>
+ <% if %w[PM AI_SYSTEM_OWNER QA].include?(@role) %>
+  <%= link_to "Bằng chứng QA / Kiểm duyệt", project_qldapm_ai_qa_evidence_path(@project.identifier), class: "button" %>
+ <% end %>
+ <%= link_to "Cập nhật Control Center", project_qldapm_ai_path(@project.identifier), class: "button" %>
+ <% if @control_center %>
+  <% cc = @control_center; quota = cc["quota_panel"] || {}; progress = cc["progress"] || {} %>
+  <% if delivery=cc["local_delivery"] %>
+   <section aria-labelledby="local-delivery-title"><h4 id="local-delivery-title">Báo cáo lưu local</h4>
+    <p>Chỉ lưu metadata/hash; không gửi nội dung công việc ra ngoài. Phạm vi: <%= delivery["scope"] %>.</p>
+    <p><% delivery.fetch("counts").each do |state,count| %><span><%= state %>: <%= count %> · </span><% end %></p>
+    <p>External delivery: <%= delivery["external_delivery"] %>. DLQ cần kiểm tra receipt và nguồn; không tự xóa hoặc replay Native write.</p>
+   </section>
+  <% end %>
+  <div class="qldapm-ai-grid">
+   <section><h4>Agent registry · năng lực Gemini / local</h4><% Array(cc["agent_registry"]).each do |agent| %>
+    <p><strong><%= agent["name"] %></strong> · <%= cc.dig("agent_status", "agents", agent["name"], "state") || "UNKNOWN" %> · <%= agent["provider"] %></p>
+    <% if cc.dig("agent_status", "agents", agent["name"], "last_provider_state") %><p class="em-muted">Phản hồi model gần nhất: <%= cc.dig("agent_status", "agents", agent["name"], "last_provider_state") %> (không phải trạng thái đang chạy).</p><% end %>
+   <% end %></section>
+   <section><h4>Gemini Free Tier</h4>
+    <% if quota["available"] %>
+     <p>Model: <%= quota.dig("provider_details", "active_model") %> · <%= quota.dig("provider_details", "google_status") %></p>
+     <p>Giới hạn RPM / TPM / RPD: <%= quota.dig("limits", "rpm") %> / <%= quota.dig("limits", "tpm") %> / <%= quota.dig("limits", "rpd") %></p>
+     <p>60 giây gần nhất: <%= quota.dig("usage_last_60s", "rpm_reserved") %> lượt đã giữ chỗ; <%= quota.dig("usage_last_60s", "input_tpm_reserved") %> input token đã giữ chỗ.</p>
+     <p>Trong ngày: <%= quota.dig("usage_today", "rpd_used") %> lượt giữ chỗ. Reset 00:00 America/Los_Angeles.</p>
+     <p>Ledger local không bao gồm client khác hoặc output token của provider. Chưa xác minh billing trực tiếp.</p>
+    <% else %><p role="status">Quota/model chưa xác minh: <%= quota["error"] || "UNKNOWN" %>.</p><% end %>
+   </section>
+  </div>
+  <h4>Run history của bạn (<%= progress["total"] %>)</h4>
+  <%= form_tag project_qldapm_ai_path(@project.identifier), method: :get do %>
+   <%= label_tag :cc_state, "Lọc trạng thái trong trang này" %>
+   <%= select_tag :cc_state, options_for_select(["ALL", "QUEUED", "RUNNING", "REVIEW", "COMPLETED", "NATIVE_CONFIRMED", "RECONCILED_SUCCESS", "UNKNOWN_REQUIRES_REVIEW", "FAILED"], params[:cc_state]) %>
+   <%= label_tag :cc_order, "Sắp xếp trong trang" %><%= select_tag :cc_order, options_for_select([["Mới nhất", "desc"], ["Cũ nhất", "asc"]], params[:cc_order]) %>
+   <%= hidden_field_tag :cc_offset, progress["offset"] || 0 %><%= submit_tag "Áp dụng", class: "button" %>
+  <% end %>
+  <% rows=Array(progress["items"]); rows=rows.select { |r| r["state"]==params[:cc_state] } if params[:cc_state].present? && params[:cc_state]!="ALL"; rows=rows.reverse if params[:cc_order]=="asc" %>
+  <% if rows.empty? %><p role="status">Chưa có lượt xử lý phù hợp. Chọn Supervisor local rồi gửi yêu cầu để bắt đầu.</p><% end %>
+  <div class="qldapm-ai-wrap"><table><caption>Lượt xử lý · mỗi trang 10 mục</caption><thead><tr><th scope="col">Run / kết quả</th><th scope="col">Trạng thái</th><th scope="col">Trace</th></tr></thead><tbody>
+   <% rows.each do |run| %><tr><td><%= link_to run["run_id"], project_qldapm_ai_path(@project.identifier, run_id: run["run_id"]) %><p><%= link_to "Xem quá trình AI xử lý", project_qldapm_ai_execution_path(@project.identifier, run["run_id"]) %></p></td><td><%= run["state"] %></td><td><%= run["trace_id"] %></td></tr><% end %>
+  </tbody></table></div>
+  <% if (progress["offset"] || 0)>0 %><%= link_to "Trang trước", project_qldapm_ai_path(@project.identifier, cc_offset: [progress["offset"]-10,0].max) %><% end %>
+  <% if progress["next_offset"] %><%= link_to "Trang sau", project_qldapm_ai_path(@project.identifier, cc_offset: progress["next_offset"]) %><% end %>
+  <details><summary>Audit / workflow timeline của bạn</summary><pre><%= JSON.pretty_generate(cc["workflow_timeline"]) %></pre></details>
+  <p>Checklist phát triển là lịch sử khai báo; không phải nghiệm thu runtime hoặc năng lực 20 người.</p>
+ <% else %><p role="status">Chưa tải được Control Center. Cập nhật trang để thử lại; không có trạng thái giả.</p><% end %>
+</section>

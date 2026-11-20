@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-10-24T22:17:45.531409+00:00",
+  "project_id": 5,
+  "gateway_image": "sha256:c0f328216654478cb58dc01dad737958416882f0352c450a0ae5a80438ca6372",
+  "core_image": "sha256:dcb6018226280bde73fb8812e463bdcb5ef6896cbe9a1c65be7516d993f4a3d4",
+  "staging_operations": false,
+  "status": "PARTIAL",
+  "safe_incremental_policy": "PASS_POLICY_ENFORCED",
+  "qualification": {
+    "status": "PASS",
+    "tests": 9,
+    "module": "test_native_incremental_sync",
+    "scope": "Real temporary SQLite cursor/outbox/ingester and isolated Native/vector fixtures",
+    "checks": [
+      "create/update/version/hash change",
+      "duplicate event",
+      "retry/backoff survives restart",
+      "complete pagination required",
+      "visibility withdrawal retains vectors",
+      "source reappears after restart",
+      "caller tombstone/delete proof denied",
+      "failed/partial inventory cannot withdraw sources"
+    ]
+  },
+  "live_external_event": "Retained actual Native automatic parent372/373 updates discovered by machine worker, CODEX_WF02_NATIVE_PARENT_UPDATE_E2E_RESULT.json",
+  "trusted_permanent_deletion": "BLOCKED_TRUSTED_NATIVE_DELETE_PRODUCER_AND_RECOVERY",
+  "physical_deletions_performed": 0,
+  "design_preview": "CODEX_WF02_DELETE_SYNC_DESIGN_PREVIEW.md",
+  "no_delete_inference_from_404_or_visibility": true
+}

@@ -1,0 +1,54 @@
+{
+  "workflow_id": "8ycOUQy9gtT60nkN",
+  "workflow_version": "e07912bb-c40c-4e18-a016-2f16ff7a38a1",
+  "workflow_name": "WF14: Durable RAG Recovery",
+  "active": true,
+  "live_tests": [
+    {
+      "test": "unknown_PM_job",
+      "http_status": 403
+    },
+    {
+      "test": "unknown_BA_job",
+      "http_status": 403
+    },
+    {
+      "test": "retry_requires_request_id",
+      "http_status": 422
+    },
+    {
+      "test": "no_native_retry",
+      "http_status": 422
+    },
+    {
+      "test": "invalid_job_id",
+      "http_status": 422
+    },
+    {
+      "test": "caller_claimed_retry_state",
+      "http_status": 422
+    },
+    {
+      "test": "missing_bearer",
+      "http_status": 401
+    },
+    {
+      "test": "missing_transport",
+      "http_status": 403
+    }
+  ],
+  "main_sync_jobs": 0,
+  "provider_receipts": 96,
+  "usage_rows": 101,
+  "gateway_image_unchanged": true,
+  "native_mutations_performed": false,
+  "staging_operations": false,
+  "offline_tests": {
+    "source_node_tests_passed": 10,
+    "gateway_sqlite_recovery_tests_passed": 7
+  },
+  "limitations": [
+    "Main outbox empty: no positive live DLQ/requeue evidence; isolated SQLite tests cover durable retry, replay and actor denial",
+    "This workflow manages RAG cache jobs; no automatic retry of Native writes or arbitrary provider jobs"
+  ]
+}

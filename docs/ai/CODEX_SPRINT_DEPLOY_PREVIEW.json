@@ -1,0 +1,18 @@
+{
+  "candidate_image": "sha256:9dcba73f1f2535d819ee9e5466994837c2046b3833a0525dc04edbec74458b9b",
+  "old_image": "sha256:e70f3bb7f1a8f0567074def02f5fe7348f5c8d4b9a779436595c8d2311874fb4",
+  "workflow_id": "RXWjVUL8ozqhjY4w",
+  "workflow_name_before": "WF08: Sprint Readiness Gate",
+  "workflow_name_after": "WF08: Sprint Risk",
+  "new_webhook_path": "qldapm-sprint-risk",
+  "candidate_tests": {
+    "run": 177,
+    "passed": 176,
+    "skipped": 1
+  },
+  "windows_related_tests_passed": 43,
+  "backup_sha256": "dbc3c377fef0d9a6efed11e87cb0108ff2ffd3d87b9221f408a16779034a94d3",
+  "scope": "Only Main Gateway image and WF08; Native GET only, actor-scoped durable reports; no model/Native mutation/Staging",
+  "limitation": "Project snapshot without explicit Native sprint selection; follows/precedes are separate scheduling dependencies; stored relation snapshots are historical",
+  "rollback": "Restore only previous AI_IMAGE and private WF08 spec; preserve all report data and business databases"
+}

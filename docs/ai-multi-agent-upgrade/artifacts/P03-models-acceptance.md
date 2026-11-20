@@ -1,0 +1,7 @@
+# P03-02 — strict agent contracts
+
+Implemented `openproject/ai/gateway/agent_models.py` in the existing Gateway, using installed Pydantic; no extra service/dependency. AgentTask, AgentRun and AgentResult carry schema_version1, strict actor/project/task/run/trace IDs, bounded native ID+lockVersion references, typed states and32KiB UTF-8 document limit. Task expiry and nested result scope/state/time consistency validated. Role, key, shell, confirmation and write-consent fields are forbidden. Agent name/run class is routing information and grants no native rights.
+
+Actual checks: `python -m unittest tests.test_agent_models -v` **5 PASS** Windows0.010s and same5PASS Linux0.010s. Linux used immutable acceptedbccd1d2c with only new module/tests mounted readonly, no network/non-root/readonly root. Logs `P03-models-targeted.log`, `P03-models-linux.log`. Tests cover all three roundtrips and generated JSON schemas, exact version including bool/string rejection, strict IDs/unknown keys, invalid JSON, raw bytes/UTF-8/character/list bounds, nonfinite/invalid expiry, nested actor/project/trace/state mismatch.
+
+This task delivers contracts, not an active Supervisor/API. Existing Gateway remainsbccd1d2c; new module is source-only until persistence/runtime candidate validation. No DB migration, provider/native request, key/config change. P03-03 will consume these models for SQLite persistence; public progress/export contracts belong to P03-08.

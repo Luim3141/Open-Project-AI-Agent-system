@@ -1,0 +1,25 @@
+<% telemetry = eng['telemetry'] || {}; live_runs = Array(telemetry['runs']); events = Array(telemetry['events']); active_runs = live_runs.select { |r| r['queue_state'] == 'executing' }; blocked = live_runs.select { |r| r['task_status'].to_s.upcase == 'BLOCKED' || r['blocked_reason'].present? }; featured = (active_runs + live_runs.first(1) + blocked).uniq { |r| r['id'] } %>
+<div class="qcc-card" aria-label="Live Agent activity">
+  <div class="qcc-card-header"><div><h3 class="qcc-card-title">CURRENT WORK / RECENT WORK</h3><p class="qcc-card-sub">Worker process, project business status và Agent execution là ba trạng thái độc lập.</p></div><span class="qcc-chip <%= active_runs.any? ? 'qcc-chip-cyan' : 'qcc-chip-slate' %>"><%= active_runs.any? ? "#{active_runs.size} run đang thực thi" : 'KHÔNG CÓ AGENT ĐANG THỰC THI' %></span></div>
+  <% if live_runs.empty? %><p class="qcc-text-muted">Chưa có run trong nguồn telemetry. Worker ALIVE không đồng nghĩa Agent đang chạy.</p><% end %>
+  <% featured.each do |r| %>
+    <% budget = r['budget'] || {}; failure = r['failure'] || {}; resume = r['resume'] || {} %>
+    <div class="qcc-knowledge-item">
+      <strong><a href="/work_packages/<%= r['native_id'] %>">WP #<%= r['native_id'] %></a> · <%= r['title'] || Array(eng['tasks']).find { |t| t['id'].to_s == r['native_id'].to_s }&.dig('subject') || r['unit'] %></strong>
+      <p>Run <code><%= r['id'].to_s.first(8) %></code> · Attempt <%= r['status'] || r['queue_state'] %> · Task <%= r['task_status'] || 'UNKNOWN' %> · Current / last Agent <%= r['agent'] || r['last_agent'] || 'UNKNOWN' %> · Stage <%= r['stage'] || 'UNKNOWN' %></p>
+      <p class="qcc-text-muted">Bắt đầu <%= format_vn_time.call(r['created_at']) %> · Event cuối <%= format_vn_time.call(r['updated_at']) %> · Elapsed <%= r['duration_seconds'] || ((r['updated_at'].to_f - r['created_at'].to_f).round rescue 'UNKNOWN') %>s</p>
+      <% if failure['message'].present? || r['blocked_reason'].present? %><p class="text-rose"><strong>Nguyên nhân:</strong> <%= failure['message'] || r['blocked_reason'] %> · <%= failure['category'] %></p><% end %>
+      <% if budget['calls_used'] %><p>Budget <strong><%= budget['calls_used'] %> / <%= budget['call_cap'] || '?' %></strong> calls · <%= budget['provider_response_count'] || 'UNKNOWN' %> provider responses đã xác minh · còn <%= budget['remaining'] || 0 %> · tích lũy <%= budget['cumulative_calls'] || 'UNKNOWN' %></p><% end %>
+      <p><strong>Next action:</strong> <%= resume['eligible'] == true ? 'Có thể yêu cầu Resume từ Execution Center; không cần giao lại task.' : (resume['reason'] || 'Xem checkpoint / final evidence trước khi quyết định.') %></p>
+      <details data-preserve-key="pipeline-<%= r['id'] %>"><summary>Persisted stages / artifacts / receipts</summary><ol class="qcc-stage-list"><% Array(r['pipeline']).each do |step| %><li><strong><%= step['agent'] %></strong> · <%= step['status'] || 'UNKNOWN' %><br><code><%= step['evidence_id'] %></code></li><% end %></ol><p>Provider response thành công không chứng minh stage có output artifact.</p><pre><%= JSON.pretty_generate(r) %></pre><button type="button" class="qcc-btn-xs qcc-btn-secondary" data-qcc-copy="<%= r['id'] %>">Copy Full Run ID</button></details>
+      <button type="button" class="qcc-btn qcc-btn-secondary qcc-run-inspector-btn" data-run-id="<%= r['id'] %>">Xem run / receipts / reviewer / QA</button>
+    </div>
+  <% end %>
+  <details data-preserve-key="live-event-feed"><summary>Live Event Feed · <%= events.size %> events gần nhất · cursor <%= telemetry['cursor'] || 0 %></summary>
+    <div style="max-height:340px;overflow:auto"><table class="qcc-table"><thead><tr><th>Thời gian</th><th>Agent / Event</th><th>Run / Correlation</th><th>Evidence</th></tr></thead><tbody>
+    <% events.reverse.first(100).each do |event| %><tr data-event-id="<%= event['event_id'] %>">
+      <td><%= format_vn_time.call(event['timestamp']) %></td><td><%= event['agent_id'] || 'UNKNOWN' %> · <%= event['event_type'] %> · <%= event['status'] %></td>
+      <td><button type="button" class="qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn" data-run-id="<%= event['run_id'] %>"><%= event['run_id'].to_s.first(8) %></button></td><td><details><summary><%= event['receipt_id'].to_s.first(12).presence || event['error_code'] || 'Technical details' %></summary><pre><%= JSON.pretty_generate(event) %></pre></details></td>
+    </tr><% end %></tbody></table></div>
+  </details>
+</div>

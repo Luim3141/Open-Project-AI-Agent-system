@@ -1,0 +1,1066 @@
+[
+  {
+    "source": "openproject/ai/gateway/agent_models.py",
+    "container": "/app/gateway/agent_models.py",
+    "source_sha256": "24395f70459837d2f4eb4a7b96c4a3dd3fc580bcd27d18e1080391e8ac08ea0f",
+    "runtime_sha256": "10b1868f96c7750c37ca41851a36928e86071a68abeb28167f3b937fbf9a2ed6",
+    "mismatch": "DIFFERENT",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "agent_registry",
+      "agent_trace",
+      "app",
+      "ba_agent",
+      "control_center_state",
+      "dev_agent",
+      "e2e_demo",
+      "intent_evals",
+      "planner",
+      "pm_agent",
+      "qa_agent",
+      "reviewer_agent",
+      "store",
+      "store",
+      "store",
+      "store",
+      "store",
+      "store",
+      "store",
+      "store",
+      "store",
+      "store",
+      "supervisor",
+      "supervisor_isolation"
+    ],
+    "imports": [],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Strict bounded Pydantic contracts; terminal result/scope/transition invariants; no native authority from IDs.",
+    "current_source_sha256": "24395f70459837d2f4eb4a7b96c4a3dd3fc580bcd27d18e1080391e8ac08ea0f",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "24395f70459837d2f4eb4a7b96c4a3dd3fc580bcd27d18e1080391e8ac08ea0f",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/agent_registry.py",
+    "container": "/app/gateway/agent_registry.py",
+    "source_sha256": "e8d67681f61d5deaac54fd411fc37c3a513df380b38e7a6cae334aabceb161d5",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "control_center_state",
+      "e2e_demo",
+      "supervisor"
+    ],
+    "imports": [
+      "agent_models",
+      "ba_agent",
+      "dev_agent",
+      "planner",
+      "pm_agent",
+      "qa_agent",
+      "reviewer_agent"
+    ],
+    "review_status": "REVIEWED_WITH_LIMITATIONS",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Registered handlers are local deterministic templates/rules. Historical Gemini provider metadata is not execution proof; runtime API projects local engine explicitly.",
+    "current_source_sha256": "2f3d7e636c0bb9712f5300796d713be8c2f1f1d639d0b6e6a1254eb72d00dc46",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "2f3d7e636c0bb9712f5300796d713be8c2f1f1d639d0b6e6a1254eb72d00dc46",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/agent_status.py",
+    "container": "/app/gateway/agent_status.py",
+    "source_sha256": "70a77ff0da8170b0e937d3f040a904f8f1b829d875b44a0ea0e92c029259e4f2",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "service"
+    ],
+    "imports": [],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Fixed actor-scoped status and separate local status from provider circuit; database availability is not provider health.",
+    "current_source_sha256": "dd9ff89689d206f77df70127219ac07b5b6a216824e83a7aa417d6dfb83cf678",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "dd9ff89689d206f77df70127219ac07b5b6a216824e83a7aa417d6dfb83cf678",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/app.py",
+    "container": "/app/gateway/app.py",
+    "source_sha256": "14fa517fb315c9769270cfbcce3285618eae64168283b62604a464dbbb90aece",
+    "runtime_sha256": "5ca4964a78b4d802fe1f1b5578cd295bb3dc738c7d6252b2f15296016b174c4d",
+    "mismatch": "DIFFERENT",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [],
+    "imports": [
+      "agent_models",
+      "automation",
+      "bridge",
+      "catalog",
+      "gemini",
+      "native",
+      "permissions",
+      "service",
+      "store"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Authenticated shared REST/MCP/HMAC bridge. New actions use same middleware; engine documented; published schemas must be regenerated.",
+    "current_source_sha256": "7bfc353724733d0176d64e6c99c6310ba32aafa14b0013ffbe8d2945f5cbaf94",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "7bfc353724733d0176d64e6c99c6310ba32aafa14b0013ffbe8d2945f5cbaf94",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/ba_agent.py",
+    "container": "/app/gateway/ba_agent.py",
+    "source_sha256": "1b54c2482d7943f100ccb8bebba451330c28a71e055c31082e366dbc38a32990",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "agent_registry"
+    ],
+    "imports": [
+      "agent_models",
+      "planner"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Local draft templates; removed invented1.5s SLA. Citation verifies source ID/version, not business acceptance.",
+    "current_source_sha256": "788dddd0d576d2abf9a76d4bb1971f2c20946f591a1fd9558be60f320f5bfbaa",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "788dddd0d576d2abf9a76d4bb1971f2c20946f591a1fd9558be60f320f5bfbaa",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/control_center_state.py",
+    "container": "/app/gateway/control_center_state.py",
+    "source_sha256": "da87e6f12b3646d2417cf9a25478e9346d41aa2a8d1bc80103ce3edfae57c0a9",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Control Center",
+    "imported_by": [
+      "service"
+    ],
+    "imports": [
+      "agent_models",
+      "agent_registry"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Actor/project SQL pagination; registry actual local execution metadata, no role supplied by browser.",
+    "current_source_sha256": "b6a36b2be2e90baa33328a07c2c20cb940dea0fcd34ad058a3a41a725239ae8f",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "b6a36b2be2e90baa33328a07c2c20cb940dea0fcd34ad058a3a41a725239ae8f",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/conversation_memory.py",
+    "container": "/app/gateway/conversation_memory.py",
+    "source_sha256": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Knowledge",
+    "imported_by": [
+      "intent_evals"
+    ],
+    "imports": [],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "In-memory convenience library, not authoritative durable context. Product continues stored AgentTask references with fresh ACL/version.",
+    "current_source_sha256": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/daily_brief.py",
+    "container": "/app/gateway/daily_brief.py",
+    "source_sha256": "8a9193c11af6343d152a7b1d6014ff6d3af497e6a90adba1a499dd0debd3dc33",
+    "runtime_sha256": "5509cf6be10c5a52d2c136d4af9da8e02b4f7e013d07fc7a7daeea43ed615b77",
+    "mismatch": "DIFFERENT",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "service"
+    ],
+    "imports": [
+      "native",
+      "permissions",
+      "store"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Existing signed durable automation retained; five configured actors, no provider or native mutation. Extended capacity is not accepted.",
+    "current_source_sha256": "8a9193c11af6343d152a7b1d6014ff6d3af497e6a90adba1a499dd0debd3dc33",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "8a9193c11af6343d152a7b1d6014ff6d3af497e6a90adba1a499dd0debd3dc33",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/decision_memory.py",
+    "container": "/app/gateway/decision_memory.py",
+    "source_sha256": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Knowledge",
+    "imported_by": [
+      "knowledge_ui_answer",
+      "sprint_readiness"
+    ],
+    "imports": [
+      "knowledge_classifier"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "In-memory role/project library; not durable audit and not public API. Product audit remains Gateway SQLite.",
+    "current_source_sha256": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/dev_agent.py",
+    "container": "/app/gateway/dev_agent.py",
+    "source_sha256": "9c37469a28a4a743a63672d1d615f7309c352ec1749a2118d4ead46df372fce7",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "agent_registry"
+    ],
+    "imports": [
+      "agent_models",
+      "planner"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Local technical draft only; no shell/file/operator tools. Input package scope and size bounded by Supervisor.",
+    "current_source_sha256": "9c37469a28a4a743a63672d1d615f7309c352ec1749a2118d4ead46df372fce7",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "9c37469a28a4a743a63672d1d615f7309c352ec1749a2118d4ead46df372fce7",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/e2e_demo.py",
+    "container": "/app/gateway/e2e_demo.py",
+    "source_sha256": "cd62b2e172f5fc7e3673ed60519ca1fcdf79a115d431d7dcaddc6674a673c59d",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [],
+    "imports": [
+      "agent_models",
+      "agent_registry",
+      "proposal_aggregation",
+      "store"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "review_notes": "Legacy cross-actor mock demonstration; excluded from runtime. Direct executor now denied. Replaced as acceptance by actual authenticated queue/native clone UAT.",
+    "current_source_sha256": "0e9fb36ce68a26df3a2a4f9213b2af92d4d820686b0433082c8f1c29090c366c",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": null,
+    "candidate_decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/intent_evals.py",
+    "container": "/app/gateway/intent_evals.py",
+    "source_sha256": "19f534aab5dc8f77755b01388670549485cddd651b2536290dbb1ff9a579d03c",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [],
+    "imports": [
+      "agent_models",
+      "conversation_memory",
+      "planner"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "review_notes": "Golden evaluation harness; not runtime intent enforcement, not throughput proof; excluded from image.",
+    "current_source_sha256": "19f534aab5dc8f77755b01388670549485cddd651b2536290dbb1ff9a579d03c",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": null,
+    "candidate_decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_classifier.py",
+    "container": "/app/gateway/knowledge_classifier.py",
+    "source_sha256": "fd49fbe155bf5bdb3e88e648c3b2b3c1db261daa8168b3c306877c027515b95a",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Knowledge",
+    "imported_by": [
+      "decision_memory",
+      "knowledge_ingestion",
+      "knowledge_search",
+      "knowledge_storage",
+      "n8n_indexing_hook"
+    ],
+    "imports": [],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Fixed project in source hash; positive numeric Native project IDs supported, but classification is never authorization. Product fetches native content itself.",
+    "current_source_sha256": "6c22928025a430f76451e2a26f72c3a6ddbcdc3425a2a6d4933fbf96e8358e8e",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "6c22928025a430f76451e2a26f72c3a6ddbcdc3425a2a6d4933fbf96e8358e8e",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_ingestion.py",
+    "container": "/app/gateway/knowledge_ingestion.py",
+    "source_sha256": "4218a35247238164e9cbcde54831198426724b96b7ed1612fba4abfb1679889d",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Knowledge",
+    "imported_by": [
+      "knowledge_search",
+      "n8n_indexing_hook"
+    ],
+    "imports": [
+      "knowledge_classifier",
+      "knowledge_storage"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Fixed false success, scoped dedup/update, metadata revision and chunk bounds; persistent chunks transact with document.",
+    "current_source_sha256": "6a839c8e92230a4117e877624c4910355711ab6970df3169b7e1899c221a0efb",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "6a839c8e92230a4117e877624c4910355711ab6970df3169b7e1899c221a0efb",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_retrieval.py",
+    "container": "/app/gateway/knowledge_retrieval.py",
+    "source_sha256": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Knowledge",
+    "imported_by": [
+      "knowledge_ui_answer"
+    ],
+    "imports": [
+      "knowledge_search"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Role/project library context formatter; product does not expose it directly because it lacks fresh Native user ACL.",
+    "current_source_sha256": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_search.py",
+    "container": "/app/gateway/knowledge_search.py",
+    "source_sha256": "dc128ffa15ee4619d01a367938b9191af448d6bbfcb7c8ba84f431ed0ad66143",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Knowledge",
+    "imported_by": [
+      "knowledge_retrieval"
+    ],
+    "imports": [
+      "knowledge_classifier",
+      "knowledge_ingestion",
+      "knowledge_storage"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Real SQLite FTS5 MATCH prefilter with project/role; query normalization, limits. Product adds actor metadata and native checks before disclosure.",
+    "current_source_sha256": "50266a9a23c96310912cb1e6b071e4805304e18ad2c9421358da338625543c60",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "50266a9a23c96310912cb1e6b071e4805304e18ad2c9421358da338625543c60",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_storage.py",
+    "container": "/app/gateway/knowledge_storage.py",
+    "source_sha256": "d8d6afa7f49d53432989aa3172b2cf2e87f75e03fa30a609d434a766f83e4f32",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Knowledge",
+    "imported_by": [
+      "knowledge_ingestion",
+      "knowledge_search"
+    ],
+    "imports": [
+      "knowledge_classifier"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "SQLite WAL runtime; pgvector unavailable; chunks/FTS/revisions transactional, fresh reads and empty isolated restore. No public PostgreSQL writes.",
+    "current_source_sha256": "d53204f6ff7ab0abf6807a285a625810c548c2b5f10454e220623dc51d96501e",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "d53204f6ff7ab0abf6807a285a625810c548c2b5f10454e220623dc51d96501e",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_ui_answer.py",
+    "container": "/app/gateway/knowledge_ui_answer.py",
+    "source_sha256": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Knowledge",
+    "imported_by": [],
+    "imports": [
+      "decision_memory",
+      "knowledge_retrieval"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Local snippet formatter library, not authoritative semantic verification. Product uses scoped Native citation API/UI.",
+    "current_source_sha256": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/local_operator.py",
+    "container": "/app/gateway/local_operator.py",
+    "source_sha256": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18",
+    "runtime_sha256": "bd7f12fc6e6e8d028072687b44294a50a9e431e865bd0c5d86f97ab4866fe421",
+    "mismatch": "DIFFERENT",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [],
+    "imports": [
+      "native",
+      "service",
+      "store"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Fixed private stdin protocol, not MCP/HTTP; enrollment fresh Native role and maintenance checks. Not granted to specialists.",
+    "current_source_sha256": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/local_queries.py",
+    "container": "/app/gateway/local_queries.py",
+    "source_sha256": "2a1b3df6e5201e13e7be56c1a32145816a971fb2cf94b11f55c982bf81cbb417",
+    "runtime_sha256": "33f35793f6eccf939642c80fa46aa3857b6524010f0c5130a52c060145493169",
+    "mismatch": "DIFFERENT",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "service"
+    ],
+    "imports": [
+      "gemini",
+      "presentation",
+      "store"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Exact read-only intents; mixed instructions stay bounded assistant path, receipts revalidate source/actor. Existing behavior retained.",
+    "current_source_sha256": "2a1b3df6e5201e13e7be56c1a32145816a971fb2cf94b11f55c982bf81cbb417",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "2a1b3df6e5201e13e7be56c1a32145816a971fb2cf94b11f55c982bf81cbb417",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/n8n_indexing_hook.py",
+    "container": "/app/gateway/n8n_indexing_hook.py",
+    "source_sha256": "b52d2453c27cf93beb9142e31d206015f62e8ed72485fd8b6cb06fb5b3056852",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Knowledge",
+    "imported_by": [],
+    "imports": [
+      "knowledge_classifier",
+      "knowledge_ingestion"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "review_notes": "Prototype raw-content webhook with wrong non-existent endpoint, excluded/not activated. Default key removed, buffer bounded/redacted, export inactive. Production uses signed fixed automation, no new public ingestion webhook.",
+    "current_source_sha256": "d81cf39420981f8b2f29b8a6e0c0259688a649ebeb0fe882613538cfe5b7edae",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": null,
+    "candidate_decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/planner.py",
+    "container": "/app/gateway/planner.py",
+    "source_sha256": "a336227405af85f8273bdb41a3d79c09d1833de3914a0009617d1494cbb12ca0",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "agent_registry",
+      "ba_agent",
+      "dev_agent",
+      "intent_evals",
+      "pm_agent",
+      "qa_agent",
+      "supervisor"
+    ],
+    "imports": [
+      "agent_models"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Bounded sequential specialist/reviewer/aggregation DAG. Library model estimate was aspirational; actual local Supervisor budget is explicitly zero.",
+    "current_source_sha256": "a336227405af85f8273bdb41a3d79c09d1833de3914a0009617d1494cbb12ca0",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "a336227405af85f8273bdb41a3d79c09d1833de3914a0009617d1494cbb12ca0",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/pm_agent.py",
+    "container": "/app/gateway/pm_agent.py",
+    "source_sha256": "9d12ecd1f01a42407ebf6d2a815e9145c16b901df75340748efe5fbd3fbf7ccc",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "agent_registry"
+    ],
+    "imports": [
+      "agent_models",
+      "planner"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Local risks/workload evidence; fixed Bangkok date and inject current config users instead of historical hardcoded5 IDs in product path.",
+    "current_source_sha256": "70654d5fbe586514a4cbe7c134af99cda54be7077ea54dd6e004626366759069",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "70654d5fbe586514a4cbe7c134af99cda54be7077ea54dd6e004626366759069",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/proposal_aggregation.py",
+    "container": "/app/gateway/proposal_aggregation.py",
+    "source_sha256": "97f36007fa6b47e621be9f17a88966ad5bd535b5bbd6a8cd9a871d9ae3b886d5",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "e2e_demo"
+    ],
+    "imports": [
+      "store"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "review_notes": "Superseded duplicate proposal/executor prototype excluded. Executor closed because supplied PM string/ID and raw PATCH bypassed canonical confirmation, ownership and native gates.",
+    "current_source_sha256": "dc89e3a1ee3a95817c0e56ef2e08694de66a502a4bd1a8fd9ffb7f16a766af26",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": null,
+    "candidate_decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/proposal_ux.py",
+    "container": "/app/gateway/proposal_ux.py",
+    "source_sha256": "4eee1a2ad99ae417b5dc94b00e69c341a6efaaf5c20c1374f85ee4052fe5c720",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [],
+    "imports": [],
+    "review_status": "REVIEWED",
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "review_notes": "Prototype formatter excluded. Removed false safe-to-execute/evidence flags; no authority from a role string or boolean.",
+    "current_source_sha256": "ddeae8ccc94a11361c7b93d8acdc6c03f0c4ec98242f738580fc0b2ba8d595f0",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": null,
+    "candidate_decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/qa_agent.py",
+    "container": "/app/gateway/qa_agent.py",
+    "source_sha256": "c89f6fd9e2d0e387e395f8e0ce412a5527838c1184b80616c4c863d70b6f5a2a",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "agent_registry"
+    ],
+    "imports": [
+      "agent_models",
+      "planner"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Local draft tests/triage only; NOT_RUN without runner evidence. Arbitrary attestation objects are not accepted from product request.",
+    "current_source_sha256": "c89f6fd9e2d0e387e395f8e0ce412a5527838c1184b80616c4c863d70b6f5a2a",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "c89f6fd9e2d0e387e395f8e0ce412a5527838c1184b80616c4c863d70b6f5a2a",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/qa_change_workflow.py",
+    "container": "/app/gateway/qa_change_workflow.py",
+    "source_sha256": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "service"
+    ],
+    "imports": [
+      "sprint_report",
+      "store"
+    ],
+    "review_status": "REVIEWED_WITH_LIMITATIONS",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Advisory in-process library, event fingerprint/cache not durable workflow receipt; not external event ingress. Notification objects do not send messages.",
+    "current_source_sha256": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/quota_panel.py",
+    "container": "/app/gateway/quota_panel.py",
+    "source_sha256": "b64dca28d162b20513559a4e3ec6c5f5d579f03e1662a7fb13ac4d028fe0324d",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Control Center",
+    "imported_by": [
+      "service"
+    ],
+    "imports": [
+      "store"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Rewritten with validated provider project and reservation ledger, separate60s/day, unknown total tokens/billing/actor API count. No guessed model or20-user share.",
+    "current_source_sha256": "e1c89401fa5080e7f09dfe0a86cfb084f00cf99ff1859d8d31f3a806ad91e4e4",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "e1c89401fa5080e7f09dfe0a86cfb084f00cf99ff1859d8d31f3a806ad91e4e4",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/reviewer_agent.py",
+    "container": "/app/gateway/reviewer_agent.py",
+    "source_sha256": "3a23526b4f78867ca86cfd4dace573d161845cdc2945ba77a611646687664493",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "agent_registry"
+    ],
+    "imports": [
+      "agent_models"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Checks references against bounded authorized native snapshot. Fixed FAILED propagation, ordinal reference confusion and explicit draft/semantic-review limits; scope checks actor/project/task/trace.",
+    "current_source_sha256": "05c40a2cc91e3ae7a18314eaf48238e57231b91ca599ac8988a9e9aa80904950",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "05c40a2cc91e3ae7a18314eaf48238e57231b91ca599ac8988a9e9aa80904950",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/role_alerts.py",
+    "container": "/app/gateway/role_alerts.py",
+    "source_sha256": "110a7b8972d95112d6c66e94db982b22c68c9e86ca36e672a8d83b34a5398eb3",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "service",
+      "service"
+    ],
+    "imports": [
+      "sprint_report",
+      "store"
+    ],
+    "review_status": "REVIEWED_WITH_LIMITATIONS",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Advisory heuristics over authorized packages. In-memory dedup only; no sender/scheduler and no delivery acceptance claim.",
+    "current_source_sha256": "110a7b8972d95112d6c66e94db982b22c68c9e86ca36e672a8d83b34a5398eb3",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "110a7b8972d95112d6c66e94db982b22c68c9e86ca36e672a8d83b34a5398eb3",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/scheduler_registry.py",
+    "container": "/app/gateway/scheduler_registry.py",
+    "source_sha256": "be7c2efd59ec41f734dab9e278f3c37f36eab153184ef8f5d2c6e7c05eac0d42",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [],
+    "imports": [],
+    "review_status": "REVIEWED",
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "review_notes": "Declaration/simulation, not actual OpenProject cron or n8n inventory. Excluded; installed n8n ownership remains separate existing contracts.",
+    "current_source_sha256": "be7c2efd59ec41f734dab9e278f3c37f36eab153184ef8f5d2c6e7c05eac0d42",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": null,
+    "candidate_decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/service.py",
+    "container": "/app/gateway/service.py",
+    "source_sha256": "d47570b2872e64e44cfb51e5054591441bbe7d631de3252dbc7f2c2a7a21d31c",
+    "runtime_sha256": "d542c756bb486bce67cbfb19a2314efd3eacaece9c60d5dfc286efbb4dbc941d",
+    "mismatch": "DIFFERENT",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "ai_worker",
+      "app",
+      "local_operator",
+      "stdio"
+    ],
+    "imports": [
+      "RUN_ROUND_LIMITS",
+      "agent_status",
+      "agent_trace",
+      "ai_worker",
+      "control_center_state",
+      "daily_brief",
+      "gemini",
+      "local_queries",
+      "native",
+      "permissions",
+      "presentation",
+      "qa_change_workflow",
+      "quota_panel",
+      "role_alerts",
+      "sprint_readiness",
+      "sprint_report",
+      "store",
+      "tasks_progress",
+      "weekly_report",
+      "workflow_pause",
+      "workflow_timeline",
+      "workload_detector",
+      "workspace"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Fresh native identity before every command/CC/worker/poll. Wired local Supervisor and scoped knowledge actions, same canonical write preview/confirm. Fixed analyze query args accidentally passed to CC.",
+    "current_source_sha256": "35621b5338e82015c75e24eb28f3dd7770c92afaa0ad2a6aea63a9bb1ce7bf79",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "35621b5338e82015c75e24eb28f3dd7770c92afaa0ad2a6aea63a9bb1ce7bf79",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/sprint_readiness.py",
+    "container": "/app/gateway/sprint_readiness.py",
+    "source_sha256": "52add5c504915e66a8a1988c2396bdb9aab0ebf861ed6a329cc2fd59d71661cb",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "service",
+      "service"
+    ],
+    "imports": [
+      "decision_memory",
+      "sprint_report"
+    ],
+    "review_status": "REVIEWED_WITH_LIMITATIONS",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Advisory text heuristics (AC/test markers), not native transition gate; optional DecisionMemory remains library only. Existing native gates remain authoritative.",
+    "current_source_sha256": "c13140db2266009a99971fdee8513b744a9bb6e306857b6d3fbe9e013f6c2a41",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "c13140db2266009a99971fdee8513b744a9bb6e306857b6d3fbe9e013f6c2a41",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/sprint_report.py",
+    "container": "/app/gateway/sprint_report.py",
+    "source_sha256": "1bd88c73a1b84606deec4b755e2ef92743a413c00f170acccc3e54be7c5d3119",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "qa_change_workflow",
+      "role_alerts",
+      "service",
+      "service",
+      "sprint_readiness",
+      "weekly_report",
+      "workload_detector"
+    ],
+    "imports": [
+      "store"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Deterministic snapshot/advisory over freshly authorized Native packages; status-based heuristic and current workload, not actual Sprint velocity/performance rating.",
+    "current_source_sha256": "b14659101813af8f53673a0a982e9ef192cf457bec62a099650d9d41bb670387",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "b14659101813af8f53673a0a982e9ef192cf457bec62a099650d9d41bb670387",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/store.py",
+    "container": "/app/gateway/store.py",
+    "source_sha256": "1339018dfd9e3167742eef336098c52d9d86f46a399bb7341ea5c4291c295f1b",
+    "runtime_sha256": "bac8e8c47032c6b35503b4bcde29c7dd649e46bdc3340afc16f215a8bbf612a3",
+    "mismatch": "DIFFERENT",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "ai_worker",
+      "app",
+      "bridge",
+      "daily_brief",
+      "e2e_demo",
+      "gemini",
+      "local_operator",
+      "local_queries",
+      "proposal_aggregation",
+      "qa_change_workflow",
+      "quota_panel",
+      "role_alerts",
+      "service",
+      "sprint_report",
+      "supervisor_isolation"
+    ],
+    "imports": [
+      "RUN_ROUND_LIMITS",
+      "RUN_TIMEOUT_SECONDS",
+      "agent_models",
+      "agent_trace",
+      "presentation",
+      "workflow_errors"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Existing WAL queue, leases/idempotency/actor scope retained; local-only claims bypass provider blocks, durable contract result and cooperative cancel, no schema migration added.",
+    "current_source_sha256": "f0c2eee58d166cc4041887753ce682a5c41cb07ce5bf22f3464bbea1733b2077",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "f0c2eee58d166cc4041887753ce682a5c41cb07ce5bf22f3464bbea1733b2077",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/supervisor.py",
+    "container": "/app/gateway/supervisor.py",
+    "source_sha256": "bacdfc3706ab5f7b83ff1225d0fbaa9589ac0496b24c08ce81953e08dc21baca",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [
+      "supervisor_isolation"
+    ],
+    "imports": [
+      "agent_models",
+      "agent_registry",
+      "planner"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Source now used by real private worker. Scope/TTL/reference/version checks, bounded10-item context and output, ordered dependencies, aggregation and failed review, progress/audit. Local drafts, zero model calls.",
+    "current_source_sha256": "2b8c559e8c444ab0c0915982e204606305066b597ce431ea65ac9355ad28b5a6",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "2b8c559e8c444ab0c0915982e204606305066b597ce431ea65ac9355ad28b5a6",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/supervisor_isolation.py",
+    "container": "/app/gateway/supervisor_isolation.py",
+    "source_sha256": "a3cfb03a49c66b4d396472bd9d983e2efc04b7a5fd3c30b28a5c7093f9b47fdf",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Supervisor/Agent",
+    "imported_by": [],
+    "imports": [
+      "agent_models",
+      "store",
+      "supervisor"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "review_notes": "Simulation harness, not a production dispatcher or20-user benchmark; excluded from image. Actual store isolation covered by application contract/UAT.",
+    "current_source_sha256": "a3cfb03a49c66b4d396472bd9d983e2efc04b7a5fd3c30b28a5c7093f9b47fdf",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": null,
+    "candidate_decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/tasks_progress.py",
+    "container": "/app/gateway/tasks_progress.py",
+    "source_sha256": "ea2f411e93332133593c45e15a148a5ab0aa318bf1c31ca1fb3ff20f40387834",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Control Center",
+    "imported_by": [
+      "service"
+    ],
+    "imports": [],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Historical checklist only; removed host-specificD path/raw parser exceptions. UI no longer treats oldDONE percentage as runtime acceptance.",
+    "current_source_sha256": "aa0363e4611b7a8f3785598a1fe4df35f6f143334c39bcd6468331f99a841b5a",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "aa0363e4611b7a8f3785598a1fe4df35f6f143334c39bcd6468331f99a841b5a",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/weekly_report.py",
+    "container": "/app/gateway/weekly_report.py",
+    "source_sha256": "c067a9f869e55f7b7812ee4393e9f888904f22116023cc1894ea7f200b4310ff",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "service",
+      "service"
+    ],
+    "imports": [
+      "sprint_report"
+    ],
+    "review_status": "REVIEWED_WITH_LIMITATIONS",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Advisory CLOSED+updatedAt proxy is not historical closing timestamp; optional direct AI helper is not routed/qualified. Deterministic product report only; no LLM calls from analyze.",
+    "current_source_sha256": "c067a9f869e55f7b7812ee4393e9f888904f22116023cc1894ea7f200b4310ff",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "c067a9f869e55f7b7812ee4393e9f888904f22116023cc1894ea7f200b4310ff",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/workflow_pause.py",
+    "container": "/app/gateway/workflow_pause.py",
+    "source_sha256": "e5898fcfc720d2734ef980b731fd027426ebfd9bf53958e0e4906cd8f4f505cd",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "service"
+    ],
+    "imports": [],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "In-memory advisory pause, not provider durable circuit. Exponent capped/raw details removed; actual durable circuit remains Store/Gemini.",
+    "current_source_sha256": "5b1753c2b0262d008ef3f7409ea64df14d981e3500e8bfc58283f86f55988b20",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "5b1753c2b0262d008ef3f7409ea64df14d981e3500e8bfc58283f86f55988b20",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/workflow_timeline.py",
+    "container": "/app/gateway/workflow_timeline.py",
+    "source_sha256": "b11dfcc20d7d21e393887274e5f20b994c3e8a4a9df7229df7ad0bf5b38394bb",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Control Center",
+    "imported_by": [
+      "service"
+    ],
+    "imports": [],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Fixed real workflow_id/observed_at/error_code mapping, bounded task timeline, no raw store errors or fabricated current timestamps.",
+    "current_source_sha256": "3786d94d32cb54874a2d234fb274a0dbc5c0c32b8f8df22f73fcffbcac0c30f3",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "3786d94d32cb54874a2d234fb274a0dbc5c0c32b8f8df22f73fcffbcac0c30f3",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  },
+  {
+    "source": "openproject/ai/gateway/workload_detector.py",
+    "container": "/app/gateway/workload_detector.py",
+    "source_sha256": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5",
+    "runtime_sha256": null,
+    "mismatch": "MISSING",
+    "category": "Gateway/Reports/Automation",
+    "imported_by": [
+      "service",
+      "service"
+    ],
+    "imports": [
+      "sprint_report"
+    ],
+    "review_status": "REVIEWED",
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "review_notes": "Authorized package-count advice, not capacity/productivity measure and no automatic reassignment. No write/sender exposed.",
+    "current_source_sha256": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5",
+    "qualification_status": "PENDING_CANDIDATE_QUALIFICATION",
+    "candidate_image_sha256": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5",
+    "candidate_decision": "RUNTIME_PACKAGED",
+    "candidate_parity": "PASS",
+    "candidate_image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea"
+  }
+]

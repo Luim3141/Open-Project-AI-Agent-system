@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-10-30T18:19:41+07:00",
+  "phase": "PHASE_2_7",
+  "defect": "DEFECT-12",
+  "milestone": "M6",
+  "description": "Milestone 6 Restoration (n8n 16 workflows + Qdrant Second Brain)",
+  "evidence": {
+    "qdrant": {
+      "port": 6333,
+      "status": "alive",
+      "collections_count": 5,
+      "primary_collection": "qldapm_knowledge_dense",
+      "points_count": 2117,
+      "collection_status": "green"
+    },
+    "n8n": {
+      "port": 5679,
+      "health_check": "HTTP 200 ok",
+      "total_workflows": 16,
+      "active_workflows": 16,
+      "workflows": [
+        {"id": "X2O2QdPY6QLOrWqL", "name": "WF01: Local Document Ingestion", "active": true},
+        {"id": "Anl8LNdN4NNTKRpe", "name": "WF02: OpenProject Event Sync", "active": true},
+        {"id": "XoP4M520TMG3WgeY", "name": "WF03: Natural Language Request Orchestrator", "active": true},
+        {"id": "elfapV5D2PTnLiHW", "name": "WF04: Multi-Agent Execution Tracking", "active": true},
+        {"id": "xCZFw45fmDQG5gNq", "name": "WF05: Native API Approval Workflow", "active": true},
+        {"id": "Jq18aFSqfuUybEic", "name": "WF06: Native API Execution & Verification", "active": true},
+        {"id": "BpCQrGR866vg4BqQ", "name": "WF07: Daily Project Brief", "active": true},
+        {"id": "RXWjVUL8ozqhjY4w", "name": "WF08: Sprint Risk", "active": true},
+        {"id": "tOyBIPw6sGjgzjtU", "name": "WF09: Bug Lifecycle Automation", "active": true},
+        {"id": "tOY7QUa9SrWPOe9e", "name": "WF10: Task Orchestration & Decomposition", "active": true},
+        {"id": "LeRVT3LWNBkJ2iz3", "name": "WF11: QA Gate Transition", "active": true},
+        {"id": "ZkgS8RZbPRA2zbhQ", "name": "WF12: Weekly Summary", "active": true},
+        {"id": "2tr0jpqaaAiq9IOU", "name": "WF13: Second Brain RAG Re-indexing", "active": true},
+        {"id": "8ycOUQy9gtT60nkN", "name": "WF14: Durable RAG Recovery", "active": true},
+        {"id": "NLugfE3U8dBS88Wg", "name": "WF15: Reconciliation & Drift Detection", "active": true},
+        {"id": "5FRYNPSot18UDpKa", "name": "WF16: Main Health Monitoring", "active": true}
+      ]
+    }
+  },
+  "status": "VERIFIED_PASS"
+}

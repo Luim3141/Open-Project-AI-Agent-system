@@ -1,0 +1,42 @@
+{
+  "id": "8f93d0a1-8115-49b5-bc73-2487e778a7cd",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": null,
+  "budget": {
+    "attempt_calls": 12,
+    "auto_continue": false,
+    "cooldown_seconds": 60,
+    "max_continuations": 5,
+    "task_calls": 72
+  },
+  "cancel_requested": false,
+  "claim_generation": 152,
+  "claim_token": "69bf2fe3-b1ce-40e3-b18b-3d65724e2a38",
+  "deadline": 1793900269.409165,
+  "definition": {
+    "acceptance": {},
+    "acceptance_file": null,
+    "base_branch": "main",
+    "base_unit": null,
+    "feedback": "Owner-approved Telegram/Observer E2E: bổ sung regression tests cho endpoint GET /health của mini-task-manager.\nChỉ bổ sung tests và ghi chú test cần thiết, không đổi hành vi ứng dụng hoặc thêm endpoint.\nKiểm tra status HTTP hiện hành, schema/body thực tế và việc gọi lặp không làm thay đổi dữ liệu Task.\nBA phải đọc nguồn và mô tả đúng contract hiện có trước khi giao Dev. Dev viết tests trên code thật;\nReviewer độc lập review diff; QA chạy bộ tests liên quan và báo exit code/bằng chứng.\nKhông replay unit cũ, không merge hoặc deploy ứng dụng. Tạo đúng một unit mới cho phạm vi này.\nGiữ One Task—Multiple Agent Runs, dùng runner/provider/budget/RBAC/approval hiện có.\nRuntime thành công chỉ READY FOR RELEASE; Owner sẽ nghiệm thu riêng sau khi xem bằng chứng.",
+    "kind": "planning",
+    "native_id": 379,
+    "source_hash": "d8b7006b5cff1bc46ead7a55715cf8df91aee06478c6293442b5352748954a83",
+    "title": "PM/BA requirements and engineering backlog"
+  },
+  "engine": "openclaw",
+  "kind": "planning",
+  "native_id": 379,
+  "project_id": 6,
+  "recovery_count": 1,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "telegram-health-regression-plan-20261105",
+  "source_version": 4,
+  "spec": "**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n\n*   Backend: Python FastAPI\n    \n*   Database: SQLite\n    \n*   Frontend: HTML, CSS, JavaScript\n    \n*   Testing: pytest\n    \n*   Version Control: Git and GitHub\n    \n\n**Functional Requirements**\n\n1.  Create new tasks.\n    \n2.  View a list of tasks.\n    \n3.  Edit task information.\n    \n4.  Delete tasks.\n    \n5.  Update task status.\n    \n6.  Search and filter tasks.\n    \n7.  Persist data in SQLite.\n    \n8.  Provide a usable web interface.\n    \n\n**AI Development Workflow**\n\nThe AI team should:\n\n1.  Analyze requirements and define acceptance criteria.\n    \n2.  Break down the project into development tasks.\n    \n3.  Establish dependencies and propose a development schedule.\n    \n4.  Implement source code in the Git repository.\n    \n5.  Build and execute automated tests.\n    \n6.  Review the implementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[https://github.com/Luim3141/mini-task-manager](https://github.com/Luim3141/mini-task-manager)\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.",
+  "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+  "stage": "ADMITTED",
+  "unit": "requirements-planning-v1-d8b7006b5cff1bc4",
+  "worker_id": "0b9b7392-13e3-457f-9024-17a08fc2dd80",
+  "write_scope_ids": []
+}

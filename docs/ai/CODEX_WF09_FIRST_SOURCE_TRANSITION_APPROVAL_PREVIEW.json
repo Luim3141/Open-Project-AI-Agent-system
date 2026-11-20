@@ -1,0 +1,308 @@
+{
+  "at": "2026-10-26T18:54:08.271825+00:00",
+  "state": "CONSUMED_EXACT_HUMAN_APPROVAL_EXECUTED",
+  "package": {
+    "scope": "Main: one exact source-backed Native Task371 transition NEW to IN ANALYSIS only; not QA/release/closure",
+    "actor": {
+      "user_id": 18,
+      "name": "System Owner",
+      "role": "AI_SYSTEM_OWNER",
+      "project_id": 5,
+      "capabilities": [
+        "AI_SYSTEM_OWNER"
+      ]
+    },
+    "operations": [
+      {
+        "proposal_id": "79fa436a-a171-4c46-bd64-ccb1a4cd1a48",
+        "proposal_hash": "fb65b3ec679356b99ba1a32bc8ae3bd00ea9690d40f37e019a7b1b2a478eb701",
+        "expires": 1793041747.408357,
+        "command": {
+          "_gateway_mode": "native",
+          "action": "transition",
+          "arguments": {
+            "id": 371,
+            "lock_version": 2,
+            "phase_hash": "cd4592d0398bc980665e64858783c4abbeb235e1da914abcc0a0a0413287a060",
+            "phase_id": "347fd46f-3215-56ae-a1cf-aa7ea081e3b1",
+            "status_id": 37
+          },
+          "auto_execute": false,
+          "idempotency_key": "phase-transition-main-source-phase-371-v2-first-transition",
+          "preview": {
+            "before": {
+              "_links": {
+                "activities": {
+                  "href": "/api/v3/work_packages/371/activities"
+                },
+                "addAttachment": {
+                  "href": "/api/v3/work_packages/371/attachments",
+                  "method": "post"
+                },
+                "addChild": {
+                  "href": "/api/v3/workspaces/qldapm-local/work_packages",
+                  "method": "post",
+                  "title": "Add child of [Bug] [CODEX TEST] Controlled Native Bug lifecycle qualification a29a433d248c"
+                },
+                "addComment": {
+                  "href": "/api/v3/work_packages/371/activities",
+                  "method": "post",
+                  "title": "Add comment"
+                },
+                "addFileLink": {
+                  "href": "/api/v3/work_packages/371/file_links",
+                  "method": "post"
+                },
+                "addRelation": {
+                  "href": "/api/v3/work_packages/371/relations",
+                  "method": "post",
+                  "title": "Add relation"
+                },
+                "addWatcher": {
+                  "href": "/api/v3/work_packages/371/watchers",
+                  "method": "post",
+                  "payload": {
+                    "user": {
+                      "href": "/api/v3/users/{user_id}"
+                    }
+                  },
+                  "templated": true
+                },
+                "ancestors": [],
+                "assignee": {
+                  "href": "/api/v3/users/21",
+                  "title": "QLDAPM BE"
+                },
+                "atom": {
+                  "href": "/work_packages/371.atom",
+                  "title": "Atom feed",
+                  "type": "application/rss+xml"
+                },
+                "attachments": {
+                  "href": "/api/v3/work_packages/371/attachments"
+                },
+                "author": {
+                  "href": "/api/v3/users/18",
+                  "title": "System Owner"
+                },
+                "availableRelationCandidates": {
+                  "href": "/api/v3/work_packages/371/available_relation_candidates",
+                  "title": "Potential work packages to relate to"
+                },
+                "availableWatchers": {
+                  "href": "/api/v3/work_packages/371/available_watchers"
+                },
+                "backlogBucket": {
+                  "href": null
+                },
+                "category": {
+                  "href": null
+                },
+                "changeParent": {
+                  "href": "/api/v3/work_packages/371",
+                  "method": "patch",
+                  "title": "Change parent of [Bug] [CODEX TEST] Controlled Native Bug lifecycle qualification a29a433d248c"
+                },
+                "configureForm": {
+                  "href": "/types/1/form_configuration/edit",
+                  "title": "Configure form",
+                  "type": "text/html"
+                },
+                "copy": {
+                  "href": "/work_packages/371/copy",
+                  "title": "Copy work package '[Bug] [CODEX TEST] Controlled Native Bug lifecycle qualification a29a433d248c'",
+                  "type": "text/html"
+                },
+                "customActions": [],
+                "customField12": {
+                  "href": null,
+                  "title": null
+                },
+                "customFields": {
+                  "href": "/projects/qldapm-local/settings/custom_fields",
+                  "title": "Custom fields",
+                  "type": "text/html"
+                },
+                "delete": {
+                  "href": "/api/v3/work_packages/371",
+                  "method": "delete"
+                },
+                "fileLinks": {
+                  "href": "/api/v3/work_packages/371/file_links"
+                },
+                "generate_pdf": {
+                  "href": "/work_packages/371/generate_pdf_dialog",
+                  "title": "Generate PDF",
+                  "type": "text/vnd.turbo-stream.html"
+                },
+                "github_pull_requests": {
+                  "href": "/api/v3/work_packages/371/github_pull_requests",
+                  "title": "GitHub pull requests"
+                },
+                "gitlab_issues": {
+                  "href": "/api/v3/work_packages/371/gitlab_issues",
+                  "title": "Gitlab Issues"
+                },
+                "gitlab_merge_requests": {
+                  "href": "/api/v3/work_packages/371/gitlab_merge_requests",
+                  "title": "Gitlab merge requests"
+                },
+                "meetings": {
+                  "href": "/work_packages/371/tabs/meetings",
+                  "title": "meetings"
+                },
+                "move": {
+                  "href": "/work_packages/371/move/new",
+                  "title": "Move work package '[Bug] [CODEX TEST] Controlled Native Bug lifecycle qualification a29a433d248c'",
+                  "type": "text/html"
+                },
+                "observedInVersions": [],
+                "parent": {
+                  "href": null
+                },
+                "pdf": {
+                  "href": "/work_packages/371.pdf",
+                  "title": "Export as PDF",
+                  "type": "application/pdf"
+                },
+                "previewMarkup": {
+                  "href": "/api/v3/render/markdown?context=/api/v3/work_packages/371",
+                  "method": "post"
+                },
+                "priority": {
+                  "href": "/api/v3/priorities/8",
+                  "title": "Normal"
+                },
+                "project": {
+                  "href": "/api/v3/projects/5",
+                  "title": "QLDAPM \u2014 Local Community"
+                },
+                "projectPhaseDefinition": {
+                  "href": null
+                },
+                "relations": {
+                  "href": "/api/v3/work_packages/371/relations"
+                },
+                "removeWatcher": {
+                  "href": "/api/v3/work_packages/371/watchers/{user_id}",
+                  "method": "delete",
+                  "templated": true
+                },
+                "responsible": {
+                  "href": null
+                },
+                "schema": {
+                  "href": "/api/v3/work_packages/schemas/5-1"
+                },
+                "self": {
+                  "href": "/api/v3/work_packages/371",
+                  "title": "[Bug] [CODEX TEST] Controlled Native Bug lifecycle qualification a29a433d248c"
+                },
+                "sprint": {
+                  "href": null
+                },
+                "status": {
+                  "href": "/api/v3/statuses/1",
+                  "title": "NEW"
+                },
+                "targetVersions": [],
+                "type": {
+                  "href": "/api/v3/types/1",
+                  "title": "Task"
+                },
+                "unwatch": {
+                  "href": "/api/v3/work_packages/371/watchers/18",
+                  "method": "delete"
+                },
+                "update": {
+                  "href": "/api/v3/work_packages/371/form",
+                  "method": "post"
+                },
+                "updateImmediately": {
+                  "href": "/api/v3/work_packages/371",
+                  "method": "patch"
+                },
+                "watchers": {
+                  "href": "/api/v3/work_packages/371/watchers"
+                }
+              },
+              "description": {
+                "format": "markdown",
+                "html": "<h2 id=\"op-frag-report-and-reproduction\" class=\"op-uc-h2\">\n<a href=\"#op-frag-report-and-reproduction\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Report and reproduction</h2>\n<p class=\"op-uc-p\">Technical acceptance resource for approved Task[Bug] mapping and Owner18 Native pipeline; isolated lifecycle fixtures already qualified.</p>\n<h2 id=\"op-frag-expectedactual-behavior\" class=\"op-uc-h2\">\n<a href=\"#op-frag-expectedactual-behavior\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Expected/actual behavior</h2>\n<p class=\"op-uc-p\">Expected: An exact human-approved Task1/NEW1 create with own Owner18 author, Native readback and RAG sync; all existing work packages preserved.<br>\nActual: Native mutation not executed at proposal time. Later assignment/fix/retest/review/status changes require new concrete proposals and approvals.</p>\n<h2 id=\"op-frag-severity-and-source-evidence\" class=\"op-uc-h2\">\n<a href=\"#op-frag-severity-and-source-evidence\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Severity and source evidence</h2>\n<p class=\"op-uc-p\">Severity: low<br>\nCODEX_WF09_MAIN_QUALIFICATION_RESULT.json; CODEX_OWNER_NATIVE_E2E_DRIVER_BOUNDARY_RESULT.json<br>\nEvidence verification: NOT_VERIFIED_BY_SYSTEM</p>\n<h2 id=\"op-frag-duplicate-references\" class=\"op-uc-h2\">\n<a href=\"#op-frag-duplicate-references\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Duplicate references</h2>\n<p class=\"op-uc-p\">No lexical candidate in current visible snapshot; not proof of uniqueness.<br>\nDisposition: No candidate to disposition</p>\n<h2 id=\"op-frag-fix-tracking\" class=\"op-uc-h2\">\n<a href=\"#op-frag-fix-tracking\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Fix tracking</h2>\n<p class=\"op-uc-p\">Not submitted</p>\n<h2 id=\"op-frag-qa-retest-evidence\" class=\"op-uc-h2\">\n<a href=\"#op-frag-qa-retest-evidence\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>QA retest evidence</h2>\n<p class=\"op-uc-p\">Not submitted; NOT_VERIFIED_BY_SYSTEM</p>\n<h2 id=\"op-frag-review\" class=\"op-uc-h2\">\n<a href=\"#op-frag-review\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Review</h2>\n<p class=\"op-uc-p\">Not submitted</p>\n<h2 id=\"op-frag-proposed-real-application-defect-binding-human-approved-scope-required\" class=\"op-uc-h2\">\n<a href=\"#op-frag-proposed-real-application-defect-binding-human-approved-scope-required\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Proposed real application-defect binding (human-approved scope required)</h2>\n<p class=\"op-uc-p\">Story: A PM converts a cited BA WBS into Native Epic/Task/Subtask nodes with explicit source dates and dependencies, without rewriting model business output or bypassing independent approvals.<br>\nScope: QLDAPM Main WBS adapter and exact Native dated-parent verifier only. This maps the retained technical test Bug to the real defect reproduced during the approved BA run; no unrelated product feature or full application QA claim.<br>\nAnalysis: Valid uppercase BA node keys failed Native key validation. After encoding, an actual Native clone stopped SOURCE_CHANGED because dated-child aggregation saved a parent twice and expanded parent data changed inside a child API response. The corrected code preserves raw BA output hash, verifies each own child receipt and exact model chain/calendar, and excludes expanded related resources from WP identity. Unknown children, unrelated model fields and excess versions remain held.<br>\nAC1: Application regression NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source preserves raw output hash, graph, requirements and scheduling; collisions and dangling references are rejected.<br>\nAC2: Application regression ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain verifies the dated-parent model chain using exact own child receipts and Native calendar evidence.<br>\nAC3: Application regressions ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects and test_expanded_parent_changes_do_not_change_the_verified_work_package retain fail-closed source protection while allowing unrelated expanded-parent data to refresh.<br>\nAC4: Actual isolated Native qualification CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json reaches VERIFIED_COMPLETED for four nodes, exact supplied dates and follows lag0, with current RAG citations and one create after lost acknowledgment. Simulated isolated decisions and synthetic embeddings are explicitly labelled; no Main business mutation or human QA decision is inferred.<br>\nEvidence scope: These are actual application-code and isolated Native results for this WBS defect. Existing accepted technical readback evidence for WP375 does not verify this Bug. Future fix/build/QA/retest/closure still requires an admitted producer, independent human reviews and separate exact Native transition approvals.<br>\nCode provenance: CODEX_WF10_FINAL_SCHEDULE_DEPLOYMENT_RESULT.json pins the deployed Gateway/Core/source hashes; raw BA output hash 4bcbbd93eeb110f99bab1b66846c814cda1af09ded78d2a18c209a63121a9ae7 remains unchanged. Preserve all prior technical qualification text above.</p>",
+                "raw": "## Report and reproduction\nTechnical acceptance resource for approved Task[Bug] mapping and Owner18 Native pipeline; isolated lifecycle fixtures already qualified.\n\n## Expected/actual behavior\nExpected: An exact human-approved Task1/NEW1 create with own Owner18 author, Native readback and RAG sync; all existing work packages preserved.\nActual: Native mutation not executed at proposal time. Later assignment/fix/retest/review/status changes require new concrete proposals and approvals.\n\n## Severity and source evidence\nSeverity: low\nCODEX_WF09_MAIN_QUALIFICATION_RESULT.json; CODEX_OWNER_NATIVE_E2E_DRIVER_BOUNDARY_RESULT.json\nEvidence verification: NOT_VERIFIED_BY_SYSTEM\n\n## Duplicate references\nNo lexical candidate in current visible snapshot; not proof of uniqueness.\nDisposition: No candidate to disposition\n\n## Fix tracking\nNot submitted\n\n## QA retest evidence\nNot submitted; NOT_VERIFIED_BY_SYSTEM\n\n## Review\nNot submitted\n\n## Proposed real application-defect binding (human-approved scope required)\nStory: A PM converts a cited BA WBS into Native Epic/Task/Subtask nodes with explicit source dates and dependencies, without rewriting model business output or bypassing independent approvals.\nScope: QLDAPM Main WBS adapter and exact Native dated-parent verifier only. This maps the retained technical test Bug to the real defect reproduced during the approved BA run; no unrelated product feature or full application QA claim.\nAnalysis: Valid uppercase BA node keys failed Native key validation. After encoding, an actual Native clone stopped SOURCE_CHANGED because dated-child aggregation saved a parent twice and expanded parent data changed inside a child API response. The corrected code preserves raw BA output hash, verifies each own child receipt and exact model chain/calendar, and excludes expanded related resources from WP identity. Unknown children, unrelated model fields and excess versions remain held.\nAC1: Application regression NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source preserves raw output hash, graph, requirements and scheduling; collisions and dangling references are rejected.\nAC2: Application regression ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain verifies the dated-parent model chain using exact own child receipts and Native calendar evidence.\nAC3: Application regressions ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects and test_expanded_parent_changes_do_not_change_the_verified_work_package retain fail-closed source protection while allowing unrelated expanded-parent data to refresh.\nAC4: Actual isolated Native qualification CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json reaches VERIFIED_COMPLETED for four nodes, exact supplied dates and follows lag0, with current RAG citations and one create after lost acknowledgment. Simulated isolated decisions and synthetic embeddings are explicitly labelled; no Main business mutation or human QA decision is inferred.\nEvidence scope: These are actual application-code and isolated Native results for this WBS defect. Existing accepted technical readback evidence for WP375 does not verify this Bug. Future fix/build/QA/retest/closure still requires an admitted producer, independent human reviews and separate exact Native transition approvals.\nCode provenance: CODEX_WF10_FINAL_SCHEDULE_DEPLOYMENT_RESULT.json pins the deployed Gateway/Core/source hashes; raw BA output hash 4bcbbd93eeb110f99bab1b66846c814cda1af09ded78d2a18c209a63121a9ae7 remains unchanged. Preserve all prior technical qualification text above.\n"
+              },
+              "dueDate": null,
+              "id": 371,
+              "lockVersion": 2,
+              "startDate": null,
+              "subject": "[Bug] [CODEX TEST] Controlled Native Bug lifecycle qualification a29a433d248c"
+            },
+            "changes": {
+              "id": 371,
+              "lock_version": 2,
+              "phase_hash": "cd4592d0398bc980665e64858783c4abbeb235e1da914abcc0a0a0413287a060",
+              "phase_id": "347fd46f-3215-56ae-a1cf-aa7ea081e3b1",
+              "status_id": 37
+            },
+            "date_adjustments": {},
+            "validation": "Native permission and gate checks run again at confirmation."
+          }
+        }
+      }
+    ],
+    "human_source_review": {
+      "phase_id": "347fd46f-3215-56ae-a1cf-aa7ea081e3b1",
+      "phase_hash": "cd4592d0398bc980665e64858783c4abbeb235e1da914abcc0a0a0413287a060",
+      "producer_actor": 20,
+      "contributor_actor": 18,
+      "independent_review_actor": 19,
+      "decision": "accept",
+      "source_version": 2,
+      "gate_revision": 2
+    },
+    "before": {
+      "native_id": 371,
+      "version": 2,
+      "status": "NEW",
+      "assignee_id": 21,
+      "visible_work_packages": 338
+    },
+    "expected": {
+      "status": "IN ANALYSIS",
+      "visible_work_packages": 338,
+      "native_business_mutations": 1,
+      "version_effect": "Native gate save and normal Native status save may increase version by2; verify authoritative receipt",
+      "gate_effect": "Source/AC/scope/analysis facts and signed independent PM19 review materialized through unchanged GatePolicy; system journal/receipt/audit recorded",
+      "rag": "Refresh only authorized371source namespaces; verify citations/version/readback"
+    },
+    "preserved": {
+      "original332": true,
+      "other374_native_rows": true,
+      "task370_version": 2,
+      "qa375": true,
+      "subject_assignee_dates_parent": true,
+      "credentials_totp": true,
+      "staging": true
+    },
+    "not_authorized": [
+      "No subsequent transition",
+      "No create/delete/comment/assignment/description/dependency mutation",
+      "No model call or external notification",
+      "No human QA review by agent"
+    ],
+    "qualification": [
+      "CODEX_WF09_WF11_SOURCE_PHASE_NATIVE_CLONE_RESULT.json",
+      "CODEX_WF09_SOURCE_ANALYSIS_HUMAN_REVIEW_RESULT.json",
+      "CODEX_BA_PHASE_READ_DEPLOYMENT_RESULT.json",
+      "CODEX_BA_PHASE_READ_ROLE_RESULT.json",
+      "CODEX_BA_PHASE_READ_SECURITY_PRESERVATION.json"
+    ]
+  },
+  "package_sha256": "fb8a79fc7bace9eb6d9a29a1282ca72a04c5e17bbe4210731a0d3289633a818d",
+  "proposal_id": "79fa436a-a171-4c46-bd64-ccb1a4cd1a48",
+  "proposal_hash": "fb65b3ec679356b99ba1a32bc8ae3bd00ea9690d40f37e019a7b1b2a478eb701",
+  "expires_bangkok": "2026-10-27T02:09:07.408357+07:00",
+  "main_native_writes": 1,
+  "human_decisions_by_agent": 0,
+  "result": "CODEX_WF09_FIRST_SOURCE_TRANSITION_RESULT.json"
+}

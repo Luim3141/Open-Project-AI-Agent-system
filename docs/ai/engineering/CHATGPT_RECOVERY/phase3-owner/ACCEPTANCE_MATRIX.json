@@ -1,0 +1,886 @@
+{
+  "snapshot_utc": "2026-11-02T10:14:03.779764+00:00",
+  "owner_accepted": false,
+  "overall_status": "P0_SOURCE_DEPLOYED_API_VERIFIED_OWNER_UAT_PENDING; P1_BLOCKERS_REMAIN",
+  "runtime_manifest": "phase3-owner/final-live-verification.json",
+  "rows": [
+    {
+      "feature": "Mission Control",
+      "expected_behavior": "Desired/effective mode, health, eligibility and blockers visible",
+      "actual_behavior": "MAIN OFF/EMPTY/workerALIVE, persisted revision/lastcommand;10livefragments",
+      "source_api_evidence": [
+        "phase3-owner/final-live-verification.json",
+        "phase3-owner/main-bridge-readback.json",
+        "phase3-owner/core-clone-result.json"
+      ],
+      "test_command": "python docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/qualify_core.py",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED"
+      ],
+      "remaining_defect": "No additional known defect in tested contract; browser acceptance pending",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Agent Workforce",
+      "expected_behavior": "Only persisted role/activity/receipt state",
+      "actual_behavior": "Durable bounded receipts and profile projection; no invented calls/reasoning",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json"
+      ],
+      "test_command": "node openproject/ai/tests/test_owner_live_transport.js",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED"
+      ],
+      "remaining_defect": "No additional known defect in tested contract; browser acceptance pending",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Work Intake",
+      "expected_behavior": "Authenticated admission once with request UUID/run feedback",
+      "actual_behavior": "Invalid swallowed mode call removed; actual controller+session request contract passed",
+      "source_api_evidence": [
+        "phase3-owner/core-clone-result.json",
+        "openproject/ai/core/test_owner_command_contract.rb"
+      ],
+      "test_command": "python docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/qualify_core.py",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE"
+      ],
+      "remaining_defect": "No Phase3 new planning run created",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "PM/BA Planning",
+      "expected_behavior": "Plan/run/unit link and agent evidence",
+      "actual_behavior": "Historical390 planning8751… mapped correctly on current telemetry",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED"
+      ],
+      "remaining_defect": "Current-image new provider planning not exercised",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "RUN ONCE",
+      "expected_behavior": "Exactly one canonical eligible/versioned unit or explain no work",
+      "actual_behavior": "Backend singleton/dependency/admission fixtures; MAIN EMPTY projection and disabled NO ELIGIBLE WORK",
+      "source_api_evidence": [
+        "phase3-owner/gateway-candidate-final.json",
+        "phase3-owner/core-clone-result.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE"
+      ],
+      "remaining_defect": "Actual active-work control effects not fault-injected on MAIN",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "AUTO",
+      "expected_behavior": "Stay enabled idle, atomically recheck mode before claim",
+      "actual_behavior": "Idle/full-delivered AUTO remains enabled in fixture; stale OFF race protected",
+      "source_api_evidence": [
+        "phase3-owner/gateway-candidate-final.json",
+        "phase3-owner/core-clone-result.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE"
+      ],
+      "remaining_defect": "Actual active-work control effects not fault-injected on MAIN",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "PAUSE",
+      "expected_behavior": "Requested differs effective until checkpoint",
+      "actual_behavior": "Fixture active PAUSE_REQUESTED vs PAUSED; no MAIN fault injection",
+      "source_api_evidence": [
+        "phase3-owner/gateway-candidate-final.json",
+        "phase3-owner/core-clone-result.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE"
+      ],
+      "remaining_defect": "Actual active-work control effects not fault-injected on MAIN",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "RESUME",
+      "expected_behavior": "Safe checkpoint/version, duplicate click no extra budget",
+      "actual_behavior": "Existing resume/fencing regressions + durable request reservation",
+      "source_api_evidence": [
+        "phase3-owner/gateway-candidate-final.json",
+        "phase3-owner/core-clone-result.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE"
+      ],
+      "remaining_defect": "Actual active-work control effects not fault-injected on MAIN",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "CANCEL",
+      "expected_behavior": "Requested differs confirmed; no fake terminal success",
+      "actual_behavior": "Fixture/control/worker cleanup regressions; current UI consumes actual state",
+      "source_api_evidence": [
+        "phase3-owner/gateway-candidate-final.json",
+        "phase3-owner/core-clone-result.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE"
+      ],
+      "remaining_defect": "Actual active-work control effects not fault-injected on MAIN",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "OFF",
+      "expected_behavior": "Stop auto admission, show active checkpoint policy",
+      "actual_behavior": "MAIN signed OFF accepted; exact UUID replay; final OFF/queue0",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json",
+        "phase3-owner/final-live-verification.json"
+      ],
+      "test_command": "phase3-owner/main-bridge-readback.json (actual signed Rails AiBridge calls)",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED"
+      ],
+      "remaining_defect": "No additional known defect in tested contract; browser acceptance pending",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Queue",
+      "expected_behavior": "Separate READY/ACTIVE/BLOCKED/EMPTY with reasons",
+      "actual_behavior": "MAIN EMPTY/ready0/active0; eligibility/concurrency reasons in fixtures",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED"
+      ],
+      "remaining_defect": "No additional known defect in tested contract; browser acceptance pending",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Live Agent Timeline",
+      "expected_behavior": "Persisted10steps/events, no fake progress",
+      "actual_behavior": "100events/cursor;390artifact pipeline correct, ReportsUNKNOWN",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json",
+        "phase3-owner/core-clone-result.json"
+      ],
+      "test_command": "node openproject/ai/tests/test_owner_live_transport.js",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED"
+      ],
+      "remaining_defect": "Browser delivery latency not measured;3s/15s/60s timers tested as contract",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Run Inspector",
+      "expected_behavior": "Correct run-specific evidence, XSS/stale-safe",
+      "actual_behavior": "Request token isolates late A success/error after B; text/escaped rendering",
+      "source_api_evidence": [
+        "openproject/ai/tests/test_run_inspector_request.js",
+        "openproject/ai/tests/test_execution_inspector_render.js"
+      ],
+      "test_command": "node openproject/ai/tests/test_run_inspector_request.js",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE"
+      ],
+      "remaining_defect": "No additional known defect in tested contract; browser acceptance pending",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "GitHub Sync",
+      "expected_behavior": "One click, explicit receipt, fresh PR fragments, last success",
+      "actual_behavior": "MAIN twiceSUCCESS changedfalse; sameUUID exact replay; UI fixtures fresh PR withoutF5",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json",
+        "phase3-owner/core-clone-result.json"
+      ],
+      "test_command": "phase3-owner/main-bridge-readback.json (actual signed Rails AiBridge calls)",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED"
+      ],
+      "remaining_defect": "External PR state mutation simulated in fixtures; Owner browser recheck pending",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "GitHub PR reconciliation",
+      "expected_behavior": "Remote read-back and Native journal, no duplicate activity",
+      "actual_behavior": "Native activity marker confirmation before ACK; current7/8/9OPENstacked",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json",
+        "phase3-owner/gateway-candidate-final.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED"
+      ],
+      "remaining_defect": "Unknown external POST still needs read-back, never automatic repost",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "OpenClaw Dev",
+      "expected_behavior": "Persist genuine actor artifacts with correct run/revision",
+      "actual_behavior": "Historical390commit4a794… and reviewed diff mapped; host protocol unchanged",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json",
+        "phase2-final/e2e/coding-result.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED (historical artifacts)"
+      ],
+      "remaining_defect": "No fresh Phase3 coding run; Phase2 E2E image boundary preserved",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Reviewer",
+      "expected_behavior": "Persist genuine actor artifacts with correct run/revision",
+      "actual_behavior": "Internal PASS matches persisted diff revision; not GitHub review",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json",
+        "phase2-final/e2e/coding-result.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED (historical artifacts)"
+      ],
+      "remaining_defect": "No fresh Phase3 coding run; Phase2 E2E image boundary preserved",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "QA",
+      "expected_behavior": "Persist genuine actor artifacts with correct run/revision",
+      "actual_behavior": "Internal PASS/exit0/testloghash matches persisted artifacts",
+      "source_api_evidence": [
+        "phase3-owner/main-bridge-readback.json",
+        "phase2-final/e2e/coding-result.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED (historical artifacts)"
+      ],
+      "remaining_defect": "No fresh Phase3 coding run; Phase2 E2E image boundary preserved",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF01–WF16",
+      "expected_behavior": "Explicit per-WF adapter/business/retention status",
+      "actual_behavior": "16published;14cloneadapters;WF07/12denied19/PARTIAL; historyOFF forWF04",
+      "source_api_evidence": [
+        "phase3-owner/n8n/n8n-readback.json",
+        "phase2-final/workflows/RESULT.md"
+      ],
+      "test_command": "python docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/n8n/record_evidence.py",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "PARTIAL"
+      ],
+      "remaining_defect": "Not16businessE2E; master-key/history unresolved",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Second Brain Exact",
+      "expected_behavior": "Fresh authorized Native citation/version",
+      "actual_behavior": "MAIN10/10samplecurrent;387/389/390version2,denseREADY",
+      "source_api_evidence": [
+        "phase3-owner/rag/post-rollout-currentness.json",
+        "phase3-owner/main-exact-knowledge.json"
+      ],
+      "test_command": "phase3-owner/main-bridge-readback.json (actual signed Rails AiBridge calls)",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "API VERIFIED"
+      ],
+      "remaining_defect": "Exact IDs do not certify semantic recall",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Second Brain Semantic",
+      "expected_behavior": "Quality+abstention on justified Native holdout",
+      "actual_behavior": "Existing semantic gate failed; new pool hypothesis rejected before tuning; freshness defect repaired",
+      "source_api_evidence": [
+        "phase3-owner/rag/RESULT.md",
+        "phase3-owner/rag/native-miss-audit.json",
+        "phase2-final/rag/RERANKER_RESULT.md"
+      ],
+      "test_command": "python docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/rag/audit_native.py",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "PARTIAL",
+        "BLOCKED QUALITY GATE"
+      ],
+      "remaining_defect": "Human labels pending; no new semantic candidate deployed",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Reports",
+      "expected_behavior": "Fresh list/detail, provenance/missing usage/time/source states",
+      "actual_behavior": "Actual report metrics schema, auto fragments, text reader; stored reports readback",
+      "source_api_evidence": [
+        "phase3-owner/core-clone-result.json",
+        "phase3-owner/main-bridge-readback.json",
+        "openproject/ai/tests/test_report_reader.js"
+      ],
+      "test_command": "node openproject/ai/tests/test_report_reader.js",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE",
+        "API VERIFIED (existing reports)"
+      ],
+      "remaining_defect": "No new narrative/model generation requested; per-run Reports linkageUNKNOWN",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Notifications",
+      "expected_behavior": "Refresh and durable dismiss",
+      "actual_behavior": "Live region added; dismiss posted toexistingGatewaycommand",
+      "source_api_evidence": [
+        "phase3-owner/core-clone-result.json",
+        "phase3-owner/gateway-candidate-final.json"
+      ],
+      "test_command": "phase3-owner/gateway-candidate-final.json#command",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE"
+      ],
+      "remaining_defect": "MAIN unread notification not dismissed just for test",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Scheduling",
+      "expected_behavior": "Read-back full config without resetting other fields",
+      "actual_behavior": "Actual bool+time schema, allfields POST, latestmodalreadback",
+      "source_api_evidence": [
+        "openproject/ai/tests/test_owner_live_transport.js",
+        "phase3-owner/gateway-candidate-final.json"
+      ],
+      "test_command": "node openproject/ai/tests/test_owner_live_transport.js",
+      "runtime_images": {
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "DEPLOYED",
+        "TESTED IN CLONE"
+      ],
+      "remaining_defect": "Did not wait for production calendar timer as acceptance",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Demo release",
+      "expected_behavior": "Label actual served revision distinct PR creation",
+      "actual_behavior": "HTTPhealth200;PR6revision0498…;TESTRELEASE/mergedfalse",
+      "source_api_evidence": [
+        "phase3-owner/demo-readback.json"
+      ],
+      "test_command": "GET http://127.0.0.1:18791/_qldapm/release",
+      "runtime_images": {},
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "API VERIFIED"
+      ],
+      "remaining_defect": "PR7/8/9notdeployed; no auto-merge",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Data preservation",
+      "expected_behavior": "No Project5 business/security config changes",
+      "actual_behavior": "13scoped/globaltables entire rows identical before/after bothrollouts",
+      "source_api_evidence": [
+        "phase3-owner/native-after-final.json"
+      ],
+      "test_command": "python docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/native_integrity.py after-final",
+      "runtime_images": {
+        "core": "sha256:7649e1f923e6af20ea6d3eb8820ff4d4466840728893374846b7875893e9bcc2",
+        "gateway": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "API VERIFIED"
+      ],
+      "remaining_defect": "Not exhaustive every DBtable/DR assurance",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "Security/DR",
+      "expected_behavior": "Safe key/persistence/custody/restore",
+      "actual_behavior": "Byte-onlycopychecker10PASS/1SKIP;6vendorfilesystemleakcanariesconfirmBLOCKED",
+      "source_api_evidence": [
+        "phase3-owner/n8n/RESULT.md",
+        "phase3-owner/n8n/OFFHOST_OWNER_PROCEDURE.md"
+      ],
+      "test_command": "python -m unittest discover -s docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/n8n -p test_*.py -v",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "PARTIAL",
+        "BLOCKED"
+      ],
+      "remaining_defect": "Master-key/history/offhostcustody/physicalDRpending",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF01",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF02",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF03",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF04",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadaptercloneverified;historical390ACKobserved via currentGateway",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "No new write-heavy MAIN workflow exercise; WF04 retentionOFF",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF05",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF06",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF07",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "All5collectorPARTIAL:actor19adminDENIED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "PARTIAL/FAILED BUSINESS"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF08",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF09",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF10",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF11",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF12",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "All5collectorPARTIAL:actor19adminDENIED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "PARTIAL/FAILED BUSINESS"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF13",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF14",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF15",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    },
+    {
+      "feature": "n8n WF16",
+      "expected_behavior": "Authorized published adapter and business outcome clearly classified",
+      "actual_behavior": "Publishedadapterverified in prior isolatedn8n;businesswritebranchNOT_EXERCISED",
+      "source_api_evidence": [
+        "phase2-final/workflows/RESULT.md",
+        "phase3-owner/n8n/principal-readback.json",
+        "phase3-owner/n8n/n8n-readback.json"
+      ],
+      "test_command": "phase2-final/workflows/qualify_published.py (prior exact unchanged n8n image/definitions)",
+      "runtime_images": {
+        "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+      },
+      "source_hash_manifest": "phase3-owner/final-live-verification.json#runtime_source_sha256",
+      "deployment_status": [
+        "TESTED IN CLONE (ADAPTER ONLY)"
+      ],
+      "remaining_defect": "Do not infer active=businessPASS",
+      "owner_uat": "PENDING OWNER"
+    }
+  ]
+}

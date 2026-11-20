@@ -1,0 +1,33 @@
+- paragraph: Bạn đã tự động đăng xuất sau 60 phút không hoạt động.
+- button "Đóng":
+- generic: Bạn đã tự động đăng xuất sau 60 phút không hoạt động.
+- generic: Mở liên kết trong tab mới
+- banner:
+  - link "Nhấn vào đây để bỏ qua menu và đi tới nội dung":
+    - /url: ""
+    - text: Chuyển đến nội dung
+  - navigation "Trình đơn trên cùng":
+    - button "Mô-đun toàn cầu":
+    - link "Trang chủ":
+      - /url: http://localhost:8088/
+  - search "Tìm kiếm trong OpenProject":
+    - button "tìm kiếm":
+      - generic: 
+    - generic: Tìm kiếm trong OpenProject
+    - combobox "Tìm kiếm trong OpenProject"
+    - status
+  - button "Trợ giúp":
+  - button "Đăng nhập":
+    - generic: Đăng nhập
+- main:
+  - heading "Nội dung" [level=1]
+  - heading "Đăng nhập" [level=1]
+  - separator
+  - generic: Tên người dùng *
+  - textbox "Tên người dùng"
+  - generic: Mật khẩu *
+  - textbox "Mật khẩu"
+  - button "Đăng nhập":
+    - generic: Đăng nhập
+  - link "Quên Mật Khẩu?":
+    - /url: /account/lost_password

@@ -1,0 +1,146 @@
+{
+  "contract": {
+    "allow_routine_writes": false,
+    "base_sha": "726f9738fd1af08bb19502227df886e075c0259b",
+    "deadline": 1793313407.7566743,
+    "engine": "openclaw",
+    "native_id": 379,
+    "project_id": 6,
+    "repository": "Luim3141/mini-task-manager",
+    "request_key": "phase2-crud-web-v1",
+    "source_version": 1,
+    "spec": "**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n\n*   Backend: Python FastAPI\n    \n*   Database: SQLite\n    \n*   Frontend: HTML, CSS, JavaScript\n    \n*   Testing: pytest\n    \n*   Version Control: Git and GitHub\n    \n\n**Functional Requirements**\n\n1.  Create new tasks.\n    \n2.  View a list of tasks.\n    \n3.  Edit task information.\n    \n4.  Delete tasks.\n    \n5.  Update task status.\n    \n6.  Search and filter tasks.\n    \n7.  Persist data in SQLite.\n    \n8.  Provide a usable web interface.\n    \n\n**AI Development Workflow**\n\nThe AI team should:\n\n1.  Analyze requirements and define acceptance criteria.\n    \n2.  Break down the project into development tasks.\n    \n3.  Establish dependencies and propose a development schedule.\n    \n4.  Implement source code in the Git repository.\n    \n5.  Build and execute automated tests.\n    \n6.  Review the implementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[https://github.com/Luim3141/mini-task-manager](https://github.com/Luim3141/mini-task-manager)\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.",
+    "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+    "stage": "ADMITTED",
+    "unit": "crud-search-web-v1",
+    "write_scope_ids": []
+  },
+  "plan": {
+    "unit": "crud-search-web-v1",
+    "title": "Edit/delete/status/search and usable web interface",
+    "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+    "steps": [
+      "Define AC/API",
+      "Implement one feature in isolated worktree",
+      "Independent review",
+      "Independent tests",
+      "Publish PR and progress",
+      "Reindex authorized Native evidence"
+    ],
+    "acceptance": {
+      "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+      "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+      "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+      "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+      "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes"
+    },
+    "interface": "task_manager.app.create_app(database_path); pytest; Python FastAPI + stdlib sqlite3",
+    "permission": "demo repository and Project6 only; no merge/deploy; completion of unit is not WP379 DONE",
+    "verification": "trusted external acceptance + repo pytest on exact tree; independent reviewer session"
+  },
+  "agent_outputs": {
+    "pm": {
+      "schema_version": 1,
+      "run_id": "54edcb3a-51c4-4bd0-b7e8-ea797ab51ccb",
+      "task_id": "81385357-de08-4366-8344-6f202cc12972",
+      "actor_id": 20,
+      "project_id": 6,
+      "trace_id": "d07749d1-7e8d-45cc-a5c2-fb174cc498ff",
+      "state": "COMPLETED",
+      "summary": "### ĐÁNH GIÁ TỔNG THỂ RỦI RO SPRINT (Mức độ: THẤP)\n- **Tổng số công việc:** 1 (Hoàn thành: 0, Đang mở: 1)\n- **Công việc quá hạn:** 0\n- **Công việc bị chặn (Blocker):** 0\n\n#### Chi tiết rủi ro và bằng chứng:\n\n#### Khuyến nghị hành động:\n1. Ưu tiên giải tỏa blocker cho các công việc có mức độ ưu tiên cao.\n2. Điều chỉnh phân bổ nguồn lực hoặc đàm phán phạm vi cho các mục trễ hạn.",
+      "references": [],
+      "receipt_ids": [],
+      "model_used": false,
+      "error_code": null
+    },
+    "ba": {
+      "schema_version": 1,
+      "run_id": "54edcb3a-51c4-4bd0-b7e8-ea797ab51ccb",
+      "task_id": "81385357-de08-4366-8344-6f202cc12972",
+      "actor_id": 20,
+      "project_id": 6,
+      "trace_id": "d07749d1-7e8d-45cc-a5c2-fb174cc498ff",
+      "state": "COMPLETED",
+      "summary": "### USER STORY: #379 — Develop Mini Task Manager Application\n- **Là [Vai trò]:** Người dùng hệ thống\n- **Tôi muốn [Tính năng]:** develop mini task manager application\n- **Để [Mục đích/Giá trị]:** đảm bảo nhu cầu nghiệp vụ được đáp ứng chính xác, minh bạch và an toàn.\n\n> Trích dẫn dữ liệu nguồn: Work Package #379 (lock_version: 1)\n\n### TIÊU CHÍ CHẤP NHẬN (ACCEPTANCE CRITERIA) — #379\n**Công việc:** Develop Mini Task Manager Application\n\n**AC1 — Điều kiện tiên quyết & Giao diện:**\n- **Given:** Người dùng đã đăng nhập vào hệ thống với quyền hạn hợp lệ.\n- **When:** Người dùng truy cập màn hình 'Develop Mini Task Manager Application'.\n- **Then:** Hệ thống hiển thị đầy đủ các trường thông tin cần thiết và các nút thao tác tương ứng.\n\n**AC2 — Luồng xử lý chính (Happy Path):**\n- **When:** Người dùng nhập dữ liệu hợp lệ và bấm xác nhận.\n- **Then (dự thảo):** Hệ thống lưu dữ liệu hợp lệ và phản hồi; SLA cần được chủ yêu cầu xác định, chưa có bằng chứng về ngưỡng hiệu năng.\n\n**AC3 — Xử lý ngoại lệ & Bảo mật:**\n- **When:** Dữ liệu đầu vào sai định dạng hoặc phiên đăng nhập hết hạn.\n- **Then:** Hệ thống hiển thị thông báo lỗi rõ ràng tại vị trí tương ứng và không lưu bản ghi lỗi.\n\n> Trích dẫn dữ liệu nguồn: Work Package #379 (lock_version: 1)",
+      "references": [
+        {
+          "schema_version": 1,
+          "work_package_id": 379,
+          "lock_version": 1
+        }
+      ],
+      "receipt_ids": [],
+      "model_used": false,
+      "error_code": null
+    }
+  },
+  "knowledge": {
+    "items": [
+      {
+        "title": "Develop Mini Task Manager Application",
+        "snippet": "Develop Mini Task Manager Application\n**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n...",
+        "native_id": 379,
+        "document_id": "1a565c6c8ce3fada472c68458ad7bc3d90be2d5416c3e0a676be0679ed28ea82",
+        "lock_version": 1,
+        "source_id": "actor:20:wp:379",
+        "score": 0.03279,
+        "citation": "/work_packages/379",
+        "match_type": "HYBRID_RRF"
+      }
+    ],
+    "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+    "dense_state": "READY",
+    "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+    "model_used": false
+  },
+  "profiles": {
+    "supervisor": {
+      "agent": "supervisor",
+      "runtime": "qldapm-local",
+      "skill": "engineering-planning",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "bounded ownership/claim/handoff; Paperclip/NEXUS principles"
+    },
+    "pm": {
+      "agent": "pm",
+      "runtime": "qldapm-local",
+      "skill": "engineering-planning",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "Senior Project Manager / Sprint Prioritizer"
+    },
+    "ba": {
+      "agent": "ba",
+      "runtime": "qldapm-local",
+      "skill": "engineering-planning",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "Requirements Analyst"
+    },
+    "dev": {
+      "agent": "dev",
+      "runtime": "openclaw",
+      "skill": "engineering-development",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "Senior Developer / Debugging Specialist"
+    },
+    "reviewer": {
+      "agent": "reviewer",
+      "runtime": "openclaw",
+      "skill": "engineering-review",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "Code Reviewer / Reality Checker"
+    },
+    "qa": {
+      "agent": "qa",
+      "runtime": "openclaw",
+      "skill": "engineering-qa",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "API Tester / Evidence Collector"
+    }
+  }
+}

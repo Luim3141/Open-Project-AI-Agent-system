@@ -1,0 +1,15 @@
+# QLDAPM runtime recovery implementation plan — 05/11/2026
+
+> Execute sequentially with the primary agent using the existing worker/service. No new orchestration, coding admission, quota changes, RAG work, GitHub writes or DR.
+
+- [x] Read new Owner spec, latest checkpoint/source, actual Docker/WSL/task ownership. Baseline images still match. OpenClaw user service enabled/Restart=always/linger=yes but inactive since explicit stop. Worker startup fences then only observes idle health.
+- [x] Capture independent failing CLI/RPC/Docker probe and current durable state/P5/config/queue/checkpoints/outbox/workflow definitions. Keep raw sensitive logs and rollback files private.
+- [x] Add failing worker idle-recovery/health contracts. Minimal change: preserve terminal runtime fencing and singleton; existing health pulse starts a stopped service with bounded CLI/RPC convergence only when no active claim, no provider generation. Keep paused/delegation/budget state untouched. Verify no competing startup ownership or unsafe restart of active run.
+- [x] Deploy host worker changes with private rollback copies and stopped idle task, verify actual single worker + OpenClaw CLI/RPC + Docker-to-OpenClaw transport. Update architecture.md in the same change. Change container image only if reproduced source defect requires it; preserve qualified Core/Gateway where unchanged.
+- [x] Controlled Gateway, OpenClaw, n8n restarts; coordinated QLDAPM-only stop/start because unrelated birdsong Docker workloads are running. Record DOCKER_DESKTOP_RESTART_NOT_EXECUTED, not a fake Desktop PASS. Test WSL distro stop/start only after ownership/impact checks; otherwise service-level test with explicit limitation.
+- [x] Verify after restart durable modes/queue/checkpoints/unknown writes/budget/provider receipts/Project5, exact16published workflow pins and safe HMAC event read-back. Target role/tool/runner/admission/review/QA contracts changed by recovery; reuse unchanged successful390/391/394 receipts and prior221tests. No MAIN coding task or replay385/391/394. At most one isolated provider smoke only if non-generation evidence is insufficient and current quota permits.
+- [x] Browser affected controls/readiness/recovery/reader/navigation checks only; no fresh70button audit or p50/p95 campaign. Explain UI Weekly daemon schedule versus independent WF12 cron. Publish20answers, short startup checklist and honest acceptance; final PAUSED/delegationOFF/queue0, no duplicate processes, no unintended generation.
+
+Rollback: restore backed-up host worker/health/startup files, stop only owned task/services while idle, restart previous worker. For any container release use existing exact pair release guard and minimal snapshot. Never restore databases, delete volumes, alter credentials/access controls or terminate unrelated services.
+
+Acceptance complete within tested frozen scope: see ACCEPTANCE.md. Desktop/WSL distro/full live coding exclusions are explicit; performance gate waived. Final v2 Task/RPC verified, full coordinated containers scenario retains v1 lineage. No new subagents.

@@ -1,0 +1,30 @@
+{
+  "id": "4e3626a4-7af2-47ff-b1e7-c2bf38f602f1",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": null,
+  "deadline": 1793567997.3901768,
+  "definition": {
+    "acceptance": {},
+    "acceptance_file": null,
+    "base_branch": "main",
+    "base_unit": null,
+    "feedback": "QLDAPM-E2E-20261102-STABILIZATION-001: Add GET /tasks/{task_id}/exists to check whether a numeric task ID exists. Return HTTP 200 JSON {\"exists\": true} for an existing task and {\"exists\": false} for a missing task; return HTTP 422 for a non-integer ID. Add focused automated tests. Preserve GET /tasks/{task_id}, /tasks/summary, /healthz, CRUD and search; do not change the SQLite schema. Produce one isolated feature branch and PR; do not merge or deploy it.",
+    "kind": "planning",
+    "native_id": 379,
+    "source_hash": "e44b47e2e8610c4f5997b2716cea8caf63ba5aa76322e16eca36cb118dfd14d8",
+    "title": "PM/BA requirements and engineering backlog"
+  },
+  "engine": "openclaw",
+  "kind": "planning",
+  "native_id": 379,
+  "project_id": 6,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "QLDAPM-E2E-20261102-STABILIZATION-001",
+  "source_version": 4,
+  "spec": "**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n\n*   Backend: Python FastAPI\n    \n*   Database: SQLite\n    \n*   Frontend: HTML, CSS, JavaScript\n    \n*   Testing: pytest\n    \n*   Version Control: Git and GitHub\n    \n\n**Functional Requirements**\n\n1.  Create new tasks.\n    \n2.  View a list of tasks.\n    \n3.  Edit task information.\n    \n4.  Delete tasks.\n    \n5.  Update task status.\n    \n6.  Search and filter tasks.\n    \n7.  Persist data in SQLite.\n    \n8.  Provide a usable web interface.\n    \n\n**AI Development Workflow**\n\nThe AI team should:\n\n1.  Analyze requirements and define acceptance criteria.\n    \n2.  Break down the project into development tasks.\n    \n3.  Establish dependencies and propose a development schedule.\n    \n4.  Implement source code in the Git repository.\n    \n5.  Build and execute automated tests.\n    \n6.  Review the implementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[https://github.com/Luim3141/mini-task-manager](https://github.com/Luim3141/mini-task-manager)\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.",
+  "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+  "stage": "ADMITTED",
+  "unit": "requirements-planning-v1-e44b47e2e8610c4f",
+  "write_scope_ids": []
+}

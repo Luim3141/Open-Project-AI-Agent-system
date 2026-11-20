@@ -1,0 +1,206 @@
+<% content_for :header_tags do %><%= render "execution_style" %><% end %>
+<section class="execution-monitor" id="execution-monitor" data-endpoint="<%= project_qldapm_ai_execution_path(@project.identifier, params[:run_id], format: :json) %>">
+  <nav class="em-breadcrumb" aria-label="Điều hướng giám sát">
+    <% if params[:studio_task_id].to_s.match?(/\A[1-9]\d*\z/) %>
+      <%= link_to "Quay lại Agent Studio — Task ##{params[:studio_task_id]}", project_qldapm_ai_observer_path(@project.identifier, task_id: params[:studio_task_id]) %>
+      <span class="em-breadcrumb-sep">/</span>
+    <% end %>
+    <%= link_to "AI Assistant", project_qldapm_ai_path(@project.identifier) %>
+    <span class="em-breadcrumb-sep">/</span>
+    <%= link_to "Lịch sử xử lý", project_qldapm_ai_executions_path(@project.identifier) %>
+    <span class="em-breadcrumb-sep">/</span>
+    <span>Chi tiết Execution</span>
+  </nav>
+
+  <header class="em-header">
+    <div class="em-header-left">
+      <div class="em-eyebrow">
+        <span class="em-eyebrow-dot"></span>
+        <span>AI Multi-Agent Execution Monitor</span>
+      </div>
+      <h2>Giám sát điều phối AI Multi-Agent</h2>
+      <div class="em-request-box">
+        <div class="em-request-label">Yêu cầu người dùng</div>
+        <p id="em-request">Đang tải yêu cầu…</p>
+      </div>
+    </div>
+    <div class="em-header-right">
+      <div class="em-header-badges">
+        <span class="em-badge" id="em-state">Đang tải…</span>
+        <span class="em-mode-pill" id="em-mode"></span>
+      </div>
+      <button type="button" class="em-btn em-btn-primary" id="em-presentation-toggle" title="Chế độ trình chiếu toàn màn hình">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        <span>Chế độ trình chiếu</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="em-status-banner em-presentation-hide" id="em-status-bar">
+    <span id="em-connection" role="status" aria-live="polite">Đang đọc execution qua phiên đăng nhập của bạn.</span>
+    <button type="button" class="em-btn em-btn-primary" id="em-reconnect" hidden>Thử kết nối lại</button>
+  </div>
+
+  <dl id="em-metadata" class="em-metadata em-presentation-hide"></dl>
+  
+  <section id="em-metrics" class="em-metrics em-presentation-hide" aria-label="Chỉ số thực thi"></section>
+  
+  <p id="em-warnings" class="em-warning" hidden></p>
+
+  <div class="em-layout">
+    <!-- GRAPH SECTION -->
+    <section class="em-card" aria-labelledby="em-graph-title">
+      <div class="em-section-head">
+        <div>
+          <h3 id="em-graph-title">Sơ đồ điều phối Multi-Agent</h3>
+          <p class="em-section-subtitle">Đường nét đứt: Supervisor giao việc · Đường liền: Phụ thuộc dữ liệu hoàn tất</p>
+        </div>
+        <div class="em-toolbar">
+          <button type="button" class="em-btn em-btn-icon" id="em-zoom-in" aria-label="Phóng to sơ đồ" title="Phóng to">+</button>
+          <button type="button" class="em-btn em-btn-icon" id="em-zoom-out" aria-label="Thu nhỏ sơ đồ" title="Thu nhỏ">−</button>
+          <button type="button" class="em-btn" id="em-fit" title="Vừa toàn bộ khung nhìn">Vừa màn hình</button>
+          <button type="button" class="em-btn" id="em-auto-layout" title="Tự động sắp xếp sơ đồ thông minh">Tự động sắp xếp</button>
+          <button type="button" class="em-btn" id="em-reset-layout" title="Khôi phục bố cục mặc định">Đặt lại bố cục</button>
+          <button type="button" class="em-btn" id="em-compact" aria-pressed="false" title="Thu gọn / mở rộng kích thước node">Thu gọn node</button>
+        </div>
+      </div>
+
+      <div class="em-graph-wrap">
+        <svg id="em-graph" role="group" aria-label="Sơ đồ agent tương tác. Chọn node bằng chuột hoặc bàn phím." tabindex="0"></svg>
+      </div>
+
+      <div class="em-graph-legend">
+        <div class="em-legend-item">
+          <span class="em-legend-line assignment"></span>
+          <span>Supervisor giao việc</span>
+        </div>
+        <div class="em-legend-item">
+          <span class="em-legend-line dependency"></span>
+          <span>Phụ thuộc dữ liệu</span>
+        </div>
+        <div class="em-legend-item">
+          <span class="em-legend-line highlight"></span>
+          <span>Luồng node đang chọn</span>
+        </div>
+        <div class="em-legend-item">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--em-success)"></span>
+          <span>Hoàn tất</span>
+        </div>
+      </div>
+
+      <details id="em-table-view" style="margin-top: 14px;">
+        <summary style="font-weight: 600; color: var(--em-muted);">Xem dạng bảng danh sách node (Hỗ trợ trình đọc màn hình)</summary>
+        <div class="em-table-wrap" style="margin-top: 8px;">
+          <table>
+            <caption>Các node của execution</caption>
+            <thead>
+              <tr>
+                <th>Agent / nhiệm vụ</th>
+                <th>Trạng thái</th>
+                <th>Phụ thuộc</th>
+                <th>Gemini calls / Token</th>
+              </tr>
+            </thead>
+            <tbody id="em-node-table"></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <!-- AGENT DETAIL PANEL -->
+    <aside class="em-card em-detail" aria-labelledby="em-detail-title">
+      <div class="em-detail-header">
+        <h3 id="em-detail-title">Chi tiết Agent</h3>
+        <p id="em-detail-hint">Chọn một node trên sơ đồ để xem nhiệm vụ, phân tích và kết quả riêng biệt.</p>
+      </div>
+
+      <div class="em-tabs-nav" role="tablist">
+        <button type="button" class="em-tab-btn active" id="tab-btn-overview" role="tab" aria-selected="true" data-tab="overview">Thông tin chính</button>
+        <button type="button" class="em-tab-btn" id="tab-btn-output" role="tab" aria-selected="false" data-tab="output">Kết quả xử lý</button>
+        <button type="button" class="em-tab-btn" id="tab-btn-fields" role="tab" aria-selected="false" data-tab="fields">Tất cả thông số</button>
+      </div>
+
+      <!-- TAB 1: OVERVIEW -->
+      <div class="em-tab-panel active" id="tab-panel-overview" role="tabpanel">
+        <dl id="em-agent-summary" class="em-detail-grid"></dl>
+      </div>
+
+      <!-- TAB 2: OUTPUT -->
+      <div class="em-tab-panel" id="tab-panel-output" role="tabpanel">
+        <div class="em-output-header">
+          <h4>Nội dung kết quả</h4>
+          <span id="em-output-origin" class="em-muted"></span>
+        </div>
+        <div id="em-agent-output" class="em-output">Chưa chọn agent.</div>
+        <div style="margin-top: 12px;">
+          <h4 style="font-size:12px;text-transform:uppercase;color:var(--em-muted);margin:0 0 6px;">Nguồn tham chiếu</h4>
+          <div id="em-agent-sources" class="em-sources-list"></div>
+        </div>
+      </div>
+
+      <!-- TAB 3: COMPLETE FIELDS (Retained for 100% test compatibility) -->
+      <div class="em-tab-panel" id="tab-panel-fields" role="tabpanel">
+        <dl id="em-agent-fields" class="em-detail-grid"></dl>
+      </div>
+    </aside>
+  </div>
+
+  <!-- TIMELINE & REPLAY SECTION -->
+  <section class="em-card em-presentation-hide" aria-labelledby="em-timeline-title">
+    <div class="em-section-head">
+      <div>
+        <h3 id="em-timeline-title">Timeline thực thi và phát lại</h3>
+        <p class="em-section-subtitle">Chỉ hiển thị các sự kiện đã ghi nhận trong trace; không ước lượng thời gian cho agent thiếu telemetry.</p>
+      </div>
+      <div>
+        <label for="em-event-agent" style="font-size: 12px; font-weight: 600; color: var(--em-muted); margin-right: 6px;">Lọc agent:</label>
+        <select id="em-event-agent" style="height: 32px; padding: 2px 8px; border-radius: 4px; border: 1px solid var(--em-border);">
+          <option value="">Tất cả</option>
+        </select>
+      </div>
+    </div>
+
+    <fieldset id="em-replay" disabled>
+      <legend>Phát lại lịch sử (Readonly replay · Không gọi AI)</legend>
+      <button type="button" class="em-btn em-btn-primary" id="em-play">Phát lại (1 sự kiện/giây)</button>
+      <label for="em-replay-position" style="font-size:12px;color:var(--em-muted);margin-left:8px;">Vị trí sự kiện:</label>
+      <input type="range" id="em-replay-position" min="0" max="0" value="0">
+      <span id="em-replay-label">0 / 0</span>
+      <button type="button" class="em-btn" id="em-present">Về kết quả cuối</button>
+    </fieldset>
+
+    <ol id="em-timeline" class="em-timeline"></ol>
+  </section>
+
+  <!-- FINAL REPORT SECTION -->
+  <section class="em-card em-presentation-hide" aria-labelledby="em-final-title">
+    <div class="em-section-head">
+      <div>
+        <h3 id="em-final-title">Tổng hợp báo cáo cuối cùng</h3>
+        <p class="em-section-subtitle">Phân tích và giải pháp hoàn chỉnh từ Multi-Agent · Reviewer local xác thực tham chiếu và ranh giới nghiệp vụ.</p>
+      </div>
+      <div class="em-toolbar">
+        <button type="button" class="em-btn active" id="em-report-tab-formatted">Báo cáo phân tách</button>
+        <button type="button" class="em-btn" id="em-report-tab-raw">Nội dung nguyên bản</button>
+      </div>
+    </div>
+
+    <!-- Structured Segmented View -->
+    <div id="em-final-segmented" class="em-final-segmented-view">
+      <!-- Populated dynamically by client JS -->
+    </div>
+
+    <!-- Raw Output View (Always preserved for test & source integrity) -->
+    <div id="em-final-raw-wrap" style="display: none;">
+      <div id="em-final-output" class="em-output">Chưa có kết quả.</div>
+    </div>
+
+    <div style="margin-top: 16px;">
+      <h4 style="font-size: 13px; font-weight: 700; color: var(--em-text); margin: 0 0 8px;">Dữ liệu nguồn xác thực</h4>
+      <div id="em-final-sources" class="em-sources-list"></div>
+    </div>
+  </section>
+
+  <noscript>Trang giám sát cần JavaScript để đọc dữ liệu và tương tác sơ đồ. Bạn vẫn có thể mở kết quả và lịch sử trong AI Assistant.</noscript>
+</section>
+<%= render "execution_client" %>

@@ -1,0 +1,6 @@
+# Merge this block manually; do not overwrite the existing Jira MCP configuration.
+# Default actor BE21 must finish local registration. No credential is embedded here.
+[mcp_servers.qldapm_openproject]
+command = "pwsh"
+args = ["-NoProfile", "-File", "D:\\AI project\\QLDAPM chat\\openproject\\ai\\Start-OpenProjectMCP.ps1", "-UserId", "21"]
+# Add "-Remote" to args to forward through the verified current AI Quick Tunnel.

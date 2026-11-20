@@ -1,0 +1,41 @@
+{
+  "scope": "ISOLATED_NEW_FIXTURE_USERS_ONLY",
+  "images": {
+    "gateway": {
+      "tag": "qldapm-rd-gateway:20261018-d6d035b12f",
+      "image": "sha256:16d40bc62157cf2bddc90217874be9e5aa81579fc9acedc92a6aaf69314a2046",
+      "exit_code": 0,
+      "source_sha256": "d6d035b12f672b309ec39d20e3436d30fb19d6e9363942d3392979007613d21a",
+      "base": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233"
+    },
+    "core": {
+      "tag": "qldapm-rd-core:20261018-9b58d31558",
+      "exit_code": 0,
+      "source_sha256": "9b58d315581116c935f07c33aecc776fed91b71469aff91a321a41b4f2f65448",
+      "base": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "image": "sha256:dd4444702e4ece6bea5002d140bf216d40c3cbad8fe964f108dbdc885e366ac4"
+    },
+    "quick-tunnel": {
+      "tag": "qldapm-rd-quick-tunnel:20261018-56a6cc1ea0",
+      "exit_code": 0,
+      "source_sha256": null,
+      "base": null,
+      "image": "sha256:eb4cb5b6f52946912fec82300c8a79df44059081d1c99710948fe0ca133d95df"
+    }
+  },
+  "started_at": 1792316186.3142707,
+  "checks": [
+    {
+      "id": "UAT-PM-LOGIN",
+      "expected": "Native login/TOTP identifies synthetic actor",
+      "status": "PASS",
+      "actual": {
+        "http": 200,
+        "id": 13
+      },
+      "exit_code": 0
+    }
+  ],
+  "provider_calls_requested": 0,
+  "serving_native_mutations": 0
+}

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/core/overlay/config/initializers/qldapm_gates.rb": "4920111b4252cdffbe8f82b325b5bd5612e2ec8a7ee54c88ac378265603aa8ef"
+  },
+  "checks": {
+    "observer": true,
+    "notifications": true,
+    "core": true,
+    "security": true
+  },
+  "evidence": {
+    "scope": "Only mapping observer to existing view_work_packages permission; runtime source parity checked by release helper",
+    "permission_regression": "RED before mapping; GREEN after",
+    "core_syntax": "PASS",
+    "journal_tests": {
+      "tests": 2,
+      "assertions": 4
+    },
+    "bot_production_image": {
+      "tests": 35,
+      "result": "PASS"
+    },
+    "gateway_notifications": "Unchanged sources: reuse qualification-v4 immutable tests and runtime-data-smoke",
+    "client_cache": "PASS"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "observed_at": "2026-10-24T22:10:51.001867+00:00",
+  "status": "PENDING_EXACT_HUMAN_APPROVAL",
+  "purpose": "One new technical resource validates explicit Native dates, priority, own Owner18 create, BE role assignment, readback, duplicate409 and RAG; not full WF09 closure or Native relation proof",
+  "actor": 18,
+  "project_id": 5,
+  "proposal_id": "f12f00f0-820f-4e91-ae39-97ea00d496fa",
+  "proposal_hash": "60f058ac0c373f5c025cc01d8e37c624c76fb24757ee5d3bae83323f097bbb02",
+  "proposal_expires": 1792880750.8240845,
+  "command": {
+    "_gateway_mode": "native",
+    "action": "create_work_package",
+    "arguments": {
+      "assignee_role": "BE",
+      "description": "Technical schedule/readback test only. Not a completed business task.\n\nAC1: Native startDate is 2026-10-26 and dueDate is 2026-10-27.\nAC2: Normal priority8 and BE21 assignment are preserved.\n\nNo parent, child, comment, transition, relation or delete is requested.",
+      "due_date": "2026-10-27",
+      "priority_id": 8,
+      "source_id": "codex_schedule_20261025_once",
+      "source_references": [
+        {
+          "lock_version": 1,
+          "work_package_id": 371
+        }
+      ],
+      "start_date": "2026-10-26",
+      "status_id": 1,
+      "subject": "[CODEX TEST] Explicit Native schedule 20261025",
+      "type_id": 1
+    },
+    "auto_execute": false,
+    "idempotency_key": "codex-native-schedule-preview-20261025-once",
+    "preview": {
+      "new_work_package": {
+        "assignee_role": "BE",
+        "description": "Technical schedule/readback test only. Not a completed business task.\n\nAC1: Native startDate is 2026-10-26 and dueDate is 2026-10-27.\nAC2: Normal priority8 and BE21 assignment are preserved.\n\nNo parent, child, comment, transition, relation or delete is requested.",
+        "due_date": "2026-10-27",
+        "priority_id": 8,
+        "source_id": "codex_schedule_20261025_once",
+        "source_references": [
+          {
+            "lock_version": 1,
+            "work_package_id": 371
+          }
+        ],
+        "start_date": "2026-10-26",
+        "status_id": 1,
+        "subject": "[CODEX TEST] Explicit Native schedule 20261025",
+        "type_id": 1
+      },
+      "validation": "Native permission and gate checks run again at confirmation."
+    }
+  },
+  "native_before": {
+    "visible_work_packages": 337,
+    "fingerprint": "6cdc85d2e77773b81e37fe64bd51a3964b1dc301ba0579f66bd0b9aa4e75e4b4",
+    "source_371_version": 1
+  },
+  "expected_after": {
+    "visible_work_packages": 338,
+    "creates": 1,
+    "existing_wp_mutations": 0,
+    "new_resource_kept": true,
+    "initial_version": 0,
+    "startDate": "2026-10-26",
+    "dueDate": "2026-10-27",
+    "priority_id": 8,
+    "assignee_id": 21
+  },
+  "excluded": [
+    "WP370",
+    "existing WP edits",
+    "parent/child hierarchy",
+    "comment",
+    "transition",
+    "relation",
+    "delete",
+    "credentials/password/TOTP",
+    "Staging",
+    "model generation",
+    "external notification adapter"
+  ],
+  "side_effects": "One standard Native creation journal/in-app events under current Main settings; no new recipient/channel. Actor and canonical RAG refresh for the new resource only.",
+  "pre_approval_tests": [
+    "433 Windows tests PASS",
+    "421 image tests PASS,12 platform/Node cases PASS Windows",
+    "48 API contracts PASS",
+    "13 Main read-only checks PASS",
+    "36 Main QA policy checks PASS",
+    "Native form dates/priority/BE payload validation with no mutation"
+  ],
+  "recovery": "Keep the test resource. Unknown create/readback outcomes remain held; inspect original source_id/request receipt, never replay POST or create a replacement approval. Retry cache sync only. No deletion/old-DB restore.",
+  "native_writes_performed": 0,
+  "approval_consumed": false,
+  "rollback": "Gateway schema fix app rollback independent from Native test data; creation is not auto-deleted",
+  "package_sha256": "c51b024cca6588d2b629a3b1e9e13042b554dc16be1fc263e44d7b24cc7dfd13"
+}

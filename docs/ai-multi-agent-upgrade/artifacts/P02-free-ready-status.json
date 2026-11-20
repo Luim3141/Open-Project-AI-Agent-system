@@ -1,0 +1,93 @@
+{
+  "target": "staging",
+  "services": [
+    {
+      "service": "db",
+      "running": true,
+      "status": "running",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": false
+    },
+    {
+      "service": "staging-web",
+      "running": true,
+      "status": "running",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": false
+    },
+    {
+      "service": "staging-gateway",
+      "running": true,
+      "status": "running",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": false
+    },
+    {
+      "service": "n8n",
+      "running": true,
+      "status": "running",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": false
+    },
+    {
+      "service": "n8n-editor",
+      "running": true,
+      "status": "running",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": false
+    },
+    {
+      "service": "quick-tunnel",
+      "running": true,
+      "status": "running",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": false
+    },
+    {
+      "service": "local-backup",
+      "running": true,
+      "status": "running",
+      "exit_code": 0,
+      "oom_killed": false,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "stopped_requires_repair": false
+    }
+  ],
+  "all_healthy": true,
+  "provider": "READY",
+  "key_present": true,
+  "provider_network_checked": false,
+  "stopped_note": "Docker cannot distinguish every operator stop from an exit; use exit/OOM and private logs. Repair explicitly restores stopped containers.",
+  "access_page": "http://localhost:18090",
+  "access": {
+    "url": "https://parking-configuring-matt-tradition.trycloudflare.com",
+    "updated_at": "2026-10-15T17:45:03Z",
+    "native_web": "ready"
+  },
+  "provider_readiness": {
+    "state": "READY",
+    "last_successful_check": 1792087094.1807897,
+    "cached": true,
+    "network_checked_now": false,
+    "billing_checked_live": false
+  }
+}

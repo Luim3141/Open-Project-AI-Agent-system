@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-27T04:21:23.923128+00:00",
+  "status": "QUALIFIED_BACKUP_MAIN_READONLY_PREFLIGHT",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:chatgpt-provider-timeout-v1-20261027",
+      "image": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0"
+    },
+    "web": {
+      "tag": "qldapm-core:chatgpt-native-subtask-v1-20261027",
+      "image": "sha256:062282b33276dd2af79ae0d97f8043c482acbafdc14bb19bf83bbc401b02101c"
+    }
+  },
+  "source_before": {
+    "openproject/ai/core/overlay/app/models/qldapm/gate_policy.rb": "e40f5fdbe37adcee90e3a5ccdccbe1992a0799a57d11c133b0ba973ffd4bcf2e",
+    "openproject/ai/core/overlay/app/models/concerns/qldapm_gate_write.rb": "8e53e8f6145f58f5f2714436bd5cb22bf7edbf0de8ef2cb0bf7adcbfd782ba06"
+  },
+  "files": {
+    "openproject/ai/core/overlay/app/models/qldapm/gate_policy.rb": {
+      "kind": "core",
+      "target": "/app/app/models/qldapm/gate_policy.rb",
+      "sha256": "b9270f61092a6354935c25e637d17afc5615828214dcbd020abcb4d480fbafac"
+    },
+    "openproject/ai/core/overlay/app/models/concerns/qldapm_gate_write.rb": {
+      "kind": "core",
+      "target": "/app/app/models/concerns/qldapm_gate_write.rb",
+      "sha256": "be6770088d92db184775b0b1e0d986bb76916939fe4081ceb9ee83cc77a7893e"
+    }
+  },
+  "qualification": {
+    "core_fixture_programs": 20,
+    "prior_programs_retained": 19,
+    "actual_native": "CHATGPT_MAIN_C4_NATIVE_SUBTASK_CLONE_RESULT.json",
+    "gateway_unchanged_qualification": "Windows739PASS;Linux722PASS15skip2hostGitfail;Main73roles48contracts13readonly;fresh real3generation qualification and postlive375Native preservation PASS",
+    "source_scope": "Two Core policy/snapshot files, no Gateway/workflow/schema/configuration/Native data changes. All tests use actual deployed base Core and candidate Native clone; no model generation for this change.",
+    "limits": "Fixture gate facts are explicitly synthetic isolated decisions. This does not admit application artifacts, constitute human QA or authorize Main mutations."
+  },
+  "changed_workflows": [],
+  "unchanged_workflows": 16,
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "new_model_calls": 0,
+  "schema_changes": {
+    "native": false,
+    "gateway": false
+  },
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\native-subtask-deployment",
+  "rollback_images": {
+    "gateway": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0",
+    "web": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+  },
+  "authorization": "PUBLICATION_REDACTED",
+  "rollback": "Core-only previous46bf image/ui-bridge config rollback, retain all databases and full provider/QA/phase/WBS history. Gatewaye9 and all16workflow definitions preserved. No schema rollback or full DR claim.",
+  "scope": "Core-only actual Native four-state development Subtask policy with implementation/build/testcases/passedQA/currentindependentcode-test approvals/checklist/blockingbugs/completion. Server-generated native marker, legacy logical policy preserved. No Gateway/schema/RBAC membership/Native WP mutation/workflow/provider change."
+}

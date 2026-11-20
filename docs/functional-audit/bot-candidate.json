@@ -1,0 +1,40 @@
+{
+  "image": "sha256:3349636541d4cccaba044d40bcf3f25dcfd469d5cf7419a9ff3c39aa7b2437e7",
+  "base": "sha256:bd305805190cfba094f4169d7549eaedb3d7584246a932bc818047b81d4e59f8",
+  "engine_sha256": "30a55e522ffcbf3f62dfb6fe2c91725309800a6f1866c26099976e82e5ed99e0",
+  "sources": {
+    "engine.py": "30a55e522ffcbf3f62dfb6fe2c91725309800a6f1866c26099976e82e5ed99e0",
+    "tools.py": "6aaeafb635f2f9be1599c8bd3b665642f30b6b9b78a72c3e8c78c2592e0e04f1",
+    "system_instructions.py": "61b3f4091776936253a8e060f9570ab2b9b6de6273b3266472f05795e1a1dc69"
+  },
+  "tests_pass": true,
+  "before_semantic": {
+    "env_sha256": "9c27c7e106069519be35ebce825af9db986520f6d6793f39ad9fad730c25e280",
+    "mounts": [
+      [
+        "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway/gemini.key",
+        "/run/qldapm-gemini.key",
+        false
+      ],
+      [
+        "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/telegram-ai/secrets",
+        "/run/secrets",
+        false
+      ],
+      [
+        "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/telegram-ai/state",
+        "/state",
+        true
+      ]
+    ],
+    "networks": [
+      "qldapm-ai_ai"
+    ],
+    "restart": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    }
+  },
+  "before_id": "aeadf80d98ef194757ff3d0b5cf982bd3429f1a4725f8d8b95827cc237556e2c",
+  "scope": "Telegram acceptance wording guard, typed checkpoint counts, resolved model receipt; no dependency/config changes"
+}

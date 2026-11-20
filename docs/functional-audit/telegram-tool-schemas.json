@@ -1,0 +1,416 @@
+[
+  {
+    "name": "list_projects",
+    "description": "Xác minh các project đã được cấu hình và được Gateway cho phép.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "search_tasks",
+    "description": "Tìm Work Packages theo tiêu đề trong project đang được phép.",
+    "parameters_json_schema": {
+      "properties": {
+        "query": {
+          "default": "",
+          "maxLength": 200,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_task_details",
+    "description": "Work Package thực tế theo ACL hiện hành.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_project_options",
+    "description": "get project options qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_task_progress",
+    "description": "Trạng thái hiện tại, stages, evidence, freshness và acceptance của một Task; nguồn chung với Visualizer.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_task_agent_runs",
+    "description": "Tất cả lượt Agent đã được ghi nhận cho Task, bao gồm checkpoint và resume.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_current_agent",
+    "description": "get current agent qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_run_details",
+    "description": "get run details qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_run_errors",
+    "description": "get run errors qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_checkpoint_status",
+    "description": "get checkpoint status qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_task_artifacts",
+    "description": "get task artifacts qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_github_prs",
+    "description": "get github prs qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_review_results",
+    "description": "get review results qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_qa_results",
+    "description": "get qa results qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "search_knowledge",
+    "description": "search knowledge qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {
+        "query": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_worker_status",
+    "description": "get worker status qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_queue_status",
+    "description": "get queue status qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_system_health",
+    "description": "get system health qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_n8n_status",
+    "description": "get n8n status qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_active_agents",
+    "description": "Agent đang RUNNING trong project hiện tại; dùng cho câu hỏi toàn cục, không dùng lịch sử/current Task cũ. Giới hạn phạm vi Observer được ghi rõ.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_blocked_tasks",
+    "description": "Danh sách Task có runtime BLOCKED trong project hiện tại; dùng thay search tiêu đề để xác minh blocker, giữ scope/truncation.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_pending_approvals",
+    "description": "Các Task đang AWAITING_OWNER_APPROVAL trong phạm vi Observer của project hiện tại; không tự approve.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "create_task",
+    "description": "Tạo đề xuất Work Package bằng type_id thật lấy từ project options; không tự chấp thuận.",
+    "parameters_json_schema": {
+      "properties": {
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 6000,
+          "type": "string"
+        },
+        "type_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "title",
+        "type_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "update_task",
+    "description": "Tạo đề xuất đổi tiêu đề Task; version/approval do Gateway kiểm tra.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "title"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "request_task_execution",
+    "description": "Đề nghị chạy một lần đúng Task nếu catalog và Gateway cho phép.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "resume_task",
+    "description": "Đề nghị tiếp tục đúng Task/Run từ checkpoint, yêu cầu xác nhận riêng.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "run_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "pause_task",
+    "description": "Đề nghị PAUSED cho engineering project; tác động toàn bộ queue, yêu cầu xác nhận.",
+    "parameters_json_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "set_execution_mode",
+    "description": "Đề nghị thay đổi OFF/AUTO/PAUSED hoặc một lượt RUN_ONCE; yêu cầu xác nhận.",
+    "parameters_json_schema": {
+      "properties": {
+        "mode": {
+          "enum": [
+            "OFF",
+            "AUTO",
+            "PAUSED",
+            "RUN_ONCE"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "request_github_sync",
+    "description": "request github sync qua dữ liệu Gateway thật.",
+    "parameters_json_schema": {
+      "properties": {},
+      "type": "object"
+    }
+  }
+]

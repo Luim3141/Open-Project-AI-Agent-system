@@ -1,0 +1,69 @@
+{
+  "credentials": [
+    {
+      "id": "2w9dSdmYbywZDuMB",
+      "type": "httpHeaderAuth",
+      "cipher_sha256": "496e3dbe75ac5ff39f8968f6ae01392b4957d85c4b5b2a708f923ecdc05487b5"
+    },
+    {
+      "id": "DBWkxwb2izrbu17C",
+      "type": "httpHeaderAuth",
+      "cipher_sha256": "b88832da4b18482d090f95c501d3af2da55fbcef395dcf6aa93deb912adea50d"
+    },
+    {
+      "id": "qldapmCommandHmac",
+      "type": "crypto",
+      "cipher_sha256": "b7fbec02c2e1dbd59613c37aeac5600b18989af4220d44878aafc22d00f3854f"
+    },
+    {
+      "id": "qldapmMachineStatus",
+      "type": "httpHeaderAuth",
+      "cipher_sha256": "a8b61ac9241d9d48773587c6b9f6de053bf2bca4f67e917f604c2b8ce2da0eb7"
+    }
+  ],
+  "weekly": {
+    "id": "ZkgS8RZbPRA2zbhQ",
+    "name": "WF12: Weekly Summary",
+    "active": true,
+    "version": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+    "settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "all",
+      "saveDataSuccessExecution": "all",
+      "saveExecutionProgress": true,
+      "saveManualExecutions": true,
+      "executionTimeout": 120,
+      "binaryMode": "separate"
+    },
+    "schedules": [
+      {
+        "id": "weekly_schedule",
+        "disabled": false,
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 0 17 * * 5"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "http_destinations": [
+      {
+        "id": "weekly_summary",
+        "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+      },
+      {
+        "id": "weekly_report",
+        "url": "http://qldapm-ai-gateway-1:8090/internal/automation/commands"
+      }
+    ],
+    "operations": [
+      "weekly_summary"
+    ]
+  }
+}

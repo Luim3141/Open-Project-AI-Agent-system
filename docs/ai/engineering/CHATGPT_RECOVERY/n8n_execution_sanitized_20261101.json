@@ -1,0 +1,275 @@
+[
+  {
+    "workflow": "WF01: Local Document Ingestion",
+    "execution_id": 2612,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Return Actual Gateway Result",
+        "statusCode": 409,
+        "body_error": "FILE_DOCUMENT_REVISION_CHANGED"
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 409,
+        "body_error": "FILE_DOCUMENT_REVISION_CHANGED"
+      }
+    ]
+  },
+  {
+    "workflow": "WF02: OpenProject Event Sync",
+    "execution_id": 2541,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Return Actual Gateway Result",
+        "statusCode": 200
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200
+      }
+    ]
+  },
+  {
+    "workflow": "WF03: Natural Language Request Orchestrator",
+    "execution_id": 2604,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Start Or Poll Persisted Caller Run",
+        "statusCode": 200
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200
+      }
+    ]
+  },
+  {
+    "workflow": "WF04: Multi-Agent Execution Tracking",
+    "execution_id": 2701,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Fetch Gateway Agent Trace",
+        "statusCode": 200
+      },
+      {
+        "node": "Format Trace Summary",
+        "statusCode": 200,
+        "body_status": "TRACE_RETRIEVED"
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200,
+        "body_status": "TRACE_RETRIEVED"
+      }
+    ]
+  },
+  {
+    "workflow": "WF05: Native API Approval Workflow",
+    "execution_id": 2545,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Fetch Gateway Proposal",
+        "statusCode": 200
+      },
+      {
+        "node": "Process PM Approval Decision",
+        "statusCode": 400,
+        "body_error": "USE_WF06_FOR_EXACT_PM_DECISION"
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 400,
+        "body_error": "USE_WF06_FOR_EXACT_PM_DECISION"
+      }
+    ]
+  },
+  {
+    "workflow": "WF06: Native API Execution & Verification",
+    "execution_id": 2547,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Authenticated Gateway PM Decision",
+        "statusCode": 409,
+        "body_error": "INVALID_ARGUMENTS"
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 409,
+        "body_error": "INVALID_ARGUMENTS"
+      }
+    ]
+  },
+  {
+    "workflow": "WF07: Daily Project Brief",
+    "execution_id": 2812,
+    "execution_status": "error",
+    "stored_nonempty_authorization": false,
+    "stored_nonempty_transport_secret": false,
+    "outputs": [
+      {
+        "node": "Gateway status",
+        "result_status": "PARTIAL",
+        "result_state": "COMPLETED"
+      }
+    ]
+  },
+  {
+    "workflow": "WF08: Sprint Risk",
+    "execution_id": 2549,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Analyze Native Relations And Persist Risk Snapshot",
+        "statusCode": 200
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200
+      }
+    ]
+  },
+  {
+    "workflow": "WF09: Bug Lifecycle Automation",
+    "execution_id": 2551,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Return Actual Gateway Result",
+        "statusCode": 200
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200
+      }
+    ]
+  },
+  {
+    "workflow": "WF10: Task Orchestration & Decomposition",
+    "execution_id": 2552,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Return Actual Gateway Result",
+        "statusCode": 200
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200
+      }
+    ]
+  },
+  {
+    "workflow": "WF11: QA Gate Transition",
+    "execution_id": 2613,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Read Native Evidence And Transition Errors",
+        "statusCode": 200
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200
+      }
+    ]
+  },
+  {
+    "workflow": "WF12: Weekly Summary",
+    "execution_id": 2750,
+    "execution_status": "error",
+    "stored_nonempty_authorization": false,
+    "stored_nonempty_transport_secret": false,
+    "outputs": [
+      {
+        "node": "Weekly Gateway status",
+        "result_status": "PARTIAL",
+        "result_state": "COMPLETED"
+      }
+    ]
+  },
+  {
+    "workflow": "WF13: Second Brain RAG Re-indexing",
+    "execution_id": 2557,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Return Actual Gateway Result",
+        "statusCode": 200
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200
+      }
+    ]
+  },
+  {
+    "workflow": "WF14: Durable RAG Recovery",
+    "execution_id": 2558,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Read Or Requeue Own Persisted RAG Job",
+        "statusCode": 200
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200
+      }
+    ]
+  },
+  {
+    "workflow": "WF15: Reconciliation & Drift Detection",
+    "execution_id": 2559,
+    "execution_status": "success",
+    "stored_nonempty_authorization": true,
+    "stored_nonempty_transport_secret": true,
+    "outputs": [
+      {
+        "node": "Reconcile Exact Native SQLite Qdrant Identity",
+        "statusCode": 200
+      },
+      {
+        "node": "Reply With Gateway Status",
+        "statusCode": 200
+      }
+    ]
+  },
+  {
+    "workflow": "WF16: Main Health Monitoring",
+    "execution_id": 2864,
+    "execution_status": "success",
+    "stored_nonempty_authorization": false,
+    "stored_nonempty_transport_secret": false,
+    "outputs": []
+  }
+]

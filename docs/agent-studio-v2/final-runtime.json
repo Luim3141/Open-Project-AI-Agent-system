@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "source_commit": "7461c66bc39a5857e58d0a01e1f385d0e03e0b6e",
+  "images": {
+    "core": {
+      "image": "sha256:784a641f79cdbb6e82fcccfd2b7abd800b0deeb555509fdb187dbbeace76694d",
+      "state": "running",
+      "health": "healthy"
+    },
+    "gateway": {
+      "image": "sha256:dbd6fca4c8f8efc559b7b266eb569d64d43af348ec2c180dbcc084d6be4e7381",
+      "state": "running",
+      "health": "healthy"
+    },
+    "telegram": {
+      "image": "sha256:035d9bf662ff92b8783ccb0a3cb94b5e03d0458b4b8abf34fc6e42c862199146",
+      "state": "running",
+      "health": "healthy"
+    },
+    "n8n": {
+      "image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+      "state": "running",
+      "health": null
+    }
+  },
+  "protected_state_unchanged": true,
+  "control": [
+    [
+      6,
+      "OFF"
+    ]
+  ],
+  "active": 0,
+  "bot_health": {
+    "state": "POLLING",
+    "telegram": "CONNECTED",
+    "gateway": {
+      "state": "REACHABLE",
+      "check": "HTTP_HEALTH_ONLY"
+    },
+    "gemini": "CONFIGURED_UNVERIFIED",
+    "notifications": {
+      "state": "DELIVERY_VERIFIED",
+      "outbox": {
+        "SENT": 5
+      }
+    },
+    "updated_at": 1793938933.5642157,
+    "bot_username": "qldapm_commander_bot",
+    "missing": []
+  },
+  "n8n_health": {
+    "http_status": 200,
+    "body": {
+      "status": "ok"
+    }
+  },
+  "final_immutable_ruby_erb": "V8 controller plus both templates compile PASS via network-none read-only container",
+  "main_checks": 13,
+  "fixture_checks": 17
+}

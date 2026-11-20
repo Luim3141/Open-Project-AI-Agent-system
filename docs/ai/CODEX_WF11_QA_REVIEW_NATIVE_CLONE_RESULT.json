@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-26T04:20:03.599386+00:00",
+  "status": "PASS_ACTUAL_NATIVE_CLONE_QA_REVIEWER_FRESHNESS_ATOMIC_AUDIT_AND_RETEST",
+  "images": {
+    "database": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+    "web": "sha256:26ed4964d63eb48dfe52f4f05776e062d09c51b6972cb142c3c8be1d88e75c82"
+  },
+  "gateway_image": "sha256:7e1df78efa229e5c0d97bb92714e5dd81ae8a3ca23ed71b0be741cc218fadcc7",
+  "created_fixture_native_id": 376,
+  "checks": [
+    "ACTUAL_SQLITE_REVIEW_AUDIT_ROLLBACK",
+    "ACTUAL_CLONED_NATIVE_QA_REVOCATION_BLOCKS_MANAGER",
+    "TWO_INDEPENDENT_SIMULATED_FIXTURE_REVIEWS_AND_REPLAY409",
+    "ACTUAL_CLONED_NATIVE_PM_REVOCATION_INVALIDATES_READINESS",
+    "SOURCE_VERSION_INVALIDATION_REJECTION_NEW_ACTUAL_RETEST_AND_REVIEW"
+  ],
+  "fixture_proposals": [
+    {
+      "id": "90a32890-2e78-4244-ae4d-e391ae1cf75a",
+      "hash": "77c93e2ca382b8c794931915934ff6b8eeef33d290e5d1a9abbad3db6f1401b1",
+      "command_sha256": "559a2d7686f1bcd0bffca490a60a927667cf9c4203ef6f99d12af3f3fa6c8179",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "id": "6e3b4da2-e6db-444b-ac64-8e22b917e6b1",
+      "hash": "7128886ee19afab00fc8d5385bd4334950dc2b38c9ee9d1e8852bbca2cdbcac4",
+      "command_sha256": "1fdfbb88c70bcf0f47639998588b407ab7edc84882d669d3a1ff3796ef8916d0",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    }
+  ],
+  "fixture_human_decisions": "SIMULATED_TEST_FIXTURE_ONLY; real own Native identities, never Main human approval",
+  "fixture_native_writes": 2,
+  "native_status_transitions": 0,
+  "pending_rag_jobs": [
+    {
+      "id": "07d086e7-fc39-590d-bf98-14fd96d0f581",
+      "native_id": 376,
+      "state": "pending"
+    },
+    {
+      "id": "b221f93b-8420-5587-9a0b-b7213ce23f60",
+      "native_id": 376,
+      "state": "pending"
+    }
+  ],
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "new_model_calls": 0,
+  "staging_operations": false,
+  "limits": [
+    "Tests cover fixed Native readback assertions, not arbitrary application QA or complete Bug closure",
+    "Only new isolated Task is changed; original375 WP rows preserved by host driver",
+    "Original cloned QA/PM accounts temporarily locked/unlocked solely to qualify revocation; no Main account action/password/token/TOTP change",
+    "Durable RAG jobs queued only; no vector completion claim",
+    "No business status transition or release gate bypass"
+  ],
+  "original_data_security_hashes_unchanged": {
+    "original375_wp": "04ec20a24a553f3cea4deab0015c29ef",
+    "original_security": "f70b036f89136c95949c9a55e88a2edd",
+    "passwords": "1c8c563bc72ffd2e539f6d7e4c2f7db8",
+    "totp": "b967a7f8d325515bfcc415f507f3e075",
+    "tokens": "d2504324eea35a15febd4ed0566b1d9c"
+  },
+  "source_dump_sha256": "42532879dfbe596424d866eeaaa1e67b30b96d82d57f7194b7d7137365bb7b96"
+}

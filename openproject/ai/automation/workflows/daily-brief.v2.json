@@ -1,0 +1,201 @@
+{
+  "id": "qldapmDailyBrief",
+  "name": "QLDAPM — Daily brief (5 roles, zero LLM)",
+  "active": false,
+  "versionId": "27ba228d-96d9-4b27-8dc6-3747de7d4c04",
+  "nodes": [
+    {
+      "id": "manual",
+      "name": "Manual status",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "metadata",
+      "name": "Command metadata",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ { version: 1, kind: 'daily_brief', request_key: 'daily:' + $now.setZone('Asia/Bangkok').toISODate(), nonce: 'n8n:' + $workflow.id + ':' + $execution.id, issued_at: Math.floor($now.toSeconds()) } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "signature",
+      "name": "Sign command",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "action": "hmac",
+        "type": "SHA256",
+        "binaryData": false,
+        "value": "={{ 'QLDAPM-AUTOMATION-COMMAND-V1\\nPOST\\n/internal/automation/commands\\n1\\n' + $json.kind + '\\n' + $json.request_key + '\\n' + $json.nonce + '\\n' + $json.issued_at }}",
+        "dataPropertyName": "signature",
+        "encoding": "hex"
+      },
+      "credentials": {
+        "crypto": {
+          "id": "qldapmCommandHmac",
+          "name": "QLDAPM status command HMAC"
+        }
+      }
+    },
+    {
+      "id": "report",
+      "name": "Gateway status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        720,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://gateway:8090/internal/automation/commands",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-QLDAPM-Command-Signature",
+              "value": "={{ $json.signature }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { version: $json.version, kind: $json.kind, request_key: $json.request_key, nonce: $json.nonce, issued_at: $json.issued_at } }}",
+        "options": {
+          "timeout": 45000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qldapmMachineStatus",
+          "name": "QLDAPM Gateway status read only"
+        }
+      }
+    },
+    {
+      "id": "schedule",
+      "name": "Daily 09:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        180
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 0 9 * * *"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "startup",
+      "name": "After startup",
+      "type": "n8n-nodes-base.n8nTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        360
+      ],
+      "parameters": {
+        "events": [
+          "init"
+        ]
+      }
+    }
+  ],
+  "connections": {
+    "Manual status": {
+      "main": [
+        [
+          {
+            "node": "Command metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Command metadata": {
+      "main": [
+        [
+          {
+            "node": "Sign command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign command": {
+      "main": [
+        [
+          {
+            "node": "Gateway status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daily 09:00": {
+      "main": [
+        [
+          {
+            "node": "Command metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "After startup": {
+      "main": [
+        [
+          {
+            "node": "Command metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Bangkok",
+    "executionTimeout": 60,
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all",
+    "errorWorkflow": "qldapmWorkflowErrors"
+  }
+}

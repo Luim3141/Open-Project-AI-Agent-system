@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-25T19:23:02.718143+00:00",
+  "status": "QUALIFIED_GATEWAY_ONLY",
+  "tag": "qldapm-ai:codex-supervisor-qa-20261026",
+  "image": "sha256:f442384ebf72b23667032cff2bf3865016ee4f04f96fae6e5aabe7e2560ed32a",
+  "rollback_image": "sha256:6966fa98222f51b30f78f4221860a6f50fbec002bfcdc4f12ac7cede310326d4",
+  "rollback_tag": "qldapm-ai:codex-qa-preview-receipts-20261025",
+  "files": {
+    "openproject\\ai\\gateway\\service.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/service.py",
+      "sha256": "68079a3138572442527f2c921d48e9c2b1732d58f7e23000a9cd4a46aa048ee0",
+      "before_sha256": "1c3480f9aa4f404540ed4a2bccfbfe8477cbb5382a57ff78d0ac3441b4bb7458"
+    },
+    "openproject\\ai\\gateway\\supervisor.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/supervisor.py",
+      "sha256": "e9c6d8624877ec02f0795ba3cba5cd667a0f0cfad2d17f633afb5380aca1eef3",
+      "before_sha256": "764265b8e4da9bd134a6598491274564c9efa746c563848d4c128ccf214d2873"
+    },
+    "openproject\\ai\\gateway\\qa_agent.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/qa_agent.py",
+      "sha256": "6ea0960c8c77960f321f7e29bdbbb3d0ac93b320ae7ecdfbb6bbca055769f617",
+      "before_sha256": "4d296b697415cdec6404321eeeacea89113ccf6329630ad1773bc8381267e535"
+    },
+    "openproject\\ai\\gateway\\native_qa_runs.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/native_qa_runs.py",
+      "sha256": "12e49877dfe1d91cb10ed08a4f5c427d89fcd7da2962e079d9beff5a361689f8",
+      "before_sha256": "6e60788143e3006893b54db0f3f119cd018faa176fcb986424f720ad521b90d8"
+    }
+  },
+  "tests": {
+    "windows": {
+      "run": 478,
+      "passed": 478,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "linux": {
+      "run": 478,
+      "passed": 465,
+      "skipped": 13,
+      "errors": 0,
+      "failures": 0
+    },
+    "targeted": 53,
+    "core": "Unchanged; prior11 Ruby programs and actual Native atomic clone evidence retained"
+  },
+  "change": "Local Supervisor lazy current signed QA report, actor/project/version verified; no automatic runner/review/proposal/Native write/provider call.",
+  "native_writes": 0,
+  "model_calls": 0,
+  "workflow_changes": 0,
+  "staging_operations": false,
+  "backups": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\supervisor-qa-deployment",
+  "rollback": "Restore only previous Gateway image selector; retain all newer databases and histories"
+}

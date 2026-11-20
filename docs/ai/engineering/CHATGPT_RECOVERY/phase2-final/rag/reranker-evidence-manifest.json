@@ -1,0 +1,391 @@
+{
+  "utc": "2026-11-02T07:26:54.211832+00:00",
+  "private_cache": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\phase2-reranker",
+  "files": {
+    "asset-manifest.json": {
+      "bytes": 1413,
+      "sha256": "79d2f0e42968750ab0358eeb3297b778a031ab2c54f085de30401408537c6554"
+    },
+    "calibration-lock.json": {
+      "bytes": 825,
+      "sha256": "54e7c584c831b3c9d5751eeb4fad9f74f6bb27b4bc27d990f2eda1e44db53524"
+    },
+    "dev-candidates-rejected-slow.json": {
+      "bytes": 769630,
+      "sha256": "309c0fa1cf4e1109f727c9bbfb8b6cf800f92a60c422942f5c421cfbb7b4818f"
+    },
+    "dev-candidates.json": {
+      "bytes": 305527,
+      "sha256": "2d1f671be3b0e3b9391626189f15993c8d38624e9fa848ff9b54bdaa937a8aa6"
+    },
+    "dev-evaluation-rejected-slow.json": {
+      "bytes": 66085,
+      "sha256": "a123f5662517bd94b52d39c3162488dd189c9b041d0fdc2a65b53285c4cbebad"
+    },
+    "dev-evaluation-rejected-truncated256.json": {
+      "bytes": 68785,
+      "sha256": "7569d42477395003af1f15cb2ef5572ef79e8b92af4797e4ac3f6362e1d2662e"
+    },
+    "dev-evaluation.json": {
+      "bytes": 69242,
+      "sha256": "85f1e2c2e44656aaaeb96f2328735afa76361aad940be25e784e06b47054321f"
+    },
+    "dev-pairs.json": {
+      "bytes": 596830,
+      "sha256": "7e3c4628289134dcb420e864090901ff542f0fc536a121fa4ffb2491d4648971"
+    },
+    "dev-scores-rejected-slow.json": {
+      "bytes": 1829740,
+      "sha256": "a143f00ea24468b33d86ca94ed539846f8379907c83ffe90b095b03429db7cf0"
+    },
+    "dev-scores-rejected-truncated256.json": {
+      "bytes": 613390,
+      "sha256": "97e27ee135493248a158c7f29877de350dd2cba4e184d59ed2ad41a34d1e50ed"
+    },
+    "dev-scores.json": {
+      "bytes": 673095,
+      "sha256": "ba618efd0a9a3f8a8632bfae16ae0224bc6a68993635d1c17b51bdde37283017"
+    },
+    "holdout-candidates.json": {
+      "bytes": 320954,
+      "sha256": "57958d736e9d37ccb84555264762ca0fe3f757fbfd30e5c320ae69ab843e2948"
+    },
+    "holdout-evaluation.json": {
+      "bytes": 80308,
+      "sha256": "09d45ceb11fcae012d3f356be7bb04ca7560ebac608aba4aa3c265c3fadb5b0c"
+    },
+    "holdout-pairs.json": {
+      "bytes": 592112,
+      "sha256": "70541b101f5a749c4af6232f721535a644cc54117d9640151b7f3e43fadaa186"
+    },
+    "holdout-scores.json": {
+      "bytes": 672149,
+      "sha256": "ab77c2e8b2627d825193146f89d415a3f7e39c3d74b6ccbf05c263066582a3a3"
+    },
+    "labels-frozen.json": {
+      "bytes": 98650,
+      "sha256": "5a9f62e98197db3b34dec331496951fea92394f1239a400e9ad2b8bdba0b7d43"
+    },
+    "native-scope.json": {
+      "bytes": 741,
+      "sha256": "7c230cf9811440404310cd5f83248513ba76a8f130c4eb4b038d8d51cf3aeec7"
+    },
+    "package-check.json": {
+      "bytes": 402,
+      "sha256": "11410a9f747289b56795e1c3a58cb53235e6416ae5f2d4102f19ddee0c5517b4"
+    },
+    "smoke.json": {
+      "bytes": 1683,
+      "sha256": "54c02fb9e233e4d6cfe9f7172f26c73e1df7c6bcf8d89988ef57771a9016196a"
+    },
+    "source-snapshot.json": {
+      "bytes": 179459,
+      "sha256": "f0186c27f40ad554c8648fcb6c31178487a58d23ac783e722c9d6a279081c18e"
+    },
+    "source-vectors-frozen.json": {
+      "bytes": 1254718,
+      "sha256": "d52e46acfb746a6bfe290d70e968bd283cf409ef86fbf05176e78ac6d0eaa321"
+    },
+    "wheel-manifest.json": {
+      "bytes": 4517,
+      "sha256": "95d97cd3ae0e1abb0dfca727723dd3ce68a81135202eb81dfed38b12a456bd4e"
+    }
+  },
+  "containers": [
+    {
+      "name": "qldapm-phase2-reranker-prepare",
+      "id": "4e30b8c4286220188f7ca0478de09ebcd4ebc4e4af7c77e533c8e2f4526780c8",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "created": "2026-11-02T04:57:15.487178259Z",
+      "started": "2026-11-02T04:57:15.877089334Z",
+      "finished": "2026-11-02T04:57:34.275961555Z",
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "network_mode": "bridge",
+      "memory_bytes": 805306368,
+      "nano_cpus": 1000000000,
+      "path": "python",
+      "args": [
+        "-m",
+        "pip",
+        "download",
+        "--only-binary=:all:",
+        "--dest",
+        "/experiment/wheels",
+        "onnxruntime==1.31.1",
+        "tokenizers==0.23.3"
+      ]
+    },
+    {
+      "name": "qldapm-phase2-reranker-install",
+      "id": "61b833aa0eeb14edfeb9a958381eb9b5b48633204614acd24f1b526a95b0911b",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "created": "2026-11-02T04:58:07.471751064Z",
+      "started": "2026-11-02T04:58:07.752950505Z",
+      "finished": "2026-11-02T05:01:55.860852508Z",
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "network_mode": "none",
+      "memory_bytes": 805306368,
+      "nano_cpus": 1000000000,
+      "path": "/experiment/venv/bin/python",
+      "args": [
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--find-links",
+        "/experiment/wheels",
+        "--require-hashes",
+        "-r",
+        "/experiment/requirements.lock"
+      ]
+    },
+    {
+      "name": "qldapm-phase2-reranker-package-check",
+      "id": "b63567eef97aad71510e42e11406a256c7a2fd9301deb1c10a2437988d232bf2",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "created": "2026-11-02T05:02:08.182377525Z",
+      "started": "2026-11-02T05:02:08.417378483Z",
+      "finished": "2026-11-02T05:02:20.295067244Z",
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "network_mode": "none",
+      "memory_bytes": 805306368,
+      "nano_cpus": 1000000000,
+      "path": "/experiment/venv/bin/python",
+      "args": [
+        "-c",
+        "import onnxruntime,tokenizers,numpy,sys,json,subprocess,resource,datetime; r={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'python':sys.version,'onnxruntime':onnxruntime.__version__,'tokenizers':tokenizers.__version__,'numpy':numpy.__version__,'providers':onnxruntime.get_available_providers(),'maxrss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'model_loaded':False}; p=subprocess.run([sys.executable,'-m','pip','check'],capture_output=True,text=True);r['pip_check']={'exit_code':p.returncode,'output':p.stdout+p.stderr};open('/experiment/package-check.json','w').write(json.dumps(r,indent=2));print(json.dumps(r,indent=2));assert p.returncode==0"
+      ]
+    },
+    {
+      "name": "qldapm-phase2-reranker-smoke",
+      "id": "208e2c6d873fc73cb94452b7e33d9fdc2bb31fe6b960eab557a5497c747267bc",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "created": "2026-11-02T05:03:27.731181424Z",
+      "started": "2026-11-02T05:03:27.957227086Z",
+      "finished": "2026-11-02T05:03:39.131377768Z",
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "network_mode": "none",
+      "memory_bytes": 805306368,
+      "nano_cpus": 1000000000,
+      "path": "/experiment/venv/bin/python",
+      "args": [
+        "/scripts/reranker_offline.py",
+        "smoke",
+        "--output",
+        "smoke.json"
+      ]
+    },
+    {
+      "name": "qldapm-phase2-reranker-dev",
+      "id": "e28c718870c743afcb610a76175f55edfb0cd6bab3027259cb3ec472ec29b843",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "created": "2026-11-02T05:06:34.441790778Z",
+      "started": "2026-11-02T05:06:35.27151078Z",
+      "finished": "2026-11-02T05:10:50.324426492Z",
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "network_mode": "none",
+      "memory_bytes": 805306368,
+      "nano_cpus": 1000000000,
+      "path": "/experiment/venv/bin/python",
+      "args": [
+        "/scripts/reranker_offline.py",
+        "score",
+        "--input",
+        "dev-pairs.json",
+        "--output",
+        "dev-scores.json"
+      ]
+    },
+    {
+      "name": "qldapm-phase2-reranker-dev-representatives",
+      "id": "d0b790c7575e3e53dcf071db90c13c13f2b1bf173c4a6a06b422d547319b02c1",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "created": "2026-11-02T05:12:10.494981074Z",
+      "started": "2026-11-02T05:12:10.656172525Z",
+      "finished": "2026-11-02T05:13:42.290669363Z",
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "network_mode": "none",
+      "memory_bytes": 805306368,
+      "nano_cpus": 1000000000,
+      "path": "/experiment/venv/bin/python",
+      "args": [
+        "/scripts/reranker_offline.py",
+        "score",
+        "--input",
+        "dev-pairs.json",
+        "--output",
+        "dev-scores.json"
+      ]
+    },
+    {
+      "name": "qldapm-phase2-reranker-dev512",
+      "id": "8b1c8a2a979da0528de983c3ea7abc8bc198c1f262b12c77b5aec671d4faf47e",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "created": "2026-11-02T07:20:32.500878341Z",
+      "started": "2026-11-02T07:20:33.099135731Z",
+      "finished": "2026-11-02T07:22:37.978695535Z",
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "network_mode": "none",
+      "memory_bytes": 805306368,
+      "nano_cpus": 1000000000,
+      "path": "/experiment/venv/bin/python",
+      "args": [
+        "/scripts/reranker_offline.py",
+        "score",
+        "--input",
+        "dev-pairs.json",
+        "--output",
+        "dev-scores.json"
+      ]
+    },
+    {
+      "name": "qldapm-phase2-reranker-holdout512",
+      "id": "de18220a7ccb299f09d13a1b3cb8cb569f4c34cb50fe0a397928903bc72bf463",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "created": "2026-11-02T07:23:30.073767941Z",
+      "started": "2026-11-02T07:23:30.232975998Z",
+      "finished": "2026-11-02T07:25:20.858212527Z",
+      "status": "exited",
+      "exit_code": 0,
+      "oom_killed": false,
+      "network_mode": "none",
+      "memory_bytes": 805306368,
+      "nano_cpus": 1000000000,
+      "path": "/experiment/venv/bin/python",
+      "args": [
+        "/scripts/reranker_offline.py",
+        "score",
+        "--input",
+        "holdout-pairs.json",
+        "--output",
+        "holdout-scores.json"
+      ]
+    }
+  ],
+  "production_source_sha256": {
+    "knowledge_ingestion.py": "5a8ac18cf75fd3f595b9082a7afb06624a643e60efadde54fc612d60e2140133",
+    "knowledge_search.py": "6dce36043c90d8ccdb55bd21b8ce0f92f46f0a48d16c3eaebad2a0d30cfcf69c"
+  },
+  "final_owned_container_inventory": {
+    "utc": "2026-11-02T07:30:55.095460+00:00",
+    "owned_count": 10,
+    "active_count": 0,
+    "containers": [
+      {
+        "name": "qldapm-phase2-rag-20261102",
+        "id": "88d43fcd50baa214f90682b10b2e4653595136fdc48e2abcc181c1c2d7abccef",
+        "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 143,
+        "finished_utc": "2026-11-02T04:21:45.311162306Z"
+      },
+      {
+        "name": "qldapm-phase2-reranker-prepare",
+        "id": "4e30b8c4286220188f7ca0478de09ebcd4ebc4e4af7c77e533c8e2f4526780c8",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 0,
+        "finished_utc": "2026-11-02T04:57:34.275961555Z"
+      },
+      {
+        "name": "qldapm-phase2-reranker-venv",
+        "id": "4131e8e0834fc02eea5806f1a41129ba3ee1870dff5822a3e07ea7d51ec13cb5",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 0,
+        "finished_utc": "2026-11-02T04:58:38.73309605Z"
+      },
+      {
+        "name": "qldapm-phase2-reranker-install",
+        "id": "61b833aa0eeb14edfeb9a958381eb9b5b48633204614acd24f1b526a95b0911b",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 0,
+        "finished_utc": "2026-11-02T05:01:55.860852508Z"
+      },
+      {
+        "name": "qldapm-phase2-reranker-package-check",
+        "id": "b63567eef97aad71510e42e11406a256c7a2fd9301deb1c10a2437988d232bf2",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 0,
+        "finished_utc": "2026-11-02T05:02:20.295067244Z"
+      },
+      {
+        "name": "qldapm-phase2-reranker-smoke",
+        "id": "208e2c6d873fc73cb94452b7e33d9fdc2bb31fe6b960eab557a5497c747267bc",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 0,
+        "finished_utc": "2026-11-02T05:03:39.131377768Z"
+      },
+      {
+        "name": "qldapm-phase2-reranker-dev",
+        "id": "e28c718870c743afcb610a76175f55edfb0cd6bab3027259cb3ec472ec29b843",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 0,
+        "finished_utc": "2026-11-02T05:10:50.324426492Z"
+      },
+      {
+        "name": "qldapm-phase2-reranker-dev-representatives",
+        "id": "d0b790c7575e3e53dcf071db90c13c13f2b1bf173c4a6a06b422d547319b02c1",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 0,
+        "finished_utc": "2026-11-02T05:13:42.290669363Z"
+      },
+      {
+        "name": "qldapm-phase2-reranker-dev512",
+        "id": "8b1c8a2a979da0528de983c3ea7abc8bc198c1f262b12c77b5aec671d4faf47e",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 0,
+        "finished_utc": "2026-11-02T07:22:37.978695535Z"
+      },
+      {
+        "name": "qldapm-phase2-reranker-holdout512",
+        "id": "de18220a7ccb299f09d13a1b3cb8cb569f4c34cb50fe0a397928903bc72bf463",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "running": false,
+        "oom_killed": false,
+        "exit_code": 0,
+        "finished_utc": "2026-11-02T07:25:20.858212527Z"
+      }
+    ],
+    "note": "All exact current experiment names/images checked; unrelated historical qldapm-phase2-rag-clone-050128 not operated."
+  }
+}

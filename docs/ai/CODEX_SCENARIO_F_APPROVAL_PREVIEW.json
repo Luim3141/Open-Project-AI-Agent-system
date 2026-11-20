@@ -1,0 +1,55 @@
+{
+  "status": "PENDING_EXACT_HUMAN_APPROVAL",
+  "run_id": "80c74d03-5c9d-4471-9d9a-09c6749c645d",
+  "trace_id": "d379df9f-0d8d-4c0a-92fd-ab518612314a",
+  "actor_id": 19,
+  "project_id": 5,
+  "native_id": 370,
+  "proposal_id": "19efe751-4af7-4cb4-96f0-0836ee504948",
+  "proposal_hash": "f1872c2436b8e964304e767488c909e36c2446361cdc36a2f0d8da5f48967cda",
+  "expires_at_utc": "2026-10-23T12:49:39.483670+00:00",
+  "action": "update_work_package",
+  "arguments": {
+    "id": 370,
+    "lock_version": 1,
+    "changes": {
+      "description": "Test-only resource for the owner-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a business milestone or personnel assessment.\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635\n\nCODEX_SCENARIO_F_RAG_20261023_aa98fa81d022"
+    }
+  },
+  "before_description": "Test-only resource for the owner-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a business milestone or personnel assessment.\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635",
+  "after_description": "Test-only resource for the owner-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a business milestone or personnel assessment.\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635\n\nCODEX_SCENARIO_F_RAG_20261023_aa98fa81d022",
+  "native_operations": 1,
+  "native_writes": 0,
+  "effect": "Append one test marker to Task370 description; expected version1->2, count333 unchanged; no comment/create/transition/delete/credential/Staging action",
+  "approval": "NOT_YET_GRANTED",
+  "model_calls": 5,
+  "http_attempts": 10,
+  "observed_tokens": 17101,
+  "trace_events": 42,
+  "context_provenance": {
+    "base_context_sha256": "3eb6129e2bbad922c49b6e925d4ff55cfd37183d83116addd72268c7111ea439",
+    "native_references": [
+      {
+        "lock_version": 1,
+        "native_id": 370
+      }
+    ],
+    "rag_hits": [
+      {
+        "document_id": "250fe506c7d06d6cccf3eba004c164f85d7bf16b52e318c5a658d1657b97a6e5",
+        "lock_version": 1,
+        "native_id": 370,
+        "snippet_sha256": "3e12a0bdb53d6fd634bbcafd788e7dfd37e122f55fcbc649120cec9058891790",
+        "source_id": "actor:19:wp:370"
+      }
+    ],
+    "rag_state": "HITS"
+  },
+  "verification_after_approval": [
+    "Native exact description/version readback",
+    "same run/trace audit correlation",
+    "durable RAG job verification and marker citation",
+    "duplicate decision returns original receipt without another Native write"
+  ],
+  "rollback": "Original description retained here; restoration requires a new PM-approved mutation with fresh version. No automatic business-write rollback."
+}

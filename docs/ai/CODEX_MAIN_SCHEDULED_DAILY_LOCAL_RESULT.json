@@ -1,0 +1,130 @@
+{
+  "at": "2026-10-26T03:25:51.738185+00:00",
+  "status": "PASS_ACTUAL_MAIN_SCHEDULED_DAILY_AND_FIVE_LOCAL_RECEIPTS",
+  "schedule_started_at_bangkok": "2026-10-26T08:00:00.230906+07:00",
+  "source_workflow": {
+    "id": "BpCQrGR866vg4BqQ",
+    "name": "WF07: Daily Project Brief",
+    "active": 1,
+    "version": "15216ba8-75a6-43a5-a939-308f6d14b957",
+    "schedule": [
+      {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 0 8 * * *"
+            }
+          ]
+        }
+      }
+    ],
+    "settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "saveDataErrorExecution": "none",
+      "saveDataSuccessExecution": "none",
+      "saveExecutionProgress": false,
+      "saveManualExecutions": false,
+      "executionTimeout": 60
+    }
+  },
+  "automation_receipt": {
+    "actor_id": null,
+    "authority": "machine",
+    "component": "gateway",
+    "kind": "daily_brief",
+    "model_calls": 0,
+    "native_write_allowed": false,
+    "project_id": 5,
+    "ready": 5,
+    "request_key": "daily:2026-10-26",
+    "run_id": "61bb51ce-2eaf-4431-8d6b-e45f4f727ac9",
+    "state": "COMPLETED",
+    "status": "READY",
+    "targets": 5,
+    "trace_id": "61bb51ce-2eaf-4431-8d6b-e45f4f727ac9",
+    "unavailable": 0
+  },
+  "reports": [
+    {
+      "actor": 19,
+      "role": "PM",
+      "state": "READY",
+      "native_visible_count": 338,
+      "source_fingerprint": "fa6512301762d78640ed392befec097412b031248e0d7c4838880f78eb98e9c5",
+      "local_receipt_id": "45765c307a536be51a532bd47456a9d73eed4417935883ff152cdad7beacf0dd",
+      "source_sha256": "066defcf6f81ba26f6289d79725437b3ced62c887b5873b0e0c3c401f7b23cb3",
+      "local_bytes_exact": true,
+      "attempts": 1,
+      "trace_binding": true
+    },
+    {
+      "actor": 20,
+      "role": "BA",
+      "state": "READY",
+      "native_visible_count": 338,
+      "source_fingerprint": "5dd2b4487fd7d1bfc032317966d22e3324e7cf250150f149bf6ad2f19963c741",
+      "local_receipt_id": "ca2e8c862732c4a76e46d04bb94f02ea6c6903295db7543d8fad598a6d10b73a",
+      "source_sha256": "ecd67cf08f2826e96b7d09df3c141b2f044e88433b674548fdd3c259cbb740b6",
+      "local_bytes_exact": true,
+      "attempts": 1,
+      "trace_binding": true
+    },
+    {
+      "actor": 21,
+      "role": "BE",
+      "state": "READY",
+      "native_visible_count": 338,
+      "source_fingerprint": "e771299b5512d4655ed3f3740e1797a7f68c00dd113d6133074dbdaf73670eb5",
+      "local_receipt_id": "30f9be512f1bc07108ed8aadabfc95d62981f1b90fad85a5c69cb981797d3921",
+      "source_sha256": "a47f9e85929aa215cbfdad14088af02fb6bca6061b867e7648622d451dc2db3e",
+      "local_bytes_exact": true,
+      "attempts": 1,
+      "trace_binding": true
+    },
+    {
+      "actor": 22,
+      "role": "FE",
+      "state": "READY",
+      "native_visible_count": 338,
+      "source_fingerprint": "0db27067d0aabce47fac633ae8e1a0ed78fd249acf3f938c126ac223e7cc01d9",
+      "local_receipt_id": "fd7d777eaa203e4711e0ecd456d4acdcca6da4888556d435e9456327211b089b",
+      "source_sha256": "31bfbe72d7b10a915be3ed7a3ed5e218dd4ab782240f54ac4f67c67bb9e70f90",
+      "local_bytes_exact": true,
+      "attempts": 1,
+      "trace_binding": true
+    },
+    {
+      "actor": 23,
+      "role": "QA",
+      "state": "READY",
+      "native_visible_count": 338,
+      "source_fingerprint": "273e2bd9d21d3fc03716e66d682a4e62c2f71160f6830c30ad554e04d8c43b63",
+      "local_receipt_id": "a576a0bc218e23ad7beaf3e51ef771f08981a7473fb79d1aa6a294c6cf7b1e66",
+      "source_sha256": "24427c60fb24d08a25cbd7e4059310bfe6972dd45848a1560f59ba79eaff5741",
+      "local_bytes_exact": true,
+      "attempts": 1,
+      "trace_binding": true
+    }
+  ],
+  "preserved_ledger": {
+    "gemini_call_receipts": 127,
+    "gemini_usage": 132,
+    "proposals": 54,
+    "knowledge_sync": 12,
+    "qa_evidence_reviews": 0
+  },
+  "verification_mutations": 0,
+  "new_forced_run": false,
+  "model_calls": 0,
+  "main_native_writes": 0,
+  "main_human_decisions": 0,
+  "staging_operations": false,
+  "external_sends": 0,
+  "limits": [
+    "Local metadata only; no external destination configured",
+    "n8n save-success/error execution settings are none; Gateway signed machine receipt and actor audit are the durable evidence",
+    "This verifies the already occurred 08:00 schedule, not an outage/cold-start test"
+  ]
+}

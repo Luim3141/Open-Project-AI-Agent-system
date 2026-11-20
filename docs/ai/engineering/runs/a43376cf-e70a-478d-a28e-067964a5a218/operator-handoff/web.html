@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Task Manager</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+    .controls, .task-item, .task-actions { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+    .controls { margin: 1rem 0; }
+    .task-item { justify-content: space-between; padding: .6rem 0; border-bottom: 1px solid #ddd; }
+    .task-title { overflow-wrap: anywhere; }
+    button, input, select { padding: .5rem; }
+    .error { color: #a01010; min-height: 1.4em; }
+    button:disabled { opacity: .6; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Mini Task Manager</h1>
+    <div id="error-box" class="error" role="alert" aria-live="assertive"></div>
+    <form id="create-form">
+      <label for="new-title">New Task</label>
+      <input id="new-title" type="text" placeholder="New task title..." required>
+      <button id="create-submit" type="submit">Add Task</button>
+    </form>
+    <div class="controls">
+      <label for="search-q">Search</label><input id="search-q" type="search" placeholder="Search tasks...">
+      <label for="filter-status">Status</label>
+      <select id="filter-status">
+        <option value="">All Statuses</option><option value="todo">Todo</option>
+        <option value="in_progress">In Progress</option><option value="done">Done</option>
+      </select>
+      <button id="search-btn" type="button">Filter</button>
+      <button id="retry-btn" type="button" hidden>Retry loading tasks</button>
+    </div>
+    <p id="list-status" role="status" aria-live="polite"></p>
+    <div id="task-list" aria-busy="false"></div>
+  </main>
+  <script>
+    const byId = id => document.getElementById(id);
+    let listSequence = 0;
+    let listController = null;
+
+    function errorMessage(data, fallback) {
+      if (typeof data === 'string') return data || fallback;
+      if (typeof data?.detail === 'string') return data.detail;
+      if (Array.isArray(data?.detail)) {
+        return data.detail.map(item => {
+          const field = Array.isArray(item.loc) ? item.loc.filter(part => part !== 'body').join('.') : '';
+          return (field ? field + ': ' : '') + (item.msg || 'Invalid value');
+        }).join('; ');
+      }
+      return fallback;
+    }
+
+    async function requestJson(url, options = {}) {
+      let response;
+      try { response = await fetch(url, options); }
+      catch (error) {
+        if (error.name === 'AbortError') throw error;
+        throw new Error('Network error. Check the connection and retry. Your input has been kept.');
+      }
+      if (!response.ok) {
+        let data = null;
+        try { data = await response.json(); } catch (_) { /* HTTP error may be HTML. */ }
+        throw new Error(errorMessage(data, 'Request failed (HTTP ' + response.status + '). Please retry.'));
+      }
+      if (response.status === 204) return null;
+      try { return await response.json(); }
+      catch (_) { throw new Error('The server returned an invalid response. Please retry.'); }
+    }
+
+    function showError(message) { byId('error-box').textContent = message || ''; }
+
+    async function withBusy(control, action) {
+      if (control.disabled) return;
+      control.disabled = true;
+      showError('');
+      try { await action(); await fetchTasks(); }
+      catch (error) { showError(error.message); }
+      finally { control.disabled = false; }
+    }
+
+    function renderTasks(tasks) {
+      const list = byId('task-list');
+      list.textContent = '';
+      tasks.forEach(task => {
+        const row = document.createElement('div'); row.className = 'task-item';
+        const title = document.createElement('span'); title.className = 'task-title';
+        title.textContent = task.title + ' (' + task.status + ')'; row.appendChild(title);
+        const actions = document.createElement('div'); actions.className = 'task-actions';
+        const status = document.createElement('select');
+        status.setAttribute('aria-label', 'Task Status: ' + task.title);
+        ['todo', 'in_progress', 'done'].forEach(value => {
+          const option = document.createElement('option'); option.value = value; option.textContent = value;
+          option.selected = value === task.status; status.appendChild(option);
+        });
+        status.value = task.status;
+        status.onchange = () => withBusy(status, async () => {
+          try {
+            await requestJson('/tasks/' + task.id, {method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({status: status.value})});
+          } catch (error) { status.value = task.status; throw error; }
+        });
+        actions.appendChild(status);
+        const edit = document.createElement('button'); edit.type = 'button'; edit.textContent = 'Edit';
+        edit.onclick = () => {
+          const title = prompt('Edit task title:', task.title);
+          if (title !== null) return withBusy(edit, () => requestJson('/tasks/' + task.id, {method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({title})}));
+        };
+        actions.appendChild(edit);
+        const remove = document.createElement('button'); remove.type = 'button'; remove.textContent = 'Delete';
+        remove.onclick = () => withBusy(remove, () => requestJson('/tasks/' + task.id, {method: 'DELETE'}));
+        actions.appendChild(remove); row.appendChild(actions); list.appendChild(row);
+      });
+    }
+
+    async function fetchTasks() {
+      const sequence = ++listSequence;
+      if (listController) listController.abort();
+      listController = new AbortController();
+      const signal = listController.signal;
+      const query = new URLSearchParams();
+      if (byId('search-q').value) query.set('q', byId('search-q').value);
+      if (byId('filter-status').value) query.set('status', byId('filter-status').value);
+      byId('task-list').setAttribute('aria-busy', 'true');
+      byId('list-status').textContent = 'Loading tasks...';
+      byId('retry-btn').hidden = true;
+      showError('');
+      try {
+        const tasks = await requestJson('/tasks?' + query.toString(), {signal});
+        if (sequence !== listSequence) return;
+        if (!Array.isArray(tasks)) throw new Error('The task list response is invalid. Please retry.');
+        renderTasks(tasks);
+        byId('list-status').textContent = tasks.length ? tasks.length + ' task(s)' : 'No tasks match your filters.';
+      } catch (error) {
+        if (sequence !== listSequence || error.name === 'AbortError') return;
+        showError(error.message);
+        byId('list-status').textContent = 'Unable to refresh tasks. Previously loaded data is kept.';
+        byId('retry-btn').hidden = false;
+      } finally {
+        if (sequence === listSequence) byId('task-list').setAttribute('aria-busy', 'false');
+      }
+    }
+
+    byId('create-form').onsubmit = event => {
+      event.preventDefault();
+      return withBusy(byId('create-submit'), async () => {
+        await requestJson('/tasks', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({title: byId('new-title').value})});
+        byId('new-title').value = '';
+      });
+    };
+    byId('search-btn').onclick = fetchTasks;
+    byId('retry-btn').onclick = fetchTasks;
+    byId('search-q').oninput = fetchTasks;
+    byId('filter-status').onchange = fetchTasks;
+    fetchTasks();
+  </script>
+</body>
+</html>

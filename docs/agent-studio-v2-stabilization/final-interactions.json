@@ -1,0 +1,47 @@
+{
+  "scope": "REAL MAIN; headless mobile/touch emulation, no OS gesture claim",
+  "checks": {
+    "burst_bounded_no_unexpected503": true,
+    "busy_retry_after_1": true,
+    "touch_zoom": true,
+    "touch_pan": true,
+    "touch_inspector": true,
+    "touch_explorer": true,
+    "no_island_overflow": true
+  },
+  "burst": [
+    {
+      "task": 379,
+      "status": 200,
+      "ms": 738.6000000000931,
+      "retry_after": null,
+      "request_id": "6dde8bd0-9cf0-4406-b294-871e19577dc8",
+      "error": null
+    },
+    {
+      "task": 391,
+      "status": 200,
+      "ms": 589.6999999997206,
+      "retry_after": null,
+      "request_id": "2e97d50d-aaf1-40e3-85a2-b6917a999dbb",
+      "error": null
+    },
+    {
+      "task": 397,
+      "status": 429,
+      "ms": 46.700000000186265,
+      "retry_after": "1",
+      "request_id": "a8b6c221-0f64-4b4b-8508-700a9f76a7cb",
+      "error": "AI_BRIDGE_BUSY"
+    },
+    {
+      "task": 398,
+      "status": 429,
+      "ms": 44.5,
+      "retry_after": "1",
+      "request_id": "06db7966-13c3-4292-af8d-1696a75d624b",
+      "error": "AI_BRIDGE_BUSY"
+    }
+  ],
+  "at": 1794457551.7859826
+}

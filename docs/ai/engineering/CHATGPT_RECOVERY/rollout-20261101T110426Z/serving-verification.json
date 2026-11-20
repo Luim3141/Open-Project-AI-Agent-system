@@ -1,0 +1,201 @@
+{
+  "gateway": {
+    "image": "sha256:1c10248134b4f7973685433a9686f3d841ed96e5b767dd5b7d497adc0e3eceeb",
+    "id": "4891c0ff1a6a8ae6ed407902e7703f1e1183722aa2cb5dcba1faf40e07a08000",
+    "health": "healthy"
+  },
+  "core": {
+    "image": "sha256:c237e4a792608e5ff5b95a7c9c36d41dc0392ceb3ec07f451fbee0d96dca06c9",
+    "id": "4049a6226cefd27a5ea6e883cb623a715dee3bf628aed0daa220abd29363ee68",
+    "health": "healthy"
+  },
+  "n8n": {
+    "image": "sha256:9e8d3393ca28a6603f3890218aeb3bb280952262c134e230b033380a2fd54e32",
+    "id": "af12b9c70d58ad7e1055fe6a87999faf70f5829ecf5efac746b0c395ce7b8be0",
+    "health": "not_configured",
+    "workflow_count": 16,
+    "active_workflows": 16,
+    "unchanged_other_workflows": 15,
+    "wf04_version": "b79f33b6-97d1-4340-b844-32b1cc2d030c",
+    "wf04_nodes": 8
+  },
+  "source_parity_files": 15,
+  "unrelated_containers_unchanged": [
+    "qldapm-openproject-proxy-1",
+    "qldapm-openproject-cron-1",
+    "qldapm-openproject-worker-1",
+    "qldapm-ai-stage-staging-gateway-1",
+    "qldapm-ai-stage-staging-web-1",
+    "qldapm-ai-stage-radmin-proxy-1",
+    "qldapm-ai-stage-local-backup-1",
+    "qldapm-ai-stage-n8n-editor-1",
+    "qldapm-qdrant",
+    "qldapm-ai-stage-quick-tunnel-1",
+    "qldapm-ai-stage-n8n-1",
+    "birdsong-retrieval-api-1",
+    "qldapm-ai-stage-db-1",
+    "qldapm-openproject-hocuspocus-1",
+    "qldapm-openproject-db-1",
+    "qldapm-openproject-cache-1",
+    "birdsong-retrieval-web-1",
+    "birdsong-retrieval-db-1"
+  ],
+  "native_business_security_preserved": {
+    "work_packages": {
+      "rows": 385,
+      "preserved_columns": [
+        "id",
+        "type_id",
+        "project_id",
+        "subject",
+        "description",
+        "due_date",
+        "category_id",
+        "status_id",
+        "assigned_to_id",
+        "priority_id",
+        "version_id",
+        "author_id",
+        "lock_version",
+        "done_ratio",
+        "estimated_hours",
+        "created_at",
+        "updated_at",
+        "start_date",
+        "responsible_id",
+        "derived_estimated_hours",
+        "schedule_manually",
+        "parent_id",
+        "duration",
+        "ignore_non_working_days",
+        "derived_remaining_hours",
+        "derived_done_ratio",
+        "position",
+        "story_points",
+        "remaining_hours",
+        "budget_id",
+        "project_phase_definition_id",
+        "sprint_id",
+        "sequence_number",
+        "identifier",
+        "backlog_bucket_id",
+        "qldapm_gate"
+      ],
+      "sha256": "6c5d78bc940335015e19ba9fab144ff1426c7a0b9b7e74eada0342dd7d56a505"
+    },
+    "relations": {
+      "rows": 357,
+      "preserved_columns": [
+        "id",
+        "from_id",
+        "to_id",
+        "lag",
+        "description",
+        "relation_type"
+      ],
+      "sha256": "30f99927ae7b0f09bc1d8cea2518941045e74c910353cad934890e229efd1fab"
+    },
+    "users": {
+      "rows": 10,
+      "preserved_columns": [
+        "id",
+        "login",
+        "firstname",
+        "lastname",
+        "mail",
+        "admin",
+        "status",
+        "language",
+        "ldap_auth_source_id",
+        "created_at",
+        "type",
+        "identity_url",
+        "first_login",
+        "force_password_change",
+        "failed_login_count",
+        "last_failed_login_on",
+        "consented_at",
+        "webauthn_id"
+      ],
+      "sha256": "fa74c623fbbf2948d970512c1a010827c3f91594ae99e0efbf428e446de58af3"
+    },
+    "members": {
+      "rows": 9,
+      "preserved_columns": [
+        "id",
+        "user_id",
+        "project_id",
+        "created_at",
+        "updated_at",
+        "entity_type",
+        "entity_id"
+      ],
+      "sha256": "2e6ce3c08e426c6b1e9348e08629008dddb7c2db9924e00d54e13ed60caacba8"
+    },
+    "member_roles": {
+      "rows": 9,
+      "preserved_columns": [
+        "id",
+        "member_id",
+        "role_id",
+        "inherited_from"
+      ],
+      "sha256": "a17ca089ed897492b59ec50524bb310a7e5d104dfd90dbb0f9f369c563e46b79"
+    },
+    "roles": {
+      "rows": 16,
+      "preserved_columns": [
+        "id",
+        "name",
+        "position",
+        "builtin",
+        "type",
+        "created_at",
+        "updated_at"
+      ],
+      "sha256": "5ce7e96d5d46ae240a698b2536a9cbd4e90fc715ce29d285b413439831c5743e"
+    },
+    "tokens": {
+      "rows": 9,
+      "preserved_columns": [
+        "id",
+        "user_id",
+        "type",
+        "value",
+        "created_at",
+        "expires_on",
+        "data"
+      ],
+      "sha256": "0a03abd116928510cf25365964d2f341bcb5869432052a61492ae37ad26b5b7b"
+    },
+    "two_factor_authentication_devices": {
+      "rows": 4,
+      "preserved_columns": [
+        "id",
+        "type",
+        "default",
+        "active",
+        "channel",
+        "phone_number",
+        "identifier",
+        "created_at",
+        "updated_at",
+        "last_used_at",
+        "otp_secret",
+        "user_id",
+        "webauthn_external_id",
+        "webauthn_public_key",
+        "webauthn_sign_count"
+      ],
+      "sha256": "dd4d19a6195ca937a966a54ee172316f0a2dff0409539aeab383ea2b40002859"
+    }
+  },
+  "unknown_native_receipts_preserved": true,
+  "http": {
+    "gateway": 200,
+    "n8n": 200,
+    "demo_health": 404,
+    "demo_summary": 405
+  },
+  "invalid_lifecycle_signature_http": 403
+}

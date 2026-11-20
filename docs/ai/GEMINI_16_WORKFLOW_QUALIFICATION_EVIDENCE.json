@@ -1,0 +1,5455 @@
+{
+  "suite": "GEMINI_16_WORKFLOW_FUNCTIONAL_QUALIFICATION",
+  "executed_at": "2026-10-28T05:01:45.605830+00:00",
+  "environment": "QLDAPM MAIN ONLY (Project 5)",
+  "n8n_url": "http://127.0.0.1:5679",
+  "gateway_url": "http://127.0.0.1:18089",
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0,
+    "partial": 0
+  },
+  "workflows": {
+    "WF01": {
+      "name": "Local Document Ingestion",
+      "workflow_id": "X2O2QdPY6QLOrWqL",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:01:47.470281+00:00",
+      "details": "WF01 xử lý nạp tài liệu Native WP #376 thành công (HTTP 200, status SKIPPED_UNCHANGED, vector_indexed=True); Chặn file nguồn ngoài allowlist (HTTP 403 FILE_SOURCE_NOT_ALLOWED); Execution ID 2539 đạt terminal success.",
+      "evidence": {
+        "native_ingest_response": {
+          "status": "SKIPPED_UNCHANGED",
+          "document_id": "86c9f2546f5bef6f8b42b55be7777ed43c95a899bab56454c0efc3b392241987",
+          "source_id": "actor:19:wp:376",
+          "chunks_count": 1,
+          "source_hash": "86c9f2546f5bef6f8b42b55be7777ed43c95a899bab56454c0efc3b392241987",
+          "vector_indexed": true,
+          "error": null,
+          "native_id": 376,
+          "lock_version": 0
+        },
+        "negative_source_rejection": {
+          "error": "FILE_SOURCE_NOT_ALLOWED"
+        },
+        "execution": {
+          "id": 2539,
+          "workflowId": "X2O2QdPY6QLOrWqL",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:01:47.041",
+          "stoppedAt": "2026-10-28 05:01:47.343",
+          "deletedAt": null,
+          "jsonSizeBytes": 7010
+        }
+      }
+    },
+    "WF02": {
+      "name": "OpenProject Event Sync",
+      "workflow_id": "Anl8LNdN4NNTKRpe",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:01:52.231340+00:00",
+      "details": "WF02 truy xuất trạng thái đồng bộ gia tăng thành công (HTTP 200, inventory_sha256: 777f6acf89462485...); Kích hoạt kiểm tra đồng bộ thành công (HTTP 200); Execution ID 2541 đạt terminal success.",
+      "evidence": {
+        "status_response": {
+          "actor": 19,
+          "authority": "actor",
+          "changed": 0,
+          "inventory_sha256": "777f6acf89462485df5b07f7a5138a51659c09b24179e7bc2dd0c46c81b65268",
+          "jobs": [],
+          "model_calls": 0,
+          "native_writes": 0,
+          "not_visible_retained": 0,
+          "observed_at": 1793163492.0870767,
+          "physical_deletion": "DENIED_WITHOUT_TRUSTED_DELETE_PROOF",
+          "project_id": 5,
+          "state": "OBSERVED",
+          "vector_integrity": "NOT_CHECKED_USE_KNOWLEDGE_INTEGRITY",
+          "visibility_policy": "Fresh Native collection gates retrieval; withdrawn index content is retained",
+          "visibility_withdrawn_ids": [],
+          "visible": 339,
+          "generation": 3
+        },
+        "sync_response": {
+          "actor": 19,
+          "authority": "actor",
+          "changed": 0,
+          "inventory_sha256": "777f6acf89462485df5b07f7a5138a51659c09b24179e7bc2dd0c46c81b65268",
+          "jobs": [],
+          "model_calls": 0,
+          "native_writes": 0,
+          "not_visible_retained": 0,
+          "observed_at": 1793163711.9130926,
+          "physical_deletion": "DENIED_WITHOUT_TRUSTED_DELETE_PROOF",
+          "project_id": 5,
+          "state": "OBSERVED",
+          "vector_integrity": "NOT_CHECKED_USE_KNOWLEDGE_INTEGRITY",
+          "visibility_policy": "Fresh Native collection gates retrieval; withdrawn index content is retained",
+          "visibility_withdrawn_ids": [],
+          "visible": 339,
+          "generation": 4
+        },
+        "execution": {
+          "id": 2541,
+          "workflowId": "Anl8LNdN4NNTKRpe",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:01:47.909",
+          "stoppedAt": "2026-10-28 05:01:52.107",
+          "deletedAt": null,
+          "jsonSizeBytes": 7206
+        }
+      }
+    },
+    "WF03": {
+      "name": "Natural Language Request Orchestrator",
+      "workflow_id": "XoP4M520TMG3WgeY",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:01:54.359353+00:00",
+      "details": "WF03 điều phối yêu cầu AI đọc trạng thái run d8396c7b... thành công (HTTP 200, state: done); Execution ID 2542 đạt terminal success.",
+      "evidence": {
+        "run_status": {
+          "id": "d8396c7b-453c-450d-b63c-68e69b3fb5d9",
+          "state": "done",
+          "result": {
+            "agent_outputs": [
+              {
+                "agent": "ba",
+                "result": {
+                  "actor_id": 19,
+                  "error_code": null,
+                  "model_used": true,
+                  "project_id": 5,
+                  "receipt_ids": [],
+                  "references": [
+                    {
+                      "lock_version": 3,
+                      "schema_version": 1,
+                      "work_package_id": 39
+                    },
+                    {
+                      "lock_version": 3,
+                      "schema_version": 1,
+                      "work_package_id": 41
+                    }
+                  ],
+                  "run_id": "d8396c7b-453c-450d-b63c-68e69b3fb5d9",
+                  "schema_version": 1,
+                  "state": "COMPLETED",
+                  "summary": "{\"nodes\":[{\"assignee_role\":\"PM\",\"depends_on\":[],\"description\":\"Quản lý toàn bộ chức năng sprint\",\"due_date\":\"2026-12-18\",\"key\":\"epic-sprint\",\"kind\":\"Epic\",\"priority_id\":9,\"requirement_ids\":[\"SPR-01\",\"SPR-02\"],\"start_date\":\"2026-10-26\",\"status_id\":1,\"subject\":\"Sprint Management Epic\"}],\"relations\":[],\"requirements\":[{\"id\":\"SPR-01\",\"text\":\"Tạo và cấu hình sprint mới\"},{\"id\":\"SPR-02\",\"text\":\"Quản lý backlog trong sprint\"}],\"schema\":\"QLDAPM_WBS_V2\"}",
+                  "task_id": "41e56fbf-1b8b-456f-a329-4b3728fcea62",
+                  "trace_id": "094d9752-3da7-4d0b-aea0-f4222a6e7460"
+                },
+                "step_id": 1
+              },
+              {
+                "agent": "reviewer",
+                "result": {
+                  "actor_id": 19,
+                  "error_code": null,
+                  "model_used": false,
+                  "project_id": 5,
+                  "receipt_ids": [],
+                  "references": [
+                    {
+                      "lock_version": 3,
+                      "schema_version": 1,
+                      "work_package_id": 39
+                    },
+                    {
+                      "lock_version": 3,
+                      "schema_version": 1,
+                      "work_package_id": 41
+                    }
+                  ],
+                  "run_id": "d8396c7b-453c-450d-b63c-68e69b3fb5d9",
+                  "schema_version": 1,
+                  "state": "COMPLETED",
+                  "summary": "### BÁO CÁO ĐỐI CHIẾU VÀ KIỂM ĐỊNH TÍNH NHẤT QUÁN (REVIEWER REPORT)\n#### 1. Kết quả đối chiếu bằng chứng native:\n- Tác vụ 1: **TRÍCH DẪN HỢP LỆ** (Công việc liên quan: #39, #41) — ID và lock_version của các trích dẫn khớp nguồn; nội dung phân tích/dự thảo vẫn cần người dùng thẩm định.\n\n#### 2. Kiểm tra xung đột đa tác nhân: Nhất quán, không phát hiện mâu thuẫn.\n\n#### 3. Rà soát ranh giới thẩm quyền RBAC:\n- Các tác vụ đều thuộc phạm vi ĐỌC (Read-Only) hợp lệ, tuân thủ đúng phân quyền của vai trò.\n\n#### 4. Kết luận kiểm định (Final Verdict):\n**KẾT QUẢ: ĐÃ KIỂM TRA THAM CHIẾU/PHẠM VI; NỘI DUNG DỰ THẢO CHƯA ĐƯỢC CON NGƯỜI NGHIỆM THU.**",
+                  "task_id": "41e56fbf-1b8b-456f-a329-4b3728fcea62",
+                  "trace_id": "094d9752-3da7-4d0b-aea0-f4222a6e7460"
+                },
+                "step_id": 2
+              }
+            ],
+            "agent_result": {
+              "actor_id": 19,
+              "error_code": null,
+              "model_used": true,
+              "project_id": 5,
+              "receipt_ids": [],
+              "references": [
+                {
+                  "lock_version": 3,
+                  "schema_version": 1,
+                  "work_package_id": 39
+                },
+                {
+                  "lock_version": 3,
+                  "schema_version": 1,
+                  "work_package_id": 41
+                }
+              ],
+              "run_id": "d8396c7b-453c-450d-b63c-68e69b3fb5d9",
+              "schema_version": 1,
+              "state": "COMPLETED",
+              "summary": "BA:\n{\"nodes\":[{\"assignee_role\":\"PM\",\"depends_on\":[],\"description\":\"Quản lý toàn bộ chức năng sprint\",\"due_date\":\"2026-12-18\",\"key\":\"epic-sprint\",\"kind\":\"Epic\",\"priority_id\":9,\"requirement_ids\":[\"SPR-01\",\"SPR-02\"],\"start_date\":\"2026-10-26\",\"status_id\":1,\"subject\":\"Sprint Management Epic\"}],\"relations\":[],\"requirements\":[{\"id\":\"SPR-01\",\"text\":\"Tạo và cấu hình sprint mới\"},{\"id\":\"SPR-02\",\"text\":\"Quản lý backlog trong sprint\"}],\"schema\":\"QLDAPM_WBS_V2\"}\n\nReviewer local: trích dẫn/phiên bản/phạm vi đã đối chiếu; nội dung gợi ý vẫn cần người dùng thẩm định.",
+              "task_id": "41e56fbf-1b8b-456f-a329-4b3728fcea62",
+              "trace_id": "094d9752-3da7-4d0b-aea0-f4222a6e7460"
+            },
+            "completed_steps": 2,
+            "context_provenance": {
+              "base_context_sha256": "367d6224eebac489d0065334fa91b70284ee4d50ea7c8897a35f729cc45d5042",
+              "native_references": [
+                {
+                  "lock_version": 0,
+                  "native_id": 374
+                },
+                {
+                  "lock_version": 3,
+                  "native_id": 39
+                },
+                {
+                  "lock_version": 1,
+                  "native_id": 372
+                },
+                {
+                  "lock_version": 3,
+                  "native_id": 38
+                },
+                {
+                  "lock_version": 3,
+                  "native_id": 40
+                },
+                {
+                  "lock_version": 3,
+                  "native_id": 41
+                },
+                {
+                  "lock_version": 3,
+                  "native_id": 42
+                },
+                {
+                  "lock_version": 3,
+                  "native_id": 43
+                },
+                {
+                  "lock_version": 3,
+                  "native_id": 44
+                },
+                {
+                  "lock_version": 3,
+                  "native_id": 45
+                }
+              ],
+              "rag_hits": [
+                {
+                  "document_id": "c4b07138ef726cdf8f8aa0e9cabe6d581be6fc078802bc45c1513f567517fcf7",
+                  "lock_version": 0,
+                  "native_id": 374,
+                  "snippet_sha256": "68b475c76528fc318f4a910cbe9033c07bf89ddcb13b1bbcc45b31c664fa2ac6",
+                  "source_id": "op:wp:374"
+                },
+                {
+                  "document_id": "bb05151f417f9a56001ff4b83c63643d8af774c7bc0b9f5cb7fc7596bbcbb226",
+                  "lock_version": 3,
+                  "native_id": 39,
+                  "snippet_sha256": "3de3fadba2720a18d64674aab0711228f171ec8b11d57fc0bce16af7b5af471d",
+                  "source_id": "op:wp:39"
+                },
+                {
+                  "document_id": "208db434d660107756fcc7ed327d34c5e07a596cdc450c7b44df551ef3408bd3",
+                  "lock_version": 1,
+                  "native_id": 372,
+                  "snippet_sha256": "2538c0b4b716b8cb37afe9eee6d53cc307869141e53041b7779ca0fc0357f237",
+                  "source_id": "op:wp:372"
+                }
+              ],
+              "rag_state": "HITS"
+            },
+            "duration_seconds": 16.688,
+            "engine": "gemini_supervisor",
+            "execution_mode": "LIVE_GEMINI",
+            "gemini_plan": null,
+            "heading": "LIVE_GEMINI — Kết quả phân tích",
+            "http_attempt_count": 2,
+            "model": "gemini-3.5-flash-lite",
+            "model_call_count": 1,
+            "model_used": true,
+            "plan": {
+              "actor_id": 19,
+              "budget": {
+                "deterministic_only": false,
+                "max_turns": 1,
+                "model_needed": true,
+                "quota_class": "interactive",
+                "schema_version": 1,
+                "token_estimate": 3000
+              },
+              "operation_type": "READ_ONLY",
+              "plan_id": "41e56fbf-1b8b-456f-a329-4b3728fcea62",
+              "project_id": 5,
+              "rejection_reason": null,
+              "requires_pm_approval": false,
+              "schema_version": 1,
+              "steps": [
+                {
+                  "action": "gemini_ba_analysis",
+                  "agent": "ba",
+                  "dependencies": [],
+                  "operation_type": "READ_ONLY",
+                  "requires_pm_consent": false,
+                  "schema_version": 1,
+                  "step_id": 1
+                },
+                {
+                  "action": "validate_native_citations_and_policy",
+                  "agent": "reviewer",
+                  "dependencies": [
+                    1
+                  ],
+                  "operation_type": "READ_ONLY",
+                  "requires_pm_consent": false,
+                  "schema_version": 1,
+                  "step_id": 2
+                }
+              ],
+              "task_id": "41e56fbf-1b8b-456f-a329-4b3728fcea62"
+            },
+            "provider": "Gemini",
+            "provider_receipts": [
+              {
+                "actor": 19,
+                "agent": "ba",
+                "at": 1793123996.190131,
+                "attempt": 0,
+                "duration_seconds": 0.555,
+                "http_status": 200,
+                "id": "d09bf3e7-62ad-4040-9683-48bad6995012",
+                "input_tokens": 6146,
+                "model": "gemini-3.5-flash-lite",
+                "phase": "countTokens",
+                "project": "gen-lang-client-0020540057",
+                "request_sha256": "4739a188d8ee7bf201b3d9ca29ac4bff7a8dafe00743985249b8aa91a7a145e7",
+                "run_id": "d8396c7b-453c-450d-b63c-68e69b3fb5d9",
+                "state": "LIVE_SUCCESS",
+                "usage": null
+              },
+              {
+                "actor": 19,
+                "agent": "ba",
+                "at": 1793123997.1190407,
+                "attempt": 0,
+                "duration_seconds": 13.238,
+                "http_status": 200,
+                "id": "355a904b-5955-43b4-80e8-b0ff557dd61a",
+                "model": "gemini-3.5-flash-lite",
+                "phase": "generateContent",
+                "project": "gen-lang-client-0020540057",
+                "provider_model_version": "gemini-3.5-flash-lite",
+                "request_sha256": "8f6bc2f96b9c6e4efb59f70bb1e0d94439df6f9622a7d88258881ebc6178451c",
+                "run_id": "d8396c7b-453c-450d-b63c-68e69b3fb5d9",
+                "state": "LIVE_SUCCESS",
+                "usage": {
+                  "candidatesTokenCount": 524,
+                  "promptTokenCount": 6128,
+                  "totalTokenCount": 6652
+                }
+              }
+            ],
+            "provider_remaining_quota": "unavailable",
+            "source_fingerprint": "1a7b8926410bd7a0ab19654725f165dd8d85e35a131cd6b09c481037e2f8e1ae",
+            "source_ids": [
+              374,
+              39,
+              372,
+              38,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45
+            ],
+            "status": "succeeded",
+            "text": "LIVE_GEMINI · gemini-3.5-flash-lite · 1 model calls · 6652 total tokens (provider metadata) · 16.688s\nProvider remaining quota: unavailable. Chỉ phân tích/đề xuất; chưa có native mutation.\n\nBA:\n{\"nodes\":[{\"assignee_role\":\"PM\",\"depends_on\":[],\"description\":\"Quản lý toàn bộ chức năng sprint\",\"due_date\":\"2026-12-18\",\"key\":\"epic-sprint\",\"kind\":\"Epic\",\"priority_id\":9,\"requirement_ids\":[\"SPR-01\",\"SPR-02\"],\"start_date\":\"2026-10-26\",\"status_id\":1,\"subject\":\"Sprint Management Epic\"}],\"relations\":[],\"requirements\":[{\"id\":\"SPR-01\",\"text\":\"Tạo và cấu hình sprint mới\"},{\"id\":\"SPR-02\",\"text\":\"Quản lý backlog trong sprint\"}],\"schema\":\"QLDAPM_WBS_V2\"}\n\nReviewer local: trích dẫn/phiên bản/phạm vi đã đối chiếu; nội dung gợi ý vẫn cần người dùng thẩm định.",
+            "tools": [],
+            "usage": [
+              {
+                "candidatesTokenCount": 524,
+                "promptTokenCount": 6128,
+                "totalTokenCount": 6652
+              }
+            ]
+          }
+        },
+        "execution": {
+          "id": 2542,
+          "workflowId": "XoP4M520TMG3WgeY",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:01:52.314",
+          "stoppedAt": "2026-10-28 05:01:54.211",
+          "deletedAt": null,
+          "jsonSizeBytes": 13848
+        }
+      }
+    },
+    "WF04": {
+      "name": "Multi-Agent Execution Tracking",
+      "workflow_id": "elfapV5D2PTnLiHW",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:01:55.953333+00:00",
+      "details": "WF04 truy xuất vết thực thi đa tác tử thành công (HTTP 200, total_events: 20, correlation_id: 8ef51c2e-b7f7-4c0b-bb24-dbb4cc5942c4); Execution ID 2543 đạt terminal success.",
+      "evidence": {
+        "trace_summary": {
+          "total_events": 20,
+          "correlation_id": "8ef51c2e-b7f7-4c0b-bb24-dbb4cc5942c4"
+        },
+        "execution": {
+          "id": 2543,
+          "workflowId": "elfapV5D2PTnLiHW",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:01:55.227",
+          "stoppedAt": "2026-10-28 05:01:55.811",
+          "deletedAt": null,
+          "jsonSizeBytes": 14792
+        }
+      }
+    },
+    "WF05": {
+      "name": "Native API Approval Workflow",
+      "workflow_id": "xCZFw45fmDQG5gNq",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:01:56.922782+00:00",
+      "details": "WF05 kiểm tra proposal 19efe751... thành công (HTTP 200, status: VERIFIED_COMPLETED, decision_recorded=True); Chặn tham số decision trái tuyến (HTTP 400 USE_WF06_FOR_EXACT_PM_DECISION); Execution ID 2545 đạt terminal success.",
+      "evidence": {
+        "proposal_inspection": {
+          "status": "VERIFIED_COMPLETED",
+          "proposal": {
+            "id": "19efe751-4af7-4cb4-96f0-0836ee504948",
+            "hash": "f1872c2436b8e964304e767488c909e36c2446361cdc36a2f0d8da5f48967cda",
+            "expires": 1792759779.48367,
+            "state": "done",
+            "command": {
+              "_gateway_mode": "native",
+              "_origin_run_id": "80c74d03-5c9d-4471-9d9a-09c6749c645d",
+              "action": "update_work_package",
+              "arguments": {
+                "changes": {
+                  "description": "Test-only resource for the owner-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a business milestone or personnel assessment.\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635\n\nCODEX_SCENARIO_F_RAG_20261023_aa98fa81d022"
+                },
+                "id": 370,
+                "lock_version": 1
+              },
+              "auto_execute": false,
+              "idempotency_key": "live-80c74d03-5c9d-4471-9d9a-09c6749c645d-0",
+              "preview": {
+                "before": {
+                  "_links": {
+                    "activities": {
+                      "href": "/api/v3/work_packages/370/activities"
+                    },
+                    "addAttachment": {
+                      "href": "/api/v3/work_packages/370/attachments",
+                      "method": "post"
+                    },
+                    "addChild": {
+                      "href": "/api/v3/workspaces/qldapm-local/work_packages",
+                      "method": "post",
+                      "title": "Add child of [CODEX TEST] Main Native E2E fdae09fb"
+                    },
+                    "addComment": {
+                      "href": "/api/v3/work_packages/370/activities",
+                      "method": "post",
+                      "title": "Add comment"
+                    },
+                    "addRelation": {
+                      "href": "/api/v3/work_packages/370/relations",
+                      "method": "post",
+                      "title": "Add relation"
+                    },
+                    "ancestors": [],
+                    "assignee": {
+                      "href": "/api/v3/users/19",
+                      "title": "QLDAPM BA-PM"
+                    },
+                    "attachments": {
+                      "href": "/api/v3/work_packages/370/attachments"
+                    },
+                    "author": {
+                      "href": "/api/v3/users/19",
+                      "title": "QLDAPM BA-PM"
+                    },
+                    "availableRelationCandidates": {
+                      "href": "/api/v3/work_packages/370/available_relation_candidates",
+                      "title": "Potential work packages to relate to"
+                    },
+                    "backlogBucket": {
+                      "href": null
+                    },
+                    "category": {
+                      "href": null
+                    },
+                    "changeParent": {
+                      "href": "/api/v3/work_packages/370",
+                      "method": "patch",
+                      "title": "Change parent of [CODEX TEST] Main Native E2E fdae09fb"
+                    },
+                    "copy": {
+                      "href": "/work_packages/370/copy",
+                      "title": "Copy work package '[CODEX TEST] Main Native E2E fdae09fb'",
+                      "type": "text/html"
+                    },
+                    "customActions": [],
+                    "customField12": {
+                      "href": null,
+                      "title": null
+                    },
+                    "github_pull_requests": {
+                      "href": "/api/v3/work_packages/370/github_pull_requests",
+                      "title": "GitHub pull requests"
+                    },
+                    "gitlab_issues": {
+                      "href": "/api/v3/work_packages/370/gitlab_issues",
+                      "title": "Gitlab Issues"
+                    },
+                    "gitlab_merge_requests": {
+                      "href": "/api/v3/work_packages/370/gitlab_merge_requests",
+                      "title": "Gitlab merge requests"
+                    },
+                    "observedInVersions": [],
+                    "parent": {
+                      "href": null
+                    },
+                    "previewMarkup": {
+                      "href": "/api/v3/render/markdown?context=/api/v3/work_packages/370",
+                      "method": "post"
+                    },
+                    "priority": {
+                      "href": "/api/v3/priorities/8",
+                      "title": "Normal"
+                    },
+                    "project": {
+                      "href": "/api/v3/projects/5",
+                      "title": "QLDAPM — Local Community"
+                    },
+                    "projectPhaseDefinition": {
+                      "href": null
+                    },
+                    "relations": {
+                      "href": "/api/v3/work_packages/370/relations"
+                    },
+                    "responsible": {
+                      "href": null
+                    },
+                    "schema": {
+                      "href": "/api/v3/work_packages/schemas/5-1"
+                    },
+                    "self": {
+                      "href": "/api/v3/work_packages/370",
+                      "title": "[CODEX TEST] Main Native E2E fdae09fb"
+                    },
+                    "sprint": {
+                      "href": null
+                    },
+                    "status": {
+                      "href": "/api/v3/statuses/1",
+                      "title": "NEW"
+                    },
+                    "targetVersions": [],
+                    "type": {
+                      "href": "/api/v3/types/1",
+                      "title": "Task"
+                    },
+                    "unwatch": {
+                      "href": "/api/v3/work_packages/370/watchers/19",
+                      "method": "delete"
+                    },
+                    "update": {
+                      "href": "/api/v3/work_packages/370/form",
+                      "method": "post"
+                    },
+                    "updateImmediately": {
+                      "href": "/api/v3/work_packages/370",
+                      "method": "patch"
+                    },
+                    "watchers": {
+                      "href": "/api/v3/work_packages/370/watchers"
+                    }
+                  },
+                  "description": {
+                    "format": "markdown",
+                    "html": "<p class=\"op-uc-p\">Test-only resource for the owner-approved Main Native API E2E.<br>\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635<br>\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.<br>\nThis is a test resource, not a business milestone or personnel assessment.<br>\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635</p>",
+                    "raw": "Test-only resource for the owner-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a business milestone or personnel assessment.\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635"
+                  },
+                  "dueDate": null,
+                  "id": 370,
+                  "lockVersion": 1,
+                  "startDate": null,
+                  "subject": "[CODEX TEST] Main Native E2E fdae09fb"
+                },
+                "changes": {
+                  "changes": {
+                    "description": "Test-only resource for the owner-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a business milestone or personnel assessment.\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635\n\nCODEX_SCENARIO_F_RAG_20261023_aa98fa81d022"
+                  },
+                  "id": 370,
+                  "lock_version": 1
+                },
+                "date_adjustments": {},
+                "validation": "Native permission and gate checks run again at confirmation."
+              }
+            },
+            "result": {
+              "correlation_id": "8c0468a4-a417-4e94-a8a3-ddd33ec383fb",
+              "knowledge_sync": {
+                "id": "652fee5e-007b-516f-8ad0-4e39fd5a9f73",
+                "native_id": 370,
+                "run_id": "80c74d03-5c9d-4471-9d9a-09c6749c645d",
+                "state": "pending",
+                "trace_id": "d379df9f-0d8d-4c0a-92fd-ab518612314a"
+              },
+              "origin": {
+                "proposal_id": "19efe751-4af7-4cb4-96f0-0836ee504948",
+                "run_id": "80c74d03-5c9d-4471-9d9a-09c6749c645d",
+                "trace_id": "d379df9f-0d8d-4c0a-92fd-ab518612314a"
+              },
+              "result": {
+                "_embedded": {
+                  "assignee": {
+                    "_links": {
+                      "memberships": {
+                        "href": "/api/v3/memberships?filters=%5B%7B%22principal%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%2219%22%5D%7D%7D%5D",
+                        "title": "Tư cách thành viên"
+                      },
+                      "self": {
+                        "href": "/api/v3/users/19",
+                        "title": "QLDAPM BA-PM"
+                      },
+                      "showUser": {
+                        "href": "/users/19",
+                        "type": "text/html"
+                      }
+                    },
+                    "_type": "User",
+                    "avatar": "http://gravatar.com/avatar/26deae390727ecb5877dc51b06b66fc0?default=404&secure=false",
+                    "createdAt": "2026-10-09T08:04:39.050Z",
+                    "email": "hiepk40c@gmail.com",
+                    "firstName": "QLDAPM",
+                    "id": 19,
+                    "identityUrl": null,
+                    "language": "vi",
+                    "lastName": "BA-PM",
+                    "login": "ba-pm",
+                    "name": "QLDAPM BA-PM",
+                    "status": "active",
+                    "updatedAt": "2026-10-23T08:44:09.648Z"
+                  },
+                  "attachments": {
+                    "_embedded": {
+                      "elements": []
+                    },
+                    "_links": {
+                      "self": {
+                        "href": "/api/v3/work_packages/370/attachments"
+                      }
+                    },
+                    "_type": "Collection",
+                    "count": 0,
+                    "total": 0
+                  },
+                  "author": {
+                    "_links": {
+                      "memberships": {
+                        "href": "/api/v3/memberships?filters=%5B%7B%22principal%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%2219%22%5D%7D%7D%5D",
+                        "title": "Tư cách thành viên"
+                      },
+                      "self": {
+                        "href": "/api/v3/users/19",
+                        "title": "QLDAPM BA-PM"
+                      },
+                      "showUser": {
+                        "href": "/users/19",
+                        "type": "text/html"
+                      }
+                    },
+                    "_type": "User",
+                    "avatar": "http://gravatar.com/avatar/26deae390727ecb5877dc51b06b66fc0?default=404&secure=false",
+                    "createdAt": "2026-10-09T08:04:39.050Z",
+                    "email": "hiepk40c@gmail.com",
+                    "firstName": "QLDAPM",
+                    "id": 19,
+                    "identityUrl": null,
+                    "language": "vi",
+                    "lastName": "BA-PM",
+                    "login": "ba-pm",
+                    "name": "QLDAPM BA-PM",
+                    "status": "active",
+                    "updatedAt": "2026-10-23T08:44:09.648Z"
+                  },
+                  "customActions": [],
+                  "observedInVersions": [],
+                  "priority": {
+                    "_links": {
+                      "self": {
+                        "href": "/api/v3/priorities/8",
+                        "title": "Normal"
+                      }
+                    },
+                    "_type": "Priority",
+                    "color": "#74C0FC",
+                    "id": 8,
+                    "isActive": true,
+                    "isDefault": true,
+                    "name": "Normal",
+                    "position": 2
+                  },
+                  "project": {
+                    "_links": {
+                      "ancestors": [],
+                      "categories": {
+                        "href": "/api/v3/workspaces/5/categories"
+                      },
+                      "createWorkPackage": {
+                        "href": "/api/v3/workspaces/5/work_packages/form",
+                        "method": "post"
+                      },
+                      "createWorkPackageImmediately": {
+                        "href": "/api/v3/workspaces/5/work_packages",
+                        "method": "post"
+                      },
+                      "favor": {
+                        "href": "/api/v3/workspaces/5/favorite",
+                        "method": "post"
+                      },
+                      "memberships": {
+                        "href": "/api/v3/memberships?filters=%5B%7B%22project%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%225%22%5D%7D%7D%5D"
+                      },
+                      "parent": {
+                        "href": null
+                      },
+                      "projectStorages": {
+                        "href": "/api/v3/project_storages?filters=%5B%7B%22projectId%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%225%22%5D%7D%7D%5D"
+                      },
+                      "schema": {
+                        "href": "/api/v3/workspaces/schema"
+                      },
+                      "self": {
+                        "href": "/api/v3/projects/5",
+                        "title": "QLDAPM — Local Community"
+                      },
+                      "status": {
+                        "href": null
+                      },
+                      "types": {
+                        "href": "/api/v3/workspaces/5/types"
+                      },
+                      "versions": {
+                        "href": "/api/v3/workspaces/5/versions"
+                      },
+                      "workPackages": {
+                        "href": "/api/v3/workspaces/5/work_packages"
+                      }
+                    },
+                    "_type": "Project",
+                    "active": true,
+                    "createdAt": "2026-10-09T08:04:38.425Z",
+                    "description": {
+                      "format": "markdown",
+                      "html": "",
+                      "raw": ""
+                    },
+                    "favorited": false,
+                    "id": 5,
+                    "identifier": "qldapm-local",
+                    "name": "QLDAPM — Local Community",
+                    "public": false,
+                    "statusExplanation": {
+                      "format": "markdown",
+                      "html": "",
+                      "raw": ""
+                    },
+                    "updatedAt": "2026-10-09T08:04:38.464Z"
+                  },
+                  "relations": {
+                    "_embedded": {
+                      "elements": []
+                    },
+                    "_links": {
+                      "self": {
+                        "href": "/api/v3/work_packages/370/relations"
+                      }
+                    },
+                    "_type": "Collection",
+                    "count": 0,
+                    "total": 0
+                  },
+                  "status": {
+                    "_links": {
+                      "self": {
+                        "href": "/api/v3/statuses/1",
+                        "title": "NEW"
+                      }
+                    },
+                    "_type": "Status",
+                    "color": "#1098AD",
+                    "defaultDoneRatio": 0,
+                    "excludedFromTotals": false,
+                    "id": 1,
+                    "isClosed": false,
+                    "isDefault": true,
+                    "isReadonly": false,
+                    "name": "NEW",
+                    "position": 1
+                  },
+                  "targetVersions": [],
+                  "type": {
+                    "_links": {
+                      "self": {
+                        "href": "/api/v3/types/1",
+                        "title": "Task"
+                      }
+                    },
+                    "_type": "Type",
+                    "color": "#1A67A3",
+                    "createdAt": "2026-10-09T07:51:33.680Z",
+                    "id": 1,
+                    "isDefault": false,
+                    "isMilestone": false,
+                    "name": "Task",
+                    "position": 1,
+                    "updatedAt": "2026-10-09T07:51:33.680Z"
+                  }
+                },
+                "_links": {
+                  "activities": {
+                    "href": "/api/v3/work_packages/370/activities"
+                  },
+                  "addAttachment": {
+                    "href": "/api/v3/work_packages/370/attachments",
+                    "method": "post"
+                  },
+                  "addChild": {
+                    "href": "/api/v3/workspaces/qldapm-local/work_packages",
+                    "method": "post",
+                    "title": "Add child of [CODEX TEST] Main Native E2E fdae09fb"
+                  },
+                  "addComment": {
+                    "href": "/api/v3/work_packages/370/activities",
+                    "method": "post",
+                    "title": "Add comment"
+                  },
+                  "addRelation": {
+                    "href": "/api/v3/work_packages/370/relations",
+                    "method": "post",
+                    "title": "Add relation"
+                  },
+                  "ancestors": [],
+                  "assignee": {
+                    "href": "/api/v3/users/19",
+                    "title": "QLDAPM BA-PM"
+                  },
+                  "attachments": {
+                    "href": "/api/v3/work_packages/370/attachments"
+                  },
+                  "author": {
+                    "href": "/api/v3/users/19",
+                    "title": "QLDAPM BA-PM"
+                  },
+                  "availableRelationCandidates": {
+                    "href": "/api/v3/work_packages/370/available_relation_candidates",
+                    "title": "Potential work packages to relate to"
+                  },
+                  "backlogBucket": {
+                    "href": null
+                  },
+                  "category": {
+                    "href": null
+                  },
+                  "changeParent": {
+                    "href": "/api/v3/work_packages/370",
+                    "method": "patch",
+                    "title": "Change parent of [CODEX TEST] Main Native E2E fdae09fb"
+                  },
+                  "copy": {
+                    "href": "/work_packages/370/copy",
+                    "title": "Copy work package '[CODEX TEST] Main Native E2E fdae09fb'",
+                    "type": "text/html"
+                  },
+                  "customActions": [],
+                  "customField12": {
+                    "href": null,
+                    "title": null
+                  },
+                  "github_pull_requests": {
+                    "href": "/api/v3/work_packages/370/github_pull_requests",
+                    "title": "GitHub pull requests"
+                  },
+                  "gitlab_issues": {
+                    "href": "/api/v3/work_packages/370/gitlab_issues",
+                    "title": "Gitlab Issues"
+                  },
+                  "gitlab_merge_requests": {
+                    "href": "/api/v3/work_packages/370/gitlab_merge_requests",
+                    "title": "Gitlab merge requests"
+                  },
+                  "observedInVersions": [],
+                  "parent": {
+                    "href": null
+                  },
+                  "previewMarkup": {
+                    "href": "/api/v3/render/markdown?context=/api/v3/work_packages/370",
+                    "method": "post"
+                  },
+                  "priority": {
+                    "href": "/api/v3/priorities/8",
+                    "title": "Normal"
+                  },
+                  "project": {
+                    "href": "/api/v3/projects/5",
+                    "title": "QLDAPM — Local Community"
+                  },
+                  "projectPhaseDefinition": {
+                    "href": null
+                  },
+                  "relations": {
+                    "href": "/api/v3/work_packages/370/relations"
+                  },
+                  "responsible": {
+                    "href": null
+                  },
+                  "schema": {
+                    "href": "/api/v3/work_packages/schemas/5-1"
+                  },
+                  "self": {
+                    "href": "/api/v3/work_packages/370",
+                    "title": "[CODEX TEST] Main Native E2E fdae09fb"
+                  },
+                  "sprint": {
+                    "href": null
+                  },
+                  "status": {
+                    "href": "/api/v3/statuses/1",
+                    "title": "NEW"
+                  },
+                  "targetVersions": [],
+                  "type": {
+                    "href": "/api/v3/types/1",
+                    "title": "Task"
+                  },
+                  "unwatch": {
+                    "href": "/api/v3/work_packages/370/watchers/19",
+                    "method": "delete"
+                  },
+                  "update": {
+                    "href": "/api/v3/work_packages/370/form",
+                    "method": "post"
+                  },
+                  "updateImmediately": {
+                    "href": "/api/v3/work_packages/370",
+                    "method": "patch"
+                  },
+                  "watchers": {
+                    "href": "/api/v3/work_packages/370/watchers"
+                  }
+                },
+                "_type": "WorkPackage",
+                "createdAt": "2026-10-23T06:40:33.773Z",
+                "customField11": "CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635",
+                "customField13": null,
+                "customField14": null,
+                "customField15": null,
+                "derivedDueDate": null,
+                "derivedEstimatedTime": null,
+                "derivedPercentageDone": null,
+                "derivedRemainingTime": null,
+                "derivedStartDate": null,
+                "description": {
+                  "format": "markdown",
+                  "html": "<p class=\"op-uc-p\">Test-only resource for the owner-approved Main Native API E2E.<br>\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635<br>\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.<br>\nThis is a test resource, not a business milestone or personnel assessment.<br>\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635</p>\n<p class=\"op-uc-p\">CODEX_SCENARIO_F_RAG_20261023_aa98fa81d022</p>",
+                  "raw": "Test-only resource for the owner-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a business milestone or personnel assessment.\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635\n\nCODEX_SCENARIO_F_RAG_20261023_aa98fa81d022"
+                },
+                "displayId": "370",
+                "dueDate": null,
+                "duration": null,
+                "estimatedTime": null,
+                "hasProjectAttributes": false,
+                "id": 370,
+                "ignoreNonWorkingDays": false,
+                "lockVersion": 2,
+                "percentageDone": 0,
+                "position": 15,
+                "scheduleManually": true,
+                "startDate": null,
+                "storyPoints": null,
+                "subject": "[CODEX TEST] Main Native E2E fdae09fb",
+                "updatedAt": "2026-10-23T12:37:53.191Z"
+              }
+            },
+            "human_confirmation_required": true,
+            "knowledge_sync": {
+              "id": "652fee5e-007b-516f-8ad0-4e39fd5a9f73",
+              "native_id": 370,
+              "state": "verified",
+              "attempts": 1,
+              "next_at": 1792759082.361012,
+              "error": null,
+              "result": {
+                "canonical": {
+                  "chunks_count": 1,
+                  "document_id": "56e6f910e4f09fcc79b333717908e6f0564090985f8de7d3c143d02a20be04b9",
+                  "error": null,
+                  "lock_version": 2,
+                  "native_id": 370,
+                  "source_hash": "56e6f910e4f09fcc79b333717908e6f0564090985f8de7d3c143d02a20be04b9",
+                  "source_id": "op:wp:370",
+                  "status": "UPDATED",
+                  "vector_indexed": true
+                },
+                "chunks_count": 1,
+                "document_id": "95f03536cf9b4aa946ec95a1b43793e08e9d0a9563803810d3bbd137eddce6ea",
+                "error": null,
+                "lock_version": 2,
+                "native_id": 370,
+                "run_id": "80c74d03-5c9d-4471-9d9a-09c6749c645d",
+                "source_hash": "95f03536cf9b4aa946ec95a1b43793e08e9d0a9563803810d3bbd137eddce6ea",
+                "source_id": "actor:19:wp:370",
+                "status": "UPDATED",
+                "trace_id": "d379df9f-0d8d-4c0a-92fd-ab518612314a",
+                "vector_indexed": true
+              }
+            },
+            "lifecycle": "VERIFIED_COMPLETED"
+          },
+          "correlation_id": "b3839e55-1dfb-43f9-a22f-62e35a03dbb1",
+          "human_confirmation_required": false,
+          "decision_recorded": true
+        },
+        "boundary_rejection": {
+          "error": "USE_WF06_FOR_EXACT_PM_DECISION"
+        },
+        "execution": {
+          "id": 2545,
+          "workflowId": "xCZFw45fmDQG5gNq",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:01:56.419",
+          "stoppedAt": "2026-10-28 05:01:56.795",
+          "deletedAt": null,
+          "jsonSizeBytes": 18173
+        }
+      }
+    },
+    "WF06": {
+      "name": "Native API Execution & Verification",
+      "workflow_id": "Jq18aFSqfuUybEic",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:01:57.728097+00:00",
+      "details": "WF06 ngăn chặn replay đề xuất đã kết thúc an toàn tuyệt đối (HTTP 409 OUTCOME_UNKNOWN_RECONCILE_FIRST); Chặn lệnh thiếu hash (HTTP 409 INVALID_ARGUMENTS); Execution ID 2547 đạt terminal success.",
+      "evidence": {
+        "replay_rejection": {
+          "error": "OUTCOME_UNKNOWN_RECONCILE_FIRST"
+        },
+        "missing_hash_rejection": {
+          "error": "INVALID_ARGUMENTS"
+        },
+        "execution": {
+          "id": 2547,
+          "workflowId": "Jq18aFSqfuUybEic",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:01:57.473",
+          "stoppedAt": "2026-10-28 05:01:57.599",
+          "deletedAt": null,
+          "jsonSizeBytes": 4657
+        }
+      }
+    },
+    "WF07": {
+      "name": "Daily Project Brief",
+      "workflow_id": "BpCQrGR866vg4BqQ",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:01:58.060981+00:00",
+      "details": "WF07 thực thi bản tin dự án hằng ngày với chữ ký HMAC máy thành công (HTTP 200, kind: daily_brief, authority: machine); Execution ID 2548 đạt terminal success.",
+      "evidence": {
+        "brief_result": {
+          "actor_id": null,
+          "authority": "machine",
+          "component": "gateway",
+          "kind": "daily_brief",
+          "model_calls": 0,
+          "native_write_allowed": false,
+          "project_id": 5,
+          "ready": 5,
+          "request_key": "daily:2026-10-28",
+          "run_id": "32af817c-e08e-43b5-9211-3b2bc0ac710a",
+          "state": "COMPLETED",
+          "status": "READY",
+          "targets": 5,
+          "trace_id": "32af817c-e08e-43b5-9211-3b2bc0ac710a",
+          "unavailable": 0
+        },
+        "execution": {
+          "id": 2548,
+          "workflowId": "BpCQrGR866vg4BqQ",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:01:57.798",
+          "stoppedAt": "2026-10-28 05:01:57.911",
+          "deletedAt": null,
+          "jsonSizeBytes": 6203
+        }
+      }
+    },
+    "WF08": {
+      "name": "Sprint Risk",
+      "workflow_id": "RXWjVUL8ozqhjY4w",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:02:03.008947+00:00",
+      "details": "WF08 tính toán rủi ro sprint thành công dựa trên quan hệ Native (HTTP 200, state: READY, project_id: 5, model_used: False); Execution ID 2549 đạt terminal success.",
+      "evidence": {
+        "sprint_risk_result": {
+          "state": "READY",
+          "as_of_date": "2026-10-28",
+          "project_id": 5,
+          "actor_id": 19,
+          "actor_role": "PM",
+          "model_used": false,
+          "observed_at": 1793163722.607861,
+          "fingerprint": "e3be7206a9ef6774f762db780c5aa34d059dec533a4b5930d0e10d7cd4ba61ad",
+          "report": {
+            "summary": {
+              "total_packages": 339,
+              "closed_packages": 0,
+              "open_packages": 339,
+              "progress_percent": 0,
+              "by_status": {
+                "NEW": 338,
+                "IN ANALYSIS": 1
+              },
+              "by_type": {
+                "Epic": 12,
+                "Task": 57,
+                "Subtask": 270
+              },
+              "unassigned_open_count": 4,
+              "missing_deadline_open_count": 5
+            },
+            "sprint_health": {
+              "status": "CRITICAL",
+              "reasons": [
+                "Có 34 công việc quá hạn cần xử lý.",
+                "Có 4 công việc chưa phân công người thực hiện.",
+                "Có 5 công việc chưa có thời hạn hoàn thành (deadline)."
+              ]
+            },
+            "overdue": [
+              {
+                "id": 102,
+                "lockVersion": 1,
+                "subject": "Đặc tả và AC cho AUTH-01",
+                "status": "NEW",
+                "assignee": "QLDAPM BA-PM",
+                "assignee_id": 19,
+                "due_date": "2026-10-05",
+                "days_overdue": 23
+              },
+              {
+                "id": 103,
+                "lockVersion": 2,
+                "subject": "Backend cho AUTH-01",
+                "status": "NEW",
+                "assignee": "QLDAPM BE",
+                "assignee_id": 21,
+                "due_date": "2026-10-07",
+                "days_overdue": 21
+              },
+              {
+                "id": 104,
+                "lockVersion": 2,
+                "subject": "Frontend cho AUTH-01",
+                "status": "NEW",
+                "assignee": "QLDAPM FE",
+                "assignee_id": 22,
+                "due_date": "2026-10-07",
+                "days_overdue": 21
+              },
+              {
+                "id": 105,
+                "lockVersion": 2,
+                "subject": "Kiểm thử và retest cho AUTH-01",
+                "status": "NEW",
+                "assignee": "QLDAPM QA",
+                "assignee_id": 23,
+                "due_date": "2026-10-08",
+                "days_overdue": 20
+              },
+              {
+                "id": 49,
+                "lockVersion": 3,
+                "subject": "AUTH-01 — Đăng ký bằng email và mật khẩu",
+                "status": "NEW",
+                "assignee": "QLDAPM PM",
+                "assignee_id": 20,
+                "due_date": "2026-10-09",
+                "days_overdue": 19
+              },
+              {
+                "id": 106,
+                "lockVersion": 2,
+                "subject": "Nghiệm thu và bàn giao AUTH-01",
+                "status": "NEW",
+                "assignee": "QLDAPM PM",
+                "assignee_id": 20,
+                "due_date": "2026-10-09",
+                "days_overdue": 19
+              },
+              {
+                "id": 368,
+                "lockVersion": 0,
+                "subject": "test",
+                "status": "NEW",
+                "assignee": "QLDAPM QA",
+                "assignee_id": 23,
+                "due_date": "2026-10-09",
+                "days_overdue": 19
+              },
+              {
+                "id": 376,
+                "lockVersion": 0,
+                "subject": "test2",
+                "status": "NEW",
+                "assignee": "Unassigned",
+                "assignee_id": null,
+                "due_date": "2026-10-09",
+                "days_overdue": 19
+              },
+              {
+                "id": 107,
+                "lockVersion": 1,
+                "subject": "Đặc tả và AC cho AUTH-02",
+                "status": "NEW",
+                "assignee": "QLDAPM BA-PM",
+                "assignee_id": 19,
+                "due_date": "2026-10-12",
+                "days_overdue": 16
+              },
+              {
+                "id": 108,
+                "lockVersion": 3,
+                "subject": "Backend cho AUTH-02",
+                "status": "NEW",
+                "assignee": "QLDAPM BE",
+                "assignee_id": 21,
+                "due_date": "2026-10-14",
+                "days_overdue": 14
+              },
+              {
+                "id": 109,
+                "lockVersion": 3,
+                "subject": "Frontend cho AUTH-02",
+                "status": "NEW",
+                "assignee": "QLDAPM FE",
+                "assignee_id": 22,
+                "due_date": "2026-10-14",
+                "days_overdue": 14
+              },
+              {
+                "id": 110,
+                "lockVersion": 3,
+                "subject": "Kiểm thử và retest cho AUTH-02",
+                "status": "NEW",
+                "assignee": "QLDAPM QA",
+                "assignee_id": 23,
+                "due_date": "2026-10-15",
+                "days_overdue": 13
+              },
+              {
+                "id": 50,
+                "lockVersion": 3,
+                "subject": "AUTH-02 — Đăng nhập",
+                "status": "NEW",
+                "assignee": "QLDAPM PM",
+                "assignee_id": 20,
+                "due_date": "2026-10-16",
+                "days_overdue": 12
+              },
+              {
+                "id": 111,
+                "lockVersion": 3,
+                "subject": "Nghiệm thu và bàn giao AUTH-02",
+                "status": "NEW",
+                "assignee": "QLDAPM PM",
+                "assignee_id": 20,
+                "due_date": "2026-10-16",
+                "days_overdue": 12
+              },
+              {
+                "id": 367,
+                "lockVersion": 0,
+                "subject": "test",
+                "status": "NEW",
+                "assignee": "QLDAPM QA",
+                "assignee_id": 23,
+                "due_date": "2026-10-16",
+                "days_overdue": 12
+              },
+              {
+                "id": 112,
+                "lockVersion": 1,
+                "subject": "Đặc tả và AC cho AUTH-03",
+                "status": "NEW",
+                "assignee": "QLDAPM BA-PM",
+                "assignee_id": 19,
+                "due_date": "2026-10-19",
+                "days_overdue": 9
+              },
+              {
+                "id": 127,
+                "lockVersion": 1,
+                "subject": "Đặc tả và AC cho PRJ-01",
+                "status": "NEW",
+                "assignee": "QLDAPM BA-PM",
+                "assignee_id": 19,
+                "due_date": "2026-10-19",
+                "days_overdue": 9
+              },
+              {
+                "id": 113,
+                "lockVersion": 3,
+                "subject": "Backend cho AUTH-03",
+                "status": "NEW",
+                "assignee": "QLDAPM BE",
+                "assignee_id": 21,
+                "due_date": "2026-10-21",
+                "days_overdue": 7
+              },
+              {
+                "id": 114,
+                "lockVersion": 3,
+                "subject": "Frontend cho AUTH-03",
+                "status": "NEW",
+                "assignee": "QLDAPM FE",
+                "assignee_id": 22,
+                "due_date": "2026-10-21",
+                "days_overdue": 7
+              },
+              {
+                "id": 128,
+                "lockVersion": 3,
+                "subject": "Backend cho PRJ-01",
+                "status": "NEW",
+                "assignee": "QLDAPM BE",
+                "assignee_id": 21,
+                "due_date": "2026-10-21",
+                "days_overdue": 7
+              },
+              {
+                "id": 129,
+                "lockVersion": 3,
+                "subject": "Frontend cho PRJ-01",
+                "status": "NEW",
+                "assignee": "QLDAPM FE",
+                "assignee_id": 22,
+                "due_date": "2026-10-21",
+                "days_overdue": 7
+              },
+              {
+                "id": 115,
+                "lockVersion": 3,
+                "subject": "Kiểm thử và retest cho AUTH-03",
+                "status": "NEW",
+                "assignee": "QLDAPM QA",
+                "assignee_id": 23,
+                "due_date": "2026-10-22",
+                "days_overdue": 6
+              },
+              {
+                "id": 130,
+                "lockVersion": 3,
+                "subject": "Kiểm thử và retest cho PRJ-01",
+                "status": "NEW",
+                "assignee": "QLDAPM QA",
+                "assignee_id": 23,
+                "due_date": "2026-10-22",
+                "days_overdue": 6
+              },
+              {
+                "id": 51,
+                "lockVersion": 3,
+                "subject": "AUTH-03 — Đăng xuất",
+                "status": "NEW",
+                "assignee": "QLDAPM PM",
+                "assignee_id": 20,
+                "due_date": "2026-10-23",
+                "days_overdue": 5
+              },
+              {
+                "id": 54,
+                "lockVersion": 3,
+                "subject": "PRJ-01 — Tạo Project với tên, mô tả và thời gian dự kiến",
+                "status": "NEW",
+                "assignee": "QLDAPM PM",
+                "assignee_id": 20,
+                "due_date": "2026-10-23",
+                "days_overdue": 5
+              },
+              {
+                "id": 116,
+                "lockVersion": 3,
+                "subject": "Nghiệm thu và bàn giao AUTH-03",
+                "status": "NEW",
+                "assignee": "QLDAPM PM",
+                "assignee_id": 20,
+                "due_date": "2026-10-23",
+                "days_overdue": 5
+              },
+              {
+                "id": 131,
+                "lockVersion": 3,
+                "subject": "Nghiệm thu và bàn giao PRJ-01",
+                "status": "NEW",
+                "assignee": "QLDAPM PM",
+                "assignee_id": 20,
+                "due_date": "2026-10-23",
+                "days_overdue": 5
+              },
+              {
+                "id": 369,
+                "lockVersion": 0,
+                "subject": "test 51",
+                "status": "NEW",
+                "assignee": "QLDAPM PM",
+                "assignee_id": 20,
+                "due_date": "2026-10-23",
+                "days_overdue": 5
+              },
+              {
+                "id": 117,
+                "lockVersion": 1,
+                "subject": "Đặc tả và AC cho AUTH-04",
+                "status": "NEW",
+                "assignee": "QLDAPM BA-PM",
+                "assignee_id": 19,
+                "due_date": "2026-10-26",
+                "days_overdue": 2
+              },
+              {
+                "id": 132,
+                "lockVersion": 1,
+                "subject": "Đặc tả và AC cho PRJ-02",
+                "status": "NEW",
+                "assignee": "QLDAPM BA-PM",
+                "assignee_id": 19,
+                "due_date": "2026-10-26",
+                "days_overdue": 2
+              },
+              {
+                "id": 137,
+                "lockVersion": 1,
+                "subject": "Đặc tả và AC cho PRJ-03",
+                "status": "NEW",
+                "assignee": "QLDAPM BA-PM",
+                "assignee_id": 19,
+                "due_date": "2026-10-26",
+                "days_overdue": 2
+              },
+              {
+                "id": 142,
+                "lockVersion": 1,
+                "subject": "Đặc tả và AC cho PRJ-04",
+                "status": "NEW",
+                "assignee": "QLDAPM BA-PM",
+                "assignee_id": 19,
+                "due_date": "2026-10-26",
+                "days_overdue": 2
+              },
+              {
+                "id": 182,
+                "lockVersion": 1,
+                "subject": "Đặc tả và AC cho SPR-01",
+                "status": "NEW",
+                "assignee": "QLDAPM BA-PM",
+                "assignee_id": 19,
+                "due_date": "2026-10-26",
+                "days_overdue": 2
+              },
+              {
+                "id": 375,
+                "lockVersion": 0,
+                "subject": "[CODEX TEST] Explicit Native schedule 20261025",
+                "status": "NEW",
+                "assignee": "QLDAPM BE",
+                "assignee_id": 21,
+                "due_date": "2026-10-27",
+                "days_overdue": 1
+              }
+            ],
+            "blocked": [],
+            "dependencies": [
+              {
+                "id": 50,
+                "prerequisite_ids": [
+                  49
+                ],
+                "relation_ids": [
+                  14
+                ]
+              },
+              {
+                "id": 51,
+                "prerequisite_ids": [
+                  50
+                ],
+                "relation_ids": [
+                  20
+                ]
+              },
+              {
+                "id": 52,
+                "prerequisite_ids": [
+                  54
+                ],
+                "relation_ids": [
+                  26
+                ]
+              },
+              {
+                "id": 53,
+                "prerequisite_ids": [
+                  50,
+                  52,
+                  55
+                ],
+                "relation_ids": [
+                  32,
+                  33,
+                  34
+                ]
+              },
+              {
+                "id": 54,
+                "prerequisite_ids": [
+                  50
+                ],
+                "relation_ids": [
+                  40
+                ]
+              },
+              {
+                "id": 55,
+                "prerequisite_ids": [
+                  54
+                ],
+                "relation_ids": [
+                  46
+                ]
+              },
+              {
+                "id": 56,
+                "prerequisite_ids": [
+                  54
+                ],
+                "relation_ids": [
+                  52
+                ]
+              },
+              {
+                "id": 57,
+                "prerequisite_ids": [
+                  49,
+                  54
+                ],
+                "relation_ids": [
+                  58,
+                  59
+                ]
+              },
+              {
+                "id": 58,
+                "prerequisite_ids": [
+                  57
+                ],
+                "relation_ids": [
+                  66
+                ]
+              },
+              {
+                "id": 59,
+                "prerequisite_ids": [
+                  56
+                ],
+                "relation_ids": [
+                  72
+                ]
+              },
+              {
+                "id": 60,
+                "prerequisite_ids": [
+                  70,
+                  71
+                ],
+                "relation_ids": [
+                  78,
+                  79
+                ]
+              },
+              {
+                "id": 61,
+                "prerequisite_ids": [
+                  60,
+                  70
+                ],
+                "relation_ids": [
+                  85,
+                  86
+                ]
+              },
+              {
+                "id": 62,
+                "prerequisite_ids": [
+                  60
+                ],
+                "relation_ids": [
+                  92
+                ]
+              },
+              {
+                "id": 63,
+                "prerequisite_ids": [
+                  60
+                ],
+                "relation_ids": [
+                  98
+                ]
+              },
+              {
+                "id": 64,
+                "prerequisite_ids": [
+                  60,
+                  65
+                ],
+                "relation_ids": [
+                  104,
+                  105
+                ]
+              },
+              {
+                "id": 65,
+                "prerequisite_ids": [
+                  54
+                ],
+                "relation_ids": [
+                  111
+                ]
+              },
+              {
+                "id": 66,
+                "prerequisite_ids": [
+                  65
+                ],
+                "relation_ids": [
+                  117
+                ]
+              },
+              {
+                "id": 67,
+                "prerequisite_ids": [
+                  64,
+                  66
+                ],
+                "relation_ids": [
+                  123,
+                  124
+                ]
+              },
+              {
+                "id": 68,
+                "prerequisite_ids": [
+                  67,
+                  72
+                ],
+                "relation_ids": [
+                  130,
+                  131
+                ]
+              },
+              {
+                "id": 69,
+                "prerequisite_ids": [
+                  68
+                ],
+                "relation_ids": [
+                  137
+                ]
+              },
+              {
+                "id": 70,
+                "prerequisite_ids": [
+                  52,
+                  54
+                ],
+                "relation_ids": [
+                  143,
+                  144
+                ]
+              },
+              {
+                "id": 71,
+                "prerequisite_ids": [
+                  70
+                ],
+                "relation_ids": [
+                  150
+                ]
+              },
+              {
+                "id": 72,
+                "prerequisite_ids": [
+                  71
+                ],
+                "relation_ids": [
+                  156
+                ]
+              },
+              {
+                "id": 73,
+                "prerequisite_ids": [
+                  57,
+                  70
+                ],
+                "relation_ids": [
+                  162,
+                  163
+                ]
+              },
+              {
+                "id": 74,
+                "prerequisite_ids": [
+                  72
+                ],
+                "relation_ids": [
+                  170
+                ]
+              },
+              {
+                "id": 75,
+                "prerequisite_ids": [
+                  67,
+                  71
+                ],
+                "relation_ids": [
+                  176,
+                  177
+                ]
+              },
+              {
+                "id": 76,
+                "prerequisite_ids": [
+                  72,
+                  75
+                ],
+                "relation_ids": [
+                  183,
+                  184
+                ]
+              },
+              {
+                "id": 77,
+                "prerequisite_ids": [
+                  75
+                ],
+                "relation_ids": [
+                  191
+                ]
+              },
+              {
+                "id": 78,
+                "prerequisite_ids": [
+                  70,
+                  75
+                ],
+                "relation_ids": [
+                  197,
+                  198
+                ]
+              },
+              {
+                "id": 79,
+                "prerequisite_ids": [
+                  71
+                ],
+                "relation_ids": [
+                  204
+                ]
+              },
+              {
+                "id": 80,
+                "prerequisite_ids": [
+                  72,
+                  79
+                ],
+                "relation_ids": [
+                  210,
+                  211
+                ]
+              },
+              {
+                "id": 81,
+                "prerequisite_ids": [
+                  80
+                ],
+                "relation_ids": [
+                  217
+                ]
+              },
+              {
+                "id": 82,
+                "prerequisite_ids": [
+                  81
+                ],
+                "relation_ids": [
+                  223
+                ]
+              },
+              {
+                "id": 83,
+                "prerequisite_ids": [
+                  52,
+                  70
+                ],
+                "relation_ids": [
+                  229,
+                  230
+                ]
+              },
+              {
+                "id": 84,
+                "prerequisite_ids": [
+                  83
+                ],
+                "relation_ids": [
+                  236
+                ]
+              },
+              {
+                "id": 85,
+                "prerequisite_ids": [
+                  83
+                ],
+                "relation_ids": [
+                  242
+                ]
+              },
+              {
+                "id": 86,
+                "prerequisite_ids": [
+                  73,
+                  83
+                ],
+                "relation_ids": [
+                  248,
+                  249
+                ]
+              },
+              {
+                "id": 87,
+                "prerequisite_ids": [
+                  85,
+                  86
+                ],
+                "relation_ids": [
+                  255,
+                  256
+                ]
+              },
+              {
+                "id": 88,
+                "prerequisite_ids": [
+                  71,
+                  83
+                ],
+                "relation_ids": [
+                  263,
+                  264
+                ]
+              },
+              {
+                "id": 89,
+                "prerequisite_ids": [
+                  88
+                ],
+                "relation_ids": [
+                  270
+                ]
+              },
+              {
+                "id": 90,
+                "prerequisite_ids": [
+                  88
+                ],
+                "relation_ids": [
+                  276
+                ]
+              },
+              {
+                "id": 91,
+                "prerequisite_ids": [
+                  90
+                ],
+                "relation_ids": [
+                  282
+                ]
+              },
+              {
+                "id": 92,
+                "prerequisite_ids": [
+                  57,
+                  88
+                ],
+                "relation_ids": [
+                  288,
+                  289
+                ]
+              },
+              {
+                "id": 93,
+                "prerequisite_ids": [
+                  72,
+                  76
+                ],
+                "relation_ids": [
+                  296,
+                  297
+                ]
+              },
+              {
+                "id": 94,
+                "prerequisite_ids": [
+                  93
+                ],
+                "relation_ids": [
+                  303
+                ]
+              },
+              {
+                "id": 95,
+                "prerequisite_ids": [
+                  73,
+                  93
+                ],
+                "relation_ids": [
+                  309,
+                  310
+                ]
+              },
+              {
+                "id": 96,
+                "prerequisite_ids": [
+                  68,
+                  94,
+                  95
+                ],
+                "relation_ids": [
+                  316,
+                  317,
+                  318
+                ]
+              },
+              {
+                "id": 97,
+                "prerequisite_ids": [
+                  73
+                ],
+                "relation_ids": [
+                  164
+                ]
+              },
+              {
+                "id": 98,
+                "prerequisite_ids": [
+                  76,
+                  87,
+                  97
+                ],
+                "relation_ids": [
+                  185,
+                  257,
+                  329
+                ]
+              },
+              {
+                "id": 99,
+                "prerequisite_ids": [
+                  92,
+                  97
+                ],
+                "relation_ids": [
+                  290,
+                  335
+                ]
+              },
+              {
+                "id": 100,
+                "prerequisite_ids": [
+                  97
+                ],
+                "relation_ids": [
+                  341
+                ]
+              },
+              {
+                "id": 101,
+                "prerequisite_ids": [
+                  97
+                ],
+                "relation_ids": [
+                  347
+                ]
+              },
+              {
+                "id": 103,
+                "prerequisite_ids": [
+                  102
+                ],
+                "relation_ids": [
+                  9
+                ]
+              },
+              {
+                "id": 104,
+                "prerequisite_ids": [
+                  102
+                ],
+                "relation_ids": [
+                  10
+                ]
+              },
+              {
+                "id": 105,
+                "prerequisite_ids": [
+                  103,
+                  104
+                ],
+                "relation_ids": [
+                  11,
+                  12
+                ]
+              },
+              {
+                "id": 106,
+                "prerequisite_ids": [
+                  105
+                ],
+                "relation_ids": [
+                  13
+                ]
+              },
+              {
+                "id": 108,
+                "prerequisite_ids": [
+                  107
+                ],
+                "relation_ids": [
+                  15
+                ]
+              },
+              {
+                "id": 109,
+                "prerequisite_ids": [
+                  107
+                ],
+                "relation_ids": [
+                  16
+                ]
+              },
+              {
+                "id": 110,
+                "prerequisite_ids": [
+                  108,
+                  109
+                ],
+                "relation_ids": [
+                  17,
+                  18
+                ]
+              },
+              {
+                "id": 111,
+                "prerequisite_ids": [
+                  110
+                ],
+                "relation_ids": [
+                  19
+                ]
+              },
+              {
+                "id": 113,
+                "prerequisite_ids": [
+                  112
+                ],
+                "relation_ids": [
+                  21
+                ]
+              },
+              {
+                "id": 114,
+                "prerequisite_ids": [
+                  112
+                ],
+                "relation_ids": [
+                  22
+                ]
+              },
+              {
+                "id": 115,
+                "prerequisite_ids": [
+                  113,
+                  114
+                ],
+                "relation_ids": [
+                  23,
+                  24
+                ]
+              },
+              {
+                "id": 116,
+                "prerequisite_ids": [
+                  115
+                ],
+                "relation_ids": [
+                  25
+                ]
+              },
+              {
+                "id": 118,
+                "prerequisite_ids": [
+                  117
+                ],
+                "relation_ids": [
+                  27
+                ]
+              },
+              {
+                "id": 119,
+                "prerequisite_ids": [
+                  117
+                ],
+                "relation_ids": [
+                  28
+                ]
+              },
+              {
+                "id": 120,
+                "prerequisite_ids": [
+                  118,
+                  119
+                ],
+                "relation_ids": [
+                  29,
+                  30
+                ]
+              },
+              {
+                "id": 121,
+                "prerequisite_ids": [
+                  120
+                ],
+                "relation_ids": [
+                  31
+                ]
+              },
+              {
+                "id": 123,
+                "prerequisite_ids": [
+                  122
+                ],
+                "relation_ids": [
+                  35
+                ]
+              },
+              {
+                "id": 124,
+                "prerequisite_ids": [
+                  122
+                ],
+                "relation_ids": [
+                  36
+                ]
+              },
+              {
+                "id": 125,
+                "prerequisite_ids": [
+                  123,
+                  124
+                ],
+                "relation_ids": [
+                  37,
+                  38
+                ]
+              },
+              {
+                "id": 126,
+                "prerequisite_ids": [
+                  125
+                ],
+                "relation_ids": [
+                  39
+                ]
+              },
+              {
+                "id": 128,
+                "prerequisite_ids": [
+                  127
+                ],
+                "relation_ids": [
+                  41
+                ]
+              },
+              {
+                "id": 129,
+                "prerequisite_ids": [
+                  127
+                ],
+                "relation_ids": [
+                  42
+                ]
+              },
+              {
+                "id": 130,
+                "prerequisite_ids": [
+                  128,
+                  129
+                ],
+                "relation_ids": [
+                  43,
+                  44
+                ]
+              },
+              {
+                "id": 131,
+                "prerequisite_ids": [
+                  130
+                ],
+                "relation_ids": [
+                  45
+                ]
+              },
+              {
+                "id": 133,
+                "prerequisite_ids": [
+                  132
+                ],
+                "relation_ids": [
+                  47
+                ]
+              },
+              {
+                "id": 134,
+                "prerequisite_ids": [
+                  132
+                ],
+                "relation_ids": [
+                  48
+                ]
+              },
+              {
+                "id": 135,
+                "prerequisite_ids": [
+                  133,
+                  134
+                ],
+                "relation_ids": [
+                  49,
+                  50
+                ]
+              },
+              {
+                "id": 136,
+                "prerequisite_ids": [
+                  135
+                ],
+                "relation_ids": [
+                  51
+                ]
+              },
+              {
+                "id": 138,
+                "prerequisite_ids": [
+                  137
+                ],
+                "relation_ids": [
+                  53
+                ]
+              },
+              {
+                "id": 139,
+                "prerequisite_ids": [
+                  137
+                ],
+                "relation_ids": [
+                  54
+                ]
+              },
+              {
+                "id": 140,
+                "prerequisite_ids": [
+                  138,
+                  139
+                ],
+                "relation_ids": [
+                  55,
+                  56
+                ]
+              },
+              {
+                "id": 141,
+                "prerequisite_ids": [
+                  140
+                ],
+                "relation_ids": [
+                  57
+                ]
+              },
+              {
+                "id": 143,
+                "prerequisite_ids": [
+                  142
+                ],
+                "relation_ids": [
+                  61
+                ]
+              },
+              {
+                "id": 144,
+                "prerequisite_ids": [
+                  142
+                ],
+                "relation_ids": [
+                  62
+                ]
+              },
+              {
+                "id": 145,
+                "prerequisite_ids": [
+                  143,
+                  144
+                ],
+                "relation_ids": [
+                  63,
+                  64
+                ]
+              },
+              {
+                "id": 146,
+                "prerequisite_ids": [
+                  145
+                ],
+                "relation_ids": [
+                  65
+                ]
+              },
+              {
+                "id": 148,
+                "prerequisite_ids": [
+                  147
+                ],
+                "relation_ids": [
+                  67
+                ]
+              },
+              {
+                "id": 149,
+                "prerequisite_ids": [
+                  147
+                ],
+                "relation_ids": [
+                  68
+                ]
+              },
+              {
+                "id": 150,
+                "prerequisite_ids": [
+                  148,
+                  149
+                ],
+                "relation_ids": [
+                  69,
+                  70
+                ]
+              },
+              {
+                "id": 151,
+                "prerequisite_ids": [
+                  150
+                ],
+                "relation_ids": [
+                  71
+                ]
+              },
+              {
+                "id": 153,
+                "prerequisite_ids": [
+                  152
+                ],
+                "relation_ids": [
+                  73
+                ]
+              },
+              {
+                "id": 154,
+                "prerequisite_ids": [
+                  152
+                ],
+                "relation_ids": [
+                  74
+                ]
+              },
+              {
+                "id": 155,
+                "prerequisite_ids": [
+                  153,
+                  154
+                ],
+                "relation_ids": [
+                  75,
+                  76
+                ]
+              },
+              {
+                "id": 156,
+                "prerequisite_ids": [
+                  155
+                ],
+                "relation_ids": [
+                  77
+                ]
+              },
+              {
+                "id": 158,
+                "prerequisite_ids": [
+                  157
+                ],
+                "relation_ids": [
+                  80
+                ]
+              },
+              {
+                "id": 159,
+                "prerequisite_ids": [
+                  157
+                ],
+                "relation_ids": [
+                  81
+                ]
+              },
+              {
+                "id": 160,
+                "prerequisite_ids": [
+                  158,
+                  159
+                ],
+                "relation_ids": [
+                  82,
+                  83
+                ]
+              },
+              {
+                "id": 161,
+                "prerequisite_ids": [
+                  160
+                ],
+                "relation_ids": [
+                  84
+                ]
+              },
+              {
+                "id": 163,
+                "prerequisite_ids": [
+                  162
+                ],
+                "relation_ids": [
+                  87
+                ]
+              },
+              {
+                "id": 164,
+                "prerequisite_ids": [
+                  162
+                ],
+                "relation_ids": [
+                  88
+                ]
+              },
+              {
+                "id": 165,
+                "prerequisite_ids": [
+                  163,
+                  164
+                ],
+                "relation_ids": [
+                  89,
+                  90
+                ]
+              },
+              {
+                "id": 166,
+                "prerequisite_ids": [
+                  165
+                ],
+                "relation_ids": [
+                  91
+                ]
+              },
+              {
+                "id": 168,
+                "prerequisite_ids": [
+                  167
+                ],
+                "relation_ids": [
+                  93
+                ]
+              },
+              {
+                "id": 169,
+                "prerequisite_ids": [
+                  167
+                ],
+                "relation_ids": [
+                  94
+                ]
+              },
+              {
+                "id": 170,
+                "prerequisite_ids": [
+                  168,
+                  169
+                ],
+                "relation_ids": [
+                  95,
+                  96
+                ]
+              },
+              {
+                "id": 171,
+                "prerequisite_ids": [
+                  170
+                ],
+                "relation_ids": [
+                  97
+                ]
+              },
+              {
+                "id": 173,
+                "prerequisite_ids": [
+                  172
+                ],
+                "relation_ids": [
+                  99
+                ]
+              },
+              {
+                "id": 174,
+                "prerequisite_ids": [
+                  172
+                ],
+                "relation_ids": [
+                  100
+                ]
+              },
+              {
+                "id": 175,
+                "prerequisite_ids": [
+                  173,
+                  174
+                ],
+                "relation_ids": [
+                  101,
+                  102
+                ]
+              },
+              {
+                "id": 176,
+                "prerequisite_ids": [
+                  175
+                ],
+                "relation_ids": [
+                  103
+                ]
+              },
+              {
+                "id": 178,
+                "prerequisite_ids": [
+                  177
+                ],
+                "relation_ids": [
+                  106
+                ]
+              },
+              {
+                "id": 179,
+                "prerequisite_ids": [
+                  177
+                ],
+                "relation_ids": [
+                  107
+                ]
+              },
+              {
+                "id": 180,
+                "prerequisite_ids": [
+                  178,
+                  179
+                ],
+                "relation_ids": [
+                  108,
+                  109
+                ]
+              },
+              {
+                "id": 181,
+                "prerequisite_ids": [
+                  180
+                ],
+                "relation_ids": [
+                  110
+                ]
+              },
+              {
+                "id": 183,
+                "prerequisite_ids": [
+                  182
+                ],
+                "relation_ids": [
+                  112
+                ]
+              },
+              {
+                "id": 184,
+                "prerequisite_ids": [
+                  182
+                ],
+                "relation_ids": [
+                  113
+                ]
+              },
+              {
+                "id": 185,
+                "prerequisite_ids": [
+                  183,
+                  184
+                ],
+                "relation_ids": [
+                  114,
+                  115
+                ]
+              },
+              {
+                "id": 186,
+                "prerequisite_ids": [
+                  185
+                ],
+                "relation_ids": [
+                  116
+                ]
+              },
+              {
+                "id": 188,
+                "prerequisite_ids": [
+                  187
+                ],
+                "relation_ids": [
+                  118
+                ]
+              },
+              {
+                "id": 189,
+                "prerequisite_ids": [
+                  187
+                ],
+                "relation_ids": [
+                  119
+                ]
+              },
+              {
+                "id": 190,
+                "prerequisite_ids": [
+                  188,
+                  189
+                ],
+                "relation_ids": [
+                  120,
+                  121
+                ]
+              },
+              {
+                "id": 191,
+                "prerequisite_ids": [
+                  190
+                ],
+                "relation_ids": [
+                  122
+                ]
+              },
+              {
+                "id": 193,
+                "prerequisite_ids": [
+                  192
+                ],
+                "relation_ids": [
+                  125
+                ]
+              },
+              {
+                "id": 194,
+                "prerequisite_ids": [
+                  192
+                ],
+                "relation_ids": [
+                  126
+                ]
+              },
+              {
+                "id": 195,
+                "prerequisite_ids": [
+                  193,
+                  194
+                ],
+                "relation_ids": [
+                  127,
+                  128
+                ]
+              },
+              {
+                "id": 196,
+                "prerequisite_ids": [
+                  195
+                ],
+                "relation_ids": [
+                  129
+                ]
+              },
+              {
+                "id": 198,
+                "prerequisite_ids": [
+                  197
+                ],
+                "relation_ids": [
+                  132
+                ]
+              },
+              {
+                "id": 199,
+                "prerequisite_ids": [
+                  197
+                ],
+                "relation_ids": [
+                  133
+                ]
+              },
+              {
+                "id": 200,
+                "prerequisite_ids": [
+                  198,
+                  199
+                ],
+                "relation_ids": [
+                  134,
+                  135
+                ]
+              },
+              {
+                "id": 201,
+                "prerequisite_ids": [
+                  200
+                ],
+                "relation_ids": [
+                  136
+                ]
+              },
+              {
+                "id": 203,
+                "prerequisite_ids": [
+                  202
+                ],
+                "relation_ids": [
+                  138
+                ]
+              },
+              {
+                "id": 204,
+                "prerequisite_ids": [
+                  202
+                ],
+                "relation_ids": [
+                  139
+                ]
+              },
+              {
+                "id": 205,
+                "prerequisite_ids": [
+                  203,
+                  204
+                ],
+                "relation_ids": [
+                  140,
+                  141
+                ]
+              },
+              {
+                "id": 206,
+                "prerequisite_ids": [
+                  205
+                ],
+                "relation_ids": [
+                  142
+                ]
+              },
+              {
+                "id": 208,
+                "prerequisite_ids": [
+                  207
+                ],
+                "relation_ids": [
+                  145
+                ]
+              },
+              {
+                "id": 209,
+                "prerequisite_ids": [
+                  207
+                ],
+                "relation_ids": [
+                  146
+                ]
+              },
+              {
+                "id": 210,
+                "prerequisite_ids": [
+                  208,
+                  209
+                ],
+                "relation_ids": [
+                  147,
+                  148
+                ]
+              },
+              {
+                "id": 211,
+                "prerequisite_ids": [
+                  210
+                ],
+                "relation_ids": [
+                  149
+                ]
+              },
+              {
+                "id": 213,
+                "prerequisite_ids": [
+                  212
+                ],
+                "relation_ids": [
+                  151
+                ]
+              },
+              {
+                "id": 214,
+                "prerequisite_ids": [
+                  212
+                ],
+                "relation_ids": [
+                  152
+                ]
+              },
+              {
+                "id": 215,
+                "prerequisite_ids": [
+                  213,
+                  214
+                ],
+                "relation_ids": [
+                  153,
+                  154
+                ]
+              },
+              {
+                "id": 216,
+                "prerequisite_ids": [
+                  215
+                ],
+                "relation_ids": [
+                  155
+                ]
+              },
+              {
+                "id": 218,
+                "prerequisite_ids": [
+                  217
+                ],
+                "relation_ids": [
+                  157
+                ]
+              },
+              {
+                "id": 219,
+                "prerequisite_ids": [
+                  217
+                ],
+                "relation_ids": [
+                  158
+                ]
+              },
+              {
+                "id": 220,
+                "prerequisite_ids": [
+                  218,
+                  219
+                ],
+                "relation_ids": [
+                  159,
+                  160
+                ]
+              },
+              {
+                "id": 221,
+                "prerequisite_ids": [
+                  220
+                ],
+                "relation_ids": [
+                  161
+                ]
+              },
+              {
+                "id": 223,
+                "prerequisite_ids": [
+                  222
+                ],
+                "relation_ids": [
+                  165
+                ]
+              },
+              {
+                "id": 224,
+                "prerequisite_ids": [
+                  222
+                ],
+                "relation_ids": [
+                  166
+                ]
+              },
+              {
+                "id": 225,
+                "prerequisite_ids": [
+                  223,
+                  224
+                ],
+                "relation_ids": [
+                  167,
+                  168
+                ]
+              },
+              {
+                "id": 226,
+                "prerequisite_ids": [
+                  225
+                ],
+                "relation_ids": [
+                  169
+                ]
+              },
+              {
+                "id": 228,
+                "prerequisite_ids": [
+                  227
+                ],
+                "relation_ids": [
+                  171
+                ]
+              },
+              {
+                "id": 229,
+                "prerequisite_ids": [
+                  227
+                ],
+                "relation_ids": [
+                  172
+                ]
+              },
+              {
+                "id": 230,
+                "prerequisite_ids": [
+                  228,
+                  229
+                ],
+                "relation_ids": [
+                  173,
+                  174
+                ]
+              },
+              {
+                "id": 231,
+                "prerequisite_ids": [
+                  230
+                ],
+                "relation_ids": [
+                  175
+                ]
+              },
+              {
+                "id": 233,
+                "prerequisite_ids": [
+                  232
+                ],
+                "relation_ids": [
+                  178
+                ]
+              },
+              {
+                "id": 234,
+                "prerequisite_ids": [
+                  232
+                ],
+                "relation_ids": [
+                  179
+                ]
+              },
+              {
+                "id": 235,
+                "prerequisite_ids": [
+                  233,
+                  234
+                ],
+                "relation_ids": [
+                  180,
+                  181
+                ]
+              },
+              {
+                "id": 236,
+                "prerequisite_ids": [
+                  235
+                ],
+                "relation_ids": [
+                  182
+                ]
+              },
+              {
+                "id": 238,
+                "prerequisite_ids": [
+                  237
+                ],
+                "relation_ids": [
+                  186
+                ]
+              },
+              {
+                "id": 239,
+                "prerequisite_ids": [
+                  237
+                ],
+                "relation_ids": [
+                  187
+                ]
+              },
+              {
+                "id": 240,
+                "prerequisite_ids": [
+                  238,
+                  239
+                ],
+                "relation_ids": [
+                  188,
+                  189
+                ]
+              },
+              {
+                "id": 241,
+                "prerequisite_ids": [
+                  240
+                ],
+                "relation_ids": [
+                  190
+                ]
+              },
+              {
+                "id": 243,
+                "prerequisite_ids": [
+                  242
+                ],
+                "relation_ids": [
+                  192
+                ]
+              },
+              {
+                "id": 244,
+                "prerequisite_ids": [
+                  242
+                ],
+                "relation_ids": [
+                  193
+                ]
+              },
+              {
+                "id": 245,
+                "prerequisite_ids": [
+                  243,
+                  244
+                ],
+                "relation_ids": [
+                  194,
+                  195
+                ]
+              },
+              {
+                "id": 246,
+                "prerequisite_ids": [
+                  245
+                ],
+                "relation_ids": [
+                  196
+                ]
+              },
+              {
+                "id": 248,
+                "prerequisite_ids": [
+                  247
+                ],
+                "relation_ids": [
+                  199
+                ]
+              },
+              {
+                "id": 249,
+                "prerequisite_ids": [
+                  247
+                ],
+                "relation_ids": [
+                  200
+                ]
+              },
+              {
+                "id": 250,
+                "prerequisite_ids": [
+                  248,
+                  249
+                ],
+                "relation_ids": [
+                  201,
+                  202
+                ]
+              },
+              {
+                "id": 251,
+                "prerequisite_ids": [
+                  250
+                ],
+                "relation_ids": [
+                  203
+                ]
+              },
+              {
+                "id": 253,
+                "prerequisite_ids": [
+                  252
+                ],
+                "relation_ids": [
+                  205
+                ]
+              },
+              {
+                "id": 254,
+                "prerequisite_ids": [
+                  252
+                ],
+                "relation_ids": [
+                  206
+                ]
+              },
+              {
+                "id": 255,
+                "prerequisite_ids": [
+                  253,
+                  254
+                ],
+                "relation_ids": [
+                  207,
+                  208
+                ]
+              },
+              {
+                "id": 256,
+                "prerequisite_ids": [
+                  255
+                ],
+                "relation_ids": [
+                  209
+                ]
+              },
+              {
+                "id": 258,
+                "prerequisite_ids": [
+                  257
+                ],
+                "relation_ids": [
+                  212
+                ]
+              },
+              {
+                "id": 259,
+                "prerequisite_ids": [
+                  257
+                ],
+                "relation_ids": [
+                  213
+                ]
+              },
+              {
+                "id": 260,
+                "prerequisite_ids": [
+                  258,
+                  259
+                ],
+                "relation_ids": [
+                  214,
+                  215
+                ]
+              },
+              {
+                "id": 261,
+                "prerequisite_ids": [
+                  260
+                ],
+                "relation_ids": [
+                  216
+                ]
+              },
+              {
+                "id": 263,
+                "prerequisite_ids": [
+                  262
+                ],
+                "relation_ids": [
+                  218
+                ]
+              },
+              {
+                "id": 264,
+                "prerequisite_ids": [
+                  262
+                ],
+                "relation_ids": [
+                  219
+                ]
+              },
+              {
+                "id": 265,
+                "prerequisite_ids": [
+                  263,
+                  264
+                ],
+                "relation_ids": [
+                  220,
+                  221
+                ]
+              },
+              {
+                "id": 266,
+                "prerequisite_ids": [
+                  265
+                ],
+                "relation_ids": [
+                  222
+                ]
+              },
+              {
+                "id": 268,
+                "prerequisite_ids": [
+                  267
+                ],
+                "relation_ids": [
+                  224
+                ]
+              },
+              {
+                "id": 269,
+                "prerequisite_ids": [
+                  267
+                ],
+                "relation_ids": [
+                  225
+                ]
+              },
+              {
+                "id": 270,
+                "prerequisite_ids": [
+                  268,
+                  269
+                ],
+                "relation_ids": [
+                  226,
+                  227
+                ]
+              },
+              {
+                "id": 271,
+                "prerequisite_ids": [
+                  270
+                ],
+                "relation_ids": [
+                  228
+                ]
+              },
+              {
+                "id": 273,
+                "prerequisite_ids": [
+                  272
+                ],
+                "relation_ids": [
+                  231
+                ]
+              },
+              {
+                "id": 274,
+                "prerequisite_ids": [
+                  272
+                ],
+                "relation_ids": [
+                  232
+                ]
+              },
+              {
+                "id": 275,
+                "prerequisite_ids": [
+                  273,
+                  274
+                ],
+                "relation_ids": [
+                  233,
+                  234
+                ]
+              },
+              {
+                "id": 276,
+                "prerequisite_ids": [
+                  275
+                ],
+                "relation_ids": [
+                  235
+                ]
+              },
+              {
+                "id": 278,
+                "prerequisite_ids": [
+                  277
+                ],
+                "relation_ids": [
+                  237
+                ]
+              },
+              {
+                "id": 279,
+                "prerequisite_ids": [
+                  277
+                ],
+                "relation_ids": [
+                  238
+                ]
+              },
+              {
+                "id": 280,
+                "prerequisite_ids": [
+                  278,
+                  279
+                ],
+                "relation_ids": [
+                  239,
+                  240
+                ]
+              },
+              {
+                "id": 281,
+                "prerequisite_ids": [
+                  280
+                ],
+                "relation_ids": [
+                  241
+                ]
+              },
+              {
+                "id": 283,
+                "prerequisite_ids": [
+                  282
+                ],
+                "relation_ids": [
+                  243
+                ]
+              },
+              {
+                "id": 284,
+                "prerequisite_ids": [
+                  282
+                ],
+                "relation_ids": [
+                  244
+                ]
+              },
+              {
+                "id": 285,
+                "prerequisite_ids": [
+                  283,
+                  284
+                ],
+                "relation_ids": [
+                  245,
+                  246
+                ]
+              },
+              {
+                "id": 286,
+                "prerequisite_ids": [
+                  285
+                ],
+                "relation_ids": [
+                  247
+                ]
+              },
+              {
+                "id": 288,
+                "prerequisite_ids": [
+                  287
+                ],
+                "relation_ids": [
+                  250
+                ]
+              },
+              {
+                "id": 289,
+                "prerequisite_ids": [
+                  287
+                ],
+                "relation_ids": [
+                  251
+                ]
+              },
+              {
+                "id": 290,
+                "prerequisite_ids": [
+                  288,
+                  289
+                ],
+                "relation_ids": [
+                  252,
+                  253
+                ]
+              },
+              {
+                "id": 291,
+                "prerequisite_ids": [
+                  290
+                ],
+                "relation_ids": [
+                  254
+                ]
+              },
+              {
+                "id": 293,
+                "prerequisite_ids": [
+                  292
+                ],
+                "relation_ids": [
+                  258
+                ]
+              },
+              {
+                "id": 294,
+                "prerequisite_ids": [
+                  292
+                ],
+                "relation_ids": [
+                  259
+                ]
+              },
+              {
+                "id": 295,
+                "prerequisite_ids": [
+                  293,
+                  294
+                ],
+                "relation_ids": [
+                  260,
+                  261
+                ]
+              },
+              {
+                "id": 296,
+                "prerequisite_ids": [
+                  295
+                ],
+                "relation_ids": [
+                  262
+                ]
+              },
+              {
+                "id": 298,
+                "prerequisite_ids": [
+                  297
+                ],
+                "relation_ids": [
+                  265
+                ]
+              },
+              {
+                "id": 299,
+                "prerequisite_ids": [
+                  297
+                ],
+                "relation_ids": [
+                  266
+                ]
+              },
+              {
+                "id": 300,
+                "prerequisite_ids": [
+                  298,
+                  299
+                ],
+                "relation_ids": [
+                  267,
+                  268
+                ]
+              },
+              {
+                "id": 301,
+                "prerequisite_ids": [
+                  300
+                ],
+                "relation_ids": [
+                  269
+                ]
+              },
+              {
+                "id": 303,
+                "prerequisite_ids": [
+                  302
+                ],
+                "relation_ids": [
+                  271
+                ]
+              },
+              {
+                "id": 304,
+                "prerequisite_ids": [
+                  302
+                ],
+                "relation_ids": [
+                  272
+                ]
+              },
+              {
+                "id": 305,
+                "prerequisite_ids": [
+                  303,
+                  304
+                ],
+                "relation_ids": [
+                  273,
+                  274
+                ]
+              },
+              {
+                "id": 306,
+                "prerequisite_ids": [
+                  305
+                ],
+                "relation_ids": [
+                  275
+                ]
+              },
+              {
+                "id": 308,
+                "prerequisite_ids": [
+                  307
+                ],
+                "relation_ids": [
+                  277
+                ]
+              },
+              {
+                "id": 309,
+                "prerequisite_ids": [
+                  307
+                ],
+                "relation_ids": [
+                  278
+                ]
+              },
+              {
+                "id": 310,
+                "prerequisite_ids": [
+                  308,
+                  309
+                ],
+                "relation_ids": [
+                  279,
+                  280
+                ]
+              },
+              {
+                "id": 311,
+                "prerequisite_ids": [
+                  310
+                ],
+                "relation_ids": [
+                  281
+                ]
+              },
+              {
+                "id": 313,
+                "prerequisite_ids": [
+                  312
+                ],
+                "relation_ids": [
+                  283
+                ]
+              },
+              {
+                "id": 314,
+                "prerequisite_ids": [
+                  312
+                ],
+                "relation_ids": [
+                  284
+                ]
+              },
+              {
+                "id": 315,
+                "prerequisite_ids": [
+                  313,
+                  314
+                ],
+                "relation_ids": [
+                  285,
+                  286
+                ]
+              },
+              {
+                "id": 316,
+                "prerequisite_ids": [
+                  315
+                ],
+                "relation_ids": [
+                  287
+                ]
+              },
+              {
+                "id": 318,
+                "prerequisite_ids": [
+                  317
+                ],
+                "relation_ids": [
+                  291
+                ]
+              },
+              {
+                "id": 319,
+                "prerequisite_ids": [
+                  317
+                ],
+                "relation_ids": [
+                  292
+                ]
+              },
+              {
+                "id": 320,
+                "prerequisite_ids": [
+                  318,
+                  319
+                ],
+                "relation_ids": [
+                  293,
+                  294
+                ]
+              },
+              {
+                "id": 321,
+                "prerequisite_ids": [
+                  320
+                ],
+                "relation_ids": [
+                  295
+                ]
+              },
+              {
+                "id": 323,
+                "prerequisite_ids": [
+                  322
+                ],
+                "relation_ids": [
+                  298
+                ]
+              },
+              {
+                "id": 324,
+                "prerequisite_ids": [
+                  322
+                ],
+                "relation_ids": [
+                  299
+                ]
+              },
+              {
+                "id": 325,
+                "prerequisite_ids": [
+                  323,
+                  324
+                ],
+                "relation_ids": [
+                  300,
+                  301
+                ]
+              },
+              {
+                "id": 326,
+                "prerequisite_ids": [
+                  325
+                ],
+                "relation_ids": [
+                  302
+                ]
+              },
+              {
+                "id": 328,
+                "prerequisite_ids": [
+                  327
+                ],
+                "relation_ids": [
+                  304
+                ]
+              },
+              {
+                "id": 329,
+                "prerequisite_ids": [
+                  327
+                ],
+                "relation_ids": [
+                  305
+                ]
+              },
+              {
+                "id": 330,
+                "prerequisite_ids": [
+                  328,
+                  329
+                ],
+                "relation_ids": [
+                  306,
+                  307
+                ]
+              },
+              {
+                "id": 331,
+                "prerequisite_ids": [
+                  330
+                ],
+                "relation_ids": [
+                  308
+                ]
+              },
+              {
+                "id": 333,
+                "prerequisite_ids": [
+                  332
+                ],
+                "relation_ids": [
+                  311
+                ]
+              },
+              {
+                "id": 334,
+                "prerequisite_ids": [
+                  332
+                ],
+                "relation_ids": [
+                  312
+                ]
+              },
+              {
+                "id": 335,
+                "prerequisite_ids": [
+                  333,
+                  334
+                ],
+                "relation_ids": [
+                  313,
+                  314
+                ]
+              },
+              {
+                "id": 336,
+                "prerequisite_ids": [
+                  335
+                ],
+                "relation_ids": [
+                  315
+                ]
+              },
+              {
+                "id": 338,
+                "prerequisite_ids": [
+                  337
+                ],
+                "relation_ids": [
+                  319
+                ]
+              },
+              {
+                "id": 339,
+                "prerequisite_ids": [
+                  337
+                ],
+                "relation_ids": [
+                  320
+                ]
+              },
+              {
+                "id": 340,
+                "prerequisite_ids": [
+                  338,
+                  339
+                ],
+                "relation_ids": [
+                  321,
+                  322
+                ]
+              },
+              {
+                "id": 341,
+                "prerequisite_ids": [
+                  340
+                ],
+                "relation_ids": [
+                  323
+                ]
+              },
+              {
+                "id": 343,
+                "prerequisite_ids": [
+                  342
+                ],
+                "relation_ids": [
+                  324
+                ]
+              },
+              {
+                "id": 344,
+                "prerequisite_ids": [
+                  342
+                ],
+                "relation_ids": [
+                  325
+                ]
+              },
+              {
+                "id": 345,
+                "prerequisite_ids": [
+                  343,
+                  344
+                ],
+                "relation_ids": [
+                  326,
+                  327
+                ]
+              },
+              {
+                "id": 346,
+                "prerequisite_ids": [
+                  345
+                ],
+                "relation_ids": [
+                  328
+                ]
+              },
+              {
+                "id": 348,
+                "prerequisite_ids": [
+                  347
+                ],
+                "relation_ids": [
+                  330
+                ]
+              },
+              {
+                "id": 349,
+                "prerequisite_ids": [
+                  347
+                ],
+                "relation_ids": [
+                  331
+                ]
+              },
+              {
+                "id": 350,
+                "prerequisite_ids": [
+                  348,
+                  349
+                ],
+                "relation_ids": [
+                  332,
+                  333
+                ]
+              },
+              {
+                "id": 351,
+                "prerequisite_ids": [
+                  350
+                ],
+                "relation_ids": [
+                  334
+                ]
+              },
+              {
+                "id": 353,
+                "prerequisite_ids": [
+                  352
+                ],
+                "relation_ids": [
+                  336
+                ]
+              },
+              {
+                "id": 354,
+                "prerequisite_ids": [
+                  352
+                ],
+                "relation_ids": [
+                  337
+                ]
+              },
+              {
+                "id": 355,
+                "prerequisite_ids": [
+                  353,
+                  354
+                ],
+                "relation_ids": [
+                  338,
+                  339
+                ]
+              },
+              {
+                "id": 356,
+                "prerequisite_ids": [
+                  355
+                ],
+                "relation_ids": [
+                  340
+                ]
+              },
+              {
+                "id": 358,
+                "prerequisite_ids": [
+                  357
+                ],
+                "relation_ids": [
+                  342
+                ]
+              },
+              {
+                "id": 359,
+                "prerequisite_ids": [
+                  357
+                ],
+                "relation_ids": [
+                  343
+                ]
+              },
+              {
+                "id": 360,
+                "prerequisite_ids": [
+                  358,
+                  359
+                ],
+                "relation_ids": [
+                  344,
+                  345
+                ]
+              },
+              {
+                "id": 361,
+                "prerequisite_ids": [
+                  360
+                ],
+                "relation_ids": [
+                  346
+                ]
+              },
+              {
+                "id": 363,
+                "prerequisite_ids": [
+                  362
+                ],
+                "relation_ids": [
+                  348
+                ]
+              },
+              {
+                "id": 364,
+                "prerequisite_ids": [
+                  362
+                ],
+                "relation_ids": [
+                  349
+                ]
+              },
+              {
+                "id": 365,
+                "prerequisite_ids": [
+                  363,
+                  364
+                ],
+                "relation_ids": [
+                  350,
+                  351
+                ]
+              },
+              {
+                "id": 366,
+                "prerequisite_ids": [
+                  365
+                ],
+                "relation_ids": [
+                  352
+                ]
+              }
+            ],
+            "dependency_data_quality": "NATIVE_RELATIONS_READ",
+            "scope": "CURRENT_VISIBLE_PROJECT_WORK_PACKAGES",
+            "workload": {
+              "18": {
+                "user_id": 18,
+                "name": "User 18",
+                "role": "AI_SYSTEM_OWNER",
+                "open_count": 0,
+                "package_ids": []
+              },
+              "19": {
+                "user_id": 19,
+                "name": "User 19",
+                "role": "PM",
+                "open_count": 54,
+                "package_ids": [
+                  102,
+                  107,
+                  112,
+                  117,
+                  122,
+                  127,
+                  132,
+                  137,
+                  142,
+                  147,
+                  152,
+                  157,
+                  162,
+                  167,
+                  172,
+                  177,
+                  182,
+                  187,
+                  192,
+                  197,
+                  202,
+                  207,
+                  212,
+                  217,
+                  222,
+                  227,
+                  232,
+                  237,
+                  242,
+                  247,
+                  252,
+                  257,
+                  262,
+                  267,
+                  272,
+                  277,
+                  282,
+                  287,
+                  292,
+                  297,
+                  302,
+                  307,
+                  312,
+                  317,
+                  322,
+                  327,
+                  332,
+                  337,
+                  342,
+                  347,
+                  352,
+                  357,
+                  362,
+                  370
+                ]
+              },
+              "20": {
+                "user_id": 20,
+                "name": "User 20",
+                "role": "BA",
+                "open_count": 118,
+                "package_ids": [
+                  38,
+                  39,
+                  40,
+                  41,
+                  42,
+                  43,
+                  44,
+                  45,
+                  46,
+                  47,
+                  48,
+                  49,
+                  50,
+                  51,
+                  52,
+                  53,
+                  54,
+                  55,
+                  56,
+                  57,
+                  58,
+                  59,
+                  60,
+                  61,
+                  62,
+                  63,
+                  64,
+                  65,
+                  66,
+                  67,
+                  68,
+                  69,
+                  70,
+                  71,
+                  72,
+                  73,
+                  74,
+                  75,
+                  76,
+                  77,
+                  78,
+                  79,
+                  80,
+                  81,
+                  82,
+                  83,
+                  84,
+                  85,
+                  86,
+                  87,
+                  88,
+                  89,
+                  90,
+                  91,
+                  92,
+                  93,
+                  94,
+                  95,
+                  96,
+                  97,
+                  98,
+                  99,
+                  100,
+                  101,
+                  106,
+                  111,
+                  116,
+                  121,
+                  126,
+                  131,
+                  136,
+                  141,
+                  146,
+                  151,
+                  156,
+                  161,
+                  166,
+                  171,
+                  176,
+                  181,
+                  186,
+                  191,
+                  196,
+                  201,
+                  206,
+                  211,
+                  216,
+                  221,
+                  226,
+                  231,
+                  236,
+                  241,
+                  246,
+                  251,
+                  256,
+                  261,
+                  266,
+                  271,
+                  276,
+                  281,
+                  286,
+                  291,
+                  296,
+                  301,
+                  306,
+                  311,
+                  316,
+                  321,
+                  326,
+                  331,
+                  336,
+                  341,
+                  346,
+                  351,
+                  356,
+                  361,
+                  366,
+                  369
+                ]
+              },
+              "21": {
+                "user_id": 21,
+                "name": "User 21",
+                "role": "BE",
+                "open_count": 55,
+                "package_ids": [
+                  103,
+                  108,
+                  113,
+                  118,
+                  123,
+                  128,
+                  133,
+                  138,
+                  143,
+                  148,
+                  153,
+                  158,
+                  163,
+                  168,
+                  173,
+                  178,
+                  183,
+                  188,
+                  193,
+                  198,
+                  203,
+                  208,
+                  213,
+                  218,
+                  223,
+                  228,
+                  233,
+                  238,
+                  243,
+                  248,
+                  253,
+                  258,
+                  263,
+                  268,
+                  273,
+                  278,
+                  283,
+                  288,
+                  293,
+                  298,
+                  303,
+                  308,
+                  313,
+                  318,
+                  323,
+                  328,
+                  333,
+                  338,
+                  343,
+                  348,
+                  353,
+                  358,
+                  363,
+                  371,
+                  375
+                ]
+              },
+              "22": {
+                "user_id": 22,
+                "name": "User 22",
+                "role": "FE",
+                "open_count": 53,
+                "package_ids": [
+                  104,
+                  109,
+                  114,
+                  119,
+                  124,
+                  129,
+                  134,
+                  139,
+                  144,
+                  149,
+                  154,
+                  159,
+                  164,
+                  169,
+                  174,
+                  179,
+                  184,
+                  189,
+                  194,
+                  199,
+                  204,
+                  209,
+                  214,
+                  219,
+                  224,
+                  229,
+                  234,
+                  239,
+                  244,
+                  249,
+                  254,
+                  259,
+                  264,
+                  269,
+                  274,
+                  279,
+                  284,
+                  289,
+                  294,
+                  299,
+                  304,
+                  309,
+                  314,
+                  319,
+                  324,
+                  329,
+                  334,
+                  339,
+                  344,
+                  349,
+                  354,
+                  359,
+                  364
+                ]
+              },
+              "23": {
+                "user_id": 23,
+                "name": "User 23",
+                "role": "QA",
+                "open_count": 55,
+                "package_ids": [
+                  105,
+                  110,
+                  115,
+                  120,
+                  125,
+                  130,
+                  135,
+                  140,
+                  145,
+                  150,
+                  155,
+                  160,
+                  165,
+                  170,
+                  175,
+                  180,
+                  185,
+                  190,
+                  195,
+                  200,
+                  205,
+                  210,
+                  215,
+                  220,
+                  225,
+                  230,
+                  235,
+                  240,
+                  245,
+                  250,
+                  255,
+                  260,
+                  265,
+                  270,
+                  275,
+                  280,
+                  285,
+                  290,
+                  295,
+                  300,
+                  305,
+                  310,
+                  315,
+                  320,
+                  325,
+                  330,
+                  335,
+                  340,
+                  345,
+                  350,
+                  355,
+                  360,
+                  365,
+                  367,
+                  368
+                ]
+              },
+              "unassigned": {
+                "open_count": 4,
+                "package_ids": [
+                  372,
+                  373,
+                  374,
+                  376
+                ]
+              }
+            },
+            "limitations": [
+              "Chỉ số quy trình dự án phục vụ hỗ trợ ra quyết định, không xếp hạng cá nhân",
+              "Thuần túy tính toán tất định (deterministic), không tiêu tốn token LLM",
+              "Chưa chọn Sprint Native; ngưỡng rủi ro là heuristic trên snapshot dự án hiện tại, không phải dự báo tiến độ.",
+              "follows/precedes là dependency lịch trình, không tự coi là trạng thái BLOCKED. Relation snapshot không được revalidate khi đọc báo cáo cũ."
+            ]
+          },
+          "report_id": "971db4e5-8818-5e69-8573-f0d43fc05ee0",
+          "report_sha256": "8338a0cd4aa298707702f8b0ccdbba794100ff32c8ce274246b31bc783609af0",
+          "last_observed_at": 1793163722.6086574
+        },
+        "execution": {
+          "id": 2549,
+          "workflowId": "RXWjVUL8ozqhjY4w",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:01:58.140",
+          "stoppedAt": "2026-10-28 05:02:02.841",
+          "deletedAt": null,
+          "jsonSizeBytes": 35222
+        }
+      }
+    },
+    "WF09": {
+      "name": "Bug Lifecycle Automation",
+      "workflow_id": "tOyBIPw6sGjgzjtU",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:02:08.838792+00:00",
+      "details": "WF09 đọc ngữ cảnh Bug #371 thành công (HTTP 200, id: 371, lockVersion: 4); Chạy phân tích bug triage thành công (HTTP 200); Execution ID 2551 đạt terminal success.",
+      "evidence": {
+        "bug_context": {
+          "id": 371,
+          "subject": "[Bug] [CODEX TEST] Controlled Native Bug lifecycle qualification a29a433d248c",
+          "status": "IN ANALYSIS"
+        },
+        "triage": {
+          "actor_id": 19,
+          "project_id": 5,
+          "classification": "Bug report",
+          "native_type_id": 1,
+          "mapping_approval_sha256": "02bae765000c1c152179db1d357519898fc923445d4e31392ff00029fddb9e40",
+          "report": null,
+          "native_id": 371,
+          "native_version": 4,
+          "native_status": {
+            "href": "/api/v3/statuses/37",
+            "title": "IN ANALYSIS"
+          },
+          "native_assignee": {
+            "href": "/api/v3/users/21",
+            "title": "QLDAPM BE"
+          },
+          "duplicates": [],
+          "duplicate_method": "LEXICAL_CANDIDATES_REQUIRE_HUMAN_REVIEW",
+          "description": {
+            "format": "markdown",
+            "raw": "## Report and reproduction\nTechnical acceptance resource for approved Task[Bug] mapping and Owner18 Native pipeline; isolated lifecycle fixtures already qualified.\n\n## Expected/actual behavior\nExpected: An exact human-approved Task1/NEW1 create with own Owner18 author, Native readback and RAG sync; all existing work packages preserved.\nActual: Native mutation not executed at proposal time. Later assignment/fix/retest/review/status changes require new concrete proposals and approvals.\n\n## Severity and source evidence\nSeverity: low\nCODEX_WF09_MAIN_QUALIFICATION_RESULT.json; CODEX_OWNER_NATIVE_E2E_DRIVER_BOUNDARY_RESULT.json\nEvidence verification: NOT_VERIFIED_BY_SYSTEM\n\n## Duplicate references\nNo lexical candidate in current visible snapshot; not proof of uniqueness.\nDisposition: No candidate to disposition\n\n## Fix tracking\nNot submitted\n\n## QA retest evidence\nNot submitted; NOT_VERIFIED_BY_SYSTEM\n\n## Review\nNot submitted\n\n## Proposed real application-defect binding (human-approved scope required)\nStory: A PM converts a cited BA WBS into Native Epic/Task/Subtask nodes with explicit source dates and dependencies, without rewriting model business output or bypassing independent approvals.\nScope: QLDAPM Main WBS adapter and exact Native dated-parent verifier only. This maps the retained technical test Bug to the real defect reproduced during the approved BA run; no unrelated product feature or full application QA claim.\nAnalysis: Valid uppercase BA node keys failed Native key validation. After encoding, an actual Native clone stopped SOURCE_CHANGED because dated-child aggregation saved a parent twice and expanded parent data changed inside a child API response. The corrected code preserves raw BA output hash, verifies each own child receipt and exact model chain/calendar, and excludes expanded related resources from WP identity. Unknown children, unrelated model fields and excess versions remain held.\nAC1: Application regression NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source preserves raw output hash, graph, requirements and scheduling; collisions and dangling references are rejected.\nAC2: Application regression ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain verifies the dated-parent model chain using exact own child receipts and Native calendar evidence.\nAC3: Application regressions ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects and test_expanded_parent_changes_do_not_change_the_verified_work_package retain fail-closed source protection while allowing unrelated expanded-parent data to refresh.\nAC4: Actual isolated Native qualification CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json reaches VERIFIED_COMPLETED for four nodes, exact supplied dates and follows lag0, with current RAG citations and one create after lost acknowledgment. Simulated isolated decisions and synthetic embeddings are explicitly labelled; no Main business mutation or human QA decision is inferred.\nEvidence scope: These are actual application-code and isolated Native results for this WBS defect. Existing accepted technical readback evidence for WP375 does not verify this Bug. Future fix/build/QA/retest/closure still requires an admitted producer, independent human reviews and separate exact Native transition approvals.\nCode provenance: CODEX_WF10_FINAL_SCHEDULE_DEPLOYMENT_RESULT.json pins the deployed Gateway/Core/source hashes; raw BA output hash 4bcbbd93eeb110f99bab1b66846c814cda1af09ded78d2a18c209a63121a9ae7 remains unchanged. Preserve all prior technical qualification text above.\n",
+            "html": "<h2 id=\"op-frag-report-and-reproduction\" class=\"op-uc-h2\">\n<a href=\"#op-frag-report-and-reproduction\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Report and reproduction</h2>\n<p class=\"op-uc-p\">Technical acceptance resource for approved Task[Bug] mapping and Owner18 Native pipeline; isolated lifecycle fixtures already qualified.</p>\n<h2 id=\"op-frag-expectedactual-behavior\" class=\"op-uc-h2\">\n<a href=\"#op-frag-expectedactual-behavior\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Expected/actual behavior</h2>\n<p class=\"op-uc-p\">Expected: An exact human-approved Task1/NEW1 create with own Owner18 author, Native readback and RAG sync; all existing work packages preserved.<br>\nActual: Native mutation not executed at proposal time. Later assignment/fix/retest/review/status changes require new concrete proposals and approvals.</p>\n<h2 id=\"op-frag-severity-and-source-evidence\" class=\"op-uc-h2\">\n<a href=\"#op-frag-severity-and-source-evidence\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Severity and source evidence</h2>\n<p class=\"op-uc-p\">Severity: low<br>\nCODEX_WF09_MAIN_QUALIFICATION_RESULT.json; CODEX_OWNER_NATIVE_E2E_DRIVER_BOUNDARY_RESULT.json<br>\nEvidence verification: NOT_VERIFIED_BY_SYSTEM</p>\n<h2 id=\"op-frag-duplicate-references\" class=\"op-uc-h2\">\n<a href=\"#op-frag-duplicate-references\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Duplicate references</h2>\n<p class=\"op-uc-p\">No lexical candidate in current visible snapshot; not proof of uniqueness.<br>\nDisposition: No candidate to disposition</p>\n<h2 id=\"op-frag-fix-tracking\" class=\"op-uc-h2\">\n<a href=\"#op-frag-fix-tracking\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Fix tracking</h2>\n<p class=\"op-uc-p\">Not submitted</p>\n<h2 id=\"op-frag-qa-retest-evidence\" class=\"op-uc-h2\">\n<a href=\"#op-frag-qa-retest-evidence\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>QA retest evidence</h2>\n<p class=\"op-uc-p\">Not submitted; NOT_VERIFIED_BY_SYSTEM</p>\n<h2 id=\"op-frag-review\" class=\"op-uc-h2\">\n<a href=\"#op-frag-review\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Review</h2>\n<p class=\"op-uc-p\">Not submitted</p>\n<h2 id=\"op-frag-proposed-real-application-defect-binding-human-approved-scope-required\" class=\"op-uc-h2\">\n<a href=\"#op-frag-proposed-real-application-defect-binding-human-approved-scope-required\" aria-hidden=\"true\" rel=\"noopener noreferrer nofollow\" class=\"op-uc-link_permalink icon-link op-uc-link\"></a>Proposed real application-defect binding (human-approved scope required)</h2>\n<p class=\"op-uc-p\">Story: A PM converts a cited BA WBS into Native Epic/Task/Subtask nodes with explicit source dates and dependencies, without rewriting model business output or bypassing independent approvals.<br>\nScope: QLDAPM Main WBS adapter and exact Native dated-parent verifier only. This maps the retained technical test Bug to the real defect reproduced during the approved BA run; no unrelated product feature or full application QA claim.<br>\nAnalysis: Valid uppercase BA node keys failed Native key validation. After encoding, an actual Native clone stopped SOURCE_CHANGED because dated-child aggregation saved a parent twice and expanded parent data changed inside a child API response. The corrected code preserves raw BA output hash, verifies each own child receipt and exact model chain/calendar, and excludes expanded related resources from WP identity. Unknown children, unrelated model fields and excess versions remain held.<br>\nAC1: Application regression NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source preserves raw output hash, graph, requirements and scheduling; collisions and dangling references are rejected.<br>\nAC2: Application regression ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain verifies the dated-parent model chain using exact own child receipts and Native calendar evidence.<br>\nAC3: Application regressions ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects and test_expanded_parent_changes_do_not_change_the_verified_work_package retain fail-closed source protection while allowing unrelated expanded-parent data to refresh.<br>\nAC4: Actual isolated Native qualification CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json reaches VERIFIED_COMPLETED for four nodes, exact supplied dates and follows lag0, with current RAG citations and one create after lost acknowledgment. Simulated isolated decisions and synthetic embeddings are explicitly labelled; no Main business mutation or human QA decision is inferred.<br>\nEvidence scope: These are actual application-code and isolated Native results for this WBS defect. Existing accepted technical readback evidence for WP375 does not verify this Bug. Future fix/build/QA/retest/closure still requires an admitted producer, independent human reviews and separate exact Native transition approvals.<br>\nCode provenance: CODEX_WF10_FINAL_SCHEDULE_DEPLOYMENT_RESULT.json pins the deployed Gateway/Core/source hashes; raw BA output hash 4bcbbd93eeb110f99bab1b66846c814cda1af09ded78d2a18c209a63121a9ae7 remains unchanged. Preserve all prior technical qualification text above.</p>"
+          },
+          "submitted_evidence": [],
+          "qa_verification": "NOT_VERIFIED",
+          "native_mutations": false,
+          "approval_required_for_native_write": true
+        },
+        "execution": {
+          "id": 2551,
+          "workflowId": "tOyBIPw6sGjgzjtU",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:02:03.781",
+          "stoppedAt": "2026-10-28 05:02:08.714",
+          "deletedAt": null,
+          "jsonSizeBytes": 16660
+        }
+      }
+    },
+    "WF10": {
+      "name": "Task Orchestration & Decomposition",
+      "workflow_id": "tOY7QUa9SrWPOe9e",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:02:09.399103+00:00",
+      "details": "WF10 truy xuất cấu hình types và statuses của Project 5 thành công (HTTP 200, types: ['Task', 'Epic', 'Subtask']); Sẵn sàng điều phối WBS an toàn; Execution ID 2552 đạt terminal success.",
+      "evidence": {
+        "project_options": {
+          "types": [
+            {
+              "id": 1,
+              "name": "Task"
+            },
+            {
+              "id": 5,
+              "name": "Epic"
+            },
+            {
+              "id": 10,
+              "name": "Subtask"
+            }
+          ],
+          "statuses": [
+            {
+              "id": 1,
+              "name": "NEW"
+            },
+            {
+              "id": 7,
+              "name": "IN PROGRESS"
+            },
+            {
+              "id": 9,
+              "name": "IN TESTING"
+            },
+            {
+              "id": 33,
+              "name": "READY"
+            },
+            {
+              "id": 34,
+              "name": "REVIEW"
+            },
+            {
+              "id": 35,
+              "name": "DONE"
+            },
+            {
+              "id": 36,
+              "name": "CANCELLED"
+            },
+            {
+              "id": 37,
+              "name": "IN ANALYSIS"
+            },
+            {
+              "id": 38,
+              "name": "READY FOR DEV"
+            },
+            {
+              "id": 39,
+              "name": "CODE REVIEW"
+            },
+            {
+              "id": 40,
+              "name": "READY FOR TEST"
+            },
+            {
+              "id": 41,
+              "name": "READY FOR RELEASE"
+            }
+          ],
+          "priorities": [
+            {
+              "id": 7,
+              "name": "Low"
+            },
+            {
+              "id": 8,
+              "name": "Normal"
+            },
+            {
+              "id": 9,
+              "name": "High"
+            },
+            {
+              "id": 10,
+              "name": "Immediate"
+            }
+          ],
+          "assignee_roles": [
+            "BA",
+            "PM",
+            "BE",
+            "FE",
+            "QA"
+          ],
+          "notice": "These options are not permission to use every transition. Native permission/form validation still applies."
+        },
+        "execution": {
+          "id": 2552,
+          "workflowId": "tOY7QUa9SrWPOe9e",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:02:08.908",
+          "stoppedAt": "2026-10-28 05:02:09.271",
+          "deletedAt": null,
+          "jsonSizeBytes": 7854
+        }
+      }
+    },
+    "WF11": {
+      "name": "QA Gate Transition",
+      "workflow_id": "LeRVT3LWNBkJ2iz3",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:02:12.221118+00:00",
+      "details": "WF11 hỗ trợ đầy đủ Native QA Evidence API: list trả về 2 bản ghi; get đọc chính xác evidence fc0479a8... (pending_qa, native_id: 371, version: 4); Bảo vệ an toàn fail-closed từ chối get_gate cũ (HTTP 422 CUSTOM_GATE_UNSUPPORTED_IN_NATIVE_MODE); Execution ID 2555 đạt terminal success.",
+      "evidence": {
+        "qa_evidence_items_count": 2,
+        "evidence_record": {
+          "actor": 18,
+          "binding": {
+            "artifact_sha256": "6806530c85763a7482875265b9b0a6b9940e0644173cab808ea6449343406b2c",
+            "assignee": "/api/v3/users/21",
+            "assignee_identity": {
+              "actor": 21,
+              "role": "BE"
+            },
+            "criteria_sha256": "15b30d7dd9bebcda6c8447186e8cd69fb26a638acfc7b5e15be8b9f5bb531087",
+            "native_id": 371,
+            "snapshot_sha256": "b8d49e5cb76655ae2e1effcd2ec0722d000008140b50f6a93b2bbe5497e3e9a7",
+            "version": 4
+          },
+          "captured_at": 1793107369.9454165,
+          "id": "fc0479a8-b30a-5e88-9e4a-10748cb30415",
+          "manifest": {
+            "artifact_sha256": "6806530c85763a7482875265b9b0a6b9940e0644173cab808ea6449343406b2c",
+            "criteria": {
+              "AC1": "Application regression NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source preserves raw output hash, graph, requirements and scheduling; collisions and dangling references are rejected.",
+              "AC2": "Application regression ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain verifies the dated-parent model chain using exact own child receipts and Native calendar evidence.",
+              "AC3": "Application regressions ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects and test_expanded_parent_changes_do_not_change_the_verified_work_package retain fail-closed source protection while allowing unrelated expanded-parent data to refresh.",
+              "AC4": "Actual isolated Native qualification CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json reaches VERIFIED_COMPLETED for four nodes, exact supplied dates and follows lag0, with current RAG citations and one create after lost acknowledgment. Simulated isolated decisions and synthetic embeddings are explicitly labelled; no Main business mutation or human QA decision is inferred."
+            },
+            "finished_at": 1793107080.5452042,
+            "schema": "QLDAPM_AUTOMATED_APPLICATION_QA_V1",
+            "source_version": 4,
+            "started_at": 1793106905.2570407,
+            "tests": [
+              {
+                "actual": "{\"passed\":13,\"records\":[{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_changed_ba_source_after_proposal_blocks_native_execution\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_explicit_ba_structured_planning_survives_provider_formatting\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_explicit_leaf_schedule_assignment_priority_are_preserved_through_native_forms\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_invalid_or_invented_scheduling_assignment_is_rejected_before_proposal\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_model_key_encoding_rejects_collisions_and_dangling_references\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_native_date_readback_mismatch_is_unknown_and_never_replayed\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_native_schedule_normalization_is_not_silently_approved\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_other_actor_wrong_hash_or_caller_authority_never_converts\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_own_structured_output_converts_to_shared_draft_with_exact_provenance\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_stale_native_or_free_text_output_is_not_a_plan\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_v2_ba_output_retains_explicit_native_relations_and_rejects_v1_smuggling\",\"outcome\":\"PASSED\"},{\"id\":\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_v2_provider_planning_keeps_explicit_relations_non_executable\",\"outcome\":\"PASSED\"}],\"tests\":13}",
+                "criterion_id": "AC1",
+                "expected": "13 pinned application regression tests pass",
+                "outcome": "PASSED",
+                "proof_sha256": "9ffb49c31994beb1aab0c87d8f60cb0285a1d60647f3ee2679b9ab8fadb181c8",
+                "reference": "wbs-application:AC1"
+              },
+              {
+                "actual": "{\"passed\":1,\"records\":[{\"id\":\"test_wbs_scheduled_parent_effects.ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain\",\"outcome\":\"PASSED\"}],\"tests\":1}",
+                "criterion_id": "AC2",
+                "expected": "1 pinned application regression tests pass",
+                "outcome": "PASSED",
+                "proof_sha256": "ccf8c52a27e2f1099794a65f9383b475243cca9e90dd26ed54d691a489596fb6",
+                "reference": "wbs-application:AC2"
+              },
+              {
+                "actual": "{\"passed\":2,\"records\":[{\"id\":\"test_wbs_scheduled_parent_effects.ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects\",\"outcome\":\"PASSED\"},{\"id\":\"test_wbs_scheduled_parent_effects.ScheduledParentEffectsTests.test_expanded_parent_changes_do_not_change_the_verified_work_package\",\"outcome\":\"PASSED\"}],\"tests\":2}",
+                "criterion_id": "AC3",
+                "expected": "2 pinned application regression tests pass",
+                "outcome": "PASSED",
+                "proof_sha256": "6c2b332c18e6da492520cc648493e3251c10f7373b105fa2e77ced3df1e44cf4",
+                "reference": "wbs-application:AC3"
+              },
+              {
+                "actual": "{\"lost_ack\":true,\"nodes\":[\"epic-1\",\"sub-a\",\"task-a\",\"task-b\"],\"raw_ba_output_unchanged\":true,\"status\":\"PASS_RETAINED_BA_TO_ISOLATED_NATIVE_WBS_RELATION_SCHEDULE_RAG_RECOVERY\"}",
+                "criterion_id": "AC4",
+                "expected": "Four actual Native WBS nodes with supplied dates/follows, target RAG and one create after lost ACK",
+                "outcome": "PASSED",
+                "proof_sha256": "ca40b92a7897f796bf52a815aaec21546fe35aa662ae640dc4f90f81e8b6d7d8",
+                "reference": "wbs-application:AC4"
+              }
+            ],
+            "work_package_id": 371
+          },
+          "producer": {
+            "code_sha256": "fec0d913e57172c422f749a3d9e068a5cd33aa6ff35b4cfee43f0fa0aed05f77",
+            "id": "qldapm-wbs-application-v1"
+          },
+          "project_id": 5,
+          "role": "AUTOMATED_PRODUCER",
+          "run_id": "2a074523-f4dc-5e61-a663-2b557b5b672a",
+          "verification_kind": "AUTOMATED_APPLICATION_WBS",
+          "source_current": true,
+          "reviews": [],
+          "artifact": "{\"actor\":18,\"build\":{\"core\":\"sha256:5e2182bb450729f03dfe415ac5d46662dac28d5e0b64fbfdca599d8c7d8dd8b5\",\"gateway\":\"sha256:bf983de5ae315dbe752df65de13c5a7393fc9c6d12f2395cd7da80a9b0cfe295\"},\"criteria\":{\"AC1\":\"Application regression NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source preserves raw output hash, graph, requirements and scheduling; collisions and dangling references are rejected.\",\"AC2\":\"Application regression ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain verifies the dated-parent model chain using exact own child receipts and Native calendar evidence.\",\"AC3\":\"Application regressions ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects and test_expanded_parent_changes_do_not_change_the_verified_work_package retain fail-closed source protection while allowing unrelated expanded-parent data to refresh.\",\"AC4\":\"Actual isolated Native qualification CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json reaches VERIFIED_COMPLETED for four nodes, exact supplied dates and follows lag0, with current RAG citations and one create after lost acknowledgment. Simulated isolated decisions and synthetic embeddings are explicitly labelled; no Main business mutation or human QA decision is inferred.\"},\"finished_at\":1793107080.5452042,\"id\":\"1ab1a4e8-2b11-4d8a-908b-527391c50952\",\"producer\":\"qldapm-wbs-application-v1\",\"producer_sha256\":\"fec0d913e57172c422f749a3d9e068a5cd33aa6ff35b4cfee43f0fa0aed05f77\",\"project_id\":5,\"qualification\":\"ISOLATED_APPLICATION_AND_NATIVE; synthetic embeddings and isolated decisions; not human QA approval\",\"source\":{\"description\":\"## Report and reproduction\\nTechnical acceptance resource for approved Task[Bug] mapping and Owner18 Native pipeline; isolated lifecycle fixtures already qualified.\\n\\n## Expected/actual behavior\\nExpected: An exact human-approved Task1/NEW1 create with own Owner18 author, Native readback and RAG sync; all existing work packages preserved.\\nActual: Native mutation not executed at proposal time. Later assignment/fix/retest/review/status changes require new concrete proposals and approvals.\\n\\n## Severity and source evidence\\nSeverity: low\\nCODEX_WF09_MAIN_QUALIFICATION_RESULT.json; CODEX_OWNER_NATIVE_E2E_DRIVER_BOUNDARY_RESULT.json\\nEvidence verification: NOT_VERIFIED_BY_SYSTEM\\n\\n## Duplicate references\\nNo lexical candidate in current visible snapshot; not proof of uniqueness.\\nDisposition: No candidate to disposition\\n\\n## Fix tracking\\nNot submitted\\n\\n## QA retest evidence\\nNot submitted; NOT_VERIFIED_BY_SYSTEM\\n\\n## Review\\nNot submitted\\n\\n## Proposed real application-defect binding (human-approved scope required)\\nStory: A PM converts a cited BA WBS into Native Epic/Task/Subtask nodes with explicit source dates and dependencies, without rewriting model business output or bypassing independent approvals.\\nScope: QLDAPM Main WBS adapter and exact Native dated-parent verifier only. This maps the retained technical test Bug to the real defect reproduced during the approved BA run; no unrelated product feature or full application QA claim.\\nAnalysis: Valid uppercase BA node keys failed Native key validation. After encoding, an actual Native clone stopped SOURCE_CHANGED because dated-child aggregation saved a parent twice and expanded parent data changed inside a child API response. The corrected code preserves raw BA output hash, verifies each own child receipt and exact model chain/calendar, and excludes expanded related resources from WP identity. Unknown children, unrelated model fields and excess versions remain held.\\nAC1: Application regression NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source preserves raw output hash, graph, requirements and scheduling; collisions and dangling references are rejected.\\nAC2: Application regression ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain verifies the dated-parent model chain using exact own child receipts and Native calendar evidence.\\nAC3: Application regressions ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects and test_expanded_parent_changes_do_not_change_the_verified_work_package retain fail-closed source protection while allowing unrelated expanded-parent data to refresh.\\nAC4: Actual isolated Native qualification CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json reaches VERIFIED_COMPLETED for four nodes, exact supplied dates and follows lag0, with current RAG citations and one create after lost acknowledgment. Simulated isolated decisions and synthetic embeddings are explicitly labelled; no Main business mutation or human QA decision is inferred.\\nEvidence scope: These are actual application-code and isolated Native results for this WBS defect. Existing accepted technical readback evidence for WP375 does not verify this Bug. Future fix/build/QA/retest/closure still requires an admitted producer, independent human reviews and separate exact Native transition approvals.\\nCode provenance: CODEX_WF10_FINAL_SCHEDULE_DEPLOYMENT_RESULT.json pins the deployed Gateway/Core/source hashes; raw BA output hash 4bcbbd93eeb110f99bab1b66846c814cda1af09ded78d2a18c209a63121a9ae7 remains unchanged. Preserve all prior technical qualification text above.\\n\",\"fields\":{\"assignee_id\":21,\"dueDate\":null,\"parent_id\":null,\"priority_id\":8,\"priority_name\":\"Normal\",\"startDate\":null,\"status_id\":37,\"subject\":\"[Bug] [CODEX TEST] Controlled Native Bug lifecycle qualification a29a433d248c\",\"type_id\":1},\"id\":371,\"project\":\"/api/v3/projects/5\",\"version\":4},\"sources\":{\"core\":{\"app/models/concerns/qldapm_gate_write.rb\":\"be6770088d92db184775b0b1e0d986bb76916939fe4081ceb9ee83cc77a7893e\",\"app/models/qldapm/gate_policy.rb\":\"b9270f61092a6354935c25e637d17afc5615828214dcbd020abcb4d480fbafac\",\"app/services/qldapm/hierarchy_readback.rb\":\"3cb44e0ce54cbc06f62ef4c56679b620b42f117684725ec9965c400651c55c89\",\"app/services/work_packages/create_service.rb\":\"e9e358fa7d6d2d55346198875e9505b02802ec9010b8eee181e56cca733bbc67\",\"app/services/work_packages/set_attributes_service/derive_progress_values_status_based.rb\":\"91f7faeb19b94e2aec078f7bb796226f95d3da7826b8397779ad43ec58fcaba4\"},\"gateway\":{\"native_wbs.py\":\"dc3605f9af52cabf9d57609926ab3fc7a1e8ba1417be4e8df851d551002266c9\",\"native_wbs_hierarchy.py\":\"184247c963c09aeab9804328f8d82e95766ffe99b62b8ed288d6aacfe77f1782\",\"native_wbs_relations.py\":\"5b340673c1e87c38b5a068dc51e182313b49d5eea9dedfddc82892ac538d79e4\",\"wbs_analysis.py\":\"32dbec1aa66502980d8addf37d822191d7f7f0858382b589a216a444ca1c5413\"}},\"started_at\":1793106905.2570407,\"tests\":[{\"actual\":\"{\\\"passed\\\":13,\\\"records\\\":[{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_changed_ba_source_after_proposal_blocks_native_execution\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_explicit_ba_structured_planning_survives_provider_formatting\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_explicit_leaf_schedule_assignment_priority_are_preserved_through_native_forms\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_invalid_or_invented_scheduling_assignment_is_rejected_before_proposal\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_model_key_encoding_rejects_collisions_and_dangling_references\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_native_date_readback_mismatch_is_unknown_and_never_replayed\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_native_schedule_normalization_is_not_silently_approved\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_other_actor_wrong_hash_or_caller_authority_never_converts\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_own_structured_output_converts_to_shared_draft_with_exact_provenance\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_stale_native_or_free_text_output_is_not_a_plan\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_v2_ba_output_retains_explicit_native_relations_and_rejects_v1_smuggling\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_native_wbs_analysis.NativeWbsAnalysisTests.test_v2_provider_planning_keeps_explicit_relations_non_executable\\\",\\\"outcome\\\":\\\"PASSED\\\"}],\\\"tests\\\":13}\",\"criterion_id\":\"AC1\",\"expected\":\"13 pinned application regression tests pass\",\"outcome\":\"PASSED\",\"proof_sha256\":\"9ffb49c31994beb1aab0c87d8f60cb0285a1d60647f3ee2679b9ab8fadb181c8\",\"reference\":\"wbs-application:AC1\"},{\"actual\":\"{\\\"passed\\\":1,\\\"records\\\":[{\\\"id\\\":\\\"test_wbs_scheduled_parent_effects.ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain\\\",\\\"outcome\\\":\\\"PASSED\\\"}],\\\"tests\\\":1}\",\"criterion_id\":\"AC2\",\"expected\":\"1 pinned application regression tests pass\",\"outcome\":\"PASSED\",\"proof_sha256\":\"ccf8c52a27e2f1099794a65f9383b475243cca9e90dd26ed54d691a489596fb6\",\"reference\":\"wbs-application:AC2\"},{\"actual\":\"{\\\"passed\\\":2,\\\"records\\\":[{\\\"id\\\":\\\"test_wbs_scheduled_parent_effects.ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects\\\",\\\"outcome\\\":\\\"PASSED\\\"},{\\\"id\\\":\\\"test_wbs_scheduled_parent_effects.ScheduledParentEffectsTests.test_expanded_parent_changes_do_not_change_the_verified_work_package\\\",\\\"outcome\\\":\\\"PASSED\\\"}],\\\"tests\\\":2}\",\"criterion_id\":\"AC3\",\"expected\":\"2 pinned application regression tests pass\",\"outcome\":\"PASSED\",\"proof_sha256\":\"6c2b332c18e6da492520cc648493e3251c10f7373b105fa2e77ced3df1e44cf4\",\"reference\":\"wbs-application:AC3\"},{\"actual\":\"{\\\"lost_ack\\\":true,\\\"nodes\\\":[\\\"epic-1\\\",\\\"sub-a\\\",\\\"task-a\\\",\\\"task-b\\\"],\\\"raw_ba_output_unchanged\\\":true,\\\"status\\\":\\\"PASS_RETAINED_BA_TO_ISOLATED_NATIVE_WBS_RELATION_SCHEDULE_RAG_RECOVERY\\\"}\",\"criterion_id\":\"AC4\",\"expected\":\"Four actual Native WBS nodes with supplied dates/follows, target RAG and one create after lost ACK\",\"outcome\":\"PASSED\",\"proof_sha256\":\"ca40b92a7897f796bf52a815aaec21546fe35aa662ae640dc4f90f81e8b6d7d8\",\"reference\":\"wbs-application:AC4\"}],\"verdict\":\"PASSED\",\"version\":1}",
+          "automated_verdict": "PASSED",
+          "review_chain_complete": false,
+          "reviewers_current": true,
+          "hash": "38aeb81b0ecb73ec399ee5214383c049269992b9ebff780f97d19fb7c6a52524",
+          "state": "pending_qa",
+          "reviewer": null,
+          "native_transition_supported": true,
+          "ready": false
+        },
+        "legacy_gate_fail_closed": {
+          "error": "CUSTOM_GATE_UNSUPPORTED_IN_NATIVE_MODE"
+        },
+        "execution": {
+          "id": 2555,
+          "workflowId": "LeRVT3LWNBkJ2iz3",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:02:11.828",
+          "stoppedAt": "2026-10-28 05:02:12.092",
+          "deletedAt": null,
+          "jsonSizeBytes": 8301
+        }
+      }
+    },
+    "WF12": {
+      "name": "Weekly Summary",
+      "workflow_id": "ZkgS8RZbPRA2zbhQ",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:02:17.462008+00:00",
+      "details": "WF12 kết xuất báo cáo tuần từ dữ liệu Native xác thực thành công (HTTP 200, state: READY, as_of_date: 2026-10-28, model_used: False); Execution ID 2556 đạt terminal success.",
+      "evidence": {
+        "weekly_summary": {
+          "state": "READY",
+          "project_id": 5,
+          "actor_id": 19,
+          "actor_role": "PM",
+          "as_of_date": "2026-10-28",
+          "window_start": "2026-10-22",
+          "upcoming_window_end": "2026-11-03",
+          "data_quality": "PARTIAL_STATUS_HISTORY_UNAVAILABLE",
+          "model_used": false,
+          "weekly_summary": {
+            "raw_counts": {
+              "closed_this_week": null,
+              "closed_updated_in_window": 0,
+              "open_total": 339,
+              "overdue_count": 34,
+              "upcoming_deadlines_7d": 30,
+              "throughput_velocity": null
+            }
+          },
+          "member_breakdown": {
+            "18": {
+              "user_id": 18,
+              "name": "User 18",
+              "role": "AI_SYSTEM_OWNER",
+              "closed_this_week": null,
+              "closed_updated_in_window": 0,
+              "open_active": 0,
+              "overdue": 0,
+              "package_ids": []
+            },
+            "19": {
+              "user_id": 19,
+              "name": "User 19",
+              "role": "PM",
+              "closed_this_week": null,
+              "closed_updated_in_window": 0,
+              "open_active": 54,
+              "overdue": 9,
+              "package_ids": [
+                102,
+                107,
+                112,
+                117,
+                122,
+                127,
+                132,
+                137,
+                142,
+                147,
+                152,
+                157,
+                162,
+                167,
+                172,
+                177,
+                182,
+                187,
+                192,
+                197,
+                202,
+                207,
+                212,
+                217,
+                222,
+                227,
+                232,
+                237,
+                242,
+                247,
+                252,
+                257,
+                262,
+                267,
+                272,
+                277,
+                282,
+                287,
+                292,
+                297,
+                302,
+                307,
+                312,
+                317,
+                322,
+                327,
+                332,
+                337,
+                342,
+                347,
+                352,
+                357,
+                362,
+                370
+              ]
+            },
+            "20": {
+              "user_id": 20,
+              "name": "User 20",
+              "role": "BA",
+              "closed_this_week": null,
+              "closed_updated_in_window": 0,
+              "open_active": 118,
+              "overdue": 9,
+              "package_ids": [
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                106,
+                111,
+                116,
+                121,
+                126,
+                131,
+                136,
+                141,
+                146,
+                151,
+                156,
+                161,
+                166,
+                171,
+                176,
+                181,
+                186,
+                191,
+                196,
+                201,
+                206,
+                211,
+                216,
+                221,
+                226,
+                231,
+                236,
+                241,
+                246,
+                251,
+                256,
+                261,
+                266,
+                271,
+                276,
+                281,
+                286,
+                291,
+                296,
+                301,
+                306,
+                311,
+                316,
+                321,
+                326,
+                331,
+                336,
+                341,
+                346,
+                351,
+                356,
+                361,
+                366,
+                369
+              ]
+            },
+            "21": {
+              "user_id": 21,
+              "name": "User 21",
+              "role": "BE",
+              "closed_this_week": null,
+              "closed_updated_in_window": 0,
+              "open_active": 55,
+              "overdue": 5,
+              "package_ids": [
+                103,
+                108,
+                113,
+                118,
+                123,
+                128,
+                133,
+                138,
+                143,
+                148,
+                153,
+                158,
+                163,
+                168,
+                173,
+                178,
+                183,
+                188,
+                193,
+                198,
+                203,
+                208,
+                213,
+                218,
+                223,
+                228,
+                233,
+                238,
+                243,
+                248,
+                253,
+                258,
+                263,
+                268,
+                273,
+                278,
+                283,
+                288,
+                293,
+                298,
+                303,
+                308,
+                313,
+                318,
+                323,
+                328,
+                333,
+                338,
+                343,
+                348,
+                353,
+                358,
+                363,
+                371,
+                375
+              ]
+            },
+            "22": {
+              "user_id": 22,
+              "name": "User 22",
+              "role": "FE",
+              "closed_this_week": null,
+              "closed_updated_in_window": 0,
+              "open_active": 53,
+              "overdue": 4,
+              "package_ids": [
+                104,
+                109,
+                114,
+                119,
+                124,
+                129,
+                134,
+                139,
+                144,
+                149,
+                154,
+                159,
+                164,
+                169,
+                174,
+                179,
+                184,
+                189,
+                194,
+                199,
+                204,
+                209,
+                214,
+                219,
+                224,
+                229,
+                234,
+                239,
+                244,
+                249,
+                254,
+                259,
+                264,
+                269,
+                274,
+                279,
+                284,
+                289,
+                294,
+                299,
+                304,
+                309,
+                314,
+                319,
+                324,
+                329,
+                334,
+                339,
+                344,
+                349,
+                354,
+                359,
+                364
+              ]
+            },
+            "23": {
+              "user_id": 23,
+              "name": "User 23",
+              "role": "QA",
+              "closed_this_week": null,
+              "closed_updated_in_window": 0,
+              "open_active": 55,
+              "overdue": 6,
+              "package_ids": [
+                105,
+                110,
+                115,
+                120,
+                125,
+                130,
+                135,
+                140,
+                145,
+                150,
+                155,
+                160,
+                165,
+                170,
+                175,
+                180,
+                185,
+                190,
+                195,
+                200,
+                205,
+                210,
+                215,
+                220,
+                225,
+                230,
+                235,
+                240,
+                245,
+                250,
+                255,
+                260,
+                265,
+                270,
+                275,
+                280,
+                285,
+                290,
+                295,
+                300,
+                305,
+                310,
+                315,
+                320,
+                325,
+                330,
+                335,
+                340,
+                345,
+                350,
+                355,
+                360,
+                365,
+                367,
+                368
+              ]
+            }
+          },
+          "ai_summary": {
+            "status": "DETERMINISTIC_ONLY",
+            "model_used": false,
+            "text": "Báo cáo tuần tính đến ngày 2026-10-28: Có 0 công việc hiện đóng được cập nhật trong cửa sổ báo cáo, 339 công việc đang tiếp diễn, 34 công việc quá hạn cần lưu ý và 30 công việc có thời hạn trong 7 ngày tới. Chưa đủ lịch sử chuyển trạng thái để tính số đóng trong tuần hoặc throughput."
+          },
+          "limitations": [
+            "updatedAt không phải thời điểm đóng; closed_this_week và throughput_velocity là null khi chưa có transition history",
+            "Trạng thái là snapshot Native hiện tại; as_of_date là mốc tính cửa sổ, không tái dựng lịch sử trạng thái",
+            "Báo cáo quy trình dự án hỗ trợ ra quyết định, không xếp hạng cá nhân",
+            "Chỉ số cá nhân được giới hạn theo vai trò, ngăn chặn rò rỉ dữ liệu chéo"
+          ],
+          "report_id": "b1d53da9-a161-5f19-b46e-e1f94ab02e56",
+          "report_sha256": "021d5275db7f7c39058d1442112f6baa4a67929e68faa8fcf060647552ff7888",
+          "last_observed_at": 1793163737.03163
+        },
+        "execution": {
+          "id": 2556,
+          "workflowId": "ZkgS8RZbPRA2zbhQ",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:02:12.298",
+          "stoppedAt": "2026-10-28 05:02:17.323",
+          "deletedAt": null,
+          "jsonSizeBytes": 9337
+        }
+      }
+    },
+    "WF13": {
+      "name": "Second Brain RAG Re-indexing",
+      "workflow_id": "2tr0jpqaaAiq9IOU",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:02:19.042903+00:00",
+      "details": "WF13 tái lập chỉ mục Second Brain cho WP #376 thành công (HTTP 200, status: SKIPPED_UNCHANGED, vector_indexed=True, lock_version: 0); Execution ID 2557 đạt terminal success.",
+      "evidence": {
+        "reindex_result": {
+          "status": "SKIPPED_UNCHANGED",
+          "document_id": "86c9f2546f5bef6f8b42b55be7777ed43c95a899bab56454c0efc3b392241987",
+          "source_id": "actor:19:wp:376",
+          "chunks_count": 1,
+          "source_hash": "86c9f2546f5bef6f8b42b55be7777ed43c95a899bab56454c0efc3b392241987",
+          "vector_indexed": true,
+          "error": null,
+          "native_id": 376,
+          "lock_version": 0
+        },
+        "execution": {
+          "id": 2557,
+          "workflowId": "2tr0jpqaaAiq9IOU",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:02:17.532",
+          "stoppedAt": "2026-10-28 05:02:18.912",
+          "deletedAt": null,
+          "jsonSizeBytes": 7960
+        }
+      }
+    },
+    "WF14": {
+      "name": "Durable RAG Recovery",
+      "workflow_id": "8ycOUQy9gtT60nkN",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:02:19.578354+00:00",
+      "details": "WF14 kiểm tra trạng thái job phục hồi tri thức 992f4f30... thành công (HTTP 200, state: verified, attempts: 1); Execution ID 2558 đạt terminal success.",
+      "evidence": {
+        "recovery_job": {
+          "id": "992f4f30-2c71-5673-96f9-05c5feca58da",
+          "native_id": 370,
+          "state": "verified",
+          "attempts": 1,
+          "next_at": 1792737731.185995,
+          "error": null,
+          "result": {
+            "canonical": {
+              "chunks_count": 1,
+              "document_id": "1fcef98c56649924e656faec18004708508ebc240ec19fb219fa87b13a05ff59",
+              "error": null,
+              "lock_version": 1,
+              "native_id": 370,
+              "source_hash": "1fcef98c56649924e656faec18004708508ebc240ec19fb219fa87b13a05ff59",
+              "source_id": "op:wp:370",
+              "status": "SKIPPED_UNCHANGED",
+              "vector_indexed": true
+            },
+            "chunks_count": 1,
+            "document_id": "250fe506c7d06d6cccf3eba004c164f85d7bf16b52e318c5a658d1657b97a6e5",
+            "error": null,
+            "lock_version": 1,
+            "native_id": 370,
+            "source_hash": "250fe506c7d06d6cccf3eba004c164f85d7bf16b52e318c5a658d1657b97a6e5",
+            "source_id": "actor:19:wp:370",
+            "status": "UPDATED",
+            "vector_indexed": true
+          }
+        },
+        "execution": {
+          "id": 2558,
+          "workflowId": "8ycOUQy9gtT60nkN",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:02:19.124",
+          "stoppedAt": "2026-10-28 05:02:19.443",
+          "deletedAt": null,
+          "jsonSizeBytes": 6544
+        }
+      }
+    },
+    "WF15": {
+      "name": "Reconciliation & Drift Detection",
+      "workflow_id": "NLugfE3U8dBS88Wg",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:02:28.504582+00:00",
+      "details": "WF15 đối chiếu toàn vẹn tri thức SQLite và Qdrant vector store thành công (HTTP 200, visible_packages: 339, documents: 376, chunks: 1742, points: 1745, 3 legacy unmatched points preserved); Execution ID 2559 đạt terminal success.",
+      "evidence": {
+        "integrity_audit": {
+          "status": "PARTIAL_UNMATCHED_POINTS",
+          "project_id": 5,
+          "native_visible_packages": 339,
+          "documents": 376,
+          "chunks": 1742,
+          "points_in_project": 1745,
+          "sqlite_quick_check": "ok",
+          "missing_native_ids": [],
+          "missing_point_ids": [],
+          "payload_mismatch_ids": [],
+          "invalid_chunk_hash_ids": [],
+          "invalid_source_hashes": [],
+          "fts_error_sources": [],
+          "orphan_fts_rows": 0,
+          "stale_sources": [],
+          "unmatched_points": [
+            {
+              "id": "2d5e7bdf-b4e0-52c6-b360-f45c1fbd74bf",
+              "source_id": "op:wp:42"
+            },
+            {
+              "id": "59e1f1a4-b659-5c3d-ab23-ebb309481dc7",
+              "source_id": "test:local:adr:0001"
+            },
+            {
+              "id": "b838195a-5afd-5f40-a70d-23c2ca9007bc",
+              "source_id": "test:wp:999"
+            }
+          ],
+          "multiple_namespaces": {
+            "38": [
+              "actor:19:wp:38",
+              "op:wp:38"
+            ],
+            "49": [
+              "actor:19:wp:49",
+              "op:wp:49"
+            ],
+            "50": [
+              "actor:19:wp:50",
+              "op:wp:50"
+            ],
+            "53": [
+              "actor:19:wp:53",
+              "op:wp:53"
+            ],
+            "75": [
+              "actor:19:wp:75",
+              "op:wp:75"
+            ],
+            "370": [
+              "actor:19:wp:370",
+              "op:wp:370"
+            ],
+            "371": [
+              "actor:18:wp:371",
+              "op:wp:371"
+            ],
+            "372": [
+              "actor:18:wp:372",
+              "op:wp:372"
+            ],
+            "373": [
+              "actor:18:wp:373",
+              "op:wp:373"
+            ],
+            "374": [
+              "actor:18:wp:374",
+              "op:wp:374"
+            ],
+            "375": [
+              "actor:18:wp:375",
+              "op:wp:375"
+            ],
+            "376": [
+              "actor:18:wp:376",
+              "actor:19:wp:376",
+              "op:wp:376"
+            ]
+          },
+          "native_sources_outside_visible_scope": 0,
+          "mutations_performed": false,
+          "cross_store_snapshot": "Main ingestion lease; external writers must honor the same lock",
+          "actor_role": "PM",
+          "report_id": "e50b346f-fc32-5757-a5df-7b3db6e9b090",
+          "report_sha256": "a0b1756807a733d2012a19cd46febf2814ae0432383adbc188e7519501fe9492",
+          "last_observed_at": 1793163748.2221
+        },
+        "execution": {
+          "id": 2559,
+          "workflowId": "NLugfE3U8dBS88Wg",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:02:19.671",
+          "stoppedAt": "2026-10-28 05:02:28.369",
+          "deletedAt": null,
+          "jsonSizeBytes": 6304
+        }
+      }
+    },
+    "WF16": {
+      "name": "Main Health Monitoring",
+      "workflow_id": "5FRYNPSot18UDpKa",
+      "status": "PASS",
+      "verified_at": "2026-10-28T05:02:29.000483+00:00",
+      "details": "WF16 giám sát sức khỏe toàn hệ thống thành công qua quyền hạn máy (HTTP 200, OpenProject: OK, Qdrant: OK, Ollama: OK, overall: HEALTHY); Execution ID 2560 đạt terminal success.",
+      "evidence": {
+        "health_probes": {
+          "backlog": {
+            "counts": {
+              "ai_queue": {
+                "finished": 90
+              },
+              "knowledge_sync": {
+                "verified": 15
+              }
+            },
+            "state": "OK"
+          },
+          "embedding": {
+            "dimensions": 1024,
+            "finite": true,
+            "latency_ms": 3294.7,
+            "samples": 1,
+            "state": "OK"
+          },
+          "ollama": {
+            "http_status": 200,
+            "latency_ms": 10.3,
+            "model": "bge-m3",
+            "state": "OK"
+          },
+          "openproject": {
+            "http_status": 200,
+            "latency_ms": 7.6,
+            "scope": "OpenProject web health; not full Native permission check",
+            "state": "OK"
+          },
+          "qdrant": {
+            "collection_status": "green",
+            "dimensions": 1024,
+            "http_status": 200,
+            "latency_ms": 2.5,
+            "points": 1745,
+            "state": "OK"
+          },
+          "resources": {
+            "cpu_cumulative": {
+              "burst_usec": 0,
+              "nice_usec": 0,
+              "nr_bursts": 0,
+              "nr_periods": 171091,
+              "nr_throttled": 1080,
+              "system_usec": 205243188,
+              "throttled_usec": 8877238,
+              "usage_usec": 1056130508,
+              "user_usec": 850887319
+            },
+            "latency_ms": 0.8,
+            "memory_bytes": 184721408,
+            "memory_limit_bytes": 402653184,
+            "pids": 4,
+            "scope": "Gateway cgroup and mounted state filesystem; CPU cumulative counters, not utilization",
+            "state": "OK",
+            "state_storage_free_bytes": 88219820032
+          }
+        },
+        "overall_state": "HEALTHY",
+        "execution": {
+          "id": 2560,
+          "workflowId": "5FRYNPSot18UDpKa",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 05:02:28.584",
+          "stoppedAt": "2026-10-28 05:02:28.833",
+          "deletedAt": null,
+          "jsonSizeBytes": 5089
+        }
+      }
+    }
+  }
+}

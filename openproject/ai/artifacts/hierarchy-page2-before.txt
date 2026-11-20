@@ -1,0 +1,828 @@
+- generic: Mở liên kết trong tab mới
+- banner:
+  - link "Nhấn vào đây để bỏ qua menu và đi tới nội dung":
+    - /url: ""
+    - text: Chuyển đến nội dung
+  - navigation "Trình đơn trên cùng":
+    - button "Mô-đun toàn cầu":
+    - link "Trang chủ":
+      - /url: http://localhost:18091/
+  - search "Tìm kiếm trong OpenProject":
+    - button "tìm kiếm":
+      - generic: 
+    - generic: Tìm kiếm trong OpenProject
+    - combobox "Tìm kiếm trong OpenProject"
+    - status
+  - button "Thêm vào…":
+    - img "Thêm vào…"
+  - link "thông báo":
+    - /url: /notifications
+  - button "Trợ giúp":
+  - button "Trình đơn người dùng":
+    - img "Trình đơn người dùng": QB
+- navigation "Menu bên":
+  - button "Thu gọn menu dự án" [expanded]:
+  - button "QLDAPM — Local Community":
+    - generic: QLDAPM — Local Community
+  - button "Thu gọn menu dự án" [expanded]:
+  - separator
+  - list:
+    - link "Quay lại một cấp độ menu":
+      - /url: "#"
+    - link "Work Packages":
+      - /url: http://localhost:18091/projects/qldapm-local/work_packages
+    - list:
+      - generic: Tìm kiếm
+      - textbox "Tìm kiếm":
+        - /placeholder: Tìm kiếm theo tên
+      - button "mặc định":
+        - text: mặc định
+        - generic: 
+      - list:
+        - link "Tất cả đều mở":
+          - /url: /projects/qldapm-local/work_packages?work_package_default=true
+          - generic: Tất cả đều mở
+        - link "Hoạt động mới nhất":
+          - /url: /projects/qldapm-local/work_packages?name=latest_activity&query_props=%7B%22g%22%3A%22%22%2C%22hi%22%3Afalse%2C%22t%22%3A%22updatedAt%3Adesc%22%2C%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22updatedAt%22%5D%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22%2A%22%2C%22v%22%3A%5B%5D%7D%5D%7D&show_enterprise_icon=false
+          - generic: Hoạt động mới nhất
+        - link "Được tạo gần đây":
+          - /url: /projects/qldapm-local/work_packages?name=recently_created&query_props=%7B%22g%22%3A%22%22%2C%22hi%22%3Afalse%2C%22t%22%3A%22createdAt%3Adesc%22%2C%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22createdAt%22%5D%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%7D&show_enterprise_icon=false
+          - generic: Được tạo gần đây
+        - link "quá hạn":
+          - /url: /projects/qldapm-local/work_packages?name=overdue&query_props=%7B%22g%22%3A%22%22%2C%22hi%22%3Afalse%2C%22t%22%3A%22createdAt%3Adesc%22%2C%22c%22%3A%5B%22id%22%2C%22type%22%2C%22subject%22%2C%22status%22%2C%22startDate%22%2C%22dueDate%22%2C%22duration%22%5D%2C%22f%22%3A%5B%7B%22n%22%3A%22dueDate%22%2C%22o%22%3A%22%5Cu003ct-%22%2C%22v%22%3A%5B%221%22%5D%7D%2C%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%7D&show_enterprise_icon=false
+          - generic: quá hạn
+        - link "Tóm tắt":
+          - /url: /projects/qldapm-local/work_packages/report?name=summary
+          - generic: Tóm tắt
+        - link "Được tạo bởi tôi":
+          - /url: /projects/qldapm-local/work_packages?name=created_by_me&query_props=%7B%22g%22%3A%22%22%2C%22hi%22%3Afalse%2C%22t%22%3A%22updatedAt%3Adesc%2Cid%3Aasc%22%2C%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22updatedAt%22%5D%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%2C%7B%22n%22%3A%22author%22%2C%22o%22%3A%22%3D%22%2C%22v%22%3A%5B%22me%22%5D%7D%5D%7D&show_enterprise_icon=false
+          - generic: Được tạo bởi tôi
+        - link "Đã giao cho tôi":
+          - /url: /projects/qldapm-local/work_packages?name=assigned_to_me&query_props=%7B%22g%22%3A%22%22%2C%22hi%22%3Afalse%2C%22t%22%3A%22updatedAt%3Adesc%2Cid%3Aasc%22%2C%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22author%22%2C%22updatedAt%22%5D%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%2C%7B%22n%22%3A%22assigneeOrGroup%22%2C%22o%22%3A%22%3D%22%2C%22v%22%3A%5B%22me%22%5D%7D%5D%7D&show_enterprise_icon=false
+          - generic: Đã giao cho tôi
+        - link "Được chia sẻ với người dùng Phiên bản doanh nghiệp":
+          - /url: /work_packages/share_upsell?name=shared_with_users
+          - text: Được chia sẻ với người dùng
+          - img "Phiên bản doanh nghiệp"
+        - link "Đã chia sẻ với tôi Phiên bản doanh nghiệp":
+          - /url: /work_packages/share_upsell?name=shared_with_me
+          - text: Đã chia sẻ với tôi
+          - img "Phiên bản doanh nghiệp"
+- main:
+  - heading "Nội dung" [level=1]
+  - navigation "vụn bánh mì":
+    - list:
+      - link "QLDAPM — Local Community":
+        - /url: /projects/qldapm-local
+      - link "Gói công việc":
+        - /url: /projects/qldapm-local/work_packages
+      - 'link "mặc định: Tất cả đều mở"':
+        - /url: "#"
+  - heading "Tất cả đều mở" [level=2]:
+    - button "Chế độ xem này có những thay đổi chưa được lưu. Nhấn vào đây để lưu chúng.":
+      - generic: 
+    - textbox "Nhấp vào chỉnh sửa tiêu đề của trình bày này. Nhấn enter để lưu.":
+      - /placeholder: Tên của trình bày
+      - text: Tất cả đều mở
+  - list:
+    - button "Tạo gói công việc mới":
+      - text: Tạo mới
+    - button "Bao gồm các dự án 1":
+      - text: Bao gồm các dự án
+      - generic: "1"
+    - note "Đây là điểm neo tập trung cho các phương thức. Nhấn shift+tab để quay lại phần tử kích hoạt phương thức."
+    - button "Đường cơ sở":
+      - text: Đường cơ sở
+    - note "Đây là điểm neo tập trung cho các phương thức. Nhấn shift+tab để quay lại phần tử kích hoạt phương thức."
+    - button "kích hoạt bộ lọc":
+      - generic: 
+      - text: bộ lọc
+      - generic: "1"
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - list
+    - button "Kích hoạt chế độ zen":
+      - generic: 
+    - button "Thêm hành động":
+      - generic: 
+  - table "Bảng có các hàng gói công việc và các cột thuộc tính gói công việc.Hầu hết các ô của bảng này là các nút kích hoạt chức năng chỉnh sửa nội tuyến của thuộc tính đó. Các hộp chọn phải được mở bằng 'ALT' và phím mũi tên. Với các liên kết trong tiêu đề bảng, bạn có thể sắp xếp, nhóm, sắp xếp lại, xóa và thêm các cột trong bảng.":
+    - caption:
+      - text: Bảng có các hàng gói công việc và các cột thuộc tính gói công việc.
+      - text: Hầu hết các ô của bảng này là các nút kích hoạt chức năng chỉnh sửa nội tuyến của thuộc tính đó. Các hộp chọn phải được mở bằng 'ALT' và phím mũi tên. Với các liên kết trong tiêu đề bảng, bạn có thể sắp xếp, nhóm, sắp xếp lại, xóa và thêm các cột trong bảng.
+    - rowgroup:
+      - row "ID Chủ đề loại Trạng thái Người được giao Độ ưu tiên":
+        - columnheader
+        - columnheader "ID":
+          - link "ID":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "Chủ đề":
+          - generic: 
+          - link "Chủ đề":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "loại":
+          - link "loại":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "Trạng thái":
+          - link "Trạng thái":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "Người được giao":
+          - link "Người được giao":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "Độ ưu tiên":
+          - link "Độ ưu tiên":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader:
+          - button "Định cấu hình chế độ xem":
+            - generic: 
+    - rowgroup:
+      - 'row "id 39 Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Quản lý Project: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 39":
+          - generic "id 39":
+            - link "39":
+              - /url: /projects/qldapm-local/work_packages/39/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Quản lý Project: Sửa"':
+          - button "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc":
+            - generic: 
+            - generic: Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc
+          - 'button "Chủ đề Quản lý Project: Sửa"': Quản lý Project
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/39/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 58 Lá gói công việc ở cấp độ 1. Chủ đề PRJ-05 — Gỡ thành viên khỏi Project: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 58":
+          - generic "id 58":
+            - link "58":
+              - /url: /projects/qldapm-local/work_packages/58/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề PRJ-05 — Gỡ thành viên khỏi Project: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề PRJ-05 — Gỡ thành viên khỏi Project: Sửa"': PRJ-05 — Gỡ thành viên khỏi Project
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/58/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 59 Lá gói công việc ở cấp độ 1. Chủ đề PRJ-06 — Xóa Project không còn sử dụng: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 59":
+          - generic "id 59":
+            - link "59":
+              - /url: /projects/qldapm-local/work_packages/59/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề PRJ-06 — Xóa Project không còn sử dụng: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề PRJ-06 — Xóa Project không còn sử dụng: Sửa"': PRJ-06 — Xóa Project không còn sử dụng
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/59/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 40 Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Backlog: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 40":
+          - generic "id 40":
+            - link "40":
+              - /url: /projects/qldapm-local/work_packages/40/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Backlog: Sửa"':
+          - button "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc":
+            - generic: 
+            - generic: Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc
+          - 'button "Chủ đề Backlog: Sửa"': Backlog
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/40/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 60 Lá gói công việc ở cấp độ 1. Chủ đề BLG-01 — Xem Backlog: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 60":
+          - generic "id 60":
+            - link "60":
+              - /url: /projects/qldapm-local/work_packages/60/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề BLG-01 — Xem Backlog: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề BLG-01 — Xem Backlog: Sửa"': BLG-01 — Xem Backlog
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/60/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 61 Lá gói công việc ở cấp độ 1. Chủ đề BLG-02 — Tạo User Story hoặc Task trực tiếp trong Backlog: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 61":
+          - generic "id 61":
+            - link "61":
+              - /url: /projects/qldapm-local/work_packages/61/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề BLG-02 — Tạo User Story hoặc Task trực tiếp trong Backlog: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề BLG-02 — Tạo User Story hoặc Task trực tiếp trong Backlog: Sửa"': BLG-02 — Tạo User Story hoặc Task trực tiếp trong Backlog
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/61/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 62 Lá gói công việc ở cấp độ 1. Chủ đề BLG-03 — Sắp xếp thứ tự Backlog: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 62":
+          - generic "id 62":
+            - link "62":
+              - /url: /projects/qldapm-local/work_packages/62/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề BLG-03 — Sắp xếp thứ tự Backlog: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề BLG-03 — Sắp xếp thứ tự Backlog: Sửa"': BLG-03 — Sắp xếp thứ tự Backlog
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/62/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 63 Lá gói công việc ở cấp độ 1. Chủ đề BLG-04 — Tìm kiếm và lọc Backlog: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 63":
+          - generic "id 63":
+            - link "63":
+              - /url: /projects/qldapm-local/work_packages/63/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề BLG-04 — Tìm kiếm và lọc Backlog: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề BLG-04 — Tìm kiếm và lọc Backlog: Sửa"': BLG-04 — Tìm kiếm và lọc Backlog
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/63/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 64 Lá gói công việc ở cấp độ 1. Chủ đề BLG-05 — Đưa item từ Backlog vào Sprint lập kế hoạch: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 64":
+          - generic "id 64":
+            - link "64":
+              - /url: /projects/qldapm-local/work_packages/64/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề BLG-05 — Đưa item từ Backlog vào Sprint lập kế hoạch: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề BLG-05 — Đưa item từ Backlog vào Sprint lập kế hoạch: Sửa"': BLG-05 — Đưa item từ Backlog vào Sprint lập kế hoạch
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/64/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 41 Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Sprint: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 41":
+          - generic "id 41":
+            - link "41":
+              - /url: /projects/qldapm-local/work_packages/41/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Sprint: Sửa"':
+          - button "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc":
+            - generic: 
+            - generic: Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc
+          - 'button "Chủ đề Sprint: Sửa"': Sprint
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/41/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 65 Lá gói công việc ở cấp độ 1. Chủ đề SPR-01 — Tạo Sprint với tên, thời gian và mục tiêu: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 65":
+          - generic "id 65":
+            - link "65":
+              - /url: /projects/qldapm-local/work_packages/65/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề SPR-01 — Tạo Sprint với tên, thời gian và mục tiêu: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề SPR-01 — Tạo Sprint với tên, thời gian và mục tiêu: Sửa"': SPR-01 — Tạo Sprint với tên, thời gian và mục tiêu
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/65/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 66 Lá gói công việc ở cấp độ 1. Chủ đề SPR-02 — Chỉnh sửa Sprint đang lập kế hoạch: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 66":
+          - generic "id 66":
+            - link "66":
+              - /url: /projects/qldapm-local/work_packages/66/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề SPR-02 — Chỉnh sửa Sprint đang lập kế hoạch: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề SPR-02 — Chỉnh sửa Sprint đang lập kế hoạch: Sửa"': SPR-02 — Chỉnh sửa Sprint đang lập kế hoạch
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/66/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 67 Lá gói công việc ở cấp độ 1. Chủ đề SPR-03 — Bắt đầu Sprint: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 67":
+          - generic "id 67":
+            - link "67":
+              - /url: /projects/qldapm-local/work_packages/67/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề SPR-03 — Bắt đầu Sprint: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề SPR-03 — Bắt đầu Sprint: Sửa"': SPR-03 — Bắt đầu Sprint
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/67/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 68 Lá gói công việc ở cấp độ 1. Chủ đề SPR-04 — Xem thông tin Sprint: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 68":
+          - generic "id 68":
+            - link "68":
+              - /url: /projects/qldapm-local/work_packages/68/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề SPR-04 — Xem thông tin Sprint: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề SPR-04 — Xem thông tin Sprint: Sửa"': SPR-04 — Xem thông tin Sprint
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/68/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 69 Lá gói công việc ở cấp độ 1. Chủ đề SPR-05 — Đóng Sprint: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 69":
+          - generic "id 69":
+            - link "69":
+              - /url: /projects/qldapm-local/work_packages/69/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề SPR-05 — Đóng Sprint: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề SPR-05 — Đóng Sprint: Sửa"': SPR-05 — Đóng Sprint
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/69/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 42 Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Task / User Story: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 42":
+          - generic "id 42":
+            - link "42":
+              - /url: /projects/qldapm-local/work_packages/42/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Task / User Story: Sửa"':
+          - button "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc":
+            - generic: 
+            - generic: Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc
+          - 'button "Chủ đề Task / User Story: Sửa"': Task / User Story
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/42/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 70 Lá gói công việc ở cấp độ 1. Chủ đề TSK-01 — Tạo Task/User Story: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM BE: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 70":
+          - generic "id 70":
+            - link "70":
+              - /url: /projects/qldapm-local/work_packages/70/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề TSK-01 — Tạo Task/User Story: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề TSK-01 — Tạo Task/User Story: Sửa"': TSK-01 — Tạo Task/User Story
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM BE: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM BE: Sửa"':
+            - generic: QB
+            - text: QLDAPM BE
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/70/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 71 Lá gói công việc ở cấp độ 1. Chủ đề TSK-02 — Xem chi tiết Task/User Story: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 71":
+          - generic "id 71":
+            - link "71":
+              - /url: /projects/qldapm-local/work_packages/71/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề TSK-02 — Xem chi tiết Task/User Story: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề TSK-02 — Xem chi tiết Task/User Story: Sửa"': TSK-02 — Xem chi tiết Task/User Story
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/71/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 72 Lá gói công việc ở cấp độ 1. Chủ đề TSK-03 — Chỉnh sửa Task/User Story: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 72":
+          - generic "id 72":
+            - link "72":
+              - /url: /projects/qldapm-local/work_packages/72/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề TSK-03 — Chỉnh sửa Task/User Story: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề TSK-03 — Chỉnh sửa Task/User Story: Sửa"': TSK-03 — Chỉnh sửa Task/User Story
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/72/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 73 Lá gói công việc ở cấp độ 1. Chủ đề TSK-04 — Gán Task/User Story cho thành viên: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 73":
+          - generic "id 73":
+            - link "73":
+              - /url: /projects/qldapm-local/work_packages/73/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề TSK-04 — Gán Task/User Story cho thành viên: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề TSK-04 — Gán Task/User Story cho thành viên: Sửa"': TSK-04 — Gán Task/User Story cho thành viên
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/73/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 74 Lá gói công việc ở cấp độ 1. Chủ đề TSK-05 — Xóa Task/User Story không còn giá trị: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 74":
+          - generic "id 74":
+            - link "74":
+              - /url: /projects/qldapm-local/work_packages/74/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề TSK-05 — Xóa Task/User Story không còn giá trị: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề TSK-05 — Xóa Task/User Story không còn giá trị: Sửa"': TSK-05 — Xóa Task/User Story không còn giá trị
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/74/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 43 Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Kanban: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 43":
+          - generic "id 43":
+            - link "43":
+              - /url: /projects/qldapm-local/work_packages/43/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc Chủ đề Kanban: Sửa"':
+          - button "Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc":
+            - generic: 
+            - generic: Cấp độ phân cấp 0, được mở rộng. Bấm để thu gọn các con đã lọc
+          - 'button "Chủ đề Kanban: Sửa"': Kanban
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/43/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 75 Lá gói công việc ở cấp độ 1. Chủ đề KAN-01 — Xem Kanban board của Sprint: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 75":
+          - generic "id 75":
+            - link "75":
+              - /url: /projects/qldapm-local/work_packages/75/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề KAN-01 — Xem Kanban board của Sprint: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề KAN-01 — Xem Kanban board của Sprint: Sửa"': KAN-01 — Xem Kanban board của Sprint
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/75/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 76 Lá gói công việc ở cấp độ 1. Chủ đề KAN-02 — Kéo-thả card giữa các cột: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 76":
+          - generic "id 76":
+            - link "76":
+              - /url: /projects/qldapm-local/work_packages/76/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề KAN-02 — Kéo-thả card giữa các cột: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề KAN-02 — Kéo-thả card giữa các cột: Sửa"': KAN-02 — Kéo-thả card giữa các cột
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/76/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - 'row "id 77 Lá gói công việc ở cấp độ 1. Chủ đề KAN-03 — Lọc Kanban board: Sửa loại Task: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Độ ưu tiên Normal: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 77":
+          - generic "id 77":
+            - link "77":
+              - /url: /projects/qldapm-local/work_packages/77/activity?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+        - 'cell "Lá gói công việc ở cấp độ 1. Chủ đề KAN-03 — Lọc Kanban board: Sửa"':
+          - generic: Lá gói công việc ở cấp độ 1.
+          - 'button "Chủ đề KAN-03 — Lọc Kanban board: Sửa"': KAN-03 — Lọc Kanban board
+        - 'cell "loại Task: Sửa"':
+          - 'button "loại Task: Sửa"': Task
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Độ ưu tiên Normal: Sửa"':
+          - 'button "Độ ưu tiên Normal: Sửa"': Normal
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/77/overview?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22hla%22%3A%5B%22status%22%2C%22priority%22%2C%22dueDate%22%5D%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%2C%22ts%22%3A%22PT0S%22%2C%22pp%22%3A20%2C%22pa%22%3A2%7D
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+    - rowgroup
+    - rowgroup:
+      - row "Tạo gói công việc mới":
+        - cell "Tạo gói công việc mới":
+          - button "Tạo gói công việc mới":
+            - generic: Tạo gói công việc mới
+  - generic: 
+  - navigation "Điều hướng phân trang":
+    - button "trước đó":
+      - text: trước đó
+    - button "Trang 1": "1"
+    - emphasis: "2"
+    - button "Trang 3": "3"
+    - button "Trang 4": "4"
+    - button "Trang 5": "5"
+    - button "Trang 6": "6"
+    - generic: Các trang bị bỏ qua.
+    - text: …
+    - button "Trang 17": "17"
+    - button "Tiếp":
+      - text: Tiếp
+    - text: (21 - 40/329)
+  - navigation "Lựa chọn mục trên mỗi trang":
+    - text: "Mỗi trang: 20"
+    - button "Hiển thị 100 trên mỗi trang": "100"

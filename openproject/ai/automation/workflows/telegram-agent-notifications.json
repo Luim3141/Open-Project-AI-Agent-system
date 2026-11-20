@@ -1,0 +1,215 @@
+{
+  "name": "QLDAPM — Telegram Agent Notifications",
+  "nodes": [
+    {
+      "id": "notification-trigger",
+      "name": "Notification Outbox Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        200
+      ],
+      "webhookId": "qldapm-telegram-agent-notifications",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CONFIGURE_NOTIFICATION_HEADER_CREDENTIAL",
+          "name": "QLDAPM Telegram Notification Key"
+        }
+      },
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "qldapm-telegram-agent-notifications",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "validate",
+      "name": "Validate Canonical Event And Recipient",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        200
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CONFIGURE_NOTIFICATION_HEADER_CREDENTIAL",
+          "name": "QLDAPM Telegram Notification Key"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "http://telegram-ai:8091/internal/notifications/validate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.body }}",
+        "options": {
+          "timeout": 10000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "telegram-send",
+      "name": "Send Telegram Notification",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        520,
+        200
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "CONFIGURE_DEDICATED_TELEGRAM_CREDENTIAL",
+          "name": "QLDAPM AI Commander Telegram"
+        }
+      },
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true
+        }
+      }
+    },
+    {
+      "id": "verify-send",
+      "name": "Require Telegram Message Receipt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        200
+      ],
+      "parameters": {
+        "jsCode": "const source=$('Validate Canonical Event And Recipient').first().json; const sent=$json; if(sent.ok!==true || !Number.isSafeInteger(sent.result?.message_id) || sent.result.message_id<=0 || sent.result.chat.id!==source.chat_id) throw new Error('TELEGRAM_MESSAGE_RECEIPT_REQUIRED'); return [{json:{notification_id:source.notification_id,lease:source.lease,message_id:sent.result.message_id,chat_id:sent.result.chat.id}}];"
+      }
+    },
+    {
+      "id": "ack",
+      "name": "Persist Delivery And Reply Context",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        200
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CONFIGURE_NOTIFICATION_HEADER_CREDENTIAL",
+          "name": "QLDAPM Telegram Notification Key"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "http://telegram-ai:8091/internal/notifications/ack",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {
+          "timeout": 10000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "reply",
+      "name": "Reply Durable Delivery ACK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1300,
+        200
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Notification Outbox Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate Canonical Event And Recipient",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Canonical Event And Recipient": {
+      "main": [
+        [
+          {
+            "node": "Send Telegram Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Telegram Notification": {
+      "main": [
+        [
+          {
+            "node": "Require Telegram Message Receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Require Telegram Message Receipt": {
+      "main": [
+        [
+          {
+            "node": "Persist Delivery And Reply Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persist Delivery And Reply Context": {
+      "main": [
+        [
+          {
+            "node": "Reply Durable Delivery ACK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Bangkok",
+    "executionTimeout": 60,
+    "saveDataErrorExecution": "none",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false
+  }
+}

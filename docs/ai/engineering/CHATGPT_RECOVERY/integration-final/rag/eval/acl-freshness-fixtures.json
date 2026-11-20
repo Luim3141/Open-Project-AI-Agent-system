@@ -1,0 +1,53 @@
+{
+  "schema": "ql-dapm-rag-security-fixtures-v1",
+  "scope": "Synthetic isolated test fixtures; do not mutate real Native data; these are specifications, not observed test results. Gate any PM-only actor-owned document before retrieval and citation. Exact API setup must follow actual implementation.",
+  "human_review": "HUMAN_REVIEW_PENDING",
+  "source_reference": {
+    "native_id": 380,
+    "source_id": "actor:20:wp:380",
+    "source_hash": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+    "source_version": 8
+  },
+  "cases": [
+    {
+      "id": "ACL-WRONG-PROJECT",
+      "fixture": "Request source 380 under synthetic project 999 with no explicit cross-project permission.",
+      "expected": "Source excluded; no document, content, citation or answer leakage."
+    },
+    {
+      "id": "ACL-WRONG-ACTOR",
+      "fixture": "Request actor20-owned source 380 as synthetic actor21 PM, with no verified supervisory grant; scope retrieval to that source.",
+      "expected": "Source excluded; no content or citation leakage."
+    },
+    {
+      "id": "ACL-WRONG-ROLE",
+      "fixture": "Request PM-only source 380 as synthetic QA without PM grant; scope retrieval to that source.",
+      "expected": "Source excluded; no content or citation leakage."
+    },
+    {
+      "id": "ACL-EMPTY-ALLOWLIST",
+      "fixture": "Explicit document allowlist is empty, with actor20 PM and project6.",
+      "expected": "No documents or citations returned; empty allowlist is not treated as unrestricted."
+    },
+    {
+      "id": "FRESH-CHANGED-VERSION",
+      "fixture": "Index the frozen reference in an isolated fixture, then alter only its simulated live lock_version before authorization/retrieval.",
+      "expected": "Original stale index content and citation are not returned; refresh or abstain."
+    },
+    {
+      "id": "FRESH-CHANGED-CONTENT",
+      "fixture": "Index frozen reference in an isolated fixture, then alter only a simulated live source activity/content hash while preserving native ID.",
+      "expected": "Stale content and citation are not returned; refresh or abstain."
+    },
+    {
+      "id": "DELETED-NATIVE",
+      "fixture": "Index frozen reference in isolated fixture and simulate Native 404/tombstone, without deleting real work packages.",
+      "expected": "Deleted content and citation are not returned."
+    },
+    {
+      "id": "MALFORMED-IDENTIFIER",
+      "fixture": "Supply malformed, zero, negative or mixed-string identifier through the actual request boundary.",
+      "expected": "Reject safely or return no authorized match; no cross-project fallback."
+    }
+  ]
+}

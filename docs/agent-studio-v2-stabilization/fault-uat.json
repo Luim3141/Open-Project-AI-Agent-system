@@ -1,0 +1,20 @@
+{
+  "scope": "INTENTIONAL FAULT UAT, NOT HISTORICAL 503 RCA",
+  "checks": {
+    "intentional_503_truthful_status_ui": true,
+    "maintenance_recovery_same_session": true,
+    "offline_finite_error": true,
+    "network_recovery": true
+  },
+  "requests": [
+    {
+      "at": 1794456527.2851665,
+      "method": "GET",
+      "route": "/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 503,
+      "error": "MAINTENANCE",
+      "request_id": "9dfbd2f8-d51e-4eb0-b52f-242c09f8cb8e"
+    }
+  ],
+  "config_preserved": true
+}

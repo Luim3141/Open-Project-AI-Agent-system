@@ -1,0 +1,37 @@
+{
+  "phase": "WF10_PREPARED_NOT_DEPLOYED",
+  "observed_at": "2026-10-24T13:22:45.691593+00:00",
+  "parent_gateway": "sha256:68d4feec7547bd6eba94d9cd4f703d5b3f7568cb639d8050531a56475909fdef",
+  "parent_core": "sha256:91def1270cfcfbd6a5329f6bf739909959c5af107d73c1f29acbc2b3cb70b36e",
+  "source_sha256": {
+    "service.py": "6ecc31e4f98021ffac985a4543e4aa11e564da32b7f48aa8034943345c57e33a",
+    "store.py": "282b1d0516c027d3fbe6d09c76457e9b36fbe21739245daa0ef9f825963e86c0",
+    "permissions.py": "b4b5553341243530cf3924c07b340875a98f9c63e87b23f3521cffd0fc052df6",
+    "catalog.py": "a3a910666e8372ad65576bb0c8d73ec2be9d8bdcd05966a723184377d5b4c048",
+    "native_wbs.py": "c7a58df490903c8d9197ae23fc99af829d56b0a6c31723827bb3ac8dc42c20f8"
+  },
+  "core_controller_sha256": "3e541fd2a802d1abf164027895caf9cdf0d945e6530a9945ec07b21dcbed6c51",
+  "changed_workflows": [
+    "WF10"
+  ],
+  "workflow_id": "tOY7QUa9SrWPOe9e",
+  "workflow_before_version": "34d1de19-42f8-4144-bcbd-a6ccd1b2d605",
+  "existing_bug_mapping_approved_hash": "02bae765000c1c152179db1d357519898fc923445d4e31392ff00029fddb9e40",
+  "native_writes": 0,
+  "model_starts": 0,
+  "credentials_changes": 0,
+  "staging_operations": false,
+  "affected_services": [
+    "Main gateway",
+    "Main web"
+  ],
+  "other_main_containers_expected_preserved": 8,
+  "rollback_gateway_tag": "qldapm-ai:codex-bug-lifecycle-20261024",
+  "rollback_core_tag": "qldapm-core:codex-bug-controls-20261024",
+  "rollback_config": "pre-wf10-config.json",
+  "rollback_definition": "pre-wf10-workflows.json",
+  "rollback_core_bridge": "pre-wf10-ui-bridge.yml",
+  "private_snapshot": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-continuation-20261024-0810",
+  "data_rollback": "Do not restore an old DB over live data; preserve existing WF13 metadata and Native rows",
+  "business_e2e": "PARTIAL: isolated lifecycle qualified; actual Main hierarchy E2E and each concrete node require separate exact proposal approvals; dependency relations and automatic live BA-output conversion remain unqualified"
+}

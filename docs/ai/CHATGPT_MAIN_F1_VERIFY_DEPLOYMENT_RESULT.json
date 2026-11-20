@@ -1,0 +1,157 @@
+{
+  "at": "2026-10-27T12:55:40.284006+00:00",
+  "status": "DEPLOYED_VERIFIED_TECHNICAL_PROOF_VERIFIER_ONLY",
+  "runtime": {
+    "qldapm-openproject-db-1": {
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "5432/tcp": null
+      }
+    },
+    "qldapm-openproject-cache-1": {
+      "id": "ac27388285fbadbf7a0f81f2f1d6c141d9fb79483d186d469d5bb324a0818115",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "11211/tcp": null
+      }
+    },
+    "qldapm-qdrant": {
+      "id": "6cacb6b0f1b07f061bab32497bd92d2e31a01a639da747cab17d7be689ccca8f",
+      "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "6333/tcp": [],
+        "6334/tcp": []
+      }
+    },
+    "qldapm-openproject-hocuspocus-1": {
+      "id": "a9e13d59ae711266f599d5a1d1d7ed33345c2450e3457003684625fb3b39a584",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "1234/tcp": null
+      }
+    },
+    "qldapm-openproject-web-1": {
+      "id": "c1a8c237f1d77b1b45845f54641009157b4d26972686a75bbf1cb1f0437c8bb1",
+      "image": "sha256:919e843524236b6f9536155ac9b7f56964c60261d51694f85b3afcf922e59da2",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-openproject-worker-1": {
+      "id": "90c2405c94731fcdb46e6e802f265d95b2614d26787c7be24b686b8111c60d25",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-openproject-cron-1": {
+      "id": "c7171eb92f9a34d2f7b50b7e1894cbfd3dd92207ca41105fd152060eb86de2b7",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-ai-gateway-1": {
+      "id": "7899fc16a68b4a6412ce6567df3247778c53817c2dde90075a97cf8d760ed4a8",
+      "image": "sha256:ba6db8ec9a7bf1e107f74c81bbb2671b3f7a5b14b171c7c823d5dcdc488e2155",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "8090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18089"
+          }
+        ]
+      }
+    },
+    "qldapm-n8n-main": {
+      "id": "247e20941d0ba377c50e1d3d0ab79ebfb49630cf4e6499ff3424adc7a65b9b7f",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "5678/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "5679"
+          }
+        ]
+      }
+    },
+    "qldapm-openproject-proxy-1": {
+      "id": "575c0693814f0f5463e7b07d58e965a7225452ca09e76c87ac70091ebad2a21f",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18088"
+          }
+        ]
+      }
+    }
+  },
+  "main_verify": {
+    "at": "2026-10-27T12:54:59.687257+00:00",
+    "status": "PASS_MAIN_AUTHENTICATED_OWNER_TECHNICAL_PROOF_VERIFY",
+    "checks": {
+      "18": {
+        "http": 200,
+        "result": {
+          "id": "0caf70c4-7718-4e64-b4ce-bd05fbcfcb4b",
+          "native_id": 371,
+          "version": 4,
+          "verdict": "PASSED",
+          "artifact_sha256": "46930c6637933082695913ce2f112c5a301880538927ff3aea333384290bd4c5",
+          "status": "TECHNICAL_PROOF_NOT_REVIEWED",
+          "qualification": "ISOLATED_APPLICATION_AND_NATIVE; synthetic embeddings and isolated decisions; not human QA approval",
+          "tested_build": {
+            "core": "sha256:e3826b3c2f8b0d1ccb401280e81f6cbb4fb50b1abadbadbb78c8258eeec68b5b",
+            "gateway": "sha256:c525fcc64b9f51998fd4bde365b08f02ebd557e092091081e516bd008a14dab1"
+          },
+          "producer": "qldapm-wbs-application-v1",
+          "finished_at": 1793091904.8527195
+        }
+      },
+      "19": {
+        "http": 403
+      },
+      "20": {
+        "http": 403
+      }
+    },
+    "anonymous_http": 401,
+    "qa_evidence_rows_created": 0,
+    "native_writes": 0,
+    "model_calls": 0,
+    "tested_build_note": "Proof v6 identifies its original tested builds; fresh current-source hashes were verified, not an assertion that the entire serving image is the tested image."
+  },
+  "preservation": "QA evidence/reviews/runs, proposals, sync, model receipts/usage, WBS and phase rows exact against predeployment snapshot;375 WP/352 relations fingerprints exact",
+  "old_QA375_chain": "PM19 read ready/current, QA23+PM19 reviews intact; BA20 denied",
+  "wf03_and_cross_actor": "PASS_GET_EXISTING_DONE_RUN_BA403",
+  "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\qa-verify-deploy-backup",
+  "rollback_gateway": "sha256:baa54ac0dc54775873db08a9497a938358f5b4a75dc99d68f945530ae77579b9",
+  "rollback_core": "sha256:e3826b3c2f8b0d1ccb401280e81f6cbb4fb50b1abadbadbb78c8258eeec68b5b",
+  "new_native_writes": 0,
+  "new_human_decisions": 0,
+  "new_model_calls": 0,
+  "staging_operations": false
+}

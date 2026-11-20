@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-25T12:35:51.584341+00:00",
+  "status": "PASS_WITH_PLATFORM_SCOPES",
+  "windows_full": {
+    "run": 449,
+    "pass": 449,
+    "skip": 0
+  },
+  "windows_after_redaction_dependency_fix": {
+    "run": 13,
+    "pass": 13
+  },
+  "linux_immutable_image": {
+    "run": 449,
+    "pass": 436,
+    "platform_or_node_skips": 13
+  },
+  "ruby_programs": 8,
+  "main_roles": 73,
+  "api_boundary_checks": 48,
+  "readonly_checks": 13,
+  "main_qa_policy_checks": 25,
+  "native_clone": "CODEX_WF11_AUTOMATED_QA_CLONE_RESULT.json",
+  "sqlite_compatibility": {
+    "old_tables": 26,
+    "rows_preserved": true,
+    "old_image_can_open_new_schema": true,
+    "new_tables": 2
+  },
+  "runtime": "CODEX_AUTOMATED_QA_FINAL_READBACK.json",
+  "resolved_qualification_failures": [
+    "Immutable image caught missing redactor dependency; fixed to reuse serving presentation.safe_text, rebuilt and reran Linux/Windows affected tests",
+    "Linux harness added missing offline helper modules; network remained disabled",
+    "Expired one-hour qualification Bearers caused401 after long interruption; fresh own Native-proven Bearers restored exact13 checks without assertion/policy change"
+  ],
+  "full_business_release": "PARTIAL"
+}

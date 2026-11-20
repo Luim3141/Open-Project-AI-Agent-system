@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "state": "BUILT_NOT_DEPLOYED",
+  "utc": "2026-11-04T04:47:32.072808+00:00",
+  "base_tag_nonce": "dca9cee8ddf14fdf8b386005f5e8aba8",
+  "initial_runtime": {
+    "gateway": {
+      "id": "868ff80d8a53956c928cf3a120b0cc0a573ac24989d6412e3fe8d421e76ff05a",
+      "image": "sha256:a6fe1d61982db84447f45eb35a56809ae4ab16d854012bec59db1f58d890b2be",
+      "started_at": "2026-11-03T18:47:10.257578646Z",
+      "compose": [
+        "docker",
+        "compose",
+        "-p",
+        "qldapm-ai",
+        "--env-file",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\.env",
+        "-f",
+        "D:\\AI project\\QLDAPM chat\\openproject\\ai\\compose.yml",
+        "-f",
+        "D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.main.yml",
+        "-f",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\demo-final-rollout-20261102T213036\\gateway-candidate.json",
+        "-f",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-c1b6c85545f34c22a586ea39a2cb7b60\\gateway-e9af9565b3af.json",
+        "-f",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-0764b43ad0bd4a3a96132d702529af72\\gateway-c49235bf1681.json",
+        "-f",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-b0f0ce3820e343d6968c0b63d4fab197\\gateway-a6fe1d61982d.json"
+      ],
+      "hashes": {
+        "openproject/ai/gateway/app.py": "9246a3f8985c40b55bda737b66d4b7d936b8eea890bb4cf3afc28315b3eae408",
+        "openproject/ai/gateway/service.py": "4f220058c6654716b7cb74bf9cbe14a80e09293c573df74d7ed6eba571a681db",
+        "openproject/ai/gateway/monitoring.py": "9af5ab36c7daaf64aa86fa5ec11ca3c23b5073498352ace80bf99cff37521957",
+        "openproject/ai/gateway/integration_events.py": "79d7ed013d1ce4d2ed70b64506adf59dc4ed9a9d3399ff69184aa7aa06c22f79",
+        "openproject/ai/gateway/engineering_github_poll.py": "2bc8ab36f3eb5a4c45d2f88cf0aa9cb48e5329b6dd9e6ad26be5528ef999f8cd",
+        "openproject/ai/gateway/engineering_github_details.py": "823bd0ca9a45ec37f4b0ef18838b7c8c1248e6869e1617cb6cf850b31d6b2789",
+        "openproject/ai/gateway/engineering_github_sync.py": "08075df59ea0f62db358c8ae945a3c0fb408fc05935eacf476bc80a7a33dec46",
+        "openproject/ai/gateway/engineering.py": "7c8664ae2bbd10ce0e9494725553a0d0eb877c38dca5d656a9a551366fddf7c9",
+        "openproject/ai/gateway/workflow_status.py": "f27bf8ad1e1371356f2c3ebe5a2b6b87837e4fe8750ffdea2fe21693d4502455",
+        "openproject/ai/gateway/workflow_commands.py": "7e404f0c3dc288532088a3dd16a64779b87cdb6151f74dd99845b83bce67d24b",
+        "openproject/ai/gateway/knowledge_answer.py": "a77c760fea779d4797a1af80a8dcfd1523ef153bc1fe12da23005dd9e26d8402",
+        "openproject/ai/gateway/bug_lifecycle.py": "4890e5420bb0c48451ae3eb84b37591243d508d5a7cfedd46703bafccc227679",
+        "openproject/ai/gateway/native_wbs.py": "15ded424623b2dd8773087dc905c63cb13e367f0ca9a9414d06af38cea8d2e5e",
+        "openproject/ai/gateway/engineering_planning.py": "b517c772a7948b63226da2f07715813ee13a8a048b9775fc7cecaaef010e7075",
+        "openproject/ai/gateway/delegated_approval.py": null,
+        "openproject/ai/gateway/permissions.py": "b7bc634cadd562ba534b711ea71707eba889821f8e3261b6e73b01e8236fd080",
+        "openproject/ai/gateway/engineering_reporting.py": "0e5729387db6ba977c474642cf3a6dad4a9eeb610933be75b7639074406ab890"
+      }
+    },
+    "core": {
+      "id": "87188a00dbb9ab0f2cb7d32cf7f4f94837e9e8754ce76b4f288871ba815bef7b",
+      "image": "sha256:91afae9c6855417dcc14828d0bd16b3a5b780439d7d1fbbfede64c64241d83d4",
+      "started_at": "2026-11-03T18:47:26.833400216Z",
+      "compose": [
+        "docker",
+        "compose",
+        "-p",
+        "qldapm-openproject",
+        "--env-file",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject\\.env",
+        "-f",
+        "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+        "-f",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject\\ui-bridge.yml",
+        "-f",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\demo-final-rollout-20261102T213036\\core-candidate.json",
+        "-f",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-c1b6c85545f34c22a586ea39a2cb7b60\\core-b5f3913ae8a7.json",
+        "-f",
+        "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-0764b43ad0bd4a3a96132d702529af72\\core-91afae9c6855.json"
+      ],
+      "hashes": {
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "28dd95be7ac18b7c4ae84cfb92488ebfa7527563c1754f407ac05b565316c0ca",
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "46b49c9dc4647e2873e57f2f64f34565c3075c5598f37d4c8b3d99c3d73d9424",
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workflows.html.erb": "25cba57bbfd1c8580f1afcc5f6f8481f3b87560d78457080abcbd376e087ef42",
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_knowledge_results.html.erb": "11ca4ed2a606ea56ca7bd88cde76c7f1cda258c19eb084c66152754ec15ff68a",
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_delegated.html.erb": null
+      }
+    }
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/app.py": "9246a3f8985c40b55bda737b66d4b7d936b8eea890bb4cf3afc28315b3eae408",
+    "openproject/ai/gateway/service.py": "7890707b1bf6910c17c334b78fe36f5f3b8d8e4b74452705e995563c10d8ba46",
+    "openproject/ai/gateway/monitoring.py": "9af5ab36c7daaf64aa86fa5ec11ca3c23b5073498352ace80bf99cff37521957",
+    "openproject/ai/gateway/integration_events.py": "3a8ea4c9f1361fca6ae050349b866da4c67320bfb7b4e18fc73c1c802ce060e4",
+    "openproject/ai/gateway/engineering_github_poll.py": "2bc8ab36f3eb5a4c45d2f88cf0aa9cb48e5329b6dd9e6ad26be5528ef999f8cd",
+    "openproject/ai/gateway/engineering_github_details.py": "823bd0ca9a45ec37f4b0ef18838b7c8c1248e6869e1617cb6cf850b31d6b2789",
+    "openproject/ai/gateway/engineering_github_sync.py": "08075df59ea0f62db358c8ae945a3c0fb408fc05935eacf476bc80a7a33dec46",
+    "openproject/ai/gateway/engineering.py": "60d2cdce3483bf9b2af3685f657025aaa6c85d73032e626a5e69051fdd0033af",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "c2daf63f3e5559420268b291755d7a4d75350fd7b64bfdef7d3a3a65916ef1c4",
+    "openproject/ai/gateway/workflow_status.py": "a15c82114c9d992aa25f544dc5932df7b295a79fa52bdd2aba8240035c005fe8",
+    "openproject/ai/gateway/workflow_commands.py": "7e404f0c3dc288532088a3dd16a64779b87cdb6151f74dd99845b83bce67d24b",
+    "openproject/ai/gateway/knowledge_answer.py": "a77c760fea779d4797a1af80a8dcfd1523ef153bc1fe12da23005dd9e26d8402",
+    "openproject/ai/gateway/bug_lifecycle.py": "4890e5420bb0c48451ae3eb84b37591243d508d5a7cfedd46703bafccc227679",
+    "openproject/ai/gateway/native_wbs.py": "15ded424623b2dd8773087dc905c63cb13e367f0ca9a9414d06af38cea8d2e5e",
+    "openproject/ai/gateway/engineering_planning.py": "b517c772a7948b63226da2f07715813ee13a8a048b9775fc7cecaaef010e7075",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "cf6fbe88fcd2dbaf259256d3426b1a3d4e1d108c82bdd3ed4f59472fd1196c7f",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workflows.html.erb": "25cba57bbfd1c8580f1afcc5f6f8481f3b87560d78457080abcbd376e087ef42",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_knowledge_results.html.erb": "11ca4ed2a606ea56ca7bd88cde76c7f1cda258c19eb084c66152754ec15ff68a",
+    "openproject/ai/gateway/delegated_approval.py": "d7e8bd3bd58f689478b1b9ddb9ac402b7a0fe7d2760905650abcaf8eadd2609f",
+    "openproject/ai/gateway/permissions.py": "102b2f18788afcb31af012f6c9e775ebfb16e415b649b3bca216e77c66759ac9",
+    "openproject/ai/gateway/engineering_reporting.py": "0bb20c0521e6884218150b581b7f5f4306c6ac9d77db73bb56e84fedc8f7a11f",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_delegated.html.erb": "c6a570595e58d7c0fc47bf11828fe6dd5432bf6062d7d13c43f442e1917f03a2"
+  },
+  "protected_inputs": {
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\.env": "05b8d1583880cef498958af796341c29b29f3523dbf666dd6733932a274ef6b3",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject\\.env": "3b8233601e9dca71d4fe88301a226a4b3b4a34f6ae0a187b59b31e0097032409",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\image-lock.json": "77bd3a81784b9951675ef3cf90f2dd0e7b9b70df04d85439c5759d917f135557",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject\\ui-bridge.yml": "38e5ecf08705a3780422d900c3b9c4811588faa9a490336b03cb8d81f9132154",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\config.json": "404814bfd899c14c6f37eaa631d5d37e438d2220bcca7789925c339ab1fa83df",
+    "D:\\AI project\\QLDAPM chat\\openproject\\ai\\compose.yml": "bdeb99a259021b5f909813ddad0b15a7f257f2ed3668d39f7fe4148929a2cc12",
+    "D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.main.yml": "851f87b13258c0b07a7f84bfc19a4ead8d877d1b992f54f3e9be14770be56d83",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\demo-final-rollout-20261102T213036\\gateway-candidate.json": "83a6179d68b82322bc259576971f85418f5340974707983b1ed511e417b0bbaa",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-c1b6c85545f34c22a586ea39a2cb7b60\\gateway-e9af9565b3af.json": "59076aef0aba4d51c45882000460b516c595cbdd22734e6e336ea29449a4dd3f",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-0764b43ad0bd4a3a96132d702529af72\\gateway-c49235bf1681.json": "f9738f99fcf6af85b9ebaa28de26f924b8f3ae824423f4cf872627a56799cf6a",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-b0f0ce3820e343d6968c0b63d4fab197\\gateway-a6fe1d61982d.json": "0b4ac2dd0c84f73d244abaf338179c4b4afd1987cd701b070f08542c2cf4ade5",
+    "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml": "a66c981287a5de54a488ac1bcd3d70b2025f9eebd4745d4a510e83955eb5c915",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\demo-final-rollout-20261102T213036\\core-candidate.json": "64ef13cbfdebd2cbff964cda1acfb72fd0fd4a593507b76a5b32dec0e443a4c6",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-c1b6c85545f34c22a586ea39a2cb7b60\\core-b5f3913ae8a7.json": "4f35f41aa4be8e7c2f0f7d6edc5c03c58b044306eba4ef4e5f95f4911fd2a078",
+    "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\integration-pair-0764b43ad0bd4a3a96132d702529af72\\core-91afae9c6855.json": "0e49eb6cc3d4a3e4d3af325392baa2514e5a3af56133ce7639a145c47eb16616"
+  },
+  "policy": {
+    "github_sync": {
+      "enabled": false,
+      "actor": 18,
+      "interval_seconds": 300
+    },
+    "n8n_integration_enabled": false,
+    "lifecycle_unchanged": true
+  },
+  "images": {
+    "gateway": "sha256:9fc01aa11bc8b5e4d111660935cb186b9c815d2e8314f5c1614ea3227c826cc8",
+    "core": "sha256:1369831de53c8c07c878fd52f635c394eab5b721e82f8b2b818cbdc7bc5d1655"
+  }
+}

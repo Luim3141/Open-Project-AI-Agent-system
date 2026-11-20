@@ -1,0 +1,8 @@
+# Owner-approved Main enrollment. Private state/ledger stay independent of Staging.
+services:
+  gateway:
+    environment:
+      QLDAPM_AI_ENVIRONMENT: production
+      QLDAPM_GEMINI_FREE_PROOF: /qldapm-policy/free-tier-proof.json
+    volumes:
+      - ${AI_RUNTIME}/operator/gemini-main/free-tier-proof.json:/qldapm-policy/free-tier-proof.json:ro

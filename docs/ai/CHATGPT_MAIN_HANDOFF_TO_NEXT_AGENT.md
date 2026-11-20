@@ -1,0 +1,12 @@
+# Live continuation checkpoint — 2026-10-27T03:27:13.896207+00:00
+
+Writer: current Codex chat. C0/C1 completed; C2a open-count fix deployed Gateway `sha256:9bdb2bc0ab99e08959ed67b3e7ea5dff8327a4c7b418799d9d09934bf2ff6d68`. Core `sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0` unchanged;9other Main containers and16workflow definitions preserved. Read `CHATGPT_MAIN_RUNTIME_CHECKPOINT.json`, claim audit, changed-files and integration matrix. Older agent checkpoint/handoff files are preserved.
+
+Native375physical/338projectWP;371v4 IN ANALYSIS/gate3,370v2. New count queries correctly distinguish57Task/12Epic/269Subtask/1Bug. RAG373/1739/1742incl3retained legacy. Provider129/usage134/proposals56/sync14/QA1+2reviews/phase1+1review unchanged;10completed count read receipts account for AI87→97 and requests285→295. All375Native rows and security/history are exact against fresh predeployment backup. No new model call or Native mutation this milestone.
+
+Windows730PASS;Linux713PASS/15skip/2Git-host failures retained. Actual Native read clone30checks and Main73role/48contract/13readonly/10count reads passed. Private snapshots and scripts: `C:\Users\LUIM\AppData\Local\QLDAPM\openproject-ai\operator\post-gemini-20261027`. App rollback pins exact priorGemini ce1d9784; retain databases/history. Old image rejects new native_open_count routes, so pause new receipt views until forward fix rather than restoring DB.
+
+Exact next action: add focused tests for Supervisor selected/project totals and global RAG context selection while preserving sourceIDs<=10. Qualify minimal source fix before a separate rollout. Then combine one fresh bounded read-only PM19 multi-specialist run with WF03 persisted start/status polling, checking real receipts/usage/schema/reviewer/durability. Do not regenerate consumed BA20 runf04b5c59, replay Native371 proposal79fa436a, or use375technical evidence to close371. Continue independent isolated business QA work while any fresh human decision is pending.
+
+
+Current 2026-10-27T04:13:07.595614+00:00: serving Gatewaye9eb18e3… /Core46bf4430… . See own runtime checkpoint. C2/C3 fresh real PM19 run bcebcbcb-35c2-496d-a7d0-af7d82ba3c51 succeeded3generations; earlier ccd6… timeout retained, do not replay either. Core two-file Native4stateSubtask compatibility source now intentionallyahead of runtime; test_native_subtask_policy.rb new, all20Core fixture job active and isolated Nativequalification next. Do not deploy wholeworkspace.371v4INANALYSIS,375v0/370v2 unchanged. No pending Nativeapproval.

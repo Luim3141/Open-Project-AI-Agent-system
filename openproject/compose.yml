@@ -1,0 +1,117 @@
+name: qldapm-openproject
+
+x-app: &app
+  image: ${OP_IMAGE:?Run Setup first}
+  restart: unless-stopped
+  environment: &environment
+    DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@db/openproject?pool=20&encoding=unicode
+    SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+    OPENPROJECT_HOST__NAME: ${OP_HOST:-127.0.0.1:18088}
+    OPENPROJECT_ADDITIONAL__HOST__NAMES: '["web", "localhost", "localhost:8088", "127.0.0.1:8088", "localhost:18088", "127.0.0.1:18088"]'
+    OPENPROJECT_HTTPS: ${OP_HTTPS:-false}
+    OPENPROJECT_HSTS: ${OP_HTTPS:-false}
+    OPENPROJECT_RAILS__CACHE__STORE: memcache
+    OPENPROJECT_CACHE__MEMCACHE__SERVER: cache:11211
+    OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL: ${COLLABORATIVE_URL:-ws://127.0.0.1:18088/hocuspocus}
+    OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__SECRET: ${COLLABORATIVE_SECRET}
+    OPENPROJECT_WEB_WORKERS: 1
+    RAILS_MIN_THREADS: 2
+    RAILS_MAX_THREADS: 4
+    IMAP_ENABLED: "false"
+    OPENPROJECT_SEED_LOCALE: en
+  volumes:
+    - opdata:/var/openproject/assets
+    - ./scripts:/qldapm:ro
+  networks: [frontend, backend]
+  logging: &logging
+    driver: json-file
+    options: {max-size: "10m", max-file: "3"}
+
+services:
+  db:
+    image: ${POSTGRES_IMAGE}
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: openproject
+    volumes: [pgdata:/var/lib/postgresql/data]
+    networks: [backend]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U postgres -d openproject"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    logging: *logging
+  cache:
+    image: ${CACHE_IMAGE}
+    restart: unless-stopped
+    networks: [backend]
+    logging: *logging
+  seeder:
+    <<: *app
+    command: ./docker/prod/seeder
+    restart: "no"
+    depends_on:
+      db: {condition: service_healthy}
+      cache: {condition: service_started}
+  web:
+    <<: *app
+    command: ./docker/prod/web
+    depends_on:
+      seeder: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, curl, -fsS, http://localhost:8080/health_checks/default]
+      interval: 15s
+      timeout: 5s
+      retries: 30
+      start_period: 120s
+  worker:
+    <<: *app
+    command: ./docker/prod/worker
+    depends_on:
+      seeder: {condition: service_completed_successfully}
+  cron:
+    <<: *app
+    command: ./docker/prod/cron
+    depends_on:
+      seeder: {condition: service_completed_successfully}
+  hocuspocus:
+    image: ${HOCUSPOCUS_IMAGE}
+    restart: unless-stopped
+    environment:
+      SECRET: ${COLLABORATIVE_SECRET}
+      OPENPROJECT_URL: http://web:8080
+      OPENPROJECT_HTTPS: ${OP_HTTPS:-false}
+    networks: [frontend, backend]
+    logging: *logging
+  proxy:
+    image: ${CADDY_IMAGE}
+    restart: unless-stopped
+    environment:
+      PROXY_SCHEME: ${PROXY_SCHEME:-http}
+    ports: ["127.0.0.1:18088:80"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ${RUNTIME_DIR}/gate:/gate:ro
+    networks: [frontend]
+    logging: *logging
+  tunnel:
+    image: ${CLOUDFLARED_IMAGE}
+    restart: "no"
+    profiles: [public]
+    command:
+      - tunnel
+      - --no-autoupdate
+      - --url
+      - http://proxy:80
+      - --allowed-mail
+      - ${ALLOWED_MAIL}
+    networks: [frontend]
+    logging: *logging
+
+volumes:
+  pgdata:
+  opdata:
+networks:
+  frontend:
+  backend:

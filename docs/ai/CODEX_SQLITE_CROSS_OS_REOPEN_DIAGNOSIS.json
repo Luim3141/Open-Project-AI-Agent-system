@@ -1,0 +1,107 @@
+{
+  "at": "2026-10-26T03:23:33.522818+00:00",
+  "status": "ISOLATED_CROSS_OS_SQLITE_DIAGNOSIS",
+  "before_host_reader": {
+    "mode": "wal",
+    "value": "synthetic-only",
+    "check": "ok"
+  },
+  "windows_host_reader": {
+    "value": "synthetic-only"
+  },
+  "linux_during_host_reader": {
+    "error": "OperationalError",
+    "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+  },
+  "linux_after_host_reader_closed": {
+    "mode": "wal",
+    "value": "synthetic-only",
+    "check": "ok"
+  },
+  "bounded_reopen_cycles": [
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    },
+    {
+      "error": "OperationalError",
+      "sqlite_errorname": "SQLITE_IOERR_SHMOPEN"
+    }
+  ],
+  "main_operations": 0,
+  "staging_operations": false,
+  "main_error_cause": "CONSISTENT_WITH_CROSS_OS_LIVE_WAL_ACCESS",
+  "safe_operator_route": "Query/snapshot live SQLite inside its Linux container. Open only completed immutable snapshots with Windows Python; never keep Windows live WAL readers open during Main HTTP probes."
+}

@@ -1,0 +1,56 @@
+{
+  "status": "PREPARED_NOT_DEPLOYED",
+  "services": {
+    "gateway": {
+      "parent": "sha256:c0f328216654478cb58dc01dad737958416882f0352c450a0ae5a80438ca6372",
+      "tag": "qldapm-ai:codex-qa-review-20261025",
+      "image": "sha256:4233460142c89bfc1c35f1e935ec62172e25971cfcb7301a75f7b9269314cbaf",
+      "files": {
+        "openproject/ai/gateway/app.py": {
+          "runtime_path": "/app/gateway/app.py",
+          "before": "70e1fa555505d43a2edcc8cb47b34627352faba133c1c4ab47c976ffe8acf2ed",
+          "after": "7867e6580fdf83ef12de618ba8f55657853a8a2e62166724783aaec1ea09482d"
+        },
+        "openproject/ai/gateway/bridge.py": {
+          "runtime_path": "/app/gateway/bridge.py",
+          "before": "a94cc0a9c7aba350c76bbf41820a05b4a67c40e3839aaff7af89b84228beb942",
+          "after": "e3d8d3132a1b4354dc377d72d854c8635a2782ad340ea0f493eefe2560e78d6b"
+        },
+        "openproject/ai/gateway/native_qa.py": {
+          "runtime_path": "/app/gateway/native_qa.py",
+          "before": "d336d06ff45386c36e5c99646d946e697a614663b29fb2b161c52ae28cbcb1d1",
+          "after": "e38b21b78f7583e7df94953ac26f716996cea2085cbe647820f3e4e75977345a"
+        }
+      }
+    },
+    "web": {
+      "parent": "sha256:1bbe160472068a64d3a965fe2bbbd280c2095d17ce285785a3ad0df40825a61f",
+      "tag": "qldapm-core:codex-qa-review-20261025",
+      "image": "sha256:d4cd4ba61f9915d434edd72377d97746930592663cb610929ab45d66c9e0d5a2",
+      "files": {
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": {
+          "runtime_path": "/app/app/controllers/qldapm_ai_controller.rb",
+          "before": "0e75b33890e655aa25e78bd90ebd6b65b9eed915f6d521bfb13633f2db952e51",
+          "after": "c52e117dbc46158e1f6785f95feca9d78c77a4751aebf0ffa402dccd814fb79d"
+        },
+        "openproject/ai/core/overlay/config/routes.rb": {
+          "runtime_path": "/app/config/routes.rb",
+          "before": "18dcd70391b4c3939ba91b0f150d91e7fdbcf9ed03c83d13758f4f5f595a3416",
+          "after": "4e767f6a538337c7870a54704b1745006aa6f23c69c8a1fe946c1e944dc0d249"
+        },
+        "openproject/ai/core/overlay/app/views/qldapm_ai/show.html.erb": {
+          "runtime_path": "/app/app/views/qldapm_ai/show.html.erb",
+          "before": "34ccae44941d6782f57656a1805e9b974a340c95ca272878b9c636d127561594",
+          "after": "5f3bedd7818455fefb9983f2e7f7c0cecd944a61ce62d01e823d3c39dfdaba51"
+        },
+        "openproject/ai/core/overlay/app/views/qldapm_ai/qa_evidence.html.erb": {
+          "runtime_path": "/app/app/views/qldapm_ai/qa_evidence.html.erb",
+          "before": null,
+          "after": "06239784dd07ef47297e971a06b01b2a1a2a84624027b1a94f5f4ad54953f413"
+        }
+      }
+    }
+  },
+  "scope": "Human review UI only; no Native writes/schema/credentials/Staging",
+  "rollback": "Previous images/config only; retain all current data/ledger"
+}

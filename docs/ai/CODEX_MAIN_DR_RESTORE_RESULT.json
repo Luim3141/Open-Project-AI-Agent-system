@@ -1,0 +1,65 @@
+{
+  "status": "PARTIAL_POSTGRES_ASSETS_SQLITE_VERIFIED_QDRANT_RESTORE_FAILED",
+  "postgres_bytes": 1999399,
+  "postgres_sha256": "4393f33de4ae56a777057b73e832e16f111b7ab6dec32bc901820a5f2c340f9a",
+  "assets_bytes": 896263,
+  "assets_sha256": "135933a9675e3e55f4fa7c95b3737d360b6e96c444470d7c177b1f218c58cad0",
+  "restored_public_tables": 220,
+  "stable_tables_exact_row_hash_match": 220,
+  "tables_changed_during_online_backup": [],
+  "work_packages_exact_row_hash_match": true,
+  "restored_assets_files": 2,
+  "isolated_container": "codex-main-dr-7d9f24b63957",
+  "network": "none",
+  "published_ports": false,
+  "main_volumes_attached": false,
+  "main_container_ids_and_images_unchanged": true,
+  "staging_operations": false,
+  "limitations": [
+    "Online snapshot: each PostgreSQL backup is transactionally consistent; no global atomic snapshot across PostgreSQL/assets/Gateway/n8n/Qdrant",
+    "No Core/Gateway application boot against restored database; no production cutover or reboot test",
+    "Native Qdrant snapshot restore failed; logical export exists and is read-back verified, but logical restore was rejected by automatic tool approval review: blocked by policy"
+  ],
+  "sqlite_restores": [
+    {
+      "database": "gateway",
+      "tables": 21,
+      "integrity_check": "ok",
+      "row_counts_match": true,
+      "backup_sha256": "369ba5a7884532bc678a12f41306c782864fc4eca7f33a1cd65ef7cf74642e32",
+      "bytes": 3215360
+    },
+    {
+      "database": "knowledge",
+      "tables": 8,
+      "integrity_check": "ok",
+      "row_counts_match": true,
+      "backup_sha256": "67adb23f2a0d7fb596341befbef0cf3395aff61940c8613750c5a256c25130d7",
+      "bytes": 5140480
+    },
+    {
+      "database": "n8n",
+      "tables": 156,
+      "integrity_check": "ok",
+      "row_counts_match": true,
+      "backup_sha256": "3594345b6528e9f5857f5a88542943b5b3e6365c540c40847bbad78f52be0953",
+      "bytes": 11452416
+    }
+  ],
+  "n8n_restored_WF08_active_name_verified": true,
+  "private_configuration_backed_up": true,
+  "qdrant_restore": {
+    "status": "FAILED_NATIVE_SNAPSHOT_RESTORE",
+    "logical_backup": {
+      "points": 1712,
+      "compressed_bytes": 9457354,
+      "sha256": "d483b34865c8b4a5252b36b594c88438f57ec7558d304eefc62df1f16e522c2c",
+      "backup_readback_verified": true,
+      "restore_performed": false
+    },
+    "logical_restore": "BLOCKED_TOOL_AUTO_REVIEW",
+    "reason": "blocked by policy",
+    "finding": "Native snapshot GNU sparse entry 0/wal/first-index is an empty 17-byte hole. Metadata supplement exposed another zero-filled segment version.info. Raw archives preserved; no Main storage mutation/restart.",
+    "root_cause_limit": "Observed corruption in snapshot output; exact upstream/filesystem cause not confirmed"
+  }
+}

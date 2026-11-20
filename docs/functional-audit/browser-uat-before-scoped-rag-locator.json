@@ -1,0 +1,242 @@
+{
+  "scope": "REAL authenticated MAIN; no asset/response interception",
+  "checks": [
+    {
+      "name": "tab_mission",
+      "status": "PASS",
+      "actual": {
+        "text_excerpt": "CURRENT WORK / RECENT WORK\n\nWorker process, project business status và Agent execution là ba trạng thái độc lập.\n\nKHÔNG CÓ AGENT ĐANG THỰC THI\nWP #398 · Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung.\n\nRun de391b2f · Attempt succeeded · Task COMPLETED · Current / last Agent qa · Stage COMPLETE\n\nBắt đầu 06/11/2026 18:16:06 · Event cuối 06/11/2026 18:34:27 · Elapsed 1102s\n\nBudget 5 / 12 calls · 5 provider responses đã xác minh · còn 7 · tích lũy 18\n\nNext action: ALREADY_COMPLETED\n\nPersisted stages / artifacts / receipts\nXem run / receipts / reviewer / QA\nWP #379 · PM/BA requirements and engineering backlog\n\nRun 595d2454 · Attempt blocked · Task BLOCKED · Current / last Agent ba · Stage pm-ba-plan\n\nBắt đầu 05/11/2026 16:48:23 · Event cuối 05/11/2026 16:49:19 · Elapsed 56s\n\nNguyên nhân: Lượt thực thi chưa hoàn tất; chưa đủ bằng chứng phân loại nguyên nhân. · UNKNOWN_FAILURE\n\nBudget 0 / 12 calls · 0 provider responses đã xác minh · còn 12 · tích lũy 1\n\nNext action: Có thể ",
+        "agent_roles": []
+      }
+    },
+    {
+      "name": "tab_pipeline",
+      "status": "PASS",
+      "actual": {
+        "text_excerpt": "Công việc · mới cập nhật trước\n\nProject 6 · Asia/Ho_Chi_Minh · WP là công việc; unit và run là các bản ghi liên kết.\n\nWP #398 · Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung.\nCOMPLETED\nTạo lúc\n06/11/2026 18:01:00\nCập nhật\n06/11/2026 18:34:27\nCurrent / last Agent\nqa · COMPLETE\nNative business status\nREADY FOR RELEASE · Engineering: COMPLETED\nNative sync / Delivery\nSTATUS_SYNC_VERIFIED · NATIVE_READBACK_VERIFIED · PR_OPEN\nRead-back 06/11/2026 18:35:28\nDependencies\nREADY\n\nBudget 5 / 12 calls · Provider responses 5 · Resume chưa đủ điều kiện · ALREADY_COMPLETED\n\nRun de391b2f · Xem chi tiết\nGitHub PR\nTechnical details\nWP #397 · Bo sung regression tests cho GET /health dam bảo kiem tra status HTTP hien hanh, schema thuc te, goi lap khong anh huong du lieu Task va tat ca pytest pass.\nCOMPLETED\nTạo lúc\n06/11/2026 02:42:34\nCập nhật\n06/11/2026 02:53:37\nCurrent / last Agent\nqa · COMPLETE\nNative business status\nUNKNOWN · Engineering: COMPLETED\nDependencies\nREADY\n\nBudget 3 / 12 c",
+        "agent_roles": []
+      }
+    },
+    {
+      "name": "tab_workforce",
+      "status": "PASS",
+      "actual": {
+        "text_excerpt": "Agent Workforce\n\nCurrent State tách biệt Last Activity. Worker ALIVE là process availability; chỉ run đang thực thi mới chứng minh Agent RUNNING.\n\nAI Supervisor\nCurrent State\nSTANDBY\nLast Activity\n\nChưa có activity phù hợp role trong dữ liệu trả về. Không suy luận từ configured runtime.\n\nConfigured model: gemini-3.5-flash-lite\nVerified historical runtime: Không dùng model (LOCAL_DETERMINISTIC)\nCurrent session: không có active session được xác minh\n\nRuntime · receipts · tools · full IDs\nProduct Manager\nCurrent State\nSTANDBY\nLast Activity\n\nLượt thực thi gần nhất: WP #379\nPM/BA requirements and engineering backlog\n\nRun / stage\n76f13288 · pm\nKết quả\nsucceeded\nBắt đầu\n06/11/2026 18:00:36\nKết thúc\n06/11/2026 18:00:42\n\nNguyên nhân / last error: Không ghi nhận\n\nBudget 1 / 12 · Provider responses 1 · Tích lũy 1\n\nCheckpoint: Chưa xác minh\n\nMở last run / evidence\n\nConfigured model: gemini-3.5-flash-lite\nVerified historical runtime: gemini-3.5-flash-lite\nCurrent session: không có active session được xác minh\n\nRuntime · receipts · tools · full IDs\nBusiness Analyst\nCurrent State\nSTANDBY\nLast Activ",
+        "agent_roles": [
+          "supervisor",
+          "pm",
+          "ba",
+          "dev",
+          "reviewer",
+          "qa"
+        ]
+      }
+    },
+    {
+      "name": "tab_backlog",
+      "status": "PASS",
+      "actual": {
+        "text_excerpt": "Rủi ro Sprint / Bug context\n\nĐọc Native Project 6 và phát observation cho WF08/WF09. Không tự transition hay phê duyệt.\n\nXem rủi ro Sprint Bug WP ID (Project 6)\nĐọc Bug context\nPM / BA Planning · versions theo Work Package\n\nPUBLISHED là kế hoạch đã phát hành; không đồng nghĩa công việc COMPLETED.\n\n+ Giao việc PM/BA\nTìm WP / Plan\nWP #379 · 12 version(s)\nPhân tích yêu cầu và định nghĩa phạm vi, hành vi API, các trường hợp biên và tiêu chí chấp nhận cho đơn vị kỹ thuật mới: bổ sung các regression tests cho các HTTP methods bị từ chối tại endpoint /healthz của mini-task-manager.\nPUBLISHED\n\nPlan 76f13288 · Mới nhất trong nhóm · Tạo 06/11/2026 17:59:47 · Published 06/11/2026 18:01:06\n\nRelated run 76f13288\n\n14 units · Ready 0 · Blocked 0 · Delivered 12\n\nNext action: Giao unit feedback-faf8797c2a8d1f4f cho Dev viet test, Reviewer kiem tra diff va QA chay pytest xac thuc.\n\nĐặc tả BA · PM plan · Acceptance Criteria · WBS · dependencies\nBo sung regression tests cho endpoint GET /health cua mini-task-manager theo feedback cua Owner ma khong thay doi hanh vi hay them endpoint moi.\nPUBLISHED\n\nPlan",
+        "agent_roles": []
+      }
+    },
+    {
+      "name": "tab_execution",
+      "status": "PASS",
+      "actual": {
+        "text_excerpt": "Trung tâm Điều phối Thực thi (Execution History & Controls)\n\nLịch sử toàn bộ các lượt chạy AI (runs), trạng thái hàng đợi và điểm kiểm soát (checkpoints)\n\nTotal 28 Runs Recorded\nRUN ID\tTHỜI ĐIỂM CHẠY\tHÀNG ĐỢI\tGIAI ĐOẠN\tTASK / UNIT\tTRẠNG THÁI REVIEW\tKẾT QUẢ\tHÀNH ĐỘNG\n\nde391b2f...\n\t06/11/2026 18:16:06\tFINISHED\tUNKNOWN\tfeedback-faf8797c2a8d1f4f (WP #398)\tReview evidence: PASS\tSUCCEEDED\t Chi tiết\n\n76f13288...\n\t06/11/2026 17:59:47\tFINISHED\tUNKNOWN\trequirements-planning-v1-faf8797c2a8d1f4f (WP #379)\tReview evidence: NOT VERIFIED\tSUCCEEDED\t Chi tiết\n\na3f592fc...\n\t06/11/2026 02:42:34\tFINISHED\tUNKNOWN\tfeedback-d8b7006b5cff1bc4 (WP #397)\tReview evidence: PASS\tSUCCEEDED\t Chi tiết\n\n8f93d0a1...\n\t05/11/2026 23:56:42\tFINISHED\tUNKNOWN\trequirements-planning-v1-d8b7006b5cff1bc4 (WP #379)\tReview evidence: NOT VERIFIED\tSUCCEEDED\t Chi tiết\n\n595d2454...\n\t05/11/2026 16:48:23\tFINISHED\tUNKNOWN\trequirements-planning-v1-f51fb8fa745ab13e (WP #379)\tReview evidence: NOT VERIFIED\tBLOCKED\tYêu cầu Resume\n\n20de715d...\n\t05/11/2026 14:26:01\tFINISHED\tUNKNOWN\tfeedback-e0408cbf553ca0ba (WP #396)\tReview evidence: PASS\tSUCC",
+        "agent_roles": []
+      }
+    },
+    {
+      "name": "tab_github",
+      "status": "PASS",
+      "actual": {
+        "text_excerpt": "Demo release · DEPLOYED_TO_DEMO\n\nUNMERGED_INTEGRATION_TEST_RELEASE · 01d765c01d62a0d636e276f72bdc5cdc62db8c5a · codex/demo-integration-20261103\n\nPR đã tích hợp trong Demo: #6, #7, #8, #9, #10 · HTTP identity đã đối chiếu lúc 12/11/2026 16:06:31. Đây là metadata của artifact đã triển khai; trạng thái merge hiện hành nằm ở bảng PR bên dưới.\n\nChuỗi Pull Requests Xếp tầng (GitHub Stacked PRs)\n\nKho mã nguồn: Luim3141/mini-task-manager · Phân định minh bạch nhánh chính và nhánh feature\n\nĐồng bộ GitHub ngay\nXem trên GitHub\nGITHUB REST API: ONLINE\nĐối soát: 15 PRs\n|\nLast successful sync: 12/11/2026 16:06:32\n2 Main\n10 Feature Branch\n3 Đang mở\nPULL REQUEST\tTASK OPENPROJECT\tTẠO LÚC\tMERGE LÚC\tBASE BRANCH (TARGET)\tHEAD BRANCH & COMMIT\tREVIEWS & CI GITHUB\tĐÍCH MERGE\tTRẠNG THÁI\nPR #15: Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung.\tWP #398\t06/11/2026 18:32:16\t—\tcodex/openclaw-feedback-d8b7006b5cff1bc4\t7ceac4e6\t\nNO_REVIEWS\nNOT_CONFIGURED\nNOT_VERIFIED_DEPLOYED\n\tFEATURE_STACK (codex/o",
+        "agent_roles": []
+      }
+    },
+    {
+      "name": "tab_reports",
+      "status": "PASS",
+      "actual": {
+        "text_excerpt": "Hệ thống Báo cáo Tự động & Lịch Chạy (Reporting System)\n\nBáo cáo tiến độ hằng ngày (Daily), hằng tuần (Weekly) và báo cáo tức thời (Snapshot)\n\nCấu hình lịch tự động\nWEEKLY\nCURRENT\n12/11/2026 10:16:18\nBáo cáo tiến độ hằng tuần (Weekly Report) — Tuần 45/2026\nWPs trong nguồn\n18\nRuns succeeded\n26\nPull Requests\n15\n\nAI: UNKNOWN · Nhận định AI chưa xác minh · Usage chưa đầy đủ\n\n# BÁO CÁO TIẾN ĐỘ AI ENGINEERING — QLDAPM MAIN **Thời điểm tạo:** 2026-11-12 10:16:18 (UTC+07:00) | **Loại báo cáo:** `WEEKLY` | **Người tạo:** User 20 (PM) **Nguồn số liệu:** Snapshot từ SQLite, OpenProject và GitHu...\n Xem toàn văn\nDAILY\nCURRENT\n12/11/2026 10:16:15\nBáo cáo tiến độ hằng ngày (Daily Report) — 2026-11-12\nWPs trong nguồn\n18\nRuns succeeded\n26\nPull Requests\n15\n\nAI: UNKNOWN · Nhận định AI chưa xác minh · Usage chưa đầy đủ\n\n# BÁO CÁO TIẾN ĐỘ AI ENGINEERING — QLDAPM MAIN **Thời điểm tạo:** 2026-11-12 10:16:15 (UTC+07:00) | **Loại báo cáo:** `DAILY` | **Người tạo:** User 20 (PM) **Nguồn số liệu:** Snapshot từ SQLite, OpenProject và GitHub...\n Xem toàn văn\nDAILY\nHISTORICAL\n06/11/2026 08:00:10\nBáo cáo tiến độ ",
+        "agent_roles": []
+      }
+    },
+    {
+      "name": "tab_knowledge",
+      "status": "PASS",
+      "actual": {
+        "text_excerpt": "Bộ máy Tìm kiếm Tri thức Thứ hai (Second Brain / RAG)\n\nTìm evidence theo quyền Project 6, đối chiếu Native version và citation trước khi trả kết quả.\n\nSố vector: chưa đo tại màn hình này\nNạp tài liệu đã đăng ký (Project 6)\nproject6-integration-qualification\nNạp / kiểm tra index nguồn\n\nNguồn do server đăng ký và pin checksum; Gateway ingest/read-back rồi WF01 quan sát. Việc tiếp nhận lệnh chưa chứng minh n8n hoàn tất.\n\nTìm kiếm Tri thức\nNguồn tài liệu\nproject6-integration-qualification\nCâu hỏi trong tài liệu\nTìm evidence trong tài liệu đã đăng ký\n\nSẵn sàng tìm kiếm. Kết quả truy hồi và câu trả lời có evidence là hai trạng thái riêng; benchmark semantic cần nghiệm thu độc lập.\n\nNhập câu hỏi tiếng Việt hoặc tiếng Anh để tìm evidence. Kết quả và citation chỉ phản ánh quyền/phiên bản tại thời điểm tìm kiếm; chưa có truy vấn mới trong phiên này.",
+        "agent_roles": []
+      }
+    },
+    {
+      "name": "tab_integrations",
+      "status": "PASS",
+      "actual": {
+        "text_excerpt": "Project6 · Approval automation\n\nDelegation: OFF · principal 25 · revision 2.\n\nChỉ các fixture và action trong allowlist được Owner ủy quyền. WF05 kiểm tra preview/policy; WF06 dùng credential của service principal để ghi Native và đọc lại. Quyết định policy không phải Owner trực tiếp nhấn Approve. Tắt delegation chặn các execution chưa claim; execution đang ghi phải được đối chiếu kết quả.\n\nBật delegated demo Project6\nFixture #395 · Native version 3 · status 37\nBUSINESS_VERIFIED · TRANSITION_FIXTURE_BUG · WP #395\nBUSINESS_VERIFIED · SET_FIXTURE_NOTE · WP #395\nREJECTED · SET_FIXTURE_NOTE · WP #394\nREJECTED · DELETE_WORK_PACKAGE · WP #395\nREJECTED · SET_FIXTURE_NOTE · WP #395\nBUSINESS_VERIFIED · SET_FIXTURE_NOTE · WP #395\nREQUIRES_HUMAN_APPROVAL · SET_FIXTURE_NOTE · WP #395\nAutomation / Workflow Status\n\nPublished metadata và execution từ n8n; Project 6 chỉ được xác nhận khi execution khớp durable Gateway receipt và read-back. Mở màn hình này không kích hoạt cron hoặc workflow.\n\nCOMMAND_ACCEPTED → WORKFLOW_TRIGGERED → WORKFLOW_EXECUTING → WORKFLOW_SUCCEEDED → BUSINESS_SIDE_EFFECT_VERIFI",
+        "agent_roles": []
+      }
+    },
+    {
+      "name": "workforce_real_roles",
+      "status": "PASS",
+      "actual": [
+        "supervisor",
+        "pm",
+        "ba",
+        "dev",
+        "reviewer",
+        "qa"
+      ]
+    },
+    {
+      "name": "workforce_run_inspector",
+      "status": "PASS",
+      "actual": {
+        "run_id": "76f13288-6055-400b-a615-e3f7600a3344",
+        "status": "COMPLETED",
+        "text_excerpt": "Chi tiết Thực thi & Giám sát Tác nhân\nCOMPLETED\n\nRun ID: 76f13288 · Đơn vị: Engineering requirements-planning-v1-faf8797c2a8d1f4f for #379\n\nExecution Summary · WP #379\n\nDevelop Mini Task Manager Application\n\nAttempt\nCOMPLETED\nEngineering task status\nPLANNING_PUBLISHED\nNative business status\nIN PROGRESS\nCurrent / last stage\nCOMPLETE\nAgent\npm\nFailure category\nKhông có mã phân loại\nNguyên nhân\nKhông ghi nhận lý do\nSự kiện cuối\nRUN_COMPLETED\nCalls used / cap\n0 / 12\nProvider responses đã xác minh\n0\nCòn trong attempt\n12\nCalls tích lũy\n2\nTokens đã ghi nhận\n0\nNguồn usage\nPROVIDER_RECEIPTS\nCheckpoint\nChưa xác minh\nResume\nKhông / chưa xác minh\nĐiều kiện / next action\nALREADY_COMPLETED\nContinuation còn lại\n5\nRun khi Resume\nCùng run, attempt mới liên kết\n\nAttempt FAILED ≠ Work Package COMPLETED · Provider request SUCCESS ≠ Dev task SUCCESS\n\nCông việc đã lưu / phần còn lại\nThời gian chạy: 173.022s\nMô"
+      }
+    },
+    {
+      "name": "reports_reader_raw_export",
+      "status": "PASS",
+      "actual": {
+        "attempts": [
+          {
+            "status": 200,
+            "retry_after": null,
+            "request_id": "906ae132-5afe-4f8c-8a01-ad060c1e4039"
+          }
+        ],
+        "rendered_chars": 6087,
+        "raw_chars": 7600,
+        "download_bytes": 8078
+      }
+    },
+    {
+      "name": "rag_actual_search_citations_and_quality_notice",
+      "status": "FAIL",
+      "error": "Locator.wait_for: Timeout 40000ms exceeded.\nCall log:\n  - waiting for locator(\".qcc-knowledge-item\").first to be visible\n    81 × locator resolved to hidden <div class=\"qcc-knowledge-item\">…</div>\n"
+    },
+    {
+      "name": "command_center_to_studio_evidence_and_history",
+      "status": "PASS",
+      "actual": {
+        "nodes": 3,
+        "unknown393": true,
+        "back_reload398": true
+      }
+    }
+  ],
+  "network": [
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/executions/76f13288-6055-400b-a615-e3f7600a3344",
+      "status": 200,
+      "request_id": "c6050e70-4620-4131-b4d4-5089c068fbb2"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/reports/e7201be9-eae8-483b-a349-279c2b6888bd",
+      "status": 200,
+      "request_id": "906ae132-5afe-4f8c-8a01-ad060c1e4039"
+    },
+    {
+      "method": "POST",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/commands",
+      "status": 200,
+      "request_id": "cd950c0b-3ee8-4427-9686-5ba7881eda11"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer",
+      "status": 200,
+      "request_id": "ceb7580a-b07c-4765-a9e1-d41d911e39b2"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "dbf4dbe0-ab28-4e89-b585-78bbbdbdf09c"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "51f5900d-2d83-4e9f-b451-44ebe570bfc2"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "896cfdf7-748d-4838-ac7f-0122cab330cb"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "f922704d-cd8f-4182-b278-ba3891c67b8d"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "55779c3c-06b2-4cdb-9a23-5501d5f5c5c1"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "be300c26-b705-4b7c-b731-b6be2f38cbc0"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "83003049-b5dc-4132-8160-339fe73483eb"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer",
+      "status": 200,
+      "request_id": "2ac1f2a5-09a3-4ab1-a4d6-6c17c6dcd477"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "d58b873f-90fd-4243-800d-fc7eaceeca02"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "b1bf43db-8194-4665-b62b-f318d9295168"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer",
+      "status": 200,
+      "request_id": "5b19652b-38f5-4993-a41a-0fe6519dbc8e"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "4467579c-ed71-48c1-84da-584316ace0da"
+    },
+    {
+      "method": "GET",
+      "path": "http://127.0.0.1:18088/projects/ai-dev-demo/qldapm-ai/observer.json",
+      "status": 200,
+      "request_id": "fa58898b-a095-40fa-86ce-88bd04717156"
+    }
+  ],
+  "errors": [],
+  "at": 1794474640.461304,
+  "finished_at": 1794474720.060452
+}

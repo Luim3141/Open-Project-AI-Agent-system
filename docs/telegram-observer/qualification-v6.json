@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "27d4f9fbdde16f2f3c64324ef7981080c08b60d5dae6c52944cdeb509eca449b"
+  },
+  "checks": {
+    "observer": true,
+    "notifications": true,
+    "core": true,
+    "security": true
+  },
+  "evidence": {
+    "scope": "Add observer to existing Project6 PM/Owner action allowlist; preserve Native view permission and role requirements",
+    "controller_regression": "RED before allowlist; GREEN after",
+    "core_syntax": "PASS",
+    "gateway_notifications": "Unchanged sources; qualification-v4 and v5 apply",
+    "rollout_tests": 5
+  }
+}

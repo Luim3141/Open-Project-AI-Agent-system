@@ -1,0 +1,11 @@
+{
+  "status": "QUALIFIED_CORE_UI_FIX",
+  "old_image": "sha256:b54ff5ded57ab8ca6084242942ad9c125e114d0695ca8e094718b963e6870d42",
+  "candidate_image": "sha256:85dcdb1804d7dae362c9f050da95f897f3d95d5efa1e9598c26ef8facf4cd58a",
+  "files": [
+    "/app/lib/api/v3/qldapm/gates_api.rb",
+    "/app/app/views/qldapm_ai/permissions.html.erb"
+  ],
+  "impact": "Only Coreweb configuration read guard and permissions rendering; preserves Owner capability and Gateway image; no schema/Nativewrite/credentials/model changes.",
+  "rollback": "private:pre-owner-ui-fix-bridge.yml -> recreate web only on b54ff5d; preserve all runtime records"
+}

@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/gateway/agent_observer.py": "0b884aea89be63e6410149af86f81e7549e8f6b7b8507a9e25708022fa95619e",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_observer_client.html.erb": "f46e9ec7acf9bd073ab7c561b0c753579639d7f10ae6cc7fbdce42493352451d"
+  },
+  "checks": {
+    "observer": true,
+    "notifications": true,
+    "core": true,
+    "security": true
+  },
+  "evidence": {
+    "immutable_gateway": {
+      "tests": 94,
+      "passed": 92,
+      "skipped": 2
+    },
+    "real_snapshot": {
+      "status": "PASS",
+      "tasks": 13,
+      "unknown_runs": 2,
+      "seconds": 20.13,
+      "summary_only": true,
+      "model_calls": 0,
+      "business_writes": 0
+    },
+    "real_snapshot_source_sha256": "0b884aea89be63e6410149af86f81e7549e8f6b7b8507a9e25708022fa95619e",
+    "client_cache_red_green": "PASS",
+    "node_syntax": "PASS"
+  },
+  "not_covered": [
+    "Owner UI login: saved password rejected",
+    "fresh coding E2E",
+    "real TASK_COMPLETED business delivery"
+  ]
+}

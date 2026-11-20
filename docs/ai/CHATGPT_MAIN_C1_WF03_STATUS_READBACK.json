@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-27T03:09:48.239160+00:00",
+  "status": "PASS_OLD_RUN_STALE_READBACK_ONLY_NEW_ASYNC_LIFECYCLE_NOT_TESTED",
+  "workflow_id": "XoP4M520TMG3WgeY",
+  "workflow_version": "9af87910-b23c-4bcb-9589-4b09e614d3cf",
+  "http": 200,
+  "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+  "durable_state": "done",
+  "nested_content_status": "stale",
+  "source_freshness": "stale correctly hidden after source change",
+  "actual_contract": "Start/plan returns persisted Gateway run acknowledgment; caller polls operation=status. WF03 definition has no final callback endpoint. Do not invent callback delivery.",
+  "workflow_nodes": [
+    {
+      "name": "User Request Webhook",
+      "type": "n8n-nodes-base.webhook"
+    },
+    {
+      "name": "Prepare Stable Orchestration Request",
+      "type": "n8n-nodes-base.code"
+    },
+    {
+      "name": "Start Or Poll Persisted Caller Run",
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "name": "Reply With Gateway Status",
+      "type": "n8n-nodes-base.respondToWebhook"
+    }
+  ],
+  "model_calls": 0,
+  "native_writes": 0,
+  "new_run_started": false
+}

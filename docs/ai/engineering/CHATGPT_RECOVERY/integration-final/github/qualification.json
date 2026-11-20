@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/gateway/app.py": "9246a3f8985c40b55bda737b66d4b7d936b8eea890bb4cf3afc28315b3eae408",
+    "openproject/ai/gateway/service.py": "32b94f54c5984bd9ad7384172185a16134b78863b3d8139e69e1d0ce81697196",
+    "openproject/ai/gateway/monitoring.py": "9af5ab36c7daaf64aa86fa5ec11ca3c23b5073498352ace80bf99cff37521957",
+    "openproject/ai/gateway/integration_events.py": "b8bd0594b6a9d021b357c844c0b8e0dfa422bfd0a04c6021c0ca6cbfac4dc52a",
+    "openproject/ai/gateway/engineering_github_poll.py": "2bc8ab36f3eb5a4c45d2f88cf0aa9cb48e5329b6dd9e6ad26be5528ef999f8cd",
+    "openproject/ai/gateway/engineering_github_details.py": "823bd0ca9a45ec37f4b0ef18838b7c8c1248e6869e1617cb6cf850b31d6b2789",
+    "openproject/ai/gateway/engineering_github_sync.py": "08075df59ea0f62db358c8ae945a3c0fb408fc05935eacf476bc80a7a33dec46",
+    "openproject/ai/gateway/engineering.py": "65ae24a23dad3c8e4f1dfea689d34b70e2b39977cbe83fc21ccc2a1d3c38737c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "144f2748375374c02c908d03b1555aa77a065c81e5108cee647af2e13e81450e"
+  },
+  "checks": {
+    "github": true,
+    "events": true,
+    "core": true
+  },
+  "images": {
+    "gateway": "sha256:e9af9565b3af52d2b2184bef144aa22cbdab019ecae15f2ccb0b48526f060ed7",
+    "core": "sha256:b5f3913ae8a74e4d37aaba9a5a6a12c14ddbe6d75d885359175a0a5d1f6a3db7"
+  },
+  "evidence_sha256": {
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/github/qualification-tests.json": "a758f5ca219dd16be96eb65d1344285fcabcd1cc52ae447a3748d822d43bdce6",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/github/core-candidate-clone-result.json": "07c9f83d003fc42941a0100d98d5086a74ce2295227a33e70cac1c3699f996f4",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/github/github-readonly-projection-final.json": "a84f2201d0814b83ca5c4a925e542effc1d863c0bb74fefed841eac4e880b63e",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/n8n/business-clone-result.json": "3f8c13f25a2aabd1574935000d21d58360e2fe6729ce514d91bf3d8eb262dc0f",
+    "docs/ai/engineering/CHATGPT_RECOVERY/integration-final/n8n/business-clone-attempt4.json": "ca3a17e97b0c8cb578548da6f9e81ec937b0e0b05848694e1aa8171cda543ceb"
+  },
+  "limits": [
+    "n8n clone proof does not imply MAIN deployment",
+    "RAG semantic gate separately failed",
+    "GitHub polling and n8n integration start disabled"
+  ],
+  "utc": "2026-11-03T12:42:37.894333+00:00"
+}

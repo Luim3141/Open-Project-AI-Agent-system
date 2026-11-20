@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-26T12:17:35.636546+00:00",
+  "status": "PASS_OLD_GATEWAY_READ_COMPATIBLE_WITH_POPULATED_NEW_CLEANUP_OUTBOX",
+  "candidate": "sha256:ffe20cad40e7506b6accfae22665f4e543aa627b6da5f2272a1177206e7edd6b",
+  "old_gateway": "sha256:73aaf0c0cf8ea575eddbae2914db14e157e0c756cd58e225d70a5baeeba6f818",
+  "new_pending_cleanup_rows_retained": 1,
+  "main_mutations": 0,
+  "schema_policy": "App-only rollback retains new table; populated schema rollback is denied",
+  "limit": "Older image reads but cannot process new cleanup intents. Pause ingestion/reindex before operational rollback to historical broad-prune code; forward fix preferred."
+}

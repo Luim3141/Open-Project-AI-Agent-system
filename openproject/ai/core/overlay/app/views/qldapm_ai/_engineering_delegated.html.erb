@@ -1,0 +1,38 @@
+<% delegated = eng['delegated_approval'] || {} %>
+<article class="qcc-card" id="qcc-delegated-policy">
+  <h3 class="qcc-card-title">Project6 · Approval automation</h3>
+  <p role="status" aria-live="polite">Delegation: <strong><%= delegated['enabled'] ? 'ON' : 'OFF' %></strong> · principal <%= delegated['principal_id'] || 'Chưa cấu hình' %> · revision <%= delegated['revision'] || 0 %>.</p>
+  <p>Chỉ các fixture và action trong allowlist được Owner ủy quyền. WF05 kiểm tra preview/policy; WF06 dùng credential của service principal để ghi Native và đọc lại. Quyết định policy không phải Owner trực tiếp nhấn Approve. Tắt delegation chặn các execution chưa claim; execution đang ghi phải được đối chiếu kết quả.</p>
+  <% if @role == 'AI_SYSTEM_OWNER' %>
+    <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: 'qcc-form' do %>
+      <%= hidden_field_tag :tool, 'delegated_control' %>
+      <%= hidden_field_tag :arguments, {enabled: !delegated['enabled'], expected_revision: delegated['revision'] || 0}.to_json %>
+      <button type="submit" class="qcc-btn"><%= delegated['enabled'] ? 'Tắt delegated demo' : 'Bật delegated demo Project6' %></button>
+    <% end %>
+  <% end %>
+  <% Array(delegated['current_fixtures']).each do |fixture| %>
+    <details data-preserve-key="delegated-fixture-<%= fixture['native_id'] %>">
+      <summary><%= link_to "Fixture ##{fixture['native_id']}", "/work_packages/#{fixture['native_id']}" %> · Native version <%= fixture['lock_version'] %> · status <%= fixture['status_id'] %></summary>
+      <p>Phạm vi: một trường của fixture thử nghiệm; giữ snapshot trước thay đổi. Replay cùng request không ghi lại Native.</p>
+      <% [['SET_FIXTURE_NOTE', 'CHECKED', 'Kiểm tra ghi chú fixture'], ['SET_FIXTURE_NOTE', 'BASELINE', 'Khôi phục ghi chú fixture']].concat(Array(fixture['transitions']).select { |pair| pair[0] == fixture['status_id'] }.map { |pair| ['TRANSITION_FIXTURE_BUG', pair[1], "Chuyển Bug fixture #{pair[0]} → #{pair[1]}"] }).each do |action,value,label| %>
+        <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: 'qcc-form' do %>
+          <%= hidden_field_tag :tool, 'delegated_preview' %>
+          <%= hidden_field_tag :arguments, {native_id: fixture['native_id'], lock_version: fixture['lock_version'], action: action, value: value}.to_json %>
+          <button type="submit" class="qcc-btn"><%= label %> · WF05 → WF06</button>
+        <% end %>
+      <% end %>
+    </details>
+  <% end %>
+  <% Array(delegated['proposals']).each do |proposal| %>
+    <details data-preserve-key="delegated-proposal-<%= proposal['id'] %>">
+      <summary><%= proposal['state'] %> · <%= proposal.dig('arguments','action') %> · WP #<%= proposal.dig('arguments','native_id') %></summary>
+      <dl class="qcc-health-details">
+        <dt>Proposal / hash</dt><dd><%= proposal['id'] %> · <%= proposal['hash'] %></dd>
+        <dt>Decision</dt><dd><%= proposal['decision'] || 'WAITING_FOR_WF05' %> · principal <%= proposal['decision_principal'] || 'Chưa có' %></dd>
+        <dt>Native execution</dt><dd><%= proposal['execution_principal'] || 'Chưa thực thi' %> · version <%= proposal.dig('before','lock_version') %> → <%= proposal.dig('after','lock_version') || 'Chưa read-back' %></dd>
+        <dt>Reason / impact</dt><dd><%= proposal['reason'] || proposal['impact'] %></dd>
+        <dt>Created / verified</dt><dd><%= format_vn_time.call(proposal['created']) %> / <%= format_vn_time.call(proposal['verified_at']) %></dd>
+      </dl>
+    </details>
+  <% end %>
+</article>

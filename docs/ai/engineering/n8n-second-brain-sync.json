@@ -1,0 +1,55 @@
+{
+  "timestamp": 1793346545.0,
+  "n8n": {
+    "total_workflows": 16,
+    "active_workflows": 16,
+    "published_workflows": 16,
+    "wf04_multi_agent_tracking": {
+      "id": "elfapV5D2PTnLiHW",
+      "active": true,
+      "trace_endpoint": "http://qldapm-ai-gateway-1:8090/api/v1/agent-runs/{{run_id}}/trace",
+      "verified": true
+    },
+    "scheduling_authority": "SUPERVISOR_EXCLUSIVE",
+    "autonomous_claims_blocked": true
+  },
+  "second_brain": {
+    "dense_engine": "Qdrant (127.0.0.1:6333, collection: qldapm_knowledge_dense)",
+    "embedding_model": "Ollama bge-m3:latest (127.0.0.1:11434)",
+    "lexical_engine": "SQLite FTS5",
+    "project6_indexed_work_packages": [
+      {
+        "id": 379,
+        "title": "Develop Mini Task Manager Application",
+        "citation": "/work_packages/379",
+        "indexed": true
+      },
+      {
+        "id": 380,
+        "title": "[AI unit] Create/list tasks + SQLite persistence",
+        "citation": "/work_packages/380",
+        "indexed": true
+      },
+      {
+        "id": 381,
+        "title": "[AI unit] Edit/delete/status/search and usable web interface",
+        "citation": "/work_packages/381",
+        "indexed": true
+      },
+      {
+        "id": 382,
+        "title": "[AI backlog] Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.",
+        "citation": "/work_packages/382",
+        "indexed": true
+      },
+      {
+        "id": 383,
+        "title": "[AI backlog] Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.",
+        "citation": "/work_packages/383",
+        "indexed": true
+      }
+    ],
+    "project5_isolation": "VERIFIED_ISOLATED"
+  },
+  "audit": "N8N_AND_SECOND_BRAIN_SYNC_SUCCESS"
+}

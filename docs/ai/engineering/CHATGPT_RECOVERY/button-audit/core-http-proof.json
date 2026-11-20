@@ -1,0 +1,60 @@
+{
+  "status": "CORE_HTTP_PASS_NATIVE_PHASE_PENDING",
+  "core": {
+    "status": "PASS",
+    "identity": 18,
+    "project": 6,
+    "native_http": "SEPARATE_ACTUAL_NATIVE_CASE",
+    "anonymous_denied": true,
+    "owner_login_json_csrf_command": "PASS",
+    "invalid_csrf_rejected_before_gateway": true,
+    "full_template": "PASS",
+    "live_regions": [
+      "qcc-live-controls",
+      "tab-mission",
+      "tab-pipeline",
+      "tab-workforce",
+      "tab-backlog",
+      "tab-execution",
+      "tab-github",
+      "tab-reports",
+      "tab-integrations",
+      "qcc-live-notifications"
+    ],
+    "ui_auth_fixture": "clone-only password and disabled clone TOTP; production MFA unchanged",
+    "gateway_transport": "fixture at actual Rails bridge boundary; Gateway integration verified separately",
+    "reused_exact_core_image": true,
+    "evidence": "core-reuse-proof.json"
+  },
+  "images": {
+    "gateway": "sha256:77213702ef933943a1fbee6feffc0d410062b8f16928dd3d1621f9489e581a12",
+    "core": "sha256:5ee7a24482be81dd7312e8c4560773aede32ec9f8bc2f6da9593c9f223e1b822"
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/store.py": "c83575171c72b2b0b9e93d8463e04ac99bcd8ba67e8bd98c0df4e254be6cbb91",
+    "openproject/ai/gateway/service.py": "f0ccdb6093cd457c6dc0494cef8451cccfc86c4ddaacc992246f6e1352991a54",
+    "openproject/ai/gateway/engineering.py": "1ca23e13175eb125c3d1ba8c8cb8c2925a21a6d7264e5a967a5bde4524a026d2",
+    "openproject/ai/gateway/engineering_operator.py": "ce72e13a3caa1cebbc7f054041da9dc5136407200aef20d9086ab89180227947",
+    "openproject/ai/gateway/engineering_lifecycle.py": "dee3b6d96f6b51249bbda104a9e1e28a51506571aa2361a37d2f20e73104d487",
+    "openproject/ai/gateway/engineering_health.py": "7fee86280e4d1ccdcfb54be8fbecb35d27ba1e17bed2fb0333bf808741051589",
+    "openproject/ai/gateway/engineering_observability.py": "7178dcea64e67260b98c99f7f4263cae688a47cdada221928a9ea0473c9743d4",
+    "openproject/ai/gateway/engineering_owner_control.py": "3c8140376ecf9bc784784a5b105defe063688a870c4c4a5d49f5767c8c1c6c28",
+    "openproject/ai/gateway/engineering_reporting.py": "63481b1382c919308c3c54cacca10f1fce6a574f9f95d561bec6ea5c05b83d1c",
+    "openproject/ai/gateway/workflow_status.py": "644e522760137f71d0cbe24bd36efcbf8d91adb4a69ce57ce03d579eee97083a",
+    "openproject/ai/gateway/delegated_approval.py": "c75218fbcd3c88bd3d8d0b836f756665ebac27865ed8e7d161eca6ef994724eb",
+    "openproject/ai/gateway/engineering_github_sync.py": "1fe18136c051e5a0a728231e05777eca0326c0c3fb481620a1656c74684a3050",
+    "openproject/ai/gateway/engineering_github_operations.py": "ee411ad0b4da32c7f8666f8b3c9e19a124719132d72f745a683d874802db716f",
+    "openproject/ai/gateway/engineering_github_poll.py": "4d11671184b108c61431ad9e23dfe5146a09ffa11b7ad1bb911c1652bacef255",
+    "openproject/ai/gateway/engineering_status_sync.py": "0e44359372a8f3f774ef5224325c9a564e63b249d0a3f78e7d034d3f33da5e46",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "cfaa9495b8e1fe1338fa40c0144459a504cbe05082f7b784a21fe715043856c4",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "2af01d0f56f14cd5be331a45c5133576134ffe59ca36c3108f0ae5b3beb14c3e",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": "e0ec90f28ca17d26f9cfb5139f8a6bae1405496d153dee05c20288501254aa2c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": "7a9d35f1828a7d3f749414856a9aa30021d766c7ae03779976865542b7e8b7a5",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": "4b3e4f9f4357434f26f47ecb24a2aee08a52e5f0248befb446bfe02334ca8f15",
+    "openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb": "ab54203e11302b2cb7b24ec3c03efb8eec2a7a1ec2fbbfa16db478e6390e70fe",
+    "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": "43ff4c9b83561f0a9efaef0f557c1c6364a80578f43fe5024e83a4b1d34ae66e",
+    "openproject/ai/core/overlay/config/initializers/qldapm_gates.rb": "f11d389af09782866137e2b50e130ba13ec188d633f1f4e453f5865b58c0d7f5",
+    "openproject/ai/gateway/catalog.py": "2b38b77d09b2ea2e31ad8c789fe7f0338a4c569dfb527f00c7f79e76540dc6ab",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": "1347c598a5b001f8014c915f0b40e331bfa4bc73bc70084506ab910b8a964766"
+  }
+}

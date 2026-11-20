@@ -1,0 +1,77 @@
+{
+  "scope": "ACTUAL Owner Telegram messages + receipts, no simulated input",
+  "messages": [
+    {
+      "at": 1794548612.1725428,
+      "role": "user",
+      "text": "Tài liệu có mã ORBIT-RECEIPT-20261103 nói gì và có chứng nhận Owner acceptance không?"
+    },
+    {
+      "at": 1794548616.754184,
+      "role": "model",
+      "text": "Dựa trên tài liệu hệ thống có mã **ORBIT-RECEIPT-20261103** (Project 6 Integration Qualification), nội dung và kết luận của tài liệu ghi nhận như sau:\n\n- **Nội dung:** Đây là tài liệu kiểm tra tích hợp có gắn mã chuẩn nhận diện (`ORBIT-RECEIPT-20261103`) nhằm xác thực việc nạp nguồn, tìm kiếm và trích dẫn thông tin trong hệ thống.\n- **Chứng nhận Owner acceptance:** Tài liệu này **không chứng nhận** chất lượng truy xuất ngữ nghĩa hoặc sự phê duyệt của chủ sở hữu (`This fixture does not certify semantic retrieval quality or Owner acceptance`)."
+    }
+  ],
+  "audit": [
+    {
+      "at": 1794548612.0189788,
+      "conversation_task_id": 398,
+      "event": "INCOMING_CONTEXT",
+      "message_id": 39,
+      "notification_context": null,
+      "reply_to_message_id": null
+    },
+    {
+      "at": 1794548612.5622444,
+      "arguments": {
+        "task_id": 398
+      },
+      "correlation_id": "2bb343ea-13e8-4e87-b700-dddcbb5a8c00",
+      "event": "READ_TOOL",
+      "project_id": 6,
+      "source_revision": "6944a307fc2cb3b678f82891de5694af8b9a84bf3d561cf8d8ec48330bdbbfa8",
+      "tool": "get_task_progress"
+    },
+    {
+      "at": 1794548615.722851,
+      "attempt": 1,
+      "error_type": null,
+      "event": "GEMINI_REQUEST",
+      "http_status": null,
+      "input_tokens": 8584,
+      "latency_seconds": 1.875,
+      "model_id": "gemini-3.5-flash-lite",
+      "output_tokens": 145,
+      "request_id": "d5802b9dd20e4739a505e70d469adb13",
+      "resolved_model_version": "gemini-3.5-flash-lite",
+      "tool_calls_count": 0
+    },
+    {
+      "at": 1794548617.26263,
+      "event": "BOT_REPLY_SENT",
+      "in_reply_to_message_id": 39,
+      "message_id": 40,
+      "part": 1
+    }
+  ],
+  "budget": [
+    [
+      20770,
+      1
+    ],
+    [
+      20769,
+      20
+    ]
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "daily_cap": 20,
+  "checks": {
+    "real_input": true,
+    "answer_received": true,
+    "fresh_rag_tool": false,
+    "no_write": true,
+    "technical_source_pin_retained": false,
+    "exact_resolved_model": true
+  }
+}

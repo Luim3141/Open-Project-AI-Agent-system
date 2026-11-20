@@ -1,0 +1,42 @@
+{
+  "status": "PREPARED_NOT_DEPLOYED",
+  "observed_at": "2026-10-24T14:17:49.638396+00:00",
+  "affected_services": [
+    "Main gateway"
+  ],
+  "parent_gateway": "sha256:930a3afd7793f1aa5ead0b13107c3ab60db598b6620e216ad99c42e09c4d1643",
+  "candidate_tag": "qldapm-ai:codex-wbs-parent-20261024",
+  "unchanged_core": "sha256:dcb6018226280bde73fb8812e463bdcb5ef6896cbe9a1c65be7516d993f4a3d4",
+  "changed_workflows": [],
+  "source_before_sha256": "c7a58df490903c8d9197ae23fc99af829d56b0a6c31723827bb3ac8dc42c20f8",
+  "source_after_sha256": "08fcc4bbab03d410dd27dfaaa254506a3f962f004477c5c4a7a3264377b7b7ea",
+  "rollback_tag": "qldapm-ai:codex-owner-lexical-20261024",
+  "rollback_env": "pre-wbs-parent-.env",
+  "rollback_data_policy": "App-only rollback; never restore pre-write database over live336 Native data",
+  "private_snapshot": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-continuation-20261024-0810",
+  "postgres_backup_bytes": 2035374,
+  "sqlite_quick_checks": "PASS_BOTH",
+  "preflight": {
+    "active_queue": 0,
+    "active_sync": 0,
+    "ledger": {
+      "gemini_call_receipts": 123,
+      "gemini_usage": 128,
+      "proposals": 52,
+      "knowledge_sync": 9
+    }
+  },
+  "native_writes": 0,
+  "model_starts": 0,
+  "staging_operations": false,
+  "regression_red": {
+    "tests": 3,
+    "failures": 3,
+    "log": "wbs-parent-red.log"
+  },
+  "targeted_green": {
+    "tests": 3,
+    "passed": 3,
+    "log": "wbs-parent-green.log"
+  }
+}

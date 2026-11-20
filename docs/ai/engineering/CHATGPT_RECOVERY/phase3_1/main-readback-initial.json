@@ -1,0 +1,225 @@
+{
+  "status": "PASS",
+  "utc": "2026-11-02T15:41:51Z",
+  "route": "Actual Rails AiBridge HMAC HTTP + Native authorization; no GUI",
+  "elapsed_seconds": 18.784,
+  "mode": "OFF",
+  "queue": {
+    "state": "BLOCKED",
+    "ready": 0,
+    "active": 0,
+    "blocked": 1,
+    "eligible_unit": null,
+    "reason_code": "NO_ELIGIBLE_WORK"
+  },
+  "worker": {
+    "state": "ALIVE",
+    "seen": 1793634095.2135394,
+    "run_id": null
+  },
+  "wp391": {
+    "id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+    "native_id": 391,
+    "title": "[AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện",
+    "task_status": "BLOCKED",
+    "native_status": "NEW",
+    "stage": "dev-0",
+    "failure": {
+      "category": "PROVIDER_QUOTA_EXHAUSTED",
+      "message": "Provider trả HTTP 429; cần kiểm tra quota trước khi tiếp tục.",
+      "raw_code": "OPENCLAW_STEP_NOT_COMPLETED",
+      "evidence_source": "SCOPED_PERSISTED_RECEIPTS_AND_CHECKPOINT"
+    },
+    "budget": {
+      "calls_used": 12,
+      "call_cap": 12,
+      "provider_response_count": 11,
+      "remaining": 0,
+      "cumulative_calls": 36,
+      "task_call_cap": 72,
+      "total_tokens_reported": 231966,
+      "usage_source": "PROVIDER_RECEIPTS",
+      "usage_missing": 1,
+      "max_continuations": 5,
+      "continuations_used": 2,
+      "session_id": "de2e2650-1e9a-4f1f-9622-58252c1ecee7"
+    },
+    "resume": {
+      "eligible": false,
+      "reason": "PROVIDER_RECOVERY_REQUIRED",
+      "checkpoint_version": 16,
+      "completed_steps": [
+        "context",
+        "prepare"
+      ],
+      "remaining_continuations": 3,
+      "action": "RESUME_SAME_RUN",
+      "same_run_id": true,
+      "cooldown_until": 1793622393.8564074,
+      "checkpoint_saved_at": null,
+      "source_readback": "RECHECKED_AT_COMMAND",
+      "provider_recovery": {
+        "verified": false,
+        "reason": "NO_NEW_VERIFIED_PROVIDER_READINESS",
+        "checked_at": 1792525638.8246694
+      },
+      "auto_enabled": false,
+      "policy": {
+        "attempt_calls": 12,
+        "task_calls": 72,
+        "max_continuations": 5,
+        "cooldown_seconds": 60,
+        "auto_continue": false
+      }
+    }
+  },
+  "dev": {
+    "agent": "dev",
+    "current_state": "STANDBY",
+    "current_run": null,
+    "last_activity": {
+      "native_id": 391,
+      "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "result": "blocked",
+      "error": "Provider trả HTTP 429; cần kiểm tra quota trước khi tiếp tục.",
+      "budget": {
+        "calls_used": 12,
+        "call_cap": 12,
+        "provider_response_count": 11,
+        "remaining": 0,
+        "cumulative_calls": 36,
+        "total_tokens_reported": 231966,
+        "usage_source": "PROVIDER_RECEIPTS",
+        "max_continuations": 5,
+        "continuations_used": 2
+      }
+    }
+  },
+  "notification_unread_count": 82,
+  "child_notifications": [
+    {
+      "id": "1bba5511-16f2-56a9-9bcc-365f4a5cbc92",
+      "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "reason_code": "PROVIDER_QUOTA_EXHAUSTED",
+      "level": "ERROR",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=b7fd6aec-3357-495f-b9e5-f7ba04d67ad6#run-b7fd6aec-3357-495f-b9e5-f7ba04d67ad6"
+    },
+    {
+      "id": "9988df06-8d4d-566c-9a3f-951fb2c45cd3",
+      "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "reason_code": "AGENT_STARTED",
+      "level": "INFO",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=b7fd6aec-3357-495f-b9e5-f7ba04d67ad6#run-b7fd6aec-3357-495f-b9e5-f7ba04d67ad6"
+    }
+  ],
+  "notification_repoll_dedup": true,
+  "integration_health": [
+    {
+      "key": "openproject",
+      "name": "OpenProject Community",
+      "url": "http://web:8080",
+      "health": "UP",
+      "checked_at": 1793634101.9268644,
+      "check_type": "HTTP GET /health_check",
+      "latency_ms": 44.9,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    },
+    {
+      "key": "gateway",
+      "name": "QLDAPM AI Gateway",
+      "url": "http://127.0.0.1:8090",
+      "health": "UP",
+      "checked_at": 1793634101.9273508,
+      "check_type": "HTTP GET /health",
+      "latency_ms": 23.2,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    },
+    {
+      "key": "openclaw",
+      "name": "OpenClaw Gateway",
+      "url": null,
+      "health": "UNKNOWN",
+      "checked_at": null,
+      "check_type": "NOT CHECKED",
+      "latency_ms": null,
+      "last_error": "SAFE_ENDPOINT_NOT_CONFIGURED",
+      "process_health": "NOT CHECKED",
+      "api_readiness": "UNKNOWN",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED — Gateway availability không chứng minh Dev đang chạy"
+    },
+    {
+      "key": "n8n",
+      "name": "n8n Orchestration",
+      "url": "http://qldapm-n8n-main:5678",
+      "health": "UP",
+      "checked_at": 1793634101.9280632,
+      "check_type": "HTTP GET /healthz/readiness",
+      "latency_ms": 31.4,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED — API readiness không chứng minh workflows PASS"
+    },
+    {
+      "key": "qdrant",
+      "name": "Qdrant Vector Database",
+      "url": "http://qldapm-qdrant:6333",
+      "health": "UP",
+      "checked_at": 1793634101.9282365,
+      "check_type": "HTTP GET /collections",
+      "latency_ms": 19.5,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    },
+    {
+      "key": "ollama",
+      "name": "Ollama Local Models",
+      "url": "http://host.docker.internal:11434",
+      "health": "UP",
+      "checked_at": 1793634101.9287648,
+      "check_type": "HTTP GET /api/tags",
+      "latency_ms": 64.1,
+      "last_error": null,
+      "process_health": "NOT CHECKED",
+      "api_readiness": "HTTP_200",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    },
+    {
+      "key": "demo",
+      "name": "Demo App",
+      "url": null,
+      "health": "UNKNOWN",
+      "checked_at": null,
+      "check_type": "NOT CHECKED",
+      "latency_ms": null,
+      "last_error": "SAFE_ENDPOINT_NOT_CONFIGURED",
+      "process_health": "NOT CHECKED",
+      "api_readiness": "UNKNOWN",
+      "authentication": "NOT CHECKED",
+      "business_status": "NOT CHECKED"
+    }
+  ],
+  "report_readback": {
+    "id": "974d783b-7949-4ae1-b6bb-cb9b473ea521",
+    "report_type": "ON_DEMAND",
+    "source_state": "CURRENT",
+    "source_status": "READY",
+    "ai_narrative_status": "GENERATED"
+  },
+  "provider_inference_calls": 0,
+  "owner_uat": "PENDING OWNER"
+}

@@ -1,0 +1,183 @@
+{
+  "observed_at": "2026-10-24T22:07:11.733628+00:00",
+  "status": "PASS",
+  "checks": {
+    "18_permissions": {
+      "status": "PASS",
+      "http_status": 200,
+      "expected": 200
+    },
+    "18_qa_tool_scope": {
+      "status": "PASS"
+    },
+    "18_capture_not_qa_or_no_evidence": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "18_review_unknown_or_wrong_role": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "19_permissions": {
+      "status": "PASS",
+      "http_status": 200,
+      "expected": 200
+    },
+    "19_qa_tool_scope": {
+      "status": "PASS"
+    },
+    "19_capture_not_qa_or_no_evidence": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "19_review_unknown_or_wrong_role": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "20_permissions": {
+      "status": "PASS",
+      "http_status": 200,
+      "expected": 200
+    },
+    "20_qa_tool_scope": {
+      "status": "PASS"
+    },
+    "20_capture_not_qa_or_no_evidence": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "20_review_unknown_or_wrong_role": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "21_permissions": {
+      "status": "PASS",
+      "http_status": 200,
+      "expected": 200
+    },
+    "21_qa_tool_scope": {
+      "status": "PASS"
+    },
+    "21_capture_not_qa_or_no_evidence": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "21_review_unknown_or_wrong_role": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "22_permissions": {
+      "status": "PASS",
+      "http_status": 200,
+      "expected": 200
+    },
+    "22_qa_tool_scope": {
+      "status": "PASS"
+    },
+    "22_capture_not_qa_or_no_evidence": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "22_review_unknown_or_wrong_role": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "23_permissions": {
+      "status": "PASS",
+      "http_status": 200,
+      "expected": 200
+    },
+    "23_qa_tool_scope": {
+      "status": "PASS"
+    },
+    "23_capture_not_qa_or_no_evidence": {
+      "status": "PASS",
+      "http_status": 409,
+      "expected": 409
+    },
+    "23_review_unknown_or_wrong_role": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "anonymous_review": {
+      "status": "PASS",
+      "http_status": 401,
+      "expected": 401
+    },
+    "invalid_bearer_review": {
+      "status": "PASS",
+      "http_status": 401,
+      "expected": 401
+    },
+    "legacy_native_guard": {
+      "status": "PASS",
+      "http_status": 422,
+      "expected": 422
+    },
+    "wf11_unknown_evidence_get": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "wf11_separate_review": {
+      "status": "PASS",
+      "http_status": 403,
+      "expected": 403
+    },
+    "wf11_qa_missing_activity": {
+      "status": "PASS",
+      "http_status": 409,
+      "expected": 409
+    },
+    "wf11_forged_qa_pass": {
+      "status": "PASS",
+      "http_status": 422,
+      "expected": 422
+    },
+    "wf11_forged_approved": {
+      "status": "PASS",
+      "http_status": 422,
+      "expected": 422
+    },
+    "wf11_forged_actor_id": {
+      "status": "PASS",
+      "http_status": 422,
+      "expected": 422
+    },
+    "wf11_forged_role": {
+      "status": "PASS",
+      "http_status": 422,
+      "expected": 422
+    },
+    "wf11_forged_file_path": {
+      "status": "PASS",
+      "http_status": 422,
+      "expected": 422
+    },
+    "no_evidence_proposal_provider_or_native_sync_created": {
+      "status": "PASS",
+      "ledger": {
+        "qa_evidence": 0,
+        "proposals": 53,
+        "gemini_call_receipts": 125,
+        "gemini_usage": 130,
+        "knowledge_sync": 11
+      }
+    }
+  },
+  "business_status": "IMPLEMENTED_TESTED_PENDING_LIVE_E2E",
+  "native_writes": 0,
+  "model_starts": 0,
+  "source": "Actual deployed Main own-actor identities and WF11 hooks; no positive QA evidence fabricated"
+}

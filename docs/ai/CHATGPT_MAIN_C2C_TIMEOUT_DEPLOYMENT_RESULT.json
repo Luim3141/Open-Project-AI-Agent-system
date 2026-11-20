@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-27T04:01:51.719287+00:00",
+  "status": "DEPLOYED_HEALTHY_SOURCE_DATA_VERIFIED_RUNTIME_REGRESSION_PENDING",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:chatgpt-provider-timeout-v1-20261027",
+      "image": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-wbs-scheduled-parent-v2-20261027",
+      "image": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+    }
+  },
+  "source_before": {
+    "openproject/ai/gateway/gemini.py": "8c7ff074c2fc4335821d6e7fe5dd5c4baaae8730600c5627fbbb934e0cfae402"
+  },
+  "files": {
+    "openproject/ai/gateway/gemini.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/gemini.py",
+      "sha256": "07424e281c70adcf301b465bcdb1a5c8bded05143aba0be75c0fc077fd482bb1"
+    }
+  },
+  "qualification": {
+    "windows": {
+      "run": 739,
+      "passed": 739,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0,
+      "modules": 107,
+      "real_network": false,
+      "host_only_module_fallback": true
+    },
+    "linux_full_actual": {
+      "run": 739,
+      "passed": 722,
+      "skipped": 15,
+      "errors": 0,
+      "failures": 2,
+      "modules": 107,
+      "real_network": false,
+      "host_only_module_fallback": true
+    },
+    "linux_full_status": "PARTIAL_2_HOST_GIT_PREREQUISITE_FAILURES_RETAINED",
+    "targeted": 69,
+    "red_before_fix": "Two failures reproduce ignored90second call budget and syntheticGoogle503 receipt; thirddeadline guard alreadypassed",
+    "source_scope": "One Gateway transport module; existing source selection/count fixes retained. No Native caller, Core, schema, workflow or provider configuration change.",
+    "isolated_sdk_integration": "Real installed Google SDK with isolated httpx transport; verifies request deadline, actual-schema parsing, limited retries, deadline cap and timeout no response metadata. No real Google call in regression.",
+    "unchanged_native_paths": "C2b Main role73/contract48/read-only13, clone6 and375row preservation passed before this transport-only change; rerun Main after deployment"
+  },
+  "changed_workflows": [],
+  "unchanged_workflows": 16,
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "new_model_calls": 0,
+  "schema_changes": {
+    "native": false,
+    "gateway": false
+  },
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\provider-timeout-deployment",
+  "rollback_images": {
+    "gateway": "sha256:0b47537e22d4e72af448be6c6bd6a8b37103d1a55507aee9b56c2fbdf8ef57a6",
+    "web": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+  },
+  "authorization": "PUBLICATION_REDACTED",
+  "rollback": "Gateway-only previous0b475image/config rollback; retain all databases, provider timeout receipt and complete history. No Core/schema/workflow rollback. This is application rollback, not full DR.",
+  "scope": "Gateway-only Gemini read timeout obeys existing bounded call/run budget; other I/O caps retained30seconds; actual no-response provider receipt uses null instead of synthetic503. No automatic timeout retry, consumed run replay, quota/provider/model/RBAC/schema/Native/Core change.",
+  "other_main_containers_unchanged": 9,
+  "all_workflows_unchanged_active_source_matched": 16
+}

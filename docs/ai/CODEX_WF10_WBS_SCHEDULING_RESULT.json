@@ -1,0 +1,91 @@
+{
+  "observed_at": "2026-10-24T22:17:45.531409+00:00",
+  "project_id": 5,
+  "gateway_image": "sha256:c0f328216654478cb58dc01dad737958416882f0352c450a0ae5a80438ca6372",
+  "core_image": "sha256:dcb6018226280bde73fb8812e463bdcb5ef6896cbe9a1c65be7516d993f4a3d4",
+  "staging_operations": false,
+  "status": "PARTIAL",
+  "implemented": true,
+  "deployed": true,
+  "model_to_draft": {
+    "observed_at": "2026-10-24T22:08:17.516442+00:00",
+    "actor": 18,
+    "project_id": 5,
+    "run_id": "486bb5f1-4413-4374-b2f1-c212cf5da0eb",
+    "state": "done",
+    "status": "PASS",
+    "native_writes": 0,
+    "source_id": 371,
+    "source_version": 1,
+    "engine": "gemini_supervisor",
+    "model_call_count": 1,
+    "http_attempt_count": 2,
+    "provider_mode": "LIVE_GEMINI",
+    "business_status": "UNVERIFIED_DRAFT_ONLY_NO_NATIVE_PROPOSAL",
+    "output_hash": "b6c0628033cf0bd73361d9101a00368596784edd11959f2dce4c7099a870657f",
+    "draft_id": "a7a581ec-b991-5d22-af5b-aab1f2211c76",
+    "draft_hash": "1e182a150586c904443eb2522c04b5c47d91454bd1779edbbec3961dc7e5b85d",
+    "node_kinds": [
+      "Epic",
+      "Task",
+      "Subtask"
+    ],
+    "source_references": [
+      {
+        "lock_version": 1,
+        "work_package_id": 371
+      }
+    ],
+    "origin": {
+      "actor": 18,
+      "output_hash": "b6c0628033cf0bd73361d9101a00368596784edd11959f2dce4c7099a870657f",
+      "run_id": "486bb5f1-4413-4374-b2f1-c212cf5da0eb"
+    }
+  },
+  "existing_approved_tree": {
+    "status": "PASS",
+    "plan_id": "fc3ed472-83df-52be-9bc5-3859a111ea52",
+    "state": "VERIFIED_COMPLETED",
+    "tree": {
+      "372": {
+        "version": 1,
+        "children": [
+          373
+        ]
+      },
+      "373": {
+        "version": 1,
+        "children": [
+          374
+        ]
+      },
+      "374": {
+        "version": 0,
+        "children": []
+      }
+    }
+  },
+  "scheduling_live": {
+    "status": "PASS",
+    "artifact": "CODEX_NATIVE_SCHEDULE_E2E_RESULT.json",
+    "actor": 18,
+    "native_id": 375,
+    "version": 0,
+    "dates": [
+      "2026-10-26",
+      "2026-10-27"
+    ],
+    "priority": 8,
+    "assignee": 21,
+    "duplicate_http": 409
+  },
+  "isolated_scheduling": "9 WBS analysis cases plus existing graph/parent proof cases in433 suite; source drift after proposal, Native calendar adjustment and response-loss mismatch remain fail-closed",
+  "dependencies": "Graph/cycle/sequencing validation PASS; Native relation writes NOT_IMPLEMENTED pending versioned/derived-schedule contract",
+  "not_qualified": [
+    "New model-produced full tree has not been written to Main",
+    "Date-driven ancestor/descendant scheduling effects beyond qualified first-child proof",
+    "Native multi-WP atomic mutation"
+  ],
+  "recovery": "Per-node exact proposals/source IDs; verify receipt/RAG before next node. Unknown Native result is held, never auto-replayed.",
+  "design_preview": "CODEX_WF10_NATIVE_DEPENDENCY_DESIGN_PREVIEW.md"
+}

@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-10-21T07:33:54.508109+00:00",
+  "environment": "main",
+  "containers": {
+    "qldapm-ai-gateway-1": {
+      "image": "qldapm-ai:rd-qual-20261021-v2",
+      "image_id": "sha256:a84bc31a582b0e6e7d6cf6287c80529d8b74f3df93c834a317e33ae4b7890b2e",
+      "ports": "127.0.0.1:8090->8090/tcp",
+      "status": "Up, Healthy"
+    },
+    "qldapm-openproject-web-1": {
+      "image_id": "sha256:95da6c8eed2e",
+      "ports": "8080/tcp",
+      "status": "Up, Healthy"
+    },
+    "qldapm-openproject-proxy-1": {
+      "image_id": "sha256:d8542f48d34a",
+      "ports": "127.0.0.1:8088->80/tcp",
+      "status": "Up, Healthy"
+    },
+    "qldapm-openproject-db-1": {
+      "image_id": "sha256:2d2b8998d310",
+      "ports": "5432/tcp",
+      "status": "Up, Accepting Connections"
+    },
+    "qldapm-openproject-worker-1": {
+      "image_id": "sha256:95da6c8eed2e",
+      "ports": "8080/tcp",
+      "status": "Up"
+    },
+    "qldapm-openproject-cron-1": {
+      "image_id": "sha256:95da6c8eed2e",
+      "ports": "8080/tcp",
+      "status": "Up"
+    }
+  },
+  "target_project": {
+    "id": 5,
+    "name": "QLDAPM \u2014 Local Community",
+    "identifier": "qldapm-local",
+    "total_work_packages": 329,
+    "epics_count": 11,
+    "tasks_count": 53,
+    "subtasks_count": 265,
+    "relations_count": 344,
+    "sprints_count": 7,
+    "versions_count": 7
+  }
+}

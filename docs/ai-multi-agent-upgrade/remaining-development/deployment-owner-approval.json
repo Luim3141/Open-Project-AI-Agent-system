@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-18T14:28:05.971499+00:00",
+  "scope_sha256": "265ab363875b7ec0610e4ec90fb945382630356118ae46331e46c48609b3020f",
+  "decision": "APPROVED",
+  "owner_text": "Duy\u1ec7t tri\u1ec3n khai \u0111\u00fang ph\u1ea1m vi n\u00e0y",
+  "scope": {
+    "target": "qldapm-ai-stage",
+    "action": "application-only-rollout",
+    "images": {
+      "gateway": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea",
+      "core": "sha256:3b09393d123464a7baf4726daf69806de4754a0b1911173e6dbe58ecb3ac2f99"
+    },
+    "up_services": [
+      "staging-web",
+      "staging-gateway"
+    ],
+    "restart_existing": [
+      "local-backup"
+    ],
+    "keep_running": [
+      "db",
+      "n8n",
+      "n8n-editor",
+      "quick-tunnel"
+    ],
+    "main_changes": false,
+    "native_business_mutations": false,
+    "account_totp_rbac_changes": false,
+    "migrations": false,
+    "google_smoke": false,
+    "paid_services": false,
+    "recovery_proof_backup": "2c70757d-586c-4c20-b876-7d464778e9ba",
+    "operator_source_sha256": "9652eb424e8642e6ed398d123518849781aeef79b68b71c9c6df44ba3d8dd889",
+    "approval_sha256": "265ab363875b7ec0610e4ec90fb945382630356118ae46331e46c48609b3020f"
+  },
+  "executed": true,
+  "execution_started_at": "2026-10-18T14:29:06.476239+00:00",
+  "apply_finished_at": "2026-10-18T14:29:46.812309+00:00"
+}

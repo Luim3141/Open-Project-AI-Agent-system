@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-26T18:46:07.153654+00:00",
+  "status": "PASS_INDEPENDENT_PM19_EXACT_SOURCE_ANALYSIS_REVIEW_READBACK",
+  "phase": {
+    "actor": 20,
+    "created_at": 1793038497.7017496,
+    "gate_revision": 2,
+    "id": "347fd46f-3215-56ae-a1cf-aa7ea081e3b1",
+    "kind": "analysis",
+    "project_id": 5,
+    "source": {
+      "description": "## Report and reproduction\nTechnical acceptance resource for approved Task[Bug] mapping and Owner18 Native pipeline; isolated lifecycle fixtures already qualified.\n\n## Expected/actual behavior\nExpected: An exact human-approved Task1/NEW1 create with own Owner18 author, Native readback and RAG sync; all existing work packages preserved.\nActual: Native mutation not executed at proposal time. Later assignment/fix/retest/review/status changes require new concrete proposals and approvals.\n\n## Severity and source evidence\nSeverity: low\nCODEX_WF09_MAIN_QUALIFICATION_RESULT.json; CODEX_OWNER_NATIVE_E2E_DRIVER_BOUNDARY_RESULT.json\nEvidence verification: NOT_VERIFIED_BY_SYSTEM\n\n## Duplicate references\nNo lexical candidate in current visible snapshot; not proof of uniqueness.\nDisposition: No candidate to disposition\n\n## Fix tracking\nNot submitted\n\n## QA retest evidence\nNot submitted; NOT_VERIFIED_BY_SYSTEM\n\n## Review\nNot submitted\n\n## Proposed real application-defect binding (human-approved scope required)\nStory: A PM converts a cited BA WBS into Native Epic/Task/Subtask nodes with explicit source dates and dependencies, without rewriting model business output or bypassing independent approvals.\nScope: QLDAPM Main WBS adapter and exact Native dated-parent verifier only. This maps the retained technical test Bug to the real defect reproduced during the approved BA run; no unrelated product feature or full application QA claim.\nAnalysis: Valid uppercase BA node keys failed Native key validation. After encoding, an actual Native clone stopped SOURCE_CHANGED because dated-child aggregation saved a parent twice and expanded parent data changed inside a child API response. The corrected code preserves raw BA output hash, verifies each own child receipt and exact model chain/calendar, and excludes expanded related resources from WP identity. Unknown children, unrelated model fields and excess versions remain held.\nAC1: Application regression NativeWbsAnalysisTests.test_model_uppercase_keys_are_encoded_without_changing_business_graph_or_source preserves raw output hash, graph, requirements and scheduling; collisions and dangling references are rejected.\nAC2: Application regression ScheduledParentEffectsTests.test_exact_native_two_save_first_child_and_later_child_chain verifies the dated-parent model chain using exact own child receipts and Native calendar evidence.\nAC3: Application regressions ScheduledParentEffectsTests.test_business_edit_unknown_child_extra_version_and_bad_calendar_are_not_parent_effects and test_expanded_parent_changes_do_not_change_the_verified_work_package retain fail-closed source protection while allowing unrelated expanded-parent data to refresh.\nAC4: Actual isolated Native qualification CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json reaches VERIFIED_COMPLETED for four nodes, exact supplied dates and follows lag0, with current RAG citations and one create after lost acknowledgment. Simulated isolated decisions and synthetic embeddings are explicitly labelled; no Main business mutation or human QA decision is inferred.\nEvidence scope: These are actual application-code and isolated Native results for this WBS defect. Existing accepted technical readback evidence for WP375 does not verify this Bug. Future fix/build/QA/retest/closure still requires an admitted producer, independent human reviews and separate exact Native transition approvals.\nCode provenance: CODEX_WF10_FINAL_SCHEDULE_DEPLOYMENT_RESULT.json pins the deployed Gateway/Core/source hashes; raw BA output hash 4bcbbd93eeb110f99bab1b66846c814cda1af09ded78d2a18c209a63121a9ae7 remains unchanged. Preserve all prior technical qualification text above.\n",
+      "fields": {
+        "assignee_id": 21,
+        "dueDate": null,
+        "parent_id": null,
+        "priority_id": 8,
+        "priority_name": "Normal",
+        "startDate": null,
+        "status_id": 1,
+        "subject": "[Bug] [CODEX TEST] Controlled Native Bug lifecycle qualification a29a433d248c",
+        "type_id": 1
+      },
+      "id": 371,
+      "project": "/api/v3/projects/5",
+      "version": 2
+    },
+    "version": 1,
+    "hash": "cd4592d0398bc980665e64858783c4abbeb235e1da914abcc0a0a0413287a060",
+    "state": "accepted",
+    "source_current": true,
+    "review": {
+      "actor": 19,
+      "approvals": [
+        "scope",
+        "analysis"
+      ],
+      "artifact_id": "347fd46f-3215-56ae-a1cf-aa7ea081e3b1",
+      "at": 1793040197.578147,
+      "decision": "accept",
+      "hash": "cd4592d0398bc980665e64858783c4abbeb235e1da914abcc0a0a0413287a060",
+      "kind": "analysis",
+      "role": "PM"
+    },
+    "can_review": false,
+    "reviewer_current": true,
+    "status_options": [
+      {
+        "id": 1,
+        "name": "NEW"
+      },
+      {
+        "id": 37,
+        "name": "IN ANALYSIS"
+      }
+    ]
+  },
+  "main_native_writes": 0,
+  "human_decisions_by_agent": 0,
+  "new_model_calls": 0,
+  "native_transition_authorized": false,
+  "scope": "Human PM19 accepted source scope/analysis only; signed review and fresh reviewer authorization validated by Gateway"
+}

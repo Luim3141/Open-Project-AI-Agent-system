@@ -1,0 +1,19 @@
+{
+  "workflow_id": "BpCQrGR866vg4BqQ",
+  "previous_version": "0325527a-a37d-4996-859e-45003bd7fc80",
+  "candidate_sha256": "73f9ac1588902830c2adde7eaf04a3fa7ba5bf9919cc4ddf7ea065e46a1b4ca4",
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "n8n_backup_sha256": "dba5eb611087ef0df8f247761002a53e204427910dcb5fe34622b1e48ba91cfc",
+  "scope": "Only WF07 nodes/connections/settings: fixed signed daily_brief, existing machine credential refs,08:00Asia/Bangkok; Gateway image/Core/WF16 unchanged",
+  "qualification": "Temporarily set WF07 cron to a single upcoming date/minute, wait for real scheduled receipt and five actor reports, then always restore08:00daily; no manual webhook before scheduled run",
+  "tests_passed": 23,
+  "credential_changes": false,
+  "native_business_writes": false,
+  "staging_operations": false,
+  "rollback": "Restore private old WF07 snapshot/activate returned version; keep Gateway daily reports/receipts, never replay Native writes",
+  "limitations": [
+    "Daily summaries deterministic, zero LLM",
+    "No external notifications authorized/sent",
+    "Partial/failure receipt is durable and not automatically re-collected same day"
+  ]
+}

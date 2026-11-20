@@ -1,0 +1,85 @@
+{
+  "status": "OWNER_NATIVE_TRANSITION_READBACK",
+  "route": "EXISTING_NATIVE_API_WITH_EXPLICIT_OWNER_APPROVAL",
+  "actor_id": 18,
+  "task_id": 397,
+  "before": {
+    "version": 10,
+    "status": "READY FOR RELEASE"
+  },
+  "after": {
+    "version": 11,
+    "business_status": "DONE",
+    "workflow_status": "COMPLETED",
+    "acceptance_status": "NOT_RECORDED",
+    "acceptance": {
+      "status": "NOT_RECORDED",
+      "required_gates": [
+        {
+          "name": "runtime_delivery",
+          "passed": true
+        },
+        {
+          "name": "recorded_stage_plan",
+          "passed": true
+        },
+        {
+          "name": "dev_commit",
+          "passed": true
+        },
+        {
+          "name": "independent_review",
+          "passed": true
+        },
+        {
+          "name": "qa_passed",
+          "passed": true
+        },
+        {
+          "name": "handoff",
+          "passed": true
+        },
+        {
+          "name": "native_final_gate",
+          "passed": false
+        },
+        {
+          "name": "owner_approval",
+          "passed": false
+        }
+      ],
+      "missing_gates": [
+        "native_final_gate",
+        "owner_approval"
+      ],
+      "evidence_refs": [
+        {
+          "source_system": "AGENT_RUNTIME",
+          "source_record_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+          "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079"
+        }
+      ],
+      "owner_approval": null,
+      "source_contract": "NATIVE_FINAL_JOURNAL_AND_EXACT_RUNTIME_REVIEW_QA_V1"
+    },
+    "source_conflicts": [],
+    "notification_events": [
+      {
+        "event_id": "b41aae14b1704b8792076706a77117539e0f6cb20d6d017efd609cdbcc7bb953",
+        "event_type": "PR_CREATED",
+        "task_id": 397,
+        "project_id": 6,
+        "workflow_run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+        "source_record_id": "a3f592fc-b91e-4f57-a812-a930bb20e079:pr",
+        "timestamp": 1793908417.6663103,
+        "uri": "https://github.com/Luim3141/mini-task-manager/pull/14"
+      }
+    ]
+  },
+  "request_key": "owner-native-397-045c95a4f5b73b32b90d65966c19c97c873f8e8f-v10",
+  "pr": {
+    "headRefOid": "045c95a4f5b73b32b90d65966c19c97c873f8e8f",
+    "state": "OPEN",
+    "url": "https://github.com/Luim3141/mini-task-manager/pull/14"
+  }
+}

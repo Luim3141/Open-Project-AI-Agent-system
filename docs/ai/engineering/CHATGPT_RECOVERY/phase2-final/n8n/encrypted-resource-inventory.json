@@ -1,0 +1,953 @@
+{
+  "started_at": "2026-11-02T07:49:46.534544+00:00",
+  "completed_at": "2026-11-02T07:49:52.673291+00:00",
+  "image": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "-i",
+    "--pull",
+    "never",
+    "--network",
+    "none",
+    "--memory",
+    "768m",
+    "--memory-swap",
+    "768m",
+    "--read-only",
+    "--tmpfs",
+    "/tmp:rw,uid=1000,gid=1000,mode=0700,size=512m",
+    "--mount",
+    "type=bind,source=C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\portable-n8n-recovery-8a61c9795ada\\ciphertext,target=/kit,readonly",
+    "--entrypoint",
+    "node",
+    "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+    "-e",
+    "const fs=require('fs'),cp=require('child_process'),crypto=require('crypto'),assert=require('assert/strict');const key=fs.readFileSync(0);const restored=cp.spawnSync('node',['/kit/portable_recovery_restore.js','/kit/n8n-recovery-v1.aesgcm'],{input:key,encoding:'utf8',timeout:180000,maxBuffer:1024*1024});assert.equal(restored.status,0,'RESTORE_FAILED');const sqlite=require(require.resolve('sqlite3',{paths:['/usr/local/lib/node_modules/n8n']}));const db=new sqlite.Database('/tmp/restore/.n8n/database.sqlite');const q=sql=>new Promise((resolve,reject)=>db.all(sql,(e,r)=>e?reject(e):resolve(r)));const quote=s=>'\"'+s.replaceAll('\"','\"\"')+'\"';(async()=>{const tables=await q(\"SELECT name FROM sqlite_master WHERE type='table' ORDER BY name\");const candidates=[];for(const {name} of tables){const cols=await q('PRAGMA table_info('+quote(name)+')');for(const col of cols){if(/secret|password|token|private.?key|credential|encrypted|provider/i.test(col.name)){const n=(await q('SELECT count(*) n FROM '+quote(name)+' WHERE '+quote(col.name)+' IS NOT NULL AND CAST('+quote(col.name)+\" AS TEXT)<>''\"))[0].n;candidates.push({table:name,column:col.name,nonempty:n});}}}const deployment=await q('SELECT type,algorithm,count(*) n FROM deployment_key GROUP BY type,algorithm ORDER BY type,algorithm');const callsites=[];const walk=dir=>{for(const e of fs.readdirSync(dir,{withFileTypes:true})){const path=dir+'/'+e.name;if(e.isDirectory())walk(path);else if(e.name.endsWith('.js')){const source=fs.readFileSync(path,'utf8');const lines=source.split('\\n');for(let i=0;i<lines.length;i++)if(/\\.(encryptV2|decryptV2|encryptWithInstanceKey|decryptWithInstanceKey|encryptDEKWithInstanceKey|decryptDEKWithInstanceKey)\\(/.test(lines[i]))callsites.push({path:path.replace('/usr/local/lib/node_modules/n8n/',''),line:i+1,methods:[...lines[i].matchAll(/\\.(encryptV2|decryptV2|encryptWithInstanceKey|decryptWithInstanceKey|encryptDEKWithInstanceKey|decryptDEKWithInstanceKey)\\(/g)].map(m=>m[1]),file_sha256:crypto.createHash('sha256').update(source).digest('hex')});}}};walk('/usr/local/lib/node_modules/n8n/dist');console.log(JSON.stringify({status:'READ_ONLY_ENCRYPTED_RESOURCE_CANDIDATE_INVENTORY',restored:JSON.parse(restored.stdout),database_candidate_columns:candidates,deployment_key_types:deployment,vendor_cipher_callsites:callsites,limitations:'Candidate columns are not proof of encryption algorithm or exhaustive feature data; no values emitted'}));db.close();})().catch(e=>{console.log(JSON.stringify({status:'FAILED',error_type:e.name}));db.close();process.exitCode=1;});"
+  ],
+  "result": {
+    "status": "READ_ONLY_ENCRYPTED_RESOURCE_CANDIDATE_INVENTORY",
+    "restored": {
+      "status": "PORTABLE_LINUX_RESTORE_VERIFIED_OLD_KEY_ONLY",
+      "node_version": "v26.7.0",
+      "schema": "qldapm.n8n.recovery-payload.v1",
+      "original_bytes_match_manifest": true,
+      "aes_gcm_tag_verified": true,
+      "tampered_ciphertext_rejected": true,
+      "wrong_key_rejected": true,
+      "wrong_aad_rejected": true,
+      "recovery_key_transport": "stdin_only_32_raw_bytes",
+      "n8n_key_transport": "original_config_inside_tmpfs_only",
+      "no_dpapi_in_container": true,
+      "decrypted_credentials": 4,
+      "integrity": "ok",
+      "workflows": {
+        "total": 16,
+        "active": 16
+      },
+      "published": 16,
+      "workflow_sharing": 16,
+      "credential_sharing": 4,
+      "owners": 1,
+      "n8n_version": "2.43.6",
+      "n8n_export_command_sha256": "cc7e9940b78ec97bf73e8ecb29ea6edcd03e6c30e5b79441bc77bed4348a058a"
+    },
+    "database_candidate_columns": [
+      {
+        "table": "agent_channel_status",
+        "column": "credentialId",
+        "nonempty": 0
+      },
+      {
+        "table": "agent_chat_subscriptions",
+        "column": "credentialId",
+        "nonempty": 0
+      },
+      {
+        "table": "agent_credential_dependency",
+        "column": "credentialId",
+        "nonempty": 0
+      },
+      {
+        "table": "agent_execution",
+        "column": "promptTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "agent_execution",
+        "column": "completionTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "agent_execution",
+        "column": "totalTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "agent_execution_threads",
+        "column": "totalPromptTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "agent_execution_threads",
+        "column": "totalCompletionTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "agents_observations",
+        "column": "tokenCount",
+        "nonempty": 0
+      },
+      {
+        "table": "auth_identity",
+        "column": "providerId",
+        "nonempty": 0
+      },
+      {
+        "table": "auth_identity",
+        "column": "providerType",
+        "nonempty": 0
+      },
+      {
+        "table": "auth_provider_sync_history",
+        "column": "providerType",
+        "nonempty": 0
+      },
+      {
+        "table": "chat_hub_agents",
+        "column": "credentialId",
+        "nonempty": 0
+      },
+      {
+        "table": "chat_hub_agents",
+        "column": "provider",
+        "nonempty": 0
+      },
+      {
+        "table": "chat_hub_messages",
+        "column": "provider",
+        "nonempty": 0
+      },
+      {
+        "table": "chat_hub_sessions",
+        "column": "credentialId",
+        "nonempty": 0
+      },
+      {
+        "table": "chat_hub_sessions",
+        "column": "provider",
+        "nonempty": 0
+      },
+      {
+        "table": "credential_dependency",
+        "column": "credentialId",
+        "nonempty": 0
+      },
+      {
+        "table": "dynamic_credential_entry",
+        "column": "credential_id",
+        "nonempty": 0
+      },
+      {
+        "table": "dynamic_credential_user_entry",
+        "column": "credentialId",
+        "nonempty": 0
+      },
+      {
+        "table": "execution_entity",
+        "column": "usedPrivateCredentials",
+        "nonempty": 594
+      },
+      {
+        "table": "instance_ai_mcp_registry_connections",
+        "column": "credentialId",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_ai_observational_memory",
+        "column": "pendingMessageTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_ai_observational_memory",
+        "column": "totalTokensObserved",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_ai_observational_memory",
+        "column": "observationTokenCount",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_ai_observational_memory",
+        "column": "bufferedObservationTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_ai_observational_memory",
+        "column": "bufferedReflectionTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_ai_observational_memory",
+        "column": "bufferedReflectionInputTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_ai_observational_memory",
+        "column": "lastBufferedAtTokens",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_ai_observations",
+        "column": "tokenCount",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_credential_assignment",
+        "column": "credentialUseId",
+        "nonempty": 0
+      },
+      {
+        "table": "instance_credential_assignment",
+        "column": "credentialId",
+        "nonempty": 0
+      },
+      {
+        "table": "invalid_auth_token",
+        "column": "token",
+        "nonempty": 0
+      },
+      {
+        "table": "oauth_access_tokens",
+        "column": "token",
+        "nonempty": 0
+      },
+      {
+        "table": "oauth_clients",
+        "column": "clientSecret",
+        "nonempty": 0
+      },
+      {
+        "table": "oauth_clients",
+        "column": "clientSecretExpiresAt",
+        "nonempty": 0
+      },
+      {
+        "table": "oauth_clients",
+        "column": "tokenEndpointAuthMethod",
+        "nonempty": 0
+      },
+      {
+        "table": "oauth_refresh_tokens",
+        "column": "token",
+        "nonempty": 0
+      },
+      {
+        "table": "project_secrets_provider_access",
+        "column": "secretsProviderConnectionId",
+        "nonempty": 0
+      },
+      {
+        "table": "promotion_connection",
+        "column": "providerId",
+        "nonempty": 0
+      },
+      {
+        "table": "secrets_provider_connection",
+        "column": "providerKey",
+        "nonempty": 0
+      },
+      {
+        "table": "secrets_provider_connection",
+        "column": "encryptedSettings",
+        "nonempty": 0
+      },
+      {
+        "table": "shared_credentials",
+        "column": "credentialsId",
+        "nonempty": 4
+      },
+      {
+        "table": "user",
+        "column": "password",
+        "nonempty": 1
+      },
+      {
+        "table": "user",
+        "column": "mfaSecret",
+        "nonempty": 0
+      }
+    ],
+    "deployment_key_types": [
+      {
+        "type": "data_encryption",
+        "algorithm": "aes-256-cbc",
+        "n": 1
+      },
+      {
+        "type": "data_encryption",
+        "algorithm": "aes-256-gcm",
+        "n": 1
+      },
+      {
+        "type": "instance.id",
+        "algorithm": null,
+        "n": 1
+      },
+      {
+        "type": "jwe.private-key",
+        "algorithm": "RSA-OAEP-256",
+        "n": 1
+      },
+      {
+        "type": "oauth-server.signing-key",
+        "algorithm": "ES256",
+        "n": 1
+      },
+      {
+        "type": "signing.binary_data",
+        "algorithm": "aes-256-gcm",
+        "n": 1
+      },
+      {
+        "type": "signing.hmac",
+        "algorithm": "aes-256-gcm",
+        "n": 1
+      },
+      {
+        "type": "signing.jwt",
+        "algorithm": "aes-256-gcm",
+        "n": 1
+      }
+    ],
+    "vendor_cipher_callsites": [
+      {
+        "path": "dist/commands/import/credentials.js",
+        "line": 236,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "baa6edafe483b4785d3ea162792d87087765c07f5dfc0455eeb88993db1818f3"
+      },
+      {
+        "path": "dist/commands/import/credentials.js",
+        "line": 314,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "baa6edafe483b4785d3ea162792d87087765c07f5dfc0455eeb88993db1818f3"
+      },
+      {
+        "path": "dist/credentials/dynamic-credentials-proxy.js",
+        "line": 63,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "9eef3ce4da8861328090807c24bfd562a684214d41b6795ca3ff4d629da7486e"
+      },
+      {
+        "path": "dist/credentials-overwrites.js",
+        "line": 63,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "3fa2107bfaef5c6058a84efa1c9ff43f603bbe4d54da52c13fc65c242202e4ac"
+      },
+      {
+        "path": "dist/credentials-overwrites.js",
+        "line": 82,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "3fa2107bfaef5c6058a84efa1c9ff43f603bbe4d54da52c13fc65c242202e4ac"
+      },
+      {
+        "path": "dist/encryption/key-manager.service.js",
+        "line": 87,
+        "methods": [
+          "decryptWithInstanceKey"
+        ],
+        "file_sha256": "347a8bd37d705e05b29e3450f92ea56e7ca9ed0cfc0960aa88e0242317ed3a4c"
+      },
+      {
+        "path": "dist/encryption/key-manager.service.js",
+        "line": 100,
+        "methods": [
+          "decryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "347a8bd37d705e05b29e3450f92ea56e7ca9ed0cfc0960aa88e0242317ed3a4c"
+      },
+      {
+        "path": "dist/encryption/key-manager.service.js",
+        "line": 113,
+        "methods": [
+          "encryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "347a8bd37d705e05b29e3450f92ea56e7ca9ed0cfc0960aa88e0242317ed3a4c"
+      },
+      {
+        "path": "dist/encryption/key-manager.service.js",
+        "line": 145,
+        "methods": [
+          "encryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "347a8bd37d705e05b29e3450f92ea56e7ca9ed0cfc0960aa88e0242317ed3a4c"
+      },
+      {
+        "path": "dist/encryption/key-manager.service.js",
+        "line": 151,
+        "methods": [
+          "encryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "347a8bd37d705e05b29e3450f92ea56e7ca9ed0cfc0960aa88e0242317ed3a4c"
+      },
+      {
+        "path": "dist/encryption/key-manager.service.js",
+        "line": 162,
+        "methods": [
+          "encryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "347a8bd37d705e05b29e3450f92ea56e7ca9ed0cfc0960aa88e0242317ed3a4c"
+      },
+      {
+        "path": "dist/encryption/key-manager.service.js",
+        "line": 182,
+        "methods": [
+          "encryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "347a8bd37d705e05b29e3450f92ea56e7ca9ed0cfc0960aa88e0242317ed3a4c"
+      },
+      {
+        "path": "dist/instance-settings-loader/loaders/sso/oidc.instance-settings-loader.js",
+        "line": 81,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "881cfd8d9e04a0b51dc1d5edbcd086cbb36c2cff65e516d305557d3ea6a0c736"
+      },
+      {
+        "path": "dist/mfa/mfa.service.js",
+        "line": 75,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "58cf708e1dab7a018ff7d6b117f6f9490144af7b6095e12697e4db4b20ef1d27"
+      },
+      {
+        "path": "dist/mfa/mfa.service.js",
+        "line": 76,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "58cf708e1dab7a018ff7d6b117f6f9490144af7b6095e12697e4db4b20ef1d27"
+      },
+      {
+        "path": "dist/mfa/mfa.service.js",
+        "line": 84,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "58cf708e1dab7a018ff7d6b117f6f9490144af7b6095e12697e4db4b20ef1d27"
+      },
+      {
+        "path": "dist/mfa/mfa.service.js",
+        "line": 85,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "58cf708e1dab7a018ff7d6b117f6f9490144af7b6095e12697e4db4b20ef1d27"
+      },
+      {
+        "path": "dist/mfa/mfa.service.js",
+        "line": 97,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "58cf708e1dab7a018ff7d6b117f6f9490144af7b6095e12697e4db4b20ef1d27"
+      },
+      {
+        "path": "dist/mfa/mfa.service.js",
+        "line": 101,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "58cf708e1dab7a018ff7d6b117f6f9490144af7b6095e12697e4db4b20ef1d27"
+      },
+      {
+        "path": "dist/mfa/mfa.service.js",
+        "line": 106,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "58cf708e1dab7a018ff7d6b117f6f9490144af7b6095e12697e4db4b20ef1d27"
+      },
+      {
+        "path": "dist/modules/agents/integrations/platforms/slack/slack-managed-setup.service.js",
+        "line": 556,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "647481889236461a791b7b546be72091ea9411f47e87ad7556de852ba7d626f3"
+      },
+      {
+        "path": "dist/modules/agents/integrations/platforms/slack/slack-methods.service.js",
+        "line": 154,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "cf74c9d3d9c5883236da238db82693b16df21aec729b19656e756307fa3b2d1c"
+      },
+      {
+        "path": "dist/modules/agents/integrations/platforms/slack/slack-methods.service.js",
+        "line": 158,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "cf74c9d3d9c5883236da238db82693b16df21aec729b19656e756307fa3b2d1c"
+      },
+      {
+        "path": "dist/modules/chat-hub/chat-hub-extractor.js",
+        "line": 71,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "7e1fcb0dc8764aab09441d46a03bc4ea85e7765a32b95a5df7d20c6c2b5d3140"
+      },
+      {
+        "path": "dist/modules/chat-hub/chat-hub-workflow.service.js",
+        "line": 871,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "936e0b87c80c4b87dcb066b55d282458cc22d3b42eb35f3ad7a8823ab37799b2"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/credential-resolvers/n8n-credential-resolver.js",
+        "line": 38,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "c2058992ea9d333f7f8ceefb84b61926d950f7f6a0d3ac8c4b7455499dc2a870"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/credential-resolvers/n8n-credential-resolver.js",
+        "line": 50,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "c2058992ea9d333f7f8ceefb84b61926d950f7f6a0d3ac8c4b7455499dc2a870"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/credential-resolvers/oauth-credential-resolver.js",
+        "line": 124,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "cbc78a1b794eeb4fa5ca7358e78fe1543beac4cb0928234a6609f944af1ac36a"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/credential-resolvers/oauth-credential-resolver.js",
+        "line": 137,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "cbc78a1b794eeb4fa5ca7358e78fe1543beac4cb0928234a6609f944af1ac36a"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/credential-resolvers/slack-credential-resolver.js",
+        "line": 70,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "4eb71e3d7b0bf35c978267fb666e167d348bb2cfaed9471d03ac7daacdb7b71c"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/credential-resolvers/slack-credential-resolver.js",
+        "line": 81,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "4eb71e3d7b0bf35c978267fb666e167d348bb2cfaed9471d03ac7daacdb7b71c"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/dynamic-credentials.controller.js",
+        "line": 93,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "ebcb43725c2efdcd1f09b4077995d4bd5ac757bbbdd1a2f13fe929220d064d68"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/dynamic-credentials.controller.js",
+        "line": 113,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "ebcb43725c2efdcd1f09b4077995d4bd5ac757bbbdd1a2f13fe929220d064d68"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/services/credential-connection-status.service.js",
+        "line": 56,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "52117ea0bf48e0720dd077e1927fe760aa30e60c323f91486e02baaa0c8e7a81"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/services/credential-resolver-workflow.service.js",
+        "line": 55,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "fd36eee301f2bcb0881d2bfdf758608a3dac6b1f81e3f73a6e0f83f55ab1e75e"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/services/credential-resolver.service.js",
+        "line": 186,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "01757d2816134b06bd13ff7dbf3c8a25da818463d6a17f71be145bea4e58b1e7"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/services/credential-resolver.service.js",
+        "line": 189,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "01757d2816134b06bd13ff7dbf3c8a25da818463d6a17f71be145bea4e58b1e7"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/services/dynamic-credential-storage.service.js",
+        "line": 57,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "c45708c7cf3aae4fa4a78e37e171b22ae797409ef0a1a039a209c741ed8c9397"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/services/dynamic-credential.service.js",
+        "line": 79,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "cb3b12be92d4a5fe91bd5d6bbf44c09e4ef456af5e4831e46e493aa4990ca71e"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/services/dynamic-credential.service.js",
+        "line": 125,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "cb3b12be92d4a5fe91bd5d6bbf44c09e4ef456af5e4831e46e493aa4990ca71e"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/services/dynamic-credential.service.js",
+        "line": 143,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "cb3b12be92d4a5fe91bd5d6bbf44c09e4ef456af5e4831e46e493aa4990ca71e"
+      },
+      {
+        "path": "dist/modules/dynamic-credentials.ee/services/n8n-resolver-seeder.service.js",
+        "line": 33,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "4f11407396808943b6aa1a40a40ccd6a7435448390ee2498d3601ecc5f4d77e6"
+      },
+      {
+        "path": "dist/modules/external-secrets.ee/external-secrets-manager.ee.js",
+        "line": 258,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "87bce62054cf2bb644104b77fcfba9575551cebcf83732f0a5a3d14401a6433c"
+      },
+      {
+        "path": "dist/modules/external-secrets.ee/secrets-providers-connections.service.ee.js",
+        "line": 316,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "c45289cd49325cae1c11342c71e6ded2181a6afc96a2ae2c84d6e91f709faed6"
+      },
+      {
+        "path": "dist/modules/external-secrets.ee/secrets-providers-connections.service.ee.js",
+        "line": 348,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "c45289cd49325cae1c11342c71e6ded2181a6afc96a2ae2c84d6e91f709faed6"
+      },
+      {
+        "path": "dist/modules/external-secrets.ee/settings-store.service.js",
+        "line": 78,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "a57d64c888f5ecb6f4fb94464d98235e753e0d74ffbb1bd310530d5acf519c0a"
+      },
+      {
+        "path": "dist/modules/external-secrets.ee/settings-store.service.js",
+        "line": 87,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "a57d64c888f5ecb6f4fb94464d98235e753e0d74ffbb1bd310530d5acf519c0a"
+      },
+      {
+        "path": "dist/modules/inbound-auth-core/trusted-source.store.js",
+        "line": 74,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "2abf57b909d882322a2552b4102fe7008f3ef740332d66dd4f7cbc7add708b95"
+      },
+      {
+        "path": "dist/modules/inbound-auth-core/trusted-source.store.js",
+        "line": 89,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "2abf57b909d882322a2552b4102fe7008f3ef740332d66dd4f7cbc7add708b95"
+      },
+      {
+        "path": "dist/modules/inbound-auth-core/trusted-source.store.js",
+        "line": 126,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "2abf57b909d882322a2552b4102fe7008f3ef740332d66dd4f7cbc7add708b95"
+      },
+      {
+        "path": "dist/modules/ldap.ee/ldap.service.ee.js",
+        "line": 71,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "9228098a8808f436b004deaa78b005f11ec2fc3ca8f40020c07b1bb35590a3b0"
+      },
+      {
+        "path": "dist/modules/ldap.ee/ldap.service.ee.js",
+        "line": 87,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "9228098a8808f436b004deaa78b005f11ec2fc3ca8f40020c07b1bb35590a3b0"
+      },
+      {
+        "path": "dist/modules/oauth-jwe/oauth-jwe-key.service.js",
+        "line": 65,
+        "methods": [
+          "decryptWithInstanceKey"
+        ],
+        "file_sha256": "4d64b28d9f5f22e9048727b1858d7a357e0c3e134bc01d67f82a3dae39253369"
+      },
+      {
+        "path": "dist/modules/oauth-jwe/oauth-jwe-key.service.js",
+        "line": 67,
+        "methods": [
+          "decryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "4d64b28d9f5f22e9048727b1858d7a357e0c3e134bc01d67f82a3dae39253369"
+      },
+      {
+        "path": "dist/modules/oauth-jwe/oauth-jwe-key.service.js",
+        "line": 131,
+        "methods": [
+          "encryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "4d64b28d9f5f22e9048727b1858d7a357e0c3e134bc01d67f82a3dae39253369"
+      },
+      {
+        "path": "dist/modules/oauth-server/oauth-signing-key.service.js",
+        "line": 84,
+        "methods": [
+          "decryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "16b384b4df2d22f0626b3c37abe437212f95252eabea03846e37494c25b81317"
+      },
+      {
+        "path": "dist/modules/oauth-server/oauth-signing-key.service.js",
+        "line": 103,
+        "methods": [
+          "encryptDEKWithInstanceKey"
+        ],
+        "file_sha256": "16b384b4df2d22f0626b3c37abe437212f95252eabea03846e37494c25b81317"
+      },
+      {
+        "path": "dist/modules/promotions.ee/promotion-providers.service.js",
+        "line": 86,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "a6c23611c7812392d70ee734cc2813fe0e6add99f61cec78a8a8a91fdf9537e9"
+      },
+      {
+        "path": "dist/modules/promotions.ee/promotion-providers.service.js",
+        "line": 140,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "a6c23611c7812392d70ee734cc2813fe0e6add99f61cec78a8a8a91fdf9537e9"
+      },
+      {
+        "path": "dist/modules/runtime-credentials/runtime-credentials-access.service.js",
+        "line": 23,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "2a431b5ddde9d65c9034135c6bbfdc0ecc399c2803368a58750a88ddc8f6ded1"
+      },
+      {
+        "path": "dist/modules/source-control.ee/source-control-preferences.service.ee.js",
+        "line": 98,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "73a44ce5766b7c75755543005c641965e02ecbf4e2aea2e6579b2af4aab1f334"
+      },
+      {
+        "path": "dist/modules/source-control.ee/source-control-preferences.service.ee.js",
+        "line": 115,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "73a44ce5766b7c75755543005c641965e02ecbf4e2aea2e6579b2af4aab1f334"
+      },
+      {
+        "path": "dist/modules/source-control.ee/source-control-preferences.service.ee.js",
+        "line": 116,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "73a44ce5766b7c75755543005c641965e02ecbf4e2aea2e6579b2af4aab1f334"
+      },
+      {
+        "path": "dist/modules/source-control.ee/source-control-preferences.service.ee.js",
+        "line": 124,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "73a44ce5766b7c75755543005c641965e02ecbf4e2aea2e6579b2af4aab1f334"
+      },
+      {
+        "path": "dist/modules/source-control.ee/source-control-preferences.service.ee.js",
+        "line": 125,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "73a44ce5766b7c75755543005c641965e02ecbf4e2aea2e6579b2af4aab1f334"
+      },
+      {
+        "path": "dist/modules/source-control.ee/source-control-preferences.service.ee.js",
+        "line": 202,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "73a44ce5766b7c75755543005c641965e02ecbf4e2aea2e6579b2af4aab1f334"
+      },
+      {
+        "path": "dist/modules/sso-oidc/oidc.service.ee.js",
+        "line": 301,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "882a591ca7d4eeaa0594e172077461de1970ad9110390622af38aa4ee112d406"
+      },
+      {
+        "path": "dist/modules/sso-oidc/oidc.service.ee.js",
+        "line": 305,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "882a591ca7d4eeaa0594e172077461de1970ad9110390622af38aa4ee112d406"
+      },
+      {
+        "path": "dist/modules/sso-oidc/oidc.service.ee.js",
+        "line": 479,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "882a591ca7d4eeaa0594e172077461de1970ad9110390622af38aa4ee112d406"
+      },
+      {
+        "path": "dist/modules/sso-oidc/oidc.service.ee.js",
+        "line": 526,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "882a591ca7d4eeaa0594e172077461de1970ad9110390622af38aa4ee112d406"
+      },
+      {
+        "path": "dist/modules/sso-saml/saml.service.ee.js",
+        "line": 95,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "ce93119c46abbab523d1acb92a229b6f73e05869deb10056232f3dc125d9f1ff"
+      },
+      {
+        "path": "dist/modules/sso-saml/saml.service.ee.js",
+        "line": 456,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "ce93119c46abbab523d1acb92a229b6f73e05869deb10056232f3dc125d9f1ff"
+      },
+      {
+        "path": "dist/oauth/oauth.service.js",
+        "line": 315,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "d090f8a1bf247a3f566044270918ef222abcee8beeaeee9bb3b2c51c2d076888"
+      },
+      {
+        "path": "dist/services/export.service.js",
+        "line": 56,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "cc3c99a7d25097f4f118ad9a4ec82c596d7bd3d5011c65c78c59937e7db9dc22"
+      },
+      {
+        "path": "dist/services/export.service.js",
+        "line": 119,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "cc3c99a7d25097f4f118ad9a4ec82c596d7bd3d5011c65c78c59937e7db9dc22"
+      },
+      {
+        "path": "dist/services/export.service.js",
+        "line": 221,
+        "methods": [
+          "encryptV2"
+        ],
+        "file_sha256": "cc3c99a7d25097f4f118ad9a4ec82c596d7bd3d5011c65c78c59937e7db9dc22"
+      },
+      {
+        "path": "dist/services/import.service.js",
+        "line": 366,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "c7ce0ec7b03dafd28a55014994dfd65d3c4e004dca5eae19e56b6f02533f1d5c"
+      },
+      {
+        "path": "dist/services/import.service.js",
+        "line": 668,
+        "methods": [
+          "decryptV2"
+        ],
+        "file_sha256": "c7ce0ec7b03dafd28a55014994dfd65d3c4e004dca5eae19e56b6f02533f1d5c"
+      }
+    ],
+    "limitations": "Candidate columns are not proof of encryption algorithm or exhaustive feature data; no values emitted"
+  }
+}

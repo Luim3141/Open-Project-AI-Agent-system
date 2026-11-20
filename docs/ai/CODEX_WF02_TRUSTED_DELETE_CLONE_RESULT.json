@@ -1,0 +1,99 @@
+{
+  "at": "2026-10-26T07:51:20.908706+00:00",
+  "status": "PASS_ACTUAL_NATIVE_DELETE_LEDGER_AND_RAG_CACHE_RECOVERY",
+  "checks": [
+    {
+      "actor": 18,
+      "native_id": 376,
+      "delete_posts": 1,
+      "lost_native_response_reconciled": true,
+      "rag": {
+        "id": "a11b7c8d-adb2-5139-b476-9a9858ad64d8",
+        "native_id": 376,
+        "state": "verified",
+        "attempts": 2,
+        "next_at": 1793001079.984711,
+        "error": null,
+        "result": {
+          "documents_removed": 3,
+          "event_id": "65e0a9b5-2fcf-4c73-95eb-74ba44044cf7",
+          "native_deleted": true,
+          "native_writes": 0,
+          "points_removed": 3,
+          "scope": "exact registered Native documents/chunks only",
+          "vector_indexed": true
+        }
+      },
+      "legacy_points_retained": 3,
+      "other_project_source_retained": true,
+      "lower_role_denials": 8,
+      "pm_delete_policy": "Native delete permission false preserved; cross-actor receipt denied422",
+      "replay_denied": true,
+      "cross_actor_receipt_denied": true
+    }
+  ],
+  "fixture_native_ids": [
+    376,
+    377
+  ],
+  "fixture_proposals": [
+    {
+      "id": "a80d0729-0dac-4937-a114-3d683a5c9d98",
+      "hash": "37042321788fff36eeb7f741e270e57f76c7362566797d14292749d5e5c498a4",
+      "actor": 18,
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    }
+  ],
+  "main_native_writes": 0,
+  "staging_operations": false,
+  "model_calls": 0,
+  "embedding_kind": "SIMULATED_FIXED_1024_VECTOR_FIXTURE; no Ollama quality claim",
+  "qdrant_scope": "fresh empty isolated Qdrant, no Main snapshot/restore",
+  "candidate_images": {
+    "database": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+    "web": "sha256:e0a840b57fac8031f2d20f8c7bc07e8f618560ec34bf1d81e14608de2d552dfd"
+  },
+  "gateway_image": "sha256:b2f2db5659d5936ea621aae68b0e04a269741b163f2f35276245d15902ddbea6",
+  "old_core_compatible_with_populated_ledger": true,
+  "rollback_core_image": "sha256:e5ec2d6426fd2fdc523a64b5d867140d63fd4265f3a8766cac5f728caac9c2a8",
+  "actual_pg_and_schema": {
+    "status": "PASS_ACTUAL_NATIVE_DELETE_PG_ATOMICITY_REPLAY_AND_SCHEMA_ROLLBACK_POLICY",
+    "checks": [
+      {
+        "case": "Native delete followed by forced event INSERT failure",
+        "status": "PASS_ACTUAL_PG_ROLLBACK",
+        "tables": [
+          "work_packages",
+          "relations",
+          "journals",
+          "attachments",
+          "custom_values",
+          "qldapm_mutation_receipts",
+          "qldapm_native_deletion_events"
+        ]
+      },
+      {
+        "case": "Exact signed replay after source removal; altered hash rejected",
+        "status": "PASS_NO_SECOND_DELETE"
+      },
+      {
+        "case": "Populated schema rollback",
+        "status": "PASS_POLICY_ENFORCED_HISTORY_RETAINED"
+      }
+    ],
+    "main_writes": 0,
+    "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+  },
+  "original_data_hashes_preserved": {
+    "relations": "352|8efb5973160c91ae1bb5b8451e5979e2",
+    "work_packages": "375|04ec20a24a553f3cea4deab0015c29ef",
+    "users": "10|10ca3b3f6ef1144f733cb777da6cbae0",
+    "user_passwords": "7|1c8c563bc72ffd2e539f6d7e4c2f7db8",
+    "two_factor_authentication_devices": "4|b967a7f8d325515bfcc415f507f3e075",
+    "tokens": "9|d2504324eea35a15febd4ed0566b1d9c",
+    "members": "7|635e9c9c13bfb9cf0f4d56e42a07e623",
+    "member_roles": "7|a401407caf4c539024415c1944cea659"
+  },
+  "migration_empty_up_down_up": "PASS_ACTUAL_NATIVE_PG",
+  "source_dump_sha256": "03276a3c73d3e660d529cd834d31d9894bea41a027734bbdcb69292262939a13"
+}

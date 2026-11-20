@@ -1,0 +1,606 @@
+{
+  "project": "QLDAPM MAIN",
+  "phase": "3.2",
+  "architecture": "QLDAPM Supervisor + OpenClaw + Gemini API",
+  "current_stage": "FUNCTIONAL_COMPLETION_PARTIAL",
+  "status": "DEPLOYED_PARTIAL_NOT_FUNCTIONAL_DEMO_READY",
+  "updated_at": "2026-11-19T17:11:23.253983+07:00",
+  "repositories": {
+    "qldapm": {
+      "path": "D:\\AI project\\QLDAPM chat",
+      "branch": "codex/local-multi-agent-upgrade",
+      "head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+      "tracked_dirty_before_checkpoint": false,
+      "preexisting_untracked_preserved": true,
+      "phase2_source_uncommitted": true,
+      "code_snapshot_preserved": true
+    },
+    "demo": {
+      "path": "D:\\AI project\\QLDAPM-demo\\mini-task-manager",
+      "branch": "codex/mini-task-manager-ready",
+      "head": "def9d0a8852af42a407bd42fb0051615a2de9331",
+      "dirty": true,
+      "untracked_preserved": [
+        "dev/"
+      ],
+      "tracked_clean": true
+    }
+  },
+  "openproject": {
+    "project_id": 6,
+    "work_package_id": 379,
+    "last_verified_version": 4,
+    "phase1_version": 0,
+    "phase1_pm_actor": 20,
+    "fresh_verification": "PM20_API_READ_VERIFIED",
+    "native_children": [
+      380,
+      381,
+      382,
+      383,
+      384
+    ],
+    "business_done": false,
+    "parent_status": "IN_PROGRESS",
+    "children_statuses": {
+      "380": "REVIEW",
+      "381": "REVIEW",
+      "382": "REVIEW",
+      "383": "REVIEW",
+      "384": "DELIVERED_PR_OPEN"
+    }
+  },
+  "openclaw": {
+    "installed": true,
+    "version": "2026.10.8 (dc2523e)",
+    "runtime": "WSL2 Ubuntu24.04 OpenClawGateway, Node24.22.2",
+    "gateway_status": "HEALTH_AND_ACTUAL_EXEC_VERIFIED",
+    "gemini_provider_status": "LIVE_TOOL_EXECUTION_VERIFIED",
+    "wsl_observed": [
+      "docker-desktop",
+      "OpenClawGateway"
+    ],
+    "installer_user_report": "Node24.19.0 rejected; OpenClawGateway expected",
+    "installer_distro_status": "REMOVED_BY_INSTALLER_ROLLBACK",
+    "execution_workspace": "/home/openclaw/engineering/feedback-4d13e695555a8d44",
+    "provider_gate": "OFF/inactive; shared quota unchanged; no fallback",
+    "personas": "Actual BA/PM system prompt and Dev/Reviewer/QA root-owned bootstrap + selected skill reports verified"
+  },
+  "completed": [
+    "A: baseline/checkpoint trước thay đổi",
+    "B: Node/OpenClaw/Gemini actual file+exec verified",
+    "C-F: Project6 scope, registry/profiles/skills, durable queue/controls, bounded real execution",
+    "G: existing SecondBrain actual ingestion/retrieval379/380/381",
+    "H: n8n16preserved, WF04 live20events/execution2701success",
+    "I: two commits/PRs/Native children readback",
+    "J: full CRUD/status/search/SQLite/web,17tests and deployed restart persistencePASS",
+    "Final:86targeted tests +15final engineering checks, Ruby/ERB/served JS compile, source parity/control/idle/preservationPASS",
+    "Continuation: actual BA/PM Gemini structured outputs, Native380/381 reused/assigned, child382 + dependencies + parent plan and SecondBrain readback; same-run cancel/resume verified",
+    "Continuation: Web UI recovery delivered commit d00f8c5/PR3/#382, actual persona+skills in Dev/Reviewer/QA, Monitor wired, 19appchecks/13targeted checks, Gatewayr7/Core r6 serving parity and 96→96 idle requests PASS",
+    "Continuation feature/three-repository matrices COMPLETE, current source serving parity verified; UAT deferred",
+    "Milestone 1 Complete: Owner HTTP 403 resolved across full path (qldapm_ai_controller, rbac, gates_api, native, service, engineering, business_runs, config.json). Unit tests 30/30 PASS, deploy r8 PASS, verify_continuation PASS, live bridge User 18 & 20 PASS (6 runs, 4 backlog, ALIVE worker), User 19 403 PASS, Project 5 untouched.",
+    "Milestone 2 Complete: State Synchronization Contract & Live Reconciliation implemented (gateway/engineering_state_sync.py). 5 state groups, SSOT definitions, OpenProject transition graph (Tasks 1->37->38->7->39->40->9->34, Stories 1->33->7->34), lockVersion concurrency protection. Unit tests 37/37 PASS, deployed r10, engineering_verify_continuation PASS. Live reconciliation on Project 6: #380-#383 transitioned to REVIEW (34) with PR/commit audit comments, #379 transitioned to IN PROGRESS (7). Project 5 untouched. Receipt saved to state-sync-reconciliation.json.",
+    "Milestone 3 Complete: Two-Way GitHub <-> OpenProject Reconciliation implemented (gateway/engineering_github_sync.py). Polling reconciliation against GitHub REST API with safe token resolution (env/config/credential-helper). Idempotent activity sync for PRs #1-#4 to WPs #380-#383. No public tunnels, no autonomous merging, #379 remains IN PROGRESS. Unit tests 43/43 PASS, deployed r12, verify_continuation PASS, live sync SUCCESS. Receipt saved to github-sync-reconciliation.json.",
+    "Milestone 4 Complete: n8n 16 workflows preserved and active (WF01-WF16); WF04 Multi-Agent Execution Tracking verified with live trace endpoint. Second Brain (Qdrant + Ollama BGE-M3 + SQLite FTS5) verified: all 5 WPs (#379-#383) indexed with exact citations (/work_packages/{id}); Project 5 scope isolation verified. Receipt saved to n8n-second-brain-sync.json.",
+    "Milestone 5 Complete: AI Engineering Control Center UI upgraded in OpenProject (openproject/ai/core/overlay/app/views/qldapm_ai/engineering.html.erb). Includes 7 subsystems: Header & Mode Badge, Overview Cards Grid (Gateway, Delivery Worker, GitHub, Second Brain & n8n), Control Actions Form (RUN ONCE, PAUSE, OFF, GitHub Sync, Refresh), Backlog Matrix, GitHub PRs Panel, Planning Accordion, and Runs History Table. Verified via Rails ApplicationController render (10/10 PASS). Image revision continuation-r13 deployed.",
+    "Milestone 6 Complete: Controlled Auto Mode and Admission Scheduler implemented (gateway/engineering_auto.py, gateway/engineering.py, gateway/engineering_operator.py, automation/engineering_delivery.py). Concurrency lock (1 runner max), dependency graph checks, Gemini quota verification, and auto-shutoff upon completion (ALL_DELIVERED) or error (safety shutoff). Unit tests 8/8 PASS; live test User 18 verified mode switches to OFF cleanly when all units delivered. Candidate r14 deployed and verified.",
+    "Milestone 7 Complete: Final System Verification & Multiproject Isolation confirmed. 37/37 engineering unit tests PASS. engineering_verify_continuation PASS (20 app tests PASS, 16 n8n workflows active & published, checksums 100% matched). Project 5 (qldapm-local) absolute integrity verified: 341 work packages preserved, RBAC unchanged (User 18 AI_SYSTEM_OWNER, User 20 BA-PM). Phase 2.5 handoff package prepared for ChatGPT takeover.",
+    "Phase 2.6 M0 Complete: Baseline Audit & Reconciliation across 7 endpoints (18088, 18089, 5679, 6333, 11434, 18789, 18791 all healthy); Test Count Discrepancy reconciled (30 core + 21 extension = 51 PASS); GitHub PRs #1-#4 audited. PHASE26_BASELINE_AUDIT.md published.",
+    "Phase 2.6 M1 Complete: Owner Full Project Authority & Cross-Actor Lifecycle Control. Fixed agent_run, cancel, resume to permit User 18 (AI_SYSTEM_OWNER) full authority over Project 6 & 5. Test suite test_owner_project_authority.py (5/5 PASS). OWNER_CAPABILITY_MATRIX.md published.",
+    "Phase 2.6 M2/M3 Complete: Deep Upstream Research on Paperclip, Agency Agents, and Superpowers. Heartbeats, budget ceilings, dynamic skills, multi-agent roles, task ownership integrated. UPSTREAM_CAPABILITY_PARITY.md published.",
+    "Phase 2.6 M4 Complete: Two-Way GitHub <-> OpenProject Sync Enhancement. Stacked branches distinguished (merged-to-main vs merged-to-feature-branch), Draft PRs recognized, persistent SQLite sync cache (engineering_github_sync_cache) preventing loops & duplicate comments. test_engineering_github_sync.py (7/7 PASS).",
+    "Phase 2.6 M5 Complete: Auto Mode Chaining & Backlog Unit Verification. Chaining on dependency delivery and dynamic backlog unit registration verified. test_engineering_auto_mode.py (10/10 PASS).",
+    "Phase 2.6 M7 Complete: Engineering Reporting System (Daily, Weekly, On-Demand). Backend gateway/engineering_reporting.py with SQLite persistent storage (engineering_reports), deterministic factual metrics aggregation (WPs, transitions, commits, PRs, runs, tokens), optional Gemini narrative, UI integration via catalog/permissions/service/controller. test_engineering_reporting.py (7/7 PASS).",
+    "Phase 2.6 M8 Complete: Control Center UI Upgrade in OpenProject (engineering.html.erb). Reports section with 3 trigger buttons (Daily, Weekly, On-Demand) and live report cards. Verified on Rails compiler.",
+    "Phase 2.6 M9 Complete: Real Browser Playwright UAT Suite (scripts/verify_phase26_playwright.py). 5/5 scenarios PASS: User 18 Owner full inspection & interactive daily report generation, User 20 PM authorized inspection, User 19 403 Forbidden access denial, Project 5 341 WPs preserved 100%. PLAYWRIGHT_UAT_REPORT.md and 4 screenshots saved.",
+    "Phase 2.6 M10 Complete: Comprehensive ChatGPT/Codex Takeover Package & Final Checkpoints updated. 66/66 unit tests PASS, deployment continuation-r15 healthy.",
+    "Phase 2.7 Forensic Audit Complete: Independent verification across all endpoints and databases, 12 defects documented in PHASE27_DEFECT_REGISTER.md.",
+    "Phase 2.7 Remediation Complete: 12/12 defects fixed and verified. Owner cross-actor authority (DEFECT-04), Auto Mode state machine & auto shutoff (DEFECT-05), Reporting scheduler & UI notifications (DEFECT-06), GitHub PRs reviews transparency (DEFECT-07), Dynamic Agent Skills 6-step cycle evidence (DEFECT-08), M6 n8n 16 workflows + Qdrant Second Brain restored (DEFECT-12), Playwright Browser UAT 8/8 PASS with live screenshots (DEFECT-11), Self-contained handoff package in docs/ai/engineering/PHASE27_HANDOFF/ (DEFECT-09, 11).",
+    "Phase 2.8 M0 Complete: Baseline Project 5 Invariant Audit confirmed exactly 341 WPs (min 38, max 378, lock_version 4, updated_at 2026-10-29T10:08:56Z). Baseline saved to project5_invariants_baseline.json.",
+    "Phase 2.8 M1 Complete: Reporting Scheduler & Timezone UI (Findings B & G) verified live. Background timer tick every 30s in service.py, Asia/Ho_Chi_Minh (UTC+7) timezone normalization, idempotency lock against duplicate dispatches, schedule config modal in Control Center. 6/6 live tests PASS.",
+    "Phase 2.8 M2 Complete: Safe Recovery & Finalization of Auto Mode E2E (Finding A). Reused existing WP #384, commit 0e8d320a, and pytest 21/21 PASS. Solved WSL2 credential boundary via host bundle publisher. PR #5 created, WP #384 delivery reconciled, Qdrant Second Brain vectorized, run finished cleanly. Evaluated as AUTO_PARTIAL_WITH_MANUAL_RECOVERY.",
+    "Phase 2.8 M3 Complete: Dynamic Agent Skills Trajectory Evidence (Finding C). Dev, Reviewer, and QA executed tools and skills_read (engineering-development, engineering-review, engineering-qa) inside isolated sandbox.",
+    "Phase 2.8 M4 Complete: Owner Cross-Actor Control & Project 5 Isolation (Finding D). User 18 (AI_SYSTEM_OWNER) successfully inspected all 7 runs and 5 backlog units, controlled mode to OFF, while Project 5 returned ENGINEERING_PROJECT_REQUIRED as strictly required.",
+    "Phase 2.8 M5 Complete: GitHub Sync Transparency (Finding F). Synced 5 stacked PRs, transparently distinguished MAIN vs FEATURE_BRANCH, verified idempotency and zero duplicate comments via SQLite cache.",
+    "Phase 2.8 M6 Complete: n8n & Qdrant Second Brain Integration (Finding H). Verified 16 active workflows, WF04 execution history, and live semantic/lexical knowledge search with exact citations (/work_packages/384, /work_packages/379).",
+    "Phase 2.8 M7 Complete: Real Browser Playwright UAT (Finding G & Control Center). 9/9 UI checks PASS under User 18 (Owner): Control Center access, Mode buttons, Notifications Bar, GitHub PR transparency, Local AI Review label, Reporting Section, and Schedule Config Modal rendering. Screenshots saved.",
+    "Phase 2.8 M8 Complete: Project 5 Invariant Deep Verification (Finding E). 7/7 invariants strictly held: 341 WPs, min 38, max 378, max lock_version 4, latest_updated_at frozen at 2026-10-29T10:08:56Z, status distribution and 5 members completely untouched.",
+    "Phase 2.8 M9 Complete: Comprehensive Phase 2.8 Handoff Package & Final Acceptance Report published in docs/ai/engineering/PHASE28_HANDOFF/.",
+    "Phase 2.9 Complete: Professional AI Agent Command Center — Complete UI/UX Redesign Without Business-Logic Regression. Built dual-view architecture (engineering.html.erb master router + _engineering_command_center.html.erb partial + _engineering_classic.html.erb fallback). Applied UI/UX Pro Max framework (Dark-first OLED, Swiss style minimalism, 100% SVG icons, zero emojis as UI icons, WCAG AA contrast > 4.5:1, responsive viewports from 375px to 1920px). Solved OpenProject CSP restrictions (script-src-attr none) via 100% Unobtrusive JS and nonced Event Delegation. Rebuilt and deployed Docker images qldapm-core:engineering-continuation-r18-20261030 and qldapm-ai:engineering-continuation-r18-20261030. Verified via Playwright Browser UAT 14/14 tests ALL PASS across all 8 tabs, schedule modal, and classic fallback. 14 full-page screenshots captured and saved. Project 5 invariants (341 WPs) preserved 100%.",
+    "Phase 2.9.2 Complete: Zero-Silent-Failure Functional Audit, Complete UI-API-Gateway-Agent Integration Repair & End-to-End Regression. Fixed OpenProject Navigation (qldapm_gates.rb registered AI Command Center on ai-dev-demo sidebar under Work packages). Solved silent failures on action buttons: wired submit visual state machine (disabling double-click, top progress bar, spinner) and Toast Notification Center (#qcc-toast-container with Dark OLED blur) for RUN ONCE, Sync GitHub, AUTO Mode toggle, and Schedule Configuration Modal. Harmonized KPI metrics to SSOT (Backlog Units: 5 / 5 Delivered, Worker: IDLE Sẵn sàng, 5/5 Backlog units marked with DELIVERED emerald chips). Implemented real-time background polling endpoint (?format=json) polling every 20s. RBAC strictly verified (Owner 18 & PM 20 full access, Dev 19 403 Forbidden). Deployed container revision continuation-r19 (qldapm-core:engineering-continuation-r19-20261030 & qldapm-ai:engineering-continuation-r19-20261030). Project 5 invariants strictly preserved (341 WPs, max lock_version 4, 0 writes).",
+    "Phase 3.0 Architecture Audit Complete: Comprehensive forensic audit across entire codebase and runtime. 28 specialized forensic reports generated in docs/ai/architecture-audit/. 20/20 Project Charter items compliant. OpenClaw WSL2 runtime verified (Node 24.22.2, 3 agents, 24 sessions, 394 trajectory events). Gemini model centralized and verified: gemini-3.5-flash-lite (325/325 receipts, 0 paid calls). Upstream capability parity verified (Paperclip, Agency Agents, Superpowers). 10 communication boundaries verified with zero-silent-failure recovery. GitHub PRs #1-#5 intact and reconciled. n8n 16/16 workflows active. Qdrant 2,132 vectors active. Project 5 341 WPs preserved 100%.",
+    "Phase 3.2 Complete: Complete Autonomous AI Engineering Workflow, Agent Coordination, OpenClaw Integration & Operational Command Center. Delivered: 1) AI Work Intake Console modal (#qcc-intake-modal) with natural language planning to PM/BA; 2) Interactive Execution Inspector modal (#qcc-run-modal) with live DAG rendering, Timeline, Diff, QA Pytest log, Raw Telemetry; 3) Live GitHub two-way sync with MAIN vs FEATURE_BRANCH transparent badges and manual trigger button; 4) Full Markdown Report Reader modal (#qcc-report-modal) with clipboard copy and narrative inspection; 5) Transparent Auto Mode and RUN ONCE safety controls with humanized ALL_DELIVERED shutoff explanations; 6) Docker revision continuation-r21 deployed (Core: 742fcea3..., Gateway: 48bf4d7b...); 7) Playwright Browser E2E Acceptance Suite: 8/8 tests PASSED with 7 full-page screenshots; 8) Project 5 strictly intact (341 WPs, max lock 4, 0 writes)."
+  ],
+  "in_progress": [],
+  "blocked": [],
+  "remaining": [],
+  "changed_files": [
+    "architecture.md",
+    "docs/ai/engineering/E2E_EVIDENCE.md",
+    "docs/ai/engineering/FEATURE_COMPLETENESS.md",
+    "docs/ai/engineering/GEMINI_CONTINUE_PROMPT.md",
+    "docs/ai/engineering/HANDOFF_GEMINI_LATEST.md",
+    "docs/ai/engineering/IMPLEMENTATION_JOURNAL.md",
+    "docs/ai/engineering/IMPLEMENTATION_STATE.json",
+    "docs/ai/engineering/MANUAL_UAT_CHECKLIST.md",
+    "docs/ai/engineering/OPERATIONS_RUNBOOK.md",
+    "docs/ai/engineering/PHASE2_CONTINUATION_REQUEST.md",
+    "docs/ai/engineering/PHASE2_REQUEST.md",
+    "docs/ai/engineering/THREE_REPOSITORY_INTEGRATION.md",
+    "docs/ai/engineering/runs/3066ed0b-fadb-47c8-8d31-349590b3301b/publish.bundle",
+    "docs/ai/engineering/runs/54edcb3a-51c4-4bd0-b7e8-ea797ab51ccb/attempt-2/publish.bundle",
+    "docs/ai/engineering/runs/a43376cf-e70a-478d-a28e-067964a5a218/operator-handoff/manifest.json",
+    "docs/ai/engineering/runs/a43376cf-e70a-478d-a28e-067964a5a218/operator-handoff/test_web_ui.py",
+    "docs/ai/engineering/runs/a43376cf-e70a-478d-a28e-067964a5a218/operator-handoff/web.html",
+    "openproject/ai/CHECKPOINT.md",
+    "openproject/ai/README.md",
+    "openproject/ai/automation/EngineeringCore.Dockerfile",
+    "openproject/ai/automation/EngineeringGateway.Dockerfile",
+    "openproject/ai/automation/Start-EngineeringDelivery.ps1",
+    "openproject/ai/automation/engineering_acceptance.py",
+    "openproject/ai/automation/engineering_acceptance_crud.py",
+    "openproject/ai/automation/engineering_bootstrap.py",
+    "openproject/ai/automation/engineering_checkpoint.py",
+    "openproject/ai/automation/engineering_delivery.py",
+    "openproject/ai/automation/engineering_demo.py",
+    "openproject/ai/automation/engineering_deploy.py",
+    "openproject/ai/automation/engineering_deploy_continuation.py",
+    "openproject/ai/automation/engineering_finalize_continuation.py",
+    "openproject/ai/automation/engineering_finalize_handoff.py",
+    "openproject/ai/automation/engineering_qualify_final.py",
+    "openproject/ai/automation/engineering_reconcile_usage.py",
+    "openproject/ai/automation/engineering_verify_continuation.py",
+    "openproject/ai/automation/engineering_worker.py",
+    "openproject/ai/automation/openclaw_provider_gate.py",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/engineering.html.erb",
+    "openproject/ai/engineering_skills/engineering-development/SKILL.md",
+    "openproject/ai/engineering_skills/engineering-planning/SKILL.md",
+    "openproject/ai/engineering_skills/engineering-qa/SKILL.md",
+    "openproject/ai/engineering_skills/engineering-review/SKILL.md",
+    "openproject/ai/gateway/agent_registry.py",
+    "openproject/ai/gateway/app.py",
+    "openproject/ai/gateway/bridge.py",
+    "openproject/ai/gateway/catalog.py",
+    "openproject/ai/gateway/engineering.py",
+    "openproject/ai/gateway/engineering_lifecycle.py",
+    "openproject/ai/gateway/engineering_monitor.py",
+    "openproject/ai/gateway/engineering_operator.py",
+    "openproject/ai/gateway/engineering_personas.py",
+    "openproject/ai/gateway/engineering_planning.py",
+    "openproject/ai/gateway/engineering_units.py",
+    "openproject/ai/gateway/native.py",
+    "openproject/ai/gateway/openproject_loader.py",
+    "openproject/ai/gateway/permissions.py",
+    "openproject/ai/gateway/service.py",
+    "openproject/ai/gateway/store.py",
+    "openproject/ai/tests/test_ai_queue.py",
+    "openproject/ai/tests/test_engineering.py",
+    "openproject/ai/tests/test_engineering_continuation.py",
+    "openproject/ai/tests/test_openclaw_provider_gate.py",
+    "openproject/ai/gateway/engineering_state_sync.py",
+    "openproject/ai/tests/test_engineering_state_sync.py",
+    "docs/ai/engineering/state-sync-reconciliation.json",
+    "openproject/ai/gateway/engineering_github_sync.py",
+    "openproject/ai/tests/test_engineering_github_sync.py",
+    "docs/ai/engineering/github-sync-reconciliation.json",
+    "docs/ai/engineering/n8n-second-brain-sync.json",
+    "openproject/ai/gateway/engineering_reporting.py",
+    "openproject/ai/tests/test_owner_project_authority.py",
+    "openproject/ai/tests/test_engineering_reporting.py",
+    "docs/ai/engineering/PHASE26_BASELINE_AUDIT.md",
+    "docs/ai/engineering/OWNER_CAPABILITY_MATRIX.md",
+    "docs/ai/engineering/UPSTREAM_CAPABILITY_PARITY.md",
+    "docs/ai/engineering/PLAYWRIGHT_UAT_REPORT.md",
+    "scripts/verify_phase26_playwright.py",
+    "docs/ai/engineering/PHASE29_BASELINE_AUDIT.md",
+    "docs/ai/engineering/PHASE29_UI_DEPENDENCY_MATRIX.md",
+    "docs/ai/engineering/PHASE29_UI_UX_REVIEW.md",
+    "docs/ai/engineering/PHASE29_HANDOFF/FINAL_ACCEPTANCE_REPORT.md",
+    "docs/ai/engineering/PHASE29_HANDOFF/README.md",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_classic.html.erb",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb"
+  ],
+  "test_evidence": [
+    "CONTINUATION_VERIFICATION.json",
+    "E2E_EVIDENCE.md",
+    "continuation-monitor-live.json",
+    "continuation-control-center-final.json",
+    "demo-service.json",
+    "runs/*/JUnit+activation+trajectory+history",
+    "Phase 2.6 M0: 51/51 engineering tests verified PASS (16 test_engineering, 14 test_engineering_continuation, 7 test_engineering_state_sync, 6 test_engineering_github_sync, 8 test_engineering_auto_mode)"
+  ],
+  "deployment_state": [
+    {
+      "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\engineering-20261029-224805",
+      "gateway_image": "sha256:eaaa1217ac79cfac4747e0fa71af40bf0d3c1a447f39e6cc24dc20e55a268fc4",
+      "core_image": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+      "project5_business_writes": 0,
+      "database_reset": false,
+      "volumes_deleted": false,
+      "gateway_deployed": "sha256:2f85354ae01fe4a3f70490cde0f7f08f4658c1afdab9ff088855c55d8d716df4",
+      "gateway_health": "healthy",
+      "core_deployed": "sha256:702cb0299bbccba3088371c7e399a6dd122fc7183d884b2c551fa67587ce945f",
+      "core_health": "healthy",
+      "gateway_revision": "continuation-r7",
+      "core_revision": "continuation-r6",
+      "continuation_history": [
+        {
+          "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\engineering-continuation-20261030-102331",
+          "gateway_before": "sha256:a9b9c2af616c4b562dd881384951a61833cfc304d4743bcfa3c21985f8fb67a5",
+          "core_before": "sha256:13ceb8c2a9296153b2783b52845484ec5b42db7463277804c46710f5d568937b"
+        },
+        {
+          "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\engineering-continuation-20261030-103414",
+          "gateway_before": "sha256:7281f90f392457e30b908c0a8a87da1fffaaf09250530bdf5849f9b074974965",
+          "core_before": "sha256:721eda080a39da3789b3b0b317b04ba73cd69e12d502d153af2de85a332e30ef"
+        },
+        {
+          "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\engineering-continuation-20261030-104050",
+          "gateway_before": "sha256:235004666cb7f199b70a40305836ae5eeab0f2d19159b3d55c01918337798f2e",
+          "core_before": "sha256:657d6f6296e51cd5affdafac6a2aae49dd40211576ef99684414aa104c2f773f"
+        },
+        {
+          "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\engineering-continuation-20261030-104426",
+          "gateway_before": "sha256:af47a9847b44efc5b51655c69d85a0b4488362a53585bec130994d6d0028bbff",
+          "core_before": "sha256:657d6f6296e51cd5affdafac6a2aae49dd40211576ef99684414aa104c2f773f"
+        },
+        {
+          "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\engineering-continuation-20261030-112238",
+          "gateway_before": "sha256:a7129a9dd6a10941a69335f27015d27a25832d68c90418afeb8cd332bbee1105",
+          "core_before": "sha256:657d6f6296e51cd5affdafac6a2aae49dd40211576ef99684414aa104c2f773f"
+        },
+        {
+          "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\engineering-continuation-20261030-112626",
+          "gateway_before": "sha256:f57bcbf92d09eb580179bc864401ad2e89ff6203c54c51faa67d04e333334790",
+          "core_before": "sha256:702cb0299bbccba3088371c7e399a6dd122fc7183d884b2c551fa67587ce945f"
+        }
+      ]
+    },
+    {
+      "demo": {
+        "url": "http://127.0.0.1:18791",
+        "head_sha": "def9d0a8852af42a407bd42fb0051615a2de9331",
+        "release": "/home/openclaw/engineering/releases/def9d0a8852af42a407bd42fb0051615a2de9331",
+        "database": "/home/openclaw/engineering/demo-data/tasks.sqlite",
+        "service": "qldapm-mini-task-manager.service",
+        "http_html": 200,
+        "prior_head_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+        "run_id": "3066ed0b-fadb-47c8-8d31-349590b3301b",
+        "update": "VERIFIED_RELEASE_PROMOTED",
+        "data_preserved": true,
+        "manual_browser_uat": "DEFERRED_BY_USER",
+        "source_revision_header": "def9d0a8852af42a407bd42fb0051615a2de9331",
+        "service_status": "MainPID=31498\nActiveState=active\nSubState=running"
+      },
+      "delivery_task": "Running / ALIVE; idle no inference verified; physical logon/reboot deferred"
+    }
+  ],
+  "active_run_ids": [],
+  "next_exact_action": "Inspect exact run artifacts/result and live QLDAPM status; reconcile unknown outcomes before any retry.",
+  "last_verified_checkpoint": "PHASE_2_7_FORENSIC_BASELINE",
+  "active_openclaw_run_id": null,
+  "engineering_last_run": {
+    "id": "8618c9a8-99b1-4a5f-bddb-e02ed04915a8",
+    "stage": "blocked",
+    "artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\8618c9a8-99b1-4a5f-bddb-e02ed04915a8"
+  },
+  "ui_uat": "DEFERRED_BY_USER",
+  "startup_delivery": "QLDAPMEngineeringDelivery Running, hidden/current user; manual start/idlePASS; actual logon/rebootNOTRUN",
+  "demo_artifacts": {
+    "full_head_sha": "29ff0ec1e531d917ce96737d768c8e16dad895c5",
+    "full_pr_url": "https://github.com/Luim3141/mini-task-manager/pull/2",
+    "full_native_child": 381,
+    "demo_url": "http://127.0.0.1:18791",
+    "full_tests": "17PASS on working tree and clean release; independent Reviewer/QA PASS AC1-9; actual terminal restart persistence PASS",
+    "head_sha": "726f9738fd1af08bb19502227df886e075c0259b",
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/1",
+    "native_child": 380,
+    "parent379_version": 1,
+    "review": "PASS independent session on diff51b27a6d",
+    "tests": "7PASS repo+external; QA separate session actual exec; host final rerun exit0",
+    "dev_state": "PARTIAL_ARTIFACT_VERIFIED; terminal model budget error retained",
+    "latest_head_sha": "def9d0a8852af42a407bd42fb0051615a2de9331",
+    "latest_pr_url": "https://github.com/Luim3141/mini-task-manager/pull/4",
+    "latest_native_child": 383,
+    "latest_run_id": "3066ed0b-fadb-47c8-8d31-349590b3301b",
+    "latest_tests": 20
+  },
+  "code_snapshot": {
+    "path": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\PHASE2_SOURCE_CONTINUATION_20261030-121554.zip",
+    "sha256": "949ba5d085eb34f5093a041b3907c8b3a3f9509964ec44235c800fc21fe9b838",
+    "files": 58,
+    "credentials_included": false
+  },
+  "deployment_current": "r16",
+  "code_snapshot_history": [
+    {
+      "path": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\PHASE2_SOURCE_20261030.zip",
+      "sha256": "7543927dd6163440a3c2841ee9d6132da77b1bd4dbdd734c49c27676cad90315",
+      "files": 39,
+      "credentials_included": false,
+      "baseline_only": true
+    }
+  ],
+  "deferred": [
+    "User UAT/browser/visual acceptance until separately requested",
+    "Actual Windows logon/reboot trigger test",
+    "PR merge/go-live only on separate authorization"
+  ],
+  "feature_matrix": "FEATURE_COMPLETENESS.md",
+  "repository_integration": "THREE_REPOSITORY_INTEGRATION.md",
+  "deployment_state_history": [
+    [
+      {
+        "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\engineering-20261029-224805",
+        "gateway_image": "sha256:eaaa1217ac79cfac4747e0fa71af40bf0d3c1a447f39e6cc24dc20e55a268fc4",
+        "core_image": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+        "project5_business_writes": 0,
+        "database_reset": false,
+        "volumes_deleted": false,
+        "gateway_deployed": "sha256:a9b9c2af616c4b562dd881384951a61833cfc304d4743bcfa3c21985f8fb67a5",
+        "gateway_health": "healthy",
+        "core_deployed": "sha256:13ceb8c2a9296153b2783b52845484ec5b42db7463277804c46710f5d568937b",
+        "core_health": "healthy",
+        "gateway_revision": "r9",
+        "core_revision": "r7"
+      },
+      {
+        "demo": {
+          "url": "http://127.0.0.1:18791",
+          "head_sha": "29ff0ec1e531d917ce96737d768c8e16dad895c5",
+          "release": "/home/openclaw/engineering/releases/29ff0ec1e531d917ce96737d768c8e16dad895c5",
+          "database": "/home/openclaw/engineering/demo-data/tasks.sqlite",
+          "service": "qldapm-mini-task-manager.service",
+          "http_html": 200,
+          "create_edit_status_restart_persistence_delete": "PASS",
+          "fixture_id": 1,
+          "fixture_removed": true,
+          "manual_browser_uat": "NOT_RUN_USER_WILL_TEST",
+          "service_status": "MainPID=11990\nActiveState=active\nSubState=running"
+        },
+        "delivery_task": "Running; manual start/idle verified; logon/reboot NOT RUN"
+      }
+    ]
+  ],
+  "github": {
+    "repo": "Luim3141/mini-task-manager",
+    "status": "ONLINE",
+    "prs": {
+      "1": {
+        "wp": 380,
+        "state": "open",
+        "merged": false,
+        "head": "1aa7c395",
+        "mergeable": true,
+        "mergeStateStatus": "CLEAN"
+      },
+      "2": {
+        "wp": 381,
+        "state": "closed",
+        "merged": true,
+        "head": "29ff0ec1"
+      },
+      "3": {
+        "wp": 382,
+        "state": "open",
+        "merged": false,
+        "head": "d00f8c5f",
+        "mergeable": true,
+        "mergeStateStatus": "CLEAN"
+      },
+      "4": {
+        "wp": 383,
+        "state": "open",
+        "merged": false,
+        "head": "def9d0a8",
+        "mergeable": true,
+        "mergeStateStatus": "CLEAN"
+      }
+    },
+    "automerge": false,
+    "pull_requests": {
+      "5": {
+        "wp": 384,
+        "state": "open",
+        "merged": false,
+        "head": "0e8d320a",
+        "base": "codex/openclaw-feedback-4d13e695555a8d44",
+        "url": "https://github.com/Luim3141/mini-task-manager/pull/5"
+      }
+    },
+    "latest_pr": {
+      "number": 6,
+      "url": "https://github.com/Luim3141/mini-task-manager/pull/6",
+      "state": "OPEN",
+      "branch": "codex/openclaw-feedback-bb9a628fe5b7be67",
+      "title": "Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,"
+    }
+  },
+  "n8n": {
+    "total": 16,
+    "active": 16,
+    "published": 16,
+    "wf04_verified": true
+  },
+  "second_brain": {
+    "qdrant": "ok",
+    "ollama": "bge-m3:latest",
+    "fts5": true,
+    "project6_indexed": [
+      379,
+      380,
+      381,
+      382,
+      383,
+      384
+    ],
+    "project5_isolated": true
+  },
+  "verification_tiers": {
+    "automated_browser_tests": "PASS (5/5 scenarios via Playwright in scripts/verify_phase26_playwright.py)",
+    "engineering_acceptance": "PASS (66/66 unit and integration tests passing)",
+    "human_user_acceptance": "PENDING_USER_SIGN_OFF (Human evaluation and manual approval preserved)"
+  },
+  "deployment_revision": "continuation-r24-20261031",
+  "phase28_milestones": {
+    "M0_baseline_audit": {
+      "status": "COMPLETED",
+      "project5_invariants": "341 WPs verified invariant baseline (docs/ai/engineering/project5_invariants_baseline.json)",
+      "project6_baseline": "WP 379 In Progress, WPs 380-383 Review"
+    },
+    "M1_reporting_scheduler_and_timezone": {
+      "status": "COMPLETED_AND_VERIFIED_LIVE",
+      "revision": "continuation-r17",
+      "tests_passed": "6/6 tests PASS in tools/test_reporting_scheduler_live.py",
+      "timezone": "Asia/Ho_Chi_Minh (UTC+7)",
+      "background_tick": "30s tick in service.py start_knowledge_worker verified autonomous report generation",
+      "ui_modal": "Config modal rendered on engineering.html.erb for User 18"
+    },
+    "M2_autonomous_delivery_auto_mode": {
+      "status": "COMPLETED_RECOVERED",
+      "classification": "AUTO_PARTIAL_WITH_MANUAL_RECOVERY",
+      "run_id": "99dd5576-afff-47b3-b5d1-f80eb3a3eb2d",
+      "run_state": "done",
+      "head_sha": "0e8d320a3459f26d01c88a3e8d4cb861e09808dd",
+      "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/5",
+      "pr_number": 5,
+      "wp_id": 384,
+      "wp_lock_version": 1,
+      "second_brain_indexed": true,
+      "final_mode": "OFF",
+      "shutoff_reason": "ALL_DELIVERED",
+      "evidence_file": "docs/ai/engineering/PHASE28_HANDOFF/M2_RECOVERY_EVIDENCE.md"
+    },
+    "M3_dynamic_agent_skills": {
+      "status": "COMPLETED_VERIFIED",
+      "evidence_file": "docs/ai/engineering/PHASE28_HANDOFF/M3_DYNAMIC_SKILLS_EVIDENCE.md",
+      "tool_calls": [
+        "skills_read engineering-development",
+        "skills_read engineering-review",
+        "skills_read engineering-qa",
+        "exec pytest"
+      ]
+    },
+    "M4_owner_control": {
+      "status": "COMPLETED_VERIFIED",
+      "actor": 18,
+      "role": "AI_SYSTEM_OWNER",
+      "cross_actor_verified": true,
+      "project5_isolation_verified": true,
+      "evidence_file": "docs/ai/engineering/PHASE28_HANDOFF/M4_OWNER_CONTROL_EVIDENCE.md"
+    },
+    "M5_github_sync": {
+      "status": "COMPLETED_VERIFIED",
+      "stacked_prs_mapped": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "main_vs_feature_branch": "DISTINGUISHED_TRANSPARENT",
+      "cache_idempotency": true,
+      "evidence_file": "docs/ai/engineering/PHASE28_HANDOFF/M5_GITHUB_SYNC_EVIDENCE.md"
+    },
+    "M6_n8n_qdrant_second_brain": {
+      "status": "COMPLETED_VERIFIED",
+      "qdrant_points": 2132,
+      "n8n_workflows_active": "16/16",
+      "knowledge_search_verified": true,
+      "evidence_file": "docs/ai/engineering/PHASE28_HANDOFF/M6_N8N_QDRANT_EVIDENCE.md"
+    },
+    "M7_browser_playwright_uat": {
+      "status": "COMPLETED_VERIFIED",
+      "checks_passed": "9/9 PASS",
+      "screenshots": [
+        "owner_control_center_live.png",
+        "owner_schedule_modal_live.png"
+      ],
+      "evidence_file": "docs/ai/engineering/PHASE28_HANDOFF/M7_BROWSER_UAT_EVIDENCE.md"
+    },
+    "M8_project5_invariants": {
+      "status": "COMPLETED_VERIFIED",
+      "invariants_held": "7/7 PASS",
+      "work_packages_count": 341,
+      "evidence_file": "docs/ai/engineering/PHASE28_HANDOFF/M8_PROJECT5_INVARIANTS_EVIDENCE.md"
+    },
+    "M9_handoff_packaging": {
+      "status": "COMPLETED_DELIVERED",
+      "handoff_dir": "docs/ai/engineering/PHASE28_HANDOFF/",
+      "report_file": "docs/ai/engineering/PHASE28_HANDOFF/FINAL_ACCEPTANCE_REPORT.md"
+    }
+  },
+  "phase3_audit": {
+    "audit_directory": "docs/ai/architecture-audit",
+    "total_documents": 28,
+    "charter_compliance": "20/20 (100%)",
+    "official_model": "gemini-3.5-flash-lite",
+    "gemini_receipts_verified": 325,
+    "openclaw_agents": [
+      "dev",
+      "reviewer",
+      "qa"
+    ],
+    "openclaw_port": 18789,
+    "provider_gate_port": 18890,
+    "n8n_workflows_active": "16/16",
+    "qdrant_vectors": 2132,
+    "project5_work_packages_preserved": 341,
+    "project6_work_packages": [
+      379,
+      380,
+      381,
+      382,
+      383,
+      384
+    ],
+    "github_prs_open": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "phase32_verification": {
+    "status": "PASSED",
+    "total_tests": 8,
+    "passed_tests": 8,
+    "test_suite": "docs/ai/engineering/PHASE32/FUNCTIONAL_TEST_RESULTS.json",
+    "evidence_screenshots": [
+      "01_intake_modal_planning.png",
+      "02_backlog_planning_specs.png",
+      "03_run_inspector_dag.png",
+      "04_run_inspector_details.png",
+      "05_github_pr_badges_sync.png",
+      "06_report_markdown_reader_modal.png",
+      "07_auto_mode_transparency_toast.png"
+    ],
+    "project5_invariants": {
+      "total_work_packages": 341,
+      "max_lock_version": 4,
+      "max_updated_at": "2026-10-29 10:08:56",
+      "writes_count": 0,
+      "intact": true
+    }
+  },
+  "functional_completion_current": {
+    "utc": "2026-11-03T20:13:07.428616+00:00",
+    "images": {
+      "gateway": "sha256:a6fe1d61982db84447f45eb35a56809ae4ab16d854012bec59db1f58d890b2be",
+      "core": "sha256:91afae9c6855417dcc14828d0bd16b3a5b780439d7d1fbbfede64c64241d83d4",
+      "n8n": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269"
+    },
+    "fresh_run": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+    "fresh_status": "succeeded",
+    "native_id": 394,
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/12",
+    "acceptance_tests": 57,
+    "mode": "OFF",
+    "active": 0,
+    "rag": "FAILED_CANDIDATES_NOT_DEPLOYED",
+    "codex_subagents": "NONE; sequential root continuation",
+    "authority": "docs/ai/engineering/CHATGPT_RECOVERY/FINAL_INTEGRATION_ACCEPTANCE.md"
+  }
+}

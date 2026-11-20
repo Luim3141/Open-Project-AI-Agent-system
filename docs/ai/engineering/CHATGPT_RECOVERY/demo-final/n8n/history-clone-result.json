@@ -1,0 +1,102 @@
+{
+  "started_utc": 1793639659.1058927,
+  "image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+  "gateway_base_image": "sha256:b184f91963e53df47cbc884cc353d03b0bce871ee19b45b5dc7a5ca78fd638ab",
+  "tests": [
+    {
+      "case": "transport_auth",
+      "status": "PASS"
+    },
+    {
+      "case": "transient_failure_fresh_retry_business_observation_dedup",
+      "status": "PASS"
+    },
+    {
+      "case": "untrusted_nested_signed_payload_rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "same_database_restart_business_ack",
+      "status": "PASS"
+    },
+    {
+      "case": "retained_success_error_and_nested_canary_absence",
+      "status": "PASS"
+    }
+  ],
+  "main_mutations": 0,
+  "gateway_source_sha256": {
+    "execution_events.py": "64747bb92b6a07c21c78ee5783daf2877d740f3189b82e41aea8cc4b30320b26",
+    "n8n_lifecycle_outbox.py": "261bc7e5f80d9c0d9f9350040de39c589167c449892300f5f9e1721d48b7713c",
+    "store.py": "93acb43ae62c9d230f3b5e3d2a6a22e573532714f6884d323a8b46aaa001e042"
+  },
+  "status": "PASS",
+  "executions": [
+    {
+      "id": 1,
+      "status": "error",
+      "finished": 0,
+      "mode": "webhook",
+      "workflowId": "elfapV5D2PTnLiHW",
+      "deletedAt": null
+    },
+    {
+      "id": 2,
+      "status": "success",
+      "finished": 1,
+      "mode": "webhook",
+      "workflowId": "elfapV5D2PTnLiHW",
+      "deletedAt": null
+    },
+    {
+      "id": 3,
+      "status": "success",
+      "finished": 1,
+      "mode": "webhook",
+      "workflowId": "elfapV5D2PTnLiHW",
+      "deletedAt": null
+    },
+    {
+      "id": 4,
+      "status": "error",
+      "finished": 0,
+      "mode": "webhook",
+      "workflowId": "elfapV5D2PTnLiHW",
+      "deletedAt": null
+    },
+    {
+      "id": 5,
+      "status": "success",
+      "finished": 1,
+      "mode": "webhook",
+      "workflowId": "elfapV5D2PTnLiHW",
+      "deletedAt": null
+    }
+  ],
+  "observations": {
+    "observations": 2,
+    "executions": [
+      {
+        "event_id": "472d2ae6-de3f-5a48-8877-d144f2eea9f3",
+        "execution_id": "2"
+      },
+      {
+        "event_id": "1b0e7fe8-2f11-536a-92fa-29c05a1700a2",
+        "execution_id": "5"
+      }
+    ]
+  },
+  "retention": {
+    "success": "all",
+    "error": "all",
+    "progress": false,
+    "age_hours": 168,
+    "max_count": 2000
+  },
+  "limitations": [
+    "Actual n8n+real Gateway lifecycle Store/source/HMAC validation; synthetic execution source events and injected503, no Native/provider work",
+    "n8n UI retry of a persisted redacted signature is not authorized; Gateway outbox sends a fresh signed retry",
+    "Physical disk/machine DR is outside this tmpfs server test"
+  ],
+  "finished_utc": 1793639866.231291
+}

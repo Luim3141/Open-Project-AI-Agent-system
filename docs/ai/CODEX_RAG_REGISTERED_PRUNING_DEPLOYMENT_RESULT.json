@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-26T12:22:21.232588+00:00",
+  "status": "DEPLOYED_HEALTHY_SOURCE_DATA_AND_SCOPED_RUNTIME_REGRESSION_PASS",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-registered-pruning-20261026",
+      "image": "sha256:ffe20cad40e7506b6accfae22665f4e543aa627b6da5f2272a1177206e7edd6b"
+    }
+  },
+  "unchanged_core_image": "sha256:545e498a70a7d61103f6356cc726d12defab7df90da2c41bb9a2d97f6982e22c",
+  "files": {
+    "openproject/ai/gateway/knowledge_storage.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/knowledge_storage.py",
+      "sha256": "ad0ef83d1234ce4d992b2d459ad40ab63f19c712fd1bba304c3a58deb4aa5c60"
+    },
+    "openproject/ai/gateway/knowledge_ingestion.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/knowledge_ingestion.py",
+      "sha256": "c4283da4f9db19f9b32c020113e825ad9586ced44f06a6a9b9d093bb4fab05f3"
+    },
+    "openproject/ai/gateway/knowledge_points.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/knowledge_points.py",
+      "sha256": "223373e5e9c63e0cd82fd2a21dda5432f83a3bbf8bb013a4c250844353fea37b"
+    },
+    "openproject/ai/gateway/vector_client.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/vector_client.py",
+      "sha256": "ed70c922d763c61e7d6c6934629b38700d9da340d3dfc1b05e721d4f43b90b29"
+    }
+  },
+  "qualification": {
+    "windows": {
+      "run": 581,
+      "passed": 581,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "linux": {
+      "run": 581,
+      "passed": 566,
+      "skipped": 15,
+      "errors": 0,
+      "failures": 0
+    },
+    "CODEX_RAG_REGISTERED_PRUNING_QDRANT_RESULT.json": "PASS_ACTUAL_ISOLATED_QDRANT_REGISTERED_PRUNING_AND_SQLITE_RECOVERY",
+    "CODEX_RAG_REGISTERED_PRUNING_WBS_NATIVE_CLONE_RESULT.json": "PASS_ACTUAL_NATIVE_WBS_TREE_EXPLICIT_RELATION_RAG_AND_RESTART",
+    "rollback_read_compatibility": true,
+    "core_unchanged_ruby_programs_previously_passed": 16
+  },
+  "changed_workflows": [],
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "new_model_calls": 0,
+  "schema_changes": {
+    "database": "knowledge.sqlite only",
+    "operation": "ADD_EMPTY_knowledge_vector_cleanup",
+    "existing_tables_altered": false,
+    "native_schema_changed": false,
+    "rollback": "Retain additive table/history; populated schema rollback denied"
+  },
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\registered-pruning-deployment",
+  "rollback_images": {
+    "gateway": "sha256:73aaf0c0cf8ea575eddbae2914db14e157e0c756cd58e225d70a5baeeba6f818"
+  },
+  "authorization": "PUBLICATION_REDACTED",
+  "rollback": "App-only; retain all DB/history. Historical broad-prune image reads but cannot process cleanup intents; pause ingestion/reindex before operational rollback and prefer forward fix.",
+  "other_main_containers_unchanged": 9,
+  "all_workflows_unchanged_active_source_matched": 16,
+  "cleanup_rows": 0,
+  "final_readback": "CODEX_RAG_REGISTERED_PRUNING_FINAL_READBACK.json"
+}

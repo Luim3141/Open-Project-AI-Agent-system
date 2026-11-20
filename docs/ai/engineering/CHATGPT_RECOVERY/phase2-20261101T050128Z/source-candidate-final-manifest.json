@@ -1,0 +1,40 @@
+{
+  "qualification_source_commit": "27db752d686d86b9683e7e7a6b15f6a223f48939",
+  "image_build_source_commit": "307503c988f28644fa2095d9631923c03dfe32d2",
+  "note": "Later commit changes host delivery/adapter/tests/architecture only; packaged app sources still match all15 parity checks.",
+  "source_files": 587,
+  "quarantined": [
+    {
+      "path": "openproject\\ai\\tests\\test_prompt_injection_and_secret_exfil.py",
+      "reason": "credential-shaped literal; no value exported"
+    }
+  ],
+  "source_bundle": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\phase2-source-20261101T103323Z\\source-final.bundle",
+  "bundle_sha256": "0025b14e62e0f5e85f863dc43d4bdf31eec6399cb259fb937dd3fa0e847a511e",
+  "worker_adapter_sha256": {
+    "openproject\\ai\\automation\\engineering_worker.py": "6f753cdf98cb910734c7331503405e23593784a051e6a629f5cdaa3a268c72b9",
+    "openproject\\ai\\automation\\engineering_delivery.py": "dff3e4df87afd9a0a9ea4cce6223f62b55c1d5539fc4d342d24d260b7e285c51",
+    "openproject\\ai\\automation\\n8n_lifecycle_adapter.py": "fd7c3ffef4a6cdf9701c00a8aacaf9ec6ed796b1a9e7521855c89cb51a0b7095"
+  },
+  "images": {
+    "gateway": {
+      "tag": "qldapm-ai:recovery-phase2-20261101-r2",
+      "id": "sha256:1c10248134b4f7973685433a9686f3d841ed96e5b767dd5b7d497adc0e3eceeb",
+      "source_commit": "307503c988f28644fa2095d9631923c03dfe32d2",
+      "recipe": "GatewayRecovery.Dockerfile"
+    },
+    "core": {
+      "tag": "qldapm-core:recovery-phase2-20261101-r1",
+      "id": "sha256:c237e4a792608e5ff5b95a7c9c36d41dc0392ceb3ec07f451fbee0d96dca06c9",
+      "source_commit": "307503c988f28644fa2095d9631923c03dfe32d2",
+      "recipe": "CoreRecovery.Dockerfile"
+    },
+    "n8n": {
+      "tag": "qldapm-n8n:recovery-phase2-redacted-r2",
+      "id": "sha256:9e8d3393ca28a6603f3890218aeb3bb280952262c134e230b033380a2fd54e32",
+      "source_commit": "307503c988f28644fa2095d9631923c03dfe32d2",
+      "recipe": "N8nRedacted.Dockerfile"
+    }
+  },
+  "source_manifest_sha256": "6fc69b8f8fb2b6a3576918215bec3ff6ca9bc5d8d74768c934363e2731e7937f"
+}

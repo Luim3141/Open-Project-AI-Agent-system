@@ -1,0 +1,164 @@
+{
+  "at": 1794477422.4594126,
+  "scope": "Semantic assertions real Gateway/Native snapshots + fresh global reads, no model calls/business writes",
+  "checks": {
+    "task398_exact_id_run": true,
+    "398_business_vs_runtime": true,
+    "398_native_version": true,
+    "recorded_stages_complete": true,
+    "dev_files_revision": true,
+    "reviewer_evidence": true,
+    "qa_evidence": true,
+    "checkpoint_and_resume": true,
+    "no_current_agent": true,
+    "run_exact_binding": true,
+    "unauthorized_and_project_isolation": true,
+    "global_running_current_scope": false,
+    "pending_owner_scoped": true
+  },
+  "global_reads": [
+    {
+      "tool": "get_active_agents",
+      "correlation_id": "7c0832bc-7f4d-4d6a-b7e9-fd574720c63b",
+      "project_id": null,
+      "items": [],
+      "truncated": false,
+      "scope_notice": "Chỉ các Task/Agent có telemetry trong cửa sổ Observer của project hiện tại; kiểm tra truncated/source_limits, không suy ra toàn bộ mọi Task.",
+      "context_truncated": false,
+      "raw_json_bytes": 7762
+    },
+    {
+      "tool": "get_blocked_tasks",
+      "correlation_id": "2ba05237-0d1a-406a-b911-92ed72f2067b",
+      "project_id": null,
+      "items": [],
+      "truncated": false,
+      "scope_notice": "Chỉ các Task/Agent có telemetry trong cửa sổ Observer của project hiện tại; kiểm tra truncated/source_limits, không suy ra toàn bộ mọi Task.",
+      "context_truncated": false,
+      "raw_json_bytes": 7762
+    },
+    {
+      "tool": "get_pending_approvals",
+      "correlation_id": "5c5b8c35-8a9d-4790-a5f0-53572be22ae0",
+      "project_id": null,
+      "items": [
+        {
+          "task_id": 398,
+          "task_title": "[AI backlog] Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung.",
+          "workflow_status": "COMPLETED",
+          "current_agent": null,
+          "business_status": "READY FOR RELEASE",
+          "acceptance_status": "AWAITING_OWNER_APPROVAL",
+          "freshness": {
+            "observed_at": 1794477421.0150483,
+            "source_updated_at": 1793964867.9740293,
+            "data_age_seconds": 512553.04101896286,
+            "freshness_status": "STALE"
+          }
+        },
+        {
+          "task_id": 396,
+          "task_title": "[AI backlog] Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest.",
+          "workflow_status": "COMPLETED",
+          "current_agent": null,
+          "business_status": "READY FOR RELEASE",
+          "acceptance_status": "AWAITING_OWNER_APPROVAL",
+          "freshness": {
+            "observed_at": 1794477421.355836,
+            "source_updated_at": 1793864672.2228715,
+            "data_age_seconds": 612749.1329643726,
+            "freshness_status": "STALE"
+          }
+        },
+        {
+          "task_id": 394,
+          "task_title": "[AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da",
+          "workflow_status": "COMPLETED",
+          "current_agent": null,
+          "business_status": "READY FOR RELEASE",
+          "acceptance_status": "AWAITING_OWNER_APPROVAL",
+          "freshness": {
+            "observed_at": 1794477421.4182956,
+            "source_updated_at": 1793735443.903253,
+            "data_age_seconds": 741977.5150425434,
+            "freshness_status": "STALE"
+          }
+        },
+        {
+          "task_id": 391,
+          "task_title": "[AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện",
+          "workflow_status": "COMPLETED",
+          "current_agent": null,
+          "business_status": "READY FOR RELEASE",
+          "acceptance_status": "AWAITING_OWNER_APPROVAL",
+          "freshness": {
+            "observed_at": 1794477421.4871347,
+            "source_updated_at": 1793655698.1892703,
+            "data_age_seconds": 821723.2978644371,
+            "freshness_status": "STALE"
+          }
+        },
+        {
+          "task_id": 390,
+          "task_title": "[AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit",
+          "workflow_status": "COMPLETED",
+          "current_agent": null,
+          "business_status": "READY FOR RELEASE",
+          "acceptance_status": "AWAITING_OWNER_APPROVAL",
+          "freshness": {
+            "observed_at": 1794477421.5509973,
+            "source_updated_at": 1793595712.0796614,
+            "data_age_seconds": 881709.4713358879,
+            "freshness_status": "STALE"
+          }
+        },
+        {
+          "task_id": 389,
+          "task_title": "[AI backlog] Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và",
+          "workflow_status": "COMPLETED",
+          "current_agent": null,
+          "business_status": "READY FOR RELEASE",
+          "acceptance_status": "AWAITING_OWNER_APPROVAL",
+          "freshness": {
+            "observed_at": 1794477421.5995867,
+            "source_updated_at": 1793566595.0065658,
+            "data_age_seconds": 910826.593020916,
+            "freshness_status": "STALE"
+          }
+        },
+        {
+          "task_id": 387,
+          "task_title": "[AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu ",
+          "workflow_status": "COMPLETED",
+          "current_agent": null,
+          "business_status": "READY FOR RELEASE",
+          "acceptance_status": "AWAITING_OWNER_APPROVAL",
+          "freshness": {
+            "observed_at": 1794477421.6581235,
+            "source_updated_at": 1793548912.4426863,
+            "data_age_seconds": 928509.2154371738,
+            "freshness_status": "STALE"
+          }
+        },
+        {
+          "task_id": 386,
+          "task_title": "[AI backlog] Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14, ",
+          "workflow_status": "COMPLETED",
+          "current_agent": null,
+          "business_status": "READY FOR RELEASE",
+          "acceptance_status": "AWAITING_OWNER_APPROVAL",
+          "freshness": {
+            "observed_at": 1794477421.7179914,
+            "source_updated_at": 1793447352.5839689,
+            "data_age_seconds": 1030069.1340224743,
+            "freshness_status": "STALE"
+          }
+        }
+      ],
+      "truncated": false,
+      "scope_notice": "Chỉ các Task/Agent có telemetry trong cửa sổ Observer của project hiện tại; kiểm tra truncated/source_limits, không suy ra toàn bộ mọi Task.",
+      "context_truncated": true,
+      "raw_json_bytes": 443357
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "at": "2026-10-27T03:54:54.313648+00:00",
+  "status": "FAILED_REAL_MULTI_AGENT_PROVIDER_TIMEOUT_NO_REPLAY",
+  "wf03_failure_lifecycle": "PASS_ACK_TERMINAL_STATUS_DURABLE_READBACK_IDEMPOTENCY_ACL",
+  "actor": 19,
+  "project": 5,
+  "run_id": "ccd6dcde-fbc3-411e-8135-1d92b229bd07",
+  "request_id": "86d32036-b344-43bc-9d7c-098a6c046a27",
+  "runtime_image": "sha256:0b47537e22d4e72af448be6c6bd6a8b37103d1a55507aee9b56c2fbdf8ef57a6",
+  "durable_state": "failed_or_unknown",
+  "elapsed_seconds": 49.158,
+  "provider_calls": {
+    "successful_count_tokens": 1,
+    "generation_attempts": 1,
+    "successful_generations": 0,
+    "http_attempts": 2,
+    "retry": 0,
+    "receipts": [
+      {
+        "id": "18360cd6-554c-4f18-a46b-88da2b90bcc4",
+        "actor": 19,
+        "run_id": "ccd6dcde-fbc3-411e-8135-1d92b229bd07",
+        "agent": "supervisor",
+        "phase": "countTokens",
+        "model": "gemini-3.5-flash-lite",
+        "state": "LIVE_SUCCESS",
+        "http_status": 200,
+        "error": null,
+        "request_sha256": "c9f287883d3449f071f68df488d6b32b7805c697c139cb89f748990fc068141a",
+        "duration_seconds": 0.497
+      },
+      {
+        "id": "8aaebe8a-4fbe-4870-b27c-7759a3f4af58",
+        "actor": 19,
+        "run_id": "ccd6dcde-fbc3-411e-8135-1d92b229bd07",
+        "agent": "supervisor",
+        "phase": "generateContent",
+        "model": "gemini-3.5-flash-lite",
+        "state": "PROVIDER_ERROR",
+        "http_status": 503,
+        "error": "GEMINI_TIMEOUT",
+        "request_sha256": "648d0c9e28f20e85cf56ae093e344262c1a9eeb3252a88692412c6d8a2ba6732",
+        "duration_seconds": null
+      }
+    ],
+    "usage_rows_delta": 2
+  },
+  "actual_google_generation_outcome": "UNKNOWN_AFTER_READ_TIMEOUT; no automatic retry or old-run replay",
+  "receipt_limitation": "Old implementation stored synthetic Gateway503 in http_status on timeout; no actual Google503 response observed. Corrected by C2c source/test change, not rewritten in historical receipt.",
+  "context_provenance": {
+    "base_context_sha256": "a8cd3eb663e87478f35d4bd0aa8d916fd7c414c8188d91e64a143ee77e68c7f6",
+    "native_references": [
+      {
+        "lock_version": 0,
+        "native_id": 375
+      }
+    ],
+    "rag_hits": [
+      {
+        "document_id": "5bd7c9754050b6b4aa9dac97b80c98c643afa4ff1ef38fd120e2c218472bddbc",
+        "lock_version": 0,
+        "native_id": 375,
+        "snippet_sha256": "982495e771470b4cb60d534cbe12af4d34aae2c59604d7ba80e154f43509c1e9",
+        "source_id": "op:wp:375"
+      }
+    ],
+    "rag_state": "HITS"
+  },
+  "polls": [
+    {
+      "at": "2026-10-27T03:50:02.466856+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:06.189752+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:10.127480+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:13.602197+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:18.276740+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:21.862643+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:25.549472+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:29.096906+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:32.590466+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:36.099774+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:40.207364+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:43.666792+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:47.244084+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T03:50:50.835575+00:00",
+      "state": "failed_or_unknown",
+      "http": 200
+    }
+  ],
+  "same_key": {
+    "http": 200,
+    "same_run_id": true
+  },
+  "altered_payload_http": 422,
+  "negative_checks": [
+    {
+      "name": "foreign_actor",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "name": "missing_transport_secret",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "name": "invalid_bearer",
+      "http": 401,
+      "status": "PASS_POLICY_ENFORCED"
+    }
+  ],
+  "trace_endpoint_http": 200,
+  "n8n_recent_execution_metadata": [],
+  "existing_provider_receipts_preserved": true,
+  "native_writes": 0,
+  "proposal_delta": 0,
+  "human_decisions": 0,
+  "staging_operations": false,
+  "n8n_execution_history": "NOT_PERSISTED_BY_EXISTING_POLICY: success/error data none, progress/manual disabled; do not change16workflows or save Bearer-bearing payloads for this test. WF03 HTTP transcript, request/run IDs and Gateway durable audit are the available correlation evidence."
+}

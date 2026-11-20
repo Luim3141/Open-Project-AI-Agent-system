@@ -1,0 +1,57 @@
+{
+  "at": 1794471775.1528006,
+  "scope": "OFFLINE CONTRACTS; fixtures and real module code; not MAIN E2E",
+  "acceptance_red": {
+    "exit_code": 1,
+    "expected_exit": 1,
+    "passed": true,
+    "tail": "line 119, in run\n    return self._loop.run_until_complete(task)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^\n  File \"/usr/local/lib/python3.13/asyncio/base_events.py\", line 726, in run_until_complete\n    return future.result()\n           ~~~~~~~~~~~~~^^\n  File \"/qa/test_acceptance_answer.py\", line 48, in test_unprompted_done_claim_is_grounded_too\n    self.assertIn('chưa',answer.lower())\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'chưa' not found in 'task đã done.'\n\n----------------------------------------------------------------------\nRan 5 tests in 0.060s\n\nFAILED (failures=4)\n"
+  },
+  "telegram_green": {
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "tail": "...........................................................\n----------------------------------------------------------------------\nRan 59 tests in 0.975s\n\nOK\n"
+  },
+  "gateway_modules": [
+    "test_gateway",
+    "test_agent_observer",
+    "test_telegram_notifications",
+    "test_observer_read_path",
+    "test_control_center",
+    "test_control_center_authorization",
+    "test_command_center_state_contract",
+    "test_supervisor",
+    "test_agent_queue",
+    "test_checkpoint",
+    "test_engineering_owner_controls",
+    "test_engineering_continuation",
+    "test_engineering_fencing",
+    "test_engineering_delivery_recovery",
+    "test_engineering_monitor_current",
+    "test_engineering_catalog_limit",
+    "test_engineering_reporting_contract",
+    "test_engineering_github_owner_contract",
+    "test_engineering_github_recovery",
+    "test_engineering_github_sync",
+    "test_business_acceptance",
+    "test_human_approval_lifecycle",
+    "test_native_qa_workflow",
+    "test_native_qa_evidence",
+    "test_takeover_security",
+    "test_automation_auth",
+    "test_n8n_lifecycle_adapter",
+    "test_n8n_lifecycle_outbox",
+    "test_notification_delivery",
+    "test_knowledge_storage",
+    "test_knowledge_integrity",
+    "test_knowledge_search",
+    "test_rag_recovery"
+  ],
+  "gateway": {
+    "exit_code": 1,
+    "expected_exit": 0,
+    "passed": false,
+    "tail": "-----------\nTraceback (most recent call last):\n  File \"/app/tests/test_native_qa_evidence.py\", line 207, in test_signed_human_ui_review_uses_fresh_actor_policy_and_cannot_be_a_model_tool\n    self.assertEqual(request(command={'id':e['id'],'hash':e['hash'],'decision':'accept','approved':True}).status_code,409)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 422 != 409\n\n----------------------------------------------------------------------\nRan 229 tests in 10.444s\n\nFAILED (failures=1, errors=18, skipped=8)\n"
+  }
+}

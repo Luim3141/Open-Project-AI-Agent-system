@@ -1,0 +1,93 @@
+{
+  "snapshot": "2026-11-01 post-30218aff",
+  "live_run": {
+    "run_id": "f136866a-b7e4-4ad8-bbd7-d846343163d0",
+    "status": "succeeded",
+    "reviewer": "PASS",
+    "qa": "PASS",
+    "host_acceptance": "26 passed, 1 warning",
+    "n8n_lifecycle_acked": 17,
+    "native_id": 387,
+    "pull_request": 7,
+    "merged": false
+  },
+  "rag": {
+    "filtered_wp387_citation": "PASS",
+    "semantic_corpus": "NOT_PASSED",
+    "evidence": "SECOND_BRAIN_RAG_EVALUATION.md"
+  },
+  "child_citation_fix": {
+    "old_code_regression": "2 failures as expected",
+    "new_code": "2 passed",
+    "engineering_regression": "113 passed",
+    "candidate_image_tests": "2 passed",
+    "main_healthy": true,
+    "worker": "ALIVE",
+    "fresh_e2e_after_fix": "NOT_RUN"
+  },
+  "additional_contracts": {
+    "rag_recovery": "21 passed",
+    "knowledge_ui_answer": "4 passed",
+    "report_reader_node_vm": "PASS"
+  },
+  "stabilization": {
+    "engineering_regression": "120 passed before latest duplicate-resume patch",
+    "continuation_tests": "16 passed including stale lease and duplicate resume",
+    "delivery_recovery": "11 passed",
+    "command_center_state": "5 passed",
+    "core_clone_native_api": "PASS",
+    "report_tests": "10 passed",
+    "live_ai_report": "GENERATED and read back",
+    "n8n_restore": "SQLite integrity ok, 16 published workflows, 16 valid sharing links, 4/4 credentials decrypt in network-none tmpfs",
+    "master_key_clone_migration": "FAILED decryption after import",
+    "dr_other_profile": "NOT_RUN",
+    "fresh_e2e": "API path verified: WP389, PR8 OPEN, 29 tests, 13 ACKs, scoped citation and report read-back"
+  },
+  "github_sync": {
+    "first": "SUCCESS, one new activity",
+    "second": "SUCCESS, zero changes",
+    "wp387_matching_activities": 1
+  },
+  "n8n": {
+    "clone_sqlite": "3 success and 1 error, no canary in execution tables/log",
+    "filesystem": "fixture only",
+    "main_ready": true,
+    "active_workflows": 16,
+    "history_scrubbed": false
+  },
+  "demo": {
+    "release": "0498ceeda97cd3e856a975129129e71f6c94a3dd",
+    "tests": "15 passed, 1 warning",
+    "health": 200,
+    "summary": 200,
+    "schema_unchanged": true,
+    "rows_unchanged": true
+  },
+  "native_recovery": {
+    "original_385_absent": true,
+    "replacement": 388,
+    "dependency": 384,
+    "relation": 360
+  },
+  "project5_work_packages": {
+    "count": 341,
+    "max_lock": 4,
+    "max_updated_utc": "2026-10-29T10:08:56.897949Z",
+    "all_columns_match_pre_e2e_snapshot": true,
+    "other_tables": "NOT_COMPARED"
+  },
+  "ui_human_uat": "NOT_RUN",
+  "full_16_business_flows": "NOT_RUN",
+  "post_e2e_rollout": {
+    "engineering_regression": "123 passed",
+    "command_center_state": "6 passed",
+    "inspector_node_vm": "PASS",
+    "report_reader_node_vm": "PASS",
+    "rails_erb": "PASS",
+    "core_clone_native_api": "PASS final image",
+    "gateway_candidate_and_rollback_startup": "PASS network none",
+    "main": "Gateway/Core healthy; queue OFF and 0 active; scheduled worker Running",
+    "fresh_e2e_after_final_images": "NOT RUN; directive limit already used",
+    "ui_human_uat": "NOT RUN"
+  }
+}

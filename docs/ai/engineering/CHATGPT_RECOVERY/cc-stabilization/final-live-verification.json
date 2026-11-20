@@ -1,0 +1,1410 @@
+{
+  "utc": "2026-11-04T16:22:32.919239+00:00",
+  "images": {
+    "gateway": "sha256:698224aa0ddc88808ebab30b4705dfe7050b09db67b8ae3fc4a569d6a8447e1c",
+    "core": "sha256:1a8f2528da78860faa69610568985471e26136d441a594f4f098c045ca181189"
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/store.py": "c83575171c72b2b0b9e93d8463e04ac99bcd8ba67e8bd98c0df4e254be6cbb91",
+    "openproject/ai/gateway/service.py": "4940cf879ec44cc8ba986179549b58ca7d863a8735984c7df4a7687163224988",
+    "openproject/ai/gateway/engineering.py": "95caa17954cc0a2a7648c947c4a268e8ac0edb65bda12eebba6428d1f548ac23",
+    "openproject/ai/gateway/engineering_operator.py": "ce72e13a3caa1cebbc7f054041da9dc5136407200aef20d9086ab89180227947",
+    "openproject/ai/gateway/engineering_lifecycle.py": "575d2c27df5e1816a133e501c53adf94947bca55affdf66d9c3761f467d79c4c",
+    "openproject/ai/gateway/engineering_health.py": "7fee86280e4d1ccdcfb54be8fbecb35d27ba1e17bed2fb0333bf808741051589",
+    "openproject/ai/gateway/engineering_observability.py": "7178dcea64e67260b98c99f7f4263cae688a47cdada221928a9ea0473c9743d4",
+    "openproject/ai/gateway/engineering_owner_control.py": "3c8140376ecf9bc784784a5b105defe063688a870c4c4a5d49f5767c8c1c6c28",
+    "openproject/ai/gateway/engineering_reporting.py": "da4ff85a1b61783316b6601c9e1eaeaf13cc4199b835616124f7a7185c7cc868",
+    "openproject/ai/gateway/workflow_status.py": "644e522760137f71d0cbe24bd36efcbf8d91adb4a69ce57ce03d579eee97083a",
+    "openproject/ai/gateway/delegated_approval.py": "c75218fbcd3c88bd3d8d0b836f756665ebac27865ed8e7d161eca6ef994724eb",
+    "openproject/ai/gateway/engineering_github_sync.py": "1fe18136c051e5a0a728231e05777eca0326c0c3fb481620a1656c74684a3050",
+    "openproject/ai/gateway/engineering_github_operations.py": "ee411ad0b4da32c7f8666f8b3c9e19a124719132d72f745a683d874802db716f",
+    "openproject/ai/gateway/engineering_github_poll.py": "4d11671184b108c61431ad9e23dfe5146a09ffa11b7ad1bb911c1652bacef255",
+    "openproject/ai/gateway/engineering_status_sync.py": "0e44359372a8f3f774ef5224325c9a564e63b249d0a3f78e7d034d3f33da5e46",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "994bebc93004f60e23b93c4afeccd0add591169c10f6414bfd84f371145a61ae",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "dd08701bc3e0a5a4db807b2bfc0fedce1ea21e5e9eeeb340fe598545fb8c7d5c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": "e0ec90f28ca17d26f9cfb5139f8a6bae1405496d153dee05c20288501254aa2c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": "c8e5a45838c4757271b10855a31b151fb06dfbd02e12b3f451a801516a53a72a",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": "16b15cf53c97c02b583c729cfcd429ef5b594076771ebaead17f5161399d3c1a",
+    "openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb": "bfd087ed4cfafba6db9e3b4224f57452761cf4ccc4840916e62a4c1a689df29f",
+    "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": "43ff4c9b83561f0a9efaef0f557c1c6364a80578f43fe5024e83a4b1d34ae66e",
+    "openproject/ai/core/overlay/config/initializers/qldapm_gates.rb": "f11d389af09782866137e2b50e130ba13ec188d633f1f4e453f5865b58c0d7f5"
+  },
+  "performance": {
+    "scope": "Actual Main Gateway HTTP; separate from Core/browser timings",
+    "rows": [
+      {
+        "index": 0,
+        "seconds": 12.8446,
+        "http": 200,
+        "bytes": 639731
+      },
+      {
+        "index": 1,
+        "seconds": 7.0845,
+        "http": 200,
+        "bytes": 639730
+      },
+      {
+        "index": 2,
+        "seconds": 8.855,
+        "http": 200,
+        "bytes": 639730
+      },
+      {
+        "index": 3,
+        "seconds": 7.2148,
+        "http": 200,
+        "bytes": 639729
+      },
+      {
+        "index": 4,
+        "seconds": 5.6801,
+        "http": 200,
+        "bytes": 639729
+      }
+    ],
+    "p50_seconds": 7.2148,
+    "p95_seconds": 12.8446,
+    "sample_count": 5,
+    "measured_utc": "2026-11-04T15:40:42.473289+00:00",
+    "reuse_reason": "Same immutable Gateway and same Native/API executable logic; subsequent Core changes are a literal historical-artifact caption and full-navigation HTML attributes only."
+  },
+  "control": {
+    "desired_mode": "PAUSED",
+    "effective_state": "PAUSED",
+    "state_revision": 34,
+    "last_command": {
+      "accepted": false,
+      "affected_run_id": null,
+      "command_id": "44c54ffc-2f20-422a-a06a-b783a413dee1",
+      "current_state": "PAUSED",
+      "desired_state": "PAUSED",
+      "reason_code": "NO_ELIGIBLE_WORK",
+      "request_id": "70eb7e8f-f671-4ecf-8e22-e404b1e7e7ef",
+      "requested_action": "RUN_ONCE",
+      "server_timestamp": 1793809306.4578614,
+      "state_revision": 34
+    },
+    "recent_commands": [
+      {
+        "accepted": false,
+        "affected_run_id": null,
+        "command_id": "44c54ffc-2f20-422a-a06a-b783a413dee1",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "NO_ELIGIBLE_WORK",
+        "request_id": "70eb7e8f-f671-4ecf-8e22-e404b1e7e7ef",
+        "requested_action": "RUN_ONCE",
+        "server_timestamp": 1793809306.4578614,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "2bf423a3-99c6-4090-b3f1-c12a5054275f",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "operation_id": "09a9772c-2103-56e2-9019-ba244ead03c3",
+        "operation_state": "QUEUED",
+        "reason_code": "QUEUED",
+        "request_id": "4875c9b6-591f-4b6b-bbec-012b576b560b",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793807442.9105597,
+        "state_revision": 34
+      },
+      {
+        "accepted": false,
+        "affected_run_id": null,
+        "command_id": "575b1edf-ab98-4873-8cdf-c67bcd15d16a",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "NO_ELIGIBLE_WORK",
+        "request_id": "bd3c10bd-79f2-43e4-9e2e-7d6c3937c95d",
+        "requested_action": "RUN_ONCE",
+        "server_timestamp": 1793803372.3558276,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "98589d81-bfe1-438a-9adb-5f50388f77a2",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "operation_id": "59817618-8750-5543-aeaa-46402ff80e3c",
+        "operation_state": "QUEUED",
+        "reason_code": "QUEUED",
+        "request_id": "d0ee671b-2d52-42d8-8fe2-8b1fdb92a19b",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793803316.272855,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "4b30ec2e-8cb4-4e72-8a1f-acdc199cf8e7",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "operation_id": "f9273f4d-02f9-5ebf-9ce1-d105ae1d1978",
+        "operation_state": "QUEUED",
+        "reason_code": "QUEUED",
+        "request_id": "4ea70717-9be7-45f2-a446-0b45b6b50a8b",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793794506.7784016,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "a892d914-fdbb-4d53-af5a-3027b6f95827",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "SUCCESS",
+        "request_id": "40418146-5a87-4106-8fc8-02ff47f686c7",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793775757.1125324,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "6718ac78-5993-470b-a839-5f118fd6a551",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "SUCCESS",
+        "request_id": "7c2b97df-27a0-4f39-8776-903f6227b207",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793775720.683058,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "d4c1b236-3b69-4909-b634-4f8faad137d9",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "SUCCESS",
+        "request_id": "b5587d9f-832f-4cf0-bbaf-25d7a51c9a25",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793775554.876894,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "3f4c36d2-b7f5-4143-9742-1bc843f40bbf",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "8e552188-3dd9-4aa4-aa98-3a075344de6d",
+        "requested_action": "PAUSED",
+        "server_timestamp": 1793775548.1367638,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "f1264e37-9c3a-482f-b09d-fa9018e7ff84",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "e27aaf0f-ce6b-47ad-801a-65b320f47271",
+        "requested_action": "PAUSED",
+        "server_timestamp": 1793775542.2026303,
+        "state_revision": 33
+      }
+    ],
+    "active_run_id": null,
+    "server_timestamp": 1793809357.6255,
+    "blocked_reason": "NO_ELIGIBLE_WORK",
+    "scheduler_policy": {
+      "blocked_default": "STOP_AUTO_REQUIRE_OWNER",
+      "auto_continuation_enabled": false
+    }
+  },
+  "queue": {
+    "state": "EMPTY",
+    "ready": 0,
+    "active": 0,
+    "blocked": 0,
+    "eligible_unit": null,
+    "reason_code": "NO_ELIGIBLE_WORK"
+  },
+  "worker": {
+    "worker_id": "715f74aa-2a00-4a9d-b845-e8dae93c4312",
+    "seen": 1793809351.8955207,
+    "run_id": null,
+    "state": "ALIVE",
+    "heartbeat_age_seconds": 5.7299792766571045
+  },
+  "delegation": false,
+  "native": [
+    {
+      "id": 386,
+      "status": "READY FOR RELEASE",
+      "lock_version": 10,
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 386,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "72a36697-da92-45ca-b549-2cb8e7c780b3",
+        "source_event_id": "4fde257f4d57d1af3a434294e91684057804fb4ae9bbd8132c1f99d6fd3820c2",
+        "source_sequence": 1793445908656756,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804564.186464
+      }
+    },
+    {
+      "id": 387,
+      "status": "READY FOR RELEASE",
+      "lock_version": 10,
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 387,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "f136866a-b7e4-4ad8-bbd7-d846343163d0",
+        "source_event_id": "07eabc5ad4873abf80048c009e4f3b69ac422334cc2358440b61d61190977d92",
+        "source_sequence": 1793547615423384,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804559.2727203
+      }
+    },
+    {
+      "id": 389,
+      "status": "READY FOR RELEASE",
+      "lock_version": 10,
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 389,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "814f7a28-6c1a-4d2e-82d6-f0d118e2081c",
+        "source_event_id": "68a44c7f71baa65baf704eea55e5183b8f95d10400c9a84367c8dbce9e7c238e",
+        "source_sequence": 1793566293829776,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804551.8659756
+      }
+    },
+    {
+      "id": 390,
+      "status": "READY FOR RELEASE",
+      "lock_version": 10,
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 390,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "447d4fd9-fd03-4a41-9468-09bad8629d48",
+        "source_event_id": "c439a6aa0b834c498ccdf31ca749c100db12bbaa84c19a896286b6d0301b347b",
+        "source_sequence": 1793594783397099,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804544.985458
+      }
+    },
+    {
+      "id": 391,
+      "status": "READY FOR RELEASE",
+      "lock_version": 10,
+      "status_sync": {
+        "delivery_state": "DEPLOYED_PENDING_ACCEPTANCE",
+        "engineering_state": "succeeded",
+        "native_id": 391,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+        "source_event_id": "fb21ad26cc293caad3b3f5418e6f77b336c63cf8f0cac97411156e8607e21fa0",
+        "source_sequence": 1793617536952737,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793804544.0980659
+      }
+    },
+    {
+      "id": 394,
+      "status": "READY FOR RELEASE",
+      "lock_version": 10,
+      "status_sync": {
+        "delivery_state": "PR_OPEN",
+        "engineering_state": "succeeded",
+        "native_id": 394,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+        "source_event_id": "4206eed331de2884c4a156c7660bb9980945b7a7b4c0a2e169875a617c95de98",
+        "source_sequence": 1793731824604237,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793794630.3600893
+      }
+    }
+  ],
+  "github_operations": [],
+  "github": {
+    "status": "ONLINE",
+    "checked_at": 1793809258.9063191,
+    "release": {
+      "head_sha": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+      "branch": "codex/demo-integration-20261103",
+      "included_prs": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "deployed_at": 1793671992.20804,
+      "source": "UNMERGED_INTEGRATION",
+      "main_merged": false,
+      "state": "DEPLOYED_TO_DEMO",
+      "release_type": "UNMERGED_INTEGRATION_TEST_RELEASE",
+      "checked_at": 1793809268.4508712,
+      "evidence": "ACTUAL_LOOPBACK_RELEASE_JSON_AND_HEADERS"
+    },
+    "sync_meta": {
+      "last_synced_at": 1793809270.1525176,
+      "total_checked": 12,
+      "total_changed": 0,
+      "status": "SUCCESS",
+      "error": null,
+      "correlation_id": "852a5ba8-b85e-4cb9-a6a7-50cbcaa77e29",
+      "started_at": 1793809258.9063191,
+      "last_success_at": 1793809270.1525176,
+      "request_id": "automatic:40f34589-c453-4c42-9760-ec753333121f"
+    }
+  },
+  "prs": [
+    {
+      "number": 12,
+      "state": "open",
+      "is_merged": false,
+      "merge_target": "UNMERGED",
+      "head_sha": "1ece6705ead14a250c05726e9217aeec94f33f2b",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/12",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 11,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "MAIN",
+      "head_sha": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/11",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 10,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-9d0ff35386a63183)",
+      "head_sha": "1914f10d3bd0b2b05459914100c53549f63d0bc5",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/10",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 9,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-e44b47e2e8610c4f)",
+      "head_sha": "4a794e2b3d62247881fef4c0908eeeee9f043ba2",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/9",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 8,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-20c2a94109f4e78f)",
+      "head_sha": "b20fb554cb0b45f2938ac11ba9e736708dcb1bf0",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/8",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 7,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-bb9a628fe5b7be67)",
+      "head_sha": "a150f3d690288ff95451c2667954f09661aa9604",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/7",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 6,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-health-check-v1)",
+      "head_sha": "0498ceeda97cd3e856a975129129e71f6c94a3dd",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/6",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 5,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-4d13e695555a8d44)",
+      "head_sha": "0e8d320a3459f26d01c88a3e8d4cb861e09808dd",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/5",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 4,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-283138e910432528)",
+      "head_sha": "def9d0a8852af42a407bd42fb0051615a2de9331",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/4",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 3,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-crud-search-web-v1)",
+      "head_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/3",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 2,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-create-list-persistence-v1)",
+      "head_sha": "29ff0ec1e531d917ce96737d768c8e16dad895c5",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/2",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 1,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "MAIN",
+      "head_sha": "1aa7c395afd4c067c298cc03cf7b661177d0bb1c",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/1",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    }
+  ],
+  "workflow_status": [
+    {
+      "code": "WF01",
+      "workflow_id": "X2O2QdPY6QLOrWqL",
+      "name": "WF01: Local Document Ingestion",
+      "purpose": "Nạp nguồn đã được cấp quyền",
+      "trigger": "Authenticated source webhook",
+      "action_tab": "tab-knowledge",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "9e815254-7b30-4740-b57f-5dbf87a7d945",
+      "definition_sha256": "4bd0804297b3be8d5724b56ea639d0ab5995bf759299d3b3552dd492e0905de2",
+      "last_execution": {
+        "id": "3640",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793775631.269,
+        "stopped_at": 1793775634.513
+      },
+      "last_successful_execution": {
+        "id": "3640",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793775631.269,
+        "stopped_at": 1793775634.513
+      },
+      "last_failed_execution": {
+        "id": "60",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1792692730.203,
+        "stopped_at": 1792692731.227
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #60",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "COMMAND_RESULT_VERIFIED",
+        "event_id": "3aba18b0-f149-5fbf-a62b-dabbfa68f46f",
+        "correlation_id": "a5879d74-1d34-45c9-a70e-5b1cad620a3b",
+        "run_id": null,
+        "native_id": null,
+        "pr_number": null,
+        "execution_id": "3427",
+        "execution_url": "http://localhost:5679/workflow/X2O2QdPY6QLOrWqL/executions/3427",
+        "updated_at": 1793714658.0610764
+      },
+      "business_side_effect": "RECEIPT_OBSERVED; execution completion not matched",
+      "workflow_url": "http://localhost:5679/workflow/X2O2QdPY6QLOrWqL",
+      "execution_url": "http://localhost:5679/workflow/X2O2QdPY6QLOrWqL/executions/3640",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF02",
+      "workflow_id": "Anl8LNdN4NNTKRpe",
+      "name": "WF02: OpenProject Event Sync",
+      "purpose": "Đối chiếu Native version/visibility",
+      "trigger": "Native inventory event / authenticated sync",
+      "action_tab": "tab-backlog",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "a6590c2d-23fe-49fc-bdb0-49179cecd309",
+      "definition_sha256": "2b7fa98adffa2af5187e773be2b8ec63fa6336149382b5c6c0c28cbaba1e6e15",
+      "last_execution": {
+        "id": "3712",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793794937.812,
+        "stopped_at": 1793794938.247
+      },
+      "last_successful_execution": {
+        "id": "3712",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793794937.812,
+        "stopped_at": 1793794938.247
+      },
+      "last_failed_execution": {
+        "id": "3312",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1793710383.404,
+        "stopped_at": 1793710383.493
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #3312",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "SOURCE_OBSERVED",
+        "event_id": "b3160da4-f91a-562d-8597-4a996652e40e",
+        "correlation_id": "b3160da4-f91a-562d-8597-4a996652e40e",
+        "run_id": null,
+        "native_id": 394,
+        "pr_number": null,
+        "execution_id": "3712",
+        "execution_url": "http://localhost:5679/workflow/Anl8LNdN4NNTKRpe/executions/3712",
+        "updated_at": 1793794938.192552
+      },
+      "business_side_effect": "SOURCE_OBSERVED",
+      "workflow_url": "http://localhost:5679/workflow/Anl8LNdN4NNTKRpe",
+      "execution_url": "http://localhost:5679/workflow/Anl8LNdN4NNTKRpe/executions/3712",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF03",
+      "workflow_id": "XoP4M520TMG3WgeY",
+      "name": "WF03: Natural Language Request Orchestrator",
+      "purpose": "Tiếp nhận yêu cầu qua n8n",
+      "trigger": "Authenticated request webhook",
+      "action_tab": "tab-backlog",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "18fbb3ad-0e1c-4835-96a5-623a6f8606d3",
+      "definition_sha256": "0085f1f34b9e838b9e9618f92e80a7bef62b7dcc7702852d941fc7c156b6771b",
+      "last_execution": {
+        "id": "3433",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793714794.255,
+        "stopped_at": 1793714794.817
+      },
+      "last_successful_execution": {
+        "id": "3433",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793714794.255,
+        "stopped_at": 1793714794.817
+      },
+      "last_failed_execution": {
+        "id": "45",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1792691628.217,
+        "stopped_at": 1792691628.467
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #45",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "PLANNING_ACCEPTED",
+        "event_id": "f4662e03-d086-5374-8943-1b74be35ae69",
+        "correlation_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+        "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+        "native_id": 379,
+        "pr_number": null,
+        "execution_id": "3433",
+        "execution_url": "http://localhost:5679/workflow/XoP4M520TMG3WgeY/executions/3433",
+        "updated_at": 1793714794.7585773
+      },
+      "business_side_effect": "PLANNING_ACCEPTED",
+      "workflow_url": "http://localhost:5679/workflow/XoP4M520TMG3WgeY",
+      "execution_url": "http://localhost:5679/workflow/XoP4M520TMG3WgeY/executions/3433",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF04",
+      "workflow_id": "elfapV5D2PTnLiHW",
+      "name": "WF04: Multi-Agent Execution Tracking",
+      "purpose": "Quan sát lifecycle và GitHub delivery",
+      "trigger": "Durable lifecycle / GitHub event",
+      "action_tab": "tab-mission",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "7b409c28-5271-4d69-98f9-c55100b3c871",
+      "definition_sha256": "4ebb0a3dc54088c5e732e1bad9bdc0f150f18b3a2fec69204dd93faea23d4ad5",
+      "last_execution": {
+        "id": "3540",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793735718.864,
+        "stopped_at": 1793735719.105
+      },
+      "last_successful_execution": {
+        "id": "3540",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793735718.864,
+        "stopped_at": 1793735719.105
+      },
+      "last_failed_execution": {
+        "id": "3279",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1793710371.773,
+        "stopped_at": 1793710371.831
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #3279",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "DELIVERY_OBSERVED",
+        "event_id": "bcb7cc3c-53d2-5d4f-92d5-a9a87a33c64a",
+        "correlation_id": "c67b62d3-ec46-43f7-9035-81d4e0a7daa4",
+        "run_id": null,
+        "native_id": 394,
+        "pr_number": 12,
+        "execution_id": "3540",
+        "execution_url": "http://localhost:5679/workflow/elfapV5D2PTnLiHW/executions/3540",
+        "updated_at": 1793735719.048148
+      },
+      "business_side_effect": "DELIVERY_OBSERVED",
+      "workflow_url": "http://localhost:5679/workflow/elfapV5D2PTnLiHW",
+      "execution_url": "http://localhost:5679/workflow/elfapV5D2PTnLiHW/executions/3540",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF05",
+      "workflow_id": "xCZFw45fmDQG5gNq",
+      "name": "WF05: Native API Approval Workflow",
+      "purpose": "Preview và quyết định Project6 theo policy được Owner ủy quyền",
+      "trigger": "Signed delegated preview / authenticated human preview",
+      "action_tab": "tab-integrations",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "688ebfd0-f5ed-442f-a29a-d244f5b574d7",
+      "definition_sha256": "1ac7259265593f62664e924b3d2a0280363215b99ef78fc1d5dddbf2dd619184",
+      "last_execution": {
+        "id": "3653",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793783283.426,
+        "stopped_at": 1793783285.018
+      },
+      "last_successful_execution": {
+        "id": "3653",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793783283.426,
+        "stopped_at": 1793783285.018
+      },
+      "last_failed_execution": {
+        "id": "164",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1792703148.411,
+        "stopped_at": 1792703148.794
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #164",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "APPROVED",
+        "event_id": "49f2e76a-2d4c-554d-a31a-f64861be7eed",
+        "correlation_id": "1d94f68f-7897-4942-bce9-6be44c42796d",
+        "run_id": null,
+        "native_id": 395,
+        "pr_number": null,
+        "execution_id": "3653",
+        "execution_url": "http://localhost:5679/workflow/xCZFw45fmDQG5gNq/executions/3653",
+        "updated_at": 1793783284.9517443
+      },
+      "business_side_effect": "APPROVED",
+      "workflow_url": "http://localhost:5679/workflow/xCZFw45fmDQG5gNq",
+      "execution_url": "http://localhost:5679/workflow/xCZFw45fmDQG5gNq/executions/3653",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF06",
+      "workflow_id": "Jq18aFSqfuUybEic",
+      "name": "WF06: Native API Execution & Verification",
+      "purpose": "Thực thi quyết định được phép và read-back bằng principal thật",
+      "trigger": "Signed delegated execution / explicit human decision",
+      "action_tab": "tab-integrations",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "dcca7091-a57d-4017-9714-26202018daaf",
+      "definition_sha256": "da4d596c0ecab38e6f150dc349aa2a13ad69ced427a15541b771b606f0b04f05",
+      "last_execution": {
+        "id": "3654",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793783290.765,
+        "stopped_at": 1793783292.171
+      },
+      "last_successful_execution": {
+        "id": "3654",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793783290.765,
+        "stopped_at": 1793783292.171
+      },
+      "last_failed_execution": {
+        "id": "116",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1792699537.526,
+        "stopped_at": 1792699537.55
+      },
+      "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+      "last_error": "N8N_EXECUTION_ERROR #116",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "BUSINESS_VERIFIED",
+        "event_id": "e5f329d5-406f-52b3-acda-3b746259e050",
+        "correlation_id": "1d94f68f-7897-4942-bce9-6be44c42796d",
+        "run_id": null,
+        "native_id": 395,
+        "pr_number": null,
+        "execution_id": "3654",
+        "execution_url": "http://localhost:5679/workflow/Jq18aFSqfuUybEic/executions/3654",
+        "updated_at": 1793783292.1136363
+      },
+      "business_side_effect": "BUSINESS_VERIFIED",
+      "workflow_url": "http://localhost:5679/workflow/Jq18aFSqfuUybEic",
+      "execution_url": "http://localhost:5679/workflow/Jq18aFSqfuUybEic/executions/3654",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF07",
+      "workflow_id": "BpCQrGR866vg4BqQ",
+      "name": "WF07: Daily Project Brief",
+      "purpose": "Thu thập báo cáo ngày",
+      "trigger": "Daily cron / signed collector",
+      "action_tab": "tab-reports",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+      "definition_sha256": "db5bcdcfc2310b6d4e96debea244bfde19b908da5af8e98fa7a6553441ecf43d",
+      "last_execution": {
+        "id": "3585",
+        "status": "success",
+        "mode": "trigger",
+        "started_at": 1793754002.841,
+        "stopped_at": 1793754004.68
+      },
+      "last_successful_execution": {
+        "id": "3585",
+        "status": "success",
+        "mode": "trigger",
+        "started_at": 1793754002.841,
+        "stopped_at": 1793754004.68
+      },
+      "last_failed_execution": {
+        "id": "2957",
+        "status": "error",
+        "mode": "trigger",
+        "started_at": 1793581200.058,
+        "stopped_at": 1793581201.087
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #2957",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": null,
+      "business_side_effect": "NOT_VERIFIED",
+      "workflow_url": "http://localhost:5679/workflow/BpCQrGR866vg4BqQ",
+      "execution_url": "http://localhost:5679/workflow/BpCQrGR866vg4BqQ/executions/3585",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF08",
+      "workflow_id": "RXWjVUL8ozqhjY4w",
+      "name": "WF08: Sprint Risk",
+      "purpose": "Đọc rủi ro sprint",
+      "trigger": "Authenticated risk webhook",
+      "action_tab": null,
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "a27ba585-d38b-4df7-bbcf-9a51643f1d98",
+      "definition_sha256": "2ea2337b48f55716c9ca4a274d4d37afe0588da023024a4f9dda2c678861a5c7",
+      "last_execution": {
+        "id": "3637",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793775387.216,
+        "stopped_at": 1793775387.948
+      },
+      "last_successful_execution": {
+        "id": "3637",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793775387.216,
+        "stopped_at": 1793775387.948
+      },
+      "last_failed_execution": {
+        "id": "52",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1792692363.848,
+        "stopped_at": 1792692372.579
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #52",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "COMMAND_RESULT_VERIFIED",
+        "event_id": "452191c1-57f5-5589-b90f-2d34e363f962",
+        "correlation_id": "19850af7-76dd-4fc1-8882-f6ef5cf465b6",
+        "run_id": null,
+        "native_id": null,
+        "pr_number": null,
+        "execution_id": "3423",
+        "execution_url": "http://localhost:5679/workflow/RXWjVUL8ozqhjY4w/executions/3423",
+        "updated_at": 1793714626.0812669
+      },
+      "business_side_effect": "RECEIPT_OBSERVED; execution completion not matched",
+      "workflow_url": "http://localhost:5679/workflow/RXWjVUL8ozqhjY4w",
+      "execution_url": "http://localhost:5679/workflow/RXWjVUL8ozqhjY4w/executions/3637",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF09",
+      "workflow_id": "tOyBIPw6sGjgzjtU",
+      "name": "WF09: Bug Lifecycle Automation",
+      "purpose": "Bug context / đề xuất transition",
+      "trigger": "Authenticated bug webhook",
+      "action_tab": "tab-backlog",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "41d0d315-c2b4-4de7-b237-7a45a382c6ed",
+      "definition_sha256": "c50ff420fc51e9731450b9b28597175dc7c3f3cff743914712d0acf9b243f7c6",
+      "last_execution": {
+        "id": "3655",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793783301.267,
+        "stopped_at": 1793783302.935
+      },
+      "last_successful_execution": {
+        "id": "3655",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793783301.267,
+        "stopped_at": 1793783302.935
+      },
+      "last_failed_execution": {
+        "id": "119",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1792699547.895,
+        "stopped_at": 1792699551.003
+      },
+      "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+      "last_error": "N8N_EXECUTION_ERROR #119",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "BUG_NATIVE_VERIFIED",
+        "event_id": "c8a333c6-09f6-5a96-b9b1-3e09d8e4ef6b",
+        "correlation_id": "1d94f68f-7897-4942-bce9-6be44c42796d",
+        "run_id": null,
+        "native_id": 395,
+        "pr_number": null,
+        "execution_id": "3655",
+        "execution_url": "http://localhost:5679/workflow/tOyBIPw6sGjgzjtU/executions/3655",
+        "updated_at": 1793783302.645302
+      },
+      "business_side_effect": "BUG_NATIVE_VERIFIED",
+      "workflow_url": "http://localhost:5679/workflow/tOyBIPw6sGjgzjtU",
+      "execution_url": "http://localhost:5679/workflow/tOyBIPw6sGjgzjtU/executions/3655",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF10",
+      "workflow_id": "tOY7QUa9SrWPOe9e",
+      "name": "WF10: Task Orchestration & Decomposition",
+      "purpose": "WBS draft/read; materialization riêng",
+      "trigger": "Authenticated decomposition webhook",
+      "action_tab": "tab-backlog",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "e5790af4-215a-44a7-8ad4-cca03ffdbe05",
+      "definition_sha256": "a041c64213c766b710c61c8019cc219732613930129397cb7347b30fbfe52967",
+      "last_execution": {
+        "id": "3453",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793715008.965,
+        "stopped_at": 1793715012.172
+      },
+      "last_successful_execution": {
+        "id": "3453",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793715008.965,
+        "stopped_at": 1793715012.172
+      },
+      "last_failed_execution": {
+        "id": "3425",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1793714641.279,
+        "stopped_at": 1793714642.327
+      },
+      "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+      "last_error": "N8N_EXECUTION_ERROR #3425",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "PLAN_NATIVE_UNITS_VERIFIED",
+        "event_id": "92e105c0-a023-5779-967b-423ce80ab3b6",
+        "correlation_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+        "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+        "native_id": 379,
+        "pr_number": null,
+        "execution_id": "3453",
+        "execution_url": "http://localhost:5679/workflow/tOY7QUa9SrWPOe9e/executions/3453",
+        "updated_at": 1793715010.6454685
+      },
+      "business_side_effect": "PLAN_NATIVE_UNITS_VERIFIED",
+      "workflow_url": "http://localhost:5679/workflow/tOY7QUa9SrWPOe9e",
+      "execution_url": "http://localhost:5679/workflow/tOY7QUa9SrWPOe9e/executions/3453",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF11",
+      "workflow_id": "LeRVT3LWNBkJ2iz3",
+      "name": "WF11: QA Gate Transition",
+      "purpose": "Đối chiếu tested commit, review và QA",
+      "trigger": "Engineering QA event / authenticated QA",
+      "action_tab": "tab-execution",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "cf9b7590-f6b1-44ea-8740-0bb48049c261",
+      "definition_sha256": "46326bdc3611bf257f1f12ee9f9fbdb5470e723bebdda3436d030bcbf27cfcdc",
+      "last_execution": {
+        "id": "3539",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793735485.098,
+        "stopped_at": 1793735485.422
+      },
+      "last_successful_execution": {
+        "id": "3539",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793735485.098,
+        "stopped_at": 1793735485.422
+      },
+      "last_failed_execution": {
+        "id": "3310",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1793710382.933,
+        "stopped_at": 1793710383.01
+      },
+      "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+      "last_error": "N8N_EXECUTION_ERROR #3310",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "QA_VERIFIED",
+        "event_id": "8de35de9-a1b8-537d-8666-8ec4344ccc76",
+        "correlation_id": "8de35de9-a1b8-537d-8666-8ec4344ccc76",
+        "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+        "native_id": 394,
+        "pr_number": null,
+        "execution_id": "3539",
+        "execution_url": "http://localhost:5679/workflow/LeRVT3LWNBkJ2iz3/executions/3539",
+        "updated_at": 1793735485.317617
+      },
+      "business_side_effect": "QA_VERIFIED",
+      "workflow_url": "http://localhost:5679/workflow/LeRVT3LWNBkJ2iz3",
+      "execution_url": "http://localhost:5679/workflow/LeRVT3LWNBkJ2iz3/executions/3539",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF12",
+      "workflow_id": "ZkgS8RZbPRA2zbhQ",
+      "name": "WF12: Weekly Summary",
+      "purpose": "Thu thập báo cáo tuần",
+      "trigger": "Weekly cron / signed collector",
+      "action_tab": "tab-reports",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+      "definition_sha256": "2c92262e2d22a2a497d8fce394818e35562dc33b16e53adfefde79e8f6021287",
+      "last_execution": {
+        "id": "3359",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793710737.271,
+        "stopped_at": 1793710742.894
+      },
+      "last_successful_execution": {
+        "id": "3359",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793710737.271,
+        "stopped_at": 1793710742.894
+      },
+      "last_failed_execution": {
+        "id": "2750",
+        "status": "error",
+        "mode": "trigger",
+        "started_at": 1793354400.198,
+        "stopped_at": 1793354462.958
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #2750",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": null,
+      "business_side_effect": "NOT_VERIFIED",
+      "workflow_url": "http://localhost:5679/workflow/ZkgS8RZbPRA2zbhQ",
+      "execution_url": "http://localhost:5679/workflow/ZkgS8RZbPRA2zbhQ/executions/3359",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF13",
+      "workflow_id": "2tr0jpqaaAiq9IOU",
+      "name": "WF13: Second Brain RAG Re-indexing",
+      "purpose": "Kiểm chứng index/citation hoặc feedback",
+      "trigger": "Index verified event / feedback webhook",
+      "action_tab": "tab-knowledge",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "0243c9f0-b9d4-465b-b90b-c0f27efd9ebe",
+      "definition_sha256": "96d96261cabe99c9b696db173ce486be625d322841c5ca9a0ccf21db87f81079",
+      "last_execution": {
+        "id": "3720",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793795054.337,
+        "stopped_at": 1793795058.064
+      },
+      "last_successful_execution": {
+        "id": "3720",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793795054.337,
+        "stopped_at": 1793795058.064
+      },
+      "last_failed_execution": {
+        "id": "3317",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1793710384.379,
+        "stopped_at": 1793710384.478
+      },
+      "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+      "last_error": "N8N_EXECUTION_ERROR #3317",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "INDEX_VERIFIED",
+        "event_id": "f62e9848-b001-5929-8ad0-f79de3f124c5",
+        "correlation_id": "f62e9848-b001-5929-8ad0-f79de3f124c5",
+        "run_id": null,
+        "native_id": 387,
+        "pr_number": null,
+        "execution_id": "3720",
+        "execution_url": "http://localhost:5679/workflow/2tr0jpqaaAiq9IOU/executions/3720",
+        "updated_at": 1793795058.011608
+      },
+      "business_side_effect": "INDEX_VERIFIED",
+      "workflow_url": "http://localhost:5679/workflow/2tr0jpqaaAiq9IOU",
+      "execution_url": "http://localhost:5679/workflow/2tr0jpqaaAiq9IOU/executions/3720",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF14",
+      "workflow_id": "8ycOUQy9gtT60nkN",
+      "name": "WF14: Durable RAG Recovery",
+      "purpose": "Quan sát retry/DLQ; worker sở hữu recovery",
+      "trigger": "Index failed event / owned recovery webhook",
+      "action_tab": "tab-knowledge",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "cfa65447-b5b9-48fb-8d51-a8469820a650",
+      "definition_sha256": "1f52e4f7fb2f40977de6db649c7958cadfaa8b7482e66712d12e9af77d437ff0",
+      "last_execution": {
+        "id": "3693",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793794754.799,
+        "stopped_at": 1793794754.935
+      },
+      "last_successful_execution": {
+        "id": "3693",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793794754.799,
+        "stopped_at": 1793794754.935
+      },
+      "last_failed_execution": null,
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": null,
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "WAITING_RETRY",
+        "event_id": "f9ebc339-0aea-5096-a25a-7ffc48daace8",
+        "correlation_id": "f9ebc339-0aea-5096-a25a-7ffc48daace8",
+        "run_id": null,
+        "native_id": 387,
+        "pr_number": null,
+        "execution_id": "3693",
+        "execution_url": "http://localhost:5679/workflow/8ycOUQy9gtT60nkN/executions/3693",
+        "updated_at": 1793794754.891406
+      },
+      "business_side_effect": "WAITING_RETRY",
+      "workflow_url": "http://localhost:5679/workflow/8ycOUQy9gtT60nkN",
+      "execution_url": "http://localhost:5679/workflow/8ycOUQy9gtT60nkN/executions/3693",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF15",
+      "workflow_id": "NLugfE3U8dBS88Wg",
+      "name": "WF15: Reconciliation & Drift Detection",
+      "purpose": "Đối chiếu và xếp hàng sửa drift có giới hạn",
+      "trigger": "Reconcile event / integrity webhook",
+      "action_tab": "tab-knowledge",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "dde4ea90-39ea-4e8b-803c-a968b4766c39",
+      "definition_sha256": "30750a83eb06214421fe3343aa671c7400bb0b03ae3c91f7ba698e9aae371e81",
+      "last_execution": {
+        "id": "3736",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793808905.25,
+        "stopped_at": 1793808909.959
+      },
+      "last_successful_execution": {
+        "id": "3736",
+        "status": "success",
+        "mode": "webhook",
+        "started_at": 1793808905.25,
+        "stopped_at": 1793808909.959
+      },
+      "last_failed_execution": {
+        "id": "3641",
+        "status": "error",
+        "mode": "webhook",
+        "started_at": 1793783002.41,
+        "stopped_at": 1793783003.099
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #3641",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": {
+        "project_id": 6,
+        "state": "ACKED",
+        "business_state": "DRIFT_OBSERVED",
+        "event_id": "55bbccf7-7887-509d-b0ab-9226f1a78249",
+        "correlation_id": "55bbccf7-7887-509d-b0ab-9226f1a78249",
+        "run_id": null,
+        "native_id": null,
+        "pr_number": null,
+        "execution_id": "3736",
+        "execution_url": "http://localhost:5679/workflow/NLugfE3U8dBS88Wg/executions/3736",
+        "updated_at": 1793808909.2039
+      },
+      "business_side_effect": "DRIFT_OBSERVED",
+      "workflow_url": "http://localhost:5679/workflow/NLugfE3U8dBS88Wg",
+      "execution_url": "http://localhost:5679/workflow/NLugfE3U8dBS88Wg/executions/3736",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    },
+    {
+      "code": "WF16",
+      "workflow_id": "5FRYNPSot18UDpKa",
+      "name": "WF16: Main Health Monitoring",
+      "purpose": "Health/backlog; không phát inference",
+      "trigger": "Monitoring cron / signed collector",
+      "action_tab": "tab-integrations",
+      "metadata_state": "FRESH",
+      "updated_at": 1793809313.167,
+      "active": true,
+      "published_version_id": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "definition_sha256": "0399242cea3b193ccdf399eed82cd0b29fca6666df35e847a6718301f0003eeb",
+      "last_execution": {
+        "id": "3737",
+        "status": "success",
+        "mode": "trigger",
+        "started_at": 1793808905.982,
+        "stopped_at": 1793808907.766
+      },
+      "last_successful_execution": {
+        "id": "3737",
+        "status": "success",
+        "mode": "trigger",
+        "started_at": 1793808905.982,
+        "stopped_at": 1793808907.766
+      },
+      "last_failed_execution": {
+        "id": "2971",
+        "status": "error",
+        "mode": "trigger",
+        "started_at": 1793593800.235,
+        "stopped_at": 1793593831.31
+      },
+      "current_state": "WORKFLOW_SUCCEEDED",
+      "last_error": "N8N_EXECUTION_ERROR #2971",
+      "retry_eligibility": "NOT_APPLICABLE",
+      "project_event": null,
+      "business_side_effect": "NOT_VERIFIED",
+      "workflow_url": "http://localhost:5679/workflow/5FRYNPSot18UDpKa",
+      "execution_url": "http://localhost:5679/workflow/5FRYNPSot18UDpKa/executions/3737",
+      "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+    }
+  ],
+  "provider_health": {
+    "state": "READINESS_STALE",
+    "model": "gemini-3.5-flash-lite",
+    "project_limits": {
+      "rpd": 500,
+      "rpm": 15,
+      "tpm": 250000
+    },
+    "engineering_limits": {
+      "rpd": 450,
+      "rpm": 10,
+      "tpm": 175000
+    },
+    "last_successful_probe": 1793655260.9349873,
+    "retry_at": null,
+    "last_provider_http": 200,
+    "network_checked_now": false,
+    "source": "PERSISTED_PROJECT_QUOTA_AND_PROVIDER_RECEIPTS"
+  },
+  "runs": [
+    {
+      "id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "native_id": 394,
+      "state": "succeeded"
+    },
+    {
+      "id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "native_id": 391,
+      "state": "succeeded"
+    }
+  ],
+  "counters": {
+    "provider_receipts": 531,
+    "coding_runs": 21,
+    "delegation_enabled": 0
+  },
+  "n8n_image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+  "core_http_observations_ms": [
+    {
+      "method": "GET",
+      "path": "/projects/ai-dev-demo/qldapm-ai",
+      "status": "200",
+      "duration": "8415.93"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/ai-dev-demo/qldapm-ai",
+      "status": "200",
+      "duration": "9096.21"
+    },
+    {
+      "method": "POST",
+      "path": "/projects/ai-dev-demo/qldapm-ai/commands",
+      "status": "422",
+      "duration": "1033.43"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/ai-dev-demo/qldapm-ai",
+      "status": "200",
+      "duration": "7406.59"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/ai-dev-demo/qldapm-ai",
+      "status": "200",
+      "duration": "6615.72"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/ai-dev-demo/qldapm-ai/reports/234ad848-0327-5201-a7d3-875f9b2e28ae",
+      "status": "200",
+      "duration": "794.66"
+    },
+    {
+      "method": "GET",
+      "path": "/projects/ai-dev-demo/qldapm-ai",
+      "status": "200",
+      "duration": "5336.37"
+    }
+  ],
+  "runtime_limits": {
+    "gateway_nano_cpus": 1000000000,
+    "gateway_memory_bytes": 402653184
+  },
+  "readiness": "FUNCTIONAL_REPAIRS_VERIFIED_PERFORMANCE_GATE_OPEN"
+}

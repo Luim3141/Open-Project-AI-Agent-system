@@ -1,0 +1,127 @@
+{
+  "method": "PLAYWRIGHT_REAL_STAGING_UI_AND_VISIBLE_RECEIPTS",
+  "checks": [
+    {
+      "id": "LIVE-A",
+      "status": "PASS",
+      "execution_id": "caee5159-1a43-4c06-a6f0-ca97b527ded6",
+      "actor": 7,
+      "role": "PM",
+      "agents": [
+        "pm",
+        "reviewer"
+      ],
+      "provider": "Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "at": "2026-10-18T17:38:45.961758+00:00",
+      "provider_status": "LIVE_SUCCESS",
+      "model_calls": 1,
+      "usage": [
+        {
+          "candidatesTokenCount": 427,
+          "promptTokenCount": 5187,
+          "totalTokenCount": 5614
+        }
+      ],
+      "response_summary": "Phân tích Sprint/rủi ro từ context Native",
+      "response_characters": 1474,
+      "native_source_ids": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "receipt_ids": [
+        "25d4c648-46d6-4cb7-beb6-c0dae5134897"
+      ],
+      "duration_seconds": 3.159,
+      "evidence": "live-A-visible-result.png (private)"
+    },
+    {
+      "id": "LIVE-B",
+      "status": "PASS",
+      "execution_id": "e7e995a2-c993-4b69-8ee3-017a6b9651c4",
+      "actor": 6,
+      "role": "BA-PM",
+      "agents": [
+        "ba",
+        "reviewer"
+      ],
+      "provider": "Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "at": "2026-10-18T17:39:31.310032+00:00",
+      "provider_status": "LIVE_SUCCESS",
+      "model_calls": 1,
+      "usage": [
+        {
+          "candidatesTokenCount": 442,
+          "promptTokenCount": 4247,
+          "thoughtsTokenCount": 897,
+          "totalTokenCount": 5586
+        }
+      ],
+      "response_summary": "BA phân tích yêu cầu/acceptance criteria trong phạm vi hiện có",
+      "response_characters": 1420,
+      "native_source_ids": [
+        102,
+        107,
+        112,
+        117,
+        122,
+        127,
+        132,
+        137,
+        142,
+        147
+      ],
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "receipt_ids": [
+        "a34d10e7-cdcf-4cdb-a889-04abba86470b"
+      ],
+      "duration_seconds": 5.157,
+      "evidence": "live-B-visible-result.png (private)"
+    },
+    {
+      "id": "LIVE-C",
+      "status": "FAIL",
+      "actor": 10,
+      "role": "QA",
+      "execution_id": "4793c4c5-e9d6-44c0-b4fd-ef7758db51ea",
+      "error_type": "TimeoutError",
+      "ui_confirmed": false,
+      "no_automatic_retry": true
+    },
+    {
+      "id": "LIVE-D",
+      "status": "FAIL",
+      "actor": 7,
+      "role": "PM",
+      "execution_id": "63e9525d-1105-4cbd-a379-dba59074a856",
+      "error_type": "TimeoutError",
+      "ui_confirmed": false,
+      "no_automatic_retry": true
+    },
+    {
+      "id": "LIVE-E",
+      "status": "FAIL",
+      "actor": 9,
+      "role": "FE",
+      "execution_id": null,
+      "error_type": "AssertionError",
+      "ui_confirmed": false,
+      "no_automatic_retry": true
+    }
+  ],
+  "serving_native_business_mutations": 0,
+  "provider": "Gemini",
+  "model": "gemini-3.5-flash-lite"
+}

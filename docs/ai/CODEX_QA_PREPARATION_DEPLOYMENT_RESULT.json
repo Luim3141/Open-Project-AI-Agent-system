@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-25T14:00:40.420007+00:00",
+  "status": "PASS_GATEWAY_ONLY_DEPLOYMENT_AND_RUNTIME_REGRESSION",
+  "tag": "qldapm-ai:codex-qa-preview-receipts-20261025",
+  "image": "sha256:6966fa98222f51b30f78f4221860a6f50fbec002bfcdc4f12ac7cede310326d4",
+  "rollback_image": "sha256:994b2efdd85274db99197a82c6554a76c4d5d22be4873a63292eff02c19b6d0b",
+  "rollback_tag": "qldapm-ai:codex-atomic-qa-20261025",
+  "files": {
+    "openproject/ai/gateway/service.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/service.py",
+      "sha256": "1c3480f9aa4f404540ed4a2bccfbfe8477cbb5382a57ff78d0ac3441b4bb7458",
+      "before_sha256": "b93325ac300f03599017955ab75ca4cd5338a5092389ee7b2df315695cc8f617"
+    }
+  },
+  "tests": {
+    "windows": {
+      "run": 473,
+      "passed": 473,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "linux": {
+      "run": 473,
+      "passed": 460,
+      "skipped": 13,
+      "errors": 0,
+      "failures": 0
+    },
+    "targeted": 45,
+    "core": "Unchanged; prior11 Ruby programs and actual Native atomic clone evidence retained"
+  },
+  "change": "Finalize own qa_transition_prepare request only on known Native4xx rejection. Preserve409/422/exact approval/unknown write behavior.",
+  "native_writes": 0,
+  "model_calls": 0,
+  "workflow_changes": 0,
+  "staging_operations": false,
+  "backups": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\qa-preparation-deployment",
+  "rollback": "Restore only previous Gateway image selector; retain all newer databases and histories",
+  "unrelated_containers_unchanged": 9,
+  "physical_native_rows_unchanged": "375|04ec20a24a553f3cea4deab0015c29ef",
+  "postdeploy_evidence": [
+    "CODEX_QA_PREPARATION_MAIN_RESULT.json",
+    "CODEX_QA_PREPARATION_FINAL_READBACK.json",
+    "CODEX_QA_PREPARATION_ROLE_RESULT.json",
+    "CODEX_QA_PREPARATION_CONTRACT_RESULT.json",
+    "CODEX_QA_PREPARATION_READONLY_RESULT.json",
+    "CODEX_QA_PREPARATION_RAG_RESULT.json",
+    "CODEX_QA_PREPARATION_SECURITY_PRESERVATION.json"
+  ]
+}

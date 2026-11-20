@@ -1,0 +1,84 @@
+{
+  "scope": "ACTUAL OWNER GLOBAL QUERY, post global-read tools",
+  "messages": [
+    {
+      "at": 1794473482.9858909,
+      "role": "user",
+      "text": "“Agent nào đang chạy trong toàn dự án 6, không chỉ Task #398?"
+    },
+    {
+      "at": 1794473492.4408493,
+      "role": "model",
+      "text": "Dựa trên dữ liệu kiểm tra thời gian thực từ hệ thống cho dự án 6:\n\n- **Không có agent nào đang chạy (`active: 0`)** trong toàn dự án tại thời điểm hiện tại. \n- Trạng thái chung của hệ thống / project worker: `OFF` (chế độ tự động tắt, không có tác vụ nào đang thực thi)."
+    }
+  ],
+  "audit": [
+    {
+      "at": 1794473482.880948,
+      "conversation_task_id": 398,
+      "event": "INCOMING_CONTEXT",
+      "message_id": 35,
+      "notification_context": null,
+      "reply_to_message_id": null
+    },
+    {
+      "at": 1794473483.3504477,
+      "arguments": {
+        "task_id": 398
+      },
+      "correlation_id": "f63c745b-5f86-409e-af56-7a93a6605170",
+      "event": "READ_TOOL",
+      "project_id": 6,
+      "source_revision": "6944a307fc2cb3b678f82891de5694af8b9a84bf3d561cf8d8ec48330bdbbfa8",
+      "tool": "get_task_progress"
+    },
+    {
+      "at": 1794473485.9018266,
+      "attempt": 1,
+      "error_type": null,
+      "event": "GEMINI_REQUEST",
+      "http_status": null,
+      "input_tokens": 8442,
+      "latency_seconds": 1.464,
+      "model_id": "gemini-3.5-flash-lite",
+      "output_tokens": 12,
+      "request_id": "62b17f89574642c5a85e09c4e217997e",
+      "resolved_model_version": "gemini-3.5-flash-lite",
+      "tool_calls_count": 1
+    },
+    {
+      "at": 1794473490.0428278,
+      "arguments": {},
+      "correlation_id": "c9b94dff-c0e2-4009-92eb-98c0fbe5b010",
+      "event": "READ_TOOL",
+      "project_id": 6,
+      "source_revision": null,
+      "tool": "get_active_agents"
+    },
+    {
+      "at": 1794473491.9294305,
+      "attempt": 1,
+      "error_type": null,
+      "event": "GEMINI_REQUEST",
+      "http_status": null,
+      "input_tokens": 11659,
+      "latency_seconds": 1.776,
+      "model_id": "gemini-3.5-flash-lite",
+      "output_tokens": 79,
+      "request_id": "858dbb9fff1f4adebec521e61d0f93ae",
+      "resolved_model_version": "gemini-3.5-flash-lite",
+      "tool_calls_count": 0
+    },
+    {
+      "at": 1794473492.908087,
+      "event": "BOT_REPLY_SENT",
+      "in_reply_to_message_id": 35,
+      "message_id": 36,
+      "part": 1
+    }
+  ],
+  "budget": [
+    20769,
+    18
+  ]
+}

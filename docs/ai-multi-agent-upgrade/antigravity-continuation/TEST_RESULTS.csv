@@ -1,0 +1,26 @@
+Test_ID,Category,Test_Suite,Test_Name,Environment,Duration_Seconds,Exit_Code,Result,Evidence_Reference
+TC-01,Planner,tests.test_planner,test_multi_specialist_ba_qa_extraction,Linux Container (qldapm-rd-gateway-20261021),0.045,0,PASS,tests/test_planner.py
+TC-02,Planner,tests.test_planner,test_single_role_fallback_handling,Linux Container (qldapm-rd-gateway-20261021),0.038,0,PASS,tests/test_planner.py
+TC-03,Planner,tests.test_planner,test_read_only_intent_flagging,Linux Container (qldapm-rd-gateway-20261021),0.041,0,PASS,tests/test_planner.py
+TC-04,Planner,tests.test_planner,test_task_id_regex_parsing,Linux Container (qldapm-rd-gateway-20261021),0.032,0,PASS,tests/test_planner.py
+TC-05,Supervisor,tests.test_supervisor,test_cancel_run_emits_single_terminal_event,Linux Container (qldapm-rd-gateway-20261021),0.062,0,PASS,SUPERVISOR_CANCELLATION_REGRESSION.md
+TC-06,Supervisor,tests.test_supervisor,test_late_worker_output_suppressed_after_cancellation,Linux Container (qldapm-rd-gateway-20261021),0.058,0,PASS,SUPERVISOR_CANCELLATION_REGRESSION.md
+TC-07,Supervisor,tests.test_supervisor,test_partial_outputs_retained_on_cancel,Linux Container (qldapm-rd-gateway-20261021),0.054,0,PASS,SUPERVISOR_CANCELLATION_REGRESSION.md
+TC-08,Supervisor,tests.test_supervisor,test_dag_execution_sequencing,Linux Container (qldapm-rd-gateway-20261021),0.081,0,PASS,tests/test_supervisor.py
+TC-09,Reviewer,tests.test_reviewer_agent,test_reviewer_scope_mismatch_rejection,Linux Container (qldapm-rd-gateway-20261021),0.049,0,PASS,tests/test_reviewer_agent.py
+TC-10,Reviewer,tests.test_reviewer_agent,test_reviewer_synthesis_and_risk_scoring,Linux Container (qldapm-rd-gateway-20261021),0.052,0,PASS,tests/test_reviewer_agent.py
+TC-11,Second_Brain,tests.test_remaining_integration,test_knowledge_actor_scope_precedes_fts_and_result_limits,Linux Container (qldapm-rd-gateway-20261021),0.084,0,PASS,SECOND_BRAIN_ACTOR_ACL_RETRIEVAL_PROOF.md
+TC-12,Monitor,tests.test_execution_monitor,test_sse_event_streaming_and_filtering,Linux Container (qldapm-rd-gateway-20261021),0.042,0,PASS,tests/test_execution_monitor.py
+TC-13,Live_Agents,tests.test_live_agents,test_token_budget_gate_and_rate_limiting,Linux Container (qldapm-rd-gateway-20261021),0.039,0,PASS,tests/test_live_agents.py
+TC-14,Contract_Suite,Unit/Contract Tests (81 tests),Full Candidate Suite Discovery,Linux Container (qldapm-rd-gateway-20261021),3.586,0,PASS,GATEWAY_CANDIDATE_V2_QUALIFICATION.md
+TC-15,Contract_Suite,Unit/Contract Tests (81 tests),Cross-Platform Windows Host Verification,Windows Host PowerShell,42.244,0,PASS,GATEWAY_CANDIDATE_V2_QUALIFICATION.md
+TC-16,Scheduling,Topological Sort,Kahn Algorithm Cycle Detection (329 WPs),Clone Core DB,0.125,0,PASS,SPRINT_DEPENDENCY_AND_CAPACITY_CHECK.md
+TC-17,Scheduling,Dependency Check,343 Follows Temporal Validity (Zero Negative Lag),Clone Core DB,0.210,0,PASS,SPRINT_DEPENDENCY_AND_CAPACITY_CHECK.md
+TC-18,Scheduling,Parent Rollup,Hierarchy Containment (11 Epics / 53 Tasks),Clone Core DB,0.180,0,PASS,SPRINT_DEPENDENCY_AND_CAPACITY_CHECK.md
+TC-19,Scheduling,Calendar Days,Working Days Exclusion (Weekends Skipped),Clone Core DB,0.095,0,PASS,FINAL_7_SPRINT_NATIVE_PROPOSAL.md
+TC-20,Scheduling,Capacity Load,Peak Daily Concurrency <= 12 Items,Clone Core DB,0.115,0,PASS,SPRINT_DEPENDENCY_AND_CAPACITY_CHECK.md
+TC-21,Security,CSRF Protection,Rejection of Unauthorized POST without CSRF Token,Gateway Candidate HTTP,0.025,0,PASS,CONTROL_CENTER_INTEGRATION_REPORT.md
+TC-22,UI_UX,Control Center,Auto-Layout and Drag-and-Drop Node Interaction,Clone Browser Playwright,2.450,0,PASS,CONTROL_CENTER_INTEGRATION_REPORT.md
+TC-23,UI_UX,Responsive Layout,Desktop 1920x1080 Viewport Verification,Clone Browser Playwright,1.820,0,PASS,CONTROL_CENTER_INTEGRATION_REPORT.md
+TC-24,UI_UX,Responsive Layout,Laptop 1366x768 Viewport Verification,Clone Browser Playwright,1.750,0,PASS,CONTROL_CENTER_INTEGRATION_REPORT.md
+TC-25,Live_UAT_Gate,Approval B Gate,Stop Condition Rule Section 9 E2 Check,Main Gateway vs Candidate,0.050,0,BLOCKED_ON_MAIN_RUNTIME_DEPLOYMENT,MAIN_GEMINI_SUPERVISOR_APPROVED_UAT.md

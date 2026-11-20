@@ -1,0 +1,321 @@
+{
+  "observed_at": "2026-11-05T17:09:21.911782+00:00",
+  "containers": {
+    "gateway": {
+      "name": "qldapm-ai-gateway-1",
+      "id": "2635dfb66a2402bd87a683779a1973683cfecf73b1b927e94a352601c4e475eb",
+      "image": "sha256:b24f2a013e24940c7b7dec8b545f343ffe98b5d81f8d4c137f1eaaa906882a31",
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "networks": [
+        "qldapm-ai_ai",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "destination": "/workspaces"
+        },
+        {
+          "type": "bind",
+          "destination": "/qldapm-policy/free-tier-proof.json"
+        },
+        {
+          "type": "bind",
+          "destination": "/state"
+        }
+      ]
+    },
+    "core": {
+      "name": "qldapm-openproject-web-1",
+      "id": "753f3daa3a3406265a80fb8760535191ef2e34e6bdfb006f8e25de43bce4933d",
+      "image": "sha256:2cc733ef3370f610edc671e6bf08ea63990570a075f2840a2858fb8c248e2f71",
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "destination": "/var/openproject/assets"
+        },
+        {
+          "type": "bind",
+          "destination": "/qldapm"
+        },
+        {
+          "type": "bind",
+          "destination": "/qldapm-ui/ui.key"
+        },
+        {
+          "type": "bind",
+          "destination": "/qldapm-ui/test-receipt.key"
+        }
+      ]
+    },
+    "n8n": {
+      "name": "qldapm-n8n-main",
+      "id": "09ab8a9f9fca7ab4e4bc212108ae0353dbdc503e4699d5f29fa35f305900dd07",
+      "image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+      "health": null,
+      "restart": "unless-stopped",
+      "networks": [
+        "qldapm-ai_ai",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "destination": "/home/node/.n8n"
+        }
+      ]
+    }
+  },
+  "source_hashes": {
+    "gateway/workspace.py": "088fc84bba3ddf23149b110e9c3be0cb6c2fd263cda3976ba6047a454e849285",
+    "gateway/ai_worker.py": "fa078049399caed58000483e350871f39225776f67f74919d1d302dcd3195eff",
+    "gateway/__init__.py": "0aad176a746f300417621f9fa15f27e59272cb11861a31f94f25ced375edebc1",
+    "gateway/local_operator.py": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18",
+    "gateway/bridge.py": "3e8d3e3eb1671202d0e06d90b93a6e30b21a7a096d392e575f52aab78320bd32",
+    "gateway/stdio.py": "e22d1b414510085582ddd542a16faa6149ff6846f5eb7919057a02fb445c0345",
+    "gateway/app.py": "9246a3f8985c40b55bda737b66d4b7d936b8eea890bb4cf3afc28315b3eae408",
+    "gateway/native.py": "88f6dd6c083de5874a5175e1a247820b75490ca10eb8c6e726362859eeb887e0",
+    "gateway/catalog.py": "420bbc3e04b213d08bddcb611eb95851289903dcd9c3f6491237b5985b65cc61",
+    "gateway/service.py": "ec33e236984e4e5010f35951633848d62336721a55864393f8912266bcb5560d",
+    "gateway/store.py": "c83575171c72b2b0b9e93d8463e04ac99bcd8ba67e8bd98c0df4e254be6cbb91",
+    "gateway/gemini.py": "e2a5da071888e6c63356b522b117956de5b26db0d5de6d210ad5e1ae9c6eb2b4",
+    "gateway/agent_observer.py": "0b884aea89be63e6410149af86f81e7549e8f6b7b8507a9e25708022fa95619e",
+    "gateway/telegram_notifications.py": "46926fc568724e68a95cc6fa4364d4432893b0900cfcadf22a570cc10c64af5a",
+    "gateway/engineering_planning.py": "0f7439eb855df9d31d3a02f18bf7f865b214b23fc5292598454f64822bc914f1",
+    "gateway/engineering_auto.py": "936e48fdad414b4e5afdec76281de468f643889cbab554f61b8af27d43b15faf",
+    "gateway/engineering_operator.py": "5a79fad4abb83a334665cd4741c119c7687a57fa33a2e765ed06795d947c0863",
+    "gateway/engineering.py": "555cb1ecffb5989c3fbe4fa9c6dc253fc5d7f547c40e1a8f60f596b333d16611",
+    "gateway/engineering_lifecycle.py": "dee3b6d96f6b51249bbda104a9e1e28a51506571aa2361a37d2f20e73104d487",
+    "gateway/engineering_reporting.py": "63481b1382c919308c3c54cacca10f1fce6a574f9f95d561bec6ea5c05b83d1c",
+    "gateway/engineering_status_sync.py": "0e44359372a8f3f774ef5224325c9a564e63b249d0a3f78e7d034d3f33da5e46",
+    "gateway/engineering_github_poll.py": "4d11671184b108c61431ad9e23dfe5146a09ffa11b7ad1bb911c1652bacef255",
+    "gateway/engineering_github_operations.py": "ee411ad0b4da32c7f8666f8b3c9e19a124719132d72f745a683d874802db716f",
+    "gateway/engineering_github_sync.py": "1fe18136c051e5a0a728231e05777eca0326c0c3fb481620a1656c74684a3050",
+    "gateway/delegated_approval.py": "c75218fbcd3c88bd3d8d0b836f756665ebac27865ed8e7d161eca6ef994724eb",
+    "gateway/workflow_status.py": "644e522760137f71d0cbe24bd36efcbf8d91adb4a69ce57ce03d579eee97083a",
+    "gateway/engineering_owner_control.py": "3c8140376ecf9bc784784a5b105defe063688a870c4c4a5d49f5767c8c1c6c28",
+    "gateway/engineering_observability.py": "7178dcea64e67260b98c99f7f4263cae688a47cdada221928a9ea0473c9743d4",
+    "gateway/engineering_health.py": "7fee86280e4d1ccdcfb54be8fbecb35d27ba1e17bed2fb0333bf808741051589",
+    "gateway/permissions.py": "102b2f18788afcb31af012f6c9e775ebfb16e415b649b3bca216e77c66759ac9",
+    "gateway/native_wbs.py": "15ded424623b2dd8773087dc905c63cb13e367f0ca9a9414d06af38cea8d2e5e",
+    "gateway/bug_lifecycle.py": "4890e5420bb0c48451ae3eb84b37591243d508d5a7cfedd46703bafccc227679",
+    "gateway/knowledge_answer.py": "a77c760fea779d4797a1af80a8dcfd1523ef153bc1fe12da23005dd9e26d8402",
+    "gateway/workflow_commands.py": "7e404f0c3dc288532088a3dd16a64779b87cdb6151f74dd99845b83bce67d24b",
+    "gateway/engineering_github_details.py": "823bd0ca9a45ec37f4b0ef18838b7c8c1248e6869e1617cb6cf850b31d6b2789",
+    "gateway/integration_events.py": "3a8ea4c9f1361fca6ae050349b866da4c67320bfb7b4e18fc73c1c802ce060e4",
+    "gateway/monitoring.py": "9af5ab36c7daaf64aa86fa5ec11ca3c23b5073498352ace80bf99cff37521957",
+    "gateway/automation_targets.py": "dad7a5ae1b9c43de2f6c945220d706c36b9cf26883d645f20963c03bfac343f2",
+    "gateway/weekly_report.py": "4e32b927376cb158d57b165a7d6f91d61886d5814490f57674bb66f3fae77e0f",
+    "gateway/n8n_lifecycle_outbox.py": "261bc7e5f80d9c0d9f9350040de39c589167c449892300f5f9e1721d48b7713c",
+    "gateway/daily_brief.py": "69e5de094cd20fac73d26b514f5b90946c20a06769b49cef3c103426608dd42c",
+    "gateway/engineering_provider.py": "07262694869c9628a86a35edb4999e96edadcb64ea1f29a4732e62662aae02f2",
+    "gateway/engineering_monitor.py": "d559f1092c27fc1e21d5766d357050137ddd2d13b03c01f80654fb451f5b5881",
+    "gateway/engineering_telemetry.py": "1ca29312f528b098faa0611d82337cd4b5c193903f0fff7b37c7850fc6460a08",
+    "gateway/knowledge_ingestion.py": "5a8ac18cf75fd3f595b9082a7afb06624a643e60efadde54fc612d60e2140133",
+    "gateway/knowledge_search.py": "6dce36043c90d8ccdb55bd21b8ce0f92f46f0a48d16c3eaebad2a0d30cfcf69c",
+    "gateway/knowledge_storage.py": "c7cdb9c330324aab42d5ef4b2e24ebe764c7d9303d0d2d778bf3b5aefc484cab",
+    "gateway/engineering_fencing.py": "c344f736e77dc486bcf807550a69e224e38d52bb6a25878819fc2ce62be48a94",
+    "gateway/vector_client.py": "53e4f97b13d6871e4aec206f4bdf66097f9f546848c85fa1c1d48cba7b2166f9",
+    "gateway/execution_events.py": "64747bb92b6a07c21c78ee5783daf2877d740f3189b82e41aea8cc4b30320b26",
+    "gateway/engineering_integrity.py": "ff9d6b83beb8ab0dd3230279d1e05c1cad403d122e4ec8c9247d0050c300c55f",
+    "gateway/knowledge_lock.py": "8a2df76b252bcb12d775bc89e56dc2ca8bc39547b8d59ac349f5d5209e0a913b",
+    "gateway/engineering_state_sync.py": "a3c48281e4f9e8c90a85156f2fedca63c54c0cef9e4b27231a0905d4d1d86e5a",
+    "gateway/business_runs.py": "ac11549797a76568ca18dc69f3955540150214b476acefce385137a7c2a8856f",
+    "gateway/engineering_personas.py": "9d5c4b7dc3df4b9c045e80c65819e218cbc1c090fe0ba2eb6f8faaf5875e8bb1",
+    "gateway/engineering_units.py": "96045c0f210c09ffdea4c5efc6c28c854c272ea21acad55ea45863a44851f95c",
+    "gateway/openproject_loader.py": "fb7485026a90420861311feb475fc2e81c5bb78276802521234d530fe0e2da8e",
+    "gateway/agent_registry.py": "69fedcafcc6aad90397c2a51985157653650d0aefb5017069eac01a505883595",
+    "gateway/native_qa.py": "824a9881cec37a19f593c23756622b90e709f7e320d900c2a620d510aa2fc13c",
+    "gateway/native_deletion.py": "7d57b353c2bedaa6290694bdb7bb69e3b324c88f84b6fd57259dc8e717de359c",
+    "gateway/file_knowledge.py": "a0cc223eddc42462711fcdf53ac69af879d6610d40f80371b40565461cdb617c",
+    "gateway/pdf_text.py": "690f5ab4f3b47ec7053da36fc1084204ef0cda9632bfb2beb7c907881c027b8c",
+    "gateway/local_loaders.py": "fd3d903d9a5ee489d46d2044b513a8d34bb98c16d40222941d4aa697624b9bf6",
+    "gateway/local_queries.py": "5c9bb7980b5c66ee7d08086f306275ae002a7c02212f552ea9678084db49584a",
+    "gateway/native_incremental.py": "23a8eb4f822938ddd4cd3d59906471c3af15e83e140d94f582984705f1bcea8b",
+    "gateway/automation.py": "f15c37cf1220404f78b8abcb19f41f4c694b036fd38e4f7fe09b74572972df5b",
+    "gateway/native_qa_bridge.py": "3862469909e46607aaab9b2ad7ce0d9d586c2614131fc64aaf40aef4337c5d74",
+    "gateway/native_qa_runs.py": "1c15142d047d9f5ef373e310e8cb533054d7801d460fdc867b4c9c8b9cc010a2",
+    "gateway/application_qa_intake.py": "66cf4709d1a08a7dd5874a3f27dcbd48aeac62ed847b483f6011cdf871bc338b",
+    "gateway/qa_agent.py": "8936dbcf01bca25b14d3a2d1274022eb868d3064f158c742b1c71ab27ff1b2bd",
+    "gateway/application_qa_proof.py": "550213cf9f9afb4a2f65109e532750215cbcedb19827cf5c3131aeed4bf3245b",
+    "gateway/planner.py": "698b696d620b6073452c3ef7712b8d066932d91cd050e8d85c63b8a2083cbd98",
+    "gateway/live_agents.py": "8f6dc64822a46c9a01f1cf88bce279f3ca36d564a1c829a58a5e7aaa6c4191bf",
+    "gateway/sprint_readiness.py": "d300f4408d6c7778566fd5a21b04efdb2df925356de6761392a2f735e10706ff",
+    "gateway/sprint_report.py": "749b3a7ed8613e8facf3db10722d0a4da9afafb105e2ce0846685a81fef1a3f9",
+    "gateway/knowledge_retrieval.py": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d",
+    "gateway/ba_agent.py": "bf79889ece1feca597574a137892a3fdc613b5bacb44cff27122bdb636e623a1",
+    "gateway/pm_agent.py": "b059338e04ac40e3fc3fdb0b0905132651c0f61b7844a892cac88195c5a46d95",
+    "gateway/notification_delivery.py": "c26307c78a5adbcfdb9c898df4e1dca74fedd938e10b5d09bbb848d947ceaf7b",
+    "gateway/qa_change_workflow.py": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd",
+    "gateway/tasks_progress.py": "aa0363e4611b7a8f3785598a1fe4df35f6f143334c39bcd6468331f99a841b5a",
+    "gateway/agent_status.py": "774fc625c95dab1514d1666274ce185efb02fcf53abf8ca1999a030347e5a524",
+    "gateway/conversation_memory.py": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e",
+    "gateway/control_center_state.py": "a677f2d1580a10938b132a43cd7d45528729dc0940b2fd519f14918c9d9962ba",
+    "gateway/native_wbs_relations.py": "5b340673c1e87c38b5a068dc51e182313b49d5eea9dedfddc82892ac538d79e4",
+    "gateway/presentation.py": "6cd70fb1ee038437bd028893f5ecfdf89d7236b95b859ccf0ca09383f6d948b4",
+    "gateway/knowledge_classifier.py": "6c22928025a430f76451e2a26f72c3a6ddbcdc3425a2a6d4933fbf96e8358e8e",
+    "gateway/workload_detector.py": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5",
+    "gateway/quota_panel.py": "8965f532a58a250ed93f2629a0f88a84a0b6b89ff3274d119b1f29af0dca0071",
+    "gateway/reviewer_agent.py": "e58d39d1ae8d54938f8dd540786b7d8b3e719134277a294d863b79f745ba64bb",
+    "gateway/wbs_analysis.py": "32dbec1aa66502980d8addf37d822191d7f7f0858382b589a216a444ca1c5413",
+    "gateway/agent_trace.py": "823b0d9b7955a958e380f38de8cb2033c0b528c1febbe60022d2b59c97b26c84",
+    "gateway/workflow_pause.py": "5b1753c2b0262d008ef3f7409ea64df14d981e3500e8bfc58283f86f55988b20",
+    "gateway/dev_agent.py": "12fc846f44e42a623d520e16b1bec5483ceea11210777cc5b01806979c8a6ce4",
+    "gateway/native_phase.py": "468c967a718916ffed95ef907a6eb0b493d654e9fa81a194d00b14197849b656",
+    "gateway/role_alerts.py": "e548fce01bacce3d740ff29903aec864ef011f395aba908005aa0f0eecd19778",
+    "gateway/agent_models.py": "23d01813e618e07470c057726200b5bc37c0af32aeb8169f2eae1e5fa45aee71",
+    "gateway/native_phase_bridge.py": "be9543089eae87c30ffb8fcbbd22ccb0a55f333bee80cef264ff481cb4ab0116",
+    "gateway/supervisor.py": "e9c6d8624877ec02f0795ba3cba5cd667a0f0cfad2d17f633afb5380aca1eef3",
+    "gateway/execution_monitor.py": "84a726ffa545bec54b49f9f1c80c444316ba45081f07fd82d33933ac07181b6b",
+    "gateway/knowledge_ui_answer.py": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08",
+    "gateway/native_wbs_hierarchy.py": "184247c963c09aeab9804328f8d82e95766ffe99b62b8ed288d6aacfe77f1782",
+    "gateway/workflow_errors.py": "9758bb44d3a53829a6d0b7f3707fe15a04a3eb816ed4c443a037652e5827ae06",
+    "gateway/run_ingest_all.py": "5284a11de773106bbd6abc65c09a880ec637438540c7ae9fefae68fb85f07599",
+    "gateway/knowledge_integrity.py": "5c55025e47fa4be1ceccde2299ed23b0642020d40775d7922e893498a38be21b",
+    "gateway/native_dependency_change.py": "389d6d636241912e00a111d7a3f6d8e675c63a1933fcd1ce8fb32ee2f953714c",
+    "gateway/business_acceptance.py": "5d94990f82036e23948a48e86c8ef1f2e2040e8ccdb9468d29d94ea22d52fd91",
+    "gateway/native_dependency.py": "9b781062fc918b2604f02bc8336a57e041cfd849af92cbeff9c3c34915b4b9d2",
+    "gateway/decision_memory.py": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df",
+    "gateway/knowledge_points.py": "223373e5e9c63e0cd82fd2a21dda5432f83a3bbf8bb013a4c250844353fea37b",
+    "gateway/knowledge_feedback.py": "b2aa826227f604d16755e18d398d43ca94ed9b82422bb16422f361d7a66713ae",
+    "gateway/workflow_timeline.py": "3786d94d32cb54874a2d234fb274a0dbc5c0c32b8f8df22f73fcffbcac0c30f3",
+    "core/overlay/config/routes.rb": "4b2d5050dc84e6d36e2578c38363beec49effb8fa2d69ec3d5d221cfef4a3324",
+    "core/overlay/lib/api/v3/root.rb": "f1a2ec3dbd3d0dd3e48cfd630b32d1cfe37b573a7804efbb62ab5db442b0de58",
+    "core/overlay/lib/api/v3/qldapm/gates_api.rb": "f54939d07257002c75422a366c02d14be143c21b778c75f697e0e5b5528a26ab",
+    "core/overlay/db/migrate/20261009160000_add_qldapm_gate_to_work_packages.rb": "0a93924c62dbcf6333c1ae245676d9c8c780d92a927435a2b66018bf241ebe32",
+    "core/overlay/db/migrate/20261010180000_create_qldapm_insight_snapshots.rb": "954c3b6f1fb19fd4a7d33ae402cef1db74559d3edcec4ca20a6938cefd2affe0",
+    "core/overlay/db/migrate/20261010190000_create_qldapm_mutation_receipts.rb": "ff4675ae036217f9a98ae166a675902b51880763e0a4f7599957d9e965aa4811",
+    "core/overlay/db/migrate/20261026000000_create_qldapm_native_deletion_events.rb": "14727aabc578a9d0aa9d371fd9e1895b5167919eac941cac90e852e62529947e",
+    "core/overlay/config/initializers/qldapm_gates.rb": "4920111b4252cdffbe8f82b325b5bd5612e2ec8a7ee54c88ac378265603aa8ef",
+    "core/overlay/config/initializers/zz_qldapm_inflections.rb": "f6c192fd72837c407074e6db364041108f9b1f0dfd9dbdaef40ea22a184bd174",
+    "core/overlay/app/controllers/qldapm_ai_controller.rb": "27d4f9fbdde16f2f3c64324ef7981080c08b60d5dae6c52944cdeb509eca449b",
+    "core/overlay/app/controllers/qldapm_gates_controller.rb": "2d890c2ab18017ddb2132c28acbac10d63cdea62271053eff2fbc97896f0ec1f",
+    "core/overlay/app/helpers/qldapm_ai_helper.rb": "965563da6f7877782ff05696de0c957d6a3ab644ad564c6fa172b0e46bc0968c",
+    "core/overlay/app/helpers/qldapm_report_reader_helper.rb": "43ff4c9b83561f0a9efaef0f557c1c6364a80578f43fe5024e83a4b1d34ae66e",
+    "core/overlay/app/models/qldapm_work_package_tree_hook.rb": "20d33217d0050e01a5dcf68d60c7082d926aa18c3ef8cf43989affea5510e089",
+    "core/overlay/app/workers/qldapm/insight_snapshot_job.rb": "5b9b077b197c3b8ce4798717ce05a4238fddb6b99f492bc17593adcbe8dc8942",
+    "core/overlay/app/views/qldapm_ai/engineering.html.erb": "f50ebd3a8c79f808f586a8dd1d9237aa9e19fc5c79048bca8f9f4456a5b8aa01",
+    "core/overlay/app/views/qldapm_ai/execution.html.erb": "8e19937d67b81f5e2a60df18b56b1d9fca7d7164516b3fd0007bbdf10cc40dc9",
+    "core/overlay/app/views/qldapm_ai/executions.html.erb": "b986b0f42decfaf78b00f91cde25f9075ea74d48ef7f195087f2836f3ea57c92",
+    "core/overlay/app/views/qldapm_ai/insights.html.erb": "96ba8c18122f98e774740860e0699ebf5a4f7024b5ff7e0dd98e1e67805a4757",
+    "core/overlay/app/views/qldapm_ai/observer.html.erb": "2992726579ccced1858248370bff9db1590c085c160ed173f8c84114b09da7f2",
+    "core/overlay/app/views/qldapm_ai/permissions.html.erb": "934dfc3b2872adcc486f0d952e567d2b3b1b474fa35db7472316c09d31126442",
+    "core/overlay/app/views/qldapm_ai/phases.html.erb": "837b8af70395e463bec1bb46a379a97036f0f9fc3cf2a5afc5d77fb2e0d070c4",
+    "core/overlay/app/views/qldapm_ai/qa_evidence.html.erb": "24eabf1046f717e0a66e8fdd4503a26077d87fc1e1b2673de39c1a348fe1e7fe",
+    "core/overlay/app/views/qldapm_ai/show.html.erb": "34ccae44941d6782f57656a1805e9b974a340c95ca272878b9c636d127561594",
+    "core/overlay/app/views/qldapm_ai/_control_center.html.erb": "daa9e75fe60bc2658fd3804fc1315dd4e460112feb60af0b1e01967983cdca19",
+    "core/overlay/app/views/qldapm_ai/_daily_brief.html.erb": "c19432aed8146eac70e9719b5ddcae5f08502b8ecde42763b4622bab44750b40",
+    "core/overlay/app/views/qldapm_ai/_engineering_classic.html.erb": "1c5c8d0c330594fb7d0859132f502143a2016010f9065dd9dc71c7a9a3f53f12",
+    "core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "eeefb62405fda56422ef780e7e929c9411120b8feae420fd2bcb396e2e93a671",
+    "core/overlay/app/views/qldapm_ai/_engineering_delegated.html.erb": "c6a570595e58d7c0fc47bf11828fe6dd5432bf6062d7d13c43f442e1917f03a2",
+    "core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": "54265b3bb970e7f9937f0f03f03b7cedd4bcf9cebc8d204359e6246369df727a",
+    "core/overlay/app/views/qldapm_ai/_engineering_knowledge_results.html.erb": "11ca4ed2a606ea56ca7bd88cde76c7f1cda258c19eb084c66152754ec15ff68a",
+    "core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": "fad0a51aa95b870f87b2c65856d59f0c8a5984d3893eea91f2edad7e9ce1219e",
+    "core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": "e0ec90f28ca17d26f9cfb5139f8a6bae1405496d153dee05c20288501254aa2c",
+    "core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": "46e414613a409c7d8733b94780a6b942085d7e382a70514d3b7ad28b661548e7",
+    "core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": "c75743ddcdb254fc8f8fc2996ea35c4b04f0125c7af096832dc5c8947ed2d3a1",
+    "core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": "4b3e4f9f4357434f26f47ecb24a2aee08a52e5f0248befb446bfe02334ca8f15",
+    "core/overlay/app/views/qldapm_ai/_engineering_workflows.html.erb": "25cba57bbfd1c8580f1afcc5f6f8481f3b87560d78457080abcbd376e087ef42",
+    "core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": "1347c598a5b001f8014c915f0b40e331bfa4bc73bc70084506ab910b8a964766",
+    "core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": "7a9d35f1828a7d3f749414856a9aa30021d766c7ae03779976865542b7e8b7a5",
+    "core/overlay/app/views/qldapm_ai/_execution_client.html.erb": "0088a4244c858eb1f228801b0f717973a0cd50641b660b8b8e8815c9a313d43e",
+    "core/overlay/app/views/qldapm_ai/_execution_style.html.erb": "79921472b417e42648d4aae52fa5dfe5a191f6cce6a19e06a7ad9dc6983905da",
+    "core/overlay/app/views/qldapm_ai/_observer_client.html.erb": "f46e9ec7acf9bd073ab7c561b0c753579639d7f10ae6cc7fbdce42493352451d",
+    "core/overlay/app/views/qldapm_ai/_result.html.erb": "a3da01d66e82e380831a491aea4deabd4ce7f86f0ada00d97910a06c8e2f6a4a",
+    "core/overlay/app/views/qldapm_gates/index.html.erb": "0f0d84a338d52fb4038c892c35910cd27a108ef63f506d97543707aa19e3f232",
+    "core/overlay/app/views/qldapm_gates/show.html.erb": "e0ed99f9cded478dde19138c4bb7f135d88411b61f4cfa4272879cb14f582948",
+    "core/overlay/app/views/qldapm_work_packages/index.html.erb": "b26620ea0b8db867f553c6ef23429b6fe2598632b9d16269142329287f03fc4c",
+    "core/overlay/app/views/qldapm_work_packages/_navigation.html.erb": "5c947a5a1fb37c97a87a924c81c5881b7281079180c00c33f877127073b6543e",
+    "core/overlay/app/views/qldapm_work_packages/_node.html.erb": "7539338e8334a26402dc587b87d4f729e61ac80a6b2e0bad435c7dd06a3e0d9f",
+    "core/overlay/app/views/qldapm_work_packages/_row.html.erb": "fcce5414b218be39bc86cc500dde6b749240a29be0020af85454d94cfbab82a1",
+    "core/overlay/app/services/qldapm/ai_bridge.rb": "ab54203e11302b2cb7b24ec3c03efb8eec2a7a1ec2fbbfa16db478e6390e70fe",
+    "core/overlay/app/services/qldapm/application_qa_receipt.rb": "7a715283cd0d45205473c722dc4d78e53d594b2e0dfcb86507803579665843e0",
+    "core/overlay/app/services/qldapm/application_qa_sources.rb": "e477d2e58737f3b84535ccc1ade00cada2b853230acd584794d3294588620c34",
+    "core/overlay/app/services/qldapm/dependency_change.rb": "443f7502c20cae3fa755c3d204514ccd3448480527aae85d712615f0996bebee",
+    "core/overlay/app/services/qldapm/dependency_mutation.rb": "35a20a498fefb2351efda3d4821f0d48317479108c817f3cbe35cca180c558f5",
+    "core/overlay/app/services/qldapm/gate_actions.rb": "34e2e3b7959d5613cc2c7414217bd54941c545b21de4e8798aa7a59852b85052",
+    "core/overlay/app/services/qldapm/hierarchy_readback.rb": "3cb44e0ce54cbc06f62ef4c56679b620b42f117684725ec9965c400651c55c89",
+    "core/overlay/app/services/qldapm/insights.rb": "5fb2a2aefabd08b68b8ae43c9db9b0f7275388d32ce6f6268459a2fcc9e5bc25",
+    "core/overlay/app/services/qldapm/insight_metrics.rb": "f26158ef4a514a12e6f41bbe421b3812aad102c188539f8c2c6be296b3480851",
+    "core/overlay/app/services/qldapm/mutations.rb": "3b161a0bdb798b179e7d6bd4d41f50ee09d8d65014198b9585aa0cc76dcab864",
+    "core/overlay/app/services/qldapm/native_deletion.rb": "1663269c0afdd149dd59bce5b2e700d76ee795abbb28f40a175d0bbb34afd457",
+    "core/overlay/app/services/qldapm/native_phase_receipt.rb": "b9ad2e9d2078be9476793e1ab015328371c6fab1cd4de0884fb625cc880f29c6",
+    "core/overlay/app/services/qldapm/observer_acceptance.rb": "702b1e0bde2f1567436fae5a9551fc20e1c4299c6860ba1266eb6e2ba486954b",
+    "core/overlay/app/services/qldapm/qa_evidence_receipt.rb": "e181f48a0fff4b25b9bfd30a9e70b57e18e322852e9dbc974bfc30f9a913a2fb",
+    "core/overlay/app/services/qldapm/test_receipt.rb": "9e00e3cc4e59c1eec2917c46b560444804b415b050001f2e2807c1274b5724ab",
+    "core/overlay/app/services/work_packages/create_service.rb": "e9e358fa7d6d2d55346198875e9505b02802ec9010b8eee181e56cca733bbc67",
+    "core/overlay/app/services/work_packages/set_attributes_service/derive_progress_values_status_based.rb": "91f7faeb19b94e2aec078f7bb796226f95d3da7826b8397779ad43ec58fcaba4",
+    "core/overlay/app/models/concerns/qldapm_board_write.rb": "dafcc357827f4ff498d37e1f38ebbe5598b9906fe5ec976404f4b80ecbea4947",
+    "core/overlay/app/models/concerns/qldapm_gate_write.rb": "be6770088d92db184775b0b1e0d986bb76916939fe4081ceb9ee83cc77a7893e",
+    "core/overlay/app/models/concerns/qldapm_relation_write.rb": "a5c0664d737683e578ba35a479d6613026cb316bdb01dfda6b47ab5579bb1863",
+    "core/overlay/app/models/qldapm/board_permissions.rb": "72e5b4da061b08829958bfca6bcb435133eb759cd2266fa425363295034a2ba7",
+    "core/overlay/app/models/qldapm/gate_policy.rb": "b9270f61092a6354935c25e637d17afc5615828214dcbd020abcb4d480fbafac",
+    "core/overlay/app/models/qldapm/insight_response.rb": "6054aab05f6e9fe2cdbdeee5ed069112c5107398e51c9af87da0202aa299c028",
+    "core/overlay/app/models/qldapm/insight_snapshot.rb": "0caefe162c1ee56da06def327cf02c0f8b5eb0fc8eeb8724a12240c77a0f5cdc",
+    "core/overlay/app/models/qldapm/mutation_receipt.rb": "39d9cba1a247daf76a992a617c169e2f27f60a075dc7b3261363813dac1f7c7a",
+    "core/overlay/app/models/qldapm/native_deletion_event.rb": "f934353dfa696fa976ac8442f84b6cf0bb0daaa35b402193556dde4b351d2c1d",
+    "core/overlay/app/models/qldapm/permission_ceiling.rb": "1f2f8e52deff368e7d80c8cbe2ab6f7c75cdd9d93726766c62ab5b84a301deca",
+    "core/overlay/app/models/qldapm/rbac.rb": "80e7074354604ac2ea25dd48564e2a5eb19176996ccbc6b8908bd3e7f39465d7",
+    "core/overlay/app/controllers/concerns/qldapm_work_package_tree.rb": "b7b8cb5b9566705620b2e87554d0e02d62697ec0b0b9ce29a182682fe0b58433"
+  },
+  "protected_state": {
+    "tables": {
+      "engineering_control": {
+        "rows": 1,
+        "sha256": "db652c49d5ced1736334a2a87a7a0eef7669aefc42be0aa50fd61c570f20b929"
+      },
+      "engineering_owner_revision": {
+        "rows": 1,
+        "sha256": "c4b0ca66bc09377d19d5ae6716e57098713e5affe14033dd6b35d457b7ac5bf4"
+      },
+      "ai_queue": {
+        "rows": 127,
+        "sha256": "dfd340a9362322da5423ff636354062dd7651d7fff6076647d267303a4c53eef"
+      },
+      "ai_runs": {
+        "rows": 230,
+        "sha256": "69c0c983e234f66521d3f5b461303191a5e037b5f8c9cbe1f51faef71d646d6b"
+      },
+      "requests": {
+        "rows": 1011,
+        "sha256": "2c9cd66a8b8c20b3ff923645e3639e5255392228948dd45495a0b10fa943db93"
+      },
+      "gemini_call_receipts": {
+        "rows": 581,
+        "sha256": "ae9a62c9ddcf1ed4874cec973aa71386ce566935d1b0445c34b1db7fa6493548"
+      },
+      "engineering_checkpoints": {
+        "rows": 29,
+        "sha256": "5ee20d8cf359dd9aef70b8e9419283d10d84c7baf859652cdb78df24fe29cb0d"
+      },
+      "tokens": {
+        "rows": 252,
+        "sha256": "556db487878c7bcd6dae12c9521c25b10d76b3de002cae2d5f604be0d3105866"
+      }
+    },
+    "control": [
+      [
+        6,
+        "RUN_ONCE"
+      ]
+    ],
+    "active": 1,
+    "files": {
+      "config.json": "cae46433a316e5b3486d6a94b08a80901f3b41dc9e622b823fbe49993433b233",
+      "credentials.json": "6fbd0ca37b9e18bc986681b236fc19c67747a16b41070152a8aef6a05072db39",
+      "gemini.key": "41f2cb531d4e9e991cb533b758e411faa7699dbbed8dd852fd2b6cfee35815e3",
+      "gemini.json": "49b6c51e8cd349280f3ed2c10df60247d94aa28861ae932dd9f4619007d05d6c",
+      "ui.key": "966f4b46b490e0a5c3b099b7946c7757e7e723298f4404da979e114501a578e1",
+      "automation.key": "ae756c51a120e81e6b51748830eac2b556f666db2a454d645ae7a565eedda70b"
+    }
+  },
+  "branch": "codex/telegram-agent-observer",
+  "head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e"
+}

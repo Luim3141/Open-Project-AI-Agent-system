@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-27T03:46:56.937223+00:00",
+  "status": "DEPLOYED_HEALTHY_SOURCE_DATA_VERIFIED_RUNTIME_REGRESSION_PENDING",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:chatgpt-supervisor-scope-v1-20261027",
+      "image": "sha256:0b47537e22d4e72af448be6c6bd6a8b37103d1a55507aee9b56c2fbdf8ef57a6"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-wbs-scheduled-parent-v2-20261027",
+      "image": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+    }
+  },
+  "source_before": {
+    "openproject/ai/gateway/service.py": "e42c685b7d3b1d2a59de5b1728f50cffcc775ed4f2f86f7936a240a48d9202b7",
+    "openproject/ai/gateway/local_queries.py": "0c1535f1c5ba9d08242051049fc95bf9ee651e2252341cc6849b7b88eca16e8e"
+  },
+  "files": {
+    "openproject/ai/gateway/service.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/service.py",
+      "sha256": "313c51c7b7c83ed3a1e954f203a1ff1eb8b8b89a21e554fdd457784b7c9be5d2"
+    },
+    "openproject/ai/gateway/local_queries.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/local_queries.py",
+      "sha256": "702661e826794fd920fb2ba6ff63c0324ee03753fa8b5f457ede06bbdc2a6500"
+    }
+  },
+  "qualification": {
+    "windows": {
+      "run": 736,
+      "passed": 736,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0,
+      "modules": 107,
+      "real_network": false,
+      "host_only_module_fallback": true
+    },
+    "linux_full_actual": {
+      "run": 736,
+      "passed": 719,
+      "skipped": 15,
+      "errors": 0,
+      "failures": 2,
+      "modules": 107,
+      "real_network": false,
+      "host_only_module_fallback": true
+    },
+    "linux_full_status": "PARTIAL_2_HOST_GIT_PREREQUISITE_FAILURES_RETAINED",
+    "linux_runtime_checks": "All non-host-release tests passed;15 existing platform skips",
+    "host_release_gate": "Both Git-dependent checks passed on actual Windows host; runtime image deliberately has no Git. No production assertions changed or failures hidden.",
+    "actual_native_clone": "CHATGPT_MAIN_C2B_NATIVE_SUPERVISOR_SCOPE_CLONE_RESULT.json",
+    "source_scope": "Exact two changed Gateway files; seven unrelated host-only modules are not added to image",
+    "core_qualification": "Unchanged Core19 fixture programs previously qualified; no Core build/deployment"
+  },
+  "changed_workflows": [],
+  "unchanged_workflows": 16,
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "new_model_calls": 0,
+  "schema_changes": {
+    "native": false,
+    "gateway": false
+  },
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\supervisor-scope-deployment",
+  "rollback_images": {
+    "gateway": "sha256:9bdb2bc0ab99e08959ed67b3e7ea5dff8327a4c7b418799d9d09934bf2ff6d68",
+    "web": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+  },
+  "authorization": "PUBLICATION_REDACTED",
+  "rollback": "Gateway-only app/config rollback to 9bdb2bc0 preserves the deployed Native open-count fix. Retain all databases, receipts and history; Core and workflow definitions are unchanged. This is scoped application rollback, not full disaster recovery qualification.",
+  "scope": "Gateway-only selected/project Supervisor scope, RAG-prioritized ten-source context, default assigned selection before cap, and deterministic status alias. Retain open-count fix, role/document ACL and explicit-target limits. No Core/Native/schema/provider configuration/write change.",
+  "other_main_containers_unchanged": 9,
+  "all_workflows_unchanged_active_source_matched": 16
+}

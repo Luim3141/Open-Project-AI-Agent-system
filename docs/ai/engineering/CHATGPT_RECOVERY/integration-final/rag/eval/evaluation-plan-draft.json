@@ -1,0 +1,35 @@
+{
+  "created_utc": "2026-11-03T02:16:11.555169+00:00",
+  "author": "independent evaluation agent separate from implementation agent; HUMAN_REVIEW_PENDING",
+  "independence": "No previously locked holdout cases or labels intentionally reused. Source documents overlap past experiments because the live Native corpus is only 12 work packages; new wording may share underlying features. No human adjudication or population sampling.",
+  "source_manifest_sha256": "c3e42f3adf7dc0976bdb58c796c290250d5e3193d6c5d7e9d850a6dc35fb6b24",
+  "dev_sha256": "dabe3c59deb347b67664f8605400220bec1c55353d44eb14cff4d460601edd67",
+  "holdout_sha256": "c7e6323a19952f336138596732db747dc90bbaf9dfe1d09d6a6ffb94aa435ea4",
+  "source_splits": {
+    "dev": [
+      380,
+      381,
+      388,
+      389,
+      390,
+      391
+    ],
+    "holdout": [
+      379,
+      382,
+      383,
+      384,
+      386,
+      387
+    ]
+  },
+  "acceptance": {
+    "holdout_hit_at_5_min": 0.8,
+    "holdout_false_positive_rate_max": 0.05,
+    "citation_identity_errors_max": 0,
+    "acl_errors_max": 0,
+    "warm_query_p95_seconds_max": 5
+  },
+  "holdout_policy": "Do not open, embed, score or calibrate on holdout until candidate source and parameters are frozen. Inspect labels independently after lock and before scoring; preserve original labels and flag ambiguity.",
+  "scope": "PM actor20, Project6 native snapshots; local file corpus requires separate ACL/citation evaluation."
+}

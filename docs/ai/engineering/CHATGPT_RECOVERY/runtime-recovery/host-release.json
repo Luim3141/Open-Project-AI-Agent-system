@@ -1,0 +1,47 @@
+{
+  "files": {
+    "engineering_worker.py": "0f030025409c9d386a494e77f74b821d6d18dedf641e012e6ec259067af52619",
+    "openclaw_health.py": "85b9ab64acd37e8814141f2034a239cb7cd58f239a5113446743f0679016bc74",
+    "Start-EngineeringDelivery.ps1": "793495ec8976f27c794aa925571dd0af94c8d11cf70e7d9202ac1054767b1eb1"
+  },
+  "tests": {
+    "targeted": 44,
+    "result": "PASS",
+    "modules": [
+      "test_openclaw_startup_recovery",
+      "test_phase31_integration_health",
+      "test_engineering_worker_recovery",
+      "test_engineering_worker_process",
+      "test_engineering_base_import",
+      "test_engineering_fencing"
+    ],
+    "final_focused": {
+      "count": 40,
+      "result": "PASS",
+      "modules": [
+        "test_openclaw_startup_recovery",
+        "test_engineering_fencing",
+        "test_engineering_worker_process",
+        "test_engineering_delivery_recovery"
+      ]
+    },
+    "additional_role_provider_contracts": {
+      "count": 22,
+      "result": "PASS",
+      "modules": [
+        "test_agent_registry",
+        "test_engineering_delivery_recovery",
+        "test_openclaw_provider_gate",
+        "test_provider_gate_http"
+      ]
+    }
+  },
+  "rollback": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\runtime-recovery",
+  "images_unchanged": true,
+  "utc": "2026-11-05T03:57:23.641375+00:00",
+  "red_before_guard": [
+    "probe-to-claim race started runtime despite arriving claim",
+    "terminal fence failure released CURRENT_CLAIM prematurely"
+  ],
+  "epoch": "v2 recovery/claim/fence mutually exclusive"
+}

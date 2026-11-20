@@ -1,0 +1,22 @@
+# Test evidence — 2026-10-27T03:27:13.896207+00:00
+
+| Scope | Actual result | Evidence |
+|---|---|---|
+| Baseline union105modules | Windows723PASS;Linux706PASS/15skip/2hostGit failures | Private union-windows-before.log / union-linux-before.log |
+| C2a union106modules | Windows730PASS;Linux713PASS/15skip/2same hostGit failures | Private union-windows-count-v1.log / union-linux-count-v1.log |
+| Targeted count/source API |20testsPASS | test_native_open_counts.py / test_local_queries.py / test_native_phase_api.py |
+| Real disposable Native REST |30checksPASS,6own identities,open/closed/type/project/receipt reads | CHATGPT_MAIN_C2_NATIVE_OPEN_COUNT_CLONE_RESULT.json |
+| Main roles/contracts/read-only |73/48/13PASS | CHATGPT_MAIN_C2_ROLE_RESULT.json / CONTRACT_RESULT / READONLY_RESULT |
+| Main count and freshness |10new persisted read runs;correct57Task,338WP,12Epic,269Subtask,1Bug | CHATGPT_MAIN_C2_OPEN_COUNT_MAIN_RESULT.json |
+| Native/security/history/RAG |375Native rows exact;QA/source reviews,ScenarioF61audit preserved;129provider/134usage unchanged | CHATGPT_MAIN_C2_DATA_PRESERVATION_RESULT.json |
+| Global RAG API |375v0found outside first10(38..47) with no native_ids selector | CHATGPT_MAIN_C2_GLOBAL_RAG_READBACK.json |
+
+Raw Linux runs are FAILED for exactly two tests requiring Git in a runtime image with no Git. They are not relabelled as a full PASS. Both execute successfully on the Windows engineering host. All730original/new assertions remain; host-only support-module fallback is explicit. Native clone fixtures use SQL-only setup of synthetic rows/statuses; this proves Native reads, not business mutation or human QA acceptance. Initial clone setup failures(json/jsonb function and assumed project3) and initial failed log parser are retained privately; no Main deployment occurred on those failures.
+
+No Google call, Native mutation, old approval replay or Staging operation in C0/C1/C2a. Offline SDK logs showing Google URLs are mocked transport. Historical Gemini receipts are read-only evidence, not new provider invocation. No fresh browser, full DR or full application lifecycle PASS is claimed.
+
+C2b deployed 2026-10-27T03:49:31.805927+00:00: Windows736PASS; Linux719PASS/15skip/2same hostGit failures; targeted44PASS; actualNativeclone6rolesPASS; Main73role/48contract/13read-onlyPASS; count57/338/12/269/1correct; localSupervisor10/338andtenIDs; all375Native rows, acceptedQA375/source reviews, oldaudit/provider/proposals/WBS/RAGexact. Evidence: CHATGPT_MAIN_C2B_SCOPE_DEPLOYMENT_RESULT.json, C2B_ROLE_RESULT, C2B_CONTRACT_RESULT, C2B_READONLY_RESULT, C2B_LOCAL_SCOPE_MAIN_RESULT, C2B_DATA_PRESERVATION_RESULT. No new provider call or Native mutation.
+
+C2c/C3 2026-10-27T04:13:07.595614+00:00: Windows739PASS;Linux722PASS/15skip/2samehostGitfails;69targetedPASS;73role/48contract/13read-onlyPASS. Actual timeout retained ccd6dcde… (one unknown generation, two receipts); fixed existing90second call budget transport cap and no-response metadata. New bcebcbcb… LIVE_GEMINI Supervisor+BA+QA:3successfulgenerations/6HTTP receipts, localReviewer, exact375v0,34.395seconds WF03ACK-to-terminal. SameUUID no newgeneration; changedpayload422/foreignactor403. Public C3_FRESH_LIVE_MULTI_AGENT_RESULT and POST_LIVE_PRESERVATION_RESULT:375Native rows/security/RAG/historyexact,137receipts/142usage explained. No MainNativewrites, no human decisions. C4 currentcandidateWBSactualNative/Qdrant four-node/date/dependency/lostACK testPASS; retainedBAoutput reused unchanged, syntheticembedding and isolateddecisions explicitlymarked. Core four-state development candidate remains UNDEPLOYED pendingqualification.
+
+C4a 2026-10-27T04:39:32.349378+00:00: Core20fixture programsPASS including all prior19; actualcandidateNative4state clonePASS with two newlycreated isolated resources, synthetic gatefacts explicitlylabelled,375originalrows exact. Core062282b3deploy only;Gatewaye9andother9containers unchanged. Postdeploy73roles/48contracts/13readonlyPASS;10countreads andlocal10/338PASS;Native/security/oldQA/source/WBS/provider/RAGexact. Preserver harness initially missed __file__ before executing checks; fixed harness and actual preservationPASS, no production rollback or assertion change. Evidence CHATGPT_MAIN_C4_SUBTASK_DEPLOYMENT_RESULT.json / C4_NATIVE_SUBTASK_CLONE_RESULT / C4A_ROLE_RESULT / C4A_CONTRACT_RESULT / C4A_READONLY_RESULT / C4A_DATA_PRESERVATION_RESULT. No Mainwrite/human decision.

@@ -1,0 +1,30 @@
+{
+  "image": "sha256:77213702ef933943a1fbee6feffc0d410062b8f16928dd3d1621f9489e581a12",
+  "tests": [
+    "test_engineering_status_sync",
+    "test_engineering_owner_controls",
+    "test_engineering_auto_mode",
+    "test_cc_github_operations",
+    "test_cc_github_snapshot",
+    "test_store_wal_connections",
+    "test_phase31_integration_health",
+    "test_engineering_reporting",
+    "test_owner_uat_recovery",
+    "test_engineering_fencing",
+    "test_delegated_approval",
+    "test_integration_events",
+    "test_workflow_status",
+    "test_engineering_github_owner_contract",
+    "test_engineering_schedule_contract",
+    "test_engineering",
+    "test_engineering_continuation",
+    "test_engineering_core_recovery",
+    "test_n8n_lifecycle_outbox",
+    "test_cc_summary_reads",
+    "test_owner_project_authority",
+    "test_cc_background_idle"
+  ],
+  "exit_code": 0,
+  "stdout_tail": "",
+  "stderr_tail": "Native report source unavailable: RuntimeError\nVector indexing pending: ValueError\nQdrant upsert error: ENGINEERING_CLAIM_LOST\nGitHub sync fetch failed: GITHUB_SYNC_TIMEOUT\n/tests/test_engineering.py:110: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient\n/usr/local/lib/python3.14/site-packages/starlette/testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n  _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\nHTTP Request: GET http://testserver/api/v1/agent-runs/7d0718d5-8686-4692-a9db-07b086c686b1/trace \"HTTP/1.1 200 OK\"\nHTTP Request: GET http://testserver/api/v1/agent-runs/7d0718d5-8686-4692-a9db-07b086c686b1/trace \"HTTP/1.1 403 Forbidden\"\nHTTP Request: GET http://testserver/api/v1/agent-runs/7d0718d5-8686-4692-a9db-07b086c686b1/trace \"HTTP/1.1 403 Forbidden\"\nHTTP Request: POST http://127.0.0.1:39705 \"HTTP/1.0 200 OK\"\nHTTP Request: POST http://testserver/internal/automation/lifecycle-observation \"HTTP/1.1 200 OK\"\nHTTP Request: POST http://testserver/internal/automation/lifecycle-observation \"HTTP/1.1 403 Forbidden\"\nHTTP Request: POST http://testserver/internal/automation/lifecycle-observation \"HTTP/1.1 403 Forbidden\"\nHTTP Request: POST http://testserver/internal/automation/lifecycle-observation?project_id=5 \"HTTP/1.1 403 Forbidden\"\n----------------------------------------------------------------------\nRan 221 tests in 6.214s\n\nOK\n"
+}

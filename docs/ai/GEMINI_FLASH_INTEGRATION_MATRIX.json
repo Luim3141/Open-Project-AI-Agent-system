@@ -1,0 +1,112 @@
+{
+  "timestamp": "2026-10-27T03:54:00+07:00",
+  "project_target": {
+    "project_id": 5,
+    "identifier": "qldapm-local",
+    "environment": "MAIN ONLY",
+    "staging_isolation_enforced": true
+  },
+  "subsystem_status": {
+    "ai_gateway": {
+      "container": "qldapm-ai-gateway-1",
+      "port": 8090,
+      "image_tag": "qldapm-ai:gemini-ai-automation-v1-20261027",
+      "image_digest": "sha256:ce1d9784d5c1a61f92f7b7e46834fe9be3052889cd35aa9801cc3b72874b30ea",
+      "health": "HEALTHY (HTTP 200 /health)",
+      "status": "PASS"
+    },
+    "openproject_core": {
+      "container": "qldapm-openproject-web-1",
+      "port": 8088,
+      "image_tag": "qldapm-core:codex-wbs-scheduled-parent-v2-20261027",
+      "work_packages_count": 338,
+      "status": "PASS"
+    },
+    "n8n_automation": {
+      "container": "qldapm-n8n-main",
+      "port": 5679,
+      "active_workflows_count": 16,
+      "all_active": true,
+      "wf03_webhook_verified": true,
+      "status": "PASS"
+    },
+    "ollama_embedding": {
+      "endpoint": "http://127.0.0.1:11434",
+      "model": "bge-m3:latest",
+      "dimensions": 1024,
+      "latency_seconds": 0.75,
+      "status": "PASS"
+    },
+    "qdrant_vector_store": {
+      "container": "qldapm-qdrant",
+      "port": 6333,
+      "collection": "qldapm_knowledge_dense",
+      "total_points": 1742,
+      "dimensions": 1024,
+      "distance": "Cosine",
+      "status": "PASS"
+    },
+    "sqlite_storage": {
+      "gateway_sqlite": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway/gateway.sqlite",
+      "knowledge_sqlite": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway/knowledge.sqlite",
+      "requests_count": 285,
+      "usage_count": 134,
+      "status": "PASS"
+    }
+  },
+  "prompt_intent_matrix": {
+    "Prompt_A": {
+      "description": "Deterministic lookup (Đếm task, thống kê trạng thái)",
+      "route": "LOCAL_DETERMINISTIC",
+      "model_used": false,
+      "provider_tokens_consumed": 0,
+      "e2e_verification": "PASS"
+    },
+    "Prompt_B": {
+      "description": "RAG project knowledge search with native citations",
+      "route": "HYBRID_RRF (Ollama BGE-M3 1024-dim + SQLite FTS5)",
+      "model_used": false,
+      "top_score": 0.03202,
+      "e2e_verification": "PASS"
+    },
+    "Prompt_C": {
+      "description": "WBS structure analysis and work package inspection",
+      "route": "NATIVE_ANALYSIS_DIRECT",
+      "workload_detector": true,
+      "sprint_readiness": true,
+      "e2e_verification": "PASS"
+    },
+    "Prompt_D": {
+      "description": "QA attestation and bug check",
+      "route": "QA_GATEWAY_INSPECTION",
+      "qa_evidence_list": true,
+      "e2e_verification": "PASS"
+    },
+    "Prompt_E": {
+      "description": "n8n operations and webhook execution",
+      "route": "N8N_WEBHOOK_TO_GATEWAY",
+      "wf03_verified": true,
+      "secret_token_enforced": true,
+      "e2e_verification": "PASS"
+    },
+    "Prompt_F": {
+      "description": "Backlog analysis & multi-agent supervisor risk review",
+      "route": "LOCAL_SUPERVISOR_MULTI_AGENT",
+      "specialists": ["ba", "qa", "reviewer"],
+      "e2e_verification": "PASS"
+    }
+  },
+  "safety_and_governance": {
+    "zero_known_regressions": true,
+    "regression_tests_passed": "203/203 (40 suites, 0 failures)",
+    "readonly_acceptance_passed": "13/13",
+    "e2e_scenarios_passed": "10/10",
+    "rbac_enforced": true,
+    "idempotency_enforced": true,
+    "audit_ledger_verified": true,
+    "single_writer_respected": true,
+    "wp371_status_preserved": "v4, IN ANALYSIS",
+    "staging_untouched": true
+  },
+  "verdict": "QUALIFIED_FOR_PRODUCTION_READY"
+}

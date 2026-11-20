@@ -1,0 +1,45 @@
+services:
+  local-backup:
+    image: ${LOCAL_BACKUP_IMAGE:?Build and lock private backup operator image once}
+    restart: unless-stopped
+    entrypoint: [python3, -u, /trusted/local_backup.py]
+    command: [watch]
+    environment:
+      PGHOST: db
+      PGUSER: postgres
+      PGDATABASE: openproject
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      PGOPTIONS: -c default_transaction_read_only=on -c statement_timeout=120000
+    volumes:
+      - ./local_backup.py:/trusted/local_backup.py:ro
+      - ./jira_sync_backup.py:/trusted/jira_sync_backup.py:ro
+      - ${AI_RUNTIME}/operator/local-backups:/backup
+      - ${AI_RUNTIME}/stage-ai:/gateway:ro
+      - ${AI_RUNTIME}/radmin-caddy:/radmin:ro
+      - ${AI_RUNTIME}/stage:/native-private:ro
+      - ${AI_RUNTIME}/.env:/secrets/runtime.env:ro
+      - ${AI_RUNTIME}/n8n-stage/encryption.key:/secrets/n8n.key:ro
+      - ${AI_RUNTIME}/operator/n8n-owner:/n8n-owner:ro
+      - ${AI_RUNTIME}/operator/gemini-free/free-tier-proof.json:/secrets/provider-proof.json:ro
+      - ${AI_RUNTIME}/operator/gemini-free:/provider-policy:ro
+      - ${AI_RUNTIME}/operator/local-runtime/stage-runtime.json:/secrets/stage-runtime.json:ro
+      - n8n-data:/n8n:ro
+      - stage-assets:/assets:ro
+    networks: [stage]
+    depends_on:
+      db: {condition: service_healthy}
+      n8n: {condition: service_healthy}
+    read_only: true
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    cpus: 0.25
+    pids_limit: 32
+    healthcheck:
+      test: [CMD, python3, -c, "import json,time; from pathlib import Path; p=Path('/backup/last-success.json'); assert p.is_file() and time.time()-json.loads(p.read_text())['at']<93600"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+      start_period: 600s
+    logging: {driver: json-file, options: {max-size: "5m", max-file: "2"}}

@@ -1,0 +1,5 @@
+# P01-12 — persisted private credentials, provider state separate
+
+One actual Desktop restart plus explicit Stop/Repair and repeated up-d all reused existing Gateway credentials/ui.key/Gemini key/config without key entry. Linux container hashes compared in memory against private provision manifest: all five files byte-identical, actual n8n mounted encryption key matches private persisted digest. Public output booleans only: P01-12-persisted.json. Full Gateway ledger469usage rows/run states survived engine restart (P01-03-restart1-check.json).
+
+Operator status distinguishes BLOCKED_KEY for missing/truncated/malformed local format, CONFIGURED_DISABLED for valid-format saved key with provider OFF, and READINESS_NOT_VERIFIED if enabled but network validity not checked. Targeted8unit tests PASS includes missing/truncated/retained/enabled states; presence never becomes READY. Existing native UI ProviderError guard remains deployed unchanged. Key acceptance by Google and future Free-only privacy authorization belong to P02; no Google call, proof renewal, billing change, model fallback, key replacement or ledger reset occurred here.

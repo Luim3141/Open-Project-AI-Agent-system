@@ -1,0 +1,32 @@
+# Owner selected a temporary public OpenProject URL; privileged services stay private.
+services:
+  staging-web:
+    command: [ruby, /qldapm-operator/quick_tunnel_web.rb]
+    volumes:
+      - ./automation/quick_tunnel_web.rb:/qldapm-operator/quick_tunnel_web.rb:ro
+      - ${AI_RUNTIME}/access:/qldapm-access
+    stop_grace_period: 60s
+  n8n-editor:
+    # Windows currently reserves 5638-5737; keep the editor on a bindable loopback port.
+    ports: !override ["127.0.0.1:15678:5678", "127.0.0.1:18090:18090"]
+    volumes:
+      - ./automation/Quick.Caddyfile:/etc/caddy/Caddyfile:ro
+      - ${AI_RUNTIME}/access:/qldapm-access:ro
+  quick-tunnel:
+    image: ${QUICK_TUNNEL_IMAGE:-sha256:a80f54e29918ec66c82cdc7ad8fd9a65e3082e59825c0356d5737916959884c6}
+    restart: unless-stopped
+    networks: [stage-front]
+    read_only: true
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 128m
+    cpus: 0.25
+    pids_limit: 32
+    healthcheck:
+      test: [CMD, wget, -q, -O, "-", "http://127.0.0.1:2000/ready"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 90s
+    logging: {driver: json-file, options: {max-size: "5m", max-file: "2"}}

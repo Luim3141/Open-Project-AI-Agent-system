@@ -1,0 +1,16 @@
+<% children = @tree_children[item.id] || [] %>
+<% node_attributes = {class: "qldapm-tree-node", data: {work_package_id: item.id, tree_level: level, tree_root: level.zero? ? true : nil}} %>
+<% if children.any? %>
+  <%= content_tag :details, node_attributes do %>
+    <summary aria-label="<%= "#{item.type.name} ##{item.id}: #{item.subject}" %>">
+      <%= render "qldapm_work_packages/row", item: item %>
+    </summary>
+    <div class="qldapm-tree-children">
+      <% children.each do |child| %><%= render "qldapm_work_packages/node", item: child, level: level + 1 %><% end %>
+    </div>
+  <% end %>
+<% else %>
+  <%= content_tag :div, node_attributes.merge(class: "qldapm-tree-node qldapm-tree-leaf") do %>
+    <%= render "qldapm_work_packages/row", item: item %>
+  <% end %>
+<% end %>

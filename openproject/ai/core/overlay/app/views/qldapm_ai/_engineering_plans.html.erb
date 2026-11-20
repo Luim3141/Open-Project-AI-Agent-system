@@ -1,0 +1,29 @@
+<div class="qcc-card qcc-planning-specs-card">
+  <div class="qcc-card-header"><div><h3 class="qcc-card-title">PM / BA Planning · versions theo Work Package</h3><p class="qcc-card-sub">PUBLISHED là kế hoạch đã phát hành; không đồng nghĩa công việc COMPLETED.</p></div><button type="button" class="qcc-btn qcc-btn-primary qcc-open-intake-btn">+ Giao việc PM/BA</button></div>
+  <label>Tìm WP / Plan <input id="qcc-plan-search" data-qcc-preserve class="qcc-input" type="search" placeholder="WP ID, title hoặc Plan ID"></label>
+  <% grouped = plans.group_by do |p|
+       related = (p['native_units'].is_a?(Hash) ? p['native_units'].values : []).filter_map { |u| u['id'] }.uniq
+       related.one? ? related.first : (p['native_id'] || p['work_package_id'] || p.dig('request','native_id') || p['id'])
+     end %>
+  <% grouped.each do |wp, versions| %>
+    <div class="qcc-plan-group">
+      <h4><%= wp.to_s.match?(/\A\d+\z/) ? "WP ##{wp}" : 'Kế hoạch chưa có WP anchor xác minh' %> · <%= versions.size %> version(s)</h4>
+      <% versions.sort_by { |p| -(Time.parse((p['published_at'] || p['created_at'] || p['created']).to_s).to_f rescue (p['created_at'] || p['created']).to_f) }.each_with_index do |plan, index| %>
+        <% units = plan['native_units'].is_a?(Hash) ? plan['native_units'].to_a : []; unit_ids = units.map { |_,v| v['id'].to_s }; observed = Array(eng['backlog']).select { |u| unit_ids.include?(u['native_id'].to_s) } %>
+        <article class="qcc-work-row" data-plan-group data-search="<%= [wp,plan['id'],plan['title'],plan.dig('ba','summary'),plan['native_units']].join(' ') %>">
+          <div class="qcc-work-heading"><strong><%= plan['title'] || plan.dig('ba','summary') || plan.dig('pm','summary') || "Plan #{plan['id'].to_s.first(8)}" %></strong><span class="qcc-chip qcc-chip-blue"><%= plan['state'] || 'UNKNOWN' %></span></div>
+          <p>Plan <code><%= plan['id'].to_s.first(8) %></code> · <%= index.zero? ? 'Mới nhất trong nhóm' : 'Lịch sử' %> · Tạo <%= format_vn_time.call(plan['created_at'] || plan['created']) %> · Published <%= format_vn_time.call(plan['published_at'] || plan['updated']) %></p>
+          <% if (plan['run_id'] || plan['id']).present? %><button type="button" class="qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn" data-run-id="<%= plan['run_id'] || plan['id'] %>">Related run <%= (plan['run_id'] || plan['id']).to_s.first(8) %></button><% end %>
+          <p><%= units.size %> units · Ready <%= observed.count { |u| u['eligible'] && u['dependency_ready'] } %> · Blocked <%= observed.count { |u| u['state'].to_s.upcase == 'BLOCKED' || u['task_status'].to_s.upcase == 'BLOCKED' } %> · Delivered <%= observed.count { |u| %w[DELIVERED SUCCEEDED].include?(u['state'].to_s.upcase) } %></p>
+          <p><strong>Next action:</strong> <%= plan.dig('pm','next_action') || 'Xem units và dependency readiness trước khi RUN ONCE / AUTO' %></p>
+          <details data-preserve-key="plan-<%= plan['id'] %>"><summary>Đặc tả BA · PM plan · Acceptance Criteria · WBS · dependencies</summary>
+            <h5>BA specification</h5><pre><%= JSON.pretty_generate(plan['ba'] || {}) %></pre><h5>PM plan</h5><pre><%= JSON.pretty_generate(plan['pm'] || {}) %></pre>
+            <ul><% units.each do |key, unit| %><li><a href="/work_packages/<%= unit['id'] %>">WP #<%= unit['id'] %></a> · <%= unit['state'] || 'UNKNOWN' %> · <code><%= key %></code></li><% end %></ul>
+            <h5>Full plan / technical identifiers</h5><button type="button" class="qcc-btn-xs qcc-btn-secondary" data-qcc-copy="<%= plan['id'] %>">Copy Full Plan ID</button><pre><%= JSON.pretty_generate(plan) %></pre>
+          </details>
+        </article>
+      <% end %>
+    </div>
+  <% end %>
+  <% if plans.empty? %><p>Chưa có kế hoạch PM/BA. Dùng Giao việc để gửi yêu cầu.</p><% end %>
+</div>

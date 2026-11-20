@@ -1,0 +1,231 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "92b1713722379eb8a854156c860046100b372e3eeba6ae1c1bf8dd84c08073b0",
+    "openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb": "ecf7f011cd7847f3bca68770284d8767b853fc7e69665cd09807ee1b112a7703",
+    "openproject/ai/core/overlay/app/services/qldapm/observer_packages.rb": "59683ffc078e1b5199fb7f6b4e457b9241e1939f22722ed0a6e2e4349d10c010",
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": "f50bc25e7023530feac3140e48cf4985efd82a946a7126fd2f1e0c178543033e",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/observer.html.erb": "8f83a46ebff619382c870ab4ac5d71447fd2aeb29a0ed9d73baf8bec1b3de63d",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/execution.html.erb": "c5595a18293ce9818ca5847d2b9d6620c2bd3a2e020ac7efa2298dcb7dc06772",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/studio.js": "c8188d41aa927f783909fbcc1ac3328b1c498ac0bd28c436e49ec913a139914d",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/studio.css": "cba2688884c2e6bdeef916830ec037fd1000366b016c417a46534350db895130",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/studio.js.LEGAL.txt": "d8bc1f42b3b0ede6cde4a51b9492aab033b97d0a98d96a726d0e86040e3ff5c4",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/manifest.json": "26f6cad41f94a2d09c4cdfe574932076b4d81a1dc9aa39c5e31a1c6667dfc64e",
+    "openproject/ai/gateway/agent_observer.py": "a62be2f4a3a8250c8b6a60c24694e1fba46233d47a992c84695d8a2e02188042",
+    "openproject/ai/gateway/observer_reads.py": "abc824f3ae8822ea5f83fa01d05d1c259b2d2a70c7c7f1681df09ac1437a4dcb",
+    "openproject/ai/gateway/engineering_monitor.py": "4f944961971768c02ac7c2829a61137567b7504a259bd855a27b291a5669a503",
+    "openproject/ai/gateway/engineering_planning.py": "e0302702356ab2092656556905e3be7743c51567f1029ac9e98064128ebbf66d",
+    "openproject/ai/gateway/native.py": "a4453350a488c086095581bb8fe9977d0aa82ab16b0e9eb9126e0a948a71675b",
+    "openproject/ai/gateway/app.py": "91112f245d3910ce09069341b1f3c01a68b9b08a3dbc320e270e18a62bd0cda1"
+  },
+  "checks": {
+    "adapter": true,
+    "fixture_browser": true,
+    "regressions": true,
+    "immutable_core": true
+  },
+  "evidence": {
+    "adapter": "on and never consume backend text as trusted UI (24.9363ms)\n\u2714 timeout resolves as finite error; explicit cancellation remains cancellation (21.9575ms)\n\u2139 tests 10\n\u2139 suites 0\n\u2139 pass 10\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 127.8175\n",
+    "fixture_browser": {
+      "status": "PASS",
+      "scope": "TEST FIXTURE ONLY",
+      "checks": {
+        "explorer_focus": true,
+        "graph_independent_lazy_details": true,
+        "typed_output_and_lazy_raw": true,
+        "status_refresh_no_layout_or_node_render": true,
+        "paged_runs_expand": true,
+        "403_stops_poll_and_clears_data": true,
+        "explicit_retry_recovers": true,
+        "rapid_switch_back_forward": true,
+        "responsive_no_overflow": true,
+        "unmount_cancels": true
+      },
+      "console_errors": [],
+      "requests": [
+        {
+          "view": "list",
+          "state": "ALL",
+          "limit": "20"
+        },
+        {
+          "task_id": "397",
+          "view": "graph"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "events",
+          "offset": "0",
+          "limit": "25"
+        },
+        {
+          "view": "list",
+          "query": "397",
+          "state": "ALL",
+          "limit": "20"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "overview",
+          "stage": "dev"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "events",
+          "offset": "0",
+          "limit": "25"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "overview",
+          "stage": "dev"
+        },
+        {
+          "task_id": "397",
+          "view": "graph"
+        },
+        {
+          "view": "list",
+          "query": "397",
+          "state": "ALL",
+          "limit": "20"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "runs",
+          "offset": "0",
+          "limit": "25",
+          "stage": "dev"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "events",
+          "offset": "0",
+          "limit": "25"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "runs",
+          "offset": "0",
+          "limit": "25",
+          "stage": "dev"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "overview",
+          "stage": "dev"
+        },
+        {
+          "task_id": "397",
+          "view": "graph"
+        },
+        {
+          "view": "list",
+          "query": "397",
+          "state": "ALL",
+          "limit": "20"
+        },
+        {
+          "task_id": "397",
+          "view": "graph"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "events",
+          "offset": "0",
+          "limit": "25"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "overview",
+          "stage": "dev"
+        },
+        {
+          "task_id": "379",
+          "view": "graph"
+        },
+        {
+          "task_id": "379",
+          "view": "details",
+          "section": "events",
+          "offset": "0",
+          "limit": "25"
+        },
+        {
+          "task_id": "391",
+          "view": "graph"
+        },
+        {
+          "task_id": "391",
+          "view": "details",
+          "section": "events",
+          "offset": "0",
+          "limit": "25"
+        },
+        {
+          "task_id": "397",
+          "view": "graph"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "events",
+          "offset": "0",
+          "limit": "25"
+        },
+        {
+          "task_id": "391",
+          "view": "graph"
+        },
+        {
+          "task_id": "391",
+          "view": "details",
+          "section": "events",
+          "offset": "0",
+          "limit": "25"
+        },
+        {
+          "task_id": "397",
+          "view": "graph"
+        },
+        {
+          "task_id": "397",
+          "view": "details",
+          "section": "events",
+          "offset": "0",
+          "limit": "25"
+        },
+        {
+          "view": "list",
+          "query": "397",
+          "state": "ALL",
+          "limit": "20"
+        }
+      ]
+    },
+    "regressions": "0 OK\"\nHTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent \"HTTP/1.1 200 OK\"\n..\n----------------------------------------------------------------------\nRan 97 tests in 2.062s\n\nOK (skipped=2)\n",
+    "immutable_core": {
+      "status": "PASS",
+      "batch_ids": [
+        379,
+        397
+      ],
+      "list_count": 2,
+      "wildcard_escaped": true,
+      "denied": true,
+      "image": "sha256:f725d17427bea86f9635350230278557a3c9a8db60199dbe94589783896a683f",
+      "isolation": "Private PG restore, separate internal network/volumes, no provider key",
+      "main_writes": 0
+    }
+  }
+}

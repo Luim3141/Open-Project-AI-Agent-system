@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-02",
+  "image": "qldapm-n8n:recovery-redaction-overwrite-candidate",
+  "image_id": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+  "network": "none",
+  "fixture": "synthetic markers only",
+  "script": "wf04_arbitrary_payload_canary.js",
+  "script_exit_code": 0,
+  "leaked": {"header": false, "nested": true, "free_text": true},
+  "interpretation": "The current redactor does not remove arbitrary secrets; this is not a safe-retention pass.",
+  "limitations": "Direct redactBundle test, not a running WF04 execution or persisted storage scan. The existing full-overwrite test uses mocked database and filesystem stores; it does not establish real filesystem persistence, restart, concurrency, or WF04 visibility and correlation."
+}

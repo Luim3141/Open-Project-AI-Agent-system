@@ -1,0 +1,34 @@
+{
+  "status": "PREPARED_TARGETED_TESTS14PASS",
+  "workflows": {
+    "WF01": {
+      "id": "X2O2QdPY6QLOrWqL",
+      "old_version": "27fdd65f-017f-4604-920d-06a48c66b3a9",
+      "candidate_sha256": "d1b4b79e8f4af9fff34c7cbd1be6380555af00ce93ae06d1e5c2984a46daca7a"
+    },
+    "WF02": {
+      "id": "Anl8LNdN4NNTKRpe",
+      "old_version": "18bc9957-edfb-44ff-9d77-3887c05b7a7f",
+      "candidate_sha256": "f1a17776f3f181c6498207f42d95dbc1937a4bbc073f972d458d80cbf69133a0"
+    },
+    "WF09": {
+      "id": "tOyBIPw6sGjgzjtU",
+      "old_version": "5defea31-0a65-412d-a68b-4bbec5a67066",
+      "candidate_sha256": "cb744df9fcedca78b4cb828ae80414c758a5be505c920ccc8219b36c3437affa"
+    },
+    "WF10": {
+      "id": "tOY7QUa9SrWPOe9e",
+      "old_version": "b60ad7c2-b487-4761-80b4-6ddb72bf3aee",
+      "candidate_sha256": "fc320cc562ab03931a78dda065005f8b2ca42c86a2591b56fd8b468b51dbc170"
+    },
+    "WF13": {
+      "id": "2tr0jpqaaAiq9IOU",
+      "old_version": "dc9d59f9-63c6-4361-8313-517b2464b4dc",
+      "candidate_sha256": "6fc2b0a91d59f4d9146042769073de3d3267c5f91c86e0e67be9d42e0819f1fd"
+    }
+  },
+  "effect": "Preserve actual Gateway HTTP status and body, remove fabricated success/decomposition/triage/sync reports and hardcodedWP38. WF01/02/13 require explicit Native id/stableUUID and supported operation; reject file paths and delete. WF09 reads explicit Native context only; WF10 reads actual project options only. These are bounded partial adapters, not full business acceptance.",
+  "native_mutations": 0,
+  "model_calls": 0,
+  "rollback": "Restore per-workflow private pre-explicit-boundary snapshots and activate returned version; all data retained."
+}

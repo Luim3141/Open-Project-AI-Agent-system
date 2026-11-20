@@ -1,0 +1,166 @@
+Open link in a new tab
+Jump to content
+Home
+CP
+Content
+AI Assistant
+/
+Lịch sử xử lý
+/
+Chi tiết Execution
+AI MULTI-AGENT EXECUTION MONITOR
+Giám sát điều phối AI Multi-Agent
+YÊU CẦU NGƯỜI DÙNG
+
+Phân tích yêu cầu và tiêu chí chấp nhận công việc #49; chỉ đọc, không thay đổi dữ liệu.
+
+Hoàn thành
+LOCAL_DETERMINISTIC
+Chế độ trình chiếu
+Đã đọc bản ghi đã lưu. Không gọi Gemini và không tự chạy lại execution.
+Run ID
+e2cc660e-bf17-49ef-b468-de9b868f0c4e
+Trace ID
+a9bf1dfd-9697-46c2-bfed-60db0e5bb523
+Người yêu cầu
+#25 · PM
+Dự án
+5
+Được tạo
+22:21:24 20/10/26
+Mô hình AI
+Không khả dụng
+AGENT THAM GIA
+3
+AGENT HOÀN THÀNH
+3
+NODE ĐANG XỬ LÝ
+0
+BƯỚC TRONG PLAN
+2
+GEMINI CALLS ĐÃ GHI NHẬN
+0
+TOKEN QUAN SÁT
+0
+DURATION ĐÃ GHI NHẬN
+6,919s
+PROVIDER ERRORS / RETRIES
+0 / 0
+Sơ đồ điều phối Multi-Agent
+
+Đường nét đứt: Supervisor giao việc · Đường liền: Phụ thuộc dữ liệu hoàn tất
+
++
+−
+Vừa màn hình
+Tự động sắp xếp
+Đặt lại bố cục
+Thu gọn node
+SV
+Supervisor
+Chưa có dữ liệu
+Lập kế hoạch và điều phối các nh…
+0 calls · Chưa có dữ liệu token
+LOCAL_DETERMINISTIC
+BA
+BA Agent
+Chưa có dữ liệu
+execute_ba_domain_task
+0 calls · Chưa có dữ liệu token
+LOCAL_DETERMINISTIC
+RV
+Reviewer
+Chưa có dữ liệu
+verify_consistency_and_rbac
+0 calls · Chưa có dữ liệu token
+LOCAL_DETERMINISTIC
+Σ
+Báo cáo tổng hợp
+Chưa có dữ liệu
+Tổng hợp kết quả đã lưu; không g…
+0 calls · Chưa có dữ liệu token
+LOCAL_DETERMINISTIC
+Supervisor giao việc
+Phụ thuộc dữ liệu
+Luồng node đang chọn
+Hoàn tất
+Xem dạng bảng danh sách node (Hỗ trợ trình đọc màn hình)
+Supervisor
+
+Lập kế hoạch và điều phối các nhiệm vụ; các đường phụ thuộc không phải quyền gọi agent.
+
+Thông tin chính
+Kết quả xử lý
+Tất cả thông số
+Vai trò chuyên môn
+SUPERVISOR
+Trạng thái hiện tại
+Chưa có dữ liệu
+Phụ thuộc
+Không có
+Gemini Calls
+0
+Token ghi nhận
+Chưa có dữ liệu
+Thời gian xử lý
+0,078s
+Chế độ thực thi
+LOCAL_DETERMINISTIC
+Mô hình AI
+Không khả dụng
+Timeline thực thi và phát lại
+
+Chỉ hiển thị các sự kiện đã ghi nhận trong trace; không ước lượng thời gian cho agent thiếu telemetry.
+
+Lọc agent:
+Tất cả
+supervisor
+ba
+reviewer
+PHÁT LẠI LỊCH SỬ (READONLY REPLAY · KHÔNG GỌI AI)
+Phát lại (1 sự kiện/giây)
+Vị trí sự kiện:
+0 / 14
+Về kết quả cuối
+Chưa có sự kiện phù hợp được ghi nhận.
+Tổng hợp báo cáo cuối cùng
+
+Phân tích và giải pháp hoàn chỉnh từ Multi-Agent · Reviewer local xác thực tham chiếu và ranh giới nghiệp vụ.
+
+Báo cáo phân tách
+Nội dung nguyên bản
+Tóm tắt chung
+Phân tích local trên 1/1 công việc trong phạm vi phân tích; tối đa 10 mục/lượt.
+Kết quả là bản phân tích/dự thảo, chưa thay đổi dữ liệu native.
+### TIÊU CHÍ CHẤP NHẬN (ACCEPTANCE CRITERIA) — #49
+**Công việc:** AUTH-01 — Đăng ký bằng email và mật khẩu
+
+**AC1 — Điều kiện tiên quyết & Giao diện:**
+- **Given:** Người dùng đã đăng nhập vào hệ thống với quyền hạn hợp lệ.
+- **When:** Người dùng truy cập màn hình 'AUTH-01 — Đăng ký bằng email và mật khẩu'.
+- **Then:** Hệ thống hiển thị đầy đủ các trường thông tin cần thiết và các nút thao tác tương ứng.
+
+**AC2 — Luồng xử lý chính (Happy Path):**
+- **When:** Người dùng nhập dữ liệu hợp lệ và bấm xác nhận.
+- **Then (dự thảo):** Hệ thống lưu dữ liệu hợp lệ và phản hồi; SLA cần được chủ yêu cầu xác định, chưa có bằng chứng về ngưỡng hiệu năng.
+
+**AC3 — Xử lý ngoại lệ & Bảo mật:**
+- **When:** Dữ liệu đầu vào sai định dạng hoặc phiên đăng nhập hết hạn.
+- **Then:** Hệ thống hiển thị thông báo lỗi rõ ràng tại vị trí tương ứng và không lưu bản ghi lỗi.
+
+> Trích dẫn dữ liệu nguồn: Work Package #49 (lock_version: 1)
+
+---
+### BÁO CÁO ĐỐI CHIẾU VÀ KIỂM ĐỊNH TÍNH NHẤT QUÁN (REVIEWER REPORT)
+#### 1. Kết quả đối chiếu bằng chứng native:
+- Tác vụ 1: **TRÍCH DẪN HỢP LỆ** (Công việc liên quan: #49) — ID và lock_version của các trích dẫn khớp nguồn; nội dung phân tích/dự thảo vẫn cần người dùng thẩm định.
+
+#### 2. Kiểm tra xung đột đa tác nhân: Nhất quán, không phát hiện mâu thuẫn.
+
+#### 3. Rà soát ranh giới thẩm quyền RBAC:
+- Các tác vụ đều thuộc phạm vi ĐỌC (Read-Only) hợp lệ, tuân thủ đúng phân quyền của vai trò.
+
+#### 4. Kết luận kiểm định (Final Verdict):
+**KẾT QUẢ: ĐÃ KIỂM TRA THAM CHIẾU/PHẠM VI; NỘI DUNG DỰ THẢO CHƯA ĐƯỢC CON NGƯỜI NGHIỆM THU.**
+Dữ liệu nguồn xác thực
+#49 · v1

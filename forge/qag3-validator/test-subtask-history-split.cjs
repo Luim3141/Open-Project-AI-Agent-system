@@ -1,0 +1,24 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const yaml = require('../../tools/forge-cli/node_modules/@forge/cli/node_modules/yaml');
+const source = `${__dirname}/manifest.subtask-history-split-candidate.yml`;
+const before = yaml.parse(fs.readFileSync(`${__dirname}/manifest.subtask-history-candidate.yml`, 'utf8'));
+const candidate = yaml.parse(fs.readFileSync(source, 'utf8'));
+const stage = yaml.parse(fs.readFileSync(`${__dirname}/manifest.subtask-history-stage.yml`, 'utf8'));
+assert.deepEqual(stage.modules['jira:workflowValidator'].filter(m => m.key !== 'qag3-subtask-history'), before.modules['jira:workflowValidator']);
+assert.deepEqual(stage.app, before.app);
+assert.equal(stage.permissions, undefined);
+assert.equal(stage.modules.function, undefined);
+assert.equal(candidate.modules['jira:workflowValidator'].length, 12);
+assert.deepEqual(candidate.app, before.app);
+assert.equal(candidate.permissions, undefined);
+assert.equal(candidate.modules.function, undefined);
+assert.deepEqual(candidate.modules['jira:workflowValidator'].filter(m => !['qag3-subtask-acceptance', 'qag3-subtask-history'].includes(m.key)),
+  before.modules['jira:workflowValidator'].filter(m => m.key !== 'qag3-subtask-acceptance'));
+const history = candidate.modules['jira:workflowValidator'].find(m => m.key === 'qag3-subtask-history').expression;
+assert(history.includes('originalIssue.changelogs.map('));
+assert(history.includes('history.every(') && history.includes('developers.includes(item.from)'));
+assert(!history.includes('evidence == previous') && !history.includes('issue.labels'));
+process.env.QAG3_VALIDATOR_MANIFEST = source;
+require('./test.cjs');
+console.log('PASS: 12-module split conjunction; ten prior modules unchanged; full history/ownership/QA checks retained. Not native Jira proof.');

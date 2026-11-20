@@ -1,0 +1,462 @@
+{
+  "csv_fields": [
+    "execution_id",
+    "case_id",
+    "claim_id",
+    "scope",
+    "environment",
+    "commit_sha",
+    "command",
+    "test_name",
+    "started_at",
+    "ended_at",
+    "duration_sec",
+    "exit_code",
+    "assertions",
+    "expected",
+    "actual",
+    "status",
+    "evidence_relative_path",
+    "raw_log_path",
+    "raw_log_hash",
+    "artifact_hash",
+    "defect_id",
+    "notes"
+  ],
+  "rows": 42,
+  "zip_members": 45,
+  "checks": [
+    {
+      "id": "CLM-01",
+      "status": "PASS",
+      "file": "clm_01_tasks.log",
+      "hash": "02461c2b13c516c1b0682cd636ffd25d8a89bb85de02b7ca4dd8ddd7a6bb85a5",
+      "csv_hash": "02461c2b13c516c1b0682cd636ffd25d8a89bb85de02b7ca4dd8ddd7a6bb85a5",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "CLM-02",
+      "status": "PASS",
+      "file": "clm_02_regression.log",
+      "hash": "1d23ec8f0db87fcf3725fc2a7c5e48c05bc224870f6be2ef0da7fca29054c3af",
+      "csv_hash": "1d23ec8f0db87fcf3725fc2a7c5e48c05bc224870f6be2ef0da7fca29054c3af",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "CLM-03",
+      "status": "PASS_WITH_LIMITATIONS",
+      "file": "clm_03_ram.log",
+      "hash": "3723c62c1d2c15fa0a98de48752cd833059ceb1cd189b13adfb23aa5d08bdce0",
+      "csv_hash": "3723c62c1d2c15fa0a98de48752cd833059ceb1cd189b13adfb23aa5d08bdce0",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "BASE-01",
+      "status": "PASS",
+      "file": "base_01_git.log",
+      "hash": "f0588df5f7cb5989b480c0c337728a0454c19350a1068cfd201d7f96e690deba",
+      "csv_hash": "f0588df5f7cb5989b480c0c337728a0454c19350a1068cfd201d7f96e690deba",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "BASE-02",
+      "status": "PASS",
+      "file": "base_02_net.log",
+      "hash": "77c23cf9cc37ebe0cc327cdda2733bc5f5acc3b5c1acc6f2187e96a61efed75c",
+      "csv_hash": "77c23cf9cc37ebe0cc327cdda2733bc5f5acc3b5c1acc6f2187e96a61efed75c",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "BASE-03",
+      "status": "PASS",
+      "file": "base_03_secrets.log",
+      "hash": "ff5c6520817046045c4bf6098ac3138d6081eaab2a7faca61c4e7164e7c80276",
+      "csv_hash": "ff5c6520817046045c4bf6098ac3138d6081eaab2a7faca61c4e7164e7c80276",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "BASE-04",
+      "status": "PASS",
+      "file": "base_04_envs.log",
+      "hash": "93070d929ad710a1f407afb71a03fcb7643a6faae9f93bd84114eaef7d4387ed",
+      "csv_hash": "93070d929ad710a1f407afb71a03fcb7643a6faae9f93bd84114eaef7d4387ed",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "OPS-01",
+      "status": "PASS",
+      "file": "ops_01_health.log",
+      "hash": "f1733ba33b1b6994e029f15d985fb3e53f88a27f0d5518dd4b5dec584a8c4785",
+      "csv_hash": "f1733ba33b1b6994e029f15d985fb3e53f88a27f0d5518dd4b5dec584a8c4785",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "OPS-02",
+      "status": "PASS",
+      "file": "ops_02_restart.log",
+      "hash": "3594740a56fbf51a758eb4771eeb1bacde4bf0f853bb97119d928134e5edf08c",
+      "csv_hash": "3594740a56fbf51a758eb4771eeb1bacde4bf0f853bb97119d928134e5edf08c",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "OPS-03",
+      "status": "PASS",
+      "file": "ops_03_wal.log",
+      "hash": "b400a3393682951bea6a5ceee3e75e56ff9b2894597bf44acf250475f0980c80",
+      "csv_hash": "b400a3393682951bea6a5ceee3e75e56ff9b2894597bf44acf250475f0980c80",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "QTT-01",
+      "status": "PASS",
+      "file": "qtt_01_status.log",
+      "hash": "5eae9117c0cc698e96255e6f23768f934c491cf1ffc0bebad4eef3bbae7f04af",
+      "csv_hash": "5eae9117c0cc698e96255e6f23768f934c491cf1ffc0bebad4eef3bbae7f04af",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "QTT-02",
+      "status": "PASS",
+      "file": "qtt_02_remote.log",
+      "hash": "78d037a89943fa8f2700eaf4d580447dafec10b38679be50e1a09c142f470e13",
+      "csv_hash": "78d037a89943fa8f2700eaf4d580447dafec10b38679be50e1a09c142f470e13",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "QTT-03",
+      "status": "PASS",
+      "file": "qtt_03_playwright_e2e.log",
+      "hash": "b97de390088c7853d02a40001e767527c7002f79729fefa1bdcdae8b89a4fac4",
+      "csv_hash": "b97de390088c7853d02a40001e767527c7002f79729fefa1bdcdae8b89a4fac4",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "QTT-04",
+      "status": "PASS",
+      "file": "qtt_04_watchdog.log",
+      "hash": "15d17d7204f8e2c92a0007d1a7fcfdbed5436e57ae221fd2f74b9486a2412167",
+      "csv_hash": "15d17d7204f8e2c92a0007d1a7fcfdbed5436e57ae221fd2f74b9486a2412167",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "QTT-05",
+      "status": "PASS",
+      "file": "qtt_05_autoheal.log",
+      "hash": "164a7be55b00f8c69aa34825112bfa814a3b3919ec73ead279e9054289bdaf43",
+      "csv_hash": "164a7be55b00f8c69aa34825112bfa814a3b3919ec73ead279e9054289bdaf43",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "QTT-06",
+      "status": "PASS",
+      "file": "qtt_06_origin.log",
+      "hash": "ee8a43f9492355099fcd0c72d25fbbc9a78a9b51dab022f0ebd03657ecc6ce43",
+      "csv_hash": "ee8a43f9492355099fcd0c72d25fbbc9a78a9b51dab022f0ebd03657ecc6ce43",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "QTT-07",
+      "status": "PASS",
+      "file": "qtt_07_traffic.log",
+      "hash": "f3f72f40c78f800319f033f229c78d2dc77879b8d152b38a7daf76b598057f9c",
+      "csv_hash": "f3f72f40c78f800319f033f229c78d2dc77879b8d152b38a7daf76b598057f9c",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "AUTH-01",
+      "status": "PASS",
+      "file": "auth_01_pm.log",
+      "hash": "8ddb401a7d1e53c9ea8db26261a98d9b0be2b55c2a3f3c8f4eb3e1751a8268fa",
+      "csv_hash": "8ddb401a7d1e53c9ea8db26261a98d9b0be2b55c2a3f3c8f4eb3e1751a8268fa",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "AUTH-02",
+      "status": "PASS",
+      "file": "auth_02_non_pm.log",
+      "hash": "76a2d143e7982ab9fc28bd09a68995c86f76ccf0b72dde776f1c89f2938142f9",
+      "csv_hash": "76a2d143e7982ab9fc28bd09a68995c86f76ccf0b72dde776f1c89f2938142f9",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "AUTH-03",
+      "status": "PASS",
+      "file": "auth_03_proposals.log",
+      "hash": "0163f1cd7f430240efefa7004ac0a829bba9f3e619d4ff8947d59bf927663227",
+      "csv_hash": "0163f1cd7f430240efefa7004ac0a829bba9f3e619d4ff8947d59bf927663227",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "AUTH-04",
+      "status": "PASS",
+      "file": "auth_04_acl.log",
+      "hash": "c81f4652a728790a5a3debabb698e523fc93f30a017faed92bc27302b78e30e8",
+      "csv_hash": "c81f4652a728790a5a3debabb698e523fc93f30a017faed92bc27302b78e30e8",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "case": {
+        "execution_id": "exec-target-users-01-6d33e164",
+        "case_id": "USERS-01",
+        "claim_id": "20 accounts in runtime",
+        "scope": "DB audit",
+        "environment": "Staging",
+        "commit_sha": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+        "command": "psql -c 'SELECT id, login FROM users'",
+        "test_name": "query_staging_users",
+        "started_at": "2026-10-17T22:47:31Z",
+        "ended_at": "2026-10-17T22:47:31Z",
+        "duration_sec": "0.0",
+        "exit_code": "-1",
+        "assertions": "1",
+        "expected": "20 user accounts exist in DB",
+        "actual": "5 roles active; 15 deferred by owner mandate",
+        "status": "DEFERRED_BY_OWNER",
+        "evidence_relative_path": "docs/ai-multi-agent-upgrade/LAN_ACCESS_20_USERS.md",
+        "raw_log_path": "",
+        "raw_log_hash": "",
+        "artifact_hash": "0d12d7328a70d7b7fff2128fa0724c294fc856a10ceb135e8d004976acf69d4b",
+        "defect_id": "DEF-02",
+        "notes": "Owner mandate: defer 20 users DB provisioning"
+      },
+      "error": "NO_EVIDENCE_COLUMN"
+    },
+    {
+      "case": {
+        "execution_id": "exec-target-users-02-b718f6e5",
+        "case_id": "USERS-02",
+        "claim_id": "Load 1->5->10->20",
+        "scope": "Load test",
+        "environment": "Staging",
+        "commit_sha": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+        "command": "test_concurrent_load_20_users.py",
+        "test_name": "test_concurrent_20_users_load",
+        "started_at": "2026-10-17T22:47:31Z",
+        "ended_at": "2026-10-17T22:47:31Z",
+        "duration_sec": "0.0",
+        "exit_code": "-1",
+        "assertions": "1",
+        "expected": "100 concurrent requests load test",
+        "actual": "Deferred by owner mandate; fair FIFO queue verified in unit tests",
+        "status": "DEFERRED_BY_OWNER",
+        "evidence_relative_path": "docs/ai-multi-agent-upgrade/LAN_ACCESS_20_USERS.md",
+        "raw_log_path": "",
+        "raw_log_hash": "",
+        "artifact_hash": "0d12d7328a70d7b7fff2128fa0724c294fc856a10ceb135e8d004976acf69d4b",
+        "defect_id": "DEF-02",
+        "notes": "Owner mandate: defer load stress test"
+      },
+      "error": "NO_EVIDENCE_COLUMN"
+    },
+    {
+      "id": "USERS-03",
+      "status": "PASS",
+      "file": "users_03_fairness.log",
+      "hash": "5b487c9aa39e5b86945fc0c0624820a145f84568488327d46480edef226ba252",
+      "csv_hash": "5b487c9aa39e5b86945fc0c0624820a145f84568488327d46480edef226ba252",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "case": {
+        "execution_id": "exec-target-ai-01-f602d227",
+        "case_id": "AI-01",
+        "claim_id": "API free guard",
+        "scope": "Billing check",
+        "environment": "Cloud Provider",
+        "commit_sha": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+        "command": "Google Cloud Console Billing Verification",
+        "test_name": "check_billing_eligibility",
+        "started_at": "2026-10-17T22:47:31Z",
+        "ended_at": "2026-10-17T22:47:31Z",
+        "duration_sec": "0.0",
+        "exit_code": "-1",
+        "assertions": "1",
+        "expected": "External GCP billing account confirmed disabled",
+        "actual": "AI Studio Rate Limits verified (15 RPM / 250K TPM / 500 RPD); GCP Console billing status unverified by owner",
+        "status": "BLOCKED_OWNER_VERIFICATION",
+        "evidence_relative_path": "openproject/ai/gateway/gemini.py",
+        "raw_log_path": "",
+        "raw_log_hash": "",
+        "artifact_hash": "0153c5b2be72c224085ddc78b12073f5c82369bbfdd7f8b85c495ce713b1ed28",
+        "defect_id": "DEF-05",
+        "notes": "BLOCKED: Project owner must verify GCP Console Billing Disabled"
+      },
+      "error": "NO_EVIDENCE_COLUMN"
+    },
+    {
+      "id": "AI-02",
+      "status": "PASS",
+      "file": "ai_02_quotas.log",
+      "hash": "f0f15217a8bcf618f6a87db38a98ced522d6817ceb1c1764a79299b402b25d2a",
+      "csv_hash": "f0f15217a8bcf618f6a87db38a98ced522d6817ceb1c1764a79299b402b25d2a",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "AI-03",
+      "status": "PASS",
+      "file": "ai_03_faults.log",
+      "hash": "cf18ef393230723429490e8482ac8971e9685cf6a36420b1e9915ef166aa925e",
+      "csv_hash": "cf18ef393230723429490e8482ac8971e9685cf6a36420b1e9915ef166aa925e",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "AI-04",
+      "status": "PASS",
+      "file": "ai_04_intent.log",
+      "hash": "47ab836067782c986c4575b72f8b11616301d7a9f34be9aca5465befd4bae6e2",
+      "csv_hash": "47ab836067782c986c4575b72f8b11616301d7a9f34be9aca5465befd4bae6e2",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "AI-05",
+      "status": "PASS",
+      "file": "ai_05_model.log",
+      "hash": "2ac82570206b15ec85f3a893664b1d122016eba075c3badf90899db99916a6c1",
+      "csv_hash": "2ac82570206b15ec85f3a893664b1d122016eba075c3badf90899db99916a6c1",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "AGT-01",
+      "status": "PASS",
+      "file": "agt_01_supervisor.log",
+      "hash": "91882cd77a846d786d77ade879a538605e382d86aa0446a23a3087ff88459804",
+      "csv_hash": "91882cd77a846d786d77ade879a538605e382d86aa0446a23a3087ff88459804",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "AGT-02",
+      "status": "PASS",
+      "file": "agt_02_agents.log",
+      "hash": "405f2dac8343d766421ea102ac0c0a222d516f28de7af94d85f8bae122558439",
+      "csv_hash": "405f2dac8343d766421ea102ac0c0a222d516f28de7af94d85f8bae122558439",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "MEM-01",
+      "status": "PASS",
+      "file": "mem_01_persistence.log",
+      "hash": "bdcaeb5f9b3ffef909486b79e9626ebfd82d1bea2425f2ba491d9970c9d2cb7e",
+      "csv_hash": "bdcaeb5f9b3ffef909486b79e9626ebfd82d1bea2425f2ba491d9970c9d2cb7e",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "MEM-02",
+      "status": "PASS",
+      "file": "mem_02_retrieval.log",
+      "hash": "7f9318046e4a3a0f6d9f8d3c181c171c6dbd22537595f024fe11c5d015137291",
+      "csv_hash": "7f9318046e4a3a0f6d9f8d3c181c171c6dbd22537595f024fe11c5d015137291",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "N8N-01",
+      "status": "PASS",
+      "file": "n8n_01_ports.log",
+      "hash": "575b5b7b7ea6aaf82b6b9c238c81342c00f150c1795d453c9ecb4b768837a4de",
+      "csv_hash": "575b5b7b7ea6aaf82b6b9c238c81342c00f150c1795d453c9ecb4b768837a4de",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "N8N-02",
+      "status": "PASS",
+      "file": "n8n_02_daily_brief.log",
+      "hash": "16ed9b68a556c6e28a5102965cf9650e71069b8ffd49e3b0f265438e7d47543d",
+      "csv_hash": "16ed9b68a556c6e28a5102965cf9650e71069b8ffd49e3b0f265438e7d47543d",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "N8N-03",
+      "status": "PASS",
+      "file": "n8n_03_fault_injection.log",
+      "hash": "2bfd08b0f15f6718e23afea48ceff35209c515362ecbf6dc05024c59567786b4",
+      "csv_hash": "2bfd08b0f15f6718e23afea48ceff35209c515362ecbf6dc05024c59567786b4",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "N8N-04",
+      "status": "PASS",
+      "file": "n8n_04_provenance_trace.log",
+      "hash": "de9e4feffe222301807994cda4c2256a2d3ef7385710765fc5bd2101ca472410",
+      "csv_hash": "de9e4feffe222301807994cda4c2256a2d3ef7385710765fc5bd2101ca472410",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "UI-01",
+      "status": "PASS",
+      "file": "ui_01_control_center.log",
+      "hash": "a43a71537297e770ce879692cf7fb31b762b34a448809817ca2e504fd69fe354",
+      "csv_hash": "a43a71537297e770ce879692cf7fb31b762b34a448809817ca2e504fd69fe354",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "SEC-01",
+      "status": "PASS",
+      "file": "sec_01_security_audit.log",
+      "hash": "9889ec828caa54217eec7b89b3d503d79b8deed1007c72949b33a5da79b91c9f",
+      "csv_hash": "9889ec828caa54217eec7b89b3d503d79b8deed1007c72949b33a5da79b91c9f",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "SEC-02",
+      "status": "PASS",
+      "file": "sec_02_write_code.log",
+      "hash": "0b4a248f6430823ccdcd39f9da2b06637b883af4efc82115c0d30804c06c0de2",
+      "csv_hash": "0b4a248f6430823ccdcd39f9da2b06637b883af4efc82115c0d30804c06c0de2",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "SEC-03",
+      "status": "PASS",
+      "file": "sec_03_redaction_guard.log",
+      "hash": "a280c6999a5221ecd1a90d6a1cff14991807496ceeae1f950559af1988da6eb0",
+      "csv_hash": "a280c6999a5221ecd1a90d6a1cff14991807496ceeae1f950559af1988da6eb0",
+      "csv_match": true,
+      "zip_match": true
+    },
+    {
+      "id": "E2E-01",
+      "status": "PASS",
+      "file": "e2e_01_business_suite.log",
+      "hash": "4540b633bebd5f9e6731a82316ecd25c87d92287fe711076abf6d4990dc1aac5",
+      "csv_hash": "4540b633bebd5f9e6731a82316ecd25c87d92287fe711076abf6d4990dc1aac5",
+      "csv_match": true,
+      "zip_match": true
+    }
+  ]
+}

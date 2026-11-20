@@ -1,0 +1,81 @@
+{
+  "scope": "Actual MAIN authenticated file-only form, modeanswer is extract not Gemini; source opened visibly",
+  "checks": {
+    "file_form_extract": true,
+    "model_used_false": true,
+    "visible_citations": true,
+    "visible_pinned_readback": true
+  },
+  "extract": {
+    "result": {
+      "answerability": {
+        "state": "EXTRACTS_AVAILABLE",
+        "reason": "Các trích đoạn đã đối chiếu nguồn, chưa tự chứng minh trả lời đầy đủ câu hỏi. Không suy diễn hoặc giải quyết mâu thuẫn giữa nguồn."
+      },
+      "answer": {
+        "text": "Theo các đoạn nguồn đã đối chiếu (trích nguyên văn; không xác nhận trạng thái runtime hiện tại):\n\n[1] # Project6 controlled integration qualification fixture\nThis local test document verifies pinned source ingestion, search and citation through WF01.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance.",
+        "method": "EXTRACTIVE",
+        "claims": [
+          {
+            "quote": "# Project6 controlled integration qualification fixture\nThis local test document verifies pinned source ingestion, search and citation through WF01.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance.",
+            "citation": {
+              "title": "Project6 Integration Qualification",
+              "source_id": "file:project6-integration-qualification",
+              "document_id": "b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74",
+              "project_id": 6,
+              "native_id": null,
+              "lock_version": null,
+              "source_sha256": "c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901",
+              "chunk_index": 0,
+              "chunk_hash": "bbb9bee3cf07bc7f6e73c670ccca8add51f8f6f3ceaf16be3587fac725ff42c7",
+              "retrieval_reference": "b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74:0:bbb9bee3cf07bc7f6e73c670ccca8add51f8f6f3ceaf16be3587fac725ff42c7",
+              "uri": "file:project6-integration-qualification#sha256=c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901"
+            }
+          }
+        ]
+      },
+      "reason_code": "AUTHORIZED_EXTRACTIVE_EVIDENCE",
+      "retrieval_state": "READY",
+      "search_status": "RESULTS",
+      "mode": "answer",
+      "model_used": false,
+      "items": [
+        {
+          "source_id": "file:project6-integration-qualification",
+          "document_id": "b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74",
+          "source_sha256": "c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901",
+          "file_name": "project6-integration-qualification.md",
+          "citation": "file:project6-integration-qualification#sha256=c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901",
+          "title": "Project6 Integration Qualification",
+          "snippet": "...1.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance.",
+          "score": 0.03279,
+          "project_id": 6,
+          "match_type": "LITERAL_REFERENCE",
+          "passage": "# Project6 controlled integration qualification fixture\nThis local test document verifies pinned source ingestion, search and citation through WF01.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance.",
+          "chunk_index": 0,
+          "chunk_hash": "bbb9bee3cf07bc7f6e73c670ccca8add51f8f6f3ceaf16be3587fac725ff42c7",
+          "retrieval_reference": "b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74:0:bbb9bee3cf07bc7f6e73c670ccca8add51f8f6f3ceaf16be3587fac725ff42c7"
+        }
+      ],
+      "dense_state": "READY",
+      "scope": "PINNED_SERVER_SOURCE_AND_FRESH_ROLE"
+    },
+    "error": null,
+    "correlation_id": "bf25e5c2-d71d-40cc-9c53-88a4d79826a6",
+    "knowledge_html": "  <p>Retrieval: READY · Answerability: EXTRACTS_AVAILABLE · Các trích đoạn đã đối chiếu nguồn, chưa tự chứng minh trả lời đầy đủ câu hỏi. Không suy diễn hoặc giải quyết mâu thuẫn giữa nguồn.</p>\n  <p>Index: NOT_REPORTED · Lần index: Chưa có dữ liệu · Scope: PINNED_SERVER_SOURCE_AND_FRESH_ROLE</p>\n    <article class=\"qcc-card\"><h4>Trả lời bằng trích nguồn</h4>\n        <p>Trích nguyên văn từ các nguồn đã đối chiếu; không xác nhận trạng thái runtime hiện tại hoặc tự giải quyết mâu thuẫn giữa nguồn.</p>\n        <blockquote><p>[1] # Project6 controlled integration qualification fixture\nThis local test document verifies pinned source ingestion, search and citation through WF01.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance.</p><cite>Project6 Integration Qualification · file:project6-integration-qualification · b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74:0:bbb9bee3cf07bc7f6e73c670ccca8add51f8f6f3ceaf16be3587fac725ff42c7</cite></blockquote>\n      \n      <p>Đối chiếu citations và phiên bản trong các nguồn dưới đây.</p></article>\n    <h4 class=\"qcc-results-heading\">1 nguồn truy hồi — Gateway đối chiếu Native ACL/version hoặc source pin/quyền tại thời điểm tìm kiếm</h4>\n      <article class=\"qcc-knowledge-item\">\n        <div class=\"qcc-knowledge-header\"><span class=\"qcc-chip qcc-chip-cyan\">LITERAL_REFERENCE</span><strong class=\"qcc-knowledge-title\">Project6 Integration Qualification</strong><span class=\"qcc-knowledge-score\">Score: 0.03</span></div>\n        <p class=\"qcc-knowledge-snippet\">...1.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance.</p>\n        <p>Native version UNKNOWN · Source file:project6-integration-qualification · Hash b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74</p>\n        \n          <p>File citation: file:project6-integration-qualification#sha256=c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901 · checksum c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901</p>\n          <form action=\"/projects/ai-dev-demo/qldapm-ai/commands\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"authenticity_token\" value=\"WU8MC85lAHKXk_fo3RXBb7Khj6xld5D-3IZYLnu9f3rjBlIbDoneg0HcnJwQwgsRaP8etx8YVeU1WAZ2PGOXxA\" /><input type=\"hidden\" name=\"tool\" id=\"tool\" value=\"knowledge_file_read\" /><input type=\"hidden\" name=\"arguments\" id=\"arguments\" value=\"{}\" /><input type=\"hidden\" name=\"source_key\" id=\"source_key\" value=\"project6-integration-qualification\" /><input type=\"hidden\" name=\"document_id\" id=\"document_id\" value=\"b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74\" /><button type=\"submit\" class=\"qcc-btn\">Đọc nội dung đúng source pin</button></form>\n      </article>\n"
+  },
+  "readback": {
+    "result": {
+      "source_id": "file:project6-integration-qualification",
+      "document_id": "b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74",
+      "source_sha256": "c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901",
+      "file_name": "project6-integration-qualification.md",
+      "citation": "file:project6-integration-qualification#sha256=c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901",
+      "content": "# Project6 controlled integration qualification fixture\nThis local test document verifies pinned source ingestion, search and citation through WF01.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance.",
+      "model_used": false
+    },
+    "error": null,
+    "correlation_id": "1ca27b32-fa0b-42c9-b34a-a29ea47b7a5c",
+    "knowledge_html": null
+  }
+}

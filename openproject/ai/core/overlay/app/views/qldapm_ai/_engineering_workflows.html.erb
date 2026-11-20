@@ -1,0 +1,34 @@
+<div class="qcc-section-header"><div><h2 class="qcc-section-title">Automation / Workflow Status</h2><p class="qcc-section-sub">Published metadata và execution từ n8n; Project 6 chỉ được xác nhận khi execution khớp durable Gateway receipt và read-back. Mở màn hình này không kích hoạt cron hoặc workflow.</p></div></div>
+<p class="qcc-text-muted">COMMAND_ACCEPTED → WORKFLOW_TRIGGERED → WORKFLOW_EXECUTING → WORKFLOW_SUCCEEDED → BUSINESS_SIDE_EFFECT_VERIFIED. HTTP 200 hoặc callback chưa chứng minh nghiệp vụ hoàn tất. FAILED là execution thất bại; NOT_APPLICABLE nghĩa là không có trigger phù hợp.</p>
+<p class="qcc-text-muted">Work Intake / planning và worker do Gateway điều phối; WF03/WF10 quan sát admission/plan publish, WF04 quan sát lifecycle. Risk, bug context và file ingest có durable observation tương ứng WF08/WF09/WF01. Lệnh Gateway chưa chứng minh n8n đã chạy: cần correlated execution/receipt. Approval và recovery giữ quyền hiện có; không có nút phê duyệt hoặc retry tùy ý tại đây.</p>
+<% workflows = Array(eng['workflow_status']) %>
+<% if workflows.empty? %><p role="status">NOT_OBSERVED — Gateway chưa cung cấp workflow projection.</p><% end %>
+<div class="qcc-services-grid qcc-health-grid">
+  <% workflows.each do |wf| %>
+    <% event = wf['project_event'] || {}; execution = wf['last_execution'] || {}; success = wf['last_successful_execution'] || {} %>
+    <article class="qcc-card" style="min-width:0;overflow-wrap:anywhere">
+      <details data-preserve-key="workflow-<%= wf['code'] %>">
+        <summary><strong><%= wf['code'] %> · <%= wf['name'] %></strong><br><span class="qcc-chip <%= wf['current_state']=='FAILED' ? 'qcc-chip-red' : wf['current_state']=='BUSINESS_SIDE_EFFECT_VERIFIED' ? 'qcc-chip-green' : 'qcc-chip-slate' %>"><%= wf['current_state'] %></span></summary>
+        <p><%= wf['purpose'] %></p>
+        <dl class="qcc-health-details">
+          <dt>Workflow ID / published</dt><dd><%= wf['workflow_id'] %> · active <%= wf['active'].nil? ? 'UNKNOWN' : wf['active'] %> · version <%= wf['published_version_id'] || 'NOT_OBSERVED' %></dd>
+          <dt>Trigger</dt><dd><%= wf['trigger'] %></dd>
+          <dt>Metadata / lần cập nhật</dt><dd><%= wf['metadata_state'] %> · <%= format_vn_time.call(wf['updated_at']) %>. STALE là snapshot quá 300 giây; execution lịch sử không phải trạng thái hiện hành.</dd>
+          <dt>Last execution (global workflow)</dt><dd><%= execution['id'] || 'NOT_OBSERVED' %> · <%= execution['status'] || 'UNKNOWN' %> · mode <%= execution['mode'] || 'UNKNOWN' %> · <%= format_vn_time.call(execution['started_at']) %></dd>
+          <dt>Last successful execution (global workflow)</dt><dd><%= success['id'] || 'NOT_OBSERVED' %> · <%= format_vn_time.call(success['stopped_at'] || success['started_at']) %></dd>
+          <dt>Last execution error / Project 6 delivery error</dt><dd><%= wf['last_error'] || 'NOT_OBSERVED' %> · <%= format_vn_time.call((wf['last_failed_execution'] || {})['started_at']) %> · <%= event['last_error'] || 'NOT_OBSERVED' %></dd>
+          <dt>Project 6 latest event / business receipt</dt><dd><%= event['state'] || 'NOT_OBSERVED' %> / <%= event['business_state'] || 'NOT_OBSERVED' %> · <%= wf['business_side_effect'] %> · <%= format_vn_time.call(event['updated_at']) %></dd>
+          <dt>Related WP / run / PR</dt><dd><% if event['native_id'].is_a?(Integer) && event['native_id']>0 %><%= link_to "WP ##{event['native_id']}", "/work_packages/#{event['native_id']}" %><% else %>NOT_OBSERVED<% end %> · <%= event['run_id'] || 'NOT_OBSERVED' %> · <%= event['pr_number'] ? "PR ##{event['pr_number']}" : 'NOT_OBSERVED' %></dd>
+          <dt>Project 6 execution / correlation</dt><dd><%= event['execution_id'] || 'NOT_OBSERVED' %> · <%= event['correlation_id'] || 'NOT_OBSERVED' %></dd>
+          <dt>Retry eligibility</dt><dd><%= wf['retry_eligibility'] %>. Worker hiện có sở hữu retry; DEAD cần kiểm tra source/quyền trước khi quyết định.</dd>
+        </dl>
+        <% if wf['workflow_url'].to_s.match?(%r{\Ahttp://localhost:5679/workflow/[A-Za-z0-9_-]{1,80}\z}) %><p><%= link_to 'Mở workflow trong n8n (yêu cầu phiên đăng nhập)', wf['workflow_url'], target: '_blank', rel: 'noopener noreferrer' %></p><% end %>
+        <% [['execution_url','Mở last n8n execution'], ['project_event','Mở Project 6 correlated execution']].each do |key,label| %>
+          <% url = key=='project_event' ? event['execution_url'] : wf[key] %>
+          <% if url.to_s.match?(%r{\Ahttp://localhost:5679/workflow/[A-Za-z0-9_-]{1,80}/executions/\d{1,20}\z}) %><p><%= link_to label, url, target: '_blank', rel: 'noopener noreferrer' %></p><% end %>
+        <% end %>
+        <% if wf['action_tab'].to_s.match?(/\Atab-(?:knowledge|backlog|mission|reports|execution|integrations)\z/) %><button type="button" class="qcc-btn" data-qcc-open-tab="<%= wf['action_tab'] %>">Xem nghiệp vụ / bằng chứng liên quan</button><% end %>
+      </details>
+    </article>
+  <% end %>
+</div>

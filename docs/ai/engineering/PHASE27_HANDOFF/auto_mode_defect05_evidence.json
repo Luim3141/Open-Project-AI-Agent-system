@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-30T18:23:33+07:00",
+  "phase": "PHASE_2_7",
+  "defect": "DEFECT-05",
+  "description": "Auto Mode State Machine & Safe Shutoff",
+  "evidence": {
+    "initial_mode": "OFF",
+    "toggle_to_auto": "AUTO",
+    "auto_evaluated_mode": "OFF",
+    "auto_shutoff_success": true,
+    "state_machine_guarantees": {
+      "opt_in_only": "Requires explicit toggle by PM or Owner (18)",
+      "concurrency_lock": "Strictly 1 active openclaw run across all engineering",
+      "quota_safety": "Verifies Gemini provider availability before admission; shutoff if unavailable",
+      "backlog_empty_shutoff": "Switches to OFF immediately when no units are pending",
+      "all_delivered_shutoff": "Switches to OFF safely when all backlog units are delivered"
+    }
+  },
+  "status": "VERIFIED_PASS"
+}

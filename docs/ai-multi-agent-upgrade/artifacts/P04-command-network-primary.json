@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "valid",
+      "status": 200
+    },
+    {
+      "case": "wrong_key",
+      "status": 401
+    },
+    {
+      "case": "missing_key",
+      "status": 401
+    },
+    {
+      "case": "business_api",
+      "status": 403
+    },
+    {
+      "case": "human_bridge",
+      "status": 403
+    },
+    {
+      "case": "actor_injection",
+      "status": 403
+    },
+    {
+      "case": "wrong_host",
+      "status": 403
+    },
+    {
+      "case": "nonce_replay",
+      "status": 403
+    },
+    {
+      "case": "expired",
+      "status": 403
+    },
+    {
+      "case": "future",
+      "status": 403
+    },
+    {
+      "case": "invalid_signature",
+      "status": 403
+    },
+    {
+      "case": "actor_injection",
+      "status": 422
+    },
+    {
+      "case": "business_kind",
+      "status": 422
+    }
+  ],
+  "signed_commands": {
+    "concurrent_duplicates": 12,
+    "one_run": true,
+    "same_receipt_on_fresh_nonce": true,
+    "authority": "machine",
+    "actor_id": null
+  },
+  "caller": "actual_n8n_container",
+  "business_writes": 0,
+  "model_calls": 0,
+  "image": "sha256:58937bdd43a4aa0c23d0a722e71968856c3e171f9b904704d09e062ecd6c2d7b",
+  "target": "primary",
+  "native_credentials_shared": false,
+  "n8n_private_network_only": true
+}

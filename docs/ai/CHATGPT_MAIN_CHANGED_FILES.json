@@ -1,0 +1,117 @@
+{
+  "at": "2026-10-27T03:05:36.268100+00:00",
+  "implementation": [
+    {
+      "path": "openproject/ai/gateway/local_queries.py",
+      "before_sha256": "f64ed8447454358534228381941b883e9dcf2b238a7fc70141b5b5d78b4fc797",
+      "after_sha256": "0c1535f1c5ba9d08242051049fc95bf9ee651e2252341cc6849b7b88eca16e8e",
+      "scope": "C2 open-count fix"
+    },
+    {
+      "path": "openproject/ai/gateway/service.py",
+      "before_sha256": "623e49e60afe6390ff7dfefa7db8428bdde2c4168897c1386d54e69e306f5ca9",
+      "after_sha256": "e42c685b7d3b1d2a59de5b1728f50cffcc775ed4f2f86f7936a240a48d9202b7",
+      "scope": "C2 open-count fix"
+    }
+  ],
+  "tests": [
+    "openproject/ai/tests/test_local_queries.py",
+    "openproject/ai/tests/test_native_open_counts.py"
+  ],
+  "architecture": "architecture.md",
+  "deployed": true,
+  "preserved_prior_agent_changes": true,
+  "candidate_images": {
+    "gateway": "sha256:9bdb2bc0ab99e08959ed67b3e7ea5dff8327a4c7b418799d9d09934bf2ff6d68",
+    "core": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+  },
+  "deployment": "CHATGPT_MAIN_C2_OPEN_COUNT_DEPLOYMENT_RESULT.json",
+  "c2b": {
+    "deployed": true,
+    "image": "sha256:0b47537e22d4e72af448be6c6bd6a8b37103d1a55507aee9b56c2fbdf8ef57a6",
+    "files": {
+      "openproject/ai/gateway/service.py": {
+        "kind": "gateway",
+        "target": "/app/gateway/service.py",
+        "sha256": "313c51c7b7c83ed3a1e954f203a1ff1eb8b8b89a21e554fdd457784b7c9be5d2"
+      },
+      "openproject/ai/gateway/local_queries.py": {
+        "kind": "gateway",
+        "target": "/app/gateway/local_queries.py",
+        "sha256": "702661e826794fd920fb2ba6ff63c0324ee03753fa8b5f457ede06bbdc2a6500"
+      }
+    },
+    "tests": [
+      "openproject/ai/tests/test_supervisor_project_scope.py"
+    ],
+    "architecture": "architecture.md",
+    "reason": "Preserve ten-source receipt contract while selecting authorized global RAG hits and assigned developer sources before cap; truthful selected/project scope"
+  },
+  "c2c": {
+    "deployed": true,
+    "files": {
+      "openproject/ai/gateway/gemini.py": {
+        "kind": "gateway",
+        "target": "/app/gateway/gemini.py",
+        "sha256": "07424e281c70adcf301b465bcdb1a5c8bded05143aba0be75c0fc077fd482bb1"
+      }
+    },
+    "tests": [
+      "openproject/ai/tests/test_live_agents.py"
+    ],
+    "architecture": "architecture.md",
+    "reason": "Honor existing bounded provider read deadline and retain honest no-response timeout receipt, without automatic replay or provider/quota changes",
+    "before_red": {
+      "tests": 3,
+      "failures": 2
+    },
+    "targeted_pass": 69
+  },
+  "c4a": {
+    "deployed": true,
+    "files": {
+      "openproject/ai/core/overlay/app/models/qldapm/gate_policy.rb": {
+        "kind": "core",
+        "target": "/app/app/models/qldapm/gate_policy.rb",
+        "sha256": "b9270f61092a6354935c25e637d17afc5615828214dcbd020abcb4d480fbafac"
+      },
+      "openproject/ai/core/overlay/app/models/concerns/qldapm_gate_write.rb": {
+        "kind": "core",
+        "target": "/app/app/models/concerns/qldapm_gate_write.rb",
+        "sha256": "be6770088d92db184775b0b1e0d986bb76916939fe4081ceb9ee83cc77a7893e"
+      }
+    },
+    "test": "openproject/ai/core/test_native_subtask_policy.rb",
+    "core_image": "sha256:062282b33276dd2af79ae0d97f8043c482acbafdc14bb19bf83bbc401b02101c",
+    "reason": "Native four-state development Subtask compatibility preserving all required evidence, independent approvals and legacy logical policy",
+    "new_unwired_fixture": "openproject/ai/tests/fixtures/wbs_bug371_criteria.json pins four human-approved Bug371criteria for next application producer; no runtime use yet"
+  },
+  "2026_10_27_port_feature_continuation": {
+    "at": "2026-10-27T09:04:05.578926+00:00",
+    "deployed_files": {
+      "openproject/compose.yml": "a66c981287a5de54a488ac1bcd3d70b2025f9eebd4745d4a510e83955eb5c915",
+      "openproject/ai/compose.yml": "bdeb99a259021b5f909813ddad0b15a7f257f2ed3668d39f7fe4148929a2cc12",
+      "openproject/ai/Start-OpenProjectMCP.ps1": "333ce813c01b4310b6b5ce97996ce7a29e6abe1be676a7a27a92e2e067a31d2e",
+      "openproject/ai/gateway/app.py": "8525c02bcb5bdbefecb3c4096c785183ffe058d48a868ef64c89b09f06df5feb",
+      "openproject/ai/gateway/planner.py": "452a7e7abdeddc63add2028f429c8dbf185fb762a92efb70abbd6547a3ad7673",
+      "openproject/ai/gateway/live_agents.py": "8f6dc64822a46c9a01f1cf88bce279f3ca36d564a1c829a58a5e7aaa6c4191bf",
+      "openproject/ai/gateway/native_qa.py": "931d1ffde348242b91e49edca29078abe2edccb97165a93da3f78df45e90e7c4",
+      "openproject/ai/core/overlay/app/views/qldapm_ai/qa_evidence.html.erb": "c720139b942e06f1e98454a3ed14d5ced31ca070a6037dad0682617a6a408b8f"
+    },
+    "undeployed_candidate_files": {
+      "openproject/ai/gateway/application_qa_intake.py": "ddb3a86e850c5216054ea5076a3bef5950c7030c8394633a9dc889f2c53ffb29",
+      "openproject/ai/core/overlay/app/services/qldapm/application_qa_sources.rb": "e477d2e58737f3b84535ccc1ade00cada2b853230acd584794d3294588620c34",
+      "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": "7376c8a7116354117432f3fde25fa5682dad246a4c2f6a611468d6ad80ddc9d3"
+    },
+    "tests": [
+      "openproject/ai/tests/test_gateway_port_origin.py",
+      "openproject/ai/tests/test_natural_wbs_routing.py",
+      "openproject/ai/tests/test_unknown_qa_kind.py",
+      "openproject/ai/tests/test_application_qa_intake.py",
+      "openproject/ai/core/test_qa_review_view.rb",
+      "openproject/ai/core/test_application_qa_sources.rb"
+    ],
+    "port_migration": "QLDAPM_MAIN_PORT_MIGRATION_CHECKPOINT.json",
+    "note": "QA intake and Core source capability are offline only; no proof admitted or human decision made."
+  }
+}

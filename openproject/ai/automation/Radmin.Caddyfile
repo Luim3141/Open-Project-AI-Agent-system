@@ -1,0 +1,25 @@
+{
+    admin off
+    auto_https disable_redirects
+    skip_install_trust
+    default_sni 26.88.211.101
+    persist_config off
+    pki {
+        ca local {
+            name "QLDAPM Radmin Local CA"
+        }
+    }
+}
+https://26.88.211.101 {
+    tls internal
+    reverse_proxy staging-web:8080
+}
+http://127.0.0.1:8081 {
+    handle /health {
+        rewrite * /health_checks/default
+        reverse_proxy staging-web:8080 {
+            header_up Host staging-web
+        }
+    }
+    respond 404
+}

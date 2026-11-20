@@ -1,0 +1,89 @@
+{
+  "scope": "ACTUAL Owner Telegram messages + receipts, no simulated input",
+  "messages": [
+    {
+      "at": 1794548903.3775175,
+      "role": "user",
+      "text": "Tài liệu có mã ORBIT-RECEIPT-20261103 nói gì và có chứng nhận Owner acceptance không?"
+    },
+    {
+      "at": 1794548912.581541,
+      "role": "model",
+      "text": "Dựa trên tài liệu hệ thống có mã **ORBIT-RECEIPT-20261103** (Project 6 Integration Qualification):\n\n- **Nội dung:** Đây là tài liệu kiểm tra tích hợp có gắn mã chuẩn nhận diện (`ORBIT-RECEIPT-20261103`) nhằm xác thực việc nạp nguồn, tìm kiếm và trích dẫn thông tin trong hệ thống.\n- **Chứng nhận Owner acceptance:** Tài liệu này **không chứng nhận** chất lượng truy xuất ngữ nghĩa hoặc sự phê duyệt của chủ sở hữu (`This fixture does not certify semantic retrieval quality or Owner acceptance`).\n\nNguồn truy hồi đã đối chiếu (không phải xác nhận runtime):\nfile:project6-integration-qualification#sha256=c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901\n/work_packages/391 · Native version 10\n/work_packages/387 · Native version 10"
+    }
+  ],
+  "audit": [
+    {
+      "at": 1794548903.263774,
+      "conversation_task_id": 398,
+      "event": "INCOMING_CONTEXT",
+      "message_id": 41,
+      "notification_context": null,
+      "reply_to_message_id": null
+    },
+    {
+      "at": 1794548904.1063278,
+      "arguments": {
+        "task_id": 398
+      },
+      "correlation_id": "19287fe7-bcc5-4aff-80a2-6246311775ed",
+      "event": "READ_TOOL",
+      "project_id": 6,
+      "source_revision": "6944a307fc2cb3b678f82891de5694af8b9a84bf3d561cf8d8ec48330bdbbfa8",
+      "tool": "get_task_progress"
+    },
+    {
+      "at": 1794548910.4257686,
+      "arguments": {
+        "mode": "answer",
+        "query": "Tài liệu có mã ORBIT-RECEIPT-20261103 nói gì và có chứng nhận Owner acceptance không?"
+      },
+      "correlation_id": "a0540761-66a7-4130-99cf-f8452d37f28d",
+      "event": "READ_TOOL",
+      "project_id": 6,
+      "source_revision": null,
+      "tool": "search_knowledge"
+    },
+    {
+      "at": 1794548912.5202544,
+      "attempt": 1,
+      "error_type": null,
+      "event": "GEMINI_REQUEST",
+      "http_status": null,
+      "input_tokens": 12464,
+      "latency_seconds": 1.6,
+      "model_id": "gemini-3.5-flash-lite",
+      "output_tokens": 132,
+      "request_id": "a8501aa359f4403ca7620a78a0e5b26b",
+      "resolved_model_version": "gemini-3.5-flash-lite",
+      "tool_calls_count": 0
+    },
+    {
+      "at": 1794548913.1494083,
+      "event": "BOT_REPLY_SENT",
+      "in_reply_to_message_id": 41,
+      "message_id": 42,
+      "part": 1
+    }
+  ],
+  "budget": [
+    [
+      20770,
+      2
+    ],
+    [
+      20769,
+      20
+    ]
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "daily_cap": 20,
+  "checks": {
+    "real_input": true,
+    "answer_received": true,
+    "fresh_rag_tool": true,
+    "no_write": true,
+    "technical_source_pin_retained": true,
+    "exact_resolved_model": true
+  }
+}

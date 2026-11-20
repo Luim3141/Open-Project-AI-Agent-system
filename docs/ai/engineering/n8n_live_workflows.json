@@ -1,0 +1,482 @@
+[
+  {
+    "id": "2tr0jpqaaAiq9IOU",
+    "name": "WF13: Second Brain RAG Re-indexing",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.397",
+    "updatedAt": "2026-10-24 09:35:38.071",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "Reindex Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 11,
+    "last_exec": "2026-10-28 05:02:17.532",
+    "last_status": "success"
+  },
+  {
+    "id": "5FRYNPSot18UDpKa",
+    "name": "WF16: Main Health Monitoring",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.406",
+    "updatedAt": "2026-10-23 07:06:04.881",
+    "nodeCount": 3,
+    "nodes": [
+      {
+        "name": "Summary Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Periodic Health Schedule",
+        "type": "n8n-nodes-base.scheduleTrigger"
+      },
+      {
+        "name": "Probe And Persist Main Health",
+        "type": "n8n-nodes-base.httpRequest"
+      }
+    ],
+    "total_execs": 280,
+    "last_exec": "2026-10-31 09:15:00.051",
+    "last_status": "success"
+  },
+  {
+    "id": "8ycOUQy9gtT60nkN",
+    "name": "WF14: Durable RAG Recovery",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.400",
+    "updatedAt": "2026-10-23 03:05:23.567",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "Error Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Prepare Durable RAG Recovery Request",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Read Or Requeue Own Persisted RAG Job",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 11,
+    "last_exec": "2026-10-28 05:02:19.124",
+    "last_status": "success"
+  },
+  {
+    "id": "Anl8LNdN4NNTKRpe",
+    "name": "WF02: OpenProject Event Sync",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.358",
+    "updatedAt": "2026-10-24 09:03:25.393",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "WP Event Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 27,
+    "last_exec": "2026-10-28 05:01:47.909",
+    "last_status": "success"
+  },
+  {
+    "id": "BpCQrGR866vg4BqQ",
+    "name": "WF07: Daily Project Brief",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.379",
+    "updatedAt": "2026-10-28 20:35:59.430",
+    "nodeCount": 6,
+    "nodes": [
+      {
+        "name": "Daily Trigger Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Daily Schedule 08:00",
+        "type": "n8n-nodes-base.scheduleTrigger"
+      },
+      {
+        "name": "Command metadata",
+        "type": "n8n-nodes-base.set"
+      },
+      {
+        "name": "Sign command",
+        "type": "n8n-nodes-base.crypto"
+      },
+      {
+        "name": "Gateway status",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Require Completed Daily Reports",
+        "type": "n8n-nodes-base.code"
+      }
+    ],
+    "total_execs": 13,
+    "last_exec": "2026-10-31 01:00:00.045",
+    "last_status": "success"
+  },
+  {
+    "id": "Jq18aFSqfuUybEic",
+    "name": "WF06: Native API Execution & Verification",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.375",
+    "updatedAt": "2026-10-22 21:55:08.490",
+    "nodeCount": 3,
+    "nodes": [
+      {
+        "name": "Execute Mutation Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Authenticated Gateway PM Decision",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 18,
+    "last_exec": "2026-10-28 05:01:57.473",
+    "last_status": "success"
+  },
+  {
+    "id": "LeRVT3LWNBkJ2iz3",
+    "name": "WF11: QA Gate Transition",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.391",
+    "updatedAt": "2026-10-28 16:14:57.630",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "QA Gate Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Require Explicit QA Target",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Read Native Evidence And Transition Errors",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 26,
+    "last_exec": "2026-10-28 16:16:31.665",
+    "last_status": "success"
+  },
+  {
+    "id": "NLugfE3U8dBS88Wg",
+    "name": "WF15: Reconciliation & Drift Detection",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.403",
+    "updatedAt": "2026-10-22 22:02:00.532",
+    "nodeCount": 3,
+    "nodes": [
+      {
+        "name": "Reconciliation Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Reconcile Exact Native SQLite Qdrant Identity",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 13,
+    "last_exec": "2026-10-28 05:02:19.671",
+    "last_status": "success"
+  },
+  {
+    "id": "RXWjVUL8ozqhjY4w",
+    "name": "WF08: Sprint Risk",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.382",
+    "updatedAt": "2026-10-24 08:18:06.094",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "Sprint Risk Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Prepare Sprint Risk Parameters",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Analyze Native Relations And Persist Risk Snapshot",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 11,
+    "last_exec": "2026-10-28 05:01:58.140",
+    "last_status": "success"
+  },
+  {
+    "id": "X2O2QdPY6QLOrWqL",
+    "name": "WF01: Local Document Ingestion",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.352",
+    "updatedAt": "2026-10-24 08:30:58.544",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "Webhook Trigger",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 23,
+    "last_exec": "2026-10-28 16:16:30.422",
+    "last_status": "success"
+  },
+  {
+    "id": "XoP4M520TMG3WgeY",
+    "name": "WF03: Natural Language Request Orchestrator",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.363",
+    "updatedAt": "2026-10-23 08:28:54.036",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "User Request Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Prepare Stable Orchestration Request",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Start Or Poll Persisted Caller Run",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 34,
+    "last_exec": "2026-10-28 15:35:03.869",
+    "last_status": "success"
+  },
+  {
+    "id": "ZkgS8RZbPRA2zbhQ",
+    "name": "WF12: Weekly Summary",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.394",
+    "updatedAt": "2026-10-29 10:11:09.663",
+    "nodeCount": 9,
+    "nodes": [
+      {
+        "name": "Weekly Summary Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Prepare Weekly Parameters",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Generate And Persist Native Weekly Summary",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Weekly Friday 17:00",
+        "type": "n8n-nodes-base.scheduleTrigger"
+      },
+      {
+        "name": "Weekly Command metadata",
+        "type": "n8n-nodes-base.set"
+      },
+      {
+        "name": "Weekly Sign command",
+        "type": "n8n-nodes-base.crypto"
+      },
+      {
+        "name": "Weekly Gateway status",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Verify weekly business completion",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 12,
+    "last_exec": "2026-10-30 10:00:00.198",
+    "last_status": "success"
+  },
+  {
+    "id": "elfapV5D2PTnLiHW",
+    "name": "WF04: Multi-Agent Execution Tracking",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.367",
+    "updatedAt": "2026-10-22 21:55:07.668",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "Agent Trace Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Fetch Gateway Agent Trace",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Format Trace Summary",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 15,
+    "last_exec": "2026-10-29 22:11:21.646",
+    "last_status": "success"
+  },
+  {
+    "id": "tOY7QUa9SrWPOe9e",
+    "name": "WF10: Task Orchestration & Decomposition",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.388",
+    "updatedAt": "2026-10-26 12:02:43.845",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "Task Event Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 12,
+    "last_exec": "2026-10-28 05:02:08.908",
+    "last_status": "success"
+  },
+  {
+    "id": "tOyBIPw6sGjgzjtU",
+    "name": "WF09: Bug Lifecycle Automation",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.385",
+    "updatedAt": "2026-10-24 21:18:00.540",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "Bug Event Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 15,
+    "last_exec": "2026-10-28 05:02:03.781",
+    "last_status": "success"
+  },
+  {
+    "id": "xCZFw45fmDQG5gNq",
+    "name": "WF05: Native API Approval Workflow",
+    "active": true,
+    "createdAt": "2026-10-22 15:52:21.371",
+    "updatedAt": "2026-10-22 21:55:08.085",
+    "nodeCount": 4,
+    "nodes": [
+      {
+        "name": "Approval Request Webhook",
+        "type": "n8n-nodes-base.webhook"
+      },
+      {
+        "name": "Fetch Gateway Proposal",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Process PM Approval Decision",
+        "type": "n8n-nodes-base.code"
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook"
+      }
+    ],
+    "total_execs": 23,
+    "last_exec": "2026-10-28 05:01:56.419",
+    "last_status": "success"
+  }
+]

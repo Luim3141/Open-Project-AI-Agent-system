@@ -1,0 +1,61 @@
+name: qldapm-ai-stage
+services:
+  db:
+    restart: unless-stopped
+    image: ${POSTGRES_IMAGE}
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: openproject
+    volumes: [stage-db:/var/lib/postgresql/data]
+    networks: [stage]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U postgres -d openproject"]
+      interval: 5s
+      retries: 30
+  staging-web:
+    restart: unless-stopped
+    image: ${CORE_IMAGE}
+    command: ./docker/prod/web
+    ports: ["127.0.0.1:18091:8080"]
+    environment: &stage-env
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@db/openproject
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      OPENPROJECT_HOST__NAME: localhost:18091
+      OPENPROJECT_ADDITIONAL__HOST__NAMES: '["localhost:18091", "127.0.0.1:18091", "staging-web", "localhost:8088"]'
+      OPENPROJECT_HTTPS: "false"
+      OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL: ""
+      OPENPROJECT_RAILS__CACHE__STORE: file_store
+      OPENPROJECT_WEB_WORKERS: 1
+      RAILS_MIN_THREADS: 1
+      # Five browser requests can call back through Gateway into Native API.
+      RAILS_MAX_THREADS: 8
+      RAILS_ENV: production
+    volumes:
+      - stage-assets:/var/openproject/assets
+      - ${AI_RUNTIME}/stage:/private
+      - ../scripts:/qldapm:ro
+      - ./core:/qldapm-core:ro
+    networks: [stage, stage-front]
+    depends_on:
+      db: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, curl, -fsS, http://localhost:8080/health_checks/default]
+      interval: 15s
+      timeout: 5s
+      retries: 30
+      start_period: 120s
+  seeder:
+    image: ${CORE_IMAGE}
+    command: ./docker/prod/seeder
+    environment: *stage-env
+    volumes: [stage-assets:/var/openproject/assets]
+    networks: [stage]
+    depends_on:
+      db: {condition: service_healthy}
+volumes:
+  stage-db:
+  stage-assets:
+networks:
+  stage:
+    internal: true
+  stage-front:

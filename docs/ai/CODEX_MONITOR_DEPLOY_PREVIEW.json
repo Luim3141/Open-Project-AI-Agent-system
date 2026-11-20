@@ -1,0 +1,28 @@
+{
+  "old_image": "sha256:0245c6ffeced965d6f6048c47132c7de28247e9db1f045d8837606f0e9a64614",
+  "candidate_image": "sha256:8bb0fa6c31ed4fce30f6a1a3f1243c4f51ea6b492a1ae39008e18b88faf68893",
+  "module_sha256": {
+    "app.py": "557293facc172367868bfded522882ceaf85a09ac37dec13f23bfb01c33a5ff4",
+    "automation.py": "65b0b249a0739049cb61872a9b6e094aef072b303571cfd3974b44902ec99798",
+    "monitoring.py": "2a6167dc805f57f32599eb3e494e5b554926e5f5fd71c7dee44eae540d2dd55a"
+  },
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "gateway_backup_sha256": "abc98672dd69a5facfbe07e454e785a092a14fa7015a73f3bc06d4b5656e8fea",
+  "n8n_backup_sha256": "b9761b3d437d4e210eb9a19812e68a069fedc92129b91eb87925e1ae0f161c41",
+  "workflow_id": "5FRYNPSot18UDpKa",
+  "previous_workflow_version": "e9a106fe-b6d6-4f8a-9df7-b779bd175444",
+  "workflow_candidate_sha256": "5bf55def99915eb372a8bcc7f9c0a9649703caca8e9c40fc2aee2acaf10f50b6",
+  "scope": "Gateway app/automation/monitoring + WF16 Main only; fixed machine GET health, durable hashed audit receipt per15min, zero Native/model/credential/Staging changes; short Gateway restart",
+  "tests": {
+    "linux_passed": 160,
+    "windows_related_passed": 47,
+    "additional_final_busy_boundary": "7 focused monitor tests PASS on both Windows and Linux, including503 nonblocking busy lock"
+  },
+  "qualification": "Deploy Gateway then WF16 single-date cron probe; first receipt must appear after cron without manual invocation; always restore15min schedule",
+  "rollback": "First restore private WF16 snapshot with cron disabled; restore previous Gateway AI_IMAGE only; preserve business/cache/daily/outbox/audit data, never restore DB or replay writes",
+  "limits": [
+    "Gateway cgroup metrics and mounted storage, not host-wide GPU/CPU utilization",
+    "One local embedding per15min, no external provider call",
+    "No external notifications; health does not certify DR or full release readiness"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "status": "EXPECTED_397_CONTEXT_NOT_OBSERVED",
+  "route": "LIVE_POLLER",
+  "operator_retry": false,
+  "expected_task_id": 397,
+  "actual_task_id": 391,
+  "project_id": 6,
+  "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+  "user_text": "Dev đã làm gì ở Task này?",
+  "model_response_stored": true,
+  "model_reply_sha256": "bfdb0ae81a11948e2912177ea4eabc4eb19fb2f80e9a5cd9f4609f2a8e4a9a17",
+  "input_reply_id_was_not_recorded": true,
+  "receipts": [
+    {
+      "at": 1793911767.9352477,
+      "event": "READ_TOOL",
+      "tool": "get_task_progress",
+      "arguments": {
+        "task_id": 391
+      },
+      "project_id": 6,
+      "source_revision": "66efdfe9a6bd71f9fd8bfbb08f20f0f2eee8d5594794a09426196ac50562baa9",
+      "correlation_id": "dc44c649-7dd7-4c12-83ab-1f27de1e8937"
+    },
+    {
+      "at": 1793911772.916824,
+      "event": "GEMINI_REQUEST",
+      "model_id": "gemini-3.5-flash-lite",
+      "error_type": null,
+      "request_id": "5c96d2a41a5d48bfbf8394585045bed5"
+    }
+  ]
+}

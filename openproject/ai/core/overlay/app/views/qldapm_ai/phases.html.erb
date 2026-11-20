@@ -1,0 +1,46 @@
+<h2>Scope / Analysis — Review nguồn Native</h2>
+<p><%= link_to "Về AI Assistant", project_qldapm_ai_path(@project.identifier) %></p>
+<p>Draft lấy nguyên Story, Scope, AC và Analysis từ phiên bản Native hiện tại. Review scope cho phép scope; review analysis cho phép cả scope và analysis. Chỉ sau review độc lập mới tạo được proposal. Mỗi Native write vẫn cần quyết định riêng cho đúng proposal/hash.</p>
+<p>Fix, build, test, QA retest và closure chưa được bridge này hỗ trợ.</p>
+<% if @error %><div role="alert"><%= @error %></div><% end %>
+<% if @review_completed %><p role="status">Đã lưu review; chưa ghi Native. Đọc lại bằng chứng để tạo proposal.</p><% end %>
+<% if %w[PM AI_SYSTEM_OWNER BA BA-PM].include?(@role) %>
+<%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
+  <%= hidden_field_tag :tool, "phase_draft" %><%= hidden_field_tag :arguments, "{}" %><%= hidden_field_tag :request_id, SecureRandom.uuid %>
+  <%= label_tag :native_id, "ID công việc Native" %><%= number_field_tag :native_id, nil, min: 1, required: true %>
+  <%= label_tag :kind, "Phạm vi nguồn" %><%= select_tag :kind, options_for_select([["Scope", "scope"], ["Scope và Analysis", "analysis"]]) %>
+  <%= submit_tag "Lập draft từ nguồn", class: "button" %>
+<% end %><% end %>
+<%= form_tag project_qldapm_ai_phases_path(@project.identifier), method: :get, data: {turbo: false} do %>
+  <%= label_tag :id, "ID draft" %><%= text_field_tag :id, params[:id], maxlength: 36, required: true %>
+  <%= submit_tag "Đọc draft", class: "button" %>
+<% end %>
+<% if @phase_inbox %>
+<section aria-labelledby="phase-inbox-title"><h3 id="phase-inbox-title">Draft còn quyền đọc</h3>
+<% if @phase_inbox.fetch("items").empty? %><p>Chưa có draft trong phạm vi hiện tại.</p><% end %>
+<% @phase_inbox.fetch("items").each do |entry| %>
+  <p><%= link_to entry["id"], project_qldapm_ai_phases_path(@project.identifier, id: entry["id"]) %> · #<%= entry["native_id"] %> v<%= entry["version"] %> · <%= entry["kind"] %> · <%= entry["state"] %> · <%= entry["source_current"] ? "Nguồn còn khớp" : "Stale" %></p>
+<% end %></section><% end %>
+<% if @phase %>
+<section aria-labelledby="phase-title"><h3 id="phase-title">Draft <%= @phase["id"] %></h3>
+<dl><dt>Công việc / phiên bản</dt><dd>#<%= @phase.dig("source", "id") %> v<%= @phase.dig("source", "version") %></dd>
+<dt>Producer / phạm vi</dt><dd>User <%= @phase["actor"] %> · <%= @phase["kind"] %></dd>
+<dt>Review / nguồn</dt><dd><%= @phase["state"] %> · <%= @phase["source_current"] ? "Còn khớp" : "Stale — cần draft mới" %></dd>
+<dt>Exact SHA256</dt><dd><code style="overflow-wrap:anywhere"><%= @phase["hash"] %></code></dd></dl>
+<h4>Nội dung Native được review</h4><pre style="white-space:pre-wrap;overflow-wrap:anywhere"><%= @phase.dig("source", "description") %></pre>
+<% if @phase["review"] %><p>Quyết định <%= @phase.dig("review", "decision") %> bởi User <%= @phase.dig("review", "actor") %>; approval keys: <%= Array(@phase.dig("review", "approvals")).join(", ") %>. Quyền reviewer hiện tại: <%= @phase["reviewer_current"] ? "Hợp lệ" : "Cần đối soát" %>.</p><% end %>
+<% if @phase["can_review"] && %w[PM AI_SYSTEM_OWNER].include?(@role) %>
+<%= form_tag project_qldapm_ai_phase_decision_path(@project.identifier), data: {turbo: false} do %>
+  <%= hidden_field_tag :id, @phase.fetch("id") %><%= hidden_field_tag :hash, @phase.fetch("hash") %>
+  <p><%= check_box_tag :acknowledge, "1", false, required: true %><%= label_tag :acknowledge, "Tôi đã đọc nội dung Native, đúng phiên bản/hash và đồng ý phạm vi approval của loại review này." %></p>
+  <%= button_tag "Chấp nhận nguồn", name: "decision", value: "accept", class: "button -primary", disabled: !@phase["source_current"] %>
+  <%= button_tag "Từ chối nguồn", name: "decision", value: "reject", class: "button" %>
+<% end %><% end %>
+<% if %w[PM AI_SYSTEM_OWNER].include?(@role) && @phase["state"] == "accepted" && @phase["source_current"] && @phase["reviewer_current"] && Array(@phase["status_options"]).any? %>
+<%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
+  <%= hidden_field_tag :tool, "phase_transition_prepare" %><%= hidden_field_tag :arguments, "{}" %><%= hidden_field_tag :request_id, SecureRandom.uuid %>
+  <%= hidden_field_tag :phase_id, @phase.fetch("id") %><%= hidden_field_tag :phase_hash, @phase.fetch("hash") %>
+  <%= label_tag :status_id, "Trạng thái Native đề xuất" %><%= select_tag :status_id, options_for_select(@phase.fetch("status_options").map { |entry| [entry.fetch("name"), entry.fetch("id")] }) %>
+  <%= submit_tag "Tạo proposal để duyệt riêng", class: "button" %>
+<% end %><% end %>
+</section><% end %>

@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "scope": "Actual Main Native create forms only; no create/update/parent mutation was submitted",
+  "actor": {
+    "user_id": 18,
+    "name": "System Owner",
+    "role": "AI_SYSTEM_OWNER",
+    "project_id": 5,
+    "capabilities": [
+      "AI_SYSTEM_OWNER"
+    ]
+  },
+  "forms": [
+    {
+      "kind": "Epic",
+      "type_id": 5,
+      "parent_native_id": null,
+      "parent_native_type": null,
+      "form_http": 200,
+      "validation_error_fields": [],
+      "form_validation_status": "PASS",
+      "parent_schema": {
+        "type": "WorkPackage",
+        "name": "Cha",
+        "required": false,
+        "hasDefault": false,
+        "writable": true,
+        "location": "_links",
+        "_links": {}
+      }
+    },
+    {
+      "kind": "Task",
+      "type_id": 1,
+      "parent_native_id": 38,
+      "parent_native_type": "Epic",
+      "form_http": 200,
+      "validation_error_fields": [],
+      "form_validation_status": "PASS",
+      "parent_schema": {
+        "type": "WorkPackage",
+        "name": "Cha",
+        "required": false,
+        "hasDefault": false,
+        "writable": true,
+        "location": "_links",
+        "_links": {}
+      }
+    },
+    {
+      "kind": "Subtask",
+      "type_id": 10,
+      "parent_native_id": 39,
+      "parent_native_type": "Epic",
+      "form_http": 200,
+      "validation_error_fields": [],
+      "form_validation_status": "PASS",
+      "parent_schema": {
+        "type": "WorkPackage",
+        "name": "Cha",
+        "required": false,
+        "hasDefault": false,
+        "writable": true,
+        "location": "_links",
+        "_links": {}
+      }
+    }
+  ],
+  "native_mutations": 0,
+  "native_count_after": 333,
+  "atomic_multi_wp_execution": "NOT_QUALIFIED_NO_BATCH_EXECUTOR",
+  "business_status": "PARTIAL",
+  "observed_at": "2026-10-24T09:53:46.537425+00:00"
+}

@@ -1,0 +1,253 @@
+{
+  "status": "AWAITING_EXPLICIT_MAIN_OPERATION_APPROVAL",
+  "snapshot_at": "2026-10-23T04:20:58.532680+07:00",
+  "target": {
+    "workspace": "D:\\AI project\\QLDAPM chat",
+    "project_id": 5,
+    "gateway": "qldapm-ai-gateway-1:8090",
+    "n8n": "qldapm-n8n-main:5679",
+    "staging_allowed": false,
+    "business_write_allowed": false
+  },
+  "before": {
+    "gateway_image": "sha256:bcd7158e4febfd276d47599bf3be514997fbd976a32fb71be0f12b7d80748168",
+    "source_modules_match_serving_image_baseline": true,
+    "gateway_config_sha256": "fac8c672493e62cb0ac27604e6d23264733660f791c77d9fb7ba3c1906f91e36",
+    "workflows": [
+      {
+        "id": "X2O2QdPY6QLOrWqL",
+        "name": "WF01: Local Document Ingestion",
+        "version_id": "f97e19dd-36cf-44e7-bd44-749c49a92e8e",
+        "active_version_id": "f97e19dd-36cf-44e7-bd44-749c49a92e8e",
+        "nodes_sha256": "ebe3cc4ca015b427a9b11d2016ac604301062cfad35d48d24bb6da373e2d3fde"
+      },
+      {
+        "id": "Anl8LNdN4NNTKRpe",
+        "name": "WF02: OpenProject Event Sync",
+        "version_id": "09247ccf-b233-4e0e-bf03-b88fb868c983",
+        "active_version_id": "09247ccf-b233-4e0e-bf03-b88fb868c983",
+        "nodes_sha256": "7951b142db81c4862a8da79961f746f6bb74f0976b5d4387a38f14cc30ee829f"
+      },
+      {
+        "id": "XoP4M520TMG3WgeY",
+        "name": "WF03: Natural Language Request Orchestrator",
+        "version_id": "3e28b7e9-0435-43d2-b5b5-ae58b89be900",
+        "active_version_id": "3e28b7e9-0435-43d2-b5b5-ae58b89be900",
+        "nodes_sha256": "f5ed5a0c2d7f30fe4a47499289d4d74a652855cf930fc70c42cb4b0668aa716f"
+      },
+      {
+        "id": "elfapV5D2PTnLiHW",
+        "name": "WF04: Multi-Agent Execution Tracking",
+        "version_id": "f5199c6e-3c64-432d-9cea-3208f35a5c70",
+        "active_version_id": "f5199c6e-3c64-432d-9cea-3208f35a5c70",
+        "nodes_sha256": "d986658d6f50dc02c690f929bb08d51327956715d6f1c4e82e5954ff0ec53a10"
+      },
+      {
+        "id": "xCZFw45fmDQG5gNq",
+        "name": "WF05: Native API Approval Workflow",
+        "version_id": "8edd0ccc-41f5-4398-ade2-69efdd7374bb",
+        "active_version_id": "8edd0ccc-41f5-4398-ade2-69efdd7374bb",
+        "nodes_sha256": "239dcd7c4394aebb62aed135c33b5b90c509632d543e70c2352516f002ca52d8"
+      },
+      {
+        "id": "Jq18aFSqfuUybEic",
+        "name": "WF06: Native API Execution & Verification",
+        "version_id": "5c2de5f2-ac0f-4507-aaaf-9f876e9be19d",
+        "active_version_id": "5c2de5f2-ac0f-4507-aaaf-9f876e9be19d",
+        "nodes_sha256": "488afb48b7269395abd67be460e32b54d5784a7c78640e003135d50dad2d2b06"
+      },
+      {
+        "id": "BpCQrGR866vg4BqQ",
+        "name": "WF07: Daily Project Brief",
+        "version_id": "e884963a-ed49-497f-9198-cf99b7dbcb56",
+        "active_version_id": "e884963a-ed49-497f-9198-cf99b7dbcb56",
+        "nodes_sha256": "0c2a8c87e01391b7d52669ac45d3615f61ca2ad40285efe0a3ea3df18ce1b030"
+      },
+      {
+        "id": "RXWjVUL8ozqhjY4w",
+        "name": "WF08: Sprint Readiness Gate",
+        "version_id": "dc83ef1a-5f8f-4699-a254-76d071a50d96",
+        "active_version_id": "dc83ef1a-5f8f-4699-a254-76d071a50d96",
+        "nodes_sha256": "a6289294891ad7d03c4183b47de783a04ba30f483d6ad1dc2ebfb096a4d952d0"
+      },
+      {
+        "id": "tOyBIPw6sGjgzjtU",
+        "name": "WF09: Bug Lifecycle Automation",
+        "version_id": "4c20dd3b-3037-4eb4-a474-543f6a1d5f73",
+        "active_version_id": "4c20dd3b-3037-4eb4-a474-543f6a1d5f73",
+        "nodes_sha256": "0e7c4a86b3a3a6e320a1e41a8d650f27e1752e851d62d7e3cbac0e513a11f6c9"
+      },
+      {
+        "id": "tOY7QUa9SrWPOe9e",
+        "name": "WF10: Task Orchestration & Decomposition",
+        "version_id": "b231a531-9a92-4367-86b7-353ebb961ed6",
+        "active_version_id": "b231a531-9a92-4367-86b7-353ebb961ed6",
+        "nodes_sha256": "f09a30a78e0e6383d072b721d8a100e37bc1b704b6aa647973043d88bb328f1b"
+      },
+      {
+        "id": "LeRVT3LWNBkJ2iz3",
+        "name": "WF11: QA Gate Transition",
+        "version_id": "a4f87c7b-f803-4cdc-8fd8-962992658ef9",
+        "active_version_id": "a4f87c7b-f803-4cdc-8fd8-962992658ef9",
+        "nodes_sha256": "596c0e3a0fd9653b62f85a1f0e21db1a968a11598063295375691428c1b49480"
+      },
+      {
+        "id": "ZkgS8RZbPRA2zbhQ",
+        "name": "WF12: Workload Balancing",
+        "version_id": "9c56f036-716c-4e78-9269-3a06d5ceb50b",
+        "active_version_id": "9c56f036-716c-4e78-9269-3a06d5ceb50b",
+        "nodes_sha256": "d3651ad01b9a85d48c93bde4e7ab82428df1df39e48e6ee65f9f9a28ea14eaf5"
+      },
+      {
+        "id": "2tr0jpqaaAiq9IOU",
+        "name": "WF13: Second Brain RAG Re-indexing",
+        "version_id": "2ac22e75-4c0c-427a-8c9c-0b3b320954fa",
+        "active_version_id": "2ac22e75-4c0c-427a-8c9c-0b3b320954fa",
+        "nodes_sha256": "006da21ef17b04594d555b1e7caf1aaa0e1d307b33697b1bc7cf922004620b04"
+      },
+      {
+        "id": "8ycOUQy9gtT60nkN",
+        "name": "WF14: Error Handling & Retry Router",
+        "version_id": "27970b41-42e2-4af1-9e21-7be713289f5f",
+        "active_version_id": "27970b41-42e2-4af1-9e21-7be713289f5f",
+        "nodes_sha256": "148a7b454cd578b9e79f55f17a2add5824afa55069198e7071f086de24a635bb"
+      },
+      {
+        "id": "NLugfE3U8dBS88Wg",
+        "name": "WF15: Reconciliation & Drift Detection",
+        "version_id": "742203e1-0c11-4453-9401-71c835feb5a6",
+        "active_version_id": "742203e1-0c11-4453-9401-71c835feb5a6",
+        "nodes_sha256": "caade0c1cdde195b2605ee8a87cb1b72f32850382fed0044733b855e3c6c432b"
+      },
+      {
+        "id": "5FRYNPSot18UDpKa",
+        "name": "WF16: Executive Summary Generator",
+        "version_id": "cd070570-fcf7-444f-a04e-cc6f5a0d8da6",
+        "active_version_id": "cd070570-fcf7-444f-a04e-cc6f5a0d8da6",
+        "nodes_sha256": "b559165a65dbb775e0512e4f6afc138a6774c20d85d102e2aa66fc2bfaa634de"
+      }
+    ]
+  },
+  "candidate": {
+    "gateway_image": "sha256:0923f9cc6d2cf895f12433da16f2ce52c1429afa39e2e0febb4668eaefdffa0a",
+    "overlay_files": {
+      "openproject\\ai\\gateway\\app.py": "8c512c3736ea2fcf968a1d53cabc013d8851c2fdcc3e7d8f78d381b64d6a093b",
+      "openproject\\ai\\gateway\\service.py": "533093af5aa367f2a8fb7b900ac6285a57c7c15ad76d4272c5d522faac6dcd95",
+      "openproject\\ai\\gateway\\store.py": "db73bdcb54501de6e8f0dffd99176ac3e0eef99b3a6b6513ab5a441dc3ca51e5",
+      "openproject\\ai\\gateway\\ai_worker.py": "fa078049399caed58000483e350871f39225776f67f74919d1d302dcd3195eff",
+      "openproject\\ai\\gateway\\catalog.py": "feaafcf4b6c353015d70cbf43e4032679282bf6daee684805bfe262d699c0535"
+    },
+    "workflow_bundle_private_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-takeover-20261023-035922\\n8n-security-candidate.json",
+    "workflow_bundle_sha256": "cc1fd1f1b7d3c1efdada91164b616749fbce3d5b9a220f22205d38dd0ed621f8",
+    "workflow_count": 16,
+    "disabled_schedules": [
+      "WF07",
+      "WF16"
+    ],
+    "ui_source_deployment_included": false
+  },
+  "operations_in_order": [
+    "Revalidate all exact hashes, live container identity, workflow versions and no running/uncertain business jobs; abort on drift",
+    "Refresh consistent Main snapshots and private configuration backup; do not touch Staging",
+    "Deactivate only Main WF06 before changing authority or credentials",
+    "Revoke the three exact exposed Gateway Bearers for PM/BA; preserve native API tokens/password/TOTP; issue replacement Bearers privately if authorized",
+    "Rotate n8n webhook header credential 2w9dSdmYbywZDuMB and matching Main private webhook config; never print value",
+    "Promote exact five-module Gateway image with same Main state/workspace/policy mounts, network and service security settings",
+    "Apply exact 16-workflow authentication candidate based on live snapshot; no shared human credential, execution payload retention off; no write retry or redirect; WF05 preview and WF06 exact PM decision; schedules WF07/WF16 disabled",
+    "Invalidate the exposed n8n Owner cookie via authenticated POST /rest/logout after other n8n operations; verify the same cookie can no longer read /rest/workflows",
+    "Re-read runtime image/workflow versions/auth bindings; verify old webhook secret, exposed Bearers and cookie rejected; verify BA cannot read PM trace through n8n; health/native read only; no business mutation test"
+  ],
+  "expected_impact": [
+    "Gateway brief restart; clients using three revoked Bearers must renew credentials",
+    "n8n Owner must log in again",
+    "Webhook callers need rotated transport secret AND their own caller Bearer",
+    "Cron WF07/WF16 pauses pending a least-privilege service identity",
+    "Old auto_execute API calls receive PM_APPROVAL_REQUIRED; proposal confirmation is required",
+    "Existing UI checkbox labels remain until separate core deployment, but Gateway rejects bypass"
+  ],
+  "validation": {
+    "image": "sha256:0923f9cc6d2cf895f12433da16f2ce52c1429afa39e2e0febb4668eaefdffa0a",
+    "linux": {
+      "exit_code": 0,
+      "count": 76,
+      "network": "none"
+    },
+    "windows": {
+      "exit_code": 0,
+      "count": 90
+    },
+    "modules": [
+      "tests.test_takeover_security",
+      "tests.test_takeover_workflows",
+      "tests.test_gateway",
+      "tests.test_level2",
+      "tests.test_business_lifecycle",
+      "tests.test_supervisor",
+      "tests.test_native_create_recovery",
+      "tests.test_business_acceptance"
+    ]
+  },
+  "backups": [
+    {
+      "file": "gateway-consistent.sqlite",
+      "quick_check": "ok",
+      "sha256": "f89774e3f9e835ce78f58eadd0dd54754ba1ae9fe7e8586542c8e1eaf7bffb99",
+      "bytes": 3055616
+    },
+    {
+      "file": "knowledge-consistent.sqlite",
+      "quick_check": "ok",
+      "sha256": "1df7171e08db60f67f60a1c5174aef7d56edeba4134dbc700304f7a3c51edeea",
+      "bytes": 5140480
+    },
+    {
+      "file": "n8n-consistent.sqlite",
+      "quick_check": "ok",
+      "sha256": "5efb8d664bef7cb4337755387fbdb293abd75dc5a0a3929f4d85458a77d4e50a",
+      "bytes": 11317248
+    }
+  ],
+  "rollback": [
+    "Keep mutation ingress disabled/maintenance if verification fails",
+    "Return only code image to pinned previous image when needed; preserve current SQLite/native data",
+    "Never reactivate leaked tokens/secrets/session, never restore stale state over live records",
+    "Resume writes only after repaired authorization and a separate approved dedicated-resource mutation E2E"
+  ],
+  "changed_preexisting_files": [
+    "openproject\\ai\\mcp-tools.json",
+    "openproject\\ai\\openapi.json",
+    "openproject\\ai\\Start-OllamaDaemon.ps1",
+    "openproject\\ai\\automation\\check_errors.py",
+    "openproject\\ai\\automation\\deploy_real_n8n_workflows.py",
+    "openproject\\ai\\automation\\patch_single_wf11.py",
+    "openproject\\ai\\automation\\patch_wf03.py",
+    "openproject\\ai\\automation\\run_full_e2e_acceptance.py",
+    "openproject\\ai\\automation\\test_n8n_patch.py",
+    "openproject\\ai\\gateway\\ai_worker.py",
+    "openproject\\ai\\gateway\\app.py",
+    "openproject\\ai\\gateway\\catalog.py",
+    "openproject\\ai\\gateway\\service.py",
+    "openproject\\ai\\gateway\\store.py",
+    "openproject\\ai\\tests\\test_business_lifecycle.py",
+    "openproject\\ai\\tests\\test_human_approval_lifecycle.py",
+    "openproject\\ai\\tests\\test_level2.py",
+    "openproject\\ai\\tests\\test_master_e2e_suite.py",
+    "openproject\\ai\\tests\\test_n8n_main_suite.py",
+    "openproject\\ai\\tests\\test_native_write_engine.py",
+    "openproject\\ai\\tests\\test_p0_multi_agent_execution.py",
+    "openproject\\ai\\tests\\test_p0_real_n8n_workflows.py",
+    "openproject\\ai\\tests\\test_p0_real_rag_corpus.py",
+    "openproject\\ai\\tests\\test_p0_security_containment.py",
+    "openproject\\ai\\tests\\test_ui_and_observability_suite.py",
+    "openproject\\ai\\tests\\test_vector_rag_ingestion.py",
+    "openproject\\ai\\core\\overlay\\app\\controllers\\qldapm_ai_controller.rb",
+    "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\show.html.erb",
+    "docs\\ai\\FINAL_BEHAVIORAL_RELEASE_GATE_REPORT.md",
+    "architecture.md"
+  ],
+  "new_security_tests": [
+    "openproject/ai/tests/test_takeover_security.py",
+    "openproject/ai/tests/test_takeover_workflows.py"
+  ],
+  "approval_sha256": "8a278d6ef136c2487f6fba399a822584a3fd72d10c5f0c01adc8386970ad4671"
+}

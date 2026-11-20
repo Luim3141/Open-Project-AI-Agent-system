@@ -1,0 +1,2102 @@
+{
+  "generated_at": "2026-10-28T20:39:59.349304+00:00",
+  "verdict": "AUTOMATION_CORE_E2E_PASS_WITH_LIMITATIONS",
+  "human_uat_signoff": false,
+  "target": {
+    "environment": "MAIN",
+    "project_id": 5,
+    "identifier": "qldapm-local",
+    "head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+    "gateway_image": "sha256:eaaa1217ac79cfac4747e0fa71af40bf0d3c1a447f39e6cc24dc20e55a268fc4",
+    "core_image": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3"
+  },
+  "main_deployment": {
+    "at": "2026-10-28T20:36:04.054316+00:00",
+    "status": "MAIN_WF07_BUSINESS_FINALIZATION_DEPLOYED",
+    "id": "BpCQrGR866vg4BqQ",
+    "previous_version": "15216ba8-75a6-43a5-a939-308f6d14b957",
+    "version": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+    "previous_nodes": 5,
+    "nodes": 6,
+    "original_nodes_preserved": true,
+    "settings_retention_preserved": true,
+    "other_workflows_preserved": [
+      "X2O2QdPY6QLOrWqL",
+      "Anl8LNdN4NNTKRpe",
+      "XoP4M520TMG3WgeY",
+      "elfapV5D2PTnLiHW",
+      "xCZFw45fmDQG5gNq",
+      "Jq18aFSqfuUybEic",
+      "RXWjVUL8ozqhjY4w",
+      "tOyBIPw6sGjgzjtU",
+      "tOY7QUa9SrWPOe9e",
+      "LeRVT3LWNBkJ2iz3",
+      "ZkgS8RZbPRA2zbhQ",
+      "2tr0jpqaaAiq9IOU",
+      "8ycOUQy9gtT60nkN",
+      "NLugfE3U8dBS88Wg",
+      "5FRYNPSot18UDpKa"
+    ],
+    "main_container_ids_images_unchanged": true,
+    "native_business_hashes_unchanged": true,
+    "native_business_writes": 0,
+    "main_schedule_manually_triggered": false,
+    "production_cron_unchanged": true,
+    "source_sha256": "5dfbb7aeb0e01de16581cae744cee6e7222f4d8066237a63f60fa6811fac19f1",
+    "rollback": "Patch only name/nodes/connections/settings from private WF07-before.json and publish its new version; do not restore any database"
+  },
+  "user_docker_restart": {
+    "at": "2026-10-28T20:02:29.204163+00:00",
+    "source": "User explicitly reported Docker restart; agent did not initiate it",
+    "preflight": "PASS_READ_ONLY_PREFLIGHT",
+    "identities_images_preserved": true,
+    "historical_requests_preserved": true,
+    "active_work": 0,
+    "containers": {
+      "qldapm-openproject-db-1": {
+        "started_at": "2026-10-28T20:00:27.490399699Z",
+        "status": "running",
+        "health": "healthy",
+        "restart_count": 0
+      },
+      "qldapm-openproject-cache-1": {
+        "started_at": "2026-10-28T20:00:27.005434195Z",
+        "status": "running",
+        "health": null,
+        "restart_count": 0
+      },
+      "qldapm-qdrant": {
+        "started_at": "2026-10-28T20:00:27.37306709Z",
+        "status": "running",
+        "health": null,
+        "restart_count": 0
+      },
+      "qldapm-openproject-hocuspocus-1": {
+        "started_at": "2026-10-28T20:00:27.55135366Z",
+        "status": "running",
+        "health": null,
+        "restart_count": 0
+      },
+      "qldapm-openproject-web-1": {
+        "started_at": "2026-10-28T20:00:27.574911946Z",
+        "status": "running",
+        "health": "healthy",
+        "restart_count": 0
+      },
+      "qldapm-openproject-worker-1": {
+        "started_at": "2026-10-28T20:00:27.148083977Z",
+        "status": "running",
+        "health": null,
+        "restart_count": 0
+      },
+      "qldapm-openproject-cron-1": {
+        "started_at": "2026-10-28T20:00:27.247498069Z",
+        "status": "running",
+        "health": null,
+        "restart_count": 0
+      },
+      "qldapm-ai-gateway-1": {
+        "started_at": "2026-10-28T20:00:27.454283732Z",
+        "status": "running",
+        "health": "healthy",
+        "restart_count": 0
+      },
+      "qldapm-n8n-main": {
+        "started_at": "2026-10-28T20:00:27.431927497Z",
+        "status": "running",
+        "health": null,
+        "restart_count": 0
+      },
+      "qldapm-openproject-proxy-1": {
+        "started_at": "2026-10-28T20:00:27.29984024Z",
+        "status": "running",
+        "health": null,
+        "restart_count": 0
+      }
+    },
+    "physical_windows_reboot": false
+  },
+  "main_scheduled_monitor_after_restart": [
+    {
+      "id": 2627,
+      "mode": "trigger",
+      "status": "success",
+      "finished": 1,
+      "startedAt": "2026-10-28 20:30:00.096",
+      "stoppedAt": "2026-10-28 20:30:01.720"
+    },
+    {
+      "id": 2626,
+      "mode": "trigger",
+      "status": "success",
+      "finished": 1,
+      "startedAt": "2026-10-28 20:15:00.104",
+      "stoppedAt": "2026-10-28 20:15:01.235"
+    },
+    {
+      "id": 2625,
+      "mode": "trigger",
+      "status": "success",
+      "finished": 1,
+      "startedAt": "2026-10-28 19:15:00.052",
+      "stoppedAt": "2026-10-28 19:15:08.815"
+    },
+    {
+      "id": 2624,
+      "mode": "trigger",
+      "status": "success",
+      "finished": 1,
+      "startedAt": "2026-10-28 19:00:00.035",
+      "stoppedAt": "2026-10-28 19:00:04.282"
+    },
+    {
+      "id": 2623,
+      "mode": "trigger",
+      "status": "success",
+      "finished": 1,
+      "startedAt": "2026-10-28 18:45:00.031",
+      "stoppedAt": "2026-10-28 18:45:03.350"
+    }
+  ],
+  "windows_tasks": [
+    {
+      "TaskName": "QLDAPM-Main-Daily-Backup",
+      "State": "Ready",
+      "LastResult": 0,
+      "LastRun": "2026-10-29T02:35:26+07:00",
+      "NextRun": "2026-10-29T03:35:25+07:00",
+      "HiddenAction": true,
+      "Principal": "LUIM",
+      "Interactive": true
+    },
+    {
+      "TaskName": "QLDAPM-Ollama-Health",
+      "State": "Ready",
+      "LastResult": 0,
+      "LastRun": "2026-10-29T03:32:38+07:00",
+      "NextRun": "2026-10-29T03:37:37+07:00",
+      "HiddenAction": true,
+      "Principal": "LUIM",
+      "Interactive": true
+    }
+  ],
+  "final_preflight": {
+    "at": "2026-10-28T20:37:15.344914+00:00",
+    "status": "PASS_READ_ONLY_PREFLIGHT",
+    "checks": {
+      "main_containers": true,
+      "port_18088": true,
+      "port_18089": true,
+      "port_5679": true,
+      "port_6333": true,
+      "port_11434": true,
+      "registered_knowledge": true,
+      "protected_legacy_points": true,
+      "wp376_preserved": true,
+      "wp371_preserved": true,
+      "qa_pending": true,
+      "gateway_sqlite": true,
+      "pm_token_valid": true,
+      "workflow_activation": true,
+      "recent_backup": true,
+      "backup_disk": true
+    },
+    "details": {
+      "runtime": {
+        "project_id": 5,
+        "containers": {
+          "qldapm-openproject-db-1": {
+            "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+            "state": "running",
+            "health": "healthy"
+          },
+          "qldapm-openproject-cache-1": {
+            "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-qdrant": {
+            "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-openproject-hocuspocus-1": {
+            "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-openproject-web-1": {
+            "image": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+            "state": "running",
+            "health": "healthy"
+          },
+          "qldapm-openproject-worker-1": {
+            "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-openproject-cron-1": {
+            "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-ai-gateway-1": {
+            "image": "sha256:eaaa1217ac79cfac4747e0fa71af40bf0d3c1a447f39e6cc24dc20e55a268fc4",
+            "state": "running",
+            "health": "healthy"
+          },
+          "qldapm-n8n-main": {
+            "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-openproject-proxy-1": {
+            "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          }
+        },
+        "staging_operations": false,
+        "scope": "Container state/health only; business acceptance is separate"
+      },
+      "active_work": 0,
+      "knowledge": {
+        "status": "PARTIAL_UNMATCHED_POINTS",
+        "project_id": 5,
+        "native_visible_packages": 339,
+        "documents": 441,
+        "chunks": 2027,
+        "points_in_project": 2030,
+        "sqlite_quick_check": "ok",
+        "missing_native_ids": [],
+        "missing_point_ids": [],
+        "payload_mismatch_ids": [],
+        "invalid_chunk_hash_ids": [],
+        "invalid_source_hashes": [],
+        "fts_error_sources": [],
+        "orphan_fts_rows": 0,
+        "stale_sources": [],
+        "unmatched_points": [
+          {
+            "id": "2d5e7bdf-b4e0-52c6-b360-f45c1fbd74bf",
+            "source_id": "op:wp:42"
+          },
+          {
+            "id": "59e1f1a4-b659-5c3d-ab23-ebb309481dc7",
+            "source_id": "test:local:adr:0001"
+          },
+          {
+            "id": "b838195a-5afd-5f40-a70d-23c2ca9007bc",
+            "source_id": "test:wp:999"
+          }
+        ],
+        "native_sources_outside_visible_scope": 0,
+        "mutations_performed": false,
+        "cross_store_snapshot": "Main ingestion lease; external writers must honor the same lock"
+      },
+      "pm_token_remaining_days": 29.4,
+      "backup_status": "PASS_MAIN_DAILY_SNAPSHOT"
+    },
+    "warnings": [],
+    "limits": [
+      "Preflight is not business E2E or human UAT",
+      "No physical reboot or Qdrant restore qualification",
+      "Exact protected records reflect this takeover baseline; review legitimate later business changes"
+    ],
+    "native_writes": 0,
+    "staging_operations": false
+  },
+  "clone": {
+    "status": "CLONE_AUTOMATION_STABILITY_PASS_PROVIDER_BLOCKED",
+    "duration_seconds": 780.1387121677399,
+    "trace_id": "8799d810-bd62-431c-a20e-7c102b29f92d",
+    "source_fixture": 377,
+    "stages": [
+      {
+        "stage": "AUTOMATIC_INDEX_v1",
+        "at": "2026-10-28T20:24:02.318042+00:00",
+        "native_id": 377,
+        "native_version": 0,
+        "generation": [
+          2
+        ],
+        "jobs": [
+          {
+            "id": "480404df-4f73-55bb-bfe4-6418f5660b1a",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          }
+        ],
+        "sources": [
+          {
+            "source_id": "actor:18:wp:377",
+            "source_hash": "566cf195dca7a3fe8634010ca50f5f605dbee7488b9f760c3f1c3009c8303bb8",
+            "metadata": {
+              "native_id": 377,
+              "lock_version": 0,
+              "actor_id": 18,
+              "activity_ids": [],
+              "activity_hashes": {},
+              "source_updated_at": "2026-10-28T20:23:35.950Z"
+            }
+          },
+          {
+            "source_id": "op:wp:377",
+            "source_hash": "a3c2437cca960f349497939529d186f0dc4a0ccd9ec7c74f16e9382f7c2e61b0",
+            "metadata": {
+              "native_id": 377,
+              "work_package_id": 377,
+              "lock_version": 0,
+              "type": "Task",
+              "status": "NEW",
+              "parent_id": null,
+              "version": "Chưa có Sprint"
+            }
+          }
+        ],
+        "fts_rows": 2
+      },
+      {
+        "stage": "AUTOMATIC_INDEX_v2",
+        "at": "2026-10-28T20:24:43.934427+00:00",
+        "native_id": 377,
+        "native_version": 1,
+        "generation": [
+          3
+        ],
+        "jobs": [
+          {
+            "id": "480404df-4f73-55bb-bfe4-6418f5660b1a",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "bfd67d16-b59f-5b13-8d8b-5233acb2b93d",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          }
+        ],
+        "sources": [
+          {
+            "source_id": "actor:18:wp:377",
+            "source_hash": "0b83e93454b7a5bd9fd7f31392f30561831f70f97353af43670d73b4557ee061",
+            "metadata": {
+              "native_id": 377,
+              "lock_version": 1,
+              "actor_id": 18,
+              "activity_ids": [],
+              "activity_hashes": {},
+              "source_updated_at": "2026-10-28T20:24:04.790Z"
+            }
+          },
+          {
+            "source_id": "op:wp:377",
+            "source_hash": "e45d3c2f7183ec96adf5eeec7b428fe072450d42fd3a152619d975221347a274",
+            "metadata": {
+              "native_id": 377,
+              "work_package_id": 377,
+              "lock_version": 1,
+              "type": "Task",
+              "status": "NEW",
+              "parent_id": null,
+              "version": "Chưa có Sprint"
+            }
+          }
+        ],
+        "fts_rows": 2
+      },
+      {
+        "stage": "COMMENT_ACTOR_BOUND",
+        "at": "2026-10-28T20:26:06.522586+00:00",
+        "native_id": 377,
+        "native_version": 1,
+        "generation": [
+          4
+        ],
+        "jobs": [
+          {
+            "id": "480404df-4f73-55bb-bfe4-6418f5660b1a",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "bfd67d16-b59f-5b13-8d8b-5233acb2b93d",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "d66076a7-649c-5c3a-b883-bd36d0fbc784",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          }
+        ],
+        "sources": [
+          {
+            "source_id": "op:wp:377",
+            "source_hash": "e45d3c2f7183ec96adf5eeec7b428fe072450d42fd3a152619d975221347a274",
+            "metadata": {
+              "native_id": 377,
+              "work_package_id": 377,
+              "lock_version": 1,
+              "type": "Task",
+              "status": "NEW",
+              "parent_id": null,
+              "version": "Chưa có Sprint"
+            }
+          },
+          {
+            "source_id": "actor:18:wp:377",
+            "source_hash": "37fa5064356dcf7792ed9a7a708fbac61c6d4b709b48ac7422e7db341154ecbf",
+            "metadata": {
+              "native_id": 377,
+              "lock_version": 1,
+              "actor_id": 18,
+              "activity_ids": [
+                1036
+              ],
+              "activity_hashes": {
+                "1036": "bd81c5932c5c9138e9bcdcc09e2c5f8676b87bee4251225a80fcf36fcd26fce3"
+              },
+              "source_updated_at": "2026-10-28T20:24:55.893Z"
+            }
+          }
+        ],
+        "fts_rows": 2
+      },
+      {
+        "stage": "AUTOMATIC_INDEX_ma",
+        "at": "2026-10-28T20:26:59.324735+00:00",
+        "native_id": 377,
+        "native_version": 2,
+        "generation": [
+          5
+        ],
+        "jobs": [
+          {
+            "id": "480404df-4f73-55bb-bfe4-6418f5660b1a",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "bfd67d16-b59f-5b13-8d8b-5233acb2b93d",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "d66076a7-649c-5c3a-b883-bd36d0fbc784",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "3732ef88-b83f-5a50-b9ba-12541191b1fd",
+            "state": "verified",
+            "attempts": 2,
+            "error": null,
+            "lease_until": null
+          }
+        ],
+        "sources": [
+          {
+            "source_id": "actor:18:wp:377",
+            "source_hash": "1971ac3be83da16472bfb46bca9d8a87b465d55cce87d8ffb0d287335d22557c",
+            "metadata": {
+              "native_id": 377,
+              "lock_version": 2,
+              "actor_id": 18,
+              "activity_ids": [
+                1036
+              ],
+              "activity_hashes": {
+                "1036": "bd81c5932c5c9138e9bcdcc09e2c5f8676b87bee4251225a80fcf36fcd26fce3"
+              },
+              "source_updated_at": "2026-10-28T20:26:07.585Z"
+            }
+          },
+          {
+            "source_id": "op:wp:377",
+            "source_hash": "4f3e1931479a999659a818d62cd7c2eccdb307d537c4a2452c3bdd94e88ae89a",
+            "metadata": {
+              "native_id": 377,
+              "work_package_id": 377,
+              "lock_version": 2,
+              "type": "Task",
+              "status": "NEW",
+              "parent_id": null,
+              "version": "Chưa có Sprint"
+            }
+          }
+        ],
+        "fts_rows": 2
+      },
+      {
+        "stage": "AUTOMATIC_INDEX_nt",
+        "at": "2026-10-28T20:28:08.013544+00:00",
+        "native_id": 377,
+        "native_version": 3,
+        "generation": [
+          6
+        ],
+        "jobs": [
+          {
+            "id": "480404df-4f73-55bb-bfe4-6418f5660b1a",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "bfd67d16-b59f-5b13-8d8b-5233acb2b93d",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "d66076a7-649c-5c3a-b883-bd36d0fbc784",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "3732ef88-b83f-5a50-b9ba-12541191b1fd",
+            "state": "verified",
+            "attempts": 2,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "316aa6f6-e491-5892-bc47-af661e7c220a",
+            "state": "verified",
+            "attempts": 2,
+            "error": null,
+            "lease_until": null
+          }
+        ],
+        "sources": [
+          {
+            "source_id": "actor:18:wp:377",
+            "source_hash": "5d77fda29d15be3b132c05da8351e9deeaf3a9b65614ca36114dc61d7089e3bd",
+            "metadata": {
+              "native_id": 377,
+              "lock_version": 3,
+              "actor_id": 18,
+              "activity_ids": [
+                1036
+              ],
+              "activity_hashes": {
+                "1036": "bd81c5932c5c9138e9bcdcc09e2c5f8676b87bee4251225a80fcf36fcd26fce3"
+              },
+              "source_updated_at": "2026-10-28T20:27:00.996Z"
+            }
+          },
+          {
+            "source_id": "op:wp:377",
+            "source_hash": "d41dbab2cb3d1928e189f305b58ca9e9693877f1edc875b71c6a2bef9607a038",
+            "metadata": {
+              "native_id": 377,
+              "work_package_id": 377,
+              "lock_version": 3,
+              "type": "Task",
+              "status": "NEW",
+              "parent_id": null,
+              "version": "Chưa có Sprint"
+            }
+          }
+        ],
+        "fts_rows": 2
+      },
+      {
+        "stage": "AUTOMATIC_INDEX_rt",
+        "at": "2026-10-28T20:33:55.918629+00:00",
+        "native_id": 377,
+        "native_version": 4,
+        "generation": [
+          12
+        ],
+        "jobs": [
+          {
+            "id": "480404df-4f73-55bb-bfe4-6418f5660b1a",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "bfd67d16-b59f-5b13-8d8b-5233acb2b93d",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "d66076a7-649c-5c3a-b883-bd36d0fbc784",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "3732ef88-b83f-5a50-b9ba-12541191b1fd",
+            "state": "verified",
+            "attempts": 2,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "316aa6f6-e491-5892-bc47-af661e7c220a",
+            "state": "verified",
+            "attempts": 2,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "a2acc08b-ff77-5c18-a4ed-a7664adf6667",
+            "state": "verified",
+            "attempts": 2,
+            "error": null,
+            "lease_until": null
+          }
+        ],
+        "sources": [
+          {
+            "source_id": "actor:18:wp:377",
+            "source_hash": "44ad2ebf3296db24f4c50529bdc2842cdda78e2656c606290361740eaa9e06e3",
+            "metadata": {
+              "native_id": 377,
+              "lock_version": 4,
+              "actor_id": 18,
+              "activity_ids": [
+                1036
+              ],
+              "activity_hashes": {
+                "1036": "bd81c5932c5c9138e9bcdcc09e2c5f8676b87bee4251225a80fcf36fcd26fce3"
+              },
+              "source_updated_at": "2026-10-28T20:28:09.066Z"
+            }
+          },
+          {
+            "source_id": "op:wp:377",
+            "source_hash": "e5a7f34237186df89faf907e54b349d647bd8647ce5790776feaaa7dcbc24899",
+            "metadata": {
+              "native_id": 377,
+              "work_package_id": 377,
+              "lock_version": 4,
+              "type": "Task",
+              "status": "NEW",
+              "parent_id": null,
+              "version": "Chưa có Sprint"
+            }
+          }
+        ],
+        "fts_rows": 2
+      }
+    ],
+    "points": {
+      "ids": [
+        "15a3aabc-2a55-5e7b-aa71-04d58f9370f2",
+        "5332ebce-517f-55f9-8a74-833d3c53b55f"
+      ],
+      "dimensions": 1024,
+      "count": 2,
+      "duplicates": 0
+    },
+    "schedules": [
+      {
+        "workflow": "WF07:",
+        "executions": [
+          {
+            "id": 3,
+            "workflowId": "CDKvDlZCav3KPdYH",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:24:00.212",
+            "stoppedAt": "2026-10-28 20:24:06.169"
+          },
+          {
+            "id": 8,
+            "workflowId": "CDKvDlZCav3KPdYH",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:25:00.253",
+            "stoppedAt": "2026-10-28 20:25:01.502"
+          },
+          {
+            "id": 13,
+            "workflowId": "CDKvDlZCav3KPdYH",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:26:00.680",
+            "stoppedAt": "2026-10-28 20:26:01.387"
+          },
+          {
+            "id": 16,
+            "workflowId": "CDKvDlZCav3KPdYH",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:27:00.158",
+            "stoppedAt": "2026-10-28 20:27:02.589"
+          },
+          {
+            "id": 19,
+            "workflowId": "CDKvDlZCav3KPdYH",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:28:00.133",
+            "stoppedAt": "2026-10-28 20:28:00.824"
+          },
+          {
+            "id": 22,
+            "workflowId": "CDKvDlZCav3KPdYH",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:30:01.179",
+            "stoppedAt": "2026-10-28 20:30:03.727"
+          },
+          {
+            "id": 25,
+            "workflowId": "CDKvDlZCav3KPdYH",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:31:00.227",
+            "stoppedAt": "2026-10-28 20:31:01.308"
+          },
+          {
+            "id": 27,
+            "workflowId": "CDKvDlZCav3KPdYH",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:32:00.246",
+            "stoppedAt": "2026-10-28 20:32:01.448"
+          },
+          {
+            "id": 30,
+            "workflowId": "CDKvDlZCav3KPdYH",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:33:00.183",
+            "stoppedAt": "2026-10-28 20:33:01.270"
+          }
+        ]
+      },
+      {
+        "workflow": "WF12:",
+        "executions": [
+          {
+            "id": 4,
+            "workflowId": "p75bYL5ub3gu3Rym",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:24:00.252",
+            "stoppedAt": "2026-10-28 20:24:30.186"
+          },
+          {
+            "id": 6,
+            "workflowId": "p75bYL5ub3gu3Rym",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:25:00.132",
+            "stoppedAt": "2026-10-28 20:25:01.470"
+          },
+          {
+            "id": 12,
+            "workflowId": "p75bYL5ub3gu3Rym",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:26:00.654",
+            "stoppedAt": "2026-10-28 20:26:01.357"
+          },
+          {
+            "id": 15,
+            "workflowId": "p75bYL5ub3gu3Rym",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:27:00.129",
+            "stoppedAt": "2026-10-28 20:27:02.536"
+          },
+          {
+            "id": 18,
+            "workflowId": "p75bYL5ub3gu3Rym",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:28:00.111",
+            "stoppedAt": "2026-10-28 20:28:00.806"
+          },
+          {
+            "id": 20,
+            "workflowId": "p75bYL5ub3gu3Rym",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:30:01.084",
+            "stoppedAt": "2026-10-28 20:30:03.680"
+          },
+          {
+            "id": 23,
+            "workflowId": "p75bYL5ub3gu3Rym",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:31:00.152",
+            "stoppedAt": "2026-10-28 20:31:01.202"
+          },
+          {
+            "id": 28,
+            "workflowId": "p75bYL5ub3gu3Rym",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:32:00.289",
+            "stoppedAt": "2026-10-28 20:32:01.587"
+          },
+          {
+            "id": 31,
+            "workflowId": "p75bYL5ub3gu3Rym",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:33:00.229",
+            "stoppedAt": "2026-10-28 20:33:02.003"
+          }
+        ]
+      },
+      {
+        "workflow": "WF16:",
+        "executions": [
+          {
+            "id": 5,
+            "workflowId": "IY2gBY60Mqxq4aBu",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:24:00.287",
+            "stoppedAt": "2026-10-28 20:24:01.680"
+          },
+          {
+            "id": 7,
+            "workflowId": "IY2gBY60Mqxq4aBu",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:25:00.182",
+            "stoppedAt": "2026-10-28 20:25:01.102"
+          },
+          {
+            "id": 11,
+            "workflowId": "IY2gBY60Mqxq4aBu",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:26:00.438",
+            "stoppedAt": "2026-10-28 20:26:01.020"
+          },
+          {
+            "id": 14,
+            "workflowId": "IY2gBY60Mqxq4aBu",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:27:00.088",
+            "stoppedAt": "2026-10-28 20:27:00.577"
+          },
+          {
+            "id": 17,
+            "workflowId": "IY2gBY60Mqxq4aBu",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:28:00.085",
+            "stoppedAt": "2026-10-28 20:28:00.390"
+          },
+          {
+            "id": 21,
+            "workflowId": "IY2gBY60Mqxq4aBu",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:30:01.131",
+            "stoppedAt": "2026-10-28 20:30:03.897"
+          },
+          {
+            "id": 24,
+            "workflowId": "IY2gBY60Mqxq4aBu",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:31:00.187",
+            "stoppedAt": "2026-10-28 20:31:00.986"
+          },
+          {
+            "id": 26,
+            "workflowId": "IY2gBY60Mqxq4aBu",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:32:00.206",
+            "stoppedAt": "2026-10-28 20:32:00.984"
+          },
+          {
+            "id": 29,
+            "workflowId": "IY2gBY60Mqxq4aBu",
+            "mode": "trigger",
+            "status": "success",
+            "finished": 1,
+            "startedAt": "2026-10-28 20:33:00.147",
+            "stoppedAt": "2026-10-28 20:33:00.904"
+          }
+        ]
+      }
+    ],
+    "faults": [
+      {
+        "dependency": "ollama",
+        "seconds": 52.8023247718811,
+        "job_states": [
+          {
+            "id": "480404df-4f73-55bb-bfe4-6418f5660b1a",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "bfd67d16-b59f-5b13-8d8b-5233acb2b93d",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "d66076a7-649c-5c3a-b883-bd36d0fbc784",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "3732ef88-b83f-5a50-b9ba-12541191b1fd",
+            "state": "verified",
+            "attempts": 2,
+            "error": null,
+            "lease_until": null
+          }
+        ]
+      },
+      {
+        "dependency": "qdrant",
+        "seconds": 68.68868017196655,
+        "job_states": [
+          {
+            "id": "480404df-4f73-55bb-bfe4-6418f5660b1a",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "bfd67d16-b59f-5b13-8d8b-5233acb2b93d",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "d66076a7-649c-5c3a-b883-bd36d0fbc784",
+            "state": "verified",
+            "attempts": 1,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "3732ef88-b83f-5a50-b9ba-12541191b1fd",
+            "state": "verified",
+            "attempts": 2,
+            "error": null,
+            "lease_until": null
+          },
+          {
+            "id": "316aa6f6-e491-5892-bc47-af661e7c220a",
+            "state": "verified",
+            "attempts": 2,
+            "error": null,
+            "lease_until": null
+          }
+        ]
+      }
+    ],
+    "collector_receipts": [
+      {
+        "id": "24bf6330-1569-4a50-ae26-87bb2b997cd5",
+        "request_key": "daily:2026-10-29",
+        "receipt": {
+          "actor_id": null,
+          "authority": "machine",
+          "component": "gateway",
+          "kind": "daily_brief",
+          "model_calls": 0,
+          "native_write_allowed": false,
+          "project_id": 5,
+          "ready": 5,
+          "request_key": "daily:2026-10-29",
+          "run_id": "24bf6330-1569-4a50-ae26-87bb2b997cd5",
+          "state": "COMPLETED",
+          "status": "READY",
+          "targets": 5,
+          "trace_id": "24bf6330-1569-4a50-ae26-87bb2b997cd5",
+          "unavailable": 0
+        }
+      },
+      {
+        "id": "2302a628-fe0f-4bed-97ca-ed3c6cac2add",
+        "request_key": "weekly:2026-10-26",
+        "receipt": {
+          "actor_id": null,
+          "authority": "machine",
+          "component": "gateway",
+          "kind": "weekly_summary",
+          "model_calls": 0,
+          "native_write_allowed": false,
+          "project_id": 5,
+          "ready": 5,
+          "request_key": "weekly:2026-10-26",
+          "run_id": "2302a628-fe0f-4bed-97ca-ed3c6cac2add",
+          "state": "COMPLETED",
+          "status": "READY",
+          "targets": 5,
+          "trace_id": "2302a628-fe0f-4bed-97ca-ed3c6cac2add",
+          "unavailable": 0
+        }
+      }
+    ],
+    "models": 0,
+    "proposals": 0,
+    "metrics": [
+      {
+        "phase": "initial",
+        "at": 1793219009.8530457,
+        "containers": [
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.15%",
+            "Container": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-gateway",
+            "ID": "4d83bbfaa099",
+            "MemPerc": "27.98%",
+            "MemUsage": "107.4MiB / 384MiB",
+            "Name": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-gateway",
+            "NetIO": "350kB / 34.4kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.33%",
+            "Container": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-n8n",
+            "ID": "758482ddebc1",
+            "MemPerc": "34.73%",
+            "MemUsage": "533.4MiB / 1.5GiB",
+            "Name": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-n8n",
+            "NetIO": "872B / 126B",
+            "PIDs": "39"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.51%",
+            "Container": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-vector",
+            "ID": "1725f60a5ee9",
+            "MemPerc": "21.89%",
+            "MemUsage": "84.06MiB / 384MiB",
+            "Name": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-vector",
+            "NetIO": "2.41kB / 1.31kB",
+            "PIDs": "59"
+          }
+        ],
+        "n8n": {
+          "workflows": [
+            {
+              "id": "CDKvDlZCav3KPdYH",
+              "name": "WF07: Daily Project Brief",
+              "active": 1,
+              "activeVersionId": "dae38833-44cc-4085-894c-e5745cb2aec5"
+            },
+            {
+              "id": "p75bYL5ub3gu3Rym",
+              "name": "WF12: Weekly Summary",
+              "active": 1,
+              "activeVersionId": "bb5f2d13-0989-4c0e-959a-41a961758731"
+            },
+            {
+              "id": "IY2gBY60Mqxq4aBu",
+              "name": "WF16: Main Health Monitoring",
+              "active": 1,
+              "activeVersionId": "d7400917-b087-4dad-846b-785343b0c6c2"
+            },
+            {
+              "id": "aUTEk2oWHrYcWXiq",
+              "name": "WF04: Multi-Agent Execution Tracking",
+              "active": 1,
+              "activeVersionId": "db6f50c6-666b-40d9-b6dc-9c066ed95b10"
+            },
+            {
+              "id": "oTEM0Ni7tgcLk1cB",
+              "name": "Daily Partial Contract old",
+              "active": 1,
+              "activeVersionId": "3ceaf452-84fa-4f16-8812-646fa1db6d4f"
+            },
+            {
+              "id": "8ddsc2RKFGvEGxBw",
+              "name": "Daily Partial Contract candidate",
+              "active": 1,
+              "activeVersionId": "6a92a418-8824-443a-915e-a992493819d6"
+            }
+          ],
+          "executions": [],
+          "bytes": 2420736,
+          "integrity": {
+            "quick_check": "ok"
+          }
+        }
+      },
+      {
+        "phase": "restarting",
+        "at": 1793219338.0080233,
+        "containers": [
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.24%",
+            "Container": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-gateway",
+            "ID": "4d83bbfaa099",
+            "MemPerc": "22.44%",
+            "MemUsage": "86.16MiB / 384MiB",
+            "Name": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-gateway",
+            "NetIO": "219kB / 6.52kB",
+            "PIDs": "2"
+          },
+          {
+            "BlockIO": "184kB / 0B",
+            "CPUPerc": "113.46%",
+            "Container": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-n8n",
+            "ID": "758482ddebc1",
+            "MemPerc": "10.57%",
+            "MemUsage": "162.4MiB / 1.5GiB",
+            "Name": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-n8n",
+            "NetIO": "872B / 126B",
+            "PIDs": "12"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.67%",
+            "Container": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-vector",
+            "ID": "1725f60a5ee9",
+            "MemPerc": "23.63%",
+            "MemUsage": "90.76MiB / 384MiB",
+            "Name": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-vector",
+            "NetIO": "210kB / 53.6kB",
+            "PIDs": "59"
+          }
+        ],
+        "n8n": {
+          "workflows": [
+            {
+              "id": "CDKvDlZCav3KPdYH",
+              "name": "WF07: Daily Project Brief",
+              "active": 1,
+              "activeVersionId": "dae38833-44cc-4085-894c-e5745cb2aec5"
+            },
+            {
+              "id": "p75bYL5ub3gu3Rym",
+              "name": "WF12: Weekly Summary",
+              "active": 1,
+              "activeVersionId": "bb5f2d13-0989-4c0e-959a-41a961758731"
+            },
+            {
+              "id": "IY2gBY60Mqxq4aBu",
+              "name": "WF16: Main Health Monitoring",
+              "active": 1,
+              "activeVersionId": "d7400917-b087-4dad-846b-785343b0c6c2"
+            },
+            {
+              "id": "aUTEk2oWHrYcWXiq",
+              "name": "WF04: Multi-Agent Execution Tracking",
+              "active": 1,
+              "activeVersionId": "db6f50c6-666b-40d9-b6dc-9c066ed95b10"
+            },
+            {
+              "id": "oTEM0Ni7tgcLk1cB",
+              "name": "Daily Partial Contract old",
+              "active": 1,
+              "activeVersionId": "3ceaf452-84fa-4f16-8812-646fa1db6d4f"
+            },
+            {
+              "id": "8ddsc2RKFGvEGxBw",
+              "name": "Daily Partial Contract candidate",
+              "active": 1,
+              "activeVersionId": "6a92a418-8824-443a-915e-a992493819d6"
+            },
+            {
+              "id": "BeI1qncKLAbGmLCV",
+              "name": "WF03: Natural Language Request Orchestrator",
+              "active": 1,
+              "activeVersionId": "33f53076-5dd9-485a-a059-c4904c165673"
+            }
+          ],
+          "executions": [
+            {
+              "id": 1,
+              "workflowId": "oTEM0Ni7tgcLk1cB",
+              "mode": "webhook",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:23:30.800",
+              "stoppedAt": "2026-10-28 20:23:31.098"
+            },
+            {
+              "id": 2,
+              "workflowId": "8ddsc2RKFGvEGxBw",
+              "mode": "webhook",
+              "status": "error",
+              "finished": 0,
+              "startedAt": "2026-10-28 20:23:31.964",
+              "stoppedAt": "2026-10-28 20:23:32.760"
+            },
+            {
+              "id": 3,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:24:00.212",
+              "stoppedAt": "2026-10-28 20:24:06.169"
+            },
+            {
+              "id": 4,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:24:00.252",
+              "stoppedAt": "2026-10-28 20:24:30.186"
+            },
+            {
+              "id": 5,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:24:00.287",
+              "stoppedAt": "2026-10-28 20:24:01.680"
+            },
+            {
+              "id": 6,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:00.132",
+              "stoppedAt": "2026-10-28 20:25:01.470"
+            },
+            {
+              "id": 7,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:00.182",
+              "stoppedAt": "2026-10-28 20:25:01.102"
+            },
+            {
+              "id": 8,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:00.253",
+              "stoppedAt": "2026-10-28 20:25:01.502"
+            },
+            {
+              "id": 9,
+              "workflowId": "aUTEk2oWHrYcWXiq",
+              "mode": "webhook",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:01.183",
+              "stoppedAt": "2026-10-28 20:25:02.020"
+            },
+            {
+              "id": 10,
+              "workflowId": "BeI1qncKLAbGmLCV",
+              "mode": "webhook",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:02.253",
+              "stoppedAt": "2026-10-28 20:25:03.057"
+            },
+            {
+              "id": 11,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:26:00.438",
+              "stoppedAt": "2026-10-28 20:26:01.020"
+            },
+            {
+              "id": 12,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:26:00.654",
+              "stoppedAt": "2026-10-28 20:26:01.357"
+            },
+            {
+              "id": 13,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:26:00.680",
+              "stoppedAt": "2026-10-28 20:26:01.387"
+            },
+            {
+              "id": 14,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:27:00.088",
+              "stoppedAt": "2026-10-28 20:27:00.577"
+            },
+            {
+              "id": 15,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:27:00.129",
+              "stoppedAt": "2026-10-28 20:27:02.536"
+            },
+            {
+              "id": 16,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:27:00.158",
+              "stoppedAt": "2026-10-28 20:27:02.589"
+            },
+            {
+              "id": 17,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:28:00.085",
+              "stoppedAt": "2026-10-28 20:28:00.390"
+            },
+            {
+              "id": 18,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:28:00.111",
+              "stoppedAt": "2026-10-28 20:28:00.806"
+            },
+            {
+              "id": 19,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:28:00.133",
+              "stoppedAt": "2026-10-28 20:28:00.824"
+            }
+          ],
+          "bytes": 2633728,
+          "integrity": {
+            "quick_check": "ok"
+          }
+        }
+      },
+      {
+        "phase": "final",
+        "at": 1793219638.1159947,
+        "containers": [
+          {
+            "BlockIO": "61.4kB / 0B",
+            "CPUPerc": "0.42%",
+            "Container": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-gateway",
+            "ID": "4d83bbfaa099",
+            "MemPerc": "33.43%",
+            "MemUsage": "128.4MiB / 384MiB",
+            "Name": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-gateway",
+            "NetIO": "2.27MB / 324kB",
+            "PIDs": "4"
+          },
+          {
+            "BlockIO": "184kB / 0B",
+            "CPUPerc": "0.68%",
+            "Container": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-n8n",
+            "ID": "758482ddebc1",
+            "MemPerc": "26.45%",
+            "MemUsage": "406.2MiB / 1.5GiB",
+            "Name": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-n8n",
+            "NetIO": "19.9kB / 11.6kB",
+            "PIDs": "37"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.89%",
+            "Container": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-vector",
+            "ID": "1725f60a5ee9",
+            "MemPerc": "24.00%",
+            "MemUsage": "92.16MiB / 384MiB",
+            "Name": "qldapm-automation-6e8ba479-eac1-4dc6-9601-3412caf9a87f-vector",
+            "NetIO": "245kB / 65.7kB",
+            "PIDs": "62"
+          }
+        ],
+        "n8n": {
+          "workflows": [
+            {
+              "id": "CDKvDlZCav3KPdYH",
+              "name": "WF07: Daily Project Brief",
+              "active": 1,
+              "activeVersionId": "dae38833-44cc-4085-894c-e5745cb2aec5"
+            },
+            {
+              "id": "p75bYL5ub3gu3Rym",
+              "name": "WF12: Weekly Summary",
+              "active": 1,
+              "activeVersionId": "bb5f2d13-0989-4c0e-959a-41a961758731"
+            },
+            {
+              "id": "IY2gBY60Mqxq4aBu",
+              "name": "WF16: Main Health Monitoring",
+              "active": 1,
+              "activeVersionId": "d7400917-b087-4dad-846b-785343b0c6c2"
+            },
+            {
+              "id": "aUTEk2oWHrYcWXiq",
+              "name": "WF04: Multi-Agent Execution Tracking",
+              "active": 1,
+              "activeVersionId": "db6f50c6-666b-40d9-b6dc-9c066ed95b10"
+            },
+            {
+              "id": "oTEM0Ni7tgcLk1cB",
+              "name": "Daily Partial Contract old",
+              "active": 1,
+              "activeVersionId": "3ceaf452-84fa-4f16-8812-646fa1db6d4f"
+            },
+            {
+              "id": "8ddsc2RKFGvEGxBw",
+              "name": "Daily Partial Contract candidate",
+              "active": 1,
+              "activeVersionId": "6a92a418-8824-443a-915e-a992493819d6"
+            },
+            {
+              "id": "BeI1qncKLAbGmLCV",
+              "name": "WF03: Natural Language Request Orchestrator",
+              "active": 1,
+              "activeVersionId": "33f53076-5dd9-485a-a059-c4904c165673"
+            }
+          ],
+          "executions": [
+            {
+              "id": 1,
+              "workflowId": "oTEM0Ni7tgcLk1cB",
+              "mode": "webhook",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:23:30.800",
+              "stoppedAt": "2026-10-28 20:23:31.098"
+            },
+            {
+              "id": 2,
+              "workflowId": "8ddsc2RKFGvEGxBw",
+              "mode": "webhook",
+              "status": "error",
+              "finished": 0,
+              "startedAt": "2026-10-28 20:23:31.964",
+              "stoppedAt": "2026-10-28 20:23:32.760"
+            },
+            {
+              "id": 3,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:24:00.212",
+              "stoppedAt": "2026-10-28 20:24:06.169"
+            },
+            {
+              "id": 4,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:24:00.252",
+              "stoppedAt": "2026-10-28 20:24:30.186"
+            },
+            {
+              "id": 5,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:24:00.287",
+              "stoppedAt": "2026-10-28 20:24:01.680"
+            },
+            {
+              "id": 6,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:00.132",
+              "stoppedAt": "2026-10-28 20:25:01.470"
+            },
+            {
+              "id": 7,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:00.182",
+              "stoppedAt": "2026-10-28 20:25:01.102"
+            },
+            {
+              "id": 8,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:00.253",
+              "stoppedAt": "2026-10-28 20:25:01.502"
+            },
+            {
+              "id": 9,
+              "workflowId": "aUTEk2oWHrYcWXiq",
+              "mode": "webhook",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:01.183",
+              "stoppedAt": "2026-10-28 20:25:02.020"
+            },
+            {
+              "id": 10,
+              "workflowId": "BeI1qncKLAbGmLCV",
+              "mode": "webhook",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:25:02.253",
+              "stoppedAt": "2026-10-28 20:25:03.057"
+            },
+            {
+              "id": 11,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:26:00.438",
+              "stoppedAt": "2026-10-28 20:26:01.020"
+            },
+            {
+              "id": 12,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:26:00.654",
+              "stoppedAt": "2026-10-28 20:26:01.357"
+            },
+            {
+              "id": 13,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:26:00.680",
+              "stoppedAt": "2026-10-28 20:26:01.387"
+            },
+            {
+              "id": 14,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:27:00.088",
+              "stoppedAt": "2026-10-28 20:27:00.577"
+            },
+            {
+              "id": 15,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:27:00.129",
+              "stoppedAt": "2026-10-28 20:27:02.536"
+            },
+            {
+              "id": 16,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:27:00.158",
+              "stoppedAt": "2026-10-28 20:27:02.589"
+            },
+            {
+              "id": 17,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:28:00.085",
+              "stoppedAt": "2026-10-28 20:28:00.390"
+            },
+            {
+              "id": 18,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:28:00.111",
+              "stoppedAt": "2026-10-28 20:28:00.806"
+            },
+            {
+              "id": 19,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:28:00.133",
+              "stoppedAt": "2026-10-28 20:28:00.824"
+            },
+            {
+              "id": 20,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:30:01.084",
+              "stoppedAt": "2026-10-28 20:30:03.680"
+            },
+            {
+              "id": 21,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:30:01.131",
+              "stoppedAt": "2026-10-28 20:30:03.897"
+            },
+            {
+              "id": 22,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:30:01.179",
+              "stoppedAt": "2026-10-28 20:30:03.727"
+            },
+            {
+              "id": 23,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:31:00.152",
+              "stoppedAt": "2026-10-28 20:31:01.202"
+            },
+            {
+              "id": 24,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:31:00.187",
+              "stoppedAt": "2026-10-28 20:31:00.986"
+            },
+            {
+              "id": 25,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:31:00.227",
+              "stoppedAt": "2026-10-28 20:31:01.308"
+            },
+            {
+              "id": 26,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:32:00.206",
+              "stoppedAt": "2026-10-28 20:32:00.984"
+            },
+            {
+              "id": 27,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:32:00.246",
+              "stoppedAt": "2026-10-28 20:32:01.448"
+            },
+            {
+              "id": 28,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:32:00.289",
+              "stoppedAt": "2026-10-28 20:32:01.587"
+            },
+            {
+              "id": 29,
+              "workflowId": "IY2gBY60Mqxq4aBu",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:33:00.147",
+              "stoppedAt": "2026-10-28 20:33:00.904"
+            },
+            {
+              "id": 30,
+              "workflowId": "CDKvDlZCav3KPdYH",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:33:00.183",
+              "stoppedAt": "2026-10-28 20:33:01.270"
+            },
+            {
+              "id": 31,
+              "workflowId": "p75bYL5ub3gu3Rym",
+              "mode": "trigger",
+              "status": "success",
+              "finished": 1,
+              "startedAt": "2026-10-28 20:33:00.229",
+              "stoppedAt": "2026-10-28 20:33:02.003"
+            }
+          ],
+          "bytes": 2633728,
+          "integrity": {
+            "quick_check": "ok"
+          }
+        }
+      }
+    ],
+    "execution_statuses": {
+      "success": 30,
+      "error": 1
+    },
+    "native_reads": {
+      "count": 12,
+      "concurrency": 3,
+      "minimum_seconds": 3.8320499999972526,
+      "mean_seconds": 7.42446977500246,
+      "maximum_seconds": 10.906560800009174
+    },
+    "provider_and_trace": {
+      "status": "CLONE_N8N_TRACE_PASS_LIVE_PROVIDER_BLOCKED",
+      "parent_trace_id": "8799d810-bd62-431c-a20e-7c102b29f92d",
+      "run_id": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+      "native_id": 377,
+      "trace": {
+        "status": 200,
+        "body": {
+          "status": "TRACE_RETRIEVED",
+          "total_events": 7,
+          "events": [
+            {
+              "schema_version": 1,
+              "run_id": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "task_id": "ff94ba3e-9516-4c1f-ac2c-4a536c16ca17",
+              "actor_id": 18,
+              "project_id": 5,
+              "trace_id": "6bb385ed-9ee4-4294-a21b-4ab0d8f62f06",
+              "event_id": "6bb385ed-9ee4-4294-a21b-4ab0d8f62f06",
+              "at": 1793219088.2348585,
+              "action": "start_ai_run",
+              "target": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "outcome": "queued",
+              "version": null
+            },
+            {
+              "schema_version": 1,
+              "run_id": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "task_id": "ff94ba3e-9516-4c1f-ac2c-4a536c16ca17",
+              "actor_id": 18,
+              "project_id": 5,
+              "trace_id": "6bb385ed-9ee4-4294-a21b-4ab0d8f62f06",
+              "event_id": "68136fe4-65a6-4e4a-a788-b4b217fc0100",
+              "at": 1793219088.3144631,
+              "action": "agent_run_state",
+              "target": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "outcome": "RUNNING",
+              "version": null
+            },
+            {
+              "schema_version": 1,
+              "run_id": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "task_id": "ff94ba3e-9516-4c1f-ac2c-4a536c16ca17",
+              "actor_id": 18,
+              "project_id": 5,
+              "trace_id": "6bb385ed-9ee4-4294-a21b-4ab0d8f62f06",
+              "event_id": "2a45dc02-f0d3-47da-807c-9c010978d93c",
+              "at": 1793219090.2629764,
+              "action": "trace_native",
+              "target": "GET",
+              "outcome": "attempt",
+              "version": null
+            },
+            {
+              "schema_version": 1,
+              "run_id": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "task_id": "ff94ba3e-9516-4c1f-ac2c-4a536c16ca17",
+              "actor_id": 18,
+              "project_id": 5,
+              "trace_id": "6bb385ed-9ee4-4294-a21b-4ab0d8f62f06",
+              "event_id": "b549a101-337e-4b31-913a-56b0ab6e60cf",
+              "at": 1793219090.7883916,
+              "action": "trace_agent",
+              "target": "scoped-resource",
+              "outcome": "attempt",
+              "version": null
+            },
+            {
+              "schema_version": 1,
+              "run_id": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "task_id": "ff94ba3e-9516-4c1f-ac2c-4a536c16ca17",
+              "actor_id": 18,
+              "project_id": 5,
+              "trace_id": "6bb385ed-9ee4-4294-a21b-4ab0d8f62f06",
+              "event_id": "67f9873b-82b3-495c-b9a3-ee8d3effd67d",
+              "at": 1793219090.9830077,
+              "action": "trace_agent",
+              "target": "scoped-resource",
+              "outcome": "attempt",
+              "version": null
+            },
+            {
+              "schema_version": 1,
+              "run_id": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "task_id": "ff94ba3e-9516-4c1f-ac2c-4a536c16ca17",
+              "actor_id": 18,
+              "project_id": 5,
+              "trace_id": "6bb385ed-9ee4-4294-a21b-4ab0d8f62f06",
+              "event_id": "c6273e8d-2411-45dc-84c3-80c24597bfc2",
+              "at": 1793219091.4664745,
+              "action": "agent_run_state",
+              "target": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "outcome": "COMPLETED",
+              "version": null
+            },
+            {
+              "schema_version": 1,
+              "run_id": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "task_id": "ff94ba3e-9516-4c1f-ac2c-4a536c16ca17",
+              "actor_id": 18,
+              "project_id": 5,
+              "trace_id": "6bb385ed-9ee4-4294-a21b-4ab0d8f62f06",
+              "event_id": "2b459e54-bd1c-4016-86fa-9233b4f94406",
+              "at": 1793219091.5690901,
+              "action": "supervisor_run",
+              "target": "4c0c1e86-5157-4cc9-8206-fbac81887a13",
+              "outcome": "ok",
+              "version": null
+            }
+          ],
+          "correlation_id": "8d805123-9d52-4cd1-9b55-dab9d02a106a",
+          "fetched_at": "2026-10-28T20:25:01.944Z"
+        }
+      },
+      "provider_boundary": {
+        "status": 503,
+        "body": {
+          "error": "GEMINI_MULTI_AGENT_DISABLED",
+          "source": "gemini"
+        }
+      },
+      "rag_reads": {
+        "concurrency": 3,
+        "runs": [
+          {
+            "seconds": 18.174399201,
+            "attempts": 1,
+            "citations": [
+              {
+                "native_id": 377,
+                "source_id": "op:wp:377",
+                "document_id": "e45d3c2f7183ec96adf5eeec7b428fe072450d42fd3a152619d975221347a274",
+                "citation": "/work_packages/377",
+                "lock_version": 1
+              }
+            ]
+          },
+          {
+            "seconds": 18.273661245000003,
+            "attempts": 1,
+            "citations": [
+              {
+                "native_id": 377,
+                "source_id": "op:wp:377",
+                "document_id": "e45d3c2f7183ec96adf5eeec7b428fe072450d42fd3a152619d975221347a274",
+                "citation": "/work_packages/377",
+                "lock_version": 1
+              }
+            ]
+          },
+          {
+            "seconds": 16.652260768,
+            "attempts": 1,
+            "citations": [
+              {
+                "native_id": 377,
+                "source_id": "op:wp:377",
+                "document_id": "e45d3c2f7183ec96adf5eeec7b428fe072450d42fd3a152619d975221347a274",
+                "citation": "/work_packages/377",
+                "lock_version": 1
+              }
+            ]
+          }
+        ]
+      },
+      "wf03": "BeI1qncKLAbGmLCV",
+      "at": "2026-10-28T20:25:21.333Z"
+    },
+    "limits": [
+      "No test Gemini credential supplied; no production provider key copied; continuous real-model gate remains EXTERNAL_DEPENDENCY_BLOCKED",
+      "Only this fixture has real vectors; imported baseline is text-only",
+      "Minute schedules in clone, actual production cron unchanged",
+      "Native writes only in disposable clone; no human QA decisions",
+      "Physical reboot and full DR not exercised"
+    ]
+  },
+  "regression": {
+    "daily_weekly_workflow_tests": {
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0
+    },
+    "provider_queue_lease_process_monitor_tests": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "provider_transport": "MockTransport, not live outage injection"
+    },
+    "failed_harness_attempts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "passed_attempt": 7
+  },
+  "acceptance_gates": {
+    "A_NATIVE_KNOWLEDGE": "PASS_REAL_CLONE",
+    "B_KNOWLEDGE_AI": "LOCAL_SUPERVISOR_PASS; LIVE_GEMINI_EXTERNAL_DEPENDENCY_BLOCKED",
+    "C_SCHEDULES": "PASS_NINE_TRIGGER_CYCLES_EACH_AND_RESTART_IN_CLONE",
+    "D_RECOVERY": "OLLAMA_PROXY_QDRANT_GATEWAY_N8N_PASS; GEMINI_TIMEOUT_QUOTA_UNIT_MOCK_PASS",
+    "E_STABILITY": "PASS_BOUNDED_780_SECONDS_NOT_24_HOURS",
+    "F_DEPLOYMENT": "PASS_WF07_ONLY_NO_IMAGE_OR_CONTAINER_RESTART"
+  },
+  "preservation": {
+    "main_native_business_writes": 0,
+    "main_human_qa_decisions": 0,
+    "staging_operations_by_agent": 0,
+    "global_docker_restart_by_agent": false,
+    "volumes_deleted": 0,
+    "production_cron_changed": false,
+    "historical_unknown_requests_preserved": true
+  },
+  "limitations": [
+    "No separate authorized Gemini test credential configured; real continuous clone-change-to-Gemini remains blocked",
+    "Windows interactive login and Docker availability required; physical Windows reboot unqualified",
+    "External email/chat unconfigured and not sent",
+    "No Qdrant/cross-service DR repeated",
+    "Latest20comments/750chars, edit-clear audit bounded to about11minutes at339WPs",
+    "Minute schedules only in clone; Main post-patch daily08:00 and Fridayweekly future triggers not observed in this run",
+    "Only fixture vectors complete in clone; imported corpus is text-only",
+    "Metrics are three samples; no memory leak absence or24hour soak claim",
+    "SQLite base file growth measured; WAL/SHM not included in initial size",
+    "Unknown Native-write interruption not reinjected; existing guards tested by targeted units and prior unchanged qualification"
+  ],
+  "source_sha256": {
+    "openproject/ai/automation/deploy_real_n8n_workflows.py": "5dfbb7aeb0e01de16581cae744cee6e7222f4d8066237a63f60fa6811fac19f1",
+    "openproject/ai/automation/automation_stability_qualification.py": "d586f58a67866f9642a7e3defb754b3d44d4ce2b00d2d08bc7f9ff91d6921f56",
+    "openproject/ai/tests/test_daily_workflow_finalization.py": "d19dc8e1ab39141f7a16728684654d1fba545bd69ae89b55464fdba54311dfb8",
+    "openproject/ai/tests/automation_dependency_proxy.py": "f97e6e1e9c34e6719e67d47a2e7f8899944a607dc534868dc2f4579a6ff586ce",
+    "openproject/ai/tests/automation_schedule_setup.js": "28c0a9bbe7002f97321a9f3e1864c9f7ff7d8492b1ace5e8bc745c3c3e57342b",
+    "openproject/ai/tests/automation_provider_and_trace_probe.js": "69e2c6b1eb8301220596ecb9bd3e89c25b89450e0a6757cc70b4ae3d0b4a61d7"
+  },
+  "private_evidence": {
+    "root": "%LOCALAPPDATA%/QLDAPM/openproject-ai/operator/automation-hardening-20261029",
+    "sha256": {
+      "baseline-preflight.json": "0679a45d225c986ca49b904d7ed671723fa7517ab45f6ecc6ee4285bf34c624c",
+      "baseline-business-fingerprints.json": "0e3fb4d5a1f0be16e3e3aae2c2671716843423ec8fd2508db409ab099a3af261",
+      "baseline-runtime.json": "a4ba2b4cbe45dc7a40242d94f46a3c459c878ddba692f5b22d423b2bac6c4bb3",
+      "baseline-pipeline-provider.json": "4a94832c6f8442b25971f616bb57067b74e3f1e39ce1cc352dfb4a58196c5652",
+      "user-docker-restart-recovery.json": "781f941bff65e382dfd38d90bcad4a9191fb42cb3cbffc1c9edf9f6e2ed00348",
+      "post-user-docker-restart-preflight.json": "61c5d04f1031232a6473a71adb35b63eef4cfded187bf539bcc842f7939073e6",
+      "post-restart-pm-auth.json": "e41ede87d147212aa901abc0edb3316581ee20f5d156d1c29996e872c7c47eba",
+      "post-restart-monitor-executions.json": "582f0fb14f93fa7dd2d70c6b94fa0561434f33df81c7ce4b62e70ad9a225fa71",
+      "windows-tasks-current.json": "840cb7033b1d4933a11594558c25fa40f2623d7fbbae0daba8878ef45d48a001",
+      "WF07-red-test.log": "8c17261bc9cf1efc1748193eeb7cbccd2d8c726bf48fa0a0a560e6ed7cdb2993",
+      "WF07-affected-regression.log": "d0de17210d3f7a731cd80ed0cefdcd924a2337daa13d5639519387860ded236d",
+      "fault-regression.log": "d8bfa6b1a2d77f0ef364332aebc4a5240c00f1fb030ce56e5ab910db4b67b97f",
+      "qualification-7/result.json": "56f149f48a90452cc0c0cf486648a7072fb45cccdc95857574b0342e759593e1",
+      "qualification-7/fixture/provider-trace-result.json": "57518939ef06ad534c503076b0f23613b40f205bf02ac2b64cfab65b9eb9771b",
+      "deployment-WF07/result.json": "4a07b00e53b5f1d3797ad729eddf5d1450b7bee854b0780c9290e2274cce69ca",
+      "final-preflight.json": "9d251248f7b850704e432d6a983d3dc9066afd15d0a764845726bee601a14eec",
+      "final-n8n-inflight.json": "e6fd5749c8e780e956989388225a0bde8c3b17d8b77c7a309859a56b91af1c1e"
+    }
+  },
+  "main_n8n_final_inflight": {
+    "at": "2026-10-28T20:45:28.240Z",
+    "unfinished": []
+  },
+  "delivery_qa": {
+    "status": "EVIDENCE_LINKS_SOURCE_HASHES_SECRET_SCAN_PASS",
+    "documents": 7,
+    "source_files": 6,
+    "plaintext_secret_matches": 0,
+    "unfinished_main_n8n_executions": 0
+  }
+}

@@ -1,0 +1,67 @@
+[AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit
+QLDAPM PM/BA engineering plan 8751d17a-4c6c-4f5f-b00c-6e1239f5353c
+Unit: feedback-9d0ff35386a63183
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-e44b47e2e8610c4f"],"objective":"Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLite schema.","priority":1,"unit":"feedback-9d0ff35386a63183"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/title với ID hợp lệ trả về HTTP 200 và payload {\"id\": id, \"title\": title}.","AC2: GET /tasks/{task_id}/title với ID không tồn tại trả về HTTP 404.","AC3: GET /tasks/{task_id}/title với ID không phải số nguyên trả về HTTP 422.","AC4: Tiêu đề chứa ký tự Unicode được bảo toàn chính xác trong phản hồi JSON.","AC5: Các chức năng CRUD cũ, search, /healthz, /tasks/summary, /exists tiếp tục hoạt động đầy đủ."],"api_behavior":["GET /tasks/{task_id}/title với task_id hợp lệ trả về HTTP 200 và JSON chứa {\"id\": task_id, \"title\": string}.","GET /tasks/{task_id}/title với task_id không tồn tại trả về HTTP 404.","GET /tasks/{task_id}/title với task_id không phải số nguyên trả về HTTP 422.","Hỗ trợ đầy đủ định dạng tiêu đề Unicode (tiếng Việt, emoji) không bị lỗi encoding."],"citations":[379],"edge_cases":["Truyền task_id dưới dạng chuỗi chữ cái hoặc số thực sẽ kích hoạt lỗi validation 422.","Truyền task_id có giá trị âm hoặc vượt quá giới hạn integer trả về 422 hoặc 404.","Tiêu đề task chứa các ký tự đặc biệt hoặc Unicode phức tạp được hiển thị và trả về hoàn toàn nguyên vẹn."],"limitations":["Không thay đổi CSDL SQLite schema.","Không tự động merge hoặc deploy code mà không có sự cho phép.","Chỉ thực hiện trong phạm vi repository Luim3141/mini-task-manager."],"scope":["Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác.","Xử lý HTTP 404 cho task_id không tồn tại.","Xử lý HTTP 422 cho task_id không phải là số nguyên hợp lệ.","Đảm bảo giữ nguyên các route CRUD, search, /healthz, /tasks/summary và /exists hiện có.","Giữ nguyên SQLite schema hiện hành không thay đổi."],"summary":"Phát triẻn endpoint GET /tasks/{task_id}/title cho mini task manager dẻ trả vè tiêu đè task chính xác ho͐-c mã 404/422 mà không thay đổi SQLite schema hoặc làm hỏng các route hiện có."},"reviewers":["reviewer","qa"],"virtual_executor":"dev"}
+
+Engineering unit feedback-9d0ff35386a63183
+
+{
+  "status": "succeeded",
+  "text": "Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "b20fb554cb0b45f2938ac11ba9e736708dcb1bf0",
+  "head_sha": "4a794e2b3d62247881fef4c0908eeeee9f043ba2",
+  "pr_url": "[Native-reference:12dfcc68fb42f83d]",
+  "delivery": {
+    "baseRefName": "codex/openclaw-feedback-e44b47e2e8610c4f",
+    "headRefName": "codex/openclaw-feedback-9d0ff35386a63183",
+    "headRefOid": "4a794e2b3d62247881fef4c0908eeeee9f043ba2",
+    "state": "OPEN",
+    "url": "[Native-reference:12dfcc68fb42f83d]"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\447d4fd9-fd03-4a41-9468-09bad8629d48\\acceptance-0.xml",
+    "log_sha256": "f8cb78f04ac6bb0cb67f39da13430dcf559f3901a3ad4774676132070357928f"
+  },
+  "review_evidence": {
+    "revision": "5259bcec53c4c9da80855369a502b91a969186dbac4bbd3e54bae02310ade5c5",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-9d0ff35386a63183 && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\447d4fd9-fd03-4a41-9468-09bad8629d48",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_tasks.py"
+  ]
+}
+Bình luận #1147: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#9 Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit]([Native-reference:12dfcc68fb42f83d])
+- Trạng thái GitHub: **`OPEN`**
+- Base Branch: `codex/openclaw-feedback-e44b47e2e8610c4f` | Head Commit: `4a794e2b`
+- Phân loại nhánh: `UNMERGED`
+
+[qldapm-github-sync:6e79f40a753f3439062a638cd2a65159edef534a2f715b1fff5dd8bf3f95e831]
+Bình luận #1157: QLDAPM PM/BA engineering plan 2f7cba6e-666f-4e94-b7f2-124dd7e153e8
+Unit: feedback-9d0ff35386a63183
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-e44b47e2e8610c4f"],"objective":"Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit (verified delivery reused)","priority":3,"unit":"feedback-9d0ff35386a63183"},"functional_specification":{"acceptance":["AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.","AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.","AC3: H

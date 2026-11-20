@@ -1,0 +1,153 @@
+{
+  "observed_at": "2026-10-24T21:22:10.573837+00:00",
+  "status": "PARTIAL_PROVENANCE_CLASSIFIED_OWNERSHIP_UNRESOLVED",
+  "points": [
+    {
+      "id": "2d5e7bdf-b4e0-52c6-b360-f45c1fbd74bf",
+      "source_id": "op:wp:42",
+      "claimed_project_id": "5",
+      "document_id": "d3a40642d44f3c724dfc9c5ced5fd60ff43d2f099d3568d7cb0db7f4ea78d0bb",
+      "chunk_hash": "aff2238c2bae3937c09083803cb29ca9bd7503e9b5944d878c4e077f90daacf5",
+      "payload_sha256": "3a67bad3661ffa26dbed9b05c50cee9fcf2e1559a3c6ae3be56e7dd2acd92ef8",
+      "classification": "UNREGISTERED_HISTORICAL_NATIVE_ALIAS_CANDIDATE",
+      "producer_identity": "NOT_PROVEN",
+      "ownership": "UNRESOLVED_KEEP_EXCLUDED",
+      "sqlite_document_registered": false,
+      "retrieval_exclusion": "Server-authorized SQLite document/chunk allowlist; not trusted from payload role/project claims",
+      "deleted": false,
+      "chunk_hash_matches_current_integrity_algorithm": true
+    },
+    {
+      "id": "59e1f1a4-b659-5c3d-ab23-ebb309481dc7",
+      "source_id": "test:local:adr:0001",
+      "claimed_project_id": "5",
+      "document_id": "1f743dc947e521272939e8918267f4bf4674d72b88e64d916f82e87b079a4419",
+      "chunk_hash": "aaeb5f911bb3909d3878c25b3569c929bd289ed6b1718e1f9f31fc82eb575683",
+      "payload_sha256": "43d92ae3e2d236c4fb45590d50e64f728d24711870f46531f15a2299a2699122",
+      "classification": "UNREGISTERED_TEST_NAMESPACE",
+      "producer_identity": "NOT_PROVEN",
+      "ownership": "UNRESOLVED_KEEP_EXCLUDED",
+      "sqlite_document_registered": false,
+      "retrieval_exclusion": "Server-authorized SQLite document/chunk allowlist; not trusted from payload role/project claims",
+      "deleted": false,
+      "chunk_hash_matches_current_integrity_algorithm": true
+    },
+    {
+      "id": "b838195a-5afd-5f40-a70d-23c2ca9007bc",
+      "source_id": "test:wp:999",
+      "claimed_project_id": "5",
+      "document_id": "8cd94c1f69d090e61a48b7742acc33d99ebb4b2831a4780c165b1e46ce693e13",
+      "chunk_hash": "692361a07ba51d9851a5d97efe71cca8b9cbeeb61d3467f24bfbf4fe64463edb",
+      "payload_sha256": "35af8545e558da2c66bc80d0946abc667afcdf7e83f1961b0bb50d0a592db63d",
+      "classification": "UNREGISTERED_TEST_NAMESPACE",
+      "producer_identity": "NOT_PROVEN",
+      "ownership": "UNRESOLVED_KEEP_EXCLUDED",
+      "sqlite_document_registered": false,
+      "retrieval_exclusion": "Server-authorized SQLite document/chunk allowlist; not trusted from payload role/project claims",
+      "deleted": false,
+      "chunk_hash_matches_current_integrity_algorithm": true
+    }
+  ],
+  "native42": {
+    "id": 42,
+    "version": 3,
+    "canonical_sqlite_document_ids": [
+      "d80f868fa1bc4178f2819461e48a059928f5fbf1c58d1abf9c27b664c736f70d"
+    ]
+  },
+  "removal_authorized": false,
+  "physical_cleanup": "BLOCKED_UNPROVEN_PRODUCER_AND_INCOMPLETE_VECTOR_RESTORE",
+  "native_writes": 0,
+  "qdrant_writes": 0,
+  "staging_operations": false,
+  "scoped_integrity": {
+    "status": "PARTIAL_UNMATCHED_POINTS",
+    "project_id": 5,
+    "native_visible_packages": 337,
+    "documents": 371,
+    "chunks": 1726,
+    "points_in_project": 1729,
+    "sqlite_quick_check": "ok",
+    "missing_native_ids": [],
+    "missing_point_ids": [],
+    "payload_mismatch_ids": [],
+    "invalid_chunk_hash_ids": [],
+    "invalid_source_hashes": [],
+    "fts_error_sources": [],
+    "orphan_fts_rows": 0,
+    "stale_sources": [],
+    "unmatched_points": [
+      {
+        "id": "2d5e7bdf-b4e0-52c6-b360-f45c1fbd74bf",
+        "source_id": "op:wp:42"
+      },
+      {
+        "id": "59e1f1a4-b659-5c3d-ab23-ebb309481dc7",
+        "source_id": "test:local:adr:0001"
+      },
+      {
+        "id": "b838195a-5afd-5f40-a70d-23c2ca9007bc",
+        "source_id": "test:wp:999"
+      }
+    ],
+    "multiple_namespaces": {
+      "49": [
+        "actor:19:wp:49",
+        "op:wp:49"
+      ],
+      "53": [
+        "actor:19:wp:53",
+        "op:wp:53"
+      ],
+      "50": [
+        "actor:19:wp:50",
+        "op:wp:50"
+      ],
+      "75": [
+        "actor:19:wp:75",
+        "op:wp:75"
+      ],
+      "38": [
+        "actor:19:wp:38",
+        "op:wp:38"
+      ],
+      "370": [
+        "actor:19:wp:370",
+        "op:wp:370"
+      ],
+      "371": [
+        "actor:18:wp:371",
+        "op:wp:371"
+      ],
+      "372": [
+        "actor:18:wp:372",
+        "op:wp:372"
+      ],
+      "373": [
+        "actor:18:wp:373",
+        "op:wp:373"
+      ],
+      "374": [
+        "actor:18:wp:374",
+        "op:wp:374"
+      ]
+    },
+    "native_sources_outside_visible_scope": 0,
+    "mutations_performed": false,
+    "cross_store_snapshot": "Main ingestion lease; external writers must honor the same lock",
+    "actor_role": "AI_SYSTEM_OWNER",
+    "report_id": "6cf9f769-bb5b-5974-90cf-a144cd67e795",
+    "report_sha256": "9188256cfbe78532be512803f7dd9dc1c4773227aac0827d8d3822bbad5ca9a6",
+    "last_observed_at": 1792876864.3564792
+  },
+  "latest_integrity": {
+    "at": "2026-10-24T22:17:45.531409+00:00",
+    "artifact": "CODEX_NATIVE_SCHEDULE_E2E_RESULT.json",
+    "native_ids": 338,
+    "documents": 373,
+    "chunks": 1728,
+    "points": 1731,
+    "new_source": "Only exact approved375 actor18+canonical namespaces",
+    "legacy_points_deleted": 0
+  }
+}

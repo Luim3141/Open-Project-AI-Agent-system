@@ -1,0 +1,57 @@
+{
+  "project_id": 6,
+  "ingestion": [
+    {
+      "status": "UPDATED",
+      "document_id": "f9e700b43600b3069ce197c766632743372d19a19bcb86dd801cf808f1244cf5",
+      "source_id": "actor:20:wp:379",
+      "chunks_count": 7,
+      "source_hash": "f9e700b43600b3069ce197c766632743372d19a19bcb86dd801cf808f1244cf5",
+      "vector_indexed": true,
+      "error": null,
+      "native_id": 379,
+      "lock_version": 1
+    },
+    {
+      "status": "CREATED",
+      "document_id": "66403bf284adc27f1d414df29e48e6d4f44cafb5d9e0555309864af3b53eb344",
+      "source_id": "actor:20:wp:381",
+      "chunks_count": 3,
+      "source_hash": "66403bf284adc27f1d414df29e48e6d4f44cafb5d9e0555309864af3b53eb344",
+      "vector_indexed": true,
+      "error": null,
+      "native_id": 381,
+      "lock_version": 0
+    }
+  ],
+  "retrieval": {
+    "items": [
+      {
+        "title": "Develop Mini Task Manager Application",
+        "snippet": "utomatically merge or deploy code without authorization.\nBình luận #1041: _Được cập nhật tự động bằng cách thay đổi các giá trị trong gói công việc con #380_\nBình luận #1042: Engineering unit verified...",
+        "native_id": 379,
+        "document_id": "f9e700b43600b3069ce197c766632743372d19a19bcb86dd801cf808f1244cf5",
+        "lock_version": 1,
+        "source_id": "actor:20:wp:379",
+        "score": 0.03279,
+        "citation": "/work_packages/379",
+        "match_type": "HYBRID_RRF"
+      },
+      {
+        "title": "[Task] #381 - [AI unit] Edit/delete/status/search and usable web interface",
+        "snippet": "...cha (Parent ID): #379\n\nMô tả chi tiết:\nEngineering unit crud-search-web-v1\n\n{\n  \"status\": \"succeeded\",\n  \"text\": \"Edit/delete/status/search and usable web inte...",
+        "native_id": 381,
+        "document_id": "8b1fc5ac2a2a45a80fee9e252e09ec838a4260f0adf242ce203d4a8d7f5902d1",
+        "lock_version": 0,
+        "source_id": "op:wp:381",
+        "score": 0.01613,
+        "citation": "/work_packages/381",
+        "match_type": "HYBRID_RRF"
+      }
+    ],
+    "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+    "dense_state": "READY",
+    "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+    "model_used": false
+  }
+}

@@ -1,0 +1,406 @@
+{
+  "utc": "2026-11-03T07:49:58.885030+00:00",
+  "status": "DEV_RELEVANCE_ONLY_NOT_DEPLOYABLE",
+  "dev_sha256": "085c0036415c0be33868515a7839887a2dbea079197e960251bb585bedc4ddd1",
+  "extractor_sha256": "98918229c8eada895178d233a6788d05f4ef4296a6db1547e7f59f30c17a0060",
+  "prepare_sha256": "7201ab24a1d1ab80ddabc901ea3b6ac619986a2c597d9ff63a0b7fc2fcc95a15",
+  "scorer_sha256": "3f88b7ef675cae9c3f3592f279e9db37adcb28bacd13267dc13639bb72153d7e",
+  "positive": 13,
+  "negative": 20,
+  "document_hit5": 11,
+  "support_span_hit5": 9,
+  "negative_with_any_candidate": 19,
+  "warm_query_p95_lower_bound_seconds": 0.4107,
+  "cold_query_lower_bound_seconds": 11.8223,
+  "scorer_cold_load_seconds": 3.0111,
+  "container_wall_seconds": 14.219,
+  "serialized_container_overhead_seconds": 8.982,
+  "serialized_scoring_average_wall_with_container_startup_seconds": 0.431,
+  "peak_memory_bytes": 570466304,
+  "truncated_pairs": 0,
+  "limitations": [
+    "non-concurrent separate embedding/retrieval and scorer execution; summed per pair excludes production IPC and end-to-end wall",
+    "candidate relevance is not answer support; all negatives are expected to retrieve candidates",
+    "no live ACL/freshness/deletion or independent label adjudication",
+    "no holdout access"
+  ],
+  "rows": [
+    {
+      "case": "dev:create_list:vi",
+      "kind": "positive",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        383
+      ],
+      "seconds": 11.8223
+    },
+    {
+      "case": "dev:create_list:en",
+      "kind": "positive",
+      "rank": 1,
+      "support_contained": true,
+      "ids": [
+        380,
+        389,
+        386,
+        379
+      ],
+      "seconds": 0.3842
+    },
+    {
+      "case": "dev:preserved_failure:vi",
+      "kind": "positive",
+      "rank": 2,
+      "support_contained": true,
+      "ids": [
+        379,
+        380,
+        390,
+        391,
+        387
+      ],
+      "seconds": 0.3181
+    },
+    {
+      "case": "dev:preserved_failure:en",
+      "kind": "positive",
+      "rank": 1,
+      "support_contained": true,
+      "ids": [
+        380,
+        379,
+        389
+      ],
+      "seconds": 0.3488
+    },
+    {
+      "case": "dev:crud_unit:vi",
+      "kind": "positive",
+      "rank": 1,
+      "support_contained": true,
+      "ids": [
+        381
+      ],
+      "seconds": 0.1101
+    },
+    {
+      "case": "dev:crud_unit:en",
+      "kind": "positive",
+      "rank": null,
+      "support_contained": false,
+      "ids": [],
+      "seconds": 0.0517
+    },
+    {
+      "case": "dev:parent_review:vi",
+      "kind": "positive",
+      "rank": 1,
+      "support_contained": false,
+      "ids": [
+        381,
+        382,
+        384,
+        390
+      ],
+      "seconds": 0.2721
+    },
+    {
+      "case": "dev:parent_review:en",
+      "kind": "positive",
+      "rank": 2,
+      "support_contained": false,
+      "ids": [
+        389,
+        381,
+        384,
+        387
+      ],
+      "seconds": 0.3255
+    },
+    {
+      "case": "dev:recovery_history:vi",
+      "kind": "positive",
+      "rank": 1,
+      "support_contained": true,
+      "ids": [
+        388,
+        391,
+        389,
+        381
+      ],
+      "seconds": 0.2511
+    },
+    {
+      "case": "dev:recovery_history:en",
+      "kind": "positive",
+      "rank": 1,
+      "support_contained": true,
+      "ids": [
+        388,
+        382,
+        391,
+        389
+      ],
+      "seconds": 0.2671
+    },
+    {
+      "case": "dev:dependency:vi",
+      "kind": "positive",
+      "rank": 1,
+      "support_contained": true,
+      "ids": [
+        388,
+        384,
+        386,
+        391
+      ],
+      "seconds": 0.2734
+    },
+    {
+      "case": "dev:dependency:en",
+      "kind": "positive",
+      "rank": 1,
+      "support_contained": true,
+      "ids": [
+        388,
+        386,
+        391
+      ],
+      "seconds": 0.2507
+    },
+    {
+      "case": "dev:pagination:vi",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        391,
+        389
+      ],
+      "seconds": 0.1396
+    },
+    {
+      "case": "dev:pagination:en",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        390,
+        391,
+        381
+      ],
+      "seconds": 0.2155
+    },
+    {
+      "case": "dev:grpc:vi",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        386,
+        387,
+        389,
+        381
+      ],
+      "seconds": 0.3507
+    },
+    {
+      "case": "dev:grpc:en",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        386,
+        387
+      ],
+      "seconds": 0.2326
+    },
+    {
+      "case": "dev:jwt:vi",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        386,
+        391,
+        389
+      ],
+      "seconds": 0.4107
+    },
+    {
+      "case": "dev:jwt:en",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        391,
+        387,
+        390
+      ],
+      "seconds": 0.4195
+    },
+    {
+      "case": "dev:cache:vi",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        383,
+        381
+      ],
+      "seconds": 0.1633
+    },
+    {
+      "case": "dev:cache:en",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        381
+      ],
+      "seconds": 0.1142
+    },
+    {
+      "case": "dev:subtasks:vi",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        390,
+        389
+      ],
+      "seconds": 0.175
+    },
+    {
+      "case": "dev:subtasks:en",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [],
+      "seconds": 0.047
+    },
+    {
+      "case": "dev:priority_field:vi",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        391
+      ],
+      "seconds": 0.0631
+    },
+    {
+      "case": "dev:priority_field:en",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        391
+      ],
+      "seconds": 0.065
+    },
+    {
+      "case": "dev:ical:vi",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        383,
+        386,
+        384
+      ],
+      "seconds": 0.3733
+    },
+    {
+      "case": "dev:ical:en",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        386,
+        389,
+        383
+      ],
+      "seconds": 0.3831
+    },
+    {
+      "case": "dev:openid:vi",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        390,
+        387
+      ],
+      "seconds": 0.2325
+    },
+    {
+      "case": "dev:openid:en",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        387,
+        390
+      ],
+      "seconds": 0.1605
+    },
+    {
+      "case": "dev:s3:vi",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        387,
+        391
+      ],
+      "seconds": 0.1453
+    },
+    {
+      "case": "dev:s3:en",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        391
+      ],
+      "seconds": 0.1085
+    },
+    {
+      "case": "dev:mixed-dependency",
+      "kind": "positive",
+      "rank": 1,
+      "support_contained": true,
+      "ids": [
+        388,
+        384,
+        386,
+        391
+      ],
+      "seconds": 0.2713
+    },
+    {
+      "case": "dev:mixed-s3",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        387,
+        391
+      ],
+      "seconds": 0.1429
+    },
+    {
+      "case": "dev:mixed-pages",
+      "kind": "negative",
+      "rank": null,
+      "support_contained": false,
+      "ids": [
+        391,
+        390
+      ],
+      "seconds": 0.1182
+    }
+  ]
+}

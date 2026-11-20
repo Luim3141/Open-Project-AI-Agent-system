@@ -1,0 +1,12 @@
+flowchart LR
+  n0["TẠO MỚI"]
+  n1["NEW"]
+  n2["READY"]
+  n3["In Progress"]
+  n4["REVIEW"]
+  n5["Done"]
+  n0 -->|"1  Create"| n1
+  n1 -->|"2  Approve scope"| n2
+  n2 -->|"4  Start delivery"| n3
+  n3 -->|"5  Submit acceptance"| n4
+  n4 -->|"6  Accept Epic"| n5

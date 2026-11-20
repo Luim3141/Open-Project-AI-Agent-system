@@ -1,0 +1,6 @@
+flowchart LR
+  a0["REVIEW"] -->|"5  Rework"| b0["In Progress"]
+  a1["Done"] -->|"6  Reopen"| b1["In Progress"]
+  a2["CODE REVIEW"] -->|"8  Code rejected"| b2["In Progress"]
+  a3["IN TESTING"] -->|"11  Bug found"| b3["In Progress"]
+  a4["REVIEW"] -->|"13  Retest"| b4["IN TESTING"]

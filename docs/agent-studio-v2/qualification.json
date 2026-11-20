@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "e5af1213c015a082e18da5d0e629c49be1515139132766e5ca5d075b8227efe3",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/observer.html.erb": "63d521644ac9e7a39906a69b81bec014581a00c7d053702e9ee71fd21c5610d9",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "5dbe3eedc2931a08a1fb05b136a982a2f63ecec7d19565a749d5b302d1397e7c",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/studio.js": "298b2138990f1625ecaa87c11d8ce3d21c36f5489de6d4efc25e690da8c54811",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/studio.css": "cba2688884c2e6bdeef916830ec037fd1000366b016c417a46534350db895130",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/studio.js.LEGAL.txt": "d8bc1f42b3b0ede6cde4a51b9492aab033b97d0a98d96a726d0e86040e3ff5c4",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/manifest.json": "b5d751062ae3ee4498f0725429454cd9e6ece0471301b0586eeffa1ed6eb4881"
+  },
+  "checks": {
+    "adapter": true,
+    "fixture_browser": true,
+    "regressions": true,
+    "immutable_core": true
+  },
+  "evidence": {
+    "adapter": "5 tests PASS; real391397 source fixtures; malformed boundary rejection",
+    "fixture_browser": {
+      "method": "OFFLINE_HEADLESS_EDGE_FIXTURES",
+      "checks": {
+        "actual_library_nodes_edges": true,
+        "select_same_task_keeps_snapshot": true,
+        "keyboard_opens_inspector": true,
+        "hover_click_work_summary": true,
+        "zoom_fit_pan": true,
+        "fresh_running_animation": true,
+        "reduced_motion": true,
+        "refresh_preserves_viewport": true,
+        "disconnect_stops_activity": true,
+        "blocked_failed_unknown_completed": true,
+        "light_theme": true,
+        "stage_expand_real_attempt": true,
+        "responsive_no_page_overflow": true,
+        "responsive_all_nodes_in_canvas": true,
+        "container_width_drives_layout": true,
+        "multiple_attempts_history_preserved": true,
+        "turbo_unmount_cancels_polling": true
+      },
+      "business_writes": 0,
+      "model_calls": 0,
+      "status": "PASS",
+      "console_errors": [],
+      "requests": 31
+    },
+    "gateway_regression": "53 Observer/notification/security and 28 integrity/workflow/supervisor/trace PASS",
+    "telegram": "54 pytest +16 subtests PASS; source/image unchanged",
+    "immutable_core": "Exact v7 builder hashes; both ERB templates compile in v7 immutable image; local assets browser tested",
+    "navigation_fix": "Main v6 click failed: legacy tab handler prevented anchor default. Limit tab selector to [data-tab]; three existing Command Center Node VM suites PASS.",
+    "scope_v8": "Scoped native select palette override after actual Main visual QA; same application logic and nav fix. Main functional UAT v7 PASS; final v8 UAT runs after rollout."
+  }
+}

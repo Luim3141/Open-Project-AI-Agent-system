@@ -1,0 +1,14 @@
+{
+  "old_image": "sha256:58829f08ebd8cfd2bd51defc2708ee9abda9b71117e1dcb69797657baa54ac37",
+  "candidate_image": "sha256:99769ead31eff11959b6f297a60632163fd78df7b3e969f29f7b56adbf0eb46d",
+  "backup_sha256": {
+    "gateway": "5d1aef8114b8f537cbc5a6c88652855c4daa70b896b5184b7f5fe0307c88cdd9",
+    "knowledge": "67adb23f2a0d7fb596341befbef0cf3395aff61940c8613750c5a256c25130d7"
+  },
+  "linux_offline_tests": 121,
+  "native_write_e2e": false,
+  "actual_native_GET_isolated_RAG_test": "PASS",
+  "migration": "Additive knowledge_sync table in Gateway SQLite only; queue initially empty",
+  "rollback": "Restore old AI_IMAGE and compose up gateway only; preserve databases and queue, never replay Native writes",
+  "scope": "Main Gateway only; credentials and Native data unchanged; no Staging operations"
+}

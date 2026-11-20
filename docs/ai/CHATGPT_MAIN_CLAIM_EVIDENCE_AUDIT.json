@@ -1,0 +1,195 @@
+{
+  "at": "2026-10-27T02:59:23.498279+00:00",
+  "milestone": "C1",
+  "status": "CLAIMS_AUDITED_OVERALL_PARTIAL",
+  "runtime": {
+    "qldapm-openproject-web-1": {
+      "id": "6907ce9e40655da12026a490cc13cfae25b40aba295b94443b36decc57f68890",
+      "image": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0",
+      "tag": "qldapm-core:codex-wbs-scheduled-parent-v2-20261027",
+      "started_at": "2026-10-26T17:57:26.873481675Z",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-ai-gateway-1": {
+      "id": "cbddf69d2b116e673b396b9f224ef08acdb0baf323bf0d17ae2d9e0bc70a30fc",
+      "image": "sha256:ce1d9784d5c1a61f92f7b7e46834fe9be3052889cd35aa9801cc3b72874b30ea",
+      "tag": "qldapm-ai:gemini-ai-automation-v1-20261027",
+      "started_at": "2026-10-26T20:47:42.730395485Z",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "8090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8090"
+          }
+        ]
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "C1-01",
+      "reported_claim": "PRODUCTION_READY/FULL_INTEGRATION_QUALIFIED",
+      "verdict": "FAILED",
+      "actual": "Evidence covers selected reads/local analysis; does not implement full application fix/build/QA/retest/closure, resolve unknown comments/provenance/DR, configure recipients or complete visual UAT. Overall PARTIAL.",
+      "evidence": [
+        "GEMINI_FLASH_MAIN_CHECKPOINT.json",
+        "CODEX_MAIN_WORKFLOW_ACCEPTANCE_MATRIX.json",
+        "CODEX_PENDING_EXTERNAL_ACCEPTANCE.md"
+      ]
+    },
+    {
+      "id": "C1-02",
+      "reported_claim": "E2E06 proves live Gemini multi-agent integration",
+      "verdict": "PARTIAL",
+      "actual": "New E2E06 is LOCAL_DETERMINISTIC and all six routing records explicitly set model_provider_invoked=false. Historical true Gemini Supervisor+BA/FE/BE/QA+local Reviewer run99f1242a exists with5 successful generations/10receipts, but source370 changed and public read correctly returns stale. Do not replay old generation.",
+      "evidence": [
+        "CLAUDE_AI_AUTOMATION_INTEGRATION_MATRIX.json",
+        "CLAUDE_SUPERVISOR_TOOL_ROUTING_RESULT.json",
+        "CODEX_MAIN_READONLY_EVIDENCE_20261027.json"
+      ]
+    },
+    {
+      "id": "C1-03",
+      "reported_claim": "WF03 HTTP200/result_status null proves new automation completion",
+      "verdict": "PARTIAL",
+      "actual": "Existing E2E05 queried the old run status only. Nested final content is stale, not absent; script reads wrong response nesting. This is no evidence of new async start-to-terminal lifecycle or final callback. Existing contract is start/plan + durable polling, not a callback contract.",
+      "evidence": [
+        "automation/run_ai_automation_e2e.py",
+        "openproject/ai/automation/deploy_real_n8n_workflows.py",
+        "CODEX_MAIN_READONLY_EVIDENCE_20261027.json"
+      ]
+    },
+    {
+      "id": "C1-04",
+      "reported_claim": "Deterministic read is instant20\u201350ms/subsecond end-to-end",
+      "verdict": "FAILED",
+      "actual": {
+        "reported_e2e_seconds": 22.695,
+        "measured_identity_ms": 707.15,
+        "measured_full_collection_ms": 6603.09,
+        "measured_native_filtered_count_ms": 654.58,
+        "cause": "uncompleted route calls full analyze with pagination and ancillary reports; route matching time is not total response time"
+      },
+      "evidence": [
+        "CLAUDE_AI_PROMPT_TO_RESULT_E2E.json",
+        "CHATGPT_MAIN_C1_LATENCY_NATIVE_BASELINE.json"
+      ]
+    },
+    {
+      "id": "C1-05",
+      "reported_claim": "338 unfinished tasks",
+      "verdict": "FAILED",
+      "actual": {
+        "actual_visible_by_type": {
+          "Epic": 12,
+          "Task": 57,
+          "Subtask": 269
+        },
+        "actual_native_open_tasks": 57,
+        "bugs": "Task[Bug] approved mapping, not every Task",
+        "other_gap": "closed status guessed by name, not Native isClosed/open filter; percentageDone is not closure"
+      },
+      "evidence": [
+        "openproject/ai/gateway/local_queries.py",
+        "CHATGPT_MAIN_C1_LATENCY_NATIVE_BASELINE.json"
+      ]
+    },
+    {
+      "id": "C1-06",
+      "reported_claim": "Source cap10 implies global RAG searches only10",
+      "verdict": "PARTIAL",
+      "actual": "Current deployed service already omits native_ids for untargeted LIVE Supervisor RAG and keeps explicit targets capped10; authoritative ACL/registered documents filtered before retrieval and fresh Native ACL/version after. Needs executable outside-first10 qualification; no source cap removal. Local Supervisor still reports10/10 without project-total context after upstream truncation.",
+      "evidence": [
+        "openproject/ai/gateway/service.py",
+        "openproject/ai/gateway/live_agents.py"
+      ]
+    },
+    {
+      "id": "C1-07",
+      "reported_claim": "203 tests are full regression replacing606",
+      "verdict": "FAILED",
+      "actual": {
+        "prior_module_count": 79,
+        "gemini_subset_module_count": 40,
+        "union_module_count": 105,
+        "prior_only_module_count": 65,
+        "evidence": "private regression-module-manifest.json",
+        "union_execution": "PENDING"
+      },
+      "evidence": [
+        "openproject/ai/run_full_regression.py",
+        "CHATGPT_MAIN_RUNTIME_CHECKPOINT.json"
+      ]
+    },
+    {
+      "id": "C1-08",
+      "reported_claim": "16 workflows have0nodes",
+      "verdict": "VERIFIED",
+      "actual": "List/export projection omitted node definitions. Actual authenticated GET each workflow shows3\u20135nodes, all16active. No recreation or workflow change required.",
+      "evidence": [
+        "CLAUDE_N8N_AI_INTEGRATION_RESULT.json",
+        "CHATGPT_MAIN_RUNTIME_CHECKPOINT.json"
+      ]
+    },
+    {
+      "id": "C1-09",
+      "reported_claim": "PM19/BA20 tokens have24h lifecycle and are valid",
+      "verdict": "PARTIAL",
+      "actual": [
+        {
+          "actor": 19,
+          "location": "incident-secrets.json existing reference",
+          "registered": true,
+          "role": "PM",
+          "expires_at_utc": "2026-10-27T20:23:46.511680+00:00",
+          "revoked": false,
+          "expired": false,
+          "issued_at": "NOT_STORED_IN_TOKEN_TABLE; cannot infer exact from24h claim"
+        },
+        {
+          "actor": 20,
+          "location": "incident-secrets.json existing reference",
+          "registered": true,
+          "role": "BA",
+          "expires_at_utc": "2026-10-27T20:23:48.001854+00:00",
+          "revoked": false,
+          "expired": false,
+          "issued_at": "NOT_STORED_IN_TOKEN_TABLE; cannot infer exact from24h claim"
+        }
+      ],
+      "evidence": [
+        "CHATGPT_MAIN_RUNTIME_CHECKPOINT.json",
+        "openproject/ai/gateway/store.py"
+      ]
+    }
+  ],
+  "source_map_missing_references": [
+    "gateway/knowledge.py",
+    "gateway/native_phases.py",
+    "gateway/native_proposals.py",
+    "gateway/native_rest.py",
+    "gateway/proposals.py",
+    "gateway/qa_engine.py",
+    "gateway/ui_bridge.py",
+    "tests/test_catalog.py",
+    "tests/test_gateway_contract.py",
+    "tests/test_knowledge.py",
+    "tests/test_n8n_integration.py",
+    "tests/test_native_phases.py",
+    "tests/test_native_qa.py",
+    "tests/test_native_rest.py",
+    "tests/test_proposals.py",
+    "tests/test_service.py",
+    "tests/test_vector_client.py"
+  ],
+  "no_historical_reports_overwritten": true,
+  "no_model_calls": true,
+  "native_writes": 0,
+  "overall_release": "PARTIAL_NOT_FULL_GO"
+}

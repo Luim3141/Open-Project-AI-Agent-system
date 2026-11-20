@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-27T04:05:33.149684+00:00",
+  "state": "PREPARED_NOT_EXECUTED",
+  "purpose": "Fresh qualification after diagnosed30second transport-cap fix; retain original timeout run, never resume it",
+  "authorization_basis": "Latest direct user request sections6.2/7.3/AI03 explicitly request real-provider multi-agent qualification within Main. Native mutations remain separately prohibited without exact new approval.",
+  "actor": 19,
+  "project": 5,
+  "native_source": {
+    "id": 375,
+    "lock_version": 0
+  },
+  "expected_agents": [
+    "supervisor",
+    "ba",
+    "qa",
+    "reviewer_local"
+  ],
+  "prompt": "BA v\u00e0 QA ph\u00e2n t\u00edch ti\u00eau ch\u00ed v\u00e0 gi\u1edbi h\u1ea1n b\u1eb1ng ch\u1ee9ng k\u1ef9 thu\u1eadt c\u1ee7a Task #375. Ch\u1ec9 \u0111\u1ecdc, n\u00eau hai r\u1ee7i ro v\u00e0 ba tr\u01b0\u1eddng h\u1ee3p ki\u1ec3m th\u1eed d\u01b0\u1edbi d\u1ea1ng g\u1ee3i \u00fd; ch\u01b0a th\u1ef1c thi ki\u1ec3m th\u1eed. Kh\u00f4ng t\u1ea1o proposal, kh\u00f4ng ghi d\u1eef li\u1ec7u v\u00e0 kh\u00f4ng \u0111\u01b0a ra quy\u1ebft \u0111\u1ecbnh ph\u00ea duy\u1ec7t. Ch\u1ec9 tr\u00edch d\u1eabn #375.",
+  "provider_settings": {
+    "model": "gemini-3.5-flash-lite",
+    "policy": null,
+    "data_scope": "project-business-content",
+    "limits": {
+      "rpd": 450,
+      "rpm": 13,
+      "tpm": 225000
+    },
+    "multi_agent": {
+      "enabled": true,
+      "max_model_calls": 5,
+      "max_http_attempts": 12,
+      "max_agents": 4,
+      "max_output_tokens": 3000,
+      "max_context_chars": 32000,
+      "timeout_seconds": 300,
+      "call_timeout_seconds": 90,
+      "retry_limit": 1,
+      "max_knowledge_items": 3
+    }
+  },
+  "maximum_expected_successful_generations": 3,
+  "system_hard_model_call_limit": 5,
+  "system_hard_http_attempt_limit": 12,
+  "expected_egress": "Filtered Native375business fields; up to3authorized citations of the same explicit source; Main aggregate summary, visible Sprint metadata and type/status options already projected by the existing server. No credentials/users/profiles/private traces.",
+  "native_write_authorized": false,
+  "proposal_creation_expected": false,
+  "human_decision_authorized": false,
+  "new_recipients_or_staging": false,
+  "execute_only_after": "C2c deployed and Main preservation/regression gate, now passed",
+  "prior_failed_run_id": "ccd6dcde-fbc3-411e-8135-1d92b229bd07",
+  "prior_generation_outcome": "UNKNOWN_AFTER_READ_TIMEOUT; no successful generation retained",
+  "runtime_image": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0",
+  "preview_sha256": "f553433e46fe4f9f5de0aa64d44aca78f1f916a5871842eb7d272c26bf85b5e9"
+}

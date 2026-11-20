@@ -1,0 +1,9 @@
+{
+  "target": "Main WF11 only",
+  "workflow_id": "LeRVT3LWNBkJ2iz3",
+  "old_version": "711fabc8-04ab-4108-a44b-15dcd2867d25",
+  "candidate_sha256": "066ef69d61039f2f65cda9404f440bc6bff21d84e2f9e79b78adbc2fd4c4d8de",
+  "tests_passed": 13,
+  "effect": "Require explicit numeric id, get_gate through caller Bearer, return actual evidence and transition errors with original Gateway HTTP status. Removes unconditional QA pass/transition permission. No Native mutation/model/credential/container/schedule changes.",
+  "rollback": "Restore nodes/connections/settings/name from private n8n-pre-wf11-native-gate.json and activate returned version; preserve all runtime data."
+}

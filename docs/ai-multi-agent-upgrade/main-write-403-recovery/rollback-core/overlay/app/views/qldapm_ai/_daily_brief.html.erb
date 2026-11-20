@@ -1,0 +1,47 @@
+<% brief = @dashboard&.dig("daily_brief") || {"state" => "MISSING"} %>
+<section class="qldapm-ai-card" aria-labelledby="daily-brief-heading">
+ <h3 id="daily-brief-heading">Tóm tắt hôm nay</h3>
+ <% case brief["state"]
+    when "READY" %>
+  <p><strong><%= brief.dig("snapshot", "count") %></strong> công việc theo quyền đọc của bạn.</p>
+  <% (brief.dig("snapshot", "by_status") || {}).each do |name, count| %>
+   <p><%= name %>: <strong><%= count %></strong></p>
+  <% end %>
+  <p>Quá hạn: <strong><%= Array(brief.dig("snapshot", "overdue_ids")).size %></strong>.</p>
+  <% Array(brief.dig("snapshot", "overdue_ids")).first(10).each do |id| %>
+   <%= link_to "Công việc ##{id}", "/work_packages/#{Integer(id)}" %>
+  <% end %>
+  <% if Array(brief.dig("snapshot", "overdue_ids")).size > 10 %>
+   <p>Hiển thị 10 công việc đầu. <a href="#ai-progress">Xem danh sách hiện tại</a>.</p>
+  <% end %>
+  <p>Tổng hợp trực tiếp từ OpenProject, không dùng AI.</p>
+ <% when "STALE" %>
+  <p>Quyền xem hoặc số liệu đã thay đổi sau lần tổng hợp. Tóm tắt cũ đang được ẩn.</p>
+  <p><a href="#ai-progress">Xem số liệu hiện tại</a>.</p>
+ <% when "DENIED" %>
+  <p>Chưa xác minh được quyền đọc của bạn trong lần tổng hợp này.</p>
+ <% when "OFFLINE" %>
+  <p>Chưa đọc được OpenProject khi tổng hợp. <a href="#ai-progress">Xem số liệu hiện tại</a>.</p>
+ <% else %>
+  <p>Chưa có tóm tắt cho hôm nay. <a href="#ai-progress">Xem số liệu trực tiếp</a>.</p>
+ <% end %>
+ <% if brief["observed_at"] %>
+  <details class="qldapm-ai-daily-details"><summary>Thời điểm và mã đối chiếu</summary>
+   <p><%= Time.at(brief["observed_at"]).getlocal("+07:00").strftime("%d/%m/%Y %H:%M") %> (UTC+7)</p>
+   <p class="qldapm-ai-trace"><code><%= brief["trace_id"] %></code></p>
+  </details>
+ <% end %>
+</section>
+<% alerts = Array(@dashboard&.dig("workflow_alerts")) %>
+<% if alerts.any? %>
+ <section class="qldapm-ai-card" aria-labelledby="workflow-alert-heading">
+  <h3 id="workflow-alert-heading">Thông báo tự động hóa</h3>
+  <p>Có lượt workflow gặp lỗi. Dữ liệu native hiện tại vẫn là nguồn đối chiếu; quản trị viên kiểm tra history n8n bằng mã dưới đây.</p>
+  <% alerts.each do |alert| %>
+   <details class="qldapm-ai-daily-details"><summary><%= alert["workflow_id"] == "qldapmDailyBrief" ? "Tổng hợp hằng ngày" : "Kiểm tra kết nối" %> · <%= alert["day"] %></summary>
+    <p><%= Time.at(alert["observed_at"]).getlocal("+07:00").strftime("%d/%m/%Y %H:%M") %> (UTC+7)</p>
+    <p class="qldapm-ai-trace"><code><%= alert["trace_id"] %></code></p>
+   </details>
+  <% end %>
+ </section>
+<% end %>

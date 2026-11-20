@@ -1,0 +1,356 @@
+{
+  "run_id": "b1cca031-81f5-4df1-870b-cbeb23d51e66",
+  "steps": {
+    "pm-ba-plan": {
+      "state": "done",
+      "at": 1793430505.7651355,
+      "value": {
+        "id": "b1cca031-81f5-4df1-870b-cbeb23d51e66",
+        "project_id": 6,
+        "native_id": 379,
+        "source_version": 4,
+        "state": "PUBLISHED",
+        "feedback": "Bổ sung tính năng phân loại công việc theo danh mục và xuất CSV báo cáo tiến độ tự động.",
+        "native_units": {
+          "create-list-persistence-v1": {
+            "id": 380,
+            "lock_version": 8,
+            "priority": 3,
+            "dependencies": [],
+            "agent": "dev",
+            "state": "DELIVERED"
+          },
+          "crud-search-web-v1": {
+            "id": 381,
+            "lock_version": 9,
+            "priority": 3,
+            "dependencies": [
+              "create-list-persistence-v1"
+            ],
+            "agent": "dev",
+            "state": "DELIVERED"
+          },
+          "feedback-283138e910432528": {
+            "id": 382,
+            "lock_version": 9,
+            "priority": 3,
+            "dependencies": [
+              "crud-search-web-v1"
+            ],
+            "agent": "dev",
+            "state": "DELIVERED"
+          },
+          "feedback-4d13e695555a8d44": {
+            "id": 383,
+            "lock_version": 9,
+            "priority": 3,
+            "dependencies": [
+              "feedback-283138e910432528"
+            ],
+            "agent": "dev",
+            "state": "DELIVERED"
+          },
+          "health-check-v1": {
+            "id": 384,
+            "lock_version": 1,
+            "priority": 3,
+            "dependencies": [
+              "feedback-4d13e695555a8d44"
+            ],
+            "agent": "dev",
+            "state": "DELIVERED"
+          },
+          "feedback-b1c22888cba835bb": {
+            "id": 385,
+            "lock_version": 0,
+            "priority": 1,
+            "dependencies": [
+              "health-check-v1"
+            ],
+            "agent": "dev",
+            "state": "PLANNED"
+          }
+        },
+        "relations": [
+          353,
+          354,
+          355,
+          356,
+          357
+        ],
+        "feedback_base_unit": "health-check-v1",
+        "knowledge": {
+          "items": [
+            {
+              "title": "Develop Mini Task Manager Application",
+              "snippet": "Develop Mini Task Manager Application\n**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n...",
+              "native_id": 379,
+              "document_id": "876277449c628b5507488f468072699716925e5365217ab006874adfe32799f3",
+              "lock_version": 4,
+              "source_id": "actor:20:wp:379",
+              "score": 0.03279,
+              "citation": "/work_packages/379",
+              "match_type": "HYBRID_RRF"
+            }
+          ],
+          "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+          "dense_state": "READY",
+          "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+          "model_used": false
+        },
+        "ba": {
+          "summary": "Bo sung tinh nang phan loai cong viec theo danh muc va xuat CSV bao cao tien do tu dong cho Mini Task Manager dua tren phan hoi nguoi dung.",
+          "scope": [
+            "Them truong danh muc (category) vao model du lieu va co so du lieu SQLite.",
+            "Ho tro loc va quan ly cong viec theo danh muc tren API va giao dien web.",
+            "Trien khai endpoint xuat bao cao tien do cong viec duoi dang file CSV."
+          ],
+          "api_behavior": [
+            "POST /tasks chap nhan them truong category tuy chon khi tao cong viec.",
+            "PATCH /tasks/{id} ho tro cap nhat truong category cua cong viec.",
+            "GET /tasks ho tro tham so loc theo category. GET /tasks/export/csv tra ve tep CSV chua danh sach va thong ke tien do."
+          ],
+          "edge_cases": [
+            "Truong category trong hoac chua ky tu dac biet duoc xuat va luu tru an toan tranh loi SQL Injection hoac loi CSV parsing.",
+            "Yeu cau xuat CSV khi danh sach cong viec trong tra ve tep CSV chi co dong tieu de."
+          ],
+          "acceptance": [
+            "AC10: POST va PATCH ho tro luu tru, tra ve chinh xac truong category.",
+            "AC11: GET /tasks?category=... loc dung danh sach theo danh muc.",
+            "AC12: GET /tasks/export/csv tra ve HTTP 200, dinh dang MIME text/csv kem noi dung dung chuan."
+          ],
+          "limitations": [
+            "Khong ho tro quan ly bang danh muc rieng biet phuc tap.",
+            "Xuat CSV ho tro dinh dang tieu chuẩnUTF-8 va phan tach dau phay."
+          ],
+          "citations": [
+            379
+          ]
+        },
+        "ba_model_used": true,
+        "pm_candidate": {
+          "summary": "Kế hoạch triển khai tính năng phân loại công việc theo danh mục và xuất báo cáo CSV dựa trên phản hồi người dùng cho Mini Task Manager.",
+          "assignments": [
+            {
+              "unit": "feedback-b1c22888cba835bb",
+              "priority": 1,
+              "objective": "Thêm trường danh mục, hỗ trợ lọc API/giao diện và endpoint xuất CSV theo AC10, AC11, AC12.",
+              "dependencies": [
+                "health-check-v1"
+              ]
+            }
+          ],
+          "blockers": [],
+          "next_action": "Tiến hành thực hiện đơn vị công việc feedback-b1c22888cba835bb với sự hỗ trợ của Dev và Reviewer."
+        },
+        "pm": {
+          "summary": "Kế hoạch triển khai tính năng phân loại công việc theo danh mục và xuất báo cáo CSV dựa trên phản hồi người dùng cho Mini Task Manager.",
+          "assignments": [
+            {
+              "unit": "create-list-persistence-v1",
+              "priority": 3,
+              "objective": "Create/list tasks + SQLite persistence (verified delivery reused)",
+              "dependencies": []
+            },
+            {
+              "unit": "crud-search-web-v1",
+              "priority": 3,
+              "objective": "Edit/delete/status/search and usable web interface (verified delivery reused)",
+              "dependencies": [
+                "create-list-persistence-v1"
+              ]
+            },
+            {
+              "unit": "feedback-283138e910432528",
+              "priority": 3,
+              "objective": "Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)",
+              "dependencies": [
+                "crud-search-web-v1"
+              ]
+            },
+            {
+              "unit": "feedback-4d13e695555a8d44",
+              "priority": 3,
+              "objective": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)",
+              "dependencies": [
+                "feedback-283138e910432528"
+              ]
+            },
+            {
+              "unit": "health-check-v1",
+              "priority": 3,
+              "objective": "Them route GET /healthz va unit test status ok (verified delivery reused)",
+              "dependencies": [
+                "feedback-4d13e695555a8d44"
+              ]
+            },
+            {
+              "unit": "feedback-b1c22888cba835bb",
+              "priority": 1,
+              "objective": "Thêm trường danh mục, hỗ trợ lọc API/giao diện và endpoint xuất CSV theo AC10, AC11, AC12.",
+              "dependencies": [
+                "health-check-v1"
+              ]
+            }
+          ],
+          "blockers": [],
+          "next_action": "Tiến hành thực hiện đơn vị công việc feedback-b1c22888cba835bb với sự hỗ trợ của Dev và Reviewer."
+        },
+        "pm_model_used": true,
+        "reused_delivered_units": [
+          "create-list-persistence-v1",
+          "crud-search-web-v1",
+          "feedback-283138e910432528",
+          "feedback-4d13e695555a8d44",
+          "health-check-v1"
+        ],
+        "profiles": {
+          "supervisor": {
+            "agent": "supervisor",
+            "runtime": "qldapm-supervisor",
+            "skill": "engineering-planning",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "claim",
+              "dependencies",
+              "stage handoff",
+              "bounded rework",
+              "publication and OFF"
+            ],
+            "tools": [
+              "existing queue",
+              "Native scoped publisher",
+              "SecondBrain"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "durable stage receipt + completion/publication readback",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "bounded ownership/claim/handoff; Paperclip/NEXUS principles"
+          },
+          "pm": {
+            "agent": "pm",
+            "runtime": "qldapm-gemini",
+            "skill": "engineering-planning",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "prioritize verified scope",
+              "Native backlog/dependencies",
+              "assign virtual Dev",
+              "blockers and next action"
+            ],
+            "tools": [
+              "shared Gemini structured analysis",
+              "Native reads",
+              "loaded planning skill"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "ordered assignments, dependencies, priorities, blockers, next action + Native backlog readback",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Senior Project Manager / Sprint Prioritizer"
+          },
+          "ba": {
+            "agent": "ba",
+            "runtime": "qldapm-gemini",
+            "skill": "engineering-planning",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "functional scope",
+              "API behavior",
+              "edge cases",
+              "acceptance and feedback specification"
+            ],
+            "tools": [
+              "shared Gemini structured analysis",
+              "Native reads",
+              "loaded planning skill"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "functional specification, API behavior, edge cases, acceptance, source citations",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Requirements Analyst"
+          },
+          "dev": {
+            "agent": "dev",
+            "runtime": "openclaw",
+            "skill": "engineering-development",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "actual source edits",
+              "terminal/dependencies",
+              "TDD and debugging",
+              "receiving feedback"
+            ],
+            "tools": [
+              "read",
+              "exec"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "filesystem diff + command/exit/test artifacts",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Senior Developer / Debugging Specialist"
+          },
+          "reviewer": {
+            "agent": "reviewer",
+            "runtime": "openclaw",
+            "skill": "engineering-review",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "independent exact-diff review",
+              "actionable findings",
+              "re-review"
+            ],
+            "tools": [
+              "read"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "JSON verdict/findings with exact revision and file/line",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Code Reviewer / Reality Checker"
+          },
+          "qa": {
+            "agent": "qa",
+            "runtime": "openclaw",
+            "skill": "engineering-qa",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "execute tests",
+              "capture real exit/artifacts",
+              "defect handoff and retest"
+            ],
+            "tools": [
+              "read",
+              "exec"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "executed command, exit code, acceptance mapping, actual failures",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "API Tester / Evidence Collector"
+          }
+        },
+        "skill": {
+          "id": "qldapm.plan.v1",
+          "sha256": "b6fddde600bef0ea56c209aa5d5fcaa598daea06ae12c36b5b2273e53f28fcd1",
+          "loaded": true
+        },
+        "updated": 1793430505.4913495
+      }
+    },
+    "planning-knowledge": {
+      "state": "started",
+      "at": 1793430510.582019
+    }
+  },
+  "revision": null
+}

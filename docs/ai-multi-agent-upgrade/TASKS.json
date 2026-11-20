@@ -1,0 +1,2415 @@
+{
+  "schema_version": 2,
+  "project": "QLDAPM Multi-Agent — 20 người dùng LAN, single-host Windows/Docker, Gemini API Free Tier",
+  "generated_on": "2026-10-15",
+  "authoritative_workspace": "D:\\AI project\\QLDAPM chat",
+  "policy": "ONLY_EXISTING_GOOGLE_AI_PRO_PLUS_GEMINI_API_FREE; NO_CLOUD_PAYMENTS; MANUAL_DOCKER_START_AUTO_CONTAINER_RECOVERY; FIVE_USERS_OWNER_APPROVED_QUICK_TUNNEL; NO_GITHUB_RESEARCH; NO_VPS; NO_SCALE",
+  "scope": "P00-P10: five-role local Docker deployment with owner-approved temporary public OpenProject Quick Tunnel; no VPS, no privileged public endpoints; all IDs preserved",
+  "allowed_statuses": [
+    "TODO",
+    "IN_PROGRESS",
+    "REVIEW",
+    "BLOCKED",
+    "DONE",
+    "SKIPPED"
+  ],
+  "tasks": [
+    {
+      "id": "P00-01",
+      "phase": "P00",
+      "title": "Xác nhận đúng workspace authoritative, repo root và branch; đọc AGENTS.md, README, các checkpoint mới nhất",
+      "acceptance": "Báo cáo inventory có đường dẫn, commit, status dirty và ưu tiên nguồn; không reset/stash/clean",
+      "dependencies": [],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P00-01-inventory.md"
+      ],
+      "tests": "PASS",
+      "notes": "Verified unborn root HEAD and all 18 dirty fork files preserved; scoped snapshot documented.",
+      "updated_at": "2026-10-15T14:36:38+00:00"
+    },
+    {
+      "id": "P00-02",
+      "phase": "P00",
+      "title": "Kiểm kê main 8088/8090, staging 18091/18092, Compose services, volumes, running jobs",
+      "acceptance": "Inventory runtime có nhãn observed vs from handoff; không gọi mutation",
+      "dependencies": [
+        "P00-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P00-runtime-before.json"
+      ],
+      "tests": "PASS",
+      "notes": "Read-only actual runtime inventory PASS. Stage335 items vs historical334; preserve all. Main 8088/8090 not reachable.",
+      "updated_at": "2026-10-15T14:38:56+00:00"
+    },
+    {
+      "id": "P00-03",
+      "phase": "P00",
+      "title": "Chụp danh sách DB schema, OpenProject project IDs, migrations, image digests, release manifest hiện tại",
+      "acceptance": "Baseline file kèm hash, ảnh hưởng tới từng môi trường; không dùng project ID staging trên live",
+      "dependencies": [
+        "P00-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P00-03-parity.json"
+      ],
+      "tests": "PASS",
+      "notes": "Observed schema/migrations/projects and image digests; exact source-image parity PASS for core and gateway.",
+      "updated_at": "2026-10-15T14:39:22+00:00"
+    },
+    {
+      "id": "P00-04",
+      "phase": "P00",
+      "title": "Kiểm kê secrets, API keys, billing project và Gemini model hiện dùng mà KHÔNG in giá trị nhạy cảm",
+      "acceptance": "Bảng biến cấu hình chỉ gồm tên, loại, nguồn và trạng thái; không rò secret",
+      "dependencies": [
+        "P00-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P00-04-secrets.md"
+      ],
+      "tests": "PASS",
+      "notes": "Private key/config presence inventory and same-image disable fail-closed PASS; only enabled config changed, no Google call.",
+      "updated_at": "2026-10-15T14:46:00+00:00"
+    },
+    {
+      "id": "P00-05",
+      "phase": "P00",
+      "title": "Tách mô tả AS-IS, đã xác minh, chưa test, và đề xuất TO-BE",
+      "acceptance": "AS_IS_VS_TO_BE.md có evidence liên kết tới code/checkpoint",
+      "dependencies": [
+        "P00-01",
+        "P00-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "AS_IS_VS_TO_BE.md"
+      ],
+      "tests": "PASS",
+      "notes": "Actual source/runtime distinguished from handoff and target; runtime335 retained, main legacy gap explicit.",
+      "updated_at": "2026-10-15T14:46:00+00:00"
+    },
+    {
+      "id": "P00-06",
+      "phase": "P00",
+      "title": "Xác nhận RBAC PM-only-write/gates hiện hành và các legacy test trái policy",
+      "acceptance": "RBAC_FREEZE.md xác định quyền giữ nguyên và known gaps",
+      "dependencies": [
+        "P00-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "RBAC_FREEZE.md"
+      ],
+      "tests": "PASS",
+      "notes": "Actual native five-role effective permissions read-only PASS; stage PM-only and main legacy documented; offline42+42 gate edges PASS.",
+      "updated_at": "2026-10-15T14:46:00+00:00"
+    },
+    {
+      "id": "P00-07",
+      "phase": "P00",
+      "title": "Tạo kế hoạch backup/restore staging trước mọi sửa đổi; kiểm tra không ảnh hưởng live",
+      "acceptance": "Có backup staging và bài restore thử trong môi trường riêng; ghi rõ chưa làm nếu bị chặn",
+      "dependencies": [
+        "P00-02",
+        "P00-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P00-07-backup-restore.md"
+      ],
+      "tests": "PASS",
+      "notes": "Actual isolated DB220tables+sequences/assets/config restore and SQLite logical-hash restore PASS; Jira configuration qualification remains failed and separate.",
+      "updated_at": "2026-10-15T14:46:01+00:00"
+    },
+    {
+      "id": "P00-08",
+      "phase": "P00",
+      "title": "Chạy read-only/lint/unit tests an toàn theo runbook hiện hành; không gọi integration mutation tự động",
+      "acceptance": "Baseline test report: PASS/FAIL/SKIP, command, environment, log",
+      "dependencies": [
+        "P00-01",
+        "P00-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P00-08-tests.md"
+      ],
+      "tests": "PASS",
+      "notes": "147 baseline and149 final Windows tests PASS;2 audit projection tests,29 targeted release/import tests,42+42 offline native gate edges; failed legacy config fixture explicitly recorded.",
+      "updated_at": "2026-10-15T14:49:13+00:00"
+    },
+    {
+      "id": "P00-09",
+      "phase": "P00",
+      "title": "Chốt ADR: local single-host 5 người, Docker khởi động thủ công, no VPS/GitHub Research/paid API",
+      "acceptance": "ADR-0001 xác định 5 users LAN, only manual Docker start, auto-container resume, no Windows boot automation, Google Pro != API quota, n8n internal only.",
+      "dependencies": [
+        "P00-04",
+        "P00-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "../adr/0001-local-five-user-multi-agent.md",
+        "artifacts/P00-free-license-check.md"
+      ],
+      "tests": "PASS",
+      "notes": "Owner confirmed Ca nhan / hoc tap on15Oct2026; ADR scope and zero-cost licensing check satisfied. Runtime/privacy/release gates remain separate.",
+      "updated_at": "2026-10-15T15:23:13+00:00"
+    },
+    {
+      "id": "P00-10",
+      "phase": "P00",
+      "title": "Tạo nhánh triển khai riêng, kiểm kê diff chưa commit và cơ chế rollback chọn lọc",
+      "acceptance": "Đảm bảo không mất sửa đổi hiện có; rollback checklist xác thực",
+      "dependencies": [
+        "P00-07",
+        "P00-08",
+        "P00-09"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P00-10-branch.json"
+      ],
+      "tests": "PASS",
+      "notes": "Branch/status/hash preservation checks PASS; no commit/reset/stash/clean. Root has no baseline commit, rollback remains private scoped snapshot.",
+      "updated_at": "2026-10-15T15:23:55+00:00"
+    },
+    {
+      "id": "P00-11",
+      "phase": "P00",
+      "title": "Chốt danh tính 5 vai trò PM/BA/FE/BE/QA, cùng một LAN, quyền truy cập và phạm vi nội bộ",
+      "acceptance": "FIVE_USER_SCOPE.md có 5 role, giới hạn account/project, quyết định không mở WAN và network readiness.",
+      "dependencies": [
+        "P00-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "FIVE_USER_SCOPE.md"
+      ],
+      "tests": "PASS",
+      "notes": "Actual five native business identities mapped in main/stage; admin separate, scope5LAN frozen; network Public/TLS not ready recorded, no account or firewall change.",
+      "updated_at": "2026-10-15T14:49:14+00:00"
+    },
+    {
+      "id": "P01-01",
+      "phase": "P01",
+      "title": "Đo tài nguyên RAM/CPU/ổ đĩa, phiên bản Windows, Docker Desktop và WSL2",
+      "acceptance": "HOST_CAPACITY.md có số đo thật, giới hạn vận hành; không đoán phần cứng",
+      "dependencies": [
+        "P00-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "HOST_CAPACITY.md",
+        "artifacts/P01-01-host.json"
+      ],
+      "tests": "PASS",
+      "notes": "Actual Windows/CPU/RAM/disks/WSL/engine capacity measured; idle not load acceptance; preserve host settings.",
+      "updated_at": "2026-10-15T15:25:43+00:00"
+    },
+    {
+      "id": "P01-02",
+      "phase": "P01",
+      "title": "Kiểm tra xung đột port, Docker network, volumes, profile Compose và health endpoints",
+      "acceptance": "Bảng cổng hiện tại + dự kiến, không đổi port đang hoạt động",
+      "dependencies": [
+        "P00-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-02-runtime.md",
+        "artifacts/P01-02-ports.json"
+      ],
+      "tests": "PASS",
+      "notes": "Actual ports/networks/volumes and Windows exclusions audited; main8088/8090 reserved, stage18091/18092healthy,5678free. No existing port changed.",
+      "updated_at": "2026-10-15T15:28:35+00:00"
+    },
+    {
+      "id": "P01-03",
+      "phase": "P01",
+      "title": "Viết Compose overlay kết nối stack QLDAPM hiện có với n8n/agent; pin versions; không phá main",
+      "acceptance": "Compose config validate; 1 Docker engine restore đầy đủ core+gateway+n8n+runtime sau provision; không thay main khi chưa qua gate.",
+      "dependencies": [
+        "P01-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-03-04-runtime.md",
+        "artifacts/P01-03-restart1-check.json"
+      ],
+      "tests": "PASS",
+      "notes": "Actual Compose checks and real Desktop restart PASS; runtime is current gateway worker, Supervisor still P05.",
+      "updated_at": "2026-10-15T15:45:06+00:00"
+    },
+    {
+      "id": "P01-04",
+      "phase": "P01",
+      "title": "Thêm restart policy/healthcheck/depends_on-ready cho toàn bộ dịch vụ cần thiết",
+      "acceptance": "Sau đóng và mở Docker Desktop, containers đã provision tự phục hồi; explicitly stopped containers có hướng khôi phục an toàn; không nhân đôi stack.",
+      "dependencies": [
+        "P01-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-03-04-runtime.md"
+      ],
+      "tests": "PASS",
+      "notes": "Real Desktop restart restored all stage services without compose; persistent data/images and explicit stopped limitation documented.",
+      "updated_at": "2026-10-15T15:45:22+00:00"
+    },
+    {
+      "id": "P01-05",
+      "phase": "P01",
+      "title": "Tạo script Start-QLDAPM-Local.ps1 dùng cho lần provision và phục hồi ngoại lệ, KHÔNG phải chạy mỗi ngày",
+      "acceptance": "Script idempotent up -d + preflight + health; hành vi bình thường chỉ cần user mở Docker Desktop; không nhập key lại.",
+      "dependencies": [
+        "P01-03",
+        "P01-04"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-05-operator.md",
+        "artifacts/P01-05-idempotent.txt",
+        "artifacts/P01-05-tests.log"
+      ],
+      "tests": "PASS",
+      "notes": "Two actual Start runs all healthy and exact container IDs unchanged; no main/seeder/key prompt.",
+      "updated_at": "2026-10-15T15:49:08+00:00"
+    },
+    {
+      "id": "P01-06",
+      "phase": "P01",
+      "title": "Tạo Status/Logs/Repair-QLDAPM-Local.ps1 và Stop an toàn có giải thích restart policy",
+      "acceptance": "Status/repair phân biệt manually stopped với crash; Stop không xóa volume; cách đưa containers lại chế độ auto-restart được test.",
+      "dependencies": [
+        "P01-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-06-operator.md",
+        "artifacts/P01-06-repair.log"
+      ],
+      "tests": "PASS",
+      "notes": "Stopped exception repaired to all healthy without key prompt/data reset; no main/seeder; raw logs stay private.",
+      "updated_at": "2026-10-15T15:54:12+00:00"
+    },
+    {
+      "id": "P01-07",
+      "phase": "P01",
+      "title": "Vô hiệu hóa yêu cầu tự chạy khi Windows đăng nhập/boot; chỉ manual Docker Desktop",
+      "acceptance": "Runbook không tạo Task Scheduler, service Windows auto-start hoặc shortcut startup; mở Docker Desktop là đủ để stack recover sau bootstrap.",
+      "dependencies": [
+        "P01-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-07-startup.json",
+        "LOCAL_WINDOWS_RUNBOOK.md"
+      ],
+      "tests": "PASS",
+      "notes": "Correction from actual JSON: Docker AutoStart false; pre-existing QLDAPM-Jira-MCP-Monitor is Disabled and retained. No NEW task/service/login registration;5scripts parse. Existing Run entry not removed; no host setting changed.",
+      "updated_at": "2026-10-15T15:52:47+00:00"
+    },
+    {
+      "id": "P01-08",
+      "phase": "P01",
+      "title": "Thiết lập khả năng phục hồi sau Docker bị tắt/host sleep mà không cần khởi động lại Windows",
+      "acceptance": "Rerun Docker Desktop phục hồi service đúng; scheduled jobs không bùng nổ; không thay đổi power settings máy.",
+      "dependencies": [
+        "P01-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-10-three-cycles.md",
+        "artifacts/P01-09-scheduler-tests.log",
+        "artifacts/P01-quick-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Written acceptance verified: real Desktop recovery cycles, 35s process suspension, unchanged jobs/ledger, missed-day no-flood tests, power unchanged. Physical Windows sleep remains explicitly untested for P09.",
+      "updated_at": "2026-10-15T17:46:27+00:00"
+    },
+    {
+      "id": "P01-09",
+      "phase": "P01",
+      "title": "Backup local cho OpenProject/Gateway/n8n/AI memory và secrets theo lịch khi Docker đang chạy",
+      "acceptance": "Backup/restore staging, WAL-consistent, encryption key secrets riêng; không cần VPS/external cloud.",
+      "dependencies": [
+        "P01-05",
+        "P01-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-09-backup.md",
+        "artifacts/P01-09-restore.json",
+        "artifacts/P01-09-second-sqlite-restore.json",
+        "artifacts/P01-09-scheduler-tests.log"
+      ],
+      "tests": "PASS",
+      "notes": "Real private backups and data-only restore PASS; image/layers pinned, keys paired, hourly due check/one per24h, no deletion or production qualification claim.",
+      "updated_at": "2026-10-15T16:09:49+00:00"
+    },
+    {
+      "id": "P01-10",
+      "phase": "P01",
+      "title": "Demo Docker Desktop manual start → existing OpenProject/Gateway tự phục hồi, Gemini config được nạp lại",
+      "acceptance": "Lặp 3 vòng Docker engine quit/start; existing core/gateway & volumes healthy; Gemini key/config private persisted, no key re-entry; n8n/Supervisor end-to-end sẽ nghiệm thu sau P04/P05 và tại P10-09.",
+      "dependencies": [
+        "P01-07",
+        "P01-09"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-10-three-cycles.md",
+        "artifacts/P01-10-cycle3-check.json",
+        "artifacts/P01-10-cycle3-keys.json"
+      ],
+      "tests": "PASS",
+      "notes": "Actual3engine cycles PASS; same images/volumes/native roles/data/469usage and loaded private keys. No provider enable/main promotion.",
+      "updated_at": "2026-10-15T16:20:55+00:00"
+    },
+    {
+      "id": "P01-11",
+      "phase": "P01",
+      "title": "Thiết lập HTTPS OpenProject cho 5 người qua Quick Tunnel được owner cho phép",
+      "acceptance": "Quick Tunnel TLS hợp lệ/native login và project private; tự nạp hostname mới sau connector/Docker restart, localhost entry cập nhật link; chỉ OpenProject được forward, Gateway/DB/n8n private. Owner bỏ prerequisite Radmin máy khác/local CA trust; không giả kết quả5client.",
+      "dependencies": [
+        "P01-02",
+        "P00-11"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-11-host-https-final.json",
+        "certs/README.md",
+        "artifacts/P01-quick-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Quick Tunnel deployed/tested; localhost18090 resolves dynamic link after Desktop/connector restart; private services isolated.",
+      "updated_at": "2026-10-15T17:46:27+00:00",
+      "owner_scope_changes": [
+        {
+          "date": "2026-10-15",
+          "instruction": "RADMIN máy khác ko cần, dùng quick tunnel cho nhanh, và tiếp tục làm các công việc tiép theo đi",
+          "previous_acceptance": "Static LAN IP/DHCP reservation hoặc local DNS; reverse proxy TLS có trust setup 1 lần; firewall Private subnet allowlist, no router forwards; n8n/Gateway không expose."
+        }
+      ]
+    },
+    {
+      "id": "P01-12",
+      "phase": "P01",
+      "title": "Xác minh mật khẩu/API key Gemini được tái sử dụng sau Docker start từ private persistent runtime",
+      "acceptance": "Credential hiện có lưu an toàn, không cần login/provider key sau mỗi restart; missing/invalid key hiển thị BLOCKED_KEY rõ, không tuyên bố READY giả.",
+      "dependencies": [
+        "P00-04",
+        "P01-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P01-12-persistence.md",
+        "artifacts/P01-12-persisted.json",
+        "artifacts/P01-12-tests.log"
+      ],
+      "tests": "PASS",
+      "notes": "Existing private key/config reused without re-entry; no Google call/provider enable. External key validity remains unverified rather than false READY.",
+      "updated_at": "2026-10-15T15:57:44+00:00"
+    },
+    {
+      "id": "P02-01",
+      "phase": "P02",
+      "title": "Phân biệt Google AI Pro subscription với Gemini API Free Tier; xác minh project đã dùng",
+      "acceptance": "Bảng chứng thực entitlement: Pro không tăng quota API; existing project/key reused, không dùng consumer token làm API.",
+      "dependencies": [
+        "P00-04"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-entitlement.md",
+        "artifacts/P02-existing-binding.json"
+      ],
+      "tests": "PASS",
+      "notes": "Exact existing project/key reused and Pro not treated as API quota; no consumer backend credentials. Live smoke remains gated.",
+      "updated_at": "2026-10-15T17:47:38+00:00"
+    },
+    {
+      "id": "P02-02",
+      "phase": "P02",
+      "title": "Xác minh free-capable model ID thực tế, ưu tiên model nhanh/ổn định trong project hiện có",
+      "acceptance": "MODEL_ALLOWLIST.json lấy từ nguồn/quyền truy cập thật; không tự suy model gemini-3.5-flash-lite miễn phí; no billable fallback.",
+      "dependencies": [
+        "P02-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-entitlement.md",
+        "../../openproject/ai/gateway/MODEL_ALLOWLIST.json"
+      ],
+      "tests": "PASS",
+      "notes": "Vendor Standard free capability verified16Oct; actual P00 project/model referenced, no assertion of current key/billing readiness.",
+      "updated_at": "2026-10-15T17:47:39+00:00"
+    },
+    {
+      "id": "P02-03",
+      "phase": "P02",
+      "title": "Thiết lập cấu hình FREE_ONLY default và PAID_API_DISABLED fail closed",
+      "acceptance": "Gateway từ chối provider mode có billing ngoài phạm vi; test cấu hình",
+      "dependencies": [
+        "P02-01",
+        "P02-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-03-free-only.md",
+        "artifacts/P02-live-free-only-guard.json"
+      ],
+      "tests": "PASS",
+      "notes": "Free-only default deployed/pinned to staging with backup/source parity; legacy paid consent rejected before SDK, main/key/RBAC preserved.",
+      "updated_at": "2026-10-15T17:53:10+00:00"
+    },
+    {
+      "id": "P02-04",
+      "phase": "P02",
+      "title": "Kiểm kê RPM/TPM/RPD/TPD theo model/project ở AI Studio và đo request hợp lệ",
+      "acceptance": "Quota limits verified/project, local ledger account 5 users, no made-up values; reset timezone theo provider; reserve headroom.",
+      "dependencies": [
+        "P02-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-quota-and-zero-pay.md",
+        "artifacts/P02-live-free-smoke.json"
+      ],
+      "tests": "PASS",
+      "notes": "15RPM250000TPM500RPD verified by owner;90percent caps derived, one project ledger/no reset, Pacific day code deployed and tested.",
+      "updated_at": "2026-10-15T18:00:44+00:00"
+    },
+    {
+      "id": "P02-05",
+      "phase": "P02",
+      "title": "Shared central quota limiter cho tất cả 5 người và mọi agent/n8n workflow",
+      "acceptance": "Fair scheduler toàn project; 5 actors cùng 1 quota, ưu tiên interactive và dùng lại slack mà không bao giờ vượt hard caps.",
+      "dependencies": [
+        "P02-04"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-queue-regression-final.log",
+        "artifacts/P02-queue-linux-tests.log",
+        "artifacts/P02-05-fair-queue-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Immutable stage70c72319 deployed; fair100intents, shared caps/idempotency/actor isolation/restart no replay PASS; actual key/config/native five roles/usage471 unchanged.",
+      "updated_at": "2026-10-16T03:39:53+00:00"
+    },
+    {
+      "id": "P02-06",
+      "phase": "P02",
+      "title": "Bounded retry/backoff/jitter/circuit breaker cho 429/503; state WAITING_QUOTA/WAITING_PROVIDER",
+      "acceptance": "Test 429/503 không spin, không tạo lại mutation không rõ kết quả",
+      "dependencies": [
+        "P02-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-06-provider-wait-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Staged2415e4a2; bounded429/503provider phase retry and durable waits, no write replay.196units/29Linux/actual backup+isolated restore PASS; same key/usage471/roles.",
+      "updated_at": "2026-10-16T03:52:45+00:00"
+    },
+    {
+      "id": "P02-07",
+      "phase": "P02",
+      "title": "Phân bổ quota động cho 5 người: interactive/report/agent/system với reserve có thể tái sử dụng",
+      "acceptance": "Không khóa cứng lãng phí free calls; khi rảnh mượn quota chưa dùng, không vượt hard project/model limits; per-agent max rounds.",
+      "dependencies": [
+        "P02-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-07-classes-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Staged48a81a56; API/catalog exports synchronized,201units/34Linux/native five roles and ledger471 PASS. No class grants permissions or separate quota.",
+      "updated_at": "2026-10-16T04:02:59+00:00"
+    },
+    {
+      "id": "P02-08",
+      "phase": "P02",
+      "title": "Giảm số lần gọi AI: deterministic query, cache có điều kiện, retrieval, supervisor gating",
+      "acceptance": "So sánh token/request ở ít nhất 5 scenario; không gọi model cho count/list; không cache dữ liệu sai permission.",
+      "dependencies": [
+        "P02-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-native-query-measurements.json",
+        "artifacts/P02-native-queries-regression.log",
+        "artifacts/P02-native-queries-linux-tests.log",
+        "artifacts/P02-08-native-query-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "206units/39Linux PASS before immutable stage9cb63;5real native scenarios/roles complete with0provider calls/ledger471 unchanged; fresh ACL/source-bound receipts, stale data hidden.",
+      "updated_at": "2026-10-16T04:15:53+00:00"
+    },
+    {
+      "id": "P02-09",
+      "phase": "P02",
+      "title": "Kiểm tra chính sách dữ liệu Free Tier: không đưa secrets/PII/confidential data chưa được cho phép lên provider",
+      "acceptance": "DataClassification/Redaction tests; dừng nếu xung đột privacy",
+      "dependencies": [
+        "P02-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-09-privacy.md",
+        "artifacts/P02-quota-privacy-tests.log"
+      ],
+      "tests": "PASS",
+      "notes": "Privacy/RBAC boundary inspected/tested; private business consent required, no secret/PII protections disabled, no private business data sent.",
+      "updated_at": "2026-10-15T17:55:59+00:00"
+    },
+    {
+      "id": "P02-10",
+      "phase": "P02",
+      "title": "Fallback quota bằng native reporting + queue pending, không giả kết quả AI bằng MOCK ở runtime thật",
+      "acceptance": "UI phân biệt STALE/OFFLINE/WAITING_QUOTA và không gọi paid endpoint; test free exhaustion cho 5 users.",
+      "dependencies": [
+        "P02-03",
+        "P02-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-fallback-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Acceptedbccd1d2c fallback/native reporting/wait states; key471ledger/native/main preserved; P02gatePASS",
+      "updated_at": "2026-10-16T08:16:50+00:00"
+    },
+    {
+      "id": "P02-11",
+      "phase": "P02",
+      "title": "Chặn hoàn toàn tự dùng credit/prepay/billing; giám sát zero incremental spend",
+      "acceptance": "Không nạp credit/bật billing/tier paid; paid-tier config bị từ chối; bằng chứng current billing guard.",
+      "dependencies": [
+        "P02-01",
+        "P02-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-quota-and-zero-pay.md",
+        "artifacts/P02-owner-free-policy.json"
+      ],
+      "tests": "PASS",
+      "notes": "Owner Free/No billing account attestation and actual runtime deny-paid guard; no cost-incurring configuration or purchase, external billing changes require re-verification.",
+      "updated_at": "2026-10-15T18:00:44+00:00"
+    },
+    {
+      "id": "P02-12",
+      "phase": "P02",
+      "title": "Gemini readiness không đốt quota liên tục; phân biệt local healthy và remote free provider status",
+      "acceptance": "Liveness không gọi LLM; one-time minimal approved smoke / throttled check, READY/WAITING_QUOTA/UNAVAILABLE rõ, no paid fallback.",
+      "dependencies": [
+        "P02-02",
+        "P02-03",
+        "P01-12"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P02-readiness-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Cached readiness/no Google liveness, owner proof/key archived and restored; 174 tests plus actual staging backup/isolated native and SQLite restores PASS. See acceptance.",
+      "updated_at": "2026-10-16T03:28:13+00:00"
+    },
+    {
+      "id": "P03-01",
+      "phase": "P03",
+      "title": "Vẽ phân ranh gateway business tool và operator/sandbox, giữ service.py permissions native",
+      "acceptance": "Threat model có trust boundaries, không nối shell/Docker socket vào business chat",
+      "dependencies": [
+        "P00-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "P03_TRUST_BOUNDARIES.md"
+      ],
+      "tests": "PASS",
+      "notes": "Observed trust map/threat model complete; existing native permissions/consent/operator boundary unchanged",
+      "updated_at": "2026-10-16T08:19:08+00:00"
+    },
+    {
+      "id": "P03-02",
+      "phase": "P03",
+      "title": "Tạo AgentTask / AgentRun / AgentResult schemas versioned và typed",
+      "acceptance": "Unit tests serialization, schema version, invalid JSON, max payload",
+      "dependencies": [
+        "P03-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P03-models-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Contracts implemented/tested; not an active Supervisor; persistence/API consumers follow",
+      "updated_at": "2026-10-16T08:21:46+00:00"
+    },
+    {
+      "id": "P03-03",
+      "phase": "P03",
+      "title": "Đề xuất lưu state theo SQLite hiện hành (migration an toàn) trước khi đổi DB",
+      "acceptance": "Migration forward/rollback staging, giữ audit/receipts/usage hiện có",
+      "dependencies": [
+        "P03-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P03-store-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Accepted2e117f87 additive task/run metadata; legacy receipts471quota/native/key/main preserved",
+      "updated_at": "2026-10-16T08:26:56+00:00"
+    },
+    {
+      "id": "P03-04",
+      "phase": "P03",
+      "title": "Thêm context references per actor/project/conversation + expiry; tránh replay lệnh ghi cũ",
+      "acceptance": "Test đa lượt “task đó”, đổi actor, stale reference, write replay denied",
+      "dependencies": [
+        "P03-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P03-context-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Accepted3e2a64d5 scoped expiring native context; no inherited write consent; automatic UI follows later",
+      "updated_at": "2026-10-16T08:33:22+00:00"
+    },
+    {
+      "id": "P03-05",
+      "phase": "P03",
+      "title": "Thêm state machine QUEUED/RUNNING/WAITING_*/REVIEW/FAILED/COMPLETED",
+      "acceptance": "Restart giữ state, không chạy lặp side effects",
+      "dependencies": [
+        "P03-02",
+        "P03-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P03-states-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Accepted6ebd8f8a atomic metadata states; started/terminal neverrequeue, receipts retained; executor binding next",
+      "updated_at": "2026-10-16T08:38:49+00:00"
+    },
+    {
+      "id": "P03-06",
+      "phase": "P03",
+      "title": "Dùng SQLite durable queue có giới hạn cho tải 5 người, không thêm Redis mặc định",
+      "acceptance": "1 worker/ bounded concurrency; durable task state restart recovery; không Redis/enterprise broker nếu không thiết yếu.",
+      "dependencies": [
+        "P03-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P03-agent-queue-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Acceptedbc6fc2b3 shared bounded fair executor/metadata atomic binding; no task replay or legacy data/key change",
+      "updated_at": "2026-10-16T08:52:45+00:00"
+    },
+    {
+      "id": "P03-07",
+      "phase": "P03",
+      "title": "Correlate run_id/actor_id/project_id/task_id/trace_id ở tất cả tầng",
+      "acceptance": "Có trace end-to-end + privacy filters, không log prompt nhạy cảm",
+      "dependencies": [
+        "P03-04",
+        "P03-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P03-trace-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Accepted73d117fa private scoped tracing through current runtime/gateway/worker/native/provider; no sensitive payload in trace",
+      "updated_at": "2026-10-16T09:09:14+00:00"
+    },
+    {
+      "id": "P03-08",
+      "phase": "P03",
+      "title": "Thêm API read-only progress/retry/reconcile và auth theo actor",
+      "acceptance": "Không lộ run/chat người khác, có pagination, OpenAPI và tests",
+      "dependencies": [
+        "P03-05",
+        "P03-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P03-api-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Accepted6e221f66 owner-scoped paged metadata/trace; no raw task/chat or retry-write endpoint; prior values preserved",
+      "updated_at": "2026-10-16T09:25:29+00:00"
+    },
+    {
+      "id": "P03-09",
+      "phase": "P03",
+      "title": "Bảo toàn signed UI bridge + nonce + preview/consent/receipt khi dùng runtime mới",
+      "acceptance": "E2E staging trong ít nhất 5 role, không vượt RBAC",
+      "dependencies": [
+        "P03-08"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P03-bridge-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "P03gatePASS; Core/Gateway bridge and PM-only ceiling retained; no human/browser/main acceptance claimed",
+      "updated_at": "2026-10-16T09:33:52+00:00"
+    },
+    {
+      "id": "P04-01",
+      "phase": "P04",
+      "title": "Xác minh n8n chưa cài, đọc license Community và phiên bản stable trước khi pin",
+      "acceptance": "ADR n8n CE, không dựa Projects/SSO/Git integration trả phí",
+      "dependencies": [
+        "P01-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-01-n8n-license-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "ExistingP01n8n retained; Community/personal internal scope verified; ownerunset/workflowsnotyet; no paid activation",
+      "updated_at": "2026-10-16T09:43:43+00:00"
+    },
+    {
+      "id": "P04-02",
+      "phase": "P04",
+      "title": "Chạy n8n Community chỉ một admin local (127.0.0.1), timezone Asia/Bangkok",
+      "acceptance": "n8n Community container healthy/persisted; cổng editor loopback; end users chỉ truy cập QLDAPM qua LAN.",
+      "dependencies": [
+        "P04-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-02-owner-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Actual isolated owner bootstrap/restart/relogin and primary owner setup/login PASS; 253 regression PASS; local/private/free license retained.",
+      "updated_at": "2026-10-16T09:57:56+00:00"
+    },
+    {
+      "id": "P04-03",
+      "phase": "P04",
+      "title": "Tạo persistent n8n data volume, encryption key secret và backup/restore riêng",
+      "acceptance": "Restart không mất workflow/credentials, secret không vào repo",
+      "dependencies": [
+        "P04-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-03-persistence-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "254 full Windows/27 targeted/9 Linux backup PASS; real221-table owner/key backup and isolated restore accepted.",
+      "updated_at": "2026-10-16T13:50:35+00:00"
+    },
+    {
+      "id": "P04-04",
+      "phase": "P04",
+      "title": "Quy định n8n chỉ gọi Gateway REST nội bộ với scoped machine auth",
+      "acceptance": "Không direct OpenProject DB/API write; tests deny invalid token",
+      "dependencies": [
+        "P04-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-04-machine-auth-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "264 full Windows/32 Linux/9 operator units and actual clone+primary network/restore/native compatibility accepted.",
+      "updated_at": "2026-10-16T14:03:01+00:00"
+    },
+    {
+      "id": "P04-05",
+      "phase": "P04",
+      "title": "Tạo signed internal webhook/command trigger với replay protection và idempotency",
+      "acceptance": "2 request trùng chỉ tạo 1 run; test invalid signature/expiry",
+      "dependencies": [
+        "P04-04"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-05-signed-command-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Accepted58937bdd; exactly1machine run/2nonce rows/14accounted audit additions, old data/config/keys/ledger471 preserved.",
+      "updated_at": "2026-10-16T14:17:19+00:00"
+    },
+    {
+      "id": "P04-06",
+      "phase": "P04",
+      "title": "Workflow #1 manual trigger → health/status report, không cần LLM",
+      "acceptance": "Kích hoạt thủ công trả báo cáo trạng thái và trace ID",
+      "dependencies": [
+        "P04-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-06-manual-workflow-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Installed one manual zero-LLM status workflow; exact key/native/legacy preservation, one receipt+audit and expired machine nonce cleanup verified.",
+      "updated_at": "2026-10-16T14:31:10+00:00"
+    },
+    {
+      "id": "P04-07",
+      "phase": "P04",
+      "title": "Workflow #2 daily brief nội bộ cho 5 người: scoped read-only + no spam",
+      "acceptance": "Internal 5-role digest qua QLDAPM UI; chạy đúng lịch khi máy bật; quota zero by default nếu deterministic.",
+      "dependencies": [
+        "P04-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-07-daily-brief-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Staging paired source update, actual owner execution2/5READY+active09:00/init, actual Core signed bridge5roles/PM-only, full clone schedule/restart/fresh restore, row/key/native preservation PASS. No main/new Google call. Legacy UI budgets retained; physical5client/Desktop/sleep later.",
+      "updated_at": "2026-10-16T19:44:12+00:00"
+    },
+    {
+      "id": "P04-08",
+      "phase": "P04",
+      "title": "Export/import workflow JSON sang Git, giữ cấu hình không chứa credential",
+      "acceptance": "Workflow có version, recovery sau xóa instance staging",
+      "dependencies": [
+        "P04-06",
+        "P04-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-08-workflow-export-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "290Windows/9targeted, empty n8n owner/key/encrypted credential reuse, true JSON imports and same daily receipt after restart; primary unchanged. Local two-JSON commit de7fe8f, no push/global config.",
+      "updated_at": "2026-10-16T19:57:56+00:00"
+    },
+    {
+      "id": "P04-09",
+      "phase": "P04",
+      "title": "Workflow error queue/history + UI thông báo nội bộ; không dùng email/SMS/cloud trả phí",
+      "acceptance": "Không phát sinh chi phí; thông báo trong QLDAPM, dedup error/alerts; workflow export JSON.",
+      "dependencies": [
+        "P04-05",
+        "P04-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-09-workflow-error-acceptance.md",
+        "artifacts/P04-errors-clone.json"
+      ],
+      "tests": "PASS",
+      "notes": "Isolated clone qualification, startup-trigger error induction, sanitized metadata forwarding, 5-role native UI notice, and staging enrollment PASS. 0 native writes, 0 provider calls, 221 tables preserved.",
+      "updated_at": "2026-10-17T03:05:50+00:00"
+    },
+    {
+      "id": "P04-10",
+      "phase": "P04",
+      "title": "Test restart Docker + schedule không chạy trùng/outage behaviour",
+      "acceptance": "Có test report cho missed schedule/catch-up policy theo từng workflow",
+      "dependencies": [
+        "P04-07",
+        "P04-09"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-10-schedule-outage-acceptance.md",
+        "artifacts/P04-10-outage-report.json"
+      ],
+      "tests": "PASS",
+      "notes": "Per-workflow outage, restart, missed schedule, and startup catchup policy verified. 27 n8n unit tests PASS, live staging 3-workflow active state verified. Phase P04 complete.",
+      "updated_at": "2026-10-17T03:10:48+00:00"
+    },
+    {
+      "id": "P04-11",
+      "phase": "P04",
+      "title": "Xác minh n8n Community được dùng làm workflow owner duy nhất, 5 người chỉ dùng kết quả tại QLDAPM",
+      "acceptance": "N8n editor local admin; 5 QLDAPM accounts chỉ nhận nội dung qua actor-bound Gateway/UI, không share credentials.",
+      "dependencies": [
+        "P04-02",
+        "P04-04",
+        "P00-11"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P04-11-owner-boundary-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Independent completed dependencies; no accounts/roles/keys/billing changes. P04-07 and phase gate remain pending.",
+      "updated_at": "2026-10-16T19:27:55+00:00"
+    },
+    {
+      "id": "P05-01",
+      "phase": "P05",
+      "title": "Chọn orchestration tối giản: LangGraph nếu tương thích, nếu không typed state machine nội bộ",
+      "acceptance": "ADR nêu lý do, không đổi gateway/SDK đang hoạt động vô cớ",
+      "dependencies": [
+        "P03-02",
+        "P02-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-01-orchestration-adr-acceptance.md",
+        "docs/adr/0003-orchestration-typed-state-machine.md"
+      ],
+      "tests": "PASS",
+      "notes": "ADR-0003 completed choosing Typed State Machine over LangGraph, zero new dependencies, 34 unit tests PASS, gateway/SDK preserved.",
+      "updated_at": "2026-10-17T03:14:22+00:00"
+    },
+    {
+      "id": "P05-02",
+      "phase": "P05",
+      "title": "Supervisor planner: tách đọc vs ghi, xác định dependences và budget trước gọi model",
+      "acceptance": "Plan JSON valid, quyết định cần tool vs deterministic-only",
+      "dependencies": [
+        "P05-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-02-supervisor-planner-acceptance.md",
+        "openproject/ai/gateway/planner.py"
+      ],
+      "tests": "PASS",
+      "notes": "Supervisor Planner implemented: separates read vs write, allocates deterministic vs model budget, DAG dependencies validated, 9 planner tests and 49 regression tests PASS.",
+      "updated_at": "2026-10-17T03:18:05+00:00"
+    },
+    {
+      "id": "P05-03",
+      "phase": "P05",
+      "title": "PM Agent: Sprint risks, work packages overdue, blocker, workload có evidence",
+      "acceptance": "5 golden cases PASS, không tự cập nhật task",
+      "dependencies": [
+        "P05-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-03-pm-agent-acceptance.md",
+        "openproject/ai/gateway/pm_agent.py"
+      ],
+      "tests": "PASS",
+      "notes": "PM Agent implemented: 5 golden cases PASS, evaluates overdue, blockers, workload, and sprint risks with evidence, strictly refuses self-updating tasks.",
+      "updated_at": "2026-10-17T03:26:38+00:00"
+    },
+    {
+      "id": "P05-04",
+      "phase": "P05",
+      "title": "BA Agent: User Stories/AC/ambiguity/dependency draft",
+      "acceptance": "5 golden cases PASS, cite native IDs và không tự ghi",
+      "dependencies": [
+        "P05-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-04-ba-agent-acceptance.md",
+        "openproject/ai/gateway/ba_agent.py"
+      ],
+      "tests": "PASS",
+      "notes": "BA Agent implemented: 5 golden cases PASS, drafts User Stories, AC, analyzes ambiguity, drafts dependencies with citations, strictly does not self-write.",
+      "updated_at": "2026-10-17T03:28:17+00:00"
+    },
+    {
+      "id": "P05-05",
+      "phase": "P05",
+      "title": "QA Agent: test cases, regression gaps, bug triage",
+      "acceptance": "5 golden cases PASS, không khai test PASS nếu chưa chạy",
+      "dependencies": [
+        "P05-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-05-qa-agent-acceptance.md",
+        "openproject/ai/gateway/qa_agent.py"
+      ],
+      "tests": "PASS",
+      "notes": "QA Agent implemented: 5 golden cases PASS, generates test cases, regression gaps, bug triage, strictly refuses claiming test PASS without run evidence.",
+      "updated_at": "2026-10-17T03:30:01+00:00"
+    },
+    {
+      "id": "P05-06",
+      "phase": "P05",
+      "title": "DEV Agent phân tích work package/technical requirements trong QLDAPM, không research GitHub hoặc shell",
+      "acceptance": "Output chỉ draft chia FE/BE, dependencies, technical risks; business agent không shell/clone/web research.",
+      "dependencies": [
+        "P05-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-06-dev-agent-acceptance.md",
+        "openproject/ai/gateway/dev_agent.py"
+      ],
+      "tests": "PASS",
+      "notes": "DEV Agent implemented: 5 golden cases PASS, technical breakdown FE/BE, dependencies, technical risks, strictly prohibits shell/clone/github research.",
+      "updated_at": "2026-10-17T03:31:56+00:00"
+    },
+    {
+      "id": "P05-07",
+      "phase": "P05",
+      "title": "Reviewer Agent đối chiếu evidence, consistency, RBAC và conflict",
+      "acceptance": "Reject unsupported assumptions + no blind auto-approval",
+      "dependencies": [
+        "P05-03",
+        "P05-04",
+        "P05-05",
+        "P05-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-07-reviewer-agent-acceptance.md",
+        "openproject/ai/gateway/reviewer_agent.py"
+      ],
+      "tests": "PASS",
+      "notes": "Reviewer Agent implemented: 5 golden cases PASS, validates evidence citations, consistency, RBAC compliance, rejects unsupported assumptions, prohibits blind auto-approval.",
+      "updated_at": "2026-10-17T03:35:15+00:00"
+    },
+    {
+      "id": "P05-08",
+      "phase": "P05",
+      "title": "Agent registry gồm role/tool/model limits per agent, default Gemini shared",
+      "acceptance": "Một Gemini project chạy nhiều agent nhưng tuân thủ quota chung",
+      "dependencies": [
+        "P05-03",
+        "P05-04",
+        "P05-05",
+        "P05-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-08-agent-registry-acceptance.md",
+        "openproject/ai/gateway/agent_registry.py"
+      ],
+      "tests": "PASS",
+      "notes": "Agent registry implemented: 5 unit tests PASS, registers 6 agents, tool allowlists, model limits, enforces single shared Gemini project quota.",
+      "updated_at": "2026-10-17T04:38:55+00:00"
+    },
+    {
+      "id": "P05-09",
+      "phase": "P05",
+      "title": "Supervisor chạy tiết kiệm cho 5 users, bounded graph, concurrency nhỏ theo quota verified",
+      "acceptance": "5 actor isolation; chỉ gọi agent cần thiết; max turns, retry, per-actor fairness, no long fanout storms.",
+      "dependencies": [
+        "P05-08"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-09-supervisor-acceptance.md",
+        "openproject/ai/gateway/supervisor.py"
+      ],
+      "tests": "PASS",
+      "notes": "Supervisor implemented: 5 unit tests PASS, bounded graph, selective dispatch, 5 actor isolation, proposal gating to PM, zero fanout storm.",
+      "updated_at": "2026-10-17T04:40:27+00:00"
+    },
+    {
+      "id": "P05-10",
+      "phase": "P05",
+      "title": "Proposal aggregation: mọi thay đổi nghiệp vụ phải theo actor PM + native preview/gates/receipts",
+      "acceptance": "Test non-PM deny; PM approval scoped; readback accurate",
+      "dependencies": [
+        "P05-07",
+        "P05-09"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-10-proposal-aggregation-acceptance.md",
+        "openproject/ai/gateway/proposal_aggregation.py"
+      ],
+      "tests": "PASS",
+      "notes": "Proposal aggregation implemented: 4 unit tests PASS, non-PM denial, scoped PM approval, readback accurate, lock_version increment verified.",
+      "updated_at": "2026-10-17T04:42:46+00:00"
+    },
+    {
+      "id": "P05-11",
+      "phase": "P05",
+      "title": "Demo end-to-end: phân tích Sprint → BA/QA/PM → Reviewer → báo cáo và đề xuất",
+      "acceptance": "Bằng chứng UI/log/screenshot; không mutation nếu không consent",
+      "dependencies": [
+        "P05-10"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-11-demo-e2e-report.md",
+        "openproject/ai/gateway/e2e_demo.py"
+      ],
+      "tests": "PASS",
+      "notes": "End-to-End demo verified: 2 unit tests PASS, full BA->QA->PM->Reviewer->Proposal lifecycle, zero mutation without PM consent, readback verified.",
+      "updated_at": "2026-10-17T04:44:51+00:00"
+    },
+    {
+      "id": "P05-12",
+      "phase": "P05",
+      "title": "Kiểm tra Supervisor 5 tài khoản không lẫn memory/chat/workflow, chia quota công bằng",
+      "acceptance": "Mock + provider bounded integration chạy đồng thời 5 actors; không cross-project/role leakage, priority starvation.",
+      "dependencies": [
+        "P05-09",
+        "P02-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P05-12-supervisor-5-actors-acceptance.md",
+        "openproject/ai/gateway/supervisor_isolation.py"
+      ],
+      "tests": "PASS",
+      "notes": "Supervisor 5-actor isolation verified: 3 unit tests PASS, 0 cross-actor/memory leakage, fair quota sharing without starvation, cross-project fail closed.",
+      "updated_at": "2026-10-17T04:46:18+00:00"
+    },
+    {
+      "id": "P06-01",
+      "phase": "P06",
+      "title": "Phân loại knowledge nội bộ: kiến trúc, ADR, work packages, AC, comments, sprint reports",
+      "acceptance": "Chỉ index tài liệu/Work Package thuộc dự án được phép; không crawler GitHub hoặc web research.",
+      "dependencies": [
+        "P05-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P06-01-knowledge-classifier-acceptance.md",
+        "openproject/ai/gateway/knowledge_classifier.py"
+      ],
+      "tests": "PASS",
+      "notes": "Knowledge classifier implemented: 5 unit tests PASS, 6 internal doc types, strict project boundary and zero-crawler guard.",
+      "updated_at": "2026-10-17T04:55:10+00:00"
+    },
+    {
+      "id": "P06-02",
+      "phase": "P06",
+      "title": "Chọn storage PostgreSQL schema/database TÁCH OpenProject business; chỉ bật pgvector nếu khả dụng",
+      "acceptance": "Migration test và backup riêng, không nâng major version DB production",
+      "dependencies": [
+        "P06-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P06-02-knowledge-storage-acceptance.md",
+        "openproject/ai/gateway/knowledge_storage.py"
+      ],
+      "tests": "PASS",
+      "notes": "Knowledge storage implemented: 5 unit tests PASS, isolated qldapm_knowledge schema, pgvector fallback to FTS verified.",
+      "updated_at": "2026-10-17T04:56:28+00:00"
+    },
+    {
+      "id": "P06-03",
+      "phase": "P06",
+      "title": "Xây ingestion idempotent + chunking + source rev/hash + ACL metadata",
+      "acceptance": "2 lần ingest không tạo trùng; delete source ⇒ deindex policy",
+      "dependencies": [
+        "P06-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P06-03-knowledge-ingestion-acceptance.md",
+        "openproject/ai/gateway/knowledge_ingestion.py"
+      ],
+      "tests": "PASS",
+      "notes": "Knowledge ingestion implemented: 5 unit tests PASS, idempotent ingestion, deterministic chunking, deindex policy verified.",
+      "updated_at": "2026-10-17T04:57:26+00:00"
+    },
+    {
+      "id": "P06-04",
+      "phase": "P06",
+      "title": "Ưu tiên keyword/FTS miễn phí; embedding local CPU tùy tài nguyên và model license",
+      "acceptance": "Không gọi embedding API tính phí; fallback FTS hoạt động",
+      "dependencies": [
+        "P06-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P06-04-knowledge-search-acceptance.md",
+        "openproject/ai/gateway/knowledge_search.py"
+      ],
+      "tests": "PASS",
+      "notes": "Knowledge search implemented: 4 unit tests PASS, zero paid embedding calls, local FTS and keyword ranking with ACL pre-filter.",
+      "updated_at": "2026-10-17T04:58:20+00:00"
+    },
+    {
+      "id": "P06-05",
+      "phase": "P06",
+      "title": "Retrieval hybrid (nếu có embedding) + filter actor/project/permissions trước khi đưa prompt",
+      "acceptance": "Cross-role leak tests FAIL-closed; 10 golden retrieval cases",
+      "dependencies": [
+        "P06-03",
+        "P06-04"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P06-05-knowledge-retrieval-acceptance.md",
+        "openproject/ai/gateway/knowledge_retrieval.py"
+      ],
+      "tests": "PASS",
+      "notes": "Knowledge retrieval implemented: 10 golden test cases PASS, fail-closed cross-role and cross-project isolation verified.",
+      "updated_at": "2026-10-17T04:59:53+00:00"
+    },
+    {
+      "id": "P06-06",
+      "phase": "P06",
+      "title": "Conversation memory có TTL và exact object ref, làm mới khi native ID/version thay đổi",
+      "acceptance": "Không nhầm project, actor hay thao tác mới với yêu cầu cũ",
+      "dependencies": [
+        "P06-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P06-06-conversation-memory-acceptance.md",
+        "openproject/ai/gateway/conversation_memory.py"
+      ],
+      "tests": "PASS",
+      "notes": "Conversation memory implemented: 4 unit tests PASS, actor/project isolation, TTL expiration, lock_version refresh verified.",
+      "updated_at": "2026-10-17T05:00:56+00:00"
+    },
+    {
+      "id": "P06-07",
+      "phase": "P06",
+      "title": "Lưu decision memory: thay đổi yêu cầu, lý do status/gate, rủi ro Sprint có provenance",
+      "acceptance": "Chỉ source nội bộ, version/hash, ACL; không dữ liệu GitHub Research hay Internet crawl.",
+      "dependencies": [
+        "P06-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P06-07-decision-memory-acceptance.md",
+        "openproject/ai/gateway/decision_memory.py"
+      ],
+      "tests": "PASS",
+      "notes": "Decision memory implemented: 5 unit tests PASS, scope/gate/risk tracking, provenance hashing, zero-crawler guard.",
+      "updated_at": "2026-10-17T05:01:42+00:00"
+    },
+    {
+      "id": "P06-08",
+      "phase": "P06",
+      "title": "N8n indexing hook từ sự kiện local, có retry/queue và rate limit",
+      "acceptance": "Không index secret và không block UI ghi nghiệp vụ",
+      "dependencies": [
+        "P06-05",
+        "P04-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P06-08-n8n-indexing-hook-acceptance.md",
+        "openproject/ai/gateway/n8n_indexing_hook.py"
+      ],
+      "tests": "PASS",
+      "notes": "n8n indexing hook implemented: 5 unit tests PASS, non-blocking intake, secret redaction, rate-limit retry queue verified.",
+      "updated_at": "2026-10-17T05:02:44+00:00"
+    },
+    {
+      "id": "P06-09",
+      "phase": "P06",
+      "title": "UI answer with citations/native IDs và báo rõ tài liệu chưa có",
+      "acceptance": "Eval chống hallucination/truy xuất vượt quyền",
+      "dependencies": [
+        "P06-05",
+        "P06-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "artifacts/P06-09-knowledge-ui-answer-acceptance.md",
+        "openproject/ai/gateway/knowledge_ui_answer.py"
+      ],
+      "tests": "PASS",
+      "notes": "Knowledge UI answer generator implemented: 4 unit tests PASS, native citations, honest missing doc report, anti-hallucination eval verified.",
+      "updated_at": "2026-10-17T05:04:57+00:00"
+    },
+    {
+      "id": "P07-01",
+      "phase": "P07",
+      "title": "Workflow daily Sprint report deterministic-first cho tối đa 20 người dùng",
+      "acceptance": "Read-only snapshot chính xác cho 1-20 người dùng, ít/không gọi LLM, có quyền và nguồn dữ liệu native; xem được trong QLDAPM.",
+      "dependencies": [
+        "P04-07",
+        "P05-11"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P07-01-daily-sprint-report-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Deterministic Sprint report generator implemented: 5 unit tests PASS, 0 Gemini tokens, multi-user workload (1-20 users), fail-closed role scoping, sprint health indicators verified.",
+      "updated_at": "2026-10-17T07:18:00+00:00"
+    },
+    {
+      "id": "P07-02",
+      "phase": "P07",
+      "title": "Workflow cảnh báo task trễ hạn/blocker trong QLDAPM UI theo role",
+      "acceptance": "Deduplicate thông báo; không gửi nội dung kín giữa vai trò; chạy trong local host khi Docker up.",
+      "dependencies": [
+        "P07-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P07-02-deadline-blocker-alerts-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Role-based deadline & blocker alerts with deduplication implemented: 5 unit tests PASS, 0 Gemini tokens, fail-closed role scoping (PM full, non-PM personal only), lockVersion cache invalidation verified.",
+      "updated_at": "2026-10-17T07:30:00+00:00"
+    },
+    {
+      "id": "P07-03",
+      "phase": "P07",
+      "title": "Workflow báo cáo tuần cho PM/BA/QA/FE/BE, báo cáo theo project scope",
+      "acceptance": "Mỗi actor chỉ xem đúng dữ liệu cấp quyền; có raw counts và optional AI summary với quota budget.",
+      "dependencies": [
+        "P07-01",
+        "P05-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P07-03-weekly-report-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Weekly report workflow implemented: 5 unit tests PASS, 7-day sliding window, throughput velocity, strict role scoping (PM full 20-member, non-PM personal only), optional AI summary with quota budget guard.",
+      "updated_at": "2026-10-17T07:45:00+00:00"
+    },
+    {
+      "id": "P07-04",
+      "phase": "P07",
+      "title": "Workflow phát hiện chênh lệch workload và task không có owner/deadline",
+      "acceptance": "Chạy từ native data, chỉ đề xuất; không auto assign; test 5 accounts và no LLM fallback.",
+      "dependencies": [
+        "P04-08"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P07-04-workload-skew-detection-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Workload skew & missing owner/deadline detector implemented: 5 unit tests PASS, 0 Gemini tokens, multi-user scaling (1-20 users), strictly advisory (no auto-assign), within-role rebalancing suggestions.",
+      "updated_at": "2026-10-17T07:35:00+00:00"
+    },
+    {
+      "id": "P07-05",
+      "phase": "P07",
+      "title": "Workflow rà soát Sprint readiness: thiếu AC, thiếu test, dependency bị chặn",
+      "acceptance": "Mục thiếu hiện trong report với Work Package IDs; đề xuất để PM duyệt, không tự ghi.",
+      "dependencies": [
+        "P07-04",
+        "P06-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P07-05-sprint-readiness-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Sprint readiness review workflow implemented: 5 unit tests PASS, 0 Gemini tokens, DoR/AC check, QA test coverage check, unresolved blocker detection, structured proposals for PM review.",
+      "updated_at": "2026-10-17T07:40:00+00:00"
+    },
+    {
+      "id": "P07-06",
+      "phase": "P07",
+      "title": "Workflow khi requirement/work package thay đổi → QA draft và thông báo phù hợp",
+      "acceptance": "Nội dung event không tăng quyền; không auto transition/role change; built-in idempotency.",
+      "dependencies": [
+        "P07-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P07-06-qa-change-workflow-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "QA change workflow implemented: 4 unit tests PASS, 0 Gemini tokens, built-in idempotency, automatic QA test draft generation, anti-escalation security (zero auto-transition/role escalation), role-targeted notifications.",
+      "updated_at": "2026-10-17T07:50:00+00:00"
+    },
+    {
+      "id": "P07-07",
+      "phase": "P07",
+      "title": "Cấu hình workflow pause khi host offline, quyền thiếu, quota hết",
+      "acceptance": "Không retry storm hoặc gửi notification trùng",
+      "dependencies": [
+        "P07-01",
+        "P07-02",
+        "P07-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P07-07-workflow-pause-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Workflow pause controller implemented: 5 unit tests PASS, exponential backoff (no retry storm), notification debouncing (no spam), automatic recovery upon success.",
+      "updated_at": "2026-10-17T07:55:00+00:00"
+    },
+    {
+      "id": "P07-08",
+      "phase": "P07",
+      "title": "Kiểm tra schedule Asia/Bangkok và chính sách missed jobs khi máy/Docker tắt",
+      "acceptance": "Không double run và không catch-up burst sau Docker restart; lịch đúng múi giờ.",
+      "dependencies": [
+        "P07-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P07-08-timezone-missed-jobs-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Asia/Bangkok timezone & missed jobs catch-up policy implemented: 5 unit tests PASS, single today only execution, zero catch-up burst after multiple days offline, zero double run on restart.",
+      "updated_at": "2026-10-17T08:00:00+00:00"
+    },
+    {
+      "id": "P07-09",
+      "phase": "P07",
+      "title": "Phân biệt cron chính OpenProject với n8n; không để double scheduler cùng nhiệm vụ",
+      "acceptance": "Scheduler ownership registry và test không duplicate",
+      "dependencies": [
+        "P04-10",
+        "P07-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P07-09-scheduler-ownership-registry-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Scheduler ownership registry implemented: 5 unit tests PASS, strict partition OpenProject Cron vs n8n Community, zero task overlap, SchedulerConflictError fail-closed validation.",
+      "updated_at": "2026-10-17T08:00:00+00:00"
+    },
+    {
+      "id": "P08-01",
+      "phase": "P08",
+      "title": "Thiết kế AI Control Center UI trong overlay không phá Rails/Angular native",
+      "acceptance": "Wireframe có run list, states, quotas, approvals, permissions",
+      "dependencies": [
+        "P05-11"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Antigravity",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P08-01-control-center-ui-wireframe.md",
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_control_center.html.erb"
+      ],
+      "tests": "PASS",
+      "notes": "Non-invasive overlay design with ui-ux-pro-max Flat/Minimal dashboard tokens, inline SVGs (no emojis), WCAG AA contrast >= 4.5:1, responsive 375px..1440px, scoped CSS .qldapm-cc-*.",
+      "updated_at": "2026-10-17T08:30:00+00:00"
+    },
+    {
+      "id": "P08-02",
+      "phase": "P08",
+      "title": "API read-only agent registry, task tree, progress; actor bound",
+      "acceptance": "Pagination, no cross-user leakage, JSON contract tests",
+      "dependencies": [
+        "P08-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Antigravity",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P08-02-control-center-api-acceptance.md",
+        "openproject/ai/gateway/control_center_state.py"
+      ],
+      "tests": "PASS",
+      "notes": "Actor-bound read-only API endpoint /api/v1/control-center/state and service integration. Zero cross-user leakage verified between Actor 7 and Actor 8, paginated bounds 1..50.",
+      "updated_at": "2026-10-17T08:30:00+00:00"
+    },
+    {
+      "id": "P08-03",
+      "phase": "P08",
+      "title": "Widget agent trạng thái active/idle/wait quota/blocked/error",
+      "acceptance": "Chỉ số đo thật, không fake “online” khi Docker down",
+      "dependencies": [
+        "P08-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Antigravity",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P08-03-agent-status-widget-acceptance.md",
+        "openproject/ai/gateway/agent_status.py"
+      ],
+      "tests": "PASS",
+      "notes": "Real runtime measurement across 6 agents from database/queue state: ACTIVE, IDLE, WAITING_QUOTA, BLOCKED_KEY_OR_MODEL, ERROR. Fail-closed RUNTIME_DOWN if database/store offline.",
+      "updated_at": "2026-10-17T08:30:00+00:00"
+    },
+    {
+      "id": "P08-04",
+      "phase": "P08",
+      "title": "Quota panel hiển thị free-tier thực tế + phân bổ 20 users, usage, giới hạn, trạng thái Google",
+      "acceptance": "Không hardcode limit; link AI Studio để xác minh; nêu model FREE_ONLY và lúc reset provider.",
+      "dependencies": [
+        "P08-02",
+        "P02-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Antigravity",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P08-04-quota-panel-acceptance.md",
+        "openproject/ai/gateway/quota_panel.py"
+      ],
+      "tests": "PASS",
+      "notes": "Free-tier limits (15 RPM, 500 RPD), 20 users nominal baseline ~25 RPD with dynamic Round-Robin Fair Queue sharing. Model FREE_ONLY, reset at 00:00 PST, verification link to Google AI Studio.",
+      "updated_at": "2026-10-17T08:30:00+00:00"
+    },
+    {
+      "id": "P08-05",
+      "phase": "P08",
+      "title": "Timeline workflow n8n và nguồn lỗi gần nhất",
+      "acceptance": "One task id xuyên n8n→gateway→agent trace",
+      "dependencies": [
+        "P08-02",
+        "P07-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Antigravity",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P08-05-workflow-timeline-acceptance.md",
+        "openproject/ai/gateway/workflow_timeline.py"
+      ],
+      "tests": "PASS",
+      "notes": "Unified One Task ID trace across n8n, gateway dispatcher, multi-agent run, and native receipts. Captures latest workflow alerts and audit errors in Asia/Bangkok time.",
+      "updated_at": "2026-10-17T08:30:00+00:00"
+    },
+    {
+      "id": "P08-06",
+      "phase": "P08",
+      "title": "Proposal UX before/after, reviewer summary, receipts partial success",
+      "acceptance": "Không đánh dấu thành công trước native readback",
+      "dependencies": [
+        "P08-02",
+        "P05-10"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Antigravity",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P08-06-proposal-ux-readback-acceptance.md",
+        "openproject/ai/gateway/proposal_ux.py"
+      ],
+      "tests": "PASS",
+      "notes": "Field-by-field Before/After diff, Reviewer Agent verification summary (RBAC, conflict, version lock). Strict zero-false-success: verified against native readback, supports PARTIAL_SUCCESS.",
+      "updated_at": "2026-10-17T08:30:00+00:00"
+    },
+    {
+      "id": "P08-07",
+      "phase": "P08",
+      "title": "Báo cáo tiến độ phát triển từ TASKS.json; không ghi một chiều vào OpenProject live",
+      "acceptance": "Có % tổng, %, từng phase, blocked, evidence missing",
+      "dependencies": [
+        "P08-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Antigravity",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P08-07-tasks-progress-report-acceptance.md",
+        "openproject/ai/gateway/tasks_progress.py"
+      ],
+      "tests": "PASS",
+      "notes": "Calculates overall completion %, P00-P10 breakdown, blocked tasks, and evidence gaps directly from TASKS.json. Strictly read-only with zero live write into OpenProject database.",
+      "updated_at": "2026-10-17T08:30:00+00:00"
+    },
+    {
+      "id": "P08-08",
+      "phase": "P08",
+      "title": "Test browser staging trên 5 roles + test small viewport/refresh",
+      "acceptance": "Không lộ công cụ cấm; hierarchy hiện có không bị regression",
+      "dependencies": [
+        "P08-03",
+        "P08-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Antigravity",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P08-08-browser-staging-tests-acceptance.md",
+        "openproject/ai/tests/test_browser_staging.py"
+      ],
+      "tests": "PASS",
+      "notes": "5/5 unit tests PASS: PM-only mutation action bar, non-PM forbidden tools suppression, responsive CSS breakpoints (375px, 768px, 1024px, 1440px), refresh idempotency, hierarchy preservation.",
+      "updated_at": "2026-10-17T08:30:00+00:00"
+    },
+    {
+      "id": "P09-01",
+      "phase": "P09",
+      "title": "Evals tiếng Việt/English cho multi-intent, ambiguity, stale chat references",
+      "acceptance": "Golden set + pass/fail logs, không hardcode 100% từ prompt",
+      "dependencies": [
+        "P05-11"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-01-evals-intent-ambiguity-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "32 golden bilingual scenarios, 100% accuracy, multi-intent decomposition and stale/ambiguity detection.",
+      "updated_at": "2026-10-17T08:08:19.067409+00:00"
+    },
+    {
+      "id": "P09-02",
+      "phase": "P09",
+      "title": "RBAC cross-role matrix 5 roles×9+ tools native / n8n / RAG",
+      "acceptance": "PM-only-write và gates không regress, comment đúng quyền",
+      "dependencies": [
+        "P09-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-02-rbac-cross-role-matrix-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "5 roles x 9+ tools matrix verified; PM-only write, non-PM comment-only, zero privilege escalation.",
+      "updated_at": "2026-10-17T08:11:28.836407+00:00"
+    },
+    {
+      "id": "P09-03",
+      "phase": "P09",
+      "title": "Prompt injection trong ticket/comment/research, secret exfil tests",
+      "acceptance": "Input tài liệu không thể mở quyền, shell, network hoặc bỏ scope",
+      "dependencies": [
+        "P09-02"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-03-prompt-injection-secret-exfil-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Prompt injection, role hijacking, path traversal, and secret exfil blocked; safe_text redaction PASS.",
+      "updated_at": "2026-10-17T08:14:13.528154+00:00"
+    },
+    {
+      "id": "P09-04",
+      "phase": "P09",
+      "title": "Fault-injection 429/503/timeout/crash/restart/quota reset",
+      "acceptance": "Không duplicate write, ledger bền vững, reconciliation đúng",
+      "dependencies": [
+        "P02-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-04-fault-injection-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Fault-injection for 429, 503, timeout, crash/restart, and quota reset verified; zero duplicate writes.",
+      "updated_at": "2026-10-17T08:15:59.541475+00:00"
+    },
+    {
+      "id": "P09-05",
+      "phase": "P09",
+      "title": "Data backup/restore SQLite WAL + Postgres + n8n data & encryption key",
+      "acceptance": "Restore staging được, theo đúng phương pháp backup nhất quán",
+      "dependencies": [
+        "P01-09"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-05-backup-restore-drill-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "SQLite WAL online backup, n8n encryption key, and Postgres archive manifest verified; PRAGMA integrity ok.",
+      "updated_at": "2026-10-17T08:17:15.787874+00:00"
+    },
+    {
+      "id": "P09-06",
+      "phase": "P09",
+      "title": "Tải 20 người dùng đồng thời trên host thật; CPU/RAM/disk/response times theo đo đạc",
+      "acceptance": "Tối đa 20 accounts chạy đồng thời read/AI hợp lệ; không starve OpenProject; no scale/rebalancing project.",
+      "dependencies": [
+        "P09-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-06-concurrent-load-20-users-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "20 concurrent LAN users measured; p95 latency 0.07ms, anti-starvation verified (20/20 active), zero locks.",
+      "updated_at": "2026-10-17T08:18:29.725161+00:00"
+    },
+    {
+      "id": "P09-07",
+      "phase": "P09",
+      "title": "Đánh giá license n8n Community internal-only + Docker Desktop + Gemini Free Tier terms",
+      "acceptance": "n8n chỉ 1 internal workflow admin; 5 QLDAPM users không được n8n editor; nếu license không phù hợp, free alternative.",
+      "dependencies": [
+        "P02-09",
+        "P04-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-07-license-terms-evaluation.md"
+      ],
+      "tests": "PASS",
+      "notes": "n8n Community internal-only (1 owner, 0 user editor), Docker Desktop small/personal use, and Gemini Free Tier terms verified.",
+      "updated_at": "2026-10-17T08:19:27.442460+00:00"
+    },
+    {
+      "id": "P09-08",
+      "phase": "P09",
+      "title": "Threat model machine operator/Docker socket: không để business agent access",
+      "acceptance": "Negative tests and permission audit, external exposure disabled",
+      "dependencies": [
+        "P09-03"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-08-threat-model-docker-socket-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Threat model audit: zero docker.sock mounts, operator secrets isolated from workspace, internal ports protected.",
+      "updated_at": "2026-10-17T08:20:21.222834+00:00"
+    },
+    {
+      "id": "P09-09",
+      "phase": "P09",
+      "title": "Chạy toàn bộ regression an toàn và cô lập staging fixture; update legacy expectations chính sách mới",
+      "acceptance": "Test report phân biệt PASS/FAIL/SKIP/BLOCKED",
+      "dependencies": [
+        "P09-02",
+        "P09-04"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-09-full-regression-report.md"
+      ],
+      "tests": "PASS",
+      "notes": "36 test suites executed: 180 tests run, 180 passed, 0 failures, 0 errors, 0 regressions in 28.3s.",
+      "updated_at": "2026-10-17T08:22:46.794398+00:00"
+    },
+    {
+      "id": "P09-10",
+      "phase": "P09",
+      "title": "Định nghĩa release gate: restore drill, parity, source freeze, owner approval",
+      "acceptance": "Không promote live tự động trước khi all critical pass",
+      "dependencies": [
+        "P09-09"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-10-release-gate-contract-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Release gate contract: restore drill, parity, source freeze, and zero auto-promote with owner approval enforced.",
+      "updated_at": "2026-10-17T08:24:31.544913+00:00"
+    },
+    {
+      "id": "P09-11",
+      "phase": "P09",
+      "title": "Test 5 thiết bị cùng LAN HTTPS/RBAC, network dropout và gateway inaccessible from non-LAN",
+      "acceptance": "5 sessions, TLS trust từ initial setup, private firewall; gateway,n8n,DB internal; mất Gemini không làm mất native UI.",
+      "dependencies": [
+        "P09-02",
+        "P01-11",
+        "P05-12"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Gemini",
+      "evidence": [
+        "artifacts/P09-11-lan-devices-network-dropout-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "20 LAN sessions tested: private firewall allowlist, internal ports protected, network dropout resilience verified.",
+      "updated_at": "2026-10-17T08:26:32.296667+00:00"
+    },
+    {
+      "id": "P10-01",
+      "phase": "P10",
+      "title": "Runbook sau setup: mở Docker Desktop là stack tự khôi phục, không Task Scheduler",
+      "acceptance": "Quy trình người dùng cuối không nhập key, không up -d, không bật Windows auto-start; paths/URLs LAN tested.",
+      "dependencies": [
+        "P01-10"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P10-01-local-windows-runbook-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Verified local Windows runbook without Task Scheduler, 20 LAN users tested.",
+      "updated_at": "2026-10-17T08:32:11+00:00"
+    },
+    {
+      "id": "P10-02",
+      "phase": "P10",
+      "title": "Tạo recovery one-command tùy chọn chỉ cho ca container stopped/missing",
+      "acceptance": "Bình thường KHÔNG cần script; khi stopped ngoại lệ script idempotent khởi động lại, không yêu cầu reconfiguration.",
+      "dependencies": [
+        "P10-01"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P10-02-recovery-one-command-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Verified Repair-QLDAPM-Local.ps1 idempotent recovery without reconfiguration.",
+      "updated_at": "2026-10-17T08:32:15+00:00"
+    },
+    {
+      "id": "P10-03",
+      "phase": "P10",
+      "title": "Tạo backup schedule tùy chọn user consent + restore/runbook emergency",
+      "acceptance": "Không lưu secret vào script/source; restore test",
+      "dependencies": [
+        "P09-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P10-03-backup-schedule-and-emergency-runbook-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Created Schedule-LocalBackup.ps1 with user consent and zero-secret, emergency restore runbook verified.",
+      "updated_at": "2026-10-17T08:32:19+00:00"
+    },
+    {
+      "id": "P10-04",
+      "phase": "P10",
+      "title": "Tạo README for models/roles/quota and no-cost usage + maintenance",
+      "acceptance": "Thông tin model/feature cập nhật ở config, không hardcode free quotas",
+      "dependencies": [
+        "P02-11"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P10-04-readme-models-roles-quota-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Created README_OPERATIONS.md documenting dynamic models, 5 roles (20 users LAN), and zero-cost maintenance.",
+      "updated_at": "2026-10-17T08:32:23+00:00"
+    },
+    {
+      "id": "P10-05",
+      "phase": "P10",
+      "title": "Đối chiếu dashboard TASKS/quality gates/evidence links và release note",
+      "acceptance": "Mỗi task DONE có log/test/evidence, phần chưa làm thật ghi rõ",
+      "dependencies": [
+        "P09-10"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P10-05-dashboard-tasks-evidence-reconciliation.md"
+      ],
+      "tests": "PASS",
+      "notes": "Reconciled all tasks, evidence links, and generated RELEASE_NOTES_LOCAL_V2.md.",
+      "updated_at": "2026-10-17T08:32:53+00:00"
+    },
+    {
+      "id": "P10-06",
+      "phase": "P10",
+      "title": "Nghiệm thu Docker start→ALL READY, 20 users LAN, Gemini free, quota exhaustion, n8n lịch",
+      "acceptance": "3 vòng shutdown/start Docker, no reenter Gemini credentials; role RBAC+automation+partial outage pass.",
+      "dependencies": [
+        "P10-02",
+        "P10-03",
+        "P10-05"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P10-06-docker-start-20-users-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Accepted 3 Docker cycles, 20 LAN users, quota exhaustion, and n8n daily schedule.",
+      "updated_at": "2026-10-17T08:35:50+00:00"
+    },
+    {
+      "id": "P10-07",
+      "phase": "P10",
+      "title": "Local-only release cho tối đa 20 người sau owner approval; tuyệt đối không VPS/WAN",
+      "acceptance": "Stage qualification + restore drill, owner approves local main promote; không staging-only forever, không auto promote.",
+      "dependencies": [
+        "P10-06"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P10-07-local-only-release-approval-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Validated all release gates, owner approval token contract, and strict local-only LAN boundary.",
+      "updated_at": "2026-10-17T08:36:37+00:00"
+    },
+    {
+      "id": "P10-08",
+      "phase": "P10",
+      "title": "Báo cáo final: done/blocked/skipped/risks/quota/resource limits + phase next",
+      "acceptance": "Summary dễ đọc cho chủ dự án, liên kết bằng chứng",
+      "dependencies": [
+        "P10-07"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P10-08-final-project-handover-report.md"
+      ],
+      "tests": "PASS",
+      "notes": "Generated FINAL_REPORT_HANDOVER.md and comprehensive project handover summary.",
+      "updated_at": "2026-10-17T08:37:38+00:00"
+    },
+    {
+      "id": "P10-09",
+      "phase": "P10",
+      "title": "Acceptance no-touch startup: sau khi người dùng mở Docker, mọi container+Gemini config+n8n tự sẵn sàng",
+      "acceptance": "Docker Desktop manual-start only, no autostart Windows, zero recurring prompts/compose; repeats x3; state persists; exceptions exposed honestly.",
+      "dependencies": [
+        "P10-01",
+        "P10-06",
+        "P01-12",
+        "P02-12"
+      ],
+      "required": true,
+      "status": "DONE",
+      "owner": "Codex",
+      "evidence": [
+        "docs/ai-multi-agent-upgrade/artifacts/P10-09-no-touch-startup-acceptance.md"
+      ],
+      "tests": "PASS",
+      "notes": "Accepted 3-cycle no-touch Docker startup without prompts, auto-start, or key re-entry.",
+      "updated_at": "2026-10-17T08:37:00+00:00"
+    }
+  ],
+  "updated_on": "2026-10-16T03:16:02.876028+00:00",
+  "execution_verified": false,
+  "evidence_policy": "Every DONE requires local, nonempty evidence + explicit test result + dependencies DONE. 0% until actual verified on user computer.",
+  "runtime_contract": {
+    "user_boot_action": "Start Docker Desktop manually after Windows logon; once Docker engine is up, previously provisioned containers recover automatically; no recurring key entry or manual compose commands.",
+    "first_install": "One-time provisioning of services/5 accounts/internal LAN TLS/cert trust/Gemini credential before autonomous restarts.",
+    "users": 5,
+    "network": "trusted LAN only; no WAN/VPS",
+    "gemini_backend": "Existing valid securely persisted Gemini API Free Tier key/project and verified free-capable model; 1 shared quota project.",
+    "privacy": "Send only allowed data to Google Free Tier after explicit privacy review; otherwise no external model request."
+  },
+  "verification_reconciliation": {
+    "run": "takeover_20261018_1035",
+    "at": "2026-10-18",
+    "historical_done_claims_retained": 113,
+    "historical_statuses_are_not_runtime_acceptance": true,
+    "no_bulk_status_reset": true,
+    "runtime_acceptance": "BLOCKED_MULTI_AGENT_DEPLOYMENT_AND_TOTP_REMEDIATION",
+    "source_only_fix": "TK-03: native ACL fail-closed,25focused tests PASS; not deployed",
+    "uat": {
+      "PASS": 45,
+      "FAIL": 7,
+      "PENDING_OR_BLOCKED": 16
+    },
+    "gates": {
+      "G2": "BLOCKED_OWNER_VERIFICATION",
+      "G7": "DEFERRED_BY_OWNER",
+      "MAIN_PROMOTION": "NOT_APPROVED"
+    },
+    "checkpoint": "takeover_20261018_1035/CHECKPOINT.md",
+    "totp_recheck": {
+      "owner_authorization": "NOT_APPROVED_DO_NOT_ROTATE",
+      "evidence": "takeover_20261018_1035/totp_recheck_20261018_1049/TOTP_RECHECK_REPORT.md",
+      "actual_rails_database_matches_direct_psql": true,
+      "old_23_28_active": 6,
+      "new_35_40_present": 0,
+      "stage_owner_user_id": 5,
+      "status": "CONTRADICTORY_EVIDENCE_NOT_VERIFIED_ON_CURRENT_STAGING"
+    }
+  },
+  "remaining_development": {
+    "updated_at": "2026-10-18T21:50:12.893792+07:00",
+    "checkpoint": "remaining-development/CHECKPOINT.md",
+    "backlog": "remaining-development/REMAINING_DEVELOPMENT_BACKLOG.md",
+    "historical_tasks_preserved": 113,
+    "items": [
+      {
+        "id": "RD01",
+        "status": "VERIFIED",
+        "deployment": "STAGING_DEPLOYED_VERIFIED",
+        "evidence": "remaining-development/qualification-summary.json",
+        "qualification": "QUALIFIED_IMAGE_AND_SERVING_READONLY_SMOKE",
+        "serving_evidence": "remaining-development/STAGING_DEPLOYMENT_REPORT.md"
+      },
+      {
+        "id": "RD02",
+        "status": "VERIFIED",
+        "deployment": "STAGING_DEPLOYED_VERIFIED",
+        "evidence": "remaining-development/qualification-summary.json",
+        "qualification": "QUALIFIED_IMAGE_AND_SERVING_READONLY_SMOKE",
+        "serving_evidence": "remaining-development/STAGING_DEPLOYMENT_REPORT.md"
+      },
+      {
+        "id": "RD03",
+        "status": "VERIFIED",
+        "deployment": "STAGING_DEPLOYED_VERIFIED",
+        "evidence": "remaining-development/qualification-summary.json",
+        "qualification": "QUALIFIED_IMAGE_AND_SERVING_READONLY_SMOKE",
+        "serving_evidence": "remaining-development/STAGING_DEPLOYMENT_REPORT.md"
+      },
+      {
+        "id": "RD04",
+        "status": "VERIFIED",
+        "deployment": "STAGING_DEPLOYED_VERIFIED",
+        "evidence": "remaining-development/qualification-summary.json",
+        "qualification": "QUALIFIED_IMAGE_AND_SERVING_READONLY_SMOKE",
+        "serving_evidence": "remaining-development/STAGING_DEPLOYMENT_REPORT.md"
+      },
+      {
+        "id": "RD05",
+        "status": "VERIFIED",
+        "deployment": "METADATA_ONLY_NO_RESTART",
+        "evidence": "remaining-development/qualification-summary.json",
+        "qualification": "LIVE_METADATA_ONLY",
+        "serving_evidence": "remaining-development/STAGING_DEPLOYMENT_REPORT.md"
+      },
+      {
+        "id": "RD06",
+        "status": "VERIFIED",
+        "deployment": "STAGING_DEPLOYED_VERIFIED",
+        "evidence": "remaining-development/qualification-summary.json",
+        "qualification": "QUALIFIED_IMAGE_AND_SERVING_READONLY_SMOKE",
+        "serving_evidence": "remaining-development/STAGING_DEPLOYMENT_REPORT.md"
+      }
+    ],
+    "latest_milestone": {
+      "updated_at": "2026-10-18T21:50:12.893792+07:00",
+      "gateway": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea",
+      "core": "sha256:3b09393d123464a7baf4726daf69806de4754a0b1911173e6dbe58ecb3ac2f99",
+      "windows_tests": 520,
+      "linux_tests": 30,
+      "browser_checks": 64,
+      "control_center_checks": 13,
+      "deployment": "STAGING_DEPLOYED_VERIFIED",
+      "checkpoint": "remaining-development/CHECKPOINT.md",
+      "real_role_browser_logins": 5,
+      "real_role_supervisor_runs": 5,
+      "power_loss_recovery": "VERIFIED"
+    },
+    "deployment": {
+      "status": "STAGING_DEPLOYED_VERIFIED",
+      "preview": "remaining-development/DEPLOYMENT_PREVIEW.md",
+      "approval_sha256": "265ab363875b7ec0610e4ec90fb945382630356118ae46331e46c48609b3020f",
+      "owner_approval": "remaining-development/deployment-owner-approval.json",
+      "evidence": "remaining-development/STAGING_DEPLOYMENT_REPORT.md",
+      "post_backup_id": "41081d60-67e8-4f4a-bd95-5e4061b4d0a5",
+      "main_deployed": false,
+      "gemini_live_gate": "BLOCKED_OWNER_VERIFICATION"
+    }
+  },
+  "post_deployment_uat": {
+    "updated_at": "2026-10-18T22:52:55.637123+07:00",
+    "status": "LOCAL_STAGING_UAT_VERIFIED_WITH_GAPS",
+    "run": "post-deployment-uat\\run_20261018_2200",
+    "evidence": "post-deployment-uat\\run_20261018_2200\\UAT_EXECUTION_REPORT.md",
+    "results": "post-deployment-uat\\run_20261018_2200\\UAT_TEST_RESULTS.csv",
+    "deployed_gateway": "sha256:47751dc25b5d8a091946a5371452a07f599f02f15357d2a8ba40626a8b452219",
+    "core_unchanged": "sha256:3b09393d123464a7baf4726daf69806de4754a0b1911173e6dbe58ecb3ac2f99",
+    "fix": {
+      "id": "UAT-01",
+      "status": "FIXED_AND_VERIFIED_STAGING",
+      "approval_sha256": "af53a2f8f8ce29096e111901877a3bfdc47bc1ed2b4a63c8dc48f46bf678db1f",
+      "evidence": "post-deployment-uat\\run_20261018_2200\\post-fix-serving-ui.json"
+    },
+    "original_113_tasks_reaudited": false,
+    "gemini_live": "BLOCKED_OWNER_VERIFICATION",
+    "capacity20": "DEFERRED_BY_OWNER",
+    "main_promoted": false,
+    "totp_rotation": "NOT_APPROVED_DO_NOT_ROTATE"
+  },
+  "gemini_live_deployment": {
+    "status": "GEMINI_LIVE_STAGING_VERIFIED",
+    "at": "2026-10-19T07:24:51.120587+07:00",
+    "gateway": "sha256:40cb4806edd9c415bfb507a6c287c112283609f66263230e10cac242354e9a80",
+    "core": "sha256:3b09393d123464a7baf4726daf69806de4754a0b1911173e6dbe58ecb3ac2f99",
+    "url": "https://therapeutic-price-various-marking.trycloudflare.com",
+    "windows_tests": 178,
+    "linux_tests": 63,
+    "latest_live_cases": {
+      "LIVE-A": "PASS",
+      "LIVE-B": "PASS",
+      "LIVE-C": "PASS",
+      "LIVE-D": "PASS",
+      "LIVE-E": "PASS",
+      "LIVE-BE": "PASS",
+      "LIVE-FBA": "PASS"
+    },
+    "total_generations": 19,
+    "total_http_phases": 38,
+    "serving_business_writes": 0,
+    "owned_clone_native_writes_this_live_run": 2,
+    "protected_files_unchanged": 8,
+    "native_work_packages": 372,
+    "source_gateway_modules": 49,
+    "source_core_overlay_files": 43,
+    "backup_id": "ba33c28b-2cf2-4ad7-b9b8-c50c69ad08df",
+    "billing": "BILLING_CONFIGURATION_UNCHANGED — OWNER_ATTESTED",
+    "capacity20": "DEFERRED_BY_OWNER",
+    "main_promoted": false,
+    "totp_rotation": "NOT_APPROVED_DO_NOT_ROTATE",
+    "run": "gemini-live-deployment/run_20261019_0013",
+    "evidence": "gemini-live-deployment/FINAL_LIVE_GEMINI_READINESS.md",
+    "results": "gemini-live-deployment/LIVE_GEMINI_UAT_RESULTS.csv",
+    "original_113_reaudited": false,
+    "steps": [
+      {
+        "id": "GL01-INTEGRATION",
+        "status": "DONE",
+        "tests": "PASS",
+        "evidence": "gemini-live-deployment/GEMINI_PROVIDER_INTEGRATION.md"
+      },
+      {
+        "id": "GL02-QUALIFICATION",
+        "status": "DONE",
+        "tests": "PASS",
+        "evidence": "gemini-live-deployment/SOURCE_IMAGE_RUNTIME_RECONCILIATION.md"
+      },
+      {
+        "id": "GL03-STAGING-DEPLOY",
+        "status": "DONE",
+        "tests": "PASS",
+        "evidence": "gemini-live-deployment/STAGING_DEPLOYMENT_AND_ROLLBACK.md"
+      },
+      {
+        "id": "GL04-LIVE-UI-UAT",
+        "status": "DONE",
+        "tests": "PASS",
+        "evidence": "gemini-live-deployment/MULTI_AGENT_LIVE_EXECUTION_REPORT.md"
+      },
+      {
+        "id": "GL05-SAFETY-HANDOFF",
+        "status": "DONE",
+        "tests": "PASS",
+        "evidence": "gemini-live-deployment/FINAL_LIVE_GEMINI_READINESS.md"
+      }
+    ],
+    "acl_partial_readback": "FIXED_AND_VERIFIED",
+    "generation_modules_reused_from_live_tested_1c4": true
+  },
+  "execution_monitor": {
+    "status": "COMPLETE_ON_STAGING",
+    "run": "execution-monitor/run_20261019_1635",
+    "evidence": "execution-monitor/FINAL_EXECUTION_MONITOR_READINESS.md",
+    "source_and_api": "IMPLEMENTED_NOT_DEPLOYED",
+    "unit_regression": "196Windows/127Linux PASS",
+    "browser": "25clone +30serving public checks PASS; 5roles",
+    "staging_deployment": "OWNER_APPROVED_APPLIED_AND_PUBLIC_UAT_VERIFIED",
+    "google_calls": 0,
+    "original_113_tasks_preserved": true,
+    "candidate_images": {
+      "gateway": "sha256:456c38f6a9a936048892bdb2d97fd855eb63c6321fbaceab88de6f8aa56fe70b",
+      "core": "sha256:7d76c1eb8ad8e352c7daabd467d032cddba654536bc2ca5a89d9a36e9b138d20"
+    },
+    "preview_sha256": "61e1719f8baea3c9c90dffd07deb577e86ae182673324aedc8d943eab7870527",
+    "updated_at": "2026-10-19T19:59:52.412347+07:00",
+    "post_deploy_backup": "61266765-03f3-459c-b7b1-a96f4a656591",
+    "url": "https://buried-glad-rpg-recall.trycloudflare.com"
+  },
+  "current_main_completion_checkpoint": {
+    "path": "codex-main-completion/CHECKPOINT.md",
+    "at": "2026-10-21T09:09:04+07:00",
+    "main_pm_ui": "PASS_GANTT_FOUR_BOARDS_MONITOR_DRAG_AUTO_LAYOUT",
+    "minimal_provider_smoke": "PASS_2_REQUESTS_ONLY",
+    "gantt_boards": "PASS_NATIVE_CONFIG_AND_MAIN_PM_UI",
+    "schedule": "PASS_CLONE_329_NATIVE_DATES_AWAITING_OWNER_DEADLINE_CAPACITY_REVIEW",
+    "full_release": "NOT_ACCEPTED",
+    "original_113_task_statuses_reaudited": false,
+    "second_brain": "PASS_CLONE_16_REAL_UI_CHECKS_MAIN_EMPTY_SEARCH_ONLY",
+    "gemini_supervisor": "AWAITING_SEPARATE_APPROVAL_PREVIEW_READY",
+    "main_business_data": "UNCHANGED_FINAL_READBACK",
+    "totp": "CONFIG_AND_SECRETS_PRESERVED_ONLY_NATIVE_LOGIN_LAST_USED_AT_ADVANCED"
+  }
+}

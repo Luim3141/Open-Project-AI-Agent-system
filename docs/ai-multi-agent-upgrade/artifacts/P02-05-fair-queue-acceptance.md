@@ -1,0 +1,16 @@
+# P02-05 fair queue acceptance — 16Oct2026
+
+Implemented and deployed staging Gateway sha256:70c72319c0205f1b76adb645ca926a73abd9cf4be6e01b7edb1a45f36f4226b8, derived from previous audited8f1e386c... source-only layer. Core/main images unchanged. Additive ai_queue table only; existing state and data retained.
+
+- P02-queue-regression-final.log:188 unit tests PASS95.240s, no skips. Existing role/native gates/idempotency/quota/privacy tests included.
+- P02-queue-linux-tests.log:14 candidate-image tests PASS0.382s, network none. Five actors20requests each round-robin, equal timestamps, idle slack reuse, interactive priority, transactionally single global slot across5connections, actor isolation,100total/20peractor pending bound, atomic idempotent response+audit+run, exact policy binding, current worker role revalidation, and shared13RPM ledger across all actors.
+- P02-queue-container-restart.json: actual same disposable container second start with private synthetic state/no network/no key.100queued intents, one deliberately expired interrupted execution fixture retains receipt and never replays;99pending resume once in fair order; original ledger preserved. Expired lease is injected, not a600-second deadline measurement. Container removed after label/ID/stopped-state verification; private fixture retained.
+- P02-queue-stage-deploy.json: operator preflight, no active/unknown business jobs, private gateway SQLite/config/key snapshot, immutable image/base-layer/policy validation, staging provision PASS. Source parity and actual schema verified after deployment.
+- P02-queue-live-check.json: all five actual native identities read335; PM-only write ceiling retained; actor6 exact live/config role is BA-PM, correcting historical BA shorthand. No role changed. Cached GeminiREADY, existing471ledger rows,0extra provider calls.
+- P02-queue-preservation-check.json:19selected containers healthy/stopped as intended, mounts/ports/private config and native schemas/roles/counts/oldrun/job/proposal/ledger unchanged; only approved Gateway image and additive ai_queue differ. HTTP8088/8090/18091/18092 all200.
+
+The queue uses existing SQLite and isolated bounded worker, no Redis/service/billing. Never-started work resumes at ASGI startup; claimed work is not replayed after interruption. Native current identity/permissions and Free-only policy rechecked at execution. Existing UI receives running+waiting message; no native fork change. Future agents/n8n must submit through this same Gateway, never directly hold Gemini key; their integration remains later phases.
+
+Initial build harness used a localsha256 as FROM and failed without deployment; corrected to verified existing tag whose immutableID matched. Initial disposable-container harness lacked /app import path and failed before seeding; corrected and complete acceptance PASS. No real Google load test, physical five-browser test or Desktop restart claimed in this task. P02-06 bounded provider wait/retry,07allocation and08/10remain unfinished.
+
+Rollback: previous8f1e...image and private before-provision-1792121792059525400 snapshot retained. No automatic restore/downgrade of queued/running state; reconcile executing receipts before any rollback. No main promotion.

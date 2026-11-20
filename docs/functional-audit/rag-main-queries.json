@@ -1,0 +1,136 @@
+{
+  "scope": "REAL MAIN Gateway/Native-filtered RAG; no ingestion/reindex/policy changes, no external model inference",
+  "at": 1794474054.5393133,
+  "cases": [
+    {
+      "query": "Viet file test doc lap kiem tra viec tu choi",
+      "expected_native": 398,
+      "native_ids_scope": [
+        398
+      ],
+      "correlation_id": "8f011a10-9eee-46a0-beb2-5a8de740647b",
+      "result": {
+        "answerability": {
+          "state": "UNVERIFIED_RETRIEVAL",
+          "reason": "Đã tìm thấy nguồn liên quan. Bộ kiểm chứng khả năng trả lời chưa đạt quality gate nên chưa tạo câu trả lời."
+        },
+        "answer": null,
+        "reason_code": "ANSWERABILITY_NOT_QUALIFIED",
+        "retrieval_state": "READY",
+        "items": [
+          {
+            "title": "[AI backlog] Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung.",
+            "snippet": "[AI backlog] Viet file test doc lap kiem tra viec tu choi cac HTTP methods khong hop le tai /healthz, dam bao khong anh huong den du lieu Task hien co va khong sua code ung dung.\nQLDAPM PM/BA engineer...",
+            "native_id": 398,
+            "document_id": "ffdd7a9b7846b4fd2fbba50b101bfe893a62510f711b1e78d349a9622a1fc654",
+            "lock_version": 10,
+            "source_id": "actor:20:wp:398",
+            "score": 0.03279,
+            "citation": "/work_packages/398",
+            "match_type": "HYBRID_RRF"
+          }
+        ],
+        "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+        "dense_state": "READY",
+        "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+        "model_used": false
+      },
+      "correct_known_hit": true,
+      "seconds": 20.03099999999904
+    },
+    {
+      "query": "GET /tasks/{task_id}/title",
+      "expected_native": 390,
+      "native_ids_scope": [
+        390
+      ],
+      "correlation_id": "428ddc6f-fb57-425d-9ec9-27333efcb595",
+      "result": {
+        "answerability": {
+          "state": "UNVERIFIED_RETRIEVAL",
+          "reason": "Đã tìm thấy nguồn liên quan. Bộ kiểm chứng khả năng trả lời chưa đạt quality gate nên chưa tạo câu trả lời."
+        },
+        "answer": null,
+        "reason_code": "ANSWERABILITY_NOT_QUALIFIED",
+        "retrieval_state": "READY",
+        "items": [
+          {
+            "title": "[Task] #390 - [AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit",
+            "snippet": "... {\\\"id\\\": id, \\\"title\\\": title}.\",\"AC2: GET /tasks/{task_id}/title với ID không tồn tại trả về HTTP 404.\",\"AC3: GET /tasks/{task_id}/title với ID không phải số nguyên trả về HTTP 422.\",\"AC4: Tiêu đề c...",
+            "native_id": 390,
+            "document_id": "4be04720642140a66ff2c44b91ec507b008a2b11895f018dd00291596ee8b224",
+            "lock_version": 10,
+            "source_id": "op:wp:390",
+            "score": 0.03279,
+            "citation": "/work_packages/390",
+            "match_type": "HYBRID_RRF"
+          }
+        ],
+        "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+        "dense_state": "READY",
+        "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+        "model_used": false
+      },
+      "correct_known_hit": true,
+      "seconds": 9.25
+    },
+    {
+      "query": "healthz",
+      "expected_native": 384,
+      "native_ids_scope": [
+        384
+      ],
+      "correlation_id": "8835d352-afbc-4cae-bc4a-ab9f06a64920",
+      "result": {
+        "answerability": {
+          "state": "UNVERIFIED_RETRIEVAL",
+          "reason": "Đã tìm thấy nguồn liên quan. Bộ kiểm chứng khả năng trả lời chưa đạt quality gate nên chưa tạo câu trả lời."
+        },
+        "answer": null,
+        "reason_code": "ANSWERABILITY_NOT_QUALIFIED",
+        "retrieval_state": "READY",
+        "items": [
+          {
+            "title": "[Task] #384 - [AI backlog] Them route GET /healthz va unit test status ok",
+            "snippet": "...4\nTiêu đề: [AI backlog] Them route GET /healthz va unit test status ok\nLoại: Task\nTrạng thái: IN PROGRESS\nMức độ ưu tiên: Normal\nNgười phụ trách: QLDAPM BA-PM\nS...",
+            "native_id": 384,
+            "document_id": "568f113db3b642666fc8256cde7c7dc30aff906d803afc68c297c00fdbece97f",
+            "lock_version": 2,
+            "source_id": "op:wp:384",
+            "score": 5.623042816557835,
+            "citation": "/work_packages/384",
+            "match_type": "FTS_BM25"
+          }
+        ],
+        "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+        "dense_state": "READY",
+        "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+        "model_used": false
+      },
+      "correct_known_hit": true,
+      "seconds": 6.452999999997701
+    },
+    {
+      "query": "unfindable_f8127b88_no_document_zqx",
+      "expected_native": null,
+      "native_ids_scope": null,
+      "correlation_id": "80a2e58d-6d5b-4aeb-a835-b5723a3bcd3a",
+      "result": {
+        "answerability": {
+          "state": "NO_EVIDENCE",
+          "reason": "Không tìm thấy bằng chứng phù hợp trong các nguồn hiện hành mà bạn được phép đọc."
+        },
+        "answer": null,
+        "reason_code": "NO_AUTHORIZED_CURRENT_EVIDENCE",
+        "retrieval_state": "READY",
+        "items": [],
+        "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+        "dense_state": "READY",
+        "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+        "model_used": false
+      },
+      "correct_known_hit": true,
+      "seconds": 6.46900000000096
+    }
+  ]
+}

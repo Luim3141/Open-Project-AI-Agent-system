@@ -1,0 +1,227 @@
+- generic: Mở liên kết trong tab mới
+- banner:
+  - link "Nhấn vào đây để bỏ qua menu và đi tới nội dung":
+    - /url: ""
+    - text: Chuyển đến nội dung
+  - navigation "Trình đơn trên cùng":
+    - button "Mô-đun toàn cầu":
+    - link "Trang chủ":
+      - /url: http://localhost:8088/
+  - search "Tìm kiếm trong OpenProject":
+    - button "tìm kiếm":
+      - generic: 
+    - generic: Tìm kiếm trong OpenProject
+    - combobox "Tìm kiếm trong OpenProject"
+    - status
+  - button "Thêm vào…":
+    - img "Thêm vào…"
+  - link "thông báo":
+    - /url: /notifications
+  - button "Trợ giúp":
+  - button "Trình đơn người dùng":
+    - img "Trình đơn người dùng": QB
+- navigation "Menu bên":
+  - button "Thu gọn menu dự án" [expanded]:
+  - button "QLDAPM — Local Community":
+    - generic: QLDAPM — Local Community
+  - button "Thu gọn menu dự án" [expanded]:
+  - separator
+  - list:
+    - link "dự án nhà":
+      - /url: http://localhost:8088/projects/qldapm-local
+      - generic: dự án nhà
+    - link "hoạt động":
+      - /url: http://localhost:8088/projects/qldapm-local/activity
+      - generic: hoạt động
+    - button "Mở menu phụ hoạt động":
+    - link "Work Packages":
+      - /url: http://localhost:8088/projects/qldapm-local/work_packages
+      - generic: Work Packages
+    - button "Mở menu phụ Work Packages":
+    - link "AI Assistant":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-ai
+      - generic: AI Assistant
+    - link "Insights":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-insights
+      - generic: Insights
+    - link "biểu đồ Gantt":
+      - /url: http://localhost:8088/projects/qldapm-local/gantt
+      - generic: biểu đồ Gantt
+    - button "Mở menu phụ biểu đồ Gantt":
+    - link "bảng":
+      - /url: http://localhost:8088/projects/qldapm-local/boards
+      - generic: bảng
+    - button "Mở menu phụ bảng":
+    - link "Backlog":
+      - /url: http://localhost:8088/projects/qldapm-local/backlogs/backlog
+      - generic: Backlog
+    - button "Mở menu phụ Backlog":
+    - link "thành viên":
+      - /url: http://localhost:8088/projects/qldapm-local/members
+      - generic: thành viên
+    - button "Mở menu phụ thành viên":
+    - link "Workflow gates":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-gates
+      - generic: Workflow gates
+    - link "Thiết lập dự án":
+      - /url: http://localhost:8088/projects/qldapm-local/settings/versions
+      - generic: Thiết lập dự án
+    - button "Mở menu phụ Thiết lập dự án":
+- main:
+  - heading "Nội dung" [level=1]
+  - heading "AI Assistant" [level=2]
+  - paragraph: AI dùng quyền OpenProject của bạn. Xem trước và xác nhận đề xuất; triển khai hoặc đổi quyền cần phê duyệt riêng.
+  - paragraph:
+    - link "Role & AI Permissions":
+      - /url: /projects/qldapm-local/qldapm-ai/permissions
+  - region "Tóm tắt hôm nay":
+    - heading "Tóm tắt hôm nay" [level=3]
+    - paragraph:
+      - text: Chưa có tóm tắt cho hôm nay.
+      - link "Xem số liệu trực tiếp":
+        - /url: http://localhost:8088/projects/qldapm-local/qldapm-ai#ai-progress
+      - text: .
+  - region "Kết nối":
+    - heading "Kết nối" [level=3]
+    - paragraph: "Gateway: ok · OpenProject: authenticated"
+    - paragraph:
+      - text: "Gemini:"
+      - strong: READY
+    - paragraph: "Chế độ: native"
+  - region "Tiến độ dự án":
+    - heading "Tiến độ dự án" [level=3]
+    - paragraph: "329"
+    - paragraph: Công việc theo quyền đọc của bạn
+    - paragraph:
+      - text: "NEW:"
+      - strong: "329"
+    - paragraph:
+      - text: "Quá hạn:"
+      - strong: "0"
+  - region "Gemini Settings":
+    - heading "Gemini Settings" [level=3]
+    - paragraph: "Model: gemini-3.5-flash-lite"
+    - paragraph: API key được giữ ở backend. Model và giới hạn được xác minh tại local; không nhập key vào chat.
+  - region "AI Control Center":
+    - heading "AI Control Center" [level=3]
+    - paragraph: Registry là năng lực được cấu hình. Trạng thái hoạt động và phản hồi model gần nhất được hiển thị riêng; chỉ Monitor của từng run thể hiện các bước thực thi.
+    - link "Execution Monitor / Lịch sử xử lý":
+      - /url: /projects/qldapm-local/qldapm-ai/executions
+    - link "Cập nhật Control Center":
+      - /url: /projects/qldapm-local/qldapm-ai
+    - heading "Agent registry · năng lực Gemini / local" [level=4]
+    - paragraph:
+      - strong: supervisor
+      - text: · IDLE · Gemini analysis / local deterministic
+    - paragraph:
+      - strong: pm
+      - text: · IDLE · Gemini analysis / local deterministic
+    - paragraph:
+      - strong: ba
+      - text: · IDLE · Gemini analysis / local deterministic
+    - paragraph:
+      - strong: dev
+      - text: · IDLE · Gemini analysis / local deterministic
+    - paragraph:
+      - strong: qa
+      - text: · IDLE · Gemini analysis / local deterministic
+    - paragraph:
+      - strong: reviewer
+      - text: · IDLE · local_deterministic
+    - heading "Gemini Free Tier" [level=4]
+    - paragraph: "Model: gemini-3.5-flash-lite · LOCAL_BUDGET_AVAILABLE"
+    - paragraph: "Giới hạn RPM / TPM / RPD: 15 / 250000 / 500"
+    - paragraph: "60 giây gần nhất: 0 lượt đã giữ chỗ; 0 input token đã giữ chỗ."
+    - paragraph: "Trong ngày: 2 lượt giữ chỗ. Reset 00:00 America/Los_Angeles."
+    - paragraph: Ledger local không bao gồm client khác hoặc output token của provider. Chưa xác minh billing trực tiếp.
+    - heading "Run history của bạn (1)" [level=4]
+    - text: Lọc trạng thái trong trang này
+    - combobox "Lọc trạng thái trong trang này":
+      - option "ALL" [selected]
+      - option "QUEUED"
+      - option "RUNNING"
+      - option "REVIEW"
+      - option "COMPLETED"
+      - option "FAILED"
+    - text: Sắp xếp trong trang
+    - combobox "Sắp xếp trong trang":
+      - option "Mới nhất" [selected]
+      - option "Cũ nhất"
+    - button "Áp dụng"
+    - table "Lượt xử lý · mỗi trang 10 mục":
+      - caption: Lượt xử lý · mỗi trang 10 mục
+      - rowgroup:
+        - row "Run / kết quả Trạng thái Trace":
+          - columnheader "Run / kết quả"
+          - columnheader "Trạng thái"
+          - columnheader "Trace"
+      - rowgroup:
+        - row "87803ca8-72a1-4643-b00f-8fda05a06266 Xem quá trình AI xử lý COMPLETED 45f86df7-745e-48dd-abc0-ea6fbee36681":
+          - cell "87803ca8-72a1-4643-b00f-8fda05a06266 Xem quá trình AI xử lý":
+            - link "87803ca8-72a1-4643-b00f-8fda05a06266":
+              - /url: /projects/qldapm-local/qldapm-ai?run_id=87803ca8-72a1-4643-b00f-8fda05a06266
+            - paragraph:
+              - link "Xem quá trình AI xử lý":
+                - /url: /projects/qldapm-local/qldapm-ai/executions/87803ca8-72a1-4643-b00f-8fda05a06266
+          - cell "COMPLETED"
+          - cell "45f86df7-745e-48dd-abc0-ea6fbee36681"
+    - generic "Audit / workflow timeline của bạn"
+    - paragraph: Checklist phát triển là lịch sử khai báo; không phải nghiệm thu runtime hoặc năng lực 20 người.
+  - paragraph: Gemini đọc mô tả nghiệp vụ, bình luận và liên kết công việc theo quyền của bạn để hiểu yêu cầu. API key và thông tin xác thực được giữ ở backend. Phân tích của AI là gợi ý; kết quả thao tác được xác nhận bằng dữ liệu OpenProject.
+  - paragraph:
+    - text: "Ví dụ: “Giải thích nghiệp vụ công việc 58 và các điểm còn thiếu”, “Thêm comment vào công việc 58: Đã kiểm tra trên staging”, “Đề xuất chia công việc 58 thành các Subtask”."
+    - link "Xem Insights local":
+      - /url: /projects/qldapm-local/qldapm-insights
+    - text: .
+  - text: Chế độ xử lý
+  - combobox "Chế độ xử lý":
+    - option "Gemini — cấu hình Free Tier đã lưu" [selected]
+    - option "Supervisor local — bản phân tích/dự thảo, không dùng model"
+  - text: Yêu cầu phân tích
+  - textbox "Yêu cầu phân tích":
+    - /placeholder: "Nêu yêu cầu bằng lời và ID công việc, ví dụ: Thêm comment vào công việc 58: Đã kiểm tra trên staging"
+  - paragraph:
+    - checkbox "Cho phép Gemini thực hiện thao tác nghiệp vụ thông thường tôi yêu cầu trong lượt này."
+    - text: Cho phép Gemini thực hiện thao tác nghiệp vụ thông thường tôi yêu cầu trong lượt này.
+  - paragraph: "Không bật: chỉ tạo đề xuất để bạn duyệt. Quyền này chỉ áp dụng cho yêu cầu vừa gửi; không cho phép xóa, đổi quyền hoặc deploy."
+  - text: Giới hạn ID công việc (tùy chọn, cách nhau bằng dấu phẩy)
+  - textbox "Giới hạn ID công việc (tùy chọn, cách nhau bằng dấu phẩy)":
+    - /placeholder: "Ví dụ: 35, 38"
+  - paragraph: "Có thể để trống: hệ thống nhận ID được ghi rõ trong câu lệnh, ví dụ “công việc 58”. Nếu nhập ô này, chỉ các ID bạn chọn được phép sửa; AI vẫn kiểm tra quyền và phiên bản."
+  - button "Gửi yêu cầu"
+  - region "Second Brain":
+    - heading "Second Brain" [level=3]
+    - paragraph: Chỉ lập chỉ mục công việc bạn được phép đọc. Mỗi kết quả kiểm tra lại quyền và phiên bản native.
+    - text: Tìm tri thức
+    - searchbox "Tìm tri thức"
+    - button "Tìm kiếm"
+    - text: ID công việc cần lập chỉ mục
+    - spinbutton "ID công việc cần lập chỉ mục"
+    - button "Lập / cập nhật chỉ mục"
+    - button "Bỏ chỉ mục của tôi"
+  - generic "Thao tác trực tiếp / khi Gemini chưa bật"
+  - option "identity" [selected]
+  - option "list_work_packages"
+  - option "analyze"
+  - option "get_assistant_status"
+  - option "get_action_history"
+  - option "start_ai_run"
+  - option "get_work_package"
+  - option "get_project_options"
+  - option "get_gate"
+  - option "get_job"
+  - option "get_proposal"
+  - option "get_ai_run"
+  - option "comment"
+  - option "create_work_package"
+  - option "update_work_package"
+  - option "transition"
+  - option "change_gate"
+  - heading "Yêu cầu AI đang xử lý và gần đây" [level=3]
+  - paragraph:
+    - link "87803ca8-72a1-4643-b00f-8fda05a06266":
+      - /url: /projects/qldapm-local/qldapm-ai?run_id=87803ca8-72a1-4643-b00f-8fda05a06266
+    - text: — Đã có kết quả
+  - heading "Đề xuất thay đổi" [level=3]
+  - paragraph: Chưa có đề xuất.
+  - generic "Action History / Audit Log của bạn"

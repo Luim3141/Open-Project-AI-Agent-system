@@ -1,0 +1,45 @@
+[
+  {
+    "check": "ruby-controller-syntax",
+    "exit_code": 0,
+    "output": "Syntax OK\n",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--tmpfs",
+      "/tmp:rw,size=128m",
+      "--entrypoint",
+      "ruby",
+      "qldapm-core:chatgpt-recovery-20261101-r1",
+      "-c",
+      "/app/app/controllers/qldapm_ai_controller.rb"
+    ]
+  },
+  {
+    "check": "rails-erb-compile",
+    "exit_code": 0,
+    "output": "ERB compilation PASS\n",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--tmpfs",
+      "/tmp:rw,size=128m",
+      "--entrypoint",
+      "bundle",
+      "qldapm-core:chatgpt-recovery-20261101-r1",
+      "exec",
+      "ruby",
+      "-raction_view",
+      "-e",
+      "s=File.read('/app/app/views/qldapm_ai/_engineering_command_center.html.erb'); c=ActionView::Template::Handlers::ERB.erb_implementation.new(s).src; RubyVM::InstructionSequence.compile(c); puts 'ERB compilation PASS'"
+    ]
+  }
+]

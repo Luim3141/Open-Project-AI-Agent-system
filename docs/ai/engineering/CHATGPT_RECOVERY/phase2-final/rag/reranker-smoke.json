@@ -1,0 +1,52 @@
+{
+  "started_utc": "2026-11-02T05:03:32.705831+00:00",
+  "ended_utc": "2026-11-02T05:03:38.499855+00:00",
+  "model_load_seconds": 5.612974757008487,
+  "total_seconds": 5.794054020996555,
+  "peak_rss_kib": 561624,
+  "cgroup_memory_peak": 569856000,
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "inputs": [
+    "input_ids",
+    "attention_mask"
+  ],
+  "threads": 1,
+  "token_limit": 256,
+  "script_sha256": "b2a80352bc68ad3233234f1b0a876a72af850d4eebf34d58afa1e0919be2da1c",
+  "results": [
+    {
+      "id": "en-relevant",
+      "score": 3.6241157054901123,
+      "tokens": 39,
+      "truncated": false,
+      "visible_text": "How can I get the title of one task? GET /tasks/{task_id}/title returns JSON with the task id and title.",
+      "seconds": 0.08880067500285804
+    },
+    {
+      "id": "en-negative",
+      "score": -5.159847736358643,
+      "tokens": 28,
+      "truncated": false,
+      "visible_text": "How can I get the title of one task? The system sends SMS reminders for an upcoming event.",
+      "seconds": 0.02700785599881783
+    },
+    {
+      "id": "vi-relevant",
+      "score": -1.6440026760101318,
+      "tokens": 40,
+      "truncated": false,
+      "visible_text": "Lấy tiêu đề của một công việc bằng ID GET /tasks/{task_id}/title trả về JSON chứa id và title của task.",
+      "seconds": 0.032840390005731024
+    },
+    {
+      "id": "vi-negative",
+      "score": -4.292263984680176,
+      "tokens": 29,
+      "truncated": false,
+      "visible_text": "Lấy tiêu đề của một công việc bằng ID Hệ thống gửi thông báo SMS khi một sự kiện sắp diễn ra.",
+      "seconds": 0.03065558199887164
+    }
+  ]
+}

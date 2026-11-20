@@ -1,0 +1,60 @@
+{
+  "observed_at": "2026-10-24T21:16:04.742792+00:00",
+  "status": "PASS_READ_ONLY_SCHEMA_QUALIFICATION",
+  "checks": {
+    "18": {
+      "role": "AI_SYSTEM_OWNER",
+      "transition_form": {
+        "http_status": 200,
+        "validation_errors": {
+          "status": {
+            "_type": "Error",
+            "errorIdentifier": "urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+            "message": "Tr\u1ea1ng th\u00e1i is invalid because no valid transition exists from old to new status for the current user's roles.",
+            "_embedded": {
+              "details": {
+                "attribute": "status"
+              }
+            }
+          }
+        }
+      },
+      "readable_activities": 2,
+      "readable_attachments": 0,
+      "native_version_unchanged": 1
+    },
+    "19": {
+      "role": "PM",
+      "transition_form": {
+        "http_status": 200,
+        "validation_errors": {
+          "status": {
+            "_type": "Error",
+            "errorIdentifier": "urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+            "message": "Tr\u1ea1ng th\u00e1i is invalid because no valid transition exists from old to new status for the current user's roles.",
+            "_embedded": {
+              "details": {
+                "attribute": "status"
+              }
+            }
+          }
+        }
+      },
+      "readable_activities": 2,
+      "readable_attachments": 0,
+      "native_version_unchanged": 1
+    },
+    "23": {
+      "role": "QA",
+      "transition_form": {
+        "http_status": 403,
+        "error": "OPENPROJECT_403: You are not authorized to access this resource."
+      },
+      "readable_activities": 2,
+      "readable_attachments": 0,
+      "native_version_unchanged": 1
+    }
+  },
+  "native_writes": 0,
+  "limitation": "Form response does not certify Core before_save gate acceptance; no trusted QA activity/artifact published and no Native transition executed"
+}

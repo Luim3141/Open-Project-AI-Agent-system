@@ -1,0 +1,23 @@
+﻿Test ID,Category,Target,Details,Status,Duration
+TC-P0-01,Phase 0 Backup,Main PostgreSQL,"Full pg_dump -Fc (1,336,509 bytes)",PASS,2.4s
+TC-P0-02,Phase 0 Backup,AI Gateway SQLite,"WAL-safe online backup with PRAGMA integrity_check (229,376 bytes)",PASS,0.8s
+TC-P0-03,Phase 0 Backup,Clone PostgreSQL,"Restoration into clone test DB, 221/221 tables matched 100%",PASS,5.1s
+TC-P1-01,Phase 1 Gateway,Linux Container Candidate,81/81 contract tests in Linux container qldapm-ai:rd-qual-20261021-v2,PASS,18.3s
+TC-P1-02,Phase 1 Gateway,Main Gateway Deployment,Recreated qldapm-ai-gateway-1 with qualified image sha256:a84bc31a582b,PASS,3.5s
+TC-P1-03,Phase 1 Gateway,Main Gateway Health,"HTTP 200 OK at /health, status=ok",PASS,0.1s
+TC-P1-04,Phase 1 Gateway,Main Planner Probe,"Specialist planner dispatches ['ba', 'qa', 'reviewer']",PASS,0.4s
+TC-P1-05,Phase 1 Gateway,Main Data Protection,15 protected business tables completely unchanged during deploy,PASS,1.2s
+TC-P2-01,Phase 2 Live UAT,Live Gemini Supervisor,Run ca0c3b3f-c01d-4291-a327-9c06b98e4f63 on WP 49 (PM 19),PASS,12.8s
+TC-P2-02,Phase 2 Live UAT,Gemini Quota & Billing,"6 HTTP calls (all 200 OK), 3 generateContent, gemini-3.5-flash-lite, $0.00 cost",PASS,N/A
+TC-P2-03,Phase 2 Live UAT,Reviewer Consistency,Rejected unevidenced WP 102 citation (AGENT_EVIDENCE_REJECTED),PASS,N/A
+TC-P2-04,Phase 2 Live UAT,WP 49 Preservation,"WP 49 0 mutations, lock_version=1",PASS,0.1s
+TC-P7-01,Phase 7 Clone Dry-Run,Clone Scheduling,329/329 work package dates applied via Rails runner in 9.63s,PASS,9.6s
+TC-P7-02,Phase 7 Clone Dry-Run,Clone Dependencies,0/343 follows relation violations (100% compliant),PASS,0.3s
+TC-P7-03,Phase 7 Clone Dry-Run,Clone Parent Rollup,"0/53 task rollup violations, 0/11 epic rollup violations",PASS,0.2s
+TC-P8-01,Phase 8 Main Deploy,Main Sprints & Versions,Configured 7 Sprints (S1..S7) & 7 Versions (Sprint 1..7) with dates,PASS,1.5s
+TC-P8-02,Phase 8 Main Deploy,Main 329 WP Apply,Applied 329 dates/sprints/versions on Main in 18.87s,PASS,18.9s
+TC-P8-03,Phase 8 Main Deploy,Main Readback Verification,"329/329 dates, 318/318 versions/sprints, 343/343 follows (0 violations)",PASS,0.8s
+TC-P9-01,Phase 9 Native Views,Main Core Web,HTTP 200 OK at /health_checks/default and /login,PASS,0.1s
+TC-P11-01,Phase 11 Security,Gate B Controller Access,"Admin role denied (DoubleRenderError restriction), PM granted (@role='PM')",PASS,0.5s
+TC-P11-02,Phase 11 Security,UI Secret Key Mounts,ui.key and test-receipt.key readable inside /qldapm-ui/,PASS,0.1s
+TC-P12-01,Phase 12 Browser UAT,Playwright Chromium/Edge,Visual verification and screenshots captured in evidence/,PASS,7.1s

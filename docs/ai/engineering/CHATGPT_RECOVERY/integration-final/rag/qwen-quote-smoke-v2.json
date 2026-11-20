@@ -1,0 +1,86 @@
+{
+  "model": "qwen3:1.7b",
+  "data": "synthetic fixtures only",
+  "rows": [
+    {
+      "case": "en-open-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 0.605,
+      "answer": {
+        "answer": "14",
+        "quote": "Books are kept for 14 days before they must be returned."
+      }
+    },
+    {
+      "case": "en-open-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 0.171,
+      "answer": {
+        "answer": "null",
+        "quote": "null"
+      }
+    },
+    {
+      "case": "en-yes-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 0.229,
+      "answer": {
+        "answer": "Yes",
+        "quote": "A registered member can reserve books online."
+      }
+    },
+    {
+      "case": "en-yes-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 0.245,
+      "answer": {
+        "answer": "null",
+        "quote": "The passage does not explicitly support yes or no."
+      }
+    },
+    {
+      "case": "vi-open-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 0.305,
+      "answer": {
+        "answer": "14 ngày",
+        "quote": "Sách được mượn trong 14 ngày trước khi phải trả."
+      }
+    },
+    {
+      "case": "vi-open-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 0.144,
+      "answer": {
+        "answer": null,
+        "quote": ""
+      }
+    },
+    {
+      "case": "vi-yes-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 0.283,
+      "answer": {
+        "answer": "Yes",
+        "quote": "Thành viên đã đăng ký được đặt trước sách trực tuyến."
+      }
+    },
+    {
+      "case": "vi-yes-negative",
+      "expected": false,
+      "actual": true,
+      "seconds": 0.281,
+      "answer": {
+        "answer": "Không",
+        "quote": "Thành viên đã đăng ký được đặt trước sách trực tuyến."
+      }
+    }
+  ]
+}

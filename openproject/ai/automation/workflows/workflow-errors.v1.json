@@ -1,0 +1,146 @@
+{
+  "id": "qldapmWorkflowErrors",
+  "name": "QLDAPM — Workflow error notice (metadata only)",
+  "active": false,
+  "versionId": "3cdbfe54-2591-4e6d-bf08-3f2d7d988f66",
+  "nodes": [
+    {
+      "id": "error",
+      "name": "Workflow error",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "metadata",
+      "name": "Command metadata",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ { version: 1, kind: 'workflow_error', request_key: 'error:' + $json.workflow.id + ':' + ($json.execution?.id ?? 'activation') + ':' + $now.setZone('Asia/Bangkok').toISODate(), nonce: 'n8n:' + $workflow.id + ':' + $execution.id, issued_at: Math.floor($now.toSeconds()) } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "signature",
+      "name": "Sign command",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "action": "hmac",
+        "type": "SHA256",
+        "binaryData": false,
+        "value": "={{ 'QLDAPM-AUTOMATION-COMMAND-V1\\nPOST\\n/internal/automation/commands\\n1\\n' + $json.kind + '\\n' + $json.request_key + '\\n' + $json.nonce + '\\n' + $json.issued_at }}",
+        "dataPropertyName": "signature",
+        "encoding": "hex"
+      },
+      "credentials": {
+        "crypto": {
+          "id": "qldapmCommandHmac",
+          "name": "QLDAPM status command HMAC"
+        }
+      }
+    },
+    {
+      "id": "report",
+      "name": "Gateway status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        720,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://gateway:8090/internal/automation/commands",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-QLDAPM-Command-Signature",
+              "value": "={{ $json.signature }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { version: $json.version, kind: $json.kind, request_key: $json.request_key, nonce: $json.nonce, issued_at: $json.issued_at } }}",
+        "options": {
+          "timeout": 8000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "qldapmMachineStatus",
+          "name": "QLDAPM Gateway status read only"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000
+    }
+  ],
+  "connections": {
+    "Command metadata": {
+      "main": [
+        [
+          {
+            "node": "Sign command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sign command": {
+      "main": [
+        [
+          {
+            "node": "Gateway status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow error": {
+      "main": [
+        [
+          {
+            "node": "Command metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Bangkok",
+    "executionTimeout": 30,
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  }
+}

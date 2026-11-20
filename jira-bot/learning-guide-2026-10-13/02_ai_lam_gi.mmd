@@ -1,0 +1,7 @@
+flowchart LR
+  a0["Người dùng"] -->|"Ghi và xem công việc"| b0["Jira"]
+  a1["Người dùng"] -->|"Bấm nút chuyển"| b1["Workflow"]
+  a2["Workflow"] -->|"Cập nhật khi đạt điều kiện"| b2["Jira"]
+  a3["Jira"] -->|"Sự kiện phù hợp"| b3["Automation"]
+  a4["Jira"] -->|"Đọc dữ liệu"| b4["Bot giám sát"]
+  a5["Bot giám sát"] -->|"Tổng hợp và giải thích"| b5["Báo cáo riêng"]

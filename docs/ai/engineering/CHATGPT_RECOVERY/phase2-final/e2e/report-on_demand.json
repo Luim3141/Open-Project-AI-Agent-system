@@ -1,0 +1,217 @@
+{
+  "http_status": 200,
+  "response": {
+    "result": {
+      "id": "5a6345e4-296b-473d-a496-a88536f75d91",
+      "project_id": 6,
+      "report_type": "ON_DEMAND",
+      "title": "Báo cáo tiến độ tức thời (On-Demand Snapshot) — 2026-11-02 14:21:50",
+      "generated_by": 20,
+      "generated_by_role": "PM",
+      "generated_at": 1793604110.474778,
+      "generated_at_iso": "2026-11-02T14:21:50+07:00",
+      "metrics": {
+        "timestamp": 1793604110.474778,
+        "project_id": 6,
+        "mode": "PAUSED",
+        "worker": {
+          "state": "ALIVE",
+          "worker_id": "c5a04442-74fd-4c32-ad29-ad1e3c291432"
+        },
+        "runs": {
+          "total": 17,
+          "succeeded": 16,
+          "failed_or_cancelled": 1,
+          "estimated_tokens_consumed": 2104715,
+          "usage_complete": false,
+          "usage_missing_calls": 6,
+          "runs_without_usage_receipts": 2,
+          "usage_source": "gemini_call_receipts.generateContent"
+        },
+        "github": {
+          "status": "ONLINE",
+          "total_prs": 9,
+          "open_prs": 5,
+          "merged_prs": 4,
+          "prs": [
+            {
+              "number": 9,
+              "title": "Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit",
+              "state": "open",
+              "is_merged": false,
+              "merge_target": "UNMERGED",
+              "head_sha": "4a794e2b",
+              "base_ref": "codex/openclaw-feedback-e44b47e2e8610c4f"
+            },
+            {
+              "number": 8,
+              "title": "Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và",
+              "state": "open",
+              "is_merged": false,
+              "merge_target": "UNMERGED",
+              "head_sha": "b20fb554",
+              "base_ref": "codex/openclaw-feedback-20c2a94109f4e78f"
+            },
+            {
+              "number": 7,
+              "title": "Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu ",
+              "state": "open",
+              "is_merged": false,
+              "merge_target": "UNMERGED",
+              "head_sha": "a150f3d6",
+              "base_ref": "codex/openclaw-feedback-bb9a628fe5b7be67"
+            },
+            {
+              "number": 6,
+              "title": "Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14, ",
+              "state": "open",
+              "is_merged": false,
+              "merge_target": "UNMERGED",
+              "head_sha": "0498ceed",
+              "base_ref": "codex/openclaw-health-check-v1"
+            },
+            {
+              "number": 5,
+              "title": "[AI Unit] Them route GET /healthz va unit test status ok",
+              "state": "open",
+              "is_merged": false,
+              "merge_target": "UNMERGED",
+              "head_sha": "0e8d320a",
+              "base_ref": "codex/openclaw-feedback-4d13e695555a8d44"
+            },
+            {
+              "number": 4,
+              "title": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.",
+              "state": "closed",
+              "is_merged": true,
+              "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-283138e910432528)",
+              "head_sha": "def9d0a8",
+              "base_ref": "codex/openclaw-feedback-283138e910432528"
+            },
+            {
+              "number": 3,
+              "title": "Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.",
+              "state": "closed",
+              "is_merged": true,
+              "merge_target": "FEATURE_BRANCH (codex/openclaw-crud-search-web-v1)",
+              "head_sha": "d00f8c5f",
+              "base_ref": "codex/openclaw-crud-search-web-v1"
+            },
+            {
+              "number": 2,
+              "title": "Edit/delete/status/search and usable web interface",
+              "state": "closed",
+              "is_merged": true,
+              "merge_target": "FEATURE_BRANCH (codex/openclaw-create-list-persistence-v1)",
+              "head_sha": "29ff0ec1",
+              "base_ref": "codex/openclaw-create-list-persistence-v1"
+            },
+            {
+              "number": 1,
+              "title": "Create and list tasks with SQLite persistence",
+              "state": "closed",
+              "is_merged": true,
+              "merge_target": "MAIN",
+              "head_sha": "1aa7c395",
+              "base_ref": "main"
+            }
+          ]
+        },
+        "work_packages": {
+          "status": "ONLINE",
+          "parent_379": {
+            "id": 379,
+            "subject": "Develop Mini Task Manager Application",
+            "status": "IN PROGRESS",
+            "lock_version": 4,
+            "url": "/work_packages/379/activity"
+          },
+          "total_items": 11,
+          "items": [
+            {
+              "id": 379,
+              "subject": "Develop Mini Task Manager Application",
+              "status": "IN PROGRESS",
+              "lock_version": 4,
+              "url": "/work_packages/379/activity"
+            },
+            {
+              "id": 380,
+              "subject": "[AI unit] Create/list tasks + SQLite persistence",
+              "status": "REVIEW",
+              "lock_version": 8,
+              "url": "/work_packages/380/activity"
+            },
+            {
+              "id": 381,
+              "subject": "[AI unit] Edit/delete/status/search and usable web interface",
+              "status": "REVIEW",
+              "lock_version": 9,
+              "url": "/work_packages/381/activity"
+            },
+            {
+              "id": 382,
+              "subject": "[AI backlog] Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.",
+              "status": "REVIEW",
+              "lock_version": 9,
+              "url": "/work_packages/382/activity"
+            },
+            {
+              "id": 383,
+              "subject": "[AI backlog] Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.",
+              "status": "REVIEW",
+              "lock_version": 9,
+              "url": "/work_packages/383/activity"
+            },
+            {
+              "id": 384,
+              "subject": "[AI backlog] Them route GET /healthz va unit test status ok",
+              "status": "IN PROGRESS",
+              "lock_version": 2,
+              "url": "/work_packages/384/activity"
+            },
+            {
+              "id": 386,
+              "subject": "[AI backlog] Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14, ",
+              "status": "NEW",
+              "lock_version": 2,
+              "url": "/work_packages/386/activity"
+            },
+            {
+              "id": 387,
+              "subject": "[AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu ",
+              "status": "NEW",
+              "lock_version": 2,
+              "url": "/work_packages/387/activity"
+            },
+            {
+              "id": 388,
+              "subject": "[Recovery WP385] Category, filter and CSV export (AC10–AC12)",
+              "status": "NEW",
+              "lock_version": 1,
+              "url": "/work_packages/388/activity"
+            },
+            {
+              "id": 389,
+              "subject": "[AI backlog] Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và",
+              "status": "NEW",
+              "lock_version": 2,
+              "url": "/work_packages/389/activity"
+            },
+            {
+              "id": 390,
+              "subject": "[AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit",
+              "status": "NEW",
+              "lock_version": 2,
+              "url": "/work_packages/390/activity"
+            }
+          ]
+        }
+      },
+      "source_status": "READY",
+      "narrative": "# BÁO CÁO TIẾN ĐỘ AI ENGINEERING — QLDAPM MAIN\n\n**Thời điểm tạo:** 2026-11-02 14:21:50 (UTC+07:00) | **Loại báo cáo:** `ON_DEMAND` | **Người tạo:** User 20 (PM)\n**Nguồn số liệu:** Snapshot từ SQLite, OpenProject và GitHub; không xác minh chi phí provider. | **OpenClaw Worker:** `ALIVE`\n\n---\n\n### 1. Tổng Quan Vận Hành & Trạng Thái Hệ Thống\n- **Chế độ kiểm soát:** `PAUSED`\n- **Delivery Worker:** `ALIVE`\n- **Phạm vi:** OpenProject Project 6; trạng thái là snapshot tại thời điểm tạo báo cáo.\n\n### 2. Tiến Độ Backlog & Work Packages (OpenProject Project 6)\n- **Trạng thái nguồn:** `READY`; OpenProject: `ONLINE`.\n- **Parent Work Package:** Develop Mini Task Manager Application\n- **Tổng số Work Packages:** 11.\n  - [WP #390](/work_packages/390/activity) [AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit (Trạng thái: `NEW` | Lock: v2)\n  - [WP #389](/work_packages/389/activity) [AI backlog] Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và (Trạng thái: `NEW` | Lock: v2)\n  - [WP #388](/work_packages/388/activity) [Recovery WP385] Category, filter and CSV export (AC10–AC12) (Trạng thái: `NEW` | Lock: v1)\n  - [WP #387](/work_packages/387/activity) [AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu  (Trạng thái: `NEW` | Lock: v2)\n  - [WP #386](/work_packages/386/activity) [AI backlog] Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (Trạng thái: `NEW` | Lock: v2)\n  - [WP #384](/work_packages/384/activity) [AI backlog] Them route GET /healthz va unit test status ok (Trạng thái: `IN PROGRESS` | Lock: v2)\n  - [WP #383](/work_packages/383/activity) [AI backlog] Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (Trạng thái: `REVIEW` | Lock: v9)\n  - [WP #382](/work_packages/382/activity) [AI backlog] Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (Trạng thái: `REVIEW` | Lock: v9)\n  - [WP #381](/work_packages/381/activity) [AI unit] Edit/delete/status/search and usable web interface (Trạng thái: `REVIEW` | Lock: v9)\n  - [WP #380](/work_packages/380/activity) [AI unit] Create/list tasks + SQLite persistence (Trạng thái: `REVIEW` | Lock: v8)\n\n### 3. Hoạt Động Của Tác Nhân AI Workforce (Supervisor, BA, PM, Dev, Reviewer, QA)\n- **Tổng số lượt chạy (Runs):** `17` lượt chạy.\n- **Lượt chạy thành công:** `16` lượt.\n- **Lượt chạy thất bại / Hủy / Blocked:** `1` lượt.\n- **Token ghi nhận trong generation receipts:** `2104715`; usage complete: `False`; không phải chứng nhận billing hoặc tổng chi phí.\n\n### 4. Quản Lý Mã Nguồn & GitHub Delivery (Luim3141/mini-task-manager)\n- **Trạng thái kết nối GitHub:** `ONLINE`\n- **Tổng số Pull Requests:** `9`.\n- **Pull Requests đã merge:** `4`.\n- **Pull Requests đang mở / Chờ review:** `5`.\n  - [PR #9](https://github.com/Luim3141/mini-task-manager/pull/9): Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit (`OPEN` -> `UNMERGED`)\n  - [PR #8](https://github.com/Luim3141/mini-task-manager/pull/8): Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và (`OPEN` -> `UNMERGED`)\n  - [PR #7](https://github.com/Luim3141/mini-task-manager/pull/7): Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu  (`OPEN` -> `UNMERGED`)\n  - [PR #6](https://github.com/Luim3141/mini-task-manager/pull/6): Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (`OPEN` -> `UNMERGED`)\n  - [PR #5](https://github.com/Luim3141/mini-task-manager/pull/5): [AI Unit] Them route GET /healthz va unit test status ok (`OPEN` -> `UNMERGED`)\n  - [PR #4](https://github.com/Luim3141/mini-task-manager/pull/4): Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (`MERGED` -> `FEATURE_BRANCH (codex/openclaw-feedback-283138e910432528)`)\n  - [PR #3](https://github.com/Luim3141/mini-task-manager/pull/3): Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (`MERGED` -> `FEATURE_BRANCH (codex/openclaw-crud-search-web-v1)`)\n  - [PR #2](https://github.com/Luim3141/mini-task-manager/pull/2): Edit/delete/status/search and usable web interface (`MERGED` -> `FEATURE_BRANCH (codex/openclaw-create-list-persistence-v1)`)\n  - [PR #1](https://github.com/Luim3141/mini-task-manager/pull/1): Create and list tasks with SQLite persistence (`MERGED` -> `MAIN`)\n\n### 5. Chất Lượng Mã Nguồn & Kiểm Thử QA\n- Snapshot này chưa tổng hợp test receipts hoặc đối soát tính toàn vẹn dữ liệu dự án khác.\n\n### 6. Đánh Giá Kỹ Thuật & Khuyến Nghị Tiếp Theo\n- Cần kiểm tra test receipts, blocker và trạng thái PR trước khi nghiệm thu hoặc giao thêm task.\n",
+      "ai_narrative_status": "NOT_REQUESTED"
+    },
+    "correlation_id": "2c26e927-5bea-4091-9c69-6faeb4546823"
+  }
+}

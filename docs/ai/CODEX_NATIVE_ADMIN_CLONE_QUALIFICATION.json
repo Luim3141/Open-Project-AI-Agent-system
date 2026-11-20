@@ -1,0 +1,291 @@
+{
+  "at": "2026-10-26T03:16:22.653595+00:00",
+  "status": "PASS_ACTUAL_ISOLATED_UPSTREAM_USER_AND_PROJECT_ADMIN_SUBCAPABILITIES",
+  "scope": "Own authenticated Admin18 and lower roles in restored Main clone. Native built-in APIs only; no Gateway admin write capability or Main human approval is claimed",
+  "core_image": "sha256:4495d944cd6ea5ab7a1fb50173310a787793f4398118f6b858333ac62a80a6a2",
+  "created_user_id": 25,
+  "created_project_id": 6,
+  "checks": [
+    {
+      "actor": 19,
+      "operation": "create_user",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 20,
+      "operation": "create_user",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 21,
+      "operation": "create_user",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 22,
+      "operation": "create_user",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 23,
+      "operation": "create_user",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 18,
+      "operation": "create_nonadmin_user",
+      "id": 25,
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "operation": "lock_unrelated_invisible_user",
+      "http": 404,
+      "visibility_precheck_http": 404,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 19,
+      "operation": "lock_visible_member",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 20,
+      "operation": "lock_unrelated_invisible_user",
+      "http": 404,
+      "visibility_precheck_http": 404,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 20,
+      "operation": "lock_visible_member",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 21,
+      "operation": "lock_unrelated_invisible_user",
+      "http": 404,
+      "visibility_precheck_http": 404,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 21,
+      "operation": "lock_visible_member",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 22,
+      "operation": "lock_unrelated_invisible_user",
+      "http": 404,
+      "visibility_precheck_http": 404,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 22,
+      "operation": "lock_visible_member",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 23,
+      "operation": "lock_unrelated_invisible_user",
+      "http": 404,
+      "visibility_precheck_http": 404,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 23,
+      "operation": "lock_visible_member",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 18,
+      "operation": "update_test_user",
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "operation": "lock_test_user",
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "operation": "unlock_test_user",
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "operation": "create_test_project",
+      "id": 6,
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "operation": "update_test_project",
+      "id": 6,
+      "status": "PASS"
+    }
+  ],
+  "fixture_proposals": [
+    {
+      "action": "upstream_create_nonadmin_user",
+      "payload_sha256": "02ec841d82b831493e2e297fd4528128ada22abecc55a000bbd015fa56753998",
+      "public_payload": {
+        "login": "codex-e2e-b960f2c2fe",
+        "firstName": "Codex",
+        "lastName": "Isolated",
+        "email": "codex-e2e-b960f2c2fe@example.invalid",
+        "admin": false,
+        "status": "active",
+        "language": "en"
+      },
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_PURPOSE_ONLY_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "action": "upstream_update_test_user",
+      "payload_sha256": "cccb8fcd198da6a6c088bfdd1d10d763aec5e1f3f179c23c856589328753a10d",
+      "public_payload": {
+        "id": 25,
+        "firstName": "Codex updated"
+      },
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_PURPOSE_ONLY_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "action": "upstream_lock_test_user",
+      "payload_sha256": "81970d138fdcc830218e82c552c238062e6eddeaf11b3f473866afbd8c24e7bd",
+      "public_payload": {
+        "id": 25
+      },
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_PURPOSE_ONLY_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "action": "upstream_unlock_test_user_not_user_delete",
+      "payload_sha256": "81970d138fdcc830218e82c552c238062e6eddeaf11b3f473866afbd8c24e7bd",
+      "public_payload": {
+        "id": 25
+      },
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_PURPOSE_ONLY_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "action": "upstream_create_test_project",
+      "payload_sha256": "58bfa2261fde7088dad516757b2aed7cdd8d09e676e33a5a19b1a8a046ef4be8",
+      "public_payload": {
+        "name": "CODEX-E2E isolated project b960f2c2fe",
+        "identifier": "codex-e2e-b960f2c2fe",
+        "public": false,
+        "description": {
+          "format": "markdown",
+          "raw": "Disposable network-isolated built-in Native administration qualification. No Main project/account write."
+        }
+      },
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_PURPOSE_ONLY_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "action": "upstream_update_test_project",
+      "payload_sha256": "ea85bb93059a8804ead409741289865058320d43ffd568bc115cea8ce850aab0",
+      "public_payload": {
+        "id": 6,
+        "name": "CODEX-E2E isolated updated b960f2c2fe",
+        "description": {
+          "format": "markdown",
+          "raw": "Verified isolated project metadata update; existing Main project is unchanged."
+        }
+      },
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_PURPOSE_ONLY_NOT_MAIN_HUMAN_APPROVAL"
+    }
+  ],
+  "main_native_writes": 0,
+  "main_credentials_changed": false,
+  "staging_operations": false,
+  "external_sends": 0,
+  "network": "Internal clone network only; no ports/shared Main volumes or notification worker",
+  "official_sources": [
+    "https://www.openproject.org/docs/api/endpoints/users/",
+    "https://www.openproject.org/docs/api/endpoints/projects/"
+  ],
+  "limits": [
+    "No Main user/project creation or account changes",
+    "No Main password/TOTP/API-key changes",
+    "No new AI administration tool or delegated approval",
+    "Boards/sprints/module configuration and real browser administration remain NOT_TESTED",
+    "No account deletion, invitation/email delivery or TOTP enrolment qualification"
+  ],
+  "original_native_security_and_wp_unchanged": {
+    "old_users_security": "0de3a617833ef96e8d6a1b482f1be7bc",
+    "old_passwords": "4234f2fd25daa7ba281efb64305450e6",
+    "old_tokens": "d2504324eea35a15febd4ed0566b1d9c",
+    "old_totp": "9fad118bef883ac25b42e1cf00c770cf",
+    "all_original_wp": "04ec20a24a553f3cea4deab0015c29ef",
+    "main_members": "f5fdad35c3b32f4b39c09311091244e9"
+  },
+  "old_project_business_fields_unchanged": true,
+  "native_derived_project_reordering": [
+    {
+      "id": 1,
+      "changes": {
+        "updated_at": [
+          "2026-10-09T08:04:38.281771+00:00",
+          "2026-10-26T03:16:22.376052+00:00"
+        ],
+        "lft": [
+          1,
+          3
+        ],
+        "rgt": [
+          2,
+          4
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "changes": {
+        "updated_at": [
+          "2026-10-09T08:04:38.464604+00:00",
+          "2026-10-26T03:16:22.376052+00:00"
+        ],
+        "lft": [
+          5,
+          7
+        ],
+        "rgt": [
+          6,
+          8
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "changes": {
+        "updated_at": [
+          "2026-10-09T08:04:38.464604+00:00",
+          "2026-10-26T03:16:22.376052+00:00"
+        ],
+        "lft": [
+          3,
+          5
+        ],
+        "rgt": [
+          4,
+          6
+        ]
+      }
+    }
+  ],
+  "native_project_forest_integrity": "PASS_EXACT_SINGLE_NEW_ROOT_AND_UNIQUE_NESTED_SET_EDGES",
+  "derived_project_source": "/app/app/models/projects/hierarchy.rb:acts_as_nested_set + reorder_by_name",
+  "qualification_history": [
+    "v1 required403 for invisible user: Native intentionally returned404 before admin gate; fixed visibility precheck plus separate visible-user403 tests",
+    "v2/v3 full old-project row invariant failed: Native reordered only lft/rgt/updated_at when adding alphabetically first root; v4 verifies exact +2 edges, unchanged business fields/parent links, and full forest integrity"
+  ],
+  "source_dump_sha256": "12ff8461ac490805aaf156c34e6ae34ab035ec0f24e7509a46f6082b700da039"
+}

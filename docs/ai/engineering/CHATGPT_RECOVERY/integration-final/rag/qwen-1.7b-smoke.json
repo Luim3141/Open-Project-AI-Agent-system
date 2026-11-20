@@ -1,0 +1,64 @@
+{
+  "model": "qwen3:1.7b",
+  "model_digest": "8f68893c685c",
+  "data": "synthetic fixtures only",
+  "cpu_threads": 1,
+  "rows": [
+    {
+      "case": "en-open-positive",
+      "expected": true,
+      "actual": false,
+      "seconds": 12.304,
+      "tokens": 7
+    },
+    {
+      "case": "en-open-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 0.257,
+      "tokens": 8
+    },
+    {
+      "case": "en-yes-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 0.15,
+      "tokens": 8
+    },
+    {
+      "case": "en-yes-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 0.138,
+      "tokens": 8
+    },
+    {
+      "case": "vi-open-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 0.155,
+      "tokens": 6
+    },
+    {
+      "case": "vi-open-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 0.125,
+      "tokens": 6
+    },
+    {
+      "case": "vi-yes-positive",
+      "expected": true,
+      "actual": true,
+      "seconds": 0.119,
+      "tokens": 6
+    },
+    {
+      "case": "vi-yes-negative",
+      "expected": false,
+      "actual": false,
+      "seconds": 0.116,
+      "tokens": 6
+    }
+  ]
+}

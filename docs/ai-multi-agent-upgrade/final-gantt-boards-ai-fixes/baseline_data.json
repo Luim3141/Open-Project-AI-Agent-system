@@ -1,0 +1,379 @@
+{
+  "total_wps": 372,
+  "p3_wps": 335,
+  "p3_info": {
+    "id": 3,
+    "identifier": "qldapm-local",
+    "name": "QLDAPM — Local Community",
+    "modules": [
+      "work_package_tracking",
+      "backlogs",
+      "board_view",
+      "activity",
+      "gantt"
+    ],
+    "members": [
+      {
+        "user_id": 6,
+        "login": "ba-pm",
+        "roles": [
+          "QLDAPM BA-PM"
+        ]
+      },
+      {
+        "user_id": 7,
+        "login": "pm",
+        "roles": [
+          "QLDAPM PM"
+        ]
+      },
+      {
+        "user_id": 8,
+        "login": "be",
+        "roles": [
+          "QLDAPM BE"
+        ]
+      },
+      {
+        "user_id": 9,
+        "login": "fe",
+        "roles": [
+          "QLDAPM FE"
+        ]
+      },
+      {
+        "user_id": 10,
+        "login": "qa",
+        "roles": [
+          "QLDAPM QA"
+        ]
+      },
+      {
+        "user_id": 12,
+        "login": "system-admin",
+        "roles": [
+          "QLDAPM PM"
+        ]
+      }
+    ]
+  },
+  "users": [
+    {
+      "id": 6,
+      "login": "ba-pm",
+      "admin": false,
+      "status": "active",
+      "totp_devices": []
+    },
+    {
+      "id": 9,
+      "login": "fe",
+      "admin": false,
+      "status": "active",
+      "totp_devices": []
+    },
+    {
+      "id": 10,
+      "login": "qa",
+      "admin": false,
+      "status": "active",
+      "totp_devices": []
+    },
+    {
+      "id": 8,
+      "login": "be",
+      "admin": false,
+      "status": "active",
+      "totp_devices": [
+        {
+          "id": 1,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 2,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 3,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 4,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 5,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 6,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 7,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 8,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 9,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 10,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 11,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 12,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 13,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 14,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 15,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 16,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 17,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 18,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 19,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 20,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 21,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 22,
+          "active": false,
+          "default": false
+        },
+        {
+          "id": 23,
+          "active": true,
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "login": "stage-owner",
+      "admin": true,
+      "status": "active",
+      "totp_devices": [
+        {
+          "id": 31,
+          "active": true,
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "login": "pm",
+      "admin": false,
+      "status": "active",
+      "totp_devices": [
+        {
+          "id": 24,
+          "active": true,
+          "default": true
+        }
+      ]
+    }
+  ],
+  "queries": [
+    {
+      "id": 29,
+      "name": "QLDAPM — Imported backlog",
+      "public": true,
+      "filters": [
+        {
+          "field": "status_id",
+          "operator": "o",
+          "values": [
+            ""
+          ]
+        },
+        {
+          "field": "manual_sort",
+          "operator": "ow",
+          "values": []
+        }
+      ],
+      "column_names": [],
+      "sort_criteria": [
+        [
+          "manual_sorting",
+          "asc"
+        ]
+      ],
+      "show_hierarchies": true
+    },
+    {
+      "id": 34,
+      "name": "Danh sách không tên",
+      "public": true,
+      "filters": [
+        {
+          "field": "manual_sort",
+          "operator": "ow",
+          "values": []
+        }
+      ],
+      "column_names": [
+        "id",
+        "subject",
+        "type",
+        "status",
+        "assigned_to",
+        "priority"
+      ],
+      "sort_criteria": [
+        [
+          "manual_sorting",
+          "asc"
+        ],
+        [
+          "id",
+          "asc"
+        ]
+      ],
+      "show_hierarchies": true
+    },
+    {
+      "id": 35,
+      "name": "NEW",
+      "public": true,
+      "filters": [
+        {
+          "field": "status_id",
+          "operator": "=",
+          "values": [
+            "1"
+          ]
+        }
+      ],
+      "column_names": [],
+      "sort_criteria": [
+        [
+          "manual_sorting",
+          "asc"
+        ],
+        [
+          "id",
+          "asc"
+        ]
+      ],
+      "show_hierarchies": false
+    },
+    {
+      "id": 36,
+      "name": "Tài khoản & Role",
+      "public": true,
+      "filters": [
+        {
+          "field": "parent",
+          "operator": "=",
+          "values": [
+            "38"
+          ]
+        }
+      ],
+      "column_names": [
+        "id",
+        "subject",
+        "type",
+        "status",
+        "assigned_to",
+        "priority"
+      ],
+      "sort_criteria": [
+        [
+          "manual_sorting",
+          "asc"
+        ],
+        [
+          "id",
+          "asc"
+        ]
+      ],
+      "show_hierarchies": true
+    }
+  ],
+  "boards": [
+    {
+      "id": 8,
+      "name": "QLDAPM Basic — manual status",
+      "options": {
+        "type": "free"
+      },
+      "widgets_count": 2
+    },
+    {
+      "id": 17,
+      "name": "Test kaban",
+      "options": {
+        "type": "action",
+        "attribute": "status"
+      },
+      "widgets_count": 1
+    },
+    {
+      "id": 18,
+      "name": "Test child",
+      "options": {
+        "type": "action",
+        "attribute": "subtasks"
+      },
+      "widgets_count": 1
+    }
+  ]
+}

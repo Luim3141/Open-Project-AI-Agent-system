@@ -1,0 +1,150 @@
+{
+  "contract": {
+    "allow_routine_writes": false,
+    "attempt": 1,
+    "deadline": 1793291356.464764,
+    "engine": "openclaw",
+    "native_id": 379,
+    "project_id": 6,
+    "repository": "Luim3141/mini-task-manager",
+    "request_key": "phase2-unit-create-list-v1",
+    "source_version": 0,
+    "spec": "**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n\n*   Backend: Python FastAPI\n    \n*   Database: SQLite\n    \n*   Frontend: HTML, CSS, JavaScript\n    \n*   Testing: pytest\n    \n*   Version Control: Git and GitHub\n    \n\n**Functional Requirements**\n\n1.  Create new tasks.\n    \n2.  View a list of tasks.\n    \n3.  Edit task information.\n    \n4.  Delete tasks.\n    \n5.  Update task status.\n    \n6.  Search and filter tasks.\n    \n7.  Persist data in SQLite.\n    \n8.  Provide a usable web interface.\n    \n\n**AI Development Workflow**\n\nThe AI team should:\n\n1.  Analyze requirements and define acceptance criteria.\n    \n2.  Break down the project into development tasks.\n    \n3.  Establish dependencies and propose a development schedule.\n    \n4.  Implement source code in the Git repository.\n    \n5.  Build and execute automated tests.\n    \n6.  Review the implementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[https://github.com/Luim3141/mini-task-manager](https://github.com/Luim3141/mini-task-manager)\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.",
+    "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+    "stage": "ADMITTED",
+    "unit": "create-list-persistence-v1",
+    "write_scope_ids": []
+  },
+  "plan": {
+    "unit": "create-list-persistence-v1",
+    "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+    "steps": [
+      "Define AC/API",
+      "Implement one feature in isolated worktree",
+      "Independent review",
+      "Independent tests",
+      "Publish PR and progress",
+      "Reindex authorized Native evidence"
+    ],
+    "acceptance": {
+      "AC1": "POST /tasks accepts nonblank title, returns201 with id,title,status=todo",
+      "AC2": "GET /tasks returns stored tasks, stable id order",
+      "AC3": "create_app(database_path) preserves tasks when reopened with same SQLite file",
+      "AC4": "blank title is rejected422; SQL text is stored as data"
+    },
+    "interface": "task_manager.app.create_app(database_path); pytest; Python FastAPI + stdlib sqlite3",
+    "permission": "demo repository and Project6 only; no merge/deploy; completion of unit is not WP379 DONE",
+    "verification": "trusted external acceptance + repo pytest on exact tree; independent reviewer session"
+  },
+  "agent_outputs": {
+    "pm": {
+      "schema_version": 1,
+      "run_id": "5c43e11d-43b7-48b9-a4f8-b5a5e28dbf03",
+      "task_id": "e2e0f543-17cd-45d5-9593-fb7e2a9e69b4",
+      "actor_id": 20,
+      "project_id": 6,
+      "trace_id": "266049f0-24a8-48d1-aed3-5d94b9f48cd6",
+      "state": "REVIEW",
+      "summary": "PM Agent chỉ phân tích dữ liệu và đề xuất phương án, tuyệt đối KHÔNG tự ý cập nhật hay chỉnh sửa trực tiếp các công việc (work packages) trong OpenProject. Yêu cầu sửa đổi đã được ghi nhận và chuyển thành bản dự thảo đề xuất (Proposal Draft) cần phê duyệt bởi người dùng PM theo chính sách PM-only-write trước khi thực hiện bất kỳ thao tác ghi nào.\n- Các công việc liên quan: #379 (lock_version: 0)",
+      "references": [
+        {
+          "schema_version": 1,
+          "work_package_id": 379,
+          "lock_version": 0
+        }
+      ],
+      "receipt_ids": [],
+      "model_used": false,
+      "error_code": null
+    },
+    "ba": {
+      "schema_version": 1,
+      "run_id": "5c43e11d-43b7-48b9-a4f8-b5a5e28dbf03",
+      "task_id": "e2e0f543-17cd-45d5-9593-fb7e2a9e69b4",
+      "actor_id": 20,
+      "project_id": 6,
+      "trace_id": "266049f0-24a8-48d1-aed3-5d94b9f48cd6",
+      "state": "REVIEW",
+      "summary": "BA Agent chỉ phân tích và soạn thảo tài liệu nghiệp vụ (User Story, AC, Ambiguity, Phụ thuộc), tuyệt đối KHÔNG tự ý ghi hoặc cập nhật trực tiếp dữ liệu vào OpenProject. Nội dung đã được biên soạn dưới dạng bản dự thảo đề xuất (Proposal Draft) và chuyển giao để PM phê duyệt theo chính sách PM-only-write trước khi áp dụng.\n- Các công việc liên quan: #379 (lock_version: 0)",
+      "references": [
+        {
+          "schema_version": 1,
+          "work_package_id": 379,
+          "lock_version": 0
+        }
+      ],
+      "receipt_ids": [],
+      "model_used": false,
+      "error_code": null
+    }
+  },
+  "knowledge": {
+    "items": [
+      {
+        "title": "[Task] #379 - Develop Mini Task Manager Application",
+        "snippet": "Mã công việc: #379\nTiêu đề: Develop Mini Task Manager Application\nLoại: Task\nTrạng thái: NEW\nMức độ ưu tiên: Normal\nNgười phụ trách: Chưa phân công\nSprint / Phiên bản: Chưa có Sprint\n\nMô tả chi tiết:\n...",
+        "native_id": 379,
+        "document_id": "a85ce806084349edfb3b25dd90c8b7de16c72473be6be44dde60b653b262ccd6",
+        "lock_version": 0,
+        "source_id": "op:wp:379",
+        "score": 0.03279,
+        "citation": "/work_packages/379",
+        "match_type": "HYBRID_RRF"
+      }
+    ],
+    "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+    "dense_state": "READY",
+    "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+    "model_used": false
+  },
+  "profiles": {
+    "supervisor": {
+      "agent": "supervisor",
+      "runtime": "qldapm-local",
+      "skill": "engineering-planning",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "bounded ownership/claim/handoff; Paperclip/NEXUS principles"
+    },
+    "pm": {
+      "agent": "pm",
+      "runtime": "qldapm-local",
+      "skill": "engineering-planning",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "Senior Project Manager / Sprint Prioritizer"
+    },
+    "ba": {
+      "agent": "ba",
+      "runtime": "qldapm-local",
+      "skill": "engineering-planning",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "Requirements Analyst"
+    },
+    "dev": {
+      "agent": "dev",
+      "runtime": "openclaw",
+      "skill": "engineering-development",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "Senior Developer / Debugging Specialist"
+    },
+    "reviewer": {
+      "agent": "reviewer",
+      "runtime": "openclaw",
+      "skill": "engineering-review",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "Code Reviewer / Reality Checker"
+    },
+    "qa": {
+      "agent": "qa",
+      "runtime": "openclaw",
+      "skill": "engineering-qa",
+      "version": "1.0.0",
+      "project_id": 6,
+      "persona": "API Tester / Evidence Collector"
+    }
+  }
+}

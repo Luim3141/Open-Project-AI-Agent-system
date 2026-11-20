@@ -1,0 +1,594 @@
+- generic: Mở liên kết trong tab mới
+- banner:
+  - link "Nhấn vào đây để bỏ qua menu và đi tới nội dung":
+    - /url: ""
+    - text: Chuyển đến nội dung
+  - navigation "Trình đơn trên cùng":
+    - button "Mô-đun toàn cầu":
+    - link "Trang chủ":
+      - /url: http://localhost:8088/
+  - search "Tìm kiếm trong OpenProject":
+    - button "tìm kiếm":
+      - generic: 
+    - generic: Tìm kiếm trong OpenProject
+    - combobox "Tìm kiếm trong OpenProject"
+    - status
+  - button "Thêm vào…":
+    - img "Thêm vào…"
+  - link "thông báo":
+    - /url: /notifications
+  - button "Trợ giúp":
+  - button "Trình đơn người dùng":
+    - img "Trình đơn người dùng": QB
+- navigation "Menu bên":
+  - button "Thu gọn menu dự án" [expanded]:
+  - button "QLDAPM — Local Community":
+    - generic: QLDAPM — Local Community
+  - button "Thu gọn menu dự án" [expanded]:
+  - separator
+  - list:
+    - link "Quay lại một cấp độ menu":
+      - /url: "#"
+    - link "biểu đồ Gantt":
+      - /url: http://localhost:8088/projects/qldapm-local/gantt
+    - list:
+      - generic: Tìm kiếm
+      - textbox "Tìm kiếm":
+        - /placeholder: Tìm kiếm theo tên
+      - button "mặc định":
+        - text: mặc định
+        - generic: 
+      - list:
+        - link "Tất cả đều mở":
+          - /url: /projects/qldapm-local/gantt?name=all_open&query_props=%7B%22tll%22%3A%22%7B%5C%22left%5C%22%3A%5C%22startDate%5C%22%2C%5C%22right%5C%22%3A%5C%22dueDate%5C%22%2C%5C%22farRight%5C%22%3A%5C%22subject%5C%22%7D%22%2C%22tzl%22%3A%22auto%22%2C%22tv%22%3Atrue%2C%22hi%22%3Atrue%2C%22t%22%3A%22start_date%3Aasc%22%2C%22c%22%3A%5B%22id%22%2C%22type%22%2C%22subject%22%2C%22status%22%2C%22startDate%22%2C%22dueDate%22%2C%22duration%22%5D%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%5D%7D
+          - generic: Tất cả đều mở
+- main:
+  - heading "Nội dung" [level=1]
+  - navigation "vụn bánh mì":
+    - list:
+      - link "QLDAPM — Local Community":
+        - /url: /projects/qldapm-local
+      - link "biểu đồ Gantt":
+        - /url: /projects/qldapm-local/gantt
+      - 'link "công khai: QLDAPM — Scrum Roadmap theo Epic"':
+        - /url: "#"
+  - heading "QLDAPM — Scrum Roadmap theo Epic" [level=2]:
+    - button "Chế độ xem này có những thay đổi chưa được lưu. Nhấn vào đây để lưu chúng.":
+      - generic: 
+    - textbox "Nhấp vào chỉnh sửa tiêu đề của trình bày này. Nhấn enter để lưu.":
+      - /placeholder: Tên của trình bày
+      - text: QLDAPM — Scrum Roadmap theo Epic
+  - list:
+    - button "Tạo gói công việc mới":
+      - text: Tạo mới
+    - button "Bao gồm các dự án 1":
+      - text: Bao gồm các dự án
+      - generic: "1"
+    - note "Đây là điểm neo tập trung cho các phương thức. Nhấn shift+tab để quay lại phần tử kích hoạt phương thức."
+    - button "Đường cơ sở":
+      - text: Đường cơ sở
+    - note "Đây là điểm neo tập trung cho các phương thức. Nhấn shift+tab để quay lại phần tử kích hoạt phương thức."
+    - button "kích hoạt bộ lọc":
+      - generic: 
+      - text: bộ lọc
+      - generic: "1"
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - list:
+      - button "Tự động thu phóng":
+        - generic: 
+      - button "Thu nhỏ":
+        - generic: 
+      - button "Phóng to" [disabled]:
+        - generic: 
+    - button "Kích hoạt chế độ zen":
+      - generic: 
+    - button "Thêm hành động":
+      - generic: 
+  - table "Bảng có các hàng gói công việc và các cột thuộc tính gói công việc.Hầu hết các ô của bảng này là các nút kích hoạt chức năng chỉnh sửa nội tuyến của thuộc tính đó. Các hộp chọn phải được mở bằng 'ALT' và phím mũi tên. Với các liên kết trong tiêu đề bảng, bạn có thể sắp xếp, nhóm, sắp xếp lại, xóa và thêm các cột trong bảng.":
+    - caption:
+      - text: Bảng có các hàng gói công việc và các cột thuộc tính gói công việc.
+      - text: Hầu hết các ô của bảng này là các nút kích hoạt chức năng chỉnh sửa nội tuyến của thuộc tính đó. Các hộp chọn phải được mở bằng 'ALT' và phím mũi tên. Với các liên kết trong tiêu đề bảng, bạn có thể sắp xếp, nhóm, sắp xếp lại, xóa và thêm các cột trong bảng.
+    - rowgroup:
+      - row "ID Chủ đề loại Trạng thái Người được giao Ngày bắt đầu Ngày kết thúc":
+        - columnheader
+        - columnheader "ID":
+          - link "ID":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "Chủ đề":
+          - generic: 
+          - link "Chủ đề":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "loại":
+          - link "loại":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "Trạng thái":
+          - link "Trạng thái":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "Người được giao":
+          - link "Người được giao":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "Ngày bắt đầu":
+          - link "Ngày bắt đầu":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader "Ngày kết thúc":
+          - link "Ngày kết thúc":
+            - /url: "#"
+          - generic: Mở trình đơn
+        - columnheader:
+          - button "Định cấu hình chế độ xem":
+            - generic: 
+    - rowgroup:
+      - 'row "id 38 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Tài khoản & Role: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 38":
+          - generic "id 38":
+            - link "38":
+              - /url: /projects/qldapm-local/work_packages/38/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Tài khoản & Role: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Tài khoản & Role: Sửa"': Tài khoản & Role
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/38/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                                 
+      - 'row "id 39 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Quản lý Project: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 39":
+          - generic "id 39":
+            - link "39":
+              - /url: /projects/qldapm-local/work_packages/39/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Quản lý Project: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Quản lý Project: Sửa"': Quản lý Project
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/39/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                                              
+      - 'row "id 40 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Backlog: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 40":
+          - generic "id 40":
+            - link "40":
+              - /url: /projects/qldapm-local/work_packages/40/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Backlog: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Backlog: Sửa"': Backlog
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/40/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                                 
+      - 'row "id 41 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Sprint: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 41":
+          - generic "id 41":
+            - link "41":
+              - /url: /projects/qldapm-local/work_packages/41/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Sprint: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Sprint: Sửa"': Sprint
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/41/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                                 
+      - 'row "id 42 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Task / User Story: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 42":
+          - generic "id 42":
+            - link "42":
+              - /url: /projects/qldapm-local/work_packages/42/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Task / User Story: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Task / User Story: Sửa"': Task / User Story
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/42/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                                 
+      - 'row "id 43 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Kanban: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 43":
+          - generic "id 43":
+            - link "43":
+              - /url: /projects/qldapm-local/work_packages/43/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Kanban: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Kanban: Sửa"': Kanban
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/43/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                    
+      - 'row "id 44 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Gantt / Timeline: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 44":
+          - generic "id 44":
+            - link "44":
+              - /url: /projects/qldapm-local/work_packages/44/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Gantt / Timeline: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Gantt / Timeline: Sửa"': Gantt / Timeline
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/44/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                    
+      - 'row "id 45 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Issue / Bug: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 45":
+          - generic "id 45":
+            - link "45":
+              - /url: /projects/qldapm-local/work_packages/45/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Issue / Bug: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Issue / Bug: Sửa"': Issue / Bug
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/45/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                                 
+      - 'row "id 46 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Comment: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 46":
+          - generic "id 46":
+            - link "46":
+              - /url: /projects/qldapm-local/work_packages/46/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Comment: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Comment: Sửa"': Comment
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/46/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                                 
+      - 'row "id 47 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Dashboard: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 47":
+          - generic "id 47":
+            - link "47":
+              - /url: /projects/qldapm-local/work_packages/47/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Dashboard: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Dashboard: Sửa"': Dashboard
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/47/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                    
+      - 'row "id 48 Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Notification: Sửa loại Epic: Sửa Trạng thái NEW: Sửa Người được chuyển nhượng QLDAPM PM: Sửa Ngày bắt đầu Không có giá trị: Sửa Ngày kết thúc Không có giá trị: Sửa Mở thông tin chi tiết xem Mở menu ngữ cảnh"':
+        - cell
+        - cell "id 48":
+          - generic "id 48":
+            - link "48":
+              - /url: /projects/qldapm-local/work_packages/48/activity?query_id=32&query_props=%7B%22pp%22%3A500%2C%22hi%22%3Atrue%2C%22tv%22%3Atrue%7D
+        - 'cell "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc Chủ đề Notification: Sửa"':
+          - button "Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc":
+            - generic: 
+            - generic: Cấp bậc phân cấp 0, đã sụp đổ. Nhấn vào đây để hiển thị những đứa trẻ được lọc
+          - 'button "Chủ đề Notification: Sửa"': Notification
+        - 'cell "loại Epic: Sửa"':
+          - 'button "loại Epic: Sửa"': Epic
+        - 'cell "Trạng thái NEW: Sửa"':
+          - 'button "Trạng thái NEW: Sửa"': NEW
+        - 'cell "Người được chuyển nhượng QLDAPM PM: Sửa"':
+          - 'button "Người được chuyển nhượng QLDAPM PM: Sửa"':
+            - generic: QP
+            - text: QLDAPM PM
+        - 'cell "Ngày bắt đầu Không có giá trị: Sửa"':
+          - 'button "Ngày bắt đầu Không có giá trị: Sửa"':
+            - text: "-"
+        - 'cell "Ngày kết thúc Không có giá trị: Sửa"':
+          - 'button "Ngày kết thúc Không có giá trị: Sửa"': "-"
+        - cell "Mở thông tin chi tiết xem Mở menu ngữ cảnh":
+          - link "Mở thông tin chi tiết xem":
+            - /url: /projects/qldapm-local/work_packages/details/48/overview
+            - generic: 
+          - link "Mở menu ngữ cảnh":
+            - /url: "#"
+            - generic: 
+      - text:                                                                 
+    - rowgroup
+    - rowgroup:
+      - row "Tạo gói công việc mới":
+        - cell "Tạo gói công việc mới":
+          - button "Tạo gói công việc mới":
+            - generic: Tạo gói công việc mới
+  - generic: 
+  - generic: Thg 10 2026
+  - generic: Thg 11 2026
+  - generic: "42"
+  - generic: "43"
+  - generic: "44"
+  - generic: "45"
+  - generic: "46"
+  - generic: "49"
+  - generic: "17"
+  - generic: "19"
+  - generic: "20"
+  - generic: "21"
+  - generic: "22"
+  - generic: "23"
+  - generic: "24"
+  - generic: "25"
+  - generic: "26"
+  - generic: "27"
+  - generic: "28"
+  - generic: "29"
+  - generic: "30"
+  - generic: "31"
+  - generic: "1"
+  - generic: "2"
+  - generic: "3"
+  - generic: "4"
+  - generic: "5"
+  - generic: "6"
+  - generic: "7"
+  - generic: "8"
+  - generic: "9"
+  - generic: "10"
+  - generic: "11"
+  - generic: "12"
+  - generic: "13"
+  - generic: "14"
+  - generic: "15"
+  - generic: "30"
+  - generic: T7
+  - generic: T2
+  - generic: T3
+  - generic: T4
+  - generic: T5
+  - generic: T6
+  - generic: T7
+  - generic: CN
+  - generic: T2
+  - generic: T3
+  - generic: T4
+  - generic: T5
+  - generic: T6
+  - generic: T7
+  - generic: CN
+  - generic: T2
+  - generic: T3
+  - generic: T4
+  - generic: T5
+  - generic: T6
+  - generic: T7
+  - generic: CN
+  - generic: T2
+  - generic: T3
+  - generic: T4
+  - generic: T5
+  - generic: T6
+  - generic: T7
+  - generic: CN
+  - generic: T2
+  - generic: "47"
+  - generic: "48"
+  - generic: "18"
+  - generic: "16"
+  - generic: "17"
+  - generic: "18"
+  - generic: "19"
+  - generic: "20"
+  - generic: "21"
+  - generic: "22"
+  - generic: "23"
+  - generic: "24"
+  - generic: "25"
+  - generic: "26"
+  - generic: "27"
+  - generic: "28"
+  - generic: "29"
+  - generic: CN
+  - generic: T2
+  - generic: T3
+  - generic: T4
+  - generic: T5
+  - generic: T6
+  - generic: T7
+  - generic: CN
+  - generic: T2
+  - generic: T3
+  - generic: T4
+  - generic: T5
+  - generic: T6
+  - generic: T7
+  - generic: CN
+  - navigation "Điều hướng phân trang":
+    - text: (1 - 329/329)
+    - generic: Bạn đang trên trang duy nhất.
+  - navigation "Lựa chọn mục trên mỗi trang":
+    - text: "Mỗi trang:"
+    - button "Hiển thị 20 trên mỗi trang": "20"
+    - button "Hiển thị 100 trên mỗi trang": "100"
+    - text: "500"

@@ -1,0 +1,2249 @@
+{
+  "utc": "2026-11-04T09:30:39.415051+00:00",
+  "containers": {
+    "gateway": {
+      "image": "sha256:f91c98823b42cb2d9499de1a8d3e3935fd59a594b6b92b3f9a4bd4cf2dc0087c",
+      "state": "running",
+      "health": "healthy"
+    },
+    "core": {
+      "image": "sha256:1f1b366abc88c20794992ee2df9a7227417fc3a770ca4b8abdb1e34becd82db8",
+      "state": "running",
+      "health": "healthy"
+    },
+    "n8n": {
+      "image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+      "state": "running",
+      "health": "NOT_CONFIGURED"
+    }
+  },
+  "runtime_source_hashes": {
+    "openproject/ai/gateway/app.py": "9246a3f8985c40b55bda737b66d4b7d936b8eea890bb4cf3afc28315b3eae408",
+    "openproject/ai/gateway/service.py": "3f7d82d085a4c5e47d47dc3aea0cbf35d60cae80263c6a598f1074564c8ec18c",
+    "openproject/ai/gateway/monitoring.py": "9af5ab36c7daaf64aa86fa5ec11ca3c23b5073498352ace80bf99cff37521957",
+    "openproject/ai/gateway/integration_events.py": "3a8ea4c9f1361fca6ae050349b866da4c67320bfb7b4e18fc73c1c802ce060e4",
+    "openproject/ai/gateway/engineering_github_poll.py": "2bc8ab36f3eb5a4c45d2f88cf0aa9cb48e5329b6dd9e6ad26be5528ef999f8cd",
+    "openproject/ai/gateway/engineering_github_details.py": "823bd0ca9a45ec37f4b0ef18838b7c8c1248e6869e1617cb6cf850b31d6b2789",
+    "openproject/ai/gateway/engineering_github_sync.py": "08075df59ea0f62db358c8ae945a3c0fb408fc05935eacf476bc80a7a33dec46",
+    "openproject/ai/gateway/engineering.py": "60d2cdce3483bf9b2af3685f657025aaa6c85d73032e626a5e69051fdd0033af",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "175287f446ed2b0e810de5b26961d47e2340ca0deae53bf225314448e561d234",
+    "openproject/ai/gateway/workflow_status.py": "a15c82114c9d992aa25f544dc5932df7b295a79fa52bdd2aba8240035c005fe8",
+    "openproject/ai/gateway/workflow_commands.py": "7e404f0c3dc288532088a3dd16a64779b87cdb6151f74dd99845b83bce67d24b",
+    "openproject/ai/gateway/knowledge_answer.py": "a77c760fea779d4797a1af80a8dcfd1523ef153bc1fe12da23005dd9e26d8402",
+    "openproject/ai/gateway/bug_lifecycle.py": "4890e5420bb0c48451ae3eb84b37591243d508d5a7cfedd46703bafccc227679",
+    "openproject/ai/gateway/native_wbs.py": "15ded424623b2dd8773087dc905c63cb13e367f0ca9a9414d06af38cea8d2e5e",
+    "openproject/ai/gateway/engineering_planning.py": "b517c772a7948b63226da2f07715813ee13a8a048b9775fc7cecaaef010e7075",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "cf6fbe88fcd2dbaf259256d3426b1a3d4e1d108c82bdd3ed4f59472fd1196c7f",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workflows.html.erb": "25cba57bbfd1c8580f1afcc5f6f8481f3b87560d78457080abcbd376e087ef42",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_knowledge_results.html.erb": "11ca4ed2a606ea56ca7bd88cde76c7f1cda258c19eb084c66152754ec15ff68a",
+    "openproject/ai/gateway/delegated_approval.py": "5f71188c8ab1e2418fd2df6b209a5313bd05f2195925b984d05927dd65715402",
+    "openproject/ai/gateway/permissions.py": "102b2f18788afcb31af012f6c9e775ebfb16e415b649b3bca216e77c66759ac9",
+    "openproject/ai/gateway/engineering_reporting.py": "0bb20c0521e6884218150b581b7f5f4306c6ac9d77db73bb56e84fedc8f7a11f",
+    "openproject/ai/gateway/catalog.py": "25729baa71be5fd46c0e539ec41cf32bfd714502271752f2930887d625d3e488",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_delegated.html.erb": "c6a570595e58d7c0fc47bf11828fe6dd5432bf6062d7d13c43f442e1917f03a2"
+  },
+  "engineering": {
+    "mode": "PAUSED",
+    "active": 0,
+    "worker_age_seconds": 8.694621086120605,
+    "worker_run_id": null,
+    "provider_receipts": 531,
+    "delegation": {
+      "enabled": 0,
+      "revision": 2
+    },
+    "runs": {
+      "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6": {
+        "queue_state": "finished",
+        "result_status": "succeeded",
+        "recovery_count": 3,
+        "generation_calls": 45
+      },
+      "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795": {
+        "queue_state": "finished",
+        "result_status": "succeeded",
+        "recovery_count": 5,
+        "generation_calls": 43
+      }
+    }
+  },
+  "owner_override": {
+    "at": 1793775548.0995326,
+    "actor": 18,
+    "action": "engineering_control",
+    "target": "6",
+    "outcome": "PAUSED"
+  },
+  "provider_gate": {
+    "active": false
+  },
+  "openclaw": {
+    "health": "READY",
+    "gateway_rpc_ok": true,
+    "checked_at": 1793784614.7838404
+  },
+  "project5_integrity": {
+    "status": "PASS_WITH_AUTHORIZED_PRINCIPAL_AND_LOGIN_TIMESTAMP_DELTAS",
+    "identical_tables": 12,
+    "counts": {
+      "work_packages": 341,
+      "projects": 1,
+      "members": 5,
+      "member_roles": 5,
+      "versions": 7,
+      "enabled_modules": 10,
+      "relations": 344,
+      "journals": 968,
+      "roles": 16,
+      "role_permissions": 366,
+      "workflows": 1370,
+      "settings": 202,
+      "users": 11
+    },
+    "existing_user_timestamp_deltas": {
+      "18": [
+        "last_login_on",
+        "updated_at"
+      ]
+    },
+    "authorized_new_user": 25,
+    "hashes": {
+      "work_packages": "5bd03c04780cca67348c7bf4ce14dcd86352848d72076206fb9ccaf324bcbf22",
+      "projects": "0c3123e6835d00cb0ba42214e875faecd392218c67add50d5d97b7be41a45d95",
+      "members": "0629caba61894e3510ee4f864fbf928b51b1fa6b59eb002a2b0aac85f78e2634",
+      "member_roles": "1110929f0b748766d5c672b084caf4d5c917b31a0091d1e5d1575e33b0e5de20",
+      "versions": "4e0fb0cc4f1220e8a61565eabdc063210177aa682362363ed1bd98ca5ad08b01",
+      "enabled_modules": "74c5d9cb9aabd0d2658f44187772367c99005120c83d368fd83bd92053ba8a2d",
+      "relations": "ffdac61c61310f79473c94cab72a6b43c6d112f53347b325cf33562b31d6bf64",
+      "journals": "34f98cedbc9b33f9c54afc6502297cce049633b9e4e5ce5015550e47801ee8a0",
+      "roles": "582d1b648167e4d5e153b5e3b8fe662754fcd72db8a8757e68fda609a3d8e093",
+      "role_permissions": "5e2546de59978d2241a14b7b1af6670515b7236492d518b112af84158bea9447",
+      "workflows": "f12673c4338cff7df76e8758fedde3283175ba9b14a8f9d66a46724862ed6038",
+      "settings": "1c52e4dfca9695922cb842e8f008e651e5e7896a3263615373d76eaefd351887",
+      "users": "d4f6f284d35bf84d572340ea656561fe64897d6ec3c920e722eff8215a2e8c67"
+    }
+  },
+  "published_workflows": [
+    {
+      "workflow": "WF01",
+      "id": "X2O2QdPY6QLOrWqL",
+      "published_version": "9e815254-7b30-4740-b57f-5dbf87a7d945",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF02",
+      "id": "Anl8LNdN4NNTKRpe",
+      "published_version": "a6590c2d-23fe-49fc-bdb0-49179cecd309",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF03",
+      "id": "XoP4M520TMG3WgeY",
+      "published_version": "18fbb3ad-0e1c-4835-96a5-623a6f8606d3",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF04",
+      "id": "elfapV5D2PTnLiHW",
+      "published_version": "7b409c28-5271-4d69-98f9-c55100b3c871",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": false,
+        "saveManualExecutions": false,
+        "executionTimeout": 30
+      }
+    },
+    {
+      "workflow": "WF05",
+      "id": "xCZFw45fmDQG5gNq",
+      "published_version": "688ebfd0-f5ed-442f-a29a-d244f5b574d7",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF06",
+      "id": "Jq18aFSqfuUybEic",
+      "published_version": "dcca7091-a57d-4017-9714-26202018daaf",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF07",
+      "id": "BpCQrGR866vg4BqQ",
+      "published_version": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+      "schedule": [
+        {
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "parameters": {
+            "rule": {
+              "interval": [
+                {
+                  "field": "cronExpression",
+                  "expression": "0 0 8 * * *"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF08",
+      "id": "RXWjVUL8ozqhjY4w",
+      "published_version": "a27ba585-d38b-4df7-bbcf-9a51643f1d98",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF09",
+      "id": "tOyBIPw6sGjgzjtU",
+      "published_version": "41d0d315-c2b4-4de7-b237-7a45a382c6ed",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF10",
+      "id": "tOY7QUa9SrWPOe9e",
+      "published_version": "e5790af4-215a-44a7-8ad4-cca03ffdbe05",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF11",
+      "id": "LeRVT3LWNBkJ2iz3",
+      "published_version": "cf9b7590-f6b1-44ea-8740-0bb48049c261",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF12",
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "published_version": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+      "schedule": [
+        {
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "parameters": {
+            "rule": {
+              "interval": [
+                {
+                  "field": "cronExpression",
+                  "expression": "0 0 17 * * 5"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true,
+        "executionTimeout": 120,
+        "binaryMode": "separate"
+      }
+    },
+    {
+      "workflow": "WF13",
+      "id": "2tr0jpqaaAiq9IOU",
+      "published_version": "0243c9f0-b9d4-465b-b90b-c0f27efd9ebe",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF14",
+      "id": "8ycOUQy9gtT60nkN",
+      "published_version": "cfa65447-b5b9-48fb-8d51-a8469820a650",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF15",
+      "id": "NLugfE3U8dBS88Wg",
+      "published_version": "dde4ea90-39ea-4e8b-803c-a968b4766c39",
+      "schedule": [],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    },
+    {
+      "workflow": "WF16",
+      "id": "5FRYNPSot18UDpKa",
+      "published_version": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "schedule": [
+        {
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "parameters": {
+            "rule": {
+              "interval": [
+                {
+                  "field": "cronExpression",
+                  "expression": "0 */15 * * * *"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "settings": {
+        "executionOrder": "v1",
+        "timezone": "Asia/Bangkok",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all",
+        "saveExecutionProgress": true,
+        "saveManualExecutions": true
+      }
+    }
+  ],
+  "delegated_n8n_executions": [
+    {
+      "id": 3643,
+      "workflowId": "xCZFw45fmDQG5gNq",
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-04 09:04:41.846",
+      "stoppedAt": "2026-11-04 09:04:42.285"
+    },
+    {
+      "id": 3644,
+      "workflowId": "xCZFw45fmDQG5gNq",
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-04 09:05:15.364",
+      "stoppedAt": "2026-11-04 09:05:21.733"
+    },
+    {
+      "id": 3645,
+      "workflowId": "Jq18aFSqfuUybEic",
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-04 09:05:38.227",
+      "stoppedAt": "2026-11-04 09:05:47.926"
+    },
+    {
+      "id": 3646,
+      "workflowId": "xCZFw45fmDQG5gNq",
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-04 09:06:16.224",
+      "stoppedAt": "2026-11-04 09:06:26.671"
+    },
+    {
+      "id": 3647,
+      "workflowId": "Jq18aFSqfuUybEic",
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-04 09:06:41.227",
+      "stoppedAt": "2026-11-04 09:06:43.462"
+    },
+    {
+      "id": 3650,
+      "workflowId": "tOyBIPw6sGjgzjtU",
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-04 09:07:30.023",
+      "stoppedAt": "2026-11-04 09:07:31.751"
+    },
+    {
+      "id": 3653,
+      "workflowId": "xCZFw45fmDQG5gNq",
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-04 09:08:03.426",
+      "stoppedAt": "2026-11-04 09:08:05.018"
+    },
+    {
+      "id": 3654,
+      "workflowId": "Jq18aFSqfuUybEic",
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-04 09:08:10.765",
+      "stoppedAt": "2026-11-04 09:08:12.171"
+    },
+    {
+      "id": 3655,
+      "workflowId": "tOyBIPw6sGjgzjtU",
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-04 09:08:21.267",
+      "stoppedAt": "2026-11-04 09:08:22.935"
+    }
+  ],
+  "wf12_executions": [
+    {
+      "id": 3359,
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-03 12:58:57.271",
+      "stoppedAt": "2026-11-03 12:59:02.894"
+    },
+    {
+      "id": 3358,
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-11-03 12:58:03.819",
+      "stoppedAt": "2026-11-03 12:58:04.013"
+    },
+    {
+      "id": 2750,
+      "status": "error",
+      "mode": "trigger",
+      "startedAt": "2026-10-30 10:00:00.198",
+      "stoppedAt": "2026-10-30 10:01:02.958"
+    },
+    {
+      "id": 2556,
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-10-28 05:02:12.298",
+      "stoppedAt": "2026-10-28 05:02:17.323"
+    },
+    {
+      "id": 2523,
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-10-28 04:58:32.939",
+      "stoppedAt": "2026-10-28 04:58:37.132"
+    },
+    {
+      "id": 2502,
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-10-28 04:56:19.348",
+      "stoppedAt": "2026-10-28 04:56:24.586"
+    },
+    {
+      "id": 2472,
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-10-28 04:45:12.834",
+      "stoppedAt": "2026-10-28 04:45:17.036"
+    },
+    {
+      "id": 156,
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-10-22 20:23:48.407",
+      "stoppedAt": "2026-10-22 20:23:52.113"
+    },
+    {
+      "id": 139,
+      "status": "success",
+      "mode": "webhook",
+      "startedAt": "2026-10-22 20:21:30.492",
+      "stoppedAt": "2026-10-22 20:21:33.435"
+    },
+    {
+      "id": 122,
+      "status": "error",
+      "mode": "webhook",
+      "startedAt": "2026-10-22 20:05:57.725",
+      "stoppedAt": "2026-10-22 20:06:00.963"
+    }
+  ],
+  "command_center": {
+    "mode": "PAUSED",
+    "workflow_status": [
+      {
+        "code": "WF01",
+        "workflow_id": "X2O2QdPY6QLOrWqL",
+        "name": "WF01: Local Document Ingestion",
+        "purpose": "Nạp nguồn đã được cấp quyền",
+        "trigger": "Authenticated source webhook",
+        "action_tab": "tab-knowledge",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "9e815254-7b30-4740-b57f-5dbf87a7d945",
+        "definition_sha256": "4bd0804297b3be8d5724b56ea639d0ab5995bf759299d3b3552dd492e0905de2",
+        "last_execution": {
+          "id": "3640",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793775631.269,
+          "stopped_at": 1793775634.513
+        },
+        "last_successful_execution": {
+          "id": "3640",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793775631.269,
+          "stopped_at": 1793775634.513
+        },
+        "last_failed_execution": {
+          "id": "60",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1792692730.203,
+          "stopped_at": 1792692731.227
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #60",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "COMMAND_RESULT_VERIFIED",
+          "event_id": "3aba18b0-f149-5fbf-a62b-dabbfa68f46f",
+          "correlation_id": "a5879d74-1d34-45c9-a70e-5b1cad620a3b",
+          "run_id": null,
+          "native_id": null,
+          "pr_number": null,
+          "execution_id": "3427",
+          "execution_url": "http://localhost:5679/workflow/X2O2QdPY6QLOrWqL/executions/3427",
+          "updated_at": 1793714658.0610764
+        },
+        "business_side_effect": "RECEIPT_OBSERVED; execution completion not matched",
+        "workflow_url": "http://localhost:5679/workflow/X2O2QdPY6QLOrWqL",
+        "execution_url": "http://localhost:5679/workflow/X2O2QdPY6QLOrWqL/executions/3640",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF02",
+        "workflow_id": "Anl8LNdN4NNTKRpe",
+        "name": "WF02: OpenProject Event Sync",
+        "purpose": "Đối chiếu Native version/visibility",
+        "trigger": "Native inventory event / authenticated sync",
+        "action_tab": "tab-backlog",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "a6590c2d-23fe-49fc-bdb0-49179cecd309",
+        "definition_sha256": "2b7fa98adffa2af5187e773be2b8ec63fa6336149382b5c6c0c28cbaba1e6e15",
+        "last_execution": {
+          "id": "3658",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783383.388,
+          "stopped_at": 1793783383.959
+        },
+        "last_successful_execution": {
+          "id": "3658",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783383.388,
+          "stopped_at": 1793783383.959
+        },
+        "last_failed_execution": {
+          "id": "3312",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1793710383.404,
+          "stopped_at": 1793710383.493
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #3312",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "SOURCE_OBSERVED",
+          "event_id": "ea609582-f9f8-515c-94a2-092e653fa171",
+          "correlation_id": "ea609582-f9f8-515c-94a2-092e653fa171",
+          "run_id": null,
+          "native_id": 395,
+          "pr_number": null,
+          "execution_id": "3658",
+          "execution_url": "http://localhost:5679/workflow/Anl8LNdN4NNTKRpe/executions/3658",
+          "updated_at": 1793783383.8391516
+        },
+        "business_side_effect": "SOURCE_OBSERVED",
+        "workflow_url": "http://localhost:5679/workflow/Anl8LNdN4NNTKRpe",
+        "execution_url": "http://localhost:5679/workflow/Anl8LNdN4NNTKRpe/executions/3658",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF03",
+        "workflow_id": "XoP4M520TMG3WgeY",
+        "name": "WF03: Natural Language Request Orchestrator",
+        "purpose": "Tiếp nhận yêu cầu qua n8n",
+        "trigger": "Authenticated request webhook",
+        "action_tab": "tab-backlog",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "18fbb3ad-0e1c-4835-96a5-623a6f8606d3",
+        "definition_sha256": "0085f1f34b9e838b9e9618f92e80a7bef62b7dcc7702852d941fc7c156b6771b",
+        "last_execution": {
+          "id": "3433",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793714794.255,
+          "stopped_at": 1793714794.817
+        },
+        "last_successful_execution": {
+          "id": "3433",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793714794.255,
+          "stopped_at": 1793714794.817
+        },
+        "last_failed_execution": {
+          "id": "45",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1792691628.217,
+          "stopped_at": 1792691628.467
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #45",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "PLANNING_ACCEPTED",
+          "event_id": "f4662e03-d086-5374-8943-1b74be35ae69",
+          "correlation_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+          "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+          "native_id": 379,
+          "pr_number": null,
+          "execution_id": "3433",
+          "execution_url": "http://localhost:5679/workflow/XoP4M520TMG3WgeY/executions/3433",
+          "updated_at": 1793714794.7585773
+        },
+        "business_side_effect": "PLANNING_ACCEPTED",
+        "workflow_url": "http://localhost:5679/workflow/XoP4M520TMG3WgeY",
+        "execution_url": "http://localhost:5679/workflow/XoP4M520TMG3WgeY/executions/3433",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF04",
+        "workflow_id": "elfapV5D2PTnLiHW",
+        "name": "WF04: Multi-Agent Execution Tracking",
+        "purpose": "Quan sát lifecycle và GitHub delivery",
+        "trigger": "Durable lifecycle / GitHub event",
+        "action_tab": "tab-mission",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "7b409c28-5271-4d69-98f9-c55100b3c871",
+        "definition_sha256": "4ebb0a3dc54088c5e732e1bad9bdc0f150f18b3a2fec69204dd93faea23d4ad5",
+        "last_execution": {
+          "id": "3540",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793735718.864,
+          "stopped_at": 1793735719.105
+        },
+        "last_successful_execution": {
+          "id": "3540",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793735718.864,
+          "stopped_at": 1793735719.105
+        },
+        "last_failed_execution": {
+          "id": "3279",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1793710371.773,
+          "stopped_at": 1793710371.831
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #3279",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "DELIVERY_OBSERVED",
+          "event_id": "bcb7cc3c-53d2-5d4f-92d5-a9a87a33c64a",
+          "correlation_id": "c67b62d3-ec46-43f7-9035-81d4e0a7daa4",
+          "run_id": null,
+          "native_id": 394,
+          "pr_number": 12,
+          "execution_id": "3540",
+          "execution_url": "http://localhost:5679/workflow/elfapV5D2PTnLiHW/executions/3540",
+          "updated_at": 1793735719.048148
+        },
+        "business_side_effect": "DELIVERY_OBSERVED",
+        "workflow_url": "http://localhost:5679/workflow/elfapV5D2PTnLiHW",
+        "execution_url": "http://localhost:5679/workflow/elfapV5D2PTnLiHW/executions/3540",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF05",
+        "workflow_id": "xCZFw45fmDQG5gNq",
+        "name": "WF05: Native API Approval Workflow",
+        "purpose": "Preview và quyết định Project6 theo policy được Owner ủy quyền",
+        "trigger": "Signed delegated preview / authenticated human preview",
+        "action_tab": "tab-integrations",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "688ebfd0-f5ed-442f-a29a-d244f5b574d7",
+        "definition_sha256": "1ac7259265593f62664e924b3d2a0280363215b99ef78fc1d5dddbf2dd619184",
+        "last_execution": {
+          "id": "3653",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783283.426,
+          "stopped_at": 1793783285.018
+        },
+        "last_successful_execution": {
+          "id": "3653",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783283.426,
+          "stopped_at": 1793783285.018
+        },
+        "last_failed_execution": {
+          "id": "164",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1792703148.411,
+          "stopped_at": 1792703148.794
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #164",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "APPROVED",
+          "event_id": "49f2e76a-2d4c-554d-a31a-f64861be7eed",
+          "correlation_id": "1d94f68f-7897-4942-bce9-6be44c42796d",
+          "run_id": null,
+          "native_id": 395,
+          "pr_number": null,
+          "execution_id": "3653",
+          "execution_url": "http://localhost:5679/workflow/xCZFw45fmDQG5gNq/executions/3653",
+          "updated_at": 1793783284.9517443
+        },
+        "business_side_effect": "APPROVED",
+        "workflow_url": "http://localhost:5679/workflow/xCZFw45fmDQG5gNq",
+        "execution_url": "http://localhost:5679/workflow/xCZFw45fmDQG5gNq/executions/3653",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF06",
+        "workflow_id": "Jq18aFSqfuUybEic",
+        "name": "WF06: Native API Execution & Verification",
+        "purpose": "Thực thi quyết định được phép và read-back bằng principal thật",
+        "trigger": "Signed delegated execution / explicit human decision",
+        "action_tab": "tab-integrations",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "dcca7091-a57d-4017-9714-26202018daaf",
+        "definition_sha256": "da4d596c0ecab38e6f150dc349aa2a13ad69ced427a15541b771b606f0b04f05",
+        "last_execution": {
+          "id": "3654",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783290.765,
+          "stopped_at": 1793783292.171
+        },
+        "last_successful_execution": {
+          "id": "3654",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783290.765,
+          "stopped_at": 1793783292.171
+        },
+        "last_failed_execution": {
+          "id": "116",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1792699537.526,
+          "stopped_at": 1792699537.55
+        },
+        "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+        "last_error": "N8N_EXECUTION_ERROR #116",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "BUSINESS_VERIFIED",
+          "event_id": "e5f329d5-406f-52b3-acda-3b746259e050",
+          "correlation_id": "1d94f68f-7897-4942-bce9-6be44c42796d",
+          "run_id": null,
+          "native_id": 395,
+          "pr_number": null,
+          "execution_id": "3654",
+          "execution_url": "http://localhost:5679/workflow/Jq18aFSqfuUybEic/executions/3654",
+          "updated_at": 1793783292.1136363
+        },
+        "business_side_effect": "BUSINESS_VERIFIED",
+        "workflow_url": "http://localhost:5679/workflow/Jq18aFSqfuUybEic",
+        "execution_url": "http://localhost:5679/workflow/Jq18aFSqfuUybEic/executions/3654",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF07",
+        "workflow_id": "BpCQrGR866vg4BqQ",
+        "name": "WF07: Daily Project Brief",
+        "purpose": "Thu thập báo cáo ngày",
+        "trigger": "Daily cron / signed collector",
+        "action_tab": "tab-reports",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+        "definition_sha256": "db5bcdcfc2310b6d4e96debea244bfde19b908da5af8e98fa7a6553441ecf43d",
+        "last_execution": {
+          "id": "3585",
+          "status": "success",
+          "mode": "trigger",
+          "started_at": 1793754002.841,
+          "stopped_at": 1793754004.68
+        },
+        "last_successful_execution": {
+          "id": "3585",
+          "status": "success",
+          "mode": "trigger",
+          "started_at": 1793754002.841,
+          "stopped_at": 1793754004.68
+        },
+        "last_failed_execution": {
+          "id": "2957",
+          "status": "error",
+          "mode": "trigger",
+          "started_at": 1793581200.058,
+          "stopped_at": 1793581201.087
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #2957",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": null,
+        "business_side_effect": "NOT_VERIFIED",
+        "workflow_url": "http://localhost:5679/workflow/BpCQrGR866vg4BqQ",
+        "execution_url": "http://localhost:5679/workflow/BpCQrGR866vg4BqQ/executions/3585",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF08",
+        "workflow_id": "RXWjVUL8ozqhjY4w",
+        "name": "WF08: Sprint Risk",
+        "purpose": "Đọc rủi ro sprint",
+        "trigger": "Authenticated risk webhook",
+        "action_tab": null,
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "a27ba585-d38b-4df7-bbcf-9a51643f1d98",
+        "definition_sha256": "2ea2337b48f55716c9ca4a274d4d37afe0588da023024a4f9dda2c678861a5c7",
+        "last_execution": {
+          "id": "3637",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793775387.216,
+          "stopped_at": 1793775387.948
+        },
+        "last_successful_execution": {
+          "id": "3637",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793775387.216,
+          "stopped_at": 1793775387.948
+        },
+        "last_failed_execution": {
+          "id": "52",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1792692363.848,
+          "stopped_at": 1792692372.579
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #52",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "COMMAND_RESULT_VERIFIED",
+          "event_id": "452191c1-57f5-5589-b90f-2d34e363f962",
+          "correlation_id": "19850af7-76dd-4fc1-8882-f6ef5cf465b6",
+          "run_id": null,
+          "native_id": null,
+          "pr_number": null,
+          "execution_id": "3423",
+          "execution_url": "http://localhost:5679/workflow/RXWjVUL8ozqhjY4w/executions/3423",
+          "updated_at": 1793714626.0812669
+        },
+        "business_side_effect": "RECEIPT_OBSERVED; execution completion not matched",
+        "workflow_url": "http://localhost:5679/workflow/RXWjVUL8ozqhjY4w",
+        "execution_url": "http://localhost:5679/workflow/RXWjVUL8ozqhjY4w/executions/3637",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF09",
+        "workflow_id": "tOyBIPw6sGjgzjtU",
+        "name": "WF09: Bug Lifecycle Automation",
+        "purpose": "Bug context / đề xuất transition",
+        "trigger": "Authenticated bug webhook",
+        "action_tab": "tab-backlog",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "41d0d315-c2b4-4de7-b237-7a45a382c6ed",
+        "definition_sha256": "c50ff420fc51e9731450b9b28597175dc7c3f3cff743914712d0acf9b243f7c6",
+        "last_execution": {
+          "id": "3655",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783301.267,
+          "stopped_at": 1793783302.935
+        },
+        "last_successful_execution": {
+          "id": "3655",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783301.267,
+          "stopped_at": 1793783302.935
+        },
+        "last_failed_execution": {
+          "id": "119",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1792699547.895,
+          "stopped_at": 1792699551.003
+        },
+        "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+        "last_error": "N8N_EXECUTION_ERROR #119",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "BUG_NATIVE_VERIFIED",
+          "event_id": "c8a333c6-09f6-5a96-b9b1-3e09d8e4ef6b",
+          "correlation_id": "1d94f68f-7897-4942-bce9-6be44c42796d",
+          "run_id": null,
+          "native_id": 395,
+          "pr_number": null,
+          "execution_id": "3655",
+          "execution_url": "http://localhost:5679/workflow/tOyBIPw6sGjgzjtU/executions/3655",
+          "updated_at": 1793783302.645302
+        },
+        "business_side_effect": "BUG_NATIVE_VERIFIED",
+        "workflow_url": "http://localhost:5679/workflow/tOyBIPw6sGjgzjtU",
+        "execution_url": "http://localhost:5679/workflow/tOyBIPw6sGjgzjtU/executions/3655",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF10",
+        "workflow_id": "tOY7QUa9SrWPOe9e",
+        "name": "WF10: Task Orchestration & Decomposition",
+        "purpose": "WBS draft/read; materialization riêng",
+        "trigger": "Authenticated decomposition webhook",
+        "action_tab": "tab-backlog",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "e5790af4-215a-44a7-8ad4-cca03ffdbe05",
+        "definition_sha256": "a041c64213c766b710c61c8019cc219732613930129397cb7347b30fbfe52967",
+        "last_execution": {
+          "id": "3453",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793715008.965,
+          "stopped_at": 1793715012.172
+        },
+        "last_successful_execution": {
+          "id": "3453",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793715008.965,
+          "stopped_at": 1793715012.172
+        },
+        "last_failed_execution": {
+          "id": "3425",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1793714641.279,
+          "stopped_at": 1793714642.327
+        },
+        "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+        "last_error": "N8N_EXECUTION_ERROR #3425",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "PLAN_NATIVE_UNITS_VERIFIED",
+          "event_id": "92e105c0-a023-5779-967b-423ce80ab3b6",
+          "correlation_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+          "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+          "native_id": 379,
+          "pr_number": null,
+          "execution_id": "3453",
+          "execution_url": "http://localhost:5679/workflow/tOY7QUa9SrWPOe9e/executions/3453",
+          "updated_at": 1793715010.6454685
+        },
+        "business_side_effect": "PLAN_NATIVE_UNITS_VERIFIED",
+        "workflow_url": "http://localhost:5679/workflow/tOY7QUa9SrWPOe9e",
+        "execution_url": "http://localhost:5679/workflow/tOY7QUa9SrWPOe9e/executions/3453",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF11",
+        "workflow_id": "LeRVT3LWNBkJ2iz3",
+        "name": "WF11: QA Gate Transition",
+        "purpose": "Đối chiếu tested commit, review và QA",
+        "trigger": "Engineering QA event / authenticated QA",
+        "action_tab": "tab-execution",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "cf9b7590-f6b1-44ea-8740-0bb48049c261",
+        "definition_sha256": "46326bdc3611bf257f1f12ee9f9fbdb5470e723bebdda3436d030bcbf27cfcdc",
+        "last_execution": {
+          "id": "3539",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793735485.098,
+          "stopped_at": 1793735485.422
+        },
+        "last_successful_execution": {
+          "id": "3539",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793735485.098,
+          "stopped_at": 1793735485.422
+        },
+        "last_failed_execution": {
+          "id": "3310",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1793710382.933,
+          "stopped_at": 1793710383.01
+        },
+        "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+        "last_error": "N8N_EXECUTION_ERROR #3310",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "QA_VERIFIED",
+          "event_id": "8de35de9-a1b8-537d-8666-8ec4344ccc76",
+          "correlation_id": "8de35de9-a1b8-537d-8666-8ec4344ccc76",
+          "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+          "native_id": 394,
+          "pr_number": null,
+          "execution_id": "3539",
+          "execution_url": "http://localhost:5679/workflow/LeRVT3LWNBkJ2iz3/executions/3539",
+          "updated_at": 1793735485.317617
+        },
+        "business_side_effect": "QA_VERIFIED",
+        "workflow_url": "http://localhost:5679/workflow/LeRVT3LWNBkJ2iz3",
+        "execution_url": "http://localhost:5679/workflow/LeRVT3LWNBkJ2iz3/executions/3539",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF12",
+        "workflow_id": "ZkgS8RZbPRA2zbhQ",
+        "name": "WF12: Weekly Summary",
+        "purpose": "Thu thập báo cáo tuần",
+        "trigger": "Weekly cron / signed collector",
+        "action_tab": "tab-reports",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+        "definition_sha256": "2c92262e2d22a2a497d8fce394818e35562dc33b16e53adfefde79e8f6021287",
+        "last_execution": {
+          "id": "3359",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793710737.271,
+          "stopped_at": 1793710742.894
+        },
+        "last_successful_execution": {
+          "id": "3359",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793710737.271,
+          "stopped_at": 1793710742.894
+        },
+        "last_failed_execution": {
+          "id": "2750",
+          "status": "error",
+          "mode": "trigger",
+          "started_at": 1793354400.198,
+          "stopped_at": 1793354462.958
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #2750",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": null,
+        "business_side_effect": "NOT_VERIFIED",
+        "workflow_url": "http://localhost:5679/workflow/ZkgS8RZbPRA2zbhQ",
+        "execution_url": "http://localhost:5679/workflow/ZkgS8RZbPRA2zbhQ/executions/3359",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF13",
+        "workflow_id": "2tr0jpqaaAiq9IOU",
+        "name": "WF13: Second Brain RAG Re-indexing",
+        "purpose": "Kiểm chứng index/citation hoặc feedback",
+        "trigger": "Index verified event / feedback webhook",
+        "action_tab": "tab-knowledge",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "0243c9f0-b9d4-465b-b90b-c0f27efd9ebe",
+        "definition_sha256": "96d96261cabe99c9b696db173ce486be625d322841c5ca9a0ccf21db87f81079",
+        "last_execution": {
+          "id": "3657",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783332.197,
+          "stopped_at": 1793783338.739
+        },
+        "last_successful_execution": {
+          "id": "3657",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783332.197,
+          "stopped_at": 1793783338.739
+        },
+        "last_failed_execution": {
+          "id": "3317",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1793710384.379,
+          "stopped_at": 1793710384.478
+        },
+        "current_state": "BUSINESS_SIDE_EFFECT_VERIFIED",
+        "last_error": "N8N_EXECUTION_ERROR #3317",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "INDEX_VERIFIED",
+          "event_id": "870bbfae-473e-5b7a-9b4b-6f7db6d9025c",
+          "correlation_id": "870bbfae-473e-5b7a-9b4b-6f7db6d9025c",
+          "run_id": null,
+          "native_id": 395,
+          "pr_number": null,
+          "execution_id": "3657",
+          "execution_url": "http://localhost:5679/workflow/2tr0jpqaaAiq9IOU/executions/3657",
+          "updated_at": 1793783338.581822
+        },
+        "business_side_effect": "INDEX_VERIFIED",
+        "workflow_url": "http://localhost:5679/workflow/2tr0jpqaaAiq9IOU",
+        "execution_url": "http://localhost:5679/workflow/2tr0jpqaaAiq9IOU/executions/3657",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF14",
+        "workflow_id": "8ycOUQy9gtT60nkN",
+        "name": "WF14: Durable RAG Recovery",
+        "purpose": "Quan sát retry/DLQ; worker sở hữu recovery",
+        "trigger": "Index failed event / owned recovery webhook",
+        "action_tab": "tab-knowledge",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "cfa65447-b5b9-48fb-8d51-a8469820a650",
+        "definition_sha256": "1f52e4f7fb2f40977de6db649c7958cadfaa8b7482e66712d12e9af77d437ff0",
+        "last_execution": {
+          "id": "3649",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783239.655,
+          "stopped_at": 1793783240.048
+        },
+        "last_successful_execution": {
+          "id": "3649",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793783239.655,
+          "stopped_at": 1793783240.048
+        },
+        "last_failed_execution": null,
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": null,
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "SUPERSEDED",
+          "event_id": "44f444fe-0935-50cc-88a8-f8cc7083b8e4",
+          "correlation_id": "44f444fe-0935-50cc-88a8-f8cc7083b8e4",
+          "run_id": null,
+          "native_id": 395,
+          "pr_number": null,
+          "execution_id": "3649",
+          "execution_url": "http://localhost:5679/workflow/8ycOUQy9gtT60nkN/executions/3649",
+          "updated_at": 1793783239.9555845
+        },
+        "business_side_effect": "SUPERSEDED",
+        "workflow_url": "http://localhost:5679/workflow/8ycOUQy9gtT60nkN",
+        "execution_url": "http://localhost:5679/workflow/8ycOUQy9gtT60nkN/executions/3649",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF15",
+        "workflow_id": "NLugfE3U8dBS88Wg",
+        "name": "WF15: Reconciliation & Drift Detection",
+        "purpose": "Đối chiếu và xếp hàng sửa drift có giới hạn",
+        "trigger": "Reconcile event / integrity webhook",
+        "action_tab": "tab-knowledge",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "dde4ea90-39ea-4e8b-803c-a968b4766c39",
+        "definition_sha256": "30750a83eb06214421fe3343aa671c7400bb0b03ae3c91f7ba698e9aae371e81",
+        "last_execution": {
+          "id": "3662",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793784604.015,
+          "stopped_at": 1793784609.02
+        },
+        "last_successful_execution": {
+          "id": "3662",
+          "status": "success",
+          "mode": "webhook",
+          "started_at": 1793784604.015,
+          "stopped_at": 1793784609.02
+        },
+        "last_failed_execution": {
+          "id": "3641",
+          "status": "error",
+          "mode": "webhook",
+          "started_at": 1793783002.41,
+          "stopped_at": 1793783003.099
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #3641",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": {
+          "project_id": 6,
+          "state": "ACKED",
+          "business_state": "DRIFT_OBSERVED",
+          "event_id": "fb4bab99-b0e2-5d3b-8267-e8a7ab20b09b",
+          "correlation_id": "fb4bab99-b0e2-5d3b-8267-e8a7ab20b09b",
+          "run_id": null,
+          "native_id": null,
+          "pr_number": null,
+          "execution_id": "3662",
+          "execution_url": "http://localhost:5679/workflow/NLugfE3U8dBS88Wg/executions/3662",
+          "updated_at": 1793784608.8186836
+        },
+        "business_side_effect": "DRIFT_OBSERVED",
+        "workflow_url": "http://localhost:5679/workflow/NLugfE3U8dBS88Wg",
+        "execution_url": "http://localhost:5679/workflow/NLugfE3U8dBS88Wg/executions/3662",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      },
+      {
+        "code": "WF16",
+        "workflow_id": "5FRYNPSot18UDpKa",
+        "name": "WF16: Main Health Monitoring",
+        "purpose": "Health/backlog; không phát inference",
+        "trigger": "Monitoring cron / signed collector",
+        "action_tab": "tab-integrations",
+        "metadata_state": "FRESH",
+        "updated_at": 1793784614.744,
+        "active": true,
+        "published_version_id": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+        "definition_sha256": "0399242cea3b193ccdf399eed82cd0b29fca6666df35e847a6718301f0003eeb",
+        "last_execution": {
+          "id": "3661",
+          "status": "success",
+          "mode": "trigger",
+          "started_at": 1793784600.064,
+          "stopped_at": 1793784603.263
+        },
+        "last_successful_execution": {
+          "id": "3661",
+          "status": "success",
+          "mode": "trigger",
+          "started_at": 1793784600.064,
+          "stopped_at": 1793784603.263
+        },
+        "last_failed_execution": {
+          "id": "2971",
+          "status": "error",
+          "mode": "trigger",
+          "started_at": 1793593800.235,
+          "stopped_at": 1793593831.31
+        },
+        "current_state": "WORKFLOW_SUCCEEDED",
+        "last_error": "N8N_EXECUTION_ERROR #2971",
+        "retry_eligibility": "NOT_APPLICABLE",
+        "project_event": null,
+        "business_side_effect": "NOT_VERIFIED",
+        "workflow_url": "http://localhost:5679/workflow/5FRYNPSot18UDpKa",
+        "execution_url": "http://localhost:5679/workflow/5FRYNPSot18UDpKa/executions/3661",
+        "execution_scope": "GLOBAL_WORKFLOW_METADATA; not Project6 business acceptance"
+      }
+    ],
+    "provider_health": {
+      "state": "READINESS_STALE",
+      "model": "gemini-3.5-flash-lite",
+      "project_limits": {
+        "rpd": 500,
+        "rpm": 15,
+        "tpm": 250000
+      },
+      "engineering_limits": {
+        "rpd": 450,
+        "rpm": 10,
+        "tpm": 175000
+      },
+      "last_successful_probe": 1793655260.9349873,
+      "retry_at": null,
+      "last_provider_http": 200,
+      "network_checked_now": false,
+      "source": "PERSISTED_PROJECT_QUOTA_AND_PROVIDER_RECEIPTS"
+    },
+    "delivery_worker": {
+      "worker_id": "93fff9e8-96af-466c-8fcb-5f81bbb1855d",
+      "seen": 1793784665.6950667,
+      "run_id": null,
+      "state": "ALIVE",
+      "heartbeat_age_seconds": 7.221090078353882
+    },
+    "delegated_approval": {
+      "enabled": false,
+      "revision": 2
+    },
+    "github": {
+      "status": "ONLINE",
+      "prs": [
+        {
+          "number": 12,
+          "state": "open",
+          "merged_at": null,
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "1ece6705ead14a250c05726e9217aeec94f33f2b",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/12",
+          "work_package_id": null
+        },
+        {
+          "number": 11,
+          "state": "closed",
+          "merged_at": "2026-11-03T13:23:29Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/11",
+          "work_package_id": null
+        },
+        {
+          "number": 10,
+          "state": "closed",
+          "merged_at": "2026-11-03T13:23:04Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "1914f10d3bd0b2b05459914100c53549f63d0bc5",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/10",
+          "work_package_id": null
+        },
+        {
+          "number": 9,
+          "state": "closed",
+          "merged_at": "2026-11-03T13:22:55Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "4a794e2b3d62247881fef4c0908eeeee9f043ba2",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/9",
+          "work_package_id": null
+        },
+        {
+          "number": 8,
+          "state": "closed",
+          "merged_at": "2026-11-03T13:22:49Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "b20fb554cb0b45f2938ac11ba9e736708dcb1bf0",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/8",
+          "work_package_id": null
+        },
+        {
+          "number": 7,
+          "state": "closed",
+          "merged_at": "2026-11-03T13:22:45Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "a150f3d690288ff95451c2667954f09661aa9604",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/7",
+          "work_package_id": null
+        },
+        {
+          "number": 6,
+          "state": "closed",
+          "merged_at": "2026-11-03T13:22:25Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "0498ceeda97cd3e856a975129129e71f6c94a3dd",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/6",
+          "work_package_id": null
+        },
+        {
+          "number": 5,
+          "state": "closed",
+          "merged_at": "2026-11-02T10:52:55Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "0e8d320a3459f26d01c88a3e8d4cb861e09808dd",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/5",
+          "work_package_id": null
+        },
+        {
+          "number": 4,
+          "state": "closed",
+          "merged_at": "2026-11-02T03:56:48Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "def9d0a8852af42a407bd42fb0051615a2de9331",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/4",
+          "work_package_id": null
+        },
+        {
+          "number": 3,
+          "state": "closed",
+          "merged_at": "2026-10-31T12:01:10Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/3",
+          "work_package_id": null
+        },
+        {
+          "number": 2,
+          "state": "closed",
+          "merged_at": "2026-10-30T05:29:14Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "29ff0ec1e531d917ce96737d768c8e16dad895c5",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/2",
+          "work_package_id": null
+        },
+        {
+          "number": 1,
+          "state": "closed",
+          "merged_at": "2026-10-31T05:45:27Z",
+          "mergedAt": null,
+          "merge_commit_sha": null,
+          "head_sha": "1aa7c395afd4c067c298cc03cf7b661177d0bb1c",
+          "html_url": "https://github.com/Luim3141/mini-task-manager/pull/1",
+          "work_package_id": null
+        }
+      ],
+      "release": {
+        "head_sha": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+        "branch": "codex/demo-integration-20261103",
+        "included_prs": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "deployed_at": 1793671992.20804,
+        "source": "UNMERGED_INTEGRATION",
+        "main_merged": false,
+        "state": "DEPLOYED_TO_DEMO",
+        "release_type": "UNMERGED_INTEGRATION_TEST_RELEASE",
+        "checked_at": 1793784662.8633623,
+        "evidence": "ACTUAL_LOOPBACK_RELEASE_JSON_AND_HEADERS"
+      }
+    }
+  },
+  "reports": [
+    {
+      "id": "234ad848-0327-5201-a7d3-875f9b2e28ae",
+      "report_type": "WORKFLOW_AUDIT",
+      "source_versions_current": true,
+      "source_state": "CURRENT",
+      "created": 1793783292.0806715,
+      "created_iso": "2026-11-04T16:08:12+07:00"
+    },
+    {
+      "id": "d75c0a93-94f4-5368-82c2-daecbf8afa07",
+      "report_type": "WORKFLOW_AUDIT",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793783203.3253298,
+      "created_iso": "2026-11-04T16:06:43+07:00"
+    },
+    {
+      "id": "468ea40f-e747-5e5d-84c7-1bf854a99dfd",
+      "report_type": "WORKFLOW_AUDIT",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793783147.5964677,
+      "created_iso": "2026-11-04T16:05:47+07:00"
+    },
+    {
+      "id": "7bf3bc03-a598-4ead-a2d4-352bf3874a17",
+      "report_type": "DAILY",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793754027.2207987,
+      "created_iso": "2026-11-04T08:00:27+07:00"
+    },
+    {
+      "id": "d349463e-cc69-4dd8-92e9-43b4fabf1e58",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793735961.7407181,
+      "created_iso": "2026-11-04T02:59:21+07:00"
+    },
+    {
+      "id": "2c41ac37-ed02-4486-a013-344b78dedf36",
+      "report_type": "DAILY",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793667609.3782136,
+      "created_iso": "2026-11-03T08:00:09+07:00"
+    },
+    {
+      "id": "35f9d933-5389-4ee6-864c-b68aadc0e561",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793656331.8416536,
+      "created_iso": "2026-11-03T04:52:11+07:00"
+    },
+    {
+      "id": "974d783b-7949-4ae1-b6bb-cb9b473ea521",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793622478.2747395,
+      "created_iso": "2026-11-02T19:27:58+07:00"
+    },
+    {
+      "id": "d7d17daa-d69b-44fc-b848-7a19107a24e7",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793616821.3727853,
+      "created_iso": "2026-11-02T17:53:41+07:00"
+    },
+    {
+      "id": "be099f56-cc9a-403c-96c2-9c958d4672dc",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793604734.0996158,
+      "created_iso": "2026-11-02T14:32:14+07:00"
+    },
+    {
+      "id": "29378b61-7785-4c88-a2fa-6e4eec6e401d",
+      "report_type": "WEEKLY",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793604127.4419644,
+      "created_iso": "2026-11-02T14:22:07+07:00"
+    },
+    {
+      "id": "8a305dda-44d1-4716-9cfd-ba8db5ef005e",
+      "report_type": "DAILY",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793604120.7856731,
+      "created_iso": "2026-11-02T14:22:00+07:00"
+    },
+    {
+      "id": "5a6345e4-296b-473d-a496-a88536f75d91",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": false,
+      "source_state": "HISTORICAL",
+      "created": 1793604110.474778,
+      "created_iso": "2026-11-02T14:21:50+07:00"
+    },
+    {
+      "id": "aff634a4-f23d-413d-8b94-0a08cb70b7a4",
+      "report_type": "WEEKLY",
+      "source_versions_current": null,
+      "source_state": "UNKNOWN",
+      "created": 1793584815.302618,
+      "created_iso": "2026-11-02T09:00:15+07:00"
+    },
+    {
+      "id": "5b35c612-7ecb-4a5e-bec6-50376f9dc233",
+      "report_type": "DAILY",
+      "source_versions_current": null,
+      "source_state": "UNKNOWN",
+      "created": 1793581212.645973,
+      "created_iso": "2026-11-02T08:00:12+07:00"
+    },
+    {
+      "id": "b69ee21a-86d9-4d9d-bd8d-fdd12245db6f",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": null,
+      "source_state": "UNKNOWN",
+      "created": 1793566646.7802835,
+      "created_iso": "2026-11-02T03:57:26+07:00"
+    },
+    {
+      "id": "156c3aa7-e5ad-4390-b213-c6efd697301a",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": null,
+      "source_state": "UNKNOWN",
+      "created": 1793565522.0317469,
+      "created_iso": "2026-11-02T03:38:42+07:00"
+    },
+    {
+      "id": "1a31b254-9fe6-4098-8f77-f400c3c869b2",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": null,
+      "source_state": "UNKNOWN",
+      "created": 1793565412.3660948,
+      "created_iso": "2026-11-02T03:36:52+07:00"
+    },
+    {
+      "id": "dd2a0dfa-e7f8-402e-95f1-d397f4d64a0a",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": null,
+      "source_state": "UNKNOWN",
+      "created": 1793565236.9556556,
+      "created_iso": "2026-11-02T03:33:56+07:00"
+    },
+    {
+      "id": "98237e37-b61b-403d-b8da-f2fe86179c6b",
+      "report_type": "ON_DEMAND",
+      "source_versions_current": null,
+      "source_state": "UNKNOWN",
+      "created": 1793549016.4899843,
+      "created_iso": "2026-11-01T23:03:36+07:00"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "2ad21d85-6c44-5733-969b-53c744416d12",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #395 — DELEGATED_BUSINESS_VERIFIED",
+      "message": "Project6 delegated policy: BUSINESS_VERIFIED; decision OWNER_DELEGATED_POLICY_APPROVED",
+      "link": "/projects/ai-dev-demo/qldapm-ai#mission",
+      "unread": 1,
+      "created": 1793783292.0645432,
+      "metadata": "{\"decision\":\"OWNER_DELEGATED_POLICY_APPROVED\",\"event_id\":\"2ad21d85-6c44-5733-969b-53c744416d12\",\"human_approval_claimed\":false,\"native_id\":395,\"principal_id\":25,\"proposal_id\":\"1d94f68f-7897-4942-bce9-6be44c42796d\",\"reason_code\":\"DELEGATED_BUSINESS_VERIFIED\",\"run_id\":null,\"wp_title\":null}",
+      "decision": "OWNER_DELEGATED_POLICY_APPROVED",
+      "event_id": "2ad21d85-6c44-5733-969b-53c744416d12",
+      "human_approval_claimed": false,
+      "native_id": 395,
+      "principal_id": 25,
+      "proposal_id": "1d94f68f-7897-4942-bce9-6be44c42796d",
+      "reason_code": "DELEGATED_BUSINESS_VERIFIED",
+      "run_id": null,
+      "wp_title": null
+    },
+    {
+      "id": "9e440cd1-b2f5-51f3-aa9c-ab146dda0525",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #395 — DELEGATED_APPROVED",
+      "message": "Project6 delegated policy: APPROVED; decision OWNER_DELEGATED_POLICY_APPROVED",
+      "link": "/projects/ai-dev-demo/qldapm-ai#mission",
+      "unread": 1,
+      "created": 1793783284.8552954,
+      "metadata": "{\"decision\":\"OWNER_DELEGATED_POLICY_APPROVED\",\"event_id\":\"9e440cd1-b2f5-51f3-aa9c-ab146dda0525\",\"human_approval_claimed\":false,\"native_id\":395,\"principal_id\":25,\"proposal_id\":\"1d94f68f-7897-4942-bce9-6be44c42796d\",\"reason_code\":\"DELEGATED_APPROVED\",\"run_id\":null,\"wp_title\":null}",
+      "decision": "OWNER_DELEGATED_POLICY_APPROVED",
+      "event_id": "9e440cd1-b2f5-51f3-aa9c-ab146dda0525",
+      "human_approval_claimed": false,
+      "native_id": 395,
+      "principal_id": 25,
+      "proposal_id": "1d94f68f-7897-4942-bce9-6be44c42796d",
+      "reason_code": "DELEGATED_APPROVED",
+      "run_id": null,
+      "wp_title": null
+    },
+    {
+      "id": "d0e4226d-2a51-5eb8-9d68-3db3bbdfcbd2",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #395 — DELEGATED_BUSINESS_VERIFIED",
+      "message": "Project6 delegated policy: BUSINESS_VERIFIED; decision OWNER_DELEGATED_POLICY_APPROVED",
+      "link": "/projects/ai-dev-demo/qldapm-ai#mission",
+      "unread": 1,
+      "created": 1793783203.2991111,
+      "metadata": "{\"decision\":\"OWNER_DELEGATED_POLICY_APPROVED\",\"event_id\":\"d0e4226d-2a51-5eb8-9d68-3db3bbdfcbd2\",\"human_approval_claimed\":false,\"native_id\":395,\"principal_id\":25,\"proposal_id\":\"e5a98879-f0c5-45e5-89f6-aff572f3f728\",\"reason_code\":\"DELEGATED_BUSINESS_VERIFIED\",\"run_id\":null,\"wp_title\":null}",
+      "decision": "OWNER_DELEGATED_POLICY_APPROVED",
+      "event_id": "d0e4226d-2a51-5eb8-9d68-3db3bbdfcbd2",
+      "human_approval_claimed": false,
+      "native_id": 395,
+      "principal_id": 25,
+      "proposal_id": "e5a98879-f0c5-45e5-89f6-aff572f3f728",
+      "reason_code": "DELEGATED_BUSINESS_VERIFIED",
+      "run_id": null,
+      "wp_title": null
+    },
+    {
+      "id": "478e6b60-5986-564c-8195-c2c7eccc8d8b",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #395 — DELEGATED_APPROVED",
+      "message": "Project6 delegated policy: APPROVED; decision OWNER_DELEGATED_POLICY_APPROVED",
+      "link": "/projects/ai-dev-demo/qldapm-ai#mission",
+      "unread": 1,
+      "created": 1793783186.2062562,
+      "metadata": "{\"decision\":\"OWNER_DELEGATED_POLICY_APPROVED\",\"event_id\":\"478e6b60-5986-564c-8195-c2c7eccc8d8b\",\"human_approval_claimed\":false,\"native_id\":395,\"principal_id\":25,\"proposal_id\":\"e5a98879-f0c5-45e5-89f6-aff572f3f728\",\"reason_code\":\"DELEGATED_APPROVED\",\"run_id\":null,\"wp_title\":null}",
+      "decision": "OWNER_DELEGATED_POLICY_APPROVED",
+      "event_id": "478e6b60-5986-564c-8195-c2c7eccc8d8b",
+      "human_approval_claimed": false,
+      "native_id": 395,
+      "principal_id": 25,
+      "proposal_id": "e5a98879-f0c5-45e5-89f6-aff572f3f728",
+      "reason_code": "DELEGATED_APPROVED",
+      "run_id": null,
+      "wp_title": null
+    },
+    {
+      "id": "487a9a89-370c-543f-8885-bb90f8de39c1",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #395 — DELEGATED_BUSINESS_VERIFIED",
+      "message": "Project6 delegated policy: BUSINESS_VERIFIED; decision OWNER_DELEGATED_POLICY_APPROVED",
+      "link": "/projects/ai-dev-demo/qldapm-ai#mission",
+      "unread": 1,
+      "created": 1793783147.5436862,
+      "metadata": "{\"decision\":\"OWNER_DELEGATED_POLICY_APPROVED\",\"event_id\":\"487a9a89-370c-543f-8885-bb90f8de39c1\",\"human_approval_claimed\":false,\"native_id\":395,\"principal_id\":25,\"proposal_id\":\"24acd49a-5575-4023-85f7-4a34447c4b5e\",\"reason_code\":\"DELEGATED_BUSINESS_VERIFIED\",\"run_id\":null,\"wp_title\":null}",
+      "decision": "OWNER_DELEGATED_POLICY_APPROVED",
+      "event_id": "487a9a89-370c-543f-8885-bb90f8de39c1",
+      "human_approval_claimed": false,
+      "native_id": 395,
+      "principal_id": 25,
+      "proposal_id": "24acd49a-5575-4023-85f7-4a34447c4b5e",
+      "reason_code": "DELEGATED_BUSINESS_VERIFIED",
+      "run_id": null,
+      "wp_title": null
+    },
+    {
+      "id": "37fb57ef-a0e7-5a20-aa39-b6e083054b03",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #395 — DELEGATED_APPROVED",
+      "message": "Project6 delegated policy: APPROVED; decision OWNER_DELEGATED_POLICY_APPROVED",
+      "link": "/projects/ai-dev-demo/qldapm-ai#mission",
+      "unread": 1,
+      "created": 1793783121.5080276,
+      "metadata": "{\"decision\":\"OWNER_DELEGATED_POLICY_APPROVED\",\"event_id\":\"37fb57ef-a0e7-5a20-aa39-b6e083054b03\",\"human_approval_claimed\":false,\"native_id\":395,\"principal_id\":25,\"proposal_id\":\"24acd49a-5575-4023-85f7-4a34447c4b5e\",\"reason_code\":\"DELEGATED_APPROVED\",\"run_id\":null,\"wp_title\":null}",
+      "decision": "OWNER_DELEGATED_POLICY_APPROVED",
+      "event_id": "37fb57ef-a0e7-5a20-aa39-b6e083054b03",
+      "human_approval_claimed": false,
+      "native_id": 395,
+      "principal_id": 25,
+      "proposal_id": "24acd49a-5575-4023-85f7-4a34447c4b5e",
+      "reason_code": "DELEGATED_APPROVED",
+      "run_id": null,
+      "wp_title": null
+    },
+    {
+      "id": "5a63365e-ba0d-5a9c-ae70-8894ef1d4eb6",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #395 — DELEGATED_REQUIRES_HUMAN_APPROVAL",
+      "message": "Project6 delegated policy: REQUIRES_HUMAN_APPROVAL; decision REQUIRES_HUMAN_APPROVAL",
+      "link": "/projects/ai-dev-demo/qldapm-ai#mission",
+      "unread": 1,
+      "created": 1793783082.1931834,
+      "metadata": "{\"decision\":\"REQUIRES_HUMAN_APPROVAL\",\"event_id\":\"5a63365e-ba0d-5a9c-ae70-8894ef1d4eb6\",\"human_approval_claimed\":false,\"native_id\":395,\"principal_id\":25,\"proposal_id\":\"2b468e0a-ff65-490a-8d3a-aeb38c6245b5\",\"reason_code\":\"DELEGATED_REQUIRES_HUMAN_APPROVAL\",\"run_id\":null,\"wp_title\":null}",
+      "decision": "REQUIRES_HUMAN_APPROVAL",
+      "event_id": "5a63365e-ba0d-5a9c-ae70-8894ef1d4eb6",
+      "human_approval_claimed": false,
+      "native_id": 395,
+      "principal_id": 25,
+      "proposal_id": "2b468e0a-ff65-490a-8d3a-aeb38c6245b5",
+      "reason_code": "DELEGATED_REQUIRES_HUMAN_APPROVAL",
+      "run_id": null,
+      "wp_title": null
+    },
+    {
+      "id": "8bb18a02-4c9e-59b8-abb9-5d7b0a3df966",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "SPRINT_RISK_REPORT_READY",
+      "message": "Báo cáo rủi ro Project6 đã lưu; mở đúng report để kiểm tra nguồn và phiên bản.",
+      "link": "/projects/ai-dev-demo/qldapm-ai#mission",
+      "unread": 1,
+      "created": 1793775384.7360559,
+      "metadata": "{\"event_id\":\"8bb18a02-4c9e-59b8-abb9-5d7b0a3df966\",\"native_id\":null,\"reason_code\":\"SPRINT_RISK_REPORT_READY\",\"report_id\":\"747c0dba-0ab4-5ceb-84e8-5732277905e9\",\"run_id\":null,\"wp_title\":null}",
+      "event_id": "8bb18a02-4c9e-59b8-abb9-5d7b0a3df966",
+      "native_id": null,
+      "reason_code": "SPRINT_RISK_REPORT_READY",
+      "report_id": "747c0dba-0ab4-5ceb-84e8-5732277905e9",
+      "run_id": null,
+      "wp_title": null
+    },
+    {
+      "id": "543b4689-0782-48c6-9e9b-ee206060cc92",
+      "project": 6,
+      "actor": 20,
+      "level": "SUCCESS",
+      "title": "Báo cáo Tiến độ Hằng ngày",
+      "message": "Báo cáo tiến độ hằng ngày (Báo cáo tiến độ hằng ngày (Daily Report) — 2026-11-04) đã được tự động tạo theo lịch.",
+      "link": "/projects/ai-dev-demo/qldapm_ai/engineering",
+      "unread": 1,
+      "created": 1793754027.0598722,
+      "metadata": "{}"
+    },
+    {
+      "id": "d3c1750c-a3cb-5461-96fb-1e1a940d8715",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #394 — TASK_COMPLETED",
+      "message": "Task hoàn tất với bằng chứng đã lưu.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793735443.903253,
+      "metadata": "{\"event_id\":\"d3c1750c-a3cb-5461-96fb-1e1a940d8715\",\"native_id\":394,\"reason_code\":\"TASK_COMPLETED\",\"resume_available\":false,\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "d3c1750c-a3cb-5461-96fb-1e1a940d8715",
+      "native_id": 394,
+      "reason_code": "TASK_COMPLETED",
+      "resume_available": false,
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "b61f37c2-a9ff-5b23-acf3-cec00f0a5c06",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #394 — GITHUB_PR_CREATED",
+      "message": "PR đã được ghi nhận; chưa đồng nghĩa merge/deploy.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793735443.903253,
+      "metadata": "{\"event_id\":\"b61f37c2-a9ff-5b23-acf3-cec00f0a5c06\",\"native_id\":394,\"pr_url\":\"https://github.com/Luim3141/mini-task-manager/pull/12\",\"reason_code\":\"GITHUB_PR_CREATED\",\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "b61f37c2-a9ff-5b23-acf3-cec00f0a5c06",
+      "native_id": 394,
+      "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/12",
+      "reason_code": "GITHUB_PR_CREATED",
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "ec89a549-0083-565f-9282-5364fb70973d",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #394 — AGENT_STARTED",
+      "message": "qa bắt đầu thực thi; xem run để biết kết quả hiện tại.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793735171.1840868,
+      "metadata": "{\"event_id\":\"ec89a549-0083-565f-9282-5364fb70973d\",\"native_id\":394,\"reason_code\":\"AGENT_STARTED\",\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "ec89a549-0083-565f-9282-5364fb70973d",
+      "native_id": 394,
+      "reason_code": "AGENT_STARTED",
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "c1fa4abd-a938-5383-867b-87d3ba7f6ae4",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #394 — AGENT_STARTED",
+      "message": "reviewer bắt đầu thực thi; xem run để biết kết quả hiện tại.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793735067.363686,
+      "metadata": "{\"event_id\":\"c1fa4abd-a938-5383-867b-87d3ba7f6ae4\",\"native_id\":394,\"reason_code\":\"AGENT_STARTED\",\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "c1fa4abd-a938-5383-867b-87d3ba7f6ae4",
+      "native_id": 394,
+      "reason_code": "AGENT_STARTED",
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "04289c3b-2028-5fcc-a62a-7905d11a124e",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #394 — AGENT_STARTED",
+      "message": "dev bắt đầu thực thi; xem run để biết kết quả hiện tại.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793734909.0588906,
+      "metadata": "{\"event_id\":\"04289c3b-2028-5fcc-a62a-7905d11a124e\",\"native_id\":394,\"reason_code\":\"AGENT_STARTED\",\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "04289c3b-2028-5fcc-a62a-7905d11a124e",
+      "native_id": 394,
+      "reason_code": "AGENT_STARTED",
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "6b1218ce-5ac4-5722-9842-27b0c7577cd1",
+      "project": 6,
+      "actor": null,
+      "level": "ERROR",
+      "title": "WP #394 — UNKNOWN_FAILURE",
+      "message": "Lượt thực thi chưa hoàn tất; chưa đủ bằng chứng phân loại nguyên nhân.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793734502.7753487,
+      "metadata": "{\"event_id\":\"6b1218ce-5ac4-5722-9842-27b0c7577cd1\",\"native_id\":394,\"reason_code\":\"UNKNOWN_FAILURE\",\"resume_available\":false,\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "6b1218ce-5ac4-5722-9842-27b0c7577cd1",
+      "native_id": 394,
+      "reason_code": "UNKNOWN_FAILURE",
+      "resume_available": false,
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "120ce5a1-e122-5b90-9592-a1b81b4d7382",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #394 — AGENT_STARTED",
+      "message": "dev bắt đầu thực thi; xem run để biết kết quả hiện tại.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793734199.8597374,
+      "metadata": "{\"event_id\":\"120ce5a1-e122-5b90-9592-a1b81b4d7382\",\"native_id\":394,\"reason_code\":\"AGENT_STARTED\",\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "120ce5a1-e122-5b90-9592-a1b81b4d7382",
+      "native_id": 394,
+      "reason_code": "AGENT_STARTED",
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "ad94484d-c051-59b9-8eb5-b76537be8371",
+      "project": 6,
+      "actor": null,
+      "level": "ERROR",
+      "title": "WP #394 — DEV_BUDGET_EXHAUSTED",
+      "message": "Hết ngân sách nội bộ 12/12 calls; Dev chưa hoàn tất.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793733644.924754,
+      "metadata": "{\"event_id\":\"ad94484d-c051-59b9-8eb5-b76537be8371\",\"native_id\":394,\"reason_code\":\"DEV_BUDGET_EXHAUSTED\",\"resume_available\":false,\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "ad94484d-c051-59b9-8eb5-b76537be8371",
+      "native_id": 394,
+      "reason_code": "DEV_BUDGET_EXHAUSTED",
+      "resume_available": false,
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "34c812a4-2924-5f3f-8c1a-ad6cd7fc5799",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #394 — AGENT_STARTED",
+      "message": "dev bắt đầu thực thi; xem run để biết kết quả hiện tại.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793733413.6287186,
+      "metadata": "{\"event_id\":\"34c812a4-2924-5f3f-8c1a-ad6cd7fc5799\",\"native_id\":394,\"reason_code\":\"AGENT_STARTED\",\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "34c812a4-2924-5f3f-8c1a-ad6cd7fc5799",
+      "native_id": 394,
+      "reason_code": "AGENT_STARTED",
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "224b7ce5-dc8a-5d61-83ff-de5898b9f181",
+      "project": 6,
+      "actor": null,
+      "level": "ERROR",
+      "title": "WP #394 — DEV_BUDGET_EXHAUSTED",
+      "message": "Hết ngân sách nội bộ 12/12 calls; Dev chưa hoàn tất.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793733051.0178115,
+      "metadata": "{\"event_id\":\"224b7ce5-dc8a-5d61-83ff-de5898b9f181\",\"native_id\":394,\"reason_code\":\"DEV_BUDGET_EXHAUSTED\",\"resume_available\":false,\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "224b7ce5-dc8a-5d61-83ff-de5898b9f181",
+      "native_id": 394,
+      "reason_code": "DEV_BUDGET_EXHAUSTED",
+      "resume_available": false,
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "494303f0-4899-596b-9056-8ec549f7dc67",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #394 — AGENT_STARTED",
+      "message": "dev bắt đầu thực thi; xem run để biết kết quả hiện tại.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793732878.46456,
+      "metadata": "{\"event_id\":\"494303f0-4899-596b-9056-8ec549f7dc67\",\"native_id\":394,\"reason_code\":\"AGENT_STARTED\",\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "494303f0-4899-596b-9056-8ec549f7dc67",
+      "native_id": 394,
+      "reason_code": "AGENT_STARTED",
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "6c3693ea-8043-50dd-af3b-095382cb528e",
+      "project": 6,
+      "actor": null,
+      "level": "ERROR",
+      "title": "WP #394 — UNKNOWN_FAILURE",
+      "message": "Lượt thực thi chưa hoàn tất; chưa đủ bằng chứng phân loại nguyên nhân.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793732304.1733532,
+      "metadata": "{\"event_id\":\"6c3693ea-8043-50dd-af3b-095382cb528e\",\"native_id\":394,\"reason_code\":\"UNKNOWN_FAILURE\",\"resume_available\":false,\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "6c3693ea-8043-50dd-af3b-095382cb528e",
+      "native_id": 394,
+      "reason_code": "UNKNOWN_FAILURE",
+      "resume_available": false,
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "329977ed-5a4d-5780-8dbc-ce45ebd5f499",
+      "project": 6,
+      "actor": null,
+      "level": "ERROR",
+      "title": "WP #394 — UNKNOWN_FAILURE",
+      "message": "Lượt thực thi chưa hoàn tất; chưa đủ bằng chứng phân loại nguyên nhân.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=301dbdd8-6f6f-4df4-b6c6-b5ca3f073795#run-301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "unread": 1,
+      "created": 1793731946.9255707,
+      "metadata": "{\"event_id\":\"329977ed-5a4d-5780-8dbc-ce45ebd5f499\",\"native_id\":394,\"reason_code\":\"UNKNOWN_FAILURE\",\"resume_available\":false,\"run_id\":\"301dbdd8-6f6f-4df4-b6c6-b5ca3f073795\",\"wp_title\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\"}",
+      "event_id": "329977ed-5a4d-5780-8dbc-ce45ebd5f499",
+      "native_id": 394,
+      "reason_code": "UNKNOWN_FAILURE",
+      "resume_available": false,
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "wp_title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+    },
+    {
+      "id": "065599d8-d717-50f8-8d2f-65ac4ea8b188",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #379 — PLANNING_COMPLETE",
+      "message": "Kế hoạch đã published; chưa đồng nghĩa hoàn tất Dev.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=96b4cee5-a13b-4397-bc7f-aa6f7b866b00#run-96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+      "unread": 1,
+      "created": 1793714925.212327,
+      "metadata": "{\"event_id\":\"065599d8-d717-50f8-8d2f-65ac4ea8b188\",\"native_id\":379,\"reason_code\":\"PLANNING_COMPLETE\",\"resume_available\":false,\"run_id\":\"96b4cee5-a13b-4397-bc7f-aa6f7b866b00\",\"wp_title\":\"PM/BA requirements and engineering backlog\"}",
+      "event_id": "065599d8-d717-50f8-8d2f-65ac4ea8b188",
+      "native_id": 379,
+      "reason_code": "PLANNING_COMPLETE",
+      "resume_available": false,
+      "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+      "wp_title": "PM/BA requirements and engineering backlog"
+    },
+    {
+      "id": "5d651abf-66fd-504e-bbea-c8e827e514a9",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #379 — AGENT_STARTED",
+      "message": "Agent bắt đầu thực thi.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=96b4cee5-a13b-4397-bc7f-aa6f7b866b00#run-96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+      "unread": 1,
+      "created": 1793714872.331019,
+      "metadata": "{\"event_id\":\"5d651abf-66fd-504e-bbea-c8e827e514a9\",\"native_id\":379,\"reason_code\":\"AGENT_STARTED\",\"resume_available\":false,\"run_id\":\"96b4cee5-a13b-4397-bc7f-aa6f7b866b00\",\"wp_title\":\"PM/BA requirements and engineering backlog\"}",
+      "event_id": "5d651abf-66fd-504e-bbea-c8e827e514a9",
+      "native_id": 379,
+      "reason_code": "AGENT_STARTED",
+      "resume_available": false,
+      "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+      "wp_title": "PM/BA requirements and engineering backlog"
+    },
+    {
+      "id": "036cac82-c5d7-59dc-9c2a-c3749a4137ad",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #379 — AGENT_STARTED",
+      "message": "pm bắt đầu thực thi; xem run để biết kết quả hiện tại.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=96b4cee5-a13b-4397-bc7f-aa6f7b866b00#run-96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+      "unread": 1,
+      "created": 1793714829.6461644,
+      "metadata": "{\"event_id\":\"036cac82-c5d7-59dc-9c2a-c3749a4137ad\",\"native_id\":379,\"reason_code\":\"AGENT_STARTED\",\"run_id\":\"96b4cee5-a13b-4397-bc7f-aa6f7b866b00\",\"wp_title\":\"PM/BA requirements and engineering backlog\"}",
+      "event_id": "036cac82-c5d7-59dc-9c2a-c3749a4137ad",
+      "native_id": 379,
+      "reason_code": "AGENT_STARTED",
+      "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+      "wp_title": "PM/BA requirements and engineering backlog"
+    },
+    {
+      "id": "e014a3c4-bd40-5e1d-8211-d2f5049a50dd",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #379 — AGENT_STARTED",
+      "message": "ba bắt đầu thực thi; xem run để biết kết quả hiện tại.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=96b4cee5-a13b-4397-bc7f-aa6f7b866b00#run-96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+      "unread": 1,
+      "created": 1793714806.574168,
+      "metadata": "{\"event_id\":\"e014a3c4-bd40-5e1d-8211-d2f5049a50dd\",\"native_id\":379,\"reason_code\":\"AGENT_STARTED\",\"run_id\":\"96b4cee5-a13b-4397-bc7f-aa6f7b866b00\",\"wp_title\":\"PM/BA requirements and engineering backlog\"}",
+      "event_id": "e014a3c4-bd40-5e1d-8211-d2f5049a50dd",
+      "native_id": 379,
+      "reason_code": "AGENT_STARTED",
+      "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+      "wp_title": "PM/BA requirements and engineering backlog"
+    },
+    {
+      "id": "dba8997b-02ba-57cc-8467-2d46e8c3fa8b",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "SPRINT_RISK_REPORT_READY",
+      "message": "Báo cáo rủi ro Project6 đã lưu; mở đúng report để kiểm tra nguồn và phiên bản.",
+      "link": "/projects/ai-dev-demo/qldapm-ai#mission",
+      "unread": 1,
+      "created": 1793714461.7708776,
+      "metadata": "{\"event_id\":\"dba8997b-02ba-57cc-8467-2d46e8c3fa8b\",\"native_id\":null,\"reason_code\":\"SPRINT_RISK_REPORT_READY\",\"report_id\":\"dce81c30-7510-5258-a1d3-6d93d76bdf72\",\"run_id\":null,\"wp_title\":null}",
+      "event_id": "dba8997b-02ba-57cc-8467-2d46e8c3fa8b",
+      "native_id": null,
+      "reason_code": "SPRINT_RISK_REPORT_READY",
+      "report_id": "dce81c30-7510-5258-a1d3-6d93d76bdf72",
+      "run_id": null,
+      "wp_title": null
+    },
+    {
+      "id": "6bec6722-5ea1-45a1-8242-9126e4edb6c2",
+      "project": 6,
+      "actor": 20,
+      "level": "SUCCESS",
+      "title": "Báo cáo Tiến độ Hằng ngày",
+      "message": "Báo cáo tiến độ hằng ngày (Báo cáo tiến độ hằng ngày (Daily Report) — 2026-11-03) đã được tự động tạo theo lịch.",
+      "link": "/projects/ai-dev-demo/qldapm_ai/engineering",
+      "unread": 1,
+      "created": 1793667609.2370796,
+      "metadata": "{}"
+    },
+    {
+      "id": "2a6f14bd-fda3-5496-a4e6-dd57a8e64775",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #391 — TASK_COMPLETED",
+      "message": "Task hoàn tất với bằng chứng đã lưu.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=b7fd6aec-3357-495f-b9e5-f7ba04d67ad6#run-b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "unread": 1,
+      "created": 1793655698.1892703,
+      "metadata": "{\"event_id\":\"2a6f14bd-fda3-5496-a4e6-dd57a8e64775\",\"native_id\":391,\"reason_code\":\"TASK_COMPLETED\",\"resume_available\":false,\"run_id\":\"b7fd6aec-3357-495f-b9e5-f7ba04d67ad6\",\"wp_title\":\"Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện\"}",
+      "event_id": "2a6f14bd-fda3-5496-a4e6-dd57a8e64775",
+      "native_id": 391,
+      "reason_code": "TASK_COMPLETED",
+      "resume_available": false,
+      "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "wp_title": "Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện"
+    },
+    {
+      "id": "bea332af-82ff-5437-969e-803ef8e004a7",
+      "project": 6,
+      "actor": null,
+      "level": "INFO",
+      "title": "WP #391 — GITHUB_PR_CREATED",
+      "message": "PR đã được ghi nhận; chưa đồng nghĩa merge/deploy.",
+      "link": "/projects/ai-dev-demo/qldapm-ai?run_id=b7fd6aec-3357-495f-b9e5-f7ba04d67ad6#run-b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "unread": 1,
+      "created": 1793655698.1892703,
+      "metadata": "{\"event_id\":\"bea332af-82ff-5437-969e-803ef8e004a7\",\"native_id\":391,\"pr_url\":\"https://github.com/Luim3141/mini-task-manager/pull/10\",\"reason_code\":\"GITHUB_PR_CREATED\",\"run_id\":\"b7fd6aec-3357-495f-b9e5-f7ba04d67ad6\",\"wp_title\":\"Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện\"}",
+      "event_id": "bea332af-82ff-5437-969e-803ef8e004a7",
+      "native_id": 391,
+      "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/10",
+      "reason_code": "GITHUB_PR_CREATED",
+      "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "wp_title": "Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện"
+    }
+  ],
+  "status": "SERVING_IMAGES_SOURCE_PINS_NATIVE_POLICY_WORKFLOWS_VERIFIED"
+}

@@ -1,0 +1,39 @@
+{
+  "scope": "read-only current MAIN key equality and known private backup directory only",
+  "main_image": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+  "backup_key_matches_main_environment": true,
+  "entries": [
+    {
+      "name": "legacy-script.dpapi",
+      "bytes": 3590,
+      "sha256": "49e331129077cc8fdb8e3f8b6807fb4b2b7101fd13abe14f8db319ed04351c9e",
+      "classification": "DPAPI_CURRENT_USER_ENCRYPTED"
+    },
+    {
+      "name": "n8n-cold-volume.tar",
+      "bytes": 20054528,
+      "sha256": "d97ae40987505a8842c101df32e90249eb38009a05b5c21e3adf649714136278",
+      "classification": "UNENCRYPTED_SENSITIVE_BACKUP"
+    },
+    {
+      "name": "n8n-cold-volume.tar.dpapi",
+      "bytes": 20054758,
+      "sha256": "f6ff1446c5da92fb835088b56daa6dbbafb94b76677ed0fc6fdb0d0d0314ffb3",
+      "classification": "DPAPI_CURRENT_USER_ENCRYPTED"
+    },
+    {
+      "name": "preserved.env",
+      "bytes": 689,
+      "sha256": "e0e40ad38b9ffb472a8548b854647c1fc9ff6ea50cc1956e4f1acda09d437654",
+      "classification": "UNENCRYPTED_SENSITIVE_BACKUP"
+    },
+    {
+      "name": "preserved.env.dpapi",
+      "bytes": 918,
+      "sha256": "83a88804fbd0c0f8be11556b37e3a587cabdc6db430f69ee5a217abe569d4f7a",
+      "classification": "DPAPI_CURRENT_USER_ENCRYPTED"
+    }
+  ],
+  "acl_observed": "Inherited full control only for SYSTEM and LUIM\\LUIM; icacls read-only, no ACL mutation",
+  "cross_profile_dr": "NOT_TESTED"
+}

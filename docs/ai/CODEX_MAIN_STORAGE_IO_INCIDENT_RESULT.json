@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-26T10:31:58.142709+07:00",
+  "status": "RECOVERED_OPERATOR_ROUTE_CORRECTED_REGRESSION_PASS",
+  "observed_failure": "One Owner get_assistant_status HTTP500; Store.authenticate -> PRAGMA journal_mode=WAL -> sqlite3.OperationalError: disk I/O error",
+  "contributing_operator_action": "Windows Python opened live Linux WAL directly during HTTP probes; this route is removed from continuation probes",
+  "root_cause_evidence": "CODEX_SQLITE_CROSS_OS_REOPEN_DIAGNOSIS.json",
+  "isolated_reproduction": {
+    "linux_before": "ok",
+    "host_readonly_succeeds": true,
+    "linux_while_windows_reader": "SQLITE_IOERR_SHMOPEN",
+    "reopen_cycles": 20,
+    "reproduced_cycles": 20,
+    "linux_after_windows_close": "ok"
+  },
+  "causal_limit": "Main traceback did not log extended SQLite code; matching failure mechanism reproduced on synthetic DB, without reproducing fault on Main",
+  "mitigation": "Query/online backup inside owning Linux container; Windows reads only completed immutable private snapshots",
+  "application_restart_or_rollback": false,
+  "database_restore_or_schema_change": false,
+  "sqlite_quick_check": "ok",
+  "post_mitigation_checks": {
+    "six_roles": 73,
+    "contracts": 48,
+    "readonly": 13,
+    "provider_agent_surface": 20
+  },
+  "native_data_and_history": "CODEX_NATIVE_DEPENDENCY_FINAL_READBACK.json",
+  "rag": "CODEX_NATIVE_DEPENDENCY_RAG_RESULT.json",
+  "security": "CODEX_NATIVE_DEPENDENCY_SECURITY_PRESERVATION.json",
+  "new_unknown_requests": 0,
+  "main_native_writes": 0,
+  "new_model_calls": 0,
+  "staging_operations": false,
+  "limits": [
+    "Never mix Windows and container direct live SQLite/WAL access",
+    "No data repair needed; future unrelated storage faults are not ruled out"
+  ]
+}

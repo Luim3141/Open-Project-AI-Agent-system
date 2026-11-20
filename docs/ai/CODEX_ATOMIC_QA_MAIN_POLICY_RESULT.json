@@ -1,0 +1,122 @@
+{
+  "at": "2026-10-25T13:50:57.025146+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "actor": 18,
+      "check": "own Native identity and additive Core QA capability",
+      "role": "AI_SYSTEM_OWNER",
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "check": "read-only malformed proof rejected",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 18,
+      "check": "QA evidence read respects current actor scope; pending human decisions unchanged",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "check": "own Native identity and additive Core QA capability",
+      "role": "PM",
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "check": "read-only malformed proof rejected",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 19,
+      "check": "QA evidence read respects current actor scope; pending human decisions unchanged",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 20,
+      "check": "own Native identity and additive Core QA capability",
+      "role": "BA",
+      "status": "PASS"
+    },
+    {
+      "actor": 20,
+      "check": "read-only malformed proof rejected",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 20,
+      "check": "QA evidence read respects current actor scope; pending human decisions unchanged",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 21,
+      "check": "own Native identity and additive Core QA capability",
+      "role": "BE",
+      "status": "PASS"
+    },
+    {
+      "actor": 21,
+      "check": "read-only malformed proof rejected",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 21,
+      "check": "QA evidence read respects current actor scope; pending human decisions unchanged",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 22,
+      "check": "own Native identity and additive Core QA capability",
+      "role": "FE",
+      "status": "PASS"
+    },
+    {
+      "actor": 22,
+      "check": "read-only malformed proof rejected",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 22,
+      "check": "QA evidence read respects current actor scope; pending human decisions unchanged",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 23,
+      "check": "own Native identity and additive Core QA capability",
+      "role": "QA",
+      "status": "PASS"
+    },
+    {
+      "actor": 23,
+      "check": "read-only malformed proof rejected",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 23,
+      "check": "QA evidence read respects current actor scope; pending human decisions unchanged",
+      "http": 200,
+      "status": "PASS"
+    }
+  ],
+  "main_native_writes": 0,
+  "main_human_decisions": 0,
+  "model_calls": 0,
+  "scope": "Fresh six-role own Native identities, additive read-only preflight and current pending evidence; no Native mutation endpoint or human review endpoint invoked",
+  "limits": [
+    "Accepted automatic Native transition E2E qualified only on isolated clone",
+    "Browser unavailable under prior policy block"
+  ]
+}

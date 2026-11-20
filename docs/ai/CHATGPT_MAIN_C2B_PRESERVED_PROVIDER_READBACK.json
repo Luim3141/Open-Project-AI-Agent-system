@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "run_id": "ba57d24f-5ecb-45ca-b835-720dc831df1a",
+  "actor": 18,
+  "project": 5,
+  "native_references": [
+    {
+      "lock_version": 2,
+      "native_id": 370
+    }
+  ],
+  "context_provenance": {
+    "base_context_sha256": "2ec7951dd077ff8126742a4fd564d9fc2e34821761c47e0506b3e6d0eda83b93",
+    "native_references": [
+      {
+        "lock_version": 2,
+        "native_id": 370
+      }
+    ],
+    "rag_hits": [
+      {
+        "document_id": "95f03536cf9b4aa946ec95a1b43793e08e9d0a9563803810d3bbd137eddce6ea",
+        "lock_version": 2,
+        "native_id": 370,
+        "snippet_sha256": "3e12a0bdb53d6fd634bbcafd788e7dfd37e122f55fcbc649120cec9058891790",
+        "source_id": "actor:19:wp:370"
+      }
+    ],
+    "rag_state": "HITS"
+  },
+  "model_call_count": 1,
+  "http_attempt_count": 3,
+  "tools": [],
+  "usage": [
+    {
+      "candidatesTokenCount": 294,
+      "promptTokenCount": 1872,
+      "thoughtsTokenCount": 424,
+      "totalTokenCount": 2590
+    }
+  ],
+  "receipts": [
+    {
+      "id": "7ea8692c-3a3c-48e6-ae24-016c6e2658c7",
+      "actor": 18,
+      "run_id": "ba57d24f-5ecb-45ca-b835-720dc831df1a",
+      "agent": "ba",
+      "phase": "countTokens",
+      "http_status": 503,
+      "state": "PROVIDER_ERROR",
+      "error": "GEMINI_UPSTREAM_REJECTED",
+      "request_sha256": "54e1247d46e390347dcd0d3300949f1c0a79db16fef7f73e1db63ef1d2443a43"
+    },
+    {
+      "id": "8e1b0e6c-01b6-41c3-a231-96740332a319",
+      "actor": 18,
+      "run_id": "ba57d24f-5ecb-45ca-b835-720dc831df1a",
+      "agent": "ba",
+      "phase": "countTokens",
+      "http_status": 200,
+      "state": "LIVE_SUCCESS",
+      "error": null,
+      "request_sha256": "54e1247d46e390347dcd0d3300949f1c0a79db16fef7f73e1db63ef1d2443a43"
+    },
+    {
+      "id": "79d0a8f9-0e4b-4b65-838d-5da265384db7",
+      "actor": 18,
+      "run_id": "ba57d24f-5ecb-45ca-b835-720dc831df1a",
+      "agent": "ba",
+      "phase": "generateContent",
+      "http_status": 200,
+      "state": "LIVE_SUCCESS",
+      "error": null,
+      "request_sha256": "7d11f5236aff59168a146f4e1e4410e956a3a21cd6bb734d59bc1a3c14159d84"
+    }
+  ],
+  "result_sha256": "503543f356d3d42e766724ce91d67fd20013e77271010c8d54a3d3ae555a607d",
+  "new_run_started": false,
+  "native_writes": 0
+}

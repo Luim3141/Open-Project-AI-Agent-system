@@ -1,0 +1,71 @@
+{
+  "status": "succeeded",
+  "text": "Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "4a794e2b3d62247881fef4c0908eeeee9f043ba2",
+  "head_sha": "1914f10d3bd0b2b05459914100c53549f63d0bc5",
+  "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/10",
+  "delivery": {
+    "baseRefName": "codex/openclaw-feedback-9d0ff35386a63183",
+    "headRefName": "codex/openclaw-feedback-2ec52f6742aa972f",
+    "headRefOid": "1914f10d3bd0b2b05459914100c53549f63d0bc5",
+    "state": "OPEN",
+    "url": "https://github.com/Luim3141/mini-task-manager/pull/10"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\b7fd6aec-3357-495f-b9e5-f7ba04d67ad6\\acceptance-0.xml",
+    "log_sha256": "434262ec4c878266c125ef162e9344b1530e50539be369b6e69d38f6a7ff80e1"
+  },
+  "review_evidence": {
+    "revision": "5e374fac2943826ec9f9287fa42c53ab0c8e997c4d8303152c1fbbcf780f714e",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-2ec52f6742aa972f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_export_csv.py"
+  ],
+  "native_readback": {
+    "child_id": 391,
+    "child_version": 2,
+    "parent": {
+      "id": 379,
+      "version": 4
+    },
+    "project_id": 6,
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/10"
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "child_id": 391,
+    "retrieval_count": 1,
+    "references": [
+      {
+        "native_id": 391,
+        "citation": "/work_packages/391"
+      }
+    ]
+  }
+}

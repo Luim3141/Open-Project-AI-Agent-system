@@ -1,0 +1,17 @@
+# P03-07 — local scoped tracing
+
+Accepted staging Gateway `sha256:73d117fa5d2a9f5b725e1796183f9dc53e0581b8a3beb803261a95205a59dd3d`. Four nullable IDs added to existing audit: project_id/run_id/task_id/trace_id. Existing audit fields and all previous values preserved. Scope loads from a stored RUNNING AgentRun with exact actor/project check; ContextVar is reset in finally. Queue/runtime events, Gateway audit and actual child-worker records share IDs. Native/provider attempt events record fixed code labels before outbound. No external tracing service, prompt/body/key/path logging. Scoped target/version accepts only resource IDs/hashes/fixed labels; arbitrary strings are redacted. Legacy unbound audit behavior remains compatible.
+
+Actual acceptance:
+
+-5new tracing tests: shared runtime/Gateway/native/provider IDs, prompt/key/invalid-ID/version exclusion, wrong scope/state/code denial, crossactor/store/legacy isolation/reset, actual disabled-provider child process loading scope. Native/provider unit attempts use mocks; no live model result claimed.
+-35targeted regressions PASS18.493s; privacy/class/role11PASS12.142s. Updated all worker fixture Service.config interfaces; role-revalidation fixture now uses realStore and explicitly asserts identity checked before model.
+-Final exact-source242Windows regression PASS with exit0+finalOK checked before deploy: P03-trace-regression-release.log/P03-trace-release-test-exit.json. Earlier fixture failures4class subcases retained and corrected; no deploy with failed tests. Intermediatef372 image/fullpass preceded final target/version privacy tightening and was never staged.
+-Final73candidate76Linux tests PASS2.991s: P03-trace-linux-release.log, readonly/non-root/networknone.
+-Fresh actual-stage cold clone: all previous values preserved, exactly4nullable columns, actual child worker+Gateway/runtime trace correlated without prompt, context reset, exact rollback copy,471usage untouched. No provider/native calls. P03-trace-clone-release.json; tests/container_agent_trace.py.
+-Previousbc6 image writes legacy audit successfully on final73extended schema, no deletion/migration rollback required. P03-trace-old-image-compatibility-release.json.
+-Actual staging:9source hashes match, cachedREADY/471usage/79done11failed/newmetadataempty unchanged, config/credentials/keys byte-identical predeploy. P03-trace-live-check.json.
+-Every original value in every Gateway SQLite table compared against private predeploy cold snapshot and matches; only4nullable audit columns added. P03-trace-row-preservation.json. Checker initially opened readonly WAL-mode cold baseline at readonly root and failed creating SHM; fixed harness to read a disposable private copy, preserving original/source. No product fix or WAL deletion.
+-Inventories/qualified comparison PASS:19selected containers,7active stagehealthy/4HTTP200; native schema/roles/counts, Gateway legacy ledger/states, mounts/ports/private metadata preserved except approved Gateway image. P03-trace-after.json/P03-trace-preservation-check.json. Inventory does not compare audit columns; separate row check above does.
+
+Rollback: previousbc6 image, operator/p03-trace-before-20261016 source and private pre-provision snapshot local-runtime/before-provision-1792141601141562800 retained. No core edit/main promotion/Desktop/CSDLDPT/billing action/new real Google call. Supervisor/n8n layers do not exist yet; their future runs must use this scope. Next08read-only paginated progress/trace/recovery hints,09signedbridge5role acceptance.

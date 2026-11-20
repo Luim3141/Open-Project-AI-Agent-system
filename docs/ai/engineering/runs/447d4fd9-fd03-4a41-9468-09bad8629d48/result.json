@@ -1,0 +1,69 @@
+{
+  "status": "succeeded",
+  "text": "Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "b20fb554cb0b45f2938ac11ba9e736708dcb1bf0",
+  "head_sha": "4a794e2b3d62247881fef4c0908eeeee9f043ba2",
+  "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/9",
+  "delivery": {
+    "baseRefName": "codex/openclaw-feedback-e44b47e2e8610c4f",
+    "headRefName": "codex/openclaw-feedback-9d0ff35386a63183",
+    "headRefOid": "4a794e2b3d62247881fef4c0908eeeee9f043ba2",
+    "state": "OPEN",
+    "url": "https://github.com/Luim3141/mini-task-manager/pull/9"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\447d4fd9-fd03-4a41-9468-09bad8629d48\\acceptance-0.xml",
+    "log_sha256": "f8cb78f04ac6bb0cb67f39da13430dcf559f3901a3ad4774676132070357928f"
+  },
+  "review_evidence": {
+    "revision": "5259bcec53c4c9da80855369a502b91a969186dbac4bbd3e54bae02310ade5c5",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-9d0ff35386a63183 && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\447d4fd9-fd03-4a41-9468-09bad8629d48",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_tasks.py"
+  ],
+  "native_readback": {
+    "child_id": 390,
+    "child_version": 2,
+    "parent": {
+      "id": 379,
+      "version": 4
+    },
+    "project_id": 6,
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/9"
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "child_id": 390,
+    "retrieval_count": 1,
+    "references": [
+      {
+        "native_id": 390,
+        "citation": "/work_packages/390"
+      }
+    ]
+  }
+}

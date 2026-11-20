@@ -1,0 +1,164 @@
+{
+  "status": "OWNER_REVIEWED_THREE_INTENTS_NOT_QUALITY_ACCEPTANCE",
+  "author": "implementation assistant; not independent evaluator",
+  "human_reviewed": true,
+  "scored_or_tuned": false,
+  "source": {
+    "native_id": 392,
+    "project_id": 6,
+    "lock_version": 0,
+    "subject": "RECOVERY-P6-129e06908220",
+    "description": "Controlled Project6 recovery fixture. ORBIT-CANONICAL recovery requires a durable index failure receipt and current source citation. Not a coding task.",
+    "citation": "/work_packages/392",
+    "source_sha256": "359f80f734510115ac604fa0add226e53912f1e6009259f15d2a5d1228c3c95f",
+    "frozen_artifact_sha256": "17f9411c3bc0b34f60721706763af87c749a0d874d18900ead2f78559ffe8176",
+    "description_sha256": "530794e7a03827fc9fd913c0e758fb1fe35b1c58d9ad22ddb7f84b099270323e",
+    "source_sha256_meaning": "canonical full Native read-back hash supplied by n8n source capture; not the description hash or salted knowledge document ID"
+  },
+  "scope": "Each query restricted to native_ids=[392], frozen Native description v0, Project6; human permission/visibility must still be verified on a live call.",
+  "cards": [
+    {
+      "id": "review:recovery-requirements:vi",
+      "language": "vi",
+      "kind_proposed": "positive",
+      "query": "Theo tài liệu WP392, phục hồi ORBIT-CANONICAL cần những bằng chứng nào?",
+      "native_ids": [
+        392
+      ],
+      "expected_source_proposed": [
+        392
+      ],
+      "evidence": {
+        "text": "ORBIT-CANONICAL recovery requires a durable index failure receipt and current source citation.",
+        "start": 38,
+        "end": 132,
+        "sha256": "beeb1716064034b045ab8fbbecef392473b4269dce214d1203a7d9a1abdb5a14",
+        "offset_unit": "Python Unicode code points within description"
+      },
+      "proposed_judgment": "Cần cả durable index failure receipt và citation của source hiện hành; không phải chứng cứ một coding run đã chạy.",
+      "owner_judgment": "AGREE",
+      "owner_correction": null,
+      "review_status": "OWNER_REVIEWED"
+    },
+    {
+      "id": "review:recovery-requirements:en",
+      "language": "en",
+      "kind_proposed": "positive",
+      "query": "According to WP392, what evidence is required for ORBIT-CANONICAL recovery?",
+      "native_ids": [
+        392
+      ],
+      "expected_source_proposed": [
+        392
+      ],
+      "evidence": {
+        "text": "ORBIT-CANONICAL recovery requires a durable index failure receipt and current source citation.",
+        "start": 38,
+        "end": 132,
+        "sha256": "beeb1716064034b045ab8fbbecef392473b4269dce214d1203a7d9a1abdb5a14",
+        "offset_unit": "Python Unicode code points within description"
+      },
+      "proposed_judgment": "Both a durable index failure receipt and a current source citation are required. This is a fixture requirement, not proof of a completed run.",
+      "owner_judgment": "AGREE",
+      "owner_correction": null,
+      "review_status": "OWNER_REVIEWED"
+    },
+    {
+      "id": "review:coding-premise:vi",
+      "language": "vi",
+      "kind_proposed": "positive",
+      "query": "WP392 có phải task viết code cần Dev agent thực thi không?",
+      "native_ids": [
+        392
+      ],
+      "expected_source_proposed": [
+        392
+      ],
+      "evidence": {
+        "text": "Not a coding task.",
+        "start": 133,
+        "end": 151,
+        "sha256": "d613e4434b6d171e82197ee79734145fcad03c4843decde55fdbec5cc9f6de17",
+        "offset_unit": "Python Unicode code points within description"
+      },
+      "proposed_judgment": "Không. Mô tả ghi rõ đây không phải coding task; không suy diễn về task khác.",
+      "owner_judgment": "AGREE",
+      "owner_correction": null,
+      "review_status": "OWNER_REVIEWED"
+    },
+    {
+      "id": "review:coding-premise:en",
+      "language": "en",
+      "kind_proposed": "positive",
+      "query": "Is WP392 a coding task for a Dev agent?",
+      "native_ids": [
+        392
+      ],
+      "expected_source_proposed": [
+        392
+      ],
+      "evidence": {
+        "text": "Not a coding task.",
+        "start": 133,
+        "end": 151,
+        "sha256": "d613e4434b6d171e82197ee79734145fcad03c4843decde55fdbec5cc9f6de17",
+        "offset_unit": "Python Unicode code points within description"
+      },
+      "proposed_judgment": "No. The source explicitly says this is not a coding task.",
+      "owner_judgment": "AGREE",
+      "owner_correction": null,
+      "review_status": "OWNER_REVIEWED"
+    },
+    {
+      "id": "review:retry-interval:vi",
+      "language": "vi",
+      "kind_proposed": "negative",
+      "query": "Riêng mô tả WP392 quy định phải đợi chính xác bao nhiêu giây giữa hai lần retry?",
+      "native_ids": [
+        392
+      ],
+      "expected_source_proposed": [],
+      "evidence": null,
+      "proposed_judgment": "ABSTAIN: mô tả không đưa ra retry interval. Không trả lời không có retry; không suy diễn interval từ cấu hình Gateway hoặc nguồn ngoài scope.",
+      "owner_judgment": "AGREE",
+      "owner_correction": null,
+      "review_status": "OWNER_REVIEWED"
+    },
+    {
+      "id": "review:retry-interval:en",
+      "language": "en",
+      "kind_proposed": "negative",
+      "query": "In the WP392 description alone, exactly how many seconds must pass between retry attempts?",
+      "native_ids": [
+        392
+      ],
+      "expected_source_proposed": [],
+      "evidence": null,
+      "proposed_judgment": "ABSTAIN: no retry interval is stated in this scoped description. This does not assert that retries do not exist.",
+      "owner_judgment": "AGREE",
+      "owner_correction": null,
+      "review_status": "OWNER_REVIEWED"
+    }
+  ],
+  "limitations": [
+    "6 wording cases, only3 correlated intents,4positive+2negative; too small for quality acceptance",
+    "controlled fixture cannot establish representative semantic RAG quality",
+    "source and queries are now visible to implementation; no unseen-document or independent-holdout claim",
+    "negative judgments apply only to explicitly scoped description, not global semantic absence",
+    "owner review is a factual judgment, not approval to deploy failed candidate"
+  ],
+  "independent_holdout_protocol": [
+    "A separate evaluator authors new cases and evidence before any candidate scoring; labels must state actual reviewer identity/type.",
+    "Split by intent before lock, keep paired VN/EN wording in one split; include positive, no-answer, false-premise, ACL, stale/deleted and multi-source cases.",
+    "Publish only source/case counts, plan and SHA256; store holdout questions/labels privately outside implementation context.",
+    "Freeze source/model/config/tests before one qualification run; verify source version and citation offsets, report answer and retrieval metrics separately.",
+    "No tuning on failed/consumed holdout; retain failed evidence and create independently authored replacement for later candidates."
+  ],
+  "review": {
+    "reviewer": "Project Owner in current chat",
+    "decision": "Đồng ý cả ba nhãn",
+    "utc": "2026-11-03T13:40:15.577911+00:00",
+    "original_packet_sha256": "4a8c97e6f63abdd7a061adce174ae6ca8d36d945e2424b64a9cf11b7874311cf",
+    "coverage": "three intents, paired Vietnamese/English wording; not representative acceptance benchmark"
+  }
+}

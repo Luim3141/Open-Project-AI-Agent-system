@@ -1,0 +1,302 @@
+{
+  "status": "FRESH_SIX_ROLE_READ_ONLY_VERIFIED",
+  "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+  "trace_id": "20518d36-7d10-4f82-87bf-7912fb8bd0e8",
+  "task_id": "14907898-b363-4ea9-9802-7d40033f5aaf",
+  "request_id": "807439d2-c17f-4d4d-9184-2966f819e8a4",
+  "actor_id": 19,
+  "project_id": 5,
+  "route": "Caller-bound WF03 -> durable Gateway run -> fresh Native context -> Gemini Supervisor +BA+FE+BE+QA -> local Reviewer -> persisted report/monitor",
+  "native_source_ids": [
+    370
+  ],
+  "native_333_unchanged": true,
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "native_mutations": 0,
+  "proposal_count_unchanged": true,
+  "execution_mode": "LIVE_GEMINI",
+  "model": "gemini-3.5-flash-lite",
+  "model_calls": 5,
+  "http_attempts": 10,
+  "total_tokens": 14303,
+  "provider_receipts": [
+    {
+      "id": "728dc2f1-ca30-408e-9b7a-be3035d00fa1",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "supervisor",
+      "phase": "countTokens",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": null,
+      "http_status": 200,
+      "attempt": 0,
+      "usage": null,
+      "input_tokens": 1648,
+      "duration_seconds": 0.459
+    },
+    {
+      "id": "ddf32a6e-4bc5-4c0f-aac9-9965120f78f3",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "supervisor",
+      "phase": "generateContent",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": "gemini-3.5-flash-lite",
+      "http_status": 200,
+      "attempt": 0,
+      "usage": {
+        "candidatesTokenCount": 325,
+        "promptTokenCount": 1630,
+        "totalTokenCount": 1955
+      },
+      "input_tokens": null,
+      "duration_seconds": 1.984
+    },
+    {
+      "id": "8f9496ad-ce64-4500-846d-edaff90bf76e",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "ba",
+      "phase": "countTokens",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": null,
+      "http_status": 200,
+      "attempt": 0,
+      "usage": null,
+      "input_tokens": 1689,
+      "duration_seconds": 0.362
+    },
+    {
+      "id": "45b5003c-2f36-491a-83ef-d549248f2df5",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "ba",
+      "phase": "generateContent",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": "gemini-3.5-flash-lite",
+      "http_status": 200,
+      "attempt": 0,
+      "usage": {
+        "candidatesTokenCount": 406,
+        "promptTokenCount": 1671,
+        "thoughtsTokenCount": 984,
+        "totalTokenCount": 3061
+      },
+      "input_tokens": null,
+      "duration_seconds": 5.209
+    },
+    {
+      "id": "de68bc44-d95d-4a6d-a273-e1f13b2ba49e",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "fe",
+      "phase": "countTokens",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": null,
+      "http_status": 200,
+      "attempt": 0,
+      "usage": null,
+      "input_tokens": 1932,
+      "duration_seconds": 0.326
+    },
+    {
+      "id": "4bc788fe-d1af-47c6-abc6-621e6fb4a927",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "fe",
+      "phase": "generateContent",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": "gemini-3.5-flash-lite",
+      "http_status": 200,
+      "attempt": 0,
+      "usage": {
+        "candidatesTokenCount": 244,
+        "promptTokenCount": 1914,
+        "thoughtsTokenCount": 1303,
+        "totalTokenCount": 3461
+      },
+      "input_tokens": null,
+      "duration_seconds": 5.352
+    },
+    {
+      "id": "a277ccd7-d64d-402e-95cf-deac2fa4057c",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "be",
+      "phase": "countTokens",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": null,
+      "http_status": 200,
+      "attempt": 0,
+      "usage": null,
+      "input_tokens": 2135,
+      "duration_seconds": 0.369
+    },
+    {
+      "id": "d27f909f-6b17-4323-8e60-a98baa5c25e9",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "be",
+      "phase": "generateContent",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": "gemini-3.5-flash-lite",
+      "http_status": 200,
+      "attempt": 0,
+      "usage": {
+        "candidatesTokenCount": 242,
+        "promptTokenCount": 2117,
+        "thoughtsTokenCount": 777,
+        "totalTokenCount": 3136
+      },
+      "input_tokens": null,
+      "duration_seconds": 3.801
+    },
+    {
+      "id": "aa2b5f09-c19d-4789-a419-49d0a0810890",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "qa",
+      "phase": "countTokens",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": null,
+      "http_status": 200,
+      "attempt": 0,
+      "usage": null,
+      "input_tokens": 2342,
+      "duration_seconds": 0.416
+    },
+    {
+      "id": "852bf5d7-b4d5-4b41-9b4a-8dd2eac7e1f3",
+      "actor": 19,
+      "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+      "agent": "qa",
+      "phase": "generateContent",
+      "state": "LIVE_SUCCESS",
+      "model": "gemini-3.5-flash-lite",
+      "provider_model_version": "gemini-3.5-flash-lite",
+      "http_status": 200,
+      "attempt": 0,
+      "usage": {
+        "candidatesTokenCount": 366,
+        "promptTokenCount": 2324,
+        "totalTokenCount": 2690
+      },
+      "input_tokens": null,
+      "duration_seconds": 2.101
+    }
+  ],
+  "actor_scoped_outputs": [
+    {
+      "agent": "ba",
+      "state": "COMPLETED",
+      "model_used": true,
+      "references": [
+        {
+          "lock_version": 1,
+          "schema_version": 1,
+          "work_package_id": 370
+        }
+      ],
+      "advisory_preview": "Phân tích phối hợp đa vai trò (BA, FE, BE, QA) cho Work Package #370 với tiêu chí chấp nhận liên quan đến phê duyệt đề xuất từ PM, Native readback và đồng bộ RAG bền vững. Đây là tài nguyên test E2E ở trạng thái NEW, và phân tích này chỉ mang tính khuyến nghị không thực thi thay đổi.\n- BA xác nhận tiêu chí chấp nhận của #370 yêu cầu phê duyệt chính xác từ PM, Native readback và RAG sync bền vững.\n- FE lưu ý tài nguyên #370 chưa định nghĩa thành phần UI cụ thể, cần tuân thủ tiêu chuẩn accessibility khi phát triển.\n- BE đánh giá các yêu cầu về approval, idempotency, Native readback và RAG sync c"
+    },
+    {
+      "agent": "fe",
+      "state": "COMPLETED",
+      "model_used": true,
+      "references": [
+        {
+          "lock_version": 1,
+          "schema_version": 1,
+          "work_package_id": 370
+        }
+      ],
+      "advisory_preview": "Phân tích giao diện người dùng và khả năng tiếp cận (accessibility) cho Work Package #370 tập trung vào trạng thái UI, các trạng thái tải/lỗi và hợp đồng API phía client.\n- Work Package #370 chưa có thành phần UI cụ thể được định nghĩa rõ ràng, đòi hỏi phải thiết kế các trạng thái loading, empty và error.\n- Cần đảm bảo tính sẵn sàng về accessibility và responsive cho các thành phần UI tương tác với Native API.\n- Định nghĩa rõ các trạng thái UI (loading, empty, error) cho thành phần giao diện của #370.\n- Áp dụng tiêu chuẩn accessibility (như ARIA labels, điều hướng bàn phím) cho các thành phần "
+    },
+    {
+      "agent": "be",
+      "state": "COMPLETED",
+      "model_used": true,
+      "references": [
+        {
+          "lock_version": 1,
+          "schema_version": 1,
+          "work_package_id": 370
+        }
+      ],
+      "advisory_preview": "Phân tích backend chuyên sâu cho Work Package #370 tập trung vào quy trình approval, tính idempotency, Native readback và đồng bộ RAG bền vững theo ngữ cảnh kiểm thử E2E.\n- Work Package #370 là tài nguyên kiểm thử E2E ở trạng thái NEW yêu cầu xác thực API chặt chẽ.\n- Cần đảm bảo cơ chế approval chính xác từ PM và tính idempotency cho các thao tác API.\n- Native readback và đồng bộ RAG bền vững là các yếu tố cốt lõi cần được kiểm tra ở tầng backend.\n- Xây dựng các ca kiểm thử API tập trung vào tính idempotency và xử lý lỗi đồng thời.\n- Kiểm tra cơ chế xác thực quyền hạn và tính toàn vẹn dữ liệu "
+    },
+    {
+      "agent": "qa",
+      "state": "COMPLETED",
+      "model_used": true,
+      "references": [
+        {
+          "lock_version": 1,
+          "schema_version": 1,
+          "work_package_id": 370
+        }
+      ],
+      "advisory_preview": "Phân tích và đề xuất ca kiểm thử cũng như giới hạn bằng chứng cho Work Package #370 tập trung vào kiểm chứng tiêu chí chấp nhận, tính idempotency, Native readback và đồng bộ RAG bền vững.\n- Work Package #370 là tài nguyên kiểm thử E2E ở trạng thái NEW với marker CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635.\n- Yêu cầu acceptance criteria bao gồm: phê duyệt chính xác từ PM, Native readback và RAG sync bền vững.\n- Chưa có thiết kế giao diện UI cụ thể cho #370, cần bổ sung trạng thái loading, empty, error và kiểm tra accessibility.\n- Đề xuất ca kiểm thử E2E xác thực phê duyệt chính xác từ PM và"
+    },
+    {
+      "agent": "reviewer",
+      "state": "COMPLETED",
+      "model_used": false,
+      "references": [
+        {
+          "lock_version": 1,
+          "schema_version": 1,
+          "work_package_id": 370
+        }
+      ],
+      "advisory_preview": "### BÁO CÁO ĐỐI CHIẾU VÀ KIỂM ĐỊNH TÍNH NHẤT QUÁN (REVIEWER REPORT)\n#### 1. Kết quả đối chiếu bằng chứng native:\n- Tác vụ 1: **TRÍCH DẪN HỢP LỆ** (Công việc liên quan: #370) — ID và lock_version của các trích dẫn khớp nguồn; nội dung phân tích/dự thảo vẫn cần người dùng thẩm định.\n- Tác vụ 2: **TRÍCH DẪN HỢP LỆ** (Công việc liên quan: #370) — ID và lock_version của các trích dẫn khớp nguồn; nội dung phân tích/dự thảo vẫn cần người dùng thẩm định.\n- Tác vụ 3: **TRÍCH DẪN HỢP LỆ** (Công việc liên quan: #370) — ID và lock_version của các trích dẫn khớp nguồn; nội dung phân tích/dự thảo vẫn cần ng"
+    }
+  ],
+  "monitor": {
+    "agents": 6,
+    "calls": 5,
+    "event_count": 43,
+    "trace_records": 34,
+    "reviewer_mode": "LOCAL_DETERMINISTIC"
+  },
+  "live_readback_tests": {
+    "persisted_run_and_receipts": true,
+    "six_role_graph": true,
+    "same_request_same_run_no_new_model_calls": true,
+    "BA_read_PM_run_http": 403
+  },
+  "provider_counts_before": {
+    "provider_receipts": 96,
+    "usage": 101,
+    "proposals": 42,
+    "knowledge_jobs": 3,
+    "active_queue": 0
+  },
+  "provider_counts_after": {
+    "provider_receipts": 106,
+    "usage": 111,
+    "proposals": 42,
+    "knowledge_jobs": 3,
+    "active_queue": 0
+  },
+  "gateway_image": "sha256:aae492ee11fa1605f24ffad50374d3e22c3c94dc1cacba2f70ce4ffcc6016d8a",
+  "credential_changes": false,
+  "staging_operations": false,
+  "billing_policy": "Existing continuous FREE_ONLY/billing-disabled proof; no fresh Console billing verification",
+  "limits": [
+    "Only testWP370 content, not business feature/code implementation or browser acceptance",
+    "Reviewer local reference/policy validation, not executed tests or semantic correctness proof",
+    "RAG retrieval is wired and independently live verified; no per-run persisted RAG-hit/context-digest receipt yet, so this does not certify full ScenarioA/F provenance",
+    "No new Native write in this model run; earlier approved three-operation pipeline is separate evidence",
+    "Core FE/BE UI labels remain source-only pending deployment/UAT"
+  ]
+}

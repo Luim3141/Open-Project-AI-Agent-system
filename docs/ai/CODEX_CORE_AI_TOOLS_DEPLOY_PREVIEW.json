@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-10-25T03:08:15.088090+00:00",
+  "status": "PREPARED_NOT_DEPLOYED",
+  "scope": "Main Web only, one controller file; Gateway/Core worker/cron/DB/n8n unchanged",
+  "parent_image": "sha256:dcb6018226280bde73fb8812e463bdcb5ef6896cbe9a1c65be7516d993f4a3d4",
+  "candidate_tag": "qldapm-core:codex-ai-tools-20261025",
+  "candidate_image": "sha256:1bbe160472068a64d3a965fe2bbbd280c2095d17ce285785a3ad0df40825a61f",
+  "controller_before_sha256": "3e541fd2a802d1abf164027895caf9cdf0d945e6530a9945ec07b21dcbed6c51",
+  "controller_after_sha256": "0e75b33890e655aa25e78bd90ebd6b65b9eed915f6d521bfb13633f2db952e51",
+  "rollback_tag": "qldapm-core:codex-wbs-controls-20261024",
+  "rollback_config": "private:pre-core-ai-tools-core-ui-bridge.yml",
+  "rollback": "Restore only prior Web image override; retain current DB/Gateway and approved375. No old DB restore.",
+  "native_count": 338,
+  "native_fingerprint": "c6f4373b58951e17e0d8b766b393dc8358fa99337d724be4e5826ff82787108b",
+  "native_writes": 0,
+  "gateway_or_workflow_changes": 0,
+  "schema_changes": false,
+  "staging_operations": false,
+  "qualification": "Actual controller/policy methods under isolated framework/transport fixtures; six-role selector, own actor, auto_execute false, forbidden model review command; full pure Ruby suite required before deploy"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "99dd5576-afff-47b3-b5d1-f80eb3a3eb2d",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": "def9d0a8852af42a407bd42fb0051615a2de9331",
+  "deadline": 1793368302.3105807,
+  "definition": {
+    "acceptance": {
+      "AC1": "POST /tasks accepts nonblank title, returns201 with id,title,status=todo",
+      "AC2": "GET /tasks returns stored tasks, stable id order",
+      "AC3": "create_app(database_path) preserves tasks when reopened with same SQLite file",
+      "AC4": "blank title is rejected422; SQL text is stored as data",
+      "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+      "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+      "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+      "AC8": "GET / returns self-contained HTML web UI with error recovery and aria-live",
+      "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; Unicode casefold search",
+      "H1": "GET /healthz returns HTTP 200 with JSON status: ok, app: mini-task-manager"
+    },
+    "acceptance_file": "test_crud_web.py",
+    "base_branch": "codex/openclaw-feedback-4d13e695555a8d44",
+    "base_unit": "feedback-4d13e695555a8d44",
+    "feedback": "Bo sung route GET /healthz tra ve JSON {\"status\": \"ok\", \"app\": \"mini-task-manager\", \"version\": \"1.0.0\"} va unit test trong test_crud_web.py.",
+    "kind": "development",
+    "native_id": 384,
+    "title": "Them route GET /healthz va unit test status ok"
+  },
+  "engine": "openclaw",
+  "kind": "development",
+  "native_id": 384,
+  "project_id": 6,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "auto-health-check-v1-1793366501",
+  "source_version": 0,
+  "spec": "Bo sung route GET /healthz tra ve JSON {status: 'ok', app: 'mini-task-manager', version: '1.0.0'} va unit test trong test_crud_web.py.",
+  "spec_sha256": "896908cbae9188455c2f2ae9c414882a3a6c2441e8a85b1abe010b11c5b16d41",
+  "stage": "ADMITTED",
+  "unit": "health-check-v1",
+  "write_scope_ids": []
+}

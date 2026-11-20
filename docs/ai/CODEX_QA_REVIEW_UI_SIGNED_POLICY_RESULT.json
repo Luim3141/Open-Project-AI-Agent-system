@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "actor": 18,
+      "role": "AI_SYSTEM_OWNER",
+      "http": 403,
+      "error": "QA_EVIDENCE_SCOPE_DENIED",
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "role": "PM",
+      "http": 403,
+      "error": "QA_EVIDENCE_SCOPE_DENIED",
+      "status": "PASS"
+    },
+    {
+      "actor": 20,
+      "role": "BA",
+      "http": 403,
+      "error": "INDEPENDENT_AUTHENTICATED_QA_REVIEW_REQUIRED",
+      "status": "PASS"
+    },
+    {
+      "actor": 21,
+      "role": "BE",
+      "http": 403,
+      "error": "INDEPENDENT_AUTHENTICATED_QA_REVIEW_REQUIRED",
+      "status": "PASS"
+    },
+    {
+      "actor": 22,
+      "role": "FE",
+      "http": 403,
+      "error": "INDEPENDENT_AUTHENTICATED_QA_REVIEW_REQUIRED",
+      "status": "PASS"
+    },
+    {
+      "actor": 23,
+      "role": "QA",
+      "http": 403,
+      "error": "INDEPENDENT_AUTHENTICATED_QA_REVIEW_REQUIRED",
+      "status": "PASS"
+    },
+    {
+      "case": "caller_approval_field_denied",
+      "http": 409,
+      "status": "PASS"
+    },
+    {
+      "case": "non_string_decision_denied",
+      "http": 409,
+      "status": "PASS"
+    },
+    {
+      "case": "signed_nonce_replay_denied",
+      "http": 403,
+      "status": "PASS"
+    },
+    {
+      "case": "forged_signature_denied",
+      "http": 403,
+      "status": "PASS"
+    }
+  ],
+  "native_writes": 0,
+  "main_evidence_reviews": 0,
+  "scope": "Real signed internal bridge and fresh Native identities; negative tests only, no browser/session qualification"
+}

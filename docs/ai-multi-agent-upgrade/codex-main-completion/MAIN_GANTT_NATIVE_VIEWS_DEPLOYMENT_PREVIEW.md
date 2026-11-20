@@ -1,0 +1,13 @@
+# Qualified Main Gantt/Core and Native Views — 21/10/2026
+
+Authority: Owner's Main takeover sectionsIV/X already approve qualified app/config deployment and four Native Boards. No additional credential, business-data, public-access or provider authorization is implied.
+
+Candidate Core `sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f`, based on currently serving dde3c32e…;47source files verified. Only Gantt navigation partial changes relative to serving Core. Gateway456c38f6… remains unchanged. No migrations/seeder, database/n8n/Tunnel/Stage/CSDLDPT restart.
+
+Actual candidate image has been started on the isolated Main clone, with its previous browser container retained stopped. Native browser Gantt5checks PASS:500/all329,11collapsed roots, retained Task/Subtask expansion, explicit100/filter/sort. Native Views72checks PASS: correct scope/column contents/329coverage,4roles denied configuration writes, actual Native assignee drag49and revert, all4Boards load, hierarchy toggle retained. Node assertions cover URL/malformed input, late Native event handlers, actual collapse acknowledgment and no recollapse. Fresh `backup-20261021-030013` restored into a NEW clone database:221table/sequence fingerprints match, SQLite cold integrity PASS.
+
+Apply first: set only Main OP_IMAGE/CORE_IMAGE to candidate; recreate Main web/worker/cron through official Compose with --no-deps --no-build, without seeder. Expected app interruption around1–3minutes. Verify health, all5Native identities, runtime47file hashes, unchanged WPs/relations/RBAC/TOTP/secrets and all15other serving containers. Rollback selects the previous immutable dde3c32eCore and its private env/image-lock, which is the healthy qualified current baseline; no DB/SQLite restore or data deletion.
+
+Then: Native API authenticated as actual PM19 creates the scoped Gantt query,23total query definitions including board columns,4Native Boards and4undated/unshared Sprint Versions if absent. Resolve actual Main IDs; never copy Clone/Stage IDs. Preserve existing query29 and Board8. No dates/status/assignee/parent/type/subject/Sprint memberships or historical executions change. Roadmap is expected empty until a separately approved membership schedule exists.
+
+Configuration rollback is non-destructive: retain newly created independent configuration, record IDs and stop on mismatch; do not delete existing or newly created business data to recover an app failure. Idempotent re-read must preserve exact matching definitions and reject ambiguous/different names. No Google calls in either apply step; the separately approved connectivity smoke is complete and must not be replayed.

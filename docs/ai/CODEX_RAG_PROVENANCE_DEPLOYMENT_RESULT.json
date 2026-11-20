@@ -1,0 +1,96 @@
+{
+  "old_image": "sha256:aae492ee11fa1605f24ffad50374d3e22c3c94dc1cacba2f70ce4ffcc6016d8a",
+  "candidate_image": "sha256:277408024c5ec10fcce0077b1d3ecaceff4be5a9ff461026ae0a2ebb8b5cd090",
+  "candidate_tag": "qldapm-ai:codex-rag-provenance-20261023",
+  "module_sha256": {
+    "service.py": "1f114edb4d8ba89794aa6740a9665ee52a4c48344ebbb7d0e6bee94c43a2cf2f",
+    "live_agents.py": "0c434c5d35f753da2964155910f20601f5ed3913c67bf755fd33c4d50549c9c2",
+    "gemini.py": "252e43999800d7c0769c523946993c765281423d745234eeff67c314f6a4c9f5",
+    "catalog.py": "45641066c3080cc46397713b5afc2aa28efda8adfc3d0a705deceef56495ff1c"
+  },
+  "gateway_backup_sha256": "459ab69d1f49672bb295907f7a4ace1917306a05ccf6ebea7ae22d6c14c813f6",
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "scope": "Main Gateway four modules only; optional1..10NativeID filter before RAG ranking, per-run authorized Native/RAG/base-context digests, actual post-SDK HTTP JSON body hash in structured provider receipt. No credentials/config/schema/Nativewrite/Core/n8n/Staging changes.",
+  "tests": {
+    "linux_run": 287,
+    "linux_passed": 284,
+    "linux_node_skipped": 3,
+    "windows_related_passed": 64,
+    "test_harness_corrections": [
+      "PYTHONPATH=/app and empty runtime for isolated no-network container; mount automation and source-only proposal_ux helper for qualification",
+      "Legacy provider-wait fixture required project_id3; no production quota behavior changed",
+      "Initial request hash mismatch exposed SDK body transformation; hash now computed at existingBoundedClient.send, exact actualMockHTTPJSON verified"
+    ]
+  },
+  "rollback": "Restore exact private pre-rag-provenance.env and recreateGatewayonly on previous image; keep additive receipt JSON/SQLite/proposals/jobs and existing Core hostname; never replay Native writes.",
+  "limits": [
+    "Historical runs/receipts are not retrofitted or rerun",
+    "Source/snippet hashes prove supplied context and request correlation, not semantic model correctness",
+    "No fresh model/write-chain acceptance until separately executed and read back"
+  ],
+  "fresh_probe": "Read-only scoped knowledge query + legacy stored run readback; no new model call during deployment",
+  "status": "DEPLOYED_AND_SCOPED_SEARCH_VERIFIED",
+  "health_http": 200,
+  "serving_four_module_sha256_verified": true,
+  "native_333_unchanged": true,
+  "six_sensitive_files_and_security_hashes_unchanged": true,
+  "nine_other_main_containers_unchanged": true,
+  "provider_usage_proposals_and_knowledge_jobs_unchanged": true,
+  "live_probes": [
+    {
+      "name": "scoped_marker_370_v1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "absent_source_never_expands_scope",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "reject_boolean_id",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "reject_null_filter",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "reject_duplicate_ids",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "name": "legacy_completed_run_readable_no_replay",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "ba_cannot_read_pm_run",
+      "status": 403,
+      "passed": true
+    }
+  ],
+  "live_citation": {
+    "title": "[CODEX TEST] Main Native E2E fdae09fb",
+    "snippet": "...r-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a busine...",
+    "native_id": 370,
+    "document_id": "250fe506c7d06d6cccf3eba004c164f85d7bf16b52e318c5a658d1657b97a6e5",
+    "lock_version": 1,
+    "source_id": "actor:19:wp:370",
+    "score": 0.03279,
+    "citation": "/work_packages/370",
+    "match_type": "HYBRID_RRF"
+  },
+  "provider_counts_after_read_only_probe": {
+    "gemini_call_receipts": 106,
+    "gemini_usage": 111,
+    "proposals": 42,
+    "knowledge_sync": 3
+  },
+  "new_model_calls": 0,
+  "native_writes": 0,
+  "verifier_correction": "Initial read-only verifier reached seven passed probes then failed cutting nested helper source; fixed outer newline boundary, no runtime change"
+}

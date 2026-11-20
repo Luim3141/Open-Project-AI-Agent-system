@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-25T04:40:49.812040+00:00",
+  "status": "DEPLOYED_HEALTHY_RUNTIME_REGRESSION_PENDING",
+  "authorization": "PUBLICATION_REDACTED",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-native-qa-20261025-v2",
+      "image": "sha256:4fa7a0c242a33442a92195cf5d2964c554b8811cb1afd4a706d50e3b3c0df16d"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-native-qa-20261025",
+      "image": "sha256:8fe51b6885aea08f6654ebb5719ca157da32d2156923c999ded0af9dae8bc00a"
+    }
+  },
+  "files": {
+    "openproject\\ai\\gateway\\app.py": {
+      "sha256": "b6cbd2b1884d0d4381e69d4cc88b1f99876a5cf898dd04692da3c2408edb9a15",
+      "old_sha256": "7867e6580fdf83ef12de618ba8f55657853a8a2e62166724783aaec1ea09482d",
+      "kind": "gateway"
+    },
+    "openproject\\ai\\gateway\\catalog.py": {
+      "sha256": "e1497a5e0ea1f66e5a21744aedef0812a80a6598d64d45259bb91e21b8d69d4b",
+      "old_sha256": "cde5070f50b85265a215fc899761a6891c756eea0af6af01ff212412882e7f92",
+      "kind": "gateway"
+    },
+    "openproject\\ai\\gateway\\native_qa.py": {
+      "sha256": "9febeaee8fdbcf3171426f44d357d12aa7ae3c1640593e643b1da05ff007de02",
+      "old_sha256": "df6a4e326c27437d3867149a562e02c7d265a410791e291c50a59ee62e201188",
+      "kind": "gateway"
+    },
+    "openproject\\ai\\gateway\\permissions.py": {
+      "sha256": "26e842af1feb70acb97c24ced8b3a70111f6649d05cfd859ca9eeb75d3c4f707",
+      "old_sha256": "be250af28518defb6f9e8786ab0764e2c61074c812d64ecace42b10a325240f6",
+      "kind": "gateway"
+    },
+    "openproject\\ai\\gateway\\qa_agent.py": {
+      "sha256": "4d296b697415cdec6404321eeeacea89113ccf6329630ad1773bc8381267e535",
+      "old_sha256": "94554a829358051a8fb8e84c8606aba479d0b95bd3115d586f1b5b15745b2363",
+      "kind": "gateway"
+    },
+    "openproject\\ai\\gateway\\service.py": {
+      "sha256": "ed1c9c88ca5566d2fad95258d614cf3fe55346237249524618c95a253ddfa3b5",
+      "old_sha256": "d59b0f5078c643270c1e53f83a9db73572296914a212eb639b83c612fe3b51e4",
+      "kind": "gateway"
+    },
+    "openproject\\ai\\gateway\\store.py": {
+      "sha256": "5a061eee89101aa177b484aaf76259b56e70b2a7ea2aec67ae2439b214d8e308",
+      "old_sha256": "50f2e04a6694dabe6f2232d1eee34dc32c499bbdb3eb3934fb64f87079930d65",
+      "kind": "gateway"
+    },
+    "openproject\\ai\\gateway\\native_qa_runs.py": {
+      "sha256": "6e60788143e3006893b54db0f3f119cd018faa176fcb986424f720ad521b90d8",
+      "old_sha256": null,
+      "kind": "gateway"
+    },
+    "openproject\\ai\\core\\overlay\\config\\routes.rb": {
+      "sha256": "91954072c414300ade685bf0c4b5df1158c5f4275ec26f8795c239ee7f5789ca",
+      "old_sha256": "4e767f6a538337c7870a54704b1745006aa6f23c69c8a1fe946c1e944dc0d249",
+      "kind": "core"
+    },
+    "openproject\\ai\\core\\overlay\\app\\controllers\\qldapm_ai_controller.rb": {
+      "sha256": "f9954d78e35ae9a6f1403042b1d75df36729d2e0a409702863c34c265e86ba21",
+      "old_sha256": "c52e117dbc46158e1f6785f95feca9d78c77a4751aebf0ffa402dccd814fb79d",
+      "kind": "core"
+    },
+    "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\qa_evidence.html.erb": {
+      "sha256": "0a2c1f8df70c3783a6ee954852c9b185f385a738cbdb81977bd9c3fdbb5e10b5",
+      "old_sha256": "06239784dd07ef47297e971a06b01b2a1a2a84624027b1a94f5f4ad54953f413",
+      "kind": "core"
+    },
+    "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\ai_bridge.rb": {
+      "sha256": "52f36ec212e5be82cce4da0fc7f3e6ac0e7431f8411de7ab0b31e51c311d84cd",
+      "old_sha256": "85c195b9fda07ef4f76f6f2434566865b4c68c5221a7ab69cbde5313a957646c",
+      "kind": "core"
+    }
+  },
+  "workflow": "WF11",
+  "workflow_before": "86a3a4dc-ff2c-47ab-bda0-d95153928f2f",
+  "workflow_candidate_sha256": "29542c48a4508184d0cf9558ff3f7d221e7e1d9915bb691dd2ff4be1106aea30",
+  "backups": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\qa-deployment",
+  "native_count": 338,
+  "queue_pending": 0,
+  "unknown_retained": 28,
+  "native_writes": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "rollback_gateway": "sha256:8c91c1c0ae3edf754615b302575d093fa45b5257ffa0b86f84d7872830a3c3ec",
+  "rollback_web": "sha256:175c337834cabb5e56689432cbb913e5dc4ef622d77b7e3e49d16333cdab85e2",
+  "rollback": "Restore only image selectors and exact prior WF11 definition; never restore old database",
+  "workflow_after": "3de06022-1bff-4a65-9152-414fe690beb8",
+  "workflow_id": "LeRVT3LWNBkJ2iz3",
+  "unrelated_containers_unchanged": 8,
+  "unrelated_workflows_unchanged": 15,
+  "physical_wp_rows_unchanged": "375|04ec20a24a553f3cea4deab0015c29ef"
+}

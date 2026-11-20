@@ -1,0 +1,203 @@
+{
+  "utc": "2026-11-02T08:00:32.295336+00:00",
+  "private_cache": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\phase2-evidence-clauses",
+  "files": {
+    "calibration-lock.json": {
+      "sha256": "b98b36380a4ada1de325ac762d8d0ba8931eaeb2cd1ebeefc12f8db6d69377ca",
+      "bytes": 770
+    },
+    "clauses-frozen.json": {
+      "sha256": "2dbabe9bef319b67a8c8e976a2fec3bb9f30ff9c6d339f16c5455661a533c338",
+      "bytes": 62150
+    },
+    "corpus-vectors.json": {
+      "sha256": "9261d1406b8a4b565c816962ec212644d8de3149aa8b69d997d044132224399e",
+      "bytes": 3475428
+    },
+    "dev-candidates.json": {
+      "sha256": "a1c2243c2c7341c16866808f3dfcfd629964733519c5b8f0b2435c311eb45d4d",
+      "bytes": 398596
+    },
+    "dev-evaluation-before-query-normalization.json": {
+      "sha256": "b26aa2ba0065b019903fa77ca86b6eeea45e7f00d1bef09775d1ad508ff55043",
+      "bytes": 60515
+    },
+    "dev-evaluation.json": {
+      "sha256": "358f3fcea1cb0690a435bd5b675b6d7541c8dac6e9e3a84059b1900532bd0af2",
+      "bytes": 60520
+    },
+    "dev-pairs.json": {
+      "sha256": "89efe6cdaf3efa15703bd9ff782862931d5ca2c7fef1e621488e06cfc010b276",
+      "bytes": 322033
+    },
+    "dev-scores-before-query-normalization.json": {
+      "sha256": "3bda491801c421a07df657f0ddc641db9c1963464343b416bec8611f60892509",
+      "bytes": 341266
+    },
+    "dev-scores.json": {
+      "sha256": "c6d1c93fc3382960f1e15f7f0137a540908c9b47fba52a28d6fb876ab3b18dda",
+      "bytes": 331320
+    },
+    "labels-frozen.json": {
+      "sha256": "c2f00a47f3e103ab9690f458f410b20b9298f93d849b67f801cc48728df4f542",
+      "bytes": 68975
+    },
+    "source-manifest.json": {
+      "sha256": "3cd0fc63cbdb07f18d32f6c2f2f69ce0d74d118feefbc61dfee1a4be15ced8c5",
+      "bytes": 13874
+    }
+  },
+  "containers": [
+    {
+      "name": "qldapm-phase2-clause-dev",
+      "id": "ec43b28f22086bfa5a7a31f2156af845d628863c86a649c278fcbc2e095beaef",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "state": "exited",
+      "running": false,
+      "exit_code": 0,
+      "oom": false,
+      "started_utc": "2026-11-02T07:47:46.142799783Z",
+      "finished_utc": "2026-11-02T07:48:18.795331802Z",
+      "network": "none",
+      "memory": 805306368,
+      "nano_cpus": 1000000000,
+      "args": [
+        "/scripts/reranker_offline.py",
+        "score",
+        "--input",
+        "dev-pairs.json",
+        "--output",
+        "dev-scores.json"
+      ]
+    },
+    {
+      "name": "qldapm-phase2-clause-dev-normalized",
+      "id": "b6a2d3b4950b78c1fd2dbba17fb32ce2eaa621f5787b4789d6cccccb5320099f",
+      "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+      "state": "exited",
+      "running": false,
+      "exit_code": 0,
+      "oom": false,
+      "started_utc": "2026-11-02T07:58:27.59123441Z",
+      "finished_utc": "2026-11-02T07:58:57.62578206Z",
+      "network": "none",
+      "memory": 805306368,
+      "nano_cpus": 1000000000,
+      "args": [
+        "/scripts/reranker_offline.py",
+        "score",
+        "--input",
+        "dev-pairs.json",
+        "--output",
+        "dev-scores.json"
+      ]
+    }
+  ],
+  "active_owned_clause_containers": 0,
+  "holdout_query_artifacts": [],
+  "diagnostics": {
+    "supporting_span_in_pool": 22,
+    "positive_total": 28,
+    "best_support_logit_range": [
+      -7.409669399261475,
+      8.400079727172852
+    ],
+    "best_support_logit_median": -1.912975251674652,
+    "max_negative_logit_range": [
+      -6.354391574859619,
+      1.3771363496780396
+    ],
+    "max_negative_logit_median": -3.3443212509155273
+  },
+  "final_all_owned_experiment_inventory": {
+    "utc": "2026-11-02T08:03:00.769735+00:00",
+    "count": 12,
+    "active_count": 0,
+    "containers": [
+      {
+        "name": "qldapm-phase2-rag-20261102",
+        "id": "88d43fcd50baa214f90682b10b2e4653595136fdc48e2abcc181c1c2d7abccef",
+        "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-reranker-prepare",
+        "id": "4e30b8c4286220188f7ca0478de09ebcd4ebc4e4af7c77e533c8e2f4526780c8",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-reranker-venv",
+        "id": "4131e8e0834fc02eea5806f1a41129ba3ee1870dff5822a3e07ea7d51ec13cb5",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-reranker-install",
+        "id": "61b833aa0eeb14edfeb9a958381eb9b5b48633204614acd24f1b526a95b0911b",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-reranker-package-check",
+        "id": "b63567eef97aad71510e42e11406a256c7a2fd9301deb1c10a2437988d232bf2",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-reranker-smoke",
+        "id": "208e2c6d873fc73cb94452b7e33d9fdc2bb31fe6b960eab557a5497c747267bc",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-reranker-dev",
+        "id": "e28c718870c743afcb610a76175f55edfb0cd6bab3027259cb3ec472ec29b843",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-reranker-dev-representatives",
+        "id": "d0b790c7575e3e53dcf071db90c13c13f2b1bf173c4a6a06b422d547319b02c1",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-reranker-dev512",
+        "id": "8b1c8a2a979da0528de983c3ea7abc8bc198c1f262b12c77b5aec671d4faf47e",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-reranker-holdout512",
+        "id": "de18220a7ccb299f09d13a1b3cb8cb569f4c34cb50fe0a397928903bc72bf463",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-clause-dev",
+        "id": "ec43b28f22086bfa5a7a31f2156af845d628863c86a649c278fcbc2e095beaef",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      },
+      {
+        "name": "qldapm-phase2-clause-dev-normalized",
+        "id": "b6a2d3b4950b78c1fd2dbba17fb32ce2eaa621f5787b4789d6cccccb5320099f",
+        "image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+        "state": "exited",
+        "oom": false
+      }
+    ]
+  }
+}

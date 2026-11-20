@@ -1,0 +1,1365 @@
+{
+  "at": "2026-10-18T03:34:01.141140+00:00",
+  "containers": [
+    {
+      "name": "qldapm-ai-stage-quick-tunnel-1",
+      "image": "sha256:a80f54e29918ec66c82cdc7ad8fd9a65e3082e59825c0356d5737916959884c6",
+      "image_ref": "qldapm-quick-tunnel:candidate",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T22:21:39.439456555Z",
+      "restart_count": 1,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "/usr/local/bin/quick_tunnel_supervisor.sh"
+      ],
+      "command": null,
+      "ports": {},
+      "networks": [
+        "qldapm-ai-stage_stage-front"
+      ],
+      "mounts": [],
+      "env_names": [
+        "CADDY_VERSION",
+        "PATH",
+        "XDG_CONFIG_HOME",
+        "XDG_DATA_HOME"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-ai-stage-staging-gateway-1",
+      "image": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233",
+      "image_ref": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T22:47:55.606704854Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": null,
+      "command": [
+        "uvicorn",
+        "gateway.app:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090"
+      ],
+      "ports": {
+        "8090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18092"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-ai-stage_automation",
+        "qldapm-ai-stage_stage",
+        "qldapm-ai-stage_stage-front"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "Destination": "/qldapm-policy/free-tier-proof.json",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "Destination": "/state",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai-workspaces",
+          "Destination": "/workspaces",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "PATH",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED",
+        "PYTHON_SHA256",
+        "PYTHON_VERSION",
+        "QLDAPM_AI_ENVIRONMENT",
+        "QLDAPM_AI_RUNTIME",
+        "QLDAPM_AI_WORKSPACES",
+        "QLDAPM_GEMINI_FREE_PROOF"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-ai-stage-staging-web-1",
+      "image": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "image_ref": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T20:54:40.682536936Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "./docker/prod/entrypoint-slim.sh"
+      ],
+      "command": [
+        "ruby",
+        "/qldapm-operator/quick_tunnel_web.rb"
+      ],
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18091"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-ai-stage_stage",
+        "qldapm-ai-stage_stage-front"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\quick_tunnel_web.rb",
+          "Destination": "/qldapm-operator/quick_tunnel_web.rb",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage/deep-test-receipt.key",
+          "Destination": "/qldapm-ui/test-receipt.key",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai/ui.key",
+          "Destination": "/qldapm-ui/ui.key",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-assets/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "Destination": "/private",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "Destination": "/qldapm-access",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/core",
+          "Destination": "/qldapm-core",
+          "RW": false
+        }
+      ],
+      "env_names": [
+        "APP_DATA_PATH",
+        "APP_PATH",
+        "APP_USER",
+        "BUNDLE_APP_CONFIG",
+        "BUNDLE_JOBS",
+        "BUNDLE_PATH",
+        "BUNDLE_RETRY",
+        "BUNDLE_SILENCE_ROOT_WARNING",
+        "BUNDLE_WITHOUT",
+        "DATABASE_URL",
+        "DEBIAN_FRONTEND",
+        "DOCKER",
+        "GEM_HOME",
+        "LANG",
+        "OPENPROJECT_ADDITIONAL__HOST__NAMES",
+        "OPENPROJECT_ANGULAR_UGLIFY",
+        "OPENPROJECT_ATTACHMENTS__STORAGE__PATH",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__SECRET",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL",
+        "OPENPROJECT_EDITION",
+        "OPENPROJECT_HOST__NAME",
+        "OPENPROJECT_HTTPS",
+        "OPENPROJECT_INSTALLATION__TYPE",
+        "OPENPROJECT_RAILS__CACHE__STORE",
+        "OPENPROJECT_WEB_WORKERS",
+        "PATH",
+        "PGBIN",
+        "PGVERSION",
+        "PGVERSION_CHOICES",
+        "RAILS_ENV",
+        "RAILS_LOG_TO_STDOUT",
+        "RAILS_MAX_THREADS",
+        "RAILS_MIN_THREADS",
+        "RAILS_SERVE_STATIC_FILES",
+        "RUBY_DOWNLOAD_SHA256",
+        "RUBY_DOWNLOAD_URL",
+        "RUBY_VERSION",
+        "SECRET_KEY_BASE",
+        "USE_JEMALLOC"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-ai-stage-local-backup-1",
+      "image": "sha256:9713d54aad003b084e58035965156902f86c0ba7a638e41ab880d119ba9cbba8",
+      "image_ref": "sha256:9713d54aad003b084e58035965156902f86c0ba7a638e41ab880d119ba9cbba8",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T19:19:30.011246039Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "python3",
+        "-u",
+        "/trusted/local_backup.py"
+      ],
+      "command": [
+        "watch"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-ai-stage_stage"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "Destination": "/secrets/provider-proof.json",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-backups",
+          "Destination": "/backup",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-runtime/stage-runtime.json",
+          "Destination": "/secrets/stage-runtime.json",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/d9df6fbd073b8269faf0286639886d8bf249263e381bf3d1dccb2c3eb5c57fc0/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/jira_sync_backup.py",
+          "Destination": "/trusted/jira_sync_backup.py",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "Destination": "/gateway",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/n8n-owner",
+          "Destination": "/n8n-owner",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/radmin-caddy",
+          "Destination": "/radmin",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-assets/_data",
+          "Destination": "/assets",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/.env",
+          "Destination": "/secrets/runtime.env",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/local_backup.py",
+          "Destination": "/trusted/local_backup.py",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_n8n-data/_data",
+          "Destination": "/n8n",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "Destination": "/native-private",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free",
+          "Destination": "/provider-policy",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/n8n-stage/encryption.key",
+          "Destination": "/secrets/n8n.key",
+          "RW": false
+        }
+      ],
+      "env_names": [
+        "APP_DATA_PATH",
+        "APP_PATH",
+        "APP_USER",
+        "BUNDLE_APP_CONFIG",
+        "BUNDLE_JOBS",
+        "BUNDLE_PATH",
+        "BUNDLE_RETRY",
+        "BUNDLE_SILENCE_ROOT_WARNING",
+        "BUNDLE_WITHOUT",
+        "DEBIAN_FRONTEND",
+        "DOCKER",
+        "GEM_HOME",
+        "LANG",
+        "OPENPROJECT_ANGULAR_UGLIFY",
+        "OPENPROJECT_ATTACHMENTS__STORAGE__PATH",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__SECRET",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL",
+        "OPENPROJECT_EDITION",
+        "OPENPROJECT_INSTALLATION__TYPE",
+        "OPENPROJECT_RAILS__CACHE__STORE",
+        "PATH",
+        "PGBIN",
+        "PGDATABASE",
+        "PGHOST",
+        "PGOPTIONS",
+        "PGPASSWORD",
+        "PGUSER",
+        "PGVERSION",
+        "PGVERSION_CHOICES",
+        "RAILS_ENV",
+        "RAILS_LOG_TO_STDOUT",
+        "RAILS_SERVE_STATIC_FILES",
+        "RUBY_DOWNLOAD_SHA256",
+        "RUBY_DOWNLOAD_URL",
+        "RUBY_VERSION",
+        "SECRET_KEY_BASE",
+        "USE_JEMALLOC"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-ai-stage-n8n-1",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "image_ref": "docker.n8n.io/n8nio/n8n:2.43.6@sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T19:19:29.794406418Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "tini",
+        "--",
+        "/docker-entrypoint.sh"
+      ],
+      "command": null,
+      "ports": {},
+      "networks": [
+        "qldapm-ai-stage_automation"
+      ],
+      "mounts": [
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_n8n-data/_data",
+          "Destination": "/home/node/.n8n",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/n8n-stage/encryption.key",
+          "Destination": "/run/secrets/n8n_encryption_key",
+          "RW": false
+        }
+      ],
+      "env_names": [
+        "GENERIC_TIMEZONE",
+        "N8N_BLOCK_ENV_ACCESS_IN_NODE",
+        "N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES",
+        "N8N_COMMUNITY_PACKAGES_ENABLED",
+        "N8N_DIAGNOSTICS_ENABLED",
+        "N8N_DISABLED_MODULES",
+        "N8N_EDITOR_BASE_URL",
+        "N8N_ENCRYPTION_KEY_FILE",
+        "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS",
+        "N8N_HOST",
+        "N8N_RELEASE_TYPE",
+        "N8N_TEMPLATES_ENABLED",
+        "N8N_VERSION_NOTIFICATIONS_ENABLED",
+        "NODES_EXCLUDE",
+        "NODE_ENV",
+        "NODE_OPTIONS",
+        "NODE_PATH",
+        "NODE_VERSION",
+        "NPM_CONFIG_UPDATE_NOTIFIER",
+        "PATH",
+        "SHELL",
+        "TZ"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-ai-stage-n8n-editor-1",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "image_ref": "caddy@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T19:19:29.849982099Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": null,
+      "command": [
+        "caddy",
+        "run",
+        "--config",
+        "/etc/caddy/Caddyfile",
+        "--adapter",
+        "caddyfile"
+      ],
+      "ports": {
+        "18090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18090"
+          }
+        ],
+        "5678/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "5678"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-ai-stage_automation",
+        "qldapm-ai-stage_editor"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\Quick.Caddyfile",
+          "Destination": "/etc/caddy/Caddyfile",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "Destination": "/qldapm-access",
+          "RW": false
+        }
+      ],
+      "env_names": [
+        "CADDY_VERSION",
+        "PATH",
+        "XDG_CONFIG_HOME",
+        "XDG_DATA_HOME"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-ai-stage-radmin-proxy-1",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "image_ref": "caddy@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "state": "exited",
+      "health": "unhealthy",
+      "started": "2026-10-15T16:16:16.116039878Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": null,
+      "command": [
+        "caddy",
+        "run",
+        "--config",
+        "/etc/caddy/Caddyfile",
+        "--adapter",
+        "caddyfile"
+      ],
+      "ports": {
+        "443/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": ""
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-ai-stage_stage-front"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/radmin-caddy",
+          "Destination": "/data",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\Radmin.Caddyfile",
+          "Destination": "/etc/caddy/Caddyfile",
+          "RW": false
+        }
+      ],
+      "env_names": [
+        "CADDY_VERSION",
+        "PATH",
+        "XDG_CONFIG_HOME",
+        "XDG_DATA_HOME"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\radmin.stage.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-ai-stage-db-1",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "image_ref": "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T19:19:29.711372486Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "docker-entrypoint.sh"
+      ],
+      "command": [
+        "postgres"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-ai-stage_stage"
+      ],
+      "mounts": [
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-db/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "GOSU_VERSION",
+        "LANG",
+        "PATH",
+        "PGDATA",
+        "PG_MAJOR",
+        "PG_VERSION",
+        "POSTGRES_DB",
+        "POSTGRES_PASSWORD"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-ai-gateway-1",
+      "image": "sha256:7190fcc265f54880c06927b846982b2c2770109790df0a389d7932637b8641a3",
+      "image_ref": "sha256:7190fcc265f54880c06927b846982b2c2770109790df0a389d7932637b8641a3",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T19:19:29.74602544Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": null,
+      "command": [
+        "python",
+        "-m",
+        "uvicorn",
+        "gateway.app:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8090",
+        "--no-access-log"
+      ],
+      "ports": {
+        "8090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8090"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-ai_ai",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway",
+          "Destination": "/state",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/workspaces",
+          "Destination": "/workspaces",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "PATH",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED",
+        "PYTHON_SHA256",
+        "PYTHON_VERSION",
+        "QLDAPM_AI_RUNTIME",
+        "QLDAPM_AI_WORKSPACES"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-cron-1",
+      "image": "sha256:2beeecac788d4f423c46a95ffbd04e6479491938b9924b610e9f47d81a38303c",
+      "image_ref": "openproject/openproject@sha256:2beeecac788d4f423c46a95ffbd04e6479491938b9924b610e9f47d81a38303c",
+      "state": "running",
+      "health": null,
+      "started": "2026-10-17T19:19:29.883505151Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "./docker/prod/entrypoint-slim.sh"
+      ],
+      "command": [
+        "./docker/prod/cron"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "APP_DATA_PATH",
+        "APP_PATH",
+        "APP_USER",
+        "BUNDLE_APP_CONFIG",
+        "BUNDLE_JOBS",
+        "BUNDLE_PATH",
+        "BUNDLE_RETRY",
+        "BUNDLE_SILENCE_ROOT_WARNING",
+        "BUNDLE_WITHOUT",
+        "DATABASE_URL",
+        "DEBIAN_FRONTEND",
+        "DOCKER",
+        "GEM_HOME",
+        "IMAP_ENABLED",
+        "LANG",
+        "OPENPROJECT_ADDITIONAL__HOST__NAMES",
+        "OPENPROJECT_ANGULAR_UGLIFY",
+        "OPENPROJECT_ATTACHMENTS__STORAGE__PATH",
+        "OPENPROJECT_CACHE__MEMCACHE__SERVER",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__SECRET",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL",
+        "OPENPROJECT_EDITION",
+        "OPENPROJECT_HOST__NAME",
+        "OPENPROJECT_HSTS",
+        "OPENPROJECT_HTTPS",
+        "OPENPROJECT_INSTALLATION__TYPE",
+        "OPENPROJECT_RAILS__CACHE__STORE",
+        "OPENPROJECT_SEED_LOCALE",
+        "OPENPROJECT_WEB_WORKERS",
+        "PATH",
+        "PGBIN",
+        "PGVERSION",
+        "PGVERSION_CHOICES",
+        "RAILS_ENV",
+        "RAILS_LOG_TO_STDOUT",
+        "RAILS_MAX_THREADS",
+        "RAILS_MIN_THREADS",
+        "RAILS_SERVE_STATIC_FILES",
+        "RUBY_DOWNLOAD_SHA256",
+        "RUBY_DOWNLOAD_URL",
+        "RUBY_VERSION",
+        "SECRET_KEY_BASE",
+        "USE_JEMALLOC"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-web-1",
+      "image": "sha256:2beeecac788d4f423c46a95ffbd04e6479491938b9924b610e9f47d81a38303c",
+      "image_ref": "openproject/openproject@sha256:2beeecac788d4f423c46a95ffbd04e6479491938b9924b610e9f47d81a38303c",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T19:19:30.03836006Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "./docker/prod/entrypoint-slim.sh"
+      ],
+      "command": [
+        "./docker/prod/web"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "APP_DATA_PATH",
+        "APP_PATH",
+        "APP_USER",
+        "BUNDLE_APP_CONFIG",
+        "BUNDLE_JOBS",
+        "BUNDLE_PATH",
+        "BUNDLE_RETRY",
+        "BUNDLE_SILENCE_ROOT_WARNING",
+        "BUNDLE_WITHOUT",
+        "DATABASE_URL",
+        "DEBIAN_FRONTEND",
+        "DOCKER",
+        "GEM_HOME",
+        "IMAP_ENABLED",
+        "LANG",
+        "OPENPROJECT_ADDITIONAL__HOST__NAMES",
+        "OPENPROJECT_ANGULAR_UGLIFY",
+        "OPENPROJECT_ATTACHMENTS__STORAGE__PATH",
+        "OPENPROJECT_CACHE__MEMCACHE__SERVER",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__SECRET",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL",
+        "OPENPROJECT_EDITION",
+        "OPENPROJECT_HOST__NAME",
+        "OPENPROJECT_HSTS",
+        "OPENPROJECT_HTTPS",
+        "OPENPROJECT_INSTALLATION__TYPE",
+        "OPENPROJECT_RAILS__CACHE__STORE",
+        "OPENPROJECT_SEED_LOCALE",
+        "OPENPROJECT_WEB_WORKERS",
+        "PATH",
+        "PGBIN",
+        "PGVERSION",
+        "PGVERSION_CHOICES",
+        "RAILS_ENV",
+        "RAILS_LOG_TO_STDOUT",
+        "RAILS_MAX_THREADS",
+        "RAILS_MIN_THREADS",
+        "RAILS_SERVE_STATIC_FILES",
+        "RUBY_DOWNLOAD_SHA256",
+        "RUBY_DOWNLOAD_URL",
+        "RUBY_VERSION",
+        "SECRET_KEY_BASE",
+        "USE_JEMALLOC"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-worker-1",
+      "image": "sha256:2beeecac788d4f423c46a95ffbd04e6479491938b9924b610e9f47d81a38303c",
+      "image_ref": "openproject/openproject@sha256:2beeecac788d4f423c46a95ffbd04e6479491938b9924b610e9f47d81a38303c",
+      "state": "running",
+      "health": null,
+      "started": "2026-10-17T19:19:29.904704287Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "./docker/prod/entrypoint-slim.sh"
+      ],
+      "command": [
+        "./docker/prod/worker"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "APP_DATA_PATH",
+        "APP_PATH",
+        "APP_USER",
+        "BUNDLE_APP_CONFIG",
+        "BUNDLE_JOBS",
+        "BUNDLE_PATH",
+        "BUNDLE_RETRY",
+        "BUNDLE_SILENCE_ROOT_WARNING",
+        "BUNDLE_WITHOUT",
+        "DATABASE_URL",
+        "DEBIAN_FRONTEND",
+        "DOCKER",
+        "GEM_HOME",
+        "IMAP_ENABLED",
+        "LANG",
+        "OPENPROJECT_ADDITIONAL__HOST__NAMES",
+        "OPENPROJECT_ANGULAR_UGLIFY",
+        "OPENPROJECT_ATTACHMENTS__STORAGE__PATH",
+        "OPENPROJECT_CACHE__MEMCACHE__SERVER",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__SECRET",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL",
+        "OPENPROJECT_EDITION",
+        "OPENPROJECT_HOST__NAME",
+        "OPENPROJECT_HSTS",
+        "OPENPROJECT_HTTPS",
+        "OPENPROJECT_INSTALLATION__TYPE",
+        "OPENPROJECT_RAILS__CACHE__STORE",
+        "OPENPROJECT_SEED_LOCALE",
+        "OPENPROJECT_WEB_WORKERS",
+        "PATH",
+        "PGBIN",
+        "PGVERSION",
+        "PGVERSION_CHOICES",
+        "RAILS_ENV",
+        "RAILS_LOG_TO_STDOUT",
+        "RAILS_MAX_THREADS",
+        "RAILS_MIN_THREADS",
+        "RAILS_SERVE_STATIC_FILES",
+        "RUBY_DOWNLOAD_SHA256",
+        "RUBY_DOWNLOAD_URL",
+        "RUBY_VERSION",
+        "SECRET_KEY_BASE",
+        "USE_JEMALLOC"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-proxy-1",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "image_ref": "caddy@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "state": "running",
+      "health": null,
+      "started": "2026-10-17T19:19:29.648541165Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": null,
+      "command": [
+        "caddy",
+        "run",
+        "--config",
+        "/etc/caddy/Caddyfile",
+        "--adapter",
+        "caddyfile"
+      ],
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8088"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\Caddyfile",
+          "Destination": "/etc/caddy/Caddyfile",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject/gate",
+          "Destination": "/gate",
+          "RW": false
+        }
+      ],
+      "env_names": [
+        "CADDY_VERSION",
+        "PATH",
+        "PROXY_SCHEME",
+        "XDG_CONFIG_HOME",
+        "XDG_DATA_HOME"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-seeder-1",
+      "image": "sha256:2beeecac788d4f423c46a95ffbd04e6479491938b9924b610e9f47d81a38303c",
+      "image_ref": "openproject/openproject@sha256:2beeecac788d4f423c46a95ffbd04e6479491938b9924b610e9f47d81a38303c",
+      "state": "exited",
+      "health": null,
+      "started": "2026-10-10T09:32:51.756755542Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "./docker/prod/entrypoint-slim.sh"
+      ],
+      "command": [
+        "./docker/prod/seeder"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "APP_DATA_PATH",
+        "APP_PATH",
+        "APP_USER",
+        "BUNDLE_APP_CONFIG",
+        "BUNDLE_JOBS",
+        "BUNDLE_PATH",
+        "BUNDLE_RETRY",
+        "BUNDLE_SILENCE_ROOT_WARNING",
+        "BUNDLE_WITHOUT",
+        "DATABASE_URL",
+        "DEBIAN_FRONTEND",
+        "DOCKER",
+        "GEM_HOME",
+        "IMAP_ENABLED",
+        "LANG",
+        "OPENPROJECT_ADDITIONAL__HOST__NAMES",
+        "OPENPROJECT_ANGULAR_UGLIFY",
+        "OPENPROJECT_ATTACHMENTS__STORAGE__PATH",
+        "OPENPROJECT_CACHE__MEMCACHE__SERVER",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__SECRET",
+        "OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL",
+        "OPENPROJECT_EDITION",
+        "OPENPROJECT_HOST__NAME",
+        "OPENPROJECT_HSTS",
+        "OPENPROJECT_HTTPS",
+        "OPENPROJECT_INSTALLATION__TYPE",
+        "OPENPROJECT_RAILS__CACHE__STORE",
+        "OPENPROJECT_SEED_LOCALE",
+        "OPENPROJECT_WEB_WORKERS",
+        "PATH",
+        "PGBIN",
+        "PGVERSION",
+        "PGVERSION_CHOICES",
+        "RAILS_ENV",
+        "RAILS_LOG_TO_STDOUT",
+        "RAILS_MAX_THREADS",
+        "RAILS_MIN_THREADS",
+        "RAILS_SERVE_STATIC_FILES",
+        "RUBY_DOWNLOAD_SHA256",
+        "RUBY_DOWNLOAD_URL",
+        "RUBY_VERSION",
+        "SECRET_KEY_BASE",
+        "USE_JEMALLOC"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-hocuspocus-1",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "image_ref": "openproject/hocuspocus@sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "state": "running",
+      "health": null,
+      "started": "2026-10-17T19:19:30.046411049Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "/nodejs/bin/node"
+      ],
+      "command": [
+        "node_modules/tsx/dist/cli.mjs",
+        "src/index.ts",
+        "--no-daemon"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [],
+      "env_names": [
+        "NODE_ENV",
+        "OPENPROJECT_HTTPS",
+        "OPENPROJECT_URL",
+        "PATH",
+        "SECRET",
+        "SSL_CERT_FILE"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-tunnel-1",
+      "image": "sha256:9b49eed8f62806d5d45ddf59ecefb5710429598ea6d3fcccd2af938f621b2b07",
+      "image_ref": "cloudflare/cloudflared@sha256:9b49eed8f62806d5d45ddf59ecefb5710429598ea6d3fcccd2af938f621b2b07",
+      "state": "exited",
+      "health": null,
+      "started": "2026-10-09T08:57:18.679997876Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "cloudflared",
+        "--no-autoupdate"
+      ],
+      "command": [
+        "tunnel",
+        "--no-autoupdate",
+        "--url",
+        "http://proxy:80",
+        "--allowed-mail",
+        "hiepk40c@gmail.com,2101minhkhai@gmail.com,nguyenduc6325@gmail.com,ttheduy1401@gmail.com,duyhungls2005@gmail.com"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [],
+      "env_names": [
+        "PATH",
+        "SSL_CERT_FILE"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-restore-20261009153707-db-1",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "image_ref": "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "state": "exited",
+      "health": "unhealthy",
+      "started": "2026-10-09T08:37:07.69664985Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "docker-entrypoint.sh"
+      ],
+      "command": [
+        "postgres"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject-restore-20261009153707_backend"
+      ],
+      "mounts": [
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-openproject-restore-20261009153707_pgdata/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "GOSU_VERSION",
+        "LANG",
+        "PATH",
+        "PGDATA",
+        "PG_MAJOR",
+        "PG_VERSION",
+        "POSTGRES_DB",
+        "POSTGRES_PASSWORD"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-restore-20261009153707-cache-1",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "image_ref": "memcached@sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "state": "exited",
+      "health": null,
+      "started": "2026-10-09T08:37:07.930111211Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "docker-entrypoint.sh"
+      ],
+      "command": [
+        "memcached"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject-restore-20261009153707_backend"
+      ],
+      "mounts": [],
+      "env_names": [
+        "MEMCACHED_SHA1",
+        "MEMCACHED_URL",
+        "MEMCACHED_VERSION",
+        "PATH"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-restore-20261009152743-db-1",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "image_ref": "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "state": "exited",
+      "health": "unhealthy",
+      "started": "2026-10-09T08:27:44.167517944Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "docker-entrypoint.sh"
+      ],
+      "command": [
+        "postgres"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject-restore-20261009152743_backend"
+      ],
+      "mounts": [
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-openproject-restore-20261009152743_pgdata/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "GOSU_VERSION",
+        "LANG",
+        "PATH",
+        "PGDATA",
+        "PG_MAJOR",
+        "PG_VERSION",
+        "POSTGRES_DB",
+        "POSTGRES_PASSWORD"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-restore-20261009152743-cache-1",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "image_ref": "memcached@sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "state": "exited",
+      "health": null,
+      "started": "2026-10-09T08:27:44.447277775Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "docker-entrypoint.sh"
+      ],
+      "command": [
+        "memcached"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject-restore-20261009152743_backend"
+      ],
+      "mounts": [],
+      "env_names": [
+        "MEMCACHED_SHA1",
+        "MEMCACHED_URL",
+        "MEMCACHED_VERSION",
+        "PATH"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-db-1",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "image_ref": "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "state": "running",
+      "health": "healthy",
+      "started": "2026-10-17T19:19:29.810963596Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "docker-entrypoint.sh"
+      ],
+      "command": [
+        "postgres"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject_backend"
+      ],
+      "mounts": [
+        {
+          "Type": "volume",
+          "Source": "/var/lib/docker/volumes/qldapm-openproject_pgdata/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        }
+      ],
+      "env_names": [
+        "GOSU_VERSION",
+        "LANG",
+        "PATH",
+        "PGDATA",
+        "PG_MAJOR",
+        "PG_VERSION",
+        "POSTGRES_DB",
+        "POSTGRES_PASSWORD"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    },
+    {
+      "name": "qldapm-openproject-cache-1",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "image_ref": "memcached@sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "state": "running",
+      "health": null,
+      "started": "2026-10-17T19:19:29.620834411Z",
+      "restart_count": 0,
+      "restart_policy": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "entrypoint": [
+        "docker-entrypoint.sh"
+      ],
+      "command": [
+        "memcached"
+      ],
+      "ports": {},
+      "networks": [
+        "qldapm-openproject_backend"
+      ],
+      "mounts": [],
+      "env_names": [
+        "MEMCACHED_SHA1",
+        "MEMCACHED_URL",
+        "MEMCACHED_VERSION",
+        "PATH"
+      ],
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "socket_mount": false
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "result": "PASS_WITH_DISCLOSED_CONTAINER_RECREATION",
+  "observed_at": "2026-10-15T19:04:35.401620+00:00",
+  "same_engine_images_tags_volumes_custom_networks_mounts_ports_restart_policies": true,
+  "containers": 39,
+  "running": 18,
+  "images": 66,
+  "volumes": 123,
+  "networks": 31,
+  "all_previous_healthy_recovered": true,
+  "qldapm_container_ids_unchanged": true,
+  "container_ids_unchanged": 38,
+  "recreated": [
+    {
+      "name": "birdsong-retrieval-api-1",
+      "old_id": "b21417c91981ea4ab8248c11d016dc4358308461696824eef3f609bab2a44dd6",
+      "new_id": "4ec809594cdae26749600399d17e8d018e48570c44ba91282394449611bff454",
+      "image_mounts_ports_policy_unchanged": true,
+      "cause": "NOT_IDENTIFIED; no recreate/remove command issued in relocation"
+    }
+  ],
+  "strict_all_container_ids_check": "FAILED_AS_EXPECTED_ON_DISCLOSED_BIRDSONG_RECREATION",
+  "first_start_strict_inventory": "PASS: runtime-first-start.json",
+  "deleted_data_items_by_relocation": 0,
+  "formatted_disks": 0
+}

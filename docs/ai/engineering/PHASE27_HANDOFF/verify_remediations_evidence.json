@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-10-30T18:14:14+07:00",
+  "phase": "PHASE_2_7",
+  "revision": "continuation-r16",
+  "suite": "tools/verify_phase27_remediations.py",
+  "results": {
+    "owner_status": {
+      "pass": true,
+      "mode": "OFF",
+      "project_id": 6,
+      "authority": "AI_SYSTEM_OWNER_VERIFIED"
+    },
+    "owner_cancel_pm20_run": {
+      "pass": true,
+      "cancelled_run_id": "309b02bd-2859-4c29-b97b-c90bda368eac",
+      "state": "cancelled",
+      "authority": "CROSS_ACTOR_AUTHORITY_VERIFIED"
+    },
+    "owner_control_toggle": {
+      "pass": true,
+      "paused": "PAUSED",
+      "off": "OFF",
+      "authority": "MODE_TOGGLE_VERIFIED"
+    },
+    "project5_isolation": {
+      "pass": true,
+      "http_status": 403,
+      "message": "AI gateway trả HTTP 403; chưa xác nhận thao tác. Kiểm tra quyền, dữ liệu và receipt trước khi gửi lại.",
+      "authority": "PROJECT_5_MUTATION_DENIED"
+    },
+    "report_schedule_get": {
+      "pass": true,
+      "daily_enabled": 1,
+      "daily_hour": 7,
+      "daily_minute": 30,
+      "weekly_enabled": 1,
+      "weekly_day": 1,
+      "weekly_hour": 9,
+      "weekly_minute": 0,
+      "timezone": "Asia/Ho_Chi_Minh"
+    },
+    "report_schedule_update": {
+      "pass": true,
+      "updated_daily_hour": 7,
+      "updated_daily_minute": 30
+    },
+    "report_generation_and_get": {
+      "pass": true,
+      "report_id": "b2923caf-cf39-4640-8cf4-a886e736c410",
+      "title": "Báo cáo tiến độ tức thời (On-Demand Snapshot) — 2026-10-30 11:13:14"
+    },
+    "github_prs_transparency": {
+      "pass": true,
+      "prs_count": 4,
+      "reviews_state": "NO_REVIEWS_ON_GITHUB",
+      "checks_state": "NO_CI_CHECKS_CONFIGURED"
+    },
+    "ui_rendering": {
+      "pass": true,
+      "has_local_ai_review_label": true,
+      "has_github_reviews_column": true,
+      "has_schedule_info": true
+    }
+  },
+  "overall": "ALL_REMEDIATIONS_PASSED"
+}

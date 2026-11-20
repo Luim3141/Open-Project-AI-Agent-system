@@ -1,0 +1,55 @@
+{
+  "status": "FROZEN_NO_INFERENCE",
+  "input_sha256": "4a653236b1189c15de5f0c5bb46820319b8fdf92f8b61234ab87049fc88ac3ed",
+  "cases": [
+    {
+      "id": "dev:create_list:vi",
+      "spans": 35,
+      "chars": 3044,
+      "support_in_context": true
+    },
+    {
+      "id": "dev:create_list:en",
+      "spans": 36,
+      "chars": 2800,
+      "support_in_context": true
+    },
+    {
+      "id": "dev:recovery_history:vi",
+      "spans": 33,
+      "chars": 2470,
+      "support_in_context": true
+    },
+    {
+      "id": "dev:recovery_history:en",
+      "spans": 37,
+      "chars": 2906,
+      "support_in_context": true
+    },
+    {
+      "id": "dev:pagination:vi",
+      "spans": 37,
+      "chars": 3606,
+      "support_in_context": false
+    },
+    {
+      "id": "dev:pagination:en",
+      "spans": 34,
+      "chars": 3026,
+      "support_in_context": false
+    }
+  ],
+  "runner_sha256": "b721fefe428c56c1151718828cfa058c05578bcd82425c12132052a47b8e7f08",
+  "holdout_access": false,
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 2048,
+    "num_predict": 64,
+    "num_thread": 1
+  },
+  "resource_route": "Existing local Ollama, CPU thread1; host RAM preflight before run. No isolated runner image installed; no hard process memory cap.",
+  "model": "qwen3:4b",
+  "comparison": "Same six observed-DEV questions/spans/options; model capacity only; prior1.7B failed. No holdout access.",
+  "base_input_sha256": "f63f7432cb2caa2821aac76ee174715d6d35b19c195635a7f5ce6c923597c5c9"
+}

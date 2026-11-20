@@ -1,0 +1,864 @@
+{
+  "source": "supplementary qag3-admin inspect_workflow, after exact approved apply",
+  "project": "QAG3",
+  "migrationApplied": false,
+  "preflight": {
+    "accountId": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb",
+    "cloudId": "560ef0cc-d24b-4613-98d3-d541afe8f32b",
+    "project": "QAG3",
+    "permissions": {
+      "ADMINISTER": true,
+      "ADMINISTER_PROJECTS": false
+    },
+    "adminWriteVerified": false
+  },
+  "workflow": {
+    "statuses": [
+      {
+        "id": "10019",
+        "statusReference": "10019",
+        "name": "READY FOR RELEASE",
+        "statusCategory": "IN_PROGRESS",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": ""
+      },
+      {
+        "id": "10014",
+        "statusReference": "10014",
+        "name": "IN ANALYSIS",
+        "statusCategory": "TODO",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": ""
+      },
+      {
+        "id": "10012",
+        "statusReference": "10012",
+        "name": "REVIEW",
+        "statusCategory": "IN_PROGRESS",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": ""
+      },
+      {
+        "id": "10015",
+        "statusReference": "10015",
+        "name": "READY FOR DEV",
+        "statusCategory": "TODO",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": ""
+      },
+      {
+        "id": "10017",
+        "statusReference": "10017",
+        "name": "READY FOR TEST",
+        "statusCategory": "IN_PROGRESS",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": ""
+      },
+      {
+        "id": "10016",
+        "statusReference": "10016",
+        "name": "CODE REVIEW",
+        "statusCategory": "IN_PROGRESS",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": ""
+      },
+      {
+        "id": "3",
+        "statusReference": "3",
+        "name": "In Progress",
+        "statusCategory": "IN_PROGRESS",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": "This work item is being actively worked on at the moment by the assignee."
+      },
+      {
+        "id": "10010",
+        "statusReference": "10010",
+        "name": "NEW",
+        "statusCategory": "TODO",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": ""
+      },
+      {
+        "id": "10018",
+        "statusReference": "10018",
+        "name": "IN TESTING",
+        "statusCategory": "IN_PROGRESS",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": ""
+      },
+      {
+        "id": "10009",
+        "statusReference": "10009",
+        "name": "Done",
+        "statusCategory": "DONE",
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "description": ""
+      }
+    ],
+    "workflows": [
+      {
+        "scope": {
+          "type": "GLOBAL"
+        },
+        "version": {
+          "versionNumber": 4,
+          "id": "3f2d44b0-a179-4149-995e-3e4219cfea7c"
+        },
+        "id": "9f21c6fc-718d-4f3c-aca9-49ab9c89c899",
+        "name": "QAG3 Task Delivery v1",
+        "description": "QAG3 only. Ten-stage feature delivery plus Code rejected, Bug found, ReDev, Retest and Reopen. Deploy to shared Test. Inactive until role gates and acceptance tests pass.",
+        "isEditable": true,
+        "startPointLayout": {
+          "x": 968,
+          "y": 4
+        },
+        "statuses": [
+          {
+            "statusReference": "10010",
+            "layout": {
+              "x": 928.40625,
+              "y": 117.4
+            },
+            "properties": {},
+            "deprecated": false
+          },
+          {
+            "statusReference": "10014",
+            "layout": {
+              "x": 1055.1850685546474,
+              "y": -135.45535252318717
+            },
+            "properties": {},
+            "deprecated": false
+          },
+          {
+            "statusReference": "10015",
+            "layout": {
+              "x": 1166.7347657211478,
+              "y": 183.91012299179323
+            },
+            "properties": {},
+            "deprecated": false
+          },
+          {
+            "statusReference": "3",
+            "layout": {
+              "x": 1362.1137231749383,
+              "y": 80.41206928290265
+            },
+            "properties": {},
+            "deprecated": false
+          },
+          {
+            "statusReference": "10016",
+            "layout": {
+              "x": 1546.9432574296413,
+              "y": 209.53819744109026
+            },
+            "properties": {},
+            "deprecated": false
+          },
+          {
+            "statusReference": "10017",
+            "layout": {
+              "x": 1527.09315049697,
+              "y": -176.85446872307872
+            },
+            "properties": {},
+            "deprecated": false
+          },
+          {
+            "statusReference": "10018",
+            "layout": {
+              "x": 2124.5523785612795,
+              "y": -92.08461169596401
+            },
+            "properties": {},
+            "deprecated": false
+          },
+          {
+            "statusReference": "10012",
+            "layout": {
+              "x": 2216.8466710952116,
+              "y": 286.42257119421646
+            },
+            "properties": {},
+            "deprecated": false
+          },
+          {
+            "statusReference": "10019",
+            "layout": {
+              "x": 2393.6922442481587,
+              "y": -47.728265362273554
+            },
+            "properties": {},
+            "deprecated": false
+          },
+          {
+            "statusReference": "10009",
+            "layout": {
+              "x": 2585.2039822936954,
+              "y": 39.998633792096065
+            },
+            "properties": {},
+            "deprecated": false
+          }
+        ],
+        "transitions": [
+          {
+            "id": "1",
+            "type": "INITIAL",
+            "toStatusReference": "10010",
+            "links": [
+              {
+                "toPort": 1
+              }
+            ],
+            "name": "Create",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "2",
+            "type": "DIRECTED",
+            "toStatusReference": "10014",
+            "links": [
+              {
+                "fromStatusReference": "10010",
+                "fromPort": 3,
+                "toPort": 7
+              }
+            ],
+            "name": "Start analysis",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "3",
+            "type": "DIRECTED",
+            "toStatusReference": "10015",
+            "links": [
+              {
+                "fromStatusReference": "10014",
+                "fromPort": 3,
+                "toPort": 7
+              }
+            ],
+            "name": "Analysis done",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "4",
+            "type": "DIRECTED",
+            "toStatusReference": "3",
+            "links": [
+              {
+                "fromStatusReference": "10015",
+                "fromPort": 3,
+                "toPort": 7
+              }
+            ],
+            "name": "Start dev",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "5",
+            "type": "DIRECTED",
+            "toStatusReference": "10016",
+            "links": [
+              {
+                "fromStatusReference": "3",
+                "fromPort": 3,
+                "toPort": 7
+              }
+            ],
+            "name": "Submit code",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "6",
+            "type": "DIRECTED",
+            "toStatusReference": "3",
+            "links": [
+              {
+                "fromStatusReference": "10016",
+                "fromPort": 7,
+                "toPort": 3
+              }
+            ],
+            "name": "Code rejected",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "7",
+            "type": "DIRECTED",
+            "toStatusReference": "10017",
+            "links": [
+              {
+                "fromStatusReference": "10016",
+                "fromPort": 3,
+                "toPort": 7
+              }
+            ],
+            "name": "Approve code",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "8",
+            "type": "DIRECTED",
+            "toStatusReference": "10018",
+            "links": [
+              {
+                "fromStatusReference": "10017",
+                "fromPort": 3,
+                "toPort": 7
+              }
+            ],
+            "name": "Start test",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "9",
+            "type": "DIRECTED",
+            "toStatusReference": "3",
+            "links": [
+              {
+                "fromStatusReference": "10018",
+                "fromPort": 7,
+                "toPort": 3
+              }
+            ],
+            "name": "Bug found",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "10",
+            "type": "DIRECTED",
+            "toStatusReference": "10012",
+            "links": [
+              {
+                "fromStatusReference": "10018",
+                "fromPort": 3,
+                "toPort": 7
+              }
+            ],
+            "name": "Pass testing",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "11",
+            "type": "DIRECTED",
+            "toStatusReference": "3",
+            "links": [
+              {
+                "fromStatusReference": "10012",
+                "fromPort": 7,
+                "toPort": 3
+              }
+            ],
+            "name": "ReDev",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "12",
+            "type": "DIRECTED",
+            "toStatusReference": "10018",
+            "links": [
+              {
+                "fromStatusReference": "10012",
+                "fromPort": 7,
+                "toPort": 3
+              }
+            ],
+            "name": "Retest",
+            "description": "",
+            "actions": [],
+            "validators": [],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "13",
+            "type": "DIRECTED",
+            "toStatusReference": "10019",
+            "links": [
+              {
+                "fromStatusReference": "10012",
+                "fromPort": 3,
+                "toPort": 7
+              }
+            ],
+            "name": "Approve",
+            "description": "",
+            "actions": [],
+            "validators": [
+              {
+                "ruleKey": "forge:expression-validator",
+                "parameters": {
+                  "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                  "config": "{}",
+                  "id": "41fae7c3-be95-5e7f-a963-85dabd941525",
+                  "disabled": "false",
+                  "tag": ""
+                },
+                "id": "7689377b-99aa-4066-b27d-3e767df627b5"
+              }
+            ],
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "14",
+            "type": "DIRECTED",
+            "toStatusReference": "10009",
+            "links": [
+              {
+                "fromStatusReference": "10019",
+                "fromPort": 3,
+                "toPort": 7
+              }
+            ],
+            "name": "Deploy",
+            "description": "",
+            "actions": [
+              {
+                "ruleKey": "system:update-field",
+                "parameters": {
+                  "field": "resolution",
+                  "value": "10000",
+                  "mode": "replace"
+                },
+                "id": "123965354"
+              }
+            ],
+            "validators": [
+              {
+                "ruleKey": "forge:expression-validator",
+                "parameters": {
+                  "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                  "config": "{}",
+                  "id": "44226c17-0035-5876-93d3-067da1d42c44",
+                  "disabled": "false",
+                  "tag": ""
+                },
+                "id": "b8522bcc-ec88-4bfd-b693-4c89d4b9cea7"
+              },
+              {
+                "ruleKey": "forge:expression-validator",
+                "parameters": {
+                  "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-task-subtasks-done",
+                  "config": "{}",
+                  "id": "31e1431d-861a-5f7d-915e-7cb7c8ebf998",
+                  "disabled": "false",
+                  "tag": ""
+                },
+                "id": "120b28ac-334a-4e29-92da-c80c0db6fb64"
+              },
+              {
+                "ruleKey": "forge:expression-validator",
+                "parameters": {
+                  "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-task-delivery-checklist",
+                  "config": "{}",
+                  "id": "c0f602c3-0619-52df-8adb-fac86fbf2c39",
+                  "disabled": "false",
+                  "tag": ""
+                },
+                "id": "e4b784f0-66de-4e4b-8111-91a1de6339e6"
+              }
+            ],
+            "conditions": {
+              "operation": "ALL",
+              "conditionGroups": [],
+              "conditions": [
+                {
+                  "ruleKey": "system:parent-or-child-blocking-condition",
+                  "parameters": {
+                    "blocker": "CHILD",
+                    "statusIds": "10009"
+                  },
+                  "id": "7730d05c-1c39-45c6-a5c8-34ab5055f6a0"
+                }
+              ]
+            },
+            "triggers": [],
+            "properties": {}
+          },
+          {
+            "id": "15",
+            "type": "DIRECTED",
+            "toStatusReference": "3",
+            "links": [
+              {
+                "fromStatusReference": "10009",
+                "fromPort": 7,
+                "toPort": 3
+              }
+            ],
+            "name": "Reopen",
+            "description": "",
+            "actions": [
+              {
+                "ruleKey": "system:update-field",
+                "parameters": {
+                  "field": "resolution",
+                  "value": "",
+                  "mode": ""
+                },
+                "id": "638122368"
+              }
+            ],
+            "validators": [
+              {
+                "ruleKey": "forge:expression-validator",
+                "parameters": {
+                  "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                  "config": "{}",
+                  "id": "e052b4b0-b52f-5cbc-98c6-3377d01c1b97",
+                  "disabled": "false",
+                  "tag": ""
+                },
+                "id": "fae9be8e-34bd-4704-85f4-fd98b00c7fa2"
+              }
+            ],
+            "triggers": [],
+            "properties": {}
+          }
+        ],
+        "loopedTransitionContainerLayout": {}
+      }
+    ]
+  },
+  "capabilities": {
+    "editorScope": "GLOBAL",
+    "projectTypes": [],
+    "systemRules": [
+      {
+        "ruleKey": "system:change-assignee",
+        "ruleType": "Function",
+        "name": "Assign a work item",
+        "description": "Automatically assign a work item to someone after moving the work item using a particular transition.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:copy-value-from-other-field",
+        "ruleType": "Function",
+        "name": "Copy the value of one field to another",
+        "description": "Automatically copy the value of one field to another after moving a work item using a particular transition.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:update-field",
+        "ruleType": "Function",
+        "name": "Update a work item field",
+        "description": "Automatically change the value of a work item field after moving the work item using a particular transition.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:restrict-issue-transition",
+        "ruleType": "Condition",
+        "name": "Restrict who can move a work item",
+        "description": "Only allow certain people to move a work item using a particular transition.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": false
+      },
+      {
+        "ruleKey": "system:previous-status-condition",
+        "ruleType": "Condition",
+        "name": "Restrict to when a work item has been through a specific status",
+        "description": "Only allow a work item to be moved using a particular transition if a work item has had a specific status.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": false
+      },
+      {
+        "ruleKey": "system:check-field-value",
+        "ruleType": "Condition",
+        "name": "Restrict to when a field is a specific value",
+        "description": "Only allow a work item to be moved using a particular transition when a field is a specific value or range of values.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": false
+      },
+      {
+        "ruleKey": "system:transition-screen",
+        "ruleType": "Screen",
+        "name": "Show a screen",
+        "description": "Allow people to update fields in a screen before they move a work item.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": false
+      },
+      {
+        "ruleKey": "system:check-permission-validator",
+        "ruleType": "Validator",
+        "name": "Validate that people have a specific permission",
+        "description": "Ensure people have a specific permission when moving a work item using a particular transition.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:trigger-webhook",
+        "ruleType": "Function",
+        "name": "Trigger a webhook",
+        "description": "Notify other apps and websites that this work item has moved through a particular transition.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:parent-or-child-blocking-condition",
+        "ruleType": "Condition",
+        "name": "Restrict based on the status of subtasks",
+        "description": "Only allow a work item to be transitioned when its subtasks have a specific status.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": false
+      },
+      {
+        "ruleKey": "system:parent-or-child-blocking-validator",
+        "ruleType": "Validator",
+        "name": "Validate that parent work items are in a specific status",
+        "description": "Ensure that a work item's parent has a specific status when moving a work item.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:previous-status-validator",
+        "ruleType": "Validator",
+        "name": "Validate that a work item has been through a specific status",
+        "description": "Ensure that a work item has been through a specific status when moving a work item.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": false
+      },
+      {
+        "ruleKey": "system:separation-of-duties",
+        "ruleType": "Condition",
+        "name": "Restrict users who have previously updated a work item's status",
+        "description": "Only allow people who haven't moved a work item between two statuses to move a work item using a particular transition.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": false
+      },
+      {
+        "ruleKey": "system:validate-field-value",
+        "ruleType": "Validator",
+        "name": "Validate a field",
+        "description": "Ensure that a field is a certain value when moving a work item using a particular transition",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:restrict-from-all-users",
+        "ruleType": "Condition",
+        "name": "Restrict from all users",
+        "description": "Don't allow anyone to move a work item using a particular transition (can include APIs).",
+        "isVisible": true,
+        "isAvailableForInitialTransition": false
+      },
+      {
+        "ruleKey": "system:trigger-agent",
+        "ruleType": "Function",
+        "name": "Trigger agent action",
+        "description": "Automatically triggers an agent action after moving the work item using a particular transition.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:proforma-forms-attached",
+        "ruleType": "Validator",
+        "name": "Require a work item to have a form attached",
+        "description": "Validate that one or more forms are attached to the work item.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:proforma-forms-submitted",
+        "ruleType": "Validator",
+        "name": "Require form submission on a work item",
+        "description": "Validate that all forms attached to the work item have been submitted.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      },
+      {
+        "ruleKey": "system:block-in-progress-approval",
+        "ruleType": "Condition",
+        "name": "Block transition until approval",
+        "description": "Condition to block work item transition if there is a pending approval.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": false
+      },
+      {
+        "ruleKey": "system:set-security-level-from-role",
+        "ruleType": "Function",
+        "name": "Set a work item's security level",
+        "description": "Automatically set a work item's security level if the user is in a specific space role after moving the work item using a particular transition.",
+        "isVisible": true,
+        "isAvailableForInitialTransition": true
+      }
+    ],
+    "connectRules": [],
+    "forgeRules": [
+      {
+        "ruleKey": "forge:expression-validator",
+        "ruleType": "Validator",
+        "name": "QAG3 PM approval",
+        "description": "Only the two approved PM accounts may perform this QAG3 transition.",
+        "id": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only"
+      },
+      {
+        "ruleKey": "forge:expression-validator",
+        "ruleType": "Validator",
+        "name": "QAG3 Epic child Tasks complete",
+        "description": "Reject empty Epics and Epics containing a child Task not in Done.",
+        "id": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-epic-children-done"
+      },
+      {
+        "ruleKey": "forge:expression-validator",
+        "ruleType": "Validator",
+        "name": "QAG3 fresh change reason",
+        "description": "Require a nonblank reason changed on this transition, not a previously saved reason.",
+        "id": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-fresh-change-reason"
+      },
+      {
+        "ruleKey": "forge:expression-validator",
+        "ruleType": "Validator",
+        "name": "QAG3 Task subtasks complete",
+        "description": "Require every current Subtask to be Done before accepting a Task.",
+        "id": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-task-subtasks-done"
+      },
+      {
+        "ruleKey": "forge:expression-validator",
+        "ruleType": "Validator",
+        "name": "QAG3 Task delivery checklist",
+        "description": "Require delivery checklist and evidence text; does not authenticate reviewers or attest retest results.",
+        "id": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-task-delivery-checklist"
+      }
+    ],
+    "triggerRules": [
+      {
+        "ruleKey": "system:development-triggers",
+        "availableTypes": [
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:pull-request-created-trigger",
+            "name": "Pull request created",
+            "description": "Automatically transitions the work item when a related pull request is created in a connected repository."
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:pull-request-merged-trigger",
+            "name": "Pull request merged",
+            "description": "Automatically transitions the work item when a related pull request is merged in a connected repository."
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:pull-request-declined-trigger",
+            "name": "Pull request declined",
+            "description": "Automatically transitions the work item when a related pull request is declined in a connected repository."
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:pull-request-reopened-trigger",
+            "name": "Pull request reopened",
+            "description": "Automatically transitions the work item when a related pull request is reopened in a connected repository."
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:branch-created-trigger",
+            "name": "Branch created",
+            "description": "Automatically transitions the work item when a related branch is created in a connected repository"
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:commit-created-trigger",
+            "name": "Commit created",
+            "description": "Automatically transitions the work item when a related commit is made in a connected repository"
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:review-started-trigger",
+            "name": "Review started",
+            "description": "Automatically transitions the work item when a related review is started in Crucible"
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:review-abandoned-trigger",
+            "name": "Review abandoned",
+            "description": "Automatically transitions the work item when a related review is abandoned in Crucible"
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:review-approval-trigger",
+            "name": "Review submitted for approval",
+            "description": "Automatically transitions the work item when a related review is submitted for approval in Crucible"
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:review-closed-trigger",
+            "name": "Review closed",
+            "description": "Automatically transitions the work item when a related review is closed in Crucible"
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:review-rejected-trigger",
+            "name": "Review rejected",
+            "description": "Automatically transitions the work item when a related review is rejected in Crucible"
+          },
+          {
+            "type": "com.atlassian.jira.plugins.jira-development-integration-plugin:review-summarized-trigger",
+            "name": "Review summarized",
+            "description": "Automatically transitions the work item when a related review is summarized in Crucible"
+          }
+        ]
+      }
+    ]
+  }
+}

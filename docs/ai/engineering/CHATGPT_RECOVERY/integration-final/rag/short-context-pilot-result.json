@@ -1,0 +1,154 @@
+{
+  "status": "DIAGNOSTIC_COMPLETE",
+  "reason": null,
+  "model_digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+  "rows": [
+    {
+      "case": "dev:create_list:vi",
+      "kind": "positive",
+      "seconds": 5.409,
+      "prompt_tokens": 1571,
+      "output_tokens": 5,
+      "done_reason": "stop",
+      "model_load_seconds": 4.448216,
+      "native_ids": [],
+      "literal_support_selected": false,
+      "correct_diagnostic": false,
+      "selected_span_ids": [],
+      "exact_span_citations": []
+    },
+    {
+      "case": "dev:create_list:en",
+      "kind": "positive",
+      "seconds": 0.782,
+      "prompt_tokens": 1482,
+      "output_tokens": 14,
+      "done_reason": "stop",
+      "model_load_seconds": 0.0134264,
+      "native_ids": [
+        380
+      ],
+      "literal_support_selected": true,
+      "correct_diagnostic": true,
+      "selected_span_ids": [
+        0,
+        5,
+        10
+      ],
+      "exact_span_citations": [
+        {
+          "document_id": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+          "native_id": 380,
+          "start": 0,
+          "end": 48,
+          "span_sha256": "b68667e41c050c9111fc7d348c12c853d8bfb025b5278eb186c6cb02766bc9f9",
+          "source_sha256": "962672e18956b93b49ed2576d6cbb100b16d4ec3b62f9739b42c96441ad268a8"
+        },
+        {
+          "document_id": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+          "native_id": 380,
+          "start": 49,
+          "end": 92,
+          "span_sha256": "cf669a01e2b146b93bbeae745ff50be95985c9bd7a2332d82fbb45f7b399f0a1",
+          "source_sha256": "962672e18956b93b49ed2576d6cbb100b16d4ec3b62f9739b42c96441ad268a8"
+        },
+        {
+          "document_id": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+          "native_id": 380,
+          "start": 1775,
+          "end": 1807,
+          "span_sha256": "4e23aa5996f71f2c9859584e0954aea57e484ff63d0382fa6f87df4ac8cd7ac0",
+          "source_sha256": "962672e18956b93b49ed2576d6cbb100b16d4ec3b62f9739b42c96441ad268a8"
+        }
+      ]
+    },
+    {
+      "case": "dev:recovery_history:vi",
+      "kind": "positive",
+      "seconds": 0.57,
+      "prompt_tokens": 1375,
+      "output_tokens": 5,
+      "done_reason": "stop",
+      "model_load_seconds": 0.0104295,
+      "native_ids": [],
+      "literal_support_selected": false,
+      "correct_diagnostic": false,
+      "selected_span_ids": [],
+      "exact_span_citations": []
+    },
+    {
+      "case": "dev:recovery_history:en",
+      "kind": "positive",
+      "seconds": 0.637,
+      "prompt_tokens": 1522,
+      "output_tokens": 5,
+      "done_reason": "stop",
+      "model_load_seconds": 0.0191326,
+      "native_ids": [],
+      "literal_support_selected": false,
+      "correct_diagnostic": false,
+      "selected_span_ids": [],
+      "exact_span_citations": []
+    },
+    {
+      "case": "dev:pagination:vi",
+      "kind": "negative",
+      "seconds": 0.782,
+      "prompt_tokens": 1776,
+      "output_tokens": 11,
+      "done_reason": "stop",
+      "model_load_seconds": 0.0080807,
+      "native_ids": [
+        391
+      ],
+      "literal_support_selected": false,
+      "correct_diagnostic": false,
+      "selected_span_ids": [
+        6,
+        26
+      ],
+      "exact_span_citations": [
+        {
+          "document_id": "349ee9655243a7ab0e9c064924be2d32c3cd409f078bd5f5a1b325a2aea51223",
+          "native_id": 391,
+          "start": 0,
+          "end": 193,
+          "span_sha256": "2bdcde671d0a7d9a85e6c19c229d940986bd9fe2ef9968c5783ce82b16d63da4",
+          "source_sha256": "9cba7e5651534247f95efc116236b2330827048635c6585d395bba3f81e42eae"
+        },
+        {
+          "document_id": "349ee9655243a7ab0e9c064924be2d32c3cd409f078bd5f5a1b325a2aea51223",
+          "native_id": 391,
+          "start": 2598,
+          "end": 2755,
+          "span_sha256": "2745720fe3bc0d8aba6e14ad9514dafd474f76ed4e8620743d1e4c08fc58ef0e",
+          "source_sha256": "9cba7e5651534247f95efc116236b2330827048635c6585d395bba3f81e42eae"
+        }
+      ]
+    },
+    {
+      "case": "dev:pagination:en",
+      "kind": "negative",
+      "seconds": 0.618,
+      "prompt_tokens": 1533,
+      "output_tokens": 5,
+      "done_reason": "stop",
+      "model_load_seconds": 0.0085482,
+      "native_ids": [],
+      "literal_support_selected": false,
+      "correct_diagnostic": true,
+      "selected_span_ids": [],
+      "exact_span_citations": []
+    }
+  ],
+  "elapsed_seconds": 8.805,
+  "all_six_diagnostic_correct": false,
+  "holdout_access": false,
+  "main_retrieval_changed": false,
+  "limits": [
+    "Observed DEV with correlated VN/EN pairs; no independent acceptance claim.",
+    "Cached retrieval/reranking excluded from timings.",
+    "Extracted spans are not assessed as complete bilingual generated answers.",
+    "No hard memory cap; resource route not deployment-qualified."
+  ]
+}

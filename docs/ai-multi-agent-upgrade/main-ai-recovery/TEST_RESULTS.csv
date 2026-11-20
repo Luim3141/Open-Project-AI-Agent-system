@@ -1,0 +1,14 @@
+Test_ID,Module,Test_Name,Target_Endpoint,Method,Actor_Role,Expected_Result,Actual_Result,Status,Evidence_Reference
+TC-GW-01,Gateway,AI Gateway Health Check,http://localhost:8090/health,GET,Anonymous,HTTP 200 {"status":"ok"},HTTP 200 {"status":"ok"},PASS,screenshots/03_gateway_health.png
+TC-OP-01,OpenProject,Core Service Health Check,http://localhost:8088/health_checks/default,GET,Anonymous,HTTP 200,HTTP 200,PASS,Live verification log
+TC-OP-02,OpenProject,Authentication Page Access,http://localhost:8088/login,GET,Anonymous,HTTP 200 with native login form,HTTP 200 rendered,PASS,screenshots/01_main_login_page.png
+TC-OP-03,OpenProject,Project 5 Overview Access,http://localhost:8088/projects/5,GET,PM (User 19),HTTP 200 with 329 WPs,HTTP 200 rendered,PASS,screenshots/02_main_project_view.png
+TC-SEC-01,Security,Gate B Admin Isolation Check,http://localhost:8088/projects/5/qldapm-ai/execute,POST,Admin (User 18),HTTP 403 Forbidden (prevent impersonation),HTTP 403 Forbidden enforced,PASS,ROOT_CAUSES.md Section 1.1
+TC-SEC-02,Security,Write Scope Parameter Sanitization,http://localhost:8088/projects/5/qldapm-ai/execute,POST,PM (User 19),No 422 error on trailing spaces/commas,Cleanly converted to integer array,PASS,CODE_CHANGES.md Section 2.1
+TC-AI-01,MultiAgent,Target WP Child Subtask Expansion,Internal Gateway Loader,CALL,Supervisor,WP #49 expanded with 5 subtasks (#102..#106),6 packages loaded into context,PASS,AI_RUN_EVIDENCE.md Section 4
+TC-AI-02,MultiAgent,Source Fingerprint Alignment,http://localhost:8090/v1/projects/5/runs/{id},GET,PM (User 19),stale: false matching loaded packages,stale: false verified,PASS,scratch/live_run_evidence.json
+TC-AI-03,MultiAgent,Deterministic Offline Supervisor Run,http://localhost:8090/v1/projects/5/runs,POST,PM (User 19),Execution state done without model calls,state: done in 0.05s (6 DAG nodes),PASS,Run e73ef6bf-6f27-4786-ae3f-6b2cfd780ae4
+TC-AI-04,MultiAgent,Single Live Gemini Multi-Agent Run,http://localhost:8090/v1/projects/5/runs,POST,PM (User 19),<=5 calls with Free Tier gemini-3.5-flash-lite,3 model calls, 7328 tokens, 17.345s,PASS,Run 0165de09-666d-465d-bdd7-14ceb97947eb
+TC-AI-05,MultiAgent,Reviewer Grounding Gate Verification,Internal Gateway Reviewer,CALL,Reviewer,100% citations match visible packages,0 errors, 100% citations grounded,PASS,AI_RUN_EVIDENCE.md Section 4
+TC-DATA-01,DataIntegrity,Native Work Packages Immutability,PostgreSQL Database,SQL,System,329 Work Packages unmodified,329 Work Packages intact (0 mutations),PASS,DATABASE_INSPECTION_RECORD
+TC-DATA-02,DataIntegrity,Native Sprints & Versions Immutability,PostgreSQL Database,SQL,System,7 Sprints and 7 Versions unmodified,7 Sprints and 7 Versions intact,PASS,DATABASE_INSPECTION_RECORD

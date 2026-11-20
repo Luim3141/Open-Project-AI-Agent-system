@@ -1,0 +1,399 @@
+{
+  "cases": [
+    {
+      "query": "kiểm tra sức khỏe máy chủ",
+      "expected": 384,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.52": {
+        "ids": [
+          384,
+          380,
+          379,
+          383,
+          386,
+          382
+        ],
+        "rank": 1,
+        "types": [
+          "DENSE_VECTOR",
+          "FTS_BM25",
+          "DENSE_VECTOR",
+          "FTS_BM25",
+          "DENSE_VECTOR",
+          "DENSE_VECTOR"
+        ]
+      }
+    },
+    {
+      "query": "tìm kiếm không phân biệt hoa thường unicode",
+      "expected": 383,
+      "0.65": {
+        "ids": [
+          383,
+          380,
+          381,
+          382,
+          379
+        ],
+        "rank": 1,
+        "types": [
+          "HYBRID_RRF",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25"
+        ]
+      },
+      "0.57": {
+        "ids": [
+          383,
+          380,
+          381,
+          382,
+          379
+        ],
+        "rank": 1,
+        "types": [
+          "HYBRID_RRF",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25"
+        ]
+      },
+      "0.52": {
+        "ids": [
+          383,
+          381,
+          382,
+          380,
+          379
+        ],
+        "rank": 1,
+        "types": [
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "FTS_BM25",
+          "FTS_BM25"
+        ]
+      }
+    },
+    {
+      "query": "thống kê số lượng công việc theo trạng thái",
+      "expected": 386,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [
+          386,
+          379,
+          382,
+          380,
+          381,
+          383,
+          384
+        ],
+        "rank": 1,
+        "types": [
+          "HYBRID_RRF",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25"
+        ]
+      },
+      "0.52": {
+        "ids": [
+          386,
+          380,
+          379,
+          383,
+          382,
+          381,
+          384
+        ],
+        "rank": 1,
+        "types": [
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25"
+        ]
+      }
+    },
+    {
+      "query": "service health check endpoint",
+      "expected": 384,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.52": {
+        "ids": [
+          386,
+          379,
+          384
+        ],
+        "rank": 3,
+        "types": [
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "FTS_BM25"
+        ]
+      }
+    },
+    {
+      "query": "case insensitive unicode search",
+      "expected": 383,
+      "0.65": {
+        "ids": [
+          383
+        ],
+        "rank": 1,
+        "types": [
+          "FTS_BM25"
+        ]
+      },
+      "0.57": {
+        "ids": [
+          383,
+          381,
+          382,
+          380,
+          379
+        ],
+        "rank": 1,
+        "types": [
+          "HYBRID_RRF",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25"
+        ]
+      },
+      "0.52": {
+        "ids": [
+          383,
+          382,
+          381,
+          380,
+          379
+        ],
+        "rank": 1,
+        "types": [
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "FTS_BM25",
+          "FTS_BM25"
+        ]
+      }
+    },
+    {
+      "query": "count tasks by status",
+      "expected": 386,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [
+          384,
+          380,
+          379,
+          386,
+          381,
+          383,
+          382
+        ],
+        "rank": 4,
+        "types": [
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "FTS_BM25",
+          "FTS_BM25",
+          "FTS_BM25"
+        ]
+      },
+      "0.52": {
+        "ids": [
+          384,
+          380,
+          379,
+          386,
+          383,
+          382,
+          381
+        ],
+        "rank": 4,
+        "types": [
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "HYBRID_RRF",
+          "FTS_BM25"
+        ]
+      }
+    },
+    {
+      "query": "upload user avatar",
+      "expected": null,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.52": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      }
+    },
+    {
+      "query": "database backup retention policy",
+      "expected": null,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.52": {
+        "ids": [
+          379
+        ],
+        "rank": null,
+        "types": [
+          "DENSE_VECTOR"
+        ]
+      }
+    },
+    {
+      "query": "send transactional email",
+      "expected": null,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.52": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      }
+    },
+    {
+      "query": "tải ảnh đại diện người dùng",
+      "expected": null,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.52": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      }
+    },
+    {
+      "query": "chính sách sao lưu cơ sở dữ liệu",
+      "expected": null,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.52": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      }
+    },
+    {
+      "query": "gửi email giao dịch",
+      "expected": null,
+      "0.65": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.57": {
+        "ids": [],
+        "rank": null,
+        "types": []
+      },
+      "0.52": {
+        "ids": [
+          380,
+          382
+        ],
+        "rank": null,
+        "types": [
+          "DENSE_VECTOR",
+          "FTS_BM25"
+        ]
+      }
+    }
+  ],
+  "acl": {
+    "wrong_role_count": 0,
+    "empty_scope_count": 0,
+    "wrong_actor_count": 0
+  },
+  "points": 135,
+  "authorized_documents": 7
+}

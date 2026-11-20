@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-25T13:52:58.124930+00:00",
+  "scope": "Main project5; isolated fixture decisions explicitly distinguished from human Main decisions",
+  "gateway_image": "sha256:994b2efdd85274db99197a82c6554a76c4d5d22be4873a63292eff02c19b6d0b",
+  "core_image": "sha256:edc9f2b23db00a25fa73acbbd3dafb1f609b17d37ea0790fde9db9778b37e8fa",
+  "main_native_writes": 0,
+  "new_main_human_decisions": 0,
+  "new_model_calls": 0,
+  "staging_operations": false,
+  "status": "PARTIAL",
+  "implemented_and_deployed": "Signed QA run/evidence/two-stage review plus exact approved atomic Native bridge and receipt recovery",
+  "main": {
+    "test_run_count": 1,
+    "evidence_id": "d4d5aa97-a716-550d-88e9-de04b9caf9c9",
+    "evidence_hash": "311a3b76ebda820a6383a393d393a86ed9bb041a5dfdbe9d5c8216ec4928a034",
+    "state": "pending_qa",
+    "source": "Native375v0, six fixed readback predicates",
+    "review_count": 0,
+    "new_transition_executed": false
+  },
+  "actual_isolated_native": {
+    "artifact": "CODEX_ATOMIC_QA_NATIVE_CLONE_RESULT.json",
+    "qualified_transition": "Task IN TESTING -> REVIEW",
+    "fresh_independent_qa_and_manager_roles": [
+      23,
+      18
+    ],
+    "requester": 19,
+    "executing_actor": 18,
+    "first_source_and_readback_versions": [
+      21,
+      23
+    ],
+    "lost_reply_posts": 1,
+    "concurrent_exact_requests": 2,
+    "post_metadata_save_transaction_rollback": true
+  },
+  "limitations": [
+    "Fixed Native field assertions only; arbitrary app/UI QA is not proven",
+    "Main needs genuine independent QA23 then PM19 for Owner18 source; no decision fabricated",
+    "Actual Native E2E qualified Task IN TESTING -> REVIEW only; retest/release/Subtask completion and full Bug closure remain PARTIAL",
+    "Existing scope/code/checklist/children/BA/PM/deployment gates remain authoritative",
+    "Legacy unsupported custom-gate422 is preserved"
+  ]
+}

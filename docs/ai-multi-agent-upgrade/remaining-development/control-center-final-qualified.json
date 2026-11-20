@@ -1,0 +1,166 @@
+{
+  "scope": "Actual browser/control-center cancellation; original wrong-route404 retained as history, correct-route rerun explicit",
+  "images": {
+    "gateway": {
+      "tag": "qldapm-rd-gateway:20261018-042a7cd7a8",
+      "image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea",
+      "exit_code": 0,
+      "source_sha256": "042a7cd7a8d851fa43531edeaed720fd8aa442ddfd8578ff1c137c85f2260366",
+      "base": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233"
+    },
+    "core": {
+      "tag": "qldapm-rd-core:20261018-c278ffb0b0",
+      "exit_code": 0,
+      "source_sha256": "c278ffb0b05c4141d2acd0d443f9b41ac8c3b398f8e260df77705d9e039eca75",
+      "base": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "image": "sha256:3b09393d123464a7baf4726daf69806de4754a0b1911173e6dbe58ecb3ac2f99"
+    },
+    "quick-tunnel": {
+      "tag": "qldapm-rd-quick-tunnel:20261018-56a6cc1ea0",
+      "exit_code": 0,
+      "source_sha256": null,
+      "base": null,
+      "image": "sha256:eb4cb5b6f52946912fec82300c8a79df44059081d1c99710948fe0ca133d95df"
+    }
+  },
+  "checks": [
+    {
+      "id": "CC-PAGING-FIXTURE",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": {
+        "new_read_only_runs": 10
+      },
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-CANCEL-QUEUED-OBSERVED",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-CANCEL-REAL",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": {
+        "http": 200
+      },
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-QUEUE-DRAIN",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-CANCEL-RECEIPT",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-PAGE-SIZE",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-NEXT",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": {
+        "url_offset": true,
+        "overlap": 0
+      },
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-PREVIOUS",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-FILTER-EMPTY",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-SORT",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-REFRESH",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-RESPONSIVE-TEN-ROWS",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0,
+      "evidence": "control-center-uat.json"
+    },
+    {
+      "id": "CC-CSRF-MISSING-TOKEN",
+      "expected": "Authenticated POST without CSRF token must be rejected",
+      "status": "PASS",
+      "actual": {
+        "http": 422,
+        "route": "/projects/qldapm-local/qldapm-ai/commands"
+      },
+      "exit_code": 0,
+      "images": {
+        "gateway": {
+          "tag": "qldapm-rd-gateway:20261018-042a7cd7a8",
+          "image": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea",
+          "exit_code": 0,
+          "source_sha256": "042a7cd7a8d851fa43531edeaed720fd8aa442ddfd8578ff1c137c85f2260366",
+          "base": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233"
+        },
+        "core": {
+          "tag": "qldapm-rd-core:20261018-c278ffb0b0",
+          "exit_code": 0,
+          "source_sha256": "c278ffb0b05c4141d2acd0d443f9b41ac8c3b398f8e260df77705d9e039eca75",
+          "base": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+          "image": "sha256:3b09393d123464a7baf4726daf69806de4754a0b1911173e6dbe58ecb3ac2f99"
+        },
+        "quick-tunnel": {
+          "tag": "qldapm-rd-quick-tunnel:20261018-56a6cc1ea0",
+          "exit_code": 0,
+          "source_sha256": null,
+          "base": null,
+          "image": "sha256:eb4cb5b6f52946912fec82300c8a79df44059081d1c99710948fe0ca133d95df"
+        }
+      },
+      "evidence": "csrf-qualified.json"
+    }
+  ],
+  "passed": true
+}

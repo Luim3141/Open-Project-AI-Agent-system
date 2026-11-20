@@ -1,0 +1,31 @@
+{
+  "mode": "OFFLINE_SAVED_RESPONSE_ONLY",
+  "diagnostic": {
+    "category": "SPAN",
+    "rule": "SPAN_REFERENCE_MISMATCH",
+    "case_id": "dev:recovery_history:vi",
+    "native_id": 388,
+    "span_id": 10,
+    "document_id": "38c4c619a0f80327537a030cf162e8f5fcc468543a617b5d2db10fb199467845",
+    "source_sha256": "6fc46219d09b109d2e73058c232ad4c6816cd34ad274e8e76bdadd909c03f729",
+    "span_sha256": "a589243baec8dc86852f0a7a1267576715bc307765e04c64cd3aed5d8bfac51d",
+    "start": 139,
+    "end": 265,
+    "candidate_span_ids": [
+      5
+    ]
+  },
+  "deterministic_pointer_repair": [
+    {
+      "rule": "UNIQUE_EXACT_QUOTE_SAME_SOURCE",
+      "from_span_id": 10,
+      "to_span_id": 5
+    }
+  ],
+  "citation_identity_valid": true,
+  "answer_support": "UNSUPPORTED_BY_SOURCE_REVIEW",
+  "reason": "Preserving old mapping/results does not entail restoring Native history; another same-source span explicitly says NEW record, not restoration.",
+  "semantic_review_provenance": "assistant source inspection, not human truth label",
+  "model_calls": 0,
+  "main_changed": false
+}

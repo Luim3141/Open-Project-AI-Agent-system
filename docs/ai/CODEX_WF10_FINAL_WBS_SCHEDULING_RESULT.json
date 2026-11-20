@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-26T10:03:55.537215+07:00",
+  "scope": "Main project5; isolated fixture decisions explicitly distinguished from human Main decisions",
+  "gateway_image": "sha256:89777ef1ddf5c84f1758756bca620599fb49b906ae77cf961249bf1f2726f0fa",
+  "core_image": "sha256:4495d944cd6ea5ab7a1fb50173310a787793f4398118f6b858333ac62a80a6a2",
+  "main_native_writes": 0,
+  "new_main_human_decisions": 0,
+  "new_model_calls": 0,
+  "staging_operations": false,
+  "status": "PARTIAL",
+  "historical_model_to_draft": {
+    "observed_at": "2026-10-24T22:08:17.516442+00:00",
+    "actor": 18,
+    "project_id": 5,
+    "run_id": "486bb5f1-4413-4374-b2f1-c212cf5da0eb",
+    "state": "done",
+    "status": "PASS",
+    "native_writes": 0,
+    "source_id": 371,
+    "source_version": 1,
+    "engine": "gemini_supervisor",
+    "model_call_count": 1,
+    "http_attempt_count": 2,
+    "provider_mode": "LIVE_GEMINI",
+    "business_status": "UNVERIFIED_DRAFT_ONLY_NO_NATIVE_PROPOSAL",
+    "output_hash": "b6c0628033cf0bd73361d9101a00368596784edd11959f2dce4c7099a870657f",
+    "draft_id": "a7a581ec-b991-5d22-af5b-aab1f2211c76",
+    "draft_hash": "1e182a150586c904443eb2522c04b5c47d91454bd1779edbbec3961dc7e5b85d",
+    "node_kinds": [
+      "Epic",
+      "Task",
+      "Subtask"
+    ],
+    "source_references": [
+      {
+        "lock_version": 1,
+        "work_package_id": 371
+      }
+    ],
+    "origin": {
+      "actor": 18,
+      "output_hash": "b6c0628033cf0bd73361d9101a00368596784edd11959f2dce4c7099a870657f",
+      "run_id": "486bb5f1-4413-4374-b2f1-c212cf5da0eb"
+    }
+  },
+  "historical_native_tree": "CODEX_WF10_SUBTASK_NATIVE_RESULT.json",
+  "historical_schedule": "CODEX_NATIVE_SCHEDULE_E2E_RESULT.json",
+  "current_tree_readback": "CODEX_ATOMIC_QA_RAG_RESULT.json",
+  "current_state": "372v1 ->373v1 ->374v0;375v0 dates/priority/BE21 retained",
+  "remaining": [
+    "Fresh exact human decisions before Main dependency/new BA-derived tree execution",
+    "Full parent/child/retest/release business closure",
+    "No relation graph semantic source; existing WP/canonical RAG sources refreshed by durable jobs"
+  ],
+  "upstream_relation_clone_baseline": {
+    "artifact": "CODEX_NATIVE_RELATION_BASELINE_CLONE_RESULT.json",
+    "relations": 4,
+    "parent_and_epic_derived_changes": "Native Subtask dependency changed384, parent382, Epic380; exact before/after artifact",
+    "manual_leaf_case": "Parent relation alone changed no dates/versions",
+    "versioned_ai_relation_execution": "NOT_IMPLEMENTED"
+  },
+  "dependency_bridge": {
+    "implemented": true,
+    "deployed": true,
+    "evidence": "CODEX_NATIVE_DEPENDENCY_DEPLOYMENT_RESULT.json",
+    "actual_native_clone_and_recovery": true,
+    "main_readonly_policy": true,
+    "main_native_write": false
+  }
+}

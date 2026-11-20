@@ -1,0 +1,546 @@
+{
+  "scope": "ISOLATED_NEW_FIXTURE_USERS_ONLY",
+  "images": {
+    "gateway": {
+      "tag": "qldapm-rd-gateway:20261018-b3e4dcef12",
+      "image": "sha256:600b84023bf19eb6041981cd1149e2521ac8cc28360374bf8c05befdbffc1402",
+      "exit_code": 0,
+      "source_sha256": "b3e4dcef12f821e028ed2c1b80a4f6470982d77489adf6fa4c8948daf4972ec9",
+      "base": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233"
+    },
+    "core": {
+      "tag": "qldapm-rd-core:20261018-4594599307",
+      "exit_code": 0,
+      "source_sha256": "459459930736c92a5d3b1ce161e3a8997b357695ce2450169b6b89cdafaa5d2c",
+      "base": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "image": "sha256:5865533ca158586f812554182bc081a7fd5ba4c67db82c41dbc0ebca56d67076"
+    },
+    "quick-tunnel": {
+      "tag": "qldapm-rd-quick-tunnel:20261018-56a6cc1ea0",
+      "exit_code": 0,
+      "source_sha256": null,
+      "base": null,
+      "image": "sha256:eb4cb5b6f52946912fec82300c8a79df44059081d1c99710948fe0ca133d95df"
+    }
+  },
+  "started_at": 1792317175.2086468,
+  "checks": [
+    {
+      "id": "UAT-PM-LOGIN",
+      "expected": "Native login/TOTP identifies synthetic actor",
+      "status": "PASS",
+      "actual": {
+        "http": 200,
+        "id": 13
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-CONTROL-CENTER",
+      "expected": "Real Core renders Control Center",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-UPDATE",
+      "expected": "Native subject/lockVersion match confirmed update",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-SUPERVISOR",
+      "expected": "Real queued worker completes local specialists/reviewer with zero model calls",
+      "status": "PASS",
+      "actual": {
+        "run_id": "cb801306-7735-40a0-b2a6-563bd369875d",
+        "state": "done"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-OUTPUT",
+      "expected": "Actual result and execution plan visible in frontend",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-TRACE",
+      "expected": "Own persisted trace has specialist events",
+      "status": "PASS",
+      "actual": {
+        "events": 7
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-KNOWLEDGE",
+      "expected": "UI ingestion/search shows fresh native citation",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-VIEWPORT-390",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-VIEWPORT-1280",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-CONSOLE",
+      "expected": "No uncaught Assistant page errors or HTTP5xx after authentication",
+      "status": "PASS",
+      "actual": {
+        "postauth_page_errors": 0,
+        "http_5xx": 0,
+        "preauth_native_errors": 2,
+        "preauth_evidence": "browser-error-diagnostic.json (upstream Native login HALError)"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-LOGOUT",
+      "expected": "Native API rejects expired browser session",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-PM-SESSION",
+      "expected": "Assistant redirects unauthenticated session to login",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-LOGIN",
+      "expected": "Native login/TOTP identifies synthetic actor",
+      "status": "PASS",
+      "actual": {
+        "http": 200,
+        "id": 14
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-CONTROL-CENTER",
+      "expected": "Real Core renders Control Center",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-WRITE-DENIED",
+      "expected": "Non-PM mutation denied without changing native fixture",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-NO-IMPERSONATION",
+      "expected": "Client actor override rejected",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-SUPERVISOR",
+      "expected": "Real queued worker completes local specialists/reviewer with zero model calls",
+      "status": "PASS",
+      "actual": {
+        "run_id": "8ba020e8-8e49-4a5d-80fc-1dd9ffec036a",
+        "state": "done"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-OUTPUT",
+      "expected": "Actual result and execution plan visible in frontend",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-TRACE",
+      "expected": "Own persisted trace has specialist events",
+      "status": "PASS",
+      "actual": {
+        "events": 7
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-KNOWLEDGE",
+      "expected": "UI ingestion/search shows fresh native citation",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-VIEWPORT-390",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-VIEWPORT-1280",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-CONSOLE",
+      "expected": "No uncaught Assistant page errors or HTTP5xx after authentication",
+      "status": "PASS",
+      "actual": {
+        "postauth_page_errors": 0,
+        "http_5xx": 0,
+        "preauth_native_errors": 2,
+        "preauth_evidence": "browser-error-diagnostic.json (upstream Native login HALError)"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-LOGOUT",
+      "expected": "Native API rejects expired browser session",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BA-PM-SESSION",
+      "expected": "Assistant redirects unauthenticated session to login",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-LOGIN",
+      "expected": "Native login/TOTP identifies synthetic actor",
+      "status": "PASS",
+      "actual": {
+        "http": 200,
+        "id": 24
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-CONTROL-CENTER",
+      "expected": "Real Core renders Control Center",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-WRITE-DENIED",
+      "expected": "Non-PM mutation denied without changing native fixture",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-NO-IMPERSONATION",
+      "expected": "Client actor override rejected",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-SUPERVISOR",
+      "expected": "Real queued worker completes local specialists/reviewer with zero model calls",
+      "status": "PASS",
+      "actual": {
+        "run_id": "77c76bc6-6c0c-4a39-b256-a73a76d83990",
+        "state": "done"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-OUTPUT",
+      "expected": "Actual result and execution plan visible in frontend",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-TRACE",
+      "expected": "Own persisted trace has specialist events",
+      "status": "PASS",
+      "actual": {
+        "events": 7
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-KNOWLEDGE",
+      "expected": "UI ingestion/search shows fresh native citation",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-VIEWPORT-390",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-VIEWPORT-1280",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-CONSOLE",
+      "expected": "No uncaught Assistant page errors or HTTP5xx after authentication",
+      "status": "PASS",
+      "actual": {
+        "postauth_page_errors": 0,
+        "http_5xx": 0,
+        "preauth_native_errors": 2,
+        "preauth_evidence": "browser-error-diagnostic.json (upstream Native login HALError)"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-LOGOUT",
+      "expected": "Native API rejects expired browser session",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-BE-SESSION",
+      "expected": "Assistant redirects unauthenticated session to login",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-LOGIN",
+      "expected": "Native login/TOTP identifies synthetic actor",
+      "status": "PASS",
+      "actual": {
+        "http": 200,
+        "id": 25
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-CONTROL-CENTER",
+      "expected": "Real Core renders Control Center",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-WRITE-DENIED",
+      "expected": "Non-PM mutation denied without changing native fixture",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-NO-IMPERSONATION",
+      "expected": "Client actor override rejected",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-SUPERVISOR",
+      "expected": "Real queued worker completes local specialists/reviewer with zero model calls",
+      "status": "PASS",
+      "actual": {
+        "run_id": "502fd32f-d585-4a4f-b9bb-16a8f19e528a",
+        "state": "done"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-OUTPUT",
+      "expected": "Actual result and execution plan visible in frontend",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-TRACE",
+      "expected": "Own persisted trace has specialist events",
+      "status": "PASS",
+      "actual": {
+        "events": 7
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-KNOWLEDGE",
+      "expected": "UI ingestion/search shows fresh native citation",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-VIEWPORT-390",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-VIEWPORT-1280",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-CONSOLE",
+      "expected": "No uncaught Assistant page errors or HTTP5xx after authentication",
+      "status": "PASS",
+      "actual": {
+        "postauth_page_errors": 0,
+        "http_5xx": 0,
+        "preauth_native_errors": 2,
+        "preauth_evidence": "browser-error-diagnostic.json (upstream Native login HALError)"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-LOGOUT",
+      "expected": "Native API rejects expired browser session",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-FE-SESSION",
+      "expected": "Assistant redirects unauthenticated session to login",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-LOGIN",
+      "expected": "Native login/TOTP identifies synthetic actor",
+      "status": "PASS",
+      "actual": {
+        "http": 200,
+        "id": 26
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-CONTROL-CENTER",
+      "expected": "Real Core renders Control Center",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-WRITE-DENIED",
+      "expected": "Non-PM mutation denied without changing native fixture",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-NO-IMPERSONATION",
+      "expected": "Client actor override rejected",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-SUPERVISOR",
+      "expected": "Real queued worker completes local specialists/reviewer with zero model calls",
+      "status": "PASS",
+      "actual": {
+        "run_id": "144c00ec-0857-4464-99ae-53ec5208751e",
+        "state": "done"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-OUTPUT",
+      "expected": "Actual result and execution plan visible in frontend",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-TRACE",
+      "expected": "Own persisted trace has specialist events",
+      "status": "PASS",
+      "actual": {
+        "events": 7
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-KNOWLEDGE",
+      "expected": "UI ingestion/search shows fresh native citation",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-VIEWPORT-390",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-VIEWPORT-1280",
+      "expected": "No horizontal document overflow",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-CONSOLE",
+      "expected": "No uncaught Assistant page errors or HTTP5xx after authentication",
+      "status": "PASS",
+      "actual": {
+        "postauth_page_errors": 0,
+        "http_5xx": 0,
+        "preauth_native_errors": 2,
+        "preauth_evidence": "browser-error-diagnostic.json (upstream Native login HALError)"
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-LOGOUT",
+      "expected": "Native API rejects expired browser session",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "UAT-QA-SESSION",
+      "expected": "Assistant redirects unauthenticated session to login",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    }
+  ],
+  "provider_calls_requested": 0,
+  "serving_native_mutations": 0,
+  "finished_at": 1792317416.8201163,
+  "passed": true
+}

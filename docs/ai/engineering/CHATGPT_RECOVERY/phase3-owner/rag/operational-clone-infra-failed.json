@@ -1,0 +1,60 @@
+{
+  "started_utc": "2026-11-02T09:33:25.097729+00:00",
+  "ended_utc": "2026-11-02T09:34:10.253778+00:00",
+  "status": "OPERATIONAL_REFRESH_CLONE_FAILED",
+  "checks": {
+    "stale_exact_lookups_empty": true,
+    "exactly9_project6_refreshes": false,
+    "only_project6_actor20_jobs": false,
+    "all9_verified_within_bound": false,
+    "no_project5_or_native_proposals": true,
+    "settled_scan_no_new_jobs": false,
+    "all10_frozen_current_source_hashes_and_metadata": true,
+    "current_actor_chunk_payloads_readback": false,
+    "pm_owner_exact_citations_current": true,
+    "actual_qdrant_acl_prefilters": true,
+    "native_business_writes_zero": true,
+    "warm_exact_p95_at_most5sec": true
+  },
+  "scan_native_ids": [
+    379,
+    380,
+    381,
+    382,
+    383,
+    384,
+    386,
+    387,
+    389,
+    390
+  ],
+  "drained_jobs": 12,
+  "baseline_exact_hit_counts": {
+    "384": 0,
+    "390": 0
+  },
+  "acl_checks": {
+    "wrong_project": true,
+    "wrong_role": true,
+    "wrong_actor": true,
+    "empty_document_scope": true
+  },
+  "current_actor_sources": 10,
+  "verified_actor_chunks": 161,
+  "warm_exact_query_p95_seconds": 0.4719798029982485,
+  "model_digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+  "snapshot_sha256": "b126f57943622ad7c5b0ed0c3dcbe641f11cf31b6d188a1b54b8e0e34395375e",
+  "predeclared_gate_sha256": "6aa691688b99af784a0576e18f581ded47b6d06f95e344bc74c5d5a337bd5159",
+  "ollama_resident_models": {
+    "models": []
+  },
+  "source_hashes": {
+    "service.py": "c801dfd716f0b46f5b588be8d98bf66841f15a06db6a39e41aebfc1b26842135",
+    "native_incremental.py": "23a8eb4f822938ddd4cd3d59906471c3af15e83e140d94f582984705f1bcea8b",
+    "knowledge_search.py": "6dce36043c90d8ccdb55bd21b8ce0f92f46f0a48d16c3eaebad2a0d30cfcf69c",
+    "knowledge_ingestion.py": "5a8ac18cf75fd3f595b9082a7afb06624a643e60efadde54fc612d60e2140133",
+    "vector_client.py": "53e4f97b13d6871e4aec206f4bdf66097f9f546848c85fa1c1d48cba7b2166f9"
+  },
+  "command": "openproject/ai/.venv/Scripts/python.exe docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/rag/qualify_refresh.py",
+  "limits": "Frozen Native fixture after independently authenticated current read. Real local BGE and disposable Qdrant. No Main Native/index/config mutation. Not semantic accuracy/human benchmark or browser Owner UAT. Qdrant cap excludes existing Ollama model/GPU memory; sequential warm timing not concurrent SLA."
+}

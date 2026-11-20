@@ -1,0 +1,324 @@
+{
+  "passed": true,
+  "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+  "backup_id": "af2be0f4-f03f-4e69-9553-310ea50da148",
+  "isolated_bootstrap": true,
+  "login_after_restart": true,
+  "credential_and_encryption_key_unchanged": true,
+  "existing_owner_not_replaced": true,
+  "loopback_only": true,
+  "primary_data_mounted": false,
+  "license_activation": false,
+  "actual_workflow_restart_restore": true,
+  "credential_encrypted_at_rest": true,
+  "credential_decrypted_after_restore": true,
+  "primary_fixture_writes": 0,
+  "restored_machine_credential_key_pair": true,
+  "restored_purpose_derived_hmac_credential": true,
+  "manual_product_workflow_before_after_restore": [
+    {
+      "passed": true,
+      "workflow_id": "qldapmManualStatus",
+      "execution_id": "5",
+      "run_id": "f7749a7e-4813-490b-b6f5-905666d42152",
+      "trace_id": "f7749a7e-4813-490b-b6f5-905666d42152",
+      "execution_history_saved": true,
+      "model_calls": 0,
+      "native_writes": 0,
+      "workflow_created_now": false,
+      "editor_only_manual": true,
+      "kind": "status",
+      "state": "COMPLETED",
+      "status": "ok"
+    },
+    {
+      "passed": true,
+      "workflow_id": "qldapmManualStatus",
+      "execution_id": "28",
+      "run_id": "35e39003-0d26-4176-a545-56896f3fc51c",
+      "trace_id": "35e39003-0d26-4176-a545-56896f3fc51c",
+      "execution_history_saved": true,
+      "model_calls": 0,
+      "native_writes": 0,
+      "workflow_created_now": false,
+      "editor_only_manual": true,
+      "kind": "status",
+      "state": "COMPLETED",
+      "status": "ok"
+    }
+  ],
+  "actual_daily_workflow_and_five_native_roles": [
+    {
+      "passed": true,
+      "manual": {
+        "passed": true,
+        "workflow_id": "qldapmDailyBrief",
+        "execution_id": "6",
+        "run_id": "132ea510-7886-46b1-9dce-99fb9e618a76",
+        "trace_id": "132ea510-7886-46b1-9dce-99fb9e618a76",
+        "execution_history_saved": true,
+        "model_calls": 0,
+        "native_writes": 0,
+        "workflow_created_now": false,
+        "editor_only_manual": false,
+        "kind": "daily_brief",
+        "state": "COMPLETED",
+        "status": "READY",
+        "targets": 5,
+        "ready": 5,
+        "unavailable": 0,
+        "published_now": false,
+        "schedule": "09:00 Asia/Bangkok and current-day startup catch-up; one receipt/day"
+      },
+      "actual_scheduled_execution_id": "7",
+      "scheduled_mode": "trigger",
+      "same_daily_receipt": true,
+      "product_schedule": "09:00 Asia/Bangkok",
+      "test_only_accelerated_schedule_seconds": 5,
+      "after_restore": false,
+      "startup_catchup_observed": false
+    },
+    {
+      "passed": true,
+      "actual_native_roles": [
+        {
+          "actor": 6,
+          "role": "BA-PM",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 7,
+          "role": "PM",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 8,
+          "role": "BE",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 9,
+          "role": "FE",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 10,
+          "role": "QA",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        }
+      ],
+      "one_daily_receipt_five_reports": true,
+      "five_actor_collection_seconds": 3.291,
+      "provider_calls": 0,
+      "native_writes": 0,
+      "primary_gateway_data_mounted": false
+    },
+    {
+      "passed": true,
+      "manual": {
+        "passed": true,
+        "workflow_id": "qldapmDailyBrief",
+        "execution_id": "33",
+        "run_id": "132ea510-7886-46b1-9dce-99fb9e618a76",
+        "trace_id": "132ea510-7886-46b1-9dce-99fb9e618a76",
+        "execution_history_saved": true,
+        "model_calls": 0,
+        "native_writes": 0,
+        "workflow_created_now": false,
+        "editor_only_manual": false,
+        "kind": "daily_brief",
+        "state": "COMPLETED",
+        "status": "READY",
+        "targets": 5,
+        "ready": 5,
+        "unavailable": 0,
+        "published_now": false,
+        "schedule": "09:00 Asia/Bangkok and current-day startup catch-up; one receipt/day"
+      },
+      "actual_scheduled_execution_id": "35",
+      "scheduled_mode": "trigger",
+      "same_daily_receipt": true,
+      "product_schedule": "09:00 Asia/Bangkok",
+      "test_only_accelerated_schedule_seconds": 5,
+      "after_restore": true,
+      "startup_catchup_observed": true
+    },
+    {
+      "passed": true,
+      "actual_native_roles": [
+        {
+          "actor": 6,
+          "role": "BA-PM",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 7,
+          "role": "PM",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 8,
+          "role": "BE",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 9,
+          "role": "FE",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        },
+        {
+          "actor": 10,
+          "role": "QA",
+          "own_native_snapshot_ready": true,
+          "count": 335,
+          "cross_actor_parameter_denied": true,
+          "compact_native_equals_full_hal": true,
+          "native_query_selectors_denied": true
+        }
+      ],
+      "one_daily_receipt_five_reports": true,
+      "five_actor_collection_seconds": 3.291,
+      "provider_calls": 0,
+      "native_writes": 0,
+      "primary_gateway_data_mounted": false
+    }
+  ],
+  "candidate_gateway": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233",
+  "candidate_core": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+  "candidate_core_database_readonly_verified": true,
+  "primary_core_replaced": false,
+  "actual_error_workflow_and_native_ui": [
+    {
+      "passed": true,
+      "error_workflow_created_now": true,
+      "published_version_id": "9cb99276-a4c0-446e-88d4-39e028df4d65",
+      "bindings": [
+        {
+          "workflow_id": "qldapmManualStatus",
+          "binding_added_now": true
+        },
+        {
+          "workflow_id": "qldapmDailyBrief",
+          "binding_added_now": true
+        }
+      ],
+      "nodes_connections_credentials_submitted": false,
+      "native_writes": 0,
+      "model_calls": 0,
+      "error_messages_forwarded": false
+    },
+    {
+      "passed": true,
+      "actual_error_execution_id": "45",
+      "production_failure_from_startup_trigger": true,
+      "error_handler_mode": "error",
+      "raw_private_marker_present_in_n8n_only": true,
+      "raw_error_not_forwarded": true,
+      "same_error_receipt_on_fresh_nonce": true,
+      "actual_five_role_ui": {
+        "passed": true,
+        "roles": [
+          {
+            "actor": 6,
+            "role": "BA-PM",
+            "native_authorized_notice": true
+          },
+          {
+            "actor": 7,
+            "role": "PM",
+            "native_authorized_notice": true
+          },
+          {
+            "actor": 8,
+            "role": "BE",
+            "native_authorized_notice": true
+          },
+          {
+            "actor": 9,
+            "role": "FE",
+            "native_authorized_notice": true
+          },
+          {
+            "actor": 10,
+            "role": "QA",
+            "native_authorized_notice": true
+          }
+        ],
+        "cross_project_empty": true,
+        "one_sanitized_notice": true,
+        "private_raw_error_absent_from_gateway": true,
+        "provider_calls": 0,
+        "native_writes": 0
+      },
+      "native_writes": 0,
+      "provider_calls": 0,
+      "primary_workflows_mutated": false
+    }
+  ],
+  "qualification_events": [
+    {
+      "phase": "backup_verified",
+      "at": 1792205615.5537014
+    },
+    {
+      "phase": "published_error_workflow_and_field_only_bindings_verified",
+      "at": 1792205689.9131324
+    },
+    {
+      "phase": "daily_schedule_and_five_native_roles_passed",
+      "at": 1792205807.090746
+    },
+    {
+      "phase": "clone_restarted",
+      "at": 1792205815.2927146
+    },
+    {
+      "phase": "fresh_directory_restore_ready",
+      "at": 1792205849.6358457
+    },
+    {
+      "phase": "startup_catchup_and_restored_five_native_roles_passed",
+      "at": 1792205921.3335896
+    },
+    {
+      "phase": "actual_trigger_error_metadata_dedup_project_ui_verified",
+      "at": 1792205971.961945
+    }
+  ]
+}

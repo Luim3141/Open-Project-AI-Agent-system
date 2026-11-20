@@ -1,0 +1,237 @@
+{
+  "at": "2026-10-18T14:38:48.097390+00:00",
+  "power_loss_reported_by_owner": true,
+  "deployment_reapplied": false,
+  "operator_lease_available": true,
+  "image_lock_manifest_runtime_match": true,
+  "protected_config_keys_unchanged": true,
+  "sqlite": {
+    "gateway.sqlite": {
+      "quick_check": "ok",
+      "table_counts": {
+        "agent_runs": 0,
+        "agent_tasks": 0,
+        "ai_queue": 0,
+        "ai_runs": 90,
+        "audit": 5152,
+        "automation_nonces": 1,
+        "automation_runs": 16,
+        "daily_briefs": 10,
+        "gemini_blocks": 1,
+        "gemini_recovery": 1,
+        "gemini_usage": 471,
+        "jobs": 0,
+        "proposals": 34,
+        "requests": 347,
+        "tokens": 50,
+        "ui_nonces": 9
+      },
+      "busy": {
+        "jobs": 0,
+        "ai_runs": 0,
+        "ai_queue": 0
+      }
+    },
+    "knowledge.sqlite": {
+      "quick_check": "ok",
+      "table_counts": {
+        "knowledge_chunks": 0,
+        "knowledge_documents": 4,
+        "knowledge_fts": 4,
+        "knowledge_fts_config": 1,
+        "knowledge_fts_content": 4,
+        "knowledge_fts_data": 8,
+        "knowledge_fts_docsize": 4,
+        "knowledge_fts_idx": 6
+      }
+    }
+  },
+  "native_fingerprint_count": 221,
+  "native_changed_tables": [
+    "sessions",
+    "$sequences"
+  ],
+  "containers": [
+    {
+      "name": "qldapm-ai-stage-quick-tunnel-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.740393732Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-ai-stage-staging-gateway-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.892258048Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-ai-stage-staging-web-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.521377025Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-ai-stage-local-backup-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.823640192Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-ai-stage-n8n-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.912405689Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "birdsong-retrieval-api-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.93936724Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-ai-stage-n8n-editor-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.883117191Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-ai-stage-db-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.974437067Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-ai-gateway-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.859164213Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-openproject-cron-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.902346695Z",
+      "running": true,
+      "health": null,
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-openproject-web-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.933442976Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-openproject-worker-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.774582537Z",
+      "running": true,
+      "health": null,
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-openproject-proxy-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.702190554Z",
+      "running": true,
+      "health": null,
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-openproject-hocuspocus-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.811087296Z",
+      "running": true,
+      "health": null,
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-openproject-db-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.960483474Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "qldapm-openproject-cache-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.953734785Z",
+      "running": true,
+      "health": null,
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "birdsong-retrieval-web-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.505101306Z",
+      "running": true,
+      "health": null,
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "name": "birdsong-retrieval-db-1",
+      "same_container_id": true,
+      "same_image": true,
+      "started_at": "2026-10-18T14:37:22.620543273Z",
+      "running": true,
+      "health": "healthy",
+      "restarts": 0,
+      "restart_policy": "unless-stopped"
+    }
+  ],
+  "full_health_pending": false
+}

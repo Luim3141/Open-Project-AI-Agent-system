@@ -1,0 +1,922 @@
+{
+  "observed_at": "2026-10-25T03:17:32.760038+00:00",
+  "status": "PASS",
+  "actors": {
+    "18": {
+      "role": "AI_SYSTEM_OWNER",
+      "native_identity": {
+        "user_id": 18,
+        "name": "System Owner",
+        "role": "AI_SYSTEM_OWNER",
+        "project_id": 5,
+        "capabilities": [
+          "AI_SYSTEM_OWNER"
+        ]
+      },
+      "route": "OWN_ACTOR_BEARER_AND_FRESH_NATIVE_KEY"
+    },
+    "19": {
+      "role": "PM",
+      "native_identity": {
+        "user_id": 19,
+        "name": "QLDAPM BA-PM",
+        "role": "PM",
+        "project_id": 5
+      },
+      "route": "OWN_ACTOR_BEARER_AND_FRESH_NATIVE_KEY"
+    },
+    "20": {
+      "role": "BA",
+      "native_identity": {
+        "user_id": 20,
+        "name": "QLDAPM PM",
+        "role": "BA",
+        "project_id": 5
+      },
+      "route": "OWN_ACTOR_BEARER_AND_FRESH_NATIVE_KEY"
+    },
+    "21": {
+      "role": "BE",
+      "native_identity": {
+        "user_id": 21,
+        "name": "QLDAPM BE",
+        "role": "BE",
+        "project_id": 5
+      },
+      "route": "OWN_ACTOR_BEARER_AND_FRESH_NATIVE_KEY"
+    },
+    "22": {
+      "role": "FE",
+      "native_identity": {
+        "user_id": 22,
+        "name": "QLDAPM FE",
+        "role": "FE",
+        "project_id": 5
+      },
+      "route": "OWN_ACTOR_BEARER_AND_FRESH_NATIVE_KEY"
+    },
+    "23": {
+      "role": "QA",
+      "native_identity": {
+        "user_id": 23,
+        "name": "QLDAPM QA",
+        "role": "QA",
+        "project_id": 5
+      },
+      "route": "OWN_ACTOR_BEARER_AND_FRESH_NATIVE_KEY"
+    }
+  },
+  "checks": {
+    "18_identity": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 18,
+        "role": "AI_SYSTEM_OWNER"
+      }
+    },
+    "18_permissions": {
+      "status": "PASS",
+      "evidence": {
+        "update_work_package": {
+          "name": "update_work_package",
+          "allowed": true,
+          "reason": null
+        },
+        "owner_inspect": {
+          "name": "owner_inspect",
+          "allowed": true,
+          "reason": null
+        },
+        "get_gate": {
+          "name": "get_gate",
+          "allowed": false,
+          "reason": "CUSTOM_GATE_UNSUPPORTED_IN_NATIVE_MODE"
+        }
+      }
+    },
+    "18_control_center": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor_id": 18
+      }
+    },
+    "18_rag": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "native_refs": [
+          {
+            "id": 370,
+            "version": 2
+          }
+        ]
+      }
+    },
+    "18_local_supervisor_start": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "19_identity": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 19,
+        "role": "PM"
+      }
+    },
+    "19_permissions": {
+      "status": "PASS",
+      "evidence": {
+        "update_work_package": {
+          "name": "update_work_package",
+          "allowed": true,
+          "reason": null
+        },
+        "owner_inspect": {
+          "name": "owner_inspect",
+          "allowed": false,
+          "reason": "PM_REQUIRED"
+        },
+        "get_gate": {
+          "name": "get_gate",
+          "allowed": false,
+          "reason": "CUSTOM_GATE_UNSUPPORTED_IN_NATIVE_MODE"
+        }
+      }
+    },
+    "19_control_center": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor_id": 19
+      }
+    },
+    "19_rag": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "native_refs": [
+          {
+            "id": 370,
+            "version": 2
+          }
+        ]
+      }
+    },
+    "19_local_supervisor_start": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "20_identity": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 20,
+        "role": "BA"
+      }
+    },
+    "20_permissions": {
+      "status": "PASS",
+      "evidence": {
+        "update_work_package": {
+          "name": "update_work_package",
+          "allowed": false,
+          "reason": "PM_REQUIRED"
+        },
+        "owner_inspect": {
+          "name": "owner_inspect",
+          "allowed": false,
+          "reason": "PM_REQUIRED"
+        },
+        "get_gate": {
+          "name": "get_gate",
+          "allowed": false,
+          "reason": "CUSTOM_GATE_UNSUPPORTED_IN_NATIVE_MODE"
+        }
+      }
+    },
+    "20_control_center": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor_id": 20
+      }
+    },
+    "20_rag": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "native_refs": [
+          {
+            "id": 370,
+            "version": 2
+          }
+        ]
+      }
+    },
+    "20_local_supervisor_start": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "21_identity": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 21,
+        "role": "BE"
+      }
+    },
+    "21_permissions": {
+      "status": "PASS",
+      "evidence": {
+        "update_work_package": {
+          "name": "update_work_package",
+          "allowed": false,
+          "reason": "PM_REQUIRED"
+        },
+        "owner_inspect": {
+          "name": "owner_inspect",
+          "allowed": false,
+          "reason": "PM_REQUIRED"
+        },
+        "get_gate": {
+          "name": "get_gate",
+          "allowed": false,
+          "reason": "CUSTOM_GATE_UNSUPPORTED_IN_NATIVE_MODE"
+        }
+      }
+    },
+    "21_control_center": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor_id": 21
+      }
+    },
+    "21_rag": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "native_refs": [
+          {
+            "id": 370,
+            "version": 2
+          }
+        ]
+      }
+    },
+    "21_local_supervisor_start": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "22_identity": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 22,
+        "role": "FE"
+      }
+    },
+    "22_permissions": {
+      "status": "PASS",
+      "evidence": {
+        "update_work_package": {
+          "name": "update_work_package",
+          "allowed": false,
+          "reason": "PM_REQUIRED"
+        },
+        "owner_inspect": {
+          "name": "owner_inspect",
+          "allowed": false,
+          "reason": "PM_REQUIRED"
+        },
+        "get_gate": {
+          "name": "get_gate",
+          "allowed": false,
+          "reason": "CUSTOM_GATE_UNSUPPORTED_IN_NATIVE_MODE"
+        }
+      }
+    },
+    "22_control_center": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor_id": 22
+      }
+    },
+    "22_rag": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "native_refs": [
+          {
+            "id": 370,
+            "version": 2
+          }
+        ]
+      }
+    },
+    "22_local_supervisor_start": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "23_identity": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 23,
+        "role": "QA"
+      }
+    },
+    "23_permissions": {
+      "status": "PASS",
+      "evidence": {
+        "update_work_package": {
+          "name": "update_work_package",
+          "allowed": false,
+          "reason": "PM_REQUIRED"
+        },
+        "owner_inspect": {
+          "name": "owner_inspect",
+          "allowed": false,
+          "reason": "PM_REQUIRED"
+        },
+        "get_gate": {
+          "name": "get_gate",
+          "allowed": false,
+          "reason": "CUSTOM_GATE_UNSUPPORTED_IN_NATIVE_MODE"
+        }
+      }
+    },
+    "23_control_center": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor_id": 23
+      }
+    },
+    "23_rag": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "native_refs": [
+          {
+            "id": 370,
+            "version": 2
+          }
+        ]
+      }
+    },
+    "23_local_supervisor_start": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "18_local_supervisor_result": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "run_id": "b3b2870a-50f5-421d-a313-2c4fb56c4cf4",
+        "state": "done",
+        "status": "succeeded",
+        "model_used": false,
+        "source_ids": [
+          370
+        ]
+      }
+    },
+    "19_local_supervisor_result": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "run_id": "bf6a3ef1-4d29-414c-8c82-4c9f0c208533",
+        "state": "done",
+        "status": "succeeded",
+        "model_used": false,
+        "source_ids": [
+          370
+        ]
+      }
+    },
+    "20_local_supervisor_result": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "run_id": "30fad2ff-8017-42cd-830b-bd3d59d7b87c",
+        "state": "done",
+        "status": "succeeded",
+        "model_used": false,
+        "source_ids": [
+          370
+        ]
+      }
+    },
+    "21_local_supervisor_result": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "run_id": "c8ee5f56-ae23-4e19-bc3c-c99ffcccd08b",
+        "state": "done",
+        "status": "succeeded",
+        "model_used": false,
+        "source_ids": [
+          370
+        ]
+      }
+    },
+    "22_local_supervisor_result": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "run_id": "b62506c8-9f73-4e2c-8b75-1f5b8a647f17",
+        "state": "done",
+        "status": "succeeded",
+        "model_used": false,
+        "source_ids": [
+          370
+        ]
+      }
+    },
+    "23_local_supervisor_result": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "run_id": "9b5f038a-9398-4026-a70b-1ed6062fd7e6",
+        "state": "done",
+        "status": "succeeded",
+        "model_used": false,
+        "source_ids": [
+          370
+        ]
+      }
+    },
+    "six_local_runs_completed": {
+      "status": "PASS",
+      "evidence": {
+        "run_ids": {
+          "18": "b3b2870a-50f5-421d-a313-2c4fb56c4cf4",
+          "19": "bf6a3ef1-4d29-414c-8c82-4c9f0c208533",
+          "20": "30fad2ff-8017-42cd-830b-bd3d59d7b87c",
+          "21": "c8ee5f56-ae23-4e19-bc3c-c99ffcccd08b",
+          "22": "b62506c8-9f73-4e2c-8b75-1f5b8a647f17",
+          "23": "9b5f038a-9398-4026-a70b-1ed6062fd7e6"
+        },
+        "waiting": []
+      }
+    },
+    "18_ordinary_cross_actor_trace_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "20_ordinary_cross_actor_trace_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "21_ordinary_cross_actor_trace_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "22_ordinary_cross_actor_trace_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "23_ordinary_cross_actor_trace_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "owner_explicit_audited_trace": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "viewer_actor": 18,
+        "subject_actor": 19
+      }
+    },
+    "19_owner_capability_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "20_owner_capability_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "21_owner_capability_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "22_owner_capability_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "23_owner_capability_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "anonymous": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 401
+      }
+    },
+    "invalid_bearer": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 401
+      }
+    },
+    "forged_owner": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "owner_proposal_only": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "proposal_id": "3e913a1c-5798-4d01-bcfb-6db99013861d",
+        "state": "pending"
+      }
+    },
+    "owner_altered_hash_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 409
+      }
+    },
+    "owner_rejects_own_draft": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "proposal_id": "3e913a1c-5798-4d01-bcfb-6db99013861d"
+      }
+    },
+    "native333_and_task370_untouched": {
+      "status": "PASS",
+      "evidence": {
+        "count": 333,
+        "fingerprint": "49de9ea96d6280a27ed09bc2d83499fc241968f74c32ed0ed6d14a48ced5388c"
+      }
+    }
+  },
+  "native_mutations": 0,
+  "model_calls": 0,
+  "run_ids": {
+    "18": "b3b2870a-50f5-421d-a313-2c4fb56c4cf4",
+    "19": "bf6a3ef1-4d29-414c-8c82-4c9f0c208533",
+    "20": "30fad2ff-8017-42cd-830b-bd3d59d7b87c",
+    "21": "c8ee5f56-ae23-4e19-bc3c-c99ffcccd08b",
+    "22": "b62506c8-9f73-4e2c-8b75-1f5b8a647f17",
+    "23": "9b5f038a-9398-4026-a70b-1ed6062fd7e6"
+  },
+  "owner_draft_proposal_id": "3e913a1c-5798-4d01-bcfb-6db99013861d",
+  "owner_native_write_e2e": "NOT_TESTED_NO_NEW_APPROVAL",
+  "acceptance_updated_at": "2026-10-24T09:04:52.402339+00:00",
+  "acceptance_status": "SUPPORTED_OWNER_ACCESS_VERIFIED_FULL_BUSINESS_RELEASE_PARTIAL",
+  "minimum_24_checks": {
+    "1": {
+      "requirement": "Owner login and Assistant",
+      "status": "PASS",
+      "evidence": "User confirmed actual login and Assistant; Native18 last_login_on24Oct08:08:27Z, failed0"
+    },
+    "2": {
+      "requirement": "Owner read-only AI",
+      "status": "PASS",
+      "evidence": "Original55 API checks plus CODEX_OWNER_FRESH_ACCESS_READONLY_RESULT.json73 checks"
+    },
+    "3": {
+      "requirement": "Owner Supervisor run",
+      "status": "PASS",
+      "evidence": "Own persisted local run b3b2870a… plus actual typed Gemini BA/Reviewer run ba57d24f…"
+    },
+    "4": {
+      "requirement": "Owner RAG search",
+      "status": "PASS",
+      "evidence": "Actual six-role final citations371v1/372v1/373v1/374v0; explicit Owner document scope; unrelated actors canonical-only; strict project/version/hash checks,3 legacy points excluded"
+    },
+    "5": {
+      "requirement": "Owner Control Center/history/audit",
+      "status": "PASS",
+      "evidence": "73API checks + human UAT confirmation"
+    },
+    "6": {
+      "requirement": "Owner own proposal create/read/reject",
+      "status": "PASS",
+      "evidence": "Original55 checks; own proposal3e913a1c… rejected, never executed"
+    },
+    "7": {
+      "requirement": "Owner approval policy qualification",
+      "status": "PASS",
+      "evidence": "Owner own Native identity, three exact human packages consumed for5 technical writes, Native readback/current RAG/audit; both new create decisions and subsequent decisions replay409. Original ScenarioF never replayed."
+    },
+    "8": {
+      "requirement": "PM legacy capabilities",
+      "status": "PASS",
+      "evidence": "Fresh own Native19 PM; configuration200, persisted local run, scoped search/history; retained ScenarioF actual writes"
+    },
+    "9": {
+      "requirement": "BA analysis/search and limits",
+      "status": "PASS",
+      "evidence": "Own Native20 loginpm roleBA; original local run and fresh scoped API/search; no Manager escalation"
+    },
+    "10": {
+      "requirement": "FE and BE granted functions",
+      "status": "PASS",
+      "evidence": "Own Native21/22 BE/FE; local run/progress/trace/search positive, cross-actor and Manager denials"
+    },
+    "11": {
+      "requirement": "QA granted functions",
+      "status": "PASS",
+      "evidence": "Own Native23 QA; local run/search/history positive and Manager denials"
+    },
+    "12": {
+      "requirement": "BA impersonation denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "Original55 forgery + API role checks; Native identity is authoritative"
+    },
+    "13": {
+      "requirement": "FE/BE/QA Owner impersonation denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "Server registry/Native identity and explicit Owner-only oversight403"
+    },
+    "14": {
+      "requirement": "Anonymous rejected",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "48 workflow transport/caller-auth boundaries and API401/403"
+    },
+    "15": {
+      "requirement": "Forged admin/owner claims rejected",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "Original55 root/actor/role422 + new file/incremental strict argument tests"
+    },
+    "16": {
+      "requirement": "Missing invalid expired Bearer rejected",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "48boundaries; retained initial expired-PM/BA401 failures; actual Owner1-second expiry401 in CODEX_OWNER_EXPIRED_BEARER_RESULT.json"
+    },
+    "17": {
+      "requirement": "Cross-actor private trace protection",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "73 fresh API checks: ordinary foreign run/trace denied even Owner; explicit audited oversight allowed18 only"
+    },
+    "18": {
+      "requirement": "Proposal replay409",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "All5 new consumed proposals rejected duplicate decision409, exact done states; ScenarioF historical replay proof retained without new replay"
+    },
+    "19": {
+      "requirement": "Altered proposal/hash denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "Original55 wrong hash409 and isolated canonical proposal tamper tests"
+    },
+    "20": {
+      "requirement": "Native write without approval blocked",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "All new5 Native operations gated by separate exact human decisions; Native writes without approval blocked in unchanged policy/contract tests"
+    },
+    "21": {
+      "requirement": "RAG document visibility",
+      "status": "PASS",
+      "evidence": "Actual six-role final citations371v1/372v1/373v1/374v0; explicit Owner document scope; unrelated actors canonical-only; strict project/version/hash checks,3 legacy points excluded"
+    },
+    "22": {
+      "requirement": "WF03–WF06 security contracts",
+      "status": "PASS",
+      "evidence": "CODEX_WBS_PARENT_POSTDEPLOY_CONTRACT_RESULT.json48 checks plus original real ScenarioF chain preserved"
+    },
+    "23": {
+      "requirement": "UI polling and no401/403 loop",
+      "status": "PASS",
+      "evidence": "Human Owner UAT: local Supervisor run completed; API polling independently qualified. See CODEX_HUMAN_CONTINUATION_CONFIRMATIONS.json; browser automation remains policy blocked."
+    },
+    "24": {
+      "requirement": "Owner logout/expired session loses access",
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": "Human Owner UAT: logout returned to login. Independent expired Gateway Bearer401 and Rails require_login tests retained; no automated browser claim."
+    }
+  },
+  "runtime_owner_native_mutation": "PASS_5_EXACT_APPROVED_TECHNICAL_OPERATIONS",
+  "fresh_api_artifact": "CODEX_OWNER_FRESH_ACCESS_READONLY_RESULT.json",
+  "actual_logins": {
+    "18": "op-owner",
+    "19": "ba-pm",
+    "20": "pm",
+    "21": "be",
+    "22": "fe",
+    "23": "qa"
+  },
+  "latest_runtime_images": {
+    "gateway": "sha256:21ad074d2b51a9332850986a1673ffc894a99d8a99707ecef1f1445996a0e724",
+    "core": "sha256:dcb6018226280bde73fb8812e463bdcb5ef6896cbe9a1c65be7516d993f4a3d4"
+  },
+  "native_data_preservation_artifact": "CODEX_FINAL_MAIN_DATA_PRESERVATION_RESULT.json",
+  "source_hash_manifest": "CODEX_CONTINUATION_SOURCE_HASHES.json",
+  "wf13_human_review_result": "CODEX_WF13_BUSINESS_E2E_RESULT.json",
+  "latest_wf09_role_qualification": "CODEX_WF09_MAIN_QUALIFICATION_RESULT.json",
+  "latest_wf10_role_qualification": "CODEX_WF10_MAIN_QUALIFICATION_RESULT.json",
+  "owner_supported_runtime_access": "PASS",
+  "owner_full_unimplemented_admin_features": "NOT_IMPLEMENTED",
+  "scope": "Supported Owner/legacy role access; full requested administration and overall business release remain PARTIAL/NOT_IMPLEMENTED as documented",
+  "final_native_tree_artifact": "CODEX_FINAL_MAIN_READBACK_RAG_RESULT.json",
+  "final_parent_policy_artifact": "CODEX_WBS_PARENT_MAIN_QUALIFICATION_RESULT.json",
+  "native_package_approvals_consumed": true,
+  "current_image": "sha256:c0f328216654478cb58dc01dad737958416882f0352c450a0ae5a80438ca6372",
+  "latest_73_checks_artifact": "CODEX_CORE_AI_TOOLS_OWNER_ACCESS_RESULT.json",
+  "fresh_owner_provider": {
+    "observed_at": "2026-10-24T22:08:17.516442+00:00",
+    "actor": 18,
+    "project_id": 5,
+    "run_id": "486bb5f1-4413-4374-b2f1-c212cf5da0eb",
+    "state": "done",
+    "status": "PASS",
+    "native_writes": 0,
+    "source_id": 371,
+    "source_version": 1,
+    "engine": "gemini_supervisor",
+    "model_call_count": 1,
+    "http_attempt_count": 2,
+    "provider_mode": "LIVE_GEMINI",
+    "business_status": "UNVERIFIED_DRAFT_ONLY_NO_NATIVE_PROPOSAL",
+    "output_hash": "b6c0628033cf0bd73361d9101a00368596784edd11959f2dce4c7099a870657f",
+    "draft_id": "a7a581ec-b991-5d22-af5b-aab1f2211c76",
+    "draft_hash": "1e182a150586c904443eb2522c04b5c47d91454bd1779edbbec3961dc7e5b85d",
+    "node_kinds": [
+      "Epic",
+      "Task",
+      "Subtask"
+    ],
+    "source_references": [
+      {
+        "lock_version": 1,
+        "work_package_id": 371
+      }
+    ],
+    "origin": {
+      "actor": 18,
+      "output_hash": "b6c0628033cf0bd73361d9101a00368596784edd11959f2dce4c7099a870657f",
+      "run_id": "486bb5f1-4413-4374-b2f1-c212cf5da0eb"
+    }
+  },
+  "latest_native_schedule": "CODEX_NATIVE_SCHEDULE_E2E_RESULT.json",
+  "full_administration": "NOT_IMPLEMENTED_WHERE_UNSUPPORTED",
+  "browser": "PASS_HUMAN_UAT_NO_BROWSER_AUTOMATION_OR_POLICY_WORKAROUND",
+  "current_core_image": "sha256:1bbe160472068a64d3a965fe2bbbd280c2095d17ce285785a3ad0df40825a61f",
+  "new_tool_selector": {
+    "state": "DEPLOYED_ROLE_SELECTOR_AND_CONTROLLER_QUALIFIED",
+    "image": "sha256:1bbe160472068a64d3a965fe2bbbd280c2095d17ce285785a3ad0df40825a61f",
+    "wbs_from_ba": "ALL_EXISTING_AI_ROLES",
+    "qa_evidence_get": [
+      "AI_SYSTEM_OWNER",
+      "PM",
+      "QA"
+    ],
+    "qa_evidence_capture": [
+      "QA"
+    ],
+    "qa_transition_prepare": [
+      "AI_SYSTEM_OWNER",
+      "PM"
+    ],
+    "human_visual_uat": "PASS_DIRECT_USER_CONFIRMED_OWNER_SELECTOR",
+    "qa_review_command": "NOT_EXPOSED_SEPARATE_HUMAN_API_ONLY",
+    "human_uat_artifact": "CODEX_OWNER_NEW_TOOLS_HUMAN_UAT_RESULT.json"
+  },
+  "historical_acceptance_status_before_selector_confirmation": "PARTIAL_TWO_UI_CHECKS_AND_NATIVE_WRITE_SCOPE_REMAIN",
+  "human_selector_uat": "CODEX_OWNER_NEW_TOOLS_HUMAN_UAT_RESULT.json",
+  "latest_qa_review_ui": {
+    "at": "2026-10-25T03:36:33.562329+00:00",
+    "status": "PASS_SCOPED_ACCESS_POLICY_NOT_MAIN_QA_BUSINESS_E2E",
+    "role_checks": "CODEX_QA_REVIEW_UI_ROLE_RESULT.json",
+    "signed_review_checks": "CODEX_QA_REVIEW_UI_SIGNED_POLICY_RESULT.json",
+    "human_uat": "CODEX_QA_REVIEW_UI_HUMAN_UAT_RESULT.json",
+    "native_writes": 0
+  },
+  "latest_regression": {
+    "at": "2026-10-26T10:31:58.142709+07:00",
+    "gateway_image": "sha256:89777ef1ddf5c84f1758756bca620599fb49b906ae77cf961249bf1f2726f0fa",
+    "core_image": "sha256:4495d944cd6ea5ab7a1fb50173310a787793f4398118f6b858333ac62a80a6a2",
+    "status": "PASS",
+    "six_role_checks": 73,
+    "new_dependency_checks": 24,
+    "evidence": "CODEX_NATIVE_DEPENDENCY_ROLE_RESULT.json",
+    "main_native_writes": 0,
+    "provider_agent_surface": 20
+  },
+  "latest_native_admin": "CODEX_NATIVE_ADMIN_CLONE_QUALIFICATION.json",
+  "current_wbs_hierarchy_qualification": {
+    "at": "2026-10-26T12:05:35.831361+00:00",
+    "runtime": {
+      "gateway": {
+        "tag": "qldapm-ai:codex-wbs-hierarchy-v3-20261026",
+        "image": "sha256:73aaf0c0cf8ea575eddbae2914db14e157e0c756cd58e225d70a5baeeba6f818"
+      },
+      "web": {
+        "tag": "qldapm-core:codex-wbs-hierarchy-v3-20261026",
+        "image": "sha256:545e498a70a7d61103f6356cc726d12defab7df90da2c41bb9a2d97f6982e22c"
+      }
+    },
+    "readback": "CODEX_WF10_EXPLICIT_RELATIONS_FINAL_READBACK.json",
+    "main_checks": {
+      "roles": 73,
+      "contracts": 48,
+      "readonly": 13,
+      "hierarchy_capability_and_negative_boundaries": 38,
+      "preserved_real_qa_chain_role_reads": 6
+    },
+    "offline": {
+      "windows": {
+        "run": 536,
+        "passed": 536,
+        "skipped": 0,
+        "errors": 0,
+        "failures": 0
+      },
+      "linux": {
+        "run": 536,
+        "passed": 521,
+        "skipped": 15,
+        "errors": 0,
+        "failures": 0
+      },
+      "ruby_programs": 16,
+      "actual_native_clone": "CODEX_WF10_EXPLICIT_RELATIONS_NATIVE_CLONE_RESULT.json"
+    },
+    "main_native_writes": 0,
+    "full_release": "PARTIAL"
+  },
+  "current_registered_pruning_qualification": {
+    "at": "2026-10-26T12:26:49.046792+00:00",
+    "runtime": {
+      "gateway": {
+        "tag": "qldapm-ai:codex-registered-pruning-20261026",
+        "image": "sha256:ffe20cad40e7506b6accfae22665f4e543aa627b6da5f2272a1177206e7edd6b"
+      }
+    },
+    "core": "sha256:545e498a70a7d61103f6356cc726d12defab7df90da2c41bb9a2d97f6982e22c",
+    "readback": "CODEX_RAG_REGISTERED_PRUNING_FINAL_READBACK.json",
+    "main_checks": {
+      "roles": 73,
+      "contracts": 48,
+      "readonly": 13,
+      "hierarchy_capability_and_negative_boundaries": 38,
+      "preserved_real_qa_chain_role_reads": 6,
+      "canonical_unchanged_same_source_legacy_smoke": 1
+    },
+    "offline": {
+      "windows": {
+        "run": 581,
+        "passed": 581,
+        "skipped": 0,
+        "errors": 0,
+        "failures": 0
+      },
+      "linux": {
+        "run": 581,
+        "passed": 566,
+        "skipped": 15,
+        "errors": 0,
+        "failures": 0
+      },
+      "CODEX_RAG_REGISTERED_PRUNING_QDRANT_RESULT.json": "PASS_ACTUAL_ISOLATED_QDRANT_REGISTERED_PRUNING_AND_SQLITE_RECOVERY",
+      "CODEX_RAG_REGISTERED_PRUNING_WBS_NATIVE_CLONE_RESULT.json": "PASS_ACTUAL_NATIVE_WBS_TREE_EXPLICIT_RELATION_RAG_AND_RESTART",
+      "rollback_read_compatibility": true,
+      "core_unchanged_ruby_programs_previously_passed": 16
+    },
+    "main_native_writes": 0,
+    "main_points_changed": 0,
+    "full_release": "PARTIAL"
+  }
+}

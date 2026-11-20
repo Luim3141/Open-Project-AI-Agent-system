@@ -1,0 +1,158 @@
+{
+  "utc": "2026-11-02T07:49:57.000155+00:00",
+  "split": "dev",
+  "scope": "repo-file-only; not Native RAG acceptance; humanPENDING",
+  "lock": {
+    "utc": "2026-11-02T07:49:56.998460+00:00",
+    "cutoff": 3.1442737579345703,
+    "coverage": 0.3,
+    "labels_sha256": "c2f00a47f3e103ab9690f458f410b20b9298f93d849b67f801cc48728df4f542",
+    "code_sha256": {
+      "clause_experiment.py": "9ba5cf71613b17cd870e5f68922954fee88a3787a57625fa85ac751a5bfde32f",
+      "clause_candidates.py": "a983ccd0eb7fd39eef46ac04d08aa1fee13b8a532b2b69efdda7c09f33168c17",
+      "clause_evaluate.py": "43042bd9e936e1462812fbd692b7abb3fdedcdbcf82083755f96111731937d8d",
+      "reranker_offline.py": "43857e7507eb88d8a2f86322ed36d72aacff8568efc1058171f8aa8150cf6c8d"
+    },
+    "selection": "dev only; negatives<=paired baseline and<=5%,no support truncation; maximize strict evidence H5,MRR,then fewer wrong proxy spans,higher coverage/cutoff"
+  },
+  "gates": {
+    "evidence_hit5_plus10pp": true,
+    "evidence_hit5_at_least_two_thirds": false,
+    "evidence_hit1_nonregression": true,
+    "evidence_mrr_nonregression": true,
+    "document_hit1_and_hit5_nonregression": true,
+    "per_language_evidence_hit5_nonregression": true,
+    "negative_not_increased_at_most5pct": true,
+    "citation_identity_zero": true,
+    "no_support_lost_to_truncation": true,
+    "warm_p95_within5s": true,
+    "memory_within768MiB": true,
+    "acl_scope_selfchecks": true
+  },
+  "passed": false,
+  "baseline": {
+    "vi": {
+      "positive": 14,
+      "negative": 10,
+      "evidence_hit1": 0,
+      "evidence_hit5": 0,
+      "evidence_mrr5": 0.0,
+      "evidence_recall5": 0.0,
+      "document_hit1": 0,
+      "document_hit5": 0,
+      "negative_returned": 0,
+      "abstention_correct": 10,
+      "identity_errors": 0,
+      "wrong_frozen_support_spans": 0,
+      "truncated_support": 0,
+      "p50_seconds": 0.09629549999954179,
+      "p95_seconds": 0.15096129999437835
+    },
+    "en": {
+      "positive": 14,
+      "negative": 10,
+      "evidence_hit1": 0,
+      "evidence_hit5": 0,
+      "evidence_mrr5": 0.0,
+      "evidence_recall5": 0.0,
+      "document_hit1": 2,
+      "document_hit5": 2,
+      "negative_returned": 0,
+      "abstention_correct": 10,
+      "identity_errors": 0,
+      "wrong_frozen_support_spans": 0,
+      "truncated_support": 0,
+      "p50_seconds": 0.10197749998769723,
+      "p95_seconds": 0.16403929999796674
+    },
+    "all": {
+      "positive": 28,
+      "negative": 20,
+      "evidence_hit1": 0,
+      "evidence_hit5": 0,
+      "evidence_mrr5": 0.0,
+      "evidence_recall5": 0.0,
+      "document_hit1": 2,
+      "document_hit5": 2,
+      "negative_returned": 0,
+      "abstention_correct": 20,
+      "identity_errors": 0,
+      "wrong_frozen_support_spans": 0,
+      "truncated_support": 0,
+      "p50_seconds": 0.09709090000251308,
+      "p95_seconds": 0.16403929999796674
+    }
+  },
+  "candidate": {
+    "vi": {
+      "positive": 14,
+      "negative": 10,
+      "evidence_hit1": 3,
+      "evidence_hit5": 3,
+      "evidence_mrr5": 0.21428571428571427,
+      "evidence_recall5": 0.21428571428571427,
+      "document_hit1": 3,
+      "document_hit5": 3,
+      "negative_returned": 0,
+      "abstention_correct": 10,
+      "identity_errors": 0,
+      "wrong_frozen_support_spans": 0,
+      "truncated_support": 0,
+      "p50_seconds": 0.6247154779994162,
+      "p95_seconds": 0.950020451011369
+    },
+    "en": {
+      "positive": 14,
+      "negative": 10,
+      "evidence_hit1": 4,
+      "evidence_hit5": 4,
+      "evidence_mrr5": 0.2857142857142857,
+      "evidence_recall5": 0.2857142857142857,
+      "document_hit1": 4,
+      "document_hit5": 4,
+      "negative_returned": 0,
+      "abstention_correct": 10,
+      "identity_errors": 0,
+      "wrong_frozen_support_spans": 0,
+      "truncated_support": 0,
+      "p50_seconds": 0.679214995005168,
+      "p95_seconds": 0.9526950059953379
+    },
+    "all": {
+      "positive": 28,
+      "negative": 20,
+      "evidence_hit1": 7,
+      "evidence_hit5": 7,
+      "evidence_mrr5": 0.25,
+      "evidence_recall5": 0.25,
+      "document_hit1": 7,
+      "document_hit5": 7,
+      "negative_returned": 0,
+      "abstention_correct": 20,
+      "identity_errors": 0,
+      "wrong_frozen_support_spans": 0,
+      "truncated_support": 0,
+      "p50_seconds": 0.6471602919773431,
+      "p95_seconds": 0.9526950059953379
+    }
+  },
+  "runtime": {
+    "started_utc": "2026-11-02T07:47:47.594823+00:00",
+    "ended_utc": "2026-11-02T07:48:18.011000+00:00",
+    "model_load_seconds": 2.169886472998769,
+    "total_seconds": 30.423528629995417,
+    "peak_rss_kib": 561888,
+    "cgroup_memory_peak": 570597376,
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "inputs": [
+      "input_ids",
+      "attention_mask"
+    ],
+    "threads": 1,
+    "token_limit": 512,
+    "script_sha256": "43857e7507eb88d8a2f86322ed36d72aacff8568efc1058171f8aa8150cf6c8d"
+  },
+  "limits": "Strict literal span judgments not human semantic adjudication; baseline evidence proxy uses its returned snippet; document-level metrics separately reported."
+}

@@ -1,0 +1,32 @@
+{
+  "started_utc": "2026-11-02T03:48:07.564205+00:00",
+  "ended_utc": "2026-11-02T03:48:09.824180+00:00",
+  "environment": "Windows host Python; isolated Qdrant 16334, synthetic contract corpus; local Ollama only",
+  "command": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/rag/integration_checks.py",
+  "checks": {
+    "new_index_visible": true,
+    "wrong_project": true,
+    "wrong_role": true,
+    "wrong_actor": true,
+    "empty_native_document_scope": true,
+    "qdrant_project_prefilter": true,
+    "qdrant_role_prefilter": true,
+    "qdrant_actor_prefilter": true,
+    "qdrant_empty_document_scope": true,
+    "revision_pruned_old_sqlite_and_qdrant": true,
+    "forged_citation_alias_cannot_override_verified_native_id": true,
+    "forged_metadata_rejected_after_vector_filter": true,
+    "forged_chunk_rejected_after_vector_filter": true,
+    "restart_readback": true,
+    "deleted_source_absent_from_both_indexes": true,
+    "three_repeated_query_rankings_identical_in_clone": true
+  },
+  "passed": 16,
+  "source_sha256": {
+    "knowledge_search.py": "6dce36043c90d8ccdb55bd21b8ce0f92f46f0a48d16c3eaebad2a0d30cfcf69c",
+    "knowledge_ingestion.py": "c4283da4f9db19f9b32c020113e825ad9586ced44f06a6a9b9d093bb4fab05f3",
+    "vector_client.py": "ed70c922d763c61e7d6c6934629b38700d9da340d3dfc1b05e721d4f43b90b29"
+  },
+  "image_digest": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+  "limits": "Not Main Native authorization or end-user citation rendering; synthetic integration corpus."
+}

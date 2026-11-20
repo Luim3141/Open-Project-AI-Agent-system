@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-25T03:36:33.562329+00:00",
+  "status": "PASS_READONLY_DISCOVERY_BUSINESS_STILL_BLOCKED",
+  "native_forms": {
+    "18": {
+      "role": "AI_SYSTEM_OWNER",
+      "source_version": 1,
+      "status": {
+        "href": "/api/v3/statuses/1",
+        "title": "NEW"
+      },
+      "allowed_current_statuses": [
+        {
+          "id": 1,
+          "name": "NEW"
+        },
+        {
+          "id": 37,
+          "name": "IN ANALYSIS"
+        }
+      ]
+    },
+    "19": {
+      "role": "PM",
+      "source_version": 1,
+      "status": {
+        "href": "/api/v3/statuses/1",
+        "title": "NEW"
+      },
+      "allowed_current_statuses": [
+        {
+          "id": 1,
+          "name": "NEW"
+        },
+        {
+          "id": 37,
+          "name": "IN ANALYSIS"
+        }
+      ]
+    },
+    "21": {
+      "role": "BE",
+      "source_version": 1,
+      "status": {
+        "href": "/api/v3/statuses/1",
+        "title": "NEW"
+      },
+      "form_http": 403
+    },
+    "23": {
+      "role": "QA",
+      "source_version": 1,
+      "status": {
+        "href": "/api/v3/statuses/1",
+        "title": "NEW"
+      },
+      "form_http": 403
+    }
+  },
+  "core_policy": {
+    "native_id": 371,
+    "version": 1,
+    "status": "NEW",
+    "authenticated_database_identity": {
+      "id": 18,
+      "role": "AI_SYSTEM_OWNER"
+    },
+    "next_core_edge": "IN ANALYSIS",
+    "errors": [
+      "EVIDENCE_STORY_REQUIRED",
+      "AC_REQUIRED",
+      "EVIDENCE_SCOPE_REQUIRED",
+      "APPROVAL_SCOPE_REQUIRED"
+    ],
+    "gate_revision": 1,
+    "evidence_keys": [],
+    "approval_keys": [],
+    "native_writes": 0,
+    "limitation": "Read-only policy evaluation on actual database snapshot; not an authenticated UI session or executed transition"
+  },
+  "native_writes": 0,
+  "interpretation": "Prior rejection was direct NEW to REVIEW, not all Native transitions. Current next Native edge NEW to IN ANALYSIS still requires existing Core story/criteria/scope evidence and independent scope approval. No missing evidence was fabricated and no gate was weakened."
+}

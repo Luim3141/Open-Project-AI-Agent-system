@@ -1,0 +1,5373 @@
+{
+  "simulation": true,
+  "verification": {"readComplete": true, "uniqueIssues": 329, "epics": 11, "tasks": 53, "subtasks": 265, "dateMismatches": 0, "parentIdentityChanges": 0, "assigneeChanges": 0, "labelChanges": 0, "epicsAccepted": ["QAG3-1", "QAG3-32", "QAG3-69"], "otherStatusChanges": 0, "forgeDevelopmentVersion": "2.13.0"},
+  "scope": "329 QAG3 WBS only",
+  "method": "Weekdays only, sequential Epics, pipelined Tasks, BA 1d, BE/FE parallel 2-3d, QA 1-2d, PM 1d with 2d end-Epic handover buffer. Longer work selected from functional complexity in Task summaries. Not actual capacity or worklog.",
+  "before": [
+    {
+      "key": "QAG3-1",
+      "start": "2026-08-17",
+      "due": "2026-08-28",
+      "status": "10012",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-2",
+      "start": "2026-08-17",
+      "due": "2026-08-20",
+      "status": "10009",
+      "parent": "QAG3-1",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-3",
+      "start": "2026-08-17",
+      "due": "2026-08-17",
+      "status": "10009",
+      "parent": "QAG3-2",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-4",
+      "start": "2026-08-18",
+      "due": "2026-08-18",
+      "status": "10009",
+      "parent": "QAG3-2",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-5",
+      "start": "2026-08-18",
+      "due": "2026-08-18",
+      "status": "10009",
+      "parent": "QAG3-2",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-6",
+      "start": "2026-08-19",
+      "due": "2026-08-19",
+      "status": "10009",
+      "parent": "QAG3-2",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-7",
+      "start": "2026-08-20",
+      "due": "2026-08-20",
+      "status": "10009",
+      "parent": "QAG3-2",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-8",
+      "start": "2026-08-18",
+      "due": "2026-08-21",
+      "status": "10009",
+      "parent": "QAG3-1",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-9",
+      "start": "2026-08-18",
+      "due": "2026-08-18",
+      "status": "10009",
+      "parent": "QAG3-8",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-10",
+      "start": "2026-08-19",
+      "due": "2026-08-19",
+      "status": "10009",
+      "parent": "QAG3-8",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-11",
+      "start": "2026-08-19",
+      "due": "2026-08-19",
+      "status": "10009",
+      "parent": "QAG3-8",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-12",
+      "start": "2026-08-20",
+      "due": "2026-08-20",
+      "status": "10009",
+      "parent": "QAG3-8",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-13",
+      "start": "2026-08-21",
+      "due": "2026-08-21",
+      "status": "10009",
+      "parent": "QAG3-8",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-14",
+      "start": "2026-08-20",
+      "due": "2026-08-25",
+      "status": "10009",
+      "parent": "QAG3-1",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-15",
+      "start": "2026-08-20",
+      "due": "2026-08-20",
+      "status": "10009",
+      "parent": "QAG3-14",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-16",
+      "start": "2026-08-21",
+      "due": "2026-08-21",
+      "status": "10009",
+      "parent": "QAG3-14",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-17",
+      "start": "2026-08-21",
+      "due": "2026-08-21",
+      "status": "10009",
+      "parent": "QAG3-14",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-18",
+      "start": "2026-08-24",
+      "due": "2026-08-24",
+      "status": "10009",
+      "parent": "QAG3-14",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-19",
+      "start": "2026-08-25",
+      "due": "2026-08-25",
+      "status": "10009",
+      "parent": "QAG3-14",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-20",
+      "start": "2026-08-21",
+      "due": "2026-08-26",
+      "status": "10009",
+      "parent": "QAG3-1",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-21",
+      "start": "2026-08-21",
+      "due": "2026-08-21",
+      "status": "10009",
+      "parent": "QAG3-20",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-22",
+      "start": "2026-08-24",
+      "due": "2026-08-24",
+      "status": "10009",
+      "parent": "QAG3-20",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-23",
+      "start": "2026-08-24",
+      "due": "2026-08-24",
+      "status": "10009",
+      "parent": "QAG3-20",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-24",
+      "start": "2026-08-25",
+      "due": "2026-08-25",
+      "status": "10009",
+      "parent": "QAG3-20",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-25",
+      "start": "2026-08-26",
+      "due": "2026-08-26",
+      "status": "10009",
+      "parent": "QAG3-20",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-26",
+      "start": "2026-08-25",
+      "due": "2026-08-28",
+      "status": "10009",
+      "parent": "QAG3-1",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-27",
+      "start": "2026-08-25",
+      "due": "2026-08-25",
+      "status": "10009",
+      "parent": "QAG3-26",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-28",
+      "start": "2026-08-26",
+      "due": "2026-08-26",
+      "status": "10009",
+      "parent": "QAG3-26",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-29",
+      "start": "2026-08-26",
+      "due": "2026-08-26",
+      "status": "10009",
+      "parent": "QAG3-26",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-30",
+      "start": "2026-08-27",
+      "due": "2026-08-27",
+      "status": "10009",
+      "parent": "QAG3-26",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-31",
+      "start": "2026-08-28",
+      "due": "2026-08-28",
+      "status": "10009",
+      "parent": "QAG3-26",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-32",
+      "start": "2026-08-31",
+      "due": "2026-09-14",
+      "status": "10012",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-33",
+      "start": "2026-08-31",
+      "due": "2026-09-03",
+      "status": "10009",
+      "parent": "QAG3-32",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-34",
+      "start": "2026-08-31",
+      "due": "2026-08-31",
+      "status": "10009",
+      "parent": "QAG3-33",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-35",
+      "start": "2026-09-01",
+      "due": "2026-09-01",
+      "status": "10009",
+      "parent": "QAG3-33",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-36",
+      "start": "2026-09-01",
+      "due": "2026-09-01",
+      "status": "10009",
+      "parent": "QAG3-33",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-37",
+      "start": "2026-09-02",
+      "due": "2026-09-02",
+      "status": "10009",
+      "parent": "QAG3-33",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-38",
+      "start": "2026-09-03",
+      "due": "2026-09-03",
+      "status": "10009",
+      "parent": "QAG3-33",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-39",
+      "start": "2026-09-01",
+      "due": "2026-09-04",
+      "status": "10009",
+      "parent": "QAG3-32",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-40",
+      "start": "2026-09-01",
+      "due": "2026-09-01",
+      "status": "10009",
+      "parent": "QAG3-39",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-41",
+      "start": "2026-09-02",
+      "due": "2026-09-02",
+      "status": "10009",
+      "parent": "QAG3-39",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-42",
+      "start": "2026-09-02",
+      "due": "2026-09-02",
+      "status": "10009",
+      "parent": "QAG3-39",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-43",
+      "start": "2026-09-03",
+      "due": "2026-09-03",
+      "status": "10009",
+      "parent": "QAG3-39",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-44",
+      "start": "2026-09-04",
+      "due": "2026-09-04",
+      "status": "10009",
+      "parent": "QAG3-39",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-45",
+      "start": "2026-09-02",
+      "due": "2026-09-07",
+      "status": "10009",
+      "parent": "QAG3-32",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-46",
+      "start": "2026-09-02",
+      "due": "2026-09-02",
+      "status": "10009",
+      "parent": "QAG3-45",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-47",
+      "start": "2026-09-03",
+      "due": "2026-09-03",
+      "status": "10009",
+      "parent": "QAG3-45",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-48",
+      "start": "2026-09-03",
+      "due": "2026-09-03",
+      "status": "10009",
+      "parent": "QAG3-45",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-49",
+      "start": "2026-09-04",
+      "due": "2026-09-04",
+      "status": "10009",
+      "parent": "QAG3-45",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-50",
+      "start": "2026-09-07",
+      "due": "2026-09-07",
+      "status": "10009",
+      "parent": "QAG3-45",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-51",
+      "start": "2026-09-04",
+      "due": "2026-09-09",
+      "status": "10009",
+      "parent": "QAG3-32",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-52",
+      "start": "2026-09-04",
+      "due": "2026-09-04",
+      "status": "10009",
+      "parent": "QAG3-51",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-53",
+      "start": "2026-09-07",
+      "due": "2026-09-07",
+      "status": "10009",
+      "parent": "QAG3-51",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-54",
+      "start": "2026-09-07",
+      "due": "2026-09-07",
+      "status": "10009",
+      "parent": "QAG3-51",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-55",
+      "start": "2026-09-08",
+      "due": "2026-09-08",
+      "status": "10009",
+      "parent": "QAG3-51",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-56",
+      "start": "2026-09-09",
+      "due": "2026-09-09",
+      "status": "10009",
+      "parent": "QAG3-51",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-57",
+      "start": "2026-09-07",
+      "due": "2026-09-10",
+      "status": "10009",
+      "parent": "QAG3-32",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-58",
+      "start": "2026-09-07",
+      "due": "2026-09-07",
+      "status": "10009",
+      "parent": "QAG3-57",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-59",
+      "start": "2026-09-08",
+      "due": "2026-09-08",
+      "status": "10009",
+      "parent": "QAG3-57",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-60",
+      "start": "2026-09-08",
+      "due": "2026-09-08",
+      "status": "10009",
+      "parent": "QAG3-57",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-61",
+      "start": "2026-09-09",
+      "due": "2026-09-09",
+      "status": "10009",
+      "parent": "QAG3-57",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-62",
+      "start": "2026-09-10",
+      "due": "2026-09-10",
+      "status": "10009",
+      "parent": "QAG3-57",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-63",
+      "start": "2026-09-09",
+      "due": "2026-09-14",
+      "status": "10009",
+      "parent": "QAG3-32",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-64",
+      "start": "2026-09-09",
+      "due": "2026-09-09",
+      "status": "10009",
+      "parent": "QAG3-63",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-65",
+      "start": "2026-09-10",
+      "due": "2026-09-10",
+      "status": "10009",
+      "parent": "QAG3-63",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-66",
+      "start": "2026-09-10",
+      "due": "2026-09-10",
+      "status": "10009",
+      "parent": "QAG3-63",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-67",
+      "start": "2026-09-11",
+      "due": "2026-09-11",
+      "status": "10009",
+      "parent": "QAG3-63",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-68",
+      "start": "2026-09-14",
+      "due": "2026-09-14",
+      "status": "10009",
+      "parent": "QAG3-63",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-69",
+      "start": "2026-09-15",
+      "due": "2026-09-25",
+      "status": "10012",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-70",
+      "start": "2026-09-15",
+      "due": "2026-09-18",
+      "status": "10009",
+      "parent": "QAG3-69",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-71",
+      "start": "2026-09-15",
+      "due": "2026-09-15",
+      "status": "10009",
+      "parent": "QAG3-70",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-72",
+      "start": "2026-09-16",
+      "due": "2026-09-16",
+      "status": "10009",
+      "parent": "QAG3-70",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-73",
+      "start": "2026-09-16",
+      "due": "2026-09-16",
+      "status": "10009",
+      "parent": "QAG3-70",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-74",
+      "start": "2026-09-17",
+      "due": "2026-09-17",
+      "status": "10009",
+      "parent": "QAG3-70",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-75",
+      "start": "2026-09-18",
+      "due": "2026-09-18",
+      "status": "10009",
+      "parent": "QAG3-70",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-76",
+      "start": "2026-09-16",
+      "due": "2026-09-21",
+      "status": "10009",
+      "parent": "QAG3-69",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-77",
+      "start": "2026-09-16",
+      "due": "2026-09-16",
+      "status": "10009",
+      "parent": "QAG3-76",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-78",
+      "start": "2026-09-17",
+      "due": "2026-09-17",
+      "status": "10009",
+      "parent": "QAG3-76",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-79",
+      "start": "2026-09-17",
+      "due": "2026-09-17",
+      "status": "10009",
+      "parent": "QAG3-76",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-80",
+      "start": "2026-09-18",
+      "due": "2026-09-18",
+      "status": "10009",
+      "parent": "QAG3-76",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-81",
+      "start": "2026-09-21",
+      "due": "2026-09-21",
+      "status": "10009",
+      "parent": "QAG3-76",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-82",
+      "start": "2026-09-17",
+      "due": "2026-09-22",
+      "status": "10009",
+      "parent": "QAG3-69",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-83",
+      "start": "2026-09-17",
+      "due": "2026-09-17",
+      "status": "10009",
+      "parent": "QAG3-82",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-84",
+      "start": "2026-09-18",
+      "due": "2026-09-18",
+      "status": "10009",
+      "parent": "QAG3-82",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-85",
+      "start": "2026-09-18",
+      "due": "2026-09-18",
+      "status": "10009",
+      "parent": "QAG3-82",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-86",
+      "start": "2026-09-21",
+      "due": "2026-09-21",
+      "status": "10009",
+      "parent": "QAG3-82",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-87",
+      "start": "2026-09-22",
+      "due": "2026-09-22",
+      "status": "10009",
+      "parent": "QAG3-82",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-88",
+      "start": "2026-09-18",
+      "due": "2026-09-23",
+      "status": "10009",
+      "parent": "QAG3-69",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-89",
+      "start": "2026-09-18",
+      "due": "2026-09-18",
+      "status": "10009",
+      "parent": "QAG3-88",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-90",
+      "start": "2026-09-21",
+      "due": "2026-09-21",
+      "status": "10009",
+      "parent": "QAG3-88",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-91",
+      "start": "2026-09-21",
+      "due": "2026-09-21",
+      "status": "10009",
+      "parent": "QAG3-88",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-92",
+      "start": "2026-09-22",
+      "due": "2026-09-22",
+      "status": "10009",
+      "parent": "QAG3-88",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-93",
+      "start": "2026-09-23",
+      "due": "2026-09-23",
+      "status": "10009",
+      "parent": "QAG3-88",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-94",
+      "start": "2026-09-22",
+      "due": "2026-09-25",
+      "status": "10009",
+      "parent": "QAG3-69",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-95",
+      "start": "2026-09-22",
+      "due": "2026-09-22",
+      "status": "10009",
+      "parent": "QAG3-94",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-96",
+      "start": "2026-09-23",
+      "due": "2026-09-23",
+      "status": "10009",
+      "parent": "QAG3-94",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-97",
+      "start": "2026-09-23",
+      "due": "2026-09-23",
+      "status": "10009",
+      "parent": "QAG3-94",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-98",
+      "start": "2026-09-24",
+      "due": "2026-09-24",
+      "status": "10009",
+      "parent": "QAG3-94",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-99",
+      "start": "2026-09-25",
+      "due": "2026-09-25",
+      "status": "10009",
+      "parent": "QAG3-94",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-100",
+      "start": "2026-09-28",
+      "due": "2026-10-08",
+      "status": "10009",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-101",
+      "start": "2026-09-28",
+      "due": "2026-10-01",
+      "status": "10009",
+      "parent": "QAG3-100",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-102",
+      "start": "2026-09-28",
+      "due": "2026-09-28",
+      "status": "10009",
+      "parent": "QAG3-101",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-103",
+      "start": "2026-09-29",
+      "due": "2026-09-29",
+      "status": "10009",
+      "parent": "QAG3-101",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-104",
+      "start": "2026-09-29",
+      "due": "2026-09-29",
+      "status": "10009",
+      "parent": "QAG3-101",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-105",
+      "start": "2026-09-30",
+      "due": "2026-09-30",
+      "status": "10009",
+      "parent": "QAG3-101",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-106",
+      "start": "2026-10-01",
+      "due": "2026-10-01",
+      "status": "10009",
+      "parent": "QAG3-101",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-107",
+      "start": "2026-09-29",
+      "due": "2026-10-02",
+      "status": "10009",
+      "parent": "QAG3-100",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-108",
+      "start": "2026-09-29",
+      "due": "2026-09-29",
+      "status": "10009",
+      "parent": "QAG3-107",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-109",
+      "start": "2026-09-30",
+      "due": "2026-09-30",
+      "status": "10009",
+      "parent": "QAG3-107",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-110",
+      "start": "2026-09-30",
+      "due": "2026-09-30",
+      "status": "10009",
+      "parent": "QAG3-107",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-111",
+      "start": "2026-10-01",
+      "due": "2026-10-01",
+      "status": "10009",
+      "parent": "QAG3-107",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-112",
+      "start": "2026-10-02",
+      "due": "2026-10-02",
+      "status": "10009",
+      "parent": "QAG3-107",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-113",
+      "start": "2026-09-30",
+      "due": "2026-10-05",
+      "status": "10009",
+      "parent": "QAG3-100",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-114",
+      "start": "2026-09-30",
+      "due": "2026-09-30",
+      "status": "10009",
+      "parent": "QAG3-113",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-115",
+      "start": "2026-10-01",
+      "due": "2026-10-01",
+      "status": "10009",
+      "parent": "QAG3-113",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-116",
+      "start": "2026-10-01",
+      "due": "2026-10-01",
+      "status": "10009",
+      "parent": "QAG3-113",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-117",
+      "start": "2026-10-02",
+      "due": "2026-10-02",
+      "status": "10009",
+      "parent": "QAG3-113",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-118",
+      "start": "2026-10-05",
+      "due": "2026-10-05",
+      "status": "10009",
+      "parent": "QAG3-113",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-119",
+      "start": "2026-10-01",
+      "due": "2026-10-06",
+      "status": "10009",
+      "parent": "QAG3-100",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-120",
+      "start": "2026-10-01",
+      "due": "2026-10-01",
+      "status": "10009",
+      "parent": "QAG3-119",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-121",
+      "start": "2026-10-02",
+      "due": "2026-10-02",
+      "status": "10009",
+      "parent": "QAG3-119",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-122",
+      "start": "2026-10-02",
+      "due": "2026-10-02",
+      "status": "10009",
+      "parent": "QAG3-119",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-123",
+      "start": "2026-10-05",
+      "due": "2026-10-05",
+      "status": "10009",
+      "parent": "QAG3-119",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-124",
+      "start": "2026-10-06",
+      "due": "2026-10-06",
+      "status": "10009",
+      "parent": "QAG3-119",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-125",
+      "start": "2026-10-05",
+      "due": "2026-10-08",
+      "status": "10009",
+      "parent": "QAG3-100",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-126",
+      "start": "2026-10-05",
+      "due": "2026-10-05",
+      "status": "10009",
+      "parent": "QAG3-125",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-127",
+      "start": "2026-10-06",
+      "due": "2026-10-06",
+      "status": "10009",
+      "parent": "QAG3-125",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-128",
+      "start": "2026-10-06",
+      "due": "2026-10-06",
+      "status": "10009",
+      "parent": "QAG3-125",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-129",
+      "start": "2026-10-07",
+      "due": "2026-10-07",
+      "status": "10009",
+      "parent": "QAG3-125",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-130",
+      "start": "2026-10-08",
+      "due": "2026-10-08",
+      "status": "10009",
+      "parent": "QAG3-125",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-131",
+      "start": "2026-10-09",
+      "due": "2026-10-21",
+      "status": "10009",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-132",
+      "start": "2026-10-09",
+      "due": "2026-10-14",
+      "status": "10009",
+      "parent": "QAG3-131",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-133",
+      "start": "2026-10-09",
+      "due": "2026-10-09",
+      "status": "10009",
+      "parent": "QAG3-132",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-134",
+      "start": "2026-10-12",
+      "due": "2026-10-12",
+      "status": "10009",
+      "parent": "QAG3-132",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-135",
+      "start": "2026-10-12",
+      "due": "2026-10-12",
+      "status": "10009",
+      "parent": "QAG3-132",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-136",
+      "start": "2026-10-13",
+      "due": "2026-10-13",
+      "status": "10009",
+      "parent": "QAG3-132",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-137",
+      "start": "2026-10-14",
+      "due": "2026-10-14",
+      "status": "10009",
+      "parent": "QAG3-132",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-138",
+      "start": "2026-10-12",
+      "due": "2026-10-15",
+      "status": "10009",
+      "parent": "QAG3-131",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-139",
+      "start": "2026-10-12",
+      "due": "2026-10-12",
+      "status": "10009",
+      "parent": "QAG3-138",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-140",
+      "start": "2026-10-13",
+      "due": "2026-10-13",
+      "status": "10009",
+      "parent": "QAG3-138",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-141",
+      "start": "2026-10-13",
+      "due": "2026-10-13",
+      "status": "10009",
+      "parent": "QAG3-138",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-142",
+      "start": "2026-10-14",
+      "due": "2026-10-14",
+      "status": "10009",
+      "parent": "QAG3-138",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-143",
+      "start": "2026-10-15",
+      "due": "2026-10-15",
+      "status": "10009",
+      "parent": "QAG3-138",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-144",
+      "start": "2026-10-13",
+      "due": "2026-10-16",
+      "status": "10009",
+      "parent": "QAG3-131",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-145",
+      "start": "2026-10-13",
+      "due": "2026-10-13",
+      "status": "10009",
+      "parent": "QAG3-144",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-146",
+      "start": "2026-10-14",
+      "due": "2026-10-14",
+      "status": "10009",
+      "parent": "QAG3-144",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-147",
+      "start": "2026-10-14",
+      "due": "2026-10-14",
+      "status": "10009",
+      "parent": "QAG3-144",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-148",
+      "start": "2026-10-15",
+      "due": "2026-10-15",
+      "status": "10009",
+      "parent": "QAG3-144",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-149",
+      "start": "2026-10-16",
+      "due": "2026-10-16",
+      "status": "10009",
+      "parent": "QAG3-144",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-150",
+      "start": "2026-10-14",
+      "due": "2026-10-19",
+      "status": "10009",
+      "parent": "QAG3-131",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-151",
+      "start": "2026-10-14",
+      "due": "2026-10-14",
+      "status": "10009",
+      "parent": "QAG3-150",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-152",
+      "start": "2026-10-15",
+      "due": "2026-10-15",
+      "status": "10009",
+      "parent": "QAG3-150",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-153",
+      "start": "2026-10-15",
+      "due": "2026-10-15",
+      "status": "10009",
+      "parent": "QAG3-150",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-154",
+      "start": "2026-10-16",
+      "due": "2026-10-16",
+      "status": "10009",
+      "parent": "QAG3-150",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-155",
+      "start": "2026-10-19",
+      "due": "2026-10-19",
+      "status": "10009",
+      "parent": "QAG3-150",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-156",
+      "start": "2026-10-16",
+      "due": "2026-10-21",
+      "status": "10009",
+      "parent": "QAG3-131",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-157",
+      "start": "2026-10-16",
+      "due": "2026-10-16",
+      "status": "10009",
+      "parent": "QAG3-156",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-158",
+      "start": "2026-10-19",
+      "due": "2026-10-19",
+      "status": "10009",
+      "parent": "QAG3-156",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-159",
+      "start": "2026-10-19",
+      "due": "2026-10-19",
+      "status": "10009",
+      "parent": "QAG3-156",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-160",
+      "start": "2026-10-20",
+      "due": "2026-10-20",
+      "status": "10009",
+      "parent": "QAG3-156",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-161",
+      "start": "2026-10-21",
+      "due": "2026-10-21",
+      "status": "10009",
+      "parent": "QAG3-156",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-162",
+      "start": "2026-10-22",
+      "due": "2026-11-02",
+      "status": "10009",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-163",
+      "start": "2026-10-22",
+      "due": "2026-10-27",
+      "status": "10009",
+      "parent": "QAG3-162",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-164",
+      "start": "2026-10-22",
+      "due": "2026-10-22",
+      "status": "10009",
+      "parent": "QAG3-163",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-165",
+      "start": "2026-10-23",
+      "due": "2026-10-23",
+      "status": "10009",
+      "parent": "QAG3-163",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-166",
+      "start": "2026-10-23",
+      "due": "2026-10-23",
+      "status": "10009",
+      "parent": "QAG3-163",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-167",
+      "start": "2026-10-26",
+      "due": "2026-10-26",
+      "status": "10009",
+      "parent": "QAG3-163",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-168",
+      "start": "2026-10-27",
+      "due": "2026-10-27",
+      "status": "10009",
+      "parent": "QAG3-163",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-169",
+      "start": "2026-10-23",
+      "due": "2026-10-28",
+      "status": "10009",
+      "parent": "QAG3-162",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-170",
+      "start": "2026-10-23",
+      "due": "2026-10-23",
+      "status": "10009",
+      "parent": "QAG3-169",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-171",
+      "start": "2026-10-26",
+      "due": "2026-10-26",
+      "status": "10009",
+      "parent": "QAG3-169",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-172",
+      "start": "2026-10-26",
+      "due": "2026-10-26",
+      "status": "10009",
+      "parent": "QAG3-169",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-173",
+      "start": "2026-10-27",
+      "due": "2026-10-27",
+      "status": "10009",
+      "parent": "QAG3-169",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-174",
+      "start": "2026-10-28",
+      "due": "2026-10-28",
+      "status": "10009",
+      "parent": "QAG3-169",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-175",
+      "start": "2026-10-26",
+      "due": "2026-10-29",
+      "status": "10009",
+      "parent": "QAG3-162",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-176",
+      "start": "2026-10-26",
+      "due": "2026-10-26",
+      "status": "10009",
+      "parent": "QAG3-175",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-177",
+      "start": "2026-10-27",
+      "due": "2026-10-27",
+      "status": "10009",
+      "parent": "QAG3-175",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-178",
+      "start": "2026-10-27",
+      "due": "2026-10-27",
+      "status": "10009",
+      "parent": "QAG3-175",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-179",
+      "start": "2026-10-28",
+      "due": "2026-10-28",
+      "status": "10009",
+      "parent": "QAG3-175",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-180",
+      "start": "2026-10-29",
+      "due": "2026-10-29",
+      "status": "10009",
+      "parent": "QAG3-175",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-181",
+      "start": "2026-10-28",
+      "due": "2026-11-02",
+      "status": "10009",
+      "parent": "QAG3-162",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-182",
+      "start": "2026-10-28",
+      "due": "2026-10-28",
+      "status": "10009",
+      "parent": "QAG3-181",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-183",
+      "start": "2026-10-29",
+      "due": "2026-10-29",
+      "status": "10009",
+      "parent": "QAG3-181",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-184",
+      "start": "2026-10-29",
+      "due": "2026-10-29",
+      "status": "10009",
+      "parent": "QAG3-181",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-185",
+      "start": "2026-10-30",
+      "due": "2026-10-30",
+      "status": "10009",
+      "parent": "QAG3-181",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-186",
+      "start": "2026-11-02",
+      "due": "2026-11-02",
+      "status": "10009",
+      "parent": "QAG3-181",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-187",
+      "start": "2026-11-03",
+      "due": "2026-11-12",
+      "status": "10009",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-188",
+      "start": "2026-11-03",
+      "due": "2026-11-06",
+      "status": "10009",
+      "parent": "QAG3-187",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-189",
+      "start": "2026-11-03",
+      "due": "2026-11-03",
+      "status": "10009",
+      "parent": "QAG3-188",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-190",
+      "start": "2026-11-04",
+      "due": "2026-11-04",
+      "status": "10009",
+      "parent": "QAG3-188",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-191",
+      "start": "2026-11-04",
+      "due": "2026-11-04",
+      "status": "10009",
+      "parent": "QAG3-188",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-192",
+      "start": "2026-11-05",
+      "due": "2026-11-05",
+      "status": "10009",
+      "parent": "QAG3-188",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-193",
+      "start": "2026-11-06",
+      "due": "2026-11-06",
+      "status": "10009",
+      "parent": "QAG3-188",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-194",
+      "start": "2026-11-04",
+      "due": "2026-11-09",
+      "status": "10009",
+      "parent": "QAG3-187",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-195",
+      "start": "2026-11-04",
+      "due": "2026-11-04",
+      "status": "10009",
+      "parent": "QAG3-194",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-196",
+      "start": "2026-11-05",
+      "due": "2026-11-05",
+      "status": "10009",
+      "parent": "QAG3-194",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-197",
+      "start": "2026-11-05",
+      "due": "2026-11-05",
+      "status": "10009",
+      "parent": "QAG3-194",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-198",
+      "start": "2026-11-06",
+      "due": "2026-11-06",
+      "status": "10009",
+      "parent": "QAG3-194",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-199",
+      "start": "2026-11-09",
+      "due": "2026-11-09",
+      "status": "10009",
+      "parent": "QAG3-194",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-200",
+      "start": "2026-11-05",
+      "due": "2026-11-10",
+      "status": "10009",
+      "parent": "QAG3-187",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-201",
+      "start": "2026-11-05",
+      "due": "2026-11-05",
+      "status": "10009",
+      "parent": "QAG3-200",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-202",
+      "start": "2026-11-06",
+      "due": "2026-11-06",
+      "status": "10009",
+      "parent": "QAG3-200",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-203",
+      "start": "2026-11-06",
+      "due": "2026-11-06",
+      "status": "10009",
+      "parent": "QAG3-200",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-204",
+      "start": "2026-11-09",
+      "due": "2026-11-09",
+      "status": "10009",
+      "parent": "QAG3-200",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-205",
+      "start": "2026-11-10",
+      "due": "2026-11-10",
+      "status": "10009",
+      "parent": "QAG3-200",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-206",
+      "start": "2026-11-09",
+      "due": "2026-11-12",
+      "status": "10009",
+      "parent": "QAG3-187",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-207",
+      "start": "2026-11-09",
+      "due": "2026-11-09",
+      "status": "10009",
+      "parent": "QAG3-206",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-208",
+      "start": "2026-11-10",
+      "due": "2026-11-10",
+      "status": "10009",
+      "parent": "QAG3-206",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-209",
+      "start": "2026-11-10",
+      "due": "2026-11-10",
+      "status": "10009",
+      "parent": "QAG3-206",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-210",
+      "start": "2026-11-11",
+      "due": "2026-11-11",
+      "status": "10009",
+      "parent": "QAG3-206",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-211",
+      "start": "2026-11-12",
+      "due": "2026-11-12",
+      "status": "10009",
+      "parent": "QAG3-206",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-212",
+      "start": "2026-11-13",
+      "due": "2026-11-25",
+      "status": "3",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-213",
+      "start": "2026-11-13",
+      "due": "2026-11-18",
+      "status": "10009",
+      "parent": "QAG3-212",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-214",
+      "start": "2026-11-13",
+      "due": "2026-11-13",
+      "status": "10009",
+      "parent": "QAG3-213",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-215",
+      "start": "2026-11-16",
+      "due": "2026-11-16",
+      "status": "10009",
+      "parent": "QAG3-213",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-216",
+      "start": "2026-11-16",
+      "due": "2026-11-16",
+      "status": "10009",
+      "parent": "QAG3-213",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-217",
+      "start": "2026-11-17",
+      "due": "2026-11-17",
+      "status": "10009",
+      "parent": "QAG3-213",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-218",
+      "start": "2026-11-18",
+      "due": "2026-11-18",
+      "status": "10009",
+      "parent": "QAG3-213",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-219",
+      "start": "2026-11-16",
+      "due": "2026-11-19",
+      "status": "10009",
+      "parent": "QAG3-212",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-220",
+      "start": "2026-11-16",
+      "due": "2026-11-16",
+      "status": "10009",
+      "parent": "QAG3-219",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-221",
+      "start": "2026-11-17",
+      "due": "2026-11-17",
+      "status": "10009",
+      "parent": "QAG3-219",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-222",
+      "start": "2026-11-17",
+      "due": "2026-11-17",
+      "status": "10009",
+      "parent": "QAG3-219",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-223",
+      "start": "2026-11-18",
+      "due": "2026-11-18",
+      "status": "10009",
+      "parent": "QAG3-219",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-224",
+      "start": "2026-11-19",
+      "due": "2026-11-19",
+      "status": "10009",
+      "parent": "QAG3-219",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-225",
+      "start": "2026-11-17",
+      "due": "2026-11-20",
+      "status": "10009",
+      "parent": "QAG3-212",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-226",
+      "start": "2026-11-17",
+      "due": "2026-11-17",
+      "status": "10009",
+      "parent": "QAG3-225",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-227",
+      "start": "2026-11-18",
+      "due": "2026-11-18",
+      "status": "10009",
+      "parent": "QAG3-225",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-228",
+      "start": "2026-11-18",
+      "due": "2026-11-18",
+      "status": "10009",
+      "parent": "QAG3-225",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-229",
+      "start": "2026-11-19",
+      "due": "2026-11-19",
+      "status": "10009",
+      "parent": "QAG3-225",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-230",
+      "start": "2026-11-20",
+      "due": "2026-11-20",
+      "status": "10009",
+      "parent": "QAG3-225",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-231",
+      "start": "2026-11-18",
+      "due": "2026-11-23",
+      "status": "10009",
+      "parent": "QAG3-212",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-232",
+      "start": "2026-11-18",
+      "due": "2026-11-18",
+      "status": "10009",
+      "parent": "QAG3-231",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-233",
+      "start": "2026-11-19",
+      "due": "2026-11-19",
+      "status": "10009",
+      "parent": "QAG3-231",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-234",
+      "start": "2026-11-19",
+      "due": "2026-11-19",
+      "status": "10009",
+      "parent": "QAG3-231",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-235",
+      "start": "2026-11-20",
+      "due": "2026-11-20",
+      "status": "10009",
+      "parent": "QAG3-231",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-236",
+      "start": "2026-11-23",
+      "due": "2026-11-23",
+      "status": "10009",
+      "parent": "QAG3-231",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-237",
+      "start": "2026-11-20",
+      "due": "2026-11-25",
+      "status": "10009",
+      "parent": "QAG3-212",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-238",
+      "start": "2026-11-20",
+      "due": "2026-11-20",
+      "status": "10009",
+      "parent": "QAG3-237",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-239",
+      "start": "2026-11-23",
+      "due": "2026-11-23",
+      "status": "10009",
+      "parent": "QAG3-237",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-240",
+      "start": "2026-11-23",
+      "due": "2026-11-23",
+      "status": "10009",
+      "parent": "QAG3-237",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-241",
+      "start": "2026-11-24",
+      "due": "2026-11-24",
+      "status": "10009",
+      "parent": "QAG3-237",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-242",
+      "start": "2026-11-25",
+      "due": "2026-11-25",
+      "status": "10009",
+      "parent": "QAG3-237",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-243",
+      "start": "2026-11-26",
+      "due": "2026-12-08",
+      "status": "10010",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-244",
+      "start": "2026-11-26",
+      "due": "2026-12-01",
+      "status": "10009",
+      "parent": "QAG3-243",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-245",
+      "start": "2026-11-26",
+      "due": "2026-11-26",
+      "status": "10009",
+      "parent": "QAG3-244",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-246",
+      "start": "2026-11-27",
+      "due": "2026-11-27",
+      "status": "10009",
+      "parent": "QAG3-244",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-247",
+      "start": "2026-11-27",
+      "due": "2026-11-27",
+      "status": "10009",
+      "parent": "QAG3-244",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-248",
+      "start": "2026-11-30",
+      "due": "2026-11-30",
+      "status": "10009",
+      "parent": "QAG3-244",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-249",
+      "start": "2026-12-01",
+      "due": "2026-12-01",
+      "status": "10009",
+      "parent": "QAG3-244",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-250",
+      "start": "2026-11-27",
+      "due": "2026-12-02",
+      "status": "10009",
+      "parent": "QAG3-243",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-251",
+      "start": "2026-11-27",
+      "due": "2026-11-27",
+      "status": "10009",
+      "parent": "QAG3-250",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-252",
+      "start": "2026-11-30",
+      "due": "2026-11-30",
+      "status": "10009",
+      "parent": "QAG3-250",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-253",
+      "start": "2026-11-30",
+      "due": "2026-11-30",
+      "status": "10009",
+      "parent": "QAG3-250",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-254",
+      "start": "2026-12-01",
+      "due": "2026-12-01",
+      "status": "10009",
+      "parent": "QAG3-250",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-255",
+      "start": "2026-12-02",
+      "due": "2026-12-02",
+      "status": "10009",
+      "parent": "QAG3-250",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-256",
+      "start": "2026-11-30",
+      "due": "2026-12-03",
+      "status": "10009",
+      "parent": "QAG3-243",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-257",
+      "start": "2026-11-30",
+      "due": "2026-11-30",
+      "status": "10009",
+      "parent": "QAG3-256",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-258",
+      "start": "2026-12-01",
+      "due": "2026-12-01",
+      "status": "10009",
+      "parent": "QAG3-256",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-259",
+      "start": "2026-12-01",
+      "due": "2026-12-01",
+      "status": "10009",
+      "parent": "QAG3-256",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-260",
+      "start": "2026-12-02",
+      "due": "2026-12-02",
+      "status": "10009",
+      "parent": "QAG3-256",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-261",
+      "start": "2026-12-03",
+      "due": "2026-12-03",
+      "status": "10009",
+      "parent": "QAG3-256",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-262",
+      "start": "2026-12-01",
+      "due": "2026-12-04",
+      "status": "10009",
+      "parent": "QAG3-243",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-263",
+      "start": "2026-12-01",
+      "due": "2026-12-01",
+      "status": "10009",
+      "parent": "QAG3-262",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-264",
+      "start": "2026-12-02",
+      "due": "2026-12-02",
+      "status": "10009",
+      "parent": "QAG3-262",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-265",
+      "start": "2026-12-02",
+      "due": "2026-12-02",
+      "status": "10009",
+      "parent": "QAG3-262",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-266",
+      "start": "2026-12-03",
+      "due": "2026-12-03",
+      "status": "10009",
+      "parent": "QAG3-262",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-267",
+      "start": "2026-12-04",
+      "due": "2026-12-04",
+      "status": "10009",
+      "parent": "QAG3-262",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-268",
+      "start": "2026-12-03",
+      "due": "2026-12-08",
+      "status": "10009",
+      "parent": "QAG3-243",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-269",
+      "start": "2026-12-03",
+      "due": "2026-12-03",
+      "status": "10009",
+      "parent": "QAG3-268",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-270",
+      "start": "2026-12-04",
+      "due": "2026-12-04",
+      "status": "10009",
+      "parent": "QAG3-268",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-271",
+      "start": "2026-12-04",
+      "due": "2026-12-04",
+      "status": "10009",
+      "parent": "QAG3-268",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-272",
+      "start": "2026-12-07",
+      "due": "2026-12-07",
+      "status": "10009",
+      "parent": "QAG3-268",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-273",
+      "start": "2026-12-08",
+      "due": "2026-12-08",
+      "status": "10009",
+      "parent": "QAG3-268",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-274",
+      "start": "2026-12-09",
+      "due": "2026-12-18",
+      "status": "10010",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-275",
+      "start": "2026-12-09",
+      "due": "2026-12-14",
+      "status": "10009",
+      "parent": "QAG3-274",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-276",
+      "start": "2026-12-09",
+      "due": "2026-12-09",
+      "status": "10009",
+      "parent": "QAG3-275",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-277",
+      "start": "2026-12-10",
+      "due": "2026-12-10",
+      "status": "10009",
+      "parent": "QAG3-275",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-278",
+      "start": "2026-12-10",
+      "due": "2026-12-10",
+      "status": "10009",
+      "parent": "QAG3-275",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-279",
+      "start": "2026-12-11",
+      "due": "2026-12-11",
+      "status": "10009",
+      "parent": "QAG3-275",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-280",
+      "start": "2026-12-14",
+      "due": "2026-12-14",
+      "status": "10009",
+      "parent": "QAG3-275",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-281",
+      "start": "2026-12-10",
+      "due": "2026-12-15",
+      "status": "10009",
+      "parent": "QAG3-274",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-282",
+      "start": "2026-12-10",
+      "due": "2026-12-10",
+      "status": "10009",
+      "parent": "QAG3-281",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-283",
+      "start": "2026-12-11",
+      "due": "2026-12-11",
+      "status": "10009",
+      "parent": "QAG3-281",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-284",
+      "start": "2026-12-11",
+      "due": "2026-12-11",
+      "status": "10009",
+      "parent": "QAG3-281",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-285",
+      "start": "2026-12-14",
+      "due": "2026-12-14",
+      "status": "10009",
+      "parent": "QAG3-281",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-286",
+      "start": "2026-12-15",
+      "due": "2026-12-15",
+      "status": "10009",
+      "parent": "QAG3-281",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-287",
+      "start": "2026-12-11",
+      "due": "2026-12-16",
+      "status": "10009",
+      "parent": "QAG3-274",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-288",
+      "start": "2026-12-11",
+      "due": "2026-12-11",
+      "status": "10009",
+      "parent": "QAG3-287",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-289",
+      "start": "2026-12-14",
+      "due": "2026-12-14",
+      "status": "10009",
+      "parent": "QAG3-287",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-290",
+      "start": "2026-12-14",
+      "due": "2026-12-14",
+      "status": "10009",
+      "parent": "QAG3-287",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-291",
+      "start": "2026-12-15",
+      "due": "2026-12-15",
+      "status": "10009",
+      "parent": "QAG3-287",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-292",
+      "start": "2026-12-16",
+      "due": "2026-12-16",
+      "status": "10009",
+      "parent": "QAG3-287",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-293",
+      "start": "2026-12-15",
+      "due": "2026-12-18",
+      "status": "10009",
+      "parent": "QAG3-274",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-294",
+      "start": "2026-12-15",
+      "due": "2026-12-15",
+      "status": "10009",
+      "parent": "QAG3-293",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-295",
+      "start": "2026-12-16",
+      "due": "2026-12-16",
+      "status": "10009",
+      "parent": "QAG3-293",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-296",
+      "start": "2026-12-16",
+      "due": "2026-12-16",
+      "status": "10009",
+      "parent": "QAG3-293",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-297",
+      "start": "2026-12-17",
+      "due": "2026-12-17",
+      "status": "10009",
+      "parent": "QAG3-293",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-298",
+      "start": "2026-12-18",
+      "due": "2026-12-18",
+      "status": "10009",
+      "parent": "QAG3-293",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-299",
+      "start": "2026-12-21",
+      "due": "2026-12-31",
+      "status": "10010",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-300",
+      "start": "2026-12-21",
+      "due": "2026-12-24",
+      "status": "10009",
+      "parent": "QAG3-299",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-301",
+      "start": "2026-12-21",
+      "due": "2026-12-21",
+      "status": "10009",
+      "parent": "QAG3-300",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-302",
+      "start": "2026-12-22",
+      "due": "2026-12-22",
+      "status": "10009",
+      "parent": "QAG3-300",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-303",
+      "start": "2026-12-22",
+      "due": "2026-12-22",
+      "status": "10009",
+      "parent": "QAG3-300",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-304",
+      "start": "2026-12-23",
+      "due": "2026-12-23",
+      "status": "10009",
+      "parent": "QAG3-300",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-305",
+      "start": "2026-12-24",
+      "due": "2026-12-24",
+      "status": "10009",
+      "parent": "QAG3-300",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-306",
+      "start": "2026-12-22",
+      "due": "2026-12-25",
+      "status": "3",
+      "parent": "QAG3-299",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-307",
+      "start": "2026-12-22",
+      "due": "2026-12-22",
+      "status": "10009",
+      "parent": "QAG3-306",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-308",
+      "start": "2026-12-23",
+      "due": "2026-12-23",
+      "status": "10009",
+      "parent": "QAG3-306",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-309",
+      "start": "2026-12-23",
+      "due": "2026-12-23",
+      "status": "10009",
+      "parent": "QAG3-306",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-310",
+      "start": "2026-12-24",
+      "due": "2026-12-24",
+      "status": "3",
+      "parent": "QAG3-306",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-311",
+      "start": "2026-12-25",
+      "due": "2026-12-25",
+      "status": "3",
+      "parent": "QAG3-306",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-312",
+      "start": "2026-12-23",
+      "due": "2026-12-28",
+      "status": "3",
+      "parent": "QAG3-299",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-313",
+      "start": "2026-12-23",
+      "due": "2026-12-23",
+      "status": "10009",
+      "parent": "QAG3-312",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-314",
+      "start": "2026-12-24",
+      "due": "2026-12-24",
+      "status": "10009",
+      "parent": "QAG3-312",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-315",
+      "start": "2026-12-24",
+      "due": "2026-12-24",
+      "status": "10009",
+      "parent": "QAG3-312",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-316",
+      "start": "2026-12-25",
+      "due": "2026-12-25",
+      "status": "3",
+      "parent": "QAG3-312",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-317",
+      "start": "2026-12-28",
+      "due": "2026-12-28",
+      "status": "3",
+      "parent": "QAG3-312",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-318",
+      "start": "2026-12-24",
+      "due": "2026-12-29",
+      "status": "3",
+      "parent": "QAG3-299",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-319",
+      "start": "2026-12-24",
+      "due": "2026-12-24",
+      "status": "10009",
+      "parent": "QAG3-318",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-320",
+      "start": "2026-12-25",
+      "due": "2026-12-25",
+      "status": "10009",
+      "parent": "QAG3-318",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-321",
+      "start": "2026-12-25",
+      "due": "2026-12-25",
+      "status": "10009",
+      "parent": "QAG3-318",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-322",
+      "start": "2026-12-28",
+      "due": "2026-12-28",
+      "status": "3",
+      "parent": "QAG3-318",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-323",
+      "start": "2026-12-29",
+      "due": "2026-12-29",
+      "status": "3",
+      "parent": "QAG3-318",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-324",
+      "start": "2026-12-28",
+      "due": "2026-12-31",
+      "status": "3",
+      "parent": "QAG3-299",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    },
+    {
+      "key": "QAG3-325",
+      "start": "2026-12-28",
+      "due": "2026-12-28",
+      "status": "10009",
+      "parent": "QAG3-324",
+      "assignee": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+    },
+    {
+      "key": "QAG3-326",
+      "start": "2026-12-29",
+      "due": "2026-12-29",
+      "status": "10009",
+      "parent": "QAG3-324",
+      "assignee": "712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a"
+    },
+    {
+      "key": "QAG3-327",
+      "start": "2026-12-29",
+      "due": "2026-12-29",
+      "status": "10009",
+      "parent": "QAG3-324",
+      "assignee": "712020:da12735c-4da8-46d6-801d-46c9898c681d"
+    },
+    {
+      "key": "QAG3-328",
+      "start": "2026-12-30",
+      "due": "2026-12-30",
+      "status": "3",
+      "parent": "QAG3-324",
+      "assignee": "712020:94d1f95d-9618-4f25-8284-41105336b942"
+    },
+    {
+      "key": "QAG3-329",
+      "start": "2026-12-31",
+      "due": "2026-12-31",
+      "status": "3",
+      "parent": "QAG3-324",
+      "assignee": "712020:47b24428-aa71-4363-b68f-29ed2285aad8"
+    }
+  ],
+  "plan": [
+    {
+      "key": "QAG3-1",
+      "type": "Epic",
+      "start": "2026-04-03",
+      "due": "2026-04-30"
+    },
+    {
+      "key": "QAG3-2",
+      "type": "Task",
+      "parent": "QAG3-1",
+      "start": "2026-04-03",
+      "due": "2026-04-13",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-3",
+      "type": "Sub-task",
+      "parent": "QAG3-2",
+      "role": "BA",
+      "start": "2026-04-03",
+      "due": "2026-04-03"
+    },
+    {
+      "key": "QAG3-4",
+      "type": "Sub-task",
+      "parent": "QAG3-2",
+      "role": "BE",
+      "start": "2026-04-06",
+      "due": "2026-04-08"
+    },
+    {
+      "key": "QAG3-5",
+      "type": "Sub-task",
+      "parent": "QAG3-2",
+      "role": "FE",
+      "start": "2026-04-06",
+      "due": "2026-04-08"
+    },
+    {
+      "key": "QAG3-6",
+      "type": "Sub-task",
+      "parent": "QAG3-2",
+      "role": "QA",
+      "start": "2026-04-09",
+      "due": "2026-04-10"
+    },
+    {
+      "key": "QAG3-7",
+      "type": "Sub-task",
+      "parent": "QAG3-2",
+      "role": "PM",
+      "start": "2026-04-13",
+      "due": "2026-04-13"
+    },
+    {
+      "key": "QAG3-8",
+      "type": "Task",
+      "parent": "QAG3-1",
+      "start": "2026-04-08",
+      "due": "2026-04-16",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-9",
+      "type": "Sub-task",
+      "parent": "QAG3-8",
+      "role": "BA",
+      "start": "2026-04-08",
+      "due": "2026-04-08"
+    },
+    {
+      "key": "QAG3-10",
+      "type": "Sub-task",
+      "parent": "QAG3-8",
+      "role": "BE",
+      "start": "2026-04-09",
+      "due": "2026-04-13"
+    },
+    {
+      "key": "QAG3-11",
+      "type": "Sub-task",
+      "parent": "QAG3-8",
+      "role": "FE",
+      "start": "2026-04-09",
+      "due": "2026-04-13"
+    },
+    {
+      "key": "QAG3-12",
+      "type": "Sub-task",
+      "parent": "QAG3-8",
+      "role": "QA",
+      "start": "2026-04-14",
+      "due": "2026-04-15"
+    },
+    {
+      "key": "QAG3-13",
+      "type": "Sub-task",
+      "parent": "QAG3-8",
+      "role": "PM",
+      "start": "2026-04-16",
+      "due": "2026-04-16"
+    },
+    {
+      "key": "QAG3-14",
+      "type": "Task",
+      "parent": "QAG3-1",
+      "start": "2026-04-13",
+      "due": "2026-04-17",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-15",
+      "type": "Sub-task",
+      "parent": "QAG3-14",
+      "role": "BA",
+      "start": "2026-04-13",
+      "due": "2026-04-13"
+    },
+    {
+      "key": "QAG3-16",
+      "type": "Sub-task",
+      "parent": "QAG3-14",
+      "role": "BE",
+      "start": "2026-04-14",
+      "due": "2026-04-15"
+    },
+    {
+      "key": "QAG3-17",
+      "type": "Sub-task",
+      "parent": "QAG3-14",
+      "role": "FE",
+      "start": "2026-04-14",
+      "due": "2026-04-15"
+    },
+    {
+      "key": "QAG3-18",
+      "type": "Sub-task",
+      "parent": "QAG3-14",
+      "role": "QA",
+      "start": "2026-04-16",
+      "due": "2026-04-16"
+    },
+    {
+      "key": "QAG3-19",
+      "type": "Sub-task",
+      "parent": "QAG3-14",
+      "role": "PM",
+      "start": "2026-04-17",
+      "due": "2026-04-17"
+    },
+    {
+      "key": "QAG3-20",
+      "type": "Task",
+      "parent": "QAG3-1",
+      "start": "2026-04-15",
+      "due": "2026-04-23",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-21",
+      "type": "Sub-task",
+      "parent": "QAG3-20",
+      "role": "BA",
+      "start": "2026-04-15",
+      "due": "2026-04-15"
+    },
+    {
+      "key": "QAG3-22",
+      "type": "Sub-task",
+      "parent": "QAG3-20",
+      "role": "BE",
+      "start": "2026-04-16",
+      "due": "2026-04-20"
+    },
+    {
+      "key": "QAG3-23",
+      "type": "Sub-task",
+      "parent": "QAG3-20",
+      "role": "FE",
+      "start": "2026-04-16",
+      "due": "2026-04-20"
+    },
+    {
+      "key": "QAG3-24",
+      "type": "Sub-task",
+      "parent": "QAG3-20",
+      "role": "QA",
+      "start": "2026-04-21",
+      "due": "2026-04-22"
+    },
+    {
+      "key": "QAG3-25",
+      "type": "Sub-task",
+      "parent": "QAG3-20",
+      "role": "PM",
+      "start": "2026-04-23",
+      "due": "2026-04-23"
+    },
+    {
+      "key": "QAG3-26",
+      "type": "Task",
+      "parent": "QAG3-1",
+      "start": "2026-04-20",
+      "due": "2026-04-30",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-27",
+      "type": "Sub-task",
+      "parent": "QAG3-26",
+      "role": "BA",
+      "start": "2026-04-20",
+      "due": "2026-04-20"
+    },
+    {
+      "key": "QAG3-28",
+      "type": "Sub-task",
+      "parent": "QAG3-26",
+      "role": "BE",
+      "start": "2026-04-21",
+      "due": "2026-04-23"
+    },
+    {
+      "key": "QAG3-29",
+      "type": "Sub-task",
+      "parent": "QAG3-26",
+      "role": "FE",
+      "start": "2026-04-21",
+      "due": "2026-04-23"
+    },
+    {
+      "key": "QAG3-30",
+      "type": "Sub-task",
+      "parent": "QAG3-26",
+      "role": "QA",
+      "start": "2026-04-24",
+      "due": "2026-04-27"
+    },
+    {
+      "key": "QAG3-31",
+      "type": "Sub-task",
+      "parent": "QAG3-26",
+      "role": "PM",
+      "start": "2026-04-28",
+      "due": "2026-04-30"
+    },
+    {
+      "key": "QAG3-32",
+      "type": "Epic",
+      "start": "2026-05-01",
+      "due": "2026-05-27"
+    },
+    {
+      "key": "QAG3-33",
+      "type": "Task",
+      "parent": "QAG3-32",
+      "start": "2026-05-01",
+      "due": "2026-05-11",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-34",
+      "type": "Sub-task",
+      "parent": "QAG3-33",
+      "role": "BA",
+      "start": "2026-05-01",
+      "due": "2026-05-01"
+    },
+    {
+      "key": "QAG3-35",
+      "type": "Sub-task",
+      "parent": "QAG3-33",
+      "role": "BE",
+      "start": "2026-05-04",
+      "due": "2026-05-06"
+    },
+    {
+      "key": "QAG3-36",
+      "type": "Sub-task",
+      "parent": "QAG3-33",
+      "role": "FE",
+      "start": "2026-05-04",
+      "due": "2026-05-06"
+    },
+    {
+      "key": "QAG3-37",
+      "type": "Sub-task",
+      "parent": "QAG3-33",
+      "role": "QA",
+      "start": "2026-05-07",
+      "due": "2026-05-08"
+    },
+    {
+      "key": "QAG3-38",
+      "type": "Sub-task",
+      "parent": "QAG3-33",
+      "role": "PM",
+      "start": "2026-05-11",
+      "due": "2026-05-11"
+    },
+    {
+      "key": "QAG3-39",
+      "type": "Task",
+      "parent": "QAG3-32",
+      "start": "2026-05-06",
+      "due": "2026-05-12",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-40",
+      "type": "Sub-task",
+      "parent": "QAG3-39",
+      "role": "BA",
+      "start": "2026-05-06",
+      "due": "2026-05-06"
+    },
+    {
+      "key": "QAG3-41",
+      "type": "Sub-task",
+      "parent": "QAG3-39",
+      "role": "BE",
+      "start": "2026-05-07",
+      "due": "2026-05-08"
+    },
+    {
+      "key": "QAG3-42",
+      "type": "Sub-task",
+      "parent": "QAG3-39",
+      "role": "FE",
+      "start": "2026-05-07",
+      "due": "2026-05-08"
+    },
+    {
+      "key": "QAG3-43",
+      "type": "Sub-task",
+      "parent": "QAG3-39",
+      "role": "QA",
+      "start": "2026-05-11",
+      "due": "2026-05-11"
+    },
+    {
+      "key": "QAG3-44",
+      "type": "Sub-task",
+      "parent": "QAG3-39",
+      "role": "PM",
+      "start": "2026-05-12",
+      "due": "2026-05-12"
+    },
+    {
+      "key": "QAG3-45",
+      "type": "Task",
+      "parent": "QAG3-32",
+      "start": "2026-05-08",
+      "due": "2026-05-15",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-46",
+      "type": "Sub-task",
+      "parent": "QAG3-45",
+      "role": "BA",
+      "start": "2026-05-08",
+      "due": "2026-05-08"
+    },
+    {
+      "key": "QAG3-47",
+      "type": "Sub-task",
+      "parent": "QAG3-45",
+      "role": "BE",
+      "start": "2026-05-11",
+      "due": "2026-05-12"
+    },
+    {
+      "key": "QAG3-48",
+      "type": "Sub-task",
+      "parent": "QAG3-45",
+      "role": "FE",
+      "start": "2026-05-11",
+      "due": "2026-05-12"
+    },
+    {
+      "key": "QAG3-49",
+      "type": "Sub-task",
+      "parent": "QAG3-45",
+      "role": "QA",
+      "start": "2026-05-13",
+      "due": "2026-05-14"
+    },
+    {
+      "key": "QAG3-50",
+      "type": "Sub-task",
+      "parent": "QAG3-45",
+      "role": "PM",
+      "start": "2026-05-15",
+      "due": "2026-05-15"
+    },
+    {
+      "key": "QAG3-51",
+      "type": "Task",
+      "parent": "QAG3-32",
+      "start": "2026-05-12",
+      "due": "2026-05-19",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-52",
+      "type": "Sub-task",
+      "parent": "QAG3-51",
+      "role": "BA",
+      "start": "2026-05-12",
+      "due": "2026-05-12"
+    },
+    {
+      "key": "QAG3-53",
+      "type": "Sub-task",
+      "parent": "QAG3-51",
+      "role": "BE",
+      "start": "2026-05-13",
+      "due": "2026-05-14"
+    },
+    {
+      "key": "QAG3-54",
+      "type": "Sub-task",
+      "parent": "QAG3-51",
+      "role": "FE",
+      "start": "2026-05-13",
+      "due": "2026-05-14"
+    },
+    {
+      "key": "QAG3-55",
+      "type": "Sub-task",
+      "parent": "QAG3-51",
+      "role": "QA",
+      "start": "2026-05-15",
+      "due": "2026-05-18"
+    },
+    {
+      "key": "QAG3-56",
+      "type": "Sub-task",
+      "parent": "QAG3-51",
+      "role": "PM",
+      "start": "2026-05-19",
+      "due": "2026-05-19"
+    },
+    {
+      "key": "QAG3-57",
+      "type": "Task",
+      "parent": "QAG3-32",
+      "start": "2026-05-14",
+      "due": "2026-05-21",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-58",
+      "type": "Sub-task",
+      "parent": "QAG3-57",
+      "role": "BA",
+      "start": "2026-05-14",
+      "due": "2026-05-14"
+    },
+    {
+      "key": "QAG3-59",
+      "type": "Sub-task",
+      "parent": "QAG3-57",
+      "role": "BE",
+      "start": "2026-05-15",
+      "due": "2026-05-18"
+    },
+    {
+      "key": "QAG3-60",
+      "type": "Sub-task",
+      "parent": "QAG3-57",
+      "role": "FE",
+      "start": "2026-05-15",
+      "due": "2026-05-18"
+    },
+    {
+      "key": "QAG3-61",
+      "type": "Sub-task",
+      "parent": "QAG3-57",
+      "role": "QA",
+      "start": "2026-05-19",
+      "due": "2026-05-20"
+    },
+    {
+      "key": "QAG3-62",
+      "type": "Sub-task",
+      "parent": "QAG3-57",
+      "role": "PM",
+      "start": "2026-05-21",
+      "due": "2026-05-21"
+    },
+    {
+      "key": "QAG3-63",
+      "type": "Task",
+      "parent": "QAG3-32",
+      "start": "2026-05-18",
+      "due": "2026-05-27",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-64",
+      "type": "Sub-task",
+      "parent": "QAG3-63",
+      "role": "BA",
+      "start": "2026-05-18",
+      "due": "2026-05-18"
+    },
+    {
+      "key": "QAG3-65",
+      "type": "Sub-task",
+      "parent": "QAG3-63",
+      "role": "BE",
+      "start": "2026-05-19",
+      "due": "2026-05-20"
+    },
+    {
+      "key": "QAG3-66",
+      "type": "Sub-task",
+      "parent": "QAG3-63",
+      "role": "FE",
+      "start": "2026-05-19",
+      "due": "2026-05-20"
+    },
+    {
+      "key": "QAG3-67",
+      "type": "Sub-task",
+      "parent": "QAG3-63",
+      "role": "QA",
+      "start": "2026-05-21",
+      "due": "2026-05-22"
+    },
+    {
+      "key": "QAG3-68",
+      "type": "Sub-task",
+      "parent": "QAG3-63",
+      "role": "PM",
+      "start": "2026-05-25",
+      "due": "2026-05-27"
+    },
+    {
+      "key": "QAG3-69",
+      "type": "Epic",
+      "start": "2026-05-28",
+      "due": "2026-06-22"
+    },
+    {
+      "key": "QAG3-70",
+      "type": "Task",
+      "parent": "QAG3-69",
+      "start": "2026-05-28",
+      "due": "2026-06-03",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-71",
+      "type": "Sub-task",
+      "parent": "QAG3-70",
+      "role": "BA",
+      "start": "2026-05-28",
+      "due": "2026-05-28"
+    },
+    {
+      "key": "QAG3-72",
+      "type": "Sub-task",
+      "parent": "QAG3-70",
+      "role": "BE",
+      "start": "2026-05-29",
+      "due": "2026-06-01"
+    },
+    {
+      "key": "QAG3-73",
+      "type": "Sub-task",
+      "parent": "QAG3-70",
+      "role": "FE",
+      "start": "2026-05-29",
+      "due": "2026-06-01"
+    },
+    {
+      "key": "QAG3-74",
+      "type": "Sub-task",
+      "parent": "QAG3-70",
+      "role": "QA",
+      "start": "2026-06-02",
+      "due": "2026-06-02"
+    },
+    {
+      "key": "QAG3-75",
+      "type": "Sub-task",
+      "parent": "QAG3-70",
+      "role": "PM",
+      "start": "2026-06-03",
+      "due": "2026-06-03"
+    },
+    {
+      "key": "QAG3-76",
+      "type": "Task",
+      "parent": "QAG3-69",
+      "start": "2026-06-01",
+      "due": "2026-06-09",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-77",
+      "type": "Sub-task",
+      "parent": "QAG3-76",
+      "role": "BA",
+      "start": "2026-06-01",
+      "due": "2026-06-01"
+    },
+    {
+      "key": "QAG3-78",
+      "type": "Sub-task",
+      "parent": "QAG3-76",
+      "role": "BE",
+      "start": "2026-06-02",
+      "due": "2026-06-04"
+    },
+    {
+      "key": "QAG3-79",
+      "type": "Sub-task",
+      "parent": "QAG3-76",
+      "role": "FE",
+      "start": "2026-06-02",
+      "due": "2026-06-04"
+    },
+    {
+      "key": "QAG3-80",
+      "type": "Sub-task",
+      "parent": "QAG3-76",
+      "role": "QA",
+      "start": "2026-06-05",
+      "due": "2026-06-08"
+    },
+    {
+      "key": "QAG3-81",
+      "type": "Sub-task",
+      "parent": "QAG3-76",
+      "role": "PM",
+      "start": "2026-06-09",
+      "due": "2026-06-09"
+    },
+    {
+      "key": "QAG3-82",
+      "type": "Task",
+      "parent": "QAG3-69",
+      "start": "2026-06-04",
+      "due": "2026-06-11",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-83",
+      "type": "Sub-task",
+      "parent": "QAG3-82",
+      "role": "BA",
+      "start": "2026-06-04",
+      "due": "2026-06-04"
+    },
+    {
+      "key": "QAG3-84",
+      "type": "Sub-task",
+      "parent": "QAG3-82",
+      "role": "BE",
+      "start": "2026-06-05",
+      "due": "2026-06-08"
+    },
+    {
+      "key": "QAG3-85",
+      "type": "Sub-task",
+      "parent": "QAG3-82",
+      "role": "FE",
+      "start": "2026-06-05",
+      "due": "2026-06-08"
+    },
+    {
+      "key": "QAG3-86",
+      "type": "Sub-task",
+      "parent": "QAG3-82",
+      "role": "QA",
+      "start": "2026-06-09",
+      "due": "2026-06-10"
+    },
+    {
+      "key": "QAG3-87",
+      "type": "Sub-task",
+      "parent": "QAG3-82",
+      "role": "PM",
+      "start": "2026-06-11",
+      "due": "2026-06-11"
+    },
+    {
+      "key": "QAG3-88",
+      "type": "Task",
+      "parent": "QAG3-69",
+      "start": "2026-06-08",
+      "due": "2026-06-12",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-89",
+      "type": "Sub-task",
+      "parent": "QAG3-88",
+      "role": "BA",
+      "start": "2026-06-08",
+      "due": "2026-06-08"
+    },
+    {
+      "key": "QAG3-90",
+      "type": "Sub-task",
+      "parent": "QAG3-88",
+      "role": "BE",
+      "start": "2026-06-09",
+      "due": "2026-06-10"
+    },
+    {
+      "key": "QAG3-91",
+      "type": "Sub-task",
+      "parent": "QAG3-88",
+      "role": "FE",
+      "start": "2026-06-09",
+      "due": "2026-06-10"
+    },
+    {
+      "key": "QAG3-92",
+      "type": "Sub-task",
+      "parent": "QAG3-88",
+      "role": "QA",
+      "start": "2026-06-11",
+      "due": "2026-06-11"
+    },
+    {
+      "key": "QAG3-93",
+      "type": "Sub-task",
+      "parent": "QAG3-88",
+      "role": "PM",
+      "start": "2026-06-12",
+      "due": "2026-06-12"
+    },
+    {
+      "key": "QAG3-94",
+      "type": "Task",
+      "parent": "QAG3-69",
+      "start": "2026-06-10",
+      "due": "2026-06-22",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-95",
+      "type": "Sub-task",
+      "parent": "QAG3-94",
+      "role": "BA",
+      "start": "2026-06-10",
+      "due": "2026-06-10"
+    },
+    {
+      "key": "QAG3-96",
+      "type": "Sub-task",
+      "parent": "QAG3-94",
+      "role": "BE",
+      "start": "2026-06-11",
+      "due": "2026-06-15"
+    },
+    {
+      "key": "QAG3-97",
+      "type": "Sub-task",
+      "parent": "QAG3-94",
+      "role": "FE",
+      "start": "2026-06-11",
+      "due": "2026-06-15"
+    },
+    {
+      "key": "QAG3-98",
+      "type": "Sub-task",
+      "parent": "QAG3-94",
+      "role": "QA",
+      "start": "2026-06-16",
+      "due": "2026-06-17"
+    },
+    {
+      "key": "QAG3-99",
+      "type": "Sub-task",
+      "parent": "QAG3-94",
+      "role": "PM",
+      "start": "2026-06-18",
+      "due": "2026-06-22"
+    },
+    {
+      "key": "QAG3-100",
+      "type": "Epic",
+      "start": "2026-06-23",
+      "due": "2026-07-21"
+    },
+    {
+      "key": "QAG3-101",
+      "type": "Task",
+      "parent": "QAG3-100",
+      "start": "2026-06-23",
+      "due": "2026-07-01",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-102",
+      "type": "Sub-task",
+      "parent": "QAG3-101",
+      "role": "BA",
+      "start": "2026-06-23",
+      "due": "2026-06-23"
+    },
+    {
+      "key": "QAG3-103",
+      "type": "Sub-task",
+      "parent": "QAG3-101",
+      "role": "BE",
+      "start": "2026-06-24",
+      "due": "2026-06-26"
+    },
+    {
+      "key": "QAG3-104",
+      "type": "Sub-task",
+      "parent": "QAG3-101",
+      "role": "FE",
+      "start": "2026-06-24",
+      "due": "2026-06-26"
+    },
+    {
+      "key": "QAG3-105",
+      "type": "Sub-task",
+      "parent": "QAG3-101",
+      "role": "QA",
+      "start": "2026-06-29",
+      "due": "2026-06-30"
+    },
+    {
+      "key": "QAG3-106",
+      "type": "Sub-task",
+      "parent": "QAG3-101",
+      "role": "PM",
+      "start": "2026-07-01",
+      "due": "2026-07-01"
+    },
+    {
+      "key": "QAG3-107",
+      "type": "Task",
+      "parent": "QAG3-100",
+      "start": "2026-06-26",
+      "due": "2026-07-06",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-108",
+      "type": "Sub-task",
+      "parent": "QAG3-107",
+      "role": "BA",
+      "start": "2026-06-26",
+      "due": "2026-06-26"
+    },
+    {
+      "key": "QAG3-109",
+      "type": "Sub-task",
+      "parent": "QAG3-107",
+      "role": "BE",
+      "start": "2026-06-29",
+      "due": "2026-07-01"
+    },
+    {
+      "key": "QAG3-110",
+      "type": "Sub-task",
+      "parent": "QAG3-107",
+      "role": "FE",
+      "start": "2026-06-29",
+      "due": "2026-07-01"
+    },
+    {
+      "key": "QAG3-111",
+      "type": "Sub-task",
+      "parent": "QAG3-107",
+      "role": "QA",
+      "start": "2026-07-02",
+      "due": "2026-07-03"
+    },
+    {
+      "key": "QAG3-112",
+      "type": "Sub-task",
+      "parent": "QAG3-107",
+      "role": "PM",
+      "start": "2026-07-06",
+      "due": "2026-07-06"
+    },
+    {
+      "key": "QAG3-113",
+      "type": "Task",
+      "parent": "QAG3-100",
+      "start": "2026-07-01",
+      "due": "2026-07-09",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-114",
+      "type": "Sub-task",
+      "parent": "QAG3-113",
+      "role": "BA",
+      "start": "2026-07-01",
+      "due": "2026-07-01"
+    },
+    {
+      "key": "QAG3-115",
+      "type": "Sub-task",
+      "parent": "QAG3-113",
+      "role": "BE",
+      "start": "2026-07-02",
+      "due": "2026-07-06"
+    },
+    {
+      "key": "QAG3-116",
+      "type": "Sub-task",
+      "parent": "QAG3-113",
+      "role": "FE",
+      "start": "2026-07-02",
+      "due": "2026-07-06"
+    },
+    {
+      "key": "QAG3-117",
+      "type": "Sub-task",
+      "parent": "QAG3-113",
+      "role": "QA",
+      "start": "2026-07-07",
+      "due": "2026-07-08"
+    },
+    {
+      "key": "QAG3-118",
+      "type": "Sub-task",
+      "parent": "QAG3-113",
+      "role": "PM",
+      "start": "2026-07-09",
+      "due": "2026-07-09"
+    },
+    {
+      "key": "QAG3-119",
+      "type": "Task",
+      "parent": "QAG3-100",
+      "start": "2026-07-06",
+      "due": "2026-07-14",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-120",
+      "type": "Sub-task",
+      "parent": "QAG3-119",
+      "role": "BA",
+      "start": "2026-07-06",
+      "due": "2026-07-06"
+    },
+    {
+      "key": "QAG3-121",
+      "type": "Sub-task",
+      "parent": "QAG3-119",
+      "role": "BE",
+      "start": "2026-07-07",
+      "due": "2026-07-09"
+    },
+    {
+      "key": "QAG3-122",
+      "type": "Sub-task",
+      "parent": "QAG3-119",
+      "role": "FE",
+      "start": "2026-07-07",
+      "due": "2026-07-09"
+    },
+    {
+      "key": "QAG3-123",
+      "type": "Sub-task",
+      "parent": "QAG3-119",
+      "role": "QA",
+      "start": "2026-07-10",
+      "due": "2026-07-13"
+    },
+    {
+      "key": "QAG3-124",
+      "type": "Sub-task",
+      "parent": "QAG3-119",
+      "role": "PM",
+      "start": "2026-07-14",
+      "due": "2026-07-14"
+    },
+    {
+      "key": "QAG3-125",
+      "type": "Task",
+      "parent": "QAG3-100",
+      "start": "2026-07-09",
+      "due": "2026-07-21",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-126",
+      "type": "Sub-task",
+      "parent": "QAG3-125",
+      "role": "BA",
+      "start": "2026-07-09",
+      "due": "2026-07-09"
+    },
+    {
+      "key": "QAG3-127",
+      "type": "Sub-task",
+      "parent": "QAG3-125",
+      "role": "BE",
+      "start": "2026-07-10",
+      "due": "2026-07-14"
+    },
+    {
+      "key": "QAG3-128",
+      "type": "Sub-task",
+      "parent": "QAG3-125",
+      "role": "FE",
+      "start": "2026-07-10",
+      "due": "2026-07-14"
+    },
+    {
+      "key": "QAG3-129",
+      "type": "Sub-task",
+      "parent": "QAG3-125",
+      "role": "QA",
+      "start": "2026-07-15",
+      "due": "2026-07-16"
+    },
+    {
+      "key": "QAG3-130",
+      "type": "Sub-task",
+      "parent": "QAG3-125",
+      "role": "PM",
+      "start": "2026-07-17",
+      "due": "2026-07-21"
+    },
+    {
+      "key": "QAG3-131",
+      "type": "Epic",
+      "start": "2026-07-22",
+      "due": "2026-08-13"
+    },
+    {
+      "key": "QAG3-132",
+      "type": "Task",
+      "parent": "QAG3-131",
+      "start": "2026-07-22",
+      "due": "2026-07-30",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-133",
+      "type": "Sub-task",
+      "parent": "QAG3-132",
+      "role": "BA",
+      "start": "2026-07-22",
+      "due": "2026-07-22"
+    },
+    {
+      "key": "QAG3-134",
+      "type": "Sub-task",
+      "parent": "QAG3-132",
+      "role": "BE",
+      "start": "2026-07-23",
+      "due": "2026-07-27"
+    },
+    {
+      "key": "QAG3-135",
+      "type": "Sub-task",
+      "parent": "QAG3-132",
+      "role": "FE",
+      "start": "2026-07-23",
+      "due": "2026-07-27"
+    },
+    {
+      "key": "QAG3-136",
+      "type": "Sub-task",
+      "parent": "QAG3-132",
+      "role": "QA",
+      "start": "2026-07-28",
+      "due": "2026-07-29"
+    },
+    {
+      "key": "QAG3-137",
+      "type": "Sub-task",
+      "parent": "QAG3-132",
+      "role": "PM",
+      "start": "2026-07-30",
+      "due": "2026-07-30"
+    },
+    {
+      "key": "QAG3-138",
+      "type": "Task",
+      "parent": "QAG3-131",
+      "start": "2026-07-27",
+      "due": "2026-07-31",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-139",
+      "type": "Sub-task",
+      "parent": "QAG3-138",
+      "role": "BA",
+      "start": "2026-07-27",
+      "due": "2026-07-27"
+    },
+    {
+      "key": "QAG3-140",
+      "type": "Sub-task",
+      "parent": "QAG3-138",
+      "role": "BE",
+      "start": "2026-07-28",
+      "due": "2026-07-29"
+    },
+    {
+      "key": "QAG3-141",
+      "type": "Sub-task",
+      "parent": "QAG3-138",
+      "role": "FE",
+      "start": "2026-07-28",
+      "due": "2026-07-29"
+    },
+    {
+      "key": "QAG3-142",
+      "type": "Sub-task",
+      "parent": "QAG3-138",
+      "role": "QA",
+      "start": "2026-07-30",
+      "due": "2026-07-30"
+    },
+    {
+      "key": "QAG3-143",
+      "type": "Sub-task",
+      "parent": "QAG3-138",
+      "role": "PM",
+      "start": "2026-07-31",
+      "due": "2026-07-31"
+    },
+    {
+      "key": "QAG3-144",
+      "type": "Task",
+      "parent": "QAG3-131",
+      "start": "2026-07-29",
+      "due": "2026-08-05",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-145",
+      "type": "Sub-task",
+      "parent": "QAG3-144",
+      "role": "BA",
+      "start": "2026-07-29",
+      "due": "2026-07-29"
+    },
+    {
+      "key": "QAG3-146",
+      "type": "Sub-task",
+      "parent": "QAG3-144",
+      "role": "BE",
+      "start": "2026-07-30",
+      "due": "2026-07-31"
+    },
+    {
+      "key": "QAG3-147",
+      "type": "Sub-task",
+      "parent": "QAG3-144",
+      "role": "FE",
+      "start": "2026-07-30",
+      "due": "2026-07-31"
+    },
+    {
+      "key": "QAG3-148",
+      "type": "Sub-task",
+      "parent": "QAG3-144",
+      "role": "QA",
+      "start": "2026-08-03",
+      "due": "2026-08-04"
+    },
+    {
+      "key": "QAG3-149",
+      "type": "Sub-task",
+      "parent": "QAG3-144",
+      "role": "PM",
+      "start": "2026-08-05",
+      "due": "2026-08-05"
+    },
+    {
+      "key": "QAG3-150",
+      "type": "Task",
+      "parent": "QAG3-131",
+      "start": "2026-07-31",
+      "due": "2026-08-07",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-151",
+      "type": "Sub-task",
+      "parent": "QAG3-150",
+      "role": "BA",
+      "start": "2026-07-31",
+      "due": "2026-07-31"
+    },
+    {
+      "key": "QAG3-152",
+      "type": "Sub-task",
+      "parent": "QAG3-150",
+      "role": "BE",
+      "start": "2026-08-03",
+      "due": "2026-08-04"
+    },
+    {
+      "key": "QAG3-153",
+      "type": "Sub-task",
+      "parent": "QAG3-150",
+      "role": "FE",
+      "start": "2026-08-03",
+      "due": "2026-08-04"
+    },
+    {
+      "key": "QAG3-154",
+      "type": "Sub-task",
+      "parent": "QAG3-150",
+      "role": "QA",
+      "start": "2026-08-05",
+      "due": "2026-08-06"
+    },
+    {
+      "key": "QAG3-155",
+      "type": "Sub-task",
+      "parent": "QAG3-150",
+      "role": "PM",
+      "start": "2026-08-07",
+      "due": "2026-08-07"
+    },
+    {
+      "key": "QAG3-156",
+      "type": "Task",
+      "parent": "QAG3-131",
+      "start": "2026-08-04",
+      "due": "2026-08-13",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-157",
+      "type": "Sub-task",
+      "parent": "QAG3-156",
+      "role": "BA",
+      "start": "2026-08-04",
+      "due": "2026-08-04"
+    },
+    {
+      "key": "QAG3-158",
+      "type": "Sub-task",
+      "parent": "QAG3-156",
+      "role": "BE",
+      "start": "2026-08-05",
+      "due": "2026-08-06"
+    },
+    {
+      "key": "QAG3-159",
+      "type": "Sub-task",
+      "parent": "QAG3-156",
+      "role": "FE",
+      "start": "2026-08-05",
+      "due": "2026-08-06"
+    },
+    {
+      "key": "QAG3-160",
+      "type": "Sub-task",
+      "parent": "QAG3-156",
+      "role": "QA",
+      "start": "2026-08-07",
+      "due": "2026-08-10"
+    },
+    {
+      "key": "QAG3-161",
+      "type": "Sub-task",
+      "parent": "QAG3-156",
+      "role": "PM",
+      "start": "2026-08-11",
+      "due": "2026-08-13"
+    },
+    {
+      "key": "QAG3-162",
+      "type": "Epic",
+      "start": "2026-08-14",
+      "due": "2026-09-08"
+    },
+    {
+      "key": "QAG3-163",
+      "type": "Task",
+      "parent": "QAG3-162",
+      "start": "2026-08-14",
+      "due": "2026-08-24",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-164",
+      "type": "Sub-task",
+      "parent": "QAG3-163",
+      "role": "BA",
+      "start": "2026-08-14",
+      "due": "2026-08-14"
+    },
+    {
+      "key": "QAG3-165",
+      "type": "Sub-task",
+      "parent": "QAG3-163",
+      "role": "BE",
+      "start": "2026-08-17",
+      "due": "2026-08-19"
+    },
+    {
+      "key": "QAG3-166",
+      "type": "Sub-task",
+      "parent": "QAG3-163",
+      "role": "FE",
+      "start": "2026-08-17",
+      "due": "2026-08-19"
+    },
+    {
+      "key": "QAG3-167",
+      "type": "Sub-task",
+      "parent": "QAG3-163",
+      "role": "QA",
+      "start": "2026-08-20",
+      "due": "2026-08-21"
+    },
+    {
+      "key": "QAG3-168",
+      "type": "Sub-task",
+      "parent": "QAG3-163",
+      "role": "PM",
+      "start": "2026-08-24",
+      "due": "2026-08-24"
+    },
+    {
+      "key": "QAG3-169",
+      "type": "Task",
+      "parent": "QAG3-162",
+      "start": "2026-08-19",
+      "due": "2026-08-27",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-170",
+      "type": "Sub-task",
+      "parent": "QAG3-169",
+      "role": "BA",
+      "start": "2026-08-19",
+      "due": "2026-08-19"
+    },
+    {
+      "key": "QAG3-171",
+      "type": "Sub-task",
+      "parent": "QAG3-169",
+      "role": "BE",
+      "start": "2026-08-20",
+      "due": "2026-08-24"
+    },
+    {
+      "key": "QAG3-172",
+      "type": "Sub-task",
+      "parent": "QAG3-169",
+      "role": "FE",
+      "start": "2026-08-20",
+      "due": "2026-08-24"
+    },
+    {
+      "key": "QAG3-173",
+      "type": "Sub-task",
+      "parent": "QAG3-169",
+      "role": "QA",
+      "start": "2026-08-25",
+      "due": "2026-08-26"
+    },
+    {
+      "key": "QAG3-174",
+      "type": "Sub-task",
+      "parent": "QAG3-169",
+      "role": "PM",
+      "start": "2026-08-27",
+      "due": "2026-08-27"
+    },
+    {
+      "key": "QAG3-175",
+      "type": "Task",
+      "parent": "QAG3-162",
+      "start": "2026-08-24",
+      "due": "2026-09-01",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-176",
+      "type": "Sub-task",
+      "parent": "QAG3-175",
+      "role": "BA",
+      "start": "2026-08-24",
+      "due": "2026-08-24"
+    },
+    {
+      "key": "QAG3-177",
+      "type": "Sub-task",
+      "parent": "QAG3-175",
+      "role": "BE",
+      "start": "2026-08-25",
+      "due": "2026-08-27"
+    },
+    {
+      "key": "QAG3-178",
+      "type": "Sub-task",
+      "parent": "QAG3-175",
+      "role": "FE",
+      "start": "2026-08-25",
+      "due": "2026-08-27"
+    },
+    {
+      "key": "QAG3-179",
+      "type": "Sub-task",
+      "parent": "QAG3-175",
+      "role": "QA",
+      "start": "2026-08-28",
+      "due": "2026-08-31"
+    },
+    {
+      "key": "QAG3-180",
+      "type": "Sub-task",
+      "parent": "QAG3-175",
+      "role": "PM",
+      "start": "2026-09-01",
+      "due": "2026-09-01"
+    },
+    {
+      "key": "QAG3-181",
+      "type": "Task",
+      "parent": "QAG3-162",
+      "start": "2026-08-27",
+      "due": "2026-09-08",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-182",
+      "type": "Sub-task",
+      "parent": "QAG3-181",
+      "role": "BA",
+      "start": "2026-08-27",
+      "due": "2026-08-27"
+    },
+    {
+      "key": "QAG3-183",
+      "type": "Sub-task",
+      "parent": "QAG3-181",
+      "role": "BE",
+      "start": "2026-08-28",
+      "due": "2026-09-01"
+    },
+    {
+      "key": "QAG3-184",
+      "type": "Sub-task",
+      "parent": "QAG3-181",
+      "role": "FE",
+      "start": "2026-08-28",
+      "due": "2026-09-01"
+    },
+    {
+      "key": "QAG3-185",
+      "type": "Sub-task",
+      "parent": "QAG3-181",
+      "role": "QA",
+      "start": "2026-09-02",
+      "due": "2026-09-03"
+    },
+    {
+      "key": "QAG3-186",
+      "type": "Sub-task",
+      "parent": "QAG3-181",
+      "role": "PM",
+      "start": "2026-09-04",
+      "due": "2026-09-08"
+    },
+    {
+      "key": "QAG3-187",
+      "type": "Epic",
+      "start": "2026-09-09",
+      "due": "2026-09-30"
+    },
+    {
+      "key": "QAG3-188",
+      "type": "Task",
+      "parent": "QAG3-187",
+      "start": "2026-09-09",
+      "due": "2026-09-17",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-189",
+      "type": "Sub-task",
+      "parent": "QAG3-188",
+      "role": "BA",
+      "start": "2026-09-09",
+      "due": "2026-09-09"
+    },
+    {
+      "key": "QAG3-190",
+      "type": "Sub-task",
+      "parent": "QAG3-188",
+      "role": "BE",
+      "start": "2026-09-10",
+      "due": "2026-09-14"
+    },
+    {
+      "key": "QAG3-191",
+      "type": "Sub-task",
+      "parent": "QAG3-188",
+      "role": "FE",
+      "start": "2026-09-10",
+      "due": "2026-09-14"
+    },
+    {
+      "key": "QAG3-192",
+      "type": "Sub-task",
+      "parent": "QAG3-188",
+      "role": "QA",
+      "start": "2026-09-15",
+      "due": "2026-09-16"
+    },
+    {
+      "key": "QAG3-193",
+      "type": "Sub-task",
+      "parent": "QAG3-188",
+      "role": "PM",
+      "start": "2026-09-17",
+      "due": "2026-09-17"
+    },
+    {
+      "key": "QAG3-194",
+      "type": "Task",
+      "parent": "QAG3-187",
+      "start": "2026-09-14",
+      "due": "2026-09-21",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-195",
+      "type": "Sub-task",
+      "parent": "QAG3-194",
+      "role": "BA",
+      "start": "2026-09-14",
+      "due": "2026-09-14"
+    },
+    {
+      "key": "QAG3-196",
+      "type": "Sub-task",
+      "parent": "QAG3-194",
+      "role": "BE",
+      "start": "2026-09-15",
+      "due": "2026-09-16"
+    },
+    {
+      "key": "QAG3-197",
+      "type": "Sub-task",
+      "parent": "QAG3-194",
+      "role": "FE",
+      "start": "2026-09-15",
+      "due": "2026-09-16"
+    },
+    {
+      "key": "QAG3-198",
+      "type": "Sub-task",
+      "parent": "QAG3-194",
+      "role": "QA",
+      "start": "2026-09-17",
+      "due": "2026-09-18"
+    },
+    {
+      "key": "QAG3-199",
+      "type": "Sub-task",
+      "parent": "QAG3-194",
+      "role": "PM",
+      "start": "2026-09-21",
+      "due": "2026-09-21"
+    },
+    {
+      "key": "QAG3-200",
+      "type": "Task",
+      "parent": "QAG3-187",
+      "start": "2026-09-16",
+      "due": "2026-09-24",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-201",
+      "type": "Sub-task",
+      "parent": "QAG3-200",
+      "role": "BA",
+      "start": "2026-09-16",
+      "due": "2026-09-16"
+    },
+    {
+      "key": "QAG3-202",
+      "type": "Sub-task",
+      "parent": "QAG3-200",
+      "role": "BE",
+      "start": "2026-09-17",
+      "due": "2026-09-21"
+    },
+    {
+      "key": "QAG3-203",
+      "type": "Sub-task",
+      "parent": "QAG3-200",
+      "role": "FE",
+      "start": "2026-09-17",
+      "due": "2026-09-21"
+    },
+    {
+      "key": "QAG3-204",
+      "type": "Sub-task",
+      "parent": "QAG3-200",
+      "role": "QA",
+      "start": "2026-09-22",
+      "due": "2026-09-23"
+    },
+    {
+      "key": "QAG3-205",
+      "type": "Sub-task",
+      "parent": "QAG3-200",
+      "role": "PM",
+      "start": "2026-09-24",
+      "due": "2026-09-24"
+    },
+    {
+      "key": "QAG3-206",
+      "type": "Task",
+      "parent": "QAG3-187",
+      "start": "2026-09-21",
+      "due": "2026-09-30",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-207",
+      "type": "Sub-task",
+      "parent": "QAG3-206",
+      "role": "BA",
+      "start": "2026-09-21",
+      "due": "2026-09-21"
+    },
+    {
+      "key": "QAG3-208",
+      "type": "Sub-task",
+      "parent": "QAG3-206",
+      "role": "BE",
+      "start": "2026-09-22",
+      "due": "2026-09-23"
+    },
+    {
+      "key": "QAG3-209",
+      "type": "Sub-task",
+      "parent": "QAG3-206",
+      "role": "FE",
+      "start": "2026-09-22",
+      "due": "2026-09-23"
+    },
+    {
+      "key": "QAG3-210",
+      "type": "Sub-task",
+      "parent": "QAG3-206",
+      "role": "QA",
+      "start": "2026-09-24",
+      "due": "2026-09-25"
+    },
+    {
+      "key": "QAG3-211",
+      "type": "Sub-task",
+      "parent": "QAG3-206",
+      "role": "PM",
+      "start": "2026-09-28",
+      "due": "2026-09-30"
+    },
+    {
+      "key": "QAG3-212",
+      "type": "Epic",
+      "start": "2026-10-01",
+      "due": "2026-10-23"
+    },
+    {
+      "key": "QAG3-213",
+      "type": "Task",
+      "parent": "QAG3-212",
+      "start": "2026-10-01",
+      "due": "2026-10-09",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-214",
+      "type": "Sub-task",
+      "parent": "QAG3-213",
+      "role": "BA",
+      "start": "2026-10-01",
+      "due": "2026-10-01"
+    },
+    {
+      "key": "QAG3-215",
+      "type": "Sub-task",
+      "parent": "QAG3-213",
+      "role": "BE",
+      "start": "2026-10-02",
+      "due": "2026-10-06"
+    },
+    {
+      "key": "QAG3-216",
+      "type": "Sub-task",
+      "parent": "QAG3-213",
+      "role": "FE",
+      "start": "2026-10-02",
+      "due": "2026-10-06"
+    },
+    {
+      "key": "QAG3-217",
+      "type": "Sub-task",
+      "parent": "QAG3-213",
+      "role": "QA",
+      "start": "2026-10-07",
+      "due": "2026-10-08"
+    },
+    {
+      "key": "QAG3-218",
+      "type": "Sub-task",
+      "parent": "QAG3-213",
+      "role": "PM",
+      "start": "2026-10-09",
+      "due": "2026-10-09"
+    },
+    {
+      "key": "QAG3-219",
+      "type": "Task",
+      "parent": "QAG3-212",
+      "start": "2026-10-06",
+      "due": "2026-10-12",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-220",
+      "type": "Sub-task",
+      "parent": "QAG3-219",
+      "role": "BA",
+      "start": "2026-10-06",
+      "due": "2026-10-06"
+    },
+    {
+      "key": "QAG3-221",
+      "type": "Sub-task",
+      "parent": "QAG3-219",
+      "role": "BE",
+      "start": "2026-10-07",
+      "due": "2026-10-08"
+    },
+    {
+      "key": "QAG3-222",
+      "type": "Sub-task",
+      "parent": "QAG3-219",
+      "role": "FE",
+      "start": "2026-10-07",
+      "due": "2026-10-08"
+    },
+    {
+      "key": "QAG3-223",
+      "type": "Sub-task",
+      "parent": "QAG3-219",
+      "role": "QA",
+      "start": "2026-10-09",
+      "due": "2026-10-09"
+    },
+    {
+      "key": "QAG3-224",
+      "type": "Sub-task",
+      "parent": "QAG3-219",
+      "role": "PM",
+      "start": "2026-10-12",
+      "due": "2026-10-12"
+    },
+    {
+      "key": "QAG3-225",
+      "type": "Task",
+      "parent": "QAG3-212",
+      "start": "2026-10-08",
+      "due": "2026-10-15",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-226",
+      "type": "Sub-task",
+      "parent": "QAG3-225",
+      "role": "BA",
+      "start": "2026-10-08",
+      "due": "2026-10-08"
+    },
+    {
+      "key": "QAG3-227",
+      "type": "Sub-task",
+      "parent": "QAG3-225",
+      "role": "BE",
+      "start": "2026-10-09",
+      "due": "2026-10-12"
+    },
+    {
+      "key": "QAG3-228",
+      "type": "Sub-task",
+      "parent": "QAG3-225",
+      "role": "FE",
+      "start": "2026-10-09",
+      "due": "2026-10-12"
+    },
+    {
+      "key": "QAG3-229",
+      "type": "Sub-task",
+      "parent": "QAG3-225",
+      "role": "QA",
+      "start": "2026-10-13",
+      "due": "2026-10-14"
+    },
+    {
+      "key": "QAG3-230",
+      "type": "Sub-task",
+      "parent": "QAG3-225",
+      "role": "PM",
+      "start": "2026-10-15",
+      "due": "2026-10-15"
+    },
+    {
+      "key": "QAG3-231",
+      "type": "Task",
+      "parent": "QAG3-212",
+      "start": "2026-10-12",
+      "due": "2026-10-19",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-232",
+      "type": "Sub-task",
+      "parent": "QAG3-231",
+      "role": "BA",
+      "start": "2026-10-12",
+      "due": "2026-10-12"
+    },
+    {
+      "key": "QAG3-233",
+      "type": "Sub-task",
+      "parent": "QAG3-231",
+      "role": "BE",
+      "start": "2026-10-13",
+      "due": "2026-10-14"
+    },
+    {
+      "key": "QAG3-234",
+      "type": "Sub-task",
+      "parent": "QAG3-231",
+      "role": "FE",
+      "start": "2026-10-13",
+      "due": "2026-10-14"
+    },
+    {
+      "key": "QAG3-235",
+      "type": "Sub-task",
+      "parent": "QAG3-231",
+      "role": "QA",
+      "start": "2026-10-15",
+      "due": "2026-10-16"
+    },
+    {
+      "key": "QAG3-236",
+      "type": "Sub-task",
+      "parent": "QAG3-231",
+      "role": "PM",
+      "start": "2026-10-19",
+      "due": "2026-10-19"
+    },
+    {
+      "key": "QAG3-237",
+      "type": "Task",
+      "parent": "QAG3-212",
+      "start": "2026-10-14",
+      "due": "2026-10-23",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-238",
+      "type": "Sub-task",
+      "parent": "QAG3-237",
+      "role": "BA",
+      "start": "2026-10-14",
+      "due": "2026-10-14"
+    },
+    {
+      "key": "QAG3-239",
+      "type": "Sub-task",
+      "parent": "QAG3-237",
+      "role": "BE",
+      "start": "2026-10-15",
+      "due": "2026-10-16"
+    },
+    {
+      "key": "QAG3-240",
+      "type": "Sub-task",
+      "parent": "QAG3-237",
+      "role": "FE",
+      "start": "2026-10-15",
+      "due": "2026-10-16"
+    },
+    {
+      "key": "QAG3-241",
+      "type": "Sub-task",
+      "parent": "QAG3-237",
+      "role": "QA",
+      "start": "2026-10-19",
+      "due": "2026-10-20"
+    },
+    {
+      "key": "QAG3-242",
+      "type": "Sub-task",
+      "parent": "QAG3-237",
+      "role": "PM",
+      "start": "2026-10-21",
+      "due": "2026-10-23"
+    },
+    {
+      "key": "QAG3-243",
+      "type": "Epic",
+      "start": "2026-10-26",
+      "due": "2026-11-16"
+    },
+    {
+      "key": "QAG3-244",
+      "type": "Task",
+      "parent": "QAG3-243",
+      "start": "2026-10-26",
+      "due": "2026-11-02",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-245",
+      "type": "Sub-task",
+      "parent": "QAG3-244",
+      "role": "BA",
+      "start": "2026-10-26",
+      "due": "2026-10-26"
+    },
+    {
+      "key": "QAG3-246",
+      "type": "Sub-task",
+      "parent": "QAG3-244",
+      "role": "BE",
+      "start": "2026-10-27",
+      "due": "2026-10-28"
+    },
+    {
+      "key": "QAG3-247",
+      "type": "Sub-task",
+      "parent": "QAG3-244",
+      "role": "FE",
+      "start": "2026-10-27",
+      "due": "2026-10-28"
+    },
+    {
+      "key": "QAG3-248",
+      "type": "Sub-task",
+      "parent": "QAG3-244",
+      "role": "QA",
+      "start": "2026-10-29",
+      "due": "2026-10-30"
+    },
+    {
+      "key": "QAG3-249",
+      "type": "Sub-task",
+      "parent": "QAG3-244",
+      "role": "PM",
+      "start": "2026-11-02",
+      "due": "2026-11-02"
+    },
+    {
+      "key": "QAG3-250",
+      "type": "Task",
+      "parent": "QAG3-243",
+      "start": "2026-10-28",
+      "due": "2026-11-03",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-251",
+      "type": "Sub-task",
+      "parent": "QAG3-250",
+      "role": "BA",
+      "start": "2026-10-28",
+      "due": "2026-10-28"
+    },
+    {
+      "key": "QAG3-252",
+      "type": "Sub-task",
+      "parent": "QAG3-250",
+      "role": "BE",
+      "start": "2026-10-29",
+      "due": "2026-10-30"
+    },
+    {
+      "key": "QAG3-253",
+      "type": "Sub-task",
+      "parent": "QAG3-250",
+      "role": "FE",
+      "start": "2026-10-29",
+      "due": "2026-10-30"
+    },
+    {
+      "key": "QAG3-254",
+      "type": "Sub-task",
+      "parent": "QAG3-250",
+      "role": "QA",
+      "start": "2026-11-02",
+      "due": "2026-11-02"
+    },
+    {
+      "key": "QAG3-255",
+      "type": "Sub-task",
+      "parent": "QAG3-250",
+      "role": "PM",
+      "start": "2026-11-03",
+      "due": "2026-11-03"
+    },
+    {
+      "key": "QAG3-256",
+      "type": "Task",
+      "parent": "QAG3-243",
+      "start": "2026-10-30",
+      "due": "2026-11-06",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-257",
+      "type": "Sub-task",
+      "parent": "QAG3-256",
+      "role": "BA",
+      "start": "2026-10-30",
+      "due": "2026-10-30"
+    },
+    {
+      "key": "QAG3-258",
+      "type": "Sub-task",
+      "parent": "QAG3-256",
+      "role": "BE",
+      "start": "2026-11-02",
+      "due": "2026-11-03"
+    },
+    {
+      "key": "QAG3-259",
+      "type": "Sub-task",
+      "parent": "QAG3-256",
+      "role": "FE",
+      "start": "2026-11-02",
+      "due": "2026-11-03"
+    },
+    {
+      "key": "QAG3-260",
+      "type": "Sub-task",
+      "parent": "QAG3-256",
+      "role": "QA",
+      "start": "2026-11-04",
+      "due": "2026-11-05"
+    },
+    {
+      "key": "QAG3-261",
+      "type": "Sub-task",
+      "parent": "QAG3-256",
+      "role": "PM",
+      "start": "2026-11-06",
+      "due": "2026-11-06"
+    },
+    {
+      "key": "QAG3-262",
+      "type": "Task",
+      "parent": "QAG3-243",
+      "start": "2026-11-03",
+      "due": "2026-11-10",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-263",
+      "type": "Sub-task",
+      "parent": "QAG3-262",
+      "role": "BA",
+      "start": "2026-11-03",
+      "due": "2026-11-03"
+    },
+    {
+      "key": "QAG3-264",
+      "type": "Sub-task",
+      "parent": "QAG3-262",
+      "role": "BE",
+      "start": "2026-11-04",
+      "due": "2026-11-05"
+    },
+    {
+      "key": "QAG3-265",
+      "type": "Sub-task",
+      "parent": "QAG3-262",
+      "role": "FE",
+      "start": "2026-11-04",
+      "due": "2026-11-05"
+    },
+    {
+      "key": "QAG3-266",
+      "type": "Sub-task",
+      "parent": "QAG3-262",
+      "role": "QA",
+      "start": "2026-11-06",
+      "due": "2026-11-09"
+    },
+    {
+      "key": "QAG3-267",
+      "type": "Sub-task",
+      "parent": "QAG3-262",
+      "role": "PM",
+      "start": "2026-11-10",
+      "due": "2026-11-10"
+    },
+    {
+      "key": "QAG3-268",
+      "type": "Task",
+      "parent": "QAG3-243",
+      "start": "2026-11-05",
+      "due": "2026-11-16",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-269",
+      "type": "Sub-task",
+      "parent": "QAG3-268",
+      "role": "BA",
+      "start": "2026-11-05",
+      "due": "2026-11-05"
+    },
+    {
+      "key": "QAG3-270",
+      "type": "Sub-task",
+      "parent": "QAG3-268",
+      "role": "BE",
+      "start": "2026-11-06",
+      "due": "2026-11-09"
+    },
+    {
+      "key": "QAG3-271",
+      "type": "Sub-task",
+      "parent": "QAG3-268",
+      "role": "FE",
+      "start": "2026-11-06",
+      "due": "2026-11-09"
+    },
+    {
+      "key": "QAG3-272",
+      "type": "Sub-task",
+      "parent": "QAG3-268",
+      "role": "QA",
+      "start": "2026-11-10",
+      "due": "2026-11-11"
+    },
+    {
+      "key": "QAG3-273",
+      "type": "Sub-task",
+      "parent": "QAG3-268",
+      "role": "PM",
+      "start": "2026-11-12",
+      "due": "2026-11-16"
+    },
+    {
+      "key": "QAG3-274",
+      "type": "Epic",
+      "start": "2026-11-17",
+      "due": "2026-12-07"
+    },
+    {
+      "key": "QAG3-275",
+      "type": "Task",
+      "parent": "QAG3-274",
+      "start": "2026-11-17",
+      "due": "2026-11-23",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-276",
+      "type": "Sub-task",
+      "parent": "QAG3-275",
+      "role": "BA",
+      "start": "2026-11-17",
+      "due": "2026-11-17"
+    },
+    {
+      "key": "QAG3-277",
+      "type": "Sub-task",
+      "parent": "QAG3-275",
+      "role": "BE",
+      "start": "2026-11-18",
+      "due": "2026-11-19"
+    },
+    {
+      "key": "QAG3-278",
+      "type": "Sub-task",
+      "parent": "QAG3-275",
+      "role": "FE",
+      "start": "2026-11-18",
+      "due": "2026-11-19"
+    },
+    {
+      "key": "QAG3-279",
+      "type": "Sub-task",
+      "parent": "QAG3-275",
+      "role": "QA",
+      "start": "2026-11-20",
+      "due": "2026-11-20"
+    },
+    {
+      "key": "QAG3-280",
+      "type": "Sub-task",
+      "parent": "QAG3-275",
+      "role": "PM",
+      "start": "2026-11-23",
+      "due": "2026-11-23"
+    },
+    {
+      "key": "QAG3-281",
+      "type": "Task",
+      "parent": "QAG3-274",
+      "start": "2026-11-19",
+      "due": "2026-11-25",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-282",
+      "type": "Sub-task",
+      "parent": "QAG3-281",
+      "role": "BA",
+      "start": "2026-11-19",
+      "due": "2026-11-19"
+    },
+    {
+      "key": "QAG3-283",
+      "type": "Sub-task",
+      "parent": "QAG3-281",
+      "role": "BE",
+      "start": "2026-11-20",
+      "due": "2026-11-23"
+    },
+    {
+      "key": "QAG3-284",
+      "type": "Sub-task",
+      "parent": "QAG3-281",
+      "role": "FE",
+      "start": "2026-11-20",
+      "due": "2026-11-23"
+    },
+    {
+      "key": "QAG3-285",
+      "type": "Sub-task",
+      "parent": "QAG3-281",
+      "role": "QA",
+      "start": "2026-11-24",
+      "due": "2026-11-24"
+    },
+    {
+      "key": "QAG3-286",
+      "type": "Sub-task",
+      "parent": "QAG3-281",
+      "role": "PM",
+      "start": "2026-11-25",
+      "due": "2026-11-25"
+    },
+    {
+      "key": "QAG3-287",
+      "type": "Task",
+      "parent": "QAG3-274",
+      "start": "2026-11-23",
+      "due": "2026-11-27",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-288",
+      "type": "Sub-task",
+      "parent": "QAG3-287",
+      "role": "BA",
+      "start": "2026-11-23",
+      "due": "2026-11-23"
+    },
+    {
+      "key": "QAG3-289",
+      "type": "Sub-task",
+      "parent": "QAG3-287",
+      "role": "BE",
+      "start": "2026-11-24",
+      "due": "2026-11-25"
+    },
+    {
+      "key": "QAG3-290",
+      "type": "Sub-task",
+      "parent": "QAG3-287",
+      "role": "FE",
+      "start": "2026-11-24",
+      "due": "2026-11-25"
+    },
+    {
+      "key": "QAG3-291",
+      "type": "Sub-task",
+      "parent": "QAG3-287",
+      "role": "QA",
+      "start": "2026-11-26",
+      "due": "2026-11-26"
+    },
+    {
+      "key": "QAG3-292",
+      "type": "Sub-task",
+      "parent": "QAG3-287",
+      "role": "PM",
+      "start": "2026-11-27",
+      "due": "2026-11-27"
+    },
+    {
+      "key": "QAG3-293",
+      "type": "Task",
+      "parent": "QAG3-274",
+      "start": "2026-11-25",
+      "due": "2026-12-07",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-294",
+      "type": "Sub-task",
+      "parent": "QAG3-293",
+      "role": "BA",
+      "start": "2026-11-25",
+      "due": "2026-11-25"
+    },
+    {
+      "key": "QAG3-295",
+      "type": "Sub-task",
+      "parent": "QAG3-293",
+      "role": "BE",
+      "start": "2026-11-26",
+      "due": "2026-11-30"
+    },
+    {
+      "key": "QAG3-296",
+      "type": "Sub-task",
+      "parent": "QAG3-293",
+      "role": "FE",
+      "start": "2026-11-26",
+      "due": "2026-11-30"
+    },
+    {
+      "key": "QAG3-297",
+      "type": "Sub-task",
+      "parent": "QAG3-293",
+      "role": "QA",
+      "start": "2026-12-01",
+      "due": "2026-12-02"
+    },
+    {
+      "key": "QAG3-298",
+      "type": "Sub-task",
+      "parent": "QAG3-293",
+      "role": "PM",
+      "start": "2026-12-03",
+      "due": "2026-12-07"
+    },
+    {
+      "key": "QAG3-299",
+      "type": "Epic",
+      "start": "2026-12-08",
+      "due": "2026-12-31"
+    },
+    {
+      "key": "QAG3-300",
+      "type": "Task",
+      "parent": "QAG3-299",
+      "start": "2026-12-08",
+      "due": "2026-12-15",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-301",
+      "type": "Sub-task",
+      "parent": "QAG3-300",
+      "role": "BA",
+      "start": "2026-12-08",
+      "due": "2026-12-08"
+    },
+    {
+      "key": "QAG3-302",
+      "type": "Sub-task",
+      "parent": "QAG3-300",
+      "role": "BE",
+      "start": "2026-12-09",
+      "due": "2026-12-10"
+    },
+    {
+      "key": "QAG3-303",
+      "type": "Sub-task",
+      "parent": "QAG3-300",
+      "role": "FE",
+      "start": "2026-12-09",
+      "due": "2026-12-10"
+    },
+    {
+      "key": "QAG3-304",
+      "type": "Sub-task",
+      "parent": "QAG3-300",
+      "role": "QA",
+      "start": "2026-12-11",
+      "due": "2026-12-14"
+    },
+    {
+      "key": "QAG3-305",
+      "type": "Sub-task",
+      "parent": "QAG3-300",
+      "role": "PM",
+      "start": "2026-12-15",
+      "due": "2026-12-15"
+    },
+    {
+      "key": "QAG3-306",
+      "type": "Task",
+      "parent": "QAG3-299",
+      "start": "2026-12-10",
+      "due": "2026-12-18",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-307",
+      "type": "Sub-task",
+      "parent": "QAG3-306",
+      "role": "BA",
+      "start": "2026-12-10",
+      "due": "2026-12-10"
+    },
+    {
+      "key": "QAG3-308",
+      "type": "Sub-task",
+      "parent": "QAG3-306",
+      "role": "BE",
+      "start": "2026-12-11",
+      "due": "2026-12-15"
+    },
+    {
+      "key": "QAG3-309",
+      "type": "Sub-task",
+      "parent": "QAG3-306",
+      "role": "FE",
+      "start": "2026-12-11",
+      "due": "2026-12-15"
+    },
+    {
+      "key": "QAG3-310",
+      "type": "Sub-task",
+      "parent": "QAG3-306",
+      "role": "QA",
+      "start": "2026-12-16",
+      "due": "2026-12-17"
+    },
+    {
+      "key": "QAG3-311",
+      "type": "Sub-task",
+      "parent": "QAG3-306",
+      "role": "PM",
+      "start": "2026-12-18",
+      "due": "2026-12-18"
+    },
+    {
+      "key": "QAG3-312",
+      "type": "Task",
+      "parent": "QAG3-299",
+      "start": "2026-12-15",
+      "due": "2026-12-22",
+      "devWorkdays": 2,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-313",
+      "type": "Sub-task",
+      "parent": "QAG3-312",
+      "role": "BA",
+      "start": "2026-12-15",
+      "due": "2026-12-15"
+    },
+    {
+      "key": "QAG3-314",
+      "type": "Sub-task",
+      "parent": "QAG3-312",
+      "role": "BE",
+      "start": "2026-12-16",
+      "due": "2026-12-17"
+    },
+    {
+      "key": "QAG3-315",
+      "type": "Sub-task",
+      "parent": "QAG3-312",
+      "role": "FE",
+      "start": "2026-12-16",
+      "due": "2026-12-17"
+    },
+    {
+      "key": "QAG3-316",
+      "type": "Sub-task",
+      "parent": "QAG3-312",
+      "role": "QA",
+      "start": "2026-12-18",
+      "due": "2026-12-21"
+    },
+    {
+      "key": "QAG3-317",
+      "type": "Sub-task",
+      "parent": "QAG3-312",
+      "role": "PM",
+      "start": "2026-12-22",
+      "due": "2026-12-22"
+    },
+    {
+      "key": "QAG3-318",
+      "type": "Task",
+      "parent": "QAG3-299",
+      "start": "2026-12-17",
+      "due": "2026-12-23",
+      "devWorkdays": 2,
+      "qaWorkdays": 1
+    },
+    {
+      "key": "QAG3-319",
+      "type": "Sub-task",
+      "parent": "QAG3-318",
+      "role": "BA",
+      "start": "2026-12-17",
+      "due": "2026-12-17"
+    },
+    {
+      "key": "QAG3-320",
+      "type": "Sub-task",
+      "parent": "QAG3-318",
+      "role": "BE",
+      "start": "2026-12-18",
+      "due": "2026-12-21"
+    },
+    {
+      "key": "QAG3-321",
+      "type": "Sub-task",
+      "parent": "QAG3-318",
+      "role": "FE",
+      "start": "2026-12-18",
+      "due": "2026-12-21"
+    },
+    {
+      "key": "QAG3-322",
+      "type": "Sub-task",
+      "parent": "QAG3-318",
+      "role": "QA",
+      "start": "2026-12-22",
+      "due": "2026-12-22"
+    },
+    {
+      "key": "QAG3-323",
+      "type": "Sub-task",
+      "parent": "QAG3-318",
+      "role": "PM",
+      "start": "2026-12-23",
+      "due": "2026-12-23"
+    },
+    {
+      "key": "QAG3-324",
+      "type": "Task",
+      "parent": "QAG3-299",
+      "start": "2026-12-21",
+      "due": "2026-12-31",
+      "devWorkdays": 3,
+      "qaWorkdays": 2
+    },
+    {
+      "key": "QAG3-325",
+      "type": "Sub-task",
+      "parent": "QAG3-324",
+      "role": "BA",
+      "start": "2026-12-21",
+      "due": "2026-12-21"
+    },
+    {
+      "key": "QAG3-326",
+      "type": "Sub-task",
+      "parent": "QAG3-324",
+      "role": "BE",
+      "start": "2026-12-22",
+      "due": "2026-12-24"
+    },
+    {
+      "key": "QAG3-327",
+      "type": "Sub-task",
+      "parent": "QAG3-324",
+      "role": "FE",
+      "start": "2026-12-22",
+      "due": "2026-12-24"
+    },
+    {
+      "key": "QAG3-328",
+      "type": "Sub-task",
+      "parent": "QAG3-324",
+      "role": "QA",
+      "start": "2026-12-25",
+      "due": "2026-12-28"
+    },
+    {
+      "key": "QAG3-329",
+      "type": "Sub-task",
+      "parent": "QAG3-324",
+      "role": "PM",
+      "start": "2026-12-29",
+      "due": "2026-12-31"
+    }
+  ],
+  "calendar": [
+    {
+      "key": "QAG3-1",
+      "name": "Tài khoản & Role",
+      "start": "2026-04-03",
+      "due": "2026-04-30",
+      "workdays": 20
+    },
+    {
+      "key": "QAG3-32",
+      "name": "Quản lý Project",
+      "start": "2026-05-01",
+      "due": "2026-05-27",
+      "workdays": 19
+    },
+    {
+      "key": "QAG3-69",
+      "name": "Backlog",
+      "start": "2026-05-28",
+      "due": "2026-06-22",
+      "workdays": 18
+    },
+    {
+      "key": "QAG3-100",
+      "name": "Sprint",
+      "start": "2026-06-23",
+      "due": "2026-07-21",
+      "workdays": 21
+    },
+    {
+      "key": "QAG3-131",
+      "name": "Task / User Story",
+      "start": "2026-07-22",
+      "due": "2026-08-13",
+      "workdays": 17
+    },
+    {
+      "key": "QAG3-162",
+      "name": "Kanban",
+      "start": "2026-08-14",
+      "due": "2026-09-08",
+      "workdays": 18
+    },
+    {
+      "key": "QAG3-187",
+      "name": "Gantt / Timeline",
+      "start": "2026-09-09",
+      "due": "2026-09-30",
+      "workdays": 16
+    },
+    {
+      "key": "QAG3-212",
+      "name": "Issue / Bug",
+      "start": "2026-10-01",
+      "due": "2026-10-23",
+      "workdays": 17
+    },
+    {
+      "key": "QAG3-243",
+      "name": "Comment",
+      "start": "2026-10-26",
+      "due": "2026-11-16",
+      "workdays": 16
+    },
+    {
+      "key": "QAG3-274",
+      "name": "Dashboard",
+      "start": "2026-11-17",
+      "due": "2026-12-07",
+      "workdays": 15
+    },
+    {
+      "key": "QAG3-299",
+      "name": "Notification",
+      "start": "2026-12-08",
+      "due": "2026-12-31",
+      "workdays": 18
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# P01-10 — actual Docker Desktop recovery, three cycles
+
+15/10/2026UTC, local Windows/WSL2. Commands operated Desktop itself; no Compose/up/container-start/repair after each engine start, no key entry. This is CLI-operated real Desktop/engine acceptance, not a claim that the human clicked UI or tested Windows boot.
+
+1. docker desktop restart --detach: before15:40:18Z, all5original provisioned stage services healthy at15:43:46Z. P01-03-before-restart/recovered1/restart1-check.json. Existing core/Gateway/DB+n8n/editor automatically restored.
+2. docker desktop stop --detach; status reported Desktop unavailable; docker desktop start --detach. Before16:10:04Z, recovered inventory16:14:13Z: all7stage services healthy, including later-added Radmin HTTPS/private backup operator. P01-10-cycle2 logs/check/TLS/keys JSON. No daily script required.
+3. docker desktop stop --detach; docker info failure explicitly observed16:16:07Z; docker desktop start --detach. Recovered16:18:58Z: all7stage services healthy. P01-10-cycle3-engine-off/check/TLS/keys JSON. Local readiness settles within~3minutes after Desktop start; initial editor503/unhealthy while n8n boots clears without restart/recreate.
+
+Across three core/Gateway/n8n recoveries: same images/volumes/mounts/port bindings, native schema/memberships/project335/main329counts,469Gateway usage history and AI/job/proposal state counts preserved. In cycles2/3 new Radmin/backup services also retained; CA and key bytes unchanged, mounted n8n key equals saved key. TLS1.3/native login/CSRF/Secure cookie after restart PASS. Existing five native API actor identities/read335 PASS after HTTPS configuration; not five remote devices/browser logins.
+
+Main8088/8090 remains UNREACHABLE due pre-existing Windows port exclusions, main images/data/accounts/RBAC not promoted or rewritten. Unrelated Birdsong was briefly interrupted by whole-engine stop/start and recovered without configuration changes. Provider remains CONFIGURED_DISABLED, current stored key reused but no Google validity/smoke inference, no Google calls/new cost/billing/quota reset. n8n owner/workflows/Supervisor are later phases; no all-agents-E2E claim.
+
+Data-only backup/restore and Stop/Repair exception separately PASS. Scheduler fake-clock test proves one due backup instead of missed-day replay. Windows power settings never changed; actual physical host sleep/resume was not exercised. P01-08 therefore remains REVIEW for that additional physical acceptance; P01-11BLOCKED because owner cannot test another Radmin client yet. Public CA trust guide is ready; no firewall/trust-store change was performed.

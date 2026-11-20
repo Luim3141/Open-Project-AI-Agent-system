@@ -1,0 +1,398 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QLDAPM Main continuation checkpoint v2",
+  "type": "object",
+  "required": [
+    "checkpoint_version",
+    "updated_at",
+    "environment",
+    "current_runtime",
+    "current_data",
+    "consumed_approvals",
+    "release_decision",
+    "verified_capabilities",
+    "current_test_baseline",
+    "workflow_acceptance",
+    "rollback_references",
+    "pending_human_actions",
+    "active_blockers",
+    "historical_milestones",
+    "next_safe_actions",
+    "verified_evidence",
+    "completed_human_actions",
+    "pending_deployments"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "checkpoint_version": {
+      "const": 2,
+      "type": "integer"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "workspace",
+        "project_id",
+        "branch",
+        "git_revision",
+        "scope"
+      ],
+      "properties": {
+        "workspace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project_id": {
+          "const": 5,
+          "type": "integer"
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "git_revision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{7,40}$"
+        },
+        "scope": {
+          "type": "string"
+        }
+      }
+    },
+    "current_runtime": {
+      "type": "object",
+      "required": [
+        "gateway",
+        "core_web",
+        "operator_manifest",
+        "source_readback"
+      ],
+      "properties": {
+        "gateway": {
+          "type": "object",
+          "required": [
+            "id",
+            "image",
+            "started"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "image": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "started": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "core_web": {
+          "type": "object",
+          "required": [
+            "id",
+            "image",
+            "started"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "image": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "started": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "operator_manifest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_readback": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "current_data": {
+      "type": "object",
+      "required": [
+        "native_visible_work_packages",
+        "native_physical_rows",
+        "provider_receipts",
+        "provider_reservations",
+        "proposals",
+        "sync_jobs",
+        "qa_evidence",
+        "human_qa_reviews",
+        "historical_pending_requests",
+        "new_unknown_requests",
+        "totp_devices",
+        "native_delete_events",
+        "registered_vector_cleanup_pending_rows",
+        "native_fingerprint",
+        "resource_versions",
+        "rag"
+      ],
+      "properties": {
+        "native_visible_work_packages": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "native_physical_rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "provider_receipts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "provider_reservations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "proposals": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sync_jobs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "qa_evidence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "human_qa_reviews": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "historical_pending_requests": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "new_unknown_requests": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totp_devices": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "native_delete_events": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "registered_vector_cleanup_pending_rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "native_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "resource_versions": {
+          "type": "object",
+          "required": [
+            "370",
+            "371",
+            "372",
+            "373",
+            "374",
+            "375"
+          ],
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "rag": {
+          "type": "object",
+          "required": [
+            "documents",
+            "chunks",
+            "points",
+            "retained_excluded_legacy_points"
+          ],
+          "properties": {
+            "documents": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "chunks": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "points": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "retained_excluded_legacy_points": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "consumed_approvals": {
+      "type": "object",
+      "required": [
+        "source_artifact",
+        "packages",
+        "scenario_f",
+        "remaining_native_write_authorization"
+      ],
+      "properties": {
+        "source_artifact": {
+          "type": "string"
+        },
+        "packages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "preview",
+              "package_hash",
+              "state",
+              "operations"
+            ],
+            "properties": {
+              "preview": {
+                "type": "string",
+                "minLength": 1
+              },
+              "package_hash": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "state": {
+                "const": "CONSUMED_DO_NOT_REPLAY"
+              },
+              "operations": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "proposal_id",
+                    "hash",
+                    "current_state"
+                  ],
+                  "properties": {
+                    "proposal_id": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$"
+                    },
+                    "hash": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "current_state": {
+                      "const": "done"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "scenario_f": {
+          "type": "object",
+          "required": [
+            "proposal_id",
+            "state",
+            "trace_id",
+            "preserved_audit_events"
+          ],
+          "properties": {
+            "proposal_id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$"
+            },
+            "state": {
+              "const": "CONSUMED_DO_NOT_REPLAY"
+            },
+            "trace_id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$"
+            },
+            "preserved_audit_events": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "remaining_native_write_authorization": {
+          "const": false
+        }
+      }
+    },
+    "release_decision": {
+      "type": "object",
+      "required": [
+        "status",
+        "full_go"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "GO",
+            "PARTIAL",
+            "BLOCKED",
+            "FAILED",
+            "TECHNICALLY_READY_PENDING_EXTERNAL_ACCEPTANCE"
+          ]
+        },
+        "full_go": {
+          "type": "boolean"
+        }
+      }
+    },
+    "verified_capabilities": {
+      "type": "object"
+    },
+    "current_test_baseline": {
+      "type": "object"
+    },
+    "workflow_acceptance": {
+      "type": "object"
+    },
+    "rollback_references": {
+      "type": "object"
+    },
+    "pending_human_actions": {
+      "type": "array"
+    },
+    "active_blockers": {
+      "type": "array"
+    },
+    "historical_milestones": {
+      "type": "array"
+    },
+    "next_safe_actions": {
+      "type": "array"
+    },
+    "verified_evidence": {
+      "type": "array"
+    },
+    "completed_human_actions": {
+      "type": "array"
+    },
+    "pending_deployments": {
+      "type": "array"
+    }
+  }
+}

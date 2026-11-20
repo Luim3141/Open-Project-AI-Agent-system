@@ -1,0 +1,16 @@
+{
+  "scope": "CLONE_NATIVE_UI",
+  "checks": [
+    {
+      "id": "browser-exception",
+      "passed": false,
+      "actual": {
+        "type": "AssertionError",
+        "message": "Locator expected to have text '500'\nActual value:  20  \nCall log:\n  - Expect \"to_have_text\" locator(\".op-pagination--options [aria-current=true]\") with timeout 20000ms\n  - waiting for locator(\".op-pagination--options [aria-current=true]\")\n    42 × locator resolved to <span tabindex=\"0\" aria-current=\"true\" aria-label=\"Show 20 per page\"> 20 </span>\n       - unexpected value \" 20 \"\n\nAria snapshot:\n- text: \"20\""
+      }
+    }
+  ],
+  "business_writes": 0,
+  "provider_calls": 0,
+  "passed": false
+}

@@ -1,0 +1,58 @@
+{
+  "at": 1794478850.8291981,
+  "checks": {
+    "offset_bad": true,
+    "offset_-1": true,
+    "offset_0": true,
+    "anonymous_denied": true,
+    "one_poller_lock": true,
+    "local_tag_matches_serving": true
+  },
+  "reads": [
+    {
+      "offset": "bad",
+      "status": 422,
+      "error": "EXECUTION_HISTORY_INVALID_FILTER",
+      "request_id": "cac38281-0934-4289-9e06-c1069e23d249"
+    },
+    {
+      "offset": "-1",
+      "status": 422,
+      "error": "EXECUTION_HISTORY_INVALID_FILTER",
+      "request_id": "3ed0eec4-704b-416d-ad21-2c1baa35d396"
+    },
+    {
+      "offset": "0",
+      "status": 200,
+      "error": null,
+      "request_id": "f319abbc-e40c-4fa9-99ca-431866a72345"
+    },
+    {
+      "auth": "NO_SESSION",
+      "status": 401,
+      "location": null
+    }
+  ],
+  "telegram": {
+    "duplicate_poller_denied": true,
+    "health": {
+      "state": "POLLING",
+      "telegram": "CONNECTED",
+      "gateway": {
+        "state": "REACHABLE",
+        "check": "HTTP_HEALTH_ONLY"
+      },
+      "gemini": "CONFIGURED_UNVERIFIED",
+      "notifications": {
+        "state": "DELIVERY_VERIFIED",
+        "outbox": {
+          "SENT": 7
+        }
+      },
+      "updated_at": 1794478855.8805716,
+      "bot_username": "qldapm_commander_bot",
+      "missing": []
+    }
+  },
+  "local_bot_tag": "sha256:3349636541d4cccaba044d40bcf3f25dcfd469d5cf7419a9ff3c39aa7b2437e7"
+}

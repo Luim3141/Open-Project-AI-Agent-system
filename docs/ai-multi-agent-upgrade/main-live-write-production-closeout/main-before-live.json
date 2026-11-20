@@ -1,0 +1,256 @@
+{
+  "runs": [
+    {
+      "id": "6276720c-d6f8-4c3a-bf64-1e4fca623eb0",
+      "worker_state": "failed_or_unknown",
+      "original_error": "GEMINI_REQUEST_BUDGET_EXHAUSTED",
+      "effective_state": "reconciled_success",
+      "completion": {
+        "approval": "USER_CONSENT",
+        "native": "RECONCILED_SUCCESS",
+        "provider": "STOPPED",
+        "state": "RECONCILED_SUCCESS",
+        "synthesis": "SYSTEM_GENERATED"
+      },
+      "heading": "Thao tác nghiệp vụ đã hoàn thành và được xác minh bằng Native API.",
+      "model_used": null,
+      "synthesis_origin": "SYSTEM",
+      "final_text": "System-generated từ Native receipt:\nOpenProject đã xác nhận kết quả. Đã tạo “test”. Công việc cha: #50.",
+      "monitor_state": "RECONCILED_SUCCESS",
+      "monitor_terminal": true,
+      "monitor_metrics": {
+        "calls": 3,
+        "tokens": 8480,
+        "usage_complete": true,
+        "mode": "LIVE_GEMINI",
+        "model": "gemini-3.5-flash-lite",
+        "retries": 0,
+        "errors": 0,
+        "model_duration_seconds": null,
+        "agents": 1,
+        "steps": 0,
+        "completed": 1,
+        "running": 0
+      },
+      "receipts": [
+        {
+          "actor": 19,
+          "agent": "business_worker",
+          "at": 1792601858.3758266,
+          "attempt": 0,
+          "http_status": 200,
+          "id": "b386d5ca-fb55-45ef-a42d-2a09f21a5b68",
+          "input_tokens": 1580,
+          "model": "gemini-3.5-flash-lite",
+          "native_project_id": 5,
+          "phase": "countTokens",
+          "project": "gen-lang-client-0020540057",
+          "run_id": "6276720c-d6f8-4c3a-bf64-1e4fca623eb0",
+          "state": "LIVE_SUCCESS",
+          "usage": null
+        },
+        {
+          "actor": 19,
+          "agent": "business_worker",
+          "at": 1792601858.9886792,
+          "attempt": 0,
+          "http_status": 200,
+          "id": "0ecf37a7-3e3b-4999-a863-bbdc4a9c9020",
+          "input_tokens": null,
+          "model": "gemini-3.5-flash-lite",
+          "native_project_id": 5,
+          "phase": "generateContent",
+          "project": "gen-lang-client-0020540057",
+          "run_id": "6276720c-d6f8-4c3a-bf64-1e4fca623eb0",
+          "state": "LIVE_SUCCESS",
+          "usage": {
+            "candidatesTokenCount": 29,
+            "promptTokenCount": 1513,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 1513
+              }
+            ],
+            "serviceTier": "standard",
+            "thoughtsTokenCount": 274,
+            "totalTokenCount": 1816
+          }
+        },
+        {
+          "actor": 19,
+          "agent": "business_worker",
+          "at": 1792601865.9068036,
+          "attempt": 0,
+          "http_status": 200,
+          "id": "358eec8c-5c23-418a-888d-2494c0e03c95",
+          "input_tokens": 2871,
+          "model": "gemini-3.5-flash-lite",
+          "native_project_id": 5,
+          "phase": "countTokens",
+          "project": "gen-lang-client-0020540057",
+          "run_id": "6276720c-d6f8-4c3a-bf64-1e4fca623eb0",
+          "state": "LIVE_SUCCESS",
+          "usage": null
+        },
+        {
+          "actor": 19,
+          "agent": "business_worker",
+          "at": 1792601866.29739,
+          "attempt": 0,
+          "http_status": 200,
+          "id": "2cbf7f2a-4f27-462b-978d-c743a96b335a",
+          "input_tokens": null,
+          "model": "gemini-3.5-flash-lite",
+          "native_project_id": 5,
+          "phase": "generateContent",
+          "project": "gen-lang-client-0020540057",
+          "run_id": "6276720c-d6f8-4c3a-bf64-1e4fca623eb0",
+          "state": "LIVE_SUCCESS",
+          "usage": {
+            "candidatesTokenCount": 40,
+            "promptTokenCount": 3078,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 3078
+              }
+            ],
+            "serviceTier": "standard",
+            "thoughtsTokenCount": 68,
+            "totalTokenCount": 3186
+          }
+        },
+        {
+          "actor": 19,
+          "agent": "business_worker",
+          "at": 1792601923.6816835,
+          "attempt": 0,
+          "http_status": 200,
+          "id": "36dc7857-e254-4125-9e3a-d5691172abb0",
+          "input_tokens": 2990,
+          "model": "gemini-3.5-flash-lite",
+          "native_project_id": 5,
+          "phase": "countTokens",
+          "project": "gen-lang-client-0020540057",
+          "run_id": "6276720c-d6f8-4c3a-bf64-1e4fca623eb0",
+          "state": "LIVE_SUCCESS",
+          "usage": null
+        },
+        {
+          "actor": 19,
+          "agent": "business_worker",
+          "at": 1792601924.196502,
+          "attempt": 0,
+          "http_status": 200,
+          "id": "9a0b8acc-b506-4f9b-aa18-2196135c4176",
+          "input_tokens": null,
+          "model": "gemini-3.5-flash-lite",
+          "native_project_id": 5,
+          "phase": "generateContent",
+          "project": "gen-lang-client-0020540057",
+          "run_id": "6276720c-d6f8-4c3a-bf64-1e4fca623eb0",
+          "state": "LIVE_SUCCESS",
+          "usage": {
+            "candidatesTokenCount": 25,
+            "promptTokenCount": 3265,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 3265
+              }
+            ],
+            "serviceTier": "standard",
+            "thoughtsTokenCount": 188,
+            "totalTokenCount": 3478
+          }
+        }
+      ],
+      "lifecycle": [
+        {
+          "id": "71031882-d601-45bc-9b33-0c81a9e0decd",
+          "at": 1792607541.2775633,
+          "action": "business_native_pending",
+          "outcome": "NATIVE_PENDING"
+        },
+        {
+          "id": "76317bd6-6e1e-4087-84b0-369fd4a98620",
+          "at": 1792607545.4341655,
+          "action": "business_outcome_verified",
+          "outcome": "RECONCILED_SUCCESS"
+        }
+      ],
+      "tools": [
+        {
+          "action": "get_work_package",
+          "native_id": 50,
+          "native_confirmed": null
+        },
+        {
+          "action": "get_project_options",
+          "native_id": null,
+          "native_confirmed": null
+        },
+        {
+          "action": "create_work_package",
+          "native_id": 367,
+          "native_confirmed": true
+        },
+        {
+          "action": "list_work_packages",
+          "native_id": null,
+          "native_confirmed": null
+        }
+      ]
+    }
+  ],
+  "counters": {
+    "runs": 16,
+    "receipts": 32,
+    "usage": 35
+  },
+  "busy": 0,
+  "pending": 0,
+  "native_read_calls": [
+    [
+      "GET",
+      "/api/v3/users/me"
+    ],
+    [
+      "GET",
+      "/api/v3/projects/5"
+    ],
+    [
+      "GET",
+      "/api/v3/memberships"
+    ],
+    [
+      "GET",
+      "/api/v3/work_packages/50"
+    ],
+    [
+      "GET",
+      "/api/v3/work_packages/367"
+    ],
+    [
+      "GET",
+      "/api/v3/users/me"
+    ],
+    [
+      "GET",
+      "/api/v3/projects/5"
+    ],
+    [
+      "GET",
+      "/api/v3/memberships"
+    ],
+    [
+      "GET",
+      "/api/v3/work_packages/50"
+    ],
+    [
+      "GET",
+      "/api/v3/work_packages/367"
+    ]
+  ]
+}

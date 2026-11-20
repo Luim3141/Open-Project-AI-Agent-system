@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "b3ac4bf978211f91d6eeb30e4e8b29361487c318361c6a249f781e9a86a98f47",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/studio.js": "789266ac6361d4099ce816ab8fb7b157da2da8345759e0659526afebfbd7c834",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/studio.css": "cba2688884c2e6bdeef916830ec037fd1000366b016c417a46534350db895130",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/studio.js.LEGAL.txt": "d8bc1f42b3b0ede6cde4a51b9492aab033b97d0a98d96a726d0e86040e3ff5c4",
+    "openproject/ai/core/overlay/public/qldapm-agent-studio-v2/manifest.json": "9f16d4065f95598db25c5e3674bd637552b34a5664de7b6a56cfae7b2d858dc1",
+    "openproject/ai/gateway/agent_observer.py": "92ce692272e5bf5e0ce08e2415d6d1041fff4353b8911e651fd5550fa03e3d56",
+    "openproject/ai/gateway/observer_reads.py": "5c1885341c498ae8d999bd8b40bf0aa363879734de53b31f111f45b6025a235b"
+  },
+  "checks": {
+    "adapter": true,
+    "fixture_browser": true,
+    "regressions": true,
+    "immutable_core": true
+  },
+  "evidence": {
+    "frontend": "(52.6715ms)\n\u2714 timeout resolves as finite error; explicit cancellation remains cancellation (23.0056ms)\n\u2714 local bridge backpressure uses its short Retry-After without weakening quota retries (0.5297ms)\n\u2139 tests 13\n\u2139 suites 0\n\u2139 pass 13\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 253.1246\n",
+    "gateway": "els/gemini-3.5-flash-lite:countTokens \"HTTP/1.1 200 OK\"\nHTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent \"HTTP/1.1 200 OK\"\n..\n----------------------------------------------------------------------\nRan 98 tests in 3.684s\n\nOK (skipped=2)\n",
+    "command": "PASS command rejects busy before Gateway without remapping429 or retrying mutation\n",
+    "admission": "Run options: --seed 48224\n\n# Running:\n\n.\n\nFinished in 0.308816s, 3.2382 runs/s, 12.9527 assertions/s.\n\n1 runs, 4 assertions, 0 failures, 0 errors, 0 skips\n",
+    "cc_ack": "PASS actual Core renderer: immediate command receipt independent of slow full-status refresh\nPASS partial render handles absent/invalid index timestamps with controller constant shadowing\n",
+    "fixture": {
+      "explorer_focus": true,
+      "graph_independent_lazy_details": true,
+      "typed_output_and_lazy_raw": true,
+      "status_refresh_no_layout_or_node_render": true,
+      "paged_runs_expand": true,
+      "403_stops_poll_and_clears_data": true,
+      "explicit_retry_recovers": true,
+      "rapid_switch_back_forward": true,
+      "responsive_no_overflow": true,
+      "unmount_cancels": true
+    },
+    "host": {
+      "command_center_real_entry": true,
+      "explorer_real_click": true,
+      "no_telemetry_truthful_unknown": true,
+      "typed_inspector": true,
+      "switch_history_correct": true,
+      "native_real_click": true,
+      "run_details_return_real_click": true,
+      "reload_context": true,
+      "responsive": true
+    }
+  },
+  "core_base": "Native/metadata/schema unchanged over isolated-clone-qualified Core; prior Puma HTTP callback red/green evidence admission-qualification.json"
+}

@@ -1,0 +1,695 @@
+{
+  "started_utc": "2026-11-02T03:44:06Z",
+  "command": "openproject/ai/.venv/Scripts/python.exe docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/workflows/qualify_published.py",
+  "environment": "isolated n8n actual published definitions + synthetic HTTP Gateway; internal Docker network",
+  "n8n_image": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+  "gateway_fixture_image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+  "tests": [
+    {
+      "name": "WF01_published_adapter",
+      "utc": "2026-11-02T03:46:13Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "knowledge_file_search",
+            "arguments": {
+              "source_key": "fixture-doc",
+              "query": "fixture query"
+            }
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF01_transport_denied",
+      "utc": "2026-11-02T03:46:14Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF01_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:16Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF02_published_adapter",
+      "utc": "2026-11-02T03:46:16Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "knowledge_incremental_status",
+            "arguments": {}
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF02_transport_denied",
+      "utc": "2026-11-02T03:46:17Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF02_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:18Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF03_published_adapter",
+      "utc": "2026-11-02T03:46:19Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "get_ai_run",
+            "arguments": {
+              "id": "11111111-1111-4111-8111-111111111111"
+            }
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF03_transport_denied",
+      "utc": "2026-11-02T03:46:21Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF03_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:22Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF04_published_adapter",
+      "utc": "2026-11-02T03:46:23Z",
+      "http": 200,
+      "response": {
+        "status": "TRACE_RETRIEVED",
+        "total_events": 1,
+        "events": [
+          {
+            "event_id": "fixture-event"
+          }
+        ],
+        "correlation_id": "fixture-correlation",
+        "fetched_at": "2026-11-02T03:46:24.558Z"
+      },
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/v1/agent-runs/11111111-1111-4111-8111-111111111111/trace",
+          "payload": {},
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF04_transport_denied",
+      "utc": "2026-11-02T03:46:24Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF04_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:26Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF05_published_adapter",
+      "utc": "2026-11-02T03:46:26Z",
+      "http": 200,
+      "response": {
+        "status": "PENDING",
+        "proposal": {
+          "id": "11111111-1111-4111-8111-111111111111",
+          "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "state": "pending",
+          "lifecycle": "PENDING"
+        },
+        "correlation_id": "fixture-correlation",
+        "human_confirmation_required": true,
+        "decision_recorded": false
+      },
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/v1/proposals/11111111-1111-4111-8111-111111111111",
+          "payload": {},
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF05_transport_denied",
+      "utc": "2026-11-02T03:46:27Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF05_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:28Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF06_published_adapter",
+      "utc": "2026-11-02T03:46:29Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "id": "11111111-1111-4111-8111-111111111111",
+          "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "state": "pending",
+          "lifecycle": "PENDING"
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/proposals/11111111-1111-4111-8111-111111111111/decision",
+          "payload": {
+            "decision": "reject",
+            "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF06_transport_denied",
+      "utc": "2026-11-02T03:46:30Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF06_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:31Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF07_published_adapter",
+      "utc": "2026-11-02T03:46:33Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "state": "COMPLETED",
+          "status": "READY",
+          "targets": 5,
+          "ready": 5
+        }
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/internal/automation/commands",
+          "payload": {
+            "version": 1,
+            "kind": "daily_brief",
+            "request_key": "daily:2026-11-02",
+            "nonce": "n8n:BpCQrGR866vg4BqQ:13",
+            "issued_at": 1793591194
+          },
+          "authorization": null,
+          "signature_present": true
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF07_transport_denied",
+      "utc": "2026-11-02T03:46:34Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF08_published_adapter",
+      "utc": "2026-11-02T03:46:36Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "sprint_risks",
+            "arguments": {
+              "as_of_date": "2026-11-02"
+            }
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF08_transport_denied",
+      "utc": "2026-11-02T03:46:37Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF08_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:38Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF09_published_adapter",
+      "utc": "2026-11-02T03:46:39Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "get_work_package",
+            "arguments": {
+              "id": 389,
+              "include_context": true
+            }
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF09_transport_denied",
+      "utc": "2026-11-02T03:46:40Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF09_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:41Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF10_published_adapter",
+      "utc": "2026-11-02T03:46:43Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "wbs_get",
+            "arguments": {
+              "id": "11111111-1111-4111-8111-111111111111"
+            }
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF10_transport_denied",
+      "utc": "2026-11-02T03:46:45Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF10_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:46Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF11_published_adapter",
+      "utc": "2026-11-02T03:46:47Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "qa_evidence_list",
+            "arguments": {
+              "native_id": 389
+            }
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF11_transport_denied",
+      "utc": "2026-11-02T03:46:48Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF11_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:49Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF12_published_adapter",
+      "utc": "2026-11-02T03:46:50Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "weekly_summary",
+            "arguments": {
+              "as_of_date": "2026-11-02"
+            }
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF12_transport_denied",
+      "utc": "2026-11-02T03:46:52Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF12_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:53Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF13_published_adapter",
+      "utc": "2026-11-02T03:46:55Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "knowledge_feedback_get",
+            "arguments": {
+              "id": "11111111-1111-4111-8111-111111111111"
+            }
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF13_transport_denied",
+      "utc": "2026-11-02T03:46:56Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF13_gateway_denied_preserved",
+      "utc": "2026-11-02T03:46:57Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF14_published_adapter",
+      "utc": "2026-11-02T03:46:58Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "knowledge_sync_status",
+            "arguments": {
+              "id": "11111111-1111-4111-8111-111111111111"
+            }
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF14_transport_denied",
+      "utc": "2026-11-02T03:46:59Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF14_gateway_denied_preserved",
+      "utc": "2026-11-02T03:47:00Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF15_published_adapter",
+      "utc": "2026-11-02T03:47:01Z",
+      "http": 200,
+      "response": {
+        "result": {
+          "fixture": true,
+          "items": [
+            {
+              "event_id": "fixture-event"
+            }
+          ]
+        },
+        "correlation_id": "fixture-correlation"
+      },
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/api/v1/commands",
+          "payload": {
+            "action": "knowledge_integrity",
+            "arguments": {}
+          },
+          "authorization": "PUBLICATION_REDACTED",
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF15_transport_denied",
+      "utc": "2026-11-02T03:47:03Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF15_gateway_denied_preserved",
+      "utc": "2026-11-02T03:47:04Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF16_published_adapter",
+      "utc": "2026-11-02T03:47:05Z",
+      "http": 200,
+      "response": {
+        "status": "HEALTHY",
+        "fixture": true
+      },
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/internal/automation/monitor",
+          "payload": {},
+          "authorization": null,
+          "signature_present": false
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF16_transport_denied",
+      "utc": "2026-11-02T03:47:07Z",
+      "http": 403,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF07_HTTP200_PARTIAL_is_failure",
+      "utc": "2026-11-02T03:47:08Z",
+      "http": 500,
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF12_published_scheduled_branch_via_clone_trigger",
+      "utc": "2026-11-02T03:47:09Z",
+      "http": 200,
+      "calls": [
+        {
+          "method": "POST",
+          "path": "/internal/automation/commands",
+          "payload": {
+            "version": 1,
+            "kind": "weekly_summary",
+            "request_key": "weekly:2026-11-02",
+            "nonce": "n8n:ZkgS8RZbPRA2zbhQ:32",
+            "issued_at": 1793591229
+          },
+          "authorization": null,
+          "signature_present": true
+        }
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "name": "WF12_HTTP200_PARTIAL_is_failure",
+      "utc": "2026-11-02T03:47:10Z",
+      "http": 500,
+      "outcome": "PASS"
+    }
+  ],
+  "production_business_writes": 0,
+  "status": "PASS_WITH_FIXTURE_LIMITS",
+  "published_snapshot_sha256": "27ce45a6cf9f8064463fa2bf57cc4dc3565ec37bc1637e04b0c76f2cf1ad49ac",
+  "source_git_head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+  "completed_utc": "2026-11-02T03:47:11Z",
+  "harness_sha256": "353a6d6d86ba846ec0e7b6966b95cfdc8cb8ba063a0591c1cb9b82136578cd60"
+}

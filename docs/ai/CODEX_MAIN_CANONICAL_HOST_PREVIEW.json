@@ -1,0 +1,11 @@
+{
+  "scope": "Main Core web only, one environment value OPENPROJECT_HOST__NAME localhost:8088 -> 127.0.0.1:8088",
+  "cause": "Browser PM authenticated on127.0.0.1; Native work-package navigation redirects to configured localhost, which has no browser session. Same127 execution monitor remains authenticated. Project route also redirects, so link-only change is insufficient.",
+  "image_unchanged": "sha256:660b9878ba51196c4d772894d2b849d0bf8f5296351912338cfde5ac50ac30bf",
+  "compose_resolved_only_one_environment_value_changes": true,
+  "bridge_before_sha256": "d30fe1c12e6f643015e01e090fe2e7ef66ecab4a96532d4c8ac2e97189dd35af",
+  "candidate_sha256": "400072adffd9a2fe2b783c3de8fdb5a55587a4167ecbd59bd67157f8ff45c69f",
+  "impact": "One Core web recreation, readiness bounded240seconds. Both hostnames remain in existing allowed hosts. No new access, credential/session rotation, DB migration, Native write, Google call, worker/cron restart or Staging operation.",
+  "rollback": "Restore exact pre-main-canonical-host-bridge.yml bytes and recreate web only on same image; retain data and existing sessions.",
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5"
+}

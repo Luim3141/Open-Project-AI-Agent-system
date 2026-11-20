@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-10-24T14:22:05.853761+00:00",
+  "scope": "Exact full WorkPackage rows vs pre-Step2 archive, read-only COPY extraction; no restore SQL executed",
+  "old_instance_wp_count": 372,
+  "new_instance_wp_count": 373,
+  "new_native_ids": [
+    373
+  ],
+  "changed_old_ids": {
+    "371": [
+      "assigned_to_id",
+      "lock_version",
+      "updated_at",
+      "qldapm_gate"
+    ],
+    "372": [
+      "lock_version",
+      "updated_at",
+      "schedule_manually"
+    ]
+  },
+  "original333_unchanged": true,
+  "wp370_version": 2,
+  "task371_assignee": 21,
+  "task371_version": 1,
+  "parent372_version": 1,
+  "parent372_native_side_effect": "schedule_manually true->false; only version/updated_at otherwise changed",
+  "child373_parent": 372,
+  "child373_author": 18,
+  "explicit_comment_requests": 0,
+  "task371_gate_diff": "Only native qldapm_gate.revision0->1; evidence/approvals/checklist/source unchanged",
+  "gate_callback_source": "openproject/ai/core/overlay/app/models/concerns/qldapm_gate_write.rb:90",
+  "native_writes_by_verifier": 0
+}

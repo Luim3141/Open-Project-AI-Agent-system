@@ -1,0 +1,4 @@
+flowchart LR
+  a0["Task bắt đầu làm"] -->|"A01 và đúng điều kiện"| b0["Epic READY → In Progress"]
+  a1["Task cuối cùng Done"] -->|"A02 và mọi Task con Done"| b1["Epic In Progress → REVIEW"]
+  a2["Epic REVIEW"] -->|"PM Accept Epic  KHÔNG phải A02"| b2["Epic Done"]

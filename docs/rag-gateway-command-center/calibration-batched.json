@@ -1,0 +1,992 @@
+{
+  "scope": "Actual BGE-M3/Qdrant read-only + captured Native ACL/version document-ID scope; SQLite private backup; not Main command API or Gemini answer E2E",
+  "results": [
+    {
+      "threshold": 0.55,
+      "calibration": {
+        "passed": 4,
+        "total": 8
+      },
+      "rows": [
+        {
+          "id": "G01",
+          "partition": "calibration",
+          "question": "WF01 supports which explicit sources?",
+          "sources": [
+            "file:main-workflow-contract"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "file:main-workflow-contract",
+              "type": "HYBRID_RRF",
+              "score": 0.03279,
+              "snippet": "# Main local knowledge ingestion contract\n\nRevision: 2026-10-28. Source key and existing permitted roles are retained.\n\nMain WF01 supports two explicit sources: an authorized Native Work Package ID, o..."
+            }
+          ],
+          "seconds": 1.011467330999949
+        },
+        {
+          "id": "G02",
+          "partition": "calibration",
+          "question": "Muốn nạp tài liệu thì có thể đưa tên đường dẫn từ máy mình trực tiếp cho server không?",
+          "sources": [
+            "op:wp:364",
+            "op:wp:265",
+            "actor:18:wp:69",
+            "op:wp:115",
+            "op:wp:130"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": false,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:364",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "hình được lưu theo tài khoản.\nCấu hình mới chỉ áp dụng cho sự kiện phát sinh sau khi lưu, không gửi hồi tố thông báo cũ.\n\nDữ liệu estimate: mô phỏng Junior, đề xuất chờ PM/refinement; không phải workl..."
+            },
+            {
+              "source": "op:wp:265",
+              "type": "FTS_BM25",
+              "score": 0.01639,
+              "snippet": "...ăng đã được triển khai. Checklist/child-completion/concurrency gate chưa cưỡng chế native...."
+            },
+            {
+              "source": "actor:18:wp:69",
+              "type": "FTS_BM25",
+              "score": 0.01613,
+              "snippet": "...ated automatically by changing values within child work package #202_..."
+            },
+            {
+              "source": "op:wp:115",
+              "type": "FTS_BM25",
+              "score": 0.01587,
+              "snippet": "...ăng đã được triển khai. Checklist/child-completion/concurrency gate chưa cưỡng chế native...."
+            },
+            {
+              "source": "op:wp:130",
+              "type": "FTS_BM25",
+              "score": 0.01562,
+              "snippet": "...t case từ hai AC và chạy trên bản Test: Thiếu tên/ngày, ngày đảo, gửi lặp và tạo Project kèm đúng PM. Đầu ra: test cases, test execution, bug/retest evidence...."
+            }
+          ],
+          "seconds": 1.2784129619999476
+        },
+        {
+          "id": "G03",
+          "partition": "calibration",
+          "question": "Nếu sửa file sau khi đăng ký mà chưa cập nhật dấu vân tay thì hệ thống làm gì?",
+          "sources": [],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": false,
+          "dense_state": "READY",
+          "matches": [],
+          "seconds": 2.180896876999668
+        },
+        {
+          "id": "G04",
+          "partition": "calibration",
+          "question": "Tại sao vector ghi thất bại vẫn có thể repair mà không mất bản nguồn?",
+          "sources": [
+            "file:main-workflow-contract",
+            "actor:18:wp:49",
+            "op:wp:230",
+            "op:wp:350",
+            "op:wp:358"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "file:main-workflow-contract",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "ifies Qdrant points. A failed vector commit is reported as pending, and the same ingestion key may safely repair it. Native Work Packages are never mutated by these operations.\n\nSearch uses the existi..."
+            },
+            {
+              "source": "actor:18:wp:49",
+              "type": "FTS_BM25",
+              "score": 0.01639,
+              "snippet": "...- [ ] Lead review → Retest nếu cần hoặc ghi rõ không cần → BA xác nhận → PM duyệt.\n- [ ] Mọi Subtask bắt buộc DONE; deploy Test và smoke đạt; PM mới chuyển Task..."
+            },
+            {
+              "source": "op:wp:230",
+              "type": "DENSE_VECTOR",
+              "score": 0.01613,
+              "snippet": "nhận kèm mã/tiêu đề item trước khi xóa.\nItem bị xóa không còn xuất hiện ở Backlog, Sprint, Kanban, Gantt hay Dashboard; URL cũ hiển thị trạng thái không tồn tại.\n\nDữ liệu estimate: mô phỏng Junior, đề..."
+            },
+            {
+              "source": "op:wp:350",
+              "type": "FTS_BM25",
+              "score": 0.01613,
+              "snippet": "...ăng đã được triển khai. Checklist/child-completion/concurrency gate chưa cưỡng chế native...."
+            },
+            {
+              "source": "op:wp:358",
+              "type": "FTS_BM25",
+              "score": 0.01587,
+              "snippet": "...tion tests, xử lý lỗi/request lặp theo nghiệp vụ; có PR và bản Test.\n- [ ] Reviewer độc lập duyệt code; không tự approve phần mình viết.\n\n### Source ID\n\nNOT-04-..."
+            }
+          ],
+          "seconds": 1.6724659190003877
+        },
+        {
+          "id": "G17",
+          "partition": "calibration",
+          "question": "Theo tài liệu dự án, backend và nơi lưu công việc dùng công nghệ gì?",
+          "sources": [
+            "op:wp:391",
+            "op:wp:396",
+            "op:wp:383",
+            "op:wp:386",
+            "op:wp:394"
+          ],
+          "expected": [
+            "op:wp:379"
+          ],
+          "hit": false,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:391",
+              "type": "HYBRID_RRF",
+              "score": 0.03151,
+              "snippet": "Mã công việc: #391\nTiêu đề: [AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệ..."
+            },
+            {
+              "source": "op:wp:396",
+              "type": "HYBRID_RRF",
+              "score": 0.03089,
+              "snippet": "Không thêm dependency\",\"Không tự merge/deploy\"],\"scope\":[\"Thêm endpoint GET /tasks/{task_id}/status\",\"Trả về id và status\",\"Xử lý 404 khi ID không tồn tại\",\"Xử lý 422 khi sai kiểu ID\",\"Viết test pytes..."
+            },
+            {
+              "source": "op:wp:383",
+              "type": "FTS_BM25",
+              "score": 0.01639,
+              "snippet": "...i Unicode và bộ lọc trạng thái (status) theo logic AND chính xác\"],\"citations\":[379],\"edge_cases\":[\"Chuỗi tìm kiếm chứa %, _, backslash được escape an toàn trướ..."
+            },
+            {
+              "source": "op:wp:386",
+              "type": "FTS_BM25",
+              "score": 0.01613,
+              "snippet": "...hỗ trợ các tham số bộ lọc phức tạp như theo từ khóa hoặc ngày tháng.\",\"Chỉ áp dụng cho cơ sở dữ liệu SQLite và backend FastAPI hiện tại.\"],\"scope\":[\"Triển khai..."
+            },
+            {
+              "source": "op:wp:394",
+              "type": "FTS_BM25",
+              "score": 0.01587,
+              "snippet": "...nt: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da\nLoại: Task\nTrạng thái: REA..."
+            }
+          ],
+          "seconds": 1.5281839799999943
+        },
+        {
+          "id": "G18",
+          "partition": "calibration",
+          "question": "Ứng dụng quản lý việc này lưu thông tin bằng cơ sở dữ liệu nào?",
+          "sources": [],
+          "expected": [
+            "op:wp:379"
+          ],
+          "hit": false,
+          "dense_state": "READY",
+          "matches": [],
+          "seconds": 1.3865132230002928
+        },
+        {
+          "id": "G19",
+          "partition": "calibration",
+          "question": "API nào đếm tổng số việc và số đang hoạt động, số hoàn thành?",
+          "sources": [
+            "op:wp:386",
+            "op:wp:394",
+            "op:wp:389",
+            "op:wp:387",
+            "op:wp:390"
+          ],
+          "expected": [
+            "op:wp:386"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:386",
+              "type": "HYBRID_RRF",
+              "score": 0.03279,
+              "snippet": "SON đúng cấu trúc {\\\"total\\\": int, \\\"active\\\": int, \\\"completed\\\": int}.\",\"AC14: Logic tính toán total là tổng, active là todo/in_progress, completed là done, luôn thỏa mãn total == active + completed..."
+            },
+            {
+              "source": "op:wp:394",
+              "type": "HYBRID_RRF",
+              "score": 0.032,
+              "snippet": "Mã công việc: #394\nTiêu đề: [AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL v..."
+            },
+            {
+              "source": "op:wp:389",
+              "type": "HYBRID_RRF",
+              "score": 0.032,
+              "snippet": "Mã công việc: #389\nTiêu đề: [AI backlog] Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 k..."
+            },
+            {
+              "source": "op:wp:387",
+              "type": "HYBRID_RRF",
+              "score": 0.03101,
+              "snippet": "Mã công việc: #387\nTiêu đề: [AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem t..."
+            },
+            {
+              "source": "op:wp:390",
+              "type": "HYBRID_RRF",
+              "score": 0.03031,
+              "snippet": "Mã công việc: #390\nTiêu đề: [AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện ..."
+            }
+          ],
+          "seconds": 1.1417044599998007
+        },
+        {
+          "id": "G31",
+          "partition": "calibration",
+          "question": "Tổng thống sao Hỏa uống cà phê giá bao nhiêu?",
+          "sources": [],
+          "expected": [],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [],
+          "seconds": 1.1854384389998813
+        }
+      ]
+    },
+    {
+      "threshold": 0.5,
+      "calibration": {
+        "passed": 5,
+        "total": 8
+      },
+      "rows": [
+        {
+          "id": "G01",
+          "partition": "calibration",
+          "question": "WF01 supports which explicit sources?",
+          "sources": [
+            "file:main-workflow-contract",
+            "op:wp:299"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "file:main-workflow-contract",
+              "type": "HYBRID_RRF",
+              "score": 0.03279,
+              "snippet": "# Main local knowledge ingestion contract\n\nRevision: 2026-10-28. Source key and existing permitted roles are retained.\n\nMain WF01 supports two explicit sources: an authorized Native Work Package ID, o..."
+            },
+            {
+              "source": "op:wp:299",
+              "type": "DENSE_VECTOR",
+              "score": 0.01613,
+              "snippet": "ển.\n\n### Source ID\n\nCMT-01-FE\n\n### Reviewer Requirement\n\nReviewer code độc lập có chuyên môn do PM chỉ định\n\n### Proposed Role\n\nFE\n\n### Proposed Sprint\n\nS4 (đề xuất, chưa chốt lịch)\n\n### Simulation Es..."
+            }
+          ],
+          "seconds": 1.2371463610002138
+        },
+        {
+          "id": "G02",
+          "partition": "calibration",
+          "question": "Muốn nạp tài liệu thì có thể đưa tên đường dẫn từ máy mình trực tiếp cho server không?",
+          "sources": [
+            "op:wp:115",
+            "op:wp:364",
+            "op:wp:265",
+            "file:main-workflow-contract",
+            "actor:18:wp:69"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:115",
+              "type": "HYBRID_RRF",
+              "score": 0.02312,
+              "snippet": "và đưa người dùng về màn hình đăng nhập.\nMở lại URL nội bộ hoặc dùng nút Back không hiển thị dữ liệu yêu cầu đăng nhập.\n\nDữ liệu estimate: mô phỏng Junior, đề xuất chờ PM/refinement; không phải worklo..."
+            },
+            {
+              "source": "op:wp:364",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "hình được lưu theo tài khoản.\nCấu hình mới chỉ áp dụng cho sự kiện phát sinh sau khi lưu, không gửi hồi tố thông báo cũ.\n\nDữ liệu estimate: mô phỏng Junior, đề xuất chờ PM/refinement; không phải workl..."
+            },
+            {
+              "source": "op:wp:265",
+              "type": "FTS_BM25",
+              "score": 0.01639,
+              "snippet": "...ăng đã được triển khai. Checklist/child-completion/concurrency gate chưa cưỡng chế native...."
+            },
+            {
+              "source": "file:main-workflow-contract",
+              "type": "DENSE_VECTOR",
+              "score": 0.01613,
+              "snippet": "aw content, actor/project claims and deletion requests cannot authorize source access.\n\nSupported formats at this boundary: UTF-8 TXT, Markdown, CSV, JSON, bounded DOCX and text-layer PDF. PDF parsing..."
+            },
+            {
+              "source": "actor:18:wp:69",
+              "type": "FTS_BM25",
+              "score": 0.01613,
+              "snippet": "...ated automatically by changing values within child work package #202_..."
+            }
+          ],
+          "seconds": 2.0622826500002702
+        },
+        {
+          "id": "G03",
+          "partition": "calibration",
+          "question": "Nếu sửa file sau khi đăng ký mà chưa cập nhật dấu vân tay thì hệ thống làm gì?",
+          "sources": [
+            "op:wp:155",
+            "op:wp:105",
+            "actor:18:wp:59",
+            "op:wp:180",
+            "op:wp:149"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": false,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:155",
+              "type": "HYBRID_RRF",
+              "score": 0.0278,
+              "snippet": "] Không DONE khi còn lỗi chưa sửa/chưa retest; Lead yêu cầu retest thì bổ sung bằng chứng trước BA/PM duyệt.\n\n### Source ID\n\nPRJ-06-QA\n\n### Reviewer Requirement\n\nLead/PM đối soát kết quả và Fix Bug; Q..."
+            },
+            {
+              "source": "op:wp:105",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "Fix Bug Subtask.\n- [ ] Không DONE khi còn lỗi chưa sửa/chưa retest; Lead yêu cầu retest thì bổ sung bằng chứng trước BA/PM duyệt.\n\n### Source ID\n\nAUTH-01-QA\n\n### Reviewer Requirement\n\nLead/PM đối soát..."
+            },
+            {
+              "source": "actor:18:wp:59",
+              "type": "FTS_BM25",
+              "score": 0.01639,
+              "snippet": "...Sprint hoặc dữ liệu đang hoạt động.\n2. Sau khi xóa, Project không còn truy cập được bởi các thành viên và URL cũ không trả dữ liệu.\n\nPhân tích: Chốt ngữ nghĩa..."
+            },
+            {
+              "source": "op:wp:180",
+              "type": "DENSE_VECTOR",
+              "score": 0.01613,
+              "snippet": "Fix Bug Subtask.\n- [ ] Không DONE khi còn lỗi chưa sửa/chưa retest; Lead yêu cầu retest thì bổ sung bằng chứng trước BA/PM duyệt.\n\n### Source ID\n\nBLG-05-QA\n\n### Reviewer Requirement\n\nLead/PM đối soát ..."
+            },
+            {
+              "source": "op:wp:149",
+              "type": "FTS_BM25",
+              "score": 0.01613,
+              "snippet": "...m thử nguồn:\nHệ thống yêu cầu xác nhận; sau khi gỡ, thành viên không còn xem hoặc thao tác dữ liệu Project.\nNếu còn Task/Issue đang gán, hệ thống cảnh báo để PM..."
+            }
+          ],
+          "seconds": 1.6465752670001166
+        },
+        {
+          "id": "G04",
+          "partition": "calibration",
+          "question": "Tại sao vector ghi thất bại vẫn có thể repair mà không mất bản nguồn?",
+          "sources": [
+            "op:wp:358",
+            "op:wp:250",
+            "file:main-workflow-contract",
+            "actor:18:wp:49",
+            "op:wp:230"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:358",
+              "type": "HYBRID_RRF",
+              "score": 0.03102,
+              "snippet": ", thời điểm và trạng thái chưa đọc; bấm vào mở đúng tài nguyên nếu còn tồn tại.\nThông báo trỏ tới item đã xóa hoặc Project mất quyền hiển thị trạng thái an toàn, không lộ dữ liệu cũ.\n\nDữ liệu estimate..."
+            },
+            {
+              "source": "op:wp:250",
+              "type": "HYBRID_RRF",
+              "score": 0.03031,
+              "snippet": "ự gán đúng Project/Sprint và trạng thái của cột đang thao tác.\nLưu thành công tạo card đúng cột; lưu thất bại không tạo card giả hoặc item trùng.\n\nDữ liệu estimate: mô phỏng Junior, đề xuất chờ PM/ref..."
+            },
+            {
+              "source": "file:main-workflow-contract",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "ifies Qdrant points. A failed vector commit is reported as pending, and the same ingestion key may safely repair it. Native Work Packages are never mutated by these operations.\n\nSearch uses the existi..."
+            },
+            {
+              "source": "actor:18:wp:49",
+              "type": "FTS_BM25",
+              "score": 0.01639,
+              "snippet": "...- [ ] Lead review → Retest nếu cần hoặc ghi rõ không cần → BA xác nhận → PM duyệt.\n- [ ] Mọi Subtask bắt buộc DONE; deploy Test và smoke đạt; PM mới chuyển Task..."
+            },
+            {
+              "source": "op:wp:230",
+              "type": "DENSE_VECTOR",
+              "score": 0.01613,
+              "snippet": "nhận kèm mã/tiêu đề item trước khi xóa.\nItem bị xóa không còn xuất hiện ở Backlog, Sprint, Kanban, Gantt hay Dashboard; URL cũ hiển thị trạng thái không tồn tại.\n\nDữ liệu estimate: mô phỏng Junior, đề..."
+            }
+          ],
+          "seconds": 1.7223389210003006
+        },
+        {
+          "id": "G17",
+          "partition": "calibration",
+          "question": "Theo tài liệu dự án, backend và nơi lưu công việc dùng công nghệ gì?",
+          "sources": [
+            "op:wp:383",
+            "op:wp:391",
+            "op:wp:382",
+            "op:wp:394",
+            "op:wp:396"
+          ],
+          "expected": [
+            "op:wp:379"
+          ],
+          "hit": false,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:383",
+              "type": "HYBRID_RRF",
+              "score": 0.03227,
+              "snippet": "Mã công việc: #383\nTiêu đề: [AI backlog] Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.\nLoại: Task..."
+            },
+            {
+              "source": "op:wp:391",
+              "type": "HYBRID_RRF",
+              "score": 0.03151,
+              "snippet": "Mã công việc: #391\nTiêu đề: [AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệ..."
+            },
+            {
+              "source": "op:wp:382",
+              "type": "HYBRID_RRF",
+              "score": 0.03125,
+              "snippet": "Mã công việc: #382\nTiêu đề: [AI backlog] Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.\nLoại: Task\nTrạng thái: REVIE..."
+            },
+            {
+              "source": "op:wp:394",
+              "type": "HYBRID_RRF",
+              "score": 0.03102,
+              "snippet": "Mã công việc: #394\nTiêu đề: [AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL v..."
+            },
+            {
+              "source": "op:wp:396",
+              "type": "HYBRID_RRF",
+              "score": 0.03089,
+              "snippet": "Không thêm dependency\",\"Không tự merge/deploy\"],\"scope\":[\"Thêm endpoint GET /tasks/{task_id}/status\",\"Trả về id và status\",\"Xử lý 404 khi ID không tồn tại\",\"Xử lý 422 khi sai kiểu ID\",\"Viết test pytes..."
+            }
+          ],
+          "seconds": 1.3472402560000774
+        },
+        {
+          "id": "G18",
+          "partition": "calibration",
+          "question": "Ứng dụng quản lý việc này lưu thông tin bằng cơ sở dữ liệu nào?",
+          "sources": [
+            "op:wp:387",
+            "op:wp:391",
+            "op:wp:394",
+            "op:wp:386",
+            "op:wp:396"
+          ],
+          "expected": [
+            "op:wp:379"
+          ],
+          "hit": false,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:387",
+              "type": "HYBRID_RRF",
+              "score": 0.03252,
+              "snippet": "Mã công việc: #387\nTiêu đề: [AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem t..."
+            },
+            {
+              "source": "op:wp:391",
+              "type": "HYBRID_RRF",
+              "score": 0.03125,
+              "snippet": "Mã công việc: #391\nTiêu đề: [AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệ..."
+            },
+            {
+              "source": "op:wp:394",
+              "type": "HYBRID_RRF",
+              "score": 0.03102,
+              "snippet": "Mã công việc: #394\nTiêu đề: [AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL v..."
+            },
+            {
+              "source": "op:wp:386",
+              "type": "HYBRID_RRF",
+              "score": 0.03083,
+              "snippet": "Mã công việc: #386\nTiêu đề: [AI backlog] Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py..."
+            },
+            {
+              "source": "op:wp:396",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "Mã công việc: #396\nTiêu đề: [AI backlog] Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest.\nLo..."
+            }
+          ],
+          "seconds": 1.332973065999795
+        },
+        {
+          "id": "G19",
+          "partition": "calibration",
+          "question": "API nào đếm tổng số việc và số đang hoạt động, số hoàn thành?",
+          "sources": [
+            "op:wp:386",
+            "op:wp:394",
+            "op:wp:389",
+            "op:wp:387",
+            "op:wp:390"
+          ],
+          "expected": [
+            "op:wp:386"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:386",
+              "type": "HYBRID_RRF",
+              "score": 0.03279,
+              "snippet": "SON đúng cấu trúc {\\\"total\\\": int, \\\"active\\\": int, \\\"completed\\\": int}.\",\"AC14: Logic tính toán total là tổng, active là todo/in_progress, completed là done, luôn thỏa mãn total == active + completed..."
+            },
+            {
+              "source": "op:wp:394",
+              "type": "HYBRID_RRF",
+              "score": 0.032,
+              "snippet": "Mã công việc: #394\nTiêu đề: [AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL v..."
+            },
+            {
+              "source": "op:wp:389",
+              "type": "HYBRID_RRF",
+              "score": 0.032,
+              "snippet": "Mã công việc: #389\nTiêu đề: [AI backlog] Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 k..."
+            },
+            {
+              "source": "op:wp:387",
+              "type": "HYBRID_RRF",
+              "score": 0.03101,
+              "snippet": "Mã công việc: #387\nTiêu đề: [AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem t..."
+            },
+            {
+              "source": "op:wp:390",
+              "type": "HYBRID_RRF",
+              "score": 0.03031,
+              "snippet": "Mã công việc: #390\nTiêu đề: [AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện ..."
+            }
+          ],
+          "seconds": 1.270699804999822
+        },
+        {
+          "id": "G31",
+          "partition": "calibration",
+          "question": "Tổng thống sao Hỏa uống cà phê giá bao nhiêu?",
+          "sources": [],
+          "expected": [],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [],
+          "seconds": 2.3065747600003306
+        }
+      ]
+    },
+    {
+      "threshold": 0.45,
+      "calibration": {
+        "passed": 6,
+        "total": 8
+      },
+      "rows": [
+        {
+          "id": "G01",
+          "partition": "calibration",
+          "question": "WF01 supports which explicit sources?",
+          "sources": [
+            "file:main-workflow-contract",
+            "op:wp:299",
+            "op:wp:249",
+            "op:wp:234",
+            "op:wp:184"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "file:main-workflow-contract",
+              "type": "HYBRID_RRF",
+              "score": 0.03279,
+              "snippet": "# Main local knowledge ingestion contract\n\nRevision: 2026-10-28. Source key and existing permitted roles are retained.\n\nMain WF01 supports two explicit sources: an authorized Native Work Package ID, o..."
+            },
+            {
+              "source": "op:wp:299",
+              "type": "DENSE_VECTOR",
+              "score": 0.01613,
+              "snippet": "ển.\n\n### Source ID\n\nCMT-01-FE\n\n### Reviewer Requirement\n\nReviewer code độc lập có chuyên môn do PM chỉ định\n\n### Proposed Role\n\nFE\n\n### Proposed Sprint\n\nS4 (đề xuất, chưa chốt lịch)\n\n### Simulation Es..."
+            },
+            {
+              "source": "op:wp:249",
+              "type": "DENSE_VECTOR",
+              "score": 0.01587,
+              "snippet": "đồng chỉ trong phát triển.\n\n### Source ID\n\nKAN-04-FE\n\n### Reviewer Requirement\n\nReviewer code độc lập có chuyên môn do PM chỉ định\n\n### Proposed Role\n\nFE\n\n### Proposed Sprint\n\nS3 (đề xuất, chưa chốt l..."
+            },
+            {
+              "source": "op:wp:234",
+              "type": "DENSE_VECTOR",
+              "score": 0.01562,
+              "snippet": "độc lập; dùng mock hợp đồng chỉ trong phát triển.\n\n### Source ID\n\nKAN-01-FE\n\n### Reviewer Requirement\n\nReviewer code độc lập có chuyên môn do PM chỉ định\n\n### Proposed Role\n\nFE\n\n### Proposed Sprint\n\nS..."
+            },
+            {
+              "source": "op:wp:184",
+              "type": "DENSE_VECTOR",
+              "score": 0.01538,
+              "snippet": "ong phát triển.\n\n### Source ID\n\nSPR-01-FE\n\n### Reviewer Requirement\n\nReviewer code độc lập có chuyên môn do PM chỉ định\n\n### Proposed Role\n\nFE\n\n### Proposed Sprint\n\nS3 (đề xuất, chưa chốt lịch)\n\n### S..."
+            }
+          ],
+          "seconds": 1.4827094570000554
+        },
+        {
+          "id": "G02",
+          "partition": "calibration",
+          "question": "Muốn nạp tài liệu thì có thể đưa tên đường dẫn từ máy mình trực tiếp cho server không?",
+          "sources": [
+            "op:wp:115",
+            "op:wp:364",
+            "op:wp:265",
+            "file:main-workflow-contract",
+            "actor:18:wp:69"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:115",
+              "type": "HYBRID_RRF",
+              "score": 0.02312,
+              "snippet": "và đưa người dùng về màn hình đăng nhập.\nMở lại URL nội bộ hoặc dùng nút Back không hiển thị dữ liệu yêu cầu đăng nhập.\n\nDữ liệu estimate: mô phỏng Junior, đề xuất chờ PM/refinement; không phải worklo..."
+            },
+            {
+              "source": "op:wp:364",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "hình được lưu theo tài khoản.\nCấu hình mới chỉ áp dụng cho sự kiện phát sinh sau khi lưu, không gửi hồi tố thông báo cũ.\n\nDữ liệu estimate: mô phỏng Junior, đề xuất chờ PM/refinement; không phải workl..."
+            },
+            {
+              "source": "op:wp:265",
+              "type": "FTS_BM25",
+              "score": 0.01639,
+              "snippet": "...ăng đã được triển khai. Checklist/child-completion/concurrency gate chưa cưỡng chế native...."
+            },
+            {
+              "source": "file:main-workflow-contract",
+              "type": "DENSE_VECTOR",
+              "score": 0.01613,
+              "snippet": "aw content, actor/project claims and deletion requests cannot authorize source access.\n\nSupported formats at this boundary: UTF-8 TXT, Markdown, CSV, JSON, bounded DOCX and text-layer PDF. PDF parsing..."
+            },
+            {
+              "source": "actor:18:wp:69",
+              "type": "FTS_BM25",
+              "score": 0.01613,
+              "snippet": "...ated automatically by changing values within child work package #202_..."
+            }
+          ],
+          "seconds": 1.7152827690001686
+        },
+        {
+          "id": "G03",
+          "partition": "calibration",
+          "question": "Nếu sửa file sau khi đăng ký mà chưa cập nhật dấu vân tay thì hệ thống làm gì?",
+          "sources": [
+            "op:wp:155",
+            "op:wp:150",
+            "op:wp:105",
+            "actor:18:wp:59",
+            "file:main-workflow-contract"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:155",
+              "type": "HYBRID_RRF",
+              "score": 0.02762,
+              "snippet": "] Không DONE khi còn lỗi chưa sửa/chưa retest; Lead yêu cầu retest thì bổ sung bằng chứng trước BA/PM duyệt.\n\n### Source ID\n\nPRJ-06-QA\n\n### Reviewer Requirement\n\nLead/PM đối soát kết quả và Fix Bug; Q..."
+            },
+            {
+              "source": "op:wp:150",
+              "type": "HYBRID_RRF",
+              "score": 0.02303,
+              "snippet": "ông DONE khi còn lỗi chưa sửa/chưa retest; Lead yêu cầu retest thì bổ sung bằng chứng trước BA/PM duyệt.\n\n### Source ID\n\nPRJ-05-QA\n\n### Reviewer Requirement\n\nLead/PM đối soát kết quả và Fix Bug; QA kh..."
+            },
+            {
+              "source": "op:wp:105",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "Fix Bug Subtask.\n- [ ] Không DONE khi còn lỗi chưa sửa/chưa retest; Lead yêu cầu retest thì bổ sung bằng chứng trước BA/PM duyệt.\n\n### Source ID\n\nAUTH-01-QA\n\n### Reviewer Requirement\n\nLead/PM đối soát..."
+            },
+            {
+              "source": "actor:18:wp:59",
+              "type": "FTS_BM25",
+              "score": 0.01639,
+              "snippet": "...Sprint hoặc dữ liệu đang hoạt động.\n2. Sau khi xóa, Project không còn truy cập được bởi các thành viên và URL cũ không trả dữ liệu.\n\nPhân tích: Chốt ngữ nghĩa..."
+            },
+            {
+              "source": "file:main-workflow-contract",
+              "type": "DENSE_VECTOR",
+              "score": 0.01613,
+              "snippet": "r can request indexing. Search and indexed readback require a fresh authenticated identity and the current server role, project and checksum policy. A changed file is refused until the operator verifi..."
+            }
+          ],
+          "seconds": 1.6547614780001823
+        },
+        {
+          "id": "G04",
+          "partition": "calibration",
+          "question": "Tại sao vector ghi thất bại vẫn có thể repair mà không mất bản nguồn?",
+          "sources": [
+            "op:wp:358",
+            "op:wp:250",
+            "file:main-workflow-contract",
+            "actor:18:wp:49",
+            "op:wp:230"
+          ],
+          "expected": [
+            "file:main-workflow-contract"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:358",
+              "type": "HYBRID_RRF",
+              "score": 0.03102,
+              "snippet": ", thời điểm và trạng thái chưa đọc; bấm vào mở đúng tài nguyên nếu còn tồn tại.\nThông báo trỏ tới item đã xóa hoặc Project mất quyền hiển thị trạng thái an toàn, không lộ dữ liệu cũ.\n\nDữ liệu estimate..."
+            },
+            {
+              "source": "op:wp:250",
+              "type": "HYBRID_RRF",
+              "score": 0.03031,
+              "snippet": "ự gán đúng Project/Sprint và trạng thái của cột đang thao tác.\nLưu thành công tạo card đúng cột; lưu thất bại không tạo card giả hoặc item trùng.\n\nDữ liệu estimate: mô phỏng Junior, đề xuất chờ PM/ref..."
+            },
+            {
+              "source": "file:main-workflow-contract",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "ifies Qdrant points. A failed vector commit is reported as pending, and the same ingestion key may safely repair it. Native Work Packages are never mutated by these operations.\n\nSearch uses the existi..."
+            },
+            {
+              "source": "actor:18:wp:49",
+              "type": "FTS_BM25",
+              "score": 0.01639,
+              "snippet": "...- [ ] Lead review → Retest nếu cần hoặc ghi rõ không cần → BA xác nhận → PM duyệt.\n- [ ] Mọi Subtask bắt buộc DONE; deploy Test và smoke đạt; PM mới chuyển Task..."
+            },
+            {
+              "source": "op:wp:230",
+              "type": "DENSE_VECTOR",
+              "score": 0.01613,
+              "snippet": "nhận kèm mã/tiêu đề item trước khi xóa.\nItem bị xóa không còn xuất hiện ở Backlog, Sprint, Kanban, Gantt hay Dashboard; URL cũ hiển thị trạng thái không tồn tại.\n\nDữ liệu estimate: mô phỏng Junior, đề..."
+            }
+          ],
+          "seconds": 1.4994609629998195
+        },
+        {
+          "id": "G17",
+          "partition": "calibration",
+          "question": "Theo tài liệu dự án, backend và nơi lưu công việc dùng công nghệ gì?",
+          "sources": [
+            "op:wp:383",
+            "op:wp:391",
+            "op:wp:382",
+            "op:wp:394",
+            "op:wp:396"
+          ],
+          "expected": [
+            "op:wp:379"
+          ],
+          "hit": false,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:383",
+              "type": "HYBRID_RRF",
+              "score": 0.03227,
+              "snippet": "Mã công việc: #383\nTiêu đề: [AI backlog] Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.\nLoại: Task..."
+            },
+            {
+              "source": "op:wp:391",
+              "type": "HYBRID_RRF",
+              "score": 0.03151,
+              "snippet": "Mã công việc: #391\nTiêu đề: [AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệ..."
+            },
+            {
+              "source": "op:wp:382",
+              "type": "HYBRID_RRF",
+              "score": 0.03125,
+              "snippet": "Mã công việc: #382\nTiêu đề: [AI backlog] Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.\nLoại: Task\nTrạng thái: REVIE..."
+            },
+            {
+              "source": "op:wp:394",
+              "type": "HYBRID_RRF",
+              "score": 0.03102,
+              "snippet": "Mã công việc: #394\nTiêu đề: [AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL v..."
+            },
+            {
+              "source": "op:wp:396",
+              "type": "HYBRID_RRF",
+              "score": 0.03089,
+              "snippet": "Không thêm dependency\",\"Không tự merge/deploy\"],\"scope\":[\"Thêm endpoint GET /tasks/{task_id}/status\",\"Trả về id và status\",\"Xử lý 404 khi ID không tồn tại\",\"Xử lý 422 khi sai kiểu ID\",\"Viết test pytes..."
+            }
+          ],
+          "seconds": 1.3045603129999108
+        },
+        {
+          "id": "G18",
+          "partition": "calibration",
+          "question": "Ứng dụng quản lý việc này lưu thông tin bằng cơ sở dữ liệu nào?",
+          "sources": [
+            "op:wp:387",
+            "op:wp:391",
+            "op:wp:394",
+            "op:wp:386",
+            "op:wp:396"
+          ],
+          "expected": [
+            "op:wp:379"
+          ],
+          "hit": false,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:387",
+              "type": "HYBRID_RRF",
+              "score": 0.03252,
+              "snippet": "Mã công việc: #387\nTiêu đề: [AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem t..."
+            },
+            {
+              "source": "op:wp:391",
+              "type": "HYBRID_RRF",
+              "score": 0.03125,
+              "snippet": "Mã công việc: #391\nTiêu đề: [AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệ..."
+            },
+            {
+              "source": "op:wp:394",
+              "type": "HYBRID_RRF",
+              "score": 0.03102,
+              "snippet": "Mã công việc: #394\nTiêu đề: [AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL v..."
+            },
+            {
+              "source": "op:wp:386",
+              "type": "HYBRID_RRF",
+              "score": 0.03083,
+              "snippet": "Mã công việc: #386\nTiêu đề: [AI backlog] Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py..."
+            },
+            {
+              "source": "op:wp:396",
+              "type": "DENSE_VECTOR",
+              "score": 0.01639,
+              "snippet": "Mã công việc: #396\nTiêu đề: [AI backlog] Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest.\nLo..."
+            }
+          ],
+          "seconds": 1.7389232089999496
+        },
+        {
+          "id": "G19",
+          "partition": "calibration",
+          "question": "API nào đếm tổng số việc và số đang hoạt động, số hoàn thành?",
+          "sources": [
+            "op:wp:386",
+            "op:wp:394",
+            "op:wp:389",
+            "op:wp:387",
+            "op:wp:390"
+          ],
+          "expected": [
+            "op:wp:386"
+          ],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [
+            {
+              "source": "op:wp:386",
+              "type": "HYBRID_RRF",
+              "score": 0.03279,
+              "snippet": "SON đúng cấu trúc {\\\"total\\\": int, \\\"active\\\": int, \\\"completed\\\": int}.\",\"AC14: Logic tính toán total là tổng, active là todo/in_progress, completed là done, luôn thỏa mãn total == active + completed..."
+            },
+            {
+              "source": "op:wp:394",
+              "type": "HYBRID_RRF",
+              "score": 0.032,
+              "snippet": "Mã công việc: #394\nTiêu đề: [AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL v..."
+            },
+            {
+              "source": "op:wp:389",
+              "type": "HYBRID_RRF",
+              "score": 0.032,
+              "snippet": "Mã công việc: #389\nTiêu đề: [AI backlog] Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 k..."
+            },
+            {
+              "source": "op:wp:387",
+              "type": "HYBRID_RRF",
+              "score": 0.03101,
+              "snippet": "Mã công việc: #387\nTiêu đề: [AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem t..."
+            },
+            {
+              "source": "op:wp:390",
+              "type": "HYBRID_RRF",
+              "score": 0.03031,
+              "snippet": "Mã công việc: #390\nTiêu đề: [AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện ..."
+            }
+          ],
+          "seconds": 1.4775233260002096
+        },
+        {
+          "id": "G31",
+          "partition": "calibration",
+          "question": "Tổng thống sao Hỏa uống cà phê giá bao nhiêu?",
+          "sources": [],
+          "expected": [],
+          "hit": true,
+          "dense_state": "READY",
+          "matches": [],
+          "seconds": 1.3031565689998388
+        }
+      ]
+    }
+  ]
+}

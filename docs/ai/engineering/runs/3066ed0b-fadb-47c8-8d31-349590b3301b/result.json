@@ -1,0 +1,70 @@
+{
+  "status": "succeeded",
+  "text": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+  "head_sha": "def9d0a8852af42a407bd42fb0051615a2de9331",
+  "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/4",
+  "delivery": {
+    "baseRefName": "codex/openclaw-feedback-283138e910432528",
+    "headRefName": "codex/openclaw-feedback-4d13e695555a8d44",
+    "headRefOid": "def9d0a8852af42a407bd42fb0051615a2de9331",
+    "state": "OPEN",
+    "url": "https://github.com/Luim3141/mini-task-manager/pull/4"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\3066ed0b-fadb-47c8-8d31-349590b3301b\\acceptance-0.xml",
+    "log_sha256": "223b5e79035b20ed566b9bd46cd11c7dbaf188668fe2babc0c843f377540f5c4"
+  },
+  "review_evidence": {
+    "revision": "9315b3dbcd3e6080d031a8cd1f785d7913620f05448599862635b8006b3bf308",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-4d13e695555a8d44 && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\3066ed0b-fadb-47c8-8d31-349590b3301b",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_tasks.py"
+  ],
+  "native_readback": {
+    "child_id": 383,
+    "child_version": 2,
+    "parent": {
+      "id": 379,
+      "version": 1
+    },
+    "project_id": 6,
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/4"
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "child_id": 383,
+    "retrieval_count": 2,
+    "references": [
+      {
+        "native_id": 379,
+        "citation": "/work_packages/379"
+      },
+      {
+        "native_id": 383,
+        "citation": "/work_packages/383"
+      }
+    ]
+  }
+}

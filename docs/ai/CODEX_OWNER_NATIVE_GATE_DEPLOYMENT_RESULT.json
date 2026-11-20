@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-25T12:56:28.670061+00:00",
+  "status": "DEPLOYED_HEALTHY_RUNTIME_ROLE_REGRESSION_PENDING",
+  "tag": "qldapm-core:codex-owner-gates-20261025",
+  "image": "sha256:8f5e1a83aeb04953d692f47d0655f593d226e87be5931619b2714e6566101ff9",
+  "rollback_tag": "qldapm-core:codex-local-delivery-20261025",
+  "rollback_image": "sha256:a56b834fd146a384ce1294095e95bdffd4048c2ad7045be177c0b471010b5e4c",
+  "files": {
+    "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\gate_actions.rb": {
+      "sha256": "34e2e3b7959d5613cc2c7414217bd54941c545b21de4e8798aa7a59852b85052",
+      "old_sha256": "bc3b4afaed616e73ff4a61ecd01222280e20c0bccf23cf34f55349941086ac8b",
+      "runtime_path": "/app/app/services/qldapm/gate_actions.rb"
+    },
+    "openproject\\ai\\core\\overlay\\app\\controllers\\qldapm_gates_controller.rb": {
+      "sha256": "2d890c2ab18017ddb2132c28acbac10d63cdea62271053eff2fbc97896f0ec1f",
+      "old_sha256": "0b66323f1860f7eb7db54707f643db64930f74d1ec2734455c3c2e4d5363575a",
+      "runtime_path": "/app/app/controllers/qldapm_gates_controller.rb"
+    },
+    "openproject\\ai\\core\\overlay\\app\\views\\qldapm_gates\\show.html.erb": {
+      "sha256": "e0ed99f9cded478dde19138c4bb7f135d88411b61f4cfa4272879cb14f582948",
+      "old_sha256": "2d3568c6485547837c876b40d0094112ccb5711aeff27272f46124fd735cbeeb",
+      "runtime_path": "/app/app/views/qldapm_gates/show.html.erb"
+    }
+  },
+  "tests": "9 standalone Ruby programs plus actual Native clone two Manager positive and4role negative operations",
+  "gateway_unchanged": "sha256:8aed99f096aca8b2a8176b5c68b5a256bf095a6e2b03ab3d26bcb135015c71bd",
+  "workflow_changes": 0,
+  "native_writes": 0,
+  "staging_operations": false,
+  "private_rollback": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\owner-gate-deployment",
+  "unrelated_main_containers_preserved": 9,
+  "native_count": 338,
+  "native_fingerprint": "c6f4373b58951e17e0d8b766b393dc8358fa99337d724be4e5826ff82787108b",
+  "physical_rows_unchanged": "375|04ec20a24a553f3cea4deab0015c29ef",
+  "main_native_writes": 0,
+  "model_calls": 0,
+  "main_human_approvals": 0
+}

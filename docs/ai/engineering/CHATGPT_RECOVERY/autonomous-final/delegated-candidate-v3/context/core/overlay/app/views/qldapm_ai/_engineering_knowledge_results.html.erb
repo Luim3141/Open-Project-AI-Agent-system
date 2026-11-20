@@ -1,0 +1,27 @@
+<% knowledge = @knowledge || {}; items = Array(knowledge['items']); answerability = knowledge['answerability'] || {}; answer = knowledge['answer'] %>
+<% if @knowledge %>
+  <p>Retrieval: <%= knowledge['retrieval_state'] || knowledge['dense_state'] || 'NOT_REPORTED' %> · Answerability: <%= answerability['state'] || 'UNVERIFIED_RETRIEVAL' %> · <%= answerability['reason'] || knowledge['reason_code'] || 'Kết quả truy hồi không tự chứng minh có đủ bằng chứng để trả lời.' %></p>
+  <p>Index: <%= knowledge['index_status'] || 'NOT_REPORTED' %> · Lần index: <%= format_vn_time.call(knowledge['last_index_at']) %> · Scope: <%= knowledge['scope'] || 'Theo quyền và phiên bản nguồn của truy vấn hiện tại.' %></p>
+  <% if answer.is_a?(Hash) && %w[ANSWERABLE SUPPORTED].include?(answerability['state']) && answer['text'].present? %>
+    <article class="qcc-card"><h4>Câu trả lời có evidence</h4><p><%= answer['text'] %></p><p>Đối chiếu citations và phiên bản trong các nguồn dưới đây.</p></article>
+  <% end %>
+  <% if items.any? %>
+    <h4 class="qcc-results-heading"><%= items.size %> nguồn truy hồi — Gateway đối chiếu Native ACL/version hoặc source pin/quyền tại thời điểm tìm kiếm</h4>
+    <% items.each do |item| %>
+      <article class="qcc-knowledge-item">
+        <div class="qcc-knowledge-header"><span class="qcc-chip qcc-chip-cyan"><%= item['match_type'] || 'UNKNOWN' %></span><strong class="qcc-knowledge-title"><%= item['title'] %></strong><span class="qcc-knowledge-score">Score: <%= item['score'].is_a?(Numeric) ? sprintf('%.2f', item['score']) : 'N/A' %></span></div>
+        <p class="qcc-knowledge-snippet"><%= item['snippet'] %></p>
+        <p>Native version <%= item['lock_version'] || 'UNKNOWN' %> · Source <%= item['source_id'] || 'NOT_REPORTED' %> · Hash <%= item['document_id'] || 'NOT_REPORTED' %></p>
+        <% if item['citation'].to_s.match?(%r{\A/work_packages/[1-9]\d*(?:/activity)?\z}) %><div class="qcc-knowledge-cite"><%= link_to "Mở nguồn WP ##{item['native_id']}", item['citation'], target: '_blank', rel: 'noopener noreferrer' %></div><% end %>
+        <% if item['source_id'].to_s.match?(/\Afile:[a-z0-9][a-z0-9_-]{0,63}\z/) && item['document_id'].to_s.match?(/\A[a-f0-9]{64}\z/) %>
+          <p>File citation: <%= item['citation'] %> · checksum <%= item['source_sha256'] %></p>
+          <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands" do %><%= hidden_field_tag :tool, 'knowledge_file_read' %><%= hidden_field_tag :arguments, '{}' %><%= hidden_field_tag :source_key, item['source_id'].delete_prefix('file:') %><%= hidden_field_tag :document_id, item['document_id'] %><button type="submit" class="qcc-btn">Đọc nội dung đúng source pin</button><% end %>
+        <% end %>
+      </article>
+    <% end %>
+  <% else %>
+    <p class="qcc-empty-state">NO_EVIDENCE — Không có nguồn đủ điều kiện trả về cho truy vấn này. <%= answerability['reason'] || knowledge['reason_code'] || 'Có thể không có evidence phù hợp, index chưa sẵn sàng hoặc nguồn không còn đúng quyền/phiên bản; không kết luận tài liệu không tồn tại.' %> Có thể sửa truy vấn và tìm lại; màn hình này không tự retry indexing.</p>
+  <% end %>
+<% else %>
+  <p class="qcc-empty-state">Nhập câu hỏi tiếng Việt hoặc tiếng Anh để tìm evidence. Kết quả và citation chỉ phản ánh quyền/phiên bản tại thời điểm tìm kiếm; chưa có truy vấn mới trong phiên này.</p>
+<% end %>

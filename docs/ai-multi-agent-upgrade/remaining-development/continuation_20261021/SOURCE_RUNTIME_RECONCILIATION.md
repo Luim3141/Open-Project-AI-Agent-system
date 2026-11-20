@@ -1,0 +1,12 @@
+# Source/runtime reconciliation — hiện hành21/10/2026
+
+**Phase1 VERIFIED / QUALIFIED_NOT_DEPLOYED.** Không thay image/config đang phục vụ. Danh sách35missing+7different là baseline trướcđợt18/10; hiện35runtimefiles khớp cảMain/Stage và7prototype/dev cốýloại. Importgraph hiện45reachablemodules; khôngexcludedmodule nào reachable từapp.53candidateGatewayfiles gồmPython+schemas khớpmanifest,50module importPASSkhôngmạng. NativeCore startup và5fixtureidentityPASS.
+
+CandidateGateway được build từpinnedPythonimagevàrequirements.lock.txt,không dựavàolocalruntimeimagecũ. Coreoverlaybuild từimmutableStagebase vớialias đượcverifydigest; khôngbit-for-bitcoldCorebuildtừupstream. InitialCorebuildrawsha256FROMfailed vìBuildKit hiểu làregistryname; loggiữlại,commandđúng vàbasealias đượcghiởcore-build-command.json.
+
+Lỗi tìmthấy/sửa: top100FTS/topNsearch chỉlọcproject/role trướcactor, làmindexcủaactor khác chiếmhếtkếtquả. knowledge_search.py nhậnauthenticatedactor scope ởsharedsearch,ápdụngtrướchairankinglimits; service.py truyềnactorserver. Clientkhôngđượcgửiactor; NativeACL/lockVersion kiểmtra cuối giữ nguyên. RED1test rồi31Windowsfocused/63LinuxcontractsPASS. Thêmtestinvalidinternalactor(True/string/zero/negative) đãnằmtrong63Linuxchecks. NoDBmigration hoặcAPIshapechange.
+
+Bảnghash/path/caller/import/decisiontừngmodule nằmởSOURCE_RUNTIME_MATRIX_CURRENT.json; nguyênbaselinehash trongremaining-development/SOURCE_RUNTIME_MATRIX.json giữ nguyên. 12modulesđổi từreview18/10 cóindexchangedfunctions ởSOURCE_REVIEW_CHANGE_INDEX.json. Priorreview được kếthừachỉvớisourcekhôngđổi; changedcriticalpaths đượcđọclại. Hai phát hiện tiếptheo cầnhoànthiện ởPhase2/4: cancellation chưa cóterminalexecutionevent; registry dùngtokenlimit tĩnh vàGemini configlỗi cóthểlàmCCkhôngtải. Không báo cácfindingnàyđãfixed trước khi cótest.
+
+## 2026-10-21 — interrupted by Owner urgent Main WRITE incident
+Phase1 image qualification retained. Phase2 source fixes (cancellation trace/partial output, multi-specialist routing, Reviewer run scope) qualified on Gateway a84bc31a with 81 Linux tests; browser continuation still pending. No six-phase item newly marked VERIFIED. Owner now narrows active work to main-write-403-recovery; do not continue Second Brain/UI/n8n/Stage work during incident. Exact Main Gemini UAT approval already used by Gemini run0165de09; do not repeat. Schedule has independently been applied; do not reapply old proposal. Latest live Main runtime must be read from incident snapshot, not this historical continuation.

@@ -1,0 +1,93 @@
+{
+  "utc": "2026-11-04T09:21:06.058561+00:00",
+  "status": "STOPPED",
+  "cases_sha256": "085c0036415c0be33868515a7839887a2dbea079197e960251bb585bedc4ddd1",
+  "pilot_freeze_sha256": "dbe9b3d6e3570d4a8501181836abf63ad5bd18a93ea149e33d66d45466236d7d",
+  "runner_sha256": "3bfb12fe4123d310fccbea2554bc199ab21d36d0875f2014e31dcf2c774d3b47",
+  "max_generation_requests": 28,
+  "warm_seconds": 5,
+  "max_generation_seconds": 150,
+  "gates": {
+    "retrieval_hit_at_5": 0.8,
+    "negative_answer_emission_rate": 0.05,
+    "semantic_support": "SOURCE_REVIEW_REQUIRED_EVERY_EMITTED_ANSWER"
+  },
+  "holdout_access": false,
+  "human_ground_truth": false,
+  "main_rag_changed": false,
+  "rows": [
+    {
+      "case": "dev:create_list:vi",
+      "kind": "positive",
+      "retrieval_hit": true,
+      "retrieved_ids": [
+        380,
+        379,
+        386,
+        383,
+        390
+      ],
+      "answer_emitted": true,
+      "reuse_pilot_response": false,
+      "seconds": 18.162,
+      "prompt_tokens": 322,
+      "done_reason": "stop",
+      "model_load_seconds": 16.2820403
+    },
+    {
+      "case": "dev:create_list:en",
+      "kind": "positive",
+      "retrieval_hit": true,
+      "retrieved_ids": [
+        380,
+        379,
+        386,
+        387,
+        383
+      ],
+      "answer_emitted": true,
+      "reuse_pilot_response": false,
+      "seconds": 2.291,
+      "prompt_tokens": 354,
+      "done_reason": "stop",
+      "model_load_seconds": 0.0376874
+    },
+    {
+      "case": "dev:preserved_failure:vi",
+      "kind": "positive",
+      "retrieval_hit": true,
+      "retrieved_ids": [
+        380,
+        379,
+        394,
+        387,
+        386
+      ],
+      "answer_emitted": true,
+      "reuse_pilot_response": true,
+      "seconds": null
+    },
+    {
+      "case": "dev:preserved_failure:en",
+      "kind": "positive",
+      "retrieval_hit": true,
+      "retrieved_ids": [
+        380,
+        379,
+        389,
+        387,
+        392
+      ],
+      "answer_emitted": true,
+      "reuse_pilot_response": false,
+      "seconds": 5.944,
+      "prompt_tokens": 691,
+      "done_reason": "stop",
+      "model_load_seconds": 0.1758896
+    }
+  ],
+  "reason": "WARM_QUERY_OVER_5_SECONDS",
+  "error_type": "ValueError",
+  "new_generation_requests": 3,
+  "generation_seconds": 26.398
+}

@@ -1,0 +1,62 @@
+{
+  "checkpoint_version": 1,
+  "updated_at": "2026-10-26T19:30:00+00:00",
+  "agent": "Claude Sonnet 5.5 (Antigravity)",
+  "supersedes_for_runtime_only": "docs/ai/CODEX_MAIN_CONTINUATION_CHECKPOINT.json (all other fields remain valid; Codex file was not modified)",
+  "scope": "Main only; no Staging operations",
+  "current_runtime": {
+    "gateway": {
+      "id": "3f883e329664a8b4c5d9fd905e5069cc44c2f2bed83c5f85c5c6f8aec8b35b0b",
+      "image": "sha256:e76038d43e98d2be5e12a85476b0901854210e63cdbf64c0e2ca4e9dfb66c4d8",
+      "tag": "qldapm-ai:codex-phase-stale-read-v1-20261027",
+      "started": "2026-10-26T19:25:30.771300447Z",
+      "native_phase_py_sha256": "468c967a718916ffed95ef907a6eb0b493d654e9fa81a194d00b14197849b656"
+    },
+    "core_web": {
+      "id": "6907ce9e40655da12026a490cc13cfae25b40aba295b94443b36decc57f68890",
+      "image": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0",
+      "unchanged": true
+    },
+    "other_main_containers_unchanged": 9,
+    "n8n_workflows_unchanged_active": 16
+  },
+  "current_data": {
+    "native_physical_rows": 375,
+    "resource_371": {"status_id": 37, "name": "IN ANALYSIS", "lock_version": 4},
+    "native_delete_events": 0,
+    "rag": {"documents": 373, "chunks": 1739, "points": 1742, "visible": 338, "unmatched_legacy_points": 3, "clean": true}
+  },
+  "deployment": {
+    "result": "CLAUDE_SONNET_PHASE_STALE_READ_DEPLOYMENT_RESULT.json",
+    "preview": "CLAUDE_SONNET_PHASE_STALE_READ_DEPLOY_PREVIEW.json",
+    "postdeploy_readonly": "CLAUDE_SONNET_PHASE_STALE_READ_POSTDEPLOY_READONLY.json",
+    "script": "operator/codex-autonomous-20261025/completion-20261026/deploy-phase-stale-read-sonnet.py (prepare/apply, derived from deploy-ba-phase-read.py)",
+    "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\phase-stale-read-deployment",
+    "rollback_images": {
+      "gateway": "sha256:7d7e39b3200908a6c5ff29bccdf4876c169a367bc2274115c9b17d36fbeab28d",
+      "web": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+    },
+    "rollback_rule": "App image only; never restore old DB over current history",
+    "pre_edit_snapshot": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\sonnet-takeover-20261027\\pre-edit-snapshot"
+  },
+  "verification": {
+    "phase_get_manager_actor18_http": 200,
+    "phase_get_pm_actor19_http": 200,
+    "phase_get_state": "accepted",
+    "source_current": false,
+    "status_options": [],
+    "main_native_writes": 0,
+    "new_model_calls": 0,
+    "human_decisions_by_agent": 0,
+    "staging_operations": false,
+    "caveat": "No actual Native clone run for this one-line change; offline suites (606 Windows / 591+15 Linux) by Codex on same image hash, 19 targeted tests re-run by Sonnet"
+  },
+  "consumed_approvals": "unchanged; see CODEX_MAIN_APPROVAL_CONSUMPTION_LEDGER.json (all CONSUMED_DO_NOT_REPLAY; remaining_native_write_authorization=false)",
+  "active_blockers": [
+    "WF09/WF11: full fix/build/application-QA/retest/closure and four-state development contract NOT_IMPLEMENTED; any next Native mutation needs a fresh exact human approval",
+    "WF14: two historical unknown comment outcomes held; full Qdrant restore blocked by policy",
+    "WF15: three legacy unmatched points NOT_PROVEN, retained/excluded",
+    "WF07/WF16: external delivery BLOCKED_CONFIGURATION; local sink only"
+  ],
+  "release_decision": {"status": "PARTIAL", "full_go": false}
+}

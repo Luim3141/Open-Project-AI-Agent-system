@@ -1,0 +1,12 @@
+import {build} from 'esbuild';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+const out='../overlay/public/qldapm-agent-studio-v2';
+await mkdir(out,{recursive:true});
+const result=await build({entryPoints:['studio.jsx'],bundle:true,minify:true,outfile:out+'/studio.js',format:'iife',target:['es2022'],define:{'process.env.NODE_ENV':'"production"'},metafile:true,legalComments:'external'});
+const css=await readFile(out+'/studio.css','utf8');
+await writeFile(out+'/studio.css',`@scope (#qldapm-agent-studio) {\n${css}\n}\n`);
+const hashes={};for(const name of ['studio.js','studio.css'])hashes[name]=createHash('sha256').update(await readFile(out+'/'+name)).digest('hex');
+await writeFile(out+'/manifest.json',JSON.stringify(hashes,null,2)+'\n');
+await writeFile('build-proof.json',JSON.stringify({inputs:Object.keys(result.metafile.inputs).filter(k=>/(@xyflow|dagre|studio|model)/.test(k)),outputs:result.metafile.outputs,hashes},null,2)+'\n');
+console.log(JSON.stringify({status:'BUILT_LOCAL_NO_CDN',hashes}));

@@ -1,0 +1,11 @@
+{
+  "workflow_id": "XoP4M520TMG3WgeY",
+  "previous_version": "e56e4a59-79cb-4c09-b72d-887d20f48115",
+  "workflow_name": "WF03: Natural Language Request Orchestrator",
+  "candidate_sha256": "c03ec44fa333315528c49e08d69fbfad3cdd0750caef3e6131ba0cad48b989cb",
+  "source_node_tests_passed": 9,
+  "scope": "Only WF03 Main nodes/connections/settings; Gateway image unchanged; no credentials or Native business writes",
+  "contract": "start requires prompt + stable request_id UUID; status requires operation=status + run_id; Gateway engine gemini routes deterministic/live based on actual policy; no auto_execute",
+  "planned_live_tests": "Deterministic Native read path, same request replay, stored-run poll, cross-actor deny, validation errors; no fresh Gemini request",
+  "rollback": "Restore private pre-orchestration WF03 fields and activate returned version; preserve all Gateway run/receipt data"
+}

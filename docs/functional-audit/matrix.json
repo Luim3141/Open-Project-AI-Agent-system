@@ -1,0 +1,3901 @@
+[
+  {
+    "id": "F001",
+    "module": "Gateway route",
+    "feature": "GET/HEAD /health",
+    "source": "openproject/ai/gateway/app.py:320",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "final-smoke.json",
+      "qualification.json"
+    ],
+    "level": "MAIN READ + ISOLATED ERRORS",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F002",
+    "module": "Gateway route",
+    "feature": "POST /api/v1/commands",
+    "source": "openproject/ai/gateway/app.py:321",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "final-smoke.json",
+      "qualification.json"
+    ],
+    "level": "MAIN READ + ISOLATED ERRORS",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F003",
+    "module": "Gateway route",
+    "feature": "POST /api/v1/ai-runs",
+    "source": "openproject/ai/gateway/app.py:322",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F004",
+    "module": "Gateway route",
+    "feature": "GET/HEAD /api/v1/ai-runs/{id}",
+    "source": "openproject/ai/gateway/app.py:323",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F005",
+    "module": "Gateway route",
+    "feature": "GET/HEAD /api/v1/proposals/{id}",
+    "source": "openproject/ai/gateway/app.py:323",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F006",
+    "module": "Gateway route",
+    "feature": "POST /api/v1/proposals/{id}/decision",
+    "source": "openproject/ai/gateway/app.py:324",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F007",
+    "module": "Gateway route",
+    "feature": "POST /api/v1/knowledge-feedback/{id}/decision",
+    "source": "openproject/ai/gateway/app.py:325",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F008",
+    "module": "Gateway route",
+    "feature": "POST /api/v1/qa-evidence/{id}/decision",
+    "source": "openproject/ai/gateway/app.py:326",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F009",
+    "module": "Gateway route",
+    "feature": "POST /api/v1/native-phases/{id}/decision",
+    "source": "openproject/ai/gateway/app.py:327",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F010",
+    "module": "Gateway route",
+    "feature": "GET/HEAD /api/v1/agent-runs",
+    "source": "openproject/ai/gateway/app.py:328",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F011",
+    "module": "Gateway route",
+    "feature": "GET/HEAD /api/v1/agent-runs/{id}",
+    "source": "openproject/ai/gateway/app.py:328",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F012",
+    "module": "Gateway route",
+    "feature": "GET/HEAD /api/v1/agent-runs/{id}/trace",
+    "source": "openproject/ai/gateway/app.py:329",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F013",
+    "module": "Gateway route",
+    "feature": "GET/HEAD /api/v1/control-center/state",
+    "source": "openproject/ai/gateway/app.py:330",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F014",
+    "module": "Gateway route",
+    "feature": "GET/HEAD /api/v1/insights",
+    "source": "openproject/ai/gateway/app.py:331",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F015",
+    "module": "Gateway route",
+    "feature": "POST /internal/ui",
+    "source": "openproject/ai/gateway/app.py:332",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F016",
+    "module": "Gateway route",
+    "feature": "GET/HEAD /api/v1/openapi.json",
+    "source": "openproject/ai/gateway/app.py:333",
+    "method": "contract + MAIN read or isolated mutation",
+    "expected": "Schema/auth/dependency/error contract; actual business read-back",
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F017",
+    "module": "Gateway command",
+    "feature": "observer_task_progress",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F018",
+    "module": "Gateway command",
+    "feature": "observer_active",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F019",
+    "module": "Gateway command",
+    "feature": "observer_run_details",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F020",
+    "module": "Gateway command",
+    "feature": "delegated_status",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F021",
+    "module": "Gateway command",
+    "feature": "delegated_control",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F022",
+    "module": "Gateway command",
+    "feature": "delegated_preview",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F023",
+    "module": "Gateway command",
+    "feature": "engineering_report_schedule_get",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F024",
+    "module": "Gateway command",
+    "feature": "engineering_report_schedule_update",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F025",
+    "module": "Gateway command",
+    "feature": "engineering_notifications_list",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F026",
+    "module": "Gateway command",
+    "feature": "engineering_notifications_dismiss",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F027",
+    "module": "Gateway command",
+    "feature": "engineering_report_generate",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F028",
+    "module": "Gateway command",
+    "feature": "engineering_report_list",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F029",
+    "module": "Gateway command",
+    "feature": "engineering_report_get",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F030",
+    "module": "Gateway command",
+    "feature": "engineering_github_sync",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F031",
+    "module": "Gateway command",
+    "feature": "engineering_plan",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F032",
+    "module": "Gateway command",
+    "feature": "engineering_cancel",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F033",
+    "module": "Gateway command",
+    "feature": "engineering_resume",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F034",
+    "module": "Gateway command",
+    "feature": "engineering_status",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F035",
+    "module": "Gateway command",
+    "feature": "engineering_run_once",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F036",
+    "module": "Gateway command",
+    "feature": "engineering_control",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F037",
+    "module": "Gateway command",
+    "feature": "delete_work_package",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F038",
+    "module": "Gateway command",
+    "feature": "update_dependency",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F039",
+    "module": "Gateway command",
+    "feature": "delete_dependency",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F040",
+    "module": "Gateway command",
+    "feature": "create_dependency",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F041",
+    "module": "Gateway command",
+    "feature": "identity",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F042",
+    "module": "Gateway command",
+    "feature": "list_work_packages",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F043",
+    "module": "Gateway command",
+    "feature": "get_work_package",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F044",
+    "module": "Gateway command",
+    "feature": "get_project_options",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F045",
+    "module": "Gateway command",
+    "feature": "analyze",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F046",
+    "module": "Gateway command",
+    "feature": "create_work_package",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F047",
+    "module": "Gateway command",
+    "feature": "update_work_package",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F048",
+    "module": "Gateway command",
+    "feature": "comment",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F049",
+    "module": "Gateway command",
+    "feature": "transition",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F050",
+    "module": "Gateway command",
+    "feature": "get_gate",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F051",
+    "module": "Gateway command",
+    "feature": "change_gate",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F052",
+    "module": "Gateway command",
+    "feature": "list_code",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F053",
+    "module": "Gateway command",
+    "feature": "read_code",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F054",
+    "module": "Gateway command",
+    "feature": "write_code",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F055",
+    "module": "Gateway command",
+    "feature": "request_test",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F056",
+    "module": "Gateway command",
+    "feature": "propose_operation",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F057",
+    "module": "Gateway command",
+    "feature": "get_job",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F058",
+    "module": "Gateway command",
+    "feature": "request_status",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F059",
+    "module": "Gateway command",
+    "feature": "reconcile_request",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F060",
+    "module": "Gateway command",
+    "feature": "get_configuration",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F061",
+    "module": "Gateway command",
+    "feature": "get_proposal",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F062",
+    "module": "Gateway command",
+    "feature": "reject_proposal",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F063",
+    "module": "Gateway command",
+    "feature": "get_assistant_status",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F064",
+    "module": "Gateway command",
+    "feature": "get_action_history",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F065",
+    "module": "Gateway command",
+    "feature": "start_ai_run",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F066",
+    "module": "Gateway command",
+    "feature": "get_ai_run",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F067",
+    "module": "Gateway command",
+    "feature": "get_insights",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F068",
+    "module": "Gateway command",
+    "feature": "get_permissions",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Dedicated Telegram token nhận 403 ENGINEERING_CAPABILITY_REQUIRED. Không mở rộng quyền; chưa nghiệm thu positive path qua token này.",
+    "status": "PARTIAL",
+    "evidence": [
+      "main-integrations.json"
+    ],
+    "level": "MAIN DENIAL",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F069",
+    "module": "Gateway command",
+    "feature": "list_agent_runs",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F070",
+    "module": "Gateway command",
+    "feature": "get_agent_run",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F071",
+    "module": "Gateway command",
+    "feature": "get_agent_trace",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F072",
+    "module": "Gateway command",
+    "feature": "cancel_agent_run",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F073",
+    "module": "Gateway command",
+    "feature": "knowledge_ingest",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F074",
+    "module": "Gateway command",
+    "feature": "knowledge_search",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F075",
+    "module": "Gateway command",
+    "feature": "knowledge_deindex",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F076",
+    "module": "Gateway command",
+    "feature": "knowledge_integrity",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F077",
+    "module": "Gateway command",
+    "feature": "weekly_summary",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F078",
+    "module": "Gateway command",
+    "feature": "sprint_risks",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F079",
+    "module": "Gateway command",
+    "feature": "get_report",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F080",
+    "module": "Gateway command",
+    "feature": "knowledge_sync_status",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Dedicated Telegram token nhận 403 ENGINEERING_CAPABILITY_REQUIRED. Không mở rộng quyền; chưa nghiệm thu positive path qua token này.",
+    "status": "PARTIAL",
+    "evidence": [
+      "main-integrations.json"
+    ],
+    "level": "MAIN DENIAL",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F081",
+    "module": "Gateway command",
+    "feature": "knowledge_sync_retry",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F082",
+    "module": "Gateway command",
+    "feature": "get_control_center",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Dedicated Telegram token nhận 403 ENGINEERING_CAPABILITY_REQUIRED. Không mở rộng quyền; chưa nghiệm thu positive path qua token này.",
+    "status": "PARTIAL",
+    "evidence": [
+      "main-integrations.json"
+    ],
+    "level": "MAIN DENIAL",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F083",
+    "module": "Gateway command",
+    "feature": "get_execution_monitor",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F084",
+    "module": "Gateway command",
+    "feature": "list_execution_monitors",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Đã đọc qua actual Gateway/Native hoặc owner bridge; chỉ nghiệm thu read path và phạm vi snapshot.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "browser-uat.json",
+      "additional-reads.json"
+    ],
+    "level": "MAIN READ",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F085",
+    "module": "Gateway command",
+    "feature": "owner_inspect",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F086",
+    "module": "Gateway command",
+    "feature": "knowledge_file_ingest",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F087",
+    "module": "Gateway command",
+    "feature": "knowledge_file_search",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F088",
+    "module": "Gateway command",
+    "feature": "knowledge_file_read",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F089",
+    "module": "Gateway command",
+    "feature": "knowledge_incremental_sync",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F090",
+    "module": "Gateway command",
+    "feature": "knowledge_incremental_status",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Dedicated Telegram token nhận 403 ENGINEERING_CAPABILITY_REQUIRED. Không mở rộng quyền; chưa nghiệm thu positive path qua token này.",
+    "status": "PARTIAL",
+    "evidence": [
+      "main-integrations.json"
+    ],
+    "level": "MAIN DENIAL",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F091",
+    "module": "Gateway command",
+    "feature": "knowledge_feedback_submit",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F092",
+    "module": "Gateway command",
+    "feature": "knowledge_feedback_get",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F093",
+    "module": "Gateway command",
+    "feature": "knowledge_feedback_apply",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F094",
+    "module": "Gateway command",
+    "feature": "bug_triage",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F095",
+    "module": "Gateway command",
+    "feature": "bug_propose",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F096",
+    "module": "Gateway command",
+    "feature": "wbs_draft",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F097",
+    "module": "Gateway command",
+    "feature": "wbs_get",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F098",
+    "module": "Gateway command",
+    "feature": "wbs_adopt",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F099",
+    "module": "Gateway command",
+    "feature": "wbs_next",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F100",
+    "module": "Gateway command",
+    "feature": "wbs_from_ba",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F101",
+    "module": "Gateway command",
+    "feature": "qa_evidence_capture",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F102",
+    "module": "Gateway command",
+    "feature": "qa_evidence_get",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F103",
+    "module": "Gateway command",
+    "feature": "qa_transition_prepare",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F104",
+    "module": "Gateway command",
+    "feature": "qa_test_run",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F105",
+    "module": "Gateway command",
+    "feature": "qa_test_get",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F106",
+    "module": "Gateway command",
+    "feature": "qa_evidence_from_run",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F107",
+    "module": "Gateway command",
+    "feature": "qa_evidence_list",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F108",
+    "module": "Gateway command",
+    "feature": "phase_draft",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F109",
+    "module": "Gateway command",
+    "feature": "phase_get",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F110",
+    "module": "Gateway command",
+    "feature": "phase_list",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F111",
+    "module": "Gateway command",
+    "feature": "phase_transition_prepare",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F112",
+    "module": "Gateway command",
+    "feature": "qa_application_proof_verify",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Chưa có invocation MAIN riêng được lưu trong audit; không suy PASS từ health hoặc suite chung.",
+    "status": "NOT TESTED",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE INVENTORY",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F113",
+    "module": "Gateway command",
+    "feature": "qa_application_proof_admit",
+    "source": "openproject/ai/gateway/service.py:30",
+    "method": "isolated contract / authorized read",
+    "expected": "Validated arguments, project/RBAC, honest status and audit; no forbidden MAIN write",
+    "actual": "Không thực hiện mutation mới trên MAIN. Các suites isolated trong REGRESSION_RESULTS không chứng minh live E2E riêng cho action này.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "ISOLATED CONTRACT / NO NEW MAIN WRITE",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F114",
+    "module": "Telegram tool",
+    "feature": "list_projects",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F115",
+    "module": "Telegram tool",
+    "feature": "search_tasks",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "query": {
+          "default": "",
+          "maxLength": 200,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F116",
+    "module": "Telegram tool",
+    "feature": "get_task_details",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F117",
+    "module": "Telegram tool",
+    "feature": "get_project_options",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F118",
+    "module": "Telegram tool",
+    "feature": "get_task_progress",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F119",
+    "module": "Telegram tool",
+    "feature": "get_task_agent_runs",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F120",
+    "module": "Telegram tool",
+    "feature": "get_current_agent",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F121",
+    "module": "Telegram tool",
+    "feature": "get_run_details",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F122",
+    "module": "Telegram tool",
+    "feature": "get_run_errors",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F123",
+    "module": "Telegram tool",
+    "feature": "get_checkpoint_status",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F124",
+    "module": "Telegram tool",
+    "feature": "get_task_artifacts",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F125",
+    "module": "Telegram tool",
+    "feature": "get_github_prs",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F126",
+    "module": "Telegram tool",
+    "feature": "get_review_results",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F127",
+    "module": "Telegram tool",
+    "feature": "get_qa_results",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F128",
+    "module": "Telegram tool",
+    "feature": "search_knowledge",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "query": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F129",
+    "module": "Telegram tool",
+    "feature": "get_worker_status",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F130",
+    "module": "Telegram tool",
+    "feature": "get_queue_status",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F131",
+    "module": "Telegram tool",
+    "feature": "get_system_health",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F132",
+    "module": "Telegram tool",
+    "feature": "get_n8n_status",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F133",
+    "module": "Telegram tool",
+    "feature": "create_task",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Strict schema/confirmation/idempotency contracts isolated; không gọi mutation MAIN.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 6000,
+          "type": "string"
+        },
+        "type_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "title",
+        "type_id"
+      ],
+      "type": "object"
+    },
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F134",
+    "module": "Telegram tool",
+    "feature": "update_task",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Strict schema/confirmation/idempotency contracts isolated; không gọi mutation MAIN.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "title"
+      ],
+      "type": "object"
+    },
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F135",
+    "module": "Telegram tool",
+    "feature": "request_task_execution",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Strict schema/confirmation/idempotency contracts isolated; không gọi mutation MAIN.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F136",
+    "module": "Telegram tool",
+    "feature": "resume_task",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Strict schema/confirmation/idempotency contracts isolated; không gọi mutation MAIN.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "run_id"
+      ],
+      "type": "object"
+    },
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F137",
+    "module": "Telegram tool",
+    "feature": "pause_task",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Strict schema/confirmation/idempotency contracts isolated; không gọi mutation MAIN.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F138",
+    "module": "Telegram tool",
+    "feature": "set_execution_mode",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Strict schema/confirmation/idempotency contracts isolated; không gọi mutation MAIN.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "input_schema": {
+      "properties": {
+        "mode": {
+          "enum": [
+            "OFF",
+            "AUTO",
+            "PAUSED",
+            "RUN_ONCE"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode"
+      ],
+      "type": "object"
+    },
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F139",
+    "module": "Telegram tool",
+    "feature": "request_github_sync",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "contract + live Gateway adapter",
+    "expected": "Authorized user/project; read actual data or exact confirmation; no replay",
+    "actual": "Strict schema/confirmation/idempotency contracts isolated; không gọi mutation MAIN.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "qualification.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F140",
+    "module": "Telegram",
+    "feature": "poller/token/webhook/one-consumer",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Bot35→36 global read/SDK function feedback,32/34 acceptance/count; exact resolved3.5lite; final polling lock and persisted conversation. Reconnect evidence is controlled restart, not arbitrary outage campaign.",
+    "status": "PASS",
+    "evidence": [
+      "telegram-live-global.json",
+      "telegram-live-postfix.json",
+      "final-smoke.json",
+      "integrity-final.json"
+    ],
+    "level": "ACTUAL OWNER LIVE + MAIN RESTART",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F141",
+    "module": "Telegram",
+    "feature": "Vietnamese multi-turn #398",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Bot35→36 global read/SDK function feedback,32/34 acceptance/count; exact resolved3.5lite; final polling lock and persisted conversation. Reconnect evidence is controlled restart, not arbitrary outage campaign.",
+    "status": "PASS",
+    "evidence": [
+      "telegram-live-global.json",
+      "telegram-live-postfix.json",
+      "final-smoke.json",
+      "integrity-final.json"
+    ],
+    "level": "ACTUAL OWNER LIVE + MAIN RESTART",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F142",
+    "module": "Telegram",
+    "feature": "reply notification397 context",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Owner19 Reply to completion16 resolved397 despite old memory391; re-read current durable context. Không gửi notification mới.",
+    "status": "PASS",
+    "evidence": [
+      "../telegram-observer/live-reply-397.json"
+    ],
+    "level": "HISTORICAL OWNER LIVE",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F143",
+    "module": "Telegram",
+    "feature": "pairing/unauthorized/stale/duplicate",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Có kiểm kê source; chưa đủ bằng chứng MAIN riêng cho chức năng này.",
+    "status": "PARTIAL",
+    "evidence": [
+      "telegram-live-global.json",
+      "telegram-live-postfix.json",
+      "final-smoke.json",
+      "integrity-final.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F144",
+    "module": "Telegram",
+    "feature": "restart conversation persistence",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Bot35→36 global read/SDK function feedback,32/34 acceptance/count; exact resolved3.5lite; final polling lock and persisted conversation. Reconnect evidence is controlled restart, not arbitrary outage campaign.",
+    "status": "PASS",
+    "evidence": [
+      "telegram-live-global.json",
+      "telegram-live-postfix.json",
+      "final-smoke.json",
+      "integrity-final.json"
+    ],
+    "level": "ACTUAL OWNER LIVE + MAIN RESTART",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F145",
+    "module": "Telegram",
+    "feature": "network/Gateway reconnect",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Bot35→36 global read/SDK function feedback,32/34 acceptance/count; exact resolved3.5lite; final polling lock and persisted conversation. Reconnect evidence is controlled restart, not arbitrary outage campaign.",
+    "status": "PASS",
+    "evidence": [
+      "telegram-live-global.json",
+      "telegram-live-postfix.json",
+      "final-smoke.json",
+      "integrity-final.json"
+    ],
+    "level": "ACTUAL OWNER LIVE + MAIN RESTART",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F146",
+    "module": "Telegram",
+    "feature": "Gemini exact model/quota/tool feedback",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Bot35→36 global read/SDK function feedback,32/34 acceptance/count; exact resolved3.5lite; final polling lock and persisted conversation. Reconnect evidence is controlled restart, not arbitrary outage campaign.",
+    "status": "PASS",
+    "evidence": [
+      "telegram-live-global.json",
+      "telegram-live-postfix.json",
+      "final-smoke.json",
+      "integrity-final.json"
+    ],
+    "level": "ACTUAL OWNER LIVE + MAIN RESTART",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F147",
+    "module": "Runtime",
+    "feature": "BA/PM planning379→398",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Actual Nov6 execution398/64tests, current terminal history/canonical acceptance. Không chạy lại hoặc dùng fixture làm live run.",
+    "status": "PARTIAL",
+    "evidence": [
+      "../agent-studio-v2-stabilization/demo-final.json",
+      "../agent-studio-v2-stabilization/demo-tests.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "HISTORICAL REAL EXECUTION + CURRENT READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F148",
+    "module": "Runtime",
+    "feature": "Dev398 exact revision",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Actual Nov6 execution398/64tests, current terminal history/canonical acceptance. Không chạy lại hoặc dùng fixture làm live run.",
+    "status": "PARTIAL",
+    "evidence": [
+      "../agent-studio-v2-stabilization/demo-final.json",
+      "../agent-studio-v2-stabilization/demo-tests.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "HISTORICAL REAL EXECUTION + CURRENT READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F149",
+    "module": "Runtime",
+    "feature": "Reviewer398 verdict/rework",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Actual Nov6 execution398/64tests, current terminal history/canonical acceptance. Không chạy lại hoặc dùng fixture làm live run.",
+    "status": "PARTIAL",
+    "evidence": [
+      "../agent-studio-v2-stabilization/demo-final.json",
+      "../agent-studio-v2-stabilization/demo-tests.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "HISTORICAL REAL EXECUTION + CURRENT READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F150",
+    "module": "Runtime",
+    "feature": "QA398 JUnit64",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Actual Nov6 execution398/64tests, current terminal history/canonical acceptance. Không chạy lại hoặc dùng fixture làm live run.",
+    "status": "PARTIAL",
+    "evidence": [
+      "../agent-studio-v2-stabilization/demo-final.json",
+      "../agent-studio-v2-stabilization/demo-tests.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "HISTORICAL REAL EXECUTION + CURRENT READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F151",
+    "module": "Runtime",
+    "feature": "OFF/AUTO/RUN_ONCE guards",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Actual Nov6 execution398/64tests, current terminal history/canonical acceptance. Không chạy lại hoặc dùng fixture làm live run.",
+    "status": "PARTIAL",
+    "evidence": [
+      "../agent-studio-v2-stabilization/demo-final.json",
+      "../agent-studio-v2-stabilization/demo-tests.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "HISTORICAL REAL EXECUTION + CURRENT READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F152",
+    "module": "Runtime",
+    "feature": "checkpoint/resume/idempotency",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Actual Nov6 execution398/64tests, current terminal history/canonical acceptance. Không chạy lại hoặc dùng fixture làm live run.",
+    "status": "PARTIAL",
+    "evidence": [
+      "../agent-studio-v2-stabilization/demo-final.json",
+      "../agent-studio-v2-stabilization/demo-tests.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "HISTORICAL REAL EXECUTION + CURRENT READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F153",
+    "module": "Runtime",
+    "feature": "Owner gates398 vs DONE397",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Actual Nov6 execution398/64tests, current terminal history/canonical acceptance. Không chạy lại hoặc dùng fixture làm live run.",
+    "status": "PARTIAL",
+    "evidence": [
+      "../agent-studio-v2-stabilization/demo-final.json",
+      "../agent-studio-v2-stabilization/demo-tests.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "HISTORICAL REAL EXECUTION + CURRENT READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F154",
+    "module": "Studio",
+    "feature": "CommandCenter entry/Project/Task/deep link",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "3 real stage nodes, Dev file/PR15, task393 empty, browser Back/reload398. RUNNING evidence là Nov6; poll/error/mobile không được claim mới đầy đủ.",
+    "status": "PARTIAL",
+    "evidence": [
+      "browser-uat.json",
+      "../agent-studio-v2-stabilization/demo-final.json"
+    ],
+    "level": "MAIN TERMINAL UI + HISTORICAL RUNNING",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F155",
+    "module": "Studio",
+    "feature": "Explorer/back/forward/reload",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "3 real stage nodes, Dev file/PR15, task393 empty, browser Back/reload398. RUNNING evidence là Nov6; poll/error/mobile không được claim mới đầy đủ.",
+    "status": "PARTIAL",
+    "evidence": [
+      "browser-uat.json",
+      "../agent-studio-v2-stabilization/demo-final.json"
+    ],
+    "level": "MAIN TERMINAL UI + HISTORICAL RUNNING",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F156",
+    "module": "Studio",
+    "feature": "graph/nodes/edges/attempts/runtime/freshness",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "3 real stage nodes, Dev file/PR15, task393 empty, browser Back/reload398. RUNNING evidence là Nov6; poll/error/mobile không được claim mới đầy đủ.",
+    "status": "PARTIAL",
+    "evidence": [
+      "browser-uat.json",
+      "../agent-studio-v2-stabilization/demo-final.json"
+    ],
+    "level": "MAIN TERMINAL UI + HISTORICAL RUNNING",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F157",
+    "module": "Studio",
+    "feature": "Inspector/timeline/artifacts/native/PR links",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "3 real stage nodes, Dev file/PR15, task393 empty, browser Back/reload398. RUNNING evidence là Nov6; poll/error/mobile không được claim mới đầy đủ.",
+    "status": "PARTIAL",
+    "evidence": [
+      "browser-uat.json",
+      "../agent-studio-v2-stabilization/demo-final.json"
+    ],
+    "level": "MAIN TERMINAL UI + HISTORICAL RUNNING",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F158",
+    "module": "Studio",
+    "feature": "poll/error recovery/no stale overwrite",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "3 real stage nodes, Dev file/PR15, task393 empty, browser Back/reload398. RUNNING evidence là Nov6; poll/error/mobile không được claim mới đầy đủ.",
+    "status": "PARTIAL",
+    "evidence": [
+      "browser-uat.json",
+      "../agent-studio-v2-stabilization/demo-final.json"
+    ],
+    "level": "MAIN TERMINAL UI + HISTORICAL RUNNING",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F159",
+    "module": "Studio",
+    "feature": "mobile touch/layout",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "3 real stage nodes, Dev file/PR15, task393 empty, browser Back/reload398. RUNNING evidence là Nov6; poll/error/mobile không được claim mới đầy đủ.",
+    "status": "PARTIAL",
+    "evidence": [
+      "browser-uat.json",
+      "../agent-studio-v2-stabilization/demo-final.json"
+    ],
+    "level": "MAIN TERMINAL UI + HISTORICAL RUNNING",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F160",
+    "module": "Command Center",
+    "feature": "Mission Control/queue/current run",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "9tabs,6roles, actual loaded run inspector, rendered/raw/export report. Không bấm controls gây mutation.",
+    "status": "PASS",
+    "evidence": [
+      "browser-uat.json"
+    ],
+    "level": "MAIN UI READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F161",
+    "module": "Command Center",
+    "feature": "Workforce roles/availability",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "9tabs,6roles, actual loaded run inspector, rendered/raw/export report. Không bấm controls gây mutation.",
+    "status": "PASS",
+    "evidence": [
+      "browser-uat.json"
+    ],
+    "level": "MAIN UI READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F162",
+    "module": "Command Center",
+    "feature": "Intake/control actions/gates",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "9tabs,6roles, actual loaded run inspector, rendered/raw/export report. Không bấm controls gây mutation.",
+    "status": "BLOCKED BY AUTHORIZATION",
+    "evidence": [
+      "browser-uat.json"
+    ],
+    "level": "MAIN UI READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F163",
+    "module": "Command Center",
+    "feature": "Reports/Analysis/read/export/audit",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "9tabs,6roles, actual loaded run inspector, rendered/raw/export report. Không bấm controls gây mutation.",
+    "status": "PASS",
+    "evidence": [
+      "browser-uat.json"
+    ],
+    "level": "MAIN UI READ",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F164",
+    "module": "OpenProject",
+    "feature": "projects/search/details/journals/parent",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Projects5/6, Native task398v10, unauthorized/cross-project denial; full project5/roles/workflows fingerprints unchanged. Chưa thực hiện CRUD mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "main-integrations.json",
+      "integrity-final.json"
+    ],
+    "level": "MAIN READ / ACL",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F165",
+    "module": "OpenProject",
+    "feature": "members/ACL/workflow status",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Projects5/6, Native task398v10, unauthorized/cross-project denial; full project5/roles/workflows fingerprints unchanged. Chưa thực hiện CRUD mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "main-integrations.json",
+      "integrity-final.json"
+    ],
+    "level": "MAIN READ / ACL",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F166",
+    "module": "GitHub",
+    "feature": "auth/repository/branch/commit/PR15",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "PR15OPEN/head7cea/one test file+17; AI review PASS/QA64. Remote CI checks0, human reviews0; không claim remote CI PASS.",
+    "status": "PARTIAL",
+    "evidence": [
+      "github-pr15.json",
+      "github-pr15.diff",
+      "semantic-read-checks.json"
+    ],
+    "level": "MAIN READ + HISTORICAL AI REVIEW",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F167",
+    "module": "GitHub",
+    "feature": "review/CI/provenance/state sync",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "PR15OPEN/head7cea/one test file+17; AI review PASS/QA64. Remote CI checks0, human reviews0; không claim remote CI PASS.",
+    "status": "PARTIAL",
+    "evidence": [
+      "github-pr15.json",
+      "github-pr15.diff",
+      "semantic-read-checks.json"
+    ],
+    "level": "MAIN READ + HISTORICAL AI REVIEW",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F168",
+    "module": "RAG",
+    "feature": "known-document lexical/semantic/citations",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Known398/384/390 và negative lexical queries, live NativeACL/version/citations. Answerability UNVERIFIED_RETRIEVAL, semantic quality gate chưa đạt. Một UAT lượt trước không có results; probe/rerun thành công, root cause chưa chốt.",
+    "status": "PARTIAL",
+    "evidence": [
+      "rag-main-queries.json",
+      "browser-uat.json",
+      "rag-recovery-probe.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "MAIN RETRIEVAL / UNQUALIFIED ANSWERABILITY",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F169",
+    "module": "RAG",
+    "feature": "project/role/actor isolation",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Known398/384/390 và negative lexical queries, live NativeACL/version/citations. Answerability UNVERIFIED_RETRIEVAL, semantic quality gate chưa đạt. Một UAT lượt trước không có results; probe/rerun thành công, root cause chưa chốt.",
+    "status": "PARTIAL",
+    "evidence": [
+      "rag-main-queries.json",
+      "browser-uat.json",
+      "rag-recovery-probe.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "MAIN RETRIEVAL / UNQUALIFIED ANSWERABILITY",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F170",
+    "module": "RAG",
+    "feature": "index/sync/storage/recovery",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Known398/384/390 và negative lexical queries, live NativeACL/version/citations. Answerability UNVERIFIED_RETRIEVAL, semantic quality gate chưa đạt. Một UAT lượt trước không có results; probe/rerun thành công, root cause chưa chốt.",
+    "status": "PARTIAL",
+    "evidence": [
+      "rag-main-queries.json",
+      "browser-uat.json",
+      "rag-recovery-probe.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "MAIN RETRIEVAL / UNQUALIFIED ANSWERABILITY",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F171",
+    "module": "RAG",
+    "feature": "Telegram knowledge adapter/report integration",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Known398/384/390 và negative lexical queries, live NativeACL/version/citations. Answerability UNVERIFIED_RETRIEVAL, semantic quality gate chưa đạt. Một UAT lượt trước không có results; probe/rerun thành công, root cause chưa chốt.",
+    "status": "PARTIAL",
+    "evidence": [
+      "rag-main-queries.json",
+      "browser-uat.json",
+      "rag-recovery-probe.json",
+      "semantic-read-checks.json"
+    ],
+    "level": "MAIN RETRIEVAL / UNQUALIFIED ANSWERABILITY",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F172",
+    "module": "Notifications",
+    "feature": "N01 completed397",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "7 durable SENT, completion397msg16, awaiting398msg22; không398TASK_COMPLETED. Offline/retry/duplicate contract isolated, không gây outage hay gửi mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "notification-main-history.json",
+      "../telegram-observer/live-reply-397.json",
+      "qualification.json"
+    ],
+    "level": "HISTORICAL DELIVERY / ISOLATED FAILURE CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F173",
+    "module": "Notifications",
+    "feature": "N02 dev-only no completion",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "7 durable SENT, completion397msg16, awaiting398msg22; không398TASK_COMPLETED. Offline/retry/duplicate contract isolated, không gây outage hay gửi mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "notification-main-history.json",
+      "../telegram-observer/live-reply-397.json",
+      "qualification.json"
+    ],
+    "level": "HISTORICAL DELIVERY / ISOLATED FAILURE CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F174",
+    "module": "Notifications",
+    "feature": "N03 QA_FAILED",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "7 durable SENT, completion397msg16, awaiting398msg22; không398TASK_COMPLETED. Offline/retry/duplicate contract isolated, không gây outage hay gửi mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "notification-main-history.json",
+      "../telegram-observer/live-reply-397.json",
+      "qualification.json"
+    ],
+    "level": "HISTORICAL DELIVERY / ISOLATED FAILURE CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F175",
+    "module": "Notifications",
+    "feature": "N04 BLOCKED",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "7 durable SENT, completion397msg16, awaiting398msg22; không398TASK_COMPLETED. Offline/retry/duplicate contract isolated, không gây outage hay gửi mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "notification-main-history.json",
+      "../telegram-observer/live-reply-397.json",
+      "qualification.json"
+    ],
+    "level": "HISTORICAL DELIVERY / ISOLATED FAILURE CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F176",
+    "module": "Notifications",
+    "feature": "N05 awaiting owner398",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "7 durable SENT, completion397msg16, awaiting398msg22; không398TASK_COMPLETED. Offline/retry/duplicate contract isolated, không gây outage hay gửi mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "notification-main-history.json",
+      "../telegram-observer/live-reply-397.json",
+      "qualification.json"
+    ],
+    "level": "HISTORICAL DELIVERY / ISOLATED FAILURE CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F177",
+    "module": "Notifications",
+    "feature": "N06 n8n offline/retry",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "7 durable SENT, completion397msg16, awaiting398msg22; không398TASK_COMPLETED. Offline/retry/duplicate contract isolated, không gây outage hay gửi mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "notification-main-history.json",
+      "../telegram-observer/live-reply-397.json",
+      "qualification.json"
+    ],
+    "level": "HISTORICAL DELIVERY / ISOLATED FAILURE CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F178",
+    "module": "Notifications",
+    "feature": "N07 Telegram offline/persistence",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "7 durable SENT, completion397msg16, awaiting398msg22; không398TASK_COMPLETED. Offline/retry/duplicate contract isolated, không gây outage hay gửi mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "notification-main-history.json",
+      "../telegram-observer/live-reply-397.json",
+      "qualification.json"
+    ],
+    "level": "HISTORICAL DELIVERY / ISOLATED FAILURE CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F179",
+    "module": "Notifications",
+    "feature": "N08 duplicate semantics",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "7 durable SENT, completion397msg16, awaiting398msg22; không398TASK_COMPLETED. Offline/retry/duplicate contract isolated, không gây outage hay gửi mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "notification-main-history.json",
+      "../telegram-observer/live-reply-397.json",
+      "qualification.json"
+    ],
+    "level": "HISTORICAL DELIVERY / ISOLATED FAILURE CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F180",
+    "module": "Notifications",
+    "feature": "N09 reply context",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "7 durable SENT, completion397msg16, awaiting398msg22; không398TASK_COMPLETED. Offline/retry/duplicate contract isolated, không gây outage hay gửi mới.",
+    "status": "PARTIAL",
+    "evidence": [
+      "notification-main-history.json",
+      "../telegram-observer/live-reply-397.json",
+      "qualification.json"
+    ],
+    "level": "HISTORICAL DELIVERY / ISOLATED FAILURE CONTRACT",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F181",
+    "module": "Operations",
+    "feature": "startup/restart policy/persistence/networks",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Image-only controlled rollouts; OFF/idle; same data/config; no replay; default bot tag final qualified image.",
+    "status": "PASS",
+    "evidence": [
+      "bot-deployment.json",
+      "core-candidate-v2/deployment.json",
+      "integrity-final.json",
+      "final-smoke.json"
+    ],
+    "level": "MAIN CONTROLLED RESTART + INTEGRITY",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F182",
+    "module": "Operations",
+    "feature": "controlled Telegram/Gateway restart/no replay",
+    "source": "Source + linked evidence",
+    "method": "component/integration/UI/historical/live as applicable",
+    "expected": "Functional behavior, distinguish evidence levels",
+    "actual": "Image-only controlled rollouts; OFF/idle; same data/config; no replay; default bot tag final qualified image.",
+    "status": "PASS",
+    "evidence": [
+      "bot-deployment.json",
+      "core-candidate-v2/deployment.json",
+      "integrity-final.json",
+      "final-smoke.json"
+    ],
+    "level": "MAIN CONTROLLED RESTART + INTEGRITY",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F183",
+    "module": "Gateway route",
+    "feature": "GET /internal/automation/status",
+    "source": "actual MAIN /api/v1/openapi.json",
+    "method": "schema + contract (no unsafe MAIN request)",
+    "expected": {
+      "security": [
+        {
+          "machineStatusAuth": []
+        }
+      ],
+      "inputs": null,
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "429"
+      ]
+    },
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F184",
+    "module": "Gateway route",
+    "feature": "GET /internal/automation/monitor",
+    "source": "actual MAIN /api/v1/openapi.json",
+    "method": "schema + contract (no unsafe MAIN request)",
+    "expected": {
+      "security": [
+        {
+          "machineStatusAuth": []
+        }
+      ],
+      "inputs": null,
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "503"
+      ]
+    },
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F185",
+    "module": "Gateway route",
+    "feature": "POST /internal/automation/commands",
+    "source": "actual MAIN /api/v1/openapi.json",
+    "method": "schema + contract (no unsafe MAIN request)",
+    "expected": {
+      "security": [
+        {
+          "machineStatusAuth": []
+        }
+      ],
+      "inputs": [
+        {
+          "name": "x-qldapm-command-signature",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "version": {
+                  "const": 1,
+                  "title": "Version",
+                  "type": "integer"
+                },
+                "kind": {
+                  "enum": [
+                    "status",
+                    "daily_brief",
+                    "weekly_summary",
+                    "workflow_error"
+                  ],
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "request_key": {
+                  "maxLength": 100,
+                  "minLength": 16,
+                  "pattern": "^[A-Za-z0-9:_-]+$",
+                  "title": "Request Key",
+                  "type": "string"
+                },
+                "nonce": {
+                  "maxLength": 100,
+                  "minLength": 16,
+                  "pattern": "^[A-Za-z0-9:_-]+$",
+                  "title": "Nonce",
+                  "type": "string"
+                },
+                "issued_at": {
+                  "maximum": 999999999999,
+                  "minimum": 0,
+                  "title": "Issued At",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "version",
+                "kind",
+                "request_key",
+                "nonce",
+                "issued_at"
+              ],
+              "title": "AutomationCommand",
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "413",
+        "422",
+        "429"
+      ]
+    },
+    "actual": "Route/HTTP contract nằm trong gateway-openapi.json và source; Main evidence chỉ áp dụng request đã ghi nhận.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F186",
+    "module": "n8n workflow",
+    "feature": "QLDAPM — Telegram Agent Notifications",
+    "source": "MAIN n8n workflow_entity bDpuIXfCgEkVOb7B",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F187",
+    "module": "n8n workflow",
+    "feature": "WF01: Local Document Ingestion",
+    "source": "MAIN n8n workflow_entity X2O2QdPY6QLOrWqL",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F188",
+    "module": "n8n workflow",
+    "feature": "WF02: OpenProject Event Sync",
+    "source": "MAIN n8n workflow_entity Anl8LNdN4NNTKRpe",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F189",
+    "module": "n8n workflow",
+    "feature": "WF03: Natural Language Request Orchestrator",
+    "source": "MAIN n8n workflow_entity XoP4M520TMG3WgeY",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F190",
+    "module": "n8n workflow",
+    "feature": "WF04: Multi-Agent Execution Tracking",
+    "source": "MAIN n8n workflow_entity elfapV5D2PTnLiHW",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F191",
+    "module": "n8n workflow",
+    "feature": "WF05: Native API Approval Workflow",
+    "source": "MAIN n8n workflow_entity xCZFw45fmDQG5gNq",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F192",
+    "module": "n8n workflow",
+    "feature": "WF06: Native API Execution & Verification",
+    "source": "MAIN n8n workflow_entity Jq18aFSqfuUybEic",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F193",
+    "module": "n8n workflow",
+    "feature": "WF07: Daily Project Brief",
+    "source": "MAIN n8n workflow_entity BpCQrGR866vg4BqQ",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F194",
+    "module": "n8n workflow",
+    "feature": "WF08: Sprint Risk",
+    "source": "MAIN n8n workflow_entity RXWjVUL8ozqhjY4w",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F195",
+    "module": "n8n workflow",
+    "feature": "WF09: Bug Lifecycle Automation",
+    "source": "MAIN n8n workflow_entity tOyBIPw6sGjgzjtU",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F196",
+    "module": "n8n workflow",
+    "feature": "WF10: Task Orchestration & Decomposition",
+    "source": "MAIN n8n workflow_entity tOY7QUa9SrWPOe9e",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F197",
+    "module": "n8n workflow",
+    "feature": "WF11: QA Gate Transition",
+    "source": "MAIN n8n workflow_entity LeRVT3LWNBkJ2iz3",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F198",
+    "module": "n8n workflow",
+    "feature": "WF12: Weekly Summary",
+    "source": "MAIN n8n workflow_entity ZkgS8RZbPRA2zbhQ",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F199",
+    "module": "n8n workflow",
+    "feature": "WF13: Second Brain RAG Re-indexing",
+    "source": "MAIN n8n workflow_entity 2tr0jpqaaAiq9IOU",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F200",
+    "module": "n8n workflow",
+    "feature": "WF14: Durable RAG Recovery",
+    "source": "MAIN n8n workflow_entity 8ycOUQy9gtT60nkN",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F201",
+    "module": "n8n workflow",
+    "feature": "WF15: Reconciliation & Drift Detection",
+    "source": "MAIN n8n workflow_entity NLugfE3U8dBS88Wg",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F202",
+    "module": "n8n workflow",
+    "feature": "WF16: Main Health Monitoring",
+    "source": "MAIN n8n workflow_entity 5FRYNPSot18UDpKa",
+    "method": "MAIN inventory/history + isolated contracts",
+    "expected": "Authorized trigger/input/output/error branch/idempotency and actual outcome",
+    "actual": "Active workflow thật; auth/inputs/targets/error/retry contracts + history refs. Không trigger mới từng business branch; history success không tự chứng minh side effect.",
+    "status": "PARTIAL",
+    "evidence": [
+      "n8n-inventory.json",
+      "n8n-contracts.json"
+    ],
+    "level": "DEPLOYED CONTRACT + HISTORICAL EXECUTIONS",
+    "input_output": "Typed/sanitized evidence packet referenced below",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F203",
+    "module": "Telegram tool",
+    "feature": "get_active_agents",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "Actual read adapter + isolated contract",
+    "expected": "Scoped current-state Observer response, no history inference",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F204",
+    "module": "Telegram tool",
+    "feature": "get_blocked_tasks",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "Actual read adapter + isolated contract",
+    "expected": "Scoped current-state Observer response, no history inference",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F205",
+    "module": "Telegram tool",
+    "feature": "get_pending_approvals",
+    "source": "openproject/ai/telegram-ai/app/tools.py",
+    "method": "Actual read adapter + isolated contract",
+    "expected": "Scoped current-state Observer response, no history inference",
+    "actual": "Actual ToolExecutor → Gateway → Native/Observer; không đồng nghĩa mọi natural-language phrasing đã qua Gemini.",
+    "status": "PASS",
+    "evidence": [
+      "main-integrations.json",
+      "semantic-read-checks.json",
+      "additional-reads.json"
+    ],
+    "input_schema": {
+      "properties": {},
+      "type": "object"
+    },
+    "level": "MAIN ADAPTER READ",
+    "input_output": "Tool schema: telegram-tool-schemas.json",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  },
+  {
+    "id": "F206",
+    "module": "Gateway MCP",
+    "feature": "97 action tools, filtered by role, /mcp transport",
+    "source": "openproject/ai/gateway/app.py:142",
+    "method": "Source inventory + isolated MCP transport tests",
+    "expected": "Same Service validation/RBAC, no alternate mutation path",
+    "actual": "97 names mirror Command enum; isolated StreamableHTTP/session/deny tests. Không dùng session MCP MAIN mới trong audit.",
+    "status": "PARTIAL",
+    "evidence": [
+      "qualification.json"
+    ],
+    "level": "SOURCE / ISOLATED CONTRACT",
+    "input_output": "Command/HTTP schema: gateway-openapi.json; Service validates arguments",
+    "risk_error": "Current project/RBAC; explicit error/unknown; bounded source window. Mutation requires exact approval; no automatic replay."
+  }
+]

@@ -1,0 +1,416 @@
+- generic: Mở liên kết trong tab mới
+- banner:
+  - link "Nhấn vào đây để bỏ qua menu và đi tới nội dung":
+    - /url: ""
+    - text: Chuyển đến nội dung
+  - navigation "Trình đơn trên cùng":
+    - button "Mô-đun toàn cầu":
+    - link "Trang chủ":
+      - /url: http://localhost:8088/
+  - search "Tìm kiếm trong OpenProject":
+    - button "tìm kiếm":
+      - generic: 
+    - generic: Tìm kiếm trong OpenProject
+    - combobox "Tìm kiếm trong OpenProject"
+    - status
+  - button "Thêm vào…":
+    - img "Thêm vào…"
+  - link "thông báo":
+    - /url: /notifications
+  - button "Trợ giúp":
+  - button "Trình đơn người dùng":
+    - img "Trình đơn người dùng": QB
+- navigation "Menu bên":
+  - button "Thu gọn menu dự án" [expanded]:
+  - button "QLDAPM — Local Community":
+    - generic: QLDAPM — Local Community
+  - button "Thu gọn menu dự án" [expanded]:
+  - separator
+  - list:
+    - link "Quay lại một cấp độ menu":
+      - /url: "#"
+    - link "bảng":
+      - /url: http://localhost:8088/projects/qldapm-local/boards
+    - list:
+      - generic: Tìm kiếm
+      - textbox "Tìm kiếm":
+        - /placeholder: Tìm kiếm theo tên
+      - button "công khai":
+        - text: công khai
+        - generic: 
+      - list:
+        - link "QLDAPM Basic — manual status":
+          - /url: /projects/qldapm-local/boards/8
+          - generic: QLDAPM Basic — manual status
+        - link "QLDAPM — Epic Breakdown & Subtasks Board":
+          - /url: /projects/qldapm-local/boards/12
+          - generic: QLDAPM — Epic Breakdown & Subtasks Board
+        - link "QLDAPM — Main Scrum Kanban Board":
+          - /url: /projects/qldapm-local/boards/10
+          - generic: QLDAPM — Main Scrum Kanban Board
+        - link "QLDAPM — Roadmap & Milestone Board":
+          - /url: /projects/qldapm-local/boards/13
+          - generic: QLDAPM — Roadmap & Milestone Board
+        - link "QLDAPM — Team Workload & Assignee Board":
+          - /url: /projects/qldapm-local/boards/11
+          - generic: QLDAPM — Team Workload & Assignee Board
+      - link "bảng":
+        - /url: /projects/qldapm-local/boards/new
+        - generic: bảng
+- main:
+  - heading "Nội dung" [level=1]
+  - navigation "vụn bánh mì":
+    - list:
+      - link "QLDAPM — Local Community":
+        - /url: /projects/qldapm-local
+      - link "bảng":
+        - /url: /projects/qldapm-local/boards
+      - 'link "công khai: QLDAPM — Epic Breakdown & Subtasks Board"':
+        - /url: "#"
+  - heading "QLDAPM — Epic Breakdown & Subtasks Board" [level=2]:
+    - textbox "Nhấp vào chỉnh sửa tiêu đề của trình bày này. Nhấn enter để lưu.":
+      - /placeholder: Tên của trình bày
+      - text: QLDAPM — Epic Breakdown & Subtasks Board
+  - list:
+    - button "kích hoạt bộ lọc":
+      - generic: 
+      - text: bộ lọc
+      - generic: "0"
+    - button "Kích hoạt chế độ zen":
+      - generic: 
+    - button "hơn thế nữa":
+      - generic: 
+  - generic: 
+  - heading "Gói công việc của phụ huynh EpicTài khoản & Role (#38)" [level=2]:
+    - text: Gói công việc của phụ huynh
+    - text: Epic
+    - link "Tài khoản & Role (#38)":
+      - /url: /work_packages/38
+  - heading [level=3]
+  - button "Thêm thẻ":
+    - generic: 
+  - 'button "- QLDAPM — Local Community #49 TaskAUTH-01 — Đăng ký bằng email và mật khẩu Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#49":
+      - /url: /projects/qldapm-local/work_packages/49/activity
+    - generic: TaskAUTH-01 — Đăng ký bằng email và mật khẩu
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #50 TaskAUTH-02 — Đăng nhập Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#50":
+      - /url: /projects/qldapm-local/work_packages/50/activity
+    - generic: TaskAUTH-02 — Đăng nhập
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #51 TaskAUTH-03 — Đăng xuất Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#51":
+      - /url: /projects/qldapm-local/work_packages/51/activity
+    - generic: TaskAUTH-03 — Đăng xuất
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #52 TaskAUTH-04 — Gán hoặc thay đổi Role của thành viên Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#52":
+      - /url: /projects/qldapm-local/work_packages/52/activity
+    - generic: TaskAUTH-04 — Gán hoặc thay đổi Role của thành viên
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #53 TaskAUTH-05 — Chỉ thấy menu, dữ liệu và hành động đúng Role Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#53":
+      - /url: /projects/qldapm-local/work_packages/53/activity
+    - generic: TaskAUTH-05 — Chỉ thấy menu, dữ liệu và hành động đúng Role
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - generic: 
+  - heading "Gói công việc của phụ huynh EpicQuản lý Project (#39)" [level=2]:
+    - text: Gói công việc của phụ huynh
+    - text: Epic
+    - link "Quản lý Project (#39)":
+      - /url: /work_packages/39
+  - heading [level=3]
+  - button "Thêm thẻ":
+    - generic: 
+  - 'button "- QLDAPM — Local Community #54 TaskPRJ-01 — Tạo Project với tên, mô tả và thời gian dự kiến Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#54":
+      - /url: /projects/qldapm-local/work_packages/54/activity
+    - generic: TaskPRJ-01 — Tạo Project với tên, mô tả và thời gian dự kiến
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #55 TaskPRJ-02 — Xem danh sách và chi tiết Project Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#55":
+      - /url: /projects/qldapm-local/work_packages/55/activity
+    - generic: TaskPRJ-02 — Xem danh sách và chi tiết Project
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #56 TaskPRJ-03 — Chỉnh sửa thông tin Project Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#56":
+      - /url: /projects/qldapm-local/work_packages/56/activity
+    - generic: TaskPRJ-03 — Chỉnh sửa thông tin Project
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #57 TaskPRJ-04 — Thêm thành viên vào Project Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#57":
+      - /url: /projects/qldapm-local/work_packages/57/activity
+    - generic: TaskPRJ-04 — Thêm thành viên vào Project
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #58 TaskPRJ-05 — Gỡ thành viên khỏi Project Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#58":
+      - /url: /projects/qldapm-local/work_packages/58/activity
+    - generic: TaskPRJ-05 — Gỡ thành viên khỏi Project
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #59 TaskPRJ-06 — Xóa Project không còn sử dụng Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#59":
+      - /url: /projects/qldapm-local/work_packages/59/activity
+    - generic: TaskPRJ-06 — Xóa Project không còn sử dụng
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - generic: 
+  - heading "Gói công việc của phụ huynh EpicBacklog (#40)" [level=2]:
+    - text: Gói công việc của phụ huynh
+    - text: Epic
+    - link "Backlog (#40)":
+      - /url: /work_packages/40
+  - heading [level=3]
+  - button "Thêm thẻ":
+    - generic: 
+  - 'button "- QLDAPM — Local Community #60 TaskBLG-01 — Xem Backlog Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#60":
+      - /url: /projects/qldapm-local/work_packages/60/activity
+    - generic: TaskBLG-01 — Xem Backlog
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #61 TaskBLG-02 — Tạo User Story hoặc Task trực tiếp trong Backlog Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#61":
+      - /url: /projects/qldapm-local/work_packages/61/activity
+    - generic: TaskBLG-02 — Tạo User Story hoặc Task trực tiếp trong Backlog
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #62 TaskBLG-03 — Sắp xếp thứ tự Backlog Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#62":
+      - /url: /projects/qldapm-local/work_packages/62/activity
+    - generic: TaskBLG-03 — Sắp xếp thứ tự Backlog
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #63 TaskBLG-04 — Tìm kiếm và lọc Backlog Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#63":
+      - /url: /projects/qldapm-local/work_packages/63/activity
+    - generic: TaskBLG-04 — Tìm kiếm và lọc Backlog
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #64 TaskBLG-05 — Đưa item từ Backlog vào Sprint lập kế hoạch Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#64":
+      - /url: /projects/qldapm-local/work_packages/64/activity
+    - generic: TaskBLG-05 — Đưa item từ Backlog vào Sprint lập kế hoạch
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - generic: 
+  - heading "Gói công việc của phụ huynh EpicSprint (#41)" [level=2]:
+    - text: Gói công việc của phụ huynh
+    - text: Epic
+    - link "Sprint (#41)":
+      - /url: /work_packages/41
+  - heading [level=3]
+  - button "Thêm thẻ":
+    - generic: 
+  - 'button "- QLDAPM — Local Community #65 TaskSPR-01 — Tạo Sprint với tên, thời gian và mục tiêu Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#65":
+      - /url: /projects/qldapm-local/work_packages/65/activity
+    - generic: TaskSPR-01 — Tạo Sprint với tên, thời gian và mục tiêu
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #66 TaskSPR-02 — Chỉnh sửa Sprint đang lập kế hoạch Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#66":
+      - /url: /projects/qldapm-local/work_packages/66/activity
+    - generic: TaskSPR-02 — Chỉnh sửa Sprint đang lập kế hoạch
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #67 TaskSPR-03 — Bắt đầu Sprint Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#67":
+      - /url: /projects/qldapm-local/work_packages/67/activity
+    - generic: TaskSPR-03 — Bắt đầu Sprint
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #68 TaskSPR-04 — Xem thông tin Sprint Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#68":
+      - /url: /projects/qldapm-local/work_packages/68/activity
+    - generic: TaskSPR-04 — Xem thông tin Sprint
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #69 TaskSPR-05 — Đóng Sprint Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#69":
+      - /url: /projects/qldapm-local/work_packages/69/activity
+    - generic: TaskSPR-05 — Đóng Sprint
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - generic: 
+  - heading "Gói công việc của phụ huynh EpicTask / User Story (#42)" [level=2]:
+    - text: Gói công việc của phụ huynh
+    - text: Epic
+    - link "Task / User Story (#42)":
+      - /url: /work_packages/42
+  - heading [level=3]
+  - button "Thêm thẻ":
+    - generic: 
+  - 'button "- QLDAPM — Local Community #70 TaskTSK-01 — Tạo Task/User Story Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#70":
+      - /url: /projects/qldapm-local/work_packages/70/activity
+    - generic: TaskTSK-01 — Tạo Task/User Story
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #71 TaskTSK-02 — Xem chi tiết Task/User Story Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#71":
+      - /url: /projects/qldapm-local/work_packages/71/activity
+    - generic: TaskTSK-02 — Xem chi tiết Task/User Story
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #72 TaskTSK-03 — Chỉnh sửa Task/User Story Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#72":
+      - /url: /projects/qldapm-local/work_packages/72/activity
+    - generic: TaskTSK-03 — Chỉnh sửa Task/User Story
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #73 TaskTSK-04 — Gán Task/User Story cho thành viên Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#73":
+      - /url: /projects/qldapm-local/work_packages/73/activity
+    - generic: TaskTSK-04 — Gán Task/User Story cho thành viên
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - 'button "- QLDAPM — Local Community #74 TaskTSK-05 — Xóa Task/User Story không còn giá trị Trạng thái chỉnh sửa của nhóm công việc Gói công việc này được giao cho QLDAPM PM"':
+    - button "Mở thông tin chi tiết xem":
+      - generic: 
+    - generic: "- QLDAPM — Local Community"
+    - link "#74":
+      - /url: /projects/qldapm-local/work_packages/74/activity
+    - generic: TaskTSK-05 — Xóa Task/User Story không còn giá trị
+    - button "Trạng thái chỉnh sửa của nhóm công việc":
+      - generic: NEW
+      - generic: 
+    - img "Gói công việc này được giao cho QLDAPM PM": QP
+  - button "Thêm danh sách vào bảng":
+    - generic: 
+    - text: Thêm danh sách vào bảng

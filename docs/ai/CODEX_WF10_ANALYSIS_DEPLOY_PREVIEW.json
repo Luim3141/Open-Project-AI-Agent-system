@@ -1,0 +1,61 @@
+{
+  "observed_at": "2026-10-24T21:50:02.056479+00:00",
+  "status": "OFFLINE_QUALIFIED_READY_SCOPED_DEPLOY",
+  "candidate_tag": "qldapm-ai:codex-wbs-analysis-20261025",
+  "candidate_image": "sha256:e549e3df34f2a6791e78e4d7ca1cd98980b5b2d80ab2cb39f3bd512301595667",
+  "parent_image": "sha256:169e2eb3eb1a51e3bb07b3263943563197786a5515da8f9d659f4246a4db6190",
+  "rollback_tag": "qldapm-ai:codex-native-qa-20261025",
+  "changed_gateway_files": {
+    "native_wbs.py": {
+      "before_sha256": "08fcc4bbab03d410dd27dfaaa254506a3f962f004477c5c4a7a3264377b7b7ea",
+      "after_sha256": "4a5bfc199d1aa8aee4288a5e72af69aafb271fe8d99cd727879cafaf99abe65a"
+    },
+    "service.py": {
+      "before_sha256": "2e1d01f293cb6bd9f5543708a408c15f808289c0796f786fac1f17cea699dfe4",
+      "after_sha256": "d59b0f5078c643270c1e53f83a9db73572296914a212eb639b83c612fe3b51e4"
+    },
+    "store.py": {
+      "before_sha256": "7705069321519f922ee5c4dac01f620ee86065de0c735c953839cbad613cc205",
+      "after_sha256": "50f2e04a6694dabe6f2232d1eee34dc32c499bbdb3eb3934fb64f87079930d65"
+    },
+    "catalog.py": {
+      "before_sha256": "1bddf610be7c24e778c3144cf8572185589f05f63763b7f82e4d149582a692bc",
+      "after_sha256": "cde5070f50b85265a215fc899761a6891c756eea0af6af01ff212412882e7f92"
+    },
+    "live_agents.py": {
+      "before_sha256": "5d66a3167e7f01e143714203c48efebf69ad1608bb51cff5afce3994e3ab248d",
+      "after_sha256": "c313ea1d1a7a3e0a924969660799378e0f5f35c50496cd8e2ae828bf2a35202f"
+    },
+    "business_runs.py": {
+      "before_sha256": "737dcf93808fe09c058c0eccd5d6459af2e166d0841cdc13b7e96bdde90e0e43",
+      "after_sha256": "af1e8cfecc1ade840b32d22b6c5b92d1c700c2d13237c7d0e49c8dc04e142c00"
+    },
+    "wbs_analysis.py": {
+      "before_sha256": null,
+      "after_sha256": "cf578880be2deeda9a66ef1b3a616359c818f420b5f2c37183ebbf9a0c55c41a"
+    }
+  },
+  "changed_workflows": [
+    "WF10"
+  ],
+  "workflow_id": "tOY7QUa9SrWPOe9e",
+  "workflow_before_version": "9dc0c360-8022-443d-9683-4ac1002b387a",
+  "workflow_definition_sha256": "fe242b77cbf9652a7108e9d80847be16e596bc218d052f15c7d7c6977a61ea3c",
+  "qualification": {
+    "windows_passed": 399,
+    "image_passed": 388,
+    "node_tests_skipped_image": 11,
+    "node_tests_passed_windows": 11
+  },
+  "core_changes": false,
+  "native_writes": 0,
+  "model_starts": 0,
+  "database_schema_changes": false,
+  "staging_operations": false,
+  "private_snapshot": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-20261025-continuation",
+  "limitations": [
+    "Native relation writes not part of this deployment",
+    "Date-derived ancestor effects remain fail-closed until separately qualified",
+    "Gemini structured WBS SDK protocol is mock-qualified, no new live model call"
+  ]
+}

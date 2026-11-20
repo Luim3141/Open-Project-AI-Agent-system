@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-26T17:03:06.270681+00:00",
+  "status": "ROLLED_BACK_APP_ONLY_AFTER_OPERATOR_TABLE_NAME_ERROR",
+  "cause": "Operator harness used nonexistent gemini_usage_reservations; actual table is gemini_usage. Business preservation assertions remain unchanged.",
+  "app_regression_demonstrated": false,
+  "native_mutations": 0,
+  "knowledge_all_rows_preserved": true,
+  "native_and_existing_gateway_preservation_before_harness_error": "PASS in rollout script prior to failing operator query",
+  "runtime": {
+    "qldapm-ai-gateway-1": {
+      "id": "e01414150f3d53d1437ab26944ab0df9ab5e3ad9d3aa1ab66a3da2a775300f37",
+      "image": "sha256:ffe20cad40e7506b6accfae22665f4e543aa627b6da5f2272a1177206e7edd6b",
+      "started": "2026-10-26T16:29:05.073601487Z"
+    },
+    "qldapm-openproject-web-1": {
+      "id": "fa6c152d4f9d86626a41142468a38f638099b4a91509eaa172eeed6bb18846eb",
+      "image": "sha256:545e498a70a7d61103f6356cc726d12defab7df90da2c41bb9a2d97f6982e22c",
+      "started": "2026-10-26T16:29:08.300011918Z"
+    }
+  },
+  "additive_gateway_phase_tables": "Retained empty; no DB restore",
+  "remaining": "Correct operator SQL and rebackup current identities; apply only after identity-pinned clones finish"
+}

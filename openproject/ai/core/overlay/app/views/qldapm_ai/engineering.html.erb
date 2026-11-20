@@ -1,0 +1,8 @@
+<%# QLDAPM AI Engineering — Master Router Template (Phase 2.9) %>
+<% html_title "AI Engineering Command Center — #{@project.name}" %>
+
+<% if @ui_mode == 'classic' %>
+  <%= render 'engineering_classic' %>
+<% else %>
+  <%= render 'engineering_command_center' %>
+<% end %>

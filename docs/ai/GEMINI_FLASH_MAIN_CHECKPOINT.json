@@ -1,0 +1,101 @@
+{
+  "checkpoint_id": "gemini-flash-main-checkpoint-20261027-035500",
+  "timestamp": "2026-10-27T03:55:00+07:00",
+  "agent_operator": "Gemini Flash 3.8",
+  "handover_context": {
+    "predecessor": "Claude Sonnet 5.5 (Milestone M2)",
+    "branch": "codex/local-multi-agent-upgrade",
+    "project_id": 5,
+    "project_identifier": "qldapm-local",
+    "authoritative_directory": "D:\\AI project\\QLDAPM chat",
+    "scope": "MAIN ONLY (Staging untouched 100%)"
+  },
+  "runtime_state": {
+    "gateway": {
+      "container": "qldapm-ai-gateway-1",
+      "port": 8090,
+      "image_tag": "qldapm-ai:gemini-ai-automation-v1-20261027",
+      "image_digest": "sha256:ce1d9784d5c1a61f92f7b7e46834fe9be3052889cd35aa9801cc3b72874b30ea",
+      "rollback_digest": "sha256:e76038d43e98d2be5e12a85476b0901854210e63cdbf64c0e2ca4e9dfb66c4d8",
+      "status": "healthy",
+      "http_status": 200
+    },
+    "core": {
+      "container": "qldapm-openproject-web-1",
+      "port": 8088,
+      "image_tag": "qldapm-core:codex-wbs-scheduled-parent-v2-20261027",
+      "status": "healthy",
+      "http_status": 200
+    },
+    "n8n": {
+      "container": "qldapm-n8n-main",
+      "port": 5679,
+      "active_workflows": 16,
+      "total_workflows": 16,
+      "wf03_webhook": "/webhook/qldapm-agent-request",
+      "status": "healthy"
+    },
+    "ollama": {
+      "endpoint": "http://127.0.0.1:11434",
+      "model": "bge-m3:latest",
+      "dimensions": 1024,
+      "status": "healthy"
+    },
+    "qdrant": {
+      "container": "qldapm-qdrant",
+      "port": 6333,
+      "collection": "qldapm_knowledge_dense",
+      "points_count": 1742,
+      "status": "healthy"
+    }
+  },
+  "work_package_baseline": {
+    "physical_rows": 375,
+    "visible_rows": 338,
+    "wp371_status": "IN ANALYSIS",
+    "wp371_lock_version": 4,
+    "uncompleted_tasks_count": 338,
+    "overdue_tasks_count": 32,
+    "native_writes_in_session": 0,
+    "replayed_transitions": 0,
+    "consumed_approvals_replayed": 0
+  },
+  "qualification_results": {
+    "unit_tests": {
+      "suites": 40,
+      "tests_total": 203,
+      "passed": 203,
+      "failed": 0,
+      "status": "100% PASS"
+    },
+    "readonly_acceptance": {
+      "checks_total": 13,
+      "passed": 13,
+      "failed": 0,
+      "status": "100% PASS"
+    },
+    "e2e_scenarios": {
+      "scenarios_total": 10,
+      "passed": 10,
+      "failed": 0,
+      "status": "100% PASS"
+    }
+  },
+  "deliverables_manifest": [
+    "docs/ai/GEMINI_FLASH_SOURCE_DEPENDENCY_MAP.md",
+    "docs/ai/CLAUDE_OLLAMA_EMBEDDING_RESULT.json",
+    "docs/ai/CLAUDE_RAG_INGEST_RETRIEVE_E2E_RESULT.json",
+    "docs/ai/CLAUDE_N8N_AI_INTEGRATION_RESULT.json",
+    "docs/ai/CODEX_MAIN_READONLY_EVIDENCE_20261027.json",
+    "docs/ai/GEMINI_GATEWAY_DEPLOY_EVIDENCE_20261027.json",
+    "docs/ai/CLAUDE_AI_PROMPT_TO_RESULT_E2E.json",
+    "docs/ai/CLAUDE_SUPERVISOR_TOOL_ROUTING_RESULT.json",
+    "docs/ai/GEMINI_FLASH_INTEGRATION_MATRIX.json",
+    "docs/ai/CLAUDE_AI_AUTOMATION_INTEGRATION_MATRIX.json",
+    "docs/ai/CLAUDE_AI_INTEGRATION_RELEASE_READINESS.md",
+    "docs/ai/GEMINI_FLASH_MAIN_CHECKPOINT.json",
+    "docs/ai/GEMINI_FLASH_MAIN_HANDOFF_TO_CODEX.md",
+    "architecture.md"
+  ],
+  "verdict": "MILESTONE_M7_COMPLETE_PRODUCTION_READY"
+}

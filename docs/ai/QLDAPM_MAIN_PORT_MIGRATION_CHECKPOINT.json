@@ -1,0 +1,238 @@
+{
+  "at": "2026-10-27T15:50:45.36924+07:00",
+  "status": "MIGRATED_SMOKE_PASS_WITH_BROWSER_AND_BUSINESS_LIMITS",
+  "host_ports": {
+    "web": 18088,
+    "gateway": 18089,
+    "n8n": 5679,
+    "qdrant": 6333,
+    "ollama": 11434
+  },
+  "containers": {
+    "qldapm-openproject-db-1": {
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "5432/tcp": null
+      }
+    },
+    "qldapm-openproject-cache-1": {
+      "id": "ac27388285fbadbf7a0f81f2f1d6c141d9fb79483d186d469d5bb324a0818115",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "11211/tcp": null
+      }
+    },
+    "qldapm-qdrant": {
+      "id": "6cacb6b0f1b07f061bab32497bd92d2e31a01a639da747cab17d7be689ccca8f",
+      "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "6333/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "6333"
+          }
+        ],
+        "6334/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "6334"
+          }
+        ]
+      }
+    },
+    "qldapm-openproject-hocuspocus-1": {
+      "id": "a9e13d59ae711266f599d5a1d1d7ed33345c2450e3457003684625fb3b39a584",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "1234/tcp": null
+      }
+    },
+    "qldapm-openproject-web-1": {
+      "id": "d47f859b049e704e708100a0532ca3dea68c54bc003a152ec935b9a909ee220a",
+      "image": "sha256:062282b33276dd2af79ae0d97f8043c482acbafdc14bb19bf83bbc401b02101c",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-openproject-worker-1": {
+      "id": "90c2405c94731fcdb46e6e802f265d95b2614d26787c7be24b686b8111c60d25",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-openproject-cron-1": {
+      "id": "c7171eb92f9a34d2f7b50b7e1894cbfd3dd92207ca41105fd152060eb86de2b7",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "8080/tcp": null
+      }
+    },
+    "qldapm-ai-gateway-1": {
+      "id": "8570880afebfb5d405f9e41ac178138a61c54dac89c288a07dc15f2cfb13c8e8",
+      "image": "sha256:c1fb8f59b763032c34cd76c1f04be4731736094d5ed77f418b3c8452ca7df3b5",
+      "status": "running",
+      "health": "healthy",
+      "ports": {
+        "8090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18089"
+          }
+        ]
+      }
+    },
+    "qldapm-n8n-main": {
+      "id": "247e20941d0ba377c50e1d3d0ab79ebfb49630cf4e6499ff3424adc7a65b9b7f",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "5678/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "5679"
+          }
+        ]
+      }
+    },
+    "qldapm-openproject-proxy-1": {
+      "id": "575c0693814f0f5463e7b07d58e965a7225452ca09e76c87ac70091ebad2a21f",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "status": "running",
+      "health": null,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18088"
+          }
+        ]
+      }
+    }
+  },
+  "smoke": {
+    "web_login_page": {
+      "status": "PASS",
+      "http": 200,
+      "old_port_in_location": false
+    },
+    "native_370_read": {
+      "status": "PASS",
+      "http": 200,
+      "id": 370,
+      "version": 2,
+      "old_port_in_location": false
+    },
+    "gateway_auth": {
+      "status": "PASS",
+      "health": 200,
+      "anonymous": 401,
+      "invalid_bearer": 401
+    },
+    "pm_identity": {
+      "status": "PASS",
+      "id": 19,
+      "role": "PM"
+    },
+    "control_center_api": {
+      "status": "PASS",
+      "result_type": "dict"
+    },
+    "task_count_create_poll": {
+      "status": "PASS",
+      "run_id": "06c86176-c206-4882-a6b6-62d416fdbb5a",
+      "state": "done",
+      "count": 57,
+      "model_used": false
+    },
+    "local_supervisor_create_poll": {
+      "status": "PASS",
+      "run_id": "516967bb-597d-4cbc-8907-79a5441ffcdc",
+      "state": "done",
+      "model_used": false,
+      "source_ids": 10
+    },
+    "rag_search": {
+      "status": "PASS",
+      "result_type": "dict",
+      "citation_relative_source": true
+    },
+    "wf03_status": {
+      "status": "PASS",
+      "http": 200,
+      "state": "done",
+      "new_execution": "status query only"
+    }
+  },
+  "post_gateway_origin_deploy": {
+    "identity": {
+      "http": 200,
+      "actor": 19
+    },
+    "local_run": {
+      "http": 200,
+      "state": "done"
+    },
+    "cross_actor": {
+      "http": 403
+    },
+    "wf03_status": {
+      "http": 200,
+      "state": "done"
+    },
+    "passed": true
+  },
+  "user_reports": {
+    "owner_login": "PASS_USER_REPORTED",
+    "assistant_control_center": "PASS_USER_REPORTED",
+    "owner_supervisor_local": "PASS_USER_REPORTED_COMPLETED_AND_DISPLAYED_AFTER_DEPLOY"
+  },
+  "origin": {
+    "same_gateway_loopback": 200,
+    "foreign": 403,
+    "direct_web_cross_origin": 403
+  },
+  "workflow_readback": {
+    "count": 16,
+    "active": 16,
+    "changed_fields": [],
+    "wf03": "existing run status only"
+  },
+  "preservation": {
+    "native_work_packages": 375,
+    "native_relations": 352,
+    "work_package_and_relation_fingerprints_match": true,
+    "knowledge_documents": 373,
+    "chunks": 1739,
+    "fts": 373,
+    "knowledge_tables_exact": true,
+    "qdrant_points": 1742,
+    "native_writes": 0,
+    "model_calls": 0
+  },
+  "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\port-migration-20261027-backup",
+  "rollback": "Gateway app-only to e9 image retaining port 18089; old ports require release by Windows; retain databases and histories",
+  "limitations": [
+    "WF03 final callback and new live Gemini not tested in port migration",
+    "full Qdrant restore remains blocked",
+    "application proof admission and independent QA review incomplete",
+    "Attachment links and other visual paths were not verified"
+  ],
+  "staging_operations": false
+}

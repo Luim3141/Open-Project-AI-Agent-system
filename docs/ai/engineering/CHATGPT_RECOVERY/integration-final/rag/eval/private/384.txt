@@ -1,0 +1,90 @@
+[AI backlog] Them route GET /healthz va unit test status ok
+Bo sung route GET /healthz tra ve JSON {status: 'ok', app: 'mini-task-manager', version: '1.0.0'} va unit test trong test_crud_web.py.
+
+Engineering unit health-check-v1
+
+{
+  "status": "succeeded",
+  "text": "Them route GET /healthz delivered; WP379 chua Done. UAT deferred.",
+  "base_sha": "def9d0a8852af42a407bd42fb0051615a2de9331",
+  "head_sha": "0e8d320a3459f26d01c88a3e8d4cb861e09808dd",
+  "pr_url": "[Native-reference:a28c6e0b2b503cd4]",
+  "delivery": {
+    "baseRefName": "codex/openclaw-feedback-4d13e695555a8d44",
+    "headRefName": "codex/openclaw-health-check-v1",
+    "headRefOid": "0e8d320a3459f26d01c88a3e8d4cb861e09808dd",
+    "state": "OPEN",
+    "url": "[Native-reference:a28c6e0b2b503cd4]"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "/app/docs/ai/engineering/runs/99dd5576-afff-47b3-b5d1-f80eb3a3eb2d/acceptance-0.xml",
+    "log_sha256": "e241406b9cd77e6e476a498828aaa6b05c8ae52e73a4cbf4803307c8cfba8e43"
+  },
+  "review_evidence": {
+    "revision": "185c9fe90c967e114727b3008890e60f2c5daebe221d3b3c61fd80957d484811",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/health-check-v1 && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC1",
+        "AC2",
+        "AC3",
+        "AC4",
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "H1"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:/AI project/QLDAPM chat/docs/ai/engineering/runs/99dd5576-afff-47b3-b5d1-f80eb3a3eb2d",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_tasks.py"
+  ]
+}
+Bình luận #1085: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#5 [AI Unit] Them route GET /healthz va unit test status ok]([Native-reference:a28c6e0b2b503cd4])
+- Trạng thái GitHub: **`OPEN`**
+- Base Branch: `codex/openclaw-feedback-4d13e695555a8d44` | Head Commit: `0e8d320a`
+- Phân loại nhánh: `UNMERGED`
+Bình luận #1090: QLDAPM PM/BA engineering plan b1cca031-81f5-4df1-870b-cbeb23d51e66
+Unit: health-check-v1
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-4d13e695555a8d44"],"objective":"Them route GET /healthz va unit test status ok (verified delivery reused)","priority":3,"unit":"health-check-v1"},"functional_specification":{"acceptance":["AC10: POST va PATCH ho tro luu tru, tra ve chinh xac truong category.","AC11: GET /tasks?category=... loc dung danh sach theo danh muc.","AC12: GET /tasks/export/csv tra ve HTTP 200, dinh dang MIME text/csv kem noi dung dung chuan."],"api_behavior":["POST /tasks chap nhan them truong category tuy chon khi tao cong viec.","PATCH /tasks/{id} ho t
+Bình luận #1102: QLDAPM PM/BA engineering plan d14bcb2d-9b53-4424-8160-2a18f769f4b5
+Unit: health-check-v1
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-4d13e695555a8d44"],"objective":"Them route GET /healthz va unit test status ok (verified delivery reused)","priority":3,"unit":"health-check-v1"},"functional_specification":{"acceptance":["AC13: GET /tasks/summary trả về JSON đúng cấu trúc {\"total\": int, \"active\": int, \"completed\": int}.","AC14: Logic tính toán total là tổng, active là todo/in_progress, completed là done, luôn thỏa mãn total == active + completed.","AC15: Trả về {\"total\": 0, \"active\": 0, \"completed\": 0} khi database chưa có dữ liệu.","AC16: Focused py
+Bình luận #1114: QLDAPM PM/BA engineering plan 3376cdf8-94e0-4587-b656-dfadc61d4071
+Unit: health-check-v1
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-4d13e695555a8d44"],"objective":"Them route GET /healthz va unit test status ok (verified delivery reused)","priority":3,"unit":"health-check-v1"},"functional_specification":{"acceptance":["AC1: GET /tasks/{id} tra ve HTTP 200 va thong tin task gom id, title, status khi ID ton tai","AC2: GET /tasks/{id} tra ve HTTP 404 khi ID khong ton tai trong CSDL","AC3: GET /tasks/{id} tra ve HTTP 422 khi ID khong phai la kieu so nguyen hop le","AC4: Tat ca cac tinh nang cu nhu GET /tasks/summary, /healthz, CRUD, search va schema SQLite giu ng
+Bình luận #1127: QLDAPM PM/BA engineering plan 4e3626a4-7af2-47ff-b1e7-c2bf38f602f1
+Unit: health-check-v1
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-4d13e695555a8d44"],"objective":"Them route GET /healthz va unit test status ok (verified delivery reused)","priority":3,"unit":"health-check-v1"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/exists với task_id tồn tại trả về HTTP 200 và {\"exists\": true}.","AC2: GET /tasks/{task_id}/exists với task_id không tồn tại trả về HTTP 200 và {\"exists\": false}.","AC3: GET /tasks/{task_id}/exists với task_id không phải số nguyên trả về HTTP 422.","AC4: Các API hiện tại bao gồm GET /tasks/{task_id}, /tasks/summary
+Bình luận #1139: QLDAPM PM/BA engineering plan 8751d17a-4c6c-4f5f-b00c-6e1239f5353c
+Unit: health-check-v1
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-4d13e695555a8d44"],"objective":"Them route GET /healthz va unit test status ok (verified delivery reused)","priority":3,"unit":"health-check-v1"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/title với ID hợp lệ trả về HTTP 200 và payload {\"id\": id, \"title\": title}.","AC2: GET /tasks/{task_id}/title với ID không tồn tại trả về HTTP 404.","AC3: GET /tasks/{task_id}/title với ID không phải số nguyên trả về HTTP 422.","AC4: Tiêu đề chứa ký tự Unicode được bảo toàn chính xác trong phản hồi JSON.","AC5: Các 
+Bình luận #1148: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#5 [AI Unit] Them route GET /healthz va unit test status ok]([Native-reference:a28c6e0b2b503cd4])
+- Trạng thái GitHub: **`ĐÃ MERGE VÀO FEATURE BRANCH (`codex/openclaw-feedback-4d13e695555a8d44`) — CHƯA VÀO MAIN`**
+- Base Branch: `codex/openclaw-feedback-4d13e695555a8d44` | Head Commit: `0e8d320a`
+- Phân loại nhánh: `FEATURE_BRANCH (codex/openclaw-feedback-4d13e695555a8d44)`
+
+[qldapm-github-sync:5651d7f62f46b075fec974d2d5a7ab8cb78504c3e01b86f6a63052fda93b91de]
+Bình luận #1153: QLDAPM PM/BA engineering plan 2f7cba6e-666f-4e94-b7f2-124dd7e153e8
+Unit: health-check-v1
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-4d13e695555a8d44"],"objective":"Them route GET /healthz va unit test status ok (verified delivery reused)","priority":3,"unit":"health-check-v1"},"functional_specification":{"acceptance":["AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.","AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.","AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.","AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.","AC5: Bảo toà

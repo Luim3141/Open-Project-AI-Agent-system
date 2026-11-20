@@ -1,0 +1,53 @@
+{
+  "id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+  "budget": {
+    "attempt_calls": 12,
+    "auto_continue": false,
+    "cooldown_seconds": 60,
+    "max_continuations": 5,
+    "task_calls": 72
+  },
+  "cancel_requested": false,
+  "claim_generation": 143,
+  "claim_token": "dd84d620-6b63-4051-b180-c699ed8c565f",
+  "deadline": 1793735032.6286802,
+  "definition": {
+    "acceptance": {
+      "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+      "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+      "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+      "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+      "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+      "F1": "AC1: GET /tasks/count trả về số lượng chính xác sau khi tạo hoặc xóa task",
+      "F2": "AC2: Bộ lọc kết hợp q và status trả về đúng số lượng theo điều kiện AND",
+      "F3": "AC3: Định tuyến /tasks/count được phân giải chính xác trước /tasks/{id}",
+      "F4": "AC4: Các tính năng CRUD, Unicode và tương thích ngược được giữ nguyên"
+    },
+    "acceptance_file": "test_crud_web.py",
+    "base_branch": "codex/demo-integration-20261103",
+    "base_sha": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+    "base_unit": "feedback-2ec52f6742aa972f",
+    "feedback": "FINAL-E2E-27FB-1da0d2f7 — Create exactly one small feature unit on the verified unmerged Demo integration base. Implement GET /tasks/count returning JSON {count: nonnegative integer}. Reuse the same optional q and status filters as GET /tasks; combined filters use AND and invalid status must have the same validation contract. Define the static /tasks/count route before any dynamic task-id route. Preserve current task CRUD, summary, detail, exists, title, CSV, Unicode and release identity behavior. Add meaningful tests for empty/count after create, q/status combined filters, Unicode/literal SQL characters, and ensure GET count never changes stored tasks. No schema migration, external service or extra feature; no PR merge or Demo deployment. Keep one coding unit, BA acceptance and PM dependencies explicit; reuse already delivered units without redoing their work.",
+    "kind": "development",
+    "native_id": 394,
+    "plan_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+    "title": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da"
+  },
+  "engine": "openclaw",
+  "kind": "development",
+  "native_id": 394,
+  "project_id": 6,
+  "recovery_count": 3,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "1a50d405-786b-4883-ab11-835ae123c431",
+  "source_version": 1,
+  "spec": "QLDAPM PM/BA engineering plan 96b4cee5-a13b-4397-bc7f-aa6f7b866b00\nUnit: feedback-a51b2f686861716c\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-2ec52f6742aa972f\"],\"objective\":\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu day du.\",\"priority\":1,\"unit\":\"feedback-a51b2f686861716c\"},\"functional_specification\":{\"acceptance\":[\"AC1: GET /tasks/count trả về số lượng chính xác sau khi tạo hoặc xóa task\",\"AC2: Bộ lọc kết hợp q và status trả về đúng số lượng theo điều kiện AND\",\"AC3: Định tuyến /tasks/count được phân giải chính xác trước /tasks/{id}\",\"AC4: Các tính năng CRUD, Unicode và tương thích ngược được giữ nguyên\"],\"api_behavior\":[\"GET /tasks/count trả về HTTP 200 kèm JSON {count: N} với N là số nguyên không âm\",\"Hỗ trợ query parameter q lọc theo tiêu đề và status lọc theo trạng thái hợp lệ\",\"Kết hợp q và status sử dụng toán tử AND\",\"Trả về 422 nếu status không hợp lệ theo đúng quy chuẩn\"],\"citations\":[379],\"edge_cases\":[\"Truyền status không hợp lệ trả về lỗi 422\",\"Bộ lọc không khớp trả về count bằng 0\",\"Ký tự Unicode hoặc cú pháp SQL đặc biệt được xử lý an toàn không làm thay đổi dữ liệu\",\"Gọi GET /tasks/count không làm thay đổi trạng thái dữ liệu đã lưu\"],\"limitations\":[\"Không thực hiện migration schema CSDL mới\",\"Không tự động merge PR hoặc triển khai môi trường demo\"],\"scope\":[\"Triển khai endpoint GET /tasks/count trả về JSON {count: nonnegative integer}\",\"Hỗ trợ các tham số truy vấn q và status tương tự GET /tasks\",\"Đảm bảo khai báo tuyến đường tĩnh /tasks/count trước /tasks/{id}\",\"Viết kiểm thử tự động cho đếm rỗng, bộ lọc kết hợp và ký tự đặc biệt\"],\"summary\":\"Xây dựng endpoint GET /tasks/count trả về số lượng công việc dạng JSON {count: integer}, hỗ trợ bộ lọc q và status kết hợp AND, đảm bảo thứ tự định tuyến tĩnh trước định tuyến động.\"},\"reviewers\":[\"reviewer\",\"qa\"],\"virtual_executor\":\"dev\"}",
+  "spec_sha256": "ecb6fde47f2fe4a3bc3472f00e75090df5059b6206dff4b0fed018cd16dc3c23",
+  "stage": "ADMITTED",
+  "unit": "feedback-a51b2f686861716c",
+  "worker_id": "74d2785e-86e9-446f-b12a-ac09a0e11797",
+  "write_scope_ids": []
+}

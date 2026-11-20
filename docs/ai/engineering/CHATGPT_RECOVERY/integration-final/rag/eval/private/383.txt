@@ -1,0 +1,100 @@
+[AI backlog] Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.
+QLDAPM PM/BA engineering plan 85b9307a-bd36-4a39-a3b5-30f4a3e5a832
+Unit: feedback-4d13e695555a8d44
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-283138e910432528"],"objective":"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.","priority":1,"unit":"feedback-4d13e695555a8d44"},"functional_specification":{"acceptance":["Testcase pytest mới kiểm tra thành công Unicode search cho 'đi chợ' và 'Straße'","Toàn bộ regression test cũ từ AC1 đến AC9 vượt qua hoàn toàn"],"api_behavior":["GET /tasks?q=đi%20chợ tìm thấy tiêu đề 'ĐI CHỢ' thông qua str.casefold","Kết hợp tìm kiếm chuỗi Unicode và bộ lọc trạng thái (status) theo logic AND chính xác"],"citations":[379],"edge_cases":["Chuỗi tìm kiếm chứa %, _, backslash được escape an toàn trước khi thêm ký tự đại diện","Hỗ trợ các ký tự Unicode đặc biệt (ví dụ ß, Đ) thông qua quy tắc casefold mở rộng"],"limitations":["Chỉ sửa đổi mã nguồn backend Python","Không thay đổi giao diện HTML/frontend","Không cài đặt lại môi trường ảo hay thư viện"],"scope":["Đăng ký hàm SQLite tùy chỉnh qldapm_casefold sử dụng str.casefold trong kết nối GET /tasks","Cập nhật truy vấn tìm kiếm sang qldapm_casefold(title) LIKE ? với q.casefold() đã escape ký tự đặc biệt","Thêm focused pytest kiểm tra tìm kiếm Unicode case-insensitive"],"summary":"Khắc phục lỗi tìm kiếm không phân biệt chữ hoa/thường với ký tự Unicode (ví dụ 'đi chợ' không khớp 'ĐI CHỢ' do SQLite lower() chỉ hỗ trợ ASCII) bằng cách đăng ký hàm SQLite tùy chỉnh qldapm_casefold sử dụng Python str.casefold trong GET /tasks."},"reviewers":["reviewer","qa"],"virtual_executor":"dev"}
+
+Engineering unit feedback-4d13e695555a8d44
+
+{
+  "status": "succeeded",
+  "text": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+  "head_sha": "def9d0a8852af42a407bd42fb0051615a2de9331",
+  "pr_url": "[Native-reference:8b233368fc2f2f7b]",
+  "delivery": {
+    "baseRefName": "codex/openclaw-feedback-283138e910432528",
+    "headRefName": "codex/openclaw-feedback-4d13e695555a8d44",
+    "headRefOid": "def9d0a8852af42a407bd42fb0051615a2de9331",
+    "state": "OPEN",
+    "url": "[Native-reference:8b233368fc2f2f7b]"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\3066ed0b-fadb-47c8-8d31-349590b3301b\\acceptance-0.xml",
+    "log_sha256": "223b5e79035b20ed566b9bd46cd11c7dbaf188668fe2babc0c843f377540f5c4"
+  },
+  "review_evidence": {
+    "revision": "9315b3dbcd3e6080d031a8cd1f785d7913620f05448599862635b8006b3bf308",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-4d13e695555a8d44 && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\3066ed0b-fadb-47c8-8d31-349590b3301b",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_tasks.py"
+  ]
+}
+Bình luận #1067: **[QLDAPM State Sync]** Đồng bộ trạng thái từ Engineering Delivery:
+- Unit: `feedback-4d13e695555a8d44`
+- Run ID: `3066ed0b-fadb-47c8-8d31-349590b3301b`
+- Commit: `def9d0a8852af42a407bd42fb0051615a2de9331`
+- PR: [[Native-reference:8b233368fc2f2f7b]]([Native-reference:8b233368fc2f2f7b])
+- Automated Tests: PASS
+- Trạng thái mới: **REVIEW** (chờ review và merge PR trên GitHub)
+Bình luận #1069: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#4 Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.]([Native-reference:8b233368fc2f2f7b])
+- Trạng thái GitHub: `OPEN`
+- Base: `codex/openclaw-feedback-283138e910432528` | Head: `def9d0a8`
+Bình luận #1081: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#4 Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.]([Native-reference:8b233368fc2f2f7b])
+- Trạng thái GitHub: **`OPEN`**
+- Base Branch: `codex/openclaw-feedback-283138e910432528` | Head Commit: `def9d0a8`
+- Phân loại nhánh: `UNMERGED`
+Bình luận #1089: QLDAPM PM/BA engineering plan b1cca031-81f5-4df1-870b-cbeb23d51e66
+Unit: feedback-4d13e695555a8d44
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-283138e910432528"],"objective":"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)","priority":3,"unit":"feedback-4d13e695555a8d44"},"functional_specification":{"acceptance":["AC10: POST va PATCH ho tro luu tru, tra ve chinh xac truong category.","AC11: GET /tasks?category=... loc dung danh sach theo danh muc.","AC12: GET /tasks/export/csv tra ve HTTP 200, dinh dang MIME text/csv kem noi dung dung
+Bình luận #1101: QLDAPM PM/BA engineering plan d14bcb2d-9b53-4424-8160-2a18f769f4b5
+Unit: feedback-4d13e695555a8d44
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-283138e910432528"],"objective":"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)","priority":3,"unit":"feedback-4d13e695555a8d44"},"functional_specification":{"acceptance":["AC13: GET /tasks/summary trả về JSON đúng cấu trúc {\"total\": int, \"active\": int, \"completed\": int}.","AC14: Logic tính toán total là tổng, active là todo/in_progress, completed là done, luôn thỏa mãn total == active + 
+Bình luận #1113: QLDAPM PM/BA engineering plan 3376cdf8-94e0-4587-b656-dfadc61d4071
+Unit: feedback-4d13e695555a8d44
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-283138e910432528"],"objective":"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)","priority":3,"unit":"feedback-4d13e695555a8d44"},"functional_specification":{"acceptance":["AC1: GET /tasks/{id} tra ve HTTP 200 va thong tin task gom id, title, status khi ID ton tai","AC2: GET /tasks/{id} tra ve HTTP 404 khi ID khong ton tai trong CSDL","AC3: GET /tasks/{id} tra ve HTTP 422 khi ID khong phai la k
+Bình luận #1126: QLDAPM PM/BA engineering plan 4e3626a4-7af2-47ff-b1e7-c2bf38f602f1
+Unit: feedback-4d13e695555a8d44
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-283138e910432528"],"objective":"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)","priority":3,"unit":"feedback-4d13e695555a8d44"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/exists với task_id tồn tại trả về HTTP 200 và {\"exists\": true}.","AC2: GET /tasks/{task_id}/exists với task_id không tồn tại trả về HTTP 200 và {\"exists\": false}.","AC3: GET /tasks/{task_id}/exi
+Bình luận #1134: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#4 Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.]([Native-reference:8b233368fc2f2f7b])
+- Trạng thái GitHub: **`ĐÃ MERGE VÀO FEATURE BRANCH (`codex/openclaw-feedback-283138e910432528`) — CHƯA VÀO MAIN`**
+- Base Branch: `codex/openclaw-feedback-283138e910432528` | Head Commit: `def9d0a8`
+- Phân loại nhánh: `FEATURE_BRANCH (codex/openclaw-feedback-283138e910432528)`
+
+[qldapm-github-sync:22a06a3da728416597d7814e53fa8e4080b84fdafcab245d8fe23a0e10a36d84]
+Bình luận #1138: QLDAPM PM/BA engineering plan 8751d17a-4c6c-4f5f-b00c-6e1239f5353c
+Unit: feedback-4d13e695555a8d44
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-283138e910432528"],"objective":"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)","priority":3,"unit":"feedback-4d13e695555a8d44"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/title với ID hợp lệ trả về HTTP 200 và payload {\"id\": id, \"title\": title}.","AC2: GET /tasks/{task_id}/title với ID không tồn tại trả về HTTP 404.","AC3: GET /tasks/{task_id}/title với ID không 
+Bình luận #1152: QLDAPM PM/BA engineering plan 2f7cba6e-666f-4e94-b7f2-124dd7e153e8
+Unit: feedback-4d13e695555a8d44
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-283138e910432528"],"objective":"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)","priority":3,"unit":"feedback-4d13e695555a8d44"},"functional_specification":{"acceptance":["AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.","AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.","AC3: Hỗ trợ q và status với cùng hành

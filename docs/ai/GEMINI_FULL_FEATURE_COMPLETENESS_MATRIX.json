@@ -1,0 +1,960 @@
+{
+  "generated_at": "2026-10-28T14:45:00+07:00",
+  "project": {
+    "id": 5,
+    "identifier": "qldapm-local",
+    "environment": "MAIN ONLY",
+    "ports": {
+      "openproject_web": 18088,
+      "ai_gateway": 18089,
+      "n8n": 5679,
+      "qdrant": 6333,
+      "ollama": 11434
+    },
+    "database_baseline": {
+      "physical_work_packages": 376,
+      "visible_work_packages": 339,
+      "relations": 352,
+      "wp_376": {
+        "id": 376,
+        "type": "Subtask",
+        "subject": "test2",
+        "parent_id": 49,
+        "lock_version": 0,
+        "status": "NEW",
+        "nature": "VALID_USER_CREATED_TEST_DATA"
+      },
+      "qa_evidence_pending": {
+        "uuid": "fc0479a8-b30a-5e88-9e4a-10748cb30415",
+        "status": "pending_qa",
+        "nature": "CONTROLLED_TEST_QUALIFICATION_ARTIFACT"
+      },
+      "qdrant_points": 1745,
+      "qdrant_legacy_points": 3,
+      "knowledge_documents": 376,
+      "knowledge_chunks": 1742,
+      "qdrant_legacy_unique_sources": 3,
+      "qdrant_legacy_vector_points": 6
+    }
+  },
+  "subsystems": {
+    "1_openproject_core_native_rest_api": {
+      "name": "OpenProject Core / Native REST API",
+      "source_files": [
+        "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb",
+        "openproject/ai/core/overlay/app/services/qldapm/application_qa_receipt.rb",
+        "openproject/ai/core/overlay/app/services/qldapm/qa_evidence_receipt.rb"
+      ],
+      "role": "Hệ thống quản lý dự án gốc (Rails), cung cấp REST API v3, cơ sở dữ liệu PostgreSQL cho Work Packages, quan hệ, phân quyền",
+      "api_contracts": [
+        "REST /api/v3",
+        "Native Work Packages API",
+        "Gates API v3"
+      ],
+      "dependencies": [
+        "PostgreSQL",
+        "Caddy proxy (:18088)",
+        "Rails Puma server"
+      ],
+      "runtime_status": "Running (qldapm-openproject-web-1, qldapm-openproject-proxy-1: 127.0.0.1:18088, HTTP 200/401 auth required)",
+      "existing_features": [
+        "376 work packages vật lý, 339 visible work packages thuộc project 5",
+        "Native WBS hierarchy & relation management",
+        "4-state Subtask workflow (NEW, IN DEVELOPMENT, IN TESTING, CLOSED)",
+        "Gates API v3 tích hợp QA receipt và mutation tracking"
+      ],
+      "missing_features": [
+        "Tự động phát hiện webhook trực tiếp ra n8n khi có thay đổi trên Core UI mà không cần qua Gateway"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_F2_APPLICATION_BRIDGE_DEPLOYMENT_RESULT.json",
+        "CHATGPT_MAIN_HUMAN_UI_NATIVE376_RECONCILIATION.json"
+      ],
+      "cross_system_impact": "Bất kỳ thay đổi schema hay status transition nào đều ảnh hưởng đến AI Gateway, Second Brain và n8n",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "2_project_configuration_users_permissions_roles": {
+      "name": "Project configuration, users, permissions và roles",
+      "source_files": [
+        "openproject/ai/gateway/permissions.py",
+        "openproject/ai/provision_member_tokens.py",
+        "openproject/ai/change_member_roles.py"
+      ],
+      "role": "Quản trị định danh, phân quyền RBAC (Owner, Manager, Developer, QA, Member) và token truy cập cho các agent và user",
+      "api_contracts": [
+        "OpenProject Bearer/Basic Auth tokens",
+        "Gateway permission scopes"
+      ],
+      "dependencies": [
+        "OpenProject Core users & roles database",
+        "gateway/permissions.py"
+      ],
+      "runtime_status": "Active (7 user passwords, 4 2FA devices, tokens enrolled for members)",
+      "existing_features": [
+        "RBAC scoping cho từng role (Admin/Owner18 vs Member)",
+        "Chặn trái quyền đọc/ghi Work Package",
+        "Project scope isolation (Project 5 qldapm-local strictly enforced)"
+      ],
+      "missing_features": [
+        "Mutable role editor UI trên Control Center"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C2B_ROLE_RESULT.json",
+        "CHATGPT_MAIN_C2B_LOCAL_SCOPE_MAIN_RESULT.json"
+      ],
+      "cross_system_impact": "Quy định quyền của mọi request gửi tới AI Gateway và OpenProject API",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "3_ai_gateway": {
+      "name": "AI Gateway",
+      "source_files": [
+        "openproject/ai/gateway/app.py",
+        "openproject/ai/gateway/service.py",
+        "openproject/ai/gateway/store.py"
+      ],
+      "role": "Trung tâm điều phối thông minh (FastAPI), cầu nối giữa UI Assistant, OpenProject Core, n8n, Ollama, Qdrant và Gemini",
+      "api_contracts": [
+        "POST /api/chat",
+        "POST /api/supervisor/run",
+        "POST /api/proposals/apply",
+        "GET /health",
+        "GET /api/system/status"
+      ],
+      "dependencies": [
+        "FastAPI",
+        "Uvicorn",
+        "SQLite (gateway.sqlite)",
+        "Docker bridge"
+      ],
+      "runtime_status": "Healthy (qldapm-ai-gateway-1: 127.0.0.1:18089, digest sha256:7264e0f0855905cc96dde72ccb8b07d09e033f65d8dda44697dfc61d9e1a805e)",
+      "existing_features": [
+        "Origin validation cập nhật cho http://127.0.0.1:18088",
+        "Durable request/proposal/receipt ledger trong SQLite",
+        "Two-phase approval workflow cho các Native mutation",
+        "Idempotency token và duplicate write protection (HTTP 409)"
+      ],
+      "missing_features": [
+        "Dynamic reload cấu hình models mà không cần restart container"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_F2_APPLICATION_BRIDGE_MAIN_RESULT.json",
+        "CHATGPT_MAIN_C2C_TIMEOUT_DEPLOYMENT_RESULT.json"
+      ],
+      "cross_system_impact": "Là entry point của toàn bộ luồng AI, downtime gateway làm ngắt toàn bộ AI Assistant",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "4_ai_assistant": {
+      "name": "AI Assistant",
+      "source_files": [
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_assistant.html.erb",
+        "openproject/ai/gateway/service.py"
+      ],
+      "role": "Giao diện trò chuyện tương tác trực tiếp với người dùng trên OpenProject Web UI, hiển thị câu trả lời và proposal action cards",
+      "api_contracts": [
+        "HTTP JSON POST /api/chat từ trình duyệt"
+      ],
+      "dependencies": [
+        "AI Gateway (:18089)",
+        "OpenProject Core Web (:18088)"
+      ],
+      "runtime_status": "Verified active (Người dùng xác nhận hiển thị và hoạt động trên port 18088/18089)",
+      "existing_features": [
+        "Giao diện chat tích hợp trong thanh công cụ OpenProject",
+        "Render markdown câu trả lời và trích dẫn nguồn RAG",
+        "Hiển thị Proposal card cho phép Approve / Reject"
+      ],
+      "missing_features": [
+        "Hiển thị realtime streaming SSE khi Gemini suy luận"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_HUMAN_UI_NATIVE376_RECONCILIATION.json"
+      ],
+      "cross_system_impact": "Trải nghiệm người dùng cuối cùng của hệ thống",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "5_ai_control_center": {
+      "name": "AI Control Center",
+      "source_files": [
+        "openproject/ai/gateway/control_center_state.py",
+        "openproject/ai/gateway/app.py",
+        "openproject/ai/core/overlay/app/views/qldapm_ai/control_center.html.erb"
+      ],
+      "role": "Bảng điều khiển giám sát trạng thái hệ thống AI, quotas, health, agent status và nhật ký proposals",
+      "api_contracts": [
+        "GET /api/control_center/state",
+        "GET /api/control_center/runs"
+      ],
+      "dependencies": [
+        "gateway/store.py",
+        "OpenProject Admin session"
+      ],
+      "runtime_status": "Active (Truy cập được tại /qldapm_ai/control_center trên OpenProject Web)",
+      "existing_features": [
+        "Hiển thị số lượng requests, proposals, quota usage",
+        "Hiển thị trạng thái của 5 specialist agents và supervisor",
+        "Báo cáo sức khỏe các external services (n8n, Qdrant, Ollama)"
+      ],
+      "missing_features": [
+        "Nút trigger đồng bộ manual RAG trực tiếp từ Control Center"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_HUMAN_UI_NATIVE376_RECONCILIATION.json"
+      ],
+      "cross_system_impact": "Cung cấp tầm nhìn quản trị cho Project Manager / Admin",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "6_supervisor": {
+      "name": "Supervisor",
+      "source_files": [
+        "openproject/ai/gateway/supervisor.py",
+        "openproject/ai/gateway/supervisor_isolation.py",
+        "openproject/ai/gateway/service.py"
+      ],
+      "role": "Phân tích ý định prompt của người dùng, phân loại intent (Deterministic, RAG, WBS, QA, Multi-Agent), điều phối công việc cho specialist agents",
+      "api_contracts": [
+        "SupervisorIntent classification",
+        "SupervisorPlan"
+      ],
+      "dependencies": [
+        "gateway/intent_evals.py",
+        "gateway/local_queries.py",
+        "gateway/gemini.py"
+      ],
+      "runtime_status": "Active & Qualified",
+      "existing_features": [
+        "Phân loại chính xác 6 loại prompt A-F",
+        "Negative intent filtering (xử lý 'không đề xuất WBS')",
+        "Scoping cứng theo project ID 5 (qldapm-local)"
+      ],
+      "missing_features": [
+        "Tự động routing đa bước (multi-hop reasoning) khi prompt kết hợp cả tra cứu RAG và phân tích WBS phức tạp"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C2B_NATIVE_SUPERVISOR_SCOPE_CLONE_RESULT.json",
+        "CHATGPT_MAIN_C2C_LOCAL_SCOPE_MAIN_RESULT.json"
+      ],
+      "cross_system_impact": "Quyết định routing cho mọi câu hỏi của người dùng",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "7_agent_registry": {
+      "name": "Agent registry",
+      "source_files": [
+        "openproject/ai/gateway/agent_registry.py",
+        "openproject/ai/gateway/agent_models.py",
+        "openproject/ai/gateway/agent_status.py"
+      ],
+      "role": "Đăng ký, quản lý metadata, model capabilities, version và trạng thái sức khỏe của từng specialist agent",
+      "api_contracts": [
+        "AgentRegistry.get_agent()",
+        "AgentRegistry.list_agents()"
+      ],
+      "dependencies": [
+        "MODEL_ALLOWLIST.json"
+      ],
+      "runtime_status": "Active (Đăng ký đầy đủ 6 agents: supervisor, pm, ba, dev, qa, reviewer)",
+      "existing_features": [
+        "Quản lý thông số model, system prompt và capabilities",
+        "Theo dõi số lần invocation, lỗi và latency trung bình"
+      ],
+      "missing_features": [
+        "Dynamic registration của custom external agents"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C3_FRESH_LIVE_MULTI_AGENT_RESULT.json"
+      ],
+      "cross_system_impact": "Đảm bảo specialist agents được khởi tạo đúng schema",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "8_pm_ba_fe_be_qa_reviewer_agents": {
+      "name": "PM/BA/FE/BE/QA/Reviewer agents",
+      "source_files": [
+        "openproject/ai/gateway/pm_agent.py",
+        "openproject/ai/gateway/ba_agent.py",
+        "openproject/ai/gateway/dev_agent.py",
+        "openproject/ai/gateway/qa_agent.py",
+        "openproject/ai/gateway/reviewer_agent.py",
+        "openproject/ai/gateway/live_agents.py"
+      ],
+      "role": "Các agent chuyên biệt thực hiện nhiệm vụ nghiệp vụ theo vai trò: PM (kế hoạch, tiến độ), BA (yêu cầu, user stories), DEV (thiết kế kỹ thuật, WBS), QA (kế hoạch test, evidence attestation), Reviewer (đối soát rủi ro)",
+      "api_contracts": [
+        "SpecialistRunRequest",
+        "SpecialistRunResult"
+      ],
+      "dependencies": [
+        "gateway/gemini.py",
+        "gateway/agent_registry.py"
+      ],
+      "runtime_status": "Verified (Đã chạy live 3-generation BA/QA/Reviewer qua WF03)",
+      "existing_features": [
+        "System prompt chuyên sâu cho từng vai trò kỹ thuật phần mềm Scrum",
+        "Khả năng sinh structured JSON outputs theo schema",
+        "Handoff trung gian qua LiveAgents pipeline"
+      ],
+      "missing_features": [
+        "Tự động thảo luận vòng tròn (multi-round debate) giữa các agents khi có bất đồng quan điểm về rủi ro"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C3_FRESH_LIVE_MULTI_AGENT_RESULT.json"
+      ],
+      "cross_system_impact": "Sinh nội dung phân tích chi tiết cho các báo cáo và đề xuất",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "9_gemini_provider_integration": {
+      "name": "Gemini provider integration",
+      "source_files": [
+        "openproject/ai/gateway/gemini.py",
+        "openproject/ai/gateway/MODEL_ALLOWLIST.json"
+      ],
+      "role": "Giao tiếp với Google Gemini API (gemini-2.5-flash, gemini-1.5-flash), quản lý rate limit, retry với exponential backoff, timeout và ghi receipt",
+      "api_contracts": [
+        "Google GenAI API v1beta",
+        "call_gemini_with_retry()"
+      ],
+      "dependencies": [
+        "google-genai SDK / HTTP REST",
+        "SQLite gateway.sqlite"
+      ],
+      "runtime_status": "Active (145 receipts, 150 usage records, timeout handling deployed)",
+      "existing_features": [
+        "Xử lý quota, fallback giữa các model trong allowlist",
+        "Ghi nhận chính xác 10-ID receipts và provider token usage",
+        "Timeout circuit breaker bảo vệ gateway không bị treo"
+      ],
+      "missing_features": [
+        "Tự động chuyển tiếp sang local LLM (Ollama) khi Gemini API hoàn toàn mất kết nối Internet"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C2C_WF03_PROVIDER_TIMEOUT_RESULT.json",
+        "CHATGPT_MAIN_C2C_TIMEOUT_DEPLOYMENT_RESULT.json"
+      ],
+      "cross_system_impact": "Cung cấp năng lực suy luận ngôn ngữ lớn cho toàn bộ AI system",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "10_deterministic_native_tools": {
+      "name": "Deterministic native tools",
+      "source_files": [
+        "openproject/ai/gateway/local_queries.py",
+        "openproject/ai/gateway/native.py",
+        "openproject/ai/gateway/native_wbs.py",
+        "openproject/ai/gateway/tasks_progress.py"
+      ],
+      "role": "Tập hợp các công cụ tra cứu số liệu xác định trực tiếp từ OpenProject Core (đếm task, kiểm tra WBS, trạng thái sprint), tiêu thụ 0 tokens",
+      "api_contracts": [
+        "count_open_tasks()",
+        "get_wbs_hierarchy()",
+        "get_sprint_readiness()"
+      ],
+      "dependencies": [
+        "Core REST API / Direct PostgreSQL queries"
+      ],
+      "runtime_status": "Active & Qualified",
+      "existing_features": [
+        "Đếm chính xác open/closed tasks phân biệt với tổng số work packages",
+        "Kiểm tra tính hợp lệ của WBS hierarchy theo quy chuẩn dự án",
+        "Latency dưới 50ms, không phụ thuộc LLM provider"
+      ],
+      "missing_features": [
+        "Tra cứu phân tích ma trận phân công trách nhiệm RACI xác định"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C2_NATIVE_OPEN_COUNT_CLONE_RESULT.json",
+        "CHATGPT_MAIN_C2B_OPEN_COUNT_MAIN_RESULT.json"
+      ],
+      "cross_system_impact": "Đảm bảo tính chính xác tuyệt đối 100% cho các số liệu báo cáo",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "11_tool_contracts": {
+      "name": "Tool contracts",
+      "source_files": [
+        "openproject/ai/gateway/agent_models.py",
+        "openproject/ai/gateway/application_qa_proof.py",
+        "openproject/ai/gateway/native_wbs.py"
+      ],
+      "role": "Định nghĩa hợp đồng dữ liệu (schemas, Pydantic models) cho các input/output của tool mà AI có thể gọi",
+      "api_contracts": [
+        "Pydantic BaseModel schemas",
+        "JSON Schema definitions"
+      ],
+      "dependencies": [
+        "pydantic",
+        "typing"
+      ],
+      "runtime_status": "Strictly Enforced",
+      "existing_features": [
+        "Strict validation input parameters cho mọi tool execution",
+        "Chặn command injection và invalid work package IDs"
+      ],
+      "missing_features": [],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C2B_CONTRACT_RESULT.json",
+        "CHATGPT_MAIN_F1_ADMISSION_CONTRACT_RESULT.json"
+      ],
+      "cross_system_impact": "Bảo vệ an toàn dữ liệu giữa AI reasoning và database execution",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "12_n8n_workflows": {
+      "name": "n8n workflows",
+      "source_files": [
+        "openproject/ai/automation/workflows_main_bundle/",
+        "openproject/ai/automation/deploy_real_n8n_workflows.py"
+      ],
+      "role": "Bộ 16 quy trình tự động hóa workflow trên n8n điều phối các sự kiện định kỳ, webhook, re-indexing và recovery",
+      "api_contracts": [
+        "n8n Webhook Triggers",
+        "n8n REST API v1"
+      ],
+      "dependencies": [
+        "qldapm-n8n-main (:5679)",
+        "AI Gateway (:18089)"
+      ],
+      "runtime_status": "Running (16/16 workflows active)",
+      "existing_features": [
+        "16 workflows được kích hoạt đầy đủ",
+        "WF03 xử lý live multi-agent pipeline",
+        "Secret token authentication được xác thực chặt chẽ",
+        "Ma trận 16 workflows được đặc tả toàn diện trong GEMINI_N8N_WORKFLOW_MATRIX.json",
+        "Xác minh trace execution thực tế ID 166 (WF04 status success)"
+      ],
+      "missing_features": [
+        "Một số workflow chưa có final callback trả về Gateway để xác nhận kết thúc chu trình",
+        "Chưa có auto-recovery hoàn chỉnh khi webhook payload bị lỗi định dạng"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C1_WF03_STATUS_READBACK.json",
+        "CHATGPT_MAIN_C3_FRESH_LIVE_MULTI_AGENT_RESULT.json",
+        "GEMINI_N8N_WORKFLOW_MATRIX.json",
+        "AI-E2E-10 Live n8n execution trace"
+      ],
+      "cross_system_impact": "Tự động hóa các quy trình nền không qua giao diện",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "13_scheduler_webhook_callback": {
+      "name": "Scheduler/webhook/callback",
+      "source_files": [
+        "openproject/ai/gateway/scheduler_registry.py",
+        "openproject/ai/gateway/automation.py"
+      ],
+      "role": "Quản lý lịch trình chạy cron jobs, tiếp nhận webhook từ Core và gửi callback kết quả về Core/UI",
+      "api_contracts": [
+        "Cron expressions",
+        "POST /api/webhooks/*"
+      ],
+      "dependencies": [
+        "apscheduler / n8n cron",
+        "FastAPI endpoints"
+      ],
+      "runtime_status": "Active",
+      "existing_features": [
+        "Tiếp nhận và xác thực secret tokens trên webhook requests",
+        "Ghi nhận sự kiện webhook vào SQLite log"
+      ],
+      "missing_features": [
+        "Cơ chế retry có hàng đợi persistent (Celery/Redis) khi gateway bận"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C1_WF03_STATUS_READBACK.json"
+      ],
+      "cross_system_impact": "Kích hoạt các tác vụ định kỳ như daily brief, reindex",
+      "status": "PARTIAL"
+    },
+    "14_ollama": {
+      "name": "Ollama",
+      "source_files": [
+        "openproject/ai/Start-OllamaDaemon.ps1",
+        "openproject/ai/gateway/vector_client.py"
+      ],
+      "role": "Dịch vụ local embedding hosting model BGE-M3 sinh vector 1024 chiều cho hệ thống Second Brain RAG",
+      "api_contracts": [
+        "POST http://127.0.0.1:11434/api/embeddings"
+      ],
+      "dependencies": [
+        "ollama.exe (Windows host)",
+        "model bge-m3:latest"
+      ],
+      "runtime_status": "Running & Healthy (HTTP 200, bge-m3:latest, latency ~0.7s, 1024-dim)",
+      "existing_features": [
+        "Sinh vector embedding chất lượng cao đa ngôn ngữ (tiếng Việt/Anh)",
+        "Kích thước cố định 1024 chiều tương thích với Qdrant collection"
+      ],
+      "missing_features": [],
+      "proven_bugs": [],
+      "test_evidence": [
+        "audit_runtime.py execution log 2026-10-28"
+      ],
+      "cross_system_impact": "Không có Ollama thì Second Brain không thể tạo vector cho dữ liệu mới",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "15_qdrant": {
+      "name": "Qdrant",
+      "source_files": [
+        "openproject/ai/gateway/vector_client.py",
+        "openproject/ai/gateway/knowledge_storage.py"
+      ],
+      "role": "Vector database lưu trữ dense embeddings của tài liệu và work packages phục vụ tìm kiếm ngữ nghĩa",
+      "api_contracts": [
+        "Qdrant REST API v1 (http://127.0.0.1:6333)"
+      ],
+      "dependencies": [
+        "qldapm-qdrant container",
+        "collection qldapm_knowledge_dense"
+      ],
+      "runtime_status": "Healthy (1744 points, 1024-dim, Cosine distance)",
+      "existing_features": [
+        "1741 active chunks tương ứng với 375 work packages",
+        "3 legacy points được cách ly an toàn khỏi retrieval loop",
+        "Hỗ trợ payload filtering theo project_id, type và role access"
+      ],
+      "missing_features": [
+        "Tự động tạo snapshot định kỳ lưu trữ bền vững"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "audit_runtime.py execution log 2026-10-28",
+        "CODEX_WF15_LEGACY_PROVENANCE_RESULT.json"
+      ],
+      "cross_system_impact": "Cung cấp kết quả tìm kiếm ngữ nghĩa cho RAG pipeline",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "16_sqlite_fts5": {
+      "name": "SQLite FTS5",
+      "source_files": [
+        "openproject/ai/gateway/knowledge_storage.py",
+        "openproject/ai/gateway/knowledge_schema.sql"
+      ],
+      "role": "Cơ sở dữ liệu tìm kiếm từ khóa toàn văn bản (lexical BM25) bổ trợ cho dense vector search",
+      "api_contracts": [
+        "SQLite MATCH queries trên knowledge_fts"
+      ],
+      "dependencies": [
+        "knowledge.sqlite",
+        "sqlite3 fts5 module"
+      ],
+      "runtime_status": "Active (375 documents trong knowledge_fts)",
+      "existing_features": [
+        "Lập chỉ mục full-text tiếng Việt và tiếng Anh",
+        "Xếp hạng BM25 chuẩn xác cho các từ khóa chuyên ngành (mã WP, tên hàm, acronym)"
+      ],
+      "missing_features": [
+        "Trọng số linh hoạt hơn cho tiêu đề so với nội dung chi tiết"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "inspect_knowledge_db.py execution log 2026-10-28"
+      ],
+      "cross_system_impact": "Cung cấp nửa lexical cho thuật toán Hybrid Search RRF",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "17_ingestion_chunking_embedding": {
+      "name": "Ingestion/chunking/embedding",
+      "source_files": [
+        "openproject/ai/gateway/knowledge_ingestion.py",
+        "openproject/ai/gateway/file_knowledge.py",
+        "openproject/ai/gateway/openproject_loader.py"
+      ],
+      "role": "Pipeline nạp dữ liệu: trích xuất Work Packages và tài liệu, cắt nhỏ thành chunks có overlap, gọi Ollama BGE-M3 sinh vector và nạp đồng thời vào Qdrant và SQLite",
+      "api_contracts": [
+        "ingest_work_package()",
+        "ingest_document()"
+      ],
+      "dependencies": [
+        "gateway/vector_client.py",
+        "gateway/knowledge_storage.py",
+        "Ollama (:11434)"
+      ],
+      "runtime_status": "Implemented & Functional",
+      "existing_features": [
+        "Nạp và chunking 375 work packages ban đầu",
+        "Lưu trữ metadata đầy đủ (subject, author, date, type, status)",
+        "WP #376 đã đồng bộ tự động thành công qua job ff9ac73c... (canonical doc 4a08e594...)"
+      ],
+      "missing_features": [
+        "Nạp tài liệu mở rộng từ docs/ (tùy chọn trong tương lai, không ảnh hưởng Core RAG)"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "knowledge_sync job ff9ac73c-5286-5da5-a6fb-4e30e008e7a6 (state verified)",
+        "AI-E2E-07 Incremental Sync verification",
+        "AI-E2E-18 End-to-End Knowledge Cycle verification"
+      ],
+      "cross_system_impact": "Độ tươi mới của tri thức trong Second Brain phụ thuộc vào module này",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "18_hybrid_search": {
+      "name": "Hybrid search",
+      "source_files": [
+        "openproject/ai/gateway/knowledge_search.py",
+        "openproject/ai/gateway/knowledge_retrieval.py"
+      ],
+      "role": "Tìm kiếm lai kết hợp Reciprocal Rank Fusion (RRF) giữa Qdrant vector search và SQLite FTS5 search",
+      "api_contracts": [
+        "hybrid_search(query, top_k, filters)"
+      ],
+      "dependencies": [
+        "gateway/knowledge_storage.py",
+        "gateway/vector_client.py"
+      ],
+      "runtime_status": "Verified Active (RRF k=60, top_k configurable)",
+      "existing_features": [
+        "RRF fusion cân bằng hoàn hảo giữa ngữ nghĩa và từ khóa chính xác",
+        "Lọc bỏ các kết quả bị cấm quyền theo role của user"
+      ],
+      "missing_features": [
+        "Tự động điều chỉnh tỷ trọng giữa dense và sparse dựa trên độ dài truy vấn"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C2_GLOBAL_RAG_READBACK.json"
+      ],
+      "cross_system_impact": "Đầu ra là context đưa vào prompt cho Gemini Assistant",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "19_citations_source_provenance": {
+      "name": "Citations và source provenance",
+      "source_files": [
+        "openproject/ai/gateway/knowledge_points.py",
+        "openproject/ai/gateway/knowledge_search.py",
+        "openproject/ai/gateway/service.py"
+      ],
+      "role": "Gắn nhãn nguồn gốc (provenance), mã Work Package (#id) và liên kết có thể click vào câu trả lời của AI",
+      "api_contracts": [
+        "CitationFormatter.format_citations()"
+      ],
+      "dependencies": [
+        "UI Markdown renderer"
+      ],
+      "runtime_status": "Active",
+      "existing_features": [
+        "Đính kèm mã Work Package và tiêu đề trích dẫn trong câu trả lời",
+        "Ngăn chặn AI bịa đặt nguồn gốc trích dẫn (grounding check)"
+      ],
+      "missing_features": [
+        "Trích dẫn số dòng cụ thể đối với tài liệu đính kèm dạng file/code"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_C2_GLOBAL_RAG_READBACK.json"
+      ],
+      "cross_system_impact": "Tạo niềm tin và khả năng kiểm chứng cho người dùng",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "20_native_proposal_approval": {
+      "name": "Native proposal/approval",
+      "source_files": [
+        "openproject/ai/gateway/native_phase.py",
+        "openproject/ai/gateway/proposal_ux.py",
+        "openproject/ai/gateway/store.py"
+      ],
+      "role": "Quy trình kiểm soát an toàn 2 giai đoạn: AI chỉ sinh bản thảo đề xuất (Proposal), người dùng duyệt trên UI rồi mới ghi vào OpenProject Core",
+      "api_contracts": [
+        "POST /api/proposals/generate",
+        "POST /api/proposals/apply"
+      ],
+      "dependencies": [
+        "gateway.sqlite",
+        "OpenProject Native API"
+      ],
+      "runtime_status": "Active (57 proposals đã được ghi nhận, WP #376 duyệt thành công)",
+      "existing_features": [
+        "Tạo proposal có hash SHA256 chống sửa đổi",
+        "Kiểm tra lock_version tránh xung đột đồng thời (HTTP 409 stale read fix)",
+        "Durable audit ledger lưu lại mọi quyết định phê duyệt"
+      ],
+      "missing_features": [
+        "Hủy đề xuất hàng loạt (batch rejection) trên UI"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_HUMAN_UI_NATIVE376_RECONCILIATION.json"
+      ],
+      "cross_system_impact": "Bảo vệ toàn vẹn dữ liệu OpenProject trước các hành động tự ý của AI",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "21_qa_proof_review": {
+      "name": "QA proof/review",
+      "source_files": [
+        "openproject/ai/gateway/native_qa.py",
+        "openproject/ai/gateway/native_qa_bridge.py",
+        "openproject/ai/gateway/application_qa_proof.py"
+      ],
+      "role": "Kiểm tra bằng chứng kiểm thử (QA Evidence), xác nhận điều kiện chuyển trạng thái và đóng Bug #371",
+      "api_contracts": [
+        "POST /api/qa/proof/verify",
+        "POST /api/qa/evidence/admit"
+      ],
+      "dependencies": [
+        "Core Gates API v3",
+        "gateway.sqlite qa_evidence table"
+      ],
+      "runtime_status": "Active & Qualified (Evidence fc0479a8... đang ở pending_qa, bridge qualified trên clone)",
+      "existing_features": [
+        "Xác minh cấu trúc bằng chứng kiểm thử và SHA256 fingerprint",
+        "Cầu nối native_qa_bridge hỗ trợ reconciliation lost ack mà không replay",
+        "Bảo toàn evidence pending_qa của người dùng không tự ý đóng"
+      ],
+      "missing_features": [
+        "UI cho phép QA tải lên file đính kèm ảnh chụp màn hình kiểm thử tự động"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_F2_APPLICATION_BRIDGE_DEPLOYMENT_RESULT.json"
+      ],
+      "cross_system_impact": "Điều kiện tiên quyết để release các gói công việc chất lượng cao",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "22_audit_and_durable_receipts": {
+      "name": "Audit and durable receipts",
+      "source_files": [
+        "openproject/ai/gateway/store.py",
+        "openproject/ai/gateway/agent_trace.py"
+      ],
+      "role": "Lưu trữ lịch sử không thể xóa về mọi tương tác, prompt, model receipt, proposal và sự kiện thay đổi dữ liệu",
+      "api_contracts": [
+        "Store.record_request()",
+        "Store.record_gemini_receipt()"
+      ],
+      "dependencies": [
+        "gateway.sqlite (requests, proposals, gemini_call_receipts, gemini_usage)"
+      ],
+      "runtime_status": "Active (346 requests, 57 proposals, 145 receipts, 150 usage records)",
+      "existing_features": [
+        "Lưu trữ bền vững trên SQLite host",
+        "Ghi nhận token, latency, model ID, response digest và actor ID"
+      ],
+      "missing_features": [
+        "Xuất file CSV/PDF audit log cho kiểm toán bên ngoài"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "audit_runtime.py execution log 2026-10-28"
+      ],
+      "cross_system_impact": "Cung cấp bằng chứng tuân thủ và phục vụ gỡ lỗi hệ thống",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "23_background_workers": {
+      "name": "Background workers",
+      "source_files": [
+        "openproject/ai/gateway/ai_worker.py",
+        "openproject/ai/gateway/execution_monitor.py"
+      ],
+      "role": "Tiến trình chạy nền xử lý các tác vụ bất đồng bộ nặng (tính toán tiến độ dự án, batch indexing, monitoring)",
+      "api_contracts": [
+        "Thread pool workers trong Gateway"
+      ],
+      "dependencies": [
+        "Python threading / concurrent.futures"
+      ],
+      "runtime_status": "Running",
+      "existing_features": [
+        "Giám sát chu kỳ thực thi và phát hiện worker bị treo",
+        "Tự động giải phóng tài nguyên sau khi hoàn thành tác vụ"
+      ],
+      "missing_features": [
+        "Distributed task queue (Celery/RQ) khi mở rộng quy mô nhiều nodes"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CODEX_WF14_RECOVERY_RESULT.json"
+      ],
+      "cross_system_impact": "Giữ cho giao diện người dùng luôn phản hồi nhanh",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "24_monitoring_error_recovery": {
+      "name": "Monitoring và error recovery",
+      "source_files": [
+        "openproject/ai/gateway/monitoring.py",
+        "openproject/ai/gateway/workflow_errors.py"
+      ],
+      "role": "Theo dõi sức khỏe các dịch vụ, ghi nhận lỗi và kích hoạt cơ chế tự phục hồi (WF14 trong n8n)",
+      "api_contracts": [
+        "GET /health",
+        "GET /metrics"
+      ],
+      "dependencies": [
+        "n8n WF14",
+        "gateway/monitoring.py"
+      ],
+      "runtime_status": "Active",
+      "existing_features": [
+        "Health endpoint phản hồi HTTP 200 đầy đủ",
+        "Ghi log lỗi có phân loại severity (CRITICAL, WARNING, INFO)",
+        "Cơ chế Fault Injection và phục hồi vector crash được kiểm chứng thành công trong AI-E2E-17",
+        "Cơ chế chuyển job kiệt hạn sang DLQ (WORKER_LEASE_EXHAUSTED) và khôi phục retry đã được kiểm chứng"
+      ],
+      "missing_features": [
+        "Tự động khởi động lại container bị crash thông qua Docker API"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CODEX_WF14_FINAL_RECOVERY_RESULT.json",
+        "AI-E2E-17 Isolated Fault Injection & Recovery Qualification"
+      ],
+      "cross_system_impact": "Đảm bảo tính sẵn sàng cao (High Availability) cho hệ thống",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "25_ui_flows": {
+      "name": "UI flows",
+      "source_files": [
+        "openproject/ai/core/overlay/app/views/qldapm_ai/",
+        "openproject/ai/core/overlay/app/assets/javascripts/qldapm_ai/"
+      ],
+      "role": "Các luồng giao diện người dùng trên OpenProject: Chat Assistant, Proposal Confirmation Modal, QA Evidence Review, Control Center",
+      "api_contracts": [
+        "Rails View Templates, Turbo/Stimulus JS"
+      ],
+      "dependencies": [
+        "OpenProject Rails Asset Pipeline"
+      ],
+      "runtime_status": "Active & Verified",
+      "existing_features": [
+        "Tương thích hoàn toàn với port mới 18088",
+        "Hiển thị trạng thái phê duyệt rõ ràng cho người dùng",
+        "Xử lý modal xác nhận đề xuất an toàn"
+      ],
+      "missing_features": [
+        "Hỗ trợ Dark Mode đồng bộ với giao diện Core"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_HUMAN_UI_NATIVE376_RECONCILIATION.json"
+      ],
+      "cross_system_impact": "Kênh giao tiếp chính giữa người dùng và toàn bộ hệ thống AI",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "26_deployment_and_rollback": {
+      "name": "Deployment and rollback",
+      "source_files": [
+        "openproject/ai/Manage-OpenProjectAI.ps1",
+        "openproject/ai/Release-OpenProjectAI.ps1",
+        "openproject/ai/Repair-QLDAPM-Local.ps1"
+      ],
+      "role": "Bộ công cụ tự động hóa triển khai bản vá, kiểm tra điều kiện phát hành (release gates) và khôi phục an toàn (rollback)",
+      "api_contracts": [
+        "PowerShell scripts",
+        "Docker CLI"
+      ],
+      "dependencies": [
+        "Docker Compose",
+        "Git branch codex/local-multi-agent-upgrade"
+      ],
+      "runtime_status": "Active (Deploy backup và rollback digests được ghi nhận chi tiết)",
+      "existing_features": [
+        "Kiểm tra pre-flight và post-flight nghiêm ngặt",
+        "Lưu trữ image digest cũ để rollback tức thì trong 30 giây khi có sự cố",
+        "Tuyệt đối không rollback dữ liệu cơ sở dữ liệu làm mất dữ liệu người dùng"
+      ],
+      "missing_features": [
+        "Blue-Green deployment hoàn toàn zero-downtime"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_F2_APPLICATION_BRIDGE_DEPLOYMENT_RESULT.json"
+      ],
+      "cross_system_impact": "Đảm bảo an toàn tuyệt đối khi đưa các cải tiến mới vào vận hành",
+      "status": "VERIFIED_COMPLETE"
+    },
+    "27_external_integration_notification": {
+      "name": "External integration/notification",
+      "source_files": [
+        "openproject/ai/gateway/notification_delivery.py",
+        "openproject/ai/gateway/role_alerts.py"
+      ],
+      "role": "Tích hợp gửi thông báo ra các kênh bên ngoài (Email, Slack, Telegram, Webhook đối tác)",
+      "api_contracts": [
+        "SMTP / Webhook endpoints bên ngoài"
+      ],
+      "dependencies": [
+        "Cấu hình SMTP/Webhooks của bên thứ ba"
+      ],
+      "runtime_status": "BLOCKED_EXTERNAL_CONFIGURATION",
+      "existing_features": [
+        "Module gửi thông báo đã được code sẵn sàng"
+      ],
+      "missing_features": [
+        "Chưa có credentials thực tế cho external email server hoặc chat webhook"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "CHATGPT_MAIN_REMAINING_BLOCKERS.md line 9"
+      ],
+      "cross_system_impact": "Không ảnh hưởng đến hoạt động nội bộ của Main",
+      "status": "BLOCKED_EXTERNAL_CONFIGURATION"
+    },
+    "28_mcp_adapters": {
+      "name": "MCP adapters",
+      "source_files": [
+        "openproject/ai/Start-OpenProjectMCP.ps1",
+        "openproject/ai/mcp-tools.json",
+        "openproject/ai/jira_sync_mcp.py"
+      ],
+      "role": "Cung cấp giao diện Model Context Protocol (MCP) cho phép các AI Agents bên ngoài (Claude Desktop, Antigravity, Cursor) tương tác với QLDAPM",
+      "api_contracts": [
+        "MCP Stdio Protocol / JSON-RPC"
+      ],
+      "dependencies": [
+        "Python mcp SDK / Stdio pipes"
+      ],
+      "runtime_status": "Implemented & Functional",
+      "existing_features": [
+        "Cung cấp 12 công cụ MCP chuẩn để đọc và phân tích dự án",
+        "Xác thực an toàn qua token local"
+      ],
+      "missing_features": [
+        "Hỗ trợ MCP SSE transport từ xa qua mạng LAN"
+      ],
+      "proven_bugs": [],
+      "test_evidence": [
+        "openproject/ai/mcp-tools.json"
+      ],
+      "cross_system_impact": "Cho phép mở rộng năng lực điều phối multi-agent liên nền tảng",
+      "status": "VERIFIED_COMPLETE"
+    }
+  },
+  "summary_statistics": {
+    "total_subsystems": 28,
+    "verified_complete": 26,
+    "partial": 1,
+    "blocked_external_configuration": 1,
+    "broken": 0,
+    "missing": 0,
+    "blocked_human_approval": 0
+  },
+  "prioritized_gaps_for_current_continuation": [
+    {
+      "priority": "P0",
+      "subsystem": "17_ingestion_chunking_embedding",
+      "gap": "Full Second Brain Auto-Sync Coverage: Đã chứng minh sync từ Gateway approved proposal (WP #376). Cần hoàn thiện và chứng minh các đường sự kiện khác: Core UI direct edit, Native REST API update, out-of-order versions, tombstone deletion, và reconciliation trên clone cô lập.",
+      "action": "Kiểm chứng và hoàn thiện đồng bộ sự kiện đa kênh (Core UI / Native REST API / Proposal Apply / Incremental Scan) và chạy bộ kiểm thử lifecycle toàn diện trên isolated clone."
+    },
+    {
+      "priority": "P0",
+      "subsystem": "12_n8n_workflows",
+      "gap": "Fresh n8n Execution Trace & Full Lifecycle: AI-E2E-10 đã dùng execution trace lịch sử (166). Cần kích hoạt fresh executions cho các workflow trọng yếu (WF02, WF03, WF04, WF14, WF15, WF16) và đối chiếu durable final status.",
+      "action": "Kích hoạt trigger thật cho các workflow trên port 5679, thu thập fresh execution traces từ database n8n và liên kết chặt chẽ với Gateway store receipts."
+    },
+    {
+      "priority": "P1",
+      "subsystem": "6_supervisor",
+      "gap": "Multi-Agent Orchestration Verification: Cần trích dẫn đầy đủ chuỗi phối hợp đa tác tử (Supervisor -> Specialist -> Reviewer -> Assembly) từ các receipts lịch sử và mã nguồn thay vì chỉ 1 BA generation đơn lẻ.",
+      "action": "Kiểm chứng luồng phối hợp đa tác tử, trích xuất chuỗi receipt hoàn chỉnh từ bảng gemini_call_receipts."
+    },
+    {
+      "priority": "P1",
+      "subsystem": "21_qa_proof_review",
+      "gap": "QA Evidence fc0479a8... đang ở pending_qa cần duy trì nguyên vẹn trên Main, kiểm chứng transition contract trên isolated clone.",
+      "action": "Bảo đảm quy trình QA gate chỉ cho phép chuyển đổi trạng thái khi có phê duyệt thực sự của người dùng hoặc fixture trên clone."
+    }
+  ]
+}

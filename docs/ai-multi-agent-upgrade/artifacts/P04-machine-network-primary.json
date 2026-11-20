@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "valid",
+      "status": 200
+    },
+    {
+      "case": "wrong_key",
+      "status": 401
+    },
+    {
+      "case": "missing_key",
+      "status": 401
+    },
+    {
+      "case": "business_api",
+      "status": 403
+    },
+    {
+      "case": "human_bridge",
+      "status": 403
+    },
+    {
+      "case": "actor_injection",
+      "status": 403
+    },
+    {
+      "case": "wrong_host",
+      "status": 403
+    }
+  ],
+  "caller": "actual_n8n_container",
+  "business_writes": 0,
+  "model_calls": 0,
+  "image": "sha256:035a6752ad3e221726d48c259e5b21fc3b6928206d18a3b7e51ba47608322761",
+  "target": "primary",
+  "native_credentials_shared": false,
+  "n8n_private_network_only": true
+}

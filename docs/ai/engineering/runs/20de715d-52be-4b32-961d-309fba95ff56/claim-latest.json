@@ -1,0 +1,52 @@
+{
+  "id": "20de715d-52be-4b32-961d-309fba95ff56",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": "1ece6705ead14a250c05726e9217aeec94f33f2b",
+  "budget": {
+    "attempt_calls": 12,
+    "auto_continue": false,
+    "cooldown_seconds": 60,
+    "max_continuations": 5,
+    "task_calls": 72
+  },
+  "cancel_requested": false,
+  "claim_generation": 149,
+  "claim_token": "0c6efc99-9d64-450a-958b-faac332eb67d",
+  "deadline": 1793865877.6239169,
+  "definition": {
+    "acceptance": {
+      "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+      "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+      "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+      "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+      "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+      "F1": "AC1: GET /tasks/{id}/status trả 200 với {id, status}",
+      "F2": "AC2: ID không tồn tại trả 404",
+      "F3": "AC3: Sai kiểu dữ liệu trả 422",
+      "F4": "AC4: Test pytest chạy thành công các kịch bản"
+    },
+    "acceptance_file": "test_crud_web.py",
+    "base_branch": "codex/openclaw-feedback-a51b2f686861716c",
+    "base_unit": "feedback-a51b2f686861716c",
+    "feedback": "Mini Task Manager: thêm GET /tasks/{task_id}/status trả {id, status}. ID không tồn tại trả 404, sai kiểu trả 422. Chỉ đọc dữ liệu; thêm test cho 200/404/422. Làm đúng 1 unit, không refactor, không thêm dependency, không tự merge/deploy.",
+    "kind": "development",
+    "native_id": 396,
+    "plan_id": "e2db6811-44fe-418c-b7dc-12fb9d52d330",
+    "title": "Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest."
+  },
+  "engine": "openclaw",
+  "kind": "development",
+  "native_id": 396,
+  "project_id": 6,
+  "recovery_count": 1,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "1ee13fe2-3c96-48c7-be4c-7f0c10c24779",
+  "source_version": 1,
+  "spec": "QLDAPM PM/BA engineering plan e2db6811-44fe-418c-b7dc-12fb9d52d330\nUnit: feedback-e0408cbf553ca0ba\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-a51b2f686861716c\"],\"objective\":\"Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest.\",\"priority\":1,\"unit\":\"feedback-e0408cbf553ca0ba\"},\"functional_specification\":{\"acceptance\":[\"AC1: GET /tasks/{id}/status trả 200 với {id, status}\",\"AC2: ID không tồn tại trả 404\",\"AC3: Sai kiểu dữ liệu trả 422\",\"AC4: Test pytest chạy thành công các kịch bản\"],\"api_behavior\":[\"GET /tasks/{task_id}/status trả về 200 kèm {id, status} nếu tìm thấy\",\"GET /tasks/{task_id}/status trả về 404 nếu ID không tồn tại\",\"GET /tasks/{task_id}/status trả về 422 nếu sai kiểu dữ liệu ID\"],\"citations\":[379],\"edge_cases\":[\"ID truyền vào sai kiểu dữ liệu trả về 422\",\"ID hợp lệ nhưng không tồn tại trong DB trả về 404\",\"Thao tác chỉ đọc không làm thay đổi dữ liệu\"],\"limitations\":[\"Chỉ làm đúng 1 unit\",\"Không refactor code cũ\",\"Không thêm dependency\",\"Không tự merge/deploy\"],\"scope\":[\"Thêm endpoint GET /tasks/{task_id}/status\",\"Trả về id và status\",\"Xử lý 404 khi ID không tồn tại\",\"Xử lý 422 khi sai kiểu ID\",\"Viết test pytest cho 200, 404, 422\"],\"summary\":\"Xây dựng đơn vị kỹ thuật bổ sung endpoint GET /tasks/{task_id}/status theo phản hồi, chỉ đọc dữ liệu, trả về id và status, xử lý 200, 404, 422 và viết test.\"},\"reviewers\":[\"reviewer\",\"qa\"],\"virtual_executor\":\"dev\"}",
+  "spec_sha256": "c3ad649329062574c45a8f4e54586a3d6783365ad1db7e6e4705d0f0267f2706",
+  "stage": "ADMITTED",
+  "unit": "feedback-e0408cbf553ca0ba",
+  "worker_id": "389551ed-d9bb-4239-b4a9-b2d29118b390",
+  "write_scope_ids": []
+}

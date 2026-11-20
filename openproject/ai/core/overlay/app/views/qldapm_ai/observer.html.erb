@@ -1,0 +1,13 @@
+<% html_title "Agent Studio — #{@project.name}" %>
+<% studio_assets = JSON.parse(File.read(Rails.root.join("public/qldapm-agent-studio-v2/manifest.json"))) %>
+<% studio_projects = Project.visible.where(id: [5, 6]).map { |project| {identifier: project.identifier, name: project.name, url: project_qldapm_ai_observer_path(project)} } %>
+<%= stylesheet_link_tag "/qldapm-agent-studio-v2/studio.css?v=#{studio_assets.fetch('studio.css')}", media: "all", "data-turbo-track": "reload" %>
+<div id="qldapm-agent-studio"
+     data-endpoint="<%= project_qldapm_ai_observer_path(@project, format: :json) %>"
+     data-command-center="<%= project_qldapm_ai_path(@project) %>"
+     data-project="<%= @project.identifier %>"
+     data-project-id="<%= @project.id %>"
+     data-projects="<%= studio_projects.to_json %>">
+  <p role="status">Đang tải Agent Studio V2…</p>
+</div>
+<%= javascript_include_tag "/qldapm-agent-studio-v2/studio.js?v=#{studio_assets.fetch('studio.js')}", defer: true, nonce: content_security_policy_nonce, "data-turbo-track": "reload" %>

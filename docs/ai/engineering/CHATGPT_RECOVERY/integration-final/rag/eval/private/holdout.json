@@ -1,0 +1,726 @@
+{
+  "schema": 1,
+  "split": "holdout",
+  "metadata": {
+    "source_manifest_sha256": "c3e42f3adf7dc0976bdb58c796c290250d5e3193d6c5d7e9d850a6dc35fb6b24",
+    "label_author": "evaluation agent, independent of implementation agent",
+    "label_review": "AUTHOR_SELF_REVIEW_ONLY",
+    "human_review": "HUMAN_REVIEW_PENDING",
+    "interpretation": "Native source states requirements or historical receipts, not necessarily current implementation."
+  },
+  "cases": [
+    {
+      "id": "holdout:stack:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Backend của mục tiêu tổng thể dùng công nghệ gì?",
+      "relevant_ids": [
+        379
+      ],
+      "source_id": "actor:20:wp:379",
+      "source_hash": "1c857a34865ea63ed93c7d27df2b584eac2c1eda77dff14d41d052842818242f",
+      "source_version": 4,
+      "support_literal": "Backend: Python FastAPI",
+      "support_offset": 205,
+      "support_sha256": "454516832ad3d3ad4121c744eb28d35fff2bbb34bf92ad470eaeb443ed6634f9",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:stack:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which backend technology is named in the overall project objective?",
+      "relevant_ids": [
+        379
+      ],
+      "source_id": "actor:20:wp:379",
+      "source_hash": "1c857a34865ea63ed93c7d27df2b584eac2c1eda77dff14d41d052842818242f",
+      "source_version": 4,
+      "support_literal": "Backend: Python FastAPI",
+      "support_offset": 205,
+      "support_sha256": "454516832ad3d3ad4121c744eb28d35fff2bbb34bf92ad470eaeb443ed6634f9",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:planning_order:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Kế hoạch tổng thể yêu cầu xác định phụ thuộc và đề xuất lịch ở giai đoạn nào?",
+      "relevant_ids": [
+        379
+      ],
+      "source_id": "actor:20:wp:379",
+      "source_hash": "1c857a34865ea63ed93c7d27df2b584eac2c1eda77dff14d41d052842818242f",
+      "source_version": 4,
+      "support_literal": "3.  Establish dependencies and propose a development schedule",
+      "support_offset": 816,
+      "support_sha256": "a71a39f5bc09744e050fe44b956011c7cdb620887627e3073810955c8ad24794",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:planning_order:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which overall project document asks the AI team to identify dependencies and propose a development schedule?",
+      "relevant_ids": [
+        379
+      ],
+      "source_id": "actor:20:wp:379",
+      "source_hash": "1c857a34865ea63ed93c7d27df2b584eac2c1eda77dff14d41d052842818242f",
+      "source_version": 4,
+      "support_literal": "3.  Establish dependencies and propose a development schedule",
+      "support_offset": 816,
+      "support_sha256": "a71a39f5bc09744e050fe44b956011c7cdb620887627e3073810955c8ad24794",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:validation_array:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Client phải xử lý dạng dữ liệu validation phức tạp nào từ FastAPI?",
+      "relevant_ids": [
+        382
+      ],
+      "source_id": "actor:20:wp:382",
+      "source_hash": "1ccb21aad2b5e5e2130748169e1c12265a2a2709629f0d160300035c4e7af8d9",
+      "source_version": 9,
+      "support_literal": "mảng chi tiết lỗi validation phức tạp",
+      "support_offset": 1262,
+      "support_sha256": "660f8e38b1592f7fe15176341af596245b7381d7ca2f5c08909823f0e388a0a5",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:validation_array:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "What complex validation detail structure must the client handle from FastAPI?",
+      "relevant_ids": [
+        382
+      ],
+      "source_id": "actor:20:wp:382",
+      "source_hash": "1ccb21aad2b5e5e2130748169e1c12265a2a2709629f0d160300035c4e7af8d9",
+      "source_version": 9,
+      "support_literal": "mảng chi tiết lỗi validation phức tạp",
+      "support_offset": 1262,
+      "support_sha256": "660f8e38b1592f7fe15176341af596245b7381d7ca2f5c08909823f0e388a0a5",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:escape_like:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Tài liệu tìm kiếm Unicode xử lý các ký tự wildcard SQL nào trước khi thêm ký tự đại diện?",
+      "relevant_ids": [
+        383
+      ],
+      "source_id": "actor:20:wp:383",
+      "source_hash": "7ac823b344b79eea374a70741f6b33136cd6282a924ca4843b06dd85309b98d6",
+      "source_version": 9,
+      "support_literal": "%, _, backslash được escape",
+      "support_offset": 1037,
+      "support_sha256": "3c6574f6415565433a71e04f4fd3073cc3937a9ca6f1b15dae83b98cfae0ebec",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:escape_like:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Before adding wildcard characters, which SQL LIKE characters must the Unicode search escape?",
+      "relevant_ids": [
+        383
+      ],
+      "source_id": "actor:20:wp:383",
+      "source_hash": "7ac823b344b79eea374a70741f6b33136cd6282a924ca4843b06dd85309b98d6",
+      "source_version": 9,
+      "support_literal": "%, _, backslash được escape",
+      "support_offset": 1037,
+      "support_sha256": "3c6574f6415565433a71e04f4fd3073cc3937a9ca6f1b15dae83b98cfae0ebec",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:frontend_boundary:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Giới hạn nào của thay đổi casefold cấm đụng giao diện frontend?",
+      "relevant_ids": [
+        383
+      ],
+      "source_id": "actor:20:wp:383",
+      "source_hash": "7ac823b344b79eea374a70741f6b33136cd6282a924ca4843b06dd85309b98d6",
+      "source_version": 9,
+      "support_literal": "Không thay đổi giao diện HTML/frontend",
+      "support_offset": 1243,
+      "support_sha256": "cb165ebd039a21a197260b69dd0b46ed47645489f993882227859992f28bf786",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:frontend_boundary:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which casefold work package explicitly excludes frontend changes?",
+      "relevant_ids": [
+        383
+      ],
+      "source_id": "actor:20:wp:383",
+      "source_hash": "7ac823b344b79eea374a70741f6b33136cd6282a924ca4843b06dd85309b98d6",
+      "source_version": 9,
+      "support_literal": "Không thay đổi giao diện HTML/frontend",
+      "support_offset": 1243,
+      "support_sha256": "cb165ebd039a21a197260b69dd0b46ed47645489f993882227859992f28bf786",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:casefold_db:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Tìm chức năng SQL tự định nghĩa để chuẩn hoá chữ hoa thường Unicode theo Python.",
+      "relevant_ids": [
+        383
+      ],
+      "source_id": "actor:20:wp:383",
+      "source_hash": "7ac823b344b79eea374a70741f6b33136cd6282a924ca4843b06dd85309b98d6",
+      "source_version": 9,
+      "support_literal": "hàm SQLite tùy chỉnh qldapm_casefold sử dụng str.casefold",
+      "support_offset": 1349,
+      "support_sha256": "2100459b76c3bc899f9e52435444a9c83150bb673bcf676f7e71ff6f01f0f3d0",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:casefold_db:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which custom SQLite function uses Python casefold for Unicode-insensitive matching?",
+      "relevant_ids": [
+        383
+      ],
+      "source_id": "actor:20:wp:383",
+      "source_hash": "7ac823b344b79eea374a70741f6b33136cd6282a924ca4843b06dd85309b98d6",
+      "source_version": 9,
+      "support_literal": "hàm SQLite tùy chỉnh qldapm_casefold sử dụng str.casefold",
+      "support_offset": 1349,
+      "support_sha256": "2100459b76c3bc899f9e52435444a9c83150bb673bcf676f7e71ff6f01f0f3d0",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:health_payload:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Health endpoint của demo trả app name và phiên bản theo yêu cầu nào?",
+      "relevant_ids": [
+        384
+      ],
+      "source_id": "actor:20:wp:384",
+      "source_hash": "0bc46a59836cbdc19f5cea29d9f1f96ceb88327bcd182baf39dd0c325b16df2b",
+      "source_version": 2,
+      "support_literal": "status: 'ok', app: 'mini-task-manager', version: '1.0.0'",
+      "support_offset": 100,
+      "support_sha256": "4c47c70e2fc57d90750cae4a9bce514279736698ffc55de98beb71bca22e71af",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:health_payload:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which health requirement includes the application name and version in its JSON?",
+      "relevant_ids": [
+        384
+      ],
+      "source_id": "actor:20:wp:384",
+      "source_hash": "0bc46a59836cbdc19f5cea29d9f1f96ceb88327bcd182baf39dd0c325b16df2b",
+      "source_version": 2,
+      "support_literal": "status: 'ok', app: 'mini-task-manager', version: '1.0.0'",
+      "support_offset": 100,
+      "support_sha256": "4c47c70e2fc57d90750cae4a9bce514279736698ffc55de98beb71bca22e71af",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:health_test:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Test file nào được nêu cùng yêu cầu GET /healthz?",
+      "relevant_ids": [
+        384
+      ],
+      "source_id": "actor:20:wp:384",
+      "source_hash": "0bc46a59836cbdc19f5cea29d9f1f96ceb88327bcd182baf39dd0c325b16df2b",
+      "source_version": 2,
+      "support_literal": "unit test trong test_crud_web.py",
+      "support_offset": 161,
+      "support_sha256": "0d55300c5b2bdbbf1df5ca36408955eed405c921892e92bc34fd08ca7f983657",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:health_test:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which test file is named alongside the GET /healthz requirement?",
+      "relevant_ids": [
+        384
+      ],
+      "source_id": "actor:20:wp:384",
+      "source_hash": "0bc46a59836cbdc19f5cea29d9f1f96ceb88327bcd182baf39dd0c325b16df2b",
+      "source_version": 2,
+      "support_literal": "unit test trong test_crud_web.py",
+      "support_offset": 161,
+      "support_sha256": "0d55300c5b2bdbbf1df5ca36408955eed405c921892e92bc34fd08ca7f983657",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:active_definition:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Bộ đếm active của summary tính hai trạng thái tác vụ nào?",
+      "relevant_ids": [
+        386
+      ],
+      "source_id": "actor:20:wp:386",
+      "source_hash": "bcdcb7e4e959380c06ba60df8a05d12de5b3b62238e4f69115e0f6dc877d2adc",
+      "source_version": 2,
+      "support_literal": "('todo', 'in_progress')",
+      "support_offset": 1454,
+      "support_sha256": "6438c654dc1bfa17a86790d65f9995b86c8b26adc01696dc4b78a698e2b10192",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:active_definition:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which two task statuses count as active in the summary?",
+      "relevant_ids": [
+        386
+      ],
+      "source_id": "actor:20:wp:386",
+      "source_hash": "bcdcb7e4e959380c06ba60df8a05d12de5b3b62238e4f69115e0f6dc877d2adc",
+      "source_version": 2,
+      "support_literal": "('todo', 'in_progress')",
+      "support_offset": 1454,
+      "support_sha256": "6438c654dc1bfa17a86790d65f9995b86c8b26adc01696dc4b78a698e2b10192",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:summary_no_filter:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Hạn chế nào của endpoint summary nói về lọc nâng cao?",
+      "relevant_ids": [
+        386
+      ],
+      "source_id": "actor:20:wp:386",
+      "source_hash": "bcdcb7e4e959380c06ba60df8a05d12de5b3b62238e4f69115e0f6dc877d2adc",
+      "source_version": 2,
+      "support_literal": "không hỗ trợ các tham số bộ lọc phức tạp",
+      "support_offset": 1855,
+      "support_sha256": "794c62b741d2e740851d5b30096b6bf42fe1d5ad5dd175bbe0662e83168e6f41",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:summary_no_filter:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which summary-endpoint limitation rules out complex filters?",
+      "relevant_ids": [
+        386
+      ],
+      "source_id": "actor:20:wp:386",
+      "source_hash": "bcdcb7e4e959380c06ba60df8a05d12de5b3b62238e4f69115e0f6dc877d2adc",
+      "source_version": 2,
+      "support_literal": "không hỗ trợ các tham số bộ lọc phức tạp",
+      "support_offset": 1855,
+      "support_sha256": "794c62b741d2e740851d5b30096b6bf42fe1d5ad5dd175bbe0662e83168e6f41",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:detail_noninteger:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Tài liệu chi tiết task yêu cầu lỗi HTTP nào nếu ID không phải số hợp lệ?",
+      "relevant_ids": [
+        387
+      ],
+      "source_id": "actor:20:wp:387",
+      "source_hash": "997df089b150419838a423f3026c1dcbb8ce0fecb4ac16453a7974697ea9a03b",
+      "source_version": 2,
+      "support_literal": "GET /tasks/{task_id} tra ve ma 422 neu task_id khong phai la so hop le",
+      "support_offset": 1304,
+      "support_sha256": "edfc293d26ef228f911f7e37cdb259041eab0c45657fa584d693df8d562e2e19",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:detail_noninteger:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "For the detail endpoint, what HTTP error is specified for a nonnumeric task ID?",
+      "relevant_ids": [
+        387
+      ],
+      "source_id": "actor:20:wp:387",
+      "source_hash": "997df089b150419838a423f3026c1dcbb8ce0fecb4ac16453a7974697ea9a03b",
+      "source_version": 2,
+      "support_literal": "GET /tasks/{task_id} tra ve ma 422 neu task_id khong phai la so hop le",
+      "support_offset": 1304,
+      "support_sha256": "edfc293d26ef228f911f7e37cdb259041eab0c45657fa584d693df8d562e2e19",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:detail_negative:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Tài liệu chi tiết task xử lý ID âm hoặc quá lớn không có trong database thế nào?",
+      "relevant_ids": [
+        387
+      ],
+      "source_id": "actor:20:wp:387",
+      "source_hash": "997df089b150419838a423f3026c1dcbb8ce0fecb4ac16453a7974697ea9a03b",
+      "source_version": 2,
+      "support_literal": "so am hoac qua lon khong co trong CSDL tra ve ma loi 404",
+      "support_offset": 1516,
+      "support_sha256": "5901681675f533cc61e5d74e3ce416dc548fe59593dc8d20d4ca41e835749691",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:detail_negative:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "What status does the detail specification give to an absent negative or oversized ID?",
+      "relevant_ids": [
+        387
+      ],
+      "source_id": "actor:20:wp:387",
+      "source_hash": "997df089b150419838a423f3026c1dcbb8ce0fecb4ac16453a7974697ea9a03b",
+      "source_version": 2,
+      "support_literal": "so am hoac qua lon khong co trong CSDL tra ve ma loi 404",
+      "support_offset": 1516,
+      "support_sha256": "5901681675f533cc61e5d74e3ce416dc548fe59593dc8d20d4ca41e835749691",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:detail_db_boundary:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Hạng mục task detail giới hạn thay đổi schema SQLite như thế nào?",
+      "relevant_ids": [
+        387
+      ],
+      "source_id": "actor:20:wp:387",
+      "source_hash": "997df089b150419838a423f3026c1dcbb8ce0fecb4ac16453a7974697ea9a03b",
+      "source_version": 2,
+      "support_literal": "Khong thay doi schema co so du lieu SQLite",
+      "support_offset": 1591,
+      "support_sha256": "ed0b87c95909cfaca97ecfda6c2d364bac803bfe228247d9c4f123a3f2d1ff68",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:detail_db_boundary:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Does the task detail work package permit a SQLite schema change?",
+      "relevant_ids": [
+        387
+      ],
+      "source_id": "actor:20:wp:387",
+      "source_hash": "997df089b150419838a423f3026c1dcbb8ce0fecb4ac16453a7974697ea9a03b",
+      "source_version": 2,
+      "support_literal": "Khong thay doi schema co so du lieu SQLite",
+      "support_offset": 1591,
+      "support_sha256": "ed0b87c95909cfaca97ecfda6c2d364bac803bfe228247d9c4f123a3f2d1ff68",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:test_stack:vi",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Framework kiểm thử nào được ghi trong technology stack của dự án?",
+      "relevant_ids": [
+        379
+      ],
+      "source_id": "actor:20:wp:379",
+      "source_hash": "1c857a34865ea63ed93c7d27df2b584eac2c1eda77dff14d41d052842818242f",
+      "source_version": 4,
+      "support_literal": "Testing: pytest",
+      "support_offset": 305,
+      "support_sha256": "961bf21f75315b501ba9e0bd48cd69266279502824a70fc612185c783a41a9d3",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:test_stack:en",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which automated testing framework is named in the project technology stack?",
+      "relevant_ids": [
+        379
+      ],
+      "source_id": "actor:20:wp:379",
+      "source_hash": "1c857a34865ea63ed93c7d27df2b584eac2c1eda77dff14d41d052842818242f",
+      "source_version": 4,
+      "support_literal": "Testing: pytest",
+      "support_offset": 305,
+      "support_sha256": "961bf21f75315b501ba9e0bd48cd69266279502824a70fc612185c783a41a9d3",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "holdout:bulk:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Có endpoint /tasks/bulk để cập nhật hàng loạt không?",
+      "relevant_ids": [],
+      "absent_anchor": "/tasks/bulk",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:bulk:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Is /tasks/bulk available to update multiple tasks at once?",
+      "relevant_ids": [],
+      "absent_anchor": "/tasks/bulk",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:attachments:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Giao diện task tải tệp đính kèm bằng multipart/form-data ở đâu?",
+      "relevant_ids": [],
+      "absent_anchor": "multipart/form-data",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:attachments:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Where does the task UI upload attachments using multipart/form-data?",
+      "relevant_ids": [],
+      "absent_anchor": "multipart/form-data",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:graphql:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Có GraphQL API cho việc đọc danh sách task không?",
+      "relevant_ids": [],
+      "absent_anchor": "graphql",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:graphql:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Does a GraphQL API serve the task list?",
+      "relevant_ids": [],
+      "absent_anchor": "graphql",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:websocket:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Có WebSocket đẩy trạng thái task theo thời gian thực không?",
+      "relevant_ids": [],
+      "absent_anchor": "websocket",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:websocket:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Does the app push task status updates over WebSocket?",
+      "relevant_ids": [],
+      "absent_anchor": "websocket",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:postgres:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Yêu cầu nào chuyển lưu trữ task sang PostgreSQL?",
+      "relevant_ids": [],
+      "absent_anchor": "postgresql",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:postgres:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Which requirement moves task storage to PostgreSQL?",
+      "relevant_ids": [],
+      "absent_anchor": "postgresql",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:deadline:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Có filter task theo deadline không?",
+      "relevant_ids": [],
+      "absent_anchor": "deadline",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:deadline:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Does the task API provide a deadline filter?",
+      "relevant_ids": [],
+      "absent_anchor": "deadline",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:tags:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "API task có nhận tag_ids để lọc nhiều nhãn không?",
+      "relevant_ids": [],
+      "absent_anchor": "tag_ids",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:tags:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Does the task API filter using tag_ids?",
+      "relevant_ids": [],
+      "absent_anchor": "tag_ids",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:saml:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Màn hình task hỗ trợ SAML đăng nhập một lần ở đâu?",
+      "relevant_ids": [],
+      "absent_anchor": "saml",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:saml:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Where does the task UI support SAML single sign-on?",
+      "relevant_ids": [],
+      "absent_anchor": "saml",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:kafka:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Ứng dụng phát sự kiện task lên Kafka topic nào?",
+      "relevant_ids": [],
+      "absent_anchor": "kafka",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:kafka:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Which Kafka topic receives task events?",
+      "relevant_ids": [],
+      "absent_anchor": "kafka",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:etag:vi",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Endpoint sửa task sử dụng ETag để chống ghi đè ở đâu?",
+      "relevant_ids": [],
+      "absent_anchor": "etag",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:etag:en",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "en",
+      "query": "Where does task editing use an ETag for concurrency control?",
+      "relevant_ids": [],
+      "absent_anchor": "etag",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "holdout:mixed-id",
+      "split": "holdout",
+      "kind": "positive",
+      "language": "mixed",
+      "query": "Request task detail với non-numeric ID nhận HTTP status gì?",
+      "relevant_ids": [
+        387
+      ],
+      "source_id": "actor:20:wp:387",
+      "source_hash": "997df089b150419838a423f3026c1dcbb8ce0fecb4ac16453a7974697ea9a03b",
+      "source_version": 2,
+      "support_literal": "GET /tasks/{task_id} tra ve ma 422 neu task_id khong phai la so hop le",
+      "support_offset": 1304,
+      "support_sha256": "edfc293d26ef228f911f7e37cdb259041eab0c45657fa584d693df8d562e2e19",
+      "judgment": "Frozen source supports this requirement, not a live deployment claim."
+    },
+    {
+      "id": "holdout:mixed-bulk",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "mixed",
+      "query": "Có bulk update qua /tasks/bulk endpoint không?",
+      "relevant_ids": [],
+      "absent_anchor": "/tasks/bulk",
+      "judgment": "No exact distinctive capability anchor in frozen corpus; semantic absence needs independent review."
+    },
+    {
+      "id": "holdout:mixed-tags",
+      "split": "holdout",
+      "kind": "negative",
+      "language": "mixed",
+      "query": "Task filter có nhận tag_ids để chọn nhiều labels không?",
+      "relevant_ids": [],
+      "absent_anchor": "tag_ids",
+      "judgment": "No exact distinctive capability anchor in frozen corpus; semantic absence needs independent review."
+    }
+  ]
+}

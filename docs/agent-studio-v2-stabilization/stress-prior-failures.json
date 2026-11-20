@@ -1,0 +1,18 @@
+{
+  "scope": "Observed tool execution failures; detailed per-request arrays were not saved by original harness",
+  "attempts": [
+    {
+      "test": "three real MAIN tabs initial load",
+      "outcome": "FAIL",
+      "task": 391,
+      "timeout_ms": 20000
+    },
+    {
+      "test": "three real MAIN tabs after 301s emulated hidden",
+      "outcome": "FAIL",
+      "step": "explicit refresh after restore",
+      "timeout_ms": 15000
+    }
+  ],
+  "limitation": "These failures remain counted; no request status or heap numbers reconstructed from memory."
+}

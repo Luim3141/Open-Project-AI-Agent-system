@@ -1,0 +1,75 @@
+{
+  "routing_verifications": [
+    {
+      "prompt_category": "Prompt A (Deterministic)",
+      "prompt": "dự án đang có bao nhiêu task chưa hoàn thành",
+      "route_type": "LOCAL_DETERMINISTIC",
+      "target_tools": [
+        "analyze"
+      ],
+      "model_provider_invoked": false,
+      "execution_time_ms": 22695.1,
+      "result_status": "SUCCESS"
+    },
+    {
+      "prompt_category": "Prompt B (RAG Knowledge)",
+      "prompt": "Tài khoản & Role",
+      "route_type": "HYBRID_RAG_OLLAMA_QDRANT",
+      "target_tools": [
+        "knowledge_search",
+        "bge-m3:latest",
+        "qdrant_dense",
+        "sqlite_fts5"
+      ],
+      "model_provider_invoked": false,
+      "execution_time_ms": 14154.1,
+      "result_status": "SUCCESS"
+    },
+    {
+      "prompt_category": "Prompt C (WBS Analysis)",
+      "prompt": "Phân tích cấu trúc WBS và chi tiết công việc 49",
+      "route_type": "NATIVE_ANALYSIS_DIRECT",
+      "target_tools": [
+        "analyze",
+        "get_work_package"
+      ],
+      "model_provider_invoked": false,
+      "execution_time_ms": 11144.0,
+      "result_status": "SUCCESS"
+    },
+    {
+      "prompt_category": "Prompt D (QA Check)",
+      "prompt": "Kiểm tra bằng chứng QA cho công việc 49",
+      "route_type": "QA_GATEWAY_INSPECTION",
+      "target_tools": [
+        "qa_evidence_list"
+      ],
+      "model_provider_invoked": false,
+      "execution_time_ms": 1892.7,
+      "result_status": "SUCCESS"
+    },
+    {
+      "prompt_category": "Prompt E (n8n Automation)",
+      "prompt": "n8n WF03 Webhook Command Forwarding",
+      "route_type": "N8N_WEBHOOK_TO_GATEWAY",
+      "target_tools": [
+        "n8n-wf03",
+        "gateway-status"
+      ],
+      "model_provider_invoked": false,
+      "execution_time_ms": 2879.9,
+      "result_status": "SUCCESS"
+    },
+    {
+      "prompt_category": "Prompt F (Backlog Analysis)",
+      "prompt": "thống kê trạng thái công việc",
+      "route_type": "DETERMINISTIC_STATUS_BREAKDOWN",
+      "target_tools": [
+        "analyze"
+      ],
+      "model_provider_invoked": false,
+      "execution_time_ms": 26235.7,
+      "result_status": "SUCCESS"
+    }
+  ]
+}

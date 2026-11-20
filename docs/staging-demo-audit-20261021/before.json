@@ -1,0 +1,3715 @@
+{
+  "timestamp": "2026-10-21T14:20:21.009083+07:00",
+  "url": "https://deployment-mae-promote-python.trycloudflare.com",
+  "containers": [
+    {
+      "name": "qldapm-ai-gateway-1",
+      "id": "b49defc66157ba09d288344dec4adcf46ab7f68f13071fa6c3439b5b26a5d715",
+      "image": "sha256:a84bc31a582b97d7e1a3b1d1bf81167f6701997fa6c2fc057061441cd2129d25",
+      "started": "2026-10-21T06:45:44.168617277Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "8090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8090"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-ai_ai",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/workspaces",
+          "destination": "/workspaces",
+          "rw": true
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-main/free-tier-proof.json",
+          "destination": "/qldapm-policy/free-tier-proof.json",
+          "rw": false
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway",
+          "destination": "/state",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-rd-gateway-20261021",
+      "id": "9b4510336fde31be7b9a3da148ee359a0239d58f372f461d602124acfab17cdf",
+      "image": "sha256:a84bc31a582b97d7e1a3b1d1bf81167f6701997fa6c2fc057061441cd2129d25",
+      "started": "2026-10-21T06:38:28.835732711Z",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "no",
+      "ports": {
+        "8090/tcp": null
+      },
+      "networks": [
+        "qldapm-rd-20261021"
+      ],
+      "mounts": [
+        {
+          "source": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\remaining-qualification-20261021\\state",
+          "destination": "/state",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-rd-core-20261021",
+      "id": "b96a68a7366addcf80bc8206763808541a2a33881e305d8ed34a8ede38dffcc1",
+      "image": "sha256:2a7eec2c2a967fd9fb7663b20f806ce6a109405abf94f2daf09538c50aee664e",
+      "started": "2026-10-21T06:38:28.549415291Z",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "no",
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18095"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-rd-20261021",
+        "qldapm-rd-loopback-20261021"
+      ],
+      "mounts": [
+        {
+          "source": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\remaining-qualification-20261021",
+          "destination": "/qa",
+          "rw": true
+        },
+        {
+          "source": "/var/lib/docker/volumes/91089caa16ce53fec04fbbab86188699f347159093823c73bddc9f6676e1ac2c/_data",
+          "destination": "/var/openproject/assets",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-rd-db-20261021",
+      "id": "c3fea9933ea3fba35a576bff1d2592f0466c0783c77093b4545a556975fb9820",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started": "2026-10-21T06:38:16.198082253Z",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "no",
+      "ports": {
+        "5432/tcp": null
+      },
+      "networks": [
+        "qldapm-rd-20261021"
+      ],
+      "mounts": [
+        {
+          "source": "/var/lib/docker/volumes/531a3ed912caf3b4d3a386fefba0c113b391a65a2f2b06b80cbb54e6bba7d8f5/_data",
+          "destination": "/var/lib/postgresql/data",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-openproject-web-1",
+      "id": "5101c314d2fcef95c9e949e45e2645d652f8abf9ca943f57690c953deb78b83d",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started": "2026-10-21T06:06:47.682148884Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "8080/tcp": null
+      },
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "destination": "/qldapm",
+          "rw": false
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/test-receipt.key",
+          "destination": "/qldapm-ui/test-receipt.key",
+          "rw": false
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway/ui.key",
+          "destination": "/qldapm-ui/ui.key",
+          "rw": false
+        },
+        {
+          "source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "destination": "/var/openproject/assets",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-openproject-worker-1",
+      "id": "040cd049f638f3348bf452d5c764b8ba2a297b8f539ffd61892bc22a1acbf84d",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started": "2026-10-21T06:06:47.625162815Z",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "8080/tcp": null
+      },
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "destination": "/qldapm",
+          "rw": false
+        },
+        {
+          "source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "destination": "/var/openproject/assets",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-openproject-cron-1",
+      "id": "34d1f577c67b837eb236636706188be7e7bb6f1b48ebe6bce1f3d20870661579",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started": "2026-10-21T06:06:47.565778Z",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "8080/tcp": null
+      },
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "destination": "/qldapm",
+          "rw": false
+        },
+        {
+          "source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "destination": "/var/openproject/assets",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-ai-stage-staging-web-1",
+      "id": "1769afbd23e43fe5374a569349d07ce2c0e20578d92e7249e8fc3099c4333153",
+      "image": "sha256:79a90c2083727e3355bb7957a0c704bcc51973f3711d3599970690eafac1eff2",
+      "started": "2026-10-21T06:06:47.654691061Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18091"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-ai-stage_stage",
+        "qldapm-ai-stage_stage-front"
+      ],
+      "mounts": [
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage/deep-test-receipt.key",
+          "destination": "/qldapm-ui/test-receipt.key",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai/ui.key",
+          "destination": "/qldapm-ui/ui.key",
+          "rw": false
+        },
+        {
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-assets/_data",
+          "destination": "/var/openproject/assets",
+          "rw": true
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "destination": "/private",
+          "rw": true
+        },
+        {
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "destination": "/qldapm",
+          "rw": false
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "destination": "/qldapm-access",
+          "rw": true
+        },
+        {
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/core",
+          "destination": "/qldapm-core",
+          "rw": false
+        },
+        {
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\quick_tunnel_web.rb",
+          "destination": "/qldapm-operator/quick_tunnel_web.rb",
+          "rw": false
+        }
+      ]
+    },
+    {
+      "name": "qldapm-ai-stage-quick-tunnel-1",
+      "id": "18e3960e896abecfbbff2cdaabc4ea3242ba477cc577d7f27269b96cf5531b84",
+      "image": "sha256:a80f54e29918ec66c82cdc7ad8fd9a65e3082e59825c0356d5737916959884c6",
+      "started": "2026-10-21T06:06:47.821276266Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "2000/tcp": null,
+        "2019/tcp": null,
+        "443/tcp": null,
+        "443/udp": null,
+        "80/tcp": null
+      },
+      "networks": [
+        "qldapm-ai-stage_stage-front"
+      ],
+      "mounts": []
+    },
+    {
+      "name": "qldapm-ai-stage-staging-gateway-1",
+      "id": "61689602da51f704618cc5786b8a221bce6b86a0f8d033226cf553d399312ade",
+      "image": "sha256:456c38f6a9a936048892bdb2d97fd855eb63c6321fbaceab88de6f8aa56fe70b",
+      "started": "2026-10-21T06:06:47.917819077Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "8090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18092"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-ai-stage_automation",
+        "qldapm-ai-stage_stage-front"
+      ],
+      "mounts": [
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "destination": "/qldapm-policy/free-tier-proof.json",
+          "rw": false
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "destination": "/state",
+          "rw": true
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai-workspaces",
+          "destination": "/workspaces",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-ai-stage-local-backup-1",
+      "id": "c605252d63bd85dfce7747b889c7a0b1c36bb353cdaa0e397c7e846dd19201a3",
+      "image": "sha256:9713d54aad003b084e58035965156902f86c0ba7a638e41ab880d119ba9cbba8",
+      "started": "2026-10-21T06:06:47.761414355Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "8080/tcp": null
+      },
+      "networks": [
+        "qldapm-ai-stage_stage"
+      ],
+      "mounts": [
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/.env",
+          "destination": "/secrets/runtime.env",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/local_backup.py",
+          "destination": "/trusted/local_backup.py",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "destination": "/gateway",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/n8n-owner",
+          "destination": "/n8n-owner",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "destination": "/secrets/provider-proof.json",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/jira_sync_backup.py",
+          "destination": "/trusted/jira_sync_backup.py",
+          "rw": false
+        },
+        {
+          "source": "/var/lib/docker/volumes/d9df6fbd073b8269faf0286639886d8bf249263e381bf3d1dccb2c3eb5c57fc0/_data",
+          "destination": "/var/openproject/assets",
+          "rw": true
+        },
+        {
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-assets/_data",
+          "destination": "/assets",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-backups",
+          "destination": "/backup",
+          "rw": true
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "destination": "/native-private",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-runtime/stage-runtime.json",
+          "destination": "/secrets/stage-runtime.json",
+          "rw": false
+        },
+        {
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_n8n-data/_data",
+          "destination": "/n8n",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free",
+          "destination": "/provider-policy",
+          "rw": false
+        },
+        {
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/radmin-caddy",
+          "destination": "/radmin",
+          "rw": false
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/n8n-stage/encryption.key",
+          "destination": "/secrets/n8n.key",
+          "rw": false
+        }
+      ]
+    },
+    {
+      "name": "qldapm-ai-stage-n8n-1",
+      "id": "5729a0af261d458d8c83f0a7eb6c6287c1280ce5bce3fe20bb04d0abbf616326",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "started": "2026-10-21T06:06:47.841018552Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "5678/tcp": null
+      },
+      "networks": [
+        "qldapm-ai-stage_automation"
+      ],
+      "mounts": [
+        {
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_n8n-data/_data",
+          "destination": "/home/node/.n8n",
+          "rw": true
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/n8n-stage/encryption.key",
+          "destination": "/run/secrets/n8n_encryption_key",
+          "rw": false
+        }
+      ]
+    },
+    {
+      "name": "qldapm-ai-stage-n8n-editor-1",
+      "id": "fbc052639a323dc346cc1d6ace98bee9d1303db73ac5673ff040fe7aa8f334a4",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started": "2026-10-21T06:06:47.871065477Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "18090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18090"
+          }
+        ],
+        "5678/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "5678"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-ai-stage_automation",
+        "qldapm-ai-stage_editor"
+      ],
+      "mounts": [
+        {
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\Quick.Caddyfile",
+          "destination": "/etc/caddy/Caddyfile",
+          "rw": false
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "destination": "/qldapm-access",
+          "rw": false
+        }
+      ]
+    },
+    {
+      "name": "qldapm-ai-stage-db-1",
+      "id": "0775f1163e682dea6e1df59f306ae89dfbe7ba0a8c38031d09604501b0ca3505",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started": "2026-10-21T06:06:47.885815794Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "5432/tcp": null
+      },
+      "networks": [
+        "qldapm-ai-stage_stage"
+      ],
+      "mounts": [
+        {
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-db/_data",
+          "destination": "/var/lib/postgresql/data",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-openproject-proxy-1",
+      "id": "752ba4082a0465eaa358590b4c8844bf6075f454406355e9280bea9803b292eb",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started": "2026-10-21T06:06:47.778472879Z",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8088"
+          }
+        ]
+      },
+      "networks": [
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": [
+        {
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\Caddyfile",
+          "destination": "/etc/caddy/Caddyfile",
+          "rw": false
+        },
+        {
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject/gate",
+          "destination": "/gate",
+          "rw": false
+        }
+      ]
+    },
+    {
+      "name": "qldapm-openproject-hocuspocus-1",
+      "id": "a9e13d59ae711266f599d5a1d1d7ed33345c2450e3457003684625fb3b39a584",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "started": "2026-10-21T06:06:47.892886545Z",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "1234/tcp": null
+      },
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ],
+      "mounts": []
+    },
+    {
+      "name": "qldapm-openproject-db-1",
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started": "2026-10-21T06:06:47.901836402Z",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "5432/tcp": null
+      },
+      "networks": [
+        "qldapm-openproject_backend"
+      ],
+      "mounts": [
+        {
+          "source": "/var/lib/docker/volumes/qldapm-openproject_pgdata/_data",
+          "destination": "/var/lib/postgresql/data",
+          "rw": true
+        }
+      ]
+    },
+    {
+      "name": "qldapm-openproject-cache-1",
+      "id": "ac27388285fbadbf7a0f81f2f1d6c141d9fb79483d186d469d5bb324a0818115",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "started": "2026-10-21T06:06:47.731425134Z",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "oom": false,
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "11211/tcp": null
+      },
+      "networks": [
+        "qldapm-openproject_backend"
+      ],
+      "mounts": []
+    }
+  ],
+  "stage_postgres": {
+    "projects": [
+      {
+        "id": 1,
+        "identifier": "demo-project",
+        "name": "Demo project",
+        "active": true
+      },
+      {
+        "id": 2,
+        "identifier": "your-scrum-project",
+        "name": "Scrum project",
+        "active": true
+      },
+      {
+        "id": 3,
+        "identifier": "qldapm-local",
+        "name": "QLDAPM — Local Community",
+        "active": true
+      }
+    ],
+    "work_packages": [
+      {
+        "project_id": 1,
+        "total": 14,
+        "with_start": 14,
+        "with_due": 14,
+        "with_version": 0
+      },
+      {
+        "project_id": 2,
+        "total": 23,
+        "with_start": 23,
+        "with_due": 17,
+        "with_version": 0
+      },
+      {
+        "project_id": 3,
+        "total": 335,
+        "with_start": 0,
+        "with_due": 0,
+        "with_version": 0
+      }
+    ],
+    "types": [
+      {
+        "project_id": 1,
+        "name": "Milestone",
+        "count": 3
+      },
+      {
+        "project_id": 1,
+        "name": "Summary task",
+        "count": 2
+      },
+      {
+        "project_id": 1,
+        "name": "Task",
+        "count": 9
+      },
+      {
+        "project_id": 2,
+        "name": "Bug",
+        "count": 2
+      },
+      {
+        "project_id": 2,
+        "name": "Epic",
+        "count": 1
+      },
+      {
+        "project_id": 2,
+        "name": "Milestone",
+        "count": 3
+      },
+      {
+        "project_id": 2,
+        "name": "Summary task",
+        "count": 3
+      },
+      {
+        "project_id": 2,
+        "name": "Task",
+        "count": 3
+      },
+      {
+        "project_id": 2,
+        "name": "User story",
+        "count": 11
+      },
+      {
+        "project_id": 3,
+        "name": "Epic",
+        "count": 11
+      },
+      {
+        "project_id": 3,
+        "name": "Subtask",
+        "count": 270
+      },
+      {
+        "project_id": 3,
+        "name": "Task",
+        "count": 54
+      }
+    ],
+    "users": [
+      {
+        "id": 4,
+        "login": "admin",
+        "status": 3,
+        "admin": true
+      },
+      {
+        "id": 5,
+        "login": "stage-owner",
+        "status": 1,
+        "admin": true
+      },
+      {
+        "id": 6,
+        "login": "ba-pm",
+        "status": 1,
+        "admin": false
+      },
+      {
+        "id": 7,
+        "login": "pm",
+        "status": 1,
+        "admin": false
+      },
+      {
+        "id": 8,
+        "login": "be",
+        "status": 1,
+        "admin": false
+      },
+      {
+        "id": 9,
+        "login": "fe",
+        "status": 1,
+        "admin": false
+      },
+      {
+        "id": 10,
+        "login": "qa",
+        "status": 1,
+        "admin": false
+      },
+      {
+        "id": 11,
+        "login": "luim-admin",
+        "status": 1,
+        "admin": true
+      },
+      {
+        "id": 12,
+        "login": "system-admin",
+        "status": 1,
+        "admin": true
+      }
+    ],
+    "memberships": [
+      {
+        "project_id": 1,
+        "user_id": 4,
+        "role": "Project admin"
+      },
+      {
+        "project_id": 1,
+        "user_id": 12,
+        "role": "QLDAPM PM"
+      },
+      {
+        "project_id": 2,
+        "user_id": 4,
+        "role": "Project admin"
+      },
+      {
+        "project_id": 2,
+        "user_id": 12,
+        "role": "QLDAPM PM"
+      },
+      {
+        "project_id": 3,
+        "user_id": 5,
+        "role": "QLDAPM PM"
+      },
+      {
+        "project_id": 3,
+        "user_id": 6,
+        "role": "QLDAPM BA-PM"
+      },
+      {
+        "project_id": 3,
+        "user_id": 7,
+        "role": "QLDAPM PM"
+      },
+      {
+        "project_id": 3,
+        "user_id": 8,
+        "role": "QLDAPM BE"
+      },
+      {
+        "project_id": 3,
+        "user_id": 9,
+        "role": "QLDAPM FE"
+      },
+      {
+        "project_id": 3,
+        "user_id": 10,
+        "role": "QLDAPM QA"
+      },
+      {
+        "project_id": 3,
+        "user_id": 12,
+        "role": "QLDAPM PM"
+      }
+    ],
+    "versions": [
+      {
+        "id": 1,
+        "project_id": 2,
+        "name": "Bug Backlog",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 2,
+        "project_id": 2,
+        "name": "Product Backlog",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 3,
+        "project_id": 2,
+        "name": "Sprint 1",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 4,
+        "project_id": 2,
+        "name": "Sprint 2",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      }
+    ],
+    "modules": [
+      {
+        "project_id": 1,
+        "name": "board_view"
+      },
+      {
+        "project_id": 1,
+        "name": "budgets"
+      },
+      {
+        "project_id": 1,
+        "name": "calendars"
+      },
+      {
+        "project_id": 1,
+        "name": "costs"
+      },
+      {
+        "project_id": 1,
+        "name": "documents"
+      },
+      {
+        "project_id": 1,
+        "name": "gantt"
+      },
+      {
+        "project_id": 1,
+        "name": "meetings"
+      },
+      {
+        "project_id": 1,
+        "name": "news"
+      },
+      {
+        "project_id": 1,
+        "name": "team_planner_view"
+      },
+      {
+        "project_id": 1,
+        "name": "work_package_tracking"
+      },
+      {
+        "project_id": 2,
+        "name": "backlogs"
+      },
+      {
+        "project_id": 2,
+        "name": "board_view"
+      },
+      {
+        "project_id": 2,
+        "name": "documents"
+      },
+      {
+        "project_id": 2,
+        "name": "gantt"
+      },
+      {
+        "project_id": 2,
+        "name": "meetings"
+      },
+      {
+        "project_id": 2,
+        "name": "news"
+      },
+      {
+        "project_id": 2,
+        "name": "work_package_tracking"
+      },
+      {
+        "project_id": 3,
+        "name": "activity"
+      },
+      {
+        "project_id": 3,
+        "name": "backlogs"
+      },
+      {
+        "project_id": 3,
+        "name": "board_view"
+      },
+      {
+        "project_id": 3,
+        "name": "gantt"
+      },
+      {
+        "project_id": 3,
+        "name": "work_package_tracking"
+      }
+    ],
+    "tables": [
+      {
+        "table_name": "ai_text_transform_action_types"
+      },
+      {
+        "table_name": "ai_text_transform_actions"
+      },
+      {
+        "table_name": "ai_text_transform_run_events"
+      },
+      {
+        "table_name": "ai_text_transform_runs"
+      },
+      {
+        "table_name": "announcements"
+      },
+      {
+        "table_name": "ar_internal_metadata"
+      },
+      {
+        "table_name": "attachable_journals"
+      },
+      {
+        "table_name": "attachment_journals"
+      },
+      {
+        "table_name": "attachments"
+      },
+      {
+        "table_name": "attribute_help_texts"
+      },
+      {
+        "table_name": "auth_providers"
+      },
+      {
+        "table_name": "autologin_session_links"
+      },
+      {
+        "table_name": "backlog_buckets"
+      },
+      {
+        "table_name": "backlog_excluded_types"
+      },
+      {
+        "table_name": "bcf_comments"
+      },
+      {
+        "table_name": "bcf_issues"
+      },
+      {
+        "table_name": "bcf_viewpoints"
+      },
+      {
+        "table_name": "budget_journals"
+      },
+      {
+        "table_name": "budgets"
+      },
+      {
+        "table_name": "calculated_value_errors"
+      },
+      {
+        "table_name": "categories"
+      },
+      {
+        "table_name": "changes"
+      },
+      {
+        "table_name": "changeset_journals"
+      },
+      {
+        "table_name": "changesets"
+      },
+      {
+        "table_name": "changesets_work_packages"
+      },
+      {
+        "table_name": "colors"
+      },
+      {
+        "table_name": "comments"
+      },
+      {
+        "table_name": "cost_entries"
+      },
+      {
+        "table_name": "cost_queries"
+      },
+      {
+        "table_name": "cost_types"
+      },
+      {
+        "table_name": "cost_types_projects"
+      },
+      {
+        "table_name": "custom_actions"
+      },
+      {
+        "table_name": "custom_actions_projects"
+      },
+      {
+        "table_name": "custom_actions_roles"
+      },
+      {
+        "table_name": "custom_actions_statuses"
+      },
+      {
+        "table_name": "custom_actions_types"
+      },
+      {
+        "table_name": "custom_comment_journals"
+      },
+      {
+        "table_name": "custom_comments"
+      },
+      {
+        "table_name": "custom_field_sections"
+      },
+      {
+        "table_name": "custom_fields"
+      },
+      {
+        "table_name": "custom_fields_projects"
+      },
+      {
+        "table_name": "custom_fields_roles"
+      },
+      {
+        "table_name": "custom_fields_types"
+      },
+      {
+        "table_name": "custom_options"
+      },
+      {
+        "table_name": "custom_styles"
+      },
+      {
+        "table_name": "custom_values"
+      },
+      {
+        "table_name": "customizable_journals"
+      },
+      {
+        "table_name": "deploy_status_checks"
+      },
+      {
+        "table_name": "deploy_targets"
+      },
+      {
+        "table_name": "design_colors"
+      },
+      {
+        "table_name": "document_journals"
+      },
+      {
+        "table_name": "document_types"
+      },
+      {
+        "table_name": "documents"
+      },
+      {
+        "table_name": "done_statuses_for_project"
+      },
+      {
+        "table_name": "emoji_reactions"
+      },
+      {
+        "table_name": "enabled_modules"
+      },
+      {
+        "table_name": "enterprise_tokens"
+      },
+      {
+        "table_name": "enumerations"
+      },
+      {
+        "table_name": "export_settings"
+      },
+      {
+        "table_name": "exports"
+      },
+      {
+        "table_name": "favorites"
+      },
+      {
+        "table_name": "file_links"
+      },
+      {
+        "table_name": "forums"
+      },
+      {
+        "table_name": "friendly_id_slugs"
+      },
+      {
+        "table_name": "github_check_runs"
+      },
+      {
+        "table_name": "github_pull_requests"
+      },
+      {
+        "table_name": "github_pull_requests_work_packages"
+      },
+      {
+        "table_name": "github_users"
+      },
+      {
+        "table_name": "gitlab_issues"
+      },
+      {
+        "table_name": "gitlab_issues_work_packages"
+      },
+      {
+        "table_name": "gitlab_merge_requests"
+      },
+      {
+        "table_name": "gitlab_merge_requests_work_packages"
+      },
+      {
+        "table_name": "gitlab_pipelines"
+      },
+      {
+        "table_name": "gitlab_users"
+      },
+      {
+        "table_name": "good_job_batches"
+      },
+      {
+        "table_name": "good_job_executions"
+      },
+      {
+        "table_name": "good_job_processes"
+      },
+      {
+        "table_name": "good_job_settings"
+      },
+      {
+        "table_name": "good_jobs"
+      },
+      {
+        "table_name": "grid_widgets"
+      },
+      {
+        "table_name": "grids"
+      },
+      {
+        "table_name": "group_details"
+      },
+      {
+        "table_name": "group_users"
+      },
+      {
+        "table_name": "health_reports"
+      },
+      {
+        "table_name": "hierarchical_item_hierarchies"
+      },
+      {
+        "table_name": "hierarchical_items"
+      },
+      {
+        "table_name": "ical_token_query_assignments"
+      },
+      {
+        "table_name": "ifc_models"
+      },
+      {
+        "table_name": "jira_fields"
+      },
+      {
+        "table_name": "jira_import_job_cursors"
+      },
+      {
+        "table_name": "jira_import_transitions"
+      },
+      {
+        "table_name": "jira_imports"
+      },
+      {
+        "table_name": "jira_issue_types"
+      },
+      {
+        "table_name": "jira_issues"
+      },
+      {
+        "table_name": "jira_open_project_references"
+      },
+      {
+        "table_name": "jira_priorities"
+      },
+      {
+        "table_name": "jira_projects"
+      },
+      {
+        "table_name": "jira_statuses"
+      },
+      {
+        "table_name": "jira_users"
+      },
+      {
+        "table_name": "jira_versions"
+      },
+      {
+        "table_name": "jiras"
+      },
+      {
+        "table_name": "job_statuses"
+      },
+      {
+        "table_name": "journals"
+      },
+      {
+        "table_name": "labor_budget_items"
+      },
+      {
+        "table_name": "last_project_folders"
+      },
+      {
+        "table_name": "ldap_auth_sources"
+      },
+      {
+        "table_name": "ldap_departments_memberships"
+      },
+      {
+        "table_name": "ldap_departments_synchronized_departments"
+      },
+      {
+        "table_name": "ldap_departments_synchronized_trees"
+      },
+      {
+        "table_name": "ldap_groups_memberships"
+      },
+      {
+        "table_name": "ldap_groups_synchronized_filters"
+      },
+      {
+        "table_name": "ldap_groups_synchronized_groups"
+      },
+      {
+        "table_name": "material_budget_items"
+      },
+      {
+        "table_name": "mcp_configurations"
+      },
+      {
+        "table_name": "meeting_agenda_item_journals"
+      },
+      {
+        "table_name": "meeting_agenda_items"
+      },
+      {
+        "table_name": "meeting_journals"
+      },
+      {
+        "table_name": "meeting_outcomes"
+      },
+      {
+        "table_name": "meeting_participant_journals"
+      },
+      {
+        "table_name": "meeting_participants"
+      },
+      {
+        "table_name": "meeting_sections"
+      },
+      {
+        "table_name": "meetings"
+      },
+      {
+        "table_name": "member_roles"
+      },
+      {
+        "table_name": "members"
+      },
+      {
+        "table_name": "menu_items"
+      },
+      {
+        "table_name": "message_journals"
+      },
+      {
+        "table_name": "messages"
+      },
+      {
+        "table_name": "news"
+      },
+      {
+        "table_name": "news_journals"
+      },
+      {
+        "table_name": "non_working_days"
+      },
+      {
+        "table_name": "notification_settings"
+      },
+      {
+        "table_name": "notifications"
+      },
+      {
+        "table_name": "oauth_access_grants"
+      },
+      {
+        "table_name": "oauth_access_tokens"
+      },
+      {
+        "table_name": "oauth_applications"
+      },
+      {
+        "table_name": "oauth_client_tokens"
+      },
+      {
+        "table_name": "oauth_clients"
+      },
+      {
+        "table_name": "oidc_group_links"
+      },
+      {
+        "table_name": "oidc_group_memberships"
+      },
+      {
+        "table_name": "oidc_user_session_links"
+      },
+      {
+        "table_name": "oidc_user_tokens"
+      },
+      {
+        "table_name": "ordered_persisted_query_entities"
+      },
+      {
+        "table_name": "ordered_work_packages"
+      },
+      {
+        "table_name": "outbound_mail_recipients"
+      },
+      {
+        "table_name": "paper_trail_audits"
+      },
+      {
+        "table_name": "persisted_queries"
+      },
+      {
+        "table_name": "persisted_views"
+      },
+      {
+        "table_name": "project_custom_field_project_mappings"
+      },
+      {
+        "table_name": "project_custom_field_type_mappings"
+      },
+      {
+        "table_name": "project_journals"
+      },
+      {
+        "table_name": "project_phase_definitions"
+      },
+      {
+        "table_name": "project_phase_journals"
+      },
+      {
+        "table_name": "project_phases"
+      },
+      {
+        "table_name": "project_queries"
+      },
+      {
+        "table_name": "project_storages"
+      },
+      {
+        "table_name": "project_types"
+      },
+      {
+        "table_name": "projects"
+      },
+      {
+        "table_name": "qldapm_insight_responses"
+      },
+      {
+        "table_name": "qldapm_insight_snapshots"
+      },
+      {
+        "table_name": "qldapm_mutation_receipts"
+      },
+      {
+        "table_name": "queries"
+      },
+      {
+        "table_name": "rates"
+      },
+      {
+        "table_name": "recaptcha_entries"
+      },
+      {
+        "table_name": "recurring_meeting_historic_schedules"
+      },
+      {
+        "table_name": "recurring_meeting_interim_responses"
+      },
+      {
+        "table_name": "recurring_meetings"
+      },
+      {
+        "table_name": "relations"
+      },
+      {
+        "table_name": "reminder_notifications"
+      },
+      {
+        "table_name": "reminders"
+      },
+      {
+        "table_name": "remote_identities"
+      },
+      {
+        "table_name": "repositories"
+      },
+      {
+        "table_name": "resource_allocation_journals"
+      },
+      {
+        "table_name": "resource_allocations"
+      },
+      {
+        "table_name": "role_permissions"
+      },
+      {
+        "table_name": "roles"
+      },
+      {
+        "table_name": "schema_migrations"
+      },
+      {
+        "table_name": "scim_clients"
+      },
+      {
+        "table_name": "service_account_associations"
+      },
+      {
+        "table_name": "sessions"
+      },
+      {
+        "table_name": "settings"
+      },
+      {
+        "table_name": "sprint_goals"
+      },
+      {
+        "table_name": "sprints"
+      },
+      {
+        "table_name": "statuses"
+      },
+      {
+        "table_name": "storages"
+      },
+      {
+        "table_name": "storages_file_links_journals"
+      },
+      {
+        "table_name": "subproject_template_assignments"
+      },
+      {
+        "table_name": "time_entries"
+      },
+      {
+        "table_name": "time_entry_activities_projects"
+      },
+      {
+        "table_name": "time_entry_journals"
+      },
+      {
+        "table_name": "token_bucket_states"
+      },
+      {
+        "table_name": "tokens"
+      },
+      {
+        "table_name": "two_factor_authentication_devices"
+      },
+      {
+        "table_name": "type_variants"
+      },
+      {
+        "table_name": "types"
+      },
+      {
+        "table_name": "user_auth_provider_links"
+      },
+      {
+        "table_name": "user_non_working_times"
+      },
+      {
+        "table_name": "user_passwords"
+      },
+      {
+        "table_name": "user_preferences"
+      },
+      {
+        "table_name": "user_working_hours"
+      },
+      {
+        "table_name": "users"
+      },
+      {
+        "table_name": "versions"
+      },
+      {
+        "table_name": "views"
+      },
+      {
+        "table_name": "watchers"
+      },
+      {
+        "table_name": "webhooks_events"
+      },
+      {
+        "table_name": "webhooks_logs"
+      },
+      {
+        "table_name": "webhooks_projects"
+      },
+      {
+        "table_name": "webhooks_webhooks"
+      },
+      {
+        "table_name": "wiki_page_journals"
+      },
+      {
+        "table_name": "wiki_page_links"
+      },
+      {
+        "table_name": "wiki_pages"
+      },
+      {
+        "table_name": "wiki_providers"
+      },
+      {
+        "table_name": "wiki_redirects"
+      },
+      {
+        "table_name": "wikis"
+      },
+      {
+        "table_name": "work_package_hierarchies"
+      },
+      {
+        "table_name": "work_package_journals"
+      },
+      {
+        "table_name": "work_package_semantic_aliases"
+      },
+      {
+        "table_name": "work_package_version_journals"
+      },
+      {
+        "table_name": "work_package_versions"
+      },
+      {
+        "table_name": "work_packages"
+      },
+      {
+        "table_name": "workflows"
+      }
+    ],
+    "business_fingerprints": [
+      {
+        "name": "work_packages",
+        "count": 372,
+        "digest": "321507bcbd0fc14cfe91461fb6830873"
+      },
+      {
+        "name": "relations",
+        "count": 352,
+        "digest": "b61feabf9d1322282499f4e8298883fe"
+      },
+      {
+        "name": "versions",
+        "count": 4,
+        "digest": "e894a68ee541ce6367ea992524209bae"
+      }
+    ]
+  },
+  "main_postgres": {
+    "projects": [
+      {
+        "id": 1,
+        "identifier": "demo-project",
+        "name": "Demo project",
+        "active": true
+      },
+      {
+        "id": 2,
+        "identifier": "your-scrum-project",
+        "name": "Scrum project",
+        "active": true
+      },
+      {
+        "id": 5,
+        "identifier": "qldapm-local",
+        "name": "QLDAPM — Local Community",
+        "active": true
+      }
+    ],
+    "work_packages": [
+      {
+        "project_id": 1,
+        "total": 14,
+        "with_start": 14,
+        "with_due": 14,
+        "with_version": 0
+      },
+      {
+        "project_id": 2,
+        "total": 23,
+        "with_start": 23,
+        "with_due": 17,
+        "with_version": 0
+      },
+      {
+        "project_id": 5,
+        "total": 329,
+        "with_start": 0,
+        "with_due": 0,
+        "with_version": 0
+      }
+    ],
+    "types": [
+      {
+        "project_id": 1,
+        "name": "Milestone",
+        "count": 3
+      },
+      {
+        "project_id": 1,
+        "name": "Summary task",
+        "count": 2
+      },
+      {
+        "project_id": 1,
+        "name": "Task",
+        "count": 9
+      },
+      {
+        "project_id": 2,
+        "name": "Bug",
+        "count": 2
+      },
+      {
+        "project_id": 2,
+        "name": "Epic",
+        "count": 1
+      },
+      {
+        "project_id": 2,
+        "name": "Milestone",
+        "count": 3
+      },
+      {
+        "project_id": 2,
+        "name": "Summary task",
+        "count": 3
+      },
+      {
+        "project_id": 2,
+        "name": "Task",
+        "count": 3
+      },
+      {
+        "project_id": 2,
+        "name": "User story",
+        "count": 11
+      },
+      {
+        "project_id": 5,
+        "name": "Epic",
+        "count": 11
+      },
+      {
+        "project_id": 5,
+        "name": "Subtask",
+        "count": 265
+      },
+      {
+        "project_id": 5,
+        "name": "Task",
+        "count": 53
+      }
+    ],
+    "users": [
+      {
+        "id": 4,
+        "login": "admin",
+        "status": 3,
+        "admin": true
+      },
+      {
+        "id": 18,
+        "login": "op-owner",
+        "status": 1,
+        "admin": true
+      },
+      {
+        "id": 19,
+        "login": "ba-pm",
+        "status": 1,
+        "admin": false
+      },
+      {
+        "id": 20,
+        "login": "pm",
+        "status": 1,
+        "admin": false
+      },
+      {
+        "id": 21,
+        "login": "be",
+        "status": 1,
+        "admin": false
+      },
+      {
+        "id": 22,
+        "login": "fe",
+        "status": 1,
+        "admin": false
+      },
+      {
+        "id": 23,
+        "login": "qa",
+        "status": 1,
+        "admin": false
+      }
+    ],
+    "memberships": [
+      {
+        "project_id": 1,
+        "user_id": 4,
+        "role": "Project admin"
+      },
+      {
+        "project_id": 2,
+        "user_id": 4,
+        "role": "Project admin"
+      },
+      {
+        "project_id": 5,
+        "user_id": 19,
+        "role": "QLDAPM PM"
+      },
+      {
+        "project_id": 5,
+        "user_id": 20,
+        "role": "QLDAPM BA"
+      },
+      {
+        "project_id": 5,
+        "user_id": 21,
+        "role": "QLDAPM BE"
+      },
+      {
+        "project_id": 5,
+        "user_id": 22,
+        "role": "QLDAPM FE"
+      },
+      {
+        "project_id": 5,
+        "user_id": 23,
+        "role": "QLDAPM QA"
+      }
+    ],
+    "versions": [
+      {
+        "id": 1,
+        "project_id": 2,
+        "name": "Bug Backlog",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 2,
+        "project_id": 2,
+        "name": "Product Backlog",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 3,
+        "project_id": 2,
+        "name": "Sprint 1",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 4,
+        "project_id": 2,
+        "name": "Sprint 2",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 5,
+        "project_id": 5,
+        "name": "Sprint 1",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 6,
+        "project_id": 5,
+        "name": "Sprint 2",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 7,
+        "project_id": 5,
+        "name": "Sprint 3",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      },
+      {
+        "id": 8,
+        "project_id": 5,
+        "name": "Sprint 4",
+        "status": "open",
+        "start_date": null,
+        "effective_date": null
+      }
+    ],
+    "modules": [
+      {
+        "project_id": 1,
+        "name": "board_view"
+      },
+      {
+        "project_id": 1,
+        "name": "budgets"
+      },
+      {
+        "project_id": 1,
+        "name": "calendars"
+      },
+      {
+        "project_id": 1,
+        "name": "costs"
+      },
+      {
+        "project_id": 1,
+        "name": "documents"
+      },
+      {
+        "project_id": 1,
+        "name": "gantt"
+      },
+      {
+        "project_id": 1,
+        "name": "meetings"
+      },
+      {
+        "project_id": 1,
+        "name": "news"
+      },
+      {
+        "project_id": 1,
+        "name": "team_planner_view"
+      },
+      {
+        "project_id": 1,
+        "name": "work_package_tracking"
+      },
+      {
+        "project_id": 2,
+        "name": "backlogs"
+      },
+      {
+        "project_id": 2,
+        "name": "board_view"
+      },
+      {
+        "project_id": 2,
+        "name": "documents"
+      },
+      {
+        "project_id": 2,
+        "name": "gantt"
+      },
+      {
+        "project_id": 2,
+        "name": "meetings"
+      },
+      {
+        "project_id": 2,
+        "name": "news"
+      },
+      {
+        "project_id": 2,
+        "name": "work_package_tracking"
+      },
+      {
+        "project_id": 5,
+        "name": "activity"
+      },
+      {
+        "project_id": 5,
+        "name": "backlogs"
+      },
+      {
+        "project_id": 5,
+        "name": "board_view"
+      },
+      {
+        "project_id": 5,
+        "name": "gantt"
+      },
+      {
+        "project_id": 5,
+        "name": "work_package_tracking"
+      }
+    ],
+    "tables": [
+      {
+        "table_name": "ai_text_transform_action_types"
+      },
+      {
+        "table_name": "ai_text_transform_actions"
+      },
+      {
+        "table_name": "ai_text_transform_run_events"
+      },
+      {
+        "table_name": "ai_text_transform_runs"
+      },
+      {
+        "table_name": "announcements"
+      },
+      {
+        "table_name": "ar_internal_metadata"
+      },
+      {
+        "table_name": "attachable_journals"
+      },
+      {
+        "table_name": "attachment_journals"
+      },
+      {
+        "table_name": "attachments"
+      },
+      {
+        "table_name": "attribute_help_texts"
+      },
+      {
+        "table_name": "auth_providers"
+      },
+      {
+        "table_name": "autologin_session_links"
+      },
+      {
+        "table_name": "backlog_buckets"
+      },
+      {
+        "table_name": "backlog_excluded_types"
+      },
+      {
+        "table_name": "bcf_comments"
+      },
+      {
+        "table_name": "bcf_issues"
+      },
+      {
+        "table_name": "bcf_viewpoints"
+      },
+      {
+        "table_name": "budget_journals"
+      },
+      {
+        "table_name": "budgets"
+      },
+      {
+        "table_name": "calculated_value_errors"
+      },
+      {
+        "table_name": "categories"
+      },
+      {
+        "table_name": "changes"
+      },
+      {
+        "table_name": "changeset_journals"
+      },
+      {
+        "table_name": "changesets"
+      },
+      {
+        "table_name": "changesets_work_packages"
+      },
+      {
+        "table_name": "colors"
+      },
+      {
+        "table_name": "comments"
+      },
+      {
+        "table_name": "cost_entries"
+      },
+      {
+        "table_name": "cost_queries"
+      },
+      {
+        "table_name": "cost_types"
+      },
+      {
+        "table_name": "cost_types_projects"
+      },
+      {
+        "table_name": "custom_actions"
+      },
+      {
+        "table_name": "custom_actions_projects"
+      },
+      {
+        "table_name": "custom_actions_roles"
+      },
+      {
+        "table_name": "custom_actions_statuses"
+      },
+      {
+        "table_name": "custom_actions_types"
+      },
+      {
+        "table_name": "custom_comment_journals"
+      },
+      {
+        "table_name": "custom_comments"
+      },
+      {
+        "table_name": "custom_field_sections"
+      },
+      {
+        "table_name": "custom_fields"
+      },
+      {
+        "table_name": "custom_fields_projects"
+      },
+      {
+        "table_name": "custom_fields_roles"
+      },
+      {
+        "table_name": "custom_fields_types"
+      },
+      {
+        "table_name": "custom_options"
+      },
+      {
+        "table_name": "custom_styles"
+      },
+      {
+        "table_name": "custom_values"
+      },
+      {
+        "table_name": "customizable_journals"
+      },
+      {
+        "table_name": "deploy_status_checks"
+      },
+      {
+        "table_name": "deploy_targets"
+      },
+      {
+        "table_name": "design_colors"
+      },
+      {
+        "table_name": "document_journals"
+      },
+      {
+        "table_name": "document_types"
+      },
+      {
+        "table_name": "documents"
+      },
+      {
+        "table_name": "done_statuses_for_project"
+      },
+      {
+        "table_name": "emoji_reactions"
+      },
+      {
+        "table_name": "enabled_modules"
+      },
+      {
+        "table_name": "enterprise_tokens"
+      },
+      {
+        "table_name": "enumerations"
+      },
+      {
+        "table_name": "export_settings"
+      },
+      {
+        "table_name": "exports"
+      },
+      {
+        "table_name": "favorites"
+      },
+      {
+        "table_name": "file_links"
+      },
+      {
+        "table_name": "forums"
+      },
+      {
+        "table_name": "friendly_id_slugs"
+      },
+      {
+        "table_name": "github_check_runs"
+      },
+      {
+        "table_name": "github_pull_requests"
+      },
+      {
+        "table_name": "github_pull_requests_work_packages"
+      },
+      {
+        "table_name": "github_users"
+      },
+      {
+        "table_name": "gitlab_issues"
+      },
+      {
+        "table_name": "gitlab_issues_work_packages"
+      },
+      {
+        "table_name": "gitlab_merge_requests"
+      },
+      {
+        "table_name": "gitlab_merge_requests_work_packages"
+      },
+      {
+        "table_name": "gitlab_pipelines"
+      },
+      {
+        "table_name": "gitlab_users"
+      },
+      {
+        "table_name": "good_job_batches"
+      },
+      {
+        "table_name": "good_job_executions"
+      },
+      {
+        "table_name": "good_job_processes"
+      },
+      {
+        "table_name": "good_job_settings"
+      },
+      {
+        "table_name": "good_jobs"
+      },
+      {
+        "table_name": "grid_widgets"
+      },
+      {
+        "table_name": "grids"
+      },
+      {
+        "table_name": "group_details"
+      },
+      {
+        "table_name": "group_users"
+      },
+      {
+        "table_name": "health_reports"
+      },
+      {
+        "table_name": "hierarchical_item_hierarchies"
+      },
+      {
+        "table_name": "hierarchical_items"
+      },
+      {
+        "table_name": "ical_token_query_assignments"
+      },
+      {
+        "table_name": "ifc_models"
+      },
+      {
+        "table_name": "jira_fields"
+      },
+      {
+        "table_name": "jira_import_job_cursors"
+      },
+      {
+        "table_name": "jira_import_transitions"
+      },
+      {
+        "table_name": "jira_imports"
+      },
+      {
+        "table_name": "jira_issue_types"
+      },
+      {
+        "table_name": "jira_issues"
+      },
+      {
+        "table_name": "jira_open_project_references"
+      },
+      {
+        "table_name": "jira_priorities"
+      },
+      {
+        "table_name": "jira_projects"
+      },
+      {
+        "table_name": "jira_statuses"
+      },
+      {
+        "table_name": "jira_users"
+      },
+      {
+        "table_name": "jira_versions"
+      },
+      {
+        "table_name": "jiras"
+      },
+      {
+        "table_name": "job_statuses"
+      },
+      {
+        "table_name": "journals"
+      },
+      {
+        "table_name": "labor_budget_items"
+      },
+      {
+        "table_name": "last_project_folders"
+      },
+      {
+        "table_name": "ldap_auth_sources"
+      },
+      {
+        "table_name": "ldap_departments_memberships"
+      },
+      {
+        "table_name": "ldap_departments_synchronized_departments"
+      },
+      {
+        "table_name": "ldap_departments_synchronized_trees"
+      },
+      {
+        "table_name": "ldap_groups_memberships"
+      },
+      {
+        "table_name": "ldap_groups_synchronized_filters"
+      },
+      {
+        "table_name": "ldap_groups_synchronized_groups"
+      },
+      {
+        "table_name": "material_budget_items"
+      },
+      {
+        "table_name": "mcp_configurations"
+      },
+      {
+        "table_name": "meeting_agenda_item_journals"
+      },
+      {
+        "table_name": "meeting_agenda_items"
+      },
+      {
+        "table_name": "meeting_journals"
+      },
+      {
+        "table_name": "meeting_outcomes"
+      },
+      {
+        "table_name": "meeting_participant_journals"
+      },
+      {
+        "table_name": "meeting_participants"
+      },
+      {
+        "table_name": "meeting_sections"
+      },
+      {
+        "table_name": "meetings"
+      },
+      {
+        "table_name": "member_roles"
+      },
+      {
+        "table_name": "members"
+      },
+      {
+        "table_name": "menu_items"
+      },
+      {
+        "table_name": "message_journals"
+      },
+      {
+        "table_name": "messages"
+      },
+      {
+        "table_name": "news"
+      },
+      {
+        "table_name": "news_journals"
+      },
+      {
+        "table_name": "non_working_days"
+      },
+      {
+        "table_name": "notification_settings"
+      },
+      {
+        "table_name": "notifications"
+      },
+      {
+        "table_name": "oauth_access_grants"
+      },
+      {
+        "table_name": "oauth_access_tokens"
+      },
+      {
+        "table_name": "oauth_applications"
+      },
+      {
+        "table_name": "oauth_client_tokens"
+      },
+      {
+        "table_name": "oauth_clients"
+      },
+      {
+        "table_name": "oidc_group_links"
+      },
+      {
+        "table_name": "oidc_group_memberships"
+      },
+      {
+        "table_name": "oidc_user_session_links"
+      },
+      {
+        "table_name": "oidc_user_tokens"
+      },
+      {
+        "table_name": "ordered_persisted_query_entities"
+      },
+      {
+        "table_name": "ordered_work_packages"
+      },
+      {
+        "table_name": "outbound_mail_recipients"
+      },
+      {
+        "table_name": "paper_trail_audits"
+      },
+      {
+        "table_name": "persisted_queries"
+      },
+      {
+        "table_name": "persisted_views"
+      },
+      {
+        "table_name": "project_custom_field_project_mappings"
+      },
+      {
+        "table_name": "project_custom_field_type_mappings"
+      },
+      {
+        "table_name": "project_journals"
+      },
+      {
+        "table_name": "project_phase_definitions"
+      },
+      {
+        "table_name": "project_phase_journals"
+      },
+      {
+        "table_name": "project_phases"
+      },
+      {
+        "table_name": "project_queries"
+      },
+      {
+        "table_name": "project_storages"
+      },
+      {
+        "table_name": "project_types"
+      },
+      {
+        "table_name": "projects"
+      },
+      {
+        "table_name": "qldapm_insight_responses"
+      },
+      {
+        "table_name": "qldapm_insight_snapshots"
+      },
+      {
+        "table_name": "qldapm_mutation_receipts"
+      },
+      {
+        "table_name": "queries"
+      },
+      {
+        "table_name": "rates"
+      },
+      {
+        "table_name": "recaptcha_entries"
+      },
+      {
+        "table_name": "recurring_meeting_historic_schedules"
+      },
+      {
+        "table_name": "recurring_meeting_interim_responses"
+      },
+      {
+        "table_name": "recurring_meetings"
+      },
+      {
+        "table_name": "relations"
+      },
+      {
+        "table_name": "reminder_notifications"
+      },
+      {
+        "table_name": "reminders"
+      },
+      {
+        "table_name": "remote_identities"
+      },
+      {
+        "table_name": "repositories"
+      },
+      {
+        "table_name": "resource_allocation_journals"
+      },
+      {
+        "table_name": "resource_allocations"
+      },
+      {
+        "table_name": "role_permissions"
+      },
+      {
+        "table_name": "roles"
+      },
+      {
+        "table_name": "schema_migrations"
+      },
+      {
+        "table_name": "scim_clients"
+      },
+      {
+        "table_name": "service_account_associations"
+      },
+      {
+        "table_name": "sessions"
+      },
+      {
+        "table_name": "settings"
+      },
+      {
+        "table_name": "sprint_goals"
+      },
+      {
+        "table_name": "sprints"
+      },
+      {
+        "table_name": "statuses"
+      },
+      {
+        "table_name": "storages"
+      },
+      {
+        "table_name": "storages_file_links_journals"
+      },
+      {
+        "table_name": "subproject_template_assignments"
+      },
+      {
+        "table_name": "time_entries"
+      },
+      {
+        "table_name": "time_entry_activities_projects"
+      },
+      {
+        "table_name": "time_entry_journals"
+      },
+      {
+        "table_name": "token_bucket_states"
+      },
+      {
+        "table_name": "tokens"
+      },
+      {
+        "table_name": "two_factor_authentication_devices"
+      },
+      {
+        "table_name": "type_variants"
+      },
+      {
+        "table_name": "types"
+      },
+      {
+        "table_name": "user_auth_provider_links"
+      },
+      {
+        "table_name": "user_non_working_times"
+      },
+      {
+        "table_name": "user_passwords"
+      },
+      {
+        "table_name": "user_preferences"
+      },
+      {
+        "table_name": "user_working_hours"
+      },
+      {
+        "table_name": "users"
+      },
+      {
+        "table_name": "versions"
+      },
+      {
+        "table_name": "views"
+      },
+      {
+        "table_name": "watchers"
+      },
+      {
+        "table_name": "webhooks_events"
+      },
+      {
+        "table_name": "webhooks_logs"
+      },
+      {
+        "table_name": "webhooks_projects"
+      },
+      {
+        "table_name": "webhooks_webhooks"
+      },
+      {
+        "table_name": "wiki_page_journals"
+      },
+      {
+        "table_name": "wiki_page_links"
+      },
+      {
+        "table_name": "wiki_pages"
+      },
+      {
+        "table_name": "wiki_providers"
+      },
+      {
+        "table_name": "wiki_redirects"
+      },
+      {
+        "table_name": "wikis"
+      },
+      {
+        "table_name": "work_package_hierarchies"
+      },
+      {
+        "table_name": "work_package_journals"
+      },
+      {
+        "table_name": "work_package_semantic_aliases"
+      },
+      {
+        "table_name": "work_package_version_journals"
+      },
+      {
+        "table_name": "work_package_versions"
+      },
+      {
+        "table_name": "work_packages"
+      },
+      {
+        "table_name": "workflows"
+      }
+    ],
+    "business_fingerprints": [
+      {
+        "name": "work_packages",
+        "count": 366,
+        "digest": "5159acd11744bd5137ca9915a9dbbf9a"
+      },
+      {
+        "name": "relations",
+        "count": 352,
+        "digest": "21df6f762dc44a9b773ac879e9f13fa1"
+      },
+      {
+        "name": "versions",
+        "count": 8,
+        "digest": "876c0740cbd29ad639475d280e559183"
+      }
+    ]
+  },
+  "stage_gateway": {
+    "config.json": {
+      "gateway_mode": "native"
+    },
+    "gemini.json": {
+      "enabled": true,
+      "model": "gemini-3.5-flash-lite"
+    },
+    "key_present": true,
+    "gateway.sqlite": {
+      "integrity": "ok",
+      "tables": {
+        "tokens": {
+          "count": 50,
+          "columns": [
+            "hash",
+            "user_id",
+            "role",
+            "expires",
+            "revoked"
+          ]
+        },
+        "audit": {
+          "count": 6593,
+          "columns": [
+            "id",
+            "at",
+            "actor",
+            "action",
+            "target",
+            "outcome",
+            "version",
+            "project_id",
+            "run_id",
+            "task_id",
+            "trace_id"
+          ]
+        },
+        "requests": {
+          "count": 371,
+          "columns": [
+            "actor",
+            "key",
+            "hash",
+            "state",
+            "result",
+            "payload"
+          ]
+        },
+        "jobs": {
+          "count": 0,
+          "columns": [
+            "id",
+            "actor",
+            "action",
+            "payload",
+            "hash",
+            "state",
+            "result",
+            "created",
+            "request_key"
+          ]
+        },
+        "proposals": {
+          "count": 34,
+          "columns": [
+            "id",
+            "actor",
+            "payload",
+            "hash",
+            "expires",
+            "state",
+            "result"
+          ]
+        },
+        "ai_runs": {
+          "count": 113,
+          "columns": [
+            "id",
+            "actor",
+            "state",
+            "result",
+            "created"
+          ]
+        },
+        "ui_nonces": {
+          "count": 2,
+          "columns": [
+            "nonce",
+            "expires"
+          ]
+        },
+        "gemini_usage": {
+          "count": 517,
+          "columns": [
+            "project",
+            "at",
+            "input_tokens"
+          ]
+        },
+        "gemini_blocks": {
+          "count": 1,
+          "columns": [
+            "project",
+            "reason"
+          ]
+        },
+        "gemini_recovery": {
+          "count": 1,
+          "columns": [
+            "project",
+            "reason",
+            "retry_at"
+          ]
+        },
+        "ai_queue": {
+          "count": 23,
+          "columns": [
+            "id",
+            "actor",
+            "payload",
+            "state",
+            "created",
+            "lease_until",
+            "served",
+            "kind"
+          ]
+        },
+        "agent_tasks": {
+          "count": 23,
+          "columns": [
+            "id",
+            "actor",
+            "project",
+            "conversation",
+            "document",
+            "expires"
+          ]
+        },
+        "agent_runs": {
+          "count": 23,
+          "columns": [
+            "id",
+            "task_id",
+            "actor",
+            "project",
+            "document"
+          ]
+        },
+        "automation_runs": {
+          "count": 19,
+          "columns": [
+            "id",
+            "request_key",
+            "hash",
+            "created",
+            "receipt"
+          ]
+        },
+        "automation_nonces": {
+          "count": 1,
+          "columns": [
+            "nonce",
+            "hash",
+            "expires"
+          ]
+        },
+        "daily_briefs": {
+          "count": 26,
+          "columns": [
+            "actor",
+            "project",
+            "day",
+            "document"
+          ]
+        },
+        "gemini_call_receipts": {
+          "count": 44,
+          "columns": [
+            "id",
+            "project",
+            "actor",
+            "run_id",
+            "document"
+          ]
+        },
+        "execution_events": {
+          "count": 0,
+          "columns": [
+            "sequence",
+            "event_id",
+            "run_id",
+            "actor",
+            "project",
+            "document"
+          ]
+        }
+      },
+      "agent_runs_recent": [
+        {
+          "id": "38fdb479-5566-4a18-b2da-6a9cf15aad3c",
+          "actor": 7,
+          "project": 3
+        },
+        {
+          "id": "94473b2c-5eb8-4373-94ef-fe6e6d03375e",
+          "actor": 8,
+          "project": 3
+        },
+        {
+          "id": "7d528511-c957-40b1-bd1e-c6fe7dd28650",
+          "actor": 7,
+          "project": 3
+        },
+        {
+          "id": "c763e4d7-f4da-4c73-a78a-65c12e042acb",
+          "actor": 7,
+          "project": 3
+        },
+        {
+          "id": "603a991e-fbd7-4743-aff6-443508c2500c",
+          "actor": 10,
+          "project": 3
+        },
+        {
+          "id": "b9c5bfbe-9659-446c-b92a-94fa48b77528",
+          "actor": 6,
+          "project": 3
+        },
+        {
+          "id": "322d10da-c17f-4724-a8f9-fe71ae2e43d7",
+          "actor": 7,
+          "project": 3
+        },
+        {
+          "id": "63e9525d-1105-4cbd-a379-dba59074a856",
+          "actor": 7,
+          "project": 3
+        },
+        {
+          "id": "4793c4c5-e9d6-44c0-b4fd-ef7758db51ea",
+          "actor": 10,
+          "project": 3
+        },
+        {
+          "id": "e7e995a2-c993-4b69-8ee3-017a6b9651c4",
+          "actor": 6,
+          "project": 3
+        },
+        {
+          "id": "caee5159-1a43-4c06-a6f0-ca97b527ded6",
+          "actor": 7,
+          "project": 3
+        },
+        {
+          "id": "b00f10b7-3490-419c-87e8-fffb505ffea6",
+          "actor": 9,
+          "project": 3
+        }
+      ],
+      "ai_runs_recent": [
+        {
+          "id": "38fdb479-5566-4a18-b2da-6a9cf15aad3c",
+          "actor": 7,
+          "state": "done",
+          "created": 1792380527.1404178
+        },
+        {
+          "id": "94473b2c-5eb8-4373-94ef-fe6e6d03375e",
+          "actor": 8,
+          "state": "done",
+          "created": 1792368649.012675
+        },
+        {
+          "id": "7d528511-c957-40b1-bd1e-c6fe7dd28650",
+          "actor": 7,
+          "state": "done",
+          "created": 1792368611.1551573
+        },
+        {
+          "id": "c763e4d7-f4da-4c73-a78a-65c12e042acb",
+          "actor": 7,
+          "state": "failed_or_unknown",
+          "created": 1792368415.5219576
+        },
+        {
+          "id": "603a991e-fbd7-4743-aff6-443508c2500c",
+          "actor": 10,
+          "state": "done",
+          "created": 1792368384.4323874
+        },
+        {
+          "id": "b9c5bfbe-9659-446c-b92a-94fa48b77528",
+          "actor": 6,
+          "state": "done",
+          "created": 1792368348.294727
+        },
+        {
+          "id": "322d10da-c17f-4724-a8f9-fe71ae2e43d7",
+          "actor": 7,
+          "state": "done",
+          "created": 1792368302.9495604
+        },
+        {
+          "id": "63e9525d-1105-4cbd-a379-dba59074a856",
+          "actor": 7,
+          "state": "failed_or_unknown",
+          "created": 1792345561.6778522
+        },
+        {
+          "id": "4793c4c5-e9d6-44c0-b4fd-ef7758db51ea",
+          "actor": 10,
+          "state": "failed_or_unknown",
+          "created": 1792345230.7454212
+        },
+        {
+          "id": "e7e995a2-c993-4b69-8ee3-017a6b9651c4",
+          "actor": 6,
+          "state": "done",
+          "created": 1792345192.5163624
+        },
+        {
+          "id": "caee5159-1a43-4c06-a6f0-ca97b527ded6",
+          "actor": 7,
+          "state": "done",
+          "created": 1792345151.2018416
+        },
+        {
+          "id": "b00f10b7-3490-419c-87e8-fffb505ffea6",
+          "actor": 9,
+          "state": "done",
+          "created": 1792338399.7887862
+        }
+      ],
+      "jobs_recent": [],
+      "gemini_call_receipts_recent": [
+        {
+          "id": "b006b3c0-7456-416b-ac5c-e6bcc67566b0",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "dba4ce1d-bd5f-42fa-ab13-7a38f4570f3f",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "28b7c476-09bf-43f5-b417-bd391eb36083",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "1500c1f3-f873-4c1d-bdf9-4bb8f51842bb",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "d116b423-a900-4928-b92a-3f8ec27548f2",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "42e2d617-b6fc-407e-bc2f-64529f58f3f3",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "82f5e99b-8157-453a-a00b-28504f3078e2",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "224d6054-579c-4f8b-83f1-1dc96830a01d",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "36781ff6-bb09-4800-9021-6ccc2abab6f0",
+          "actor": 8,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "dd8dc986-2430-42d6-836a-9ff9438b3faf",
+          "actor": 8,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "a71bf309-e2ef-47ab-b43f-e384d9ffe549",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "968cb2fb-86c4-454a-920f-6ab92dbbc22b",
+          "actor": 7,
+          "project": "gen-lang-client-0020540057"
+        }
+      ],
+      "ai_queue_recent": [
+        {
+          "id": "38fdb479-5566-4a18-b2da-6a9cf15aad3c",
+          "actor": 7,
+          "state": "finished",
+          "created": 1792380527.1404178
+        },
+        {
+          "id": "94473b2c-5eb8-4373-94ef-fe6e6d03375e",
+          "actor": 8,
+          "state": "finished",
+          "created": 1792368649.012675
+        },
+        {
+          "id": "7d528511-c957-40b1-bd1e-c6fe7dd28650",
+          "actor": 7,
+          "state": "finished",
+          "created": 1792368611.1551573
+        },
+        {
+          "id": "c763e4d7-f4da-4c73-a78a-65c12e042acb",
+          "actor": 7,
+          "state": "finished",
+          "created": 1792368415.5219576
+        },
+        {
+          "id": "603a991e-fbd7-4743-aff6-443508c2500c",
+          "actor": 10,
+          "state": "finished",
+          "created": 1792368384.4323874
+        },
+        {
+          "id": "b9c5bfbe-9659-446c-b92a-94fa48b77528",
+          "actor": 6,
+          "state": "finished",
+          "created": 1792368348.294727
+        },
+        {
+          "id": "322d10da-c17f-4724-a8f9-fe71ae2e43d7",
+          "actor": 7,
+          "state": "finished",
+          "created": 1792368302.9495604
+        },
+        {
+          "id": "63e9525d-1105-4cbd-a379-dba59074a856",
+          "actor": 7,
+          "state": "finished",
+          "created": 1792345561.6778522
+        },
+        {
+          "id": "4793c4c5-e9d6-44c0-b4fd-ef7758db51ea",
+          "actor": 10,
+          "state": "finished",
+          "created": 1792345230.7454212
+        },
+        {
+          "id": "e7e995a2-c993-4b69-8ee3-017a6b9651c4",
+          "actor": 6,
+          "state": "finished",
+          "created": 1792345192.5163624
+        },
+        {
+          "id": "caee5159-1a43-4c06-a6f0-ca97b527ded6",
+          "actor": 7,
+          "state": "finished",
+          "created": 1792345151.2018416
+        },
+        {
+          "id": "b00f10b7-3490-419c-87e8-fffb505ffea6",
+          "actor": 9,
+          "state": "finished",
+          "created": 1792338399.7887862
+        }
+      ]
+    },
+    "knowledge.sqlite": {
+      "integrity": "ok",
+      "tables": {
+        "knowledge_documents": {
+          "count": 5,
+          "columns": [
+            "id",
+            "project_id",
+            "doc_type",
+            "source_id",
+            "title",
+            "content",
+            "allowed_roles",
+            "metadata",
+            "source_hash",
+            "created_at",
+            "updated_at"
+          ]
+        },
+        "knowledge_chunks": {
+          "count": 3,
+          "columns": [
+            "id",
+            "document_id",
+            "chunk_index",
+            "chunk_text",
+            "chunk_hash",
+            "created_at"
+          ]
+        },
+        "knowledge_fts": {
+          "count": 5,
+          "columns": [
+            "source_hash",
+            "title",
+            "content"
+          ]
+        },
+        "knowledge_fts_data": {
+          "count": 9,
+          "columns": [
+            "id",
+            "block"
+          ]
+        },
+        "knowledge_fts_idx": {
+          "count": 7,
+          "columns": [
+            "segid",
+            "term",
+            "pgno"
+          ]
+        },
+        "knowledge_fts_content": {
+          "count": 5,
+          "columns": [
+            "id",
+            "c0",
+            "c1",
+            "c2"
+          ]
+        },
+        "knowledge_fts_docsize": {
+          "count": 5,
+          "columns": [
+            "id",
+            "sz"
+          ]
+        },
+        "knowledge_fts_config": {
+          "count": 1,
+          "columns": [
+            "k",
+            "v"
+          ]
+        }
+      },
+      "knowledge_documents_recent": [
+        {
+          "id": "0e0e9cd91331e0b0c0b1c85eb2ae9335f0adc94d879b9f664ccfa22f3609f682"
+        },
+        {
+          "id": "f7a5130f21584b3c3ffc6d064fce1dd78eae387b19fbb4f8768c861b7cfaac78"
+        },
+        {
+          "id": "06549ca2272217a3fd196b5ec14c2715ac978373d1ff1bd4327b0e0dbacc4d5f"
+        },
+        {
+          "id": "7565ae8440d30ba8349bf81e3a51b4d45d0958da403fdd8aceb15e1bfc854513"
+        },
+        {
+          "id": "088b6d48ca0a71444519a96f15125c96ac00ac768efe98c0ba8c9673eac2e70a"
+        }
+      ]
+    },
+    "test_new.sqlite": {
+      "integrity": "ok",
+      "tables": {
+        "t": {
+          "count": 0,
+          "columns": [
+            "id"
+          ]
+        }
+      }
+    },
+    "test_new_gateway.sqlite": {
+      "integrity": "ok",
+      "tables": {}
+    }
+  },
+  "main_gateway": {
+    "config.json": {
+      "gateway_mode": "native",
+      "maintenance": false
+    },
+    "gemini.json": {
+      "enabled": true,
+      "model": "gemini-3.5-flash-lite"
+    },
+    "key_present": true,
+    "gateway.sqlite": {
+      "integrity": "ok",
+      "tables": {
+        "tokens": {
+          "count": 2,
+          "columns": [
+            "hash",
+            "user_id",
+            "role",
+            "expires",
+            "revoked"
+          ]
+        },
+        "audit": {
+          "count": 326,
+          "columns": [
+            "id",
+            "at",
+            "actor",
+            "action",
+            "target",
+            "outcome",
+            "version",
+            "project_id",
+            "run_id",
+            "task_id",
+            "trace_id"
+          ]
+        },
+        "requests": {
+          "count": 5,
+          "columns": [
+            "actor",
+            "key",
+            "hash",
+            "state",
+            "result",
+            "payload"
+          ]
+        },
+        "jobs": {
+          "count": 2,
+          "columns": [
+            "id",
+            "actor",
+            "action",
+            "payload",
+            "hash",
+            "state",
+            "result",
+            "created",
+            "request_key"
+          ]
+        },
+        "proposals": {
+          "count": 0,
+          "columns": [
+            "id",
+            "actor",
+            "payload",
+            "hash",
+            "expires",
+            "state",
+            "result"
+          ]
+        },
+        "ai_runs": {
+          "count": 3,
+          "columns": [
+            "id",
+            "actor",
+            "state",
+            "result",
+            "created"
+          ]
+        },
+        "ui_nonces": {
+          "count": 6,
+          "columns": [
+            "nonce",
+            "expires"
+          ]
+        },
+        "ai_queue": {
+          "count": 3,
+          "columns": [
+            "id",
+            "actor",
+            "payload",
+            "state",
+            "created",
+            "lease_until",
+            "served",
+            "kind"
+          ]
+        },
+        "agent_tasks": {
+          "count": 3,
+          "columns": [
+            "id",
+            "actor",
+            "project",
+            "conversation",
+            "document",
+            "expires"
+          ]
+        },
+        "agent_runs": {
+          "count": 3,
+          "columns": [
+            "id",
+            "task_id",
+            "actor",
+            "project",
+            "document"
+          ]
+        },
+        "automation_runs": {
+          "count": 0,
+          "columns": [
+            "id",
+            "request_key",
+            "hash",
+            "created",
+            "receipt"
+          ]
+        },
+        "automation_nonces": {
+          "count": 0,
+          "columns": [
+            "nonce",
+            "hash",
+            "expires"
+          ]
+        },
+        "daily_briefs": {
+          "count": 0,
+          "columns": [
+            "actor",
+            "project",
+            "day",
+            "document"
+          ]
+        },
+        "gemini_usage": {
+          "count": 10,
+          "columns": [
+            "project",
+            "at",
+            "input_tokens"
+          ]
+        },
+        "gemini_blocks": {
+          "count": 0,
+          "columns": [
+            "project",
+            "reason"
+          ]
+        },
+        "gemini_recovery": {
+          "count": 0,
+          "columns": [
+            "project",
+            "reason",
+            "retry_at"
+          ]
+        },
+        "gemini_call_receipts": {
+          "count": 8,
+          "columns": [
+            "id",
+            "project",
+            "actor",
+            "run_id",
+            "document"
+          ]
+        },
+        "execution_events": {
+          "count": 59,
+          "columns": [
+            "sequence",
+            "event_id",
+            "run_id",
+            "actor",
+            "project",
+            "document"
+          ]
+        }
+      },
+      "agent_runs_recent": [
+        {
+          "id": "c92242b2-9c95-4355-adda-3b11322573d4",
+          "actor": 19,
+          "project": 5
+        },
+        {
+          "id": "ca0c3b3f-c01d-4291-a327-9c06b98e4f63",
+          "actor": 19,
+          "project": 5
+        },
+        {
+          "id": "87803ca8-72a1-4643-b00f-8fda05a06266",
+          "actor": 19,
+          "project": 5
+        }
+      ],
+      "ai_runs_recent": [
+        {
+          "id": "c92242b2-9c95-4355-adda-3b11322573d4",
+          "actor": 19,
+          "state": "failed_or_unknown",
+          "created": 1792566922.440038
+        },
+        {
+          "id": "ca0c3b3f-c01d-4291-a327-9c06b98e4f63",
+          "actor": 19,
+          "state": "failed_or_unknown",
+          "created": 1792565822.4520473
+        },
+        {
+          "id": "87803ca8-72a1-4643-b00f-8fda05a06266",
+          "actor": 19,
+          "state": "done",
+          "created": 1792524747.8746936
+        }
+      ],
+      "jobs_recent": [
+        {
+          "id": "0b956fe2-dafe-404d-8e06-66c8214fec49",
+          "actor": 20,
+          "state": "done",
+          "created": 1791600263.5774887
+        },
+        {
+          "id": "6cea186f-f5af-4a99-943c-9aceb42e409c",
+          "actor": 20,
+          "state": "done",
+          "created": 1791600054.310877
+        }
+      ],
+      "gemini_call_receipts_recent": [
+        {
+          "id": "76ddadca-ca14-437b-8bcb-c15986a6ebc6",
+          "actor": 19,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "3c654f75-821f-406b-8a2b-0453afa30f9f",
+          "actor": 19,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "010a3bd0-aa31-4b85-8114-1bf4c2b130ff",
+          "actor": 19,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "9be64d92-75e7-4a34-acab-a52deee7aceb",
+          "actor": 19,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "e358556c-876f-4996-9170-34068c92d769",
+          "actor": 19,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "1db2c3ed-32e0-40e3-86f0-7bfcb4962080",
+          "actor": 19,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "1677aafa-8d2a-46e7-82ce-2a7f9bf9ac39",
+          "actor": 19,
+          "project": "gen-lang-client-0020540057"
+        },
+        {
+          "id": "102c36eb-3042-476d-85d6-7e03a30ae849",
+          "actor": 19,
+          "project": "gen-lang-client-0020540057"
+        }
+      ],
+      "ai_queue_recent": [
+        {
+          "id": "c92242b2-9c95-4355-adda-3b11322573d4",
+          "actor": 19,
+          "state": "finished",
+          "created": 1792566922.440038
+        },
+        {
+          "id": "ca0c3b3f-c01d-4291-a327-9c06b98e4f63",
+          "actor": 19,
+          "state": "finished",
+          "created": 1792565822.4520473
+        },
+        {
+          "id": "87803ca8-72a1-4643-b00f-8fda05a06266",
+          "actor": 19,
+          "state": "finished",
+          "created": 1792524747.8746936
+        }
+      ]
+    },
+    "knowledge.sqlite": {
+      "integrity": "ok",
+      "tables": {
+        "knowledge_documents": {
+          "count": 0,
+          "columns": [
+            "id",
+            "project_id",
+            "doc_type",
+            "source_id",
+            "title",
+            "content",
+            "allowed_roles",
+            "metadata",
+            "source_hash",
+            "created_at",
+            "updated_at"
+          ]
+        },
+        "knowledge_chunks": {
+          "count": 0,
+          "columns": [
+            "id",
+            "document_id",
+            "chunk_index",
+            "chunk_text",
+            "chunk_hash",
+            "created_at"
+          ]
+        },
+        "knowledge_fts": {
+          "count": 0,
+          "columns": [
+            "source_hash",
+            "title",
+            "content"
+          ]
+        },
+        "knowledge_fts_data": {
+          "count": 2,
+          "columns": [
+            "id",
+            "block"
+          ]
+        },
+        "knowledge_fts_idx": {
+          "count": 0,
+          "columns": [
+            "segid",
+            "term",
+            "pgno"
+          ]
+        },
+        "knowledge_fts_content": {
+          "count": 0,
+          "columns": [
+            "id",
+            "c0",
+            "c1",
+            "c2"
+          ]
+        },
+        "knowledge_fts_docsize": {
+          "count": 0,
+          "columns": [
+            "id",
+            "sz"
+          ]
+        },
+        "knowledge_fts_config": {
+          "count": 1,
+          "columns": [
+            "k",
+            "v"
+          ]
+        }
+      },
+      "knowledge_documents_recent": []
+    }
+  },
+  "http": [
+    {
+      "url": "http://127.0.0.1:18091/health_checks/default",
+      "status": 200,
+      "seconds": 0.03,
+      "title": [],
+      "login_form": false,
+      "cloudflare": false,
+      "bytes_read": 47,
+      "body_sha256": "253d0517c95a25857c5a23fe2f466c7f055fec02f27b3bf441a8e7d3284c171c"
+    },
+    {
+      "url": "http://127.0.0.1:18092/health",
+      "status": 200,
+      "seconds": 0.04,
+      "title": [],
+      "login_form": false,
+      "cloudflare": false,
+      "bytes_read": 15,
+      "body_sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288"
+    },
+    {
+      "url": "http://localhost:5678/healthz/readiness",
+      "status": 200,
+      "seconds": 2.08,
+      "title": [],
+      "login_form": false,
+      "cloudflare": false,
+      "bytes_read": 15,
+      "body_sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288"
+    },
+    {
+      "url": "https://deployment-mae-promote-python.trycloudflare.com/health_checks/default",
+      "status": 200,
+      "seconds": 1.28,
+      "title": [],
+      "login_form": false,
+      "cloudflare": true,
+      "bytes_read": 47,
+      "body_sha256": "253d0517c95a25857c5a23fe2f466c7f055fec02f27b3bf441a8e7d3284c171c"
+    },
+    {
+      "url": "https://deployment-mae-promote-python.trycloudflare.com/login",
+      "status": 200,
+      "seconds": 1.31,
+      "title": [
+        "Sign in | OpenProject"
+      ],
+      "login_form": true,
+      "cloudflare": true,
+      "bytes_read": 49114,
+      "body_sha256": "a3f7e569cf972d21c7e5fab68666800e36a5469eba08a1283156eb762f4f13ac"
+    }
+  ]
+}

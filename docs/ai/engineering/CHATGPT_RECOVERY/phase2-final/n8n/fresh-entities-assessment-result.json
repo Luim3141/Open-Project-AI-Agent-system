@@ -1,0 +1,103 @@
+{
+  "started_at": "2026-11-02T07:48:16.884026+00:00",
+  "image": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+  "source_commit": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+  "environment": "disposable network-none readonly image; no MAIN or backup mounts; max768MiB one container at a time",
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--memory",
+        "768m",
+        "--memory-swap",
+        "768m",
+        "--read-only",
+        "--tmpfs",
+        "/home/node/.n8n:rw,uid=1000,gid=1000,mode=0700,size=32m",
+        "--entrypoint",
+        "n8n",
+        "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+        "export:entities",
+        "--help"
+      ],
+      "started_at": "2026-11-02T07:48:16.918279+00:00",
+      "completed_at": "2026-11-02T07:48:20.228225+00:00",
+      "exit": 0,
+      "help": "No encryption key found - Auto-generating and saving to: /home/node/.n8n/config\nUSAGE\n  $ n8n export:entities\n\nFLAGS\n  -h, --help                           Show CLI help\n  --outputDir                          Output directory path [default: /usr/local/lib/node_modules/n8n/dist/commands/export/outputs]\n  --includeExecutionHistoryDataTables  Include execution history data tables, these are excluded by default as they can be very large [default: false]\n  --includeDataTableRows               Include user-data table row contents. When false, only the data-table schemas (registry rows) are exported. [default: true]\n  --keyFile <value>                    Optional path to a file containing a custom encryption key\n\nDESCRIPTION\n  Export database entities to JSON files\n\nEXAMPLES\n  $ n8n export:entities\n  $ n8n export:entities --outputDir=./exports\n  $ n8n export:entities --outputDir=/path/to/backup\n  $ n8n export:entities --includeExecutionHistoryDataTables=true\n  $ n8n export:entities --includeDataTableRows=false\n  $ n8n export:entities --keyFile=/path/to/key.txt\n  $ n8n export:entities --outputDir=./exports --keyFile=/path/to/key.txt\n\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--memory",
+        "768m",
+        "--memory-swap",
+        "768m",
+        "--read-only",
+        "--tmpfs",
+        "/home/node/.n8n:rw,uid=1000,gid=1000,mode=0700,size=32m",
+        "--entrypoint",
+        "n8n",
+        "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+        "import:entities",
+        "--help"
+      ],
+      "started_at": "2026-11-02T07:48:20.228246+00:00",
+      "completed_at": "2026-11-02T07:48:23.675272+00:00",
+      "exit": 0,
+      "help": "No encryption key found - Auto-generating and saving to: /home/node/.n8n/config\nUSAGE\n  $ n8n import:entities\n\nFLAGS\n  -h, --help                           Show CLI help\n  --inputDir                           Input directory that holds output files for import [default: ./outputs]\n  --truncateTables                     Truncate tables before import [default: false]\n  --keyFile <value>                    Optional path to a file containing a custom encryption key\n  --skipMigrationChecks                Skip migration validation checks [default: false]\n  --skipTogglingForeignKeyConstraints  Skip disabling foreign key constraints [default: false]\n\nDESCRIPTION\n  Import database entities from JSON files\n\nEXAMPLES\n  $ n8n import:entities\n  $ n8n import:entities --inputDir=./exports\n  $ n8n import:entities --inputDir=/path/to/backup\n  $ n8n import:entities --truncateTables\n  $ n8n import:entities --inputDir=./exports --truncateTables\n  $ n8n import:entities --keyFile=/path/to/key.txt\n  $ n8n import:entities --inputDir=./exports --keyFile=/path/to/key.txt\n  $ n8n import:entities --skipMigrationChecks\n  $ n8n import:entities --inputDir=./exports --skipMigrationChecks\n\n",
+      "stderr": ""
+    }
+  ],
+  "sources": {
+    "dist/commands/export/entities.js": {
+      "sha256": "dbf2ecca59604aedb859b72d8bfb4f72a983f5a76117711cae8f395af353b03b",
+      "evidence_path": "docs\\ai\\engineering\\CHATGPT_RECOVERY\\phase2-final\\n8n\\vendor-dist-commands-export-entities.js"
+    },
+    "dist/commands/import/entities.js": {
+      "sha256": "2583c42ded6199d464e785a30be4d87b9f003581de9caacb709ee2f9d7641504",
+      "evidence_path": "docs\\ai\\engineering\\CHATGPT_RECOVERY\\phase2-final\\n8n\\vendor-dist-commands-import-entities.js"
+    },
+    "dist/services/export.service.js": {
+      "sha256": "cc3c99a7d25097f4f118ad9a4ec82c596d7bd3d5011c65c78c59937e7db9dc22",
+      "evidence_path": "docs\\ai\\engineering\\CHATGPT_RECOVERY\\phase2-final\\n8n\\vendor-dist-services-export.service.js"
+    },
+    "dist/services/import.service.js": {
+      "sha256": "c7ce0ec7b03dafd28a55014994dfd65d3c4e004dca5eae19e56b6f02533f1d5c",
+      "evidence_path": "docs\\ai\\engineering\\CHATGPT_RECOVERY\\phase2-final\\n8n\\vendor-dist-services-import.service.js"
+    }
+  },
+  "source_inspection_command": [
+    "docker",
+    "run",
+    "--rm",
+    "--pull",
+    "never",
+    "--network",
+    "none",
+    "--memory",
+    "768m",
+    "--memory-swap",
+    "768m",
+    "--read-only",
+    "--entrypoint",
+    "node",
+    "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+    "-e",
+    "const fs=require('fs'),crypto=require('crypto');const paths=['dist/commands/export/entities.js','dist/commands/import/entities.js','dist/services/export.service.js','dist/services/import.service.js'];console.log(JSON.stringify(Object.fromEntries(paths.map(p=>{const s=fs.readFileSync('/usr/local/lib/node_modules/n8n/'+p,'utf8');return [p,{sha256:crypto.createHash('sha256').update(s).digest('hex'),source:s}]}))));"
+  ],
+  "status": "BLOCKED_NO_SUPPORTED_DEPLOYMENT_KEY_EXCLUSION_OR_INNER_RESOURCE_REENCRYPTION",
+  "completed_at": "2026-11-02T07:48:24.405725+00:00"
+}

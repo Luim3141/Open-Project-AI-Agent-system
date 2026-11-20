@@ -1,0 +1,132 @@
+- generic: Mở liên kết trong tab mới
+- banner:
+  - link "Nhấn vào đây để bỏ qua menu và đi tới nội dung":
+    - /url: ""
+    - text: Chuyển đến nội dung
+  - navigation "Trình đơn trên cùng":
+    - button "Mô-đun toàn cầu":
+    - link "Trang chủ":
+      - /url: http://localhost:8088/
+  - search "Tìm kiếm trong OpenProject":
+    - button "tìm kiếm":
+      - generic: 
+    - generic: Tìm kiếm trong OpenProject
+    - combobox "Tìm kiếm trong OpenProject"
+    - status
+  - button "Thêm vào…":
+    - img "Thêm vào…"
+  - link "thông báo":
+    - /url: /notifications
+  - button "Trợ giúp":
+  - button "Trình đơn người dùng":
+    - img "Trình đơn người dùng": QB
+- navigation "Menu bên":
+  - button "Thu gọn menu dự án" [expanded]:
+  - button "QLDAPM — Local Community":
+    - generic: QLDAPM — Local Community
+  - button "Thu gọn menu dự án" [expanded]:
+  - separator
+  - list:
+    - link "Quay lại một cấp độ menu":
+      - /url: "#"
+    - link "Backlog":
+      - /url: http://localhost:8088/projects/qldapm-local/backlogs/backlog
+    - list:
+      - link "Backlog and sprints":
+        - /url: http://localhost:8088/projects/qldapm-local/backlogs/backlog
+        - generic: Backlog and sprints
+      - link "All sprints":
+        - /url: http://localhost:8088/projects/qldapm-local/backlogs/sprints
+        - generic: All sprints
+- main:
+  - heading "Nội dung" [level=1]
+  - navigation "Breadcrumb":
+    - list:
+      - link "QLDAPM — Local Community":
+        - /url: /projects/qldapm-local
+        - generic: QLDAPM — Local Community
+      - link "Backlog":
+        - /url: /projects/qldapm-local/backlogs/backlog
+        - generic: Backlog
+      - link "All sprints":
+        - /url: "#"
+        - generic: All sprints
+  - heading "All sprints" [level=2]
+  - table "All sprints":
+    - rowgroup:
+      - row "Tên Sprint Trạng thái Ngày bắt đầu Ngày kết thúc Work packages hành động":
+        - columnheader "Tên Sprint"
+        - columnheader "Trạng thái"
+        - columnheader "Ngày bắt đầu"
+        - columnheader "Ngày kết thúc"
+        - columnheader "Work packages"
+        - columnheader "hành động":
+          - generic: hành động
+    - rowgroup:
+      - row "S1 Đang lập kế hoạch 60 Xem thêm":
+        - rowheader "S1":
+          - link "S1":
+            - /url: /projects/qldapm-local/backlogs/backlog?sprint_ids%5B%5D=11
+        - cell "Đang lập kế hoạch":
+          - generic: Đang lập kế hoạch
+        - cell
+        - cell
+        - cell "60"
+        - cell "Xem thêm":
+          - button "Xem thêm":
+      - row "S2 Đang lập kế hoạch 66 Xem thêm":
+        - rowheader "S2":
+          - link "S2":
+            - /url: /projects/qldapm-local/backlogs/backlog?sprint_ids%5B%5D=12
+        - cell "Đang lập kế hoạch":
+          - generic: Đang lập kế hoạch
+        - cell
+        - cell
+        - cell "66"
+        - cell "Xem thêm":
+          - button "Xem thêm":
+      - row "S3 Đang lập kế hoạch 54 Xem thêm":
+        - rowheader "S3":
+          - link "S3":
+            - /url: /projects/qldapm-local/backlogs/backlog?sprint_ids%5B%5D=13
+        - cell "Đang lập kế hoạch":
+          - generic: Đang lập kế hoạch
+        - cell
+        - cell
+        - cell "54"
+        - cell "Xem thêm":
+          - button "Xem thêm":
+      - row "S4 Đang lập kế hoạch 90 Xem thêm":
+        - rowheader "S4":
+          - link "S4":
+            - /url: /projects/qldapm-local/backlogs/backlog?sprint_ids%5B%5D=14
+        - cell "Đang lập kế hoạch":
+          - generic: Đang lập kế hoạch
+        - cell
+        - cell
+        - cell "90"
+        - cell "Xem thêm":
+          - button "Xem thêm":
+      - row "S5 Đang lập kế hoạch 48 Xem thêm":
+        - rowheader "S5":
+          - link "S5":
+            - /url: /projects/qldapm-local/backlogs/backlog?sprint_ids%5B%5D=15
+        - cell "Đang lập kế hoạch":
+          - generic: Đang lập kế hoạch
+        - cell
+        - cell
+        - cell "48"
+        - cell "Xem thêm":
+          - button "Xem thêm":
+  - generic: (1 - 5/5)
+  - navigation "Lựa chọn mục trên mỗi trang":
+    - text: "Mỗi trang:"
+    - link "Hiển thị 20 trên mỗi trang":
+      - /url: /projects/qldapm-local/backlogs/sprints?page=1&per_page=20
+      - text: "20"
+    - link "Hiển thị 100 trên mỗi trang":
+      - /url: /projects/qldapm-local/backlogs/sprints?page=1&per_page=100
+      - text: "100"
+    - link "Hiển thị 500 trên mỗi trang":
+      - /url: /projects/qldapm-local/backlogs/sprints?page=1&per_page=500
+      - text: "500"

@@ -1,0 +1,104 @@
+{
+  "at": "2026-10-25T04:40:04.328495+00:00",
+  "status": "PASS_ISOLATED_AUTOMATED_QA_REVIEW_ATTACHMENT_AND_NATIVE_GUARD",
+  "scope": "Actual HTTP OpenProject Main clone, own existing Native identities; simulated isolated proposal decision, not human Main approval",
+  "clone_id": "34c5e897-e253-4ab2-b8ee-98777fa50ad8",
+  "core_image": "sha256:8fe51b6885aea08f6654ebb5719ca157da32d2156923c999ded0af9dae8bc00a",
+  "native_id": 376,
+  "identities": {
+    "18": "AI_SYSTEM_OWNER",
+    "19": "PM",
+    "20": "BA",
+    "21": "BE",
+    "22": "FE",
+    "23": "QA"
+  },
+  "automated_run": {
+    "id": "baef25ff-bc0e-56ba-8686-37da6248d7c9",
+    "verdict": "PASSED",
+    "verification_kind": "AUTOMATED_NATIVE_READBACK",
+    "binding": {
+      "assignee": "/api/v3/users/21",
+      "criteria_sha256": "69f8c6cb7cdb210949524962bfae2050bd0e50eb736ee51fe51b7c9a8a0b4155",
+      "native_id": 376,
+      "snapshot_sha256": "774fc104d3337b08f9abe4963a04fdadedfca9bb8e795ce4cef1c6d93e7aeee0",
+      "version": 0
+    },
+    "producer": {
+      "code_sha256": "6e60788143e3006893b54db0f3f119cd018faa176fcb986424f720ad521b90d8",
+      "id": "qldapm-native-readback-v1"
+    },
+    "artifact_sha256": "8221e1f68ab486e4f6f66fed557553b0baafd4573ff306c5798fdde192996e19",
+    "started_at": 1792903202.5698824,
+    "finished_at": 1792903203.3733191
+  },
+  "test_cases": [
+    {
+      "actual": "\"2026-10-26\"",
+      "criterion_id": "AC1",
+      "expected": "\"2026-10-26\"",
+      "observed_at": 1792903202.6974583,
+      "outcome": "PASSED",
+      "reference": "qldapm-native-readback-v1:AC1:startDate"
+    },
+    {
+      "actual": "\"2026-10-27\"",
+      "criterion_id": "AC2",
+      "expected": "\"2026-10-27\"",
+      "observed_at": 1792903202.861814,
+      "outcome": "PASSED",
+      "reference": "qldapm-native-readback-v1:AC2:dueDate"
+    },
+    {
+      "actual": "21",
+      "criterion_id": "AC3",
+      "expected": "21",
+      "observed_at": 1792903203.0688732,
+      "outcome": "PASSED",
+      "reference": "qldapm-native-readback-v1:AC3:assignee_id"
+    }
+  ],
+  "attachment_checks": {
+    "anonymous_upload_http": 401,
+    "qa_upload_http": 403,
+    "owner_upload_http": 201,
+    "attachment_id": 3,
+    "file_size": 1037,
+    "content_type": "application/json",
+    "author": 18,
+    "container_native_id": 376,
+    "artifact_sha256": "8221e1f68ab486e4f6f66fed557553b0baafd4573ff306c5798fdde192996e19",
+    "fixed_native_content": "PASS_EXACT_BYTES_SHA256",
+    "version_before_attachment": 0,
+    "version_after_attachment": 0
+  },
+  "main_native_writes": 0,
+  "clone_create_count": 1,
+  "clone_attachment_count": 1,
+  "staging_operations": false,
+  "official_contract_source": "https://www.openproject.org/docs/api/endpoints/attachments/",
+  "limitations": [
+    "Automated proof is limited to exact fixed Native readback predicates, not arbitrary application or UI test criteria",
+    "No human Main QA review or Native transition performed",
+    "Core business transition prerequisite gate remains enforced; full bug closure and RAG processing not qualified by this clone run"
+  ],
+  "automated_review_checks": {
+    "manager_cannot_skip_qa": "PASS",
+    "actual_native_authenticated_review_fixture": {
+      "requester": 19,
+      "qa": 23,
+      "manager": 18,
+      "state": "accepted",
+      "human_main_approval": false
+    },
+    "duplicate_review_http": 409,
+    "native_form_still_enforced": {
+      "http": 422,
+      "code": "OPENPROJECT_FORM_REJECTED"
+    },
+    "six_role_inbox": "PASS_FRESH_NATIVE_AUTHORIZED",
+    "native_update_invalidates_accepted_evidence": "PASS"
+  },
+  "gateway_image": "sha256:4fa7a0c242a33442a92195cf5d2964c554b8811cb1afd4a706d50e3b3c0df16d",
+  "clone_update_count": 1
+}

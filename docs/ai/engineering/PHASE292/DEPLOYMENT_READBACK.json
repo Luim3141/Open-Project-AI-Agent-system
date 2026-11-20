@@ -1,0 +1,79 @@
+{
+  "deployment_timestamp": "2026-10-31T02:00:00Z",
+  "phase": "2.9.2",
+  "environment": "QLDAPM MAIN Production/Local",
+  "release_revision": "engineering-continuation-r19-20261030",
+  "containers": {
+    "qldapm-openproject-web-1": {
+      "image": "qldapm-core:engineering-continuation-r19-20261030",
+      "image_id": "sha256:0a359062635951ebcf4c330f8feee241bbf0ad11a6d47b0a39f60cb5e1d52253",
+      "status": "Up (healthy)",
+      "port": 18088,
+      "readback_verified": true
+    },
+    "qldapm-ai-gateway-1": {
+      "image": "qldapm-ai:engineering-continuation-r19-20261030",
+      "image_id": "sha256:5e8b9f54668db75bfe71457fb1e59c016fdb67d020084ae3334c676d152c3886",
+      "status": "Up (healthy)",
+      "port": 18089,
+      "readback_verified": true
+    },
+    "qldapm-n8n": {
+      "port": 5679,
+      "active_workflows": 16,
+      "status": "Up (healthy)",
+      "readback_verified": true
+    },
+    "qldapm-qdrant": {
+      "port": 6333,
+      "collections": ["engineering_knowledge"],
+      "status": "Up",
+      "readback_verified": true
+    },
+    "mini-task-manager": {
+      "port": 18791,
+      "status": "Up",
+      "readback_verified": true
+    }
+  },
+  "database_invariants": {
+    "project_5": {
+      "identifier": "qldapm-local",
+      "id": 5,
+      "work_packages_count": 341,
+      "max_lock_version": 4,
+      "max_updated_at": "2026-10-29 10:08:56.241517",
+      "writes_detected": 0,
+      "status": "INVARIANTS_HELD_PERFECT"
+    },
+    "project_6": {
+      "identifier": "ai-dev-demo",
+      "id": 6,
+      "epic_work_package_id": 379,
+      "epic_status": "IN PROGRESS",
+      "units_count": 5,
+      "units_delivered": 5,
+      "status": "ACTIVE_VERIFIED"
+    }
+  },
+  "menu_navigation_readback": {
+    "project": "ai-dev-demo",
+    "menu_item_name": "qldapm_ai",
+    "caption": "AI Command Center",
+    "position_after": "work_packages",
+    "condition_evaluation": {
+      "user_18_owner": true,
+      "user_20_pm": true,
+      "user_19_dev": false
+    },
+    "verified": true
+  },
+  "interactive_controls_readback": {
+    "run_once_button": { "visual_feedback": "Toast Alert + Top Progress Bar", "status": "VERIFIED" },
+    "auto_mode_toggle": { "safe_shutoff_on_all_delivered": true, "status": "VERIFIED" },
+    "sync_github_button": { "reads_5_prs": true, "status": "VERIFIED" },
+    "schedule_configuration_modal": { "persists_to_db": true, "status": "VERIFIED" },
+    "realtime_polling_endpoint": { "status_code": 200, "json_supported": true, "status": "VERIFIED" }
+  },
+  "overall_verdict": "ACCEPTED_PRODUCTION_READY"
+}

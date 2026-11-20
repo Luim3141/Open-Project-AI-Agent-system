@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-10-30T18:19:15+07:00",
+  "phase": "PHASE_2_7",
+  "defect": "DEFECT-08",
+  "description": "Dynamic Agent Skills: Installed -> Discovered -> Selected -> Read -> Executed -> Verified",
+  "evidence": {
+    "step_1_installed": [
+      {"skill": "engineering-development", "file": "openproject/ai/engineering_skills/engineering-development/SKILL.md", "bytes": 2078},
+      {"skill": "engineering-planning", "file": "openproject/ai/engineering_skills/engineering-planning/SKILL.md", "bytes": 1160},
+      {"skill": "engineering-qa", "file": "openproject/ai/engineering_skills/engineering-qa/SKILL.md", "bytes": 1244},
+      {"skill": "engineering-review", "file": "openproject/ai/engineering_skills/engineering-review/SKILL.md", "bytes": 1289}
+    ],
+    "step_2_discovered_configured": {
+      "runtime_config": "/home/openclaw/.openclaw/openclaw.json",
+      "entries": {
+        "dev": {"skills": ["engineering-development"], "contextInjection": "always", "cwd": "/home/openclaw/engineering/feedback-4d13e695555a8d44"},
+        "reviewer": {"skills": ["engineering-review"], "contextInjection": "always", "cwd": "/home/openclaw/engineering/feedback-4d13e695555a8d44"},
+        "qa": {"skills": ["engineering-qa"], "contextInjection": "always", "cwd": "/home/openclaw/engineering/feedback-4d13e695555a8d44"}
+      }
+    },
+    "step_3_selected_isolated": {
+      "path": "/opt/qldapm/agents/feedback-4d13e695555a8d44",
+      "permissions": "chmod 0444, chown root:root",
+      "subdirs": ["dev", "reviewer", "qa"]
+    },
+    "step_4_read_injected": {
+      "injection_mechanism": "systemPromptReport / contextInjection always",
+      "gemini_call_receipts_recorded": 5,
+      "model": "gemini-3.5-flash-lite"
+    },
+    "step_5_executed": {
+      "dev_tools_policy": {"profile": "coding", "deny": ["write", "edit", "apply_patch"]},
+      "reviewer_tools_policy": {"profile": "coding", "deny": ["write", "edit", "apply_patch", "exec", "process"]},
+      "qa_tools_policy": {"profile": "coding", "deny": ["write", "edit", "apply_patch"]}
+    },
+    "step_6_verified": {
+      "acceptance_suites": ["/opt/qldapm/acceptance/test_create_list.py", "/opt/qldapm/acceptance/test_crud_web.py"],
+      "verified_reports_count": 5
+    }
+  },
+  "status": "VERIFIED_PASS"
+}

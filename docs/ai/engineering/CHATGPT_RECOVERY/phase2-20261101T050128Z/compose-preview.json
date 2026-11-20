@@ -1,0 +1,58 @@
+[
+  {
+    "kind": "gateway",
+    "changes": [
+      {
+        "service": "gateway",
+        "changed_keys": [
+          "image",
+          "pull_policy"
+        ]
+      }
+    ],
+    "candidate_image": "sha256:1c10248134b4f7973685433a9686f3d841ed96e5b767dd5b7d497adc0e3eceeb",
+    "rollback_config_valid": true,
+    "command_prefix": [
+      "docker",
+      "compose",
+      "-p",
+      "qldapm-ai",
+      "--env-file",
+      "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\.env",
+      "-f",
+      "D:\\AI project\\QLDAPM chat\\openproject\\ai\\compose.yml",
+      "-f",
+      "D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.main.yml"
+    ],
+    "candidate_override": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\CHATGPT_RECOVERY\\compose.gateway.candidate.json",
+    "applied": false
+  },
+  {
+    "kind": "core",
+    "changes": [
+      {
+        "service": "web",
+        "changed_keys": [
+          "image",
+          "pull_policy"
+        ]
+      }
+    ],
+    "candidate_image": "sha256:c237e4a792608e5ff5b95a7c9c36d41dc0392ceb3ec07f451fbee0d96dca06c9",
+    "rollback_config_valid": true,
+    "command_prefix": [
+      "docker",
+      "compose",
+      "-p",
+      "qldapm-openproject",
+      "--env-file",
+      "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject\\.env",
+      "-f",
+      "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "-f",
+      "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject\\ui-bridge.yml"
+    ],
+    "candidate_override": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\CHATGPT_RECOVERY\\compose.core.candidate.json",
+    "applied": false
+  }
+]

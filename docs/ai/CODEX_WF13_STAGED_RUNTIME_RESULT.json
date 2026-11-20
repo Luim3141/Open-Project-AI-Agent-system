@@ -1,0 +1,146 @@
+{
+  "status": "PASS",
+  "business_status": "PARTIAL",
+  "checks": {
+    "20_own_source_bound_feedback": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": "5120bbb6-bf06-5d42-9e77-46f174009667",
+        "hash": "1ba3f8a6af66c7fb8125784f0318566a24f6d1fb4bdd01f2d7227cc734e9bc14",
+        "source": {
+          "source_key": "main-workflow-contract"
+        },
+        "binding": {
+          "document_id": "2b97d8563a71bceb0ee4fe68c51131a1a7baebcbe8f7c1da8a5161127f59ab31",
+          "source_id": "file:main-workflow-contract",
+          "version": "310b1188dc4664a159be33e7a6ae6cf156fee0295bcb25669f83ebe17324d182"
+        }
+      }
+    },
+    "20_submit_idempotent": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "20_owner_authorized_review_read": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "20_foreign_qa_read_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "20_wrong_hash_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 409
+      }
+    },
+    "20_nonmanager_review_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "20_unapproved_apply_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 409
+      }
+    },
+    "21_own_source_bound_feedback": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": "2d538cab-0a46-552d-a566-5f3a4b9f8515",
+        "hash": "196e27d5773937f3767c8b4ee1f171322f61334883165e72572fe7083353eb7d",
+        "source": {
+          "native_id": 39
+        },
+        "binding": {
+          "document_id": "bb05151f417f9a56001ff4b83c63643d8af774c7bc0b9f5cb7fc7596bbcbb226",
+          "source_id": "op:wp:39",
+          "version": 3
+        }
+      }
+    },
+    "21_submit_idempotent": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "21_owner_authorized_review_read": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "21_foreign_qa_read_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "21_wrong_hash_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 409
+      }
+    },
+    "21_nonmanager_review_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "21_unapproved_apply_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 409
+      }
+    }
+  },
+  "feedbacks": [
+    {
+      "id": "5120bbb6-bf06-5d42-9e77-46f174009667",
+      "hash": "1ba3f8a6af66c7fb8125784f0318566a24f6d1fb4bdd01f2d7227cc734e9bc14",
+      "actor": 20,
+      "project_id": 5,
+      "source": {
+        "source_key": "main-workflow-contract"
+      },
+      "binding": {
+        "document_id": "2b97d8563a71bceb0ee4fe68c51131a1a7baebcbe8f7c1da8a5161127f59ab31",
+        "source_id": "file:main-workflow-contract",
+        "version": "310b1188dc4664a159be33e7a6ae6cf156fee0295bcb25669f83ebe17324d182"
+      },
+      "note": "[CODEX TEST] Kiểm thử controlled reindex cho nguồn hiện hành đã xác minh. Không sửa nội dung nguồn hoặc Native data; feedback note không được index."
+    },
+    {
+      "id": "2d538cab-0a46-552d-a566-5f3a4b9f8515",
+      "hash": "196e27d5773937f3767c8b4ee1f171322f61334883165e72572fe7083353eb7d",
+      "actor": 21,
+      "project_id": 5,
+      "source": {
+        "native_id": 39
+      },
+      "binding": {
+        "document_id": "bb05151f417f9a56001ff4b83c63643d8af774c7bc0b9f5cb7fc7596bbcbb226",
+        "source_id": "op:wp:39",
+        "version": 3
+      },
+      "note": "[CODEX TEST] Kiểm thử controlled reindex cho nguồn hiện hành đã xác minh. Không sửa nội dung nguồn hoặc Native data; feedback note không được index."
+    }
+  ],
+  "native_writes": 0,
+  "promotions": 0,
+  "qualification_detail": "PASS_STAGED_POLICY_CHECKS",
+  "remaining_gate": "EXACT_INDEPENDENT_HUMAN_REVIEW_NOT_RECEIVED"
+}

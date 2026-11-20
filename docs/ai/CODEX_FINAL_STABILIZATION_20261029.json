@@ -1,0 +1,491 @@
+{
+  "at": "2026-10-28T22:02:23.433930+00:00",
+  "verdict": "AUTOMATION_CORE_E2E_PASS_WITH_LIMITATIONS",
+  "core_automation_operational": true,
+  "all_technical_gates_qualified": false,
+  "human_uat_accepted": false,
+  "full_local_go_live_ready": false,
+  "target": {
+    "project_id": 5,
+    "environment": "MAIN",
+    "head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+    "branch": "codex/local-multi-agent-upgrade"
+  },
+  "new_findings": [
+    {
+      "severity": "Medium",
+      "kind": "WINDOWS_TASK_AVAILABILITY_CONFIGURATION",
+      "reproduction": "Both backup/observer XML had DisallowStartIfOnBatteries=true and StopIfGoingOnBatteries=true. Laptop battery use could skip observations or terminate a backup.",
+      "root_cause": "New-ScheduledTaskSettingsSet defaults were inherited.",
+      "fix": "AllowStartIfOnBatteries + DontStopIfGoingOnBatteries in two installer source lines; only these two existing-task settings updated.",
+      "status": "FIXED_AND_CONFIG_READBACK_VERIFIED",
+      "physical_battery_transition_tested": false
+    },
+    {
+      "kind": "TRANSIENT_DEPENDENCY_SIGNAL",
+      "execution_id": 2631,
+      "business_state": "DEGRADED",
+      "technical_state": "success",
+      "cause_observed": "Embedding health probe ReadTimeout at8024.5ms; no inference of broader outage.",
+      "recovery": "Natural executions2632/2633 HEALTHY; UI search and live RAG succeeded.",
+      "source_patch": "NONE; no evidence justifies weakening probe timeout or restarting Main."
+    }
+  ],
+  "source_changes": {
+    "openproject/ai/Schedule-MainBackup.ps1": "cff3eba10ae924e392dcb685321ab8aeecbda0ad85a00483ce7d58ccf7743c00",
+    "openproject/ai/Schedule-NaturalObservation.ps1": "238b017f74a51233e44c75dcf38072643aa5080cb0b7e6fdead40911b4d908ec"
+  },
+  "documentation_changes": [
+    "architecture.md",
+    "docs/ai/CODEX_FULL_PROJECT_OPERATOR_GUIDE.md",
+    "docs/ai/OPERATOR_UAT_SPECIFICATION_AND_CHECKLIST.md",
+    "docs/ai/CODEX_TAKEOVER_CHECKPOINT_20261028_RUNTIME.md",
+    "docs/ai/CODEX_FINAL_STABILIZATION_20261029.json"
+  ],
+  "validation": {
+    "powershell_parse": "PASS_BOTH_FILES",
+    "exact_source_diff": "PASS_ONLY_TWO_SETTINGS_FLAGS_PER_LINE",
+    "settings_contract": "PASS_USING_INSTALLED_WINDOWS_CMDLET",
+    "negative_reproduction": "Original XML proves both battery blocks; no forced power change.",
+    "launcher_smoke": "Observer[]/backupNOT_DUE/exit0 before apply; both real ScheduledTask invocations result0 after apply.",
+    "deployed_xml_diff": "PASS_ONLY_TWO_BOOLEAN_VALUES_PER_TASK",
+    "main_readback": "PRESERVATION_AND_RUNTIME_READBACK_PASS",
+    "product_clone_e2e": "NOT_RERUN_HOST_TASK_CONFIGURATION_ONLY; no Gateway/Core/workflow logic change. Prior unchanged product qualifications retained.",
+    "old_tests_repeated": false,
+    "browser_integration": "Fresh read-only Owner coverage and one authorized Main live inference; see UI evidence and limitations.",
+    "ui_error_path_source_review": {
+      "monitor": "AbortController25s; bounded6read failures/backoff; hides private content on lost auth; never replays writes.",
+      "bridge": "fixedGateway/open_timeout3/read_timeout100/write_timeout5, bounded2MiBresponse, sanitized errors.",
+      "qualification": "Source review only for induced provider unavailable; browser observed completed run and historical source-withdrawn state."
+    }
+  },
+  "deployment": {
+    "scope": "EXISTING_TWO_WINDOWS_TASK_SETTINGS_ONLY",
+    "tasks": [
+      {
+        "Task": "QLDAPM-Main-Daily-Backup",
+        "ExactTwoFlagDelta": true,
+        "State": "Ready",
+        "NextRun": "2026-10-29T05:35:25+07:00"
+      },
+      {
+        "Task": "QLDAPM-NaturalSchedule-Observation",
+        "ExactTwoFlagDelta": true,
+        "State": "Ready",
+        "NextRun": "2026-10-29T08:05:00+07:00"
+      }
+    ],
+    "smoke": [
+      {
+        "TaskName": "QLDAPM-Main-Daily-Backup",
+        "LastRunTime": "2026-10-29T04:53:07+07:00",
+        "LastTaskResult": 0,
+        "NextRunTime": "2026-10-29T05:35:25+07:00"
+      },
+      {
+        "TaskName": "QLDAPM-NaturalSchedule-Observation",
+        "LastRunTime": "2026-10-29T04:53:07+07:00",
+        "LastTaskResult": 0,
+        "NextRunTime": "2026-10-29T08:05:00+07:00"
+      }
+    ],
+    "gateway_core_images_changed": false,
+    "workflow_definitions_changed": false,
+    "service_restarts": 0,
+    "rollback": "Set only DisallowStartIfOnBatteries/StopIfGoingOnBatteries back to true on these exact two tasks; source before copies and full before/after XML retained privately. No Main DB restore."
+  },
+  "fresh_main_ui_live": {
+    "run_id": "c5d44a1d-7440-48a5-be4c-f90fc88dda61",
+    "actor": 18,
+    "role": "AI_SYSTEM_OWNER",
+    "trace_id": "481e29c0-0743-49c6-8d64-37863c7ef9b4",
+    "state": "done",
+    "model": "gemini-3.5-flash-lite",
+    "model_calls": 1,
+    "http_attempts": 2,
+    "http_attempt_scope": "one countTokens plus one generateContent; not two generations or retries",
+    "provider_tokens": 1936,
+    "execution_duration_seconds": 16.647,
+    "provider_pipeline_duration_seconds": 3.223,
+    "events": 18,
+    "source_ids": [
+      376
+    ],
+    "source_fingerprint": "8c902cb1a038655cccc19dff84bc9e5e59416a7aee5f2a3635c0763f873c71d3",
+    "context_provenance": {
+      "base_context_sha256": "71537e530bb259e6359fafd01dd986c97aa5f1b276fab5c4d6a16f2186e4b901",
+      "native_references": [
+        {
+          "lock_version": 0,
+          "native_id": 376
+        }
+      ],
+      "rag_hits": [
+        {
+          "document_id": "4a08e5947b04239d18f871a77b1d9abbe32f907389f1b842f8cb53e308055283",
+          "lock_version": 0,
+          "native_id": 376,
+          "snippet_sha256": "f3e960f8398d086892cfc59b3fc88039b62531d9d564ef545a6344bd661a0664",
+          "source_id": "op:wp:376"
+        }
+      ],
+      "rag_state": "HITS"
+    },
+    "receipts": [
+      {
+        "agent": "pm",
+        "attempt": 0,
+        "http_status": 200,
+        "id": "a663f178-1fb4-4a07-bb66-96e168311332",
+        "model": "gemini-3.5-flash-lite",
+        "phase": "countTokens",
+        "request_sha256": "1f339ac87488d8b882a9bdab7cf256c7aa3449de746768c0b7783c54f337ef6c",
+        "state": "LIVE_SUCCESS",
+        "usage": null
+      },
+      {
+        "agent": "pm",
+        "attempt": 0,
+        "http_status": 200,
+        "id": "8b467e2a-f301-4634-a7d9-5a2590cd3502",
+        "model": "gemini-3.5-flash-lite",
+        "phase": "generateContent",
+        "provider_model_version": "gemini-3.5-flash-lite",
+        "request_sha256": "fda59627d5d8a8091b01ee37a2c86736aa441949c08d46b0e296a728b1ed3b32",
+        "state": "LIVE_SUCCESS",
+        "usage": {
+          "candidatesTokenCount": 215,
+          "promptTokenCount": 1721,
+          "totalTokenCount": 1936
+        }
+      }
+    ],
+    "citation_opened": "/work_packages/376; test2/Subtask/NEW/parent49",
+    "new_proposals": 0,
+    "native_writes": 0,
+    "n8n_execution_id": null,
+    "scope": "Core UI→Gateway Supervisor→authorized Main RAG→PM Gemini→localReviewer→persisted final→Monitor/citation. No new Native source change and no clone context sent to Main provider."
+  },
+  "gemini_continuous": {
+    "status": "EXTERNAL_DEPENDENCY_BLOCKED",
+    "test_key_present": false,
+    "test_proof_present": false,
+    "test_provider_enabled": false,
+    "new_enrollment_created": false,
+    "production_key_exported_or_decrypted": false,
+    "quota_reset_or_bypass": false,
+    "main_route_C": "Fresh authorized Main-only read inference verified with normal quota/audit; no credential moved.",
+    "route_D": "No existing approved secret-free clone provider broker found; the Main integration binds actor/project/source reads and its own quota ledger. No new broker or writable shared quota mount created.",
+    "operator_action": "Use prepared gemini-isolated-test/LOCAL_INPUT.md hidden local input for a separately authorized TEST credential plus actual dedicated-project quota/Free/data-scope proof. Never paste secrets into chat or Git."
+  },
+  "natural_schedules": {
+    "WF07": {
+      "status": "PENDING_SCHEDULED_OBSERVATION",
+      "scheduled_at": "2026-10-29T08:00:00+07:00",
+      "observer_at": "2026-10-29T08:05:00+07:00"
+    },
+    "WF12": {
+      "status": "PENDING_SCHEDULED_OBSERVATION",
+      "scheduled_at": "2026-10-30T17:00:00+07:00",
+      "observer_at": "2026-10-30T17:05:00+07:00"
+    },
+    "WF16": {
+      "workflow": "WF16",
+      "scheduled_at": "2026-10-29T05:00:00+07:00",
+      "observed_at": "2026-10-29T05:00:58.349311+07:00",
+      "native_writes_by_observer": 0,
+      "execution_id": 2633,
+      "trigger_at_utc": "2026-10-28 22:00:00.034",
+      "stopped_at_utc": "2026-10-28 22:00:04.279",
+      "workflow_version": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "retry_of": null,
+      "retry_success_id": null,
+      "execution_error": false,
+      "business_state": "HEALTHY",
+      "receipt_id": "d0cd164d-53ff-43cd-b35e-fd722cc3e689",
+      "idempotency_key": "health_monitor:1992472",
+      "cached": false,
+      "status": "OBSERVED_HEALTHY"
+    },
+    "manual_workflow_invocations": 0,
+    "production_cron_changes": 0,
+    "duplicate_observer_tasks_created": 0,
+    "availability_gap": {
+      "workflow": "WF16",
+      "slots_not_observed": [
+        "2026-10-29T02:30:00+07:00",
+        "2026-10-29T02:45:00+07:00",
+        "2026-10-29T03:00:00+07:00"
+      ],
+      "evidence": "Latest retained natural history jumps2625/02:15 to2626/03:15; current n8n StartedAt03:00:27 after user-reported Docker restart.",
+      "interpretation": "No fabricated catch-up; no claim the local host was available continuously. Exact outage onset not independently measured."
+    }
+  },
+  "startup": {
+    "after_docker_restart": "AFTER_DOCKER_RESTART_PASS_RETAINED",
+    "after_windows_login": "NOT_QUALIFIED_BY_NEW_LOGIN",
+    "before_login": "NOT_QUALIFIED_INTERACTIVE_PRINCIPAL",
+    "physical_reboot": "PHYSICAL_REBOOT_NOT_QUALIFIED",
+    "ollama_listener_pid": 20592,
+    "instances": 1,
+    "hidden_powershell": "Actions use -WindowStyle Hidden; no continuous visual flash capture performed. Task.Hidden itself is not the window visibility control.",
+    "battery": "Two backup/observer scheduler blocks removed and exact readback verified; physical unplug not tested.",
+    "sleep": "WakeToRun=false; no OS sleep/power policy changed. Sleeping/offline machine can miss natural n8n schedules; no catch-up fabricated.",
+    "login_checklist": "When Operator later logs in/reboots by choice: record real boot/login times, check Docker/Main identity+health, one Ollama listener, task LastResult/last-success, scanner timestamp and next actual scheduled receipt. Do not reboot now or infer pre-login from after-login."
+  },
+  "preservation": {
+    "at": "2026-10-28T21:59:39.796132+00:00",
+    "status": "PRESERVATION_AND_RUNTIME_READBACK_PASS",
+    "main_container_identities_unchanged": true,
+    "native_business_hashes_unchanged": true,
+    "fingerprints": {
+      "work_packages": {
+        "rows": 376,
+        "md5": "a85649ecb8560b439bc0ee6bf83b66aa"
+      },
+      "relations": {
+        "rows": 352,
+        "md5": "8efb5973160c91ae1bb5b8451e5979e2"
+      },
+      "custom_values": {
+        "rows": 1695,
+        "md5": "cbc3da8a99bc734c1cc966853559964e"
+      },
+      "journals": {
+        "rows": 1027,
+        "md5": "632f9fd3634045206a66be8f137d0042"
+      },
+      "user_passwords": {
+        "rows": 7,
+        "md5": "1c8c563bc72ffd2e539f6d7e4c2f7db8"
+      }
+    },
+    "unknown_requests_unchanged": true,
+    "workflows_unchanged": 16,
+    "n8n_bytes": {
+      "database.sqlite": 13279232,
+      "database.sqlite-wal": 4161232,
+      "database.sqlite-shm": 32768
+    },
+    "inflight": [],
+    "pipeline": {
+      "at": 1793224779.3514504,
+      "scanner": {
+        "activity_audit_batch_limit": 32,
+        "activity_audit_ids": [
+          207,
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          222,
+          223,
+          224,
+          225,
+          226,
+          227,
+          228,
+          229,
+          230,
+          231,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238
+        ],
+        "actor": 18,
+        "authority": "machine",
+        "changed": 0,
+        "inventory_sha256": "3bdf32e4af0b93ed93c4910b26152ae0abc6334289217994ffa0be06b6849bae",
+        "jobs": [],
+        "model_calls": 0,
+        "native_writes": 0,
+        "not_visible_retained": 0,
+        "observed_at": 1793224724.915431,
+        "physical_deletion": "DENIED_WITHOUT_TRUSTED_DELETE_PROOF",
+        "project_id": 5,
+        "state": "OBSERVED",
+        "vector_integrity": "NOT_CHECKED_USE_KNOWLEDGE_INTEGRITY",
+        "visibility_policy": "Fresh Native collection gates retrieval; withdrawn index content is retained",
+        "visibility_withdrawn_ids": [],
+        "visible": 339,
+        "generation": 4890
+      },
+      "scanner_age_seconds": 54.436020612716675,
+      "sync": [
+        [
+          "verified",
+          86
+        ]
+      ],
+      "queue": [
+        [
+          "finished",
+          94
+        ]
+      ],
+      "qa": "pending_qa",
+      "knowledge_quick_check": "ok",
+      "documents": 441,
+      "chunks": 2027,
+      "fts_rows": 441,
+      "gemini_usage_count": 175,
+      "proposals_total": 57
+    },
+    "native_writes_by_agent": 0,
+    "qa_decisions": 0,
+    "staging_operations": 0
+  },
+  "acceptance_matrix": [
+    {
+      "item": "OpenProject Native API",
+      "status": "PASS_REAL_MAIN",
+      "evidence_scope": "Fresh UI citation opens WP376/test2/NEW/parent49; five business-table fingerprints unchanged."
+    },
+    {
+      "item": "Automatic Source Scanner",
+      "status": "PASS_REAL_CLONE",
+      "evidence_scope": "Prior fresh-change clone qualification retained; current Main scanner generation4890/age54.44s, no pending work."
+    },
+    {
+      "item": "Second Brain Ingestion",
+      "status": "PASS_REAL_CLONE",
+      "evidence_scope": "Prior six automatic jobs verified; current Main86verified/441documents/2027chunks. No repeated fixture write."
+    },
+    {
+      "item": "Ollama Embedding",
+      "status": "PASS_REAL_MAIN",
+      "evidence_scope": "WF16 actual embedding successful at04:45 and05:00; one listener PID20592. One04:30 timeout recorded separately."
+    },
+    {
+      "item": "Qdrant + FTS5",
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence_scope": "Main2030points reported green; SQLite quick_check ok/441FTS. Prior registered-payload and exact3legacy protection evidence retained, not rerun."
+    },
+    {
+      "item": "Hybrid RAG",
+      "status": "PASS_REAL_MAIN",
+      "evidence_scope": "Fresh UI model run includes persisted op:wp:376/v0 RAG provenance, snippet hash and provider request hashes."
+    },
+    {
+      "item": "Source ACL / Prompt Boundary",
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence_scope": "Fresh Owner UI hides withdrawn-source historical output; prior actor/prompt-negative clone tests retained. No fresh five-role browser session."
+    },
+    {
+      "item": "n8n Scheduled Workflows",
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence_scope": "Natural WF16 observed; WF07 today08:00/WF12 Friday17:00 still future; existing two one-shot observations remain registered."
+    },
+    {
+      "item": "n8n Event/Webhook Workflows",
+      "status": "PASS_REAL_CLONE",
+      "evidence_scope": "Prior actual16workflow business/negative qualification retained; fresh n8n UI shows16published; definitions unchanged."
+    },
+    {
+      "item": "Supervisor",
+      "status": "PASS_REAL_MAIN",
+      "evidence_scope": "Fresh Owner UI run persisted plan PM→localReviewer,18events, final answer; no Native writes."
+    },
+    {
+      "item": "Specialist Agents",
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence_scope": "Fresh PM live and Reviewer local verified. Existing other-agent qualification retained; no new live call for every specialist."
+    },
+    {
+      "item": "Live Gemini",
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence_scope": "Fresh Main UI generateContent HTTP200/1936tokens. Continuous fresh clone-change→provider remains EXTERNAL_DEPENDENCY_BLOCKED."
+    },
+    {
+      "item": "Proposal/Approval",
+      "status": "PASS_REAL_CLONE",
+      "evidence_scope": "Prior clone approval/Native writes retained. Fresh Main proposal read prevents replay; WBS receipt DRAFT_NON_EXECUTABLE/hash; no approval clicked."
+    },
+    {
+      "item": "QA Gate",
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence_scope": "Fresh UI inbox/detail shows pending_qa/Native371v4/currentsource/self-review unavailable; prior clone gate tests retained; human decision pending."
+    },
+    {
+      "item": "Monitoring",
+      "status": "PASS_REAL_MAIN",
+      "evidence_scope": "WF16 distinguishes technicalsuccess/businessDEGRADED2631 from HEALTHY2632/2633, with durable audit receipts."
+    },
+    {
+      "item": "Retry/Recovery",
+      "status": "PASS_REAL_CLONE",
+      "evidence_scope": "Prior real dependency outages/Gateway300slease/n8nrestart retained. Main recent executions no retries/inflight; no new fault injection."
+    },
+    {
+      "item": "Docker Restart",
+      "status": "PASS_REAL_MAIN",
+      "evidence_scope": "User-initiated Docker restart recovery evidence retained; current IDs/images/starttimes stable. No restart initiated this session."
+    },
+    {
+      "item": "Windows Login/Startup",
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence_scope": "Hidden actions/limitedinteractiveLUIM/currenttaskresult0/singleOllama; battery gates fixed. New login/prelogin/reboot not qualified."
+    },
+    {
+      "item": "Backup",
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence_scope": "Daily per-store snapshot last-success retained; current duecheckNOT_DUE/task0; battery no longer blocks. No Qdrant/full cross-service restore qualified."
+    },
+    {
+      "item": "UI Automation Acceptance",
+      "status": "PASS_WITH_LIMITATIONS",
+      "evidence_scope": "Fresh Owner/Project5 Assistant/count/search/citation/liveMonitor/PMoutput/QA/WBS/permissions/freshness/n8nUI checked. Loading transition not sampled reliably; no induced provider-outage browser test or fresh five-role coverage."
+    },
+    {
+      "item": "Human UAT",
+      "status": "HUMAN_UAT_PENDING",
+      "evidence_scope": "No human sign-off inferred from browser automation; checklist boxes remain unchanged."
+    }
+  ],
+  "private_evidence": "%LOCALAPPDATA%/QLDAPM/openproject-ai/operator/final-stabilization-20261029",
+  "ui_artifacts": [
+    "ui-count.jpg",
+    "ui-freshness.txt",
+    "ui-live-answer.jpg",
+    "ui-live-answer.txt",
+    "ui-live-monitor.jpg",
+    "ui-live-monitor.txt",
+    "ui-n8n-2632.txt",
+    "ui-n8n-executions.txt",
+    "ui-n8n-workflows.txt",
+    "ui-native-citation.txt",
+    "ui-permissions.txt",
+    "ui-proposal-preview.txt",
+    "ui-qa-pending.txt",
+    "ui-search.txt",
+    "ui-source-withdrawn.txt",
+    "ui-wbs-read.txt"
+  ],
+  "remaining_limits": [
+    "Natural WF07/WF12 remain pending until actual future observations; read private *-latest.json on resume.",
+    "Fresh continuous clone-to-Gemini blocked on test credential/proof; Main live inference is separate evidence.",
+    "Human UAT/sign-off and new login/prelogin/physical reboot not qualified.",
+    "No new full Qdrant/cross-service DR; scheduled backup excludes Qdrant; existing full-restore limitation retained.",
+    "External SMTP/chat BLOCKED_EXTERNAL_CONFIGURATION; no external message sent.",
+    "Fresh UI used Owner only; no forced provider outage, physical battery transition or 24hour soak."
+  ],
+  "operator_actions": [
+    "Provide TEST credential/proof locally only if continuous clone gate is required.",
+    "Keep LUIM logged in, machine awake and Docker available for existing WF07/WF12 observations.",
+    "Review human UAT checklist; automated UI checks do not sign on your behalf."
+  ]
+}

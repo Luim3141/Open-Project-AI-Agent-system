@@ -1,0 +1,263 @@
+{
+  "started_utc": "2026-11-02T03:47:47Z",
+  "completed_utc": "2026-11-02T03:48:03Z",
+  "source_git_head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+  "source_note": "working tree uncommitted; per-file hashes identify tested revision",
+  "source_sha256": {
+    "gateway/engineering_reporting.py": "fc7347b6a09aa05af697b617dc6317f50c37a5c11833e86d9e9163a20a3868e7",
+    "tests/test_engineering_reporting.py": "bff9a143b46f4a3e25e102463ee3ff88c70b3ff8849ad0edb7098d1dc36c0b3b",
+    "automation/deploy_real_n8n_workflows.py": "a6f8a93c78139e086218575121d340d3917d32c00c4c992a6142b2bcb26c757e",
+    "gateway/daily_brief.py": "065208e8ccfb38e72e42a3d23b21c89339f9b75bad34f590d3874c46616b160d",
+    "gateway/weekly_report.py": "a827773969cc26d8710965f9b22c0e8533a4027b1e8ddf57ec9975950acffdfa",
+    "gateway/native.py": "88f6dd6c083de5874a5175e1a247820b75490ca10eb8c6e726362859eeb887e0",
+    "tests/test_engineering_reporting_contract.py": "b2c4f1ff586c3ce543eb02430e7f732e006ceca8a25ac320d4cfe1f7460b1e5d",
+    "tests/test_operational_reports.py": "a90151d5897023782ba381818f06a47d0370f9a01d32a084ac9149cbd1e81b17",
+    "tests/test_takeover_workflows.py": "c796541a63c721e71ac3cdf376f884d8bc6dd8e5a49fbdf58884d433b0d3694d",
+    "tests/test_daily_workflow_finalization.py": "d19dc8e1ab39141f7a16728684654d1fba545bd69ae89b55464fdba54311dfb8",
+    "tests/test_scheduled_weekly_summary.py": "6c7b21d35fc3de305b3c4d6f1141b30915b66777ea4d69f32e7c7ca7d90a6f74",
+    "tests/test_weekly_accuracy.py": "1b19993e9df93b9fd1f2b14b9a976280ff6749f33365d02a045c9c1b018b7f12"
+  },
+  "tested_image": null,
+  "serving_baseline_gateway_image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb",
+  "command": "openproject/ai/.venv/Scripts/python.exe docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/workflows/record_tests.py",
+  "environment": "Windows Python 3.14.3; isolated temporary SQLite + Native/GitHub fixtures; no MAIN writes",
+  "evidence_path": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\CHATGPT_RECOVERY\\phase2-final\\workflows\\targeted-tests.log",
+  "status": "PASS",
+  "tests": [
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_absent_parent_is_not_invented_when_other_sources_are_available",
+      "utc": "2026-11-02T03:47:48Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_collect_factual_metrics",
+      "utc": "2026-11-02T03:47:48Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_dispatch_via_service_execute_actor",
+      "utc": "2026-11-02T03:47:48Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_factual_report_does_not_require_or_claim_provider_verification",
+      "utc": "2026-11-02T03:47:49Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_generate_report_daily_and_weekly",
+      "utc": "2026-11-02T03:47:49Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_generate_report_on_demand_and_persistence",
+      "utc": "2026-11-02T03:47:49Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_invalid_report_type_rejected",
+      "utc": "2026-11-02T03:47:49Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_list_reports_and_pagination",
+      "utc": "2026-11-02T03:47:51Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_reports_link_exact_sources_and_revalidate_native_revision",
+      "utc": "2026-11-02T03:47:51Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_requested_ai_narrative_failure_is_explicit_and_redacted",
+      "utc": "2026-11-02T03:47:52Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_requested_ai_narrative_is_generated_and_persisted",
+      "utc": "2026-11-02T03:47:52Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_unauthorized_actor_rejected",
+      "utc": "2026-11-02T03:47:52Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting.EngineeringReportingTests.test_unavailable_sources_are_unknown_not_zero_or_invented_parent",
+      "utc": "2026-11-02T03:47:52Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting_contract.EngineeringReportTemplateContractTests.test_mission_and_run_cards_do_not_invent_acceptance_or_native_versions",
+      "utc": "2026-11-02T03:47:52Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting_contract.EngineeringReportTemplateContractTests.test_reader_uses_list_narrative_and_server_fallback_as_text",
+      "utc": "2026-11-02T03:47:52Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting_contract.EngineeringReportTemplateContractTests.test_report_cards_use_recorded_metrics_or_explicit_missing_data",
+      "utc": "2026-11-02T03:47:52Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_engineering_reporting_contract.EngineeringReportTemplateContractTests.test_report_json_cannot_close_its_script_element",
+      "utc": "2026-11-02T03:47:52Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_operational_reports.OperationalReportTests.test_deduplication_durability_and_scoped_readback",
+      "utc": "2026-11-02T03:47:52Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_operational_reports.OperationalReportTests.test_pm_report_cannot_be_read_after_owner_role_changes_to_ba",
+      "utc": "2026-11-02T03:47:53Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_operational_reports.OperationalReportTests.test_service_revalidates_visibility_and_marks_changed_versions_as_historical",
+      "utc": "2026-11-02T03:47:53Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_operational_reports.OperationalReportTests.test_tampered_report_is_not_returned_as_verified_evidence",
+      "utc": "2026-11-02T03:47:53Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_operational_reports.OperationalReportTests.test_unknown_report_kind_is_rejected",
+      "utc": "2026-11-02T03:47:53Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_daily_schedule_uses_fixed_signed_machine_operation_without_caller_inputs",
+      "utc": "2026-11-02T03:47:53Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_execution_uses_exact_proposal_decision_never_raw_mutation",
+      "utc": "2026-11-02T03:47:53Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_gateway_calls_forward_only_the_authenticated_request_header",
+      "utc": "2026-11-02T03:47:53Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_interactive_approval_and_trace_preserve_gateway_http_status",
+      "utc": "2026-11-02T03:47:53Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_javascript_formatters_propagate_denial_and_actual_proposal_lifecycle",
+      "utc": "2026-11-02T03:47:53Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_legacy_adapters_return_actual_results_without_default_targets",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_monitor_schedule_uses_fixed_machine_probe_without_fabricated_kpis",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_orchestrator_preserves_request_identity_and_polls_stored_runs",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_qa_gate_reads_real_evidence_without_asserting_approval",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_reapplying_hardening_preserves_graph_and_has_no_dangling_nodes",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_reconciliation_calls_exact_identity_audit_without_static_totals",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_recovery_routes_only_durable_rag_job_operations",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_scheduled_weekly_rejects_transport_success_with_incomplete_business_result",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_sprint_risk_uses_persisted_native_analysis_and_no_default_work_package",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_takeover_workflows.WorkflowBoundaryTests.test_weekly_summary_retains_weekly_purpose_and_caller_context",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_daily_workflow_finalization.DailyWorkflowFinalizationTests.test_daily_collector_requires_ready_before_n8n_success",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_scheduled_weekly_summary.ScheduledWeeklySummaryTests.test_concurrent_duplicate_schedule_collects_once_and_restart_does_not_fabricate_completion",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_scheduled_weekly_summary.ScheduledWeeklySummaryTests.test_interrupted_collector_is_failed_and_never_replayed_as_a_success",
+      "utc": "2026-11-02T03:47:54Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_scheduled_weekly_summary.ScheduledWeeklySummaryTests.test_role_revocation_is_partial_and_request_cannot_choose_actor_or_project",
+      "utc": "2026-11-02T03:47:59Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_scheduled_weekly_summary.ScheduledWeeklySummaryTests.test_signed_schedule_persists_each_authorized_actor_report_and_deduplicates",
+      "utc": "2026-11-02T03:47:59Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_scheduled_weekly_summary.ScheduledWeeklySummaryTests.test_wrong_week_and_reserved_status_namespace_are_rejected",
+      "utc": "2026-11-02T03:48:02Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_weekly_accuracy.WeeklyAccuracyTests.test_percent_complete_does_not_override_native_workflow_status",
+      "utc": "2026-11-02T03:48:02Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_weekly_accuracy.WeeklyAccuracyTests.test_rolling_seven_days_use_bangkok_dates_and_exclude_future_updates",
+      "utc": "2026-11-02T03:48:02Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_weekly_accuracy.WeeklyAccuracyTests.test_updated_done_item_is_not_proof_it_was_closed_this_week",
+      "utc": "2026-11-02T03:48:02Z",
+      "outcome": "PASS"
+    },
+    {
+      "test": "tests.test_weekly_accuracy.WeeklyAccuracyTests.test_weekly_service_uses_native_actor_and_persists_only_role_scoped_member_data",
+      "utc": "2026-11-02T03:48:02Z",
+      "outcome": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "run_id": "75323361-e6b8-45ba-a99b-c379ad80e652",
+  "state": "done",
+  "status": "answered",
+  "completion": {
+    "approval": "NOT_REQUIRED",
+    "native": "NOT_REQUESTED",
+    "provider": "COMPLETED",
+    "state": "COMPLETED",
+    "synthesis": "MODEL_COMPLETE"
+  },
+  "original_error": null,
+  "original_worker_state": "done",
+  "model_used": true,
+  "tools": [
+    {
+      "action": "get_work_package",
+      "arguments_keys": [
+        "id"
+      ]
+    }
+  ],
+  "ledger": {
+    "counts": {
+      "gemini_call_receipts": 110,
+      "gemini_usage": 115,
+      "proposals": 42,
+      "knowledge_sync": 3
+    },
+    "receipts": [
+      {
+        "id": "baf532a3-8a45-4695-8747-c8a5003fc1a5",
+        "agent": "business_worker",
+        "phase": "countTokens",
+        "state": "LIVE_SUCCESS",
+        "usage": null
+      },
+      {
+        "id": "f0ee21a9-44a1-4542-8364-d50ff5b773f2",
+        "agent": "business_worker",
+        "phase": "generateContent",
+        "state": "LIVE_SUCCESS",
+        "usage": {
+          "candidatesTokenCount": 18,
+          "promptTokenCount": 2249,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 2249
+            }
+          ],
+          "serviceTier": "standard",
+          "thoughtsTokenCount": 205,
+          "totalTokenCount": 2472
+        }
+      },
+      {
+        "id": "97d72645-7c9b-4aa8-9383-eb52b40dfd59",
+        "agent": "business_worker",
+        "phase": "countTokens",
+        "state": "LIVE_SUCCESS",
+        "usage": null
+      },
+      {
+        "id": "0c0c177a-6763-457f-a5f6-44bfe108186c",
+        "agent": "business_worker",
+        "phase": "generateContent",
+        "state": "LIVE_SUCCESS",
+        "usage": {
+          "candidatesTokenCount": 283,
+          "promptTokenCount": 2904,
+          "promptTokensDetails": [
+            {
+              "modality": "TEXT",
+              "tokenCount": 2904
+            }
+          ],
+          "serviceTier": "standard",
+          "thoughtsTokenCount": 538,
+          "totalTokenCount": 3725
+        }
+      }
+    ]
+  },
+  "acceptance": "NOT_SIX_ROLE_NOT_SCENARIO_F; enginegemini writeintent routes legacy business tools; no typedRAGprovenance",
+  "next": "Add explicit Supervisor proposal engine, preserve legacy business routes and exactPMapproval"
+}

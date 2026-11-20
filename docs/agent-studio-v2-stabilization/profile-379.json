@@ -1,0 +1,477 @@
+{
+  "task_id": 379,
+  "total_ms": 6081.695903005311,
+  "native_calls": [
+    {
+      "path": "/api/v3/users/me",
+      "method": "GET",
+      "status": 200,
+      "ms": 78.327
+    },
+    {
+      "path": "/api/v3/projects/6",
+      "method": "GET",
+      "status": 200,
+      "ms": 43.615
+    },
+    {
+      "path": "/api/v3/qldapm/permissions",
+      "method": "GET",
+      "status": 200,
+      "ms": 38.963
+    },
+    {
+      "path": "/api/v3/work_packages/379",
+      "method": "GET",
+      "status": 200,
+      "ms": 196.543
+    },
+    {
+      "path": "/api/v3/work_packages/380",
+      "method": "GET",
+      "status": 200,
+      "ms": 373.432
+    },
+    {
+      "path": "/api/v3/work_packages/381",
+      "method": "GET",
+      "status": 200,
+      "ms": 326.454
+    },
+    {
+      "path": "/api/v3/work_packages/382",
+      "method": "GET",
+      "status": 200,
+      "ms": 207.759
+    },
+    {
+      "path": "/api/v3/work_packages/383",
+      "method": "GET",
+      "status": 200,
+      "ms": 190.778
+    },
+    {
+      "path": "/api/v3/work_packages/384",
+      "method": "GET",
+      "status": 200,
+      "ms": 290.358
+    },
+    {
+      "path": "/api/v3/work_packages/386",
+      "method": "GET",
+      "status": 200,
+      "ms": 275.25
+    },
+    {
+      "path": "/api/v3/work_packages/387",
+      "method": "GET",
+      "status": 200,
+      "ms": 245.922
+    },
+    {
+      "path": "/api/v3/work_packages/389",
+      "method": "GET",
+      "status": 200,
+      "ms": 305.879
+    },
+    {
+      "path": "/api/v3/work_packages/390",
+      "method": "GET",
+      "status": 200,
+      "ms": 228.059
+    },
+    {
+      "path": "/api/v3/work_packages/391",
+      "method": "GET",
+      "status": 200,
+      "ms": 167.156
+    },
+    {
+      "path": "/api/v3/work_packages/394",
+      "method": "GET",
+      "status": 200,
+      "ms": 198.48
+    },
+    {
+      "path": "/api/v3/work_packages/396",
+      "method": "GET",
+      "status": 200,
+      "ms": 172.483
+    },
+    {
+      "path": "/api/v3/work_packages/397",
+      "method": "GET",
+      "status": 200,
+      "ms": 166.464
+    },
+    {
+      "path": "/api/v3/qldapm/observer_acceptance/379",
+      "method": "GET",
+      "status": 200,
+      "ms": 53.683
+    }
+  ],
+  "result_bytes": 192614,
+  "functions": [
+    {
+      "file": "agent_observer.py",
+      "line": 228,
+      "function": "execute",
+      "calls": 1,
+      "self_s": 0.001005681,
+      "cumulative_s": 5.918217231000001
+    },
+    {
+      "file": "agent_observer.py",
+      "line": 194,
+      "function": "task_progress",
+      "calls": 1,
+      "self_s": 0.0009406000000000001,
+      "cumulative_s": 5.9172069490000005
+    },
+    {
+      "file": "agent_observer.py",
+      "line": 156,
+      "function": "recorded_monitor",
+      "calls": 16,
+      "self_s": 0.002235618,
+      "cumulative_s": 5.5162696
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.next>",
+      "calls": 1170,
+      "self_s": 0.0028932270000000004,
+      "cumulative_s": 4.099231226000001
+    },
+    {
+      "file": "contextlib.py",
+      "line": 136,
+      "function": "__enter__",
+      "calls": 533,
+      "self_s": 0.0009041800000000001,
+      "cumulative_s": 3.7645351660000004
+    },
+    {
+      "file": "<stdin>",
+      "line": 11,
+      "function": "call",
+      "calls": 18,
+      "self_s": 0.00037563200000000004,
+      "cumulative_s": 3.5598922830000004
+    },
+    {
+      "file": "native.py",
+      "line": 28,
+      "function": "call",
+      "calls": 18,
+      "self_s": 0.00070936,
+      "cumulative_s": 3.5592940430000004
+    },
+    {
+      "file": "_api.py",
+      "line": 123,
+      "function": "stream",
+      "calls": 36,
+      "self_s": 0.00047467500000000003,
+      "cumulative_s": 3.537478493
+    },
+    {
+      "file": "_client.py",
+      "line": 827,
+      "function": "stream",
+      "calls": 36,
+      "self_s": 0.000156097,
+      "cumulative_s": 3.3826704380000003
+    },
+    {
+      "file": "_client.py",
+      "line": 879,
+      "function": "send",
+      "calls": 18,
+      "self_s": 0.000159431,
+      "cumulative_s": 3.3742553610000003
+    },
+    {
+      "file": "_client.py",
+      "line": 930,
+      "function": "_send_handling_auth",
+      "calls": 18,
+      "self_s": 0.00013732000000000002,
+      "cumulative_s": 3.3738063260000004
+    },
+    {
+      "file": "_client.py",
+      "line": 964,
+      "function": "_send_handling_redirects",
+      "calls": 18,
+      "self_s": 0.00010285200000000001,
+      "cumulative_s": 3.373469908
+    },
+    {
+      "file": "_client.py",
+      "line": 1001,
+      "function": "_send_single_request",
+      "calls": 18,
+      "self_s": 0.000559846,
+      "cumulative_s": 3.3732939560000004
+    },
+    {
+      "file": "default.py",
+      "line": 230,
+      "function": "handle_request",
+      "calls": 18,
+      "self_s": 0.000883924,
+      "cumulative_s": 3.365409124
+    },
+    {
+      "file": "connection_pool.py",
+      "line": 199,
+      "function": "handle_request",
+      "calls": 18,
+      "self_s": 0.0004966290000000001,
+      "cumulative_s": 3.3624776190000003
+    },
+    {
+      "file": "connection.py",
+      "line": 69,
+      "function": "handle_request",
+      "calls": 18,
+      "self_s": 0.00048022900000000004,
+      "cumulative_s": 3.36016195
+    },
+    {
+      "file": "native.py",
+      "line": 152,
+      "function": "package",
+      "calls": 14,
+      "self_s": 0.00011129600000000001,
+      "cumulative_s": 3.345360051
+    },
+    {
+      "file": "http11.py",
+      "line": 65,
+      "function": "handle_request",
+      "calls": 18,
+      "self_s": 0.0009031060000000001,
+      "cumulative_s": 3.330175074
+    },
+    {
+      "file": "http11.py",
+      "line": 209,
+      "function": "_receive_event",
+      "calls": 103,
+      "self_s": 0.0007327950000000001,
+      "cumulative_s": 3.326194584
+    },
+    {
+      "file": "http11.py",
+      "line": 170,
+      "function": "_receive_response_headers",
+      "calls": 18,
+      "self_s": 0.000133793,
+      "cumulative_s": 3.3206765750000002
+    },
+    {
+      "file": "sync.py",
+      "line": 124,
+      "function": "read",
+      "calls": 31,
+      "self_s": 0.00038015200000000003,
+      "cumulative_s": 3.313553192
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'recv' of '_socket.socket' objects>",
+      "calls": 31,
+      "self_s": 3.3126024210000002,
+      "cumulative_s": 3.3126024210000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+      "calls": 132,
+      "self_s": 1.701516347,
+      "cumulative_s": 1.701516347
+    },
+    {
+      "file": "engineering_monitor.py",
+      "line": 9,
+      "function": "project",
+      "calls": 14,
+      "self_s": 0.006398611,
+      "cumulative_s": 1.3763686990000001
+    },
+    {
+      "file": "store.py",
+      "line": 380,
+      "function": "execution_records",
+      "calls": 15,
+      "self_s": 0.005488974000000001,
+      "cumulative_s": 0.9392275750000001
+    },
+    {
+      "file": "engineering_observability.py",
+      "line": 39,
+      "function": "describe_run",
+      "calls": 14,
+      "self_s": 0.026438661000000002,
+      "cumulative_s": 0.565680921
+    },
+    {
+      "file": "store.py",
+      "line": 84,
+      "function": "connect",
+      "calls": 144,
+      "self_s": 0.0034049590000000004,
+      "cumulative_s": 0.556995667
+    },
+    {
+      "file": "engineering_lifecycle.py",
+      "line": 31,
+      "function": "load",
+      "calls": 14,
+      "self_s": 0.0006245210000000001,
+      "cumulative_s": 0.44192227100000003
+    },
+    {
+      "file": "store.py",
+      "line": 307,
+      "function": "agent_run",
+      "calls": 15,
+      "self_s": 0.000712907,
+      "cumulative_s": 0.43056786100000005
+    },
+    {
+      "file": "contextlib.py",
+      "line": 145,
+      "function": "__exit__",
+      "calls": 532,
+      "self_s": 0.0014200030000000002,
+      "cumulative_s": 0.33482035400000004
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'close' of 'sqlite3.Connection' objects>",
+      "calls": 72,
+      "self_s": 0.323283723,
+      "cumulative_s": 0.323283723
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method _sqlite3.connect>",
+      "calls": 72,
+      "self_s": 0.220619898,
+      "cumulative_s": 0.228204909
+    },
+    {
+      "file": "service.py",
+      "line": 71,
+      "function": "native_actor",
+      "calls": 1,
+      "self_s": 5.9055e-05,
+      "cumulative_s": 0.163444843
+    },
+    {
+      "file": "native.py",
+      "line": 82,
+      "function": "identity",
+      "calls": 1,
+      "self_s": 2.5666e-05,
+      "cumulative_s": 0.160975589
+    },
+    {
+      "file": "_client.py",
+      "line": 639,
+      "function": "__init__",
+      "calls": 18,
+      "self_s": 0.000366345,
+      "cumulative_s": 0.146826316
+    },
+    {
+      "file": "_client.py",
+      "line": 718,
+      "function": "_init_transport",
+      "calls": 18,
+      "self_s": 0.00013533000000000002,
+      "cumulative_s": 0.143174157
+    },
+    {
+      "file": "default.py",
+      "line": 136,
+      "function": "__init__",
+      "calls": 18,
+      "self_s": 0.00048746000000000005,
+      "cumulative_s": 0.143038827
+    },
+    {
+      "file": "<frozen importlib._bootstrap>",
+      "line": 1360,
+      "function": "_find_and_load",
+      "calls": 65,
+      "self_s": 0.0005456910000000001,
+      "cumulative_s": 0.10803940000000001
+    },
+    {
+      "file": "_config.py",
+      "line": 23,
+      "function": "create_ssl_context",
+      "calls": 18,
+      "self_s": 0.000284037,
+      "cumulative_s": 0.10768013400000001
+    },
+    {
+      "file": "<frozen importlib._bootstrap>",
+      "line": 1308,
+      "function": "_find_and_load_unlocked",
+      "calls": 64,
+      "self_s": 0.000538363,
+      "cumulative_s": 0.10724641300000001
+    },
+    {
+      "file": "<frozen importlib._bootstrap>",
+      "line": 914,
+      "function": "_load_unlocked",
+      "calls": 55,
+      "self_s": 0.000276769,
+      "cumulative_s": 0.10585198400000001
+    },
+    {
+      "file": "<frozen importlib._bootstrap_external>",
+      "line": 757,
+      "function": "exec_module",
+      "calls": 55,
+      "self_s": 0.000188364,
+      "cumulative_s": 0.105385167
+    },
+    {
+      "file": "<frozen importlib._bootstrap>",
+      "line": 483,
+      "function": "_call_with_frames_removed",
+      "calls": 167,
+      "self_s": 0.000148452,
+      "cumulative_s": 0.10403190300000001
+    },
+    {
+      "file": "ssl.py",
+      "line": 696,
+      "function": "create_default_context",
+      "calls": 18,
+      "self_s": 0.000680365,
+      "cumulative_s": 0.100944664
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'load_verify_locations' of '_ssl._SSLContext' objects>",
+      "calls": 18,
+      "self_s": 0.09137229300000001,
+      "cumulative_s": 0.09137229300000001
+    }
+  ]
+}

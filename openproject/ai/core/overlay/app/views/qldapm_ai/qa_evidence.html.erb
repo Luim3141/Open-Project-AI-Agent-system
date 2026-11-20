@@ -1,0 +1,113 @@
+<h2>Bằng chứng QA / Kiểm duyệt</h2>
+<p><%= link_to "Về AI Assistant", project_qldapm_ai_path(@project.identifier) %></p>
+<% if @role == "AI_SYSTEM_OWNER" %>
+<section aria-labelledby="application-proof-heading">
+  <h3 id="application-proof-heading">Proof kiểm thử ứng dụng</h3>
+  <p>Xác minh proof kỹ thuật hoặc đưa vào hàng đợi QA độc lập. Thao tác này không review thay QA/PM và không ghi Native.</p>
+  <%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
+    <%= hidden_field_tag :arguments, "{}" %><%= hidden_field_tag :request_id, SecureRandom.uuid %>
+    <%= label_tag :proof_id, "ID proof ứng dụng" %><%= text_field_tag :proof_id, nil, required: true, maxlength: 36, size: 40 %>
+    <%= button_tag "Xác minh proof", name: "tool", value: "qa_application_proof_verify", class: "button" %>
+    <%= button_tag "Đưa proof vào QA review", name: "tool", value: "qa_application_proof_admit", class: "button" %>
+  <% end %>
+</section>
+<% end %>
+<% if @qa_inbox %>
+<section aria-labelledby="qa-inbox-heading"><h3 id="qa-inbox-heading">Hộp thư bằng chứng</h3>
+<p>Tối đa 20 bằng chứng gần nhất còn quyền đọc Native. Trạng thái review không thay approval Native.</p>
+<% if @qa_inbox.fetch("items").empty? %><p>Chưa có bằng chứng trong phạm vi truy cập hiện tại.</p><% else %>
+<div style="overflow-x:auto"><table><caption>Bằng chứng được chia sẻ để review</caption>
+<thead><tr><th scope="col">Bằng chứng</th><th scope="col">Công việc / phiên bản</th><th scope="col">Người khởi tạo</th><th scope="col">Review / nguồn</th></tr></thead>
+<tbody><% @qa_inbox.fetch("items").each do |entry| %><tr>
+<td><%= link_to entry.fetch("id"), project_qldapm_ai_qa_evidence_path(@project.identifier, id: entry.fetch("id")) %></td>
+<td>#<%= entry["native_id"] %> / <%= entry["version"] %></td><td>User <%= entry["actor"] %></td>
+<td><%= entry["state"] %> / <%= entry["source_current"] ? "Còn khớp" : "Stale" %></td>
+</tr><% end %></tbody></table></div><% end %></section>
+<% end %>
+<% if %w[PM AI_SYSTEM_OWNER QA].include?(@role) %>
+<section aria-labelledby="qa-run-heading"><h3 id="qa-run-heading">Kiểm thử Native chỉ đọc</h3>
+<p>Runner thực thi các assertion readback được nêu rõ trong acceptance criteria Native; không tự suy luận PASS cho tiêu chí khác. Artifact tự động không thay QA review hoặc approval Native. Người khởi tạo không tự duyệt bằng chứng.</p>
+<%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
+  <%= hidden_field_tag :tool, "qa_test_run" %><%= hidden_field_tag :arguments, "{}" %><%= hidden_field_tag :request_id, SecureRandom.uuid %>
+  <%= label_tag :native_id, "ID công việc cần kiểm thử readback" %><%= number_field_tag :native_id, nil, min: 1, required: true %>
+  <%= submit_tag "Chạy kiểm thử chỉ đọc", class: "button" %>
+<% end %>
+</section>
+<% end %>
+<% if @qa_run&.dig("compatibility") == "UNSUPPORTED_RUN_KIND" %>
+<p role="status">Run chưa được phiên bản này hỗ trợ; không thể đưa vào QA review.</p>
+<% elsif @qa_run %>
+<section aria-labelledby="qa-run-result"><h3 id="qa-run-result">Kết quả tự động <%= @qa_run["id"] %></h3>
+<p>Verdict: <%= @qa_run["verdict"] %> · Nguồn còn khớp: <%= @qa_run["source_current"] ? "Có" : "Không" %>. Chưa phải quyết định QA/PM/Owner.</p>
+<details><summary>Test cases và artifact đã kiểm tra chữ ký</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere"><%= @qa_run["artifact"] %></pre></details>
+<p>Artifact SHA256: <code style="overflow-wrap:anywhere"><%= @qa_run["artifact_sha256"] %></code></p>
+<%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
+ <%= hidden_field_tag :tool, "qa_evidence_from_run" %><%= hidden_field_tag :arguments, JSON.generate({run_id: @qa_run.fetch("id")}) %><%= hidden_field_tag :request_id, SecureRandom.uuid %>
+ <%= submit_tag "Đưa artifact vào QA review", class: "button", disabled: !@qa_run["source_current"] %>
+<% end %>
+</section>
+<% end %>
+<p>QA lập bằng chứng từ activity và attachment Native của chính mình bằng tool <code>qa_evidence_capture</code>. Dùng ID kết quả để đọc tại đây.</p>
+<% if @qa_evidence&.dig("verification_kind") == "AUTOMATED_APPLICATION_WBS" %>
+<p>Đây là qualification application WBS trong môi trường cô lập, không phải human QA PASS. QA độc lập review trước, sau đó PM độc lập review.
+<%= @qa_evidence["native_transition_supported"] ? "Bridge Native hỗ trợ loại proof này; vẫn cần đủ review, Native form/gate và approval riêng." : "Native transition chưa được hỗ trợ cho loại proof này." %></p>
+<% elsif @qa_evidence&.dig("verification_kind") == "AUTOMATED_NATIVE_READBACK" %>
+<p>Đây là kết quả kiểm thử readback Native tự động, không phải human QA PASS. QA độc lập review trước, sau đó PM/Owner độc lập review. Mọi thay đổi trạng thái Native vẫn cần proposal và approval riêng.</p>
+<% elsif @qa_evidence&.dig("verification_kind") == "MANUAL_ATTESTATION" %><p>Đây là lời xác nhận kiểm thử thủ công của QA. Review chấp nhận hoặc từ chối bằng chứng; mọi thay đổi trạng thái Native vẫn cần proposal và approval riêng.</p><% end %>
+<% if @error %><div role="alert" tabindex="-1" autofocus><p><%= @error %></p><p>Đọc lại ID và phiên bản hiện tại trước khi quyết định. Không tự gửi lại review chưa xác định kết quả.</p></div><% end %>
+<% if @review_completed %><p role="status">Đã lưu quyết định review. Không thực hiện Native write.</p><% end %>
+<%= form_tag project_qldapm_ai_qa_evidence_path(@project.identifier), method: :get, data: {turbo: false} do %>
+  <%= label_tag :id, "ID bằng chứng QA" %>
+  <%= text_field_tag :id, params[:id], required: true, maxlength: 36, size: 40 %>
+  <%= submit_tag "Đọc bằng chứng", class: "button" %>
+<% end %>
+<% if @qa_evidence %>
+  <% if @qa_evidence["compatibility"] == "UNSUPPORTED_EVIDENCE_KIND" %>
+    <p role="status">Loại bằng chứng chưa được phiên bản này hỗ trợ; không thể review hoặc tạo proposal từ bằng chứng này.</p>
+  <% else %>
+  <% evidence = @qa_evidence; binding = evidence.fetch("binding"); manifest = evidence.fetch("manifest"); automated = %w[AUTOMATED_NATIVE_READBACK AUTOMATED_APPLICATION_WBS].include?(evidence["verification_kind"]) %>
+  <section aria-labelledby="qa-evidence-heading">
+    <h3 id="qa-evidence-heading">Bằng chứng <%= evidence["id"] %></h3>
+    <dl>
+      <dt>Công việc / phiên bản</dt><dd><%= link_to "##{Integer(binding['native_id'])}", "/work_packages/#{Integer(binding['native_id'])}" %> / <%= binding["version"] %></dd>
+      <dt>Người xác nhận / loại bằng chứng</dt><dd>User <%= evidence["actor"] %> / <%= evidence["verification_kind"] %></dd>
+      <% if automated %>
+      <dt>Runner / execution</dt><dd><%= evidence.dig("producer", "id") %> / <%= evidence["run_id"] %></dd>
+      <dt>Runner code SHA256</dt><dd><code style="overflow-wrap:anywhere"><%= evidence.dig("producer", "code_sha256") %></code></dd>
+      <dt>Kết quả tự động</dt><dd><%= evidence["automated_verdict"] %> — tách biệt với quyết định review</dd>
+      <% if manifest["started_at"] && manifest["finished_at"] %><dt>Thời gian thực thi</dt><dd><%= Time.at(manifest["started_at"]).getlocal("+07:00").strftime("%d/%m/%Y %H:%M:%S UTC+7") %> → <%= Time.at(manifest["finished_at"]).getlocal("+07:00").strftime("%d/%m/%Y %H:%M:%S UTC+7") %></dd><% end %>
+      <% else %><dt>Activity / thời điểm Native</dt><dd><%= binding["activity_id"] %> / <%= binding["activity_created_at"] %></dd><% end %>
+      <dt>Artifact / SHA256</dt><dd><%= automated ? "Signed runner log" : manifest["attachment_id"] %> / <code style="overflow-wrap:anywhere"><%= binding["artifact_sha256"] %></code></dd>
+      <dt>Trạng thái review / người duyệt</dt><dd><%= evidence["state"] %> / <%= evidence["reviewer"] || "Chưa có" %></dd>
+      <% if evidence.key?("reviewers_current") && (evidence["reviewer"].present? || Array(evidence["reviews"]).any?) %>
+      <dt>Quyền hiện tại của người đã review</dt><dd><%= evidence["reviewers_current"] ? "Còn hợp lệ" : "Quyền reviewer đã thay đổi — cần đối soát, không tạo proposal" %></dd>
+      <% end %>
+      <dt>Nguồn còn khớp phiên bản và nội dung</dt><dd><%= evidence["source_current"] ? "Có" : "Không — cần bằng chứng mới" %></dd>
+      <dt>Đủ điều kiện tạo proposal</dt><dd><%= evidence["ready"] ? "Có — vẫn kiểm tra Native form và approval riêng" : "Chưa đủ" %></dd>
+      <dt>Hash review chính xác</dt><dd><code style="overflow-wrap:anywhere"><%= evidence["hash"] %></code></dd>
+    </dl>
+    <h4>Acceptance criteria Native</h4>
+    <% manifest.fetch("criteria").each do |id, text| %><p><strong><%= id %>:</strong> <%= text %></p><% end %>
+    <div style="overflow-x:auto"><table>
+      <caption><%= automated ? "Test cases do runner thực thi" : "Test cases do QA xác nhận" %></caption>
+      <thead><tr><% ["Criterion", "Test reference", "Expected", "Actual", "Outcome"].each do |heading| %><th scope="col"><%= heading %></th><% end %></tr></thead>
+      <tbody><% manifest.fetch("tests").each do |test| %><tr><% %w[criterion_id reference expected actual outcome].each do |field| %><td style="white-space:pre-wrap;overflow-wrap:anywhere"><%= test[field] %></td><% end %></tr><% end %></tbody>
+    </table></div>
+    <% if automated %>
+      <details><summary>Artifact đã kiểm tra chữ ký và hash</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere"><%= evidence["artifact"] %></pre></details>
+      <% Array(evidence["reviews"]).each do |review| %><p>Review <%= review["stage"] %>: User <%= review["actor"] %> — <%= review["decision"] %></p><% end %>
+    <% end %>
+    <% independent = evidence["actor"] != User.current.id && binding["assignee"] != "/api/v3/users/#{User.current.id}" %>
+    <% qa_stage = automated && @role == "QA" && evidence["state"] == "pending_qa" %>
+    <% manager_stage = %w[PM AI_SYSTEM_OWNER].include?(@role) && evidence["state"] == (automated ? "qa_accepted" : "pending") %>
+    <% if independent && (qa_stage || manager_stage) %>
+      <%= form_tag(qa_stage ? project_qldapm_ai_qa_test_decision_path(@project.identifier) : project_qldapm_ai_qa_decision_path(@project.identifier), data: {turbo: false}) do %>
+        <%= hidden_field_tag :id, evidence.fetch("id") %><%= hidden_field_tag :hash, evidence.fetch("hash") %>
+        <p><%= check_box_tag :acknowledge, "1", false, required: true %><%= label_tag :acknowledge, "Tôi đã đọc criteria, expected/actual, nguồn và đúng hash ở trên; tôi chịu trách nhiệm về quyết định review." %></p>
+        <%= button_tag "Chấp nhận bằng chứng", name: "decision", value: "accept", class: "button -primary", disabled: !evidence["source_current"] || (automated && manager_stage && evidence["reviewers_current"] == false) %>
+        <%= button_tag "Từ chối bằng chứng", name: "decision", value: "reject", class: "button" %>
+      <% end %>
+    <% else %><p role="status">Chưa đến lượt review của vai trò này, bằng chứng đã xử lý hoặc người duyệt không độc lập với producer/assignee.</p><% end %>
+  </section>
+  <% end %>
+<% end %>

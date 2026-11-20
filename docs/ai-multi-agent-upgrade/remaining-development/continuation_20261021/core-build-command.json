@@ -1,0 +1,18 @@
+{
+  "command": [
+    "docker",
+    "build",
+    "--file",
+    "openproject/ai/automation/ExecutionMonitorCore.Dockerfile",
+    "--build-arg",
+    "CORE_IMAGE=qldapm-core-dependency:rd-79a90c208372",
+    "--build-arg",
+    "SOURCE_SHA256=efeb58bb733538a8b4bcf47d427abcfa1ac575a4b34f9f23d33bca6e678f1df1",
+    "--tag",
+    "qldapm-core:rd-qual-20261021",
+    "openproject/ai"
+  ],
+  "base_image": "sha256:79a90c2083727e3355bb7957a0c704bcc51973f3711d3599970690eafac1eff2",
+  "base_local_alias": "qldapm-core-dependency:rd-79a90c208372",
+  "source_sha256": "efeb58bb733538a8b4bcf47d427abcfa1ac575a4b34f9f23d33bca6e678f1df1"
+}

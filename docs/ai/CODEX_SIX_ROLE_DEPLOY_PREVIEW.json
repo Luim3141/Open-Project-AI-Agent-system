@@ -1,0 +1,42 @@
+{
+  "old_image": "sha256:8bb0fa6c31ed4fce30f6a1a3f1243c4f51ea6b492a1ae39008e18b88faf68893",
+  "candidate_image": "sha256:aae492ee11fa1605f24ffad50374d3e22c3c94dc1cacba2f70ce4ffcc6016d8a",
+  "module_sha256": {
+    "agent_models.py": "23d01813e618e07470c057726200b5bc37c0af32aeb8169f2eae1e5fa45aee71",
+    "agent_registry.py": "def0e8f74d135c1916f20019c7fcf2a1cd966cb5f5831792a44caa182fba9a16",
+    "dev_agent.py": "12fc846f44e42a623d520e16b1bec5483ceea11210777cc5b01806979c8a6ce4",
+    "planner.py": "e8e9220d53c56897cdefb37bc2615d7cb0db4b39bfdcc9a1324a515c1cf58f16",
+    "live_agents.py": "9f41e684aee1778f56d745e3fc404db73c78b6546ea1cbdb51e374a8148e5af8",
+    "supervisor.py": "764265b8e4da9bd134a6598491274564c9efa746c563848d4c128ccf214d2873",
+    "agent_status.py": "774fc625c95dab1514d1666274ce185efb02fcf53abf8ca1999a030347e5a524",
+    "execution_monitor.py": "84a726ffa545bec54b49f9f1c80c444316ba45081f07fd82d33933ac07181b6b",
+    "execution_events.py": "e10e8247f81fc4e0285ccb947e0f2e9324fe561311b6d1135d6353cc28457975",
+    "service.py": "5f03b950f3d4c5a4b59b36b8dcf368e10ca5043862da60070aac4613a4259145"
+  },
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "gateway_backup_sha256": "498651bc1770e78cd5499475c76b5955803ea6ca90a9cd8cd30a7c4ab0ae820b",
+  "runtime_config_diff": {
+    "multi_agent.max_agents": {
+      "before": 3,
+      "after": 4
+    },
+    "max_model_calls": 5,
+    "other_fields": "UNCHANGED"
+  },
+  "scope": "Only10Gatewaymodules + max_agents3to4; FE/BE distinct, legacyDEV read compatible, scoped event status, selected context count; no Core/n8n/credentials/paidpolicy/Nativewrite/Staging",
+  "tests": {
+    "linux_run": 278,
+    "linux_passed": 276,
+    "linux_skipped": 2,
+    "windows_related_passed": 104,
+    "windows_final_progress_fixture_passed": 1,
+    "linux_test_only_source_helper": "proposal_ux.py mounted for source-only UX unit helpers, not serving code"
+  },
+  "fresh_probe": "One read-only WF03 request on Task370, Supervisor+BA+FE+BE+QA actual Free-only Gemini receipts; local Reviewer, no new Native mutation/proposal confirmation",
+  "rollback": "Restore max_agents3 JSON before old AI_IMAGE; preserve DB/results. Old monitor cannot understand new FE/BE plan graphs; restore new image for those graphs. Old DEV records remain readable",
+  "limits": [
+    "Core FE/BE labels source only, no Main UI deployment/UAT yet",
+    "Local FE/BE use existing shared technical advisory; only live provider prompts are distinct specialists",
+    "Reviewer checks references/policy, not executed code/tests or semantic correctness guarantee"
+  ]
+}

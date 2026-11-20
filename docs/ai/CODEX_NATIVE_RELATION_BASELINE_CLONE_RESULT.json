@@ -1,0 +1,604 @@
+{
+  "at": "2026-10-25T19:54:40.688850+00:00",
+  "status": "PASS_ACTUAL_ISOLATED_NATIVE_RELATION_DIRECTION_LAG_SCHEDULING_AND_ROLES",
+  "scope": "Baseline upstream Native API qualification only; simulated fixture Task create approvals, not human Main approval or versioned Gateway relation execution",
+  "core_image": "sha256:edc9f2b23db00a25fa73acbbd3dafb1f609b17d37ea0790fde9db9778b37e8fa",
+  "gateway_image": "sha256:f442384ebf72b23667032cff2bf3865016ee4f04f96fae6e5aabe7e2560ed32a",
+  "identities": {
+    "18": "AI_SYSTEM_OWNER",
+    "19": "PM",
+    "20": "BA",
+    "21": "BE",
+    "22": "FE",
+    "23": "QA"
+  },
+  "clone_created_ids": [
+    376,
+    377,
+    378,
+    379,
+    380,
+    381,
+    382,
+    383,
+    384
+  ],
+  "relations": [
+    {
+      "actor": 18,
+      "id": 353,
+      "type": "follows",
+      "lag": 0,
+      "predecessor": 376,
+      "successor": 377,
+      "before": {
+        "376": {
+          "id": 376,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "377": {
+          "id": 377,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "378": {
+          "id": 378,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "379": {
+          "id": 379,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        }
+      },
+      "after": {
+        "376": {
+          "id": 376,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "377": {
+          "id": 377,
+          "lockVersion": 1,
+          "startDate": "2026-10-28",
+          "dueDate": "2026-10-29",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "378": {
+          "id": 378,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "379": {
+          "id": 379,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        }
+      },
+      "same_request_duplicate": "Native rejects409/422; no idempotent approved AI receipt yet"
+    },
+    {
+      "actor": 19,
+      "id": 354,
+      "type": "follows",
+      "lag": 2,
+      "predecessor": 378,
+      "successor": 379,
+      "before": {
+        "376": {
+          "id": 376,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "377": {
+          "id": 377,
+          "lockVersion": 1,
+          "startDate": "2026-10-28",
+          "dueDate": "2026-10-29",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "378": {
+          "id": 378,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "379": {
+          "id": 379,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        }
+      },
+      "after": {
+        "376": {
+          "id": 376,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "377": {
+          "id": 377,
+          "lockVersion": 1,
+          "startDate": "2026-10-28",
+          "dueDate": "2026-10-29",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "378": {
+          "id": 378,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "379": {
+          "id": 379,
+          "lockVersion": 1,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        }
+      },
+      "same_request_duplicate": "Native rejects409/422; no idempotent approved AI receipt yet"
+    },
+    {
+      "actor": 19,
+      "id": 355,
+      "type": "follows",
+      "lag": 2,
+      "predecessor": 381,
+      "successor": 382,
+      "before": {
+        "376": {
+          "id": 376,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "377": {
+          "id": 377,
+          "lockVersion": 1,
+          "startDate": "2026-10-28",
+          "dueDate": "2026-10-29",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "378": {
+          "id": 378,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "379": {
+          "id": 379,
+          "lockVersion": 1,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "380": {
+          "id": 380,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "381": {
+          "id": 381,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "382": {
+          "id": 382,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "383": {
+          "id": 383,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "384": {
+          "id": 384,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        }
+      },
+      "after": {
+        "376": {
+          "id": 376,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "377": {
+          "id": 377,
+          "lockVersion": 1,
+          "startDate": "2026-10-28",
+          "dueDate": "2026-10-29",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "378": {
+          "id": 378,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "379": {
+          "id": 379,
+          "lockVersion": 1,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "380": {
+          "id": 380,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "381": {
+          "id": 381,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "382": {
+          "id": 382,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "383": {
+          "id": 383,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "384": {
+          "id": 384,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        }
+      },
+      "same_request_duplicate": "Native rejects409/422; no idempotent approved AI receipt yet"
+    },
+    {
+      "actor": 19,
+      "id": 356,
+      "type": "follows",
+      "lag": 2,
+      "predecessor": 383,
+      "successor": 384,
+      "before": {
+        "376": {
+          "id": 376,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "377": {
+          "id": 377,
+          "lockVersion": 1,
+          "startDate": "2026-10-28",
+          "dueDate": "2026-10-29",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "378": {
+          "id": 378,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "379": {
+          "id": 379,
+          "lockVersion": 1,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "380": {
+          "id": 380,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "381": {
+          "id": 381,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "382": {
+          "id": 382,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "383": {
+          "id": 383,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "384": {
+          "id": 384,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        }
+      },
+      "after": {
+        "376": {
+          "id": 376,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "377": {
+          "id": 377,
+          "lockVersion": 1,
+          "startDate": "2026-10-28",
+          "dueDate": "2026-10-29",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "378": {
+          "id": 378,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "379": {
+          "id": 379,
+          "lockVersion": 1,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "380": {
+          "id": 380,
+          "lockVersion": 2,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-11-02",
+          "duration": "P6D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "381": {
+          "id": 381,
+          "lockVersion": 1,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "382": {
+          "id": 382,
+          "lockVersion": 2,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        },
+        "383": {
+          "id": 383,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "duration": "P2D",
+          "scheduleManually": true,
+          "ignoreNonWorkingDays": false
+        },
+        "384": {
+          "id": 384,
+          "lockVersion": 1,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "duration": "P2D",
+          "scheduleManually": false,
+          "ignoreNonWorkingDays": false
+        }
+      },
+      "same_request_duplicate": "Native rejects409/422; no idempotent approved AI receipt yet"
+    }
+  ],
+  "low_role_denials": [
+    {
+      "actor": 20,
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 21,
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 22,
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "actor": 23,
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    }
+  ],
+  "cycle": {
+    "status": "PASS_POLICY_ENFORCED",
+    "http": 422
+  },
+  "prior_failed_expectations": [
+    "v2/v3 expected parent follows to reschedule manual leaves; actual unchanged dates/versions retained as failed qualification, not product regression"
+  ],
+  "parent_relation_with_manual_leaves": "Native relation exists but no schedule/version changes; never claim scheduling completion from HTTP201",
+  "hierarchy_derived_impact": {
+    "epic": 380,
+    "predecessor_task": 381,
+    "successor_task": 382,
+    "predecessor_child": 383,
+    "successor_child": 384,
+    "changed_ids": [
+      380,
+      382,
+      384
+    ]
+  },
+  "main_native_writes": 0,
+  "staging_operations": false,
+  "model_calls": 0,
+  "external_sends": 0,
+  "limits": [
+    "No Main relation write",
+    "No versioned exact proposal/hash/receipt bridge implemented for relations",
+    "Broader cross-branch graph derived impact not qualified",
+    "No lost-reply/concurrency/rollback qualification for relation bridge",
+    "No vector ingestion in clone; create outbox only"
+  ],
+  "original375_cloned_wp_rows_unchanged": true,
+  "original_cloned_relation_rows_unchanged": "352|8efb5973160c91ae1bb5b8451e5979e2",
+  "source_dump_sha256": "9461c6811b73e48da7381b8e7e1226e9001471382c911c4458302d999d8b87aa"
+}

@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-01T04:34:09.674581+00:00",
+  "probes": [
+    {
+      "service": "gateway",
+      "url": "http://127.0.0.1:18089/health",
+      "status": 200
+    },
+    {
+      "service": "n8n",
+      "url": "http://127.0.0.1:5679/healthz",
+      "status": 200
+    },
+    {
+      "service": "qdrant",
+      "url": "http://127.0.0.1:6333/collections",
+      "status": 200
+    },
+    {
+      "service": "ollama",
+      "url": "http://127.0.0.1:11434/api/tags",
+      "status": 200
+    },
+    {
+      "service": "demo-health",
+      "url": "http://127.0.0.1:18791/healthz",
+      "status": 404
+    },
+    {
+      "service": "demo-summary",
+      "url": "http://127.0.0.1:18791/tasks/summary",
+      "status": 405
+    }
+  ],
+  "sql": "5|341|4|2026-10-29 10:08:56.897949+00\n6|7|9|2026-10-31 12:48:30.776682+00\n379|7|4\n386|1|2",
+  "queue": {
+    "mode": "OFF",
+    "active": 0,
+    "provider_receipts": 358
+  },
+  "containers": [
+    {
+      "name": "/qldapm-ai-gateway-1",
+      "id": "b3a46ef39a6e6453e768d806a7246f9e2ed58e295955779a46c71c2208557a70",
+      "image": "sha256:fcb44c49afb99efd85b4a00297a58e7c5a59d36ab2f2b78e15a6a6d135f5e93e",
+      "health": "healthy"
+    },
+    {
+      "name": "/qldapm-openproject-web-1",
+      "id": "7bdf5d2eff8c8c3e1dcd72fef4058252789ccc8668930f59984b46c500adebea",
+      "image": "sha256:a4fa8150728bc5fc50f8afed22fce898cc52065a55ff0fdb53b803a81d9e1c6b",
+      "health": "healthy"
+    },
+    {
+      "name": "/qldapm-n8n-main",
+      "id": "cbcbcf0c01e33bb7e02b1c2fd5d0af873b945b131606509a718726fae2542d46",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "health": null
+    },
+    {
+      "name": "/qldapm-openproject-db-1",
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "health": "healthy"
+    }
+  ],
+  "same_container_ids_and_images": true
+}

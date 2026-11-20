@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-25T12:34:36.701865+00:00",
+  "status": "PASS",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-native-qa-20261025-v2",
+      "image": "sha256:4fa7a0c242a33442a92195cf5d2964c554b8811cb1afd4a706d50e3b3c0df16d"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-native-qa-20261025",
+      "image": "sha256:8fe51b6885aea08f6654ebb5719ca157da32d2156923c999ded0af9dae8bc00a"
+    }
+  },
+  "source_hashes": {
+    "openproject\\ai\\gateway\\app.py": "b6cbd2b1884d0d4381e69d4cc88b1f99876a5cf898dd04692da3c2408edb9a15",
+    "openproject\\ai\\gateway\\catalog.py": "e1497a5e0ea1f66e5a21744aedef0812a80a6598d64d45259bb91e21b8d69d4b",
+    "openproject\\ai\\gateway\\native_qa.py": "9febeaee8fdbcf3171426f44d357d12aa7ae3c1640593e643b1da05ff007de02",
+    "openproject\\ai\\gateway\\permissions.py": "26e842af1feb70acb97c24ced8b3a70111f6649d05cfd859ca9eeb75d3c4f707",
+    "openproject\\ai\\gateway\\qa_agent.py": "4d296b697415cdec6404321eeeacea89113ccf6329630ad1773bc8381267e535",
+    "openproject\\ai\\gateway\\service.py": "ed1c9c88ca5566d2fad95258d614cf3fe55346237249524618c95a253ddfa3b5",
+    "openproject\\ai\\gateway\\store.py": "5a061eee89101aa177b484aaf76259b56e70b2a7ea2aec67ae2439b214d8e308",
+    "openproject\\ai\\gateway\\native_qa_runs.py": "6e60788143e3006893b54db0f3f119cd018faa176fcb986424f720ad521b90d8",
+    "openproject\\ai\\core\\overlay\\config\\routes.rb": "91954072c414300ade685bf0c4b5df1158c5f4275ec26f8795c239ee7f5789ca",
+    "openproject\\ai\\core\\overlay\\app\\controllers\\qldapm_ai_controller.rb": "f9954d78e35ae9a6f1403042b1d75df36729d2e0a409702863c34c265e86ba21",
+    "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\qa_evidence.html.erb": "0a2c1f8df70c3783a6ee954852c9b185f385a738cbdb81977bd9c3fdbb5e10b5",
+    "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\ai_bridge.rb": "52f36ec212e5be82cce4da0fc7f3e6ac0e7431f8411de7ab0b31e51c311d84cd"
+  },
+  "source_mismatches": [],
+  "native_count": 338,
+  "physical_rows_unchanged": "375|04ec20a24a553f3cea4deab0015c29ef",
+  "native_fingerprint": "c6f4373b58951e17e0d8b766b393dc8358fa99337d724be4e5826ff82787108b",
+  "ledger": {
+    "gemini_call_receipts": 127,
+    "gemini_usage": 132,
+    "proposals": 54,
+    "knowledge_sync": 12,
+    "qa_test_runs": 1,
+    "qa_evidence": 1,
+    "qa_evidence_reviews": 0
+  },
+  "metadata_delta": "Exactly one automated read-only test run and one pending_qa evidence; zero independent decisions",
+  "scenario_f_exact_audit_rows": 61,
+  "consumed_scenario_f_proposal_and_original_report_unchanged": true,
+  "historical_ids_retained": {
+    "audit": {
+      "prior": 9044,
+      "missing": 0
+    },
+    "ai_runs": {
+      "prior": 71,
+      "missing": 0
+    },
+    "agent_runs": {
+      "prior": 57,
+      "missing": 0
+    },
+    "agent_tasks": {
+      "prior": 58,
+      "missing": 0
+    },
+    "proposals": {
+      "prior": 54,
+      "missing": 0
+    },
+    "operational_reports": {
+      "prior": 76,
+      "missing": 0
+    },
+    "gemini_call_receipts": {
+      "prior": 127,
+      "missing": 0
+    }
+  },
+  "all_28_historical_pending_request_rows_exactly_preserved": true,
+  "new_unknown_requests": 0,
+  "native_writes": 0,
+  "model_calls": 0,
+  "main_human_decisions": 0,
+  "staging_operations": false,
+  "ui": "Actual source controller/ActionView tests PASS; new visual automated-run/inbox flow NOT_TESTED_BROWSER_POLICY_BLOCKED"
+}

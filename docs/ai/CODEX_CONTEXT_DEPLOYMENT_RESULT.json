@@ -1,0 +1,46 @@
+{
+  "status": "DEPLOYED_AND_READBACK_VERIFIED",
+  "gateway_image": "sha256:40137d60217439175b5b7e6dcbf2a501606134df378c231c32ee6c11bdb72e45",
+  "module_sha256": "e8c2ca264f93451d3dd5a5ff240c1fa5b87b4ed370e20f8c12d6b355544d0c93",
+  "provider_receipts": 96,
+  "usage_rows": 101,
+  "native_context_probes": [
+    {
+      "role": "PM",
+      "http_status": 200,
+      "native_id": 49,
+      "relations": 2,
+      "comments": 3
+    },
+    {
+      "role": "BA",
+      "http_status": 200,
+      "native_id": 49,
+      "relations": 2,
+      "comments": 3
+    }
+  ],
+  "projection_assessment": {
+    "kind": "ISOLATED_PROJECTION_WITH_LIVE_NATIVE_INPUT",
+    "native_ids": [
+      49,
+      50
+    ],
+    "projection_relation_edges": 2,
+    "context_endpoint_filter_verified": true,
+    "provider_calls": 0
+  },
+  "qualification": {
+    "linux_tests_run": 201,
+    "linux_passed": 200,
+    "linux_skipped": 1,
+    "windows_related_passed": 45
+  },
+  "native_fingerprint": "57d64095ee75637a873e5d2b337c5d51d03ca82e2eb3bf2e4f2cf947cfa3c863",
+  "native_mutations_performed": false,
+  "staging_operations": false,
+  "limitations": [
+    "Initial inference of missing embedded relations was disproven by live detail GET; Native/Service fetch unchanged",
+    "Only model projection changed; no fresh Gemini generation/six-role proof in this deployment"
+  ]
+}

@@ -1,0 +1,7 @@
+# ADR-0002 — n8n Community, một owner vận hành local
+
+Ngày16/10/2026: giữ n8n Community cho quy trình nội bộ cá nhân/học tập đã được owner xác nhận. Một owner vận hành editor localhost; năm actor nghiệp vụ nhận kết quả theo quyền QLDAPM. Không dựa vào tính năng Projects/sharing/SSO/Git trả phí; machine trigger có scope riêng, không nhận PM/admin token hay quyền Docker. Lựa chọn này giữ quyền nghiệp vụ ở OpenProject/Gateway thay vì mua năm editor seats hoặc chuyển dữ liệu sang n8n Cloud. [License](https://docs.n8n.io/n8n-community-license/community-license.md), [editions](https://docs.n8n.io/deploy/host-n8n/community-edition-features.md).
+
+Runtime đã được provision từP01, không cài trùng/reset. Giữ pin2.43.6/digestdd580fe1... đã kiểm thử, license release khớp bản lưu; đây là GA15Oct, không gọi là mới nhất.2.43.7 GA16Oct đã được kiểm tra; tính năng shutdown execution cần đánh giá bằng backup/restore/restart riêng trước một đợt cập nhật. Việc giữ pin trong đợt cấu hình này tránh trộn thay đổi version/schema với owner/workflow mới. [2.43.6](https://github.com/n8n-io/n8n/releases/tag/n8n@2.43.6), [2.43.7](https://github.com/n8n-io/n8n/releases/tag/n8n@2.43.7).
+
+Trước khi tạo owner, runtime healthy/timezoneAsia/Bangkok, encryption key/volume đã tồn tại, setupowner còn trống. Giữ mọi dữ liệu/key; owner bootstrap phải từ chối ghi đè một owner đã có, lưu credential mới private một lần và kiểm thử trên bản sao trước. Owner/workflows/machine auth chưa được coi là triển khai xong chỉ vì container healthy.

@@ -1,0 +1,580 @@
+{
+  "pins": {
+    "ai_queue": {
+      "count": 124,
+      "sha256": "94547f0fe9e5dcc68527bdd9b2ce39d43439a294609e7d1713271ae9dfca0cb2"
+    },
+    "ai_runs": {
+      "count": 227,
+      "sha256": "f0f7a805a82b3c63b390af293725baafc3c97443fa9a28d8d42d5d64a63249c4"
+    },
+    "engineering_unit_definitions": {
+      "count": 10,
+      "sha256": "6d0996d82bd7f68b3d0b496d7f20651c628b18c9914f300eb63495486320abc6"
+    },
+    "engineering_plans": {
+      "count": 10,
+      "sha256": "1062d716537e6664776cc17cde9d860a2f480bcc7607a67e1d48ddb8c630d76c"
+    },
+    "delegated_control": {
+      "count": 1,
+      "sha256": "d8478eba2da807cf69c149d2f43dad17e72cdc500debb446f6a067baa25923a8"
+    },
+    "gemini_call_receipts": {
+      "count": 542,
+      "sha256": "28df73aff5c37756e4b9d26373e178e19b73df329c2b188d77e6ead67729c686"
+    }
+  },
+  "run": {
+    "state": "finished",
+    "payload": {
+      "allow_routine_writes": false,
+      "base_sha": null,
+      "budget": {
+        "attempt_calls": 12,
+        "auto_continue": false,
+        "cooldown_seconds": 60,
+        "max_continuations": 5,
+        "task_calls": 72
+      },
+      "claim_generation": 146,
+      "claim_token": "0320f85b-b8c9-4160-aa69-7afc542b3d51",
+      "deadline": 1793856343.083298,
+      "definition": {
+        "acceptance": {},
+        "acceptance_file": null,
+        "base_branch": "main",
+        "base_unit": null,
+        "feedback": "Mini Task Manager: thêm GET /tasks/{task_id}/status trả {id, status}. ID không tồn tại trả 404, sai kiểu trả 422. Chỉ đọc dữ liệu; thêm test cho 200/404/422. Làm đúng 1 unit, không refactor, không thêm dependency, không tự merge/deploy.",
+        "kind": "planning",
+        "native_id": 379,
+        "source_hash": "e0408cbf553ca0ba103cdeb046e4b085351d62f277100f57bf7d13b0acf84a75",
+        "title": "PM/BA requirements and engineering backlog"
+      },
+      "engine": "openclaw",
+      "kind": "planning",
+      "native_id": 379,
+      "project_id": 6,
+      "repository": "Luim3141/mini-task-manager",
+      "request_key": "0655a6c6-78a7-4f5a-a1f9-54887d600491",
+      "source_version": 4,
+      "spec": "**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n\n*   Backend: Python FastAPI\n    \n*   Database: SQLite\n    \n*   Frontend: HTML, CSS, JavaScript\n    \n*   Testing: pytest\n    \n*   Version Control: Git and GitHub\n    \n\n**Functional Requirements**\n\n1.  Create new tasks.\n    \n2.  View a list of tasks.\n    \n3.  Edit task information.\n    \n4.  Delete tasks.\n    \n5.  Update task status.\n    \n6.  Search and filter tasks.\n    \n7.  Persist data in SQLite.\n    \n8.  Provide a usable web interface.\n    \n\n**AI Development Workflow**\n\nThe AI team should:\n\n1.  Analyze requirements and define acceptance criteria.\n    \n2.  Break down the project into development tasks.\n    \n3.  Establish dependencies and propose a development schedule.\n    \n4.  Implement source code in the Git repository.\n    \n5.  Build and execute automated tests.\n    \n6.  Review the implementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[https://github.com/Luim3141/mini-task-manager](https://github.com/Luim3141/mini-task-manager)\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.",
+      "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+      "stage": "ADMITTED",
+      "unit": "requirements-planning-v1-e0408cbf553ca0ba",
+      "worker_id": "637c6a1b-ebcb-4870-a4c4-06e49ec5e4da",
+      "write_scope_ids": []
+    }
+  },
+  "result": {
+    "error": "REQUEST_DEADLINE_EXCEEDED",
+    "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\e2db6811-44fe-418c-b7dc-12fb9d52d330",
+    "status": "blocked",
+    "text": "Checkpoint đã lưu; phần hoàn tất được giữ. Không tự replay."
+  },
+  "plan": {
+    "ba": {
+      "acceptance": [
+        "AC1: GET /tasks/{id}/status trả 200 với {id, status}",
+        "AC2: ID không tồn tại trả 404",
+        "AC3: Sai kiểu dữ liệu trả 422",
+        "AC4: Test pytest chạy thành công các kịch bản"
+      ],
+      "api_behavior": [
+        "GET /tasks/{task_id}/status trả về 200 kèm {id, status} nếu tìm thấy",
+        "GET /tasks/{task_id}/status trả về 404 nếu ID không tồn tại",
+        "GET /tasks/{task_id}/status trả về 422 nếu sai kiểu dữ liệu ID"
+      ],
+      "citations": [
+        379
+      ],
+      "edge_cases": [
+        "ID truyền vào sai kiểu dữ liệu trả về 422",
+        "ID hợp lệ nhưng không tồn tại trong DB trả về 404",
+        "Thao tác chỉ đọc không làm thay đổi dữ liệu"
+      ],
+      "limitations": [
+        "Chỉ làm đúng 1 unit",
+        "Không refactor code cũ",
+        "Không thêm dependency",
+        "Không tự merge/deploy"
+      ],
+      "scope": [
+        "Thêm endpoint GET /tasks/{task_id}/status",
+        "Trả về id và status",
+        "Xử lý 404 khi ID không tồn tại",
+        "Xử lý 422 khi sai kiểu ID",
+        "Viết test pytest cho 200, 404, 422"
+      ],
+      "summary": "Xây dựng đơn vị kỹ thuật bổ sung endpoint GET /tasks/{task_id}/status theo phản hồi, chỉ đọc dữ liệu, trả về id và status, xử lý 200, 404, 422 và viết test."
+    },
+    "ba_model_used": true,
+    "feedback": "Mini Task Manager: thêm GET /tasks/{task_id}/status trả {id, status}. ID không tồn tại trả 404, sai kiểu trả 422. Chỉ đọc dữ liệu; thêm test cho 200/404/422. Làm đúng 1 unit, không refactor, không thêm dependency, không tự merge/deploy.",
+    "feedback_base_unit": "feedback-a51b2f686861716c",
+    "id": "e2db6811-44fe-418c-b7dc-12fb9d52d330",
+    "knowledge": {
+      "answer": null,
+      "answerability": {
+        "reason": "Không tìm thấy bằng chứng phù hợp trong các nguồn hiện hành mà bạn được phép đọc.",
+        "state": "NO_EVIDENCE"
+      },
+      "dense_state": "READY",
+      "items": [],
+      "model_used": false,
+      "reason_code": "NO_AUTHORIZED_CURRENT_EVIDENCE",
+      "retrieval_state": "READY",
+      "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+      "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)"
+    },
+    "native_id": 379,
+    "native_units": {
+      "create-list-persistence-v1": {
+        "agent": "dev",
+        "dependencies": [],
+        "id": 380,
+        "lock_version": 8,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "crud-search-web-v1": {
+        "agent": "dev",
+        "dependencies": [
+          "create-list-persistence-v1"
+        ],
+        "id": 381,
+        "lock_version": 9,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "feedback-20c2a94109f4e78f": {
+        "agent": "dev",
+        "dependencies": [
+          "feedback-bb9a628fe5b7be67"
+        ],
+        "id": 387,
+        "lock_version": 10,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "feedback-283138e910432528": {
+        "agent": "dev",
+        "dependencies": [
+          "crud-search-web-v1"
+        ],
+        "id": 382,
+        "lock_version": 9,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "feedback-2ec52f6742aa972f": {
+        "agent": "dev",
+        "dependencies": [
+          "feedback-9d0ff35386a63183"
+        ],
+        "id": 391,
+        "lock_version": 10,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "feedback-4d13e695555a8d44": {
+        "agent": "dev",
+        "dependencies": [
+          "feedback-283138e910432528"
+        ],
+        "id": 383,
+        "lock_version": 9,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "feedback-9d0ff35386a63183": {
+        "agent": "dev",
+        "dependencies": [
+          "feedback-e44b47e2e8610c4f"
+        ],
+        "id": 390,
+        "lock_version": 10,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "feedback-a51b2f686861716c": {
+        "agent": "dev",
+        "dependencies": [
+          "feedback-2ec52f6742aa972f"
+        ],
+        "id": 394,
+        "lock_version": 10,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "feedback-bb9a628fe5b7be67": {
+        "agent": "dev",
+        "dependencies": [
+          "health-check-v1"
+        ],
+        "id": 386,
+        "lock_version": 10,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "feedback-e0408cbf553ca0ba": {
+        "agent": "dev",
+        "dependencies": [
+          "feedback-a51b2f686861716c"
+        ],
+        "id": 396,
+        "lock_version": 0,
+        "priority": 1,
+        "state": "PLANNED"
+      },
+      "feedback-e44b47e2e8610c4f": {
+        "agent": "dev",
+        "dependencies": [
+          "feedback-20c2a94109f4e78f"
+        ],
+        "id": 389,
+        "lock_version": 10,
+        "priority": 3,
+        "state": "DELIVERED"
+      },
+      "health-check-v1": {
+        "agent": "dev",
+        "dependencies": [
+          "feedback-4d13e695555a8d44"
+        ],
+        "id": 384,
+        "lock_version": 2,
+        "priority": 3,
+        "state": "DELIVERED"
+      }
+    },
+    "pm": {
+      "assignments": [
+        {
+          "dependencies": [],
+          "objective": "Create/list tasks + SQLite persistence (verified delivery reused)",
+          "priority": 3,
+          "unit": "create-list-persistence-v1"
+        },
+        {
+          "dependencies": [
+            "create-list-persistence-v1"
+          ],
+          "objective": "Edit/delete/status/search and usable web interface (verified delivery reused)",
+          "priority": 3,
+          "unit": "crud-search-web-v1"
+        },
+        {
+          "dependencies": [
+            "crud-search-web-v1"
+          ],
+          "objective": "Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)",
+          "priority": 3,
+          "unit": "feedback-283138e910432528"
+        },
+        {
+          "dependencies": [
+            "feedback-283138e910432528"
+          ],
+          "objective": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)",
+          "priority": 3,
+          "unit": "feedback-4d13e695555a8d44"
+        },
+        {
+          "dependencies": [
+            "feedback-4d13e695555a8d44"
+          ],
+          "objective": "Them route GET /healthz va unit test status ok (verified delivery reused)",
+          "priority": 3,
+          "unit": "health-check-v1"
+        },
+        {
+          "dependencies": [
+            "health-check-v1"
+          ],
+          "objective": "Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)",
+          "priority": 3,
+          "unit": "feedback-bb9a628fe5b7be67"
+        },
+        {
+          "dependencies": [
+            "feedback-bb9a628fe5b7be67"
+          ],
+          "objective": "Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu  (verified delivery reused)",
+          "priority": 3,
+          "unit": "feedback-20c2a94109f4e78f"
+        },
+        {
+          "dependencies": [
+            "feedback-20c2a94109f4e78f"
+          ],
+          "objective": "Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và (verified delivery reused)",
+          "priority": 3,
+          "unit": "feedback-e44b47e2e8610c4f"
+        },
+        {
+          "dependencies": [
+            "feedback-e44b47e2e8610c4f"
+          ],
+          "objective": "Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit (verified delivery reused)",
+          "priority": 3,
+          "unit": "feedback-9d0ff35386a63183"
+        },
+        {
+          "dependencies": [
+            "feedback-9d0ff35386a63183"
+          ],
+          "objective": "Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện (verified delivery reused)",
+          "priority": 3,
+          "unit": "feedback-2ec52f6742aa972f"
+        },
+        {
+          "dependencies": [
+            "feedback-2ec52f6742aa972f"
+          ],
+          "objective": "Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da (verified delivery reused)",
+          "priority": 3,
+          "unit": "feedback-a51b2f686861716c"
+        },
+        {
+          "dependencies": [
+            "feedback-a51b2f686861716c"
+          ],
+          "objective": "Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest.",
+          "priority": 1,
+          "unit": "feedback-e0408cbf553ca0ba"
+        }
+      ],
+      "blockers": [],
+      "next_action": "Giao nhiem vu cho Dev thuc hien unit feedback-e0408cbf553ca0ba va chay pytest kiem tra cac ma phan hoi 200, 404, 422.",
+      "summary": "Keo hoach xay dung endpoint GET /tasks/{task_id}/status theo yeu cau, dam bao xu ly 200, 404, 422 va viet pytest."
+    },
+    "pm_candidate": {
+      "assignments": [
+        {
+          "dependencies": [
+            "feedback-a51b2f686861716c"
+          ],
+          "objective": "Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest.",
+          "priority": 1,
+          "unit": "feedback-e0408cbf553ca0ba"
+        }
+      ],
+      "blockers": [],
+      "next_action": "Giao nhiem vu cho Dev thuc hien unit feedback-e0408cbf553ca0ba va chay pytest kiem tra cac ma phan hoi 200, 404, 422.",
+      "summary": "Keo hoach xay dung endpoint GET /tasks/{task_id}/status theo yeu cau, dam bao xu ly 200, 404, 422 va viet pytest."
+    },
+    "pm_model_used": true,
+    "project_id": 6,
+    "relations": [
+      353,
+      354,
+      355,
+      356,
+      358,
+      359,
+      361,
+      362,
+      363,
+      364,
+      365
+    ],
+    "reused_delivered_units": [
+      "create-list-persistence-v1",
+      "crud-search-web-v1",
+      "feedback-283138e910432528",
+      "feedback-4d13e695555a8d44",
+      "health-check-v1",
+      "feedback-bb9a628fe5b7be67",
+      "feedback-20c2a94109f4e78f",
+      "feedback-e44b47e2e8610c4f",
+      "feedback-9d0ff35386a63183",
+      "feedback-2ec52f6742aa972f",
+      "feedback-a51b2f686861716c"
+    ],
+    "source_version": 4,
+    "state": "PLANNING"
+  },
+  "checkpoint": {
+    "version": 2,
+    "document": {
+      "completed_steps": [],
+      "error": "REQUEST_DEADLINE_EXCEEDED",
+      "resumable": true,
+      "revision": null,
+      "session_id": null,
+      "stage": "pm-ba-plan",
+      "terminal_known": true
+    }
+  },
+  "pending": [
+    {
+      "actor": 20,
+      "key": "engineering-e2db6811-44fe-418c-b7dc-12fb9d52d330-plan-parent",
+      "state": "pending",
+      "payload": "{\"action\":\"engineering_native_plan-parent\",\"method\":\"POST\",\"path\":\"/api/v3/work_packages/379/activities\",\"payload\":{\"comment\":{\"format\":\"markdown\",\"raw\":\"PM/BA plan và backlog đã đồng bộ; WP379 chưa Done.\\n{\\\"backlog\\\":{\\\"create-list-persistence-v1\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[],\\\"id\\\":380,\\\"lock_version\\\":8,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"crud-search-web-v1\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"create-list-persistence-v1\\\"],\\\"id\\\":381,\\\"lock_version\\\":9,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"feedback-20c2a94109f4e78f\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"feedback-bb9a628fe5b7be67\\\"],\\\"id\\\":387,\\\"lock_version\\\":10,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"feedback-283138e910432528\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"crud-search-web-v1\\\"],\\\"id\\\":382,\\\"lock_version\\\":9,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"feedback-2ec52f6742aa972f\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"feedback-9d0ff35386a63183\\\"],\\\"id\\\":391,\\\"lock_version\\\":10,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"feedback-4d13e695555a8d44\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"feedback-283138e910432528\\\"],\\\"id\\\":383,\\\"lock_version\\\":9,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"feedback-9d0ff35386a63183\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"feedback-e44b47e2e8610c4f\\\"],\\\"id\\\":390,\\\"lock_version\\\":10,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"feedback-a51b2f686861716c\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"feedback-2ec52f6742aa972f\\\"],\\\"id\\\":394,\\\"lock_version\\\":10,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"feedback-bb9a628fe5b7be67\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"health-check-v1\\\"],\\\"id\\\":386,\\\"lock_version\\\":10,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"feedback-e0408cbf553ca0ba\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"feedback-a51b2f686861716c\\\"],\\\"id\\\":396,\\\"lock_version\\\":0,\\\"priority\\\":1,\\\"state\\\":\\\"PLANNED\\\"},\\\"feedback-e44b47e2e8610c4f\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"feedback-20c2a94109f4e78f\\\"],\\\"id\\\":389,\\\"lock_version\\\":10,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"},\\\"health-check-v1\\\":{\\\"agent\\\":\\\"dev\\\",\\\"dependencies\\\":[\\\"feedback-4d13e695555a8d44\\\"],\\\"id\\\":384,\\\"lock_version\\\":2,\\\"priority\\\":3,\\\"state\\\":\\\"DELIVERED\\\"}},\\\"plan\\\":{\\\"assignments\\\":[{\\\"dependencies\\\":[],\\\"objective\\\":\\\"Create/list tasks + SQLite persistence (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"create-list-persistence-v1\\\"},{\\\"dependencies\\\":[\\\"create-list-persistence-v1\\\"],\\\"objective\\\":\\\"Edit/delete/status/search and usable web interface (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"crud-search-web-v1\\\"},{\\\"dependencies\\\":[\\\"crud-search-web-v1\\\"],\\\"objective\\\":\\\"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"feedback-283138e910432528\\\"},{\\\"dependencies\\\":[\\\"feedback-283138e910432528\\\"],\\\"objective\\\":\\\"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"feedback-4d13e695555a8d44\\\"},{\\\"dependencies\\\":[\\\"feedback-4d13e695555a8d44\\\"],\\\"objective\\\":\\\"Them route GET /healthz va unit test status ok (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"health-check-v1\\\"},{\\\"dependencies\\\":[\\\"health-check-v1\\\"],\\\"objective\\\":\\\"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"feedback-bb9a628fe5b7be67\\\"},{\\\"dependencies\\\":[\\\"feedback-bb9a628fe5b7be67\\\"],\\\"objective\\\":\\\"Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu  (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"feedback-20c2a94109f4e78f\\\"},{\\\"dependencies\\\":[\\\"feedback-20c2a94109f4e78f\\\"],\\\"objective\\\":\\\"Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\\\\\\\"exists\\\\\\\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"feedback-e44b47e2e8610c4f\\\"},{\\\"dependencies\\\":[\\\"feedback-e44b47e2e8610c4f\\\"],\\\"objective\\\":\\\"Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"feedback-9d0ff35386a63183\\\"},{\\\"dependencies\\\":[\\\"feedback-9d0ff35386a63183\\\"],\\\"objective\\\":\\\"Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"feedback-2ec52f6742aa972f\\\"},{\\\"dependencies\\\":[\\\"feedback-2ec52f6742aa972f\\\"],\\\"objective\\\":\\\"Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da (verified delivery reused)\\\",\\\"priority\\\":3,\\\"unit\\\":\\\"feedback-a51b2f686861716c\\\"},{\\\"dependencies\\\":[\\\"feedback-a51b2f686861716c\\\"],\\\"objective\\\":\\\"Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest.\\\",\\\"priority\\\":1,\\\"unit\\\":\\\"feedback-e0408cbf553ca0ba\\\"}],\\\"blockers\\\":[],\\\"next_action\\\":\\\"Giao nhiem vu cho Dev thuc hien unit feedback-e0408cbf553ca0ba va chay pytest kiem tra cac ma phan hoi 200, 404, 422.\\\",\\\"summary\\\":\\\"Keo hoach xay dung endpoint GET /tasks/{task_id}/status theo yeu cau, dam bao xu ly 200, 404, 422 va viet pytest.\\\"},\\\"plan_id\\\":\\\"e2db6811-44fe-418c-b7dc-12fb9d52d330\\\",\\\"specification\\\":{\\\"acceptance\\\":[\\\"AC1: GET /tasks/{id}/status trả 200 với {id, status}\\\",\\\"AC2: ID không tồn tại trả 404\\\",\\\"AC3: Sai kiểu dữ liệu trả 422\\\",\\\"AC4: Test pytest chạy thành công các kịch bản\\\"],\\\"api_behavior\\\":[\\\"GET /tasks/{task_id}/status trả về 200 kèm {id, status} nếu tìm thấy\\\",\\\"GET /tasks/{task_id}/status trả về 404 nếu ID không tồn tại\\\",\\\"GET /tasks/{task_id}/status trả về 422 nếu sai kiểu dữ liệu ID\\\"],\\\"citations\\\":[379],\\\"edge_cases\\\":[\\\"ID truyền vào sai kiểu dữ liệu trả về 422\\\",\\\"ID hợp lệ nhưng không tồn tại trong DB trả về 404\\\",\\\"Thao tác chỉ đọc không làm thay đổi dữ liệu\\\"],\\\"limitations\\\":[\\\"Chỉ làm đúng 1 unit\\\",\\\"Không refactor code cũ\\\",\\\"Không thêm dependency\\\",\\\"Không tự merge/deploy\\\"],\\\"scope\\\":[\\\"Thêm endpoint GET /tasks/{task_id}/status\\\",\\\"Trả về id và status\\\",\\\"Xử lý 404 khi ID không tồn tại\\\",\\\"Xử lý 422 khi sai kiểu ID\\\",\\\"Viết test pytest cho 200, 404, 422\\\"],\\\"summary\\\":\\\"Xây dựng đơn vị kỹ thuật bổ sung endpoint GET /tasks/{task_id}/status theo phản hồi, chỉ đọc dữ liệu, trả về id và status, xử lý 200, 404, 422 và viết test.\\\"}}\"}},\"project_id\":6}",
+      "result": null
+    }
+  ],
+  "unknown_requests": {
+    "count": 48,
+    "sha256": "c7270e69968888faf671ad5848590acd15e91bd48c734adb8f54c6463c5d121c"
+  },
+  "commands": [
+    {
+      "accepted": false,
+      "affected_run_id": null,
+      "command_id": "5f10b115-c5d0-43ca-a567-b0354b950ecc",
+      "current_state": "PAUSED",
+      "desired_state": "PAUSED",
+      "reason_code": "NO_ELIGIBLE_WORK",
+      "request_id": "a36b836e-bce7-465c-9cca-d71447801bc0",
+      "requested_action": "RUN_ONCE",
+      "server_timestamp": 1793855078.978318,
+      "state_revision": 58
+    },
+    {
+      "accepted": true,
+      "affected_run_id": null,
+      "command_id": "545536f5-3780-46f5-b558-b516939ce9e3",
+      "current_state": "PAUSED",
+      "desired_state": "PAUSED",
+      "reason_code": "COMMAND_ACCEPTED",
+      "request_id": "bfb24502-4566-4eb4-8fa2-565501007581",
+      "requested_action": "PAUSED",
+      "server_timestamp": 1793855077.9358013,
+      "state_revision": 58
+    },
+    {
+      "accepted": false,
+      "affected_run_id": null,
+      "command_id": "3adc1a44-95ea-40d1-91a0-190db6050439",
+      "current_state": "AUTO_IDLE",
+      "desired_state": "AUTO",
+      "reason_code": "ENGINEERING_PLAN_HANDOFF_REQUIRED",
+      "request_id": "011dc708-f0aa-4096-85f3-2bcbf4a0f2ea",
+      "requested_action": "AUTO",
+      "server_timestamp": 1793854926.7378068,
+      "state_revision": 57
+    },
+    {
+      "accepted": true,
+      "affected_run_id": null,
+      "command_id": "d3f2e65d-73f4-4fd6-8e09-7a09c0c0c0f8",
+      "current_state": "OFF",
+      "desired_state": "OFF",
+      "reason_code": "COMMAND_ACCEPTED",
+      "request_id": "6ebb49bf-58c7-4a16-9cab-0a6ce1425bf4",
+      "requested_action": "OFF",
+      "server_timestamp": 1793854915.3237302,
+      "state_revision": 56
+    },
+    {
+      "accepted": false,
+      "affected_run_id": null,
+      "command_id": "b39c6038-f5d2-439a-ad34-5bf09aad519f",
+      "current_state": "AUTO_IDLE",
+      "desired_state": "AUTO",
+      "reason_code": "ENGINEERING_PLAN_HANDOFF_REQUIRED",
+      "request_id": "d2ee8aa5-132d-475a-ac24-d77a195aabd2",
+      "requested_action": "AUTO",
+      "server_timestamp": 1793854805.2222793,
+      "state_revision": 55
+    },
+    {
+      "accepted": false,
+      "affected_run_id": null,
+      "command_id": "ba715d8b-5c18-4e3b-a2af-46b2ba33130b",
+      "current_state": "OFF",
+      "desired_state": "OFF",
+      "reason_code": "ENGINEERING_PLAN_HANDOFF_REQUIRED",
+      "request_id": "39944828-15c5-4204-86f2-8a9b35b84281",
+      "requested_action": "RUN_ONCE",
+      "server_timestamp": 1793854792.4953961,
+      "state_revision": 54
+    },
+    {
+      "accepted": true,
+      "affected_run_id": "e2db6811-44fe-418c-b7dc-12fb9d52d330",
+      "command_id": "5e781d54-c01f-4e1f-b951-a6a4e6337b55",
+      "current_state": "READY",
+      "desired_state": "AUTO",
+      "reason_code": "COMMAND_ACCEPTED",
+      "request_id": "0655a6c6-78a7-4f5a-a1f9-54887d600491",
+      "requested_action": "PLAN",
+      "server_timestamp": 1793854543.4219263,
+      "state_revision": 53
+    },
+    {
+      "accepted": true,
+      "affected_run_id": "b7048b21-3dd9-4a99-9d70-6c7056ba99d1",
+      "command_id": "8fd081af-4c24-479a-b377-93bd94d5dfa0",
+      "current_state": "AUTO_IDLE",
+      "desired_state": "AUTO",
+      "reason_code": "COMMAND_ACCEPTED",
+      "request_id": "3b855371-def8-4e9f-bc96-419e75936b70",
+      "requested_action": "REPORT_GENERATE",
+      "server_timestamp": 1793854220.2535064,
+      "state_revision": 52
+    },
+    {
+      "accepted": true,
+      "affected_run_id": null,
+      "command_id": "265ec603-a4e1-495d-b6f2-2d09f66a8486",
+      "current_state": "AUTO_IDLE",
+      "desired_state": "AUTO",
+      "reason_code": "ALL_DELIVERED",
+      "request_id": "5a568b2d-c871-423a-8757-1d849d8d68e2",
+      "requested_action": "AUTO",
+      "server_timestamp": 1793854183.1915193,
+      "state_revision": 52
+    },
+    {
+      "accepted": true,
+      "affected_run_id": null,
+      "command_id": "7ca83abb-79fa-4734-a2f1-310fa790a539",
+      "current_state": "OFF",
+      "desired_state": "OFF",
+      "reason_code": "COMMAND_ACCEPTED",
+      "request_id": "095b73fa-8884-411d-b9d8-ce79601338d1",
+      "requested_action": "OFF",
+      "server_timestamp": 1793854168.124681,
+      "state_revision": 51
+    },
+    {
+      "accepted": false,
+      "affected_run_id": null,
+      "command_id": "5a7d608b-8a02-4495-a255-50872b91b82a",
+      "current_state": "PAUSED",
+      "desired_state": "PAUSED",
+      "reason_code": "NO_ELIGIBLE_WORK",
+      "request_id": "7e1fd7db-000e-42a8-93d9-20b617a26b88",
+      "requested_action": "RUN_ONCE",
+      "server_timestamp": 1793854158.1131167,
+      "state_revision": 50
+    },
+    {
+      "accepted": true,
+      "affected_run_id": "6b3456f3-5824-45b0-923c-83761f04fb23",
+      "command_id": "236987ea-fe0a-4143-a23a-a95b57160404",
+      "current_state": "PAUSED",
+      "desired_state": "PAUSED",
+      "reason_code": "COMMAND_ACCEPTED",
+      "request_id": "b9f73bf1-1f83-4d53-9e27-dbb5bd6f4a76",
+      "requested_action": "REPORT_GENERATE",
+      "server_timestamp": 1793853180.7218516,
+      "state_revision": 50
+    }
+  ],
+  "control": {
+    "project": 6,
+    "mode": "PAUSED",
+    "updated": 1793855077.7623065
+  },
+  "revision": 58,
+  "utc": "2026-11-05T05:16:32.812268+00:00",
+  "images": {
+    "gateway": "sha256:77213702ef933943a1fbee6feffc0d410062b8f16928dd3d1621f9489e581a12",
+    "core": "sha256:5ee7a24482be81dd7312e8c4560773aede32ec9f8bc2f6da9593c9f223e1b822",
+    "n8n": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "at": "2026-10-26T17:26:44.423186+00:00",
+  "status": "PASS_DEPLOYED_MAIN_SOURCE_ANALYSIS_WITH_FULL_TARGETED_REGRESSION",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-native-phase-v3-20261026",
+      "image": "sha256:3aeb3203bfdb4b91c95f858ee9a948701abea4c572668bb2b87712c2e6327144"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-native-phase-v3-20261026",
+      "image": "sha256:81f535ba3f8f37c0523b5e957c31cd14e4dc2a233856a832fd4b432708e135d3"
+    }
+  },
+  "source_before": {
+    "openproject/ai/gateway/store.py": "027eb69958199e56fb75afa12975ec54fd3a5a653d9c2cd304e414e5b1b79a87",
+    "openproject/ai/gateway/service.py": "40daed21fe4759328f3757f6a39986552b2144fbf3bd81e805770582f3c55ab6",
+    "openproject/ai/gateway/native_phase.py": null,
+    "openproject/ai/gateway/native_phase_bridge.py": null,
+    "openproject/ai/gateway/app.py": "b6cbd2b1884d0d4381e69d4cc88b1f99876a5cf898dd04692da3c2408edb9a15",
+    "openproject/ai/gateway/bridge.py": "e3d8d3132a1b4354dc377d72d854c8635a2782ad340ea0f493eefe2560e78d6b",
+    "openproject/ai/gateway/permissions.py": "b4329952ec146c530785f726fe688306f78f1cd3661cd26d39ca080f58ebf551",
+    "openproject/ai/gateway/catalog.py": "a2b82ac1b18384bc1e580833930013ae14a75a419d87a108083b387228ba9bc6",
+    "openproject/ai/core/overlay/app/services/qldapm/native_phase_receipt.rb": null,
+    "openproject/ai/core/overlay/app/services/qldapm/mutations.rb": "efab67f25cb308e87d6d83f9a606a95f27d30a291845c7543194583c4b2867e8",
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": "30b836cf89a161d01af6ac35ef1198131021a0a9fc2caac4f086229c6a31f69c",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "65c753319ef5484c4ac68c6b9a85a48a42464d06abdb4f5442e2732c060d5069",
+    "openproject/ai/core/overlay/config/routes.rb": "91954072c414300ade685bf0c4b5df1158c5f4275ec26f8795c239ee7f5789ca",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/phases.html.erb": null,
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_control_center.html.erb": "4d7a5992a117659417a8c40237d2b14f3a5c9985774bac09e9d54597c68087ba"
+  },
+  "files": {
+    "openproject/ai/gateway/store.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/store.py",
+      "sha256": "eb16bee6471b92b100ae32b62ccc62dabd296adee1c95304cf28e81b443459f8"
+    },
+    "openproject/ai/gateway/service.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/service.py",
+      "sha256": "7806476e276fe2cf60233a0b9c8caea44da7aa38b896898c611ba160defafb21"
+    },
+    "openproject/ai/gateway/native_phase.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_phase.py",
+      "sha256": "ebe40fdef770fbbe388d84bc8aa1a68c09e44d1be63a216baa97233ea6e77ad8"
+    },
+    "openproject/ai/gateway/native_phase_bridge.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_phase_bridge.py",
+      "sha256": "be9543089eae87c30ffb8fcbbd22ccb0a55f333bee80cef264ff481cb4ab0116"
+    },
+    "openproject/ai/gateway/app.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/app.py",
+      "sha256": "4cfb47c98fd9b80ae4ebdf74b016c994d517a14a9d10bf5740e6dabbfb2fe6db"
+    },
+    "openproject/ai/gateway/bridge.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/bridge.py",
+      "sha256": "ca94c22e4e1d80eb57c02175dbc9808d382df9165d850c05766df2ce80e759e3"
+    },
+    "openproject/ai/gateway/permissions.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/permissions.py",
+      "sha256": "948ad80f30799b685d5b5d995580b086b3ceee0f5cfa0afcffc320b682ca7cc8"
+    },
+    "openproject/ai/gateway/catalog.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/catalog.py",
+      "sha256": "7e283814581b7407a893dc9425cf890e99819ef3622a23914f65ba3ad5f95666"
+    },
+    "openproject/ai/core/overlay/app/services/qldapm/native_phase_receipt.rb": {
+      "kind": "core",
+      "target": "/app/app/services/qldapm/native_phase_receipt.rb",
+      "sha256": "b9ad2e9d2078be9476793e1ab015328371c6fab1cd4de0884fb625cc880f29c6"
+    },
+    "openproject/ai/core/overlay/app/services/qldapm/mutations.rb": {
+      "kind": "core",
+      "target": "/app/app/services/qldapm/mutations.rb",
+      "sha256": "3b161a0bdb798b179e7d6bd4d41f50ee09d8d65014198b9585aa0cc76dcab864"
+    },
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": {
+      "kind": "core",
+      "target": "/app/lib/api/v3/qldapm/gates_api.rb",
+      "sha256": "ea3035c594f7935e66e1074b6002e65b6e0dbe6856b57d6d30241fe8620b268d"
+    },
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": {
+      "kind": "core",
+      "target": "/app/app/controllers/qldapm_ai_controller.rb",
+      "sha256": "09cdf404f18a825e59f2cb237fd3e002a9203215efe1a4ca845ac04cb6bda5fb"
+    },
+    "openproject/ai/core/overlay/config/routes.rb": {
+      "kind": "core",
+      "target": "/app/config/routes.rb",
+      "sha256": "76b54436ad702b7e80a080db6e4c6e513aa29a578639ad6614c213c7f185f75d"
+    },
+    "openproject/ai/core/overlay/app/views/qldapm_ai/phases.html.erb": {
+      "kind": "core",
+      "target": "/app/app/views/qldapm_ai/phases.html.erb",
+      "sha256": "837b8af70395e463bec1bb46a379a97036f0f9fc3cf2a5afc5d77fb2e0d070c4"
+    },
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_control_center.html.erb": {
+      "kind": "core",
+      "target": "/app/app/views/qldapm_ai/_control_center.html.erb",
+      "sha256": "daa9e75fe60bc2658fd3804fc1315dd4e460112feb60af0b1e01967983cdca19"
+    }
+  },
+  "qualification": {
+    "windows": {
+      "run": 599,
+      "passed": 599,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "linux": {
+      "run": 599,
+      "passed": 584,
+      "skipped": 15,
+      "errors": 0,
+      "failures": 0
+    },
+    "ruby_programs": 19,
+    "source_phase_native_clone": "CODEX_WF09_WF11_SOURCE_PHASE_NATIVE_CLONE_RESULT.json",
+    "rollback_read_compatibility": "CODEX_NATIVE_SOURCE_PHASE_ROLLBACK_COMPATIBILITY.json"
+  },
+  "changed_workflows": [],
+  "unchanged_workflows": 16,
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "new_model_calls": 0,
+  "schema_changes": {
+    "native": false,
+    "gateway": "Existing empty additive phase metadata tables retained from prior app-only rollback; Native schema unchanged"
+  },
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\native-source-phase-deployment-v3",
+  "rollback_images": {
+    "gateway": "sha256:ffe20cad40e7506b6accfae22665f4e543aa627b6da5f2272a1177206e7edd6b",
+    "web": "sha256:545e498a70a7d61103f6356cc726d12defab7df90da2c41bb9a2d97f6982e22c"
+  },
+  "authorization": "PUBLICATION_REDACTED",
+  "rollback": "App-only prior two image/config references, retain all databases and phase receipts. Old Gateway reads populated phase metadata but cannot execute/reconcile new phase commands; pause these paths and prefer forward fix.",
+  "scope": "Source/scope/analysis only; fix/build/test/retest/closure still PARTIAL",
+  "other_main_containers_unchanged": 8,
+  "all_workflows_unchanged_active_source_matched": 16,
+  "runtime_regression": {
+    "CONTRACT_RESULT": 48,
+    "READONLY_RESULT": 13,
+    "ROLE_RESULT": 73,
+    "NEW_BOUNDARIES": 38,
+    "HIERARCHY_BOUNDARIES": 38
+  },
+  "post_regression_native_and_rag_preservation": true,
+  "background_scan_preservation": {
+    "content_version_visibility_exact": true,
+    "scan_semantics_exact": true,
+    "observation_only_delta": [
+      {
+        "actor": 18,
+        "project": 5,
+        "generation_before": 2594,
+        "generation_after": 2601,
+        "inventory_sha256": "fdd8d63c6df047767c033ec472f1dad519896f489567aa3582fa1a3ff5e5c140",
+        "changed": 0,
+        "visible": 338,
+        "native_writes": 0
+      },
+      {
+        "actor": 19,
+        "project": 5,
+        "generation_before": 1,
+        "generation_after": 1,
+        "inventory_sha256": "2bbb759dd3608f7db9b52e48e158e9cee3b167926fb40715c3f53fb686d77e71",
+        "changed": 0,
+        "visible": 333,
+        "native_writes": 0
+      }
+    ]
+  },
+  "remaining_scope": "Fix/build/application QA/retest/closure NOT_IMPLEMENTED; logged-in visual browser acceptance NOT_TESTED_POLICY"
+}

@@ -1,0 +1,35 @@
+{
+  "run_id": "2f5647e9-a52f-4fb4-854c-0bede88308ed",
+  "request_key": "daily:2026-11-03:readers-79b7e5567bd9",
+  "state": "COMPLETED",
+  "status": "READY",
+  "ready": 4,
+  "targets": 4,
+  "unavailable": 0,
+  "model_calls": 0,
+  "native_write_allowed": false,
+  "created": 1793655286.3032994,
+  "reports": [],
+  "execution": {
+    "id": 3089,
+    "status": "success",
+    "startedAt": "2026-11-03 01:00:00.044",
+    "correlated": 1
+  },
+  "utc": "2026-11-03T13:05:09.686752+00:00",
+  "target_selection": {
+    "excluded_actor_ids": [
+      19
+    ],
+    "reason": "EXPLICIT_CONFIGURED_READERS; native identity/role/permission rechecked per target",
+    "selected_actor_ids": [
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "limits": [
+    "current-day cron execution reuses immutable READY4/4 receipt created earlier that day; this was not a fresh generation during integration rollout"
+  ]
+}

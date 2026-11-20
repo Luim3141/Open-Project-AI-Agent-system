@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "target": {
+    "site": "http://127.0.0.1:8088",
+    "project_id": 5,
+    "actor_id": 19,
+    "role": "PM"
+  },
+  "marker": "CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635",
+  "native_form_validation": "PASS_NO_COMMIT",
+  "native_mutations_performed": false,
+  "operations": [
+    {
+      "action": "create_work_package",
+      "arguments": {
+        "source_id": "CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635",
+        "subject": "[CODEX TEST] Main Native E2E fdae09fb",
+        "type_id": 1,
+        "assignee_id": 19,
+        "description": "Test-only resource for the owner-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a business milestone or personnel assessment."
+      },
+      "limit": 1
+    },
+    {
+      "action": "update_work_package",
+      "target": "Only the ID returned by the approved create, after marker/author/project readback",
+      "changes": {
+        "description": "Test-only resource for the owner-approved Main Native API E2E.\nMarker: CODEX_MAIN_E2E_fdae09fbd88f4e06a462da73ed61d635\nAcceptance: exact PM proposal approval, Native readback, durable RAG sync.\nThis is a test resource, not a business milestone or personnel assessment.\nE2E update proof: fdae09fbd88f4e06a462da73ed61d635"
+      },
+      "limit": 1
+    },
+    {
+      "action": "comment",
+      "target": "Only that same created test ID after fresh Native readback",
+      "text": "CODEX E2E comment proof fdae09fbd88f4e06a462da73ed61d635",
+      "limit": 1
+    }
+  ],
+  "guards": [
+    "Gateway creates proposals only; each exact returned hash must be checked against these payloads and confirmed as PM",
+    "Fresh Native permission/lockVersion at each operation; request keys bound to this marker",
+    "No unknown-outcome Native write retry; reconcile original receipt before any further action",
+    "Wait for exact durable outbox RAG verification and citation readback after each confirmed mutation",
+    "No existing WP mutation; no transition/delete/credential change/Staging/model request"
+  ],
+  "impact": "One clearly marked standalone test Task, PM19 assigned; project WP count increases from332 to333. It remains after test; no automatic deletion.",
+  "rollback": "Preserve receipts and stop on discrepancy. No Main DB restore, deletion, or edits to unrelated WPs. Test resource remains identifiable by marker.",
+  "approval_required_by": "Original request section G: prepare separate test resources and obtain approval before Native write E2E",
+  "approval_sha256": "862c99e3dd0251275cf04154b3b86b55603a12b992ffd99a675d3ffb0f255528"
+}

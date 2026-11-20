@@ -1,0 +1,106 @@
+<h2>AI Assistant</h2>
+<% content_for :header_tags do %>
+<style>
+ .qldapm-ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;margin:20px 0}
+ .qldapm-ai-card{border:1px solid var(--borderColor-default,#d0d7de);border-radius:8px;padding:20px;background:var(--bgColor-default,#fff)}
+ .qldapm-ai-card h3{margin-top:0}.qldapm-ai-count{font-size:32px;font-weight:650;margin:8px 0}
+ .qldapm-ai-trace{overflow-wrap:anywhere}.qldapm-ai-daily-details>summary{cursor:pointer;padding:12px 0}
+ .qldapm-ai-wrap{overflow:auto}.qldapm-ai-wrap pre{white-space:pre-wrap;overflow-wrap:anywhere}
+ .qldapm-ai-result{border:2px solid #0969da;border-left-width:8px;border-radius:10px;padding:22px;margin:20px 0;background:#f0f6ff;color:#1f2328;overflow-wrap:anywhere}
+ .qldapm-ai-result h3{margin:0 0 12px;font-size:24px}.qldapm-ai-result.-succeeded{border-color:#1a7f37;background:#dafbe1}
+ .qldapm-ai-result.-failed,.qldapm-ai-result.-partial{border-color:#bc4c00;background:#fff1e5}
+ .qldapm-ai-result.-proposed{border-color:#9a6700;background:#fff8c5}.qldapm-ai-result details{margin-top:18px}
+ .qldapm-ai-result pre{white-space:pre-wrap;overflow-wrap:anywhere}.qldapm-ai-answer{font-size:17px;line-height:1.65}
+ .qldapm-ai-preview{width:100%;border-collapse:collapse}.qldapm-ai-preview th,.qldapm-ai-preview td{padding:12px;border:1px solid #d0d7de;vertical-align:top;white-space:pre-wrap;text-align:left}
+ .qldapm-ai-actions{margin-top:20px}.qldapm-ai-outcome{padding:10px 0;border-bottom:1px solid #d0d7de}
+ .qldapm-ai-tools textarea{width:100%;box-sizing:border-box}.qldapm-ai-actions{display:flex;gap:12px;flex-wrap:wrap}
+</style>
+<% end %>
+<p>AI dùng quyền OpenProject của bạn. Xem trước và xác nhận đề xuất; triển khai hoặc đổi quyền cần phê duyệt riêng.</p>
+<% if %w[PM AI_SYSTEM_OWNER].include?(@role) %><p><%= link_to "Role & AI Permissions", project_qldapm_ai_permissions_path(@project.identifier) %></p>
+<% else %><p role="status">Role <%= @role %>: chỉ đọc, phân tích, báo cáo và bình luận. Tạo/sửa/xóa công việc, đổi trạng thái và Boards cần PM; Gemini chỉ có thể soạn đề xuất bằng văn bản.</p><% end %>
+<%= render "result" %>
+<% if @context_error %><p role="status">Chưa cập nhật được dữ liệu tổng quan: <%= @context_error %>. Kết quả thao tác ở trên được giữ nguyên.</p><% end %>
+<% if @run || @proposal %>
+ <p><%= link_to "Về tổng quan AI và tiến độ dự án", project_qldapm_ai_path(@project.identifier) %></p>
+<% else %>
+<div class="qldapm-ai-grid">
+ <%= render "daily_brief" %>
+ <section class="qldapm-ai-card" aria-labelledby="ai-connection"><h3 id="ai-connection">Kết nối</h3>
+  <% if @connection %><p>Gateway: <%= @connection["gateway"] %> · OpenProject: <%= @connection["openproject"] %></p>
+   <p>Gemini: <strong><%= @connection.dig("gemini", "state") %></strong></p>
+   <p>Chế độ: <%= @connection["gateway_mode"] %></p>
+  <% else %><p>Chưa đọc được trạng thái kết nối.</p><% end %>
+ </section>
+ <section class="qldapm-ai-card" aria-labelledby="ai-progress"><h3 id="ai-progress">Tiến độ dự án</h3>
+  <% if @dashboard %><p class="qldapm-ai-count"><%= @dashboard["count"] %></p><p>Công việc theo quyền đọc của bạn</p>
+   <% (@dashboard["by_status"] || {}).each do |name, count| %><p><%= name %>: <strong><%= count %></strong></p><% end %>
+   <p>Quá hạn: <strong><%= Array(@dashboard["overdue_ids"]).size %></strong></p>
+   <% Array(@dashboard["overdue_ids"]).each do |id| %><%= link_to "##{id}", "/work_packages/#{id}" %> <% end %>
+  <% else %><p>Chưa có dữ liệu. Thử cập nhật trang.</p><% end %>
+ </section>
+ <section class="qldapm-ai-card" aria-labelledby="ai-settings"><h3 id="ai-settings">Gemini Settings</h3>
+  <p>Model: <%= @connection&.dig("gemini", "model") || "Chưa xác minh" %></p>
+  <% if @connection&.dig("gemini", "authorization_mode") == "continuous" %><p>Cấu hình sử dụng lâu dài chỉ Free Tier; không billing hoặc paid fallback.</p><% end %>
+  <p>API key được giữ ở backend. Model và giới hạn được xác minh tại local; không nhập key vào chat.</p>
+ </section>
+</div>
+<% end %>
+<%= render "control_center" %>
+<p>Gemini đọc mô tả nghiệp vụ, bình luận và liên kết công việc theo quyền của bạn để hiểu yêu cầu. API key và thông tin xác thực được giữ ở backend. Phân tích của AI là gợi ý; kết quả thao tác được xác nhận bằng dữ liệu OpenProject.</p>
+<p>Ví dụ: “Giải thích nghiệp vụ công việc 58 và các điểm còn thiếu”, “Thêm comment vào công việc 58: Đã kiểm tra trên staging”, “Đề xuất chia công việc 58 thành các Subtask”. <%= link_to "Xem Insights local", project_qldapm_insights_path(@project.identifier) %>.</p>
+<%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
+  <%= hidden_field_tag :request_id, params[:request_id].presence || SecureRandom.uuid %>
+  <%= label_tag :engine, "Chế độ xử lý" %>
+  <%= select_tag :engine, options_for_select([["Gemini — cấu hình Free Tier đã lưu", "gemini"], ["Gemini Business Tools — chỉ đọc (Live)", "gemini_read"], ["Supervisor local — bản phân tích/dự thảo, không dùng model", "supervisor"]], params[:engine]) %>
+  <%= label_tag :prompt, "Yêu cầu phân tích" %>
+  <%= text_area_tag :prompt, params[:prompt].presence || "", rows: 4, required: true, maxlength: 8000, placeholder: "Nêu yêu cầu bằng lời và ID công việc, ví dụ: Thêm comment vào công việc 58: Đã kiểm tra trên staging" %>
+  <p>Gemini tạo đề xuất; PM hoặc AI System Owner cần xem nội dung và xác nhận riêng trước mỗi thao tác ghi.</p>
+  <p>Phê duyệt chỉ áp dụng cho nội dung và hash đã xem; xóa, đổi quyền hoặc deploy cần phê duyệt riêng.</p>
+  <%= label_tag :write_scope_ids, "Giới hạn ID công việc (tùy chọn, cách nhau bằng dấu phẩy)" %>
+  <%= text_field_tag :write_scope_ids, params[:write_scope_ids], placeholder: "Ví dụ: 35, 38" %>
+  <p>Có thể để trống: hệ thống nhận ID được ghi rõ trong câu lệnh, ví dụ “công việc 58”. Nếu nhập ô này, chỉ các ID bạn chọn được phép sửa; AI vẫn kiểm tra quyền và phiên bản.</p>
+  <%= submit_tag "Gửi yêu cầu", class: "button -primary" %>
+<% end %>
+<section class="qldapm-ai-card" aria-labelledby="knowledge-title"><h3 id="knowledge-title">Second Brain</h3>
+ <p>Chỉ lập chỉ mục công việc bạn được phép đọc. Mỗi kết quả kiểm tra lại quyền và phiên bản native.</p>
+ <%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
+  <%= hidden_field_tag :tool, "knowledge_search" %><%= hidden_field_tag :arguments, "{}" %>
+  <%= label_tag :knowledge_query, "Tìm tri thức" %><%= search_field_tag :knowledge_query, params[:knowledge_query], required: true, maxlength: 500 %>
+  <%= submit_tag "Tìm kiếm", class: "button" %>
+ <% end %>
+ <%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
+  <%= hidden_field_tag :arguments, "{}" %><%= label_tag :native_id, "ID công việc cần lập chỉ mục" %>
+  <%= number_field_tag :native_id, nil, min: 1, required: true %>
+  <%= button_tag "Lập / cập nhật chỉ mục", name: "tool", value: "knowledge_ingest", class: "button" %>
+  <%= button_tag "Bỏ chỉ mục của tôi", name: "tool", value: "knowledge_deindex", class: "button" %>
+ <% end %>
+ <% if @knowledge %><div role="status"><p><%= Array(@knowledge["items"]).size %> kết quả phù hợp và còn quyền đọc.</p>
+  <% Array(@knowledge["items"]).each do |item| %><article><h4><%= link_to item["title"], "/work_packages/#{Integer(item['native_id'])}" %></h4>
+   <p><%= item["snippet"] %></p><p>Nguồn #<%= item["native_id"] %> · lockVersion <%= item["lock_version"] %></p></article><% end %>
+ </div><% end %>
+</section>
+<details class="qldapm-ai-tools"><summary>Thao tác trực tiếp / khi Gemini chưa bật</summary>
+<%= form_tag project_qldapm_ai_command_path(@project.identifier), data: {turbo: false} do %>
+  <%= label_tag :tool, "Tool" %>
+  <%= select_tag :tool, options_for_select(@tools || %w[identity list_work_packages analyze comment], params[:tool]) %>
+  <%= label_tag :arguments, 'Arguments JSON (chat: {"prompt":"..."})' %>
+  <%= text_area_tag :arguments, params[:arguments].presence || '{}', rows: 6, required: true %>
+  <p>Thao tác ghi tạo đề xuất có thời hạn. PM hoặc AI System Owner xác nhận đúng nội dung và hash trước khi thực thi.</p>
+  <%= submit_tag "Đọc / kiểm thử / tạo đề xuất", class: "button -primary" %>
+<% end %>
+</details>
+<% if @history %>
+ <div class="qldapm-ai-grid"><section class="qldapm-ai-card"><h3>Yêu cầu AI đang xử lý và gần đây</h3>
+  <% if Array(@history["runs"]).empty? %><p>Chưa có yêu cầu AI của bạn.</p><% end %>
+  <% Array(@history["runs"]).each do |run| %><p><%= link_to run["id"], project_qldapm_ai_path(@project.identifier, run_id: run["id"]) %> — <%= qldapm_state(run["state"]) %></p><% end %>
+ </section><section class="qldapm-ai-card"><h3>Đề xuất thay đổi</h3>
+  <% if Array(@history["proposals"]).empty? %><p>Chưa có đề xuất.</p><% end %>
+  <% Array(@history["proposals"]).each do |proposal| %><p><%= link_to proposal["id"], project_qldapm_ai_path(@project.identifier, proposal_id: proposal["id"]) %> — <%= qldapm_state(proposal["state"]) %></p><% end %>
+ </section></div>
+ <details class="qldapm-ai-wrap"><summary>Action History / Audit Log của bạn</summary>
+  <table><caption>30 sự kiện gần nhất</caption><thead><tr><th scope="col">Thời điểm</th><th scope="col">Thao tác</th><th scope="col">Đối tượng</th><th scope="col">Kết quả</th></tr></thead><tbody>
+   <% Array(@history["audit"]).each do |event| %><tr><td><%= Time.at(event["at"]).in_time_zone("Asia/Bangkok").strftime("%d/%m %H:%M") %></td><td><%= event["action"] %></td><td><%= event["target"] %></td><td><%= event["outcome"] %></td></tr><% end %>
+  </tbody></table>
+ </details>
+<% end %>

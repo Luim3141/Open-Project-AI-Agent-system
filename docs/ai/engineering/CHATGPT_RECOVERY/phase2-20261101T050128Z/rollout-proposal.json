@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "AWAITING_OWNER_APPROVAL",
+  "qualification_source_commit": "27db752d686d86b9683e7e7a6b15f6a223f48939",
+  "images": {
+    "gateway": "sha256:1c10248134b4f7973685433a9686f3d841ed96e5b767dd5b7d497adc0e3eceeb",
+    "core": "sha256:c237e4a792608e5ff5b95a7c9c36d41dc0392ceb3ec07f451fbee0d96dca06c9",
+    "n8n": "sha256:9e8d3393ca28a6603f3890218aeb3bb280952262c134e230b033380a2fd54e32"
+  },
+  "worker_sha256": {
+    "openproject\\ai\\automation\\engineering_worker.py": "6f753cdf98cb910734c7331503405e23593784a051e6a629f5cdaa3a268c72b9",
+    "openproject\\ai\\automation\\engineering_delivery.py": "dff3e4df87afd9a0a9ea4cce6223f62b55c1d5539fc4d342d24d260b7e285c51",
+    "openproject\\ai\\automation\\n8n_lifecycle_adapter.py": "fd7c3ffef4a6cdf9701c00a8aacaf9ec6ed796b1a9e7521855c89cb51a0b7095"
+  },
+  "services_to_restart": [
+    "qldapm-n8n-main",
+    "qldapm-ai-gateway-1",
+    "qldapm-openproject-web-1",
+    "QLDAPMEngineeringDelivery"
+  ],
+  "workflow": {
+    "id": "elfapV5D2PTnLiHW",
+    "expected_active_version": "4a8ddd7c-763a-45dc-adb1-99633047b62e",
+    "change": "append4 lifecycle nodes; retain original nodes/connections; retention settings none"
+  },
+  "configuration": "private n8n_lifecycle enabled=true, fixed local webhook URL, new private64hex signing key; keep all provider/auth policies",
+  "required_preconditions": [
+    "fresh private backups including n8n before stopping",
+    "mode OFF and active queue0",
+    "no Native unknown replay",
+    "compare exact source/image/workflow version",
+    "preserve existing n8n owner/encryption keys and volume"
+  ],
+  "approved_by_owner": false,
+  "main_applied": false,
+  "bounded_project6_business_e2e_authorized": false,
+  "separate_approval": [
+    "WP385 replacement and historical correction",
+    "demo18791 release",
+    "historical n8n purge/credential rotation",
+    "fresh provider/native/github writes E2E"
+  ]
+}

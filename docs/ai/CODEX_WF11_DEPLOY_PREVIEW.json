@@ -1,0 +1,124 @@
+{
+  "status": "OFFLINE_QUALIFICATION_IN_PROGRESS_NO_DEPLOYMENT_YET",
+  "observed_at": "2026-10-24T21:13:41.677528+00:00",
+  "parent_image": "sha256:21ad074d2b51a9332850986a1673ffc894a99d8a99707ecef1f1445996a0e724",
+  "candidate_tag": "qldapm-ai:codex-native-qa-20261025",
+  "changed_gateway_files": {
+    "app.py": {
+      "before_sha256": "4a0336446f0f116e18782968d455b26d8197973343f0937609455e52be7f2bec",
+      "after_sha256": "70e1fa555505d43a2edcc8cb47b34627352faba133c1c4ab47c976ffe8acf2ed"
+    },
+    "catalog.py": {
+      "before_sha256": "a3a910666e8372ad65576bb0c8d73ec2be9d8bdcd05966a723184377d5b4c048",
+      "after_sha256": "1bddf610be7c24e778c3144cf8572185589f05f63763b7f82e4d149582a692bc"
+    },
+    "service.py": {
+      "before_sha256": "6ecc31e4f98021ffac985a4543e4aa11e564da32b7f48aa8034943345c57e33a",
+      "after_sha256": "2e1d01f293cb6bd9f5543708a408c15f808289c0796f786fac1f17cea699dfe4"
+    },
+    "permissions.py": {
+      "before_sha256": "b4b5553341243530cf3924c07b340875a98f9c63e87b23f3521cffd0fc052df6",
+      "after_sha256": "be250af28518defb6f9e8786ab0764e2c61074c812d64ecace42b10a325240f6"
+    },
+    "store.py": {
+      "before_sha256": "282b1d0516c027d3fbe6d09c76457e9b36fbe21739245daa0ef9f825963e86c0",
+      "after_sha256": "7705069321519f922ee5c4dac01f620ee86065de0c735c953839cbad613cc205"
+    },
+    "native.py": {
+      "before_sha256": "ca2960866bbbdf2cb8e7a01c97b73c95205a89c319df48bea0dd10944945ec55",
+      "after_sha256": "a4262c8a6d3a6c20306a879efc483d68713d5f33a860270e8e7d55d53d717cbd"
+    },
+    "bug_lifecycle.py": {
+      "before_sha256": "68ac7b52905b95dc4a179d7fda996636aaf1563224f9b0031d3111e61fa993fe",
+      "after_sha256": "f978e1626481e8445da7d02d1cfbb5f4f483400c0a0f2f796949b7ed28b261c1"
+    },
+    "native_qa.py": {
+      "before_sha256": null,
+      "after_sha256": "d336d06ff45386c36e5c99646d946e697a614663b29fb2b161c52ae28cbcb1d1"
+    }
+  },
+  "workflow_changes": [
+    "WF09",
+    "WF11"
+  ],
+  "database_change": "Additive Gateway SQLite qa_evidence only; no Native schema change",
+  "rollback_tag": "qldapm-ai:codex-wbs-parent-20261024",
+  "rollback": "Restore only previous AI_IMAGE and exact WF09/WF11 exports; keep new SQLite table and all historical data",
+  "private_snapshot": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-20261025-continuation",
+  "native_writes": 0,
+  "new_approval_authority": false,
+  "core_changes": false,
+  "staging_operations": false,
+  "scope": "Manual Native QA evidence ledger and ordinary separately approved transition proposals. Legacy get_gate/change_gate422 and all Core gates remain.",
+  "workflow_before": {
+    "WF04": {
+      "id": "elfapV5D2PTnLiHW",
+      "version": "4a8ddd7c-763a-45dc-adb1-99633047b62e"
+    },
+    "WF05": {
+      "id": "xCZFw45fmDQG5gNq",
+      "version": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8"
+    },
+    "WF06": {
+      "id": "Jq18aFSqfuUybEic",
+      "version": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c"
+    },
+    "WF15": {
+      "id": "NLugfE3U8dBS88Wg",
+      "version": "3f8520e1-15f5-48d4-b61d-c0df8a19cae9"
+    },
+    "WF12": {
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "version": "68ced74a-6dcf-46df-92c3-201febb5341a"
+    },
+    "WF14": {
+      "id": "8ycOUQy9gtT60nkN",
+      "version": "e07912bb-c40c-4e18-a016-2f16ff7a38a1"
+    },
+    "WF07": {
+      "id": "BpCQrGR866vg4BqQ",
+      "version": "15216ba8-75a6-43a5-a939-308f6d14b957"
+    },
+    "WF16": {
+      "id": "5FRYNPSot18UDpKa",
+      "version": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f"
+    },
+    "WF03": {
+      "id": "XoP4M520TMG3WgeY",
+      "version": "9af87910-b23c-4bcb-9589-4b09e614d3cf"
+    },
+    "WF11": {
+      "id": "LeRVT3LWNBkJ2iz3",
+      "version": "a6c7f2e0-b6c3-47b7-8834-a61c04d01757"
+    },
+    "WF08": {
+      "id": "RXWjVUL8ozqhjY4w",
+      "version": "830871f2-9ac5-487f-b4de-b2e0922e9e36"
+    },
+    "WF01": {
+      "id": "X2O2QdPY6QLOrWqL",
+      "version": "c7409a2f-c90b-4715-a24f-66ee3234af28"
+    },
+    "WF02": {
+      "id": "Anl8LNdN4NNTKRpe",
+      "version": "95f5fbd7-f849-4a4a-9467-4fe8348b6387"
+    },
+    "WF13": {
+      "id": "2tr0jpqaaAiq9IOU",
+      "version": "bf7f89b1-07a4-42a9-b6e2-98fa3c15d694"
+    },
+    "WF09": {
+      "id": "tOyBIPw6sGjgzjtU",
+      "version": "8e1ad7a9-078a-4906-baab-b70e98c3c448"
+    },
+    "WF10": {
+      "id": "tOY7QUa9SrWPOe9e",
+      "version": "9dc0c360-8022-443d-9683-4ac1002b387a"
+    }
+  },
+  "workflow_definition_sha256": {
+    "WF11": "87c151133133e06b2c7a173fb70c9325c4850e906cd2b041d303e9ab36f8a70c",
+    "WF09": "d9b5faef1876d508d8acfc61bb84fe39da79c00aefbf4ff59bf4ae5213dfc78f"
+  },
+  "candidate_image": "sha256:169e2eb3eb1a51e3bb07b3263943563197786a5515da8f9d659f4246a4db6190"
+}

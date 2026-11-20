@@ -1,0 +1,11 @@
+# P04-01 — existing n8n inspected; Community decision verified
+
+P01 already provisioned n8n; do not pretend it is absent or reinstall/reset it. Actual n8n2.43.6/digestdd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833 healthy, private automation network, persistent data+readonly encryption secret; editor proxy loopback5678. TZ/GENERIC_TIMEZONE Asia/Bangkok. `/rest/settings` reports setup owner still required; no existing configured owner is replaced.
+
+Read-only checks PASS: exact binary version, immutable image, environment timezone, no activation key, community packages disabled; exact tagged2.43.6 license downloaded from primary source byte-matches archived license SHA f5fdd51d... . Package declares LicenseRef-n8n-sustainable-use. Runtime npm package omits standalone LICENSE.md; exact release source and archived copy were used, not a fabricated image-file check. `P04-n8n-license-version.json`.
+
+Decision ADR-0002 uses Community indefinitely for this owner-confirmed personal/internal use, one local workflow owner; five QLDAPM humans receive outputs only. No paid Projects/sharing/SSO/source-control integration or license registration/trial needed. Official current2.43.7 release was checked and is newer (16Oct shutdown-execution feature); current qualified2.43.6 GA15Oct pin is retained during owner/workflow setup pending a separately tested update. Do not label2.43.6 latest.
+
+Primary sources reviewed16Oct: [tagged license](https://raw.githubusercontent.com/n8n-io/n8n/n8n@2.43.6/LICENSE.md), [license guidance](https://docs.n8n.io/n8n-community-license/community-license.md), [Community editions](https://docs.n8n.io/deploy/host-n8n/community-edition-features.md), [2.43.6](https://github.com/n8n-io/n8n/releases/tag/n8n@2.43.6), [2.43.7](https://github.com/n8n-io/n8n/releases/tag/n8n@2.43.7). Old docs URLs returned404; current canonical docs were resolved. No GitHub Research/crawler feature is implemented by reading official dependency sources.
+
+No source/runtime mutation in this audit, no paid activation/billing/provider call. Next02one owner setup guarded against overwrite;03workflow/key persistence/backup;04scoped machine auth. Existing Gateway6e221f66/native1cdd/current key471usage/5accounts intact.

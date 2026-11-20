@@ -1,0 +1,13 @@
+{
+  "candidate_image": "sha256:b1bfce67f803bb4171e621e2f32bca83058c021a6c45e8a878293d17fefe9f0b",
+  "old_image": "sha256:d006b57e21b88cbba291ff7144ecb9a26c024f20dd1630ad2977e415c22ca9f6",
+  "gateway_backup_sha256": "cd0fa4c427ddffa41f254e4a2d0d4c0456a1c025fa985bca813f8bc0a56400ec",
+  "scope": "Add operational_reports table and scoped persisted report API; no Native writes or Staging",
+  "candidate_tests": {
+    "run": 135,
+    "passed": 134,
+    "skipped": 1,
+    "skip_reason": "Node.js absent in Python image; six workflow tests passed on Windows"
+  },
+  "rollback": "Restore old AI_IMAGE; keep additive report table, all state and queues"
+}

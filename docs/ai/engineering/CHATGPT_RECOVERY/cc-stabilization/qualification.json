@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "images": {
+    "gateway": "sha256:016115071c25fc3f1aa0c595e8add80228df5d47c92807dc35537fef8780ec28",
+    "core": "sha256:06aeb74a42763aa0026b5ee55538ee36da62fc51db5db64948ff638356dfc880"
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/store.py": "c83575171c72b2b0b9e93d8463e04ac99bcd8ba67e8bd98c0df4e254be6cbb91",
+    "openproject/ai/gateway/service.py": "d7f551806ae8ccba0b02cf6a299fc646097b01adfc9c7392a07ab84039a418b3",
+    "openproject/ai/gateway/engineering.py": "64c840c158386fe8d125ac73b7ea156ca3867eb82c8b5e6fcf48a590f888d248",
+    "openproject/ai/gateway/engineering_operator.py": "ce72e13a3caa1cebbc7f054041da9dc5136407200aef20d9086ab89180227947",
+    "openproject/ai/gateway/engineering_lifecycle.py": "575d2c27df5e1816a133e501c53adf94947bca55affdf66d9c3761f467d79c4c",
+    "openproject/ai/gateway/engineering_health.py": "7fee86280e4d1ccdcfb54be8fbecb35d27ba1e17bed2fb0333bf808741051589",
+    "openproject/ai/gateway/engineering_observability.py": "aa1b3f9840ddb4ac2e9dc031e2f78731c3b4987ea7becc302bf19d9241a6c36a",
+    "openproject/ai/gateway/engineering_owner_control.py": "3c8140376ecf9bc784784a5b105defe063688a870c4c4a5d49f5767c8c1c6c28",
+    "openproject/ai/gateway/engineering_reporting.py": "da4ff85a1b61783316b6601c9e1eaeaf13cc4199b835616124f7a7185c7cc868",
+    "openproject/ai/gateway/workflow_status.py": "644e522760137f71d0cbe24bd36efcbf8d91adb4a69ce57ce03d579eee97083a",
+    "openproject/ai/gateway/delegated_approval.py": "c75218fbcd3c88bd3d8d0b836f756665ebac27865ed8e7d161eca6ef994724eb",
+    "openproject/ai/gateway/engineering_github_sync.py": "1fe18136c051e5a0a728231e05777eca0326c0c3fb481620a1656c74684a3050",
+    "openproject/ai/gateway/engineering_github_operations.py": "74c108ab5f43b50f1516312be39aa90ba24147778f893dbe9f2e439284945dbb",
+    "openproject/ai/gateway/engineering_github_poll.py": "48bab0af6366df642d2f414fde1e8e126e24a833ee361faed3203f2e6efd35a4",
+    "openproject/ai/gateway/engineering_status_sync.py": "4a05c94c1f4ac44e72c50395b3e6ed255dca629f9f3c96243732782102aa8acd",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "994bebc93004f60e23b93c4afeccd0add591169c10f6414bfd84f371145a61ae",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "85c6d2b380d43d8708401ad7c6056fb136ca0eb1d8e12caf1af74c22feba1b9a",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": "e0ec90f28ca17d26f9cfb5139f8a6bae1405496d153dee05c20288501254aa2c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": "c8e5a45838c4757271b10855a31b151fb06dfbd02e12b3f451a801516a53a72a"
+  },
+  "checks": {
+    "github": true,
+    "events": true,
+    "core": true
+  },
+  "evidence": {
+    "immutable_gateway_image": "image-regression.json",
+    "actual_native_and_rails_clone": "clone-qualification.json",
+    "navigation_transport": {
+      "test_cc_navigation.js": "PASS canonical route/query, reload URL, tab back/forward and ARIA state",
+      "test_owner_live_transport.js": "PASS Owner JSON POST/CSRF, single sync, fresh PR/report fragments, denied/unknown, stale ordering, bounded visibility/reconnect, navigation cleanup; OWNER UAT PENDING"
+    },
+    "main_native_read_only_preview": "native-dry-run.json"
+  },
+  "scope": "157 immutable-image regression tests including GitHub/outbox; actual Native forms/PATCH/readback/controls; actual Rails login/CSRF/render/fast receipt; deterministic browser-handler regression. Actual Main browser/GitHub/n8n readback follows rollout.",
+  "generation_calls": 0,
+  "main_writes": 0
+}

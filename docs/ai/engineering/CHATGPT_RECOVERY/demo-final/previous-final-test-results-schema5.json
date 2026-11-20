@@ -1,0 +1,1145 @@
+{
+  "schema_version": 5,
+  "snapshot_utc": "2026-11-02T16:14:21.191993+00:00",
+  "overall_status": "PHASE3_1_DEPLOYED_API_CLONE_VERIFIED_OWNER_UAT_PENDING; PROVIDER391_AND_PREEXISTING_BLOCKERS_REMAIN",
+  "current_images": {
+    "gateway": "sha256:b184f91963e53df47cbc884cc353d03b0bce871ee19b45b5dc7a5ca78fd638ab",
+    "core": "sha256:e8474e53c7f56a46cd724f4a938a33f9ba01374fbaeb4bb729499cce4fbd4e84",
+    "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+  },
+  "current_serving_source_manifest": "phase3_1/final-live-verification.json#runtime_source_sha256",
+  "aggregation_policy": "Final immutable Gateway105 PASS; Owner recovery22 included, health3 included. Core clone separate. Host163 is prior revision, not complete final-source certification. No overlapping sums; no browser/pixel/whole-image coding E2E.",
+  "historical_index": "phase3_1/previous-final-test-results-schema4.json",
+  "checks": [
+    {
+      "record": "phase3_1/checks/engineering-20261102T152349176403Z.json",
+      "sha256": "e05175bc7987d28216555145cda459ca62bb3bbf16dc2e94e586f6504dd4ebfe",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "started_utc": "2026-11-02T15:23:51.077760+00:00",
+      "finished_utc": "2026-11-02T15:25:54.387114+00:00",
+      "environment": "host-current-fixtures",
+      "tested_image_digests": [],
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/engineering-20261102T152349176403Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": false,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": false,
+        "openproject/ai/gateway/engineering_operator.py": false,
+        "openproject/ai/gateway/engineering_monitor.py": false,
+        "openproject/ai/gateway/engineering_owner_control.py": false,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": false,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": false,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/engineering-final-20261102T153118018672Z.json",
+      "sha256": "1e5105570fc0a182766600ea2c760639ad26e2195c69d9ce416e3d781174655d",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "started_utc": "2026-11-02T15:31:19.649602+00:00",
+      "finished_utc": "2026-11-02T15:33:14.797820+00:00",
+      "environment": "host-no-provider-fixtures",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/engineering-final-20261102T153118018672Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": false,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": false,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": false,
+        "openproject/ai/gateway/engineering_owner_control.py": false,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": false,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": false,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/node-final-live-20261102T154800039389Z.json",
+      "sha256": "c0ae7e650bc8a69ab5a1e73c63d61f6aaff339d798456fbb0f1c98f1cba1391d",
+      "command": [
+        "node",
+        "openproject/ai/tests/test_owner_live_transport.js"
+      ],
+      "started_utc": "2026-11-02T15:48:01.098076+00:00",
+      "finished_utc": "2026-11-02T15:48:02.081974+00:00",
+      "environment": "node-vm-no-browser",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/node-final-live-20261102T154800039389Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": true,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": true,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": true,
+        "openproject/ai/gateway/engineering_owner_control.py": true,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": true,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": true,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/node-final-ux-20261102T154756619414Z.json",
+      "sha256": "ed21f713a1f1b7a85240be7e48f9e6065728f83c6a91d0ed6349e91843e6afe6",
+      "command": [
+        "node",
+        "openproject/ai/tests/test_phase31_owner_ux.js"
+      ],
+      "started_utc": "2026-11-02T15:47:58.902090+00:00",
+      "finished_utc": "2026-11-02T15:47:59.896972+00:00",
+      "environment": "node-vm-no-browser",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/node-final-ux-20261102T154756619414Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": true,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": true,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": true,
+        "openproject/ai/gateway/engineering_owner_control.py": true,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": true,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": true,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/node-inspector-20261102T153228093514Z.json",
+      "sha256": "76a1615dfca443f550fec02a35d605c5413f681289dd01a2761f6b12e1a8d890",
+      "command": [
+        "node",
+        "openproject/ai/tests/test_run_inspector_request.js"
+      ],
+      "started_utc": "2026-11-02T15:32:29.032543+00:00",
+      "finished_utc": "2026-11-02T15:32:30.052658+00:00",
+      "environment": "node-vm-no-browser",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/node-inspector-20261102T153228093514Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": false,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": false,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": false,
+        "openproject/ai/gateway/engineering_owner_control.py": false,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": false,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": false,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/node-live-20261102T153225170949Z.json",
+      "sha256": "58ff876d63ba521f3349e52e0d7bf84ef2556e391fe157edc8b79711ceb71e40",
+      "command": [
+        "node",
+        "openproject/ai/tests/test_owner_live_transport.js"
+      ],
+      "started_utc": "2026-11-02T15:32:26.542401+00:00",
+      "finished_utc": "2026-11-02T15:32:27.947348+00:00",
+      "environment": "node-vm-no-browser",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/node-live-20261102T153225170949Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": false,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": false,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": false,
+        "openproject/ai/gateway/engineering_owner_control.py": false,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": false,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": false,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/node-native-identity-20261102T155953008284Z.json",
+      "sha256": "1839bb01e66eed55b1307583882c0d94efa7a99d1cdee389ed370b53c8e0d24b",
+      "command": [
+        "node",
+        "openproject/ai/tests/test_phase31_owner_ux.js"
+      ],
+      "started_utc": "2026-11-02T16:00:07.470243+00:00",
+      "finished_utc": "2026-11-02T16:00:20.920052+00:00",
+      "environment": "node-vm-no-browser",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/node-native-identity-20261102T155953008284Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": true,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": true,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": true,
+        "openproject/ai/gateway/engineering_owner_control.py": true,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": true,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": true,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/node-reader-20261102T153221062155Z.json",
+      "sha256": "46cf8510d4f178fcaa8aca7f7f55da93b98f4905eabffbd03e0929f8a7bae29c",
+      "command": [
+        "node",
+        "openproject/ai/tests/test_report_reader.js"
+      ],
+      "started_utc": "2026-11-02T15:32:21.822897+00:00",
+      "finished_utc": "2026-11-02T15:32:23.003230+00:00",
+      "environment": "node-vm-no-browser",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/node-reader-20261102T153221062155Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": false,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": false,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": false,
+        "openproject/ai/gateway/engineering_owner_control.py": false,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": false,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": false,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/node-ux-20261102T153223114104Z.json",
+      "sha256": "ff046f7b14d617ba81ec28085cdcef507a6a8c04dbf0399cf86c407e888abbe2",
+      "command": [
+        "node",
+        "openproject/ai/tests/test_phase31_owner_ux.js"
+      ],
+      "started_utc": "2026-11-02T15:32:23.787538+00:00",
+      "finished_utc": "2026-11-02T15:32:24.916163+00:00",
+      "environment": "node-vm-no-browser",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/node-ux-20261102T153223114104Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": false,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": false,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": false,
+        "openproject/ai/gateway/engineering_owner_control.py": false,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": false,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": false,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/owner-health-20261102T153210835823Z.json",
+      "sha256": "5466b5855015311f3e3e19e501e797ca4a029d7f5d047ae90bd749c68e08c6f0",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "test_owner_uat_recovery",
+        "test_phase31_integration_health"
+      ],
+      "started_utc": "2026-11-02T15:32:11.517858+00:00",
+      "finished_utc": "2026-11-02T15:32:26.619104+00:00",
+      "environment": "host-isolated-fixtures",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/owner-health-20261102T153210835823Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": false,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": false,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": false,
+        "openproject/ai/gateway/engineering_owner_control.py": false,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": false,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": false,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/ruby-markdown-20261102T153444537104Z.json",
+      "sha256": "5119bc7463ab277d94c5e4b4da102f00ff188b596c09c7c93ffc65420dd1288b",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--entrypoint",
+        "bundle",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai,target=/fixture,readonly",
+        "qldapm-core:phase3_1",
+        "exec",
+        "ruby",
+        "/fixture/tests/test_phase31_report_reader.rb"
+      ],
+      "started_utc": "2026-11-02T15:34:46.331718+00:00",
+      "finished_utc": "2026-11-02T15:34:52.728515+00:00",
+      "environment": "immutable-core-network-none",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/ruby-markdown-20261102T153444537104Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": false,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": false,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": true,
+        "openproject/ai/gateway/engineering_owner_control.py": false,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": false,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": true,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/ruby-planning-identity-20261102T160555757630Z.json",
+      "sha256": "0e07696514c7a195a5dd2148b45ddf54ac3741e9718309512745765307a8cf48",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--entrypoint",
+        "bundle",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai,target=/fixture,readonly",
+        "qldapm-core:phase3_1",
+        "exec",
+        "ruby",
+        "/fixture/tests/test_phase31_planning_identity.rb"
+      ],
+      "started_utc": "2026-11-02T16:06:00.601991+00:00",
+      "finished_utc": "2026-11-02T16:06:10.544698+00:00",
+      "environment": "immutable-core-network-none",
+      "tested_image_digests": [],
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/ruby-planning-identity-20261102T160555757630Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": true,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": true,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": true,
+        "openproject/ai/gateway/engineering_owner_control.py": true,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": true,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": true,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/ruby-planning-identity-fixed-harness-20261102T160706710572Z.json",
+      "sha256": "1d175c80427fe68d12e6ea483d7272f58affc6b8f7dd49cc9be410ddcc6082ee",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--entrypoint",
+        "bundle",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai,target=/fixture,readonly",
+        "qldapm-core:phase3_1",
+        "exec",
+        "ruby",
+        "/fixture/tests/test_phase31_planning_identity.rb"
+      ],
+      "started_utc": "2026-11-02T16:07:08.264322+00:00",
+      "finished_utc": "2026-11-02T16:07:18.222055+00:00",
+      "environment": "immutable-core-network-none",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/ruby-planning-identity-fixed-harness-20261102T160706710572Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": true,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": true,
+        "openproject/ai/gateway/engineering_operator.py": true,
+        "openproject/ai/gateway/engineering_monitor.py": true,
+        "openproject/ai/gateway/engineering_owner_control.py": true,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": true,
+        "openproject/ai/gateway/engineering_health.py": true,
+        "openproject/ai/gateway/service.py": true,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": true,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": true
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/checks/worker-budget-20261102T123801973763Z.json",
+      "sha256": "911afb0afaee795fe032d713f95b56359a4c1f2ad4c4e488ec538628090d1eef",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "test_engineering_worker_recovery"
+      ],
+      "started_utc": "2026-11-02T12:38:03.654598+00:00",
+      "finished_utc": "2026-11-02T12:38:04.745146+00:00",
+      "environment": "host-fixture-no-provider",
+      "tested_image_digests": [],
+      "exit_code": 0,
+      "outcome": "PASS",
+      "source_changed_during_check": false,
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase3_1/checks/worker-budget-20261102T123801973763Z.log",
+      "current_serving_component_hash_matches": {
+        "openproject/ai/gateway/engineering.py": false,
+        "openproject/ai/gateway/engineering_auto.py": true,
+        "openproject/ai/gateway/engineering_lifecycle.py": false,
+        "openproject/ai/gateway/engineering_operator.py": false,
+        "openproject/ai/gateway/engineering_monitor.py": false,
+        "openproject/ai/gateway/engineering_owner_control.py": false,
+        "openproject/ai/gateway/engineering_reporting.py": true,
+        "openproject/ai/gateway/engineering_observability.py": false,
+        "openproject/ai/gateway/engineering_health.py": false,
+        "openproject/ai/gateway/service.py": false,
+        "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": false,
+        "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": true,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": false,
+        "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": false
+      },
+      "scope_note": "Historical/failure entries retained; do not infer final image from host suite or sum overlapping tests."
+    },
+    {
+      "record": "phase3_1/gateway-candidate-final.json",
+      "sha256": "024dc0ecd54a69face010669efa818f72da225ac1049e8744911833b940a028c",
+      "evidence": {
+        "started_utc": "2026-11-02T15:47:16.642177+00:00",
+        "finished_utc": "2026-11-02T15:48:16.526920+00:00",
+        "image": "sha256:b184f91963e53df47cbc884cc353d03b0bce871ee19b45b5dc7a5ca78fd638ab",
+        "command": [
+          "docker",
+          "run",
+          "--rm",
+          "--network",
+          "none",
+          "--memory",
+          "512m",
+          "--cpus",
+          "2",
+          "-e",
+          "PYTHONPATH=/app:/app/tests:/fixture/openproject/ai",
+          "--mount",
+          "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai\\tests,target=/app/tests,readonly",
+          "--mount",
+          "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation,target=/fixture/openproject/ai/automation,readonly",
+          "sha256:b184f91963e53df47cbc884cc353d03b0bce871ee19b45b5dc7a5ca78fd638ab",
+          "python",
+          "-m",
+          "unittest",
+          "test_owner_uat_recovery",
+          "test_phase31_integration_health",
+          "test_engineering_owner_controls",
+          "test_engineering_auto_mode",
+          "test_engineering_continuation",
+          "test_engineering_github_owner_contract",
+          "test_engineering_reporting",
+          "test_engineering_fencing",
+          "test_engineering_worker_recovery"
+        ],
+        "exit_code": 0,
+        "outcome": "PASS",
+        "environment": "network-none immutable Gateway; synthetic fixtures; read-only tests/hostadapter; no production data",
+        "evidence": "gateway-candidate-final.log"
+      }
+    },
+    {
+      "record": "phase3_1/core-clone-result.json",
+      "sha256": "6ad229f3da19b94d9b474aa39cfa05fe9ce0c934bf32a8bfd5da022cb9efc3d0",
+      "evidence": {
+        "status": "PASS",
+        "identity": 18,
+        "project": 6,
+        "native_http": "PASS",
+        "anonymous_denied": true,
+        "owner_login_json_csrf_command": "PASS",
+        "invalid_csrf_rejected_before_gateway": true,
+        "full_template": "PASS",
+        "live_regions": [
+          "qcc-live-controls",
+          "tab-mission",
+          "tab-pipeline",
+          "tab-workforce",
+          "tab-backlog",
+          "tab-execution",
+          "tab-github",
+          "tab-reports",
+          "tab-integrations",
+          "qcc-live-notifications"
+        ],
+        "ui_auth_fixture": "clone-only password and disabled clone TOTP; production MFA unchanged",
+        "gateway_transport": "fixture at actual Rails bridge boundary; Gateway integration verified separately",
+        "started_utc": "2026-11-02T16:05:07.997334+00:00",
+        "finished_utc": "2026-11-02T16:08:09.758620+00:00",
+        "image": "sha256:e8474e53c7f56a46cd724f4a938a33f9ba01374fbaeb4bb729499cce4fbd4e84",
+        "command": [
+          "python",
+          "docs\\ai\\engineering\\CHATGPT_RECOVERY\\phase3_1\\qualify_core.py"
+        ],
+        "environment": "isolated Native clone + actual Rails routing/session/CSRF + synthetic Gateway boundary"
+      }
+    },
+    {
+      "record": "phase3_1/gateway-owner-startup-rollback.json",
+      "sha256": "a9fc7ee8bcb038a96ced7222e4b20cad287dcaa89c527c9fcd616680b36a9893",
+      "evidence": [
+        {
+          "kind": "candidate",
+          "image": "sha256:b184f91963e53df47cbc884cc353d03b0bce871ee19b45b5dc7a5ca78fd638ab",
+          "health": 200,
+          "network": "none",
+          "private_or_live_mounts": 0
+        },
+        {
+          "kind": "rollback",
+          "image": "sha256:ce047f82692e7c46db1ddcb675be85d43a99936f0859e055db5513219a9ab6d4",
+          "health": 200,
+          "network": "none",
+          "private_or_live_mounts": 0
+        }
+      ]
+    },
+    {
+      "record": "phase3_1/main-readback.json",
+      "sha256": "1306f20f9b01d8874a936660dc755eed99fa2b405dbe77fa4c09473709efadbd",
+      "evidence": {
+        "status": "PASS",
+        "utc": "2026-11-02T15:56:37Z",
+        "route": "Actual Rails AiBridge HMAC HTTP + Native authorization; no GUI",
+        "elapsed_seconds": 49.266,
+        "mode": "OFF",
+        "queue": {
+          "state": "BLOCKED",
+          "ready": 0,
+          "active": 0,
+          "blocked": 1,
+          "eligible_unit": null,
+          "reason_code": "NO_ELIGIBLE_WORK"
+        },
+        "worker": {
+          "state": "ALIVE",
+          "seen": 1793634966.5963304,
+          "run_id": null
+        },
+        "wp391": {
+          "id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+          "native_id": 391,
+          "title": "[AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện",
+          "task_status": "BLOCKED",
+          "native_status": "NEW",
+          "stage": "dev-0",
+          "failure": {
+            "category": "PROVIDER_QUOTA_EXHAUSTED",
+            "message": "Provider trả HTTP 429; cần kiểm tra quota trước khi tiếp tục.",
+            "raw_code": "OPENCLAW_STEP_NOT_COMPLETED",
+            "evidence_source": "SCOPED_PERSISTED_RECEIPTS_AND_CHECKPOINT"
+          },
+          "budget": {
+            "calls_used": 12,
+            "call_cap": 12,
+            "provider_response_count": 11,
+            "remaining": 0,
+            "cumulative_calls": 36,
+            "task_call_cap": 72,
+            "total_tokens_reported": 231966,
+            "usage_source": "PROVIDER_RECEIPTS",
+            "usage_missing": 1,
+            "max_continuations": 5,
+            "continuations_used": 2,
+            "session_id": "de2e2650-1e9a-4f1f-9622-58252c1ecee7"
+          },
+          "resume": {
+            "eligible": false,
+            "reason": "PROVIDER_RECOVERY_REQUIRED",
+            "checkpoint_version": 16,
+            "completed_steps": [
+              "context",
+              "prepare"
+            ],
+            "remaining_continuations": 3,
+            "action": "RESUME_SAME_RUN",
+            "same_run_id": true,
+            "cooldown_until": 1793622393.8564074,
+            "checkpoint_saved_at": null,
+            "source_readback": "RECHECKED_AT_COMMAND",
+            "provider_recovery": {
+              "verified": false,
+              "reason": "NO_NEW_VERIFIED_PROVIDER_READINESS",
+              "checked_at": 1792525638.8246694
+            },
+            "auto_enabled": false,
+            "policy": {
+              "attempt_calls": 12,
+              "task_calls": 72,
+              "max_continuations": 5,
+              "cooldown_seconds": 60,
+              "auto_continue": false
+            }
+          }
+        },
+        "dev": {
+          "agent": "dev",
+          "current_state": "STANDBY",
+          "current_run": null,
+          "last_activity": {
+            "native_id": 391,
+            "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+            "result": "blocked",
+            "error": "Provider trả HTTP 429; cần kiểm tra quota trước khi tiếp tục.",
+            "budget": {
+              "calls_used": 12,
+              "call_cap": 12,
+              "provider_response_count": 11,
+              "remaining": 0,
+              "cumulative_calls": 36,
+              "total_tokens_reported": 231966,
+              "usage_source": "PROVIDER_RECEIPTS",
+              "max_continuations": 5,
+              "continuations_used": 2
+            }
+          }
+        },
+        "notification_unread_count": 82,
+        "child_notifications": [
+          {
+            "id": "1bba5511-16f2-56a9-9bcc-365f4a5cbc92",
+            "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+            "reason_code": "PROVIDER_QUOTA_EXHAUSTED",
+            "level": "ERROR",
+            "link": "/projects/ai-dev-demo/qldapm-ai?run_id=b7fd6aec-3357-495f-b9e5-f7ba04d67ad6#run-b7fd6aec-3357-495f-b9e5-f7ba04d67ad6"
+          },
+          {
+            "id": "9988df06-8d4d-566c-9a3f-951fb2c45cd3",
+            "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+            "reason_code": "AGENT_STARTED",
+            "level": "INFO",
+            "link": "/projects/ai-dev-demo/qldapm-ai?run_id=b7fd6aec-3357-495f-b9e5-f7ba04d67ad6#run-b7fd6aec-3357-495f-b9e5-f7ba04d67ad6"
+          }
+        ],
+        "notification_repoll_dedup": true,
+        "integration_health": [
+          {
+            "key": "openproject",
+            "name": "OpenProject Community",
+            "url": "http://web:8080",
+            "health": "UP",
+            "checked_at": 1793634973.6371202,
+            "check_type": "HTTP GET /health_check",
+            "latency_ms": 264.0,
+            "last_error": null,
+            "process_health": "NOT CHECKED",
+            "api_readiness": "HTTP_200",
+            "authentication": "NOT CHECKED",
+            "business_status": "NOT CHECKED"
+          },
+          {
+            "key": "gateway",
+            "name": "QLDAPM AI Gateway",
+            "url": "http://127.0.0.1:8090",
+            "health": "UP",
+            "checked_at": 1793634973.6382806,
+            "check_type": "HTTP GET /health",
+            "latency_ms": 368.9,
+            "last_error": null,
+            "process_health": "NOT CHECKED",
+            "api_readiness": "HTTP_200",
+            "authentication": "NOT CHECKED",
+            "business_status": "NOT CHECKED"
+          },
+          {
+            "key": "openclaw",
+            "name": "OpenClaw Gateway",
+            "url": null,
+            "health": "UNKNOWN",
+            "checked_at": null,
+            "check_type": "NOT CHECKED",
+            "latency_ms": null,
+            "last_error": "SAFE_ENDPOINT_NOT_CONFIGURED",
+            "process_health": "NOT CHECKED",
+            "api_readiness": "UNKNOWN",
+            "authentication": "NOT CHECKED",
+            "business_status": "NOT CHECKED — Gateway availability không chứng minh Dev đang chạy"
+          },
+          {
+            "key": "n8n",
+            "name": "n8n Orchestration",
+            "url": "http://qldapm-n8n-main:5678",
+            "health": "UP",
+            "checked_at": 1793634973.641557,
+            "check_type": "HTTP GET /healthz/readiness",
+            "latency_ms": 181.4,
+            "last_error": null,
+            "process_health": "NOT CHECKED",
+            "api_readiness": "HTTP_200",
+            "authentication": "NOT CHECKED",
+            "business_status": "NOT CHECKED — API readiness không chứng minh workflows PASS"
+          },
+          {
+            "key": "qdrant",
+            "name": "Qdrant Vector Database",
+            "url": "http://qldapm-qdrant:6333",
+            "health": "UP",
+            "checked_at": 1793634973.6425328,
+            "check_type": "HTTP GET /collections",
+            "latency_ms": 223.5,
+            "last_error": null,
+            "process_health": "NOT CHECKED",
+            "api_readiness": "HTTP_200",
+            "authentication": "NOT CHECKED",
+            "business_status": "NOT CHECKED"
+          },
+          {
+            "key": "ollama",
+            "name": "Ollama Local Models",
+            "url": "http://host.docker.internal:11434",
+            "health": "UP",
+            "checked_at": 1793634973.644255,
+            "check_type": "HTTP GET /api/tags",
+            "latency_ms": 654.6,
+            "last_error": null,
+            "process_health": "NOT CHECKED",
+            "api_readiness": "HTTP_200",
+            "authentication": "NOT CHECKED",
+            "business_status": "NOT CHECKED"
+          },
+          {
+            "key": "demo",
+            "name": "Demo App",
+            "url": null,
+            "health": "UNKNOWN",
+            "checked_at": null,
+            "check_type": "NOT CHECKED",
+            "latency_ms": null,
+            "last_error": "SAFE_ENDPOINT_NOT_CONFIGURED",
+            "process_health": "NOT CHECKED",
+            "api_readiness": "UNKNOWN",
+            "authentication": "NOT CHECKED",
+            "business_status": "NOT CHECKED"
+          }
+        ],
+        "report_readback": {
+          "id": "974d783b-7949-4ae1-b6bb-cb9b473ea521",
+          "report_type": "ON_DEMAND",
+          "source_state": "CURRENT",
+          "source_status": "READY",
+          "ai_narrative_status": "GENERATED"
+        },
+        "main_erb": "PASS; real signed status rendered with production Rails view, not browser/session UAT",
+        "native_379_representations": {
+          "native_record_count": 1,
+          "engineering_units": [
+            "crud-search-web-v1",
+            "create-list-persistence-v1"
+          ]
+        },
+        "provider_inference_calls": 0,
+        "owner_uat": "PENDING OWNER"
+      }
+    },
+    {
+      "record": "phase3_1/native-after-identity.json",
+      "sha256": "08264dd610033647e191427b3e91c1df8a5d83971d9b34dfac8a3a8c15427346",
+      "evidence": {
+        "utc": "2026-11-02T16:11:18.422787+00:00",
+        "scope": "Project5 scoped Native rows + global security/config tables; no writes",
+        "tables": {
+          "work_packages": {
+            "count": 341,
+            "sha256": "5bd03c04780cca67348c7bf4ce14dcd86352848d72076206fb9ccaf324bcbf22"
+          },
+          "projects": {
+            "count": 1,
+            "sha256": "0c3123e6835d00cb0ba42214e875faecd392218c67add50d5d97b7be41a45d95"
+          },
+          "members": {
+            "count": 5,
+            "sha256": "0629caba61894e3510ee4f864fbf928b51b1fa6b59eb002a2b0aac85f78e2634"
+          },
+          "member_roles": {
+            "count": 5,
+            "sha256": "1110929f0b748766d5c672b084caf4d5c917b31a0091d1e5d1575e33b0e5de20"
+          },
+          "versions": {
+            "count": 7,
+            "sha256": "4e0fb0cc4f1220e8a61565eabdc063210177aa682362363ed1bd98ca5ad08b01"
+          },
+          "enabled_modules": {
+            "count": 10,
+            "sha256": "74c5d9cb9aabd0d2658f44187772367c99005120c83d368fd83bd92053ba8a2d"
+          },
+          "relations": {
+            "count": 344,
+            "sha256": "ffdac61c61310f79473c94cab72a6b43c6d112f53347b325cf33562b31d6bf64"
+          },
+          "journals": {
+            "count": 968,
+            "sha256": "34f98cedbc9b33f9c54afc6502297cce049633b9e4e5ce5015550e47801ee8a0"
+          },
+          "roles": {
+            "count": 16,
+            "sha256": "582d1b648167e4d5e153b5e3b8fe662754fcd72db8a8757e68fda609a3d8e093"
+          },
+          "role_permissions": {
+            "count": 366,
+            "sha256": "5e2546de59978d2241a14b7b1af6670515b7236492d518b112af84158bea9447"
+          },
+          "workflows": {
+            "count": 1370,
+            "sha256": "f12673c4338cff7df76e8758fedde3283175ba9b14a8f9d66a46724862ed6038"
+          },
+          "settings": {
+            "count": 202,
+            "sha256": "1c52e4dfca9695922cb842e8f008e651e5e7896a3263615373d76eaefd351887"
+          },
+          "users": {
+            "count": 10,
+            "sha256": "c5fdbfaa52187209c4eb288a69fd559685f7d07ba515f7da5ad060c7f0ef6525"
+          }
+        },
+        "comparison": {
+          "identical_tables": 13,
+          "allowed_observed_changes": {},
+          "status": "PASS"
+        }
+      }
+    },
+    {
+      "record": "phase3_1/wp391-after-identity.json",
+      "sha256": "fb3c67701fa8d6f5c2c5432a064172e6de84ba5bb972d64503b3ff8127f777c2",
+      "evidence": {
+        "ai_queue": "96da60f4f42ce7053600e08798e6f7decc35a7bfe7b88a17f3dd794e70fa88a1",
+        "ai_runs": "fee2c7cee74d480e85a1e4cad2b96b03c4311234b344742c727bd70172f6c5c9",
+        "engineering_checkpoints": "5e11e8173cceabdba2b35a5cc0d0f1bbcde26c71c83f82d4d038c844b6505af2",
+        "provider_receipts": 474,
+        "native_sha256": "c21beb518c6bd21797f51701660467d17f0b45b4ee0a97a27ca3353f509dc40d",
+        "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+        "utc": "2026-11-02T16:11:19.941721+00:00",
+        "comparison": "PASS; exact run/queue/checkpoint/Native and provider count unchanged"
+      }
+    },
+    {
+      "record": "phase3_1/final-live-verification.json",
+      "sha256": "1d72aaf240b770674f7499b3e07ca0c1a3a11ced38a09c983052dca73e3a050c",
+      "evidence": {
+        "utc": "2026-11-02T16:12:37.270570+00:00",
+        "status": "SERVING_SOURCE_IMAGES_PINS_AND_EXECUTION_PRESERVATION_PASS",
+        "containers": {
+          "gateway": {
+            "image": "sha256:b184f91963e53df47cbc884cc353d03b0bce871ee19b45b5dc7a5ca78fd638ab",
+            "state": "running",
+            "health": "healthy"
+          },
+          "core": {
+            "image": "sha256:e8474e53c7f56a46cd724f4a938a33f9ba01374fbaeb4bb729499cce4fbd4e84",
+            "state": "running",
+            "health": "healthy"
+          },
+          "n8n": {
+            "image": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          }
+        },
+        "engineering": {
+          "ai_queue": "96da60f4f42ce7053600e08798e6f7decc35a7bfe7b88a17f3dd794e70fa88a1",
+          "ai_runs": "fee2c7cee74d480e85a1e4cad2b96b03c4311234b344742c727bd70172f6c5c9",
+          "engineering_checkpoints": "5e11e8173cceabdba2b35a5cc0d0f1bbcde26c71c83f82d4d038c844b6505af2",
+          "provider_receipts": 474,
+          "mode": "OFF",
+          "active": 0,
+          "worker_age_seconds": 15.40898323059082,
+          "worker_run_id": null
+        },
+        "scheduled_worker": "Running",
+        "host_worker_sha256": "e2840eaa8cfeb5ae0fa4682b7c65f9eca244f5e1d6693cc00f02e0bd09f13f48",
+        "runtime_source_sha256": {
+          "openproject/ai/gateway/engineering.py": "147d3a45c7e3a80301d42743b18c5a41ee84c939d08d8e9a3a5bfeee65022e1c",
+          "openproject/ai/gateway/engineering_auto.py": "02d43d00f65816e0524eed25f6a409c897cf2c12dfae09ed6c4579f896416594",
+          "openproject/ai/gateway/engineering_lifecycle.py": "d90d3774d705685c4dbbcf43dc5f3aa8710559223f8cd9fec6b8d9b0f38392e3",
+          "openproject/ai/gateway/engineering_operator.py": "34eef7ffcf8d2bad6c1feb380083d6e0e55ff669bdf7fdcd770d737284c29323",
+          "openproject/ai/gateway/engineering_monitor.py": "d559f1092c27fc1e21d5766d357050137ddd2d13b03c01f80654fb451f5b5881",
+          "openproject/ai/gateway/engineering_owner_control.py": "cca775737a4e932cce6e2d3dbd57b7d162e8d5b6add78733c43485ce1c420044",
+          "openproject/ai/gateway/engineering_reporting.py": "0e5729387db6ba977c474642cf3a6dad4a9eeb610933be75b7639074406ab890",
+          "openproject/ai/gateway/engineering_observability.py": "45cc6ba5f16d1d3d33f5067a0b64b1c6524f8ff72dcba20959d1d293b782c380",
+          "openproject/ai/gateway/engineering_health.py": "c3eeabe4590781a3bf26bf56178f900bad625012984657ca4133eb193f416b9d",
+          "openproject/ai/gateway/service.py": "01358f9f182734651be4eb0a5eae5c5077aa7444b320546aad28e5477291ca13",
+          "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "36204f04d1f2022c2114421fe1ddfd7fd468d89984f9d86c04ce8871d0d15a15",
+          "openproject/ai/core/overlay/app/helpers/qldapm_report_reader_helper.rb": "4d20008514a240ef1a0d6ccd029b55b3fe30879d5356ccd67c5a6d9052fcff4a",
+          "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "519eb33dc7fa2fc260df254c1440ba8ff77da3a2ac8f62921531a0a350ae977f",
+          "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_live_activity.html.erb": "fad0a51aa95b870f87b2c65856d59f0c8a5984d3893eea91f2edad7e9ce1219e",
+          "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": "11832f2418476c97f90b146bbc5b2c519ab0fc527106e29d6de37d79e758e933",
+          "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_plans.html.erb": "c75743ddcdb254fc8f8fc2996ea35c4b04f0125c7af096832dc5c8947ed2d3a1",
+          "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workforce.html.erb": "652c3563bbd4cd5c6ebe61ff851d56465d0e3878dbd604df8b1950c16c4a43f2",
+          "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": "8e31818958350ae6905f695ea8f365cdcf40ebe70ba668d31f87058ba9c055f6",
+          "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_owner_ux_script.html.erb": "46e414613a409c7d8733b94780a6b942085d7e382a70514d3b7ad28b661548e7",
+          "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": "d2edc41aceb9b08a131eb425bc4d3a8ccbcbd3f8243a5cd0a73213e4c47a48cf",
+          "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": "173efc99ed8c7a617e96091868ec0a57693b6ec5cfed867de9f57ed7d1511917"
+        },
+        "image_pins_match": true,
+        "provider_gate": {
+          "active": false
+        },
+        "provider_inference_calls": 0,
+        "wp391_resume_executed": false,
+        "owner_uat": "PENDING OWNER",
+        "scope": "Exact allowlist and scoped Project5 integrity snapshots; not whole DB/physical DR/whole-image coding E2E"
+      }
+    },
+    {
+      "record": "phase3_1/provider-diagnostic-artifacts.json",
+      "sha256": "70c9a803b2984fdc941883d10bf71a38a033c60df7f228967b435f39d6ae64ca",
+      "scope_note": "Read-only saved historical run artifacts; safe code/metric-name extraction only. RESOURCE_EXHAUSTED/429 found; no quota metric/id/retryDelay found; not a fresh provider probe.",
+      "evidence": {
+        "dev-0-result.json": {
+          "sha256": "e36a7153c1a6a74800346be7a0410680b176679b5de0ceabd426d08442b1e88f",
+          "quota_metric_names": [],
+          "quota_ids": [],
+          "retry_delay_values": [],
+          "provider_code_names": [
+            "RESOURCE_EXHAUSTED"
+          ],
+          "429_mentions": 3
+        },
+        "dev-0-trajectory.jsonl": {
+          "sha256": "86992b3900a85549a3a69cf4ad2bb20df70e007dab346fdbb19a47e5268d0ebc",
+          "quota_metric_names": [],
+          "quota_ids": [],
+          "retry_delay_values": [],
+          "provider_code_names": [
+            "RESOURCE_EXHAUSTED"
+          ],
+          "429_mentions": 2
+        },
+        "dev-0-transport.json": {
+          "sha256": "90c6a061cd1184983403209535f247e91b1d3ac624d0cfcfd54a4a30d4689330",
+          "quota_metric_names": [],
+          "quota_ids": [],
+          "retry_delay_values": [],
+          "provider_code_names": [],
+          "429_mentions": 1
+        }
+      }
+    }
+  ]
+}

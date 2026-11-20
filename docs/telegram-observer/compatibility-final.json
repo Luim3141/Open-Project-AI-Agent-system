@@ -1,0 +1,198 @@
+{
+  "status": "PASS",
+  "scope": "ORIGINAL_GATEWAY_ROWS_AND_CONFIG_PLUS_APPROVED_NEW_E2E",
+  "state": {
+    "tables": {
+      "ai_queue": {
+        "original_rows": 126,
+        "original_rows_sha256": "7c5a95a8df945bd6fd084b0eb13b1646c53ea7d3ee88854b00772e4ae73e2288",
+        "current_rows": 128
+      },
+      "ai_runs": {
+        "original_rows": 229,
+        "original_rows_sha256": "e60bddb8c94fa42c7ca115673c7e26394da459a04ce5b4ca4b56ddf6d0ed9b43",
+        "current_rows": 231
+      },
+      "requests": {
+        "original_rows": 975,
+        "original_rows_sha256": "0ca081236590f9e87b9e828642451f563eac8a85166e1f89de3d27905936c530",
+        "current_rows": 1025
+      },
+      "gemini_call_receipts": {
+        "original_rows": 577,
+        "original_rows_sha256": "9e1055041d5bf7ad6f37938cc87e621fb97d456438dc8c3512a5750abe37a5c5",
+        "current_rows": 598
+      },
+      "engineering_checkpoints": {
+        "original_rows": 28,
+        "original_rows_sha256": "6fc63e75b788b9c5fbfcad182c6f1e6f4d3124e038d4b825d71d29030c8df735",
+        "current_rows": 30
+      },
+      "tokens": {
+        "original_rows": 251,
+        "original_rows_sha256": "ed28ba1cb7df1ae31386beb26e99bb2c8b0d0f18b06c00527bd3058e8b3c26cb",
+        "current_rows": 252
+      }
+    },
+    "files": {
+      "config.json": "cae46433a316e5b3486d6a94b08a80901f3b41dc9e622b823fbe49993433b233",
+      "credentials.json": "6fbd0ca37b9e18bc986681b236fc19c67747a16b41070152a8aef6a05072db39",
+      "gemini.key": "41f2cb531d4e9e991cb533b758e411faa7699dbbed8dd852fd2b6cfee35815e3",
+      "gemini.json": "49b6c51e8cd349280f3ed2c10df60247d94aa28861ae932dd9f4619007d05d6c",
+      "ui.key": "966f4b46b490e0a5c3b099b7946c7757e7e723298f4404da979e114501a578e1",
+      "automation.key": "ae756c51a120e81e6b51748830eac2b556f666db2a454d645ae7a565eedda70b"
+    },
+    "control": [
+      [
+        6,
+        "OFF"
+      ]
+    ],
+    "active": 0
+  },
+  "containers": {
+    "qldapm-ai-gateway-1": {
+      "image": "sha256:dbd6fca4c8f8efc559b7b266eb569d64d43af348ec2c180dbcc084d6be4e7381",
+      "state": "running",
+      "health": "healthy",
+      "started_at": "2026-11-06T03:01:10.858371428Z",
+      "restart_policy": "unless-stopped",
+      "networks": [
+        "qldapm-ai_ai",
+        "qldapm-openproject_frontend"
+      ]
+    },
+    "qldapm-openproject-web-1": {
+      "image": "sha256:bcbccefa237906fa7a0c8867ff16d6d826c025ce81748b9fb3f6a1399601dc27",
+      "state": "running",
+      "health": "healthy",
+      "started_at": "2026-11-06T03:01:29.407492716Z",
+      "restart_policy": "unless-stopped",
+      "networks": [
+        "qldapm-openproject_backend",
+        "qldapm-openproject_frontend"
+      ]
+    },
+    "qldapm-ai-telegram-ai-1": {
+      "image": "sha256:035d9bf662ff92b8783ccb0a3cb94b5e03d0458b4b8abf34fc6e42c862199146",
+      "state": "running",
+      "health": "healthy",
+      "started_at": "2026-11-06T03:03:34.695980904Z",
+      "restart_policy": "unless-stopped",
+      "networks": [
+        "qldapm-ai_ai"
+      ]
+    },
+    "qldapm-n8n-main": {
+      "image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+      "state": "running",
+      "health": null,
+      "started_at": "2026-11-05T19:39:08.079383305Z",
+      "restart_policy": "unless-stopped",
+      "networks": [
+        "qldapm-ai_ai",
+        "qldapm-openproject_frontend"
+      ]
+    }
+  },
+  "original_n8n_rows_preserved": true,
+  "n8n": {
+    "workflows": [
+      {
+        "id": "2tr0jpqaaAiq9IOU",
+        "sha256": "be15832670f8308d490e9bb92749d2c9726b09546c2703a20de8e70a95375077"
+      },
+      {
+        "id": "5FRYNPSot18UDpKa",
+        "sha256": "0962a80be74b10bc65d0ef688b0a0daf12e8a2614dfa1269ff7b4b1b4572987c"
+      },
+      {
+        "id": "8ycOUQy9gtT60nkN",
+        "sha256": "a65950d5da5bf6d204fc9040dab46412a94ec16001d3feda9233bd42bfad5e53"
+      },
+      {
+        "id": "Anl8LNdN4NNTKRpe",
+        "sha256": "ceaa49ebf0ee3b119227f8a745a421b9419411c52b06feb2f301c770cd999077"
+      },
+      {
+        "id": "BpCQrGR866vg4BqQ",
+        "sha256": "60f00aa0a50b1a6dbd3aab8e8f33c447ad0ea2a61da5d7164054aad00ec2f90b"
+      },
+      {
+        "id": "Jq18aFSqfuUybEic",
+        "sha256": "81dc6fb4a7b4fbb9c2ea5b40e7a02dfac1f97fb03c1c3affe3276234ff77a55b"
+      },
+      {
+        "id": "LeRVT3LWNBkJ2iz3",
+        "sha256": "e31f3e9f37bcd00a2ea5e404beac4be080d67ba4aae56a43bd44bc444e72554b"
+      },
+      {
+        "id": "NLugfE3U8dBS88Wg",
+        "sha256": "5e7133a43f51f571c335ef52b5ff93fac4f4f9804fcd5362919f2b440d7534c6"
+      },
+      {
+        "id": "RXWjVUL8ozqhjY4w",
+        "sha256": "5e38b9de9376981c3af5c58e1a4581261e9fa26d37ed4068e1b2172844171a81"
+      },
+      {
+        "id": "X2O2QdPY6QLOrWqL",
+        "sha256": "b7d598471ed3bb0d11fab85b553c9a5c07254d73597b67134cf721eb39a442b6"
+      },
+      {
+        "id": "XoP4M520TMG3WgeY",
+        "sha256": "0bcb50eb1200b232c55388790399e768ae10d881fbae9535b6ab81d3fb013552"
+      },
+      {
+        "id": "ZkgS8RZbPRA2zbhQ",
+        "sha256": "9bf2678c0ad93a2928807ea26d0efa570c1367c9098b3e424d9e4479b51a9ccf"
+      },
+      {
+        "id": "bDpuIXfCgEkVOb7B",
+        "sha256": "0afcc1effc3ce590d4dd6cbf3012c2fabf7c64e6fcab5d851b96250a0fdc2f00"
+      },
+      {
+        "id": "elfapV5D2PTnLiHW",
+        "sha256": "86786fd1930fc3e58f4f1f8dc75625cf3318d41b15e2a5e2c988bb9e2e16e6ba"
+      },
+      {
+        "id": "tOY7QUa9SrWPOe9e",
+        "sha256": "9f29cf42c844c4b766c8ba4847ad4946f0a4b6f30c14fa86dbc341ff57b850ca"
+      },
+      {
+        "id": "tOyBIPw6sGjgzjtU",
+        "sha256": "11d6749a652c8d91313d3f870d147589cbd9d838d730597bb1397d02ccc0f5dd"
+      },
+      {
+        "id": "xCZFw45fmDQG5gNq",
+        "sha256": "8152808922e37042656df87d2f56adb77f680d12a78edb513de39fe28b37f6af"
+      }
+    ],
+    "credentials": [
+      {
+        "id": "2w9dSdmYbywZDuMB",
+        "sha256": "1157ec28f2385403b9da1262377a64d166ccc43b7b446da945e7347d0b660767"
+      },
+      {
+        "id": "DBWkxwb2izrbu17C",
+        "sha256": "c0451a99cd9bbcb9b598b040a04b6590153cd792b4522156aa3065ff3594417e"
+      },
+      {
+        "id": "TL6NEnOS6XFk2zHA",
+        "sha256": "e808812d6ef7d8b10fb71dbb291230dd1cef2a3ab4719d7427d27af7d81a4534"
+      },
+      {
+        "id": "qldapmCommandHmac",
+        "sha256": "8b76307f8c4360b0e1619acc092fd5743cb210e8c3217cef135e484862182803"
+      },
+      {
+        "id": "qldapmMachineStatus",
+        "sha256": "3fe8aff37d70ab9cbe6aa6c21ccc3c2b926c5edb8248c8da7e4b82002d47e1a9"
+      },
+      {
+        "id": "rxXHy5LfH7hO1SVm",
+        "sha256": "38dc4b8454e6ae5c13042574c8b1959996ef13b8b21b386918e0f22b95f0b8d9"
+      }
+    ]
+  },
+  "native_security_limitation": "Users full baseline hash differs after actual failed/successful UI authentication; exact entire delta not proven. No reset or role/password mutation performed."
+}

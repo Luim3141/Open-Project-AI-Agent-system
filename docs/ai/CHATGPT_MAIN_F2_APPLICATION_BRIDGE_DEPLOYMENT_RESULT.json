@@ -1,0 +1,91 @@
+{
+  "at": "2026-10-27T13:44:37.874962+00:00",
+  "status": "DEPLOYED_MAIN_READ_POLICY_VERIFIED",
+  "gateway": "sha256:7264e0f0855905cc96dde72ccb8b07d09e033f65d8dda44697dfc61d9e1a805e",
+  "core": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+  "source": {
+    "openproject\\ai\\gateway\\native_qa.py": {
+      "service": "gateway",
+      "target": "/app/gateway/native_qa.py",
+      "sha256": "dcea8810309bbd13c50c9b390d58df32d9f0460475a2179efdad2d43fcefada1"
+    },
+    "openproject\\ai\\gateway\\native_qa_bridge.py": {
+      "service": "gateway",
+      "target": "/app/gateway/native_qa_bridge.py",
+      "sha256": "3862469909e46607aaab9b2ad7ce0d9d586c2614131fc64aaf40aef4337c5d74"
+    },
+    "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\application_qa_receipt.rb": {
+      "service": "web",
+      "target": "/app/app/services/qldapm/application_qa_receipt.rb",
+      "sha256": "7a715283cd0d45205473c722dc4d78e53d594b2e0dfcb86507803579665843e0"
+    },
+    "openproject\\ai\\core\\overlay\\app\\services\\qldapm\\qa_evidence_receipt.rb": {
+      "service": "web",
+      "target": "/app/app/services/qldapm/qa_evidence_receipt.rb",
+      "sha256": "e181f48a0fff4b25b9bfd30a9e70b57e18e322852e9dbc974bfc30f9a913a2fb"
+    },
+    "openproject\\ai\\core\\overlay\\lib\\api\\v3\\qldapm\\gates_api.rb": {
+      "service": "web",
+      "target": "/app/lib/api/v3/qldapm/gates_api.rb",
+      "sha256": "e848602e19ed9a39c4483adb937cfd9b07cb52d29b271622276fbe73c8cff0de"
+    },
+    "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\qa_evidence.html.erb": {
+      "service": "web",
+      "target": "/app/app/views/qldapm_ai/qa_evidence.html.erb",
+      "sha256": "24eabf1046f717e0a66e8fdd4503a26077d87fc1e1b2673de39c1a348fe1e7fe"
+    }
+  },
+  "rollback_gateway": "sha256:12c1d595a271d7704918e5b3328d6b08603109afc46b85d2de8e8caf16baa447",
+  "rollback_core": "sha256:5e2182bb450729f03dfe415ac5d46662dac28d5e0b64fbfdca599d8c7d8dd8b5",
+  "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\application-bridge-deploy-backup",
+  "qualification": {
+    "windows": 60,
+    "candidate_linux": {
+      "run": 60,
+      "passed": 57,
+      "skipped": 3,
+      "skip_reason": "Node adapter tests qualified on Windows host"
+    },
+    "core_receipt_and_actionview": "PASS",
+    "actual_native_clone": {
+      "status": "PASS_ACTUAL_NATIVE_APPLICATION_QA_BRIDGE",
+      "reviews_and_approval": "SIMULATED_ISOLATED_FIXTURE_ONLY; no Main decisions",
+      "fixture_native_id": 371,
+      "native_mutation_posts": 1,
+      "lost_ack_reconciled_without_replay": true,
+      "duplicate_approval_http": 409,
+      "native_readback_status": "REVIEW",
+      "verified_rag_jobs": 1,
+      "embeddings": "SYNTHETIC_ISOLATED_1024D",
+      "new_model_calls": 0,
+      "old_evidence_stale_after_transition": true,
+      "tested_build": {
+        "core": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+        "gateway": "sha256:7264e0f0855905cc96dde72ccb8b07d09e033f65d8dda44697dfc61d9e1a805e"
+      },
+      "all_other_native_rows_exact": {
+        "work_packages": "375|68477b17d65e7539bb4c0fb6a01669df",
+        "relations": "352|8efb5973160c91ae1bb5b8451e5979e2"
+      },
+      "main_native_writes": 0,
+      "staging_operations": false
+    }
+  },
+  "native_writes": 0,
+  "new_main_human_decisions": 0,
+  "new_model_calls": 0,
+  "schema_changes": false,
+  "staging_operations": false,
+  "main_evidence_state": "pending_qa; user deferred manual review, no substitute decision",
+  "rollback": "Prior weekly Gateway and admission Core; retain all databases, signed artifacts and review history. Prior pair refuses application Native preparation; never restore old DB.",
+  "native_fingerprints": {
+    "work_packages": "376|a85649ecb8560b439bc0ee6bf83b66aa",
+    "relations": "352|8efb5973160c91ae1bb5b8451e5979e2",
+    "qldapm_mutation_receipts": "1|2e60f9244b63949ce96d16c5309ff43e",
+    "qldapm_native_deletion_events": "0|",
+    "user_passwords": "7|1c8c563bc72ffd2e539f6d7e4c2f7db8",
+    "two_factor_authentication_devices": "4|4db60e3d2443fbfaa9cc75b28952c857"
+  },
+  "other_main_containers_unchanged": 8,
+  "main_integration": "CHATGPT_MAIN_F2_APPLICATION_BRIDGE_MAIN_RESULT.json"
+}

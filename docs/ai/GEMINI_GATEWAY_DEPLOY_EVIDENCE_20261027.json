@@ -1,0 +1,30 @@
+{
+  "deployment_id": "deploy-gemini-ai-automation-1793047684",
+  "timestamp_start": "2026-10-26T20:47:33.822634+00:00",
+  "timestamp_end": "2026-10-26T20:48:04.332176+00:00",
+  "container_name": "qldapm-ai-gateway-1",
+  "service_url": "http://127.0.0.1:8090",
+  "pre_deployment": {
+    "image_tag": "qldapm-ai:gemini-ai-automation-v1-20261027-prev",
+    "image_digest": "sha256:e022e14eabc64117b7fc6933d804ac1f59e7116f67b070d2b2fab4b9070de1d3",
+    "status": "running",
+    "health": "healthy"
+  },
+  "post_deployment": {
+    "image_tag": "qldapm-ai:gemini-ai-automation-v1-20261027",
+    "image_digest": "sha256:ce1d9784d5c1a61f92f7b7e46834fe9be3052889cd35aa9801cc3b72874b30ea",
+    "status": "running",
+    "health": "healthy",
+    "http_health_response": {
+      "status": "ok"
+    }
+  },
+  "backups": {
+    "env_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\.env.bak_pre_gemini_automation",
+    "state_backup_dir": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\pre_gemini_ai_automation_backup"
+  },
+  "database_integrity_checked": true,
+  "protected_tables_unchanged_count": 15,
+  "status": "PASS",
+  "summary": "Main AI Gateway successfully upgraded to qldapm-ai:gemini-ai-automation-v1-20261027 with zero data mutation and 100% verified health."
+}

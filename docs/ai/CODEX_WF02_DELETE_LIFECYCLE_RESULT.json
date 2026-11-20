@@ -1,0 +1,96 @@
+{
+  "observed_at": "2026-10-26T17:06:41.150130+00:00",
+  "status": "PASS_ISOLATED_EXTERNAL_HTTP_NATIVE_DELETE_LIFECYCLE",
+  "checks": [
+    {
+      "case": "Independent Native HTTP create/update -> durable scan -> actual Qdrant/SQLite/FTS",
+      "expected": "Two different verified source-version jobs, then no refresh",
+      "actual": {
+        "native_id": 376,
+        "version": 1,
+        "first_job": {
+          "id": "8b39d625-a5ca-5ba0-bc83-745ec088fbfc",
+          "lock_version": 0,
+          "native_id": 376,
+          "source_hash": "6c7411fcdfc7ea070b786dfcd0ced67faa6ee55b5e4c75027b2451774f9af166"
+        },
+        "second_job": {
+          "id": "5f2cf4e3-1ada-56ed-88bb-7236b03b1307",
+          "lock_version": 1,
+          "native_id": 376,
+          "source_hash": "0859b9df50f35bf5a126898c49aa9b31ecd6bfdb98845032f962646fbb8db7c3"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "Independent HTTP exact proposal/approval -> signed delete -> lost Native reply -> ledger readback -> vector ack loss -> process kill/restart",
+      "expected": "One Native delete, exact registered cache cleanup, three unknown vectors and foreign project retained",
+      "actual": {
+        "native_id": 377,
+        "native_delete_posts": 1,
+        "fts_deleted_sources_absent": 2,
+        "fts_updated_source_searchable": true,
+        "rate_limit_policy_preserved": true,
+        "actual_crashed_worker_lease_until": 1793034391.38632,
+        "lease_expired_before_reclaim": true,
+        "sync": {
+          "id": "8ea0afbc-7053-59cb-8c98-57f461872731",
+          "native_id": 377,
+          "state": "verified",
+          "attempts": 2,
+          "next_at": 1793034395.7801573,
+          "error": null,
+          "result": {
+            "documents_removed": 2,
+            "event_id": "4b4b2768-526d-4299-8373-114a317f4c98",
+            "native_deleted": true,
+            "native_writes": 0,
+            "points_removed": 2,
+            "scope": "exact registered Native documents/chunks only",
+            "vector_indexed": true
+          }
+        },
+        "legacy_retained": 3,
+        "foreign_project_retained": true,
+        "original_updated_resource_retained": 1
+      },
+      "status": "PASS"
+    }
+  ],
+  "fixture_native_ids": [
+    376,
+    377
+  ],
+  "simulated_decisions": [
+    {
+      "id": "ccfb91a5-22d9-4f96-92cd-f60fbf8a750e",
+      "hash": "9a395cff8b9623f4fc7613d0294c37fc03bb184b17dc6f22a73df0522ab60f70",
+      "authorization_kind": "SIMULATED_ISOLATED_EXTERNAL_HTTP_DECISION_NOT_MAIN"
+    }
+  ],
+  "main_native_writes": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "limits": [
+    "Only eligible NEW orphan Task deletion; updated/history-bearing sources remain protected",
+    "Actual Native, HTTP transport, Qdrant, SQLite and FTS; synthetic1024embeddings only",
+    "Three test-only legacy equivalents, not Main vector restore",
+    "Original Main remains unchanged; no actual human Main approval claimed"
+  ],
+  "original_data_hashes_preserved": {
+    "work_packages": "375|04ec20a24a553f3cea4deab0015c29ef",
+    "relations": "352|8efb5973160c91ae1bb5b8451e5979e2",
+    "users": "10|10ca3b3f6ef1144f733cb777da6cbae0",
+    "user_passwords": "7|1c8c563bc72ffd2e539f6d7e4c2f7db8",
+    "two_factor_authentication_devices": "4|b967a7f8d325515bfcc415f507f3e075",
+    "tokens": "9|d2504324eea35a15febd4ed0566b1d9c",
+    "members": "7|635e9c9c13bfb9cf0f4d56e42a07e623",
+    "member_roles": "7|a401407caf4c539024415c1944cea659"
+  },
+  "candidate_images": {
+    "gateway": "sha256:3aeb3203bfdb4b91c95f858ee9a948701abea4c572668bb2b87712c2e6327144",
+    "core": "sha256:81f535ba3f8f37c0523b5e957c31cd14e4dc2a233856a832fd4b432708e135d3"
+  },
+  "source_dump_sha256": "93c30b3e7ec2b674e46af963204fbb400dcf59ab94b3481ddab4a72b45730600"
+}

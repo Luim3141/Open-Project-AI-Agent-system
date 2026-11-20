@@ -1,0 +1,106 @@
+{
+  "started_utc": "2026-11-02T03:45:07.909548+00:00",
+  "ended_utc": "2026-11-02T03:45:23.531355+00:00",
+  "environment": "Windows-11-10.0.26200-SP0; isolated Qdrant 16334; local Ollama; historical Project6 SQLite copy",
+  "command": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/rag/benchmark_phase2.py holdout",
+  "git_head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+  "serving_gateway_image": "sha256:698db791f8e96e8c0db6253457a75348eade5dff3c89e2d1ae314083387fcceb (not deployed by benchmark)",
+  "source_sha256": {
+    "knowledge_search.py": "6dce36043c90d8ccdb55bd21b8ce0f92f46f0a48d16c3eaebad2a0d30cfcf69c",
+    "knowledge_ingestion.py": "68c0dbdada0b5a09fbab684585e60b9c857b7241878dcf9205b5a869a0c07c33",
+    "vector_client.py": "ed70c922d763c61e7d6c6934629b38700d9da340d3dfc1b05e721d4f43b90b29",
+    "knowledge_storage.py": "ad0ef83d1234ce4d992b2d459ad40ab63f19c712fd1bba304c3a58deb4aa5c60"
+  },
+  "labels_sha256": "c18c247c0a359efcea4b8d5115196aba1793ef4174539f0f803bdef5add588a3",
+  "snapshot_sha256": {
+    "knowledge.sqlite": "f4837ce3db6ce3542acbac8b6b40195f78cf2df2879e32e4b747e28da45f5d8d",
+    "source-vectors.json": "867e7fe2ca2691617d25514047fedc4f4109efed0d674d8d92c8dd4c3b31f6cd"
+  },
+  "threshold": 0.65,
+  "metrics": {
+    "baseline": {
+      "vi": {
+        "positive": 12,
+        "negative": 10,
+        "hit1": 5,
+        "hit5": 5,
+        "mrr5": 0.4166666666666667,
+        "recall5": 0.4166666666666667,
+        "negative_returned": 0,
+        "abstention_correct": 10,
+        "citation_identity_violations": 0,
+        "p50_seconds": 0.19734909999533556,
+        "p95_seconds": 0.5583078000054229
+      },
+      "en": {
+        "positive": 12,
+        "negative": 10,
+        "hit1": 3,
+        "hit5": 3,
+        "mrr5": 0.25,
+        "recall5": 0.25,
+        "negative_returned": 1,
+        "abstention_correct": 9,
+        "citation_identity_violations": 0,
+        "p50_seconds": 0.167340800006059,
+        "p95_seconds": 0.318877199999406
+      },
+      "all": {
+        "positive": 24,
+        "negative": 20,
+        "hit1": 8,
+        "hit5": 8,
+        "mrr5": 0.3333333333333333,
+        "recall5": 0.3333333333333333,
+        "negative_returned": 1,
+        "abstention_correct": 19,
+        "citation_identity_violations": 0,
+        "p50_seconds": 0.167340800006059,
+        "p95_seconds": 0.34010630000557285
+      }
+    },
+    "candidate": {
+      "vi": {
+        "positive": 12,
+        "negative": 10,
+        "hit1": 6,
+        "hit5": 8,
+        "mrr5": 0.5583333333333333,
+        "recall5": 0.6666666666666666,
+        "negative_returned": 1,
+        "abstention_correct": 9,
+        "citation_identity_violations": 0,
+        "p50_seconds": 0.17084439998143353,
+        "p95_seconds": 0.3008624000067357
+      },
+      "en": {
+        "positive": 12,
+        "negative": 10,
+        "hit1": 2,
+        "hit5": 7,
+        "mrr5": 0.3611111111111111,
+        "recall5": 0.5833333333333334,
+        "negative_returned": 1,
+        "abstention_correct": 9,
+        "citation_identity_violations": 0,
+        "p50_seconds": 0.18302589998347685,
+        "p95_seconds": 0.2850032000133069
+      },
+      "all": {
+        "positive": 24,
+        "negative": 20,
+        "hit1": 8,
+        "hit5": 15,
+        "mrr5": 0.4597222222222222,
+        "recall5": 0.625,
+        "negative_returned": 2,
+        "abstention_correct": 18,
+        "citation_identity_violations": 0,
+        "p50_seconds": 0.17350289999740198,
+        "p95_seconds": 0.3008624000067357
+      }
+    }
+  },
+  "human_adjudication": "PENDING; not acceptance",
+  "model_digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab"
+}

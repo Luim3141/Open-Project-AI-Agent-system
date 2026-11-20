@@ -1,0 +1,442 @@
+{
+  "generated_at": "2026-10-28T02:58:00+07:00",
+  "environment": "MAIN ONLY",
+  "n8n_instance": {
+    "host_url": "http://127.0.0.1:5679",
+    "container_name": "qldapm-n8n-main",
+    "internal_url": "http://qldapm-n8n-main:5678",
+    "gateway_internal_target": "http://qldapm-ai-gateway-1:8090",
+    "total_workflows": 16,
+    "active_workflows": 16,
+    "total_executions_recorded": 167
+  },
+  "workflows": {
+    "WF01": {
+      "id": "X2O2QdPY6QLOrWqL",
+      "name": "WF01: Local Document Ingestion",
+      "active": true,
+      "webhook_path": "qldapm-ingest",
+      "trigger": "Webhook (POST /webhook/qldapm-ingest) / Manual",
+      "input_schema": {
+        "path": "string (file path to document)",
+        "project_id": "string (default: '5')",
+        "allowed_roles": "array of strings"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "knowledge_ingest",
+      "dependencies": [
+        "AI Gateway (port 18089 / internal 8090)",
+        "Second Brain SQLite (knowledge.sqlite)",
+        "Qdrant collection (qldapm_knowledge_dense)",
+        "Ollama BGE-M3 (1024D)"
+      ],
+      "final_result_contract": {
+        "status": "CREATED | UPDATED | SKIPPED_UNCHANGED",
+        "document_id": "string (sha256)",
+        "chunks_count": "integer >= 1",
+        "vector_indexed": "boolean (true)"
+      },
+      "retry_and_recovery": {
+        "mechanism": "KnowledgeIngester retry queue + SQLite transaction rollback on vector failure",
+        "dlq": "Jobs failing vector commit remain in SQLite with VECTOR_INDEX_PENDING for subsequent retry"
+      }
+    },
+    "WF02": {
+      "id": "Anl8LNdN4NNTKRpe",
+      "name": "WF02: OpenProject Event Sync",
+      "active": true,
+      "webhook_path": "qldapm-op-sync",
+      "trigger": "Webhook (POST /webhook/qldapm-op-sync) on Native WP mutation",
+      "input_schema": {
+        "action": "string (work_package:created | work_package:updated)",
+        "work_package": {
+          "id": "integer",
+          "lockVersion": "integer"
+        }
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "list_work_packages -> knowledge_ingest",
+      "dependencies": [
+        "OpenProject Core REST API v3",
+        "AI Gateway store knowledge_sync outbox",
+        "Second Brain"
+      ],
+      "final_result_contract": {
+        "canonical_sync": "verified",
+        "native_id": "integer",
+        "lock_version": "integer matching Native",
+        "vector_indexed": "boolean (true)"
+      },
+      "retry_and_recovery": {
+        "mechanism": "native_incremental_scan outbox scan every 60s reconciles missed webhooks",
+        "idempotency": "Deduplicated by native-event-{project}-{id}-{version}-{hash}"
+      }
+    },
+    "WF03": {
+      "id": "XoP4M520TMG3WgeY",
+      "name": "WF03: Natural Language Request Orchestrator",
+      "active": true,
+      "webhook_path": "qldapm-agent-request",
+      "trigger": "Webhook (POST /webhook/qldapm-agent-request)",
+      "input_schema": {
+        "prompt": "string",
+        "actor_id": "integer",
+        "idempotency_key": "string (uuid)"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "start_ai_run",
+      "dependencies": [
+        "AI Supervisor engine",
+        "Gemini live provider / local deterministic tools",
+        "Second Brain RAG"
+      ],
+      "final_result_contract": {
+        "run_id": "string (uuid)",
+        "status": "succeeded | in_progress",
+        "model_used": "boolean",
+        "routine_writes_authorized": "boolean (false if negative intent)",
+        "write_scope_ids": "array"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Strict idempotency key replay; altered payloads rejected with HTTP 422",
+        "timeout": "Hard deadline enforced via supervisor_isolation"
+      }
+    },
+    "WF04": {
+      "id": "elfapV5D2PTnLiHW",
+      "name": "WF04: Multi-Agent Execution Tracking",
+      "active": true,
+      "webhook_path": "qldapm-agent-trace",
+      "trigger": "Webhook (POST /webhook/qldapm-agent-trace)",
+      "input_schema": {
+        "run_id": "string (uuid)"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "get_ai_run",
+      "dependencies": [
+        "Gateway audit table",
+        "agent_trace.py"
+      ],
+      "final_result_contract": {
+        "run_id": "string (uuid)",
+        "stages": "array of execution phases",
+        "receipts": "array of Gemini/tool receipts",
+        "tokens_consumed": "integer"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Read-only idempotent inspection from durable SQLite audit ledger"
+      }
+    },
+    "WF05": {
+      "id": "xCZFw45fmDQG5gNq",
+      "name": "WF05: Native API Approval Workflow",
+      "active": true,
+      "webhook_path": "qldapm-approval",
+      "trigger": "Webhook (POST /webhook/qldapm-approval)",
+      "input_schema": {
+        "proposal_id": "string (uuid)",
+        "actor": "integer",
+        "decision": "string ('approve' | 'reject')"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "apply_proposal | reject_proposal",
+      "dependencies": [
+        "Gateway proposals table",
+        "RBAC permissions engine (PM/Owner scope)"
+      ],
+      "final_result_contract": {
+        "proposal_id": "string (uuid)",
+        "state": "'done' | 'rejected'",
+        "applied_at": "ISO-8601 timestamp"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Optimistic lock version check prevents double-application or stale approvals"
+      }
+    },
+    "WF06": {
+      "id": "Jq18aFSqfuUybEic",
+      "name": "WF06: Native API Execution & Verification",
+      "active": true,
+      "webhook_path": "qldapm-execute-mutation",
+      "trigger": "Webhook (POST /webhook/qldapm-execute-mutation)",
+      "input_schema": {
+        "proposal_id": "string (uuid)",
+        "auto_execute": "boolean (optional flag; ONLY executes if caller possesses PM/Owner role and proposal has passed required approval gates; NEVER bypasses RBAC or approval policies)"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "apply_proposal",
+      "dependencies": [
+        "OpenProject Core Gates API v3",
+        "Gateway mutation rollback store"
+      ],
+      "final_result_contract": {
+        "mutation_applied": true,
+        "readback_verified": true,
+        "work_package_id": "integer"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Automatic signed rollback receipt generated if readback verification fails"
+      }
+    },
+    "WF07": {
+      "id": "BpCQrGR866vg4BqQ",
+      "name": "WF07: Daily Project Brief",
+      "active": true,
+      "webhook_path": "qldapm-daily-brief",
+      "trigger": "Cron (08:00 daily) / Webhook (POST /webhook/qldapm-daily-brief)",
+      "input_schema": {
+        "project_id": 5,
+        "date": "string (YYYY-MM-DD)"
+      },
+      "gateway_endpoint": "POST /api/v1/commands (signed with HMAC automation.key)",
+      "gateway_command": "daily_brief",
+      "dependencies": [
+        "Gateway daily_brief.py",
+        "Notification delivery spool"
+      ],
+      "final_result_contract": {
+        "date": "string",
+        "summary": "string (Markdown)",
+        "metrics": "object (open_tasks, blockers, velocity)",
+        "notification_queued": true
+      },
+      "retry_and_recovery": {
+        "mechanism": "Local notification spool retains messages until successful transmission"
+      }
+    },
+    "WF08": {
+      "id": "RXWjVUL8ozqhjY4w",
+      "name": "WF08: Sprint Risk",
+      "active": true,
+      "webhook_path": "qldapm-sprint-risk",
+      "trigger": "Webhook (POST /webhook/qldapm-sprint-risk) / Schedule",
+      "input_schema": {
+        "project_id": 5,
+        "sprint_id": "integer"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "sprint_readiness",
+      "dependencies": [
+        "Gateway sprint_readiness.py",
+        "OpenProject Native work packages"
+      ],
+      "final_result_contract": {
+        "risk_score": "float (0.0 to 1.0)",
+        "risk_level": "LOW | MEDIUM | HIGH",
+        "blockers": "array of work package IDs",
+        "model_tokens_consumed": 0
+      },
+      "retry_and_recovery": {
+        "mechanism": "Read-only deterministic calculation with zero mutation risk"
+      }
+    },
+    "WF09": {
+      "id": "tOyBIPw6sGjgzjtU",
+      "name": "WF09: Bug Lifecycle Automation",
+      "active": true,
+      "webhook_path": "qldapm-bug-lifecycle",
+      "trigger": "Webhook (POST /webhook/qldapm-bug-lifecycle)",
+      "input_schema": {
+        "bug_id": "integer",
+        "event": "string"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "bug_lifecycle",
+      "dependencies": [
+        "Gateway bug_lifecycle.py",
+        "OpenProject Bug Work Packages",
+        "QA Gates"
+      ],
+      "final_result_contract": {
+        "bug_id": "integer",
+        "triage_state": "classified",
+        "duplicate_candidates": "array",
+        "current_status": "string (e.g. IN ANALYSIS)"
+      },
+      "retry_and_recovery": {
+        "mechanism": "QA gates strictly require cryptographic evidence receipt before closing bug"
+      }
+    },
+    "WF10": {
+      "id": "tOY7QUa9SrWPOe9e",
+      "name": "WF10: Task Orchestration & Decomposition",
+      "active": true,
+      "webhook_path": "qldapm-task-orchestration",
+      "trigger": "Webhook (POST /webhook/qldapm-task-orchestration)",
+      "input_schema": {
+        "parent_wp_id": "integer",
+        "prompt": "string"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "start_ai_run (BA agent mode)",
+      "dependencies": [
+        "BA Agent",
+        "Native WBS hierarchy engine"
+      ],
+      "final_result_contract": {
+        "nodes": "array of proposed subtasks",
+        "relations": "array of dependency edges",
+        "proposal_draft_id": "string (uuid)"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Proposal draft remains in pending status until human review; 0 automatic write"
+      }
+    },
+    "WF11": {
+      "id": "LeRVT3LWNBkJ2iz3",
+      "name": "WF11: QA Gate Transition",
+      "active": true,
+      "webhook_path": "qldapm-qa-gate",
+      "trigger": "Webhook (POST /webhook/qldapm-qa-gate)",
+      "input_schema": {
+        "work_package_id": "integer",
+        "target_status": "string",
+        "evidence_id": "string (uuid)"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "native_qa_verify",
+      "dependencies": [
+        "Gateway qa_evidence table",
+        "Core Gates API v3"
+      ],
+      "final_result_contract": {
+        "transition_admitted": "boolean",
+        "evidence_hash": "string (sha256)",
+        "new_status": "string"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Rejection if evidence is in pending_qa state or SHA256 payload mismatch"
+      }
+    },
+    "WF12": {
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "name": "WF12: Weekly Summary",
+      "active": true,
+      "webhook_path": "qldapm-weekly-summary",
+      "trigger": "Webhook (POST /webhook/qldapm-weekly-summary) / Cron (Weekly)",
+      "input_schema": {
+        "project_id": 5,
+        "week_number": "integer"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "weekly_report",
+      "dependencies": [
+        "Gateway weekly_report.py",
+        "workload_detector.py"
+      ],
+      "final_result_contract": {
+        "heading": "string",
+        "completed_count": "integer",
+        "wip_count": "integer",
+        "model_tokens_consumed": 0
+      },
+      "retry_and_recovery": {
+        "mechanism": "Deterministic query against Native database; immune to model timeouts"
+      }
+    },
+    "WF13": {
+      "id": "2tr0jpqaaAiq9IOU",
+      "name": "WF13: Second Brain RAG Re-indexing",
+      "active": true,
+      "webhook_path": "qldapm-rag-reindex",
+      "trigger": "Webhook (POST /webhook/qldapm-rag-reindex) / Periodic Schedule",
+      "input_schema": {
+        "project_id": "5",
+        "force_refresh": "boolean"
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "knowledge_ingest",
+      "dependencies": [
+        "KnowledgeStorage",
+        "VectorClient",
+        "Qdrant collection",
+        "Ollama daemon"
+      ],
+      "final_result_contract": {
+        "total_documents": "integer (all active project documents)",
+        "total_chunks": "integer (sum of chunks across all active project documents)",
+        "qdrant_points": "integer (matching active chunks + preserved legacy points)",
+        "integrity": "VERIFIED (100% parity between SQLite chunks and Qdrant vectors)"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Registered point pruning preserves uncorrupted points during partial failure"
+      }
+    },
+    "WF14": {
+      "id": "8ycOUQy9gtT60nkN",
+      "name": "WF14: Durable RAG Recovery",
+      "active": true,
+      "webhook_path": "qldapm-error-handler",
+      "trigger": "Webhook (POST /webhook/qldapm-error-handler)",
+      "input_schema": {
+        "error_type": "string",
+        "subsystem": "string",
+        "details": "object"
+      },
+      "gateway_endpoint": "POST /internal/automation/commands",
+      "gateway_command": "log_workflow_error",
+      "dependencies": [
+        "Gateway workflow_errors.py",
+        "audit table"
+      ],
+      "final_result_contract": {
+        "error_logged": true,
+        "quarantine_applied": "boolean",
+        "dlq_registered": "boolean"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Hai cấp độ retry riêng biệt: (1) n8n HTTP retry: Exponential backoff tối đa 3 lần cho lỗi mạng/HTTP transient; (2) Gateway Asynchronous Worker: Ngưỡng 5 lần thất bại cạn lease trước khi chuyển sang DLQ (WORKER_LEASE_EXHAUSTED).",
+        "quarantine_policy": "Chuyển sang DLQ khi vượt ngưỡng attempts, hỗ trợ lệnh retry_knowledge_sync khôi phục an toàn."
+      }
+    },
+    "WF15": {
+      "id": "NLugfE3U8dBS88Wg",
+      "name": "WF15: Reconciliation & Drift Detection",
+      "active": true,
+      "webhook_path": "qldapm-reconciliation",
+      "trigger": "Webhook (POST /webhook/qldapm-reconciliation) / Periodic Schedule",
+      "input_schema": {
+        "project_id": 5
+      },
+      "gateway_endpoint": "POST /api/v1/commands",
+      "gateway_command": "native_incremental_scan",
+      "dependencies": [
+        "OpenProject Native packages collection",
+        "native_index_cursor table",
+        "knowledge_documents table"
+      ],
+      "final_result_contract": {
+        "visible_native_wps": "integer (current visible packages count from Native API)",
+        "drift_detected": "boolean (true nếu có chênh lệch giữa Native Core và Second Brain cursor)",
+        "reconciled_jobs_enqueued": "integer (số job đồng bộ được đưa vào outbox nếu phát hiện drift)"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Only proven cache drift requeues a refresh job; never modifies Native data"
+      }
+    },
+    "WF16": {
+      "id": "5FRYNPSot18UDpKa",
+      "name": "WF16: Main Health Monitoring",
+      "active": true,
+      "webhook_path": "qldapm-monitoring",
+      "trigger": "Interval (every 15 minutes) / Webhook (POST /webhook/qldapm-monitoring)",
+      "input_schema": {},
+      "gateway_endpoint": "GET /health",
+      "dependencies": [
+        "AI Gateway (18089)",
+        "OpenProject Core (18088)",
+        "n8n (5679)",
+        "Qdrant (6333)",
+        "Ollama (11434)"
+      ],
+      "final_result_contract": {
+        "status": "ok",
+        "subsystems_online": 5,
+        "timestamp": "ISO-8601"
+      },
+      "retry_and_recovery": {
+        "mechanism": "Non-blocking watchdog logs outage to execution_entity table"
+      }
+    }
+  }
+}

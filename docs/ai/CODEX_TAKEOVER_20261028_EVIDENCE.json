@@ -1,0 +1,1425 @@
+{
+  "generated_at": "2026-10-28T16:43:22.639596+00:00",
+  "release_status": "READY_FOR_OPERATOR_UAT",
+  "human_signoff": false,
+  "target": {
+    "environment": "MAIN",
+    "project_id": 5,
+    "identifier": "qldapm-local",
+    "head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+    "branch": "codex/local-multi-agent-upgrade",
+    "ports": {
+      "core": 18088,
+      "gateway": 18089,
+      "n8n": 5679,
+      "qdrant": 6333,
+      "ollama": 11434
+    },
+    "bind": "127.0.0.1"
+  },
+  "final_readback": {
+    "at": "2026-10-28T16:29:47.314727+00:00",
+    "status": "MAIN_FINAL_READBACK_PASS",
+    "images": {
+      "qldapm-openproject-db-1": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "qldapm-openproject-cache-1": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "qldapm-qdrant": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "qldapm-openproject-hocuspocus-1": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "qldapm-openproject-web-1": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+      "qldapm-openproject-worker-1": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "qldapm-openproject-cron-1": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "qldapm-ai-gateway-1": "sha256:eaaa1217ac79cfac4747e0fa71af40bf0d3c1a447f39e6cc24dc20e55a268fc4",
+      "qldapm-n8n-main": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "qldapm-openproject-proxy-1": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f"
+    },
+    "native_counts": {
+      "work_packages": 376,
+      "relations": 352,
+      "custom_values": 1695,
+      "journals": 1027,
+      "user_passwords": 7,
+      "two_factor_authentication_devices": 4
+    },
+    "business_and_password_hashes_unchanged": true,
+    "two_factor_preservation": {
+      "device_ids_unchanged": true,
+      "device_count": 4,
+      "changed_fields_per_device": {
+        "4": [],
+        "1": [
+          "last_used_at"
+        ],
+        "3": [],
+        "2": []
+      },
+      "source": "Original private qualification1 snapshot versus current; values never emitted"
+    },
+    "wp376": {
+      "id": 376,
+      "subject": "test2",
+      "lock_version": 0,
+      "status": "NEW"
+    },
+    "wp371": {
+      "id": 371,
+      "lock_version": 4,
+      "status": "IN ANALYSIS"
+    },
+    "qa": "pending_qa",
+    "sync": [
+      [
+        "verified",
+        86,
+        null
+      ]
+    ],
+    "active": 0,
+    "historical_pending": 29,
+    "unknown_sha256": "a0581b7ae81748f910412e8fa0240c809522da4bacebcd707479299eb12ecb06"
+  },
+  "knowledge": {
+    "status": "PARTIAL_UNMATCHED_POINTS",
+    "project_id": 5,
+    "native_visible_packages": 339,
+    "documents": 441,
+    "chunks": 2027,
+    "points_in_project": 2030,
+    "sqlite_quick_check": "ok",
+    "missing_native_ids": [],
+    "missing_point_ids": [],
+    "payload_mismatch_ids": [],
+    "invalid_chunk_hash_ids": [],
+    "invalid_source_hashes": [],
+    "fts_error_sources": [],
+    "orphan_fts_rows": 0,
+    "stale_sources": [],
+    "unmatched_points": [
+      {
+        "id": "2d5e7bdf-b4e0-52c6-b360-f45c1fbd74bf",
+        "source_id": "op:wp:42"
+      },
+      {
+        "id": "59e1f1a4-b659-5c3d-ab23-ebb309481dc7",
+        "source_id": "test:local:adr:0001"
+      },
+      {
+        "id": "b838195a-5afd-5f40-a70d-23c2ca9007bc",
+        "source_id": "test:wp:999"
+      }
+    ],
+    "native_sources_outside_visible_scope": 0,
+    "mutations_performed": false,
+    "cross_store_snapshot": "Main ingestion lease; external writers must honor the same lock",
+    "actor_role": "PM",
+    "report_id": "60ba9671-d306-5dae-8ac9-11b5e3f705f3",
+    "report_sha256": "439d99d5ef8d805131639e914901dd08b220451b479974534343be037ab2c6be",
+    "last_observed_at": 1793204986.7402196
+  },
+  "workflows": [
+    {
+      "code": "WF01",
+      "id": "X2O2QdPY6QLOrWqL",
+      "active": true,
+      "version": "c7409a2f-c90b-4715-a24f-66ee3234af28",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF02",
+      "id": "Anl8LNdN4NNTKRpe",
+      "active": true,
+      "version": "95f5fbd7-f849-4a4a-9467-4fe8348b6387",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF03",
+      "id": "XoP4M520TMG3WgeY",
+      "active": true,
+      "version": "9af87910-b23c-4bcb-9589-4b09e614d3cf",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF04",
+      "id": "elfapV5D2PTnLiHW",
+      "active": true,
+      "version": "4a8ddd7c-763a-45dc-adb1-99633047b62e",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF05",
+      "id": "xCZFw45fmDQG5gNq",
+      "active": true,
+      "version": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF06",
+      "id": "Jq18aFSqfuUybEic",
+      "active": true,
+      "version": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c",
+      "changed_fields": [],
+      "node_count": 3
+    },
+    {
+      "code": "WF07",
+      "id": "BpCQrGR866vg4BqQ",
+      "active": true,
+      "version": "15216ba8-75a6-43a5-a939-308f6d14b957",
+      "changed_fields": [],
+      "node_count": 5
+    },
+    {
+      "code": "WF08",
+      "id": "RXWjVUL8ozqhjY4w",
+      "active": true,
+      "version": "830871f2-9ac5-487f-b4de-b2e0922e9e36",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF09",
+      "id": "tOyBIPw6sGjgzjtU",
+      "active": true,
+      "version": "56995a8f-14dd-41be-835f-24045297c7ea",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF10",
+      "id": "tOY7QUa9SrWPOe9e",
+      "active": true,
+      "version": "142d0a0d-0c12-4b6d-b1f5-c91033fc854e",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF11",
+      "id": "LeRVT3LWNBkJ2iz3",
+      "active": true,
+      "version": "65f31f4c-186a-4950-8178-f50204bc261c",
+      "changed_fields": [
+        "nodes"
+      ],
+      "node_count": 4
+    },
+    {
+      "code": "WF12",
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "active": true,
+      "version": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+      "changed_fields": [
+        "nodes",
+        "connections",
+        "settings"
+      ],
+      "node_count": 9
+    },
+    {
+      "code": "WF13",
+      "id": "2tr0jpqaaAiq9IOU",
+      "active": true,
+      "version": "bf7f89b1-07a4-42a9-b6e2-98fa3c15d694",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF14",
+      "id": "8ycOUQy9gtT60nkN",
+      "active": true,
+      "version": "e07912bb-c40c-4e18-a016-2f16ff7a38a1",
+      "changed_fields": [],
+      "node_count": 4
+    },
+    {
+      "code": "WF15",
+      "id": "NLugfE3U8dBS88Wg",
+      "active": true,
+      "version": "3f8520e1-15f5-48d4-b61d-c0df8a19cae9",
+      "changed_fields": [],
+      "node_count": 3
+    },
+    {
+      "code": "WF16",
+      "id": "5FRYNPSot18UDpKa",
+      "active": true,
+      "version": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "changed_fields": [],
+      "node_count": 3
+    }
+  ],
+  "comment_clone": {
+    "status": "CLONE_NATIVE_COMMENT_SYNC_PASS",
+    "at": "2026-10-28T12:19:50.456085+00:00",
+    "gateway_image": "sha256:c779448e6d362050d06bf14c97b3a808a31246e596312df89de5dc457b406972",
+    "core_image": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+    "final_scan_generation": 23,
+    "fixture_qdrant_point_ids": [
+      "92035f29-f304-50a9-8315-276a33860ca5",
+      "a7dfd582-3ccc-5c87-8ab0-ef6cf94c3f72"
+    ],
+    "embedding_model": "bge-m3",
+    "dimensions": 1024,
+    "fixture_fts_documents": 2,
+    "limits": [
+      "Native Core/PG/Gateway worker/SQLite/FTS/Qdrant/Ollama exercised; Gemini and n8n not exercised in this suite",
+      "Bootstrap existing Native corpus text-only; only the new fixture is auto-indexed with real embeddings",
+      "Latest 20 bounded actor-authorized comments; no claim of complete journal history"
+    ],
+    "isolation": "Separate PG, Gateway SQLite, Qdrant, credentials and networks; host Ollama embeddings only",
+    "traces": [
+      {
+        "label": "CREATE",
+        "at": "2026-10-28T11:59:32.823621+00:00",
+        "native_id": 377,
+        "lock_version": 0,
+        "activity_ids": [],
+        "document_id": "e726cdca367a45cb07ea817891214411f009dc420245df547a1c021b49a08ff2",
+        "source_id": "actor:18:wp:377",
+        "jobs": [
+          {
+            "id": "0cdd7836-5027-5058-a000-5835096ff37f",
+            "state": "verified"
+          }
+        ],
+        "citations": [
+          {
+            "native_id": 377,
+            "document_id": "2f8de94cad94097146f367a4148220f40b5f3799f9cd6268e1753b86695ff953",
+            "lock_version": 0,
+            "source_id": "op:wp:377",
+            "citation": "/work_packages/377",
+            "match_type": "HYBRID_RRF"
+          }
+        ]
+      },
+      {
+        "label": "UPDATE",
+        "at": "2026-10-28T12:00:25.900524+00:00",
+        "native_id": 377,
+        "lock_version": 1,
+        "activity_ids": [],
+        "document_id": "1725eaaab1e3ce3fb4a642197150beccd97c325c755b83e630a576c13731ce02",
+        "source_id": "actor:18:wp:377",
+        "jobs": [
+          {
+            "id": "0cdd7836-5027-5058-a000-5835096ff37f",
+            "state": "verified"
+          },
+          {
+            "id": "a510b964-41ca-5c05-83b4-318de692aaf5",
+            "state": "verified"
+          }
+        ],
+        "citations": [
+          {
+            "native_id": 377,
+            "document_id": "fca5a915d72b5779280cbd302d59ccb4ec80847713532b8d7ad9e0af62a8ffd8",
+            "lock_version": 1,
+            "source_id": "op:wp:377",
+            "citation": "/work_packages/377",
+            "match_type": "HYBRID_RRF"
+          }
+        ]
+      },
+      {
+        "label": "COMMENT_ONLY",
+        "at": "2026-10-28T12:01:25.608688+00:00",
+        "native_id": 377,
+        "lock_version": 1,
+        "activity_ids": [
+          1036
+        ],
+        "document_id": "f586717a8d2524201dd44e1e14ec6d6e5ec16aea6c7cd833eeff3ab059d5d266",
+        "source_id": "actor:18:wp:377",
+        "jobs": [
+          {
+            "id": "0cdd7836-5027-5058-a000-5835096ff37f",
+            "state": "verified"
+          },
+          {
+            "id": "a510b964-41ca-5c05-83b4-318de692aaf5",
+            "state": "verified"
+          },
+          {
+            "id": "e672b87a-8905-54be-b35b-d30454a295cf",
+            "state": "verified"
+          }
+        ],
+        "citations": [
+          {
+            "native_id": 377,
+            "document_id": "f586717a8d2524201dd44e1e14ec6d6e5ec16aea6c7cd833eeff3ab059d5d266",
+            "lock_version": 1,
+            "source_id": "actor:18:wp:377",
+            "citation": "/work_packages/377",
+            "match_type": "HYBRID_RRF"
+          }
+        ]
+      },
+      {
+        "label": "EDIT_COMMENT",
+        "at": "2026-10-28T12:08:32.767371+00:00",
+        "native_id": 377,
+        "lock_version": 1,
+        "activity_ids": [
+          1036
+        ],
+        "document_id": "1ce2e8314c8c3e7af0db58e0fb100d467fb9d309eb3c9fbab5449c9587b6c60a",
+        "source_id": "actor:18:wp:377",
+        "jobs": [
+          {
+            "id": "0cdd7836-5027-5058-a000-5835096ff37f",
+            "state": "verified"
+          },
+          {
+            "id": "a510b964-41ca-5c05-83b4-318de692aaf5",
+            "state": "verified"
+          },
+          {
+            "id": "e672b87a-8905-54be-b35b-d30454a295cf",
+            "state": "verified"
+          },
+          {
+            "id": "8c7a8102-249c-5855-98e1-f91bf46cf0a4",
+            "state": "verified"
+          }
+        ],
+        "citations": [
+          {
+            "native_id": 377,
+            "document_id": "1ce2e8314c8c3e7af0db58e0fb100d467fb9d309eb3c9fbab5449c9587b6c60a",
+            "lock_version": 1,
+            "source_id": "actor:18:wp:377",
+            "citation": "/work_packages/377",
+            "match_type": "HYBRID_RRF"
+          }
+        ]
+      },
+      {
+        "label": "REMOVE_COMMENT",
+        "at": "2026-10-28T12:19:38.642160+00:00",
+        "native_id": 377,
+        "lock_version": 1,
+        "activity_ids": [],
+        "document_id": "1725eaaab1e3ce3fb4a642197150beccd97c325c755b83e630a576c13731ce02",
+        "source_id": "actor:18:wp:377",
+        "jobs": [
+          {
+            "id": "0cdd7836-5027-5058-a000-5835096ff37f",
+            "state": "verified"
+          },
+          {
+            "id": "a510b964-41ca-5c05-83b4-318de692aaf5",
+            "state": "verified"
+          },
+          {
+            "id": "e672b87a-8905-54be-b35b-d30454a295cf",
+            "state": "verified"
+          },
+          {
+            "id": "8c7a8102-249c-5855-98e1-f91bf46cf0a4",
+            "state": "verified"
+          },
+          {
+            "id": "90872148-03dd-54c2-8031-dbe15a2773fe",
+            "state": "verified"
+          }
+        ],
+        "citations": [
+          {
+            "native_id": 377,
+            "document_id": "fca5a915d72b5779280cbd302d59ccb4ec80847713532b8d7ad9e0af62a8ffd8",
+            "lock_version": 1,
+            "source_id": "op:wp:377",
+            "citation": "/work_packages/377",
+            "match_type": "HYBRID_RRF"
+          }
+        ]
+      }
+    ]
+  },
+  "business_clone": {
+    "status": "CLONE_N8N_NATIVE_RAG_QA_RECOVERY_BUSINESS_PASS",
+    "gateway_image": "sha256:eaaa1217ac79cfac4747e0fa71af40bf0d3c1a447f39e6cc24dc20e55a268fc4",
+    "core_image": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+    "approval_fixture": {
+      "workflows": [
+        {
+          "code": "WF05",
+          "id": "4uV77Wk9nJreHxVn"
+        },
+        {
+          "code": "WF06",
+          "id": "fsdAmlommPxZvQ49"
+        }
+      ],
+      "source_id": "CLONE-APPROVAL-28ae276b-b5a2-4612-9d6e-7587fc396665",
+      "native_id": 377,
+      "lock_version": 0,
+      "proposal_id": "b17aee0c-fc13-4bc2-a1cf-2453ed4197b3",
+      "proposal_hash": "9f90c8a853e40639bba66dc68706cbcf161fa5371f3a48e3abda5182c773c8eb",
+      "rejected_proposal_id": "a5f9a066-a3b3-4ce1-ba7d-c925751f010c",
+      "denied_http": 403,
+      "replay_http": 409,
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    "schedule_receipt": {
+      "actor_id": null,
+      "authority": "machine",
+      "component": "gateway",
+      "kind": "weekly_summary",
+      "model_calls": 0,
+      "native_write_allowed": false,
+      "project_id": 5,
+      "ready": 5,
+      "request_key": "weekly:2026-10-26",
+      "run_id": "04591831-7586-4b0b-ab77-14b5138a0cbe",
+      "state": "COMPLETED",
+      "status": "READY",
+      "targets": 5,
+      "trace_id": "04591831-7586-4b0b-ab77-14b5138a0cbe",
+      "unavailable": 0
+    },
+    "schedule_fixture": "Every minute in clone; production Friday17:00 Asia/Bangkok is statically checked separately",
+    "business_checks": [
+      {
+        "code": "WF01",
+        "state": "PASS",
+        "at": "2026-10-28T16:08:46.712Z"
+      },
+      {
+        "code": "WF02",
+        "state": "PASS",
+        "at": "2026-10-28T16:08:52.792Z"
+      },
+      {
+        "code": "WF03",
+        "state": "PASS",
+        "at": "2026-10-28T16:08:54.041Z"
+      },
+      {
+        "code": "WF04",
+        "state": "PASS",
+        "at": "2026-10-28T16:08:54.681Z"
+      },
+      {
+        "code": "WF07",
+        "state": "PASS",
+        "at": "2026-10-28T16:08:55.775Z"
+      },
+      {
+        "code": "WF08",
+        "state": "PASS",
+        "at": "2026-10-28T16:09:02.650Z"
+      },
+      {
+        "code": "WF09",
+        "state": "PASS",
+        "at": "2026-10-28T16:09:06.337Z"
+      },
+      {
+        "code": "WF10",
+        "state": "PASS",
+        "at": "2026-10-28T16:09:07.914Z"
+      },
+      {
+        "code": "WF11",
+        "state": "PASS",
+        "at": "2026-10-28T16:10:02.003Z"
+      },
+      {
+        "code": "WF12",
+        "state": "PASS",
+        "at": "2026-10-28T16:10:06.666Z"
+      },
+      {
+        "code": "WF13",
+        "state": "PASS",
+        "at": "2026-10-28T16:10:19.643Z"
+      },
+      {
+        "code": "WF14",
+        "state": "PASS",
+        "at": "2026-10-28T16:10:34.437Z"
+      },
+      {
+        "code": "WF15",
+        "state": "PASS",
+        "at": "2026-10-28T16:10:49.088Z"
+      },
+      {
+        "code": "WF16",
+        "state": "PASS",
+        "at": "2026-10-28T16:10:49.491Z"
+      },
+      {
+        "code": "ACL_REVOKE",
+        "state": "PASS",
+        "at": "2026-10-28T16:11:21.852Z"
+      },
+      {
+        "code": "DELETE_TOMBSTONE",
+        "state": "PASS",
+        "at": "2026-10-28T16:11:49.315Z"
+      }
+    ],
+    "executions": [
+      {
+        "id": 62,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fsdAmlommPxZvQ49"
+      },
+      {
+        "id": 61,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fsdAmlommPxZvQ49"
+      },
+      {
+        "id": 60,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "bi8xwS1WpUFtSXsD"
+      },
+      {
+        "id": 59,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 58,
+        "mode": "trigger",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "svniRd83zFK7E7zx"
+      },
+      {
+        "id": 57,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 56,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "dOWkixGDMtpVuSpG"
+      },
+      {
+        "id": 55,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "XeBgKtrOLewxIrTm"
+      },
+      {
+        "id": 54,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "8GXtlf97DeXahEwx"
+      },
+      {
+        "id": 53,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "XeBgKtrOLewxIrTm"
+      },
+      {
+        "id": 52,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "162WcGQqf8aFBJES"
+      },
+      {
+        "id": 51,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "162WcGQqf8aFBJES"
+      },
+      {
+        "id": 50,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "162WcGQqf8aFBJES"
+      },
+      {
+        "id": 49,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "162WcGQqf8aFBJES"
+      },
+      {
+        "id": 48,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "162WcGQqf8aFBJES"
+      },
+      {
+        "id": 47,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "162WcGQqf8aFBJES"
+      },
+      {
+        "id": 46,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "162WcGQqf8aFBJES"
+      },
+      {
+        "id": 45,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "dOWkixGDMtpVuSpG"
+      },
+      {
+        "id": 44,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "8GXtlf97DeXahEwx"
+      },
+      {
+        "id": 43,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fsdAmlommPxZvQ49"
+      },
+      {
+        "id": 42,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "svniRd83zFK7E7zx"
+      },
+      {
+        "id": 41,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "SgNGqxnTHOPF6afJ"
+      },
+      {
+        "id": 40,
+        "mode": "trigger",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "svniRd83zFK7E7zx"
+      },
+      {
+        "id": 39,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fsdAmlommPxZvQ49"
+      },
+      {
+        "id": 38,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "SgNGqxnTHOPF6afJ"
+      },
+      {
+        "id": 37,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "SgNGqxnTHOPF6afJ"
+      },
+      {
+        "id": 36,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "SgNGqxnTHOPF6afJ"
+      },
+      {
+        "id": 35,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "SgNGqxnTHOPF6afJ"
+      },
+      {
+        "id": 34,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "SgNGqxnTHOPF6afJ"
+      },
+      {
+        "id": 33,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "SgNGqxnTHOPF6afJ"
+      },
+      {
+        "id": 32,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "SgNGqxnTHOPF6afJ"
+      },
+      {
+        "id": 31,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fsdAmlommPxZvQ49"
+      },
+      {
+        "id": 30,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "FdpFjwtREPOljX0I"
+      },
+      {
+        "id": 29,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "FdpFjwtREPOljX0I"
+      },
+      {
+        "id": 28,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "AGSMMclEptIko5RN"
+      },
+      {
+        "id": 27,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "AGSMMclEptIko5RN"
+      },
+      {
+        "id": 26,
+        "mode": "trigger",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "svniRd83zFK7E7zx"
+      },
+      {
+        "id": 25,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "G9us5Y1Y4CRn5ps2"
+      },
+      {
+        "id": 24,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "HWzQ3x3xxFPeax2L"
+      },
+      {
+        "id": 23,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "zNKBVfFRvg3K5jJy"
+      },
+      {
+        "id": 22,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "bi8xwS1WpUFtSXsD"
+      },
+      {
+        "id": 21,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "bi8xwS1WpUFtSXsD"
+      },
+      {
+        "id": 20,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "bi8xwS1WpUFtSXsD"
+      },
+      {
+        "id": 19,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fmusIYP8iP75sOIY"
+      },
+      {
+        "id": 18,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 17,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 16,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 15,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 14,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 13,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 12,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 11,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 10,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 9,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 8,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "3beLXZrUzYZGaIuU"
+      },
+      {
+        "id": 7,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fsdAmlommPxZvQ49"
+      },
+      {
+        "id": 6,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fsdAmlommPxZvQ49"
+      },
+      {
+        "id": 5,
+        "mode": "trigger",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "svniRd83zFK7E7zx"
+      },
+      {
+        "id": 4,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fsdAmlommPxZvQ49"
+      },
+      {
+        "id": 3,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "fsdAmlommPxZvQ49"
+      },
+      {
+        "id": 2,
+        "mode": "webhook",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "4uV77Wk9nJreHxVn"
+      },
+      {
+        "id": 1,
+        "mode": "trigger",
+        "status": "success",
+        "finished": 1,
+        "workflowId": "svniRd83zFK7E7zx"
+      }
+    ],
+    "limits": [
+      "WF03 deterministic Native and WF04 local Supervisor; live Gemini is separately tested on MAIN",
+      "QA starting IN TESTING state and reviewer seeded only in disposable clone; all actual reviews and controlled transition use authenticated workflows",
+      "WF14 DLQ state deliberately injected; real Qdrant pause/unpause, status/retry/replay and worker recovery exercised",
+      "Text-only baseline imported; WF15 proves exact new fixture point repair, not completeness of every unrelated baseline vector",
+      "WF16 schedule disabled in clone to control first failure probe; real webhook and persisted 15-minute cache exercised"
+    ]
+  },
+  "gemini_live": [
+    {
+      "run_id": "17054b69-beef-4abc-9a20-a666a58f839f",
+      "state": "done",
+      "execution_mode": "LIVE_GEMINI",
+      "engine": "gemini_supervisor",
+      "model_call_count": 1,
+      "model": "gemini-3.5-flash-lite",
+      "usage": [
+        {
+          "candidatesTokenCount": 273,
+          "promptTokenCount": 1668,
+          "thoughtsTokenCount": 1075,
+          "totalTokenCount": 3016
+        }
+      ],
+      "source_fingerprint": "8c902cb1a038655cccc19dff84bc9e5e59416a7aee5f2a3635c0763f873c71d3",
+      "source_ids": [
+        376
+      ],
+      "context_provenance": {
+        "base_context_sha256": "4799606e0a13ec6d192cbf0d7fc35ea42c6b41cb619738d05b74e2b367eae2b9",
+        "native_references": [
+          {
+            "lock_version": 0,
+            "native_id": 376
+          }
+        ],
+        "rag_hits": [
+          {
+            "document_id": "4a08e5947b04239d18f871a77b1d9abbe32f907389f1b842f8cb53e308055283",
+            "lock_version": 0,
+            "native_id": 376,
+            "snippet_sha256": "f3e960f8398d086892cfc59b3fc88039b62531d9d564ef545a6344bd661a0664",
+            "source_id": "op:wp:376"
+          }
+        ],
+        "rag_state": "HITS"
+      },
+      "agents": [
+        {
+          "agent": "pm",
+          "state": "COMPLETED",
+          "model_used": true,
+          "references": [
+            {
+              "lock_version": 0,
+              "schema_version": 1,
+              "work_package_id": 376
+            }
+          ]
+        },
+        {
+          "agent": "reviewer",
+          "state": "COMPLETED",
+          "model_used": false,
+          "references": [
+            {
+              "lock_version": 0,
+              "schema_version": 1,
+              "work_package_id": 376
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": "9f3cda3e-8a60-4784-bef8-d2a79c9c1682",
+      "state": "done",
+      "execution_mode": "LIVE_GEMINI",
+      "engine": "gemini_supervisor",
+      "model_call_count": 1,
+      "model": "gemini-3.5-flash-lite",
+      "usage": [
+        {
+          "candidatesTokenCount": 281,
+          "promptTokenCount": 1663,
+          "totalTokenCount": 1944
+        }
+      ],
+      "source_fingerprint": "8c902cb1a038655cccc19dff84bc9e5e59416a7aee5f2a3635c0763f873c71d3",
+      "source_ids": [
+        376
+      ],
+      "context_provenance": {
+        "base_context_sha256": "1a18758cc621e5695c8cd8556354c4ac4dcc96db863941c396c047adf3b5a4f1",
+        "native_references": [
+          {
+            "lock_version": 0,
+            "native_id": 376
+          }
+        ],
+        "rag_hits": [
+          {
+            "document_id": "4a08e5947b04239d18f871a77b1d9abbe32f907389f1b842f8cb53e308055283",
+            "lock_version": 0,
+            "native_id": 376,
+            "snippet_sha256": "f3e960f8398d086892cfc59b3fc88039b62531d9d564ef545a6344bd661a0664",
+            "source_id": "op:wp:376"
+          }
+        ],
+        "rag_state": "HITS"
+      },
+      "agents": [
+        {
+          "agent": "pm",
+          "state": "COMPLETED",
+          "model_used": true,
+          "references": [
+            {
+              "lock_version": 0,
+              "schema_version": 1,
+              "work_package_id": 376
+            }
+          ]
+        },
+        {
+          "agent": "reviewer",
+          "state": "COMPLETED",
+          "model_used": false,
+          "references": [
+            {
+              "lock_version": 0,
+              "schema_version": 1,
+              "work_package_id": 376
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "registered_file": {
+    "status": "MAIN_REGISTERED_FILE_REVISION_AND_WF11_READ_PASS",
+    "revision": {
+      "status": "UPDATED",
+      "document_id": "3c1f58ffd56f3c48f71b9378a6c96b85a005a1a5b097daeed4633b85122aa6dc",
+      "source_id": "file:main-workflow-contract",
+      "chunks_count": 5,
+      "source_hash": "3c1f58ffd56f3c48f71b9378a6c96b85a005a1a5b097daeed4633b85122aa6dc",
+      "vector_indexed": true,
+      "error": null,
+      "source_sha256": "0283711d579898eab1b8026ee418cde7dfc9631c8c2fe72a3820814ace1126f1",
+      "file_name": "main-workflow-contract.md",
+      "citation": "file:main-workflow-contract#sha256=0283711d579898eab1b8026ee418cde7dfc9631c8c2fe72a3820814ace1126f1",
+      "model_used": false
+    },
+    "replay_identical": true,
+    "read_content_matches": true,
+    "old_revision_http": 409,
+    "qa_http": 200
+  },
+  "mcp_http": {
+    "at": "2026-10-28T11:59:55.250993+00:00",
+    "status": "LIVE_READ_ONLY_MCP_PASS",
+    "transport": "Streamable HTTP /mcp via MCP Python ClientSession",
+    "server": "qldapm-openproject",
+    "tools_count": 68,
+    "invoked": [
+      "initialize",
+      "tools/list",
+      "tools/call identity"
+    ],
+    "identity": {
+      "user_id": 19,
+      "name": "QLDAPM BA-PM",
+      "role": "PM",
+      "project_id": 5
+    },
+    "anonymous_http": 401,
+    "owner_only_tools_excluded": true,
+    "main_business_writes": 0,
+    "model_calls": 0
+  },
+  "mcp_stdio": {
+    "status": "MAIN_STDIO_CLIENT_INTEROPERABILITY_PASS",
+    "tools": 77,
+    "identity": {
+      "user_id": 19,
+      "project_id": 5
+    },
+    "owner_call_denied": true,
+    "discovery_scope": "Static catalog includes restricted names; authenticated Gateway validates every invocation",
+    "native_writes": 0,
+    "model_calls": 0
+  },
+  "preflight": {
+    "at": "2026-10-28T16:38:14.249074+00:00",
+    "status": "PASS_READ_ONLY_PREFLIGHT",
+    "checks": {
+      "main_containers": true,
+      "port_18088": true,
+      "port_18089": true,
+      "port_5679": true,
+      "port_6333": true,
+      "port_11434": true,
+      "registered_knowledge": true,
+      "protected_legacy_points": true,
+      "wp376_preserved": true,
+      "wp371_preserved": true,
+      "qa_pending": true,
+      "gateway_sqlite": true,
+      "pm_token_valid": true,
+      "workflow_activation": true,
+      "recent_backup": true,
+      "backup_disk": true
+    },
+    "details": {
+      "runtime": {
+        "project_id": 5,
+        "containers": {
+          "qldapm-openproject-db-1": {
+            "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+            "state": "running",
+            "health": "healthy"
+          },
+          "qldapm-openproject-cache-1": {
+            "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-qdrant": {
+            "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-openproject-hocuspocus-1": {
+            "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-openproject-web-1": {
+            "image": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+            "state": "running",
+            "health": "healthy"
+          },
+          "qldapm-openproject-worker-1": {
+            "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-openproject-cron-1": {
+            "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-ai-gateway-1": {
+            "image": "sha256:eaaa1217ac79cfac4747e0fa71af40bf0d3c1a447f39e6cc24dc20e55a268fc4",
+            "state": "running",
+            "health": "healthy"
+          },
+          "qldapm-n8n-main": {
+            "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          },
+          "qldapm-openproject-proxy-1": {
+            "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+            "state": "running",
+            "health": "NOT_CONFIGURED"
+          }
+        },
+        "staging_operations": false,
+        "scope": "Container state/health only; business acceptance is separate"
+      },
+      "active_work": 0,
+      "knowledge": {
+        "status": "PARTIAL_UNMATCHED_POINTS",
+        "project_id": 5,
+        "native_visible_packages": 339,
+        "documents": 441,
+        "chunks": 2027,
+        "points_in_project": 2030,
+        "sqlite_quick_check": "ok",
+        "missing_native_ids": [],
+        "missing_point_ids": [],
+        "payload_mismatch_ids": [],
+        "invalid_chunk_hash_ids": [],
+        "invalid_source_hashes": [],
+        "fts_error_sources": [],
+        "orphan_fts_rows": 0,
+        "stale_sources": [],
+        "unmatched_points": [
+          {
+            "id": "2d5e7bdf-b4e0-52c6-b360-f45c1fbd74bf",
+            "source_id": "op:wp:42"
+          },
+          {
+            "id": "59e1f1a4-b659-5c3d-ab23-ebb309481dc7",
+            "source_id": "test:local:adr:0001"
+          },
+          {
+            "id": "b838195a-5afd-5f40-a70d-23c2ca9007bc",
+            "source_id": "test:wp:999"
+          }
+        ],
+        "native_sources_outside_visible_scope": 0,
+        "mutations_performed": false,
+        "cross_store_snapshot": "Main ingestion lease; external writers must honor the same lock"
+      },
+      "pm_token_remaining_days": 29.56,
+      "backup_status": "PASS_MAIN_DAILY_SNAPSHOT"
+    },
+    "warnings": [],
+    "limits": [
+      "Preflight is not business E2E or human UAT",
+      "No physical reboot or Qdrant restore qualification",
+      "Exact protected records reflect this takeover baseline; review legitimate later business changes"
+    ],
+    "native_writes": 0,
+    "staging_operations": false
+  },
+  "post_final_backup": {
+    "status": "PASS_MAIN_DAILY_SNAPSHOT",
+    "at": 1793205019.5779896,
+    "directory": "20261028T163019Z-e13247c4",
+    "native_status": "PASS_NATIVE_AND_SQLITE_SNAPSHOT",
+    "auxiliary_status": "PASS_PRIVATE_N8N_ASSETS_SNAPSHOT_ONLY",
+    "captured_active_work": 0,
+    "native_writes": 0,
+    "staging_operations": false,
+    "limits": [
+      "Individual consistent snapshots, not atomic across services",
+      "Qdrant collection is not backed up by this task",
+      "No automatic restore, history deletion or replay; existing backups retained",
+      "Runs only while the limited interactive Windows user and Docker are available"
+    ]
+  },
+  "preservation": {
+    "native_business_writes": 0,
+    "human_qa_decisions": 0,
+    "staging_operations": false,
+    "public_ports_added": false
+  },
+  "source_sha256": {
+    "openproject/ai/gateway/native_incremental.py": "23a8eb4f822938ddd4cd3d59906471c3af15e83e140d94f582984705f1bcea8b",
+    "openproject/ai/gateway/openproject_loader.py": "a712bc097c03d8a085f2fd1cdafb6e5557ec723a6840b853702cf0f1b5fcd32d",
+    "openproject/ai/gateway/service.py": "19ad7db9b2edc122d87e8fbce6b2414fe2c62e2fc6f0af30b25206680edc1e01",
+    "openproject/ai/gateway/automation.py": "f15c37cf1220404f78b8abcb19f41f4c694b036fd38e4f7fe09b74572972df5b",
+    "openproject/ai/gateway/store.py": "dfb2d614dbdac2bceff28071e8be3b9fa9883114e7f7519280f4a21d9bd81dc9",
+    "openproject/ai/gateway/weekly_report.py": "a827773969cc26d8710965f9b22c0e8533a4027b1e8ddf57ec9975950acffdfa",
+    "openproject/ai/gateway/local_queries.py": "5c9bb7980b5c66ee7d08086f306275ae002a7c02212f552ea9678084db49584a",
+    "openproject/ai/gateway/file_knowledge.py": "a0cc223eddc42462711fcdf53ac69af879d6610d40f80371b40565461cdb617c",
+    "openproject/ai/gateway/local_loaders.py": "fd3d903d9a5ee489d46d2044b513a8d34bb98c16d40222941d4aa697624b9bf6",
+    "openproject/ai/gateway/pdf_text.py": "690f5ab4f3b47ec7053da36fc1084204ef0cda9632bfb2beb7c907881c027b8c",
+    "openproject/ai/gateway/native_deletion.py": "7d57b353c2bedaa6290694bdb7bb69e3b324c88f84b6fd57259dc8e717de359c",
+    "openproject/ai/gateway/native_qa.py": "824a9881cec37a19f593c23756622b90e709f7e320d900c2a620d510aa2fc13c",
+    "openproject/ai/requirements.txt": "50887ac1fbedb696d246eb7f860c558ad670804d987d3d3417db750817b99c79",
+    "openproject/ai/requirements.lock.txt": "78401f7fd13ed3c9f9bd0f2dea11a6e55759e0e044baaf350456818cfe0cfa32",
+    "openproject/ai/Dockerfile": "8cd7dd9a43af2d00ac3a2f3bd29117d42eaeb203b27004102107ca8610e8ba5a",
+    "openproject/ai/Dockerfile.gateway-patch": "65b0a572d945374dfb31cecd15ed4c7e813a78346dae99146ce0c2554cb0ec07",
+    "openproject/ai/knowledge_sources/main-workflow-contract.md": "0283711d579898eab1b8026ee418cde7dfc9631c8c2fe72a3820814ace1126f1",
+    "openproject/ai/automation/deploy_real_n8n_workflows.py": "e370f146a1ee2a058b88eaf161d32c68d8ad3b61dd7960694c551656c97b752d",
+    "openproject/ai/automation/comment_sync_qualification.py": "9db1e95b7077525ec03484790cf9c822f3a4e839694293e5d6ce6f1c41910226",
+    "openproject/ai/automation/weekly_summary_qualification.py": "055d89fbe7a4b0bc55a1296a9c26f79c4745bde3f05744a0cd1519070c9891ba",
+    "openproject/ai/automation/main_operations.py": "95e786ee716dc7884eb04998172513c4df38feb18b58c9c8eba1ef9065540840",
+    "openproject/ai/automation/main_auxiliary_backup.py": "1899f491d9681c515c0d0a663d06b5ad171519947a222787ff9481fb2a47b1c8",
+    "openproject/ai/automation/main_backup_schedule.py": "98b430541331d55d4e6fa95fe2ae44fce1d9b0884ba57f93ad95ff1c9edc5d7d",
+    "openproject/ai/automation/operator_uat_preflight.py": "a3f7c3d826ed085319ccbdcb00bc29bbddb3e3564690846e55854a706276cd00",
+    "openproject/ai/Schedule-MainBackup.ps1": "7cd9d697150652f1702cf03202daba90d3d161858d35c490b1c1f6989d65d556"
+  },
+  "private_artifacts": {
+    "root": "%LOCALAPPDATA%/QLDAPM/openproject-ai/operator/codex-comment-sync-20261028",
+    "sha256": {
+      "main-final-readback.json": "9d34bb233f313bcc694a00b183d152eeeb670bbb6f230a8a75b9f3891de94eb6",
+      "main-final-file-and-qa-read.json": "d8c44b9d1376603377864986cfe0faf5b4d885f4083db3df1e6be78209fb76bb",
+      "qualification-6/result.json": "a583f2a6d43ab6425d9d266b0b3b042fbd4fb79646e9dd21e33f576571b3cc2d",
+      "workflow-business-10/result.json": "5bfe077997b39065ada87a097124d93b986c7f0a3626d9bc6782aef460773c7e",
+      "workflow-business-10/n8n/business-result.json": "1efd2cf6abc46908f35ed9cbb69c5d180dcc4aea6fccbc07ebfd0f9f0076e989",
+      "deployment-final/result.json": "6d002506d2c9955b4abc11f30b97020d2955e3af03305f146696240a2adcb8dc",
+      "WF11-deployment-result.json": "c19af28d9e9cd83fce10c8552ecccee24a07119e41a22913a23d5e4a7c53df92",
+      "WF12-deployment-result.json": "fd9b441057ff2007fe3e893dd2eb796f7f0665c5e24e2a65efbd312187ef2316",
+      "main-gemini-read-result.json": "94ab9298eb2d10a2f56b9baad27423e80efe27ef8ca590b0d497c272feaf9248",
+      "main-WF03-gemini-result.json": "b739e296fe0247ba7eec65c8f193e0b7e0600bc5b42ace205225bad30d3358d6",
+      "mcp-readonly-result.json": "205a1d88805f8dfa93095296f6980f1ecd6c37a3ee0cf567d8d22a41f66f1025",
+      "mcp-stdio-readonly-result.json": "4882473b6fd7692c38f80f3f02f884a76d2fdb0250d7dc5ebe986c007dc3af35",
+      "operator-preflight-final.json": "9188b73ef77edf23ed34db478ee4d930f4032ca52a003d22cac463a67342adf7",
+      "final-qualified-backup/last-success.json": "1761b7757e282bc99941f6d6367a405cece28cce98a86e8f077a2fdb7c4797ba"
+    }
+  },
+  "not_qualified": [
+    "Human UAT/sign-off",
+    "Physical reboot/pre-login recovery",
+    "Full Qdrant/cross-service restore",
+    "One continuous fresh clone Native change to live Gemini chain",
+    "Fresh live model calls for every specialist",
+    "External delivery: missing credentials/destination/authorization"
+  ],
+  "delivery_verification": {
+    "at": "2026-10-28T16:46:39.761061+00:00",
+    "status": "DOCUMENTATION_SECURITY_AND_EVIDENCE_QA_PASS",
+    "documentation_files_checked": 7,
+    "subsystems": 28,
+    "workflow_definitions": 16,
+    "deployed_source_hashes_match": true,
+    "private_artifacts_hashes_match": true,
+    "plaintext_secret_matches": 0,
+    "targeted_host_tests": {
+      "modules": [
+        "test_operator_uat_preflight",
+        "test_main_backup_schedule",
+        "test_main_operations"
+      ],
+      "tests": 14,
+      "result": "PASS"
+    },
+    "git_diff_check": "PASS",
+    "historical_tracked_changes": "NONE",
+    "clone_comment_weekly_label_containers_remaining": 0,
+    "backup_task_last_run": "2026-10-28T23:35:26+07:00",
+    "backup_task_last_result": 0
+  }
+}

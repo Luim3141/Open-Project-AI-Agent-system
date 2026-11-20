@@ -1,0 +1,11 @@
+# Resume — 2026-10-19T07:24:51.120587+07:00
+
+GEMINI_LIVE_STAGING_VERIFIED. Final serving Gatewaysha256:40cb4806edd9c415bfb507a6c287c112283609f66263230e10cac242354e9a80 /Core3b unchanged.178Windows/63LinuxPASS,latestA-E+BE+BAdenyPASS;5realroles reopened on40cb withTOTP/logout/CC/historyisolated. Actual model workflows ran on7ffee/1c4; SDK/live_agents byte-identical on40cb, complete MockNative path + all saved outputs reopened. No Googlecalls after ACL-only patch:19generations/38HTTP,ledger509.
+
+Final reviewer found progress/failedpartial ACL readback gap, regression RED before fix. source service.py carries all contextIDs/fingerprint on progress/wait/failure; get_ai_run reauthorizes Native/version and validates partialscopes. HistoricalfailedpartialIDs63e9525d/c763e4d7 nowSTALE,rawDBhistory kept; successfulD7d528511 resultstillvisible. Exactproof acl-live-readback.json.
+
+18servinghealthy/17otherID/start/restart unchanged,372WP/217Nativefingerprints retained;only4accessmetadata tableschange.8protectedprivatefiles/token/TOTPsecurity same;12userskeepattributesexceptaccess timestamps;knowledge4oldDocs+1PM38/3chunks. Servingbusinesswrites0;clone451writes2total,version2.4ownedclones stopped/binds retained;no reseed/delete. Backup ba33c28b-2cf2-4ad7-b9b8-c50c69ad08df post-acl-backup.json and post-acl-restore.json PASS3SQLitecoldrestore. Model/key/project/billing/FreeOnly unchanged,outputcap3000,max5generation/12HTTP/3agents/300s.
+
+Ten handoff docs inparent;FINAL_LIVE_GEMINI_READINESS.md authoritative. TASKS extension only,113objects unchanged;progress.py nowrendersGemini extension ahead of historicalUAT. Corecaptionlocal/plainMarkdownP3;semanticacceptancehuman;20capacityDEFERRED;Mainnotpromoted;TOTP_DO_NOT_ROTATE. No newDockerDesktopfullrestart. No pendingapproval/deploy in current scope. Do not rerunprovision/deploy/failedruns duehistorical docs. NextownercontentUAT,CoreUXcandidateonlyifrequested,Mainpromotiononlyapproved.
+
+WorkspaceD:\AI project\QLDAPM chat,branchcodex/local-multi-agent-upgrade,HEADde7fe8f,existinguntrackeddata retained;noGitcommit/reset/clean/push. Privateevidence/drivers C:\Users\LUIM\AppData\Local\QLDAPM\openproject-ai\operator\gemini-live-20261019_0013.

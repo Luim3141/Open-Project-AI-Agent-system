@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-11-03T02:17:21.241813+00:00",
+  "author": "independent evaluation agent separate from implementation agent; HUMAN_REVIEW_PENDING",
+  "independence": "No previously locked holdout cases or labels intentionally reused. Source documents overlap past experiments because the live Native corpus is only 12 work packages; new wording may share underlying features. No human adjudication or population sampling. Positive cases whose literal support appears in more than one work package were excluded before any scoring, because copied comments create ambiguous citations and document-split leakage. This check cannot detect all paraphrased duplication.",
+  "source_manifest_sha256": "c3e42f3adf7dc0976bdb58c796c290250d5e3193d6c5d7e9d850a6dc35fb6b24",
+  "dev_sha256": "085c0036415c0be33868515a7839887a2dbea079197e960251bb585bedc4ddd1",
+  "holdout_sha256": "65aa1399a233a49eb39edd2f5aa2b9af09827c7fdb983b5ac8ae0eaac6a6373c",
+  "source_splits": {
+    "dev": [
+      380,
+      381,
+      388,
+      389,
+      390,
+      391
+    ],
+    "holdout": [
+      379,
+      382,
+      383,
+      384,
+      386,
+      387
+    ]
+  },
+  "acceptance": {
+    "holdout_hit_at_5_min": 0.8,
+    "holdout_false_positive_rate_max": 0.05,
+    "citation_identity_errors_max": 0,
+    "acl_errors_max": 0,
+    "warm_query_p95_seconds_max": 5
+  },
+  "holdout_policy": "Do not open for implementation, embed, score or calibrate on holdout until candidate source and parameters are frozen. Author-only label QA is allowed before lock; preserve frozen hashes and flag subsequent ambiguity.",
+  "scope": "PM actor20, Project6 native snapshots; local file corpus requires separate ACL/citation evaluation.",
+  "counts": {
+    "dev": {
+      "positive": 13,
+      "negative": 20,
+      "mixed": 3,
+      "excluded_ambiguous": 14
+    },
+    "holdout": {
+      "positive": 29,
+      "negative": 22,
+      "mixed": 3,
+      "excluded_ambiguous": 14
+    }
+  },
+  "label_limitations": [
+    "Positive support checked as literal source offset and SHA256.",
+    "Negative capability checked by humanlike agent review and absence of a distinctive term; semantic negatives are not human-adjudicated.",
+    "VN/EN queries are paired by intent; counts are correlated, not independent samples.",
+    "Documents in earlier experiments recur, even though queries were independently authored; prior knowledge of project features may bias authorship.",
+    "Human adjudication and independent review after candidate lock remain pending."
+  ],
+  "qa_before_candidate_lock": "Author self-review widened four support types to include complete answers and excluded two dev MySQL cases whose question could permit a negative inference from SQLite evidence. Query holdout unchanged and never scored. This is not independent adjudication."
+}

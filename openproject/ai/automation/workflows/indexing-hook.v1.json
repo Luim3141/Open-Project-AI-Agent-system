@@ -1,0 +1,48 @@
+{
+  "name": "QLDAPM Local Second Brain Indexing Hook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "qldapm-index-hook",
+        "options": {}
+      },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "return items.map(i => { i.json.sanitized = true; return i; });"
+      },
+      "name": "Local Redaction Check",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "http://staging-gateway:18092/api/v1/internal/knowledge/index",
+        "options": {}
+      },
+      "name": "Gateway Ingestion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [650, 300]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [[{"node": "Local Redaction Check", "type": "main", "index": 0}]]
+    },
+    "Local Redaction Check": {
+      "main": [[{"node": "Gateway Ingestion", "type": "main", "index": 0}]]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "at": 1794478865.0178373,
+  "scope": "OFFLINE CONTRACTS; fixtures and real module code; not MAIN E2E",
+  "acceptance_red": {
+    "exit_code": 1,
+    "expected_exit": 1,
+    "passed": true,
+    "tail": "line 119, in run\n    return self._loop.run_until_complete(task)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^\n  File \"/usr/local/lib/python3.13/asyncio/base_events.py\", line 726, in run_until_complete\n    return future.result()\n           ~~~~~~~~~~~~~^^\n  File \"/qa/test_acceptance_answer.py\", line 48, in test_unprompted_done_claim_is_grounded_too\n    self.assertIn('chưa',answer.lower())\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'chưa' not found in 'task đã done.'\n\n----------------------------------------------------------------------\nRan 5 tests in 0.083s\n\nFAILED (failures=4)\n"
+  },
+  "telegram_green": {
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "tail": "..............................................................\n----------------------------------------------------------------------\nRan 62 tests in 1.304s\n\nOK\n"
+  },
+  "gateway_modules": [
+    "test_gateway",
+    "test_agent_observer",
+    "test_telegram_notifications",
+    "test_observer_read_path",
+    "test_supervisor",
+    "test_agent_queue",
+    "test_engineering_owner_controls",
+    "test_engineering_continuation",
+    "test_engineering_fencing",
+    "test_engineering_delivery_recovery",
+    "test_engineering_monitor_current",
+    "test_engineering_catalog_limit",
+    "test_engineering_reporting_contract",
+    "test_engineering_github_owner_contract",
+    "test_engineering_github_recovery",
+    "test_engineering_github_sync",
+    "test_business_acceptance",
+    "test_human_approval_lifecycle",
+    "test_native_qa_workflow",
+    "test_native_qa_evidence",
+    "test_takeover_security",
+    "test_automation_auth",
+    "test_n8n_lifecycle_adapter",
+    "test_n8n_lifecycle_outbox",
+    "test_notification_delivery",
+    "test_knowledge_storage",
+    "test_knowledge_integrity",
+    "test_knowledge_search",
+    "test_rag_recovery",
+    "test_cc_summary_reads",
+    "test_native_deletion",
+    "test_native_dependency",
+    "test_native_dependency_changes",
+    "test_native_write_engine",
+    "test_native_create_recovery",
+    "test_native_wbs",
+    "test_native_wbs_analysis",
+    "test_native_wbs_parent_effects",
+    "test_native_wbs_workflow",
+    "test_wbs_hierarchy_readback",
+    "test_business_lifecycle",
+    "test_application_qa_intake",
+    "test_application_qa_proof",
+    "test_application_qa_admission",
+    "test_application_qa_verify_action",
+    "test_application_qa_bridge",
+    "test_bug_qa_evidence_integration",
+    "test_native_phase",
+    "test_native_phase_api",
+    "test_native_phase_bridge",
+    "test_native_qa_atomic_transition"
+  ],
+  "gateway": {
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "tail": "tp://127.0.0.1:8090/api/v1/commands \"HTTP/1.1 403 Forbidden\"\nHTTP Request: POST http://127.0.0.1:8090/api/v1/commands \"HTTP/1.1 403 Forbidden\"\nHTTP Request: POST http://127.0.0.1:8090/api/v1/commands \"HTTP/1.1 403 Forbidden\"\n...........StreamableHTTP session manager started\nHTTP Request: POST http://localhost:8090/api/v1/commands \"HTTP/1.1 409 Conflict\"\nHTTP Request: POST http://localhost:8090/api/v1/commands \"HTTP/1.1 409 Conflict\"\nStreamableHTTP session manager shutting down\n....\n----------------------------------------------------------------------\nRan 423 tests in 21.729s\n\nOK (skipped=22)\n"
+  },
+  "host_contracts": {
+    "exit_code": 0,
+    "tail": "............\n----------------------------------------------------------------------\nRan 12 tests in 3.278s\n\nOK\n"
+  },
+  "node_contracts": {
+    "exit_code": 0,
+    "tail": "......\n----------------------------------------------------------------------\nRan 6 tests in 1.895s\n\nOK\n"
+  }
+}

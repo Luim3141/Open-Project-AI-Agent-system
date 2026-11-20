@@ -1,0 +1,74 @@
+[AI backlog] Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {"exists": true|false}, xử lý HTTP 422 khi ID không hợp lệ và
+QLDAPM PM/BA engineering plan 4e3626a4-7af2-47ff-b1e7-c2bf38f602f1
+Unit: feedback-e44b47e2e8610c4f
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-20c2a94109f4e78f"],"objective":"Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và bổ sung kiểm thử tự động.","priority":1,"unit":"feedback-e44b47e2e8610c4f"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/exists với task_id tồn tại trả về HTTP 200 và {\"exists\": true}.","AC2: GET /tasks/{task_id}/exists với task_id không tồn tại trả về HTTP 200 và {\"exists\": false}.","AC3: GET /tasks/{task_id}/exists với task_id không phải số nguyên trả về HTTP 422.","AC4: Các API hiện tại bao gồm GET /tasks/{task_id}, /tasks/summary, /healthz và CRUD/search hoạt động bình thường mà không đổi schema SQLite."],"api_behavior":["GET /tasks/{task_id}/exists nhận tham số đường dẫn task_id dạng số nguyên.","Trả về HTTP 200 kèm cấu trúc JSON {\"exists\": true} nếu task tồn tại trong SQLite.","Trả về HTTP 200 kèm cấu trúc JSON {\"exists\": false} nếu task không tồn tại.","Trả về HTTP 422 nếu task_id truyền vào không phải là số nguyên hợp lệ."],"citations":[379],"edge_cases":["Truyền task_id chứa ký tự chữ cái hoặc chuỗi không hợp lệ trả về HTTP 422.","Truyền task_id có giá trị không khớp kiểu số nguyên trả về HTTP 422.","Kiểm tra khi cơ sở dữ liệu SQLite trống."],"limitations":["Không thay đổi schema SQLite hiện có.","Không tự động merge hoặc deploy mã nguồn mà không có sự cho phép."],"scope":["Triển khai endpoint GET /tasks/{task_id}/exists","Xử lý trả về HTTP 200 với {\"exists\": true} hoặc {\"exists\": false}","Xử lý trả về HTTP 422 khi task_id không phải là số nguyên","Viết các bài kiểm thử tự động tập trung cho endpoint mới"],"summary":"Bổ sung API GET /tasks/{task_id}/exists để kiểm tra sự tồn tại của một task theo ID số nguyên, trả về JSON chuẩn và xử lý lỗi 422 cho ID không hợp lệ, đồng thời giữ nguyên các API cũ và schema SQLite."},"reviewers":["reviewer","qa"],"virtual_executor":"dev"}
+
+Engineering unit feedback-e44b47e2e8610c4f
+
+{
+  "status": "succeeded",
+  "text": "Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "a150f3d690288ff95451c2667954f09661aa9604",
+  "head_sha": "b20fb554cb0b45f2938ac11ba9e736708dcb1bf0",
+  "pr_url": "[Native-reference:47e52f684bc4f3e9]",
+  "delivery": {
+    "baseRefName": "codex/openclaw-feedback-20c2a94109f4e78f",
+    "headRefName": "codex/openclaw-feedback-e44b47e2e8610c4f",
+    "headRefOid": "b20fb554cb0b45f2938ac11ba9e736708dcb1bf0",
+    "state": "OPEN",
+    "url": "[Native-reference:47e52f684bc4f3e9]"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\814f7a28-6c1a-4d2e-82d6-f0d118e2081c\\acceptance-0.xml",
+    "log_sha256": "721f82c11830de3321b387d0d468f28060f09d2d34e329f62ba0e2703805aa83"
+  },
+  "review_evidence": {
+    "revision": "d7a2bf7c84aaeaf41663e9e6e9e8c75d8712dacaf2edce4d2e2f87c796f20497",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-e44b47e2e8610c4f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC1",
+        "AC2",
+        "AC3",
+        "AC4",
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\814f7a28-6c1a-4d2e-82d6-f0d118e2081c",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_tasks.py"
+  ]
+}
+Bình luận #1132: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#8 Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {"exists": true|false}, xử lý HTTP 422 khi ID không hợp lệ và]([Native-reference:47e52f684bc4f3e9])
+- Trạng thái GitHub: **`OPEN`**
+- Base Branch: `codex/openclaw-feedback-20c2a94109f4e78f` | Head Commit: `b20fb554`
+- Phân loại nhánh: `UNMERGED`
+
+[qldapm-github-sync:2e1f99d3f7b1053da631bd31bf1ddb0e04fa7fa800eb1af87a27c25c12998554]
+Bình luận #1142: QLDAPM PM/BA engineering plan 8751d17a-4c6c-4f5f-b00c-6e1239f5353c
+Unit: feedback-e44b47e2e8610c4f
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-20c2a94109f4e78f"],"objective":"Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và (verified delivery reused)","priority":3,"unit":"feedback-e44b47e2e8610c4f"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/title với ID hợp lệ trả về HTTP 200 và payload {\"id\": id, \"title\": title}.","AC2: GET /tasks/{task_id}/title với ID không tồn tại trả về HTTP 404.","AC3: GET /t
+Bình luận #1156: QLDAPM PM/BA engineering plan 2f7cba6e-666f-4e94-b7f2-124dd7e153e8
+Unit: feedback-e44b47e2e8610c4f
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["feedback-20c2a94109f4e78f"],"objective":"Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và (verified delivery reused)","priority":3,"unit":"feedback-e44b47e2e8610c4f"},"functional_specification":{"acceptance":["AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.","AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.","AC3:

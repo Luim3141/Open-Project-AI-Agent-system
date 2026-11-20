@@ -1,0 +1,241 @@
+{
+  "at": "2026-10-28T21:25:00.767316+00:00",
+  "verdict": "AUTOMATION_CORE_E2E_PASS_WITH_LIMITATIONS",
+  "new_production_defects": 0,
+  "production_workflow_image_deployments": 0,
+  "gemini_continuous": {
+    "status": "EXTERNAL_DEPENDENCY_BLOCKED",
+    "test_key_present": false,
+    "config_prepared": "%LOCALAPPDATA%/QLDAPM/openproject-ai/operator/gemini-isolated-test",
+    "enabled": false,
+    "production_key_copied_or_decrypted": false,
+    "fake_proof_created": false,
+    "requirements": [
+      "separate authorized test credential",
+      "dedicated test Google project/quota ledger; shared production project requires an already approved shared limiter, never a reset counter",
+      "exact model and real test-project rpm/tpm/rpd quotas",
+      "Free tier and billing disabled verification",
+      "data-scope authorization matching clone context",
+      "fresh key-bound manual-official-console proof accepted by Gemini.settings"
+    ]
+  },
+  "natural_schedules": {
+    "WF07": {
+      "status": "PENDING_SCHEDULED_OBSERVATION",
+      "scheduled_at": "2026-10-29T08:00:00+07:00",
+      "observer_at": "2026-10-29T08:05:00+07:00"
+    },
+    "WF12": {
+      "status": "PENDING_SCHEDULED_OBSERVATION",
+      "scheduled_at": "2026-10-30T17:00:00+07:00",
+      "observer_at": "2026-10-30T17:05:00+07:00"
+    },
+    "WF16": {
+      "workflow": "WF16",
+      "scheduled_at": "2026-10-29T04:15:00+07:00",
+      "observed_at": "2026-10-29T04:17:54.407099+07:00",
+      "native_writes_by_observer": 0,
+      "execution_id": 2630,
+      "trigger_at_utc": "2026-10-28 21:15:00.115",
+      "stopped_at_utc": "2026-10-28 21:15:05.861",
+      "workflow_version": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "retry_of": null,
+      "retry_success_id": null,
+      "execution_error": false,
+      "business_state": "HEALTHY",
+      "receipt_id": "2a86f84b-5b85-40c3-8f69-4205d7c7a270",
+      "idempotency_key": "health_monitor:1992469",
+      "cached": false,
+      "status": "OBSERVED_HEALTHY"
+    }
+  },
+  "observer_task": {
+    "Name": "QLDAPM-NaturalSchedule-Observation",
+    "State": "Ready",
+    "LastResult": 0,
+    "NextRun": "2026-10-29T08:05:00+07:00",
+    "Principal": "LUIM",
+    "LogonType": "Interactive",
+    "RunLevel": "Limited",
+    "Hidden": true,
+    "MultipleInstances": "IgnoreNew",
+    "Triggers": [
+      {
+        "StartBoundary": "2026-10-29T08:05:00+07:00",
+        "Enabled": true
+      },
+      {
+        "StartBoundary": "2026-10-30T17:05:00+07:00",
+        "Enabled": true
+      }
+    ],
+    "Actions": [
+      {
+        "Execute": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "Arguments": "-NoProfile -NonInteractive -WindowStyle Hidden -File \"D:\\AI project\\QLDAPM chat\\openproject\\ai\\Schedule-NaturalObservation.ps1\" -Run"
+      }
+    ]
+  },
+  "observer_results": "%LOCALAPPDATA%/QLDAPM/openproject-ai/operator/natural-schedule-observations/*-latest.json",
+  "startup": {
+    "docker_restart": "AFTER_DOCKER_RESTART_PASS (prior observed user restart; not repeated)",
+    "windows_login": "NOT_QUALIFIED_BY_NEW_LOGIN_OBSERVATION",
+    "before_login": "NOT_QUALIFIED; current tasks use interactive LUIM",
+    "physical_reboot": "PHYSICAL_REBOOT_NOT_QUALIFIED",
+    "powershell_visibility": "Hidden action configured; no new visual flash inspection",
+    "ollama_instances": 1,
+    "ollama_listener_pid": 20592,
+    "docker_desktop_hkcu_run": true
+  },
+  "operational_state": {
+    "pipeline": {
+      "at": 1793222042.156304,
+      "scanner": {
+        "generation": 4845,
+        "activity_audit_batch_limit": 32,
+        "activity_audit_ids": [
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154
+        ],
+        "actor": 18,
+        "authority": "machine",
+        "changed": 0,
+        "inventory_sha256": "3bdf32e4af0b93ed93c4910b26152ae0abc6334289217994ffa0be06b6849bae",
+        "jobs": [],
+        "model_calls": 0,
+        "native_writes": 0,
+        "not_visible_retained": 0,
+        "observed_at": 1793222008.649342,
+        "physical_deletion": "DENIED_WITHOUT_TRUSTED_DELETE_PROOF",
+        "project_id": 5,
+        "state": "OBSERVED",
+        "vector_integrity": "NOT_CHECKED_USE_KNOWLEDGE_INTEGRITY",
+        "visibility_policy": "Fresh Native collection gates retrieval; withdrawn index content is retained",
+        "visibility_withdrawn_ids": [],
+        "visible": 339
+      },
+      "sync": [
+        [
+          "verified",
+          86
+        ]
+      ],
+      "ai_queue": [
+        [
+          "finished",
+          93
+        ]
+      ],
+      "expired_running_sync": 0,
+      "qa": "pending_qa"
+    },
+    "knowledge": {
+      "quick_check": "ok",
+      "documents": 441,
+      "chunks": 2027,
+      "fts_rows": 441,
+      "orphan_fts": 0,
+      "at": "2026-10-28T21:22:12.669378+00:00",
+      "qdrant_status": "green",
+      "qdrant_points": 2030,
+      "dimensions": 1024,
+      "protected_legacy_ids_preserved": [
+        "2d5e7bdf-b4e0-52c6-b360-f45c1fbd74bf",
+        "59e1f1a4-b659-5c3d-ab23-ebb309481dc7",
+        "b838195a-5afd-5f40-a70d-23c2ca9007bc"
+      ],
+      "bge_m3_present": true,
+      "scope": "Read-only counts/quick_check/exact protected IDs; full payload reconciliation retained from prior evidence, not rerun"
+    },
+    "n8n_storage": {
+      "at": "2026-10-28T21:16:10.621Z",
+      "bytes": {
+        "database.sqlite": 13279232,
+        "database.sqlite-wal": 4161232,
+        "database.sqlite-shm": 32768
+      },
+      "inflight": []
+    },
+    "preservation": {
+      "at": "2026-10-28T21:19:22.320070+00:00",
+      "status": "PRESERVATION_READBACK_PASS",
+      "workflows_unchanged": 16,
+      "native_business_hashes_unchanged": true,
+      "native_counts": {
+        "work_packages": 376,
+        "relations": 352,
+        "custom_values": 1695,
+        "journals": 1027,
+        "user_passwords": 7
+      },
+      "native_writes_by_agent": 0,
+      "qa_decisions": 0,
+      "staging_operations": 0
+    }
+  },
+  "validation": {
+    "new_observer_tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "live_read_only_integration": "WF16 execution2630 / durable receipt / exact bucket and published version",
+    "task_smoke": "PASS_NO_DUE_TARGETS; not scheduled business evidence",
+    "python_syntax": "PASS",
+    "powershell_parse": "PASS",
+    "old_qualifications_repeated": false
+  },
+  "source_sha256": {
+    "openproject/ai/automation/natural_schedule_observation.py": "80b187f3a44b6cee480bf9e4f8a0a46a28fc62c762ccb6c1be7a5150165c40ad",
+    "openproject/ai/Schedule-NaturalObservation.ps1": "94ba07df358b6a0165dc51a31ee1f26abe8696279cbaad646bd85ef039cd62da",
+    "openproject/ai/tests/test_natural_schedule_observation.py": "41beeaa7c098690c3ab31091a36bf45d6e5d0068549ff7bf1b9db24e8c4da6f4"
+  },
+  "rollback": "Only unregister the new QLDAPM-NaturalSchedule-Observation task if needed; retain observation files; no Main restore or workflow change",
+  "operator_action": [
+    "Provide separately authorized TEST key via prepared hidden local input and actual test-project Free/quota/data-scope evidence",
+    "Keep interactive LUIM session and Docker available for the two read-only one-shot observations; they cannot prove before-login availability",
+    "Human UAT and any future login/reboot qualification remain separate; no reboot or manual workflow execution requested now"
+  ],
+  "limitations": [
+    "Observer writes private local results, does not send external notifications or auto-fix failed workflows",
+    "No fresh full payload reconciliation/endurance repeated; current counts/quick_check/protected IDs checked, prior payload-integrity evidence retained",
+    "External SMTP/chat unconfigured; full Qdrant DR and human sign-off unchanged"
+  ],
+  "delivery_validation": {
+    "source_hashes_match": true,
+    "links_valid": true,
+    "credential_pattern_scan": "PASS_WITHOUT_READING_PRODUCTION_KEY",
+    "test_key_and_proof_still_absent": true,
+    "no_future_pass": true,
+    "observer_tests_passed": 8
+  }
+}

@@ -1,0 +1,20 @@
+{
+    auto_https off
+}
+:80 {
+    @maintenance {
+        file {
+            root /gate
+            try_files maintenance
+        }
+    }
+    route {
+        respond @maintenance "OpenProject is starting. Please retry shortly." 503
+        reverse_proxy /hocuspocus* hocuspocus:1234 {
+            header_up X-Forwarded-Proto {$PROXY_SCHEME}
+        }
+        reverse_proxy web:8080 {
+            header_up X-Forwarded-Proto {$PROXY_SCHEME}
+        }
+    }
+}

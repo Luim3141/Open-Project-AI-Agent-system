@@ -1,0 +1,54 @@
+{
+  "utc": "2026-11-04T09:25:21.936941+00:00",
+  "status": "FAILED_QUALIFICATION_NOT_DEPLOYED",
+  "reviewer": "root assistant source review; NOT independent human ground truth; only prior WP392 intent is human-confirmed",
+  "retrieval": {
+    "scope": "Observed correlated DEV, exact frozen candidate corpus, actual BGE/Qdrant906facts + FTS/identity union",
+    "hit_at_5": 1.0,
+    "positives": 13
+  },
+  "six_case_pilot": {
+    "positive_source_hits": 4,
+    "positive_queries": 4,
+    "strict_complete_source_supported_answers": 3,
+    "negative_answers": 0,
+    "negative_queries": 2,
+    "warm_seconds": [
+      2.827,
+      2.07,
+      2.758,
+      1.424,
+      1.577
+    ],
+    "source_issue": "CRUD selection includes parent379 copied assignment objective as a second answer identity; child381 is relevant, but complete unambiguous unit answer not accepted.",
+    "limits": "Six correlated questions cannot establish representative <=5% FPR."
+  },
+  "expanded_dev": {
+    "status": "STOPPED",
+    "reason": "WARM_QUERY_OVER_5_SECONDS",
+    "evaluated_positive_answers": 4,
+    "complete_supported_answers": 2,
+    "not_supported": [
+      "dev:create_list:vi",
+      "dev:create_list:en"
+    ],
+    "support_reason": "Only unit identifier/name was selected; it does not establish the complete initial/order plus create/list and SQLite requirements.",
+    "stopping_warm_seconds": 5.944,
+    "warm_gate_seconds": 5,
+    "new_generation_requests": 3,
+    "negatives_evaluated_in_expanded_run": 0,
+    "representative_fpr": null
+  },
+  "citation_integrity": {
+    "checked": 17,
+    "hash_offset_native_id_version_errors": 0,
+    "scope": "Candidate source identity only; exact quote is not semantic support"
+  },
+  "main_semantic_e2e": "NOT_RUN_NO_QUALIFIED_CANDIDATE",
+  "locked_holdout": "NOT_CREATED_OR_SCORED_AFTER_FAILED_DEV_GATE",
+  "old_holdout_access": false,
+  "main_rag_changed": false,
+  "gemini_generation_calls": 0,
+  "this_continuation_local_4b_generation_requests": 11,
+  "next_required": "Fix complete-evidence/answerability and worst-case latency without changing gates, then freeze a broader source-reviewed benchmark; qualify before serving integration."
+}

@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-26T03:23:08.101378+00:00",
+  "status": "ISOLATED_CROSS_OS_SQLITE_DIAGNOSIS",
+  "before_host_reader": {
+    "mode": "wal",
+    "value": "synthetic-only",
+    "check": "ok"
+  },
+  "windows_host_reader": {
+    "value": "synthetic-only"
+  },
+  "linux_during_host_reader": {
+    "mode": "wal",
+    "value": "synthetic-only",
+    "check": "ok"
+  },
+  "linux_after_host_reader_closed": {
+    "mode": "wal",
+    "value": "synthetic-only",
+    "check": "ok"
+  },
+  "main_operations": 0,
+  "staging_operations": false,
+  "main_error_cause": "NOT_REPRODUCED_ONE_SHOT",
+  "safe_operator_route": "Query/snapshot live SQLite inside its Linux container. Open only completed immutable snapshots with Windows Python; never keep Windows live WAL readers open during Main HTTP probes."
+}

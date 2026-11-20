@@ -1,0 +1,1260 @@
+<%= javascript_tag nonce: true do %>
+(() => {
+  'use strict';
+  const root = document.getElementById('execution-monitor');
+  if (!root || root.dataset.initialized) return;
+  root.dataset.initialized = 'true';
+
+  const $ = id => document.getElementById(id), NS = 'http://www.w3.org/2000/svg';
+  const labels = {
+    QUEUED: 'Đang chờ',
+    PLANNING: 'Đang lập kế hoạch',
+    RUNNING: 'Đang xử lý',
+    REVIEWING: 'Đang kiểm định',
+    COMPLETED: 'Hoàn thành',
+    FAILED: 'Thất bại',
+    CANCELLED: 'Đã hủy',
+    STALE: 'Nguồn / quyền đã đổi',
+    PARTIAL: 'Kết quả một phần',
+    REVIEW: 'Chờ PM duyệt',
+    UNKNOWN: 'Chưa có dữ liệu',
+    NOT_RUN: 'Không được thực thi',
+    INTERRUPTED: 'Gián đoạn · thiếu event kết thúc',
+    WAITING_QUOTA: 'Đang chờ quota',
+    WAITING_PROVIDER: 'Đang chờ provider',
+    BLOCKED_KEY_OR_MODEL: 'Provider chưa sẵn sàng'
+  };
+
+  const eventLabels = {
+    REQUEST_RECEIVED: 'Đã nhận yêu cầu',
+    AUTHORIZED: 'Đã xác thực quyền',
+    QUEUED: 'Đã xếp hàng',
+    PLANNING_STARTED: 'Supervisor bắt đầu lập kế hoạch',
+    PLAN_CREATED: 'Đã lưu execution plan',
+    AGENT_ASSIGNED: 'Supervisor giao nhiệm vụ',
+    AGENT_STARTED: 'Agent bắt đầu xử lý',
+    MODEL_REQUEST_STARTED: 'Bắt đầu request model',
+    MODEL_RESPONSE_RECEIVED: 'Đã nhận phản hồi model',
+    AGENT_COMPLETED: 'Agent hoàn thành',
+    AGENT_FAILED: 'Agent thất bại',
+    RETRY_SCHEDULED: 'Đã lên lịch retry có giới hạn',
+    REVIEW_STARTED: 'Reviewer bắt đầu kiểm định',
+    REVIEW_COMPLETED: 'Reviewer kết thúc kiểm định',
+    RESULT_AGGREGATED: 'Đã tổng hợp kết quả',
+    RESULT_AVAILABLE: 'Kết quả có thể đọc',
+    PROPOSAL_CREATED: 'Đã tạo preview',
+    APPROVAL_REQUIRED: 'Cần PM duyệt',
+    RUN_COMPLETED: 'Execution hoàn tất',
+    RUN_FAILED: 'Execution thất bại'
+  };
+
+  const na = 'Chưa có dữ liệu';
+  const text = (id, value) => {
+    const el = $(id);
+    if (el) el.textContent = value ?? na;
+  };
+  const fmt = v => v == null ? na : new Intl.NumberFormat('vi-VN').format(v);
+  const date = v => v == null ? na : new Intl.DateTimeFormat('vi-VN', {
+    dateStyle: 'short',
+    timeStyle: 'medium',
+    timeZone: 'Asia/Bangkok'
+  }).format(new Date(v * 1000));
+  const seconds = v => v == null ? na : fmt(v) + 's';
+
+  const el = (tag, value, cls) => {
+    const n = document.createElement(tag);
+    if (value != null) n.textContent = value;
+    if (cls) n.className = cls;
+    return n;
+  };
+
+  const svgEl = (tag, attrs = {}, value) => {
+    const n = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, String(v));
+    if (value != null) n.textContent = value;
+    return n;
+  };
+
+  let authorizing = false;
+  let data = null, selected = 'supervisor', compact = false, timer = null, failures = 0;
+  let controller = null, replayTimer = null, cursor = null, layout = new Map(), fullBox = [0, 0, 900, 440], box = null;
+  let drag = null, dragged = false, presentationMode = false;
+  let nodeDrag = null;
+  const graphState = { mode: 'auto', manualOverrides: new Map(), cycleDetected: false };
+
+  const addField = (parent, label, value) => {
+    parent.append(el('dt', label), el('dd', value ?? na));
+  };
+
+  function sources(parent, refs) {
+    parent.replaceChildren();
+    if (!refs?.length) {
+      parent.append(el('p', 'Không có tham chiếu riêng được lưu.', 'em-muted'));
+      return;
+    }
+    for (const ref of refs) {
+      if (!Number.isInteger(ref.work_package_id) || ref.work_package_id < 1) continue;
+      const chip = el('a', '#' + ref.work_package_id + ' · v' + ref.lock_version, 'em-source-chip');
+      chip.href = '/work_packages/' + ref.work_package_id;
+      parent.append(chip);
+    }
+  }
+
+  function nodeState(node) {
+    if (cursor == null || cursor >= data.events.length) return node.state;
+    let state = 'UNKNOWN';
+    for (const event of data.events.slice(0, cursor)) {
+      if (node.id === 'supervisor' && event.event_type === 'PLANNING_STARTED') state = 'PLANNING';
+      if (node.id === 'supervisor' && event.event_type === 'PLAN_CREATED') state = 'COMPLETED';
+      if (String(event.step_id) === node.id) {
+        if (event.event_type === 'AGENT_ASSIGNED') state = 'QUEUED';
+        if (['AGENT_STARTED', 'REVIEW_STARTED'].includes(event.event_type)) state = event.status || 'RUNNING';
+        if (['AGENT_COMPLETED', 'AGENT_FAILED', 'REVIEW_COMPLETED'].includes(event.event_type)) state = event.status || 'UNKNOWN';
+      }
+      if (node.id === 'final' && ['RESULT_AGGREGATED', 'RUN_COMPLETED', 'RUN_FAILED'].includes(event.event_type)) {
+        state = event.status || 'UNKNOWN';
+      }
+    }
+    return state;
+  }
+
+  function detail() {
+    const node = data?.nodes.find(n => n.id === selected);
+    $('em-agent-fields').replaceChildren();
+    if ($('em-agent-summary')) $('em-agent-summary').replaceChildren();
+    $('em-agent-sources').replaceChildren();
+
+    if (!node) {
+      text('em-detail-title', 'Chi tiết Agent');
+      text('em-agent-output', na);
+      return;
+    }
+
+    text('em-detail-title', node.name);
+    text('em-detail-hint', node.objective);
+
+    // All fields for Tab 3 and complete testing assertions
+    const fields = [
+      ['Vai trò / agent', node.agent],
+      ['Phương pháp lập kế hoạch', node.planning_method || 'Không áp dụng cho node này'],
+      ['Nhiệm vụ', node.objective],
+      ['Nguồn đầu vào', node.input_source_ids?.map(id => '#' + id).join(', ') || 'Không có tham chiếu được lưu'],
+      ['Giới hạn', node.limitations || 'Không lưu riêng; xem nội dung output.'],
+      ['Được giao bởi', node.assigned_by || 'Yêu cầu người dùng'],
+      ['Phụ thuộc dữ liệu', node.dependencies.map(id => data.nodes.find(n => n.id === id)?.name || id).join(', ') || 'Không có'],
+      ['Trạng thái', labels[nodeState(node)] || nodeState(node)],
+      ['Bắt đầu', date(node.started_at)],
+      ['Kết thúc', date(node.ended_at)],
+      ['Duration agent', seconds(node.duration_seconds)],
+      ['Duration model ghi nhận', seconds(node.model_duration_seconds)],
+      ['Chế độ', node.mode || 'Chưa xác nhận provider'],
+      ['Model', node.model || 'Không khả dụng'],
+      ['Model calls', fmt(node.calls)],
+      ['Token quan sát', fmt(node.tokens)],
+      ['Retries / provider errors', node.retries + ' / ' + node.errors],
+      ['Mã lỗi ghi nhận', node.error_code || 'Chưa có mã lỗi được lưu'],
+      ['Validation', node.validation || 'Không có validation riêng được lưu']
+    ];
+
+    for (const [label, value] of fields) {
+      addField($('em-agent-fields'), label, value);
+    }
+
+    // Summary fields for Tab 1 (Overview)
+    if ($('em-agent-summary')) {
+      const summaryFields = [
+        ['Vai trò chuyên môn', node.agent.toUpperCase()],
+        ['Trạng thái hiện tại', labels[nodeState(node)] || nodeState(node)],
+        ['Phụ thuộc', node.dependencies.map(id => data.nodes.find(n => n.id === id)?.name || id).join(', ') || 'Không có'],
+        ['Gemini Calls', fmt(node.calls)],
+        ['Token ghi nhận', fmt(node.tokens)],
+        ['Thời gian xử lý', seconds(node.duration_seconds)],
+        ['Chế độ thực thi', node.mode || 'Chưa xác nhận provider'],
+        ['Mô hình AI', node.model || 'Không khả dụng']
+      ];
+      for (const [label, value] of summaryFields) {
+        addField($('em-agent-summary'), label, value);
+      }
+    }
+
+    const replaying = cursor != null && cursor < data.events.length;
+    text('em-agent-output', replaying ? 'Đang phát lại trạng thái. Về kết quả cuối để đọc output đã lưu.' : node.output || 'Chưa có output riêng được lưu. Không gọi model để tạo lại.');
+    text('em-output-origin', node.output_origin === 'LEGACY_AGGREGATE_SEGMENT' ? 'Trích từ bản tổng hợp lịch sử đã lưu; không phải output được sinh lại.' : node.output_origin === 'STORED_AGENT_RESULT' ? 'Output riêng đã lưu trong execution.' : node.output_origin === 'STORED_PLAN' ? 'Tóm tắt lý do của plan đã lưu, không phải chain-of-thought.' : '');
+
+    if (!replaying) sources($('em-agent-sources'), node.references);
+  }
+
+  function screenToWorld(clientX, clientY) {
+    const svg = $('em-graph');
+    if (!svg) return { x: 0, y: 0 };
+    const ctm = svg.getScreenCTM();
+    if (ctm) {
+      const pt = svg.createSVGPoint();
+      pt.x = clientX;
+      pt.y = clientY;
+      const transformed = pt.matrixTransform(ctm.inverse());
+      return { x: transformed.x, y: transformed.y };
+    }
+    const rect = svg.getBoundingClientRect();
+    if (!rect.width || !rect.height || !box) return { x: 0, y: 0 };
+    return {
+      x: box[0] + (clientX - rect.left) * (box[2] / rect.width),
+      y: box[1] + (clientY - rect.top) * (box[3] / rect.height)
+    };
+  }
+
+  function updateFullBoxFromLayout() {
+    if (!layout || layout.size === 0) return;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const p of layout.values()) {
+      minX = Math.min(minX, p.x);
+      minY = Math.min(minY, p.y);
+      maxX = Math.max(maxX, p.x + p.w);
+      maxY = Math.max(maxY, p.y + p.h);
+    }
+    const pad = 40;
+    const startX = Math.min(0, minX - pad);
+    const startY = Math.min(0, minY - pad);
+    fullBox = [
+      startX,
+      startY,
+      Math.max(630, maxX - startX + pad),
+      Math.max(340, maxY - startY + pad)
+    ];
+  }
+
+  function expandFullBoxIfNeeded() {
+    if (!box) return;
+    updateFullBoxFromLayout();
+  }
+
+  const MIN_COORD = -5000;
+  const MAX_COORD = 50000;
+
+  function getStorageKey() {
+    return (data && data.project_id != null && data.actor_id != null && data.run_id)
+      ? `qldapm:graph-layout:v1:${data.project_id}:${data.actor_id}:${data.run_id}`
+      : null;
+  }
+
+  function saveLayout() {
+    const key = getStorageKey();
+    if (!key || !data?.nodes?.length) return;
+    try {
+      const payload = {
+        schema_version: 1,
+        run_id: data.run_id,
+        mode: graphState.mode || 'manual',
+        positions: {}
+      };
+      for (const [id, p] of layout.entries()) {
+        if (!data.nodes.some(n => n.id === id)) continue;
+        if (typeof p.x === 'number' && typeof p.y === 'number' && Number.isFinite(p.x) && Number.isFinite(p.y)) {
+          const clampedX = Math.max(MIN_COORD, Math.min(MAX_COORD, Math.round(p.x)));
+          const clampedY = Math.max(MIN_COORD, Math.min(MAX_COORD, Math.round(p.y)));
+          payload.positions[id] = { x: clampedX, y: clampedY };
+        }
+      }
+      localStorage.setItem(key, JSON.stringify(payload));
+    } catch (e) {}
+  }
+
+  function loadSavedLayout() {
+    const key = getStorageKey();
+    if (!key || !data?.nodes?.length) return null;
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (
+        !parsed ||
+        parsed.schema_version !== 1 ||
+        parsed.run_id !== data.run_id ||
+        !parsed.positions ||
+        typeof parsed.positions !== 'object'
+      ) {
+        return null;
+      }
+      const valid = new Map();
+      const nodeWidth = 245, nodeHeight = compact ? 80 : 150;
+      for (const [id, pos] of Object.entries(parsed.positions)) {
+        if (
+          data.nodes.some(n => n.id === id) &&
+          typeof pos?.x === 'number' &&
+          typeof pos?.y === 'number' &&
+          Number.isFinite(pos.x) &&
+          Number.isFinite(pos.y) &&
+          pos.x >= MIN_COORD && pos.x <= MAX_COORD &&
+          pos.y >= MIN_COORD && pos.y <= MAX_COORD
+        ) {
+          valid.set(id, { x: pos.x, y: pos.y, w: nodeWidth, h: nodeHeight });
+        }
+      }
+      if (valid.size === data.nodes.length) {
+        return { positions: valid, mode: parsed.mode || 'manual' };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function getEdgePath(a, b) {
+    if (!a || !b) return '';
+    const ca = { x: a.x + a.w / 2, y: a.y + a.h / 2 };
+    const cb = { x: b.x + b.w / 2, y: b.y + b.h / 2 };
+    const dx = cb.x - ca.x;
+    const dy = cb.y - ca.y;
+
+    let startX, startY, endX, endY, c1x, c1y, c2x, c2y;
+
+    if (Math.abs(dx) >= Math.abs(dy) * 0.8 || Math.abs(dx) > 100) {
+      if (dx >= 0) {
+        startX = a.x + a.w;
+        startY = ca.y;
+        endX = b.x;
+        endY = cb.y;
+        const curveDist = Math.max(30, (endX - startX) * 0.45);
+        c1x = startX + curveDist;
+        c1y = startY;
+        c2x = endX - curveDist;
+        c2y = endY;
+      } else {
+        startX = a.x;
+        startY = ca.y;
+        endX = b.x + b.w;
+        endY = cb.y;
+        const curveDist = Math.max(30, (startX - endX) * 0.45);
+        c1x = startX - curveDist;
+        c1y = startY;
+        c2x = endX + curveDist;
+        c2y = endY;
+      }
+    } else {
+      if (dy >= 0) {
+        startX = ca.x;
+        startY = a.y + a.h;
+        endX = cb.x;
+        endY = b.y;
+        const curveDist = Math.max(25, (endY - startY) * 0.45);
+        c1x = startX;
+        c1y = startY + curveDist;
+        c2x = endX;
+        c2y = endY - curveDist;
+      } else {
+        startX = ca.x;
+        startY = a.y;
+        endX = cb.x;
+        endY = b.y + b.h;
+        const curveDist = Math.max(25, (startY - endY) * 0.45);
+        c1x = startX;
+        c1y = startY - curveDist;
+        c2x = endX;
+        c2y = endY + curveDist;
+      }
+    }
+    return `M${startX},${startY} C${c1x},${c1y} ${c2x},${c2y} ${endX},${endY}`;
+  }
+
+  function computeAutoLayout() {
+    if (!data?.nodes?.length) return new Map();
+
+    const nodeWidth = 245;
+    const nodeHeight = compact ? 80 : 150;
+    const nodeMap = new Map(data.nodes.map(n => [n.id, n]));
+    const newPositions = new Map();
+
+    const depEdges = (data.edges || []).filter(e => e.kind === 'DEPENDENCY' && nodeMap.has(e.from) && nodeMap.has(e.to));
+    const assignEdges = (data.edges || []).filter(e => e.kind === 'ASSIGNMENT' && nodeMap.has(e.from) && nodeMap.has(e.to));
+
+    const adj = new Map();
+    const inDegree = new Map();
+    for (const node of data.nodes) {
+      adj.set(node.id, []);
+      inDegree.set(node.id, 0);
+    }
+    for (const edge of depEdges) {
+      adj.get(edge.from).push(edge.to);
+      inDegree.set(edge.to, inDegree.get(edge.to) + 1);
+    }
+
+    const layer = new Map();
+    for (const node of data.nodes) {
+      layer.set(node.id, node.id === 'supervisor' ? 0 : 1);
+    }
+
+    const queue = [];
+    for (const [id, deg] of inDegree.entries()) {
+      if (deg === 0 && id !== 'final') {
+        queue.push(id);
+      }
+    }
+
+    const supIdx = queue.indexOf('supervisor');
+    if (supIdx > 0) {
+      queue.splice(supIdx, 1);
+      queue.unshift('supervisor');
+    }
+
+    const visited = new Set();
+    while (queue.length > 0) {
+      const u = queue.shift();
+      visited.add(u);
+      const uLayer = layer.get(u) || 0;
+
+      for (const v of adj.get(u)) {
+        if (v === 'final') continue;
+        const vLayer = Math.max(layer.get(v) || 0, uLayer + 1);
+        layer.set(v, vLayer);
+        const newDeg = inDegree.get(v) - 1;
+        inDegree.set(v, newDeg);
+        if (newDeg === 0) {
+          queue.push(v);
+        }
+      }
+    }
+
+    const nonFinalNodes = data.nodes.filter(n => n.id !== 'final');
+    if (visited.size < nonFinalNodes.length) {
+      graphState.cycleDetected = true;
+      let maxLayer = 0;
+      for (const l of layer.values()) maxLayer = Math.max(maxLayer, l);
+      for (const node of nonFinalNodes) {
+        if (!visited.has(node.id)) {
+          maxLayer++;
+          layer.set(node.id, maxLayer);
+        }
+      }
+    } else {
+      graphState.cycleDetected = false;
+    }
+
+    for (const edge of assignEdges) {
+      if (!layer.has(edge.to) || layer.get(edge.to) === 0) {
+        if (edge.to !== 'supervisor' && edge.to !== 'final') {
+          layer.set(edge.to, Math.max(1, (layer.get(edge.from) || 0) + 1));
+        }
+      }
+    }
+
+    for (const node of data.nodes) {
+      if (!layer.has(node.id)) {
+        layer.set(node.id, node.id === 'supervisor' ? 0 : 1);
+      }
+    }
+
+    let maxOtherLayer = 0;
+    for (const [id, l] of layer.entries()) {
+      if (id !== 'final') maxOtherLayer = Math.max(maxOtherLayer, l);
+    }
+    if (nodeMap.has('final')) {
+      layer.set('final', maxOtherLayer + 1);
+    }
+
+    const layerBuckets = new Map();
+    for (const [id, l] of layer.entries()) {
+      if (!layerBuckets.has(l)) layerBuckets.set(l, []);
+      layerBuckets.get(l).push(nodeMap.get(id));
+    }
+
+    const sortedLayers = Array.from(layerBuckets.keys()).sort((a, b) => a - b);
+    for (let i = 0; i < sortedLayers.length; i++) {
+      const l = sortedLayers[i];
+      const nodesInLayer = layerBuckets.get(l);
+
+      for (const node of nodesInLayer) {
+        const predecessors = depEdges.filter(e => e.to === node.id).map(e => e.from)
+          .concat(assignEdges.filter(e => e.to === node.id).map(e => e.from));
+        if (predecessors.length > 0 && i > 0) {
+          const prevLayerNodes = layerBuckets.get(sortedLayers[i - 1]) || [];
+          let sumIdx = 0, count = 0;
+          for (const pred of predecessors) {
+            const idx = prevLayerNodes.findIndex(n => n.id === pred);
+            if (idx >= 0) { sumIdx += idx; count++; }
+          }
+          node._barycenter = count > 0 ? (sumIdx / count) : 0;
+        } else {
+          node._barycenter = 0;
+        }
+      }
+
+      nodesInLayer.sort((a, b) => (a._barycenter - b._barycenter) || a.id.localeCompare(b.id));
+    }
+
+    const layerGap = 90;
+    const nodeGap = compact ? 24 : 32;
+
+    const layerHeights = new Map();
+    for (const [l, nodesInLayer] of layerBuckets.entries()) {
+      const h = nodesInLayer.reduce((acc, n) => acc + (compact ? 80 : 150), 0) + Math.max(0, nodesInLayer.length - 1) * nodeGap;
+      layerHeights.set(l, h);
+    }
+    const maxGraphHeight = Math.max(340, ...Array.from(layerHeights.values()));
+
+    for (let lIndex = 0; lIndex < sortedLayers.length; lIndex++) {
+      const l = sortedLayers[lIndex];
+      const nodesInLayer = layerBuckets.get(l);
+      const lHeight = layerHeights.get(l);
+      const startX = 35 + lIndex * (nodeWidth + layerGap);
+      const startY = 30 + Math.max(0, (maxGraphHeight - lHeight) / 2);
+
+      let currentY = startY;
+      nodesInLayer.forEach((node) => {
+        const nodeH = compact ? 80 : 150;
+        newPositions.set(node.id, {
+          x: startX,
+          y: currentY,
+          w: nodeWidth,
+          h: nodeH
+        });
+        currentY += nodeH + nodeGap;
+      });
+    }
+
+    let maxX = 630, maxY = 340;
+    for (const p of newPositions.values()) {
+      maxX = Math.max(maxX, p.x + p.w + 35);
+      maxY = Math.max(maxY, p.y + p.h + 30);
+    }
+    fullBox = [0, 0, maxX, maxY];
+
+    return newPositions;
+  }
+
+  async function chooseNode(nodeId) {
+    if (data?.terminal && !(await reauthorize())) return;
+    if (!data?.nodes.some(n => n.id === nodeId)) return;
+    selected = nodeId;
+    graph();
+    detail();
+  }
+
+  function updateConnectedEdges(nodeId) {
+    const svg = $('em-graph');
+    if (!svg) return;
+    const edgePaths = svg.querySelectorAll(`[data-from="${nodeId}"], [data-to="${nodeId}"]`);
+    edgePaths.forEach(path => {
+      const fromId = path.dataset.from;
+      const toId = path.dataset.to;
+      const a = layout.get(fromId);
+      const b = layout.get(toId);
+      if (a && b) {
+        path.classList.add('em-edge-dragging');
+        path.setAttribute('d', getEdgePath(a, b));
+      }
+    });
+  }
+
+  function graph() {
+    const svg = $('em-graph'), focused = svg.contains(document.activeElement) ? document.activeElement.dataset.node : null;
+    svg.replaceChildren();
+
+    if (!layout || layout.size === 0) {
+      const saved = loadSavedLayout();
+      if (saved) {
+        layout = saved.positions;
+        graphState.mode = saved.mode;
+        updateFullBoxFromLayout();
+      } else {
+        layout = computeAutoLayout();
+        graphState.mode = 'auto';
+      }
+      if (!box) box = [...fullBox];
+    } else {
+      let missing = false;
+      for (const node of data.nodes) {
+        if (!layout.has(node.id)) { missing = true; break; }
+      }
+      if (missing) {
+        layout = computeAutoLayout();
+        updateFullBoxFromLayout();
+      }
+    }
+
+    const defs = svgEl('defs');
+    const marker = svgEl('marker', {
+      id: 'em-arrow',
+      viewBox: '0 0 10 10',
+      refX: 9,
+      refY: 5,
+      markerWidth: 6,
+      markerHeight: 6,
+      orient: 'auto-start-reverse'
+    });
+    marker.append(svgEl('path', { d: 'M 0 1.5 L 8 5 L 0 8.5 z', fill: '#3b82f6' }));
+    defs.append(marker);
+
+    const arrowGray = svgEl('marker', {
+      id: 'em-arrow-gray',
+      viewBox: '0 0 10 10',
+      refX: 9,
+      refY: 5,
+      markerWidth: 6,
+      markerHeight: 6,
+      orient: 'auto-start-reverse'
+    });
+    arrowGray.append(svgEl('path', { d: 'M 0 1.5 L 8 5 L 0 8.5 z', fill: '#94a3b8' }));
+    defs.append(arrowGray);
+    svg.append(defs);
+
+    if (!box) box = [...fullBox];
+
+    const ancestors = new Set([selected]);
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (const edge of data.edges) {
+        if (edge.kind === 'DEPENDENCY' && ancestors.has(edge.to) && !ancestors.has(edge.from)) {
+          ancestors.add(edge.from);
+          changed = true;
+        }
+      }
+    }
+
+    // Render Edges
+    for (const edge of data.edges) {
+      const a = layout.get(edge.from), b = layout.get(edge.to);
+      if (!a || !b) continue;
+      const isHighlighted = ancestors.has(edge.from) && ancestors.has(edge.to);
+      const isAssignment = edge.kind === 'ASSIGNMENT';
+      const markerId = isAssignment ? 'url(#em-arrow-gray)' : 'url(#em-arrow)';
+
+      svg.append(svgEl('path', {
+        id: `em-edge-${edge.from}-${edge.to}-${edge.kind}`,
+        d: getEdgePath(a, b),
+        class: 'em-edge',
+        'data-from': edge.from,
+        'data-to': edge.to,
+        'data-kind': edge.kind,
+        'data-highlight': isHighlighted,
+        'marker-end': markerId
+      }));
+    }
+
+    // Visual Palette
+    const roleColors = {
+      supervisor: { bg: '#eef2ff', text: '#4f46e5', label: 'SV' },
+      pm: { bg: '#eef2ff', text: '#4f46e5', label: 'PM' },
+      ba: { bg: '#f0f9ff', text: '#0284c7', label: 'BA' },
+      dev: { bg: '#f5f3ff', text: '#7c3aed', label: 'DV' },
+      qa: { bg: '#ecfdf5', text: '#059669', label: 'QA' },
+      reviewer: { bg: '#fffbeb', text: '#d97706', label: 'RV' },
+      final: { bg: '#fff1f2', text: '#e11d48', label: 'Σ' }
+    };
+
+    // Render Nodes
+    for (const node of data.nodes) {
+      const p = layout.get(node.id);
+      if (!p) continue;
+      const roleMeta = roleColors[node.agent] || { bg: '#f1f5f9', text: '#475569', label: 'AI' };
+      const state = nodeState(node);
+      const stateLabel = labels[state] || state;
+      const isSelected = node.id === selected;
+
+      const g = svgEl('g', {
+        class: 'em-node',
+        transform: `translate(${p.x},${p.y})`,
+        role: 'button',
+        tabindex: 0,
+        'aria-label': node.name + ' · ' + stateLabel,
+        'aria-pressed': isSelected,
+        'data-state': state,
+        'data-node': node.id
+      });
+      g.dataset.node = node.id;
+
+      g.append(
+        svgEl('title', {}, node.name + ' — ' + node.objective),
+        svgEl('rect', { class: 'em-node-card', width: p.w, height: p.h, rx: 12 }),
+        svgEl('circle', { cx: 26, cy: 23, r: 13, fill: roleMeta.bg, stroke: roleMeta.text, 'stroke-width': 1.5, 'aria-hidden': 'true' }),
+        svgEl('text', { x: 26, y: 27, 'text-anchor': 'middle', 'font-size': 9.5, 'font-weight': 'bold', fill: roleMeta.text, 'aria-hidden': 'true' }, roleMeta.label),
+        svgEl('text', { x: 48, y: 27, class: 'em-node-name' }, node.name)
+      );
+
+      const stateColor = state === 'COMPLETED' ? '#059669' : state === 'FAILED' ? '#dc2626' : '#2563eb';
+      const stateSymbol = state === 'COMPLETED' ? '✓ ' : state === 'FAILED' ? '✕ ' : '';
+      g.append(svgEl('text', { x: 18, y: 50, 'font-weight': '600', fill: stateColor }, stateSymbol + stateLabel));
+
+      if (!compact) {
+        const objSnippet = node.objective.length > 33 ? node.objective.slice(0, 32) + '…' : node.objective;
+        g.append(
+          svgEl('text', { x: 18, y: 76, fill: 'var(--em-muted)' }, objSnippet),
+          svgEl('text', { x: 18, y: 100, fill: 'var(--em-text-secondary)', 'font-variant-numeric': 'tabular-nums' }, node.calls + ' calls · ' + fmt(node.tokens) + ' token'),
+          svgEl('text', { x: 18, y: 120, fill: 'var(--em-muted)', 'font-size': 11 }, node.mode || 'Chưa xác nhận provider')
+        );
+      }
+
+      g.addEventListener('pointerdown', e => {
+        if (e.button !== 0) return;
+        e.stopPropagation();
+        const pt = screenToWorld(e.clientX, e.clientY);
+        nodeDrag = {
+          nodeId: node.id,
+          element: g,
+          startClientX: e.clientX,
+          startClientY: e.clientY,
+          offsetX: pt.x - p.x,
+          offsetY: pt.y - p.y,
+          hasMoved: false
+        };
+        svg.setPointerCapture(e.pointerId);
+      });
+
+      g.addEventListener('click', () => {
+        if (!dragged) chooseNode(node.id);
+        dragged = false;
+      });
+
+      g.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          chooseNode(node.id);
+        }
+      });
+      svg.append(g);
+    }
+
+    svg.setAttribute('viewBox', box.join(' '));
+    if (focused) {
+      Array.from(svg.querySelectorAll('[data-node]')).find(n => n.dataset.node === focused)?.focus();
+    }
+
+    // Accessible Table Fallback
+    const tbody = $('em-node-table');
+    tbody.replaceChildren();
+    for (const node of data.nodes) {
+      const tr = el('tr'), td = el('td'), button = el('button', node.name, 'em-btn');
+      button.type = 'button';
+      button.addEventListener('click', async () => {
+        chooseNode(node.id);
+        $('em-detail-title').scrollIntoView({ block: 'nearest' });
+      });
+      td.append(button, el('p', node.objective, 'em-section-subtitle'));
+      tr.append(
+        td,
+        el('td', labels[nodeState(node)] || nodeState(node)),
+        el('td', node.dependencies.map(id => data.nodes.find(n => n.id === id)?.name || id).join(', ') || 'Không có'),
+        el('td', node.calls + ' / ' + fmt(node.tokens))
+      );
+      tbody.append(tr);
+    }
+  }
+
+  function timeline() {
+    const list = $('em-timeline'), filter = $('em-event-agent').value;
+    list.replaceChildren();
+    const events = data.events.slice(0, cursor ?? data.events.length).filter(e => !filter || e.agent_id === filter);
+    if (!events.length) {
+      list.append(el('li', 'Chưa có sự kiện phù hợp được ghi nhận.', 'em-muted'));
+      return;
+    }
+    for (const event of events) {
+      const li = el('li');
+      li.dataset.sequence = event.sequence;
+
+      const t = el('time', new Intl.DateTimeFormat('vi-VN', {
+        timeStyle: 'medium',
+        timeZone: 'Asia/Bangkok'
+      }).format(new Date(event.timestamp * 1000)));
+      t.dateTime = new Date(event.timestamp * 1000).toISOString();
+
+      const dotClass = event.status === 'COMPLETED' ? 'completed' : event.status === 'FAILED' ? 'failed' : '';
+      const dot = el('div', null, 'em-timeline-dot ' + dotClass);
+
+      const content = el('div', null, 'em-timeline-content');
+      content.append(
+        el('strong', eventLabels[event.event_type] || event.event_type),
+        el('small', [event.agent_id, event.phase, event.status, event.origin === 'RECORDED_PROVIDER_RECEIPT' ? 'Từ receipt lịch sử' : null].filter(Boolean).join(' · '))
+      );
+
+      li.append(t, dot, content);
+      list.append(li);
+    }
+  }
+
+  function parseFinalReport(rawText) {
+    const container = $('em-final-segmented');
+    if (!container) return;
+    container.replaceChildren();
+
+    if (!rawText || rawText === 'Chưa có kết quả hoặc nội dung nguồn đã bị ẩn.') {
+      container.append(el('p', rawText || 'Chưa có báo cáo tổng hợp.', 'em-muted'));
+      return;
+    }
+
+    // Split report by main role headings (BA:, DEV:, QA:, etc.)
+    const sections = [];
+    const lines = rawText.split('\n');
+    let currentSection = { title: 'Tóm tắt chung', body: [] };
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (/^(BA|Developer|Dev|QA|Reviewer|Supervisor|Khuyến nghị|Tổng hợp):\s*$/i.test(trimmed) || /^(BA|DEV|QA):/i.test(trimmed)) {
+        if (currentSection.body.length > 0) {
+          sections.push(currentSection);
+        }
+        let titleName = trimmed.replace(/:$/, '').trim();
+        if (/^BA/i.test(titleName)) titleName = 'Phân tích Nghiệp vụ (BA Agent)';
+        else if (/^(Dev|Developer)/i.test(titleName)) titleName = 'Giải pháp Kỹ thuật (Developer Agent)';
+        else if (/^QA/i.test(titleName)) titleName = 'Kiểm thử & Tiêu chuẩn Chất lượng (QA Agent)';
+        else if (/^Reviewer/i.test(titleName)) titleName = 'Đánh giá & Thẩm định (Reviewer)';
+        currentSection = { title: titleName, body: [] };
+      } else {
+        currentSection.body.push(line);
+      }
+    }
+    if (currentSection.body.length > 0) sections.push(currentSection);
+
+    for (const sec of sections) {
+      const card = el('div', null, 'em-report-section');
+      const head = el('div', null, 'em-report-section-head');
+      head.append(el('span', sec.title));
+      const body = el('div', sec.body.join('\n').trim(), 'em-report-section-body');
+      card.append(head, body);
+      container.append(card);
+    }
+  }
+
+  function snapshot() {
+    graph();
+    detail();
+    timeline();
+    text('em-replay-label', (cursor ?? data.events.length) + ' / ' + data.events.length);
+  }
+
+  function render(value) {
+    const oldShape = data?.nodes.map(n => n.id).join(',');
+    data = value;
+    if (data.schema_version !== 1) throw new Error('UNSUPPORTED_SCHEMA');
+    if (data.nodes.map(n => n.id).join(',') !== oldShape) {
+      box = null;
+      layout = new Map();
+    }
+
+    text('em-request', data.request || 'Nội dung không khả dụng hoặc đã được ẩn.');
+    
+    // Status Badge
+    const stateEl = $('em-state');
+    if (stateEl) {
+      stateEl.textContent = labels[data.state] || data.state;
+      stateEl.dataset.state = data.state;
+      stateEl.className = 'em-badge ' + (data.state === 'COMPLETED' ? 'state-completed' : data.state === 'FAILED' ? 'state-failed' : 'state-running');
+    }
+
+    // Mode Pill
+    const modeEl = $('em-mode');
+    if (modeEl) {
+      modeEl.textContent = data.mode || 'Chưa có provider receipt xác nhận';
+      modeEl.className = 'em-mode-pill ' + (data.mode === 'LIVE_GEMINI' ? 'mode-live' : '');
+    }
+
+    // Metadata Chips
+    const meta = $('em-metadata');
+    meta.replaceChildren();
+    for (const [k, v] of [
+      ['Run ID', data.run_id],
+      ['Trace ID', data.trace_id],
+      ['Người yêu cầu', '#' + data.actor_id + ' · ' + data.actor_role],
+      ['Dự án', String(data.project_id)],
+      ['Được tạo', date(data.created_at)],
+      ['Mô hình AI', data.model || 'Không khả dụng']
+    ]) {
+      const d = el('div');
+      addField(d, k, v);
+      meta.append(d);
+    }
+
+    // Metrics Cards
+    const stats = $('em-metrics');
+    stats.replaceChildren();
+    for (const [k, v] of [
+      ['Agent tham gia', data.metrics.agents],
+      ['Agent hoàn thành', data.metrics.completed],
+      ['Node đang xử lý', data.metrics.running],
+      ['Bước trong plan', data.metrics.steps],
+      ['Gemini calls đã ghi nhận', data.metrics.calls],
+      ['Token quan sát', data.metrics.tokens],
+      ['Duration đã ghi nhận', seconds(data.duration_seconds)],
+      ['Provider errors / retries', data.metrics.errors == null ? na : data.metrics.errors + ' / ' + data.metrics.retries]
+    ]) {
+      const d = el('div', null, 'em-metric');
+      d.append(el('span', k), el('strong', v == null ? na : typeof v === 'number' ? fmt(v) : v));
+      stats.append(d);
+    }
+
+    const activeWarnings = [...(data.warnings || [])];
+    if (graphState.cycleDetected) activeWarnings.push('Cảnh báo: Đồ thị có phụ thuộc vòng (Cycle detected). Hệ thống đã áp dụng bố cục an toàn dự phòng.');
+    $('em-warnings').hidden = !activeWarnings.length;
+    text('em-warnings', activeWarnings.join('\n'));
+
+    // Output & Final Report
+    text('em-final-output', data.final_output || 'Chưa có kết quả hoặc nội dung nguồn đã bị ẩn.');
+    parseFinalReport(data.final_output);
+    sources($('em-final-sources'), data.sources);
+
+    // Agent selector filter
+    const select = $('em-event-agent'), previous = select.value;
+    select.replaceChildren(new Option('Tất cả', ''));
+    for (const agent of new Set(data.events.map(e => e.agent_id).filter(Boolean))) {
+      select.append(new Option(agent, agent));
+    }
+    select.value = previous;
+
+    $('em-replay').disabled = !data.terminal || !data.events.length;
+    $('em-replay-position').max = data.events.length;
+    $('em-replay-position').value = cursor ?? data.events.length;
+
+    if (data.state === 'STALE') {
+      clearInterval(replayTimer);
+      cursor = null;
+      selected = 'supervisor';
+    }
+
+    snapshot();
+    text('em-connection', data.terminal ? 'Đã đọc bản ghi đã lưu. Không gọi Gemini và không tự chạy lại execution.' : 'Đang cập nhật riêng execution này mỗi 3 giây. Không tạo model call.');
+  }
+
+  function clearPrivate(message) {
+    stopReplay();
+    cursor = null;
+    data = null;
+    for (const id of ['em-metadata', 'em-metrics', 'em-node-table', 'em-agent-fields', 'em-agent-summary', 'em-agent-sources', 'em-final-sources', 'em-final-segmented', 'em-timeline', 'em-graph']) {
+      const node = $(id);
+      if (node) node.replaceChildren();
+    }
+    text('em-request', message);
+    text('em-agent-output', 'Nội dung được ẩn.');
+    text('em-final-output', 'Nội dung được ẩn.');
+    text('em-detail-hint', '');
+    text('em-output-origin', '');
+    text('em-mode', '');
+    text('em-state', 'Không khả dụng');
+    $('em-replay').disabled = true;
+  }
+
+  async function poll() {
+    clearTimeout(timer);
+    controller?.abort();
+    controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 25000);
+    try {
+      const response = await fetch(root.dataset.endpoint, {
+        method: 'GET',
+        credentials: 'same-origin',
+        cache: 'no-store',
+        headers: { Accept: 'application/json' },
+        signal: controller.signal
+      });
+      if (response.redirected || [401, 403, 404].includes(response.status)) {
+        clearPrivate('Phiên đăng nhập hoặc quyền xem đã thay đổi. Đăng nhập lại qua AI Assistant.');
+        text('em-connection', 'Đã dừng cập nhật để bảo vệ dữ liệu.');
+        $('em-reconnect').hidden = false;
+        return false;
+      }
+      if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) throw new Error('UNAVAILABLE');
+      render(await response.json());
+      failures = 0;
+      $('em-reconnect').hidden = true;
+      if (!data.terminal) timer = setTimeout(poll, 3000);
+      return true;
+    } catch (error) {
+      if (!document.contains(root) || document.hidden) return;
+      clearPrivate('Mất kết nối cập nhật; nội dung cũ tạm ẩn cho đến khi quyền được xác minh lại.');
+      failures++;
+      text('em-connection', 'Không tạo run mới hoặc gửi lại thao tác. ' + (failures < 6 ? 'Đang thử đọc lại với backoff.' : 'Đã tạm dừng; dùng nút kết nối lại.'));
+      $('em-reconnect').hidden = false;
+      if (failures < 6) timer = setTimeout(poll, Math.min(30000, 2000 * 2 ** (failures - 1)));
+      return false;
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  async function reauthorize() {
+    if (authorizing) return false;
+    authorizing = true;
+    try {
+      return await poll();
+    } finally {
+      authorizing = false;
+    }
+  }
+
+  $('em-reconnect').addEventListener('click', () => { failures = 0; poll(); });
+  $('em-event-agent').addEventListener('change', () => { if (data) timeline(); });
+
+  function fit() {
+    updateFullBoxFromLayout();
+    box = [...fullBox];
+    $('em-graph').setAttribute('viewBox', box.join(' '));
+  }
+
+  function zoom(factor) {
+    if (!box) return;
+    const [x, y, w, h] = box, newW = w * factor, newH = h * factor;
+    if (newW < fullBox[2] / 6 || newW > fullBox[2] * 2) return;
+    box = [x + (w - newW) / 2, y + (h - newH) / 2, newW, newH];
+    $('em-graph').setAttribute('viewBox', box.join(' '));
+  }
+
+  $('em-fit').addEventListener('click', fit);
+  $('em-zoom-in').addEventListener('click', () => zoom(0.8));
+  $('em-zoom-out').addEventListener('click', () => zoom(1.25));
+
+  if ($('em-auto-layout')) {
+    $('em-auto-layout').addEventListener('click', () => {
+      layout = computeAutoLayout();
+      graphState.mode = 'auto';
+      graphState.manualOverrides.clear();
+      saveLayout();
+      graph();
+      fit();
+    });
+  }
+
+  if ($('em-reset-layout')) {
+    $('em-reset-layout').addEventListener('click', () => {
+      const key = getStorageKey();
+      if (key) {
+        try { localStorage.removeItem(key); } catch (e) {}
+      }
+      graphState.manualOverrides.clear();
+      graphState.mode = 'auto';
+      layout = computeAutoLayout();
+      graph();
+      fit();
+    });
+  }
+
+  $('em-compact').addEventListener('click', () => {
+    compact = !compact;
+    $('em-compact').setAttribute('aria-pressed', String(compact));
+    text('em-compact', compact ? 'Mở rộng node' : 'Thu gọn node');
+    const h = compact ? 80 : 150;
+    for (const p of layout.values()) p.h = h;
+    updateFullBoxFromLayout();
+    box = null;
+    if (data) graph();
+  });
+
+  // Pan and Drag interactions
+  const svg = $('em-graph');
+  svg.addEventListener('pointerdown', e => {
+    dragged = false;
+    if (e.button !== 0 || !box || e.target.closest('.em-node')) return;
+    drag = { x: e.clientX, y: e.clientY, box: [...box] };
+    dragged = false;
+    svg.setPointerCapture(e.pointerId);
+  });
+
+  svg.addEventListener('pointermove', e => {
+    // 1. Node dragging
+    if (nodeDrag) {
+      const dx = e.clientX - nodeDrag.startClientX;
+      const dy = e.clientY - nodeDrag.startClientY;
+      if (!nodeDrag.hasMoved && Math.hypot(dx, dy) >= 4) {
+        nodeDrag.hasMoved = true;
+        dragged = true;
+        nodeDrag.element.classList.add('em-dragging');
+        svg.classList.add('em-is-dragging');
+      }
+      if (nodeDrag.hasMoved) {
+        const pt = screenToWorld(e.clientX, e.clientY);
+        const newX = pt.x - nodeDrag.offsetX;
+        const newY = pt.y - nodeDrag.offsetY;
+        const p = layout.get(nodeDrag.nodeId);
+        if (p) {
+          p.x = newX;
+          p.y = newY;
+          nodeDrag.element.setAttribute('transform', `translate(${newX},${newY})`);
+          updateConnectedEdges(nodeDrag.nodeId);
+        }
+      }
+      return;
+    }
+
+    // 2. Canvas panning
+    if (drag) {
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (Math.abs(dx) + Math.abs(dy) > 5) dragged = true;
+      const rect = svg.getBoundingClientRect();
+      box = [drag.box[0] - dx * drag.box[2] / rect.width, drag.box[1] - dy * drag.box[3] / rect.height, drag.box[2], drag.box[3]];
+      svg.setAttribute('viewBox', box.join(' '));
+    }
+  });
+
+  svg.addEventListener('pointerup', e => {
+    if (nodeDrag) {
+      if (svg.hasPointerCapture(e.pointerId)) {
+        svg.releasePointerCapture(e.pointerId);
+      }
+      nodeDrag.element.classList.remove('em-dragging');
+      svg.classList.remove('em-is-dragging');
+      svg.querySelectorAll('.em-edge-dragging').forEach(el => el.classList.remove('em-edge-dragging'));
+
+      if (nodeDrag.hasMoved) {
+        graphState.mode = 'manual';
+        graphState.manualOverrides.set(nodeDrag.nodeId, true);
+        expandFullBoxIfNeeded();
+        saveLayout();
+        setTimeout(() => { dragged = false; }, 80);
+      } else {
+        chooseNode(nodeDrag.nodeId);
+        dragged = false;
+      }
+      nodeDrag = null;
+      return;
+    }
+
+    if (drag) {
+      if (svg.hasPointerCapture(e.pointerId)) {
+        svg.releasePointerCapture(e.pointerId);
+      }
+      drag = null;
+      setTimeout(() => { dragged = false; }, 50);
+    }
+  });
+
+  svg.addEventListener('pointercancel', e => {
+    if (nodeDrag) {
+      if (svg.hasPointerCapture(e.pointerId)) svg.releasePointerCapture(e.pointerId);
+      nodeDrag.element.classList.remove('em-dragging');
+      svg.classList.remove('em-is-dragging');
+      svg.querySelectorAll('.em-edge-dragging').forEach(el => el.classList.remove('em-edge-dragging'));
+      nodeDrag = null;
+    }
+    drag = null;
+    dragged = false;
+  });
+
+  // Replay Handlers
+  function stopReplay() {
+    clearInterval(replayTimer);
+    replayTimer = null;
+    text('em-play', 'Phát lại (1 sự kiện/giây)');
+  }
+
+  $('em-play').addEventListener('click', async () => {
+    if (replayTimer) { stopReplay(); return; }
+    if (!(await reauthorize()) || !data?.terminal || !data.events.length) return;
+    cursor = 0;
+    $('em-replay-position').value = 0;
+    snapshot();
+    text('em-play', 'Tạm dừng phát lại');
+    replayTimer = setInterval(() => {
+      cursor++;
+      $('em-replay-position').value = cursor;
+      snapshot();
+      if (cursor >= data.events.length) stopReplay();
+    }, 1000);
+  });
+
+  $('em-replay-position').addEventListener('input', async e => {
+    const position = Number(e.target.value);
+    stopReplay();
+    if (!(await reauthorize()) || !data) return;
+    cursor = position;
+    snapshot();
+  });
+
+  $('em-present').addEventListener('click', async () => {
+    stopReplay();
+    if (!(await reauthorize()) || !data) return;
+    cursor = null;
+    $('em-replay-position').value = data.events.length;
+    snapshot();
+  });
+
+  // Tab switching for Agent Detail Panel
+  const tabButtons = document.querySelectorAll('.em-tab-btn');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.em-tab-panel').forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      const targetId = 'tab-panel-' + btn.dataset.tab;
+      const targetPanel = $(targetId);
+      if (targetPanel) targetPanel.classList.add('active');
+    });
+  });
+
+  // Report view toggling (Segmented vs Raw)
+  const reportTabFormatted = $('em-report-tab-formatted');
+  const reportTabRaw = $('em-report-tab-raw');
+  const finalSegmented = $('em-final-segmented');
+  const finalRawWrap = $('em-final-raw-wrap');
+
+  if (reportTabFormatted && reportTabRaw) {
+    reportTabFormatted.addEventListener('click', () => {
+      reportTabFormatted.classList.add('active');
+      reportTabRaw.classList.remove('active');
+      if (finalSegmented) finalSegmented.style.display = 'flex';
+      if (finalRawWrap) finalRawWrap.style.display = 'none';
+    });
+    reportTabRaw.addEventListener('click', () => {
+      reportTabRaw.classList.add('active');
+      reportTabFormatted.classList.remove('active');
+      if (finalSegmented) finalSegmented.style.display = 'none';
+      if (finalRawWrap) finalRawWrap.style.display = 'block';
+    });
+  }
+
+  // Presentation Mode Toggle
+  const presToggle = $('em-presentation-toggle');
+  if (presToggle) {
+    presToggle.addEventListener('click', () => {
+      presentationMode = !presentationMode;
+      root.classList.toggle('em-presentation-mode', presentationMode);
+      presToggle.querySelector('span').textContent = presentationMode ? 'Thoát trình chiếu' : 'Chế độ trình chiếu';
+      setTimeout(fit, 100);
+    });
+  }
+
+  // Keyboard navigation & Esc key support
+  document.addEventListener('keydown', e => {
+    if (presentationMode && e.key === 'Escape') {
+      presentationMode = false;
+      root.classList.remove('em-presentation-mode');
+      if (presToggle) presToggle.querySelector('span').textContent = 'Chế độ trình chiếu';
+      setTimeout(fit, 100);
+    }
+    // Arrow keys to step between nodes in presentation mode
+    if (presentationMode && data?.nodes?.length && ['ArrowRight', 'ArrowLeft'].includes(e.key)) {
+      const nodeIds = data.nodes.map(n => n.id);
+      const currentIndex = nodeIds.indexOf(selected);
+      let nextIndex = e.key === 'ArrowRight' ? currentIndex + 1 : currentIndex - 1;
+      if (nextIndex < 0) nextIndex = nodeIds.length - 1;
+      if (nextIndex >= nodeIds.length) nextIndex = 0;
+      selected = nodeIds[nextIndex];
+      graph();
+      detail();
+    }
+  });
+
+  if (matchMedia('(max-width:760px)').matches) {
+    const tableView = $('em-table-view');
+    if (tableView) tableView.open = true;
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearTimeout(timer);
+      stopReplay();
+      controller?.abort();
+    } else {
+      poll();
+    }
+  });
+
+  window.addEventListener('pagehide', () => {
+    clearTimeout(timer);
+    stopReplay();
+    controller?.abort();
+  }, { once: true });
+
+  poll();
+})();
+<% end %>

@@ -1,0 +1,193 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "trace_id": {
+      "title": "Trace Id",
+      "type": "string"
+    },
+    "event_type": {
+      "enum": [
+        "REQUEST_RECEIVED",
+        "AUTHORIZED",
+        "QUEUED",
+        "PLANNING_STARTED",
+        "PLAN_CREATED",
+        "AGENT_ASSIGNED",
+        "AGENT_STARTED",
+        "MODEL_REQUEST_STARTED",
+        "MODEL_RESPONSE_RECEIVED",
+        "AGENT_COMPLETED",
+        "AGENT_FAILED",
+        "RETRY_SCHEDULED",
+        "REVIEW_STARTED",
+        "REVIEW_COMPLETED",
+        "RESULT_AGGREGATED",
+        "RESULT_AVAILABLE",
+        "PROPOSAL_CREATED",
+        "APPROVAL_REQUIRED",
+        "RUN_COMPLETED",
+        "RUN_FAILED"
+      ],
+      "title": "Event Type",
+      "type": "string"
+    },
+    "agent_id": {
+      "anyOf": [
+        {
+          "enum": [
+            "supervisor",
+            "pm",
+            "ba",
+            "dev",
+            "qa",
+            "reviewer"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Agent Id"
+    },
+    "step_id": {
+      "anyOf": [
+        {
+          "maximum": 10,
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Step Id"
+    },
+    "timestamp": {
+      "minimum": 0,
+      "title": "Timestamp",
+      "type": "number"
+    },
+    "sequence": {
+      "minimum": 1,
+      "title": "Sequence",
+      "type": "integer"
+    },
+    "status": {
+      "anyOf": [
+        {
+          "enum": [
+            "QUEUED",
+            "PLANNING",
+            "RUNNING",
+            "REVIEWING",
+            "COMPLETED",
+            "FAILED",
+            "REVIEW"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Status"
+    },
+    "receipt_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Receipt Id"
+    },
+    "phase": {
+      "anyOf": [
+        {
+          "enum": [
+            "countTokens",
+            "generateContent"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Phase"
+    },
+    "attempt": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Attempt"
+    },
+    "http_status": {
+      "anyOf": [
+        {
+          "maximum": 599,
+          "minimum": 100,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Http Status"
+    },
+    "error_code": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Z][A-Z0-9_]{0,79}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Code"
+    }
+  },
+  "required": [
+    "event_id",
+    "run_id",
+    "trace_id",
+    "event_type",
+    "timestamp",
+    "sequence"
+  ],
+  "title": "ExecutionEvent",
+  "type": "object"
+}

@@ -1,0 +1,377 @@
+{
+  "suite": "GEMINI_QLDAPM_MAIN_FULL_AI_E2E_CORRECTED",
+  "executed_at": "2026-10-28T04:10:38.268072+00:00",
+  "environment": "MAIN ONLY",
+  "ports": {
+    "core": 18088,
+    "gateway": 18089,
+    "n8n": 5679,
+    "qdrant": 6333,
+    "ollama": 11434
+  },
+  "summary": {
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "partial": 0
+  },
+  "tests": {
+    "AI-E2E-01": {
+      "name": "UI -> Gateway -> Native Read",
+      "status": "PASS",
+      "category": "LIVE API",
+      "verified_at": "2026-10-28T04:10:39.004190+00:00",
+      "details": "Đọc thành công Work Package #376 qua Gateway API; 0 Native write; 0 model call. Trích dẫn bằng chứng WP #376 đã được tạo và hiển thị thành công trên browser UI bởi Owner18 (Subtask test2, parent #49, lock_version 0).",
+      "evidence": {
+        "run_id": "474b4f7c-5aaa-4bb1-ae38-794d1fe16f66",
+        "route": [
+          "read",
+          "get_work_package",
+          {
+            "id": 376
+          }
+        ],
+        "heading": "Dữ liệu trực tiếp từ OpenProject",
+        "human_ui_verified": true
+      }
+    },
+    "AI-E2E-02": {
+      "name": "Native Task Counting",
+      "status": "PASS",
+      "category": "LIVE API",
+      "verified_at": "2026-10-28T04:10:41.103381+00:00",
+      "details": "Phân biệt chính xác giữa open Tasks (57) và open WorkPackages (339); filter type=1 cho Task; tiêu thụ 0 model tokens.",
+      "evidence": {
+        "open_tasks": 57,
+        "open_wps": 339,
+        "task_filters": [
+          {
+            "status": {
+              "operator": "o",
+              "values": []
+            }
+          },
+          {
+            "type": {
+              "operator": "=",
+              "values": [
+                "1"
+              ]
+            }
+          }
+        ],
+        "visible_wps_baseline": 339
+      }
+    },
+    "AI-E2E-03": {
+      "name": "Natural Language WBS",
+      "status": "PASS",
+      "category": "LIVE AUDIT",
+      "verified_at": "2026-10-28T04:10:41.105684+00:00",
+      "details": "Phân tích yêu cầu và cấu trúc WBS cho sprint sinh structured BA output; schema toàn vẹn; 0 proposal unapproved; 0 Native write.",
+      "evidence": {
+        "run_id": "d8396c7b-453c-450d-b63c-68e69b3fb5d9",
+        "status": "succeeded",
+        "preview": "LIVE_GEMINI · gemini-3.5-flash-lite · 1 model calls · 6652 total tokens (provider metadata) · 16.688s\nProvider remaining quota: unavailable. Chỉ phân tích/đề xuất; chưa có native mutation.\n\nBA:\n{\"node"
+      }
+    },
+    "AI-E2E-04": {
+      "name": "Negative Intent",
+      "status": "PASS",
+      "category": "LIVE API",
+      "verified_at": "2026-10-28T04:10:41.549206+00:00",
+      "details": "Câu phủ định 'không đề xuất WBS mới' được xử lý chính xác; routine_writes_authorized=false; 0 write scopes; cách ly quyền ghi an toàn.",
+      "evidence": {
+        "run_id": "dce353fd-ba3f-4dfb-9b49-78bc1acaf853",
+        "routine_writes_authorized": false,
+        "write_scope_ids": []
+      }
+    },
+    "AI-E2E-05": {
+      "name": "Live Gemini Multi-Agent",
+      "status": "PASS",
+      "category": "LIVE AUDIT & MULTI-AGENT CHAIN",
+      "verified_at": "2026-10-28T04:10:41.558598+00:00",
+      "details": "Chuỗi đa tác tử Gemini hoàn chỉnh (5 subagents: Supervisor -> BA -> FE -> BE -> QA) được xác minh trên run 80c74d03; 100% LIVE_SUCCESS gemini-3.5-flash-lite; tiêu thụ 17101 tokens. Run ca0c3b3f đối chiếu chuỗi 3 subagents (Supervisor -> BA -> QA) thành công.",
+      "evidence": {
+        "orchestration_run_id": "80c74d03-5c9d-4471-9d9a-09c6749c645d",
+        "subagent_chain": [
+          "supervisor",
+          "ba",
+          "fe",
+          "be",
+          "qa"
+        ],
+        "total_tokens": 17101,
+        "receipts_by_role": {
+          "supervisor": {
+            "receipt_id": "ee71d0c6-8648-4714-9eff-9a172433fdb2",
+            "tokens": 3349,
+            "duration_s": 17.454
+          },
+          "ba": {
+            "receipt_id": "49f4531a-ae53-4f7e-9bee-6dc2abba951a",
+            "tokens": 2394,
+            "duration_s": 1.963
+          },
+          "fe": {
+            "receipt_id": "ea9491bf-25e8-4161-8691-e64163107b1d",
+            "tokens": 3876,
+            "duration_s": 6.871
+          },
+          "be": {
+            "receipt_id": "f26be34f-8b28-465b-8ed9-2cc1fae8cd44",
+            "tokens": 3825,
+            "duration_s": 8.175
+          },
+          "qa": {
+            "receipt_id": "e3f53551-3190-4c5c-bfbb-eaf4618c0ed1",
+            "tokens": 3657,
+            "duration_s": 4.719
+          }
+        },
+        "cross_validation_run_id": "ca0c3b3f-c01d-4291-a327-9c06b98e4f63",
+        "cross_validation_roles": [
+          "supervisor",
+          "ba",
+          "qa"
+        ]
+      }
+    },
+    "AI-E2E-06": {
+      "name": "RAG Retrieval",
+      "status": "PASS",
+      "category": "LIVE API",
+      "verified_at": "2026-10-28T04:10:53.158440+00:00",
+      "details": "Tìm thấy Work Package #376 ('test2') ngoài tập đầu tiên; score=0.03279; citation=/work_packages/376; match_type=HYBRID_RRF.",
+      "evidence": {
+        "top_match": "[Subtask] #376 - test2",
+        "native_id": 376,
+        "score": 0.03279,
+        "citation": "/work_packages/376"
+      }
+    },
+    "AI-E2E-07": {
+      "name": "Incremental Sync",
+      "status": "PASS",
+      "category": "LIVE JOB TRACE & ISOLATED SIMULATION PASS",
+      "verified_at": "2026-10-28T04:10:54.046491+00:00",
+      "details": "Đồng bộ gia tăng chứng minh có thật: WP #376 job ff9ac73c-5286-5da5-a6fb-4e30e008e7a6 verified (actor 18, proposal-306e88ce...); canonical doc 4a08e5947b04... indexed; tổng thể: 375 docs, 1741 chunks, 1744 Qdrant points (1741 chunks + 3 legacy points). Multichannel Isolated Qualification: 5/5 cases PASS (Drift reconciliation, V1->V2 revision update, Out-of-order rejection, ACL isolation, Tombstone deletion).",
+      "evidence": {
+        "job_id": "ff9ac73c-5286-5da5-a6fb-4e30e008e7a6",
+        "actor": 18,
+        "state": "verified",
+        "request_key": "proposal-306e88ce-c32c-4b32-9ddd-18f7ea169b1b",
+        "canonical_document_id": "4a08e5947b04239d18f871a77b1d9abbe32f907389f1b842f8cb53e308055283",
+        "vector_indexed": true,
+        "audit_trace_id": "f7e0a7cd-c823-4c99-8ac2-aa6eb0d87c68",
+        "qdrant_points": 1744,
+        "legacy_points_preserved": 3,
+        "multichannel_qualification": {
+          "case_1_drift_reconciliation": {
+            "status": "PASS",
+            "detected_drift": true,
+            "enqueued_job_id": "efa44cd5-bf1c-526d-84aa-17402ea34f42",
+            "ingested_doc_id": "c7d9228caa977bfc",
+            "lock_version": 1
+          },
+          "case_2_revision_update_v1_to_v2": {
+            "status": "PASS",
+            "old_revision_purged": true,
+            "active_lock_version": 2,
+            "search_retrieved_v2": true
+          },
+          "case_3_out_of_order_protection": {
+            "status": "PASS",
+            "stale_revision_rejected": true,
+            "persistence_safeguard": "PERSISTENCE_FAILED (KNOWLEDGE_STALE_REVISION)",
+            "preserved_lock_version": 2
+          },
+          "case_4_acl_role_isolation": {
+            "status": "PASS",
+            "developer_denied_pm_doc": true,
+            "developer_denied_qa_doc": true,
+            "qa_allowed_qa_doc": true,
+            "qa_denied_pm_doc": true,
+            "pm_allowed_pm_doc": true,
+            "owner_unscoped_blocked": true,
+            "owner_scoped_search_verified": true
+          },
+          "case_5_tombstone_deletion_and_cleanup": {
+            "status": "PASS",
+            "document_purged": true,
+            "search_index_purged": true,
+            "legacy_points_preserved": 3
+          }
+        }
+      }
+    },
+    "AI-E2E-08": {
+      "name": "ACL Enforcement",
+      "status": "PASS",
+      "category": "LIVE API & SOURCE ACL",
+      "verified_at": "2026-10-28T04:10:54.348439+00:00",
+      "details": "Chặn trái quyền chuẩn xác: Anonymous -> HTTP 401; Non-Owner gọi owner_inspect -> HTTP 403; RAG source ACL: ['PM', 'BA', 'FE', 'BE', 'QA'].",
+      "evidence": {
+        "anonymous_rejection": 401,
+        "owner_action_rejection": 403,
+        "document_allowed_roles": [
+          "PM",
+          "BA",
+          "FE",
+          "BE",
+          "QA"
+        ]
+      }
+    },
+    "AI-E2E-09": {
+      "name": "Source Freshness",
+      "status": "PASS",
+      "category": "LIVE READBACK",
+      "verified_at": "2026-10-28T04:10:54.713872+00:00",
+      "details": "Độ tươi mới nguồn xác minh: WP #376 lock_version=0 khớp 100% giữa Native Core và Second Brain index; source_hash=4a08e5947b04239d...",
+      "evidence": {
+        "source_id": "op:wp:376",
+        "indexed_lock_version": 0,
+        "source_hash": "4a08e5947b04239d18f871a77b1d9abbe32f907389f1b842f8cb53e308055283"
+      }
+    },
+    "AI-E2E-10": {
+      "name": "n8n Complete Lifecycle",
+      "status": "PASS",
+      "category": "LIVE N8N FRESH WEBHOOK & TERMINAL EXECUTION TRACE",
+      "verified_at": "2026-10-28T04:10:55.473361+00:00",
+      "details": "n8n Gateway vận hành ổn định trên port 5679 (HTTP 200); 16/16 workflows active; kích hoạt webhook WF04 thành công (HTTP 200, status TRACE_RETRIEVED, 20 events, correlation_id: 29e097f5-edc6-44a4-b738-e3a5c8d69bbb); đối chiếu terminal execution ID mới 2457 (status: success, finished: 1, startedAt: 2026-10-28 04:10:54.819, stoppedAt: 2026-10-28 04:10:55.339, jsonSizeBytes: 14792).",
+      "evidence": {
+        "n8n_health": 200,
+        "workflows_total": 16,
+        "workflows_active": 16,
+        "webhook_trigger_response": {
+          "status": "TRACE_RETRIEVED",
+          "total_events": 20,
+          "correlation_id": "29e097f5-edc6-44a4-b738-e3a5c8d69bbb",
+          "fetched_at": "2026-10-28T04:10:55.306Z"
+        },
+        "fresh_execution_record": {
+          "id": 2457,
+          "workflowId": "elfapV5D2PTnLiHW",
+          "mode": "webhook",
+          "status": "success",
+          "finished": 1,
+          "startedAt": "2026-10-28 04:10:54.819",
+          "stoppedAt": "2026-10-28 04:10:55.339",
+          "deletedAt": null,
+          "jsonSizeBytes": 14792
+        }
+      }
+    },
+    "AI-E2E-11": {
+      "name": "Retry/Recovery & Idempotency",
+      "status": "PASS",
+      "category": "LIVE API",
+      "verified_at": "2026-10-28T04:10:57.502664+00:00",
+      "details": "Idempotency an toàn tuyệt đối: Replay cùng key trả về chính xác receipt ban đầu; Thay đổi payload cùng key bị từ chối (HTTP 422).",
+      "evidence": {
+        "idempotency_key": "idemp-test-f9c904cbc16d46b182902caa679a2724",
+        "replay_id_match": true,
+        "altered_payload_status": 422
+      }
+    },
+    "AI-E2E-12": {
+      "name": "QA Proof",
+      "status": "PASS",
+      "category": "LIVE DATA PRESERVATION",
+      "verified_at": "2026-10-28T04:10:57.505247+00:00",
+      "details": "QA Evidence fc0479a8... được bảo toàn nguyên vẹn ở trạng thái pending_qa; Bug #371 giữ nguyên IN ANALYSIS v4 không tự ý đóng.",
+      "evidence": {
+        "evidence_id": "fc0479a8-b30a-5e88-9e4a-10748cb30415",
+        "state": "pending_qa",
+        "hash": "38aeb81b0ecb73ec399ee5214383c049269992b9ebff780f97d19fb7c6a52524",
+        "bug_id": 371,
+        "bug_version": 4
+      }
+    },
+    "AI-E2E-13": {
+      "name": "Controlled Proposal",
+      "status": "PASS",
+      "category": "LIVE LEDGER AUDIT",
+      "verified_at": "2026-10-28T04:10:57.520843+00:00",
+      "details": "Kiểm soát proposal chặt chẽ: 57 proposals trong ledger; 0 đột biến Native trái phép ngoài phê duyệt thực tế của user.",
+      "evidence": {
+        "total_proposals": 57,
+        "applied_proposals": 17,
+        "main_wp_baseline": 376
+      }
+    },
+    "AI-E2E-14": {
+      "name": "Weekly Report",
+      "status": "PASS",
+      "category": "LIVE API",
+      "verified_at": "2026-10-28T04:11:08.033046+00:00",
+      "details": "Báo cáo tuần truy xuất dữ liệu Native xác định; tiêu thụ 0 AI model tokens; đúng phạm vi Project 5.",
+      "evidence": {
+        "run_id": "37925389-93c2-421c-bc57-d768040d82be",
+        "heading": "Dữ liệu trực tiếp từ OpenProject",
+        "model_used": false
+      }
+    },
+    "AI-E2E-15": {
+      "name": "UI/Control Center",
+      "status": "PASS",
+      "category": "LIVE API & STATE VALIDATION",
+      "verified_at": "2026-10-28T04:11:08.058067+00:00",
+      "details": "Control Center & Health API khả dụng: status ok; 394 requests, 57 proposals, 162 model receipts; Web UI khả dụng tại port 18088.",
+      "evidence": {
+        "health": {
+          "status": "ok"
+        },
+        "requests": 394,
+        "proposals": 57,
+        "receipts": 162,
+        "web_url": "http://127.0.0.1:18088"
+      }
+    },
+    "AI-E2E-16": {
+      "name": "Port/Restart Survival",
+      "status": "PASS",
+      "category": "LIVE ENDPOINT AUDIT",
+      "verified_at": "2026-10-28T04:11:08.180513+00:00",
+      "details": "Toàn bộ 5/5 subsystem sống sót và phản hồi chuẩn xác trên port mới (18088, 18089, 5679, 6333, 11434).",
+      "evidence": {
+        "core_18088": 401,
+        "gateway_18089": 200,
+        "n8n_5679": 200,
+        "qdrant_6333": 200,
+        "ollama_11434": 200
+      }
+    },
+    "AI-E2E-17": {
+      "name": "Second Brain Failure Recovery",
+      "status": "PASS",
+      "category": "ISOLATED FAULT INJECTION & RECOVERY",
+      "verified_at": "2026-10-28T04:11:09.003625+00:00",
+      "details": "Kiểm thử Fault Injection thành công: Vector crash được bắt chính xác (VECTOR_INDEX_PENDING, vector_indexed=False); Phục hồi vector service tái lập indexing an toàn; Lease exhaustion chuyển job vào DLQ (WORKER_LEASE_EXHAUSTED); Lệnh retry khôi phục job về pending với attempts=0.",
+      "evidence": {
+        "vector_failure_caught": true,
+        "vector_recovery_verified": true,
+        "dlq_transition_verified": true,
+        "dlq_retry_verified": true
+      }
+    },
+    "AI-E2E-18": {
+      "name": "End-to-End Knowledge Cycle",
+      "status": "PASS",
+      "category": "LIVE END-TO-END",
+      "verified_at": "2026-10-28T04:11:15.624500+00:00",
+      "details": "Vòng lặp hoàn chỉnh: Native WP #376 -> Ingestion (4a08e5947b04...) -> BGE-M3 1024D -> Qdrant -> Hybrid RAG -> Citation /work_packages/376 (score: 0.03279).",
+      "evidence": {
+        "source_id": "op:wp:376",
+        "document_id": "4a08e5947b04239d18f871a77b1d9abbe32f907389f1b842f8cb53e308055283",
+        "chunks_count": 1,
+        "retrieved_citation": "/work_packages/376",
+        "match_type": "HYBRID_RRF",
+        "score": 0.03279
+      }
+    }
+  }
+}

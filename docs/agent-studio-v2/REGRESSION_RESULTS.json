@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-06",
+  "scope": "Isolated regression suites; no production model inference or business writes",
+  "gateway_observer_notification_acl": {
+    "command": ".venv/Scripts/python.exe -m unittest tests.test_agent_observer tests.test_telegram_notifications tests.test_telegram_n8n tests.test_telegram_n8n_install tests.test_telegram_rollout tests.test_execution_monitor",
+    "cwd": "openproject/ai",
+    "tests": 53,
+    "status": "PASS"
+  },
+  "integrity_workflow_runtime": {
+    "command": ".venv/Scripts/python.exe -m unittest tests.test_engineering_integrity_projection tests.test_workflow_status tests.test_workflow_status_snapshot tests.test_supervisor tests.test_agent_trace",
+    "cwd": "openproject/ai",
+    "tests": 28,
+    "status": "PASS"
+  },
+  "telegram": {
+    "command": ".venv/Scripts/python.exe -m pytest -q",
+    "cwd": "openproject/ai/telegram-ai",
+    "tests": 54,
+    "subtests": 16,
+    "status": "PASS",
+    "warning": "Host Python3.14 google-genai types deprecation; production bot remains Python3.13 with unchanged image"
+  },
+  "frontend": {
+    "command": "npm test; npm run build",
+    "cwd": "openproject/ai/core/agent-studio-v2",
+    "tests": 5,
+    "status": "PASS",
+    "browser": "fixture-browser.json"
+  },
+  "excluded_live_suites": "Legacy test_p0_multi_agent_execution is explicitly skipped; test_multi_agent_real_execution did not import under host module path and was not rerun because it opens production Store. Use isolated runtime suites instead. No claim of new live-running execution.",
+  "command_center_js": {
+    "commands": ["node openproject/ai/tests/test_phase31_owner_ux.js", "node openproject/ai/tests/test_execution_inspector_render.js", "node openproject/ai/tests/test_owner_live_transport.js"],
+    "status": "PASS",
+    "scope": "Actual Node VM helpers: filtering/inspector escaping/transport/CSRF/stale ordering/visibility/reconnect/navigation cleanup"
+  },
+  "immutable_core": "Controller Ruby syntax and both Rails ERB templates compile in immutable candidate; builder verifies all seven image source hashes. Final Main UAT recorded separately."
+}

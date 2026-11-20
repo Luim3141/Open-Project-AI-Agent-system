@@ -1,0 +1,106 @@
+{
+  "status": "LIVE_REPORT_COLLECTORS_VERIFIED",
+  "daily": {
+    "run_id": "2f5647e9-a52f-4fb4-854c-0bede88308ed",
+    "state": "COMPLETED",
+    "status": "READY",
+    "targets": 4,
+    "ready": 4,
+    "target_selection": {
+      "selected_actor_ids": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "excluded_actor_ids": [
+        19
+      ],
+      "reason": "EXPLICIT_CONFIGURED_READERS; native identity/role/permission rechecked per target"
+    }
+  },
+  "weekly": {
+    "run_id": "65664000-66d4-42d0-b8d9-f4d019ac0929",
+    "state": "COMPLETED",
+    "status": "READY",
+    "targets": 4,
+    "ready": 4,
+    "target_selection": {
+      "selected_actor_ids": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "excluded_actor_ids": [
+        19
+      ],
+      "reason": "EXPLICIT_CONFIGURED_READERS; native identity/role/permission rechecked per target"
+    }
+  },
+  "daily_native_source_readback": [
+    {
+      "actor": 20,
+      "project": 5,
+      "count": 341,
+      "fingerprint_verified": true,
+      "source": "fresh Native daily_summary GET"
+    },
+    {
+      "actor": 21,
+      "project": 5,
+      "count": 341,
+      "fingerprint_verified": true,
+      "source": "fresh Native daily_summary GET"
+    },
+    {
+      "actor": 22,
+      "project": 5,
+      "count": 341,
+      "fingerprint_verified": true,
+      "source": "fresh Native daily_summary GET"
+    },
+    {
+      "actor": 23,
+      "project": 5,
+      "count": 341,
+      "fingerprint_verified": true,
+      "source": "fresh Native daily_summary GET"
+    }
+  ],
+  "weekly_persisted_readback": [
+    {
+      "actor": 20,
+      "report_id": "76c9d568-f586-50cc-9c50-3f76130a7aad",
+      "document_sha256": "c9bacd62635227085991b6259710d7d28e5877f8b99bd6a815f1180253fbe3a0",
+      "reference_count": 341
+    },
+    {
+      "actor": 21,
+      "report_id": "1db09b24-be6b-5427-b6f9-567415dba47e",
+      "document_sha256": "6bd1a4be33f637c61b5fb9d9746bb69693b499c0803b43e2a609730bcd6925c7",
+      "reference_count": 341
+    },
+    {
+      "actor": 22,
+      "report_id": "4498c797-372d-505b-8dde-a34a37ab94e7",
+      "document_sha256": "11fe7eba45c7337fc107e231e7d88c080abfeef35c0e3ada44d0f7f81977c761",
+      "reference_count": 341
+    },
+    {
+      "actor": 23,
+      "report_id": "4e3070dc-50ee-5cff-ba00-cb2847e13750",
+      "document_sha256": "4482c39ed58568e3ed1a3b339a06ff0e082a11906736a35155adf46d1a0ede9b",
+      "reference_count": 341
+    }
+  ],
+  "actor19_still_denied": true,
+  "retry_idempotency": "same persisted receipt on duplicate daily webhook and exact signed weekly command",
+  "route": {
+    "daily": "actual MAIN WF07 webhook \u2192 credential HMAC/machine \u2192 collector",
+    "weekly": "exact signed scheduled machine contract; actual WF12 branch exercised on n8n clone, MAIN cron read-back separately"
+  },
+  "native_writes": 0,
+  "model_calls": 0,
+  "utc": "2026-11-02T21:35:27.298582+00:00"
+}

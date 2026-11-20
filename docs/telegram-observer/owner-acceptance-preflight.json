@@ -1,0 +1,70 @@
+{
+  "actor": 18,
+  "role": "AI_SYSTEM_OWNER",
+  "version": 10,
+  "status": {
+    "href": "/api/v3/statuses/41",
+    "title": "READY FOR RELEASE"
+  },
+  "form_errors": [],
+  "status_schema": {
+    "type": "Status",
+    "name": "Trạng thái",
+    "required": true,
+    "hasDefault": true,
+    "writable": true,
+    "location": "_links",
+    "_embedded": {
+      "allowedValues": [
+        {
+          "_type": "Status",
+          "id": 35,
+          "name": "DONE",
+          "isClosed": true,
+          "color": "#175A8E",
+          "isDefault": false,
+          "isReadonly": false,
+          "excludedFromTotals": false,
+          "defaultDoneRatio": 100,
+          "position": 17,
+          "_links": {
+            "self": {
+              "href": "/api/v3/statuses/35",
+              "title": "DONE"
+            }
+          }
+        },
+        {
+          "_type": "Status",
+          "id": 41,
+          "name": "READY FOR RELEASE",
+          "isClosed": false,
+          "color": "#175A8E",
+          "isDefault": false,
+          "isReadonly": false,
+          "excludedFromTotals": false,
+          "defaultDoneRatio": 0,
+          "position": 23,
+          "_links": {
+            "self": {
+              "href": "/api/v3/statuses/41",
+              "title": "READY FOR RELEASE"
+            }
+          }
+        }
+      ]
+    },
+    "_links": {
+      "allowedValues": [
+        {
+          "href": "/api/v3/statuses/35",
+          "title": "DONE"
+        },
+        {
+          "href": "/api/v3/statuses/41",
+          "title": "READY FOR RELEASE"
+        }
+      ]
+    }
+  }
+}

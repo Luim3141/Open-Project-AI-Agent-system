@@ -1,0 +1,42 @@
+{
+  "status": "PREPARED_NOT_DEPLOYED",
+  "observed_at": "2026-10-24T14:02:15.558225+00:00",
+  "affected_services": [
+    "Main gateway"
+  ],
+  "parent_gateway": "sha256:29ae006229bd3cd649b7426ec0f8b1ba5838f95bc9ded83c9e10654c19c8faec",
+  "candidate_tag": "qldapm-ai:codex-owner-lexical-20261024",
+  "unchanged_core": "sha256:dcb6018226280bde73fb8812e463bdcb5ef6896cbe9a1c65be7516d993f4a3d4",
+  "changed_workflows": [],
+  "source_before_sha256": "c17dc6a988092dc7db2151116d0e0bd614b0b77a857b0afc983a8f4da2cb532c",
+  "source_after_sha256": "35498ed3fd230c8d18847666b9a57d2680fdc1f9159dda8a9e5b5e1aed8607f1",
+  "rollback_tag": "qldapm-ai:codex-wbs-plans-20261024",
+  "rollback_env": "pre-owner-lexical-.env",
+  "rollback_data_policy": "App-only rollback; never restore pre-write database over live335 Native data",
+  "private_snapshot": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-continuation-20261024-0810",
+  "postgres_backup_bytes": 2029962,
+  "sqlite_quick_checks": "PASS_BOTH",
+  "preflight": {
+    "active_queue": 0,
+    "active_sync": 0,
+    "ledger": {
+      "gemini_call_receipts": 123,
+      "gemini_usage": 128,
+      "proposals": 50,
+      "knowledge_sync": 6
+    }
+  },
+  "native_writes": 0,
+  "model_starts": 0,
+  "staging_operations": false,
+  "regression_red": {
+    "tests": 3,
+    "failures": 3,
+    "log": "owner-lexical-red.log"
+  },
+  "targeted_green": {
+    "tests": 3,
+    "passed": 3,
+    "log": "owner-lexical-green.log"
+  }
+}

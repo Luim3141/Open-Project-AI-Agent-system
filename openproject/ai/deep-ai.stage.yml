@@ -1,0 +1,27 @@
+# Synthetic staging only. Never include this file in the live project.
+services:
+  staging-web:
+    volumes:
+      - ${AI_RUNTIME}/stage-ai/ui.key:/qldapm-ui/ui.key:ro
+      - ${AI_RUNTIME}/stage/deep-test-receipt.key:/qldapm-ui/test-receipt.key:ro
+  staging-gateway:
+    restart: unless-stopped
+    image: ${AI_IMAGE}
+    environment:
+      QLDAPM_AI_RUNTIME: /state
+      QLDAPM_AI_WORKSPACES: /workspaces
+    command: [uvicorn, gateway.app:app, --host, "0.0.0.0", --port, "8090"]
+    ports: ["127.0.0.1:18092:8090"]
+    volumes:
+      - ${AI_RUNTIME}/stage-ai:/state
+      - ${AI_RUNTIME}/stage-ai-workspaces:/workspaces
+    networks:
+      stage-front:
+        aliases: [gateway]
+    read_only: true
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 384m
+    cpus: 1
+    pids_limit: 128

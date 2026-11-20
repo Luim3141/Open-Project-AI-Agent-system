@@ -1,0 +1,231 @@
+{
+  "runId": "3b3b3c1e-c249-465e-9898-66fde94da102",
+  "status": "ok",
+  "summary": "completed",
+  "result": {
+    "payloads": [
+      {
+        "text": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"04fc6371df90be5aa161a81607e2b8081259e3e7bf0e4bdc14c9f1cc75bf8ad4\",\n  \"findings\": []\n}\n```",
+        "mediaUrl": null
+      }
+    ],
+    "meta": {
+      "durationMs": 4831,
+      "agentMeta": {
+        "sessionId": "b6d25da4-2d39-4801-8612-25cf54111584",
+        "sessionFile": "agent:reviewer:explicit:b6d25da4-2d39-4801-8612-25cf54111584",
+        "provider": "google",
+        "model": "gemini-3.5-flash-lite",
+        "contextTokens": 1048576,
+        "contextTokensSource": "resolved",
+        "agentHarnessId": "openclaw",
+        "credentialSource": {
+          "kind": "direct",
+          "evidence": "environment",
+          "authorization": "PUBLICATION_REDACTED"
+        },
+        "usage": {
+          "input": 8494,
+          "output": 103,
+          "cacheRead": 4061,
+          "cacheWrite": 0,
+          "total": 12658,
+          "cost": {
+            "total": 0
+          }
+        },
+        "lastCallUsage": {
+          "input": 2373,
+          "output": 85,
+          "cacheRead": 4061,
+          "cacheWrite": 0,
+          "cost": {
+            "total": 0
+          },
+          "total": 6519
+        },
+        "promptTokens": 6434,
+        "contextBudgetStatus": {
+          "schemaVersion": 1,
+          "source": "pre-prompt-estimate",
+          "updatedAt": 1793548683188,
+          "provider": "google",
+          "model": "gemini-3.5-flash-lite",
+          "route": "fits",
+          "shouldCompact": false,
+          "estimatedPromptTokens": 6709,
+          "contextTokenBudget": 1048576,
+          "promptBudgetBeforeReserve": 1028576,
+          "reserveTokens": 20000,
+          "effectiveReserveTokens": 20000,
+          "remainingPromptBudgetTokens": 1021867,
+          "overflowTokens": 0,
+          "toolResultReducibleChars": 0,
+          "messageCount": 0,
+          "unwindowedMessageCount": 0,
+          "sessionId": "b6d25da4-2d39-4801-8612-25cf54111584"
+        },
+        "codeModeEngaged": false,
+        "assistantTurns": 2,
+        "terminalReceipt": {
+          "runId": "3b3b3c1e-c249-465e-9898-66fde94da102",
+          "sessionId": "b6d25da4-2d39-4801-8612-25cf54111584",
+          "turnId": "3b3b3c1e-c249-465e-9898-66fde94da102",
+          "requested": {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite"
+          },
+          "effective": {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite",
+            "responseModel": "gemini-3.5-flash-lite"
+          },
+          "successfulToolNames": [
+            "skills_read"
+          ],
+          "rerouted": false,
+          "terminalDisposition": "visible"
+        }
+      },
+      "aborted": false,
+      "systemPromptReport": {
+        "source": "run",
+        "generatedAt": 1793548682801,
+        "sessionId": "b6d25da4-2d39-4801-8612-25cf54111584",
+        "sessionKey": "agent:reviewer:explicit:b6d25da4-2d39-4801-8612-25cf54111584",
+        "provider": "google",
+        "model": "gemini-3.5-flash-lite",
+        "workspaceDir": "/home/openclaw/engineering/feedback-20c2a94109f4e78f",
+        "bootstrapMaxChars": 20000,
+        "bootstrapTotalMaxChars": 60000,
+        "bootstrapTruncation": {
+          "warningMode": "always",
+          "warningShown": false,
+          "truncatedFiles": 0,
+          "nearLimitFiles": 0,
+          "totalNearLimit": false
+        },
+        "sandbox": {
+          "mode": "off",
+          "sandboxed": false
+        },
+        "systemPrompt": {
+          "chars": 12547,
+          "hash": "16ada26ac9817f18016bf1e95c6dbb117c9b35a42bf76047970e4a29608b287b",
+          "projectContextChars": 6504,
+          "nonProjectContextChars": 6043
+        },
+        "injectedWorkspaceFiles": [
+          {
+            "name": "AGENTS.md",
+            "path": "/home/openclaw/engineering/feedback-20c2a94109f4e78f/AGENTS.md",
+            "missing": false,
+            "rawChars": 2533,
+            "injectedChars": 2533,
+            "truncated": false
+          },
+          {
+            "name": "SOUL.md",
+            "path": "/home/openclaw/engineering/feedback-20c2a94109f4e78f/SOUL.md",
+            "missing": false,
+            "rawChars": 1350,
+            "injectedChars": 1350,
+            "truncated": false
+          },
+          {
+            "name": "IDENTITY.md",
+            "path": "/home/openclaw/engineering/feedback-20c2a94109f4e78f/IDENTITY.md",
+            "missing": true,
+            "rawChars": 0,
+            "injectedChars": 87,
+            "truncated": false
+          },
+          {
+            "name": "BOOTSTRAP.md",
+            "path": "/home/openclaw/engineering/feedback-20c2a94109f4e78f/BOOTSTRAP.md",
+            "missing": true,
+            "rawChars": 0,
+            "injectedChars": 0,
+            "truncated": false
+          }
+        ],
+        "skills": {
+          "promptChars": 683,
+          "hash": "02715ca30acb0b73e2ae1eed8a76a97135b9b6a3204d040f506810b9282e1caa",
+          "entries": [
+            {
+              "name": "engineering-review",
+              "blockChars": 312
+            }
+          ]
+        },
+        "tools": {
+          "listChars": 0,
+          "schemaChars": 537,
+          "entries": [
+            {
+              "name": "read",
+              "summaryChars": 164,
+              "summaryHash": "d136f5b09e28d671addad4ca800b75b8aa6a36002bc739ead964f618d3e34829",
+              "schemaChars": 460,
+              "schemaHash": "6cbbd52fc1ec26fec668c24fc08c8ea42240d163d061109d07886707dfa8d428",
+              "propertiesCount": 5
+            },
+            {
+              "name": "skills_read",
+              "summaryChars": 192,
+              "summaryHash": "22e1821dfbc26bdfaba43eaa0f6d8ae20e3784560feb6a163a067fa5cefff353",
+              "schemaChars": 77,
+              "schemaHash": "2c1504684515db5ece179c4c776e308d55ea99fd9d7c7a8ffa87da40675dfe29",
+              "propertiesCount": 1
+            }
+          ]
+        },
+        "currentTurn": {
+          "promptChars": 8350,
+          "runtimeContextChars": 0,
+          "modelOnlyPromptChars": 0
+        }
+      },
+      "finalPromptText": "Trusted engineering envelope: {\"run_id\": \"f136866a-b7e4-4ad8-bbd7-d846343163d0\", \"project_id\": 6, \"native_id\": 387, \"actor_id\": 20, \"agent_role\": \"reviewer\", \"repository\": \"Luim3141/mini-task-manager\", \"session_id\": \"b6d25da4-2d39-4801-8612-25cf54111584\", \"workspace\": \"/home/openclaw/engineering/feedback-20c2a94109f4e78f\", \"skills_version\": \"1.0.0\", \"request_allowance\": 5, \"timeout_seconds\": 420}\nIndependent reviewer. Read skills/engineering-review/SKILL.md and actual files. No edits/exec. Return only JSON {\"verdict\":\"PASS\" or \"FAIL\",\"revision\":\"04fc6371df90be5aa161a81607e2b8081259e3e7bf0e4bdc14c9f1cc75bf8ad4\",\"findings\":[]}; actionable findings include file/line/reason. Map each AC to actual code/tests. Spec {\"unit\": \"feedback-20c2a94109f4e78f\", \"title\": \"Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu \", \"spec_sha256\": \"dfb97e89338a045c22ccf6a46dd50f95b2014cb5d006d22078f6b72f537005e5\", \"steps\": [\"Define AC/API\", \"Implement one feature in isolated worktree\", \"Independent review\", \"Independent tests\", \"Publish PR and progress\", \"Reindex authorized Native evidence\"], \"acceptance\": {\"AC5\": \"PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening\", \"AC6\": \"DELETE /tasks/{id} returns204; missing edit/delete returns404\", \"AC7\": \"GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids\", \"AC8\": \"GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors\", \"AC9\": \"Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes\", \"F1\": \"AC1: GET /tasks/{id} tra ve HTTP 200 va thong tin task gom id, title, status khi ID ton tai\", \"F2\": \"AC2: GET /tasks/{id} tra ve HTTP 404 khi ID khong ton tai trong CSDL\", \"F3\": \"AC3: GET /tasks/{id} tra ve HTTP 422 khi ID khong phai la kieu so nguyen hop le\", \"F4\": \"AC4: Tat ca cac tinh nang cu nhu GET /tasks/summary, /healthz, CRUD, search va schema SQLite giu nguyen khong thay doi\"}, \"interface\": \"task_manager.app.create_app(database_path); pytest; Python FastAPI + stdlib sqlite3\", \"permission\": \"demo repository and Project6 only; no merge/deploy; completion of unit is not WP379 DONE\", \"verification\": \"trusted external acceptance + repo pytest on exact tree; independent reviewer session\", \"functional_specification\": {\"acceptance\": [\"AC1: GET /tasks/{id} tra ve HTTP 200 va thong tin task gom id, title, status khi ID ton tai\", \"AC2: GET /tasks/{id} tra ve HTTP 404 khi ID khong ton tai trong CSDL\", \"AC3: GET /tasks/{id} tra ve HTTP 422 khi ID khong phai la kieu so nguyen hop le\", \"AC4: Tat ca cac tinh nang cu nhu GET /tasks/summary, /healthz, CRUD, search va schema SQLite giu nguyen khong thay doi\"], \"api_behavior\": [\"GET /tasks/{task_id} tra ve ma 200 kem JSON chua id, title va status neu task ton tai\", \"GET /tasks/{task_id} tra ve ma 404 neu task_id khong ton tai trong CSDL\", \"GET /tasks/{task_id} tra ve ma 422 neu task_id khong phai la so hop le\"], \"citations\": [379], \"edge_cases\": [\"Truy van voi task_id la chuoi chu cai hoac ky tu dac biet tra ve ma loi 422\", \"Truy van task_id co gia tri so am hoac qua lon khong co trong CSDL tra ve ma loi 404\"], \"limitations\": [\"Khong thay doi schema co so du lieu SQLite\", \"Khong tu dong merge nhanh hoac pull request\"], \"scope\": [\"Them phuong thuc GET /tasks/{task_id} tren ung dung FastAPI\", \"Bosung bai kiem thu tu dong cho viec lay chi tiet task va xu ly ID khong ton tai hoac khong hop le\", \"Dam bao khong thay doi schema co so du lieu SQLite hien tai\"], \"summary\": \"Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu tu dong va giu nguyen cac API cu.\"}, \"pm_plan\": {\"assignments\": [{\"dependencies\": [], \"objective\": \"Create/list tasks + SQLite persistence (verified delivery reused)\", \"priority\": 3, \"unit\": \"create-list-persistence-v1\"}, {\"dependencies\": [\"create-list-persistence-v1\"], \"objective\": \"Edit/delete/status/search and usable web interface (verified delivery reused)\", \"priority\": 3, \"unit\": \"crud-search-web-v1\"}, {\"dependencies\": [\"crud-search-web-v1\"], \"objective\": \"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-283138e910432528\"}, {\"dependencies\": [\"feedback-283138e910432528\"], \"objective\": \"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-4d13e695555a8d44\"}, {\"dependencies\": [\"feedback-4d13e695555a8d44\"], \"objective\": \"Them route GET /healthz va unit test status ok (verified delivery reused)\", \"priority\": 3, \"unit\": \"health-check-v1\"}, {\"dependencies\": [\"health-check-v1\"], \"objective\": \"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-bb9a628fe5b7be67\"}, {\"dependencies\": [\"feedback-bb9a628fe5b7be67\"], \"objective\": \"Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu tu dong va giu nguyen cac API cu.\", \"priority\": 1, \"unit\": \"feedback-20c2a94109f4e78f\"}], \"blockers\": [], \"next_action\": \"Phan cong Dev thuc hien unit feedback-20c2a94109f4e78f tren kho Luim3141/mini-task-manager va kiem tra ket qua test tu dong.\", \"summary\": \"Ke hoach trien khai endpoint GET /tasks/{task_id} tren ung dung FastAPI, dam bao tra ve thong tin chi tiet hoac loi 404/422 chinh xac ma khong anh huong den schema SQLite hay cac API cu.\"}, \"feedback\": \"QLDAPM-E2E-20261101-POST-ROLLOUT-001: Add GET /tasks/{task_id} to retrieve one existing task by numeric ID. Return the existing id, title and status fields, or HTTP 404 if the task is absent. Add focused automated tests including persistence and invalid or absent IDs. Preserve GET /tasks/summary, /healthz, CRUD and search; do not change the database schema. Produce one isolated feature branch and PR, do not merge.\"}\nDiff:\ndiff --git a/task_manager/app.py b/task_manager/app.py\nindex deeec0a..e5e4f1c 100644\n--- a/task_manager/app.py\n+++ b/task_manager/app.py\n@@ -58,6 +58,17 @@ def create_app(database_path: str = \"tasks.db\") -> FastAPI:\n         conn.close()\n         return {\"id\": row[0], \"title\": row[1], \"status\": row[2]}\n \n+    @app.get(\"/tasks/{task_id}\")\n+    def get_task(task_id: int):\n+        conn = sqlite3.connect(database_path)\n+        cursor = conn.cursor()\n+        cursor.execute(\"SELECT id, title, status FROM tasks WHERE id = ?\", (task_id,))\n+        row = cursor.fetchone()\n+        conn.close()\n+        if not row:\n+            raise HTTPException(status_code=404, detail=\"Task not found\")\n+        return {\"id\": row[0], \"title\": row[1], \"status\": row[2]}\n+\n     @app.get(\"/tasks\")\n     def list_tasks(\n         q: Optional[str] = Query(None),\ndiff --git a/tests/test_tasks.py b/tests/test_tasks.py\nindex c2fad7c..f5136a8 100644\n--- a/tests/test_tasks.py\n+++ b/tests/test_tasks.py\n@@ -165,3 +165,21 @@ def test_ac14_summary_counts_invariant(client):\n     assert data[\"active\"] == 2\n     assert data[\"completed\"] == 2\n     assert data[\"total\"] == data[\"active\"] + data[\"completed\"]\n+\n+def test_get_task_success(client):\n+    res = client.post(\"/tasks\", json={\"title\": \"Specific Task\"})\n+    tid = res.json()[\"id\"]\n+    r = client.get(f\"/tasks/{tid}\")\n+    assert r.status_code == 200\n+    data = r.json()\n+    assert data[\"id\"] == tid\n+    assert data[\"title\"] == \"Specific Task\"\n+    assert data[\"status\"] == \"todo\"\n+\n+def test_get_task_not_found(client):\n+    r = client.get(\"/tasks/99999\")\n+    assert r.status_code == 404\n+\n+def test_get_task_invalid_id(client):\n+    r = client.get(\"/tasks/abc\")\n+    assert r.status_code == 422",
+      "finalAssistantVisibleText": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"04fc6371df90be5aa161a81607e2b8081259e3e7bf0e4bdc14c9f1cc75bf8ad4\",\n  \"findings\": []\n}\n```",
+      "finalAssistantRawText": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"04fc6371df90be5aa161a81607e2b8081259e3e7bf0e4bdc14c9f1cc75bf8ad4\",\n  \"findings\": []\n}\n```",
+      "replayInvalid": false,
+      "livenessState": "working",
+      "stopReason": "stop",
+      "executionTrace": {
+        "winnerProvider": "google",
+        "winnerModel": "gemini-3.5-flash-lite",
+        "attempts": [
+          {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite",
+            "result": "success",
+            "stage": "assistant"
+          }
+        ],
+        "fallbackUsed": false,
+        "runner": "embedded"
+      },
+      "requestShaping": {
+        "thinking": "off"
+      },
+      "completion": {
+        "stopReason": "stop",
+        "finishReason": "stop"
+      },
+      "toolSummary": {
+        "calls": 1,
+        "tools": [
+          "skills_read"
+        ],
+        "failures": 0
+      },
+      "terminalReply": {
+        "disposition": "visible",
+        "text": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"04fc6371df90be5aa161a81607e2b8081259e3e7bf0e4bdc14c9f1cc75bf8ad4\",\n  \"findings\": []\n}\n```"
+      }
+    },
+    "sourceReplyDeliveryState": "missing"
+  }
+}

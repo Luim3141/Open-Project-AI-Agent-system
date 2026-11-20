@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-25T03:33:53.843499+00:00",
+  "parent": "sha256:d4cd4ba61f9915d434edd72377d97746930592663cb610929ab45d66c9e0d5a2",
+  "tag": "qldapm-core:codex-qa-review-nav-20261025",
+  "image": "sha256:175c337834cabb5e56689432cbb913e5dc4ef622d77b7e3e49d16333cdab85e2",
+  "files": {
+    "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\show.html.erb": {
+      "before": "5f3bedd7818455fefb9983f2e7f7c0cecd944a61ce62d01e823d3c39dfdaba51",
+      "after": "34ccae44941d6782f57656a1805e9b974a340c95ca272878b9c636d127561594",
+      "runtime_path": "/app/app/views/qldapm_ai/show.html.erb"
+    },
+    "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_control_center.html.erb": {
+      "before": "24a9606f484cea08dfadce791253140f39c32a37f476e7fac3aeea9bde6dccf4",
+      "after": "a58a8b75d1bbb32cb10e59d4bf5ac0fbc375974e5f09681bf6a6eb93694e3c42",
+      "runtime_path": "/app/app/views/qldapm_ai/_control_center.html.erb"
+    }
+  },
+  "scope": "Only two Rails view templates; no Gateway/controller/Native/workflow changes",
+  "human_request": "User confirms QA page works but cannot find entry from Assistant; move link into Control Center button row",
+  "rollback_config": "private:navigation-ui-bridge.yml",
+  "status": "DEPLOYED_HEALTHY",
+  "other_main_containers_preserved": 9,
+  "core_ruby_programs": 8,
+  "role_navigation_matrix": "PM/Owner/QA visible; BA/BE/FE hidden; actual ActionView render",
+  "native_writes": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "human_navigation_uat": "NOT_TESTED_NEW_BUTTON; prior QA page UAT PASS"
+}

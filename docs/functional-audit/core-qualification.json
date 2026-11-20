@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "efde2d67f2149cd5b5ffd32978f66e4a57b9b8fdbcf7a0045383773bd4fb236b"
+  },
+  "checks": {
+    "adapter": true,
+    "fixture_browser": true,
+    "regressions": true,
+    "immutable_core": true
+  },
+  "evidence": {
+    "test_report_controller": "PASS report controller success, forbidden and unavailable status contracts; no GUI",
+    "test_read_bridge_errors": "PASS both execution read endpoints preserve 9 error statuses, retry hints and request IDs",
+    "test_bridge_busy_controller": "PASS command rejects busy before Gateway without remapping429 or retrying mutation"
+  },
+  "ui_reuse": "Studio assets unchanged from deployed/qualified d0bdd; existing source-pinned retry fixture proof retained. New controller status contracts verified; actual MAIN UAT required after rollout."
+}

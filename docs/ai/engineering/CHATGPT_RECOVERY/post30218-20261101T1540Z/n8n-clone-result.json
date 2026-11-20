@@ -1,0 +1,104 @@
+{
+  "status": "RUNNING",
+  "private_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\qldapm-recovery-p2-322cab56",
+  "network": "qldapm-recovery-p2-322cab56-net",
+  "n8n_image": "qldapm-n8n:recovery-phase2-redacted-r2",
+  "automatic_event_delivery": {
+    "outbox": [
+      [
+        "ACKED",
+        2
+      ]
+    ],
+    "observations": 1,
+    "executions": [
+      "1"
+    ]
+  },
+  "gateway_runtime": "actual ASGI lifespan + Service background publisher + signed observation route",
+  "canary_http": {
+    "success": 200,
+    "error": 500
+  },
+  "manual_exit_code": 0,
+  "retention": {
+    "tables": [
+      {
+        "table": "execution_data",
+        "rows": 4,
+        "leaked": true
+      },
+      {
+        "table": "execution_metadata",
+        "rows": 0,
+        "leaked": false
+      },
+      {
+        "table": "execution_annotations",
+        "rows": 0,
+        "leaked": false
+      },
+      {
+        "table": "execution_annotation_tags",
+        "rows": 0,
+        "leaked": false
+      },
+      {
+        "table": "execution_entity",
+        "rows": 4,
+        "leaked": false
+      }
+    ],
+    "log_leaked": false
+  },
+  "leak_paths": [
+    {
+      "executionId": 2,
+      "field": "data",
+      "path": "/resultData/runData/Trigger/0/data/main/0/0/json/headers/authorization",
+      "canaryIndex": 0
+    },
+    {
+      "executionId": 2,
+      "field": "data",
+      "path": "/resultData/runData/Trigger/0/data/main/0/0/json/headers/x-qldapm-webhook-token",
+      "canaryIndex": 0
+    },
+    {
+      "executionId": 3,
+      "field": "data",
+      "path": "/resultData/runData/Trigger/0/data/main/0/0/json/headers/authorization",
+      "canaryIndex": 1
+    },
+    {
+      "executionId": 3,
+      "field": "data",
+      "path": "/resultData/runData/Trigger/0/data/main/0/0/json/headers/x-qldapm-webhook-token",
+      "canaryIndex": 1
+    },
+    {
+      "executionId": 4,
+      "field": "data",
+      "path": "/resultData/runData/Code/0/data/main/0/0/json/headers/authorization",
+      "canaryIndex": 2
+    },
+    {
+      "executionId": 4,
+      "field": "workflowData",
+      "path": "/nodes/1/parameters/jsCode",
+      "canaryIndex": 2
+    },
+    {
+      "executionId": 4,
+      "field": "workflowData",
+      "path": "/nodes/2/parameters/headerParameters/parameters/0/value",
+      "canaryIndex": 2
+    },
+    {
+      "executionId": 4,
+      "field": "workflowData",
+      "path": "/nodes/2/parameters/headerParameters/parameters/1/value",
+      "canaryIndex": 2
+    }
+  ]
+}

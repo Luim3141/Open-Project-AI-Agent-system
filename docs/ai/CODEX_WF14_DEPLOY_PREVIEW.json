@@ -1,0 +1,12 @@
+{
+  "workflow_id": "8ycOUQy9gtT60nkN",
+  "previous_version": "27970b41-42e2-4af1-9e21-7be713289f5f",
+  "workflow_name": "WF14: Error Handling & Retry Router",
+  "candidate_sha256": "a56a6caded89765d2bbf99ef3ec7da7c2ecd302274a0ddf6d15051223eec31b2",
+  "source_node_tests_passed": 10,
+  "offline_gateway_and_workflow_tests_passed": 17,
+  "scope": "Only WF14 Main nodes/connections/settings; Gateway image unchanged; no credentials or Native business writes",
+  "contract": "status requires own durable RAG job_id UUID; retry additionally requires stable request_id UUID and a DLQ job; only local cache requeue, never Native write replay",
+  "planned_live_tests": "Read/validation/denial probes only: Main outbox empty, no synthetic Main job or forced outage; positive DLQ/replay covered with isolated SQLite",
+  "rollback": "Restore private pre-recovery WF14 fields and activate returned version; preserve all Gateway run/receipt data"
+}

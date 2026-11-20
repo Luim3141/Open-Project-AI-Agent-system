@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "checks": {
+    "observer": true,
+    "notifications": true,
+    "core": true,
+    "security": true
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/agent_observer.py": "e8956ee2a9753ea7c70c486c7e54f8f893e70598cff299269e4d76fd3a6d4945",
+    "openproject/ai/gateway/catalog.py": "420bbc3e04b213d08bddcb611eb95851289903dcd9c3f6491237b5985b65cc61",
+    "openproject/ai/gateway/service.py": "ec33e236984e4e5010f35951633848d62336721a55864393f8912266bcb5560d",
+    "openproject/ai/gateway/telegram_notifications.py": "46926fc568724e68a95cc6fa4364d4432893b0900cfcadf22a570cc10c64af5a",
+    "openproject/ai/core/overlay/config/routes.rb": "4b2d5050dc84e6d36e2578c38363beec49effb8fa2d69ec3d5d221cfef4a3324",
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": "f54939d07257002c75422a366c02d14be143c21b778c75f697e0e5b5528a26ab",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "23e828652b30074ded731207b60ea5f6c043076dcde5ff9d9e4eea7ccccb897d",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/observer.html.erb": "2992726579ccced1858248370bff9db1590c085c160ed173f8c84114b09da7f2",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "eeefb62405fda56422ef780e7e929c9411120b8feae420fd2bcb396e2e93a671",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_observer_client.html.erb": "f95dfce25e02908d5e7e960131f401ff9886addf8ba828d8d9932cdce60f9c47",
+    "openproject/ai/core/overlay/app/services/qldapm/observer_acceptance.rb": "702b1e0bde2f1567436fae5a9551fc20e1c4299c6860ba1266eb6e2ba486954b"
+  },
+  "evidence": {
+    "host_gateway_tests": 99,
+    "telegram_tests": 27,
+    "immutable_gateway_tests": {
+      "run": 91,
+      "passed": 89,
+      "skipped": 2
+    },
+    "core_ruby": {
+      "tests": 2,
+      "assertions": 4
+    },
+    "ruby_syntax": "PASS",
+    "observer_javascript_syntax": "PASS"
+  },
+  "not_covered": [
+    "real Telegram pairing",
+    "real outgoing Telegram delivery",
+    "new live coding workflow"
+  ]
+}

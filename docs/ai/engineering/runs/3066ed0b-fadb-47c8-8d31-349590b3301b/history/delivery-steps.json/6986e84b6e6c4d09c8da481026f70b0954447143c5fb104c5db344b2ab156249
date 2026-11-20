@@ -1,0 +1,328 @@
+{
+  "run_id": "3066ed0b-fadb-47c8-8d31-349590b3301b",
+  "steps": {
+    "context": {
+      "state": "done",
+      "at": 1793335513.8429418,
+      "value": {
+        "contract": {
+          "allow_routine_writes": false,
+          "base_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+          "deadline": 1793337304.035246,
+          "definition": {
+            "acceptance": {
+              "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+              "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+              "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+              "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+              "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+              "F1": "Testcase pytest mới kiểm tra thành công Unicode search cho 'đi chợ' và 'Straße'",
+              "F2": "Toàn bộ regression test cũ từ AC1 đến AC9 vượt qua hoàn toàn"
+            },
+            "acceptance_file": "test_crud_web.py",
+            "base_branch": "codex/openclaw-feedback-283138e910432528",
+            "base_unit": "feedback-283138e910432528",
+            "feedback": "Sua bug da tai hien trong search hien co: title \"ĐI CHỢ\" nhung q=\"đi chợ\" tra [] vi SQLite lower chi ASCII. Giu tat ca CRUD/Web error/retry/stale/double-submit da delivery. Chi thay search case-insensitive bang Unicode casefold: register deterministic SQLite function qldapm_casefold voi Python str.casefold trong GET /tasks connection, dung qldapm_casefold(title) LIKE ? va q.casefold() truoc escape literal %, _, backslash. Them focused pytest that fails truocfix cho ĐI CHỢ vs đi chợ va Straße vs STRASSE, giu literal wildcard/status AND. Fix chi vai dong backend; khong sua HTML, khong cai lai venv/deps, khong baseline rediscovery. Use explicit cd application cwd and .venv/bin/python -m pytest; .venv is ready. One batch exec to add red test, capture red, edit lines, capture green. No browser/UAT. Existing actual checks PASS except this demonstrated Unicode bug.",
+            "kind": "development",
+            "native_id": 383,
+            "plan_id": "85b9307a-bd36-4a39-a3b5-30f4a3e5a832",
+            "title": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode."
+          },
+          "engine": "openclaw",
+          "kind": "development",
+          "native_id": 383,
+          "project_id": 6,
+          "repository": "Luim3141/mini-task-manager",
+          "request_key": "continuation-unicode-search-delivery-v1",
+          "source_version": 1,
+          "spec": "QLDAPM PM/BA engineering plan 85b9307a-bd36-4a39-a3b5-30f4a3e5a832\nUnit: feedback-4d13e695555a8d44\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-283138e910432528\"],\"objective\":\"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.\",\"priority\":1,\"unit\":\"feedback-4d13e695555a8d44\"},\"functional_specification\":{\"acceptance\":[\"Testcase pytest mới kiểm tra thành công Unicode search cho 'đi chợ' và 'Straße'\",\"Toàn bộ regression test cũ từ AC1 đến AC9 vượt qua hoàn toàn\"],\"api_behavior\":[\"GET /tasks?q=đi%20chợ tìm thấy tiêu đề 'ĐI CHỢ' thông qua str.casefold\",\"Kết hợp tìm kiếm chuỗi Unicode và bộ lọc trạng thái (status) theo logic AND chính xác\"],\"citations\":[379],\"edge_cases\":[\"Chuỗi tìm kiếm chứa %, _, backslash được escape an toàn trước khi thêm ký tự đại diện\",\"Hỗ trợ các ký tự Unicode đặc biệt (ví dụ ß, Đ) thông qua quy tắc casefold mở rộng\"],\"limitations\":[\"Chỉ sửa đổi mã nguồn backend Python\",\"Không thay đổi giao diện HTML/frontend\",\"Không cài đặt lại môi trường ảo hay thư viện\"],\"scope\":[\"Đăng ký hàm SQLite tùy chỉnh qldapm_casefold sử dụng str.casefold trong kết nối GET /tasks\",\"Cập nhật truy vấn tìm kiếm sang qldapm_casefold(title) LIKE ? với q.casefold() đã escape ký tự đặc biệt\",\"Thêm focused pytest kiểm tra tìm kiếm Unicode case-insensitive\"],\"summary\":\"Khắc phục lỗi tìm kiếm không phân biệt chữ hoa/thường với ký tự Unicode (ví dụ 'đi chợ' không khớp 'ĐI CHỢ' do SQLite lower() chỉ hỗ trợ ASCII) bằng cách đăng ký hàm SQLite tùy chỉnh qldapm_casefold sử dụng Python str.casefold trong GET /tasks.\"},\"reviewers\":[\"reviewer\",\"qa\"],\"virtual_executor\":\"dev\"}",
+          "spec_sha256": "517a56c83e98b92eccd87a6f0f1021fd4ccf29ebe403d938a0152adb18dd810a",
+          "stage": "ADMITTED",
+          "unit": "feedback-4d13e695555a8d44",
+          "write_scope_ids": []
+        },
+        "plan": {
+          "unit": "feedback-4d13e695555a8d44",
+          "title": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.",
+          "spec_sha256": "517a56c83e98b92eccd87a6f0f1021fd4ccf29ebe403d938a0152adb18dd810a",
+          "steps": [
+            "Define AC/API",
+            "Implement one feature in isolated worktree",
+            "Independent review",
+            "Independent tests",
+            "Publish PR and progress",
+            "Reindex authorized Native evidence"
+          ],
+          "acceptance": {
+            "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+            "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+            "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+            "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+            "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+            "F1": "Testcase pytest mới kiểm tra thành công Unicode search cho 'đi chợ' và 'Straße'",
+            "F2": "Toàn bộ regression test cũ từ AC1 đến AC9 vượt qua hoàn toàn"
+          },
+          "interface": "task_manager.app.create_app(database_path); pytest; Python FastAPI + stdlib sqlite3",
+          "permission": "demo repository and Project6 only; no merge/deploy; completion of unit is not WP379 DONE",
+          "verification": "trusted external acceptance + repo pytest on exact tree; independent reviewer session",
+          "functional_specification": {
+            "acceptance": [
+              "Testcase pytest mới kiểm tra thành công Unicode search cho 'đi chợ' và 'Straße'",
+              "Toàn bộ regression test cũ từ AC1 đến AC9 vượt qua hoàn toàn"
+            ],
+            "api_behavior": [
+              "GET /tasks?q=đi%20chợ tìm thấy tiêu đề 'ĐI CHỢ' thông qua str.casefold",
+              "Kết hợp tìm kiếm chuỗi Unicode và bộ lọc trạng thái (status) theo logic AND chính xác"
+            ],
+            "citations": [
+              379
+            ],
+            "edge_cases": [
+              "Chuỗi tìm kiếm chứa %, _, backslash được escape an toàn trước khi thêm ký tự đại diện",
+              "Hỗ trợ các ký tự Unicode đặc biệt (ví dụ ß, Đ) thông qua quy tắc casefold mở rộng"
+            ],
+            "limitations": [
+              "Chỉ sửa đổi mã nguồn backend Python",
+              "Không thay đổi giao diện HTML/frontend",
+              "Không cài đặt lại môi trường ảo hay thư viện"
+            ],
+            "scope": [
+              "Đăng ký hàm SQLite tùy chỉnh qldapm_casefold sử dụng str.casefold trong kết nối GET /tasks",
+              "Cập nhật truy vấn tìm kiếm sang qldapm_casefold(title) LIKE ? với q.casefold() đã escape ký tự đặc biệt",
+              "Thêm focused pytest kiểm tra tìm kiếm Unicode case-insensitive"
+            ],
+            "summary": "Khắc phục lỗi tìm kiếm không phân biệt chữ hoa/thường với ký tự Unicode (ví dụ 'đi chợ' không khớp 'ĐI CHỢ' do SQLite lower() chỉ hỗ trợ ASCII) bằng cách đăng ký hàm SQLite tùy chỉnh qldapm_casefold sử dụng Python str.casefold trong GET /tasks."
+          },
+          "pm_plan": {
+            "assignments": [
+              {
+                "dependencies": [],
+                "objective": "Create/list tasks + SQLite persistence (verified delivery reused)",
+                "priority": 3,
+                "unit": "create-list-persistence-v1"
+              },
+              {
+                "dependencies": [
+                  "create-list-persistence-v1"
+                ],
+                "objective": "Edit/delete/status/search and usable web interface (verified delivery reused)",
+                "priority": 3,
+                "unit": "crud-search-web-v1"
+              },
+              {
+                "dependencies": [
+                  "crud-search-web-v1"
+                ],
+                "objective": "Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)",
+                "priority": 3,
+                "unit": "feedback-283138e910432528"
+              },
+              {
+                "dependencies": [
+                  "feedback-283138e910432528"
+                ],
+                "objective": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.",
+                "priority": 1,
+                "unit": "feedback-4d13e695555a8d44"
+              }
+            ],
+            "blockers": [],
+            "next_action": "Thuc hien Unit feedback-4d13e695555a8d44 bang cach them test red, sua code backend va chay pytest de xac nhan green.",
+            "summary": "Ke hoach trien khai don vi ky thuat sua loi tim kiem khong phan biet chu hoa thuong Unicode cho GET /tasks bang cach dang ky ham SQLite qldapm_casefold."
+          },
+          "feedback": "Sua bug da tai hien trong search hien co: title \"ĐI CHỢ\" nhung q=\"đi chợ\" tra [] vi SQLite lower chi ASCII. Giu tat ca CRUD/Web error/retry/stale/double-submit da delivery. Chi thay search case-insensitive bang Unicode casefold: register deterministic SQLite function qldapm_casefold voi Python str.casefold trong GET /tasks connection, dung qldapm_casefold(title) LIKE ? va q.casefold() truoc escape literal %, _, backslash. Them focused pytest that fails truocfix cho ĐI CHỢ vs đi chợ va Straße vs STRASSE, giu literal wildcard/status AND. Fix chi vai dong backend; khong sua HTML, khong cai lai venv/deps, khong baseline rediscovery. Use explicit cd application cwd and .venv/bin/python -m pytest; .venv is ready. One batch exec to add red test, capture red, edit lines, capture green. No browser/UAT. Existing actual checks PASS except this demonstrated Unicode bug."
+        },
+        "agent_outputs": {
+          "pm": {
+            "schema_version": 1,
+            "run_id": "3066ed0b-fadb-47c8-8d31-349590b3301b",
+            "task_id": "ff877057-6d76-4bf9-ac54-c88695e023c6",
+            "actor_id": 20,
+            "project_id": 6,
+            "trace_id": "754fcee6-cfe0-4115-9118-14642b6c9a80",
+            "state": "COMPLETED",
+            "summary": "### ĐÁNH GIÁ TỔNG THỂ RỦI RO SPRINT (Mức độ: THẤP)\n- **Tổng số công việc:** 1 (Hoàn thành: 0, Đang mở: 1)\n- **Công việc quá hạn:** 0\n- **Công việc bị chặn (Blocker):** 0\n\n#### Chi tiết rủi ro và bằng chứng:\n\n#### Khuyến nghị hành động:\n1. Ưu tiên giải tỏa blocker cho các công việc có mức độ ưu tiên cao.\n2. Điều chỉnh phân bổ nguồn lực hoặc đàm phán phạm vi cho các mục trễ hạn.",
+            "references": [],
+            "receipt_ids": [],
+            "model_used": false,
+            "error_code": null
+          },
+          "ba": {
+            "schema_version": 1,
+            "run_id": "3066ed0b-fadb-47c8-8d31-349590b3301b",
+            "task_id": "ff877057-6d76-4bf9-ac54-c88695e023c6",
+            "actor_id": 20,
+            "project_id": 6,
+            "trace_id": "754fcee6-cfe0-4115-9118-14642b6c9a80",
+            "state": "COMPLETED",
+            "summary": "Không tìm thấy công việc mục tiêu để soạn thảo tiêu chí chấp nhận.",
+            "references": [],
+            "receipt_ids": [],
+            "model_used": false,
+            "error_code": null
+          }
+        },
+        "knowledge": {
+          "items": [
+            {
+              "title": "Develop Mini Task Manager Application",
+              "snippet": "Develop Mini Task Manager Application\n**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n...",
+              "native_id": 379,
+              "document_id": "162d33865a2dcbb0edec5d72d9dcbf98d2b5802d8971bcd66d0ad9057f5db5d0",
+              "lock_version": 1,
+              "source_id": "actor:20:wp:379",
+              "score": 0.03279,
+              "citation": "/work_packages/379",
+              "match_type": "HYBRID_RRF"
+            }
+          ],
+          "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+          "dense_state": "READY",
+          "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+          "model_used": false
+        },
+        "profiles": {
+          "supervisor": {
+            "agent": "supervisor",
+            "runtime": "qldapm-supervisor",
+            "skill": "engineering-planning",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "claim",
+              "dependencies",
+              "stage handoff",
+              "bounded rework",
+              "publication and OFF"
+            ],
+            "tools": [
+              "existing queue",
+              "Native scoped publisher",
+              "SecondBrain"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "durable stage receipt + completion/publication readback",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "bounded ownership/claim/handoff; Paperclip/NEXUS principles"
+          },
+          "pm": {
+            "agent": "pm",
+            "runtime": "qldapm-gemini",
+            "skill": "engineering-planning",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "prioritize verified scope",
+              "Native backlog/dependencies",
+              "assign virtual Dev",
+              "blockers and next action"
+            ],
+            "tools": [
+              "shared Gemini structured analysis",
+              "Native reads",
+              "loaded planning skill"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "ordered assignments, dependencies, priorities, blockers, next action + Native backlog readback",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Senior Project Manager / Sprint Prioritizer"
+          },
+          "ba": {
+            "agent": "ba",
+            "runtime": "qldapm-gemini",
+            "skill": "engineering-planning",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "functional scope",
+              "API behavior",
+              "edge cases",
+              "acceptance and feedback specification"
+            ],
+            "tools": [
+              "shared Gemini structured analysis",
+              "Native reads",
+              "loaded planning skill"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "functional specification, API behavior, edge cases, acceptance, source citations",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Requirements Analyst"
+          },
+          "dev": {
+            "agent": "dev",
+            "runtime": "openclaw",
+            "skill": "engineering-development",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "actual source edits",
+              "terminal/dependencies",
+              "TDD and debugging",
+              "receiving feedback"
+            ],
+            "tools": [
+              "read",
+              "exec"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "filesystem diff + command/exit/test artifacts",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Senior Developer / Debugging Specialist"
+          },
+          "reviewer": {
+            "agent": "reviewer",
+            "runtime": "openclaw",
+            "skill": "engineering-review",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "independent exact-diff review",
+              "actionable findings",
+              "re-review"
+            ],
+            "tools": [
+              "read"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "JSON verdict/findings with exact revision and file/line",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Code Reviewer / Reality Checker"
+          },
+          "qa": {
+            "agent": "qa",
+            "runtime": "openclaw",
+            "skill": "engineering-qa",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "execute tests",
+              "capture real exit/artifacts",
+              "defect handoff and retest"
+            ],
+            "tools": [
+              "read",
+              "exec"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "executed command, exit code, acceptance mapping, actual failures",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "API Tester / Evidence Collector"
+          }
+        }
+      }
+    },
+    "prepare": {
+      "state": "done",
+      "at": 1793335568.0829136,
+      "value": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a"
+    }
+  },
+  "revision": null
+}

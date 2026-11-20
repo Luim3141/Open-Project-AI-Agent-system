@@ -1,0 +1,1653 @@
+{
+  "site": "https://luimjiraqldapm.atlassian.net",
+  "project": "QAG3",
+  "source": "supplementary MCP inspect_workflow",
+  "readAtomic": false,
+  "workflows": {
+    "epic": {
+      "statuses": [
+        {
+          "id": "10013",
+          "statusReference": "10013",
+          "name": "CANCELLED",
+          "statusCategory": "DONE",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10012",
+          "statusReference": "10012",
+          "name": "REVIEW",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10011",
+          "statusReference": "10011",
+          "name": "READY",
+          "statusCategory": "TODO",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "3",
+          "statusReference": "3",
+          "name": "In Progress",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": "This work item is being actively worked on at the moment by the assignee."
+        },
+        {
+          "id": "10010",
+          "statusReference": "10010",
+          "name": "NEW",
+          "statusCategory": "TODO",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10009",
+          "statusReference": "10009",
+          "name": "Done",
+          "statusCategory": "DONE",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        }
+      ],
+      "workflows": [
+        {
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "version": {
+            "versionNumber": 5,
+            "id": "ad587970-0156-4760-8a3c-a98a7811470c"
+          },
+          "id": "5079dd5a-c3a9-4049-a1d7-70c0acc6a365",
+          "name": "QAG3 Epic Lifecycle v1",
+          "description": "QAG3 only. Epic scope and PM acceptance. NEW > READY > IN PROGRESS > REVIEW > DONE; CANCELLED and controlled reopen. Not production-ready until gates and tests pass.",
+          "isEditable": true,
+          "startPointLayout": {
+            "x": 829.5985984802246,
+            "y": -130.8013427734375
+          },
+          "statuses": [
+            {
+              "statusReference": "10010",
+              "layout": {
+                "x": 744.4049644470215,
+                "y": 192.59825439453124
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10011",
+              "layout": {
+                "x": 987.9982566833496,
+                "y": -90.80134277343751
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "3",
+              "layout": {
+                "x": 1254.7956199645996,
+                "y": 334.29674072265624
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10012",
+              "layout": {
+                "x": 1847.999111175537,
+                "y": 312.69346923828124
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10009",
+              "layout": {
+                "x": 2051.0783348083496,
+                "y": 33.49687499999999
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10013",
+              "layout": {
+                "x": 2012.892910003662,
+                "y": -70.50153808593751
+              },
+              "properties": {},
+              "deprecated": false
+            }
+          ],
+          "transitions": [
+            {
+              "id": "1",
+              "type": "INITIAL",
+              "toStatusReference": "10010",
+              "links": [
+                {
+                  "toPort": 1
+                }
+              ],
+              "name": "Create",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "2",
+              "type": "DIRECTED",
+              "toStatusReference": "10011",
+              "links": [
+                {
+                  "fromStatusReference": "10010",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Approve scope",
+              "description": "",
+              "actions": [],
+              "validators": [
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                    "config": "{}",
+                    "id": "7b85d583-eaae-5328-974d-6f90f058d638",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "196c1bcb-4f32-4c2f-be4f-718760bd4271"
+                }
+              ],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "3",
+              "type": "DIRECTED",
+              "toStatusReference": "10010",
+              "links": [
+                {
+                  "fromStatusReference": "10011",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Reanalyse",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "4",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10011",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Start delivery",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "5",
+              "type": "DIRECTED",
+              "toStatusReference": "10012",
+              "links": [
+                {
+                  "fromStatusReference": "3",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Submit acceptance",
+              "description": "",
+              "actions": [],
+              "validators": [
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-epic-children-done",
+                    "config": "{}",
+                    "id": "08138138-abc0-5207-a309-f17341e18ca2",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "940ca21c-c87f-4c49-99ab-317793ecf1d5"
+                }
+              ],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "6",
+              "type": "DIRECTED",
+              "toStatusReference": "10009",
+              "links": [
+                {
+                  "fromStatusReference": "10012",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Accept Epic",
+              "description": "",
+              "actions": [
+                {
+                  "ruleKey": "system:update-field",
+                  "parameters": {
+                    "field": "resolution",
+                    "value": "10000",
+                    "mode": "replace"
+                  },
+                  "id": "410671709"
+                }
+              ],
+              "validators": [
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                    "config": "{}",
+                    "id": "e4c4d33e-cb37-598b-921e-ce53a7afe078",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "fd215e8c-2a5c-4648-a12d-63bfa7689ff8"
+                },
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-epic-children-done",
+                    "config": "{}",
+                    "id": "9e6d3ed0-d595-5898-acde-90f8a00024c8",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "5eda5340-f480-4eab-a50a-df683e2d5e8c"
+                }
+              ],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "7",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10012",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Return / scope changed",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "8",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10009",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Reopen",
+              "description": "",
+              "actions": [
+                {
+                  "ruleKey": "system:update-field",
+                  "parameters": {
+                    "field": "resolution",
+                    "value": "",
+                    "mode": ""
+                  },
+                  "id": "155607670"
+                }
+              ],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "10",
+              "type": "DIRECTED",
+              "toStatusReference": "10010",
+              "links": [
+                {
+                  "fromStatusReference": "10013",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Restore",
+              "description": "",
+              "actions": [
+                {
+                  "ruleKey": "system:update-field",
+                  "parameters": {
+                    "field": "resolution",
+                    "value": "",
+                    "mode": ""
+                  },
+                  "id": "473357207"
+                }
+              ],
+              "validators": [
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                    "config": "{}",
+                    "id": "37f4e389-8963-5aa4-a25a-b96c27bf18c1",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "4c2c917c-9d4a-43aa-b0e2-319ca429cf3f"
+                }
+              ],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "9",
+              "type": "DIRECTED",
+              "toStatusReference": "10013",
+              "links": [
+                {
+                  "fromStatusReference": "10010",
+                  "fromPort": 3,
+                  "toPort": 7
+                },
+                {
+                  "fromStatusReference": "10011",
+                  "fromPort": 3,
+                  "toPort": 7
+                },
+                {
+                  "fromStatusReference": "3",
+                  "fromPort": 3,
+                  "toPort": 7
+                },
+                {
+                  "fromStatusReference": "10012",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Cancel Epic",
+              "description": "",
+              "actions": [],
+              "validators": [
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                    "config": "{}",
+                    "id": "028f802c-1444-55c1-ae8d-6cf8f116fb2b",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "d5b5cae0-7d2a-48cb-8b78-63e49b2e0412"
+                }
+              ],
+              "triggers": [],
+              "properties": {}
+            }
+          ],
+          "loopedTransitionContainerLayout": {}
+        }
+      ]
+    },
+    "task": {
+      "statuses": [
+        {
+          "id": "10019",
+          "statusReference": "10019",
+          "name": "READY FOR RELEASE",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10014",
+          "statusReference": "10014",
+          "name": "IN ANALYSIS",
+          "statusCategory": "TODO",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10012",
+          "statusReference": "10012",
+          "name": "REVIEW",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10015",
+          "statusReference": "10015",
+          "name": "READY FOR DEV",
+          "statusCategory": "TODO",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10017",
+          "statusReference": "10017",
+          "name": "READY FOR TEST",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10016",
+          "statusReference": "10016",
+          "name": "CODE REVIEW",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "3",
+          "statusReference": "3",
+          "name": "In Progress",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": "This work item is being actively worked on at the moment by the assignee."
+        },
+        {
+          "id": "10010",
+          "statusReference": "10010",
+          "name": "NEW",
+          "statusCategory": "TODO",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10018",
+          "statusReference": "10018",
+          "name": "IN TESTING",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10009",
+          "statusReference": "10009",
+          "name": "Done",
+          "statusCategory": "DONE",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        }
+      ],
+      "workflows": [
+        {
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "version": {
+            "versionNumber": 4,
+            "id": "3f2d44b0-a179-4149-995e-3e4219cfea7c"
+          },
+          "id": "9f21c6fc-718d-4f3c-aca9-49ab9c89c899",
+          "name": "QAG3 Task Delivery v1",
+          "description": "QAG3 only. Ten-stage feature delivery plus Code rejected, Bug found, ReDev, Retest and Reopen. Deploy to shared Test. Inactive until role gates and acceptance tests pass.",
+          "isEditable": true,
+          "startPointLayout": {
+            "x": 968,
+            "y": 4
+          },
+          "statuses": [
+            {
+              "statusReference": "10010",
+              "layout": {
+                "x": 928.40625,
+                "y": 117.4
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10014",
+              "layout": {
+                "x": 1055.1850685546474,
+                "y": -135.45535252318717
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10015",
+              "layout": {
+                "x": 1166.7347657211478,
+                "y": 183.91012299179323
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "3",
+              "layout": {
+                "x": 1362.1137231749383,
+                "y": 80.41206928290265
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10016",
+              "layout": {
+                "x": 1546.9432574296413,
+                "y": 209.53819744109026
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10017",
+              "layout": {
+                "x": 1527.09315049697,
+                "y": -176.85446872307872
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10018",
+              "layout": {
+                "x": 2124.5523785612795,
+                "y": -92.08461169596401
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10012",
+              "layout": {
+                "x": 2216.8466710952116,
+                "y": 286.42257119421646
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10019",
+              "layout": {
+                "x": 2393.6922442481587,
+                "y": -47.728265362273554
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10009",
+              "layout": {
+                "x": 2585.2039822936954,
+                "y": 39.998633792096065
+              },
+              "properties": {},
+              "deprecated": false
+            }
+          ],
+          "transitions": [
+            {
+              "id": "1",
+              "type": "INITIAL",
+              "toStatusReference": "10010",
+              "links": [
+                {
+                  "toPort": 1
+                }
+              ],
+              "name": "Create",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "2",
+              "type": "DIRECTED",
+              "toStatusReference": "10014",
+              "links": [
+                {
+                  "fromStatusReference": "10010",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Start analysis",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "3",
+              "type": "DIRECTED",
+              "toStatusReference": "10015",
+              "links": [
+                {
+                  "fromStatusReference": "10014",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Analysis done",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "4",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10015",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Start dev",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "5",
+              "type": "DIRECTED",
+              "toStatusReference": "10016",
+              "links": [
+                {
+                  "fromStatusReference": "3",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Submit code",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "6",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10016",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Code rejected",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "7",
+              "type": "DIRECTED",
+              "toStatusReference": "10017",
+              "links": [
+                {
+                  "fromStatusReference": "10016",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Approve code",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "8",
+              "type": "DIRECTED",
+              "toStatusReference": "10018",
+              "links": [
+                {
+                  "fromStatusReference": "10017",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Start test",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "9",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10018",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Bug found",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "10",
+              "type": "DIRECTED",
+              "toStatusReference": "10012",
+              "links": [
+                {
+                  "fromStatusReference": "10018",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Pass testing",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "11",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10012",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "ReDev",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "12",
+              "type": "DIRECTED",
+              "toStatusReference": "10018",
+              "links": [
+                {
+                  "fromStatusReference": "10012",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Retest",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "13",
+              "type": "DIRECTED",
+              "toStatusReference": "10019",
+              "links": [
+                {
+                  "fromStatusReference": "10012",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Approve",
+              "description": "",
+              "actions": [],
+              "validators": [
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                    "config": "{}",
+                    "id": "41fae7c3-be95-5e7f-a963-85dabd941525",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "2264f9db-8cb7-41e4-adbd-a28171e65778"
+                }
+              ],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "14",
+              "type": "DIRECTED",
+              "toStatusReference": "10009",
+              "links": [
+                {
+                  "fromStatusReference": "10019",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Deploy",
+              "description": "",
+              "actions": [
+                {
+                  "ruleKey": "system:update-field",
+                  "parameters": {
+                    "field": "resolution",
+                    "value": "10000",
+                    "mode": "replace"
+                  },
+                  "id": "123965354"
+                }
+              ],
+              "validators": [
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                    "config": "{}",
+                    "id": "44226c17-0035-5876-93d3-067da1d42c44",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "ac3ac269-732f-40f6-826f-9179912fa168"
+                },
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-task-subtasks-done",
+                    "config": "{}",
+                    "id": "31e1431d-861a-5f7d-915e-7cb7c8ebf998",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "83fdea01-5d72-41e5-8f86-c16780bc8776"
+                },
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-task-delivery-checklist",
+                    "config": "{}",
+                    "id": "c0f602c3-0619-52df-8adb-fac86fbf2c39",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "7e4e04d8-5db3-4b27-b199-ede76e028fe4"
+                }
+              ],
+              "conditions": {
+                "operation": "ALL",
+                "conditionGroups": [],
+                "conditions": [
+                  {
+                    "ruleKey": "system:parent-or-child-blocking-condition",
+                    "parameters": {
+                      "blocker": "CHILD",
+                      "statusIds": "10009"
+                    },
+                    "id": "0258441e-e0e3-47df-a4d9-50d2163bbeca"
+                  }
+                ]
+              },
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "15",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10009",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Reopen",
+              "description": "",
+              "actions": [
+                {
+                  "ruleKey": "system:update-field",
+                  "parameters": {
+                    "field": "resolution",
+                    "value": "",
+                    "mode": ""
+                  },
+                  "id": "638122368"
+                }
+              ],
+              "validators": [
+                {
+                  "ruleKey": "forge:expression-validator",
+                  "parameters": {
+                    "key": "ari:cloud:ecosystem::extension/f6f77ef8-978a-4e85-a3df-b30d3ef38d06/f976ef41-5e46-44f1-b8a7-4a60f9d90b24/static/qag3-pm-only",
+                    "config": "{}",
+                    "id": "e052b4b0-b52f-5cbc-98c6-3377d01c1b97",
+                    "disabled": "false",
+                    "tag": ""
+                  },
+                  "id": "211e50be-732e-4dd2-b873-14a2feb8d13b"
+                }
+              ],
+              "triggers": [],
+              "properties": {}
+            }
+          ],
+          "loopedTransitionContainerLayout": {}
+        }
+      ]
+    },
+    "subtask": {
+      "statuses": [
+        {
+          "id": "10012",
+          "statusReference": "10012",
+          "name": "REVIEW",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10017",
+          "statusReference": "10017",
+          "name": "READY FOR TEST",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10016",
+          "statusReference": "10016",
+          "name": "CODE REVIEW",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "3",
+          "statusReference": "3",
+          "name": "In Progress",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": "This work item is being actively worked on at the moment by the assignee."
+        },
+        {
+          "id": "10010",
+          "statusReference": "10010",
+          "name": "NEW",
+          "statusCategory": "TODO",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10018",
+          "statusReference": "10018",
+          "name": "IN TESTING",
+          "statusCategory": "IN_PROGRESS",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        },
+        {
+          "id": "10009",
+          "statusReference": "10009",
+          "name": "Done",
+          "statusCategory": "DONE",
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "description": ""
+        }
+      ],
+      "workflows": [
+        {
+          "scope": {
+            "type": "GLOBAL"
+          },
+          "version": {
+            "versionNumber": 4,
+            "id": "5a32d28e-8c31-4883-ab57-2989421e45f7"
+          },
+          "id": "7512e21c-34cd-4fc8-baf4-9398f36f3e37",
+          "name": "QAG3 Individual Work v1",
+          "description": "QAG3 only. BA/QA/PM: NEW > IN PROGRESS > REVIEW > DONE. BE/FE: NEW > IN PROGRESS > CODE REVIEW > READY FOR TEST > IN TESTING > REVIEW > DONE. Routing uses the approved five assignee account IDs, not security roles. Rework/Reopen/Code rejected/Bug found/Retest retained. Inactive pending gates and migration approval.",
+          "isEditable": true,
+          "startPointLayout": {
+            "x": 940.7987308502197,
+            "y": -6.801124572753906
+          },
+          "statuses": [
+            {
+              "statusReference": "10010",
+              "layout": {
+                "x": 928.40625,
+                "y": 117.4
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "3",
+              "layout": {
+                "x": 1102.3980598449707,
+                "y": -199.30128479003906
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10012",
+              "layout": {
+                "x": 1864.6128177642822,
+                "y": 155.89531707763672
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10009",
+              "layout": {
+                "x": 1421.7968034744263,
+                "y": -72.10150909423828
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10016",
+              "layout": {
+                "x": 1125.197437286377,
+                "y": 290.39801025390625
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10017",
+              "layout": {
+                "x": 1416.864891052246,
+                "y": 201.59807586669922
+              },
+              "properties": {},
+              "deprecated": false
+            },
+            {
+              "statusReference": "10018",
+              "layout": {
+                "x": 1501.9961433410645,
+                "y": 354.3980712890625
+              },
+              "properties": {},
+              "deprecated": false
+            }
+          ],
+          "transitions": [
+            {
+              "id": "1",
+              "type": "INITIAL",
+              "toStatusReference": "10010",
+              "links": [
+                {
+                  "toPort": 1
+                }
+              ],
+              "name": "Create",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "2",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10010",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Start work",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "3",
+              "type": "DIRECTED",
+              "toStatusReference": "10012",
+              "links": [
+                {
+                  "fromStatusReference": "3",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Submit work",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "conditions": {
+                "operation": "ANY",
+                "conditionGroups": [],
+                "conditions": [
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:0d04982c-00bf-46af-b3a7-446d0f44edfb\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "6c6306c1-1490-4672-acf0-e306965012fe"
+                  },
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:94d1f95d-9618-4f25-8284-41105336b942\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "bb5f9885-2090-47ad-a1dc-b0de63bd5e47"
+                  },
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:47b24428-aa71-4363-b68f-29ed2285aad8\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "1972b37d-7bb8-40c3-bee0-410db27a5661"
+                  }
+                ]
+              },
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "7",
+              "type": "DIRECTED",
+              "toStatusReference": "10016",
+              "links": [
+                {
+                  "fromStatusReference": "3",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Submit code",
+              "description": "BE/FE assignment only; reviewer and test evidence required before acceptance.",
+              "actions": [],
+              "validators": [],
+              "conditions": {
+                "operation": "ANY",
+                "conditionGroups": [],
+                "conditions": [
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "2e373269-c615-49d2-bfbe-5783705997d9"
+                  },
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:da12735c-4da8-46d6-801d-46c9898c681d\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "90054cb6-2ba9-4516-889b-913b4db63d74"
+                  }
+                ]
+              },
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "4",
+              "type": "DIRECTED",
+              "toStatusReference": "10009",
+              "links": [
+                {
+                  "fromStatusReference": "10012",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Approve work",
+              "description": "",
+              "actions": [
+                {
+                  "ruleKey": "system:update-field",
+                  "parameters": {
+                    "field": "resolution",
+                    "value": "10000",
+                    "mode": "replace"
+                  },
+                  "id": "1283685106"
+                }
+              ],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "5",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10012",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Rework",
+              "description": "",
+              "actions": [],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "13",
+              "type": "DIRECTED",
+              "toStatusReference": "10018",
+              "links": [
+                {
+                  "fromStatusReference": "10012",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Retest",
+              "description": "BE/FE assignment only; reviewer and test evidence required before acceptance.",
+              "actions": [],
+              "validators": [],
+              "conditions": {
+                "operation": "ANY",
+                "conditionGroups": [],
+                "conditions": [
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "600286f4-d5f3-465d-ac25-292028889de3"
+                  },
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:da12735c-4da8-46d6-801d-46c9898c681d\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "0617c074-9ee5-4451-adf1-c1b1bb5a12e0"
+                  }
+                ]
+              },
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "6",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10009",
+                  "fromPort": 7,
+                  "toPort": 3
+                }
+              ],
+              "name": "Reopen",
+              "description": "",
+              "actions": [
+                {
+                  "ruleKey": "system:update-field",
+                  "parameters": {
+                    "field": "resolution",
+                    "value": "",
+                    "mode": ""
+                  },
+                  "id": "995882234"
+                }
+              ],
+              "validators": [],
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "8",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10016",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Code rejected",
+              "description": "BE/FE assignment only; reviewer and test evidence required before acceptance.",
+              "actions": [],
+              "validators": [],
+              "conditions": {
+                "operation": "ANY",
+                "conditionGroups": [],
+                "conditions": [
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "7304dea1-28fc-4a17-b244-1e9826fdd4d6"
+                  },
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:da12735c-4da8-46d6-801d-46c9898c681d\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "c93e4eb3-3d73-44c1-abce-d9509dd68e1d"
+                  }
+                ]
+              },
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "9",
+              "type": "DIRECTED",
+              "toStatusReference": "10017",
+              "links": [
+                {
+                  "fromStatusReference": "10016",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Approve code",
+              "description": "BE/FE assignment only; reviewer and test evidence required before acceptance.",
+              "actions": [],
+              "validators": [],
+              "conditions": {
+                "operation": "ANY",
+                "conditionGroups": [],
+                "conditions": [
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "89afd6dc-1115-473f-93e0-b8bf8793fb4c"
+                  },
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:da12735c-4da8-46d6-801d-46c9898c681d\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "497bae8f-f067-484c-b62c-fef9c82747df"
+                  }
+                ]
+              },
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "10",
+              "type": "DIRECTED",
+              "toStatusReference": "10018",
+              "links": [
+                {
+                  "fromStatusReference": "10017",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Start test",
+              "description": "BE/FE assignment only; reviewer and test evidence required before acceptance.",
+              "actions": [],
+              "validators": [],
+              "conditions": {
+                "operation": "ANY",
+                "conditionGroups": [],
+                "conditions": [
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "352d50da-98ed-45f2-9d2b-5f01ca9f3f34"
+                  },
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:da12735c-4da8-46d6-801d-46c9898c681d\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "e404f657-cce0-4fee-8f6c-5684bdb628b7"
+                  }
+                ]
+              },
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "11",
+              "type": "DIRECTED",
+              "toStatusReference": "3",
+              "links": [
+                {
+                  "fromStatusReference": "10018",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Bug found",
+              "description": "BE/FE assignment only; reviewer and test evidence required before acceptance.",
+              "actions": [],
+              "validators": [],
+              "conditions": {
+                "operation": "ANY",
+                "conditionGroups": [],
+                "conditions": [
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "90d59093-89fa-4ec0-8a1a-975bba6aacf5"
+                  },
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:da12735c-4da8-46d6-801d-46c9898c681d\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "005e0b33-d7b3-46cf-b8f7-7144f888027b"
+                  }
+                ]
+              },
+              "triggers": [],
+              "properties": {}
+            },
+            {
+              "id": "12",
+              "type": "DIRECTED",
+              "toStatusReference": "10012",
+              "links": [
+                {
+                  "fromStatusReference": "10018",
+                  "fromPort": 3,
+                  "toPort": 7
+                }
+              ],
+              "name": "Pass testing",
+              "description": "BE/FE assignment only; reviewer and test evidence required before acceptance.",
+              "actions": [],
+              "validators": [],
+              "conditions": {
+                "operation": "ANY",
+                "conditionGroups": [],
+                "conditions": [
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:7141e4e4-a663-4691-a3ec-fec3efb6df5a\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "ab90ab58-8cd5-4403-a726-0948a750af37"
+                  },
+                  {
+                    "ruleKey": "system:check-field-value",
+                    "parameters": {
+                      "fieldId": "assignee",
+                      "fieldValue": "[\"712020:da12735c-4da8-46d6-801d-46c9898c681d\"]",
+                      "comparator": "=",
+                      "comparisonType": "OPTIONID"
+                    },
+                    "id": "2650dbb4-cd78-40d9-b070-e6c033e45513"
+                  }
+                ]
+              },
+              "triggers": [],
+              "properties": {}
+            }
+          ],
+          "loopedTransitionContainerLayout": {}
+        }
+      ]
+    }
+  }
+}

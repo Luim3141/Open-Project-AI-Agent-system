@@ -1,0 +1,132 @@
+{
+  "utc": "2026-11-03T12:50:22.088761+00:00",
+  "http": 200,
+  "result": {
+    "result": {
+      "observed_at": 1793710221.8729398,
+      "project_id": 5,
+      "state": "DEGRADED",
+      "checks": {
+        "openproject": {
+          "state": "OK",
+          "http_status": 200,
+          "scope": "OpenProject web health; not full Native permission check",
+          "latency_ms": 11.4
+        },
+        "qdrant": {
+          "state": "OK",
+          "http_status": 200,
+          "collection_status": "green",
+          "points": 2326,
+          "dimensions": 1024,
+          "latency_ms": 2.1
+        },
+        "ollama": {
+          "state": "OK",
+          "http_status": 200,
+          "model": "bge-m3",
+          "latency_ms": 78.1
+        },
+        "gateway": {
+          "state": "OK",
+          "health": "UP",
+          "checked_at": 1793710221.6099331,
+          "latency_ms": 18,
+          "last_error": null
+        },
+        "openclaw": {
+          "state": "ERROR",
+          "health": "DOWN",
+          "checked_at": 1793710221.6234353,
+          "latency_ms": 12.5,
+          "last_error": "CONNECTIVITY_CHECK_FAILED"
+        },
+        "n8n": {
+          "state": "OK",
+          "health": "UP",
+          "checked_at": 1793710221.6116848,
+          "latency_ms": 9.2,
+          "last_error": null
+        },
+        "demo": {
+          "state": "OK",
+          "health": "UP",
+          "checked_at": 1793710221.6131356,
+          "latency_ms": 21.7,
+          "last_error": null
+        },
+        "provider": {
+          "state": "NOT_CHECKED",
+          "model": "gemini-3.5-flash-lite",
+          "project_limits": {
+            "rpd": 500,
+            "rpm": 15,
+            "tpm": 250000
+          },
+          "engineering_limits": {
+            "rpd": 450,
+            "rpm": 10,
+            "tpm": 175000
+          },
+          "last_successful_probe": 1793655260.9349873,
+          "retry_at": null,
+          "last_provider_http": 200,
+          "network_checked_now": false,
+          "source": "PERSISTED_PROJECT_QUOTA_AND_PROVIDER_RECEIPTS",
+          "health": "PROVIDER_READINESS_STALE",
+          "scope": "Persisted provider evidence; no inference health probe"
+        },
+        "resources": {
+          "state": "OK",
+          "memory_bytes": 279511040,
+          "memory_limit_bytes": 402653184,
+          "pids": 10,
+          "cpu_cumulative": {
+            "usage_usec": 170248082,
+            "user_usec": 145098522,
+            "system_usec": 25149559,
+            "nice_usec": 0,
+            "nr_periods": 2825,
+            "nr_throttled": 1144,
+            "throttled_usec": 113254965,
+            "nr_bursts": 0,
+            "burst_usec": 0
+          },
+          "state_storage_free_bytes": 40795283456,
+          "scope": "Gateway cgroup and mounted state filesystem; CPU cumulative counters, not utilization",
+          "latency_ms": 0.5
+        },
+        "worker": {
+          "state": "OK",
+          "health": "WORKER_ALIVE",
+          "seen": 1793710221.7314103,
+          "run_id": null
+        },
+        "backlog": {
+          "state": "OK",
+          "counts": {
+            "ai_queue": {
+              "finished": 121
+            },
+            "knowledge_sync": {
+              "verified": 172
+            }
+          }
+        },
+        "business_integration": {
+          "state": "OK",
+          "health": "NO_FAILED_OBSERVATIONS",
+          "workflows": []
+        }
+      },
+      "authority": "machine",
+      "actor_id": null,
+      "model_calls": 0,
+      "native_write_allowed": false,
+      "scope": "Main HTTP readiness, resources, queues, Worker and persisted provider evidence; zero embedding/model inference"
+    },
+    "sha256": "820a884cd27b183f4f1b2c4e9cd77196a3c5f39da1560edb40489d50027a3bef",
+    "correlation_id": "e7107d18-2498-4376-95cf-c771478db888",
+    "cached": false
+  }
+}

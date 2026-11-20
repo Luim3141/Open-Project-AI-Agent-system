@@ -1,0 +1,128 @@
+{
+  "qldapm-openproject-proxy-1": {
+    "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+    "state": "running",
+    "health": null,
+    "desired_bindings": {
+      "80/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8088"
+        }
+      ]
+    },
+    "actual_ports": {
+      "80/tcp": []
+    },
+    "restart": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "networks": {
+      "qldapm-openproject_frontend": {
+        "ip": "172.22.0.4",
+        "network_id": "fa3cea302616fd0e5ceacbb4a6d938d766aa9f520e9f7638fd176726798e8692"
+      }
+    },
+    "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml"
+  },
+  "qldapm-ai-gateway-1": {
+    "image": "sha256:7190fcc265f54880c06927b846982b2c2770109790df0a389d7932637b8641a3",
+    "state": "running",
+    "health": "healthy",
+    "desired_bindings": {
+      "8090/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8090"
+        }
+      ]
+    },
+    "actual_ports": {
+      "8090/tcp": []
+    },
+    "restart": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "networks": {
+      "qldapm-ai_ai": {
+        "ip": "172.28.0.2",
+        "network_id": "38f4e79c3e3b8917a269e4be16f049e4e003613a2e88a4406d7845526c614408"
+      },
+      "qldapm-openproject_frontend": {
+        "ip": "172.22.0.3",
+        "network_id": "fa3cea302616fd0e5ceacbb4a6d938d766aa9f520e9f7638fd176726798e8692"
+      }
+    },
+    "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\compose.yml"
+  },
+  "qldapm-ai-stage-staging-web-1": {
+    "image": "sha256:1cdd2590d6f31384eacf93bd504b421288c7d0a7ef37a137e1e2b8ec009dd87a",
+    "state": "running",
+    "health": "healthy",
+    "desired_bindings": {
+      "8080/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "18091"
+        }
+      ]
+    },
+    "actual_ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "18091"
+        }
+      ]
+    },
+    "restart": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "networks": {
+      "qldapm-ai-stage_stage": {
+        "ip": "172.27.0.3",
+        "network_id": "414cb4c67389d270078d36d21e63229a5c5598fa848c7c07456bc601b5a0495d"
+      },
+      "qldapm-ai-stage_stage-front": {
+        "ip": "172.29.0.2",
+        "network_id": "cac6da81b69da532da8745b698c9a10f8fb5d8a8eae954fdb0683017a80dd8b6"
+      }
+    },
+    "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml"
+  },
+  "qldapm-ai-stage-staging-gateway-1": {
+    "image": "sha256:79bc0c4c67d606b79936a7324040a7543c1b00a4518337a3e9270af0cc62ff3e",
+    "state": "running",
+    "health": null,
+    "desired_bindings": {
+      "8090/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "18092"
+        }
+      ]
+    },
+    "actual_ports": {
+      "8090/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "18092"
+        }
+      ]
+    },
+    "restart": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "networks": {
+      "qldapm-ai-stage_stage-front": {
+        "ip": "172.29.0.3",
+        "network_id": "cac6da81b69da532da8745b698c9a10f8fb5d8a8eae954fdb0683017a80dd8b6"
+      }
+    },
+    "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml"
+  }
+}

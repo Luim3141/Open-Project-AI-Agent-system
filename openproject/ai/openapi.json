@@ -1,0 +1,1144 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "QLDAPM AI",
+    "version": "1.1.0"
+  },
+  "paths": {
+    "/api/v1/commands": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "identity",
+                      "list_work_packages",
+                      "get_work_package",
+                      "get_project_options",
+                      "analyze",
+                      "create_work_package",
+                      "update_work_package",
+                      "comment",
+                      "transition",
+                      "get_gate",
+                      "change_gate",
+                      "list_code",
+                      "read_code",
+                      "write_code",
+                      "request_test",
+                      "propose_operation",
+                      "get_job",
+                      "request_status",
+                      "reconcile_request",
+                      "get_configuration",
+                      "get_proposal",
+                      "reject_proposal",
+                      "get_assistant_status",
+                      "get_action_history",
+                      "start_ai_run",
+                      "get_ai_run",
+                      "get_insights",
+                      "get_permissions",
+                      "list_agent_runs",
+                      "get_agent_run",
+                      "get_agent_trace",
+                      "cancel_agent_run",
+                      "knowledge_ingest",
+                      "knowledge_search",
+                      "knowledge_deindex",
+                      "knowledge_integrity",
+                      "weekly_summary",
+                      "sprint_risks",
+                      "get_report",
+                      "knowledge_sync_status",
+                      "knowledge_sync_retry",
+                      "get_control_center",
+                      "get_execution_monitor",
+                      "list_execution_monitors",
+                      "owner_inspect",
+                      "knowledge_file_ingest",
+                      "knowledge_file_search",
+                      "knowledge_file_read",
+                      "knowledge_incremental_sync",
+                      "knowledge_incremental_status",
+                      "knowledge_feedback_submit",
+                      "knowledge_feedback_get",
+                      "knowledge_feedback_apply",
+                      "bug_triage",
+                      "bug_propose",
+                      "wbs_draft",
+                      "wbs_get",
+                      "wbs_adopt",
+                      "wbs_next"
+                    ],
+                    "title": "Action",
+                    "type": "string"
+                  },
+                  "arguments": {
+                    "additionalProperties": true,
+                    "title": "Arguments",
+                    "type": "object"
+                  },
+                  "idempotency_key": {
+                    "anyOf": [
+                      {
+                        "maxLength": 100,
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Idempotency Key"
+                  },
+                  "auto_execute": {
+                    "default": false,
+                    "description": "Legacy field; true is denied. PM must confirm the exact proposal separately.",
+                    "title": "Auto Execute",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "action"
+                ],
+                "title": "Command",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Result and correlation ID"
+          },
+          "401": {
+            "description": "Invalid token"
+          },
+          "403": {
+            "description": "Denied"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Invalid command"
+          },
+          "429": {
+            "description": "Quota or rate limit"
+          },
+          "503": {
+            "description": "Unavailable; source identifies gateway/openproject/gemini"
+          }
+        }
+      }
+    },
+    "/api/v1/ai-runs/{id}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Actor-scoped data"
+          },
+          "403": {
+            "description": "Denied"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/proposals/{id}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Actor-scoped data"
+          },
+          "403": {
+            "description": "Denied"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/insights": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Actor-scoped data"
+          },
+          "403": {
+            "description": "Denied"
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                7,
+                30,
+                90
+              ],
+              "default": 30
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/ai-runs": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "prompt"
+                ],
+                "properties": {
+                  "prompt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 8000
+                  },
+                  "engine": {
+                    "type": "string",
+                    "enum": [
+                      "gemini",
+                      "gemini_read",
+                      "supervisor",
+                      "supervisor_gemini"
+                    ],
+                    "default": "gemini",
+                    "description": "supervisor is local; supervisor_gemini uses bounded live specialists and proposal-only writes with separate exact PM approval; gemini preserves legacy business tools; gemini_read is read-only"
+                  },
+                  "run_class": {
+                    "type": "string",
+                    "enum": [
+                      "interactive",
+                      "agent",
+                      "report",
+                      "system"
+                    ],
+                    "default": "interactive",
+                    "description": "Scheduling priority and model round bound only; does not change identity, permissions or write consent"
+                  },
+                  "context_task_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Own stored task reference; requires conversation_id, fresh native ACL/version and unexpired task. Read-only exact follow-up; never write consent"
+                  },
+                  "conversation_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Must match the stored actor/project/task conversation; required with context_task_id"
+                  },
+                  "allow_routine_writes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Legacy scope selection only; all writes produce proposals requiring a separate authenticated PM decision"
+                  },
+                  "write_scope_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "default": [],
+                    "description": "User-selected existing work package IDs permitted to change in this run, without a fixed count; newly created IDs are tracked locally"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Run receipt; poll GET"
+          },
+          "503": {
+            "description": "Provider disabled/unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/proposals/{id}/decision": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "PM decision for own exact proposal; approval executes once",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "decision",
+                  "hash"
+                ],
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "approve",
+                      "reject"
+                    ]
+                  },
+                  "hash": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Persisted decision/result; Native readback is separate from RAG verification"
+          },
+          "403": {
+            "description": "PM/actor denied"
+          },
+          "409": {
+            "description": "Changed, expired, consumed or uncertain proposal"
+          },
+          "422": {
+            "description": "Invalid decision"
+          }
+        }
+      }
+    },
+    "/api/v1/knowledge-feedback/{id}/decision": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Independent Manager exact-hash feedback review; no Native write or note promotion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "decision",
+                  "hash"
+                ],
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "accept",
+                      "reject"
+                    ]
+                  },
+                  "hash": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Source-bound decision"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Role/source/self-review denied"
+          },
+          "409": {
+            "description": "Changed or consumed feedback"
+          },
+          "422": {
+            "description": "Invalid payload"
+          },
+          "503": {
+            "description": "Source unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/agent-runs": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647,
+              "default": 0
+            }
+          }
+        ],
+        "description": "Actor/project-scoped metadata only. No execution retry or business mutation.",
+        "responses": {
+          "200": {
+            "description": "Own metadata and correlation ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result",
+                    "correlation_id"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/AgentRunPage"
+                    },
+                    "correlation_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Denied or not found in own scope"
+          },
+          "422": {
+            "description": "Invalid ID or page"
+          }
+        }
+      }
+    },
+    "/api/v1/agent-runs/{id}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "description": "Actor/project-scoped metadata only. No execution retry or business mutation.",
+        "responses": {
+          "200": {
+            "description": "Own metadata and correlation ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result",
+                    "correlation_id"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/AgentProgress"
+                    },
+                    "correlation_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Denied or not found in own scope"
+          },
+          "422": {
+            "description": "Invalid ID or page"
+          }
+        }
+      }
+    },
+    "/api/v1/agent-runs/{id}/trace": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647,
+              "default": 0
+            }
+          }
+        ],
+        "description": "Actor/project-scoped metadata only. No execution retry or business mutation.",
+        "responses": {
+          "200": {
+            "description": "Own metadata and correlation ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result",
+                    "correlation_id"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/AgentTracePage"
+                    },
+                    "correlation_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Denied or not found in own scope"
+          },
+          "422": {
+            "description": "Invalid ID or page"
+          }
+        }
+      }
+    },
+    "/internal/automation/status": {
+      "get": {
+        "security": [
+          {
+            "machineStatusAuth": []
+          }
+        ],
+        "description": "Internal machine Gateway liveness only; no native/provider probe, actor, query or request body.",
+        "responses": {
+          "200": {
+            "description": "Gateway liveness and correlation ID; zero model calls"
+          },
+          "401": {
+            "description": "Machine authentication required"
+          },
+          "403": {
+            "description": "Machine scope denied"
+          },
+          "429": {
+            "description": "Machine rate limited"
+          }
+        }
+      }
+    },
+    "/internal/automation/monitor": {
+      "get": {
+        "security": [
+          {
+            "machineStatusAuth": []
+          }
+        ],
+        "description": "Fixed Main health probes and Gateway cgroup/backlog; persisted SHA256 receipt per15minute bucket, one local BGE-M3 embedding, zero provider/Native writes. No caller target/body/query/human authority.",
+        "responses": {
+          "200": {
+            "description": "Persisted HEALTHY/DEGRADED report; observed_at/cached distinguish freshness"
+          },
+          "401": {
+            "description": "Machine authentication required"
+          },
+          "403": {
+            "description": "Scope denied"
+          },
+          "503": {
+            "description": "Monitor busy or receipt unavailable"
+          }
+        }
+      }
+    },
+    "/internal/automation/commands": {
+      "post": {
+        "security": [
+          {
+            "machineStatusAuth": []
+          }
+        ],
+        "description": "Internal signed status, fixed-five daily_brief read or fixed workflow_error metadata;60second expiry/15second future tolerance, durable idempotency, no caller actor/LLM/business write. daily_brief requires daily:YYYY-MM-DD; workflow_error requires error:<known-workflow>:<execution-or-activation>:YYYY-MM-DD in Asia/Bangkok, no raw errors.",
+        "parameters": [
+          {
+            "name": "x-qldapm-command-signature",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "version": {
+                    "const": 1,
+                    "title": "Version",
+                    "type": "integer"
+                  },
+                  "kind": {
+                    "enum": [
+                      "status",
+                      "daily_brief",
+                      "workflow_error"
+                    ],
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "request_key": {
+                    "maxLength": 100,
+                    "minLength": 16,
+                    "pattern": "^[A-Za-z0-9:_-]+$",
+                    "title": "Request Key",
+                    "type": "string"
+                  },
+                  "nonce": {
+                    "maxLength": 100,
+                    "minLength": 16,
+                    "pattern": "^[A-Za-z0-9:_-]+$",
+                    "title": "Nonce",
+                    "type": "string"
+                  },
+                  "issued_at": {
+                    "maximum": 999999999999,
+                    "minimum": 0,
+                    "title": "Issued At",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "version",
+                  "kind",
+                  "request_key",
+                  "nonce",
+                  "issued_at"
+                ],
+                "title": "AutomationCommand",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Same durable receipt on duplicate"
+          },
+          "401": {
+            "description": "Machine auth required"
+          },
+          "403": {
+            "description": "Signature, scope, expiry or replay denied"
+          },
+          "413": {
+            "description": "Payload too large"
+          },
+          "422": {
+            "description": "Invalid command"
+          },
+          "429": {
+            "description": "Rate limited"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "machineStatusAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-qldapm-machine-key",
+        "description": "Separate local n8n key; deterministic status/fixed-five daily reads only, never a human bearer or business write permission"
+      }
+    },
+    "schemas": {
+      "AgentProgress": {
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "const": 1,
+            "default": 1,
+            "title": "Schema Version",
+            "type": "integer"
+          },
+          "run_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "task_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+            "title": "Task Id",
+            "type": "string"
+          },
+          "actor_id": {
+            "exclusiveMinimum": 0,
+            "title": "Actor Id",
+            "type": "integer"
+          },
+          "project_id": {
+            "exclusiveMinimum": 0,
+            "title": "Project Id",
+            "type": "integer"
+          },
+          "trace_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+            "title": "Trace Id",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "QUEUED",
+              "RUNNING",
+              "WAITING_QUOTA",
+              "WAITING_PROVIDER",
+              "BLOCKED_KEY_OR_MODEL",
+              "REVIEW",
+              "FAILED",
+              "COMPLETED"
+            ],
+            "title": "State",
+            "type": "string"
+          },
+          "created_at": {
+            "minimum": 0,
+            "title": "Created At",
+            "type": "number"
+          },
+          "updated_at": {
+            "minimum": 0,
+            "title": "Updated At",
+            "type": "number"
+          },
+          "model_used": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Model Used"
+          },
+          "receipt_id": {
+            "anyOf": [
+              {
+                "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Receipt Id"
+          },
+          "can_replay": {
+            "const": false,
+            "default": false,
+            "title": "Can Replay",
+            "type": "boolean"
+          },
+          "reconcile_required": {
+            "default": false,
+            "title": "Reconcile Required",
+            "type": "boolean"
+          },
+          "new_request_required": {
+            "default": false,
+            "title": "New Request Required",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "run_id",
+          "task_id",
+          "actor_id",
+          "project_id",
+          "trace_id",
+          "state",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "AgentProgress",
+        "type": "object",
+        "x-max-serialized-bytes": 32768
+      },
+      "AgentRunPage": {
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "const": 1,
+            "default": 1,
+            "title": "Schema Version",
+            "type": "integer"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AgentProgress"
+            },
+            "maxItems": 50,
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "minimum": 0,
+            "title": "Total",
+            "type": "integer"
+          },
+          "limit": {
+            "maximum": 50,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "offset": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "title": "Offset",
+            "type": "integer"
+          },
+          "next_offset": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Offset"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset",
+          "next_offset"
+        ],
+        "title": "AgentRunPage",
+        "type": "object",
+        "x-max-serialized-bytes": 32768
+      },
+      "AgentTraceEvent": {
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "const": 1,
+            "default": 1,
+            "title": "Schema Version",
+            "type": "integer"
+          },
+          "run_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "task_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+            "title": "Task Id",
+            "type": "string"
+          },
+          "actor_id": {
+            "exclusiveMinimum": 0,
+            "title": "Actor Id",
+            "type": "integer"
+          },
+          "project_id": {
+            "exclusiveMinimum": 0,
+            "title": "Project Id",
+            "type": "integer"
+          },
+          "trace_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+            "title": "Trace Id",
+            "type": "string"
+          },
+          "event_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+            "title": "Event Id",
+            "type": "string"
+          },
+          "at": {
+            "minimum": 0,
+            "title": "At",
+            "type": "number"
+          },
+          "action": {
+            "maxLength": 64,
+            "title": "Action",
+            "type": "string"
+          },
+          "target": {
+            "maxLength": 256,
+            "title": "Target",
+            "type": "string"
+          },
+          "outcome": {
+            "maxLength": 64,
+            "title": "Outcome",
+            "type": "string"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "maxLength": 256,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Version"
+          }
+        },
+        "required": [
+          "run_id",
+          "task_id",
+          "actor_id",
+          "project_id",
+          "trace_id",
+          "event_id",
+          "at",
+          "action",
+          "target",
+          "outcome"
+        ],
+        "title": "AgentTraceEvent",
+        "type": "object",
+        "x-max-serialized-bytes": 32768
+      },
+      "AgentTracePage": {
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "const": 1,
+            "default": 1,
+            "title": "Schema Version",
+            "type": "integer"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AgentTraceEvent"
+            },
+            "maxItems": 50,
+            "title": "Items",
+            "type": "array"
+          },
+          "total": {
+            "minimum": 0,
+            "title": "Total",
+            "type": "integer"
+          },
+          "limit": {
+            "maximum": 50,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "offset": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "title": "Offset",
+            "type": "integer"
+          },
+          "next_offset": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Offset"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset",
+          "next_offset"
+        ],
+        "title": "AgentTracePage",
+        "type": "object",
+        "x-max-serialized-bytes": 32768
+      }
+    }
+  }
+}

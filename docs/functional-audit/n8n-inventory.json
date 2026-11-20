@@ -1,0 +1,2199 @@
+{
+  "at": 1794471930.7418108,
+  "workflow_count": 17,
+  "workflows": [
+    {
+      "id": "bDpuIXfCgEkVOb7B",
+      "name": "QLDAPM — Telegram Agent Notifications",
+      "active": true,
+      "category": "Notification",
+      "triggers": [
+        {
+          "name": "Notification Outbox Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-telegram-agent-notifications",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply Durable Delivery ACK",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Notification Outbox Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Validate Canonical Event And Recipient",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Send Telegram Notification",
+          "type": "n8n-nodes-base.telegram",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "telegramApi"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Require Telegram Message Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "b6d42453c51d9590f06981e64af9eefa1ec9a2954062d67f92c65ef373f1299a"
+        },
+        {
+          "name": "Persist Delivery And Reply Context",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply Durable Delivery ACK",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "none",
+        "saveDataSuccessExecution": "none"
+      },
+      "connection_count": 5,
+      "recent_executions": [],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "X2O2QdPY6QLOrWqL",
+      "name": "WF01: Local Document Ingestion",
+      "active": true,
+      "category": "Synchronization",
+      "triggers": [
+        {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-ingest",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF01 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf01",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF01 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "43fe147747366edb20df45f272a5954f4ab96c91bc837d3bda272d66541f4d53"
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF01 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF01 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF01 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "80143d0cc13399bf714180604196f9e73a5187c8a1d69578d305920ebe3d2ba1"
+        },
+        {
+          "name": "Integration WF01 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "Anl8LNdN4NNTKRpe",
+      "name": "WF02: OpenProject Event Sync",
+      "active": true,
+      "category": "Synchronization",
+      "triggers": [
+        {
+          "name": "WP Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-op-sync",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF02 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf02",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF02 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "WP Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "844738678838c66f183e4329c2856df21e62c550eb464daf19eb52771a7937cc"
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF02 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF02 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF02 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "d166b9b705c753ea546bcab3f2141d059900ed03cdfab6452088249117f703d4"
+        },
+        {
+          "name": "Integration WF02 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [
+        {
+          "id": 4352,
+          "workflowId": "Anl8LNdN4NNTKRpe",
+          "status": "success",
+          "startedAt": "2026-11-06 11:39:42.252",
+          "stoppedAt": "2026-11-06 11:39:45.751"
+        },
+        {
+          "id": 4349,
+          "workflowId": "Anl8LNdN4NNTKRpe",
+          "status": "success",
+          "startedAt": "2026-11-06 11:38:16.227",
+          "stoppedAt": "2026-11-06 11:38:22.440"
+        },
+        {
+          "id": 4346,
+          "workflowId": "Anl8LNdN4NNTKRpe",
+          "status": "error",
+          "startedAt": "2026-11-06 11:37:46.024",
+          "stoppedAt": "2026-11-06 11:37:46.292"
+        },
+        {
+          "id": 4345,
+          "workflowId": "Anl8LNdN4NNTKRpe",
+          "status": "error",
+          "startedAt": "2026-11-06 11:37:35.715",
+          "stoppedAt": "2026-11-06 11:37:36.043"
+        },
+        {
+          "id": 4343,
+          "workflowId": "Anl8LNdN4NNTKRpe",
+          "status": "error",
+          "startedAt": "2026-11-06 11:37:18.846",
+          "stoppedAt": "2026-11-06 11:37:19.380"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "XoP4M520TMG3WgeY",
+      "name": "WF03: Natural Language Request Orchestrator",
+      "active": true,
+      "category": "Business orchestration",
+      "triggers": [
+        {
+          "name": "User Request Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-agent-request",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF03 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf03",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF03 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "User Request Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Prepare Stable Orchestration Request",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "0917053f306e071ca2b231fca2a28846c8db60af78b35779a5f40b1106c5f80d"
+        },
+        {
+          "name": "Start Or Poll Persisted Caller Run",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF03 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF03 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF03 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "53cb968defac6d115a5ffef09fe417330d4750b6892f4b33d10e91491c352fc9"
+        },
+        {
+          "name": "Integration WF03 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [
+        {
+          "id": 4246,
+          "workflowId": "XoP4M520TMG3WgeY",
+          "status": "success",
+          "startedAt": "2026-11-06 11:00:00.601",
+          "stoppedAt": "2026-11-06 11:00:04.163"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "elfapV5D2PTnLiHW",
+      "name": "WF04: Multi-Agent Execution Tracking",
+      "active": true,
+      "category": "Other",
+      "triggers": [
+        {
+          "name": "Lifecycle Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-lifecycle",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply Lifecycle ACK",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF04 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf04",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF04 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Lifecycle Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Retrieve Source Trace And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Require Business Observation",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "33398e437e16a84805f60ce8c6b8d063f58d03d8d004d71e7c53f6c15ef41798"
+        },
+        {
+          "name": "Reply Lifecycle ACK",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF04 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF04 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF04 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "ab02d4aaea849338aeed10d86968152246ec1914dd6ca1be3fd907da4bb377d8"
+        },
+        {
+          "name": "Integration WF04 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [
+        {
+          "id": 4351,
+          "workflowId": "elfapV5D2PTnLiHW",
+          "status": "success",
+          "startedAt": "2026-11-06 11:39:18.466",
+          "stoppedAt": "2026-11-06 11:39:19.281"
+        },
+        {
+          "id": 4347,
+          "workflowId": "elfapV5D2PTnLiHW",
+          "status": "error",
+          "startedAt": "2026-11-06 11:37:55.123",
+          "stoppedAt": "2026-11-06 11:37:55.442"
+        },
+        {
+          "id": 4344,
+          "workflowId": "elfapV5D2PTnLiHW",
+          "status": "error",
+          "startedAt": "2026-11-06 11:37:27.229",
+          "stoppedAt": "2026-11-06 11:37:27.530"
+        },
+        {
+          "id": 4342,
+          "workflowId": "elfapV5D2PTnLiHW",
+          "status": "error",
+          "startedAt": "2026-11-06 11:37:06.650",
+          "stoppedAt": "2026-11-06 11:37:06.997"
+        },
+        {
+          "id": 4341,
+          "workflowId": "elfapV5D2PTnLiHW",
+          "status": "error",
+          "startedAt": "2026-11-06 11:36:56.356",
+          "stoppedAt": "2026-11-06 11:36:56.547"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "xCZFw45fmDQG5gNq",
+      "name": "WF05: Native API Approval Workflow",
+      "active": true,
+      "category": "Approval",
+      "triggers": [
+        {
+          "name": "Approval Request Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-approval",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF05 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf05",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF05 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Approval Request Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Fetch Gateway Proposal",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Process PM Approval Decision",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "c48659d58deb4e0551a9835b02ddee8e831668bc9db5d6f37571e011aa9131ad"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF05 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF05 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF05 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "f52ebc3ffbe4e980fd7995dd179d0fb965531ec1e0f9d7e2c40b2b7b0f5021f5"
+        },
+        {
+          "name": "Integration WF05 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "Jq18aFSqfuUybEic",
+      "name": "WF06: Native API Execution & Verification",
+      "active": true,
+      "category": "Other",
+      "triggers": [
+        {
+          "name": "Execute Mutation Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-execute-mutation",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF06 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf06",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF06 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Execute Mutation Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Authenticated Gateway PM Decision",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF06 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF06 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF06 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "d3840cd061320c4d7f6cc19f49a28dc566024db8a852e7558e2019a69498ec89"
+        },
+        {
+          "name": "Integration WF06 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 5,
+      "recent_executions": [],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "BpCQrGR866vg4BqQ",
+      "name": "WF07: Daily Project Brief",
+      "active": true,
+      "category": "Reporting",
+      "triggers": [
+        {
+          "name": "Daily Trigger Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-daily-brief",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Daily Schedule 08:00",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 0 8 * * *"
+              }
+            ]
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Daily Trigger Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Daily Schedule 08:00",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Command metadata",
+          "type": "n8n-nodes-base.set",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Sign command",
+          "type": "n8n-nodes-base.crypto",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "crypto"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Gateway status",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Require Completed Daily Reports",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "bfa1ede954059b47ff265d801f070b3ab23345be94b655c8d7fd7f82077bfe98"
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 5,
+      "recent_executions": [
+        {
+          "id": 4200,
+          "workflowId": "BpCQrGR866vg4BqQ",
+          "status": "success",
+          "startedAt": "2026-11-06 01:00:01.448",
+          "stoppedAt": "2026-11-06 01:00:02.424"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "RXWjVUL8ozqhjY4w",
+      "name": "WF08: Sprint Risk",
+      "active": true,
+      "category": "Reporting",
+      "triggers": [
+        {
+          "name": "Sprint Risk Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-sprint-risk",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF08 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf08",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF08 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Sprint Risk Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Prepare Sprint Risk Parameters",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "b5ea36a5c41dd36ab500acf8a5b3a3a544d5e1379ad1c942ba05e2c2a0d892ad"
+        },
+        {
+          "name": "Analyze Native Relations And Persist Risk Snapshot",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF08 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF08 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF08 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "3f4b0862eb4064043e728410ff287970bf425eb02c857494aae8c055f25e8544"
+        },
+        {
+          "name": "Integration WF08 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "tOyBIPw6sGjgzjtU",
+      "name": "WF09: Bug Lifecycle Automation",
+      "active": true,
+      "category": "Other",
+      "triggers": [
+        {
+          "name": "Bug Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-bug-lifecycle",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF09 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf09",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF09 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Bug Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "e0ef4544cc2b6db128b03296f763f8bd6cd9b4aacb35663f3f2fb11aaf6561ae"
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF09 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF09 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF09 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "f41a5a85c086124119e42cd7a6b0030700757a13d3a8010cabeb24ef7992353b"
+        },
+        {
+          "name": "Integration WF09 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "tOY7QUa9SrWPOe9e",
+      "name": "WF10: Task Orchestration & Decomposition",
+      "active": true,
+      "category": "Business orchestration",
+      "triggers": [
+        {
+          "name": "Task Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-task-orchestration",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF10 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf10",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF10 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Task Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "31dd9b1d3af05cbf1725936ccce30ab1787451df8f756a8db3f488a8611776cc"
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF10 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF10 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF10 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "a8137313c734d8684467723dcc5dbcc5c2791588c7c86775a7178e05db74dbdb"
+        },
+        {
+          "name": "Integration WF10 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [
+        {
+          "id": 4256,
+          "workflowId": "tOY7QUa9SrWPOe9e",
+          "status": "success",
+          "startedAt": "2026-11-06 11:01:18.220",
+          "stoppedAt": "2026-11-06 11:01:21.623"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "LeRVT3LWNBkJ2iz3",
+      "name": "WF11: QA Gate Transition",
+      "active": true,
+      "category": "Approval",
+      "triggers": [
+        {
+          "name": "QA Gate Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-qa-gate",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF11 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf11",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF11 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "QA Gate Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Require Explicit QA Target",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "24ec8547c9d33c235caa34af66650a5a4f2a2cf570802002acc8d092c3fde0ad"
+        },
+        {
+          "name": "Read Native Evidence And Transition Errors",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF11 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF11 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF11 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "04509450733690599b5e44413e53756d924aa59785e3e35d9d4c1fde5d5d4996"
+        },
+        {
+          "name": "Integration WF11 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [
+        {
+          "id": 4340,
+          "workflowId": "LeRVT3LWNBkJ2iz3",
+          "status": "success",
+          "startedAt": "2026-11-06 11:36:23.448",
+          "stoppedAt": "2026-11-06 11:36:24.102"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "name": "WF12: Weekly Summary",
+      "active": true,
+      "category": "Reporting",
+      "triggers": [
+        {
+          "name": "Weekly Summary Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-weekly-summary",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Weekly Friday 17:00",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 0 17 * * 5"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Weekly Summary Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Prepare Weekly Parameters",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "9fd4b4f76234ec9e2d37697ff9413bda7e45bedd258c7a867f8608b997668dd8"
+        },
+        {
+          "name": "Generate And Persist Native Weekly Summary",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Weekly Friday 17:00",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Weekly Command metadata",
+          "type": "n8n-nodes-base.set",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Weekly Sign command",
+          "type": "n8n-nodes-base.crypto",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "crypto"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Weekly Gateway status",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Verify weekly business completion",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "7ba147124f0e28492ad03eafa14fc92b6e0e0c329c3ac9998a2cf6854359ffd5"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 7,
+      "recent_executions": [
+        {
+          "id": 4235,
+          "workflowId": "ZkgS8RZbPRA2zbhQ",
+          "status": "success",
+          "startedAt": "2026-11-06 10:00:00.088",
+          "stoppedAt": "2026-11-06 10:00:00.473"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "2tr0jpqaaAiq9IOU",
+      "name": "WF13: Second Brain RAG Re-indexing",
+      "active": true,
+      "category": "Synchronization",
+      "triggers": [
+        {
+          "name": "Reindex Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-rag-reindex",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF13 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf13",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF13 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Reindex Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "744e1d6d668ab756daef3de3cd47850423809bb89bec913458117dea3f0288c2"
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF13 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF13 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF13 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "371c495b0b450d84bc4e30126f32f1d4e973097c306b826e56e01b1f691060f7"
+        },
+        {
+          "name": "Integration WF13 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [
+        {
+          "id": 4350,
+          "workflowId": "2tr0jpqaaAiq9IOU",
+          "status": "success",
+          "startedAt": "2026-11-06 11:38:34.529",
+          "stoppedAt": "2026-11-06 11:38:52.257"
+        },
+        {
+          "id": 4348,
+          "workflowId": "2tr0jpqaaAiq9IOU",
+          "status": "error",
+          "startedAt": "2026-11-06 11:38:05.861",
+          "stoppedAt": "2026-11-06 11:38:06.192"
+        },
+        {
+          "id": 4339,
+          "workflowId": "2tr0jpqaaAiq9IOU",
+          "status": "success",
+          "startedAt": "2026-11-06 11:35:42.616",
+          "stoppedAt": "2026-11-06 11:36:01.142"
+        },
+        {
+          "id": 4337,
+          "workflowId": "2tr0jpqaaAiq9IOU",
+          "status": "success",
+          "startedAt": "2026-11-06 11:35:10.928",
+          "stoppedAt": "2026-11-06 11:35:14.418"
+        },
+        {
+          "id": 4326,
+          "workflowId": "2tr0jpqaaAiq9IOU",
+          "status": "success",
+          "startedAt": "2026-11-06 11:30:33.073",
+          "stoppedAt": "2026-11-06 11:30:39.691"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "8ycOUQy9gtT60nkN",
+      "name": "WF14: Durable RAG Recovery",
+      "active": true,
+      "category": "Recovery",
+      "triggers": [
+        {
+          "name": "Error Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-error-handler",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF14 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf14",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF14 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Error Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Prepare Durable RAG Recovery Request",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "73968ca4691ade52aea54007f71bd98ee64074e4e82dc7eb14311e2207f3a434"
+        },
+        {
+          "name": "Read Or Requeue Own Persisted RAG Job",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF14 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF14 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF14 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "1f2588ec5a6302ec2f976afe858a0cd706c78e9c248070cc803910f7a7463728"
+        },
+        {
+          "name": "Integration WF14 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 6,
+      "recent_executions": [
+        {
+          "id": 4333,
+          "workflowId": "8ycOUQy9gtT60nkN",
+          "status": "success",
+          "startedAt": "2026-11-06 11:34:29.282",
+          "stoppedAt": "2026-11-06 11:34:29.602"
+        },
+        {
+          "id": 4158,
+          "workflowId": "8ycOUQy9gtT60nkN",
+          "status": "success",
+          "startedAt": "2026-11-05 20:06:47.984",
+          "stoppedAt": "2026-11-05 20:06:48.189"
+        },
+        {
+          "id": 4154,
+          "workflowId": "8ycOUQy9gtT60nkN",
+          "status": "success",
+          "startedAt": "2026-11-05 20:06:01.265",
+          "stoppedAt": "2026-11-05 20:06:01.587"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "NLugfE3U8dBS88Wg",
+      "name": "WF15: Reconciliation & Drift Detection",
+      "active": true,
+      "category": "Other",
+      "triggers": [
+        {
+          "name": "Reconciliation Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-reconciliation",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        },
+        {
+          "name": "Integration WF15 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-integration-wf15",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Integration WF15 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": null
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Reconciliation Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Reconcile Exact Native SQLite Qdrant Identity",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF15 Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF15 Read Source And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Integration WF15 Require Business Receipt",
+          "type": "n8n-nodes-base.code",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": "17d85e14d5dd164168534c132ffe84c638d0e14ae190ccde2a02b8577c7db7e0"
+        },
+        {
+          "name": "Integration WF15 Reply",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 5,
+      "recent_executions": [
+        {
+          "id": 4403,
+          "workflowId": "NLugfE3U8dBS88Wg",
+          "status": "success",
+          "startedAt": "2026-11-12 08:15:11.733",
+          "stoppedAt": "2026-11-12 08:15:15.087"
+        },
+        {
+          "id": 4401,
+          "workflowId": "NLugfE3U8dBS88Wg",
+          "status": "success",
+          "startedAt": "2026-11-12 08:07:08.536",
+          "stoppedAt": "2026-11-12 08:07:15.060"
+        },
+        {
+          "id": 4400,
+          "workflowId": "NLugfE3U8dBS88Wg",
+          "status": "error",
+          "startedAt": "2026-11-12 08:06:29.696",
+          "stoppedAt": "2026-11-12 08:06:30.050"
+        },
+        {
+          "id": 4399,
+          "workflowId": "NLugfE3U8dBS88Wg",
+          "status": "error",
+          "startedAt": "2026-11-12 08:06:07.518",
+          "stoppedAt": "2026-11-12 08:06:07.903"
+        },
+        {
+          "id": 4398,
+          "workflowId": "NLugfE3U8dBS88Wg",
+          "status": "success",
+          "startedAt": "2026-11-12 06:15:06.230",
+          "stoppedAt": "2026-11-12 06:15:07.713"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    },
+    {
+      "id": "5FRYNPSot18UDpKa",
+      "name": "WF16: Main Health Monitoring",
+      "active": true,
+      "category": "Recovery",
+      "triggers": [
+        {
+          "name": "Summary Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "method": "POST",
+          "path": "qldapm-monitoring",
+          "authentication": "headerAuth",
+          "schedule": null
+        },
+        {
+          "name": "Periodic Health Schedule",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "method": null,
+          "path": null,
+          "authentication": null,
+          "schedule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 */15 * * * *"
+              }
+            ]
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "name": "Summary Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        },
+        {
+          "name": "Periodic Health Schedule",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [],
+          "code_sha256": null
+        },
+        {
+          "name": "Probe And Persist Main Health",
+          "type": "n8n-nodes-base.httpRequest",
+          "continue_on_fail": false,
+          "on_error": null,
+          "credential_types": [
+            "httpHeaderAuth"
+          ],
+          "code_sha256": null
+        }
+      ],
+      "settings": {
+        "errorWorkflow": null,
+        "executionOrder": "v1",
+        "saveDataErrorExecution": "all",
+        "saveDataSuccessExecution": "all"
+      },
+      "connection_count": 2,
+      "recent_executions": [
+        {
+          "id": 4402,
+          "workflowId": "5FRYNPSot18UDpKa",
+          "status": "success",
+          "startedAt": "2026-11-12 08:15:00.062",
+          "stoppedAt": "2026-11-12 08:15:02.805"
+        },
+        {
+          "id": 4397,
+          "workflowId": "5FRYNPSot18UDpKa",
+          "status": "success",
+          "startedAt": "2026-11-12 06:15:03.405",
+          "stoppedAt": "2026-11-12 06:15:06.348"
+        },
+        {
+          "id": 4395,
+          "workflowId": "5FRYNPSot18UDpKa",
+          "status": "success",
+          "startedAt": "2026-11-12 06:00:00.414",
+          "stoppedAt": "2026-11-12 06:00:01.380"
+        },
+        {
+          "id": 4393,
+          "workflowId": "5FRYNPSot18UDpKa",
+          "status": "success",
+          "startedAt": "2026-11-12 05:45:02.911",
+          "stoppedAt": "2026-11-12 05:45:13.368"
+        },
+        {
+          "id": 4391,
+          "workflowId": "5FRYNPSot18UDpKa",
+          "status": "success",
+          "startedAt": "2026-11-12 05:30:06.537",
+          "stoppedAt": "2026-11-12 05:30:13.116"
+        }
+      ],
+      "history_window": "last250 global executions; absence is not proof of never run",
+      "status": "PARTIAL",
+      "evidence_level": "MAIN READ ONLY inventory/history; no workflow triggered"
+    }
+  ],
+  "scope": "Actual MAIN n8n SQLite read-only; no secret/credential values or raw payloads exported"
+}

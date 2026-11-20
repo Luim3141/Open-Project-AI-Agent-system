@@ -1,0 +1,77 @@
+{
+  "observed_at": "2026-10-25T03:40:49.982491+00:00",
+  "status": "PARTIAL_NATIVE_QA_PRODUCER_CAPABILITY_GAP",
+  "actors": {
+    "18": {
+      "role": "AI_SYSTEM_OWNER",
+      "native_id": 375,
+      "version": 0,
+      "links": {
+        "attachments": {
+          "href": "/api/v3/work_packages/375/attachments"
+        },
+        "addAttachment": {
+          "href": "/api/v3/work_packages/375/attachments",
+          "method": "post"
+        },
+        "update": {
+          "href": "/api/v3/work_packages/375/form",
+          "method": "post"
+        },
+        "updateImmediately": {
+          "href": "/api/v3/work_packages/375",
+          "method": "patch"
+        },
+        "addComment": {
+          "href": "/api/v3/work_packages/375/activities",
+          "method": "post",
+          "title": "Add comment"
+        }
+      }
+    },
+    "19": {
+      "role": "PM",
+      "native_id": 375,
+      "version": 0,
+      "links": {
+        "attachments": {
+          "href": "/api/v3/work_packages/375/attachments"
+        },
+        "addAttachment": {
+          "href": "/api/v3/work_packages/375/attachments",
+          "method": "post"
+        },
+        "update": {
+          "href": "/api/v3/work_packages/375/form",
+          "method": "post"
+        },
+        "updateImmediately": {
+          "href": "/api/v3/work_packages/375",
+          "method": "patch"
+        },
+        "addComment": {
+          "href": "/api/v3/work_packages/375/activities",
+          "method": "post",
+          "title": "Add comment"
+        }
+      }
+    },
+    "23": {
+      "role": "QA",
+      "native_id": 375,
+      "version": 0,
+      "links": {
+        "attachments": {
+          "href": "/api/v3/work_packages/375/attachments"
+        },
+        "addComment": {
+          "href": "/api/v3/work_packages/375/activities",
+          "method": "post",
+          "title": "Add comment"
+        }
+      }
+    }
+  },
+  "native_writes": 0,
+  "interpretation": "QA23 can read and has advertised addComment but no advertised addAttachment or update link on375v0. No upload POST attempted; absence of link is not a tested HTTP403. Current strict V1 evidence requires an actual QA-authored Native attachment. Do not substitute Owner attachment or grant edit_work_packages merely to pass QA."
+}

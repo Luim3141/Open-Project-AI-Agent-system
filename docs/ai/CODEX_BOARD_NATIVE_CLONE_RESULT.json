@@ -1,0 +1,114 @@
+{
+  "at": "2026-10-26T04:33:58.220926+00:00",
+  "status": "PASS_ACTUAL_ISOLATED_NATIVE_GRID_CREATE_UPDATE_READ_ROLE_CEILINGS",
+  "web_image": "sha256:26ed4964d63eb48dfe52f4f05776e062d09c51b6972cb142c3c8be1d88e75c82",
+  "checks": [
+    {
+      "actor": 18,
+      "status": "PASS",
+      "operations": [
+        "valid_create_form",
+        "create_empty_basic_grid",
+        "update_own_fixture",
+        "readback"
+      ],
+      "grid_id": 15
+    },
+    {
+      "actor": 19,
+      "status": "PASS",
+      "operations": [
+        "valid_create_form",
+        "create_empty_basic_grid",
+        "update_own_fixture",
+        "readback"
+      ],
+      "grid_id": 16
+    },
+    {
+      "actor": 20,
+      "operation": "create",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_error_identifier": "urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+      "attribute": "scope"
+    },
+    {
+      "actor": 20,
+      "operation": "update",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 404,
+      "native_error_identifier": "urn:openproject-org:api:v3:errors:NotFound",
+      "attribute": null
+    },
+    {
+      "actor": 21,
+      "operation": "create",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_error_identifier": "urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+      "attribute": "scope"
+    },
+    {
+      "actor": 21,
+      "operation": "update",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 404,
+      "native_error_identifier": "urn:openproject-org:api:v3:errors:NotFound",
+      "attribute": null
+    },
+    {
+      "actor": 22,
+      "operation": "create",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_error_identifier": "urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+      "attribute": "scope"
+    },
+    {
+      "actor": 22,
+      "operation": "update",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 404,
+      "native_error_identifier": "urn:openproject-org:api:v3:errors:NotFound",
+      "attribute": null
+    },
+    {
+      "actor": 23,
+      "operation": "create",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_error_identifier": "urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+      "attribute": "scope"
+    },
+    {
+      "actor": 23,
+      "operation": "update",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 404,
+      "native_error_identifier": "urn:openproject-org:api:v3:errors:NotFound",
+      "attribute": null
+    }
+  ],
+  "fixture_grid_ids": [
+    15,
+    16
+  ],
+  "main_writes": 0,
+  "staging_operations": false,
+  "limits": [
+    "Empty Basic Grid API layout qualification only; not query-column creation, card moves or visual drag/drop",
+    "No existing Main or original cloned grid was changed",
+    "Browser UAT remains blocked by existing policy"
+  ],
+  "original_data_hashes_preserved": {
+    "grids": "00709479f2ac47865dc795911f7eb4ba",
+    "work_packages": "04ec20a24a553f3cea4deab0015c29ef",
+    "user_passwords": "1c8c563bc72ffd2e539f6d7e4c2f7db8",
+    "two_factor_authentication_devices": "b967a7f8d325515bfcc415f507f3e075",
+    "tokens": "d2504324eea35a15febd4ed0566b1d9c",
+    "members": "635e9c9c13bfb9cf0f4d56e42a07e623",
+    "member_roles": "a401407caf4c539024415c1944cea659"
+  },
+  "source_dump_sha256": "ec3d3fbeed7935afc252385924caa5052641ead260d1f5edeacc4ce514d07873"
+}

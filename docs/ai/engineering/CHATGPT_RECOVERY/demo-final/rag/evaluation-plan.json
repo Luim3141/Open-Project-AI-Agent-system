@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-11-02T16:40:53.588122+00:00",
+  "labels_sha256": "d50579e0b6accdee6c09941453602c3fe20079b3f42b2fc41338ff367a3e7b33",
+  "counts": {
+    "dev": {
+      "positive": 24,
+      "negative": 20
+    },
+    "holdout": {
+      "positive": 20,
+      "negative": 20
+    }
+  },
+  "acceptance": {
+    "holdout_hit_at_5_min": 0.8,
+    "holdout_false_positive_rate_max": 0.05,
+    "citation_identity_errors_max": 0,
+    "acl_errors_max": 0,
+    "warm_query_p95_seconds_max": 5
+  },
+  "iteration_policy": "At most two bounded development refinements, no scoring/embedding/ranking holdout until source+parameters frozen; holdout once only. No label/threshold changes after holdout.",
+  "raw_queries": "Private labels.json, not printed to logs; source clauses frozen before model scoring. Author knows authored queries; evaluation not independently blinded."
+}

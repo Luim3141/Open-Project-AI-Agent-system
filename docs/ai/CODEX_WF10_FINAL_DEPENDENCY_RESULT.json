@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-26T08:04:33.762688+00:00",
+  "status": "PARTIAL_FULL_TREE_BUSINESS_ACCEPTANCE",
+  "deployed_actions": [
+    "create_dependency",
+    "update_dependency",
+    "delete_dependency"
+  ],
+  "wf10": {
+    "id": "tOY7QUa9SrWPOe9e",
+    "version": "fd4c6f3d-8cf5-4290-9092-a5a88d04b6fe",
+    "active": true,
+    "source_hardening_matches": true,
+    "drift_fields": [],
+    "sha256": "9fe90a3950250deb0864e4d01ca57d4d77fcee28f90c67cc07767a2ee7fb7811",
+    "business_status": "PARTIAL",
+    "evidence_and_gap": "Controlled Native follows relation create/update/delete, exact version/hash/scope, Native derived scheduling, rollback, receipt replay and lost-ack recovery qualified on disposable clones; new40Main forms/boundary/own-actor forwarding checks PASS. No new Main Native write or full model-tree business closure; relation-specific semantic corpus remains unimplemented.",
+    "business_e2e_artifact": "CODEX_WF10_WBS_SCHEDULING_RESULT.json",
+    "scoped_native_tree_status": "PASS",
+    "native_dependency": {
+      "deployed": true,
+      "artifact": "CODEX_NATIVE_DEPENDENCY_DEPLOYMENT_RESULT.json",
+      "main_scope_role_checks": 24,
+      "main_native_execution": "NOT_TESTED_REQUIRES_FRESH_EXACT_HUMAN_APPROVAL",
+      "clone_native_execution": "PASS",
+      "clone_atomic_rollback": "PASS"
+    }
+  },
+  "evidence": [
+    "CODEX_NATIVE_DEPENDENCY_GATEWAY_CLONE_RESULT.json",
+    "CODEX_NATIVE_DEPENDENCY_CORE_CLONE_RESULT.json",
+    "CODEX_NATIVE_DEPENDENCY_CHANGE_CLONE_RESULT.json",
+    "CODEX_NATIVE_DEPENDENCY_CHANGE_MAIN_RESULT.json",
+    "CODEX_WF02_TRUSTED_DELETE_FINAL_READBACK.json"
+  ],
+  "source_preservation": "Current inherited dependency modules match qualified source hashes; actual relation and original tree data unchanged",
+  "qualified": "Exact scope/hash/version locking, Native relation CRUD, derived scheduling, null lag, own actor, lost-ack GET reconciliation, PG rollback and idempotency",
+  "remaining": [
+    "Full BA-produced tree with automatic proposal-only Native dependency phase",
+    "Full dependency-specific semantic corpus/project impact; no invented capacity",
+    "No new Main relation execution without fresh exact authenticated human decision"
+  ],
+  "main_native_writes_this_phase": 0,
+  "current_wbs_hierarchy_qualification": {
+    "at": "2026-10-26T12:05:35.831361+00:00",
+    "runtime": {
+      "gateway": {
+        "tag": "qldapm-ai:codex-wbs-hierarchy-v3-20261026",
+        "image": "sha256:73aaf0c0cf8ea575eddbae2914db14e157e0c756cd58e225d70a5baeeba6f818"
+      },
+      "web": {
+        "tag": "qldapm-core:codex-wbs-hierarchy-v3-20261026",
+        "image": "sha256:545e498a70a7d61103f6356cc726d12defab7df90da2c41bb9a2d97f6982e22c"
+      }
+    },
+    "readback": "CODEX_WF10_EXPLICIT_RELATIONS_FINAL_READBACK.json",
+    "main_checks": {
+      "roles": 73,
+      "contracts": 48,
+      "readonly": 13,
+      "hierarchy_capability_and_negative_boundaries": 38,
+      "preserved_real_qa_chain_role_reads": 6
+    },
+    "offline": {
+      "windows": {
+        "run": 536,
+        "passed": 536,
+        "skipped": 0,
+        "errors": 0,
+        "failures": 0
+      },
+      "linux": {
+        "run": 536,
+        "passed": 521,
+        "skipped": 15,
+        "errors": 0,
+        "failures": 0
+      },
+      "ruby_programs": 16,
+      "actual_native_clone": "CODEX_WF10_EXPLICIT_RELATIONS_NATIVE_CLONE_RESULT.json"
+    },
+    "main_native_writes": 0,
+    "full_release": "PARTIAL"
+  }
+}

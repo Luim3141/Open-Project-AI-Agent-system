@@ -1,0 +1,13 @@
+# Optional staging-only proof mount. Create the operator proof locally before using this override.
+services:
+  staging-gateway:
+    environment:
+      QLDAPM_AI_ENVIRONMENT: staging
+      QLDAPM_GEMINI_FREE_PROOF: /qldapm-policy/free-tier-proof.json
+    volumes:
+      - type: bind
+        source: ${AI_RUNTIME}/operator/gemini-free/free-tier-proof.json
+        target: /qldapm-policy/free-tier-proof.json
+        read_only: true
+        bind:
+          create_host_path: false

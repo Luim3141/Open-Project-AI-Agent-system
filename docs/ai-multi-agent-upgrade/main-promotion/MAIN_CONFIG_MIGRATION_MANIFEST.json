@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QLDAPM Main Configuration Migration Manifest (Preview Only - No Auto-Mutation)",
+  "generated_at": "2026-10-20T20:00:00+07:00",
+  "target_environment": "Main (http://localhost:8088)",
+  "target_project": {
+    "identifier": "qldapm-local",
+    "id": 5,
+    "name": "QLDAPM — Local Community"
+  },
+  "types_mapping": {
+    "Epic": 5,
+    "Task": 1,
+    "Subtask": 10
+  },
+  "subtask_type_verification": {
+    "main_db_type_id": 10,
+    "staging_db_type_id": 8,
+    "explanation": "Main database assigns Subtask to Type ID 10 (265 subtasks in Project 5). Deployment report correctly recorded Type ID 10. Previous UAT report had a documentation typo referencing Staging Type ID 8."
+  },
+  "configurations_to_migrate": {
+    "saved_queries": [
+      {
+        "staging_query_id": 37,
+        "name": "QLDAPM — Scrum Roadmap theo Epic",
+        "is_public": true,
+        "timeline_visible": true,
+        "show_hierarchies": true,
+        "include_subprojects": true,
+        "sort_criteria": [["id", "asc"]],
+        "columns": ["id", "subject", "type", "status", "assigned_to", "start_date", "due_date"],
+        "status": "READY_FOR_APPROVAL",
+        "dependency": "None (Configuration only, 0 WP mutation)"
+      }
+    ],
+    "agile_boards": [
+      {
+        "staging_board_id": 19,
+        "target_board_name": "QLDAPM — Main Scrum Kanban Board",
+        "board_type": "action",
+        "attribute": "status",
+        "requires_version": false,
+        "status": "READY_FOR_APPROVAL",
+        "columns": [
+          {"name": "NEW", "status_id": 1},
+          {"name": "IN PROGRESS", "status_id": 7},
+          {"name": "CODE REVIEW", "status_id": 39},
+          {"name": "READY FOR TEST", "status_id": 40},
+          {"name": "IN TESTING", "status_id": 9},
+          {"name": "REVIEW", "status_id": 34},
+          {"name": "DONE", "status_id": 35}
+        ]
+      },
+      {
+        "staging_board_id": 20,
+        "target_board_name": "QLDAPM — Team Workload & Assignee Board",
+        "board_type": "action",
+        "attribute": "assigned_to",
+        "requires_version": false,
+        "status": "READY_FOR_APPROVAL",
+        "columns": [
+          {"name": "Unassigned", "user_id": null},
+          {"name": "PM", "user_id": 19, "email": "hiepk40c@gmail.com"},
+          {"name": "BA", "user_id": 20, "email": "2101minhkhai@gmail.com"},
+          {"name": "BE", "user_id": 21, "email": "nguyenduc6325@gmail.com"},
+          {"name": "FE", "user_id": 22, "email": "ttheduy1401@gmail.com"},
+          {"name": "QA", "user_id": 23, "email": "duyhungls2005@gmail.com"}
+        ]
+      },
+      {
+        "staging_board_id": 21,
+        "target_board_name": "QLDAPM — Epic Breakdown & Subtasks Board",
+        "board_type": "action",
+        "attribute": "subtasks",
+        "requires_version": false,
+        "status": "READY_FOR_APPROVAL",
+        "columns": [
+          {"name": "Epic #38: Tài khoản & Role", "parent_id": 38},
+          {"name": "Epic #39: Quản lý Project", "parent_id": 39},
+          {"name": "Epic #40: Backlog", "parent_id": 40},
+          {"name": "Epic #41: Sprint", "parent_id": 41},
+          {"name": "Epic #42: Task / User Story", "parent_id": 42}
+        ]
+      },
+      {
+        "staging_board_id": 22,
+        "target_board_name": "QLDAPM — Roadmap & Milestone Board",
+        "board_type": "action",
+        "attribute": "version",
+        "requires_version": true,
+        "status": "BLOCKED_PENDING_VERSION_APPROVAL",
+        "columns": [
+          {"name": "Sprint 1: Nền tảng xác thực & Khởi tạo dự án", "version_id": null},
+          {"name": "Sprint 2: Quản lý yêu cầu & Kế hoạch làm việc", "version_id": null},
+          {"name": "Sprint 3: Bảng trực quan, Tiến độ & Quản trị lỗi", "version_id": null},
+          {"name": "Sprint 4: Giao tiếp nhóm, Báo cáo & Nghiệm thu", "version_id": null}
+        ],
+        "blocker_reason": "Version records do not exist on Main DB. Creating this board requires creating 4 Version records and assigning Work Packages to Versions, which is strictly subject to Owner approval."
+      }
+    ]
+  },
+  "scrum_schedule_plan": {
+    "total_main_work_packages": 329,
+    "epics_count": 11,
+    "tasks_count": 53,
+    "subtasks_count": 265,
+    "excluded_staging_items": [
+      {"id": 436, "subject": "pm review", "type_id": 8, "reason": "Non-WBS test ticket created on Staging Oct 15"},
+      {"id": 441, "subject": "Test", "type_id": 8, "reason": "Non-WBS test ticket created on Staging Oct 15"},
+      {"id": 442, "subject": "gemini test", "type_id": 8, "reason": "Non-WBS test ticket created on Staging Oct 15"},
+      {"id": 443, "subject": "gemini test", "type_id": 8, "reason": "Non-WBS test ticket created on Staging Oct 15"},
+      {"id": 446, "subject": "gemini test 2", "type_id": 8, "reason": "Non-WBS test ticket created on Staging Oct 15"},
+      {"id": 447, "subject": "gemini test 3", "type_id": 1, "reason": "Non-WBS test ticket created on Staging Oct 15"}
+    ],
+    "status": "PREVIEW_ONLY_ZERO_MUTATION",
+    "note": "Scrum proposal must be applied exclusively to the 329 legitimate WBS items (IDs 38..366) upon Owner explicit approval."
+  }
+}

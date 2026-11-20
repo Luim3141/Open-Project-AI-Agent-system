@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-26T08:04:33.762688+00:00",
+  "status": "PARTIAL_MAIN_POLICY_VERIFIED_NATIVE_EXECUTION_ISOLATED_ONLY",
+  "implemented": true,
+  "deployed": true,
+  "main_native_delete_events": 0,
+  "main_mutations": 0,
+  "scope": "Exactly one NEW independent Task; no parent/child/relation/history-receipt removal, no activity/attachments/time entries; no cascade",
+  "producer": "Native DeleteService + same-PG-transaction signed event without WorkPackage FK",
+  "consumer": "Durable exact registered Qdrant IDs then SQLite/chunks/FTS; proof revalidation, persisted plan, cache-only restart/retry",
+  "authorization": "PUBLICATION_REDACTED",
+  "evidence": [
+    "CODEX_WF02_EXTERNAL_CLIENT_NATIVE_CLONE_RESULT.json",
+    "CODEX_WF02_TRUSTED_DELETE_CLONE_RESULT.json",
+    "CODEX_WF02_TRUSTED_DELETE_MAIN_RESULT.json",
+    "CODEX_WF02_TRUSTED_DELETE_FINAL_READBACK.json"
+  ],
+  "limits": [
+    "No Main destructive E2E was performed or approved",
+    "Existing ordinary external Native DELETE stays denied; proof-producing bridge only",
+    "Deletion of parents, non-NEW work, relations, existing receipt references, activities and attachments remains denied",
+    "Fresh isolated vectors are synthetic fixture values; Main dense RAG is separately preserved",
+    "No visibility/404 inferred tombstone and no unregistered legacy point removal"
+  ]
+}

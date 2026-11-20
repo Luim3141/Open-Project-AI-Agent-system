@@ -1,0 +1,5 @@
+flowchart LR
+  a0["READY"] -->|"3  Reanalyse"| b0["NEW"]
+  a1["REVIEW"] -->|"7  Return / scope changed"| b1["In Progress"]
+  a2["Done"] -->|"8  Reopen"| b2["In Progress"]
+  a3["CANCELLED"] -->|"10  Restore"| b3["NEW"]

@@ -1,0 +1,87 @@
+{
+  "at": "2026-10-25T19:27:06.475542+00:00",
+  "status": "PASS",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-supervisor-qa-20261026",
+      "image": "sha256:f442384ebf72b23667032cff2bf3865016ee4f04f96fae6e5aabe7e2560ed32a"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-atomic-qa-20261025",
+      "image": "sha256:edc9f2b23db00a25fa73acbbd3dafb1f609b17d37ea0790fde9db9778b37e8fa"
+    }
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/store.py": "6aacd0d3fccd89e45b60bc731f8ae31320fdb696a960652271125dc8d4ef9fb0",
+    "openproject/ai/gateway/service.py": "68079a3138572442527f2c921d48e9c2b1732d58f7e23000a9cd4a46aa048ee0",
+    "openproject/ai/gateway/monitoring.py": "1f5eecb223014229093b978f4b887e8429db40082bc89b979adc06800cb2181f",
+    "openproject/ai/gateway/control_center_state.py": "a677f2d1580a10938b132a43cd7d45528729dc0940b2fd519f14918c9d9962ba",
+    "openproject/ai/gateway/notification_delivery.py": "c26307c78a5adbcfdb9c898df4e1dca74fedd938e10b5d09bbb848d947ceaf7b",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_control_center.html.erb": "4d7a5992a117659417a8c40237d2b14f3a5c9985774bac09e9d54597c68087ba",
+    "openproject/ai/core/overlay/app/services/qldapm/gate_actions.rb": "34e2e3b7959d5613cc2c7414217bd54941c545b21de4e8798aa7a59852b85052",
+    "openproject/ai/core/overlay/app/controllers/qldapm_gates_controller.rb": "2d890c2ab18017ddb2132c28acbac10d63cdea62271053eff2fbc97896f0ec1f",
+    "openproject/ai/core/overlay/app/views/qldapm_gates/show.html.erb": "e0ed99f9cded478dde19138c4bb7f135d88411b61f4cfa4272879cb14f582948",
+    "openproject/ai/gateway/native_qa.py": "6075840cc60e5baab7dabc4ec1ff4d1363453e04d4b473fb79c72e8e96d7255d",
+    "openproject/ai/gateway/native_qa_bridge.py": "e8b7869270efbc451eae9f3d6e83468cf558adb40fe89fd8276c054902957b5d",
+    "openproject/ai/core/overlay/app/services/qldapm/qa_evidence_receipt.rb": "ed06971cc8ddca3cf2d67f4a911b943244e631cfd0c4db0f2c316ed713754627",
+    "openproject/ai/core/overlay/app/services/qldapm/mutations.rb": "efab67f25cb308e87d6d83f9a606a95f27d30a291845c7543194583c4b2867e8",
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": "bb71a4f775f8c9851c6899064bd303ace2aa3fc0e4368d400435fbddf9585e85",
+    "openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb": "050e18d2c6578cbee4639ac3d840d6d010a0c96a5bbda97b07bb982eb483a163",
+    "openproject/ai/gateway/supervisor.py": "e9c6d8624877ec02f0795ba3cba5cd667a0f0cfad2d17f633afb5380aca1eef3",
+    "openproject/ai/gateway/qa_agent.py": "6ea0960c8c77960f321f7e29bdbbb3d0ac93b320ae7ecdfbb6bbca055769f617",
+    "openproject/ai/gateway/native_qa_runs.py": "12e49877dfe1d91cb10ed08a4f5c427d89fcd7da2962e079d9beff5a361689f8"
+  },
+  "source_mismatches": [],
+  "native_count": 338,
+  "physical_rows_unchanged": "375|04ec20a24a553f3cea4deab0015c29ef",
+  "native_fingerprint": "c6f4373b58951e17e0d8b766b393dc8358fa99337d724be4e5826ff82787108b",
+  "ledger": {
+    "gemini_call_receipts": 127,
+    "gemini_usage": 132,
+    "proposals": 54,
+    "knowledge_sync": 12,
+    "qa_test_runs": 1,
+    "qa_evidence": 1,
+    "qa_evidence_reviews": 0
+  },
+  "metadata_delta": "Exactly one automated read-only test run and one pending_qa evidence; zero independent decisions",
+  "scenario_f_exact_audit_rows": 61,
+  "consumed_scenario_f_proposal_and_original_report_unchanged": true,
+  "historical_ids_retained": {
+    "audit": {
+      "prior": 10847,
+      "missing": 0
+    },
+    "ai_runs": {
+      "prior": 71,
+      "missing": 0
+    },
+    "agent_runs": {
+      "prior": 57,
+      "missing": 0
+    },
+    "agent_tasks": {
+      "prior": 58,
+      "missing": 0
+    },
+    "proposals": {
+      "prior": 54,
+      "missing": 0
+    },
+    "operational_reports": {
+      "prior": 76,
+      "missing": 0
+    },
+    "gemini_call_receipts": {
+      "prior": 127,
+      "missing": 0
+    }
+  },
+  "all_28_historical_pending_request_rows_exactly_preserved": true,
+  "new_unknown_requests": 0,
+  "native_writes": 0,
+  "model_calls": 0,
+  "main_human_decisions": 0,
+  "staging_operations": false,
+  "ui": "Actual source controller/ActionView tests PASS; new visual automated-run/inbox flow NOT_TESTED_BROWSER_POLICY_BLOCKED"
+}

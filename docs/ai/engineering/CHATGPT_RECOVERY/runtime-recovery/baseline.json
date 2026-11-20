@@ -1,0 +1,720 @@
+{
+  "pins": {
+    "engineering_control": {
+      "count": 1,
+      "sha256": "6b86c5133fad9e0d2bb96a943fdb8670a184b46e30db2f5a9ca7d09229e8f61a"
+    },
+    "engineering_owner_revision": {
+      "count": 1,
+      "sha256": "73a5f6cebe3c05f3b8387516042496db65ff6b9dd2cbacd85aaaa358feb68fae"
+    },
+    "ai_queue": {
+      "count": 123,
+      "sha256": "c60cf71b2e0481b73bf57535a1df0738cfb1e4d417922e209b0944c84cfc5b98"
+    },
+    "ai_runs": {
+      "count": 226,
+      "sha256": "796a06d5768c8c380aa10299961dfb4c9a69f8effc900c27b7cf4bc5ba617da4"
+    },
+    "engineering_checkpoints": {
+      "count": 25,
+      "sha256": "31cba81d03ff22c04f40d7a2364e64c716143b9fb18fdf7a49fd723ac6935e71"
+    },
+    "engineering_unit_definitions": {
+      "count": 9,
+      "sha256": "62fe5a7ffc1062ac0dbeb149f67b9c900bbe14187a7cad48fcb358a7d067795e"
+    },
+    "engineering_plans": {
+      "count": 9,
+      "sha256": "eeafc304f3af0355a9ff79ee816e01b9e983c169ca9ea3b7ab5ff84eb1073c11"
+    },
+    "delegated_control": {
+      "count": 1,
+      "sha256": "d8478eba2da807cf69c149d2f43dad17e72cdc500debb446f6a067baa25923a8"
+    },
+    "gemini_usage": {
+      "count": 649,
+      "sha256": "cc89f799ef744fb5b1c0355aa5b665540819ab9750f7bdc460380cae0c3a6902"
+    },
+    "gemini_blocks": {
+      "count": 1,
+      "sha256": "06cd0b0f2e4f8dc73f51cabb169adb24dbd7e03220b57ace556cdc3a2a098a1d"
+    },
+    "gemini_recovery": {
+      "count": 1,
+      "sha256": "680b00177671010c4b95aff8e8a772024a598e8fd016aae5a8fb0092c8e9698a"
+    },
+    "gemini_call_receipts": {
+      "count": 533,
+      "sha256": "a1edcbe816690d47ebf21ae76bc684193d94646221f5ccfcbd3e6e9322ff6f58"
+    },
+    "unknown_requests": {
+      "count": 38,
+      "sha256": "9f6ad05c08cf903e0ea877f828a382ad7da75141f5f656169b1126a8917879ed"
+    }
+  },
+  "mode": {
+    "project": 6,
+    "mode": "PAUSED",
+    "updated": 1793835269.9646072
+  },
+  "revision": 47,
+  "delegation": false,
+  "queue_active": 0,
+  "outbox": {
+    "ACKED": 134
+  },
+  "protected_runs": [
+    {
+      "id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "state": "finished",
+      "result_status": "succeeded"
+    },
+    {
+      "id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "state": "finished",
+      "result_status": "succeeded"
+    }
+  ],
+  "containers": {
+    "qldapm-ai-gateway-1": {
+      "id": "a03265418dd4d84c698d0b2417a1d6f0438af42ee16163805b1158e18559766a",
+      "image": "sha256:77213702ef933943a1fbee6feffc0d410062b8f16928dd3d1621f9489e581a12",
+      "started_at": "2026-11-04T23:07:52.570419372Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-ai",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway",
+          "destination": "/state"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/workspaces",
+          "destination": "/workspaces"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-main/free-tier-proof.json",
+          "destination": "/qldapm-policy/free-tier-proof.json"
+        }
+      ]
+    },
+    "qldapm-openproject-web-1": {
+      "id": "6129fed169ae898ee195716f2483723b178c6eb2c5c31913b73806d9183d9a4d",
+      "image": "sha256:5ee7a24482be81dd7312e8c4560773aede32ec9f8bc2f6da9593c9f223e1b822",
+      "started_at": "2026-11-04T23:08:09.253052444Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-openproject",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "destination": "/var/openproject/assets"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "destination": "/qldapm"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway/ui.key",
+          "destination": "/qldapm-ui/ui.key"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/test-receipt.key",
+          "destination": "/qldapm-ui/test-receipt.key"
+        }
+      ]
+    },
+    "qldapm-n8n-main": {
+      "id": "09ab8a9f9fca7ab4e4bc212108ae0353dbdc503e4699d5f29fa35f305900dd07",
+      "image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+      "started_at": "2026-11-04T17:56:36.163845799Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": null,
+      "project": null,
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-n8n-main-data/_data",
+          "destination": "/home/node/.n8n"
+        }
+      ]
+    },
+    "qldapm-openproject-proxy-1": {
+      "id": "575c0693814f0f5463e7b07d58e965a7225452ca09e76c87ac70091ebad2a21f",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started_at": "2026-11-04T17:56:36.188024367Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": null,
+      "project": "qldapm-openproject",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "D:\\AI project\\QLDAPM chat\\openproject\\Caddyfile",
+          "destination": "/etc/caddy/Caddyfile"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject/gate",
+          "destination": "/gate"
+        }
+      ]
+    },
+    "qldapm-openproject-cron-1": {
+      "id": "c7171eb92f9a34d2f7b50b7e1894cbfd3dd92207ca41105fd152060eb86de2b7",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started_at": "2026-11-04T17:56:36.115559904Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": null,
+      "project": "qldapm-openproject",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "destination": "/qldapm"
+        },
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "destination": "/var/openproject/assets"
+        }
+      ]
+    },
+    "qldapm-openproject-worker-1": {
+      "id": "90c2405c94731fcdb46e6e802f265d95b2614d26787c7be24b686b8111c60d25",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started_at": "2026-11-04T17:56:36.074750245Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": null,
+      "project": "qldapm-openproject",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+          "destination": "/var/openproject/assets"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "destination": "/qldapm"
+        }
+      ]
+    },
+    "qldapm-ai-stage-staging-gateway-1": {
+      "id": "9305fed11832a0271905c050f57c4e18d30e127b0a138eb3a3eb4d7d0ee91969",
+      "image": "sha256:02353a807a2491e946cdcb41eecaa79d2566221b6018cddca4d7f1578ec593fe",
+      "started_at": "2026-11-04T17:56:36.298519048Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-ai-stage",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "destination": "/qldapm-policy/free-tier-proof.json"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "destination": "/state"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai-workspaces",
+          "destination": "/workspaces"
+        }
+      ]
+    },
+    "qldapm-ai-stage-staging-web-1": {
+      "id": "9531e43e01fdb148ba43f683e292bcadd5f28f7baf267f72d876c15f17816d3c",
+      "image": "sha256:665eb48b71e11991d385076eefd7ee768177e1c0f1079cdfe9b011cc0279d50b",
+      "started_at": "2026-11-04T17:56:36.283801301Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-ai-stage",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/staging-custom/runtime-mounts/scripts",
+          "destination": "/qldapm"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "destination": "/qldapm-access"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/staging-custom/runtime-mounts/core",
+          "destination": "/qldapm-core"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/staging-custom/runtime-mounts/automation/quick_tunnel_web.rb",
+          "destination": "/qldapm-operator/quick_tunnel_web.rb"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage/deep-test-receipt.key",
+          "destination": "/qldapm-ui/test-receipt.key"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai/ui.key",
+          "destination": "/qldapm-ui/ui.key"
+        },
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-assets/_data",
+          "destination": "/var/openproject/assets"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "destination": "/private"
+        }
+      ]
+    },
+    "qldapm-ai-stage-radmin-proxy-1": {
+      "id": "2721f35fcd2997887b1f453847175d9e4a4a6948fbbe4cc9e75928486eb84ac6",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started_at": "2026-11-04T17:56:36.2053084Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-ai-stage",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/radmin-caddy",
+          "destination": "/data"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/staging-custom/runtime-mounts/automation/Radmin.Caddyfile",
+          "destination": "/etc/caddy/Caddyfile"
+        }
+      ]
+    },
+    "qldapm-ai-stage-local-backup-1": {
+      "id": "fb26710cda0efaaab2f2655d79f77789192b095b9da2528df07947aff61b9fb8",
+      "image": "sha256:9713d54aad003b084e58035965156902f86c0ba7a638e41ab880d119ba9cbba8",
+      "started_at": "2026-11-04T17:56:36.172570748Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-ai-stage",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_n8n-data/_data",
+          "destination": "/n8n"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/n8n-owner",
+          "destination": "/n8n-owner"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free",
+          "destination": "/provider-policy"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/radmin-caddy",
+          "destination": "/radmin"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "destination": "/native-private"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/.env",
+          "destination": "/secrets/runtime.env"
+        },
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-assets/_data",
+          "destination": "/assets"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/n8n-stage/encryption.key",
+          "destination": "/secrets/n8n.key"
+        },
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/d9df6fbd073b8269faf0286639886d8bf249263e381bf3d1dccb2c3eb5c57fc0/_data",
+          "destination": "/var/openproject/assets"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "destination": "/secrets/provider-proof.json"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-runtime/stage-runtime.json",
+          "destination": "/secrets/stage-runtime.json"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/staging-custom/runtime-mounts/backup/jira_sync_backup.py",
+          "destination": "/trusted/jira_sync_backup.py"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/staging-custom/runtime-mounts/backup/local_backup.py",
+          "destination": "/trusted/local_backup.py"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/local-backups",
+          "destination": "/backup"
+        },
+        {
+          "type": "bind",
+          "source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "destination": "/gateway"
+        }
+      ]
+    },
+    "qldapm-ai-stage-n8n-editor-1": {
+      "id": "b6e9224aa5f1f8deb17e7fec5b34b37f7bf8ce5c187ff1b8900ce50b2bb1dd6f",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started_at": "2026-11-04T17:56:36.039230099Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-ai-stage",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/staging-custom/runtime-mounts/automation/Quick.Caddyfile",
+          "destination": "/etc/caddy/Caddyfile"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "destination": "/qldapm-access"
+        }
+      ]
+    },
+    "qldapm-qdrant": {
+      "id": "6cacb6b0f1b07f061bab32497bd92d2e31a01a639da747cab17d7be689ccca8f",
+      "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "started_at": "2026-11-04T17:56:35.895070093Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": null,
+      "project": null,
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\qdrant_storage",
+          "destination": "/qdrant/storage"
+        }
+      ]
+    },
+    "qldapm-ai-stage-quick-tunnel-1": {
+      "id": "18e3960e896abecfbbff2cdaabc4ea3242ba477cc577d7f27269b96cf5531b84",
+      "image": "sha256:a80f54e29918ec66c82cdc7ad8fd9a65e3082e59825c0356d5737916959884c6",
+      "started_at": "2026-11-04T17:56:35.92585226Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-ai-stage",
+      "mounts": []
+    },
+    "qldapm-ai-stage-n8n-1": {
+      "id": "5729a0af261d458d8c83f0a7eb6c6287c1280ce5bce3fe20bb04d0abbf616326",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "started_at": "2026-11-04T17:56:36.086647084Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-ai-stage",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_n8n-data/_data",
+          "destination": "/home/node/.n8n"
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/n8n-stage/encryption.key",
+          "destination": "/run/secrets/n8n_encryption_key"
+        }
+      ]
+    },
+    "birdsong-retrieval-api-1": {
+      "id": "4933f46a17ed294c6024df7785188efbf66501cc0f15a5eb0731728a56e70dd5",
+      "image": "sha256:5373e09aa12fe46f877dc616123ae1682f0e4684876d727ce7ab8da0bdd485d3",
+      "started_at": "2026-11-04T17:56:36.250852414Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "birdsong-retrieval",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "D:\\AI project\\CSDLDPT\\data",
+          "destination": "/app/data"
+        }
+      ]
+    },
+    "qldapm-ai-stage-db-1": {
+      "id": "0775f1163e682dea6e1df59f306ae89dfbe7ba0a8c38031d09604501b0ca3505",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started_at": "2026-11-04T17:56:36.226474058Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-ai-stage",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-db/_data",
+          "destination": "/var/lib/postgresql/data"
+        }
+      ]
+    },
+    "qldapm-openproject-hocuspocus-1": {
+      "id": "a9e13d59ae711266f599d5a1d1d7ed33345c2450e3457003684625fb3b39a584",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "started_at": "2026-11-04T17:56:36.287673598Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": null,
+      "project": "qldapm-openproject",
+      "mounts": []
+    },
+    "qldapm-openproject-db-1": {
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started_at": "2026-11-04T17:56:36.232124922Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "qldapm-openproject",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/qldapm-openproject_pgdata/_data",
+          "destination": "/var/lib/postgresql/data"
+        }
+      ]
+    },
+    "qldapm-openproject-cache-1": {
+      "id": "ac27388285fbadbf7a0f81f2f1d6c141d9fb79483d186d469d5bb324a0818115",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "started_at": "2026-11-04T17:56:35.866544578Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": null,
+      "project": "qldapm-openproject",
+      "mounts": []
+    },
+    "birdsong-retrieval-web-1": {
+      "id": "f4a5af81b68b60a227b3202302cea40fa9538ef40758930f059d8c6e5c274fc4",
+      "image": "sha256:dc282f66bcbfc80ed190657477d0a1bf42de6cee9a40770a5ed01e9cde5bd7fc",
+      "started_at": "2026-11-04T17:56:35.975467144Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": null,
+      "project": "birdsong-retrieval",
+      "mounts": []
+    },
+    "birdsong-retrieval-db-1": {
+      "id": "946f80aece3e0cc4f3337bb518c52f777ce7e09fac43088f7c81cced7a3f4861",
+      "image": "sha256:cf134a767f474095eeba57e0117be8e568e011a63f33fbf252f14c9b760f8e6f",
+      "started_at": "2026-11-04T17:56:36.215448818Z",
+      "restart": {
+        "Name": "unless-stopped",
+        "MaximumRetryCount": 0
+      },
+      "health": "healthy",
+      "project": "birdsong-retrieval",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/birdsong-retrieval_postgres_data/_data",
+          "destination": "/var/lib/postgresql/data"
+        }
+      ]
+    }
+  },
+  "workflow_pins": [
+    {
+      "code": "WF01",
+      "id": "X2O2QdPY6QLOrWqL",
+      "active": true,
+      "published_version_id": "9e815254-7b30-4740-b57f-5dbf87a7d945",
+      "definition_sha256": "4bd0804297b3be8d5724b56ea639d0ab5995bf759299d3b3552dd492e0905de2"
+    },
+    {
+      "code": "WF02",
+      "id": "Anl8LNdN4NNTKRpe",
+      "active": true,
+      "published_version_id": "a6590c2d-23fe-49fc-bdb0-49179cecd309",
+      "definition_sha256": "2b7fa98adffa2af5187e773be2b8ec63fa6336149382b5c6c0c28cbaba1e6e15"
+    },
+    {
+      "code": "WF03",
+      "id": "XoP4M520TMG3WgeY",
+      "active": true,
+      "published_version_id": "18fbb3ad-0e1c-4835-96a5-623a6f8606d3",
+      "definition_sha256": "0085f1f34b9e838b9e9618f92e80a7bef62b7dcc7702852d941fc7c156b6771b"
+    },
+    {
+      "code": "WF04",
+      "id": "elfapV5D2PTnLiHW",
+      "active": true,
+      "published_version_id": "7b409c28-5271-4d69-98f9-c55100b3c871",
+      "definition_sha256": "4ebb0a3dc54088c5e732e1bad9bdc0f150f18b3a2fec69204dd93faea23d4ad5"
+    },
+    {
+      "code": "WF05",
+      "id": "xCZFw45fmDQG5gNq",
+      "active": true,
+      "published_version_id": "688ebfd0-f5ed-442f-a29a-d244f5b574d7",
+      "definition_sha256": "1ac7259265593f62664e924b3d2a0280363215b99ef78fc1d5dddbf2dd619184"
+    },
+    {
+      "code": "WF06",
+      "id": "Jq18aFSqfuUybEic",
+      "active": true,
+      "published_version_id": "dcca7091-a57d-4017-9714-26202018daaf",
+      "definition_sha256": "da4d596c0ecab38e6f150dc349aa2a13ad69ced427a15541b771b606f0b04f05"
+    },
+    {
+      "code": "WF07",
+      "id": "BpCQrGR866vg4BqQ",
+      "active": true,
+      "published_version_id": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+      "definition_sha256": "db5bcdcfc2310b6d4e96debea244bfde19b908da5af8e98fa7a6553441ecf43d"
+    },
+    {
+      "code": "WF08",
+      "id": "RXWjVUL8ozqhjY4w",
+      "active": true,
+      "published_version_id": "a27ba585-d38b-4df7-bbcf-9a51643f1d98",
+      "definition_sha256": "2ea2337b48f55716c9ca4a274d4d37afe0588da023024a4f9dda2c678861a5c7"
+    },
+    {
+      "code": "WF09",
+      "id": "tOyBIPw6sGjgzjtU",
+      "active": true,
+      "published_version_id": "41d0d315-c2b4-4de7-b237-7a45a382c6ed",
+      "definition_sha256": "c50ff420fc51e9731450b9b28597175dc7c3f3cff743914712d0acf9b243f7c6"
+    },
+    {
+      "code": "WF10",
+      "id": "tOY7QUa9SrWPOe9e",
+      "active": true,
+      "published_version_id": "e5790af4-215a-44a7-8ad4-cca03ffdbe05",
+      "definition_sha256": "a041c64213c766b710c61c8019cc219732613930129397cb7347b30fbfe52967"
+    },
+    {
+      "code": "WF11",
+      "id": "LeRVT3LWNBkJ2iz3",
+      "active": true,
+      "published_version_id": "cf9b7590-f6b1-44ea-8740-0bb48049c261",
+      "definition_sha256": "46326bdc3611bf257f1f12ee9f9fbdb5470e723bebdda3436d030bcbf27cfcdc"
+    },
+    {
+      "code": "WF12",
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "active": true,
+      "published_version_id": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+      "definition_sha256": "2c92262e2d22a2a497d8fce394818e35562dc33b16e53adfefde79e8f6021287"
+    },
+    {
+      "code": "WF13",
+      "id": "2tr0jpqaaAiq9IOU",
+      "active": true,
+      "published_version_id": "0243c9f0-b9d4-465b-b90b-c0f27efd9ebe",
+      "definition_sha256": "96d96261cabe99c9b696db173ce486be625d322841c5ca9a0ccf21db87f81079"
+    },
+    {
+      "code": "WF14",
+      "id": "8ycOUQy9gtT60nkN",
+      "active": true,
+      "published_version_id": "cfa65447-b5b9-48fb-8d51-a8469820a650",
+      "definition_sha256": "1f52e4f7fb2f40977de6db649c7958cadfaa8b7482e66712d12e9af77d437ff0"
+    },
+    {
+      "code": "WF15",
+      "id": "NLugfE3U8dBS88Wg",
+      "active": true,
+      "published_version_id": "dde4ea90-39ea-4e8b-803c-a968b4766c39",
+      "definition_sha256": "30750a83eb06214421fe3343aa671c7400bb0b03ae3c91f7ba698e9aae371e81"
+    },
+    {
+      "code": "WF16",
+      "id": "5FRYNPSot18UDpKa",
+      "active": true,
+      "published_version_id": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "definition_sha256": "0399242cea3b193ccdf399eed82cd0b29fca6666df35e847a6718301f0003eeb"
+    }
+  ],
+  "utc": "2026-11-04T23:47:37.998957+00:00"
+}

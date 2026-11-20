@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-27T08:02:30.142275+00:00",
+  "status": "DECLINED_USER_REQUIRES_ORIGINAL8088_8090",
+  "cause": "Windows dynamically excludes TCP8061-8160 after the observed Docker/runtime restart; Main8088/8090 both fall inside it. Restarting only existing Main publishers did not restore host listeners.",
+  "scope": "Temporary Main loopback host port change only",
+  "changes": [
+    {
+      "container": "qldapm-openproject-proxy-1",
+      "before": "127.0.0.1:8088:80",
+      "after": "127.0.0.1:18088:80"
+    },
+    {
+      "container": "qldapm-ai-gateway-1",
+      "before": "127.0.0.1:8090:8090",
+      "after": "127.0.0.1:18089:8090"
+    }
+  ],
+  "verified_free_ports": [
+    18088,
+    18089
+  ],
+  "unchanged": [
+    "Gatewaye9image",
+    "Core062image",
+    "NativeWPdata",
+    "credentials/TOTP",
+    "internalDockerURLs/ports",
+    "all16workflows",
+    "Staging",
+    "Windowsportreservations/firewall/DockerEngine/WSL"
+  ],
+  "user_impact": "Host browser/API base URLs change to localhost18088/18089 temporarily; old8088/8090 remain unavailable while Windows owns their range. Verify browser/login/relativeAPIlinks before treating UI as ready. No bypass of existing browser tool policy.",
+  "rollback": "Restore only original two Main mappings after Windows releases8088/8090; retain databases/history, same images. No global Docker/WSLrestart or OSnetwork changes.",
+  "reason_for_decision": "Existing user constraint preserves APIcontracts; changing user-visibleMain URLs requires choosing recovery strategy.",
+  "preview_sha256": "216a00d9e53d56c948dd2e057a99faa7a47bef6812cc3d82eaa250787127417e",
+  "user_decision": "Keep8088/8090; user handles Windows exclusion with guidance. Agent must not apply alternate mappings or OSnetwork changes."
+}

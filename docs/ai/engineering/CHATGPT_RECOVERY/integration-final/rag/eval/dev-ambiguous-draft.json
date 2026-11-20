@@ -1,0 +1,685 @@
+{
+  "schema": 1,
+  "split": "dev",
+  "cases": [
+    {
+      "id": "dev:create_list:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Tìm unit đầu tiên phụ trách tạo và liệt kê việc có lưu bằng SQLite.",
+      "relevant_ids": [
+        380
+      ],
+      "source_id": "actor:20:wp:380",
+      "source_hash": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+      "source_version": 8,
+      "support_literal": "Create/list tasks + SQLite persistence",
+      "support_offset": 10,
+      "support_sha256": "bcee352d8a117913e433bf9dec597cd6252fc8e2671f7880c6f6ce41ab392879",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:create_list:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which initial engineering unit creates and lists persisted tasks using SQLite?",
+      "relevant_ids": [
+        380
+      ],
+      "source_id": "actor:20:wp:380",
+      "source_hash": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+      "source_version": 8,
+      "support_literal": "Create/list tasks + SQLite persistence",
+      "support_offset": 10,
+      "support_sha256": "bcee352d8a117913e433bf9dec597cd6252fc8e2671f7880c6f6ce41ab392879",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:preserved_failure:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Bằng chứng nào cho biết unit create/list đã giữ lại lỗi kết thúc cũ khi dùng partial artifact?",
+      "relevant_ids": [
+        380
+      ],
+      "source_id": "actor:20:wp:380",
+      "source_hash": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+      "source_version": 8,
+      "support_literal": "terminal_failure_preserved",
+      "support_offset": 1382,
+      "support_sha256": "3e23542d16f58c6baf60a04b919ee32bfae9bc6875bb5cd2a3222317f4db98f1",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:preserved_failure:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which create/list delivery retains its previous terminal failure alongside a verified partial artifact?",
+      "relevant_ids": [
+        380
+      ],
+      "source_id": "actor:20:wp:380",
+      "source_hash": "3fd4a982eb04b678eb21b16def953d4bd981c755263fb8df19aecf7b06f3335d",
+      "source_version": 8,
+      "support_literal": "terminal_failure_preserved",
+      "support_offset": 1382,
+      "support_sha256": "3e23542d16f58c6baf60a04b919ee32bfae9bc6875bb5cd2a3222317f4db98f1",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:crud_unit:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Unit nào mở rộng chỉnh sửa, xoá, trạng thái và tìm kiếm trong giao diện web?",
+      "relevant_ids": [
+        381
+      ],
+      "source_id": "actor:20:wp:381",
+      "source_hash": "aa4f1a35149e86a4d402a3a78b7bc19387f7c6dd80ad73232bea985d523dfb60",
+      "source_version": 9,
+      "support_literal": "Edit/delete/status/search and usable web interface",
+      "support_offset": 10,
+      "support_sha256": "1a83152626879419775e451d9487620b552150300606cd9e0faecbca6c4dadc4",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:crud_unit:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which delivery adds editing, deletion, status changes, search and a web interface?",
+      "relevant_ids": [
+        381
+      ],
+      "source_id": "actor:20:wp:381",
+      "source_hash": "aa4f1a35149e86a4d402a3a78b7bc19387f7c6dd80ad73232bea985d523dfb60",
+      "source_version": 9,
+      "support_literal": "Edit/delete/status/search and usable web interface",
+      "support_offset": 10,
+      "support_sha256": "1a83152626879419775e451d9487620b552150300606cd9e0faecbca6c4dadc4",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:parent_review:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Khi unit giao diện CRUD được xác minh, WP cha còn chờ bước nào?",
+      "relevant_ids": [
+        381
+      ],
+      "source_id": "actor:20:wp:381",
+      "source_hash": "aa4f1a35149e86a4d402a3a78b7bc19387f7c6dd80ad73232bea985d523dfb60",
+      "source_version": 9,
+      "support_literal": "WP379 awaits review/UAT",
+      "support_offset": 197,
+      "support_sha256": "2a5f6f790c2ac06a70a6e3aa7b0abe3016fe7b13fd4b2b931467df913473490c",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:parent_review:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "After the CRUD interface unit was verified, what remained pending for the parent work package?",
+      "relevant_ids": [
+        381
+      ],
+      "source_id": "actor:20:wp:381",
+      "source_hash": "aa4f1a35149e86a4d402a3a78b7bc19387f7c6dd80ad73232bea985d523dfb60",
+      "source_version": 9,
+      "support_literal": "WP379 awaits review/UAT",
+      "support_offset": 197,
+      "support_sha256": "2a5f6f790c2ac06a70a6e3aa7b0abe3016fe7b13fd4b2b931467df913473490c",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:recovery_history:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Bản thay thế WP385 có khôi phục lại lịch sử Native của bản bị xoá không?",
+      "relevant_ids": [
+        388
+      ],
+      "source_id": "actor:20:wp:388",
+      "source_hash": "38c4c619a0f80327537a030cf162e8f5fcc468543a617b5d2db10fb199467845",
+      "source_version": 1,
+      "support_literal": "not restoration of Native history",
+      "support_offset": 104,
+      "support_sha256": "a8e1cd66d69288d75990fd567b3c1dccbd467ac668a91b1d9adf006df496ce37",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:recovery_history:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "Does the replacement of WP385 restore the deleted Native history?",
+      "relevant_ids": [
+        388
+      ],
+      "source_id": "actor:20:wp:388",
+      "source_hash": "38c4c619a0f80327537a030cf162e8f5fcc468543a617b5d2db10fb199467845",
+      "source_version": 1,
+      "support_literal": "not restoration of Native history",
+      "support_offset": 104,
+      "support_sha256": "a8e1cd66d69288d75990fd567b3c1dccbd467ac668a91b1d9adf006df496ce37",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:dependency:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Hạng mục thay thế WP385 phụ thuộc vào health-check nào?",
+      "relevant_ids": [
+        388
+      ],
+      "source_id": "actor:20:wp:388",
+      "source_hash": "38c4c619a0f80327537a030cf162e8f5fcc468543a617b5d2db10fb199467845",
+      "source_version": 1,
+      "support_literal": "Dependency: health-check-v1 / WP384",
+      "support_offset": 385,
+      "support_sha256": "975d7ddf450325a50eaa23f0c7c93e157ea295ff05a260c10ca2326d195778d5",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:dependency:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which health-check work package is a dependency of the WP385 replacement?",
+      "relevant_ids": [
+        388
+      ],
+      "source_id": "actor:20:wp:388",
+      "source_hash": "38c4c619a0f80327537a030cf162e8f5fcc468543a617b5d2db10fb199467845",
+      "source_version": 1,
+      "support_literal": "Dependency: health-check-v1 / WP384",
+      "support_offset": 385,
+      "support_sha256": "975d7ddf450325a50eaa23f0c7c93e157ea295ff05a260c10ca2326d195778d5",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:exists_noninteger:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Tài liệu kiểm tra tồn tại việc quy định gì khi task_id không phải số nguyên?",
+      "relevant_ids": [
+        389
+      ],
+      "source_id": "actor:20:wp:389",
+      "source_hash": "d5a65c4578bbd97b9b6fa5edb106b8f29ee7741912b32c0058e88e296fb87635",
+      "source_version": 2,
+      "support_literal": "task_id không phải số nguyên trả về HTTP 422",
+      "support_offset": 985,
+      "support_sha256": "acc860ffea37f924fff62de2aaaf1ec758bb01719123a1b25a8e956ec8fd58e1",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:exists_noninteger:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "What response is specified when the task existence endpoint receives a noninteger task_id?",
+      "relevant_ids": [
+        389
+      ],
+      "source_id": "actor:20:wp:389",
+      "source_hash": "d5a65c4578bbd97b9b6fa5edb106b8f29ee7741912b32c0058e88e296fb87635",
+      "source_version": 2,
+      "support_literal": "task_id không phải số nguyên trả về HTTP 422",
+      "support_offset": 985,
+      "support_sha256": "acc860ffea37f924fff62de2aaaf1ec758bb01719123a1b25a8e956ec8fd58e1",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:exists_false:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Tìm yêu cầu existence endpoint trả giá trị false cho một ID không có trong SQLite.",
+      "relevant_ids": [
+        389
+      ],
+      "source_id": "actor:20:wp:389",
+      "source_hash": "d5a65c4578bbd97b9b6fa5edb106b8f29ee7741912b32c0058e88e296fb87635",
+      "source_version": 2,
+      "support_literal": "exists\\\": false",
+      "support_offset": 928,
+      "support_sha256": "c29c0692b0a34c484233dd72218ccde3bf76444b7cf67afceb0fbced7ea6b1b8",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:exists_false:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "Find the existence check specification for an ID absent from SQLite, including the false result.",
+      "relevant_ids": [
+        389
+      ],
+      "source_id": "actor:20:wp:389",
+      "source_hash": "d5a65c4578bbd97b9b6fa5edb106b8f29ee7741912b32c0058e88e296fb87635",
+      "source_version": 2,
+      "support_literal": "exists\\\": false",
+      "support_offset": 928,
+      "support_sha256": "c29c0692b0a34c484233dd72218ccde3bf76444b7cf67afceb0fbced7ea6b1b8",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:title_unicode:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Tài liệu nào yêu cầu phản hồi title giữ đúng ký tự Unicode?",
+      "relevant_ids": [
+        390
+      ],
+      "source_id": "actor:20:wp:390",
+      "source_hash": "e23b9ea9ef490f99892a7b6f7fe583740fc8fafef50ebdbeb760a2d439ec3718",
+      "source_version": 2,
+      "support_literal": "Tiêu đề chứa ký tự Unicode được bảo toàn chính xác",
+      "support_offset": 997,
+      "support_sha256": "190b6dbe22d3a4b19c8cce24ac150bdf3e15f227194ecd4c49b8bcf8a290a43c",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:title_unicode:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "Which title endpoint specification preserves Unicode characters in the response?",
+      "relevant_ids": [
+        390
+      ],
+      "source_id": "actor:20:wp:390",
+      "source_hash": "e23b9ea9ef490f99892a7b6f7fe583740fc8fafef50ebdbeb760a2d439ec3718",
+      "source_version": 2,
+      "support_literal": "Tiêu đề chứa ký tự Unicode được bảo toàn chính xác",
+      "support_offset": 997,
+      "support_sha256": "190b6dbe22d3a4b19c8cce24ac150bdf3e15f227194ecd4c49b8bcf8a290a43c",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:title_invalid:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Endpoint lấy title xử lý task_id dạng chữ như thế nào?",
+      "relevant_ids": [
+        390
+      ],
+      "source_id": "actor:20:wp:390",
+      "source_hash": "e23b9ea9ef490f99892a7b6f7fe583740fc8fafef50ebdbeb760a2d439ec3718",
+      "source_version": 2,
+      "support_literal": "task_id không phải số nguyên trả về HTTP 422",
+      "support_offset": 1405,
+      "support_sha256": "acc860ffea37f924fff62de2aaaf1ec758bb01719123a1b25a8e956ec8fd58e1",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:title_invalid:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "How must the title-only endpoint handle an alphabetic task identifier?",
+      "relevant_ids": [
+        390
+      ],
+      "source_id": "actor:20:wp:390",
+      "source_hash": "e23b9ea9ef490f99892a7b6f7fe583740fc8fafef50ebdbeb760a2d439ec3718",
+      "source_version": 2,
+      "support_literal": "task_id không phải số nguyên trả về HTTP 422",
+      "support_offset": 1405,
+      "support_sha256": "acc860ffea37f924fff62de2aaaf1ec758bb01719123a1b25a8e956ec8fd58e1",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:csv_delivery_base:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Unit CSV ghi nhận base branch nào cho delivery?",
+      "relevant_ids": [
+        391
+      ],
+      "source_id": "actor:20:wp:391",
+      "source_hash": "349ee9655243a7ab0e9c064924be2d32c3cd409f078bd5f5a1b325a2aea51223",
+      "source_version": 2,
+      "support_literal": "codex/openclaw-feedback-9d0ff35386a63183",
+      "support_offset": 3325,
+      "support_sha256": "2f8678f1407d70f03e903665f0154b37696ce8549408be119d4b2fb4f040091b",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:csv_delivery_base:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "What base branch is recorded in the CSV delivery receipt?",
+      "relevant_ids": [
+        391
+      ],
+      "source_id": "actor:20:wp:391",
+      "source_hash": "349ee9655243a7ab0e9c064924be2d32c3cd409f078bd5f5a1b325a2aea51223",
+      "source_version": 2,
+      "support_literal": "codex/openclaw-feedback-9d0ff35386a63183",
+      "support_offset": 3325,
+      "support_sha256": "2f8678f1407d70f03e903665f0154b37696ce8549408be119d4b2fb4f040091b",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:csv_delivery_review:vi",
+      "split": "dev",
+      "kind": "positive",
+      "language": "vi",
+      "query": "Nguồn nào lưu kết quả review PASS cho unit export.csv?",
+      "relevant_ids": [
+        391
+      ],
+      "source_id": "actor:20:wp:391",
+      "source_hash": "349ee9655243a7ab0e9c064924be2d32c3cd409f078bd5f5a1b325a2aea51223",
+      "source_version": 2,
+      "support_literal": "\"verdict\": \"PASS\"",
+      "support_offset": 4069,
+      "support_sha256": "27ed40761c22e868b922635bbcdfa9904a20ab28f691cc2ec739ca9a811a47cb",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:csv_delivery_review:en",
+      "split": "dev",
+      "kind": "positive",
+      "language": "en",
+      "query": "Find the persisted reviewer verdict for the export.csv engineering unit.",
+      "relevant_ids": [
+        391
+      ],
+      "source_id": "actor:20:wp:391",
+      "source_hash": "349ee9655243a7ab0e9c064924be2d32c3cd409f078bd5f5a1b325a2aea51223",
+      "source_version": 2,
+      "support_literal": "\"verdict\": \"PASS\"",
+      "support_offset": 4069,
+      "support_sha256": "27ed40761c22e868b922635bbcdfa9904a20ab28f691cc2ec739ca9a811a47cb",
+      "judgment": "Frozen source supports this requirement or historical receipt; not a live deployment claim."
+    },
+    {
+      "id": "dev:mysql:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Ứng dụng task có lưu dữ liệu vào MySQL thay cho SQLite không?",
+      "relevant_ids": [],
+      "absent_anchor": "mysql",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:mysql:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "Does the task application persist records in MySQL instead of SQLite?",
+      "relevant_ids": [],
+      "absent_anchor": "mysql",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:pagination:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "API task có hỗ trợ page_size để chia trang không?",
+      "relevant_ids": [],
+      "absent_anchor": "page_size",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:pagination:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "Does the task list API implement a page_size parameter?",
+      "relevant_ids": [],
+      "absent_anchor": "page_size",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:grpc:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Tài liệu nào mô tả truy vấn task qua gRPC?",
+      "relevant_ids": [],
+      "absent_anchor": "grpc",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:grpc:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "Which document describes querying tasks through gRPC?",
+      "relevant_ids": [],
+      "absent_anchor": "grpc",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:jwt:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Ứng dụng task phát JWT để phân quyền từng endpoint ở đâu?",
+      "relevant_ids": [],
+      "absent_anchor": "jwt",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:jwt:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "Where does the task application issue JWT credentials for its endpoints?",
+      "relevant_ids": [],
+      "absent_anchor": "jwt",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:cache:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Task list được cache bằng Memcached ở đâu?",
+      "relevant_ids": [],
+      "absent_anchor": "memcached",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:cache:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "Where is the task list cached using Memcached?",
+      "relevant_ids": [],
+      "absent_anchor": "memcached",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:subtasks:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "API tạo việc có trường parent_id để tạo subtask không?",
+      "relevant_ids": [],
+      "absent_anchor": "parent_id",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:subtasks:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "Does task creation accept a parent_id for nested subtasks?",
+      "relevant_ids": [],
+      "absent_anchor": "parent_id",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:priority_field:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Bảng tasks có cột tasks.priority để sắp xếp không?",
+      "relevant_ids": [],
+      "absent_anchor": "tasks.priority",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:priority_field:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "Does the tasks table define tasks.priority for ordering?",
+      "relevant_ids": [],
+      "absent_anchor": "tasks.priority",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:ical:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Lịch công việc được đồng bộ qua calendar sync như thế nào?",
+      "relevant_ids": [],
+      "absent_anchor": "calendar sync",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:ical:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "How does the application implement calendar sync for tasks?",
+      "relevant_ids": [],
+      "absent_anchor": "calendar sync",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:openid:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "Có đăng nhập OpenID cho ứng dụng task không?",
+      "relevant_ids": [],
+      "absent_anchor": "openid",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:openid:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "Does the task application implement OpenID login?",
+      "relevant_ids": [],
+      "absent_anchor": "openid",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:s3:vi",
+      "split": "dev",
+      "kind": "negative",
+      "language": "vi",
+      "query": "File task được lưu trong S3 bucket nào?",
+      "relevant_ids": [],
+      "absent_anchor": "s3 bucket",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:s3:en",
+      "split": "dev",
+      "kind": "negative",
+      "language": "en",
+      "query": "Which S3 bucket stores task files?",
+      "relevant_ids": [],
+      "absent_anchor": "s3 bucket",
+      "judgment": "Capability is absent from frozen Project6 actor20 Native sources; lexical absence supports but does not independently prove semantic absence."
+    },
+    {
+      "id": "dev:mixed-dependency",
+      "split": "dev",
+      "kind": "positive",
+      "language": "mixed",
+      "query": "Replacement WP385 có dependency tới health-check work package nào?",
+      "relevant_ids": [
+        388
+      ],
+      "source_id": "actor:20:wp:388",
+      "source_hash": "38c4c619a0f80327537a030cf162e8f5fcc468543a617b5d2db10fb199467845",
+      "source_version": 1,
+      "support_literal": "Dependency: health-check-v1 / WP384",
+      "support_offset": 385,
+      "support_sha256": "975d7ddf450325a50eaa23f0c7c93e157ea295ff05a260c10ca2326d195778d5",
+      "judgment": "Frozen source supports this requirement, not a live deployment claim."
+    },
+    {
+      "id": "dev:mixed-exists-type",
+      "split": "dev",
+      "kind": "positive",
+      "language": "mixed",
+      "query": "Với exists endpoint, non-integer task_id phải trả HTTP code nào?",
+      "relevant_ids": [
+        389
+      ],
+      "source_id": "actor:20:wp:389",
+      "source_hash": "d5a65c4578bbd97b9b6fa5edb106b8f29ee7741912b32c0058e88e296fb87635",
+      "source_version": 2,
+      "support_literal": "task_id không phải số nguyên trả về HTTP 422",
+      "support_offset": 985,
+      "support_sha256": "acc860ffea37f924fff62de2aaaf1ec758bb01719123a1b25a8e956ec8fd58e1",
+      "judgment": "Frozen source supports this requirement, not a live deployment claim."
+    },
+    {
+      "id": "dev:mixed-title-unicode",
+      "split": "dev",
+      "kind": "positive",
+      "language": "mixed",
+      "query": "Title response phải giữ Unicode characters trong task name như thế nào?",
+      "relevant_ids": [
+        390
+      ],
+      "source_id": "actor:20:wp:390",
+      "source_hash": "e23b9ea9ef490f99892a7b6f7fe583740fc8fafef50ebdbeb760a2d439ec3718",
+      "source_version": 2,
+      "support_literal": "Tiêu đề chứa ký tự Unicode được bảo toàn chính xác",
+      "support_offset": 997,
+      "support_sha256": "190b6dbe22d3a4b19c8cce24ac150bdf3e15f227194ecd4c49b8bcf8a290a43c",
+      "judgment": "Frozen source supports this requirement, not a live deployment claim."
+    },
+    {
+      "id": "dev:mixed-s3",
+      "split": "dev",
+      "kind": "negative",
+      "language": "mixed",
+      "query": "Task files lưu ở S3 bucket nào?",
+      "relevant_ids": [],
+      "absent_anchor": "s3 bucket",
+      "judgment": "No exact distinctive capability anchor in frozen corpus; semantic absence needs independent review."
+    },
+    {
+      "id": "dev:mixed-pages",
+      "split": "dev",
+      "kind": "negative",
+      "language": "mixed",
+      "query": "Task list có page_size để pagination không?",
+      "relevant_ids": [],
+      "absent_anchor": "page_size",
+      "judgment": "No exact distinctive capability anchor in frozen corpus; semantic absence needs independent review."
+    }
+  ]
+}

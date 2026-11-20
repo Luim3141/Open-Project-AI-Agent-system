@@ -1,0 +1,210 @@
+[
+  {
+    "source": "openproject/ai/gateway/agent_registry.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "2f3d7e636c0bb9712f5300796d713be8c2f1f1d639d0b6e6a1254eb72d00dc46",
+    "changed_functions": []
+  },
+  {
+    "source": "openproject/ai/gateway/ba_agent.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "788dddd0d576d2abf9a76d4bb1971f2c20946f591a1fd9558be60f320f5bfbaa",
+    "changed_functions": [
+      {
+        "name": "BAAgent.run",
+        "line": 151,
+        "lines": 96
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/control_center_state.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "b6a36b2be2e90baa33328a07c2c20cb940dea0fcd34ad058a3a41a725239ae8f",
+    "changed_functions": [
+      {
+        "name": "get_control_center_state",
+        "line": 62,
+        "lines": 60
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/dev_agent.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "9c37469a28a4a743a63672d1d615f7309c352ec1749a2118d4ead46df372fce7",
+    "changed_functions": [
+      {
+        "name": "DEVAgent.run",
+        "line": 101,
+        "lines": 117
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/planner.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "a336227405af85f8273bdb41a3d79c09d1833de3914a0009617d1494cbb12ca0",
+    "changed_functions": [
+      {
+        "name": "is_write_intent",
+        "line": 40,
+        "lines": 5
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/pm_agent.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "70654d5fbe586514a4cbe7c134af99cda54be7077ea54dd6e004626366759069",
+    "changed_functions": [
+      {
+        "name": "PMAgent.run",
+        "line": 193,
+        "lines": 102
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/qa_agent.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "c89f6fd9e2d0e387e395f8e0ce412a5527838c1184b80616c4c863d70b6f5a2a",
+    "changed_functions": [
+      {
+        "name": "QAAgent.run",
+        "line": 166,
+        "lines": 98
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/quota_panel.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "33177f5844467f999e1114a9e37ff00575722ffdfe2f451e913ff4ea19a9be05",
+    "changed_functions": [
+      {
+        "name": "get_quota_panel_data",
+        "line": 6,
+        "lines": 38
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/reviewer_agent.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "05c40a2cc91e3ae7a18314eaf48238e57231b91ca599ac8988a9e9aa80904950",
+    "changed_functions": [
+      {
+        "name": "detect_agent_conflicts",
+        "line": 54,
+        "lines": 26
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/service.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "35621b5338e82015c75e24eb28f3dd7770c92afaa0ad2a6aea63a9bb1ce7bf79",
+    "changed_functions": [
+      {
+        "name": "Service.control_center_state",
+        "line": 170,
+        "lines": 48
+      },
+      {
+        "name": "Service.start_run",
+        "line": 262,
+        "lines": 86
+      },
+      {
+        "name": "Service._process_run",
+        "line": 431,
+        "lines": 40
+      },
+      {
+        "name": "Service.run_supervisor",
+        "line": 472,
+        "lines": 106
+      },
+      {
+        "name": "Service.knowledge",
+        "line": 579,
+        "lines": 43
+      },
+      {
+        "name": "Service.perform",
+        "line": 664,
+        "lines": 411
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/store.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "f0c2eee58d166cc4041887753ce682a5c41cb07ce5bf22f3464bbea1733b2077",
+    "changed_functions": [
+      {
+        "name": "Store.__init__",
+        "line": 29,
+        "lines": 38
+      },
+      {
+        "name": "Store.execution_records",
+        "line": 304,
+        "lines": 10
+      },
+      {
+        "name": "Store.execution_history",
+        "line": 315,
+        "lines": 30
+      },
+      {
+        "name": "Store.reserve_gemini",
+        "line": 406,
+        "lines": 38
+      },
+      {
+        "name": "Store.settle_gemini_input",
+        "line": 445,
+        "lines": 6
+      },
+      {
+        "name": "Store.provider_receipt",
+        "line": 452,
+        "lines": 5
+      },
+      {
+        "name": "Store.enqueue_run",
+        "line": 727,
+        "lines": 61
+      },
+      {
+        "name": "Store.finish_run",
+        "line": 845,
+        "lines": 15
+      },
+      {
+        "name": "Store.cancel_agent_run",
+        "line": 865,
+        "lines": 17
+      }
+    ]
+  },
+  {
+    "source": "openproject/ai/gateway/supervisor.py",
+    "old_qualified_image": "6afb78c4",
+    "old_sha256": "2b8c559e8c444ab0c0915982e204606305066b597ce431ea65ac9355ad28b5a6",
+    "changed_functions": [
+      {
+        "name": "Supervisor.__init__",
+        "line": 21,
+        "lines": 3
+      },
+      {
+        "name": "Supervisor.execute_task",
+        "line": 25,
+        "lines": 112
+      }
+    ]
+  }
+]

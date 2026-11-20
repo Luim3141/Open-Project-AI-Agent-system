@@ -1,0 +1,124 @@
+{
+  "status": "DIAGNOSTIC_STOPPED",
+  "rows": [
+    {
+      "case": "dev:preserved_failure:vi",
+      "kind": "positive",
+      "seconds": 17.445,
+      "model_load_seconds": 10.0110537,
+      "prompt_tokens": 1513,
+      "output_tokens": 27,
+      "done_reason": "stop",
+      "answer_emitted": true,
+      "selected_fact_ids": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_native_ids": [
+        380,
+        380,
+        380,
+        380
+      ],
+      "semantic_support": "PENDING_SOURCE_REVIEW"
+    },
+    {
+      "case": "dev:crud_unit:en",
+      "kind": "positive",
+      "seconds": 8.21,
+      "model_load_seconds": 0.1173985,
+      "prompt_tokens": 1445,
+      "output_tokens": 27,
+      "done_reason": "stop",
+      "answer_emitted": true,
+      "selected_fact_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "citation_native_ids": [
+        381,
+        381,
+        381,
+        381
+      ],
+      "semantic_support": "PENDING_SOURCE_REVIEW"
+    }
+  ],
+  "holdout_access": false,
+  "main_rag_changed": false,
+  "embedding_seconds": 5.132,
+  "qdrant_points_verified": 15,
+  "retrieval": [
+    {
+      "case": "dev:preserved_failure:vi",
+      "ids": [
+        380,
+        381,
+        394,
+        383,
+        391
+      ],
+      "hit": true,
+      "context_chars": 4285
+    },
+    {
+      "case": "dev:crud_unit:en",
+      "ids": [
+        381,
+        382,
+        384,
+        379,
+        387
+      ],
+      "hit": true,
+      "context_chars": 4271
+    },
+    {
+      "case": "dev:recovery_history:vi",
+      "ids": [
+        388
+      ],
+      "hit": true,
+      "context_chars": 796
+    },
+    {
+      "case": "human-intent392:en",
+      "ids": [
+        392
+      ],
+      "hit": true,
+      "context_chars": 688
+    },
+    {
+      "case": "dev:pagination:vi",
+      "ids": [
+        379,
+        391,
+        387,
+        390,
+        380
+      ],
+      "hit": null,
+      "context_chars": 4268
+    },
+    {
+      "case": "dev:pagination:en",
+      "ids": [
+        379,
+        380,
+        381,
+        387,
+        391
+      ],
+      "hit": null,
+      "context_chars": 4179
+    }
+  ],
+  "reason": "WARM_QUERY_OVER_5_SECONDS",
+  "error_type": "ValueError",
+  "elapsed_seconds": 31.78
+}

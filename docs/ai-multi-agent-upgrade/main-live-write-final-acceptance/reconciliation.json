@@ -1,0 +1,337 @@
+{
+  "route": "OPERATOR_CORE_SIGNED_BRIDGE_NATIVE_GET_ONLY",
+  "at": 1792603481.925082,
+  "run_id": "6276720c-d6f8-4c3a-bf64-1e4fca623eb0",
+  "id": 367,
+  "reconciled": true,
+  "actor": 19,
+  "native_mutations": 0,
+  "google_calls": 0,
+  "request_key": "owner-create-e3626ae0-ce29-4e52-bcb8-98793eeefce5",
+  "correlation_id": "4c8182f9-423c-49de-b090-5ebe37280404",
+  "bridge_command_correlation": "5142b86d-2a03-4a00-b118-5c78f548c268",
+  "worker_state_preserved": "failed_or_unknown",
+  "display": {
+    "connection_state": "WAITING_QUOTA",
+    "error": "GEMINI_REQUEST_BUDGET_EXHAUSTED",
+    "heading": "Native đã xác nhận sau timeout — không gửi lại yêu cầu",
+    "message": "Subtask đã được đối soát bằng source marker và author. Gemini đã dừng trong ngân sách; không có bản tổng hợp model mới.",
+    "outcome_unknown": false,
+    "outcomes": [
+      {
+        "action": "get_work_package",
+        "title": "Đọc công việc #50",
+        "state": "read",
+        "detail": "Đã đọc dữ liệu theo quyền của bạn.",
+        "work_package_id": 50,
+        "proposal_id": null
+      },
+      {
+        "action": "get_project_options",
+        "title": "Đọc loại công việc và workflow",
+        "state": "read",
+        "detail": "Đã đọc dữ liệu theo quyền của bạn.",
+        "work_package_id": null,
+        "proposal_id": null
+      },
+      {
+        "action": "create_work_package",
+        "title": "Tạo công việc #367",
+        "state": "succeeded",
+        "detail": "OpenProject đã xác nhận kết quả. Đã tạo “test”. Công việc cha: #50.",
+        "work_package_id": 367,
+        "proposal_id": null
+      },
+      {
+        "action": "list_work_packages",
+        "title": "Tìm công việc",
+        "state": "read",
+        "detail": "Đã đọc dữ liệu theo quyền của bạn.",
+        "work_package_id": null,
+        "proposal_id": null
+      }
+    ],
+    "provider_http_status": 503,
+    "source": "gemini",
+    "status": "partial",
+    "text": "Tạo công việc #367: OpenProject đã xác nhận kết quả. Đã tạo “test”. Công việc cha: #50.",
+    "tools": [
+      {
+        "action": "get_work_package",
+        "arguments": {
+          "id": 50
+        },
+        "result": {
+          "result": {
+            "comments": [
+              {
+                "createdAt": "2026-10-09T08:09:35.375Z",
+                "id": 82,
+                "text": "_Updated automatically by changing values within child work package #107_\n"
+              }
+            ],
+            "description": "Là người dùng đã có tài khoản, tôi muốn đăng nhập để truy cập các Project được cấp quyền.\n\nAcceptance Criteria nguồn:\n1. Thông tin hợp lệ mở đúng danh sách Project mà người dùng tham gia; không hợp lệ không tạo phiên đăng nhập.\n2. Thông báo lỗi không tiết lộ email có tồn tại hay không và hệ thống bảo vệ trước các lần đăng nhập sai lặp lại.\n\nPhân tích: Chốt lỗi đăng nhập không lộ tài khoản, giới hạn thử sai và phiên đăng nhập.\nTask là đơn vị bàn giao chức năng; owner PM điều phối, công việc cá nhân nằm ở Subtask.\nEstimate chỉ là đề xuất mô phỏng Junior, chưa phải cam kết hoặc thời gian thực.\n\n## Acceptance Criteria\n\nThông tin hợp lệ mở đúng danh sách Project mà người dùng tham gia; không hợp lệ không tạo phiên đăng nhập.\nThông báo lỗi không tiết lộ email có tồn tại hay không và hệ thống bảo vệ trước các lần đăng nhập sai lặp lại.\n\n## Checklist (manual gate)\n\n- [ ] BA chốt yêu cầu/AC, quyền và trường hợp lỗi; PM duyệt phạm vi.\n- [ ] BE/FE có bản code, unit/integration test và review độc lập; không tự approve code.\n- [ ] Bản Test tập trung sẵn sàng; Task READY FOR TEST trước khi QA chạy test.\n- [ ] QA lưu test case, actual/expected và kết quả; mọi Fix Bug được sửa và retest đạt.\n- [ ] Lead review → Retest nếu cần hoặc ghi rõ không cần → BA xác nhận → PM duyệt.\n- [ ] Mọi Subtask bắt buộc DONE; deploy Test và smoke đạt; PM mới chuyển Task DONE.\n- [ ] Không chốt điểm thật từ estimate mô phỏng; giữ baseline khi thay đổi phạm vi.\n\n### Source ID\n\nAUTH-02\n\n### Reviewer Requirement\n\nLead được PM chỉ định → QA retest khi cần → BA xác nhận → PM duyệt\n\n### Proposed Role\n\nPM\n\n### Proposed Sprint\n\nS1 (đề xuất, chưa chốt lịch)\n\n### Simulation Estimate Hours\n\n28\n\n### Simulation Points\n\n28\n\n### Depends On Source IDs\n\nAUTH-01\n\n### Integration With Source IDs\n\n—\n\n### Labels\n\nqag3-wbs source-AUTH-02\n\n### Approval\n\nDRAFT\n\n### Proposed Priority\n\nHigh\n\nDữ liệu nguồn v7. Estimate/point là MÔ PHỎNG; Sprint chưa chốt lịch. Việc tạo ticket không chứng minh chức năng đã được triển khai. Checklist/child-completion/concurrency gate chưa cưỡng chế native.",
+            "dueDate": "2026-10-16",
+            "fields": {
+              "customField11": "AUTH-02",
+              "customField13": "S1 (đề xuất, chưa chốt lịch)",
+              "customField14": 28.0,
+              "customField15": 28.0
+            },
+            "id": 50,
+            "lockVersion": 2,
+            "parent_id": 38,
+            "percentageDone": 0,
+            "priority_id": 8,
+            "relations": [
+              {
+                "description": "",
+                "id": 14,
+                "targets": {
+                  "from": "/api/v3/work_packages/50",
+                  "to": "/api/v3/work_packages/49"
+                },
+                "type": "follows"
+              },
+              {
+                "description": "",
+                "id": 20,
+                "targets": {
+                  "from": "/api/v3/work_packages/51",
+                  "to": "/api/v3/work_packages/50"
+                },
+                "type": "follows"
+              },
+              {
+                "description": "",
+                "id": 32,
+                "targets": {
+                  "from": "/api/v3/work_packages/53",
+                  "to": "/api/v3/work_packages/50"
+                },
+                "type": "follows"
+              },
+              {
+                "description": "",
+                "id": 40,
+                "targets": {
+                  "from": "/api/v3/work_packages/54",
+                  "to": "/api/v3/work_packages/50"
+                },
+                "type": "follows"
+              }
+            ],
+            "startDate": "2026-10-12",
+            "status": "NEW",
+            "status_id": 1,
+            "subject": "AUTH-02 — Đăng nhập",
+            "type": "Task",
+            "type_id": 1
+          }
+        }
+      },
+      {
+        "action": "get_project_options",
+        "arguments": {},
+        "result": {
+          "result": {
+            "assignee_roles": [
+              "BA",
+              "PM",
+              "BE",
+              "FE",
+              "QA"
+            ],
+            "priorities": [
+              {
+                "id": 7,
+                "name": "Low"
+              },
+              {
+                "id": 8,
+                "name": "Normal"
+              },
+              {
+                "id": 9,
+                "name": "High"
+              },
+              {
+                "id": 10,
+                "name": "Immediate"
+              }
+            ],
+            "statuses": [
+              {
+                "id": 1,
+                "name": "NEW"
+              },
+              {
+                "id": 7,
+                "name": "IN PROGRESS"
+              },
+              {
+                "id": 9,
+                "name": "IN TESTING"
+              },
+              {
+                "id": 33,
+                "name": "READY"
+              },
+              {
+                "id": 34,
+                "name": "REVIEW"
+              },
+              {
+                "id": 35,
+                "name": "DONE"
+              },
+              {
+                "id": 36,
+                "name": "CANCELLED"
+              },
+              {
+                "id": 37,
+                "name": "IN ANALYSIS"
+              },
+              {
+                "id": 38,
+                "name": "READY FOR DEV"
+              },
+              {
+                "id": 39,
+                "name": "CODE REVIEW"
+              },
+              {
+                "id": 40,
+                "name": "READY FOR TEST"
+              },
+              {
+                "id": 41,
+                "name": "READY FOR RELEASE"
+              }
+            ],
+            "types": [
+              {
+                "id": 1,
+                "name": "Task"
+              },
+              {
+                "id": 5,
+                "name": "Epic"
+              },
+              {
+                "id": 10,
+                "name": "Subtask"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "action": "create_work_package",
+        "arguments": {
+          "assignee_id": 23,
+          "parent_id": 50,
+          "subject": "test",
+          "type_id": 10
+        },
+        "result": {
+          "result": {
+            "id": 367,
+            "lockVersion": 0,
+            "status_id": 1,
+            "type_id": 10,
+            "type": "Subtask",
+            "priority_id": 8,
+            "parent_id": 50,
+            "dueDate": "2026-10-16",
+            "subject": "test",
+            "description": "",
+            "startDate": "2026-10-12",
+            "percentageDone": 0,
+            "fields": {
+              "customField11": "owner-e3626ae0-ce29-4e52-bcb8-98793eeefce5",
+              "customField13": null,
+              "customField14": null,
+              "customField15": null
+            },
+            "comments": [],
+            "relations": [],
+            "status": "NEW",
+            "native_confirmed": true
+          }
+        }
+      },
+      {
+        "action": "list_work_packages",
+        "arguments": {
+          "parent_id": 50,
+          "query": "test"
+        },
+        "result": {
+          "result": {
+            "items": [
+              {
+                "dueDate": "2026-10-15",
+                "id": 110,
+                "lockVersion": 2,
+                "parent_id": 50,
+                "priority_id": 8,
+                "status_id": 1,
+                "subject": "Kiểm thử và retest cho AUTH-02",
+                "type": "Subtask",
+                "type_id": 10
+              }
+            ],
+            "next_offset": null,
+            "total": 1
+          }
+        }
+      }
+    ],
+    "usage": [
+      {
+        "candidatesTokenCount": 29,
+        "promptTokenCount": 1513,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 1513
+          }
+        ],
+        "serviceTier": "standard",
+        "thoughtsTokenCount": 274,
+        "totalTokenCount": 1816
+      },
+      {
+        "candidatesTokenCount": 40,
+        "promptTokenCount": 3078,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 3078
+          }
+        ],
+        "serviceTier": "standard",
+        "thoughtsTokenCount": 68,
+        "totalTokenCount": 3186
+      },
+      {
+        "candidatesTokenCount": 25,
+        "promptTokenCount": 3265,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 3265
+          }
+        ],
+        "serviceTier": "standard",
+        "thoughtsTokenCount": 188,
+        "totalTokenCount": 3478
+      }
+    ],
+    "native_reconciled": true,
+    "provider_report_completed": false,
+    "original_worker_state": "failed_or_unknown"
+  }
+}

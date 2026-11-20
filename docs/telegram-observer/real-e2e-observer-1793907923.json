@@ -1,0 +1,224 @@
+{
+  "task_id": 397,
+  "project_id": 6,
+  "version": 1,
+  "workflow_status": "RUNNING",
+  "business_status": "NEW",
+  "acceptance_status": "NOT_RECORDED",
+  "acceptance": {
+    "status": "NOT_RECORDED",
+    "required_gates": [
+      {
+        "name": "runtime_delivery",
+        "passed": false
+      },
+      {
+        "name": "recorded_stage_plan",
+        "passed": false
+      },
+      {
+        "name": "dev_commit",
+        "passed": false
+      },
+      {
+        "name": "independent_review",
+        "passed": false
+      },
+      {
+        "name": "qa_passed",
+        "passed": false
+      },
+      {
+        "name": "handoff",
+        "passed": false
+      },
+      {
+        "name": "native_final_gate",
+        "passed": false
+      },
+      {
+        "name": "owner_approval",
+        "passed": false
+      }
+    ],
+    "missing_gates": [
+      "runtime_delivery",
+      "recorded_stage_plan",
+      "dev_commit",
+      "independent_review",
+      "qa_passed",
+      "handoff",
+      "native_final_gate",
+      "owner_approval"
+    ],
+    "evidence_refs": [
+      {
+        "source_system": "AGENT_RUNTIME",
+        "source_record_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+        "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079"
+      }
+    ],
+    "owner_approval": null,
+    "source_contract": "NATIVE_FINAL_JOURNAL_AND_EXACT_RUNTIME_REVIEW_QA_V1"
+  },
+  "current_agent": null,
+  "current_stage": null,
+  "freshness": {
+    "observed_at": 1793907923.2709196,
+    "source_updated_at": 1793907908.8182547,
+    "data_age_seconds": 14.452664852142334,
+    "freshness_status": "FRESH"
+  },
+  "source_conflicts": [],
+  "revision": "7695c748b6b6e3d3fe7396ac03760267311ec6b927c81f60f697ccf7c3e5c14d",
+  "notification_events": [],
+  "runs": [
+    {
+      "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "state": "RUNNING",
+      "started_at": 1793907754.0544243,
+      "updated_at": 1793907908.8182547,
+      "finished_at": null,
+      "checkpoint": {
+        "version": 3,
+        "completed_steps": [
+          "context"
+        ],
+        "error": null,
+        "resumable": true,
+        "revision": null,
+        "session_id": null,
+        "stage": "prepare",
+        "terminal_known": true
+      },
+      "resume": {
+        "eligible": false,
+        "reason": "WORKER_ACTIVE",
+        "checkpoint_version": 3,
+        "completed_steps": [
+          "context"
+        ],
+        "remaining_continuations": 5,
+        "action": "RESUME_SAME_RUN",
+        "same_run_id": true,
+        "cooldown_until": 1793907814.0626962,
+        "checkpoint_saved_at": null,
+        "source_readback": "RECHECKED_AT_COMMAND",
+        "provider_recovery": {
+          "verified": false,
+          "reason": "NO_NEW_VERIFIED_PROVIDER_READINESS",
+          "checked_at": null
+        },
+        "auto_enabled": false,
+        "policy": {
+          "attempt_calls": 12,
+          "task_calls": 72,
+          "max_continuations": 5,
+          "cooldown_seconds": 60,
+          "auto_continue": false
+        }
+      },
+      "model_calls": 0,
+      "tokens_used": null,
+      "error_code": null,
+      "error_message": null,
+      "blocker": null,
+      "attempt": 1
+    }
+  ],
+  "stages": [
+    {
+      "agent_role": "dev",
+      "status": "QUEUED",
+      "started_at": null,
+      "updated_at": 1793907908.8182547,
+      "completed_at": null,
+      "latest_run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "attempts": 1,
+      "blocker": null
+    },
+    {
+      "agent_role": "reviewer",
+      "status": "QUEUED",
+      "started_at": null,
+      "updated_at": 1793907908.8182547,
+      "completed_at": null,
+      "latest_run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "attempts": 1,
+      "blocker": null
+    },
+    {
+      "agent_role": "qa",
+      "status": "QUEUED",
+      "started_at": null,
+      "updated_at": 1793907908.8182547,
+      "completed_at": null,
+      "latest_run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "attempts": 1,
+      "blocker": null
+    }
+  ],
+  "artifacts": [],
+  "events": [
+    {
+      "schema_version": 1,
+      "event_id": "52a86802-2516-5960-982b-dcb3051bf3e1",
+      "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "trace_id": "fe0d2294-2ac3-453a-bc6f-d0a6814199a1",
+      "event_type": "REQUEST_RECEIVED",
+      "agent_id": null,
+      "step_id": null,
+      "timestamp": 1793907754.058674,
+      "sequence": 1,
+      "status": "QUEUED",
+      "receipt_id": null,
+      "phase": null,
+      "attempt": null,
+      "http_status": null,
+      "error_code": null,
+      "task_id": 397,
+      "source_system": "AGENT_RUNTIME",
+      "source_record_id": "52a86802-2516-5960-982b-dcb3051bf3e1"
+    },
+    {
+      "schema_version": 1,
+      "event_id": "e8420d90-a9d8-56fe-bb3e-d262868b1031",
+      "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "trace_id": "fe0d2294-2ac3-453a-bc6f-d0a6814199a1",
+      "event_type": "AUTHORIZED",
+      "agent_id": null,
+      "step_id": null,
+      "timestamp": 1793907754.062259,
+      "sequence": 2,
+      "status": "QUEUED",
+      "receipt_id": null,
+      "phase": null,
+      "attempt": null,
+      "http_status": null,
+      "error_code": null,
+      "task_id": 397,
+      "source_system": "AGENT_RUNTIME",
+      "source_record_id": "e8420d90-a9d8-56fe-bb3e-d262868b1031"
+    },
+    {
+      "schema_version": 1,
+      "event_id": "863f69f0-00b1-54a3-840a-6dfed55dfde9",
+      "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "trace_id": "fe0d2294-2ac3-453a-bc6f-d0a6814199a1",
+      "event_type": "QUEUED",
+      "agent_id": null,
+      "step_id": null,
+      "timestamp": 1793907754.0626962,
+      "sequence": 3,
+      "status": "QUEUED",
+      "receipt_id": null,
+      "phase": null,
+      "attempt": null,
+      "http_status": null,
+      "error_code": null,
+      "task_id": 397,
+      "source_system": "AGENT_RUNTIME",
+      "source_record_id": "863f69f0-00b1-54a3-840a-6dfed55dfde9"
+    }
+  ]
+}

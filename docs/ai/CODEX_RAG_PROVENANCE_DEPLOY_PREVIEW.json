@@ -1,0 +1,32 @@
+{
+  "old_image": "sha256:aae492ee11fa1605f24ffad50374d3e22c3c94dc1cacba2f70ce4ffcc6016d8a",
+  "candidate_image": "sha256:277408024c5ec10fcce0077b1d3ecaceff4be5a9ff461026ae0a2ebb8b5cd090",
+  "candidate_tag": "qldapm-ai:codex-rag-provenance-20261023",
+  "module_sha256": {
+    "service.py": "1f114edb4d8ba89794aa6740a9665ee52a4c48344ebbb7d0e6bee94c43a2cf2f",
+    "live_agents.py": "0c434c5d35f753da2964155910f20601f5ed3913c67bf755fd33c4d50549c9c2",
+    "gemini.py": "252e43999800d7c0769c523946993c765281423d745234eeff67c314f6a4c9f5",
+    "catalog.py": "45641066c3080cc46397713b5afc2aa28efda8adfc3d0a705deceef56495ff1c"
+  },
+  "gateway_backup_sha256": "459ab69d1f49672bb295907f7a4ace1917306a05ccf6ebea7ae22d6c14c813f6",
+  "native_fingerprint": "e72e02fa7914513540816b2c6484a254aadb24232db11966b13524e7df1e79a5",
+  "scope": "Main Gateway four modules only; optional1..10NativeID filter before RAG ranking, per-run authorized Native/RAG/base-context digests, actual post-SDK HTTP JSON body hash in structured provider receipt. No credentials/config/schema/Nativewrite/Core/n8n/Staging changes.",
+  "tests": {
+    "linux_run": 287,
+    "linux_passed": 284,
+    "linux_node_skipped": 3,
+    "windows_related_passed": 64,
+    "test_harness_corrections": [
+      "PYTHONPATH=/app and empty runtime for isolated no-network container; mount automation and source-only proposal_ux helper for qualification",
+      "Legacy provider-wait fixture required project_id3; no production quota behavior changed",
+      "Initial request hash mismatch exposed SDK body transformation; hash now computed at existingBoundedClient.send, exact actualMockHTTPJSON verified"
+    ]
+  },
+  "rollback": "Restore exact private pre-rag-provenance.env and recreateGatewayonly on previous image; keep additive receipt JSON/SQLite/proposals/jobs and existing Core hostname; never replay Native writes.",
+  "limits": [
+    "Historical runs/receipts are not retrofitted or rerun",
+    "Source/snippet hashes prove supplied context and request correlation, not semantic model correctness",
+    "No fresh model/write-chain acceptance until separately executed and read back"
+  ],
+  "fresh_probe": "Read-only scoped knowledge query + legacy stored run readback; no new model call during deployment"
+}

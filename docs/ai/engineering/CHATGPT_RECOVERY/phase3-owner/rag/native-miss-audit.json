@@ -1,0 +1,1110 @@
+{
+  "started_utc": "2026-11-02T09:17:26.907852+00:00",
+  "ended_utc": "2026-11-02T09:17:55.277533+00:00",
+  "purpose": "DIAGNOSTIC_ONLY_CONSUMED_HOLDOUT_NO_CALIBRATION",
+  "command": "openproject/ai/.venv/Scripts/python.exe docs/ai/engineering/CHATGPT_RECOVERY/phase3-owner/rag/audit_native.py",
+  "source_hashes": {
+    "source-snapshot.json": "f0186c27f40ad554c8648fcb6c31178487a58d23ac783e722c9d6a279081c18e",
+    "source-vectors-frozen.json": "d52e46acfb746a6bfe290d70e968bd283cf409ef86fbf05176e78ac6d0eaa321",
+    "holdout-candidates.json": "57958d736e9d37ccb84555264762ca0fe3f757fbfd30e5c320ae69ab843e2948",
+    "labels-frozen.json": "5a9f62e98197db3b34dec331496951fea92394f1239a400e9ad2b8bdba0b7d43"
+  },
+  "native_scope_historical_only": {
+    "verified_read_only": true,
+    "project_id": 6,
+    "actor_id": 20,
+    "role": "PM",
+    "observed_utc_approx": "2026-11-02T05:04:00Z",
+    "route": "OS_OPERATOR_NATIVE_READ",
+    "actual_methods": [
+      "Service.engineering.scoped(project6)",
+      "Native.identity(20, PM)",
+      "Native.package(each_id)"
+    ],
+    "verification_agent": "root, reported in team message; this worker did not invoke signed Core bridge",
+    "native_versions": {
+      "379": 4,
+      "380": 8,
+      "381": 9,
+      "382": 9,
+      "383": 9,
+      "384": 2,
+      "386": 2,
+      "387": 2,
+      "389": 2,
+      "390": 2
+    },
+    "project_links": "all /api/v3/projects/6",
+    "limitations": "No signed browser bridge or end-user UI authorization test in this read."
+  },
+  "current_acl_verified": false,
+  "scope_exclusions": [
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-payload",
+      "language": "vi",
+      "query": "Route chỉ lấy tiêu đề task trả hai trường id và title",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "JSON gồm id và title",
+      "evidence_excerpt": "route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên c",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-payload",
+      "language": "en",
+      "query": "Find the route returning only task id and title",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "JSON gồm id và title",
+      "evidence_excerpt": "route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên c",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-unicode",
+      "language": "vi",
+      "query": "Phản hồi API title phải giữ nguyên tiếng Việt và emoji của tiêu đề",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "Unicode",
+      "evidence_excerpt": " HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit\nQLDAPM PM/BA engineering pla",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 1,
+          "chunk_hash": "5dd36eed7a0bb756ec679b354e5792035084247dd1a01b5cece9412815ffb6d9"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 3,
+          "chunk_hash": "1b7387483db9aae8c7c975c6861a38f8e263ce8ed000885b21acba7df5c4bd5f"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-unicode",
+      "language": "en",
+      "query": "The task title API response must preserve Vietnamese characters and emoji",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "Unicode",
+      "evidence_excerpt": " HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit\nQLDAPM PM/BA engineering pla",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 1,
+          "chunk_hash": "5dd36eed7a0bb756ec679b354e5792035084247dd1a01b5cece9412815ffb6d9"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 3,
+          "chunk_hash": "1b7387483db9aae8c7c975c6861a38f8e263ce8ed000885b21acba7df5c4bd5f"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-missing",
+      "language": "vi",
+      "query": "Spec route title trả 404 nếu không tìm thấy công việc",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "HTTP 404",
+      "evidence_excerpt": "ề JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không ",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 1,
+          "chunk_hash": "5dd36eed7a0bb756ec679b354e5792035084247dd1a01b5cece9412815ffb6d9"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-missing",
+      "language": "en",
+      "query": "Find the title route specification returning 404 when the task is missing",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "HTTP 404",
+      "evidence_excerpt": "ề JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không ",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 1,
+          "chunk_hash": "5dd36eed7a0bb756ec679b354e5792035084247dd1a01b5cece9412815ffb6d9"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-invalid",
+      "language": "vi",
+      "query": "Route đọc title từ chối ID không nguyên bằng HTTP 422",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "HTTP 422",
+      "evidence_excerpt": "d và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit\nQL",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 1,
+          "chunk_hash": "5dd36eed7a0bb756ec679b354e5792035084247dd1a01b5cece9412815ffb6d9"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-invalid",
+      "language": "en",
+      "query": "The title-reading route rejects noninteger IDs with HTTP 422",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "HTTP 422",
+      "evidence_excerpt": "d và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit\nQL",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 1,
+          "chunk_hash": "5dd36eed7a0bb756ec679b354e5792035084247dd1a01b5cece9412815ffb6d9"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-exact",
+      "language": "vi",
+      "query": "GET /tasks/{task_id}/title Unicode id title",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "GET /tasks/{task_id}/title",
+      "evidence_excerpt": "[AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiê",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 1,
+          "chunk_hash": "5dd36eed7a0bb756ec679b354e5792035084247dd1a01b5cece9412815ffb6d9"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 3,
+          "chunk_hash": "1b7387483db9aae8c7c975c6861a38f8e263ce8ed000885b21acba7df5c4bd5f"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-exact",
+      "language": "en",
+      "query": "GET /tasks/{task_id}/title Unicode JSON payload",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "GET /tasks/{task_id}/title",
+      "evidence_excerpt": "[AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiê",
+      "supporting_chunks": [
+        {
+          "chunk_index": 0,
+          "chunk_hash": "ee8263230bcb58d8ec2d8527c4498907dbe85070e0956259d81a8caf946f0ed4"
+        },
+        {
+          "chunk_index": 1,
+          "chunk_hash": "5dd36eed7a0bb756ec679b354e5792035084247dd1a01b5cece9412815ffb6d9"
+        },
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 3,
+          "chunk_hash": "1b7387483db9aae8c7c975c6861a38f8e263ce8ed000885b21acba7df5c4bd5f"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-regression",
+      "language": "vi",
+      "query": "Thêm API title nhưng không làm hỏng route exists và summary cũ",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "/exists",
+      "evidence_excerpt": "D cũ, search, /healthz, /tasks/summary, /exists tiếp tục hoạt động đầy đủ.\"],\"api_behavior\":[\"GET /tasks/{task_id}/title với ta",
+      "supporting_chunks": [
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    },
+    {
+      "split": "holdout",
+      "kind": "positive",
+      "intent": "390:title-regression",
+      "language": "en",
+      "query": "Add the title API while retaining existing exists and summary behavior",
+      "relevant_ids": [
+        390
+      ],
+      "partial_ids": [
+        379
+      ],
+      "source_hash": "024862baafbbc45374582ddb511360964030e30119e04a6526337da27fdf86f8",
+      "evidence_literal": "/exists",
+      "evidence_excerpt": "D cũ, search, /healthz, /tasks/summary, /exists tiếp tục hoạt động đầy đủ.\"],\"api_behavior\":[\"GET /tasks/{task_id}/title với ta",
+      "supporting_chunks": [
+        {
+          "chunk_index": 2,
+          "chunk_hash": "2ed7dc5b07972540838cf6f3ff976db304fdad8eedf16e80d1e938988e2219d6"
+        },
+        {
+          "chunk_index": 4,
+          "chunk_hash": "dac90d57a34d34b31890b070856091d4120c04daef0449da50b65b4e39650984"
+        }
+      ],
+      "judgment": "Agent full-content judgment: source describes requested requirement; parent may be partial; not a claim that behavior is deployed.",
+      "human_review": "PENDING"
+    }
+  ],
+  "category_counts": {
+    "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR": 14,
+    "BASELINE_HIT": 10
+  },
+  "cases": [
+    {
+      "query": "Lấy chi tiết một task qua ID và nhận đủ id title status trong JSON",
+      "language": "vi",
+      "intent": "387:detail-fields",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 1,
+        "chunk_hash": "b39dbc5b868dff6729a24373c91968229bc560d7f79e4eddd6c4c047b0707ecc",
+        "score": 0.6307903854877694
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 3,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "387": 4,
+        "389": 5,
+        "380": 1
+      }
+    },
+    {
+      "query": "Fetch one task by its ID and return id title and status in JSON",
+      "language": "en",
+      "intent": "387:detail-fields",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 1,
+        "chunk_hash": "b39dbc5b868dff6729a24373c91968229bc560d7f79e4eddd6c4c047b0707ecc",
+        "score": 0.61631861753823
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 2,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "387": 5,
+        "389": 5
+      }
+    },
+    {
+      "query": "Yêu cầu GET chi tiết công việc trả 404 khi không có ID trong SQLite",
+      "language": "vi",
+      "intent": "387:detail-missing",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 1,
+        "chunk_hash": "b39dbc5b868dff6729a24373c91968229bc560d7f79e4eddd6c4c047b0707ecc",
+        "score": 0.6263513544249798
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "387": 4,
+        "389": 4,
+        "386": 1,
+        "383": 1
+      }
+    },
+    {
+      "query": "Find the requirement that getting a missing task detail returns 404",
+      "language": "en",
+      "intent": "387:detail-missing",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 2,
+        "chunk_hash": "a6e77768f822e1c2ef7ee71a7119dbc85eeac3d29f9f0b0795f632a1e4ef9169",
+        "score": 0.5806873193155269
+      },
+      "best_relevant_chunk_rank": 6,
+      "raw_top10_distinct_docs": 3,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "387": 3,
+        "380": 1
+      }
+    },
+    {
+      "query": "Route lấy thông tin task kiểm tra ID chữ cái và phản hồi 422",
+      "language": "vi",
+      "intent": "387:detail-invalid",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 0,
+        "chunk_hash": "ec701eeb8fdc1cfa0d66abfc8d37c2a203f7debedbd357f6a35135eddaea0b6a",
+        "score": 0.600899438799924
+      },
+      "best_relevant_chunk_rank": 7,
+      "raw_top10_distinct_docs": 2,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "387": 4
+      }
+    },
+    {
+      "query": "The single-task detail route rejects alphabetic identifiers with 422",
+      "language": "en",
+      "intent": "387:detail-invalid",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 1,
+        "chunk_hash": "b39dbc5b868dff6729a24373c91968229bc560d7f79e4eddd6c4c047b0707ecc",
+        "score": 0.47721321587727866
+      },
+      "best_relevant_chunk_rank": 8,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 5,
+        "383": 2,
+        "387": 1,
+        "382": 2
+      }
+    },
+    {
+      "query": "Với route chi tiết task, ID âm không tồn tại phải trả lỗi gì",
+      "language": "vi",
+      "intent": "387:detail-negative",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 4,
+        "chunk_hash": "197b36805592f1aae600b3321b54b2d52a40bbeb76a20cab8e5b7783994a8c66",
+        "score": 0.5479692909264994
+      },
+      "best_relevant_chunk_rank": 6,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 7,
+        "387": 1,
+        "382": 1,
+        "384": 1
+      }
+    },
+    {
+      "query": "What error does the task detail route return for a nonexistent negative ID",
+      "language": "en",
+      "intent": "387:detail-negative",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 4,
+        "chunk_hash": "197b36805592f1aae600b3321b54b2d52a40bbeb76a20cab8e5b7783994a8c66",
+        "score": 0.524595340947674
+      },
+      "best_relevant_chunk_rank": 6,
+      "raw_top10_distinct_docs": 3,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 7,
+        "387": 2,
+        "384": 1
+      }
+    },
+    {
+      "query": "GET /tasks/{task_id} id title status",
+      "language": "vi",
+      "intent": "387:detail-exact",
+      "native_ids": [
+        387
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        387
+      ],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 1,
+        "chunk_hash": "b39dbc5b868dff6729a24373c91968229bc560d7f79e4eddd6c4c047b0707ecc",
+        "score": 0.6398753443284593
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 3,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "387": 4,
+        "389": 5,
+        "384": 1
+      }
+    },
+    {
+      "query": "GET /tasks/{task_id} JSON id title status",
+      "language": "en",
+      "intent": "387:detail-exact",
+      "native_ids": [
+        387
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        387
+      ],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 1,
+        "chunk_hash": "b39dbc5b868dff6729a24373c91968229bc560d7f79e4eddd6c4c047b0707ecc",
+        "score": 0.6167195154381848
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 3,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "387": 4,
+        "389": 5,
+        "384": 1
+      }
+    },
+    {
+      "query": "Bổ sung truy xuất task theo ID nhưng không đổi schema SQLite",
+      "language": "vi",
+      "intent": "387:detail-preserve",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 3,
+        "chunk_hash": "f13e6f965cbe163edae143030387e6339491e5af5777ce02bd4cafae682114db",
+        "score": 0.5823072185085891
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "387": 2,
+        "380": 4,
+        "389": 3,
+        "383": 1
+      }
+    },
+    {
+      "query": "Add task lookup by ID while keeping the SQLite schema unchanged",
+      "language": "en",
+      "intent": "387:detail-preserve",
+      "native_ids": [
+        387
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 387,
+        "chunk_index": 3,
+        "chunk_hash": "f13e6f965cbe163edae143030387e6339491e5af5777ce02bd4cafae682114db",
+        "score": 0.5998216442145748
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "387": 2,
+        "380": 5,
+        "389": 2,
+        "383": 1
+      }
+    },
+    {
+      "query": "Kiểm tra task tồn tại theo ID và chỉ lấy cờ exists true",
+      "language": "vi",
+      "intent": "389:exists-true",
+      "native_ids": [
+        389
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        389,
+        387,
+        380,
+        382,
+        381
+      ],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 1,
+        "chunk_hash": "ef8e4a1c51c2328ca6843ad613e1f35dc4fc2a134841600180e64edca5de6141",
+        "score": 0.7202866703831485
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "384": 1,
+        "380": 2,
+        "387": 1
+      }
+    },
+    {
+      "query": "Check task existence by identifier and return only the exists true flag",
+      "language": "en",
+      "intent": "389:exists-true",
+      "native_ids": [
+        389
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        389
+      ],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 1,
+        "chunk_hash": "ef8e4a1c51c2328ca6843ad613e1f35dc4fc2a134841600180e64edca5de6141",
+        "score": 0.6816492928290954
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "384": 2,
+        "380": 1,
+        "382": 1
+      }
+    },
+    {
+      "query": "Task không tồn tại nhưng API existence phải trả HTTP 200 exists false",
+      "language": "vi",
+      "intent": "389:exists-false",
+      "native_ids": [
+        389
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        389,
+        387,
+        382
+      ],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 1,
+        "chunk_hash": "ef8e4a1c51c2328ca6843ad613e1f35dc4fc2a134841600180e64edca5de6141",
+        "score": 0.733026048931531
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "387": 2,
+        "382": 1,
+        "380": 1
+      }
+    },
+    {
+      "query": "A missing task must still receive HTTP 200 and exists false from the existence API",
+      "language": "en",
+      "intent": "389:exists-false",
+      "native_ids": [
+        389
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        389
+      ],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 1,
+        "chunk_hash": "ef8e4a1c51c2328ca6843ad613e1f35dc4fc2a134841600180e64edca5de6141",
+        "score": 0.7115513211147452
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "387": 2,
+        "382": 1,
+        "380": 1
+      }
+    },
+    {
+      "query": "ID không nguyên trong route exists bị validation lỗi 422",
+      "language": "vi",
+      "intent": "389:exists-invalid",
+      "native_ids": [
+        389
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        389,
+        382,
+        387
+      ],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 4,
+        "chunk_hash": "4aadc8473770486ad05dad599d3cbd0a9dd82e11c01caf48aef3445b47035e24",
+        "score": 0.6582131881547221
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 5,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "384": 1,
+        "387": 1,
+        "383": 1,
+        "382": 1
+      }
+    },
+    {
+      "query": "A noninteger identifier on the exists route fails validation with 422",
+      "language": "en",
+      "intent": "389:exists-invalid",
+      "native_ids": [
+        389
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 5,
+        "chunk_hash": "11063f364aac332d097ed7c70cbf8cd945c43b169adfc4513734817842a6f7c9",
+        "score": 0.6250720184792745
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 4,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "387": 1,
+        "384": 1,
+        "383": 2
+      }
+    },
+    {
+      "query": "Spec API kiểm tra tồn tại khi cơ sở dữ liệu SQLite chưa có task",
+      "language": "vi",
+      "intent": "389:exists-empty",
+      "native_ids": [
+        389
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        389,
+        387,
+        386,
+        382,
+        381
+      ],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 4,
+        "chunk_hash": "4aadc8473770486ad05dad599d3cbd0a9dd82e11c01caf48aef3445b47035e24",
+        "score": 0.6530937353704117
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 3,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 5,
+        "380": 4,
+        "386": 1
+      }
+    },
+    {
+      "query": "Find the existence API specification for an empty SQLite task database",
+      "language": "en",
+      "intent": "389:exists-empty",
+      "native_ids": [
+        389
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 1,
+        "chunk_hash": "ef8e4a1c51c2328ca6843ad613e1f35dc4fc2a134841600180e64edca5de6141",
+        "score": 0.595086185376524
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 3,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 5,
+        "386": 2,
+        "380": 3
+      }
+    },
+    {
+      "query": "GET /tasks/{task_id}/exists 200 true false",
+      "language": "vi",
+      "intent": "389:exists-exact",
+      "native_ids": [
+        389
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        389,
+        387,
+        380
+      ],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 1,
+        "chunk_hash": "ef8e4a1c51c2328ca6843ad613e1f35dc4fc2a134841600180e64edca5de6141",
+        "score": 0.7365223033996651
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 5,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "387": 1,
+        "384": 1,
+        "386": 1,
+        "383": 1
+      }
+    },
+    {
+      "query": "GET /tasks/{task_id}/exists integer ID true false",
+      "language": "en",
+      "intent": "389:exists-exact",
+      "native_ids": [
+        389
+      ],
+      "category": "BASELINE_HIT",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [
+        389,
+        387,
+        380
+      ],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 1,
+        "chunk_hash": "ef8e4a1c51c2328ca6843ad613e1f35dc4fc2a134841600180e64edca5de6141",
+        "score": 0.7339895970220057
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 3,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 6,
+        "384": 1,
+        "387": 3
+      }
+    },
+    {
+      "query": "Thêm exists endpoint nhưng giữ nguyên GET detail summary healthz và schema",
+      "language": "vi",
+      "intent": "389:exists-preserve",
+      "native_ids": [
+        389
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 0,
+        "chunk_hash": "a8e437439bfbcc0b0a376a2848441b4b605f5fcf09cb269dc14bc34c6ba297f1",
+        "score": 0.5665056348079828
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 5,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 3,
+        "386": 3,
+        "384": 1,
+        "380": 1,
+        "387": 2
+      }
+    },
+    {
+      "query": "Add the exists endpoint while preserving detail summary healthz and the schema",
+      "language": "en",
+      "intent": "389:exists-preserve",
+      "native_ids": [
+        389
+      ],
+      "category": "QUALIFIED_CANDIDATE_ABSENT_COSINE_FLOOR",
+      "answerability": "FROZEN_SOURCE_LITERAL_PRESENT_AGENT_LABEL",
+      "baseline_ids": [],
+      "best_relevant": {
+        "native_id": 389,
+        "chunk_index": 0,
+        "chunk_hash": "a8e437439bfbcc0b0a376a2848441b4b605f5fcf09cb269dc14bc34c6ba297f1",
+        "score": 0.5346460663539507
+      },
+      "best_relevant_chunk_rank": 1,
+      "raw_top10_distinct_docs": 5,
+      "reranker_pool_has_relevant_doc": true,
+      "top10_document_counts": {
+        "389": 4,
+        "386": 3,
+        "380": 1,
+        "382": 1,
+        "387": 1
+      }
+    }
+  ],
+  "limits": "Source-literal proxy, not human labels. Snapshot scope historical, not current Native ACL. No fresh holdout consumed. No Main source/config/index writes."
+}

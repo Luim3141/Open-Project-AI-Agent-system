@@ -1,0 +1,59 @@
+{
+  "package": {
+    "version": 1,
+    "purpose": "Exactly one fresh structured BA read-only run for WF10 qualification",
+    "destination": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite",
+    "operations": [
+      "countTokens",
+      "generateContent"
+    ],
+    "gateway": "http://127.0.0.1:8090/api/v1/commands",
+    "actor": 20,
+    "native_source_ids": [
+      375
+    ],
+    "egress_scope": {
+      "prompt": "Exact prompt below",
+      "native_items": "Only visible375: ID, lockVersion, subject<=300, description<=1000, status<=80, dates, up to2 comments<=250 each, relations whose endpoints are in the selected source",
+      "rag": "At most3 authorized current citations filtered to native375, redacted by existing server policy",
+      "project_context": "BA non-manager: selected count, scope text; no sprints, project summary or project options"
+    },
+    "limits": {
+      "runs": 1,
+      "specialists": [
+        "ba"
+      ],
+      "policy": "Existing bounded Free-only provider policy; retries remain bounded by configured policy",
+      "no_paid_model_or_billing_change": true,
+      "native_writes": 0,
+      "native_proposals": 0,
+      "credential_changes": 0,
+      "staging_operations": 0
+    },
+    "persisted_effects": [
+      "One own BA execution and trace",
+      "Provider receipts/reservations only if provider is called",
+      "No Native approval or QA human decision"
+    ],
+    "request": {
+      "action": "start_ai_run",
+      "arguments": {
+        "engine": "supervisor_gemini",
+        "prompt": "BA only, read-only WBS_NATIVE_RELATIONS. Inspect only Task #375 and produce a structured QLDAPM_WBS_V2 draft for isolated qualification, with no proposed_operations and no Native writes. Use four nodes: Epic root; Task A child of root; Subtask A child of Task A; Task B child of root. Use explicit relation Task A predecessor to Task B successor with lag 0. Supplied isolated qualification inputs only, not new Main deadlines: Task A and Subtask A start_date=2026-10-26,due_date=2026-10-26; Task B start_date=2026-10-27,due_date=2026-10-27. Epic must omit dates. All nodes use initial Native NEW status1 and [CODEX TEST] prefix. Omit assignee roles and estimates. Do not invent any planning field. Cite #375 current version. The allocation into fixture days is an explicit test input, not a claim about business scheduling or approval. Keep descriptions concise. Exclude personal data or secrets. Only the BA specialist is requested.",
+        "allow_routine_writes": false,
+        "run_class": "interactive"
+      },
+      "idempotency_key": "38d5c333-28d1-41fa-bf2c-645fc773b229"
+    }
+  },
+  "package_sha256": "a10e19d6e02df9928ebeb8307cd45f200187efadf81aad328bde9bc31d75d58f",
+  "state": "CONSUMED_ONE_APPROVED_RUN_COMPLETED",
+  "automatic_review": "Generation command rejected before execution: external Gemini transfer not specifically authorized; no retry or alternate route attempted",
+  "human_approval": {
+    "at": "2026-10-26T16:51:16.997853+00:00",
+    "evidence": "Direct exact user reply and explicit follow-up reaffirmation",
+    "package_sha256": "a10e19d6e02df9928ebeb8307cd45f200187efadf81aad328bde9bc31d75d58f"
+  },
+  "run_id": "f04b5c59-26dc-40af-b999-00298b298ca0",
+  "evidence": "CODEX_WF10_FRESH_MODEL_RECEIPT_READBACK.json"
+}

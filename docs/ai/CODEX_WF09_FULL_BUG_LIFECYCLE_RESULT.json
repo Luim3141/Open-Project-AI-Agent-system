@@ -1,0 +1,48 @@
+{
+  "observed_at": "2026-10-24T22:17:45.531409+00:00",
+  "project_id": 5,
+  "gateway_image": "sha256:c0f328216654478cb58dc01dad737958416882f0352c450a0ae5a80438ca6372",
+  "core_image": "sha256:dcb6018226280bde73fb8812e463bdcb5ef6896cbe9a1c65be7516d993f4a3d4",
+  "staging_operations": false,
+  "status": "PARTIAL",
+  "implemented": true,
+  "deployed": true,
+  "isolated_integration": {
+    "status": "PASS",
+    "test": "test_bug_qa_evidence_integration.BugQaIntegrationTests.test_bug_fix_manual_retest_independent_review_exact_transition_and_cache",
+    "producer": "ISOLATED_NATIVE_COMMENT_ATTACHMENT_FIXTURE_NOT_MAIN",
+    "steps": [
+      "report/triage",
+      "separate exact create approval",
+      "assignment approval",
+      "fix evidence explicitly unverified",
+      "QA23 Native-authored manual artifact",
+      "independent Owner18 evidence review",
+      "exact evidence-bound transition proposal approval",
+      "Native readback",
+      "real temporary SQLite/outbox ingestion with vector fixture",
+      "replay denial"
+    ],
+    "native_business_writes": 4,
+    "rag_jobs_verified": 4,
+    "qualified_transition": "REVIEW fixture, not Main closure"
+  },
+  "live": {
+    "create_and_assign_371": "PASS_HISTORICAL_EXACT_APPROVALS",
+    "version": 1,
+    "assignee": 21,
+    "new_main_fix_retest_review_transition": "NOT_TESTED_NO_NEW_EXACT_APPROVAL_OR_QA_PRODUCER",
+    "actual_native_form": "Owner/PM status validation error; QA form403, preserved in CODEX_20261025_NATIVE_QA_SCHEMA_READONLY.json"
+  },
+  "qa_contract": "Authenticated manual attestation with attachment SHA, source version, complete criteria and independent review; no automated runner verification",
+  "business_blockers": [
+    "No new genuine QA Main artifact/activity or actual fix/retest/review/valid closing transition",
+    "Existing Native/Core gates still authoritative; no custom gate bypass"
+  ],
+  "native_writes_this_scope": 0,
+  "evidence": [
+    "CODEX_WF11_MAIN_POLICY_QUALIFICATION.json",
+    "CODEX_WBS_SCHEMA_POSTDEPLOY_QA_POLICY.json",
+    "CODEX_20261025_QUALIFICATION_MANIFEST.json"
+  ]
+}

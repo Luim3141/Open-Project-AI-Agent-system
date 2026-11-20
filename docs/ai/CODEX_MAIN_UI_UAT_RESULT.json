@@ -1,0 +1,56 @@
+{
+  "status": "PM_MAIN_UI_VERIFIED_WITH_LIMITS",
+  "site": "http://127.0.0.1:8088",
+  "actor": {
+    "user_id": 19,
+    "role": "PM",
+    "browser_user_display": "QLDAPM BA-PM"
+  },
+  "project_id": 5,
+  "core_image": "sha256:660b9878ba51196c4d772894d2b849d0bf8f5296351912338cfde5ac50ac30bf",
+  "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+  "trace_id": "20518d36-7d10-4f82-87bf-7912fb8bd0e8",
+  "route": "CUA in-app browser, real owner-authenticated PM session",
+  "viewport": {
+    "width": 433,
+    "height": 455
+  },
+  "checks": {
+    "persisted_run_pm19_project5": true,
+    "six_roles_seven_nodes_five_model_calls_14303_tokens": true,
+    "fe_and_be_report_sections_distinct": true,
+    "fe_output_and_native_reference_visible": true,
+    "be_keyboard_enter_selection_and_distinct_output": true,
+    "readonly_replay_0_to_43_events_restored": true,
+    "assistant_daily_snapshot_333_new_22_overdue": true,
+    "control_center_fe_be_idle_and_reviewer_local": true,
+    "automatic_write_controls_absent_and_exact_approval_copy_present": true,
+    "second_brain_form_returns_one_370_v1_citation": true,
+    "native_citation_stays_on_127_authenticated": true,
+    "native_test_description_and_marker_visible": true,
+    "native_comment_1023_text_and_actor19_visible": true,
+    "native_333_fingerprint_unchanged": true,
+    "credentials_security_hashes_unchanged": true,
+    "provider_usage_proposals_and_knowledge_jobs_unchanged": true,
+    "nine_other_main_container_ids_images_start_times_unchanged": true
+  },
+  "native_comment_text": "CODEX E2E comment proof fdae09fbd88f4e06a462da73ed61d635",
+  "screenshots": [
+    "docs/ai/CODEX_MAIN_UI_GRAPH_20261023.png",
+    "docs/ai/CODEX_MAIN_UI_NATIVE_20261023.png"
+  ],
+  "native_writes_during_ui_uat": 0,
+  "additional_google_calls_during_ui_uat": 0,
+  "staging_operations": false,
+  "fixes_verified": [
+    "Core four-file overlay: FE/BE colors/report parsing, remove obsolete auto-write checkboxes, forced proposal-only bridge",
+    "Main web canonical hostname: localhost8088 ->127.0.0.1:8088; existing127session now follows Native citations without another login"
+  ],
+  "limits": [
+    "Only current433x455viewport verified; full graph fit is dense, keyboard/table fallback and zoom remain available; no desktop viewport or20userload test",
+    "UI executed no new proposal approval or business write; earlier approved create/update/comment and freshGemini run are separate evidence",
+    "Assistant navigation and search finished after browser command deadline; functional eventual result verified, no latency SLO accepted",
+    "Native editor emitted nonfatal toolbarview-item-unavailable warning; existing comment loaded, editor submission not tested",
+    "Backup PG/assets/SQLite created before Core deploy; this is not a new fullQdrantDR restore proof"
+  ]
+}

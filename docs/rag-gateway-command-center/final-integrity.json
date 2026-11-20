@@ -1,0 +1,74 @@
+{
+  "source_parity": {
+    "core": {
+      "present": 82,
+      "absent_legacy": []
+    },
+    "gateway": {
+      "present": 115,
+      "absent_legacy": [
+        "e2e_demo.py",
+        "intent_evals.py",
+        "n8n_indexing_hook.py",
+        "proposal_aggregation.py",
+        "proposal_ux.py",
+        "scheduler_registry.py",
+        "supervisor_isolation.py"
+      ]
+    },
+    "telegram": {
+      "present": 10,
+      "absent_legacy": []
+    }
+  },
+  "product_changed": [
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_knowledge_results.html.erb",
+    "openproject/ai/gateway/catalog.py",
+    "openproject/ai/gateway/file_knowledge.py",
+    "openproject/ai/gateway/knowledge_answer.py",
+    "openproject/ai/gateway/knowledge_search.py",
+    "openproject/ai/gateway/service.py",
+    "openproject/ai/telegram-ai/app/engine.py",
+    "openproject/ai/telegram-ai/app/system_instructions.py",
+    "openproject/ai/telegram-ai/app/tools.py"
+  ],
+  "payload_baseline_sha": "c945eb2c94e435359a23f4ed0618b131fe639b96b690fd828938903984cfeba4",
+  "payload_matching_normalization": [
+    "pointsFalse",
+    "id_payloadFalse"
+  ],
+  "corpus": {
+    "chunks": 2485,
+    "points": 2488,
+    "payload_fingerprints": {
+      "pointsFalse": "c945eb2c94e435359a23f4ed0618b131fe639b96b690fd828938903984cfeba4",
+      "pointsTrue": "c21f695dc3655d461aaad5151491ae507b6e79f47cd01607a6c841016339a10c",
+      "payloadsFalse": "b645ef1cc1d6e8c8d56ea93505b7152f157264774e7f12e3c72d3fa62a7868d6",
+      "payloadsTrue": "1f8327ff5483b257050c3271a0bff3c4576c1c834aac6f3af54bf92f0deeeea3",
+      "id_payloadFalse": "c945eb2c94e435359a23f4ed0618b131fe639b96b690fd828938903984cfeba4",
+      "id_payloadTrue": "c21f695dc3655d461aaad5151491ae507b6e79f47cd01607a6c841016339a10c",
+      "pairsFalse": "aeda7d314a7b0fc333f0f4d3f6c900dd826acd684fb43cc79ae2bee524b0dcc3",
+      "pairsTrue": "9755e40eeb4bf4c48ff667da792c8c16094dd9cd7fe46b5750f52f47e2a11126"
+    }
+  },
+  "pr15": {
+    "headRefOid": "7ceac4e6b2b9103b18e1a8be37e15f3c05b8de70",
+    "mergedAt": null,
+    "state": "OPEN",
+    "statusCheckRollup": [],
+    "url": "https://github.com/Luim3141/mini-task-manager/pull/15"
+  },
+  "checks": {
+    "core_all_source_parity": true,
+    "gateway_all_source_parity": true,
+    "telegram_all_source_parity": true,
+    "exactly_11_product_files": true,
+    "corpus_metadata_pins_roles_lengths": true,
+    "corpus_counts": true,
+    "whole_vector_payload_unchanged": true,
+    "PR15_open_unmerged": true,
+    "n8n_container_image_unchanged": true
+  }
+}

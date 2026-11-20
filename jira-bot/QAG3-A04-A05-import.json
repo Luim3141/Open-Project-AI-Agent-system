@@ -1,0 +1,1052 @@
+{
+  "cloud": true,
+  "rules": [
+    {
+      "id": 6377414,
+      "clientKey": "01a11b6f-291e-70df-b8cd-f192489ee252",
+      "name": "QAG3 A04 - Reconcile old and new Epic after Parent change",
+      "state": "DISABLED",
+      "description": "QAG3 only. Local import candidate; keep disabled until Jira qualification. Approved Task Parent change reconciles old/new Epic. Never auto-Done, Cancel or Restore; old Done Epic is preserved. Actor is PM Hiep to comply with existing PM validators; no gate bypass. Native current-scope checks and re-fetch are not atomic.",
+      "authorAccountId": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb",
+      "actor": {
+        "type": "ACCOUNT_ID",
+        "value": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb"
+      },
+      "created": 1791561990823,
+      "updated": 1791737193367,
+      "trigger": {
+        "id": "6c8aa405-2026-4012-8000-000000000030",
+        "component": "TRIGGER",
+        "parentId": null,
+        "conditionParentId": null,
+        "schemaVersion": 2,
+        "type": "jira.issue.field.changed",
+        "value": {
+          "changeType": "ANY_CHANGE",
+          "fields": [
+            {
+              "value": "parent",
+              "type": "field"
+            }
+          ],
+          "actions": []
+        },
+        "children": [],
+        "conditions": [
+          {
+            "id": "6c8aa405-2026-4012-8000-000000000031",
+            "component": "CONDITION",
+            "parentId": null,
+            "conditionParentId": "6c8aa405-2026-4012-8000-000000000030",
+            "schemaVersion": 1,
+            "type": "jira.jql.condition",
+            "value": "project = QAG3 AND issuetype = 10011 AND labels = qag3-scope-approved",
+            "children": [],
+            "conditions": [],
+            "connectionId": null,
+            "checksum": null
+          }
+        ],
+        "connectionId": null,
+        "checksum": null
+      },
+      "components": [
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000032",
+          "component": "ACTION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "codebarrel.action.log",
+          "value": "A04 Parent event {{triggerIssue.key}} old={{fieldChange.from|0}} new={{fieldChange.to|0}} at {{triggerIssue.updated.toMillis}}.",
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000033",
+          "component": "ACTION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.refresh.issue",
+          "value": {
+            "delayMs": null
+          },
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000034",
+          "component": "CONDITION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.comparator.condition",
+          "value": {
+            "first": "{{issue.parent.id|0}}",
+            "second": "{{fieldChange.to|0}}",
+            "operator": "EQUALS"
+          },
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000035",
+          "component": "CONDITION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.comparator.condition",
+          "value": {
+            "first": "{{fieldChange.from|0}}-{{fieldChange.to|0}}",
+            "second": "0-0",
+            "operator": "NOT_EQUALS"
+          },
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000036",
+          "component": "CONDITION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.comparator.condition",
+          "value": {
+            "first": "{{fieldChange.from|0}}",
+            "second": "{{fieldChange.to|0}}",
+            "operator": "NOT_EQUALS"
+          },
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000026",
+          "component": "BRANCH",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.related",
+          "value": {
+            "relatedType": "jql",
+            "jql": "project = QAG3 AND issuetype = 10000 AND id in ({{fieldChange.from|0}},{{fieldChange.to|0}})",
+            "linkTypes": [],
+            "onlyUpdatedIssues": false,
+            "similarityLimit": 40,
+            "compareValue": 0
+          },
+          "children": [
+            {
+              "id": "6c8aa405-2026-4012-8000-000000000027",
+              "component": "ACTION",
+              "parentId": "6c8aa405-2026-4012-8000-000000000026",
+              "conditionParentId": null,
+              "schemaVersion": 1,
+              "type": "jira.issue.refresh.issue",
+              "value": {
+                "delayMs": null
+              },
+              "children": [],
+              "conditions": [],
+              "connectionId": null,
+              "checksum": null
+            },
+            {
+              "id": "6c8aa405-2026-4012-8000-000000000028",
+              "component": "CONDITION",
+              "parentId": "6c8aa405-2026-4012-8000-000000000026",
+              "conditionParentId": null,
+              "schemaVersion": 1,
+              "type": "jira.jql.condition",
+              "value": "project = QAG3 AND issuetype = 10000",
+              "children": [],
+              "conditions": [],
+              "connectionId": null,
+              "checksum": null
+            },
+            {
+              "id": "6c8aa405-2026-4012-8000-000000000029",
+              "component": "ACTION",
+              "parentId": "6c8aa405-2026-4012-8000-000000000026",
+              "conditionParentId": null,
+              "schemaVersion": 1,
+              "type": "codebarrel.action.log",
+              "value": "A04 reconcile {{issue.key}}, old={{fieldChange.from|0}}, new={{fieldChange.to|0}}.",
+              "children": [],
+              "conditions": [],
+              "connectionId": null,
+              "checksum": null
+            },
+            {
+              "id": "6c8aa405-2026-4012-8000-000000000025",
+              "component": "CONDITION",
+              "parentId": "6c8aa405-2026-4012-8000-000000000026",
+              "conditionParentId": null,
+              "schemaVersion": 1,
+              "type": "jira.condition.container.block",
+              "value": null,
+              "children": [
+                {
+                  "id": "6c8aa405-2026-4012-8000-000000000005",
+                  "component": "CONDITION_BLOCK",
+                  "parentId": "6c8aa405-2026-4012-8000-000000000025",
+                  "conditionParentId": null,
+                  "schemaVersion": 1,
+                  "type": "jira.condition.if.block",
+                  "value": {
+                    "conditionMatchType": "ALL"
+                  },
+                  "children": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000004",
+                      "component": "ACTION",
+                      "parentId": "6c8aa405-2026-4012-8000-000000000005",
+                      "conditionParentId": null,
+                      "schemaVersion": 1,
+                      "type": "codebarrel.action.log",
+                      "value": "A04 {{issue.key}} stays REVIEW: nonempty current Task scope all Done.",
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "conditions": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000001",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000005",
+                      "schemaVersion": 1,
+                      "type": "jira.jql.condition",
+                      "value": "project = QAG3 AND issuetype = 10000 AND status = 10012",
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    },
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000002",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000005",
+                      "schemaVersion": 1,
+                      "type": "jira.issues.related.condition",
+                      "value": {
+                        "relatedType": "stories",
+                        "linkTypes": [],
+                        "operator": "present",
+                        "relatedJql": "",
+                        "compareJql": "",
+                        "compareValue": 0,
+                        "similarityLimit": 40,
+                        "jql": ""
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    },
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000003",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000005",
+                      "schemaVersion": 1,
+                      "type": "jira.issues.related.condition",
+                      "value": {
+                        "relatedType": "stories",
+                        "linkTypes": [],
+                        "operator": "allmatch",
+                        "relatedJql": "",
+                        "compareJql": "project = QAG3 AND issuetype = 10011 AND status = 10009",
+                        "compareValue": 0,
+                        "similarityLimit": 40,
+                        "jql": ""
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "connectionId": null,
+                  "checksum": null
+                },
+                {
+                  "id": "6c8aa405-2026-4012-8000-000000000008",
+                  "component": "CONDITION_BLOCK",
+                  "parentId": "6c8aa405-2026-4012-8000-000000000025",
+                  "conditionParentId": null,
+                  "schemaVersion": 1,
+                  "type": "jira.condition.if.block",
+                  "value": {
+                    "conditionMatchType": "ALL"
+                  },
+                  "children": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000007",
+                      "component": "ACTION",
+                      "parentId": "6c8aa405-2026-4012-8000-000000000008",
+                      "conditionParentId": null,
+                      "schemaVersion": 11,
+                      "type": "jira.issue.transition",
+                      "value": {
+                        "operations": [
+                          {
+                            "field": {
+                              "type": "NAME",
+                              "value": "QAG3 Change reason"
+                            },
+                            "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:textarea",
+                            "type": "SET",
+                            "value": "A04 approved Parent change: Task {{triggerIssue.key}}, {{fieldChange.from|0}} -> {{fieldChange.to|0}}, event {{triggerIssue.updated.toMillis}}; reconcile current Epic {{issue.key}}."
+                          }
+                        ],
+                        "advancedFields": null,
+                        "sendNotifications": true,
+                        "destinationStatus": {
+                          "type": "NAME",
+                          "value": "In Progress"
+                        },
+                        "transitionMatch": ""
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "conditions": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000006",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000008",
+                      "schemaVersion": 1,
+                      "type": "jira.jql.condition",
+                      "value": "project = QAG3 AND issuetype = 10000 AND status = 10012",
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "connectionId": null,
+                  "checksum": null
+                },
+                {
+                  "id": "6c8aa405-2026-4012-8000-000000000013",
+                  "component": "CONDITION_BLOCK",
+                  "parentId": "6c8aa405-2026-4012-8000-000000000025",
+                  "conditionParentId": null,
+                  "schemaVersion": 1,
+                  "type": "jira.condition.if.block",
+                  "value": {
+                    "conditionMatchType": "ALL"
+                  },
+                  "children": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000012",
+                      "component": "ACTION",
+                      "parentId": "6c8aa405-2026-4012-8000-000000000013",
+                      "conditionParentId": null,
+                      "schemaVersion": 11,
+                      "type": "jira.issue.transition",
+                      "value": {
+                        "operations": [
+                          {
+                            "field": {
+                              "type": "NAME",
+                              "value": "QAG3 Change reason"
+                            },
+                            "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:textarea",
+                            "type": "SET",
+                            "value": "A04 approved Parent change: Task {{triggerIssue.key}}, {{fieldChange.from|0}} -> {{fieldChange.to|0}}, event {{triggerIssue.updated.toMillis}}; reconcile current Epic {{issue.key}}."
+                          }
+                        ],
+                        "advancedFields": null,
+                        "sendNotifications": true,
+                        "destinationStatus": {
+                          "type": "NAME",
+                          "value": "REVIEW"
+                        },
+                        "transitionMatch": ""
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "conditions": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000009",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000013",
+                      "schemaVersion": 1,
+                      "type": "jira.jql.condition",
+                      "value": "project = QAG3 AND issuetype = 10000 AND status = 3",
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    },
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000010",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000013",
+                      "schemaVersion": 1,
+                      "type": "jira.issues.related.condition",
+                      "value": {
+                        "relatedType": "stories",
+                        "linkTypes": [],
+                        "operator": "present",
+                        "relatedJql": "",
+                        "compareJql": "",
+                        "compareValue": 0,
+                        "similarityLimit": 40,
+                        "jql": ""
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    },
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000011",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000013",
+                      "schemaVersion": 1,
+                      "type": "jira.issues.related.condition",
+                      "value": {
+                        "relatedType": "stories",
+                        "linkTypes": [],
+                        "operator": "allmatch",
+                        "relatedJql": "",
+                        "compareJql": "project = QAG3 AND issuetype = 10011 AND status = 10009",
+                        "compareValue": 0,
+                        "similarityLimit": 40,
+                        "jql": ""
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "connectionId": null,
+                  "checksum": null
+                },
+                {
+                  "id": "6c8aa405-2026-4012-8000-000000000019",
+                  "component": "CONDITION_BLOCK",
+                  "parentId": "6c8aa405-2026-4012-8000-000000000025",
+                  "conditionParentId": null,
+                  "schemaVersion": 1,
+                  "type": "jira.condition.if.block",
+                  "value": {
+                    "conditionMatchType": "ALL"
+                  },
+                  "children": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000018",
+                      "component": "ACTION",
+                      "parentId": "6c8aa405-2026-4012-8000-000000000019",
+                      "conditionParentId": null,
+                      "schemaVersion": 11,
+                      "type": "jira.issue.transition",
+                      "value": {
+                        "operations": [
+                          {
+                            "field": {
+                              "type": "NAME",
+                              "value": "QAG3 Change reason"
+                            },
+                            "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:textarea",
+                            "type": "SET",
+                            "value": "A04 approved Parent change: Task {{triggerIssue.key}}, {{fieldChange.from|0}} -> {{fieldChange.to|0}}, event {{triggerIssue.updated.toMillis}}; reconcile current Epic {{issue.key}}."
+                          }
+                        ],
+                        "advancedFields": null,
+                        "sendNotifications": true,
+                        "destinationStatus": {
+                          "type": "NAME",
+                          "value": "In Progress"
+                        },
+                        "transitionMatch": ""
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "conditions": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000014",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000019",
+                      "schemaVersion": 1,
+                      "type": "jira.jql.condition",
+                      "value": "project = QAG3 AND issuetype = 10000 AND status = 10011",
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    },
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000015",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000019",
+                      "schemaVersion": 1,
+                      "type": "jira.comparator.condition",
+                      "value": {
+                        "first": "{{issue.id}}",
+                        "second": "{{fieldChange.to|0}}",
+                        "operator": "EQUALS"
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    },
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000016",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000019",
+                      "schemaVersion": 1,
+                      "type": "jira.comparator.condition",
+                      "value": {
+                        "first": "{{triggerIssue.status.id}}",
+                        "second": "10010",
+                        "operator": "NOT_EQUALS"
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    },
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000017",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000019",
+                      "schemaVersion": 1,
+                      "type": "jira.comparator.condition",
+                      "value": {
+                        "first": "{{triggerIssue.status.id}}",
+                        "second": "10009",
+                        "operator": "NOT_EQUALS"
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "connectionId": null,
+                  "checksum": null
+                },
+                {
+                  "id": "6c8aa405-2026-4012-8000-000000000024",
+                  "component": "CONDITION_BLOCK",
+                  "parentId": "6c8aa405-2026-4012-8000-000000000025",
+                  "conditionParentId": null,
+                  "schemaVersion": 1,
+                  "type": "jira.condition.if.block",
+                  "value": {
+                    "conditionMatchType": "ALL"
+                  },
+                  "children": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000023",
+                      "component": "ACTION",
+                      "parentId": "6c8aa405-2026-4012-8000-000000000024",
+                      "conditionParentId": null,
+                      "schemaVersion": 11,
+                      "type": "jira.issue.transition",
+                      "value": {
+                        "operations": [
+                          {
+                            "field": {
+                              "type": "NAME",
+                              "value": "QAG3 Change reason"
+                            },
+                            "fieldType": "com.atlassian.jira.plugin.system.customfieldtypes:textarea",
+                            "type": "SET",
+                            "value": "A04 approved Parent change: Task {{triggerIssue.key}}, {{fieldChange.from|0}} -> {{fieldChange.to|0}}, event {{triggerIssue.updated.toMillis}}; reconcile current Epic {{issue.key}}."
+                          }
+                        ],
+                        "advancedFields": null,
+                        "sendNotifications": true,
+                        "destinationStatus": {
+                          "type": "NAME",
+                          "value": "In Progress"
+                        },
+                        "transitionMatch": ""
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "conditions": [
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000020",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000024",
+                      "schemaVersion": 1,
+                      "type": "jira.jql.condition",
+                      "value": "project = QAG3 AND issuetype = 10000 AND status = 10009",
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    },
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000021",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000024",
+                      "schemaVersion": 1,
+                      "type": "jira.comparator.condition",
+                      "value": {
+                        "first": "{{issue.id}}",
+                        "second": "{{fieldChange.to|0}}",
+                        "operator": "EQUALS"
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    },
+                    {
+                      "id": "6c8aa405-2026-4012-8000-000000000022",
+                      "component": "CONDITION",
+                      "parentId": null,
+                      "conditionParentId": "6c8aa405-2026-4012-8000-000000000024",
+                      "schemaVersion": 1,
+                      "type": "jira.comparator.condition",
+                      "value": {
+                        "first": "{{triggerIssue.status.id}}",
+                        "second": "10009",
+                        "operator": "NOT_EQUALS"
+                      },
+                      "children": [],
+                      "conditions": [],
+                      "connectionId": null,
+                      "checksum": null
+                    }
+                  ],
+                  "connectionId": null,
+                  "checksum": null
+                }
+              ],
+              "conditions": [],
+              "connectionId": null,
+              "checksum": null
+            }
+          ],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        }
+      ],
+      "canOtherRuleTrigger": false,
+      "notifyOnError": "FIRSTERROR",
+      "projects": [],
+      "labels": [],
+      "tags": [],
+      "ruleScope": {
+        "resources": [
+          "ari:cloud:jira:560ef0cc-d24b-4613-98d3-d541afe8f32b:project/10002"
+        ]
+      },
+      "ruleHome": {
+        "ruleLifecycleHome": {
+          "locationARI": "ari:cloud:jira:560ef0cc-d24b-4613-98d3-d541afe8f32b:project/10002"
+        },
+        "ruleBillingHome": {
+          "locationARI": "ari:cloud:jira-software::site/560ef0cc-d24b-4613-98d3-d541afe8f32b"
+        }
+      },
+      "writeAccessType": "OWNER_ONLY",
+      "readAccessType": "UNRESTRICTED",
+      "collaborators": [],
+      "billingType": "NORMAL",
+      "idUuid": "01a1216a-82a7-7a79-9f26-8102e7f6a942",
+      "partitionId": "01a11b6f-291e-70df-b8cd-f192489ee252",
+      "checksum": {
+        "version": 3,
+        "value": "a7460ff77d8dc953038d49de4b9af59c7701d02a809f8c8e836c7a9d48968722"
+      },
+      "currentVersionId": null,
+      "ruleArchetype": null,
+      "editRestrictions": null
+    },
+    {
+      "id": 6427495,
+      "clientKey": "01a11b6f-291e-70df-b8cd-f192489ee252",
+      "name": "QAG3 A05 - Notify independent PM review coordinator",
+      "state": "DISABLED",
+      "description": "QAG3 only. Local import candidate; keep disabled until import and notification E2E. Real review-entry event notifies the other PM coordinator, not an attestation by QA or Lead. Freeze event key, re-fetch, preserve labels and mark before email to reduce replay. Marker is not atomic; send failure retains marker and requires manual audit/resend. No paid quota upgrade.",
+      "authorAccountId": "712020:0d04982c-00bf-46af-b3a7-446d0f44edfb",
+      "actor": {
+        "type": "ACCOUNT_ID",
+        "value": "557058:f58131cb-b67d-43c7-b30d-6b58d40bd077"
+      },
+      "created": 1791788061302,
+      "updated": 1791788061302,
+      "trigger": {
+        "id": "6c8aa405-2026-4012-8000-000000000037",
+        "parentId": null,
+        "conditionParentId": null,
+        "component": "TRIGGER",
+        "type": "jira.multiple.issue.event",
+        "value": {
+          "eventKey": null,
+          "issueEvent": null,
+          "events": [
+            {
+              "id": 4,
+              "key": "jira:issue_updated",
+              "event": "issue_generic",
+              "labelKey": "com.codebarrel.automation.trigger.multiple.transitioned",
+              "system": false
+            }
+          ],
+          "eventFilters": [
+            "ari:cloud:jira:560ef0cc-d24b-4613-98d3-d541afe8f32b:project/10002"
+          ]
+        },
+        "conditions": [
+          {
+            "id": "6c8aa405-2026-4012-8000-000000000038",
+            "component": "CONDITION",
+            "parentId": null,
+            "conditionParentId": "6c8aa405-2026-4012-8000-000000000037",
+            "schemaVersion": 1,
+            "type": "jira.jql.condition",
+            "value": "project = QAG3 AND ((issuetype = 10011 AND status in (10016,10012,10019)) OR (issuetype = 10010 AND status in (10016,10012)))",
+            "children": [],
+            "conditions": [],
+            "connectionId": null,
+            "checksum": null
+          }
+        ],
+        "children": [],
+        "schemaVersion": 1,
+        "connectionId": null,
+        "checksum": null
+      },
+      "components": [
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000039",
+          "component": "ACTION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.create.variable",
+          "value": {
+            "id": "_customsmartvalue_id_qag3_a05_event_key",
+            "name": {
+              "type": "FREE",
+              "value": "qag3A05EventKey"
+            },
+            "type": "SMART",
+            "query": {
+              "type": "SMART",
+              "value": "qag3-a05-{{triggerIssue.status.id}}-{{triggerIssue.updated.toMillis}}"
+            },
+            "lazy": false
+          },
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000047",
+          "component": "ACTION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.issue.refresh.issue",
+          "value": {
+            "delayMs": null
+          },
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000048",
+          "component": "CONDITION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.comparator.condition",
+          "value": {
+            "first": "{{issue.status.id}}",
+            "second": "{{triggerIssue.status.id}}",
+            "operator": "EQUALS"
+          },
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000049",
+          "component": "CONDITION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.jql.condition",
+          "value": "project = QAG3 AND (labels is EMPTY OR labels not in (\"{{qag3A05EventKey}}\"))",
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000050",
+          "component": "ACTION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 10,
+          "type": "jira.issue.edit",
+          "value": {
+            "operations": [
+              {
+                "field": {
+                  "type": "ID",
+                  "value": "labels"
+                },
+                "fieldType": "labels",
+                "type": "ADDREMOVE",
+                "value": {
+                  "ADD": [
+                    {
+                      "type": "NAME",
+                      "value": "{{qag3A05EventKey}}"
+                    }
+                  ],
+                  "REMOVE": []
+                }
+              }
+            ],
+            "advancedFields": null,
+            "sendNotifications": false
+          },
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000051",
+          "component": "ACTION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "codebarrel.action.log",
+          "value": "A05 marked attempted notification {{issue.key}} / {{qag3A05EventKey}}; not proof of email delivery.",
+          "children": [],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "6c8aa405-2026-4012-8000-000000000040",
+          "component": "CONDITION",
+          "parentId": null,
+          "conditionParentId": null,
+          "schemaVersion": 1,
+          "type": "jira.condition.container.block",
+          "value": null,
+          "children": [
+            {
+              "id": "6c8aa405-2026-4012-8000-000000000043",
+              "component": "CONDITION_BLOCK",
+              "parentId": "6c8aa405-2026-4012-8000-000000000040",
+              "conditionParentId": null,
+              "schemaVersion": 1,
+              "type": "jira.condition.if.block",
+              "value": {
+                "conditionMatchType": "ALL"
+              },
+              "children": [
+                {
+                  "id": "6c8aa405-2026-4012-8000-000000000042",
+                  "component": "ACTION",
+                  "parentId": "6c8aa405-2026-4012-8000-000000000043",
+                  "conditionParentId": null,
+                  "schemaVersion": 3,
+                  "type": "jira.issue.outgoing.email",
+                  "value": {
+                    "fromName": "",
+                    "replyTo": "",
+                    "to": [
+                      {
+                        "type": "FREE",
+                        "value": "hiepk40c@gmail.com"
+                      }
+                    ],
+                    "cc": [],
+                    "bcc": [],
+                    "subject": "[QAG3] Review {{triggerIssue.key}} / {{triggerIssue.status.id}}",
+                    "body": "Review coordination requested for <a href=\"https://luimjiraqldapm.atlassian.net/browse/{{triggerIssue.key}}\">{{triggerIssue.key}}</a>, status {{triggerIssue.status.id}}. Event: {{qag3A05EventKey}}. Please assign/confirm the appropriate independent reviewer. This notification is not QA approval or acceptance evidence.",
+                    "mimeType": "text/html",
+                    "convertLineBreaks": true
+                  },
+                  "children": [],
+                  "conditions": [],
+                  "connectionId": null,
+                  "checksum": null
+                }
+              ],
+              "conditions": [
+                {
+                  "id": "6c8aa405-2026-4012-8000-000000000041",
+                  "component": "CONDITION",
+                  "parentId": null,
+                  "conditionParentId": "6c8aa405-2026-4012-8000-000000000043",
+                  "schemaVersion": 1,
+                  "type": "jira.comparator.condition",
+                  "value": {
+                    "first": "{{issue.assignee.accountId|unassigned}}",
+                    "second": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+                    "operator": "EQUALS"
+                  },
+                  "children": [],
+                  "conditions": [],
+                  "connectionId": null,
+                  "checksum": null
+                }
+              ],
+              "connectionId": null,
+              "checksum": null
+            },
+            {
+              "id": "6c8aa405-2026-4012-8000-000000000046",
+              "component": "CONDITION_BLOCK",
+              "parentId": "6c8aa405-2026-4012-8000-000000000040",
+              "conditionParentId": null,
+              "schemaVersion": 1,
+              "type": "jira.condition.if.block",
+              "value": {
+                "conditionMatchType": "ALL"
+              },
+              "children": [
+                {
+                  "id": "6c8aa405-2026-4012-8000-000000000045",
+                  "component": "ACTION",
+                  "parentId": "6c8aa405-2026-4012-8000-000000000046",
+                  "conditionParentId": null,
+                  "schemaVersion": 3,
+                  "type": "jira.issue.outgoing.email",
+                  "value": {
+                    "fromName": "",
+                    "replyTo": "",
+                    "to": [
+                      {
+                        "type": "FREE",
+                        "value": "2101minhkhai@gmail.com"
+                      }
+                    ],
+                    "cc": [],
+                    "bcc": [],
+                    "subject": "[QAG3] Review {{triggerIssue.key}} / {{triggerIssue.status.id}}",
+                    "body": "Review coordination requested for <a href=\"https://luimjiraqldapm.atlassian.net/browse/{{triggerIssue.key}}\">{{triggerIssue.key}}</a>, status {{triggerIssue.status.id}}. Event: {{qag3A05EventKey}}. Please assign/confirm the appropriate independent reviewer. This notification is not QA approval or acceptance evidence.",
+                    "mimeType": "text/html",
+                    "convertLineBreaks": true
+                  },
+                  "children": [],
+                  "conditions": [],
+                  "connectionId": null,
+                  "checksum": null
+                }
+              ],
+              "conditions": [
+                {
+                  "id": "6c8aa405-2026-4012-8000-000000000044",
+                  "component": "CONDITION",
+                  "parentId": null,
+                  "conditionParentId": "6c8aa405-2026-4012-8000-000000000046",
+                  "schemaVersion": 1,
+                  "type": "jira.comparator.condition",
+                  "value": {
+                    "first": "{{issue.assignee.accountId|unassigned}}",
+                    "second": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+                    "operator": "NOT_EQUALS"
+                  },
+                  "children": [],
+                  "conditions": [],
+                  "connectionId": null,
+                  "checksum": null
+                }
+              ],
+              "connectionId": null,
+              "checksum": null
+            }
+          ],
+          "conditions": [],
+          "connectionId": null,
+          "checksum": null
+        }
+      ],
+      "canOtherRuleTrigger": false,
+      "notifyOnError": "FIRSTERROR",
+      "projects": [],
+      "labels": [],
+      "tags": [],
+      "ruleScope": {
+        "resources": [
+          "ari:cloud:jira:560ef0cc-d24b-4613-98d3-d541afe8f32b:project/10002"
+        ]
+      },
+      "ruleHome": {
+        "ruleLifecycleHome": {
+          "locationARI": "ari:cloud:jira:560ef0cc-d24b-4613-98d3-d541afe8f32b:project/10002"
+        },
+        "ruleBillingHome": {
+          "locationARI": "ari:cloud:jira-software::site/560ef0cc-d24b-4613-98d3-d541afe8f32b"
+        }
+      },
+      "writeAccessType": "OWNER_ONLY",
+      "readAccessType": "UNRESTRICTED",
+      "collaborators": [],
+      "billingType": "NORMAL",
+      "idUuid": "01a12ee4-1276-76b4-ba01-49bdeda52f9d",
+      "partitionId": "01a11b6f-291e-70df-b8cd-f192489ee252",
+      "checksum": {
+        "version": 3,
+        "value": "6b27c6e10b0d6bb27df25d7ebf50993831c2f3302bc54c9322fd9273bf2e879e"
+      },
+      "currentVersionId": null,
+      "ruleArchetype": null,
+      "editRestrictions": null
+    }
+  ]
+}

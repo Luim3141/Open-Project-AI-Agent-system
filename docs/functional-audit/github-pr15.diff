@@ -1,0 +1,25 @@
+diff --git a/tests/test_health_regression.py b/tests/test_health_regression.py
+index cf89cd2..ba1ba7c 100644
+--- a/tests/test_health_regression.py
++++ b/tests/test_health_regression.py
+@@ -43,3 +43,20 @@ def test_health_endpoint_repeated_calls_no_task_side_effect(client_with_db):
+     assert len(after_tasks) == 2
+     assert after_tasks[0]["title"] == "Task Alpha"
+     assert after_tasks[1]["title"] == "Task Beta"
++
++
++def test_health_endpoint_rejected_methods(client_with_db):
++    # Ensure tasks table has data to check for side effects
++    client_with_db.post("/tasks", json={"title": "Side Effect Check Task"})
++    initial_tasks = client_with_db.get("/tasks").json()
++
++    for method in ["post", "put", "delete", "patch"]:
++        fn = getattr(client_with_db, method)
++        response = fn("/healthz")
++        assert response.status_code == 405
++
++    # Verify task data remains completely unmodified after rejected methods
++    after_tasks = client_with_db.get("/tasks").json()
++    assert after_tasks == initial_tasks
++    assert len(after_tasks) == 1
++    assert after_tasks[0]["title"] == "Side Effect Check Task"

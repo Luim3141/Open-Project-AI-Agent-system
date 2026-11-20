@@ -1,0 +1,148 @@
+{
+  "at": "2026-10-27T13:47:08.798630+00:00",
+  "status": "PASS_MAIN_APPLICATION_BRIDGE_READ_AND_POLICY",
+  "checks": [
+    {
+      "actor": 18,
+      "action": "identity",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "action": "qa_evidence_get",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "action": "identity",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "action": "qa_evidence_get",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 20,
+      "action": "identity",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 20,
+      "action": "qa_evidence_get",
+      "http": 403,
+      "expected": 403,
+      "status": "PASS"
+    },
+    {
+      "actor": 21,
+      "action": "identity",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 21,
+      "action": "qa_evidence_get",
+      "http": 403,
+      "expected": 403,
+      "status": "PASS"
+    },
+    {
+      "actor": 22,
+      "action": "identity",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 22,
+      "action": "qa_evidence_get",
+      "http": 403,
+      "expected": 403,
+      "status": "PASS"
+    },
+    {
+      "actor": 23,
+      "action": "identity",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 23,
+      "action": "qa_evidence_get",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "action": "qa_evidence_get",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "action": "qa_evidence_get",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 23,
+      "action": "qa_evidence_get",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "action": "qa_transition_prepare",
+      "http": 409,
+      "expected": 409,
+      "status": "PASS"
+    },
+    {
+      "actor": 20,
+      "action": "qa_transition_prepare",
+      "http": 403,
+      "expected": 403,
+      "status": "PASS"
+    },
+    {
+      "actor": 18,
+      "action": "qa_application_proof_verify",
+      "http": 422,
+      "expected": 422,
+      "status": "PASS"
+    },
+    {
+      "actor": 19,
+      "action": "get_ai_run",
+      "http": 200,
+      "expected": 200,
+      "status": "PASS"
+    }
+  ],
+  "anonymous_http": 401,
+  "old_QA375": "ready/current; original QA23/PM19 review chain preserved",
+  "application_QA371": "current/pending_qa; capability supported, no human decisions and not ready",
+  "existing_real_gemini_run": "Read-only current receipt retained; no new generation",
+  "workflow_boundary_checks": 48,
+  "unknown_requests_unchanged": true,
+  "main_native_writes": 0,
+  "new_provider_calls": 0,
+  "new_human_decisions": 0
+}

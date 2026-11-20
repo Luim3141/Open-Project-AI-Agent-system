@@ -1,0 +1,13 @@
+<details data-preserve-key="notification-list" class="qcc-card qcc-notification-list">
+  <summary aria-live="polite">Thông báo · <strong><%= eng['notification_unread_count'] || (eng['notifications'].is_a?(Hash) && eng['notifications']['unread_count']) || notifications.size %></strong> chưa đọc</summary>
+  <% notifications.each do |notice| %>
+    <article class="qcc-work-row"><div class="qcc-work-heading"><strong><%= notice['title'] || notice['message'] %></strong><span class="qcc-chip qcc-chip-amber"><%= notice['severity'] || notice['level'] || 'INFO' %></span></div>
+      <p><%= notice['message'] %></p><p>WP #<%= notice['native_id'] || notice['wp_id'] || notice['work_package_id'] || '?' %> · <%= format_vn_time.call(notice['created_at'] || notice['created'] || notice['timestamp']) %> · <%= notice['reason_code'] %></p>
+      <div class="qcc-work-actions"><% if notice['run_id'].present? %><button type="button" class="qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn" data-run-id="<%= notice['run_id'] %>">Mở run <%= notice['run_id'].to_s.first(8) %></button><% end %>
+      <% wp = notice['native_id'] || notice['wp_id'] || notice['work_package_id']; if wp.to_s.match?(/\A\d+\z/) %><a href="/work_packages/<%= wp %>">Mở WP #<%= wp %></a><% end %>
+      <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: 'qcc-action-form' do %><%= hidden_field_tag :tool, 'engineering_notifications_dismiss' %><%= hidden_field_tag :arguments, {id:notice['id']}.to_json %><button type="submit" class="qcc-btn-xs qcc-btn-secondary">Đánh dấu đã đọc</button><% end %></div>
+    </article>
+  <% end %>
+  <% if notifications.empty? %><p>Không có thông báo chưa đọc.</p><% end %>
+  <p class="qcc-text-muted">In-app notifications được lưu bền vững. Không bảo đảm thông báo khi đóng web; external delivery chưa được xác minh.</p>
+</details>

@@ -1,0 +1,66 @@
+{
+  "observed_at": "2026-10-24T22:17:45.531409+00:00",
+  "project_id": 5,
+  "gateway_image": "sha256:c0f328216654478cb58dc01dad737958416882f0352c450a0ae5a80438ca6372",
+  "core_image": "sha256:dcb6018226280bde73fb8812e463bdcb5ef6896cbe9a1c65be7516d993f4a3d4",
+  "staging_operations": false,
+  "status": "PASS",
+  "windows": {
+    "run": 433,
+    "passed": 433,
+    "skipped": 0
+  },
+  "image": {
+    "run": 433,
+    "passed": 421,
+    "skipped": 12,
+    "skip_reason": "11 Node and one Windows-specific fixture; all12 PASS Windows"
+  },
+  "additional_source_only_local_sink_tests": {
+    "windows": 2,
+    "linux": 2,
+    "deployed": false
+  },
+  "logs": {
+    "wbs-schema-final-windows.log": {
+      "sha256": "00fec222b2e70c072a23407e505eddd36823ed29ec9cfab4b9c9e90357ab9720",
+      "private_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-20261025-continuation\\wbs-schema-final-windows.log"
+    },
+    "wbs-schema-final-image-complete.log": {
+      "sha256": "f24d61145683529f84b08e56eb718418f8bcb194cd5068a5ea1fed42876db05e",
+      "private_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-20261025-continuation\\wbs-schema-final-image-complete.log"
+    },
+    "bug-qa-chain.log": {
+      "sha256": "02b95495a6a6999d0784e18de2dae3c2b19426ec930532b5991289f4bef82a7c",
+      "private_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-20261025-continuation\\bug-qa-chain.log"
+    },
+    "wf02-delete-qualification.log": {
+      "sha256": "cb21873b900191813fa14d1f16e185486da589d5f664245a563a294d45891b97",
+      "private_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-20261025-continuation\\wf02-delete-qualification.log"
+    },
+    "local-notification-adapter.log": {
+      "sha256": "d3f3a22da5785fc99728a57d42b5e12d00626e0644f83617d1d12549d4b47cd4",
+      "private_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-20261025-continuation\\local-notification-adapter.log"
+    },
+    "local-notification-adapter-image.log": {
+      "sha256": "d8a2470214233fda82e575e804b229a7083e9f91942ae03adaa5b6dbf4e13fe2",
+      "private_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-20261025-continuation\\local-notification-adapter-image.log"
+    }
+  },
+  "test_harness_notes": [
+    "An initial fixture counted a background knowledge_ingest attempt as a Native business write. Diagnostic showed one update_work_package plus one cache ingestion. Isolated fixture now rejects unsupported ingestion; Native-write assertions unchanged.",
+    "Windows offline harness blocks real httpx/requests HTTP transports; MockTransport/ASGI fixtures remain usable. No Main/Google calls made by qualification fixtures.",
+    "First expanded Linux harness lacked two imported CLI source modules. Re-run mounted those read-only; full433 loaded and421PASS/12platform skips. No assertion or expected behavior was weakened.",
+    "Free-tier enrollment tests use TemporaryDirectory and synthetic keys/environment, including a historical staging label. They never open or mutate the real Staging runtime."
+  ],
+  "current_core_image": "sha256:1bbe160472068a64d3a965fe2bbbd280c2095d17ce285785a3ad0df40825a61f",
+  "core_ui_qualification": {
+    "programs": 6,
+    "actual_controller_role_matrix": "PASS",
+    "valid_edges": 42,
+    "wrong_role_edges_denied": 42,
+    "action_view_xss": "PASS",
+    "log_sha256": "89ae2d2613bdfe35bd84bf611fc0e205f6a8a2042b0cbd20e912b12ce5eaf2f6",
+    "runtime_script_note": "test_daily_bridge.rb requires a staged Rails DB and was NOT run against Staging. An initial network-isolated plain-Ruby enumeration raised missing Project before any IO; the six standalone programs were explicitly run and passed."
+  }
+}

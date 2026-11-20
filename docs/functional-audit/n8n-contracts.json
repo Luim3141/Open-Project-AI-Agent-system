@@ -1,0 +1,3321 @@
+[
+  {
+    "id": "bDpuIXfCgEkVOb7B",
+    "name": "QLDAPM — Telegram Agent Notifications",
+    "nodes": [
+      {
+        "name": "Notification Outbox Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Validate Canonical Event And Recipient",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "authentication",
+          "genericAuthType",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://telegram-ai:8091/internal/notifications/validate"
+        ],
+        "authentication_mode": "genericCredentialType",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Send Telegram Notification",
+        "type": "n8n-nodes-base.telegram",
+        "parameter_keys": [
+          "resource",
+          "operation",
+          "chatId",
+          "text",
+          "additionalFields"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [
+          "telegramApi"
+        ],
+        "input_reference_fields": [
+          "chat_id",
+          "text"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Require Telegram Message Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Persist Delivery And Reply Context",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "authentication",
+          "genericAuthType",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://telegram-ai:8091/internal/notifications/ack"
+        ],
+        "authentication_mode": "genericCredentialType",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply Durable Delivery ACK",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "X2O2QdPY6QLOrWqL",
+    "name": "WF01: Local Document Ingestion",
+    "nodes": [
+      {
+        "name": "Webhook Trigger",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "INVALID_EXPLICIT_NATIVE_TARGET",
+          "INVALID_FILE_INGEST_REQUEST",
+          "INVALID_FILE_SOURCE_REQUEST",
+          "INVALID_NATIVE_INGEST_REQUEST",
+          "UNSUPPORTED_NATIVE_INGEST_OPERATION",
+          "knowledge_file_ingest",
+          "knowledge_file_read",
+          "knowledge_file_search",
+          "knowledge_ingest"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF01 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF01 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF01 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF01 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "Anl8LNdN4NNTKRpe",
+    "name": "WF02: OpenProject Event Sync",
+    "nodes": [
+      {
+        "name": "WP Event Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "INVALID_EXPLICIT_NATIVE_TARGET",
+          "INVALID_INCREMENTAL_SYNC_REQUEST",
+          "INVALID_NATIVE_INGEST_REQUEST",
+          "UNSUPPORTED_NATIVE_INGEST_OPERATION",
+          "knowledge_incremental_status",
+          "knowledge_incremental_sync",
+          "knowledge_ingest"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF02 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF02 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF02 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF02 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "XoP4M520TMG3WgeY",
+    "name": "WF03: Natural Language Request Orchestrator",
+    "nodes": [
+      {
+        "name": "User Request Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Prepare Stable Orchestration Request",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "INVALID_ORCHESTRATION_OPERATION",
+          "get_ai_run",
+          "start_ai_run"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Start Or Poll Persisted Caller Run",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF03 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF03 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF03 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF03 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "elfapV5D2PTnLiHW",
+    "name": "WF04: Multi-Agent Execution Tracking",
+    "nodes": [
+      {
+        "name": "Lifecycle Event Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "responseMode",
+          "options",
+          "authentication"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Retrieve Source Trace And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/lifecycle-observation"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Require Business Observation",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Reply Lifecycle ACK",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF04 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF04 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF04 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF04 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "xCZFw45fmDQG5gNq",
+    "name": "WF05: Native API Approval Workflow",
+    "nodes": [
+      {
+        "name": "Approval Request Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Fetch Gateway Proposal",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "authentication",
+          "headerParameters",
+          "method",
+          "options",
+          "sendHeaders",
+          "url"
+        ],
+        "destination_templates": [
+          "=http://qldapm-ai-gateway-1:8090/api/v1/proposals/{{ ($json.body && $json.body.proposal_id) || $json.proposal_id }}"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "proposal_id"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Process PM Approval Decision",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF05 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF05 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF05 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF05 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "Jq18aFSqfuUybEic",
+    "name": "WF06: Native API Execution & Verification",
+    "nodes": [
+      {
+        "name": "Execute Mutation Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Authenticated Gateway PM Decision",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "=http://qldapm-ai-gateway-1:8090/api/v1/proposals/{{ /^[0-9a-f-]{36}$/i.test($json.body?.proposal_id || '') ? $json.body.proposal_id : 'invalid' }}/decision"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF06 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF06 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF06 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF06 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "BpCQrGR866vg4BqQ",
+    "name": "WF07: Daily Project Brief",
+    "nodes": [
+      {
+        "name": "Daily Trigger Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Daily Schedule 08:00",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "parameter_keys": [
+          "rule"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Command metadata",
+        "type": "n8n-nodes-base.set",
+        "parameter_keys": [
+          "mode",
+          "jsonOutput",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Sign command",
+        "type": "n8n-nodes-base.crypto",
+        "parameter_keys": [
+          "action",
+          "type",
+          "binaryData",
+          "value",
+          "dataPropertyName",
+          "encoding"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [
+          "crypto"
+        ],
+        "input_reference_fields": [
+          "issued_at",
+          "kind",
+          "nonce",
+          "request_key"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Gateway status",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "authentication",
+          "genericAuthType",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/commands"
+        ],
+        "authentication_mode": "genericCredentialType",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [
+          "issued_at",
+          "kind",
+          "nonce",
+          "request_key",
+          "signature",
+          "version"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Require Completed Daily Reports",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "result"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": true
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "RXWjVUL8ozqhjY4w",
+    "name": "WF08: Sprint Risk",
+    "nodes": [
+      {
+        "name": "Sprint Risk Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Prepare Sprint Risk Parameters",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "INVALID_WORKFLOW_PROJECT_SCOPE",
+          "sprint_risks"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Analyze Native Relations And Persist Risk Snapshot",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF08 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF08 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF08 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF08 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "tOyBIPw6sGjgzjtU",
+    "name": "WF09: Bug Lifecycle Automation",
+    "nodes": [
+      {
+        "name": "Bug Event Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "INVALID_BUG_AUTHORITY_CLAIM",
+          "INVALID_BUG_PROPOSAL_REQUEST",
+          "INVALID_EXPLICIT_NATIVE_TARGET",
+          "INVALID_WORKFLOW_PROJECT_SCOPE",
+          "bug_propose",
+          "bug_triage",
+          "get_work_package"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF09 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF09 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF09 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF09 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "tOY7QUa9SrWPOe9e",
+    "name": "WF10: Task Orchestration & Decomposition",
+    "nodes": [
+      {
+        "name": "Task Event Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "INVALID_DEPENDENCY_CHANGE_FIELD",
+          "INVALID_WBS_AUTHORITY_OR_PARENT_CLAIM",
+          "INVALID_WBS_REQUEST_KEY",
+          "INVALID_WORKFLOW_PROJECT_SCOPE",
+          "get_project_options",
+          "wbs_get"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF10 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF10 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF10 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF10 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "LeRVT3LWNBkJ2iz3",
+    "name": "WF11: QA Gate Transition",
+    "nodes": [
+      {
+        "name": "QA Gate Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Require Explicit QA Target",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "INVALID_QA_EVIDENCE_REQUEST",
+          "INVALID_QA_TARGET",
+          "qa_evidence_capture",
+          "qa_evidence_get",
+          "qa_evidence_list",
+          "qa_test_run",
+          "qa_transition_prepare"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Read Native Evidence And Transition Errors",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "={{ $json.qa_decision ? \"http://qldapm-ai-gateway-1:8090/api/v1/qa-evidence/\" + $json.evidence_id + '/decision' : \"http://qldapm-ai-gateway-1:8090/api/v1/commands\" }}"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [
+          "evidence_id",
+          "payload",
+          "qa_decision"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF11 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF11 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF11 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF11 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "ZkgS8RZbPRA2zbhQ",
+    "name": "WF12: Weekly Summary",
+    "nodes": [
+      {
+        "name": "Weekly Summary Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Prepare Weekly Parameters",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "weekly_summary"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Generate And Persist Native Weekly Summary",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Weekly Friday 17:00",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "parameter_keys": [
+          "rule"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Weekly Command metadata",
+        "type": "n8n-nodes-base.set",
+        "parameter_keys": [
+          "mode",
+          "jsonOutput",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Weekly Sign command",
+        "type": "n8n-nodes-base.crypto",
+        "parameter_keys": [
+          "action",
+          "value",
+          "dataPropertyName"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [
+          "crypto"
+        ],
+        "input_reference_fields": [
+          "issued_at",
+          "kind",
+          "nonce",
+          "request_key"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Weekly Gateway status",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "authentication",
+          "genericAuthType",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/commands"
+        ],
+        "authentication_mode": "genericCredentialType",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [
+          "issued_at",
+          "kind",
+          "nonce",
+          "request_key",
+          "signature",
+          "version"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Verify weekly business completion",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "result"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": true
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "2tr0jpqaaAiq9IOU",
+    "name": "WF13: Second Brain RAG Re-indexing",
+    "nodes": [
+      {
+        "name": "Reindex Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Prepare Explicit Caller Request",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "INVALID_EXPLICIT_NATIVE_TARGET",
+          "INVALID_FEEDBACK_REQUEST",
+          "INVALID_NATIVE_INGEST_REQUEST",
+          "UNSUPPORTED_NATIVE_INGEST_OPERATION",
+          "knowledge_feedback_apply",
+          "knowledge_feedback_get",
+          "knowledge_feedback_submit",
+          "knowledge_ingest"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Return Actual Gateway Result",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "={{ $json.feedback_decision ? \"http://qldapm-ai-gateway-1:8090/api/v1/knowledge-feedback/\" + $json.feedback_id + '/decision' : \"http://qldapm-ai-gateway-1:8090/api/v1/commands\" }}"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [
+          "feedback_decision",
+          "feedback_id",
+          "payload"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF13 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF13 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF13 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF13 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "8ycOUQy9gtT60nkN",
+    "name": "WF14: Durable RAG Recovery",
+    "nodes": [
+      {
+        "name": "Error Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Prepare Durable RAG Recovery Request",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [
+          "INVALID_RECOVERY_JOB_ID",
+          "INVALID_RECOVERY_OPERATION",
+          "knowledge_sync_retry",
+          "knowledge_sync_status"
+        ],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Read Or Requeue Own Persisted RAG Job",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF14 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF14 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF14 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF14 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "NLugfE3U8dBS88Wg",
+    "name": "WF15: Reconciliation & Drift Detection",
+    "nodes": [
+      {
+        "name": "Reconciliation Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reconcile Exact Native SQLite Qdrant Identity",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options",
+          "authentication",
+          "sendHeaders",
+          "headerParameters"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        ],
+        "authentication_mode": "none",
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Reply With Gateway Status",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body",
+          "statusCode"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF15 Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "httpMethod",
+          "path",
+          "authentication",
+          "responseMode",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF15 Read Source And Observe",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "sendHeaders",
+          "headerParameters",
+          "sendBody",
+          "specifyBody",
+          "jsonBody",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+        ],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [
+          "body"
+        ],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Integration WF15 Require Business Receipt",
+        "type": "n8n-nodes-base.code",
+        "parameter_keys": [
+          "jsCode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": true
+      },
+      {
+        "name": "Integration WF15 Reply",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "parameter_keys": [
+          "respondWith",
+          "responseBody",
+          "options"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  },
+  {
+    "id": "5FRYNPSot18UDpKa",
+    "name": "WF16: Main Health Monitoring",
+    "nodes": [
+      {
+        "name": "Summary Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "parameter_keys": [
+          "authentication",
+          "httpMethod",
+          "options",
+          "path",
+          "responseMode"
+        ],
+        "destination_templates": [],
+        "authentication_mode": "headerAuth",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Periodic Health Schedule",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "parameter_keys": [
+          "rule"
+        ],
+        "destination_templates": [],
+        "authentication_mode": null,
+        "credential_types": [],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [
+          "main"
+        ],
+        "code_present": false
+      },
+      {
+        "name": "Probe And Persist Main Health",
+        "type": "n8n-nodes-base.httpRequest",
+        "parameter_keys": [
+          "method",
+          "url",
+          "authentication",
+          "genericAuthType",
+          "options"
+        ],
+        "destination_templates": [
+          "http://qldapm-ai-gateway-1:8090/internal/automation/monitor"
+        ],
+        "authentication_mode": "genericCredentialType",
+        "credential_types": [
+          "httpHeaderAuth"
+        ],
+        "input_reference_fields": [],
+        "operations_in_code": [],
+        "retry_on_fail": false,
+        "max_tries": null,
+        "on_error": null,
+        "continue_on_fail": false,
+        "error_connections": [],
+        "code_present": false
+      }
+    ],
+    "scope": "MAIN deployed definition contract inspection; not triggered by audit. Code operations/keys are static hints, not inferred E2E success."
+  }
+]

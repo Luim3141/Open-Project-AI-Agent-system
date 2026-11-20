@@ -1,0 +1,294 @@
+{
+  "scope": "MAIN invalid read-only selectors",
+  "cases": [
+    {
+      "query": "limit=bad",
+      "status": 200,
+      "body": {
+        "schema_version": 1,
+        "actor_id": 18,
+        "project_id": 6,
+        "items": [
+          {
+            "run_id": "de391b2f-e5f2-4bc3-be10-54ab11d73099",
+            "trace_id": "ad96c1a3-de03-4569-8cf1-ca37202c8de4",
+            "created_at": 1793963766.2720528,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-faf8797c2a8d1f4f for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 18,
+            "tokens": 227018,
+            "duration_seconds": 1101.688
+          },
+          {
+            "run_id": "76f13288-6055-400b-a615-e3f7600a3344",
+            "trace_id": "ab98f04e-f83f-42f3-88f8-fa995aac2120",
+            "created_at": 1793962787.639034,
+            "state": "COMPLETED",
+            "request": "Engineering requirements-planning-v1-faf8797c2a8d1f4f for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 2,
+            "tokens": 5642,
+            "duration_seconds": 173.022
+          },
+          {
+            "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+            "trace_id": "fe0d2294-2ac3-453a-bc6f-d0a6814199a1",
+            "created_at": 1793907754.0544243,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-d8b7006b5cff1bc4 for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 17,
+            "tokens": 232022,
+            "duration_seconds": 663.603
+          },
+          {
+            "run_id": "8f93d0a1-8115-49b5-bc73-2487e778a7cd",
+            "trace_id": "ba4b8f8c-2e94-47c8-93e4-e7139e3168fb",
+            "created_at": 1793897802.6578546,
+            "state": "COMPLETED",
+            "request": "Engineering requirements-planning-v1-d8b7006b5cff1bc4 for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 2,
+            "tokens": 5422,
+            "duration_seconds": 784.34
+          },
+          {
+            "run_id": "595d2454-2f11-4b16-a720-3445faa2b30a",
+            "trace_id": "d21ed1cb-27f4-4b1d-ae2c-23fec9b6adbb",
+            "created_at": 1793872103.0278468,
+            "state": "FAILED",
+            "request": "Engineering requirements-planning-v1-f51fb8fa745ab13e for #379",
+            "agents": [],
+            "mode": null,
+            "calls": 1,
+            "tokens": null,
+            "duration_seconds": 56.383
+          },
+          {
+            "run_id": "20de715d-52be-4b32-961d-309fba95ff56",
+            "trace_id": "0ef95306-456e-45fe-a2b7-f4bd7e5b9c8d",
+            "created_at": 1793863561.1503317,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-e0408cbf553ca0ba for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 25,
+            "tokens": 282518,
+            "duration_seconds": 1111.062
+          },
+          {
+            "run_id": "e2db6811-44fe-418c-b7dc-12fb9d52d330",
+            "trace_id": "d02bd43d-e579-4030-b49c-8986a6cae62d",
+            "created_at": 1793854543.083298,
+            "state": "COMPLETED",
+            "request": "Engineering requirements-planning-v1-e0408cbf553ca0ba for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 2,
+            "tokens": 5687,
+            "duration_seconds": 2859.216
+          },
+          {
+            "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+            "trace_id": "ae5b8162-6bc9-4f29-9893-eb92ebf40f64",
+            "created_at": 1793731824.6021152,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-a51b2f686861716c for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 43,
+            "tokens": 707018,
+            "duration_seconds": 3619.292
+          },
+          {
+            "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+            "trace_id": "35d937e1-5857-42d5-92fb-010b16883603",
+            "created_at": 1793714785.5252328,
+            "state": "COMPLETED",
+            "request": "Engineering requirements-planning-v1-a51b2f686861716c for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 2,
+            "tokens": 6662,
+            "duration_seconds": 139.679
+          },
+          {
+            "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+            "trace_id": "434d99da-3998-4c94-91f3-1e50a367ceb5",
+            "created_at": 1793617536.9506848,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-2ec52f6742aa972f for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 45,
+            "tokens": 720654,
+            "duration_seconds": 38161.231
+          }
+        ],
+        "total": 34,
+        "limit": 10,
+        "offset": 0,
+        "next_offset": 10
+      },
+      "request_id": "7dd2b6de-14a6-42e3-b98c-b39511c40d8e"
+    },
+    {
+      "query": "offset=bad",
+      "status": 503,
+      "body": {
+        "error": "EXECUTION_HISTORY_UNAVAILABLE"
+      },
+      "request_id": "57ff0e8d-3b00-438c-b9f6-ab86cd08445f"
+    },
+    {
+      "query": "limit=0",
+      "status": 200,
+      "body": {
+        "schema_version": 1,
+        "actor_id": 18,
+        "project_id": 6,
+        "items": [
+          {
+            "run_id": "de391b2f-e5f2-4bc3-be10-54ab11d73099",
+            "trace_id": "ad96c1a3-de03-4569-8cf1-ca37202c8de4",
+            "created_at": 1793963766.2720528,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-faf8797c2a8d1f4f for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 18,
+            "tokens": 227018,
+            "duration_seconds": 1101.688
+          },
+          {
+            "run_id": "76f13288-6055-400b-a615-e3f7600a3344",
+            "trace_id": "ab98f04e-f83f-42f3-88f8-fa995aac2120",
+            "created_at": 1793962787.639034,
+            "state": "COMPLETED",
+            "request": "Engineering requirements-planning-v1-faf8797c2a8d1f4f for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 2,
+            "tokens": 5642,
+            "duration_seconds": 173.022
+          },
+          {
+            "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+            "trace_id": "fe0d2294-2ac3-453a-bc6f-d0a6814199a1",
+            "created_at": 1793907754.0544243,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-d8b7006b5cff1bc4 for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 17,
+            "tokens": 232022,
+            "duration_seconds": 663.603
+          },
+          {
+            "run_id": "8f93d0a1-8115-49b5-bc73-2487e778a7cd",
+            "trace_id": "ba4b8f8c-2e94-47c8-93e4-e7139e3168fb",
+            "created_at": 1793897802.6578546,
+            "state": "COMPLETED",
+            "request": "Engineering requirements-planning-v1-d8b7006b5cff1bc4 for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 2,
+            "tokens": 5422,
+            "duration_seconds": 784.34
+          },
+          {
+            "run_id": "595d2454-2f11-4b16-a720-3445faa2b30a",
+            "trace_id": "d21ed1cb-27f4-4b1d-ae2c-23fec9b6adbb",
+            "created_at": 1793872103.0278468,
+            "state": "FAILED",
+            "request": "Engineering requirements-planning-v1-f51fb8fa745ab13e for #379",
+            "agents": [],
+            "mode": null,
+            "calls": 1,
+            "tokens": null,
+            "duration_seconds": 56.383
+          },
+          {
+            "run_id": "20de715d-52be-4b32-961d-309fba95ff56",
+            "trace_id": "0ef95306-456e-45fe-a2b7-f4bd7e5b9c8d",
+            "created_at": 1793863561.1503317,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-e0408cbf553ca0ba for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 25,
+            "tokens": 282518,
+            "duration_seconds": 1111.062
+          },
+          {
+            "run_id": "e2db6811-44fe-418c-b7dc-12fb9d52d330",
+            "trace_id": "d02bd43d-e579-4030-b49c-8986a6cae62d",
+            "created_at": 1793854543.083298,
+            "state": "COMPLETED",
+            "request": "Engineering requirements-planning-v1-e0408cbf553ca0ba for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 2,
+            "tokens": 5687,
+            "duration_seconds": 2859.216
+          },
+          {
+            "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+            "trace_id": "ae5b8162-6bc9-4f29-9893-eb92ebf40f64",
+            "created_at": 1793731824.6021152,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-a51b2f686861716c for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 43,
+            "tokens": 707018,
+            "duration_seconds": 3619.292
+          },
+          {
+            "run_id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+            "trace_id": "35d937e1-5857-42d5-92fb-010b16883603",
+            "created_at": 1793714785.5252328,
+            "state": "COMPLETED",
+            "request": "Engineering requirements-planning-v1-a51b2f686861716c for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 2,
+            "tokens": 6662,
+            "duration_seconds": 139.679
+          },
+          {
+            "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+            "trace_id": "434d99da-3998-4c94-91f3-1e50a367ceb5",
+            "created_at": 1793617536.9506848,
+            "state": "COMPLETED",
+            "request": "Engineering feedback-2ec52f6742aa972f for #379",
+            "agents": [],
+            "mode": "LIVE_GEMINI",
+            "calls": 45,
+            "tokens": 720654,
+            "duration_seconds": 38161.231
+          }
+        ],
+        "total": 34,
+        "limit": 10,
+        "offset": 0,
+        "next_offset": 10
+      },
+      "request_id": "ecc85d03-6972-4322-8202-537c7c6075fa"
+    },
+    {
+      "query": "offset=-1",
+      "status": 422,
+      "body": {
+        "error": "EXECUTION_HISTORY_UNAVAILABLE"
+      },
+      "request_id": "84fa77ae-a846-4164-8868-942f39f1a852"
+    }
+  ],
+  "at": 1794475679.001539
+}

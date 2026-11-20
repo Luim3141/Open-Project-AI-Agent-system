@@ -1,0 +1,67 @@
+<%= javascript_tag nonce: true do %>
+  document.addEventListener("click", function(event) {
+    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var link = event.target.closest("a[href]");
+    if (!link || link.target || link.hasAttribute("download")) return;
+    var url = new URL(link.href, window.location.href);
+    if (url.origin !== window.location.origin || url.pathname !== "/projects/qldapm-local/work_packages" || url.hash) return;
+    if (["native_table", "query_id", "query_props", "name"].some(function(key) { return url.searchParams.has(key); })) return;
+    // Angular's client router otherwise reopens its flat table without calling the Rails tree action.
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    window.location.assign(url.href);
+  }, true);
+
+  // Auto-page and auto-collapse root Epics on Project Gantt initial view
+  (function() {
+    if (!window.location.pathname.startsWith("/projects/qldapm-local/gantt")) return;
+    var url = new URL(window.location.href);
+    var props;
+    try {
+      var encoded = url.searchParams.get("query_props");
+      props = encoded ? JSON.parse(encoded.charAt(0) === "%" ? decodeURIComponent(encoded) : encoded) : {};
+    } catch (_) { return; }
+    if (!props || typeof props !== "object" || Array.isArray(props)) return;
+    // Native Angular reads pagination from query_props, not a top-level pp parameter.
+    if (props.pp === undefined) {
+      props.pp = 500;
+      if (!encoded) { props.hi = true; props.tv = true; }
+      url.searchParams.set("query_props", JSON.stringify(props));
+      url.searchParams.delete("pp");
+      url.search = url.search.replace(/\+/g, "%20");
+      window.location.replace(url.href);
+      return;
+    }
+
+    var rootEpics = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48];
+    var collapsedKey = "qldapm_gantt_collapsed_" + window.location.pathname;
+    if (sessionStorage.getItem(collapsedKey) || props.hi === false) return;
+    var finished = false;
+    function stop() {
+      finished = true;
+      clearInterval(timer);
+      document.removeEventListener("pointerdown", userInput, true);
+      document.removeEventListener("keydown", userInput, true);
+    }
+    function userInput(event) { if (event.isTrusted) stop(); }
+    // Native rows can precede their event/state handlers; acknowledge actual collapse before marking done.
+    var timer = setInterval(function() {
+      if (finished) return;
+      if (window.location.pathname !== url.pathname) { stop(); return; }
+      var buttons = rootEpics.map(function(id) { return document.querySelector("tr.wp-row-" + id + " .wp-table--hierarchy-indicator"); });
+      if (buttons.some(function(button) { return !button; })) return;
+      buttons.forEach(function(button) {
+        if (!button.classList.contains("-hierarchy-collapsed")) {
+          button.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window, detail: 1 }));
+        }
+      });
+      if (buttons.every(function(button) { return button.classList.contains("-hierarchy-collapsed"); })) {
+        sessionStorage.setItem(collapsedKey, "1");
+        stop();
+      }
+    }, 250);
+    document.addEventListener("pointerdown", userInput, true);
+    document.addEventListener("keydown", userInput, true);
+    setTimeout(stop, 60000);
+  })();
+<% end %>

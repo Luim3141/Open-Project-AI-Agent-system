@@ -1,0 +1,150 @@
+{
+  "project_id": 5,
+  "actors": [
+    {
+      "actor": 18,
+      "registry_role": "AI_SYSTEM_OWNER",
+      "scheduled_target": false,
+      "native_identity": {
+        "id": 18,
+        "login": "op-owner",
+        "admin": true,
+        "status": "active"
+      },
+      "resolved_role": "AI_SYSTEM_OWNER",
+      "registry_matches": true
+    },
+    {
+      "actor": 19,
+      "registry_role": "PM",
+      "scheduled_target": true,
+      "native_identity": {
+        "id": 19,
+        "login": "ba-pm",
+        "admin": true,
+        "status": "active"
+      },
+      "identity_error_class": "PermissionError",
+      "identity_denied": true
+    },
+    {
+      "actor": 20,
+      "registry_role": "BA",
+      "scheduled_target": true,
+      "native_identity": {
+        "id": 20,
+        "login": "pm",
+        "admin": null,
+        "status": "active"
+      },
+      "resolved_role": "BA",
+      "registry_matches": true
+    },
+    {
+      "actor": 21,
+      "registry_role": "BE",
+      "scheduled_target": true,
+      "native_identity": {
+        "id": 21,
+        "login": "be",
+        "admin": null,
+        "status": "active"
+      },
+      "resolved_role": "BE",
+      "registry_matches": true
+    },
+    {
+      "actor": 22,
+      "registry_role": "FE",
+      "scheduled_target": true,
+      "native_identity": {
+        "id": 22,
+        "login": "fe",
+        "admin": null,
+        "status": "active"
+      },
+      "resolved_role": "FE",
+      "registry_matches": true
+    },
+    {
+      "actor": 23,
+      "registry_role": "QA",
+      "scheduled_target": true,
+      "native_identity": {
+        "id": 23,
+        "login": "qa",
+        "admin": null,
+        "status": "active"
+      },
+      "resolved_role": "QA",
+      "registry_matches": true
+    }
+  ],
+  "collectors": [
+    {
+      "kind": "daily_brief",
+      "run_id": "3f90801a-ada9-4e86-9715-e9888c446181",
+      "project_id": 5,
+      "state": "COMPLETED",
+      "status": "PARTIAL",
+      "targets": 5,
+      "ready": 4,
+      "unavailable": 1,
+      "actor_states": []
+    },
+    {
+      "kind": "weekly_summary",
+      "run_id": "4149212b-18c2-4463-937c-59f5d397db28",
+      "project_id": 5,
+      "state": "COMPLETED",
+      "status": "PARTIAL",
+      "targets": 5,
+      "ready": 4,
+      "unavailable": 1,
+      "actor_states": [
+        {
+          "actor": 19,
+          "state": "DENIED"
+        },
+        {
+          "actor": 20,
+          "state": "READY"
+        },
+        {
+          "actor": 21,
+          "state": "READY"
+        },
+        {
+          "actor": 22,
+          "state": "READY"
+        },
+        {
+          "actor": 23,
+          "state": "READY"
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "native.py": "88f6dd6c083de5874a5175e1a247820b75490ca10eb8c6e726362859eeb887e0",
+    "daily_brief.py": "065208e8ccfb38e72e42a3d23b21c89339f9b75bad34f590d3874c46616b160d",
+    "weekly_report.py": "a827773969cc26d8710965f9b22c0e8533a4027b1e8ddf57ec9975950acffdfa"
+  },
+  "started_utc": "2026-11-02T09:18:51.070450+00:00",
+  "completed_utc": "2026-11-02T09:18:53.367090+00:00",
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "qldapm-ai-gateway-1",
+    "python",
+    "-"
+  ],
+  "route": "Native HTTP GET and SQLite mode=ro; no business writes",
+  "probe_sha256": "95ee7d1a7d88109198b1fe2f88cd45705cfa09b9d758250699140a71f698d230",
+  "images": {
+    "qldapm-ai-gateway-1": "sha256:8359e250512b0a68a6e92892feb539d6f392b94aa39b91e670db42f49c411e8a",
+    "qldapm-n8n-main": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+    "qldapm-openproject-web-1": "sha256:a6a61b685014039049f46d1d93a90340d4108265dccbed93cc6d04fbe3f027fd"
+  }
+}

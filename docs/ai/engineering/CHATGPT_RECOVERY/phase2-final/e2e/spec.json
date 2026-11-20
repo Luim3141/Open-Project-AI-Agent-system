@@ -1,0 +1,4 @@
+{
+  "marker": "QLDAPM-E2E-20261102-PHASE2-FINAL-001",
+  "feedback": "QLDAPM-E2E-20261102-PHASE2-FINAL-001: Add GET /tasks/{task_id}/title that returns HTTP 200 JSON {\"id\": task_id, \"title\": the exact stored title} for an existing numeric task ID. Return HTTP 404 for a missing task and HTTP 422 for a non-integer ID. Preserve Unicode titles exactly. Add focused automated tests for existing, missing, invalid and Unicode title. Preserve all existing CRUD, search, /healthz, /tasks/summary and /exists routes. Do not change the SQLite schema. Create one isolated feature branch and PR based on the latest verified PR8 source; do not merge or deploy it."
+}

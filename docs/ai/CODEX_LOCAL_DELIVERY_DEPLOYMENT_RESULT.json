@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-25T12:43:50.273482+00:00",
+  "status": "DEPLOYED_HEALTHY_RUNTIME_REGRESSION_PENDING",
+  "authorization": "PUBLICATION_REDACTED",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-local-delivery-20261025",
+      "image": "sha256:8aed99f096aca8b2a8176b5c68b5a256bf095a6e2b03ab3d26bcb135015c71bd"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-local-delivery-20261025",
+      "image": "sha256:a56b834fd146a384ce1294095e95bdffd4048c2ad7045be177c0b471010b5e4c"
+    }
+  },
+  "files": {
+    "openproject/ai/gateway/store.py": {
+      "sha256": "ef592e6282a271509992b319aad62def5d5839ffc05913ff58fff7c30cbd08b3",
+      "kind": "gateway",
+      "old_sha256": "5a061eee89101aa177b484aaf76259b56e70b2a7ea2aec67ae2439b214d8e308"
+    },
+    "openproject/ai/gateway/service.py": {
+      "sha256": "cd126991c73d441f79c4c1bc1f11a714e527d3b9c0d234ea6e272cce05284523",
+      "kind": "gateway",
+      "old_sha256": "ed1c9c88ca5566d2fad95258d614cf3fe55346237249524618c95a253ddfa3b5"
+    },
+    "openproject/ai/gateway/monitoring.py": {
+      "sha256": "1f5eecb223014229093b978f4b887e8429db40082bc89b979adc06800cb2181f",
+      "kind": "gateway",
+      "old_sha256": "2a6167dc805f57f32599eb3e494e5b554926e5f5fd71c7dee44eae540d2dd55a"
+    },
+    "openproject/ai/gateway/control_center_state.py": {
+      "sha256": "a677f2d1580a10938b132a43cd7d45528729dc0940b2fd519f14918c9d9962ba",
+      "kind": "gateway",
+      "old_sha256": "b932c3523a0a82884124854b7016a1526d759492232aa795b43e647fd9a3a82b"
+    },
+    "openproject/ai/gateway/notification_delivery.py": {
+      "sha256": "c26307c78a5adbcfdb9c898df4e1dca74fedd938e10b5d09bbb848d947ceaf7b",
+      "kind": "gateway",
+      "old_sha256": "3ad95a44313c9d5d80eb2e30daebeca1db2224199592766e2c807b2b84dd778e"
+    },
+    "openproject\\ai\\core\\overlay\\app\\views\\qldapm_ai\\_control_center.html.erb": {
+      "sha256": "4d7a5992a117659417a8c40237d2b14f3a5c9985774bac09e9d54597c68087ba",
+      "kind": "core",
+      "old_sha256": "a58a8b75d1bbb32cb10e59d4bf5ac0fbc375974e5f09681bf6a6eb93694e3c42"
+    }
+  },
+  "workflow": "NONE_PRESERVE_ALL16",
+  "workflow_before": "3de06022-1bff-4a65-9152-414fe690beb8",
+  "workflow_candidate_sha256": "d0b65cfa6796189c9141380d89f60f32caacaba9efc830dd48f4d3365a1e4937",
+  "backups": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\notification-deployment",
+  "native_count": 338,
+  "queue_pending": 0,
+  "unknown_retained": 28,
+  "native_writes": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "rollback_gateway": "sha256:4fa7a0c242a33442a92195cf5d2964c554b8811cb1afd4a706d50e3b3c0df16d",
+  "rollback_web": "sha256:8fe51b6885aea08f6654ebb5719ca157da32d2156923c999ded0af9dae8bc00a",
+  "rollback": "Restore only image selectors; keep all16 workflow definitions and all newer queue/SQLite records",
+  "workflow_after": "3de06022-1bff-4a65-9152-414fe690beb8",
+  "workflow_id": "LeRVT3LWNBkJ2iz3",
+  "unrelated_containers_unchanged": 8,
+  "unrelated_workflows_unchanged": 16,
+  "physical_wp_rows_unchanged": "375|04ec20a24a553f3cea4deab0015c29ef"
+}

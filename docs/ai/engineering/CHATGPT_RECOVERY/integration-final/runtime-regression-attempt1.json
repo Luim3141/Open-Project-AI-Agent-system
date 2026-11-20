@@ -1,0 +1,20 @@
+{
+  "exit_code": 1,
+  "image": "sha256:e9af9565b3af52d2b2184bef144aa22cbdab019ecae15f2ccb0b48526f060ed7",
+  "modules": [
+    "test_integration_pair_release",
+    "test_project6_file_workflow",
+    "test_project6_file_knowledge",
+    "test_integration_route",
+    "test_integration_events",
+    "test_github_integration_projection",
+    "test_github_integration",
+    "test_engineering_github_sync",
+    "test_engineering_github_owner_contract",
+    "test_engineering_github_journal",
+    "test_engineering_github_recovery"
+  ],
+  "output": "/workspace/openproject/ai/tests/test_integration_route.py:9: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 203, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/usr/local/lib/python3.14/unittest/__main__.py\", line 18, in <module>\n    main(module=None)\n    ~~~~^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.14/unittest/main.py\", line 103, in __init__\n    self.parseArgs(argv)\n    ~~~~~~~~~~~~~~^^^^^^\n  File \"/usr/local/lib/python3.14/unittest/main.py\", line 142, in parseArgs\n    self.createTests()\n    ~~~~~~~~~~~~~~~~^^\n  File \"/usr/local/lib/python3.14/unittest/main.py\", line 153, in createTests\n    self.test = self.testLoader.loadTestsFromNames(self.testNames,\n                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n                                                   self.module)\n                                                   ^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.14/unittest/loader.py\", line 214, in loadTestsFromNames\n    suites = [self.loadTestsFromName(name, module) for name in names]\n              ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.14/unittest/loader.py\", line 141, in loadTestsFromName\n    module = __import__(module_name)\n  File \"/workspace/openproject/ai/tests/test_integration_route.py\", line 10, in <module>\n    from gateway.app import Security\n  File \"/app/gateway/app.py\", line 434, in <module>\n    app = create_app() if os.environ.get(\"QLDAPM_AI_RUNTIME\") else None\n          ~~~~~~~~~~^^\n  File \"/app/gateway/app.py\", line 120, in create_app\n    store = service.store if service else Store(root)\n                                          ~~~~~^^^^^^\n  File \"/app/gateway/store.py\", line 31, in __init__\n    self.root.mkdir(parents=True, exist_ok=True)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.14/pathlib/__init__.py\", line 1011, in mkdir\n    os.mkdir(self, mode)\n    ~~~~~~~~^^^^^^^^^^^^\nOSError: [Errno 30] Read-only file system: '/state'\n",
+  "network": "none",
+  "main_writes": 0
+}

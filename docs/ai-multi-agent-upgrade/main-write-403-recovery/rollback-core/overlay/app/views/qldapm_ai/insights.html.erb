@@ -1,0 +1,24 @@
+<h2>Insights — dẫn chứng và xu hướng</h2>
+<p>Không xếp hạng, không tổng điểm, không quyết định nhân sự tự động. PM xem toàn dự án; thành viên xem chính mình.</p>
+<% if @error %><div role="alert"><%= @error %></div><% end %>
+<%= form_tag project_qldapm_insights_path(@project.identifier), method: :get do %>
+  <%= label_tag :user_id, "User ID (PM được chọn thành viên)" %><%= number_field_tag :user_id, @subject, min: 1 %>
+  <%= label_tag :days, "Cửa sổ" %><%= select_tag :days, options_for_select([7,30,90], @days) %>
+  <%= submit_tag "Xem báo cáo", class: "button" %>
+<% end %>
+<% if @report %>
+  <h3><%= @report["subject"] %> — coverage: <%= @report["coverage"] %></h3>
+  <pre><%= JSON.pretty_generate(@report) %></pre>
+  <h3>Snapshot đã lưu và giải trình</h3>
+  <% @snapshots.each do |snapshot| %>
+    <details><summary><%= snapshot.created_at %> — <%= snapshot.input_hash.first(12) %></summary>
+      <pre><%= JSON.pretty_generate(snapshot.report) %></pre>
+      <% snapshot.responses.order(:id).each do |response| %><p><%= response.user_id %>: <%= response.body %></p><% end %>
+      <%= form_tag project_qldapm_insight_response_path(@project.identifier), data: {turbo: false} do %>
+        <%= hidden_field_tag :snapshot_id, snapshot.id %><%= label_tag "body-#{snapshot.id}", "Giải trình/chỉnh dữ kiện (giữ bản gốc)" %>
+        <%= text_area_tag :body, nil, id: "body-#{snapshot.id}", required: true, maxlength: 4000 %>
+        <%= submit_tag "Thêm giải trình", class: "button" %>
+      <% end %>
+    </details>
+  <% end %>
+<% end %>

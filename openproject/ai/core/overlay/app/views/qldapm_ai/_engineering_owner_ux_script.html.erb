@@ -1,0 +1,48 @@
+  function qccUxEscape(value) {
+    return String(value == null ? 'Chưa có dữ liệu' : value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});
+  }
+  function qccTaskMatches(row, query, state) {
+    return (!query || String(row.search || '').toLocaleLowerCase().includes(query.toLocaleLowerCase())) && (!state || state === 'ALL' || row.state === state);
+  }
+  function qccApplyWorkFilters(root) {
+    root = root || document;
+    var search=document.getElementById('qcc-task-search'), filter=document.getElementById('qcc-task-state');
+    var count=0;
+    root.querySelectorAll('#qcc-tasks-table [data-work-row]').forEach(function(row){
+      var visible=qccTaskMatches(row.dataset,search ? search.value : '',filter ? filter.value : 'ALL');
+      row.hidden=!visible;if(visible)count++;
+    });
+    var empty=document.getElementById('qcc-task-filter-empty');if(empty && (root===document || root.id==='tab-backlog'))empty.hidden=count>0;
+    var planSearch=document.getElementById('qcc-plan-search');
+    root.querySelectorAll('[data-plan-group]').forEach(function(group){group.hidden=!!(planSearch && !group.dataset.search.toLocaleLowerCase().includes(planSearch.value.toLocaleLowerCase()));});
+  }
+  function qccCapturePanelState(node) {
+    if(!node.querySelectorAll)return null;
+    var state={values:{},open:[],selected:window.qccSelectedWork};
+    node.querySelectorAll('[data-qcc-preserve]').forEach(function(n){state.values[n.id]=n.value;});
+    node.querySelectorAll('details[data-preserve-key][open]').forEach(function(n){state.open.push(n.dataset.preserveKey);});
+    return state;
+  }
+  function qccRestorePanelState(node,state) {
+    if(!state || !node.querySelectorAll)return;
+    node.querySelectorAll('[data-qcc-preserve]').forEach(function(n){if(Object.prototype.hasOwnProperty.call(state.values,n.id))n.value=state.values[n.id];});
+    node.querySelectorAll('details[data-preserve-key]').forEach(function(n){n.open=state.open.includes(n.dataset.preserveKey);});
+    node.querySelectorAll('[data-work-row]').forEach(function(n){n.classList.toggle('qcc-work-selected',n.dataset.wpId===state.selected);});
+    qccApplyWorkFilters(node);
+  }
+  function qccExecutionSummary(data) {
+    var s=data.execution_summary || data.summary || data, b=s.budget || {}, f=s.failure || {}, r=s.resume || {}, c=s.checkpoint || {};
+    function field(label,value){return '<div><dt>'+qccUxEscape(label)+'</dt><dd>'+qccUxEscape(value)+'</dd></div>';}
+    var html='<h4>Execution Summary · '+(s.native_id ? 'WP #'+qccUxEscape(s.native_id) : 'WP chưa xác minh')+'</h4><p>'+qccUxEscape(s.title || data.request || data.unit)+'</p><dl class="qcc-summary-grid">';
+    html+=field('Attempt',s.attempt_status || data.state)+field('Engineering task status',s.task_status)+field('Native business status',s.native_status || 'UNKNOWN — xem Native WP')+field('Current / last stage',s.stage)+field('Agent',s.agent || s.last_agent);
+    html+=field('Failure category',f.category || 'Không có mã phân loại')+field('Nguyên nhân',f.message || s.blocked_reason || 'Không ghi nhận lý do')+field('Sự kiện cuối',(s.last_event || {}).event_type || s.last_event || s.updated_at);
+    html+=field('Calls used / cap',b.calls_used == null ? null : b.calls_used+' / '+(b.call_cap == null ? '?' : b.call_cap));
+    html+=field('Provider responses đã xác minh',b.provider_response_count)+field('Còn trong attempt',b.remaining)+field('Calls tích lũy',b.cumulative_calls);
+    var checkpointTime=c.updated_at || c.saved_at;
+    html+=field('Tokens đã ghi nhận',b.total_tokens_reported)+field('Nguồn usage',b.usage_source)+field('Checkpoint',checkpointTime && typeof formatVNDateTime==='function' ? formatVNDateTime(checkpointTime) : checkpointTime || (c.resumable ? 'Đã lưu' : 'Chưa xác minh'));
+    html+=field('Resume',r.eligible === true ? 'Có thể yêu cầu Resume' : 'Không / chưa xác minh')+field('Điều kiện / next action',r.reason)+field('Continuation còn lại',r.remaining_continuations);
+    html+=field('Run khi Resume',r.same_run_id === true ? 'Cùng run, attempt mới liên kết' : 'Xem policy / chưa xác minh');
+    html+='</dl><p class="qcc-text-muted">Attempt FAILED ≠ Work Package COMPLETED · Provider request SUCCESS ≠ Dev task SUCCESS</p>';
+    if(r.completed_steps)html+='<details><summary>Công việc đã lưu / phần còn lại</summary><pre>'+qccUxEscape(JSON.stringify({completed_steps:r.completed_steps,action:r.action},null,2))+'</pre></details>';
+    return html;
+  }

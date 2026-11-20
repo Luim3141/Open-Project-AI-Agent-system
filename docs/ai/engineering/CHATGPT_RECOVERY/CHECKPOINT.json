@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-01T04:34:48.074654+00:00",
+  "files": 18,
+  "archive": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\CHATGPT_RECOVERY\\run-20261101T035551Z\\candidate-source-tests-final.zip",
+  "sha256": "cb5897cef368e9465b7708bc500801b816b6ec037698cd3067161a1b9dbe6423",
+  "status": "CANDIDATE_READY_AWAITING_PRODUCTION_APPROVAL",
+  "candidate_images": [
+    {
+      "kind": "gateway",
+      "tag": "qldapm-ai:chatgpt-recovery-20261101-r2",
+      "id": "sha256:49a08540e14b5c4f2eb8a44f22b012baa575c2b2db5ba0b16b76eeb76852284b"
+    },
+    {
+      "kind": "core",
+      "tag": "qldapm-core:chatgpt-recovery-20261101-r1",
+      "id": "sha256:9b90e20fcb044c89b3260fc13f33c386923a6192a498f4655bd1272a44bbebb6"
+    }
+  ],
+  "current": {
+    "at": "2026-11-04T16:22:32.919239+00:00",
+    "status": "FUNCTIONAL_REPAIRS_VERIFIED_PERFORMANCE_GATE_OPEN",
+    "images": {
+      "gateway": "sha256:698224aa0ddc88808ebab30b4705dfe7050b09db67b8ae3fc4a569d6a8447e1c",
+      "core": "sha256:1a8f2528da78860faa69610568985471e26136d441a594f4f098c045ca181189",
+      "n8n": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269"
+    },
+    "evidence": "cc-stabilization/final-live-verification.json",
+    "next": "Performance gate remains open; do not replay coding or resume RAG/DR outside newest scope."
+  }
+}

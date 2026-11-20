@@ -1,0 +1,108 @@
+[
+  {
+    "id": "qldapmManualStatus",
+    "active": false,
+    "versionId": "ca0f86f6-d803-4556-84c5-229c7636c883",
+    "activeVersionId": null,
+    "settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "executionTimeout": 30,
+      "saveManualExecutions": true,
+      "saveDataSuccessExecution": "all",
+      "saveDataErrorExecution": "all",
+      "errorWorkflow": "qldapmWorkflowErrors"
+    },
+    "nodes": [
+      {
+        "name": "Manual status",
+        "type": "n8n-nodes-base.manualTrigger"
+      },
+      {
+        "name": "Command metadata",
+        "type": "n8n-nodes-base.set"
+      },
+      {
+        "name": "Sign command",
+        "type": "n8n-nodes-base.crypto"
+      },
+      {
+        "name": "Gateway status",
+        "type": "n8n-nodes-base.httpRequest"
+      }
+    ]
+  },
+  {
+    "id": "qldapmDailyBrief",
+    "active": true,
+    "versionId": "ff2dcc80-c891-4c06-b5c7-41bd70805c45",
+    "activeVersionId": "ff2dcc80-c891-4c06-b5c7-41bd70805c45",
+    "settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "executionTimeout": 60,
+      "saveManualExecutions": true,
+      "saveDataSuccessExecution": "all",
+      "saveDataErrorExecution": "all",
+      "errorWorkflow": "qldapmWorkflowErrors"
+    },
+    "nodes": [
+      {
+        "name": "Manual status",
+        "type": "n8n-nodes-base.manualTrigger"
+      },
+      {
+        "name": "Command metadata",
+        "type": "n8n-nodes-base.set"
+      },
+      {
+        "name": "Sign command",
+        "type": "n8n-nodes-base.crypto"
+      },
+      {
+        "name": "Gateway status",
+        "type": "n8n-nodes-base.httpRequest"
+      },
+      {
+        "name": "Daily 09:00",
+        "type": "n8n-nodes-base.scheduleTrigger"
+      },
+      {
+        "name": "After startup",
+        "type": "n8n-nodes-base.n8nTrigger"
+      }
+    ]
+  },
+  {
+    "id": "qldapmWorkflowErrors",
+    "active": true,
+    "versionId": "543eb013-1975-4a77-b5de-2b05a09057eb",
+    "activeVersionId": "543eb013-1975-4a77-b5de-2b05a09057eb",
+    "settings": {
+      "executionOrder": "v1",
+      "timezone": "Asia/Bangkok",
+      "executionTimeout": 30,
+      "saveManualExecutions": true,
+      "saveDataSuccessExecution": "all",
+      "saveDataErrorExecution": "all"
+    },
+    "nodes": [
+      {
+        "name": "Workflow error",
+        "type": "n8n-nodes-base.errorTrigger"
+      },
+      {
+        "name": "Command metadata",
+        "type": "n8n-nodes-base.set"
+      },
+      {
+        "name": "Sign command",
+        "type": "n8n-nodes-base.crypto"
+      },
+      {
+        "name": "Gateway status",
+        "type": "n8n-nodes-base.httpRequest"
+      }
+    ]
+  }
+]

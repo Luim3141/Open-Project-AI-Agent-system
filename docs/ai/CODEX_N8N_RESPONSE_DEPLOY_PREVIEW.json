@@ -1,0 +1,24 @@
+{
+  "workflows": [
+    {
+      "code": "WF04",
+      "id": "elfapV5D2PTnLiHW",
+      "old_version_id": "29bc5da7-dbd5-4630-ae4e-2029bb5a3c70"
+    },
+    {
+      "code": "WF05",
+      "id": "xCZFw45fmDQG5gNq",
+      "old_version_id": "e110c3e9-9391-4fb3-b908-a4f83c34824c"
+    },
+    {
+      "code": "WF06",
+      "id": "Jq18aFSqfuUybEic",
+      "old_version_id": "317b66fe-1d97-4b98-888c-cd8a5cda481c"
+    }
+  ],
+  "candidate_sha256": "e7232cb4b07254a765f84b10e025ab7691b634a25d567901319dffcae2d8fc43",
+  "changes": "Propagate Gateway HTTP status; expose actual proposal lifecycle; no raw mutation or shared PM authority",
+  "tests": "5 source/Node formatter tests PASS",
+  "native_write_e2e": false,
+  "rollback": "Private n8n-pre-response-propagation.json; restore nodes/settings/connections and reactivate then read back"
+}

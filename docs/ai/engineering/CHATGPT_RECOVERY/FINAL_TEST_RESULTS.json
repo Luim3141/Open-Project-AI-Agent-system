@@ -1,0 +1,450 @@
+{
+  "schema_version": 11,
+  "snapshot_utc": "2026-11-05T04:27:53.777759+00:00",
+  "overall_status": "AI_CONTROL_CENTER_DEMO_READY",
+  "current_images": {
+    "gateway": "sha256:77213702ef933943a1fbee6feffc0d410062b8f16928dd3d1621f9489e581a12",
+    "core": "sha256:5ee7a24482be81dd7312e8c4560773aede32ec9f8bc2f6da9593c9f223e1b822",
+    "n8n": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269"
+  },
+  "serving_source": "runtime-recovery/final-live-verification.json",
+  "main_delegated": {
+    "status": "MAIN_BUSINESS_VERIFIED",
+    "principal": 25,
+    "fixture": {
+      "id": 395,
+      "version": 3,
+      "status_id": 37,
+      "status": "IN ANALYSIS",
+      "description": "OWNER-DELEGATED-ba87296691fb\nDelegated fixture state: BASELINE"
+    },
+    "delegation_enabled": false,
+    "n8n_executions": 9
+  },
+  "engineering": {
+    "mode": "PAUSED",
+    "active": 0,
+    "worker_age_seconds": 7.005966663360596,
+    "worker_run_id": null,
+    "provider_receipts": 534,
+    "delegation": {
+      "enabled": 0,
+      "revision": 2
+    },
+    "runs": {
+      "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6": {
+        "queue_state": "finished",
+        "result_status": "succeeded",
+        "recovery_count": 3,
+        "generation_calls": 45
+      },
+      "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795": {
+        "queue_state": "finished",
+        "result_status": "succeeded",
+        "recovery_count": 5,
+        "generation_calls": 43
+      }
+    },
+    "desired_mode": "PAUSED",
+    "effective_state": "PAUSED",
+    "revision": 50,
+    "queue": {
+      "state": "EMPTY",
+      "ready": 0,
+      "active": 0,
+      "blocked": 0,
+      "eligible_unit": null,
+      "reason_code": "NO_ELIGIBLE_WORK"
+    },
+    "worker_id": "637c6a1b-ebcb-4870-a4c4-06e49ec5e4da",
+    "provider_health": {
+      "state": "READINESS_STALE",
+      "model": "gemini-3.5-flash-lite",
+      "project_limits": {
+        "rpd": 500,
+        "rpm": 15,
+        "tpm": 250000
+      },
+      "engineering_limits": {
+        "rpd": 450,
+        "rpm": 10,
+        "tpm": 175000
+      },
+      "last_successful_probe": 1793851553.8767874,
+      "retry_at": null,
+      "last_provider_http": 200,
+      "network_checked_now": false,
+      "source": "PERSISTED_PROJECT_QUOTA_AND_PROVIDER_RECEIPTS"
+    },
+    "coding_runs": 21
+  },
+  "owner_override": {
+    "actor": 18,
+    "scope": "safe control UAT OFF/AUTO_IDLE/PAUSED",
+    "revision": 50,
+    "outcome": "PAUSED",
+    "evidence": "runtime-recovery/final-live-verification.json"
+  },
+  "project5": {
+    "status": "PASS",
+    "scope": "13scopes Project5 plus global config/security",
+    "identical_tables": 13,
+    "counts": {
+      "work_packages": 341,
+      "projects": 1,
+      "members": 5,
+      "member_roles": 5,
+      "versions": 7,
+      "enabled_modules": 10,
+      "relations": 344,
+      "journals": 968,
+      "roles": 16,
+      "role_permissions": 366,
+      "workflows": 1370,
+      "settings": 202,
+      "users": 11
+    },
+    "hashes": {
+      "work_packages": "e986cf7dd3a4fe5c0134b4135eb73fa99a2a244cf994fb95afd2bd1f53b9eed6",
+      "projects": "e04758614fe517f3c3e5b72b2697f3106160006e42db7f714516e2aad0fcf8f4",
+      "members": "876d11e23db3a4bc6c031e9ea788daf4ecbb211460ad44bb38a5354839bb7551",
+      "member_roles": "7ef14726fb2dd61fad2b9b8bf8e5062c2ef98475d6e640307116a74b92ddcf1e",
+      "versions": "47ae957316e138bb7c10479de5c8b0c0d951a916c0990470596ae4f963b864f2",
+      "enabled_modules": "331c80f8c39fefcf67a96f1801e9d137b46f5e0045b61ecbcd0c5babf5aea19c",
+      "relations": "2c0b663e376fdb4d7283bfd8a040e87c9029149d69ae283a91465f9c7828dcca",
+      "journals": "66799a695a6d157526f5c92f33e596907bec1e5f34288f84b2da77c521d2c067",
+      "roles": "950fbf0eb1ce7056fc831c0233666b4052aaac192a7f82f709f452f81bd16004",
+      "role_permissions": "b45bf3bde8d4a53b53dfce9e3ba3bd98ca63b530b24206de0acd4864d87fe413",
+      "workflows": "e99b6f1608bea5633ca61928cc31759160f453c0d1710226398e44469a635448",
+      "settings": "1b5e2d20f959025a88f2aa6ec4b17556bd5196933b20453207badc61c7ae679e",
+      "users": "be328a6c5418768eb33dd3fbcf9d65adf3d6060aa28e7e8d8c3bd3464fff449e"
+    },
+    "existing_user_timestamp_deltas": {},
+    "evidence": "runtime-recovery/native-integrity-after.json"
+  },
+  "checks": {
+    "runtime": "CLI_RPC_DOCKER_TRANSPORT_WORKER_PASS_NO_GENERATION",
+    "persistent_state": "RESTART_AND_POST_UAT_INVARIANTS_VERIFIED",
+    "main_business": "MAIN_UI_GATEWAY_SIGNED_N8N_NATIVE_READBACK_PASS",
+    "project5": "PASS",
+    "performance_gate": "WAIVED_BY_OWNER_LATEST_SPEC",
+    "core_controls": "MAIN_UI_PASS_SAFE_POSTRESTART",
+    "provider": "ONE_ISOLATED_SMOKE_HTTP200_THEN_NORMAL_TTL_STALE",
+    "desktop_restart": "DOCKER_DESKTOP_RESTART_NOT_EXECUTED"
+  },
+  "semantic_rag": {
+    "utc": "2026-11-04T09:25:21.936941+00:00",
+    "status": "FAILED_QUALIFICATION_NOT_DEPLOYED",
+    "reviewer": "root assistant source review; NOT independent human ground truth; only prior WP392 intent is human-confirmed",
+    "retrieval": {
+      "scope": "Observed correlated DEV, exact frozen candidate corpus, actual BGE/Qdrant906facts + FTS/identity union",
+      "hit_at_5": 1.0,
+      "positives": 13
+    },
+    "six_case_pilot": {
+      "positive_source_hits": 4,
+      "positive_queries": 4,
+      "strict_complete_source_supported_answers": 3,
+      "negative_answers": 0,
+      "negative_queries": 2,
+      "warm_seconds": [
+        2.827,
+        2.07,
+        2.758,
+        1.424,
+        1.577
+      ],
+      "source_issue": "CRUD selection includes parent379 copied assignment objective as a second answer identity; child381 is relevant, but complete unambiguous unit answer not accepted.",
+      "limits": "Six correlated questions cannot establish representative <=5% FPR."
+    },
+    "expanded_dev": {
+      "status": "STOPPED",
+      "reason": "WARM_QUERY_OVER_5_SECONDS",
+      "evaluated_positive_answers": 4,
+      "complete_supported_answers": 2,
+      "not_supported": [
+        "dev:create_list:vi",
+        "dev:create_list:en"
+      ],
+      "support_reason": "Only unit identifier/name was selected; it does not establish the complete initial/order plus create/list and SQLite requirements.",
+      "stopping_warm_seconds": 5.944,
+      "warm_gate_seconds": 5,
+      "new_generation_requests": 3,
+      "negatives_evaluated_in_expanded_run": 0,
+      "representative_fpr": null
+    },
+    "citation_integrity": {
+      "checked": 17,
+      "hash_offset_native_id_version_errors": 0,
+      "scope": "Candidate source identity only; exact quote is not semantic support"
+    },
+    "main_semantic_e2e": "NOT_RUN_NO_QUALIFIED_CANDIDATE",
+    "locked_holdout": "NOT_CREATED_OR_SCORED_AFTER_FAILED_DEV_GATE",
+    "old_holdout_access": false,
+    "main_rag_changed": false,
+    "gemini_generation_calls": 0,
+    "this_continuation_local_4b_generation_requests": 11,
+    "next_required": "Fix complete-evidence/answerability and worst-case latency without changing gates, then freeze a broader source-reviewed benchmark; qualify before serving integration."
+  },
+  "knowledge_integrity": {
+    "report_id": "04e5b97f-e663-5eb9-9cb3-27c47ca94c67",
+    "status": "PARTIAL_UNMATCHED_POINTS",
+    "documents": 33,
+    "chunks": 337,
+    "points_in_project": 345,
+    "missing_native_ids": [],
+    "missing_point_ids": [],
+    "payload_mismatch_ids": [],
+    "invalid_chunk_hash_ids": [],
+    "invalid_source_hashes": [],
+    "fts_error_sources": [],
+    "orphan_fts_rows": 0,
+    "stale_sources": [],
+    "unmatched_points": [
+      {
+        "id": "22660fa4-27fb-527b-bb31-8a13062037a9",
+        "source_id": "op:wp:385"
+      },
+      {
+        "id": "56550b16-8ede-51c9-a5e5-655603cc30fe",
+        "source_id": "actor:20:wp:385"
+      },
+      {
+        "id": "606cd2fb-02ec-5782-b14d-702298d20bb2",
+        "source_id": "op:wp:385"
+      },
+      {
+        "id": "8355a4c7-a640-56ce-8d22-f68161be2f31",
+        "source_id": "actor:20:wp:385"
+      },
+      {
+        "id": "97de4eb8-3834-5047-867c-5387901b67b4",
+        "source_id": "actor:20:wp:385"
+      },
+      {
+        "id": "b29c3d48-fda6-5cae-9151-da0e86121ddc",
+        "source_id": "op:wp:385"
+      },
+      {
+        "id": "d228f229-d38e-58a6-a1ee-c6492e46a45b",
+        "source_id": "actor:20:wp:385"
+      },
+      {
+        "id": "ed6c8163-b2a1-52fe-8b12-2137fc35c6cf",
+        "source_id": "op:wp:385"
+      }
+    ]
+  },
+  "wf12": {
+    "definition": "VERIFIED",
+    "scheduled_clone": "PASS",
+    "main_manual": "VERIFIED_HISTORICAL",
+    "current_wallclock": "WAITING_FOR_SCHEDULE",
+    "next_local": "2026-11-06 17:00 Asia/Bangkok",
+    "published_cron": "0 0 17 * * 5",
+    "timezone": "Asia/Bangkok",
+    "ui_schedule": "Independent Gateway daemon Monday09:00 Asia/Ho_Chi_Minh; UI Save does not change WF12",
+    "evidence": "runtime-recovery/n8n-private-contract-baseline.json"
+  },
+  "human_browser_uat": "AFFECTED_MAIN_UI_VERIFIED_BY_CUA_OWNER_SESSION; UNCHANGED_PRIOR_BINDINGS_REUSED",
+  "previous_results_file": "runtime-recovery/previous-results-schema10.json",
+  "paid_calls": 0,
+  "new_coding_runs": 0,
+  "github_demo_frozen": true,
+  "new_subagents": 0,
+  "control_center_stabilization": {
+    "test_count": 166,
+    "images": {
+      "gateway": "sha256:698224aa0ddc88808ebab30b4705dfe7050b09db67b8ae3fc4a569d6a8447e1c",
+      "core": "sha256:1a8f2528da78860faa69610568985471e26136d441a594f4f098c045ca181189",
+      "n8n": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269"
+    },
+    "runtime_evidence": "cc-stabilization/final-live-verification.json",
+    "clone_evidence": "cc-stabilization/clone-qualification-caption.json",
+    "browser_evidence": "cc-stabilization/browser-uat.json",
+    "data_integrity": "cc-stabilization/native-integrity-after.json",
+    "performance_gate": "OPEN",
+    "rag_algorithms": "UNCHANGED_FAILED_FROZEN",
+    "no_new_coding_runs": true,
+    "provider_receipts": 531,
+    "final_mode": "PAUSED",
+    "delegation": "OFF",
+    "authority": "HISTORICAL_PREVIOUS_PHASE"
+  },
+  "demo_ready": true,
+  "previous_current_checkpoint": {
+    "schema_version": 10,
+    "snapshot_utc": "2026-11-04T23:27:06.261431+00:00",
+    "overall_status": "CORE_SAFE_ACTIONS_MAIN_VERIFIED_PERFORMANCE_GATE_OPEN",
+    "current_images": {
+      "gateway": "sha256:77213702ef933943a1fbee6feffc0d410062b8f16928dd3d1621f9489e581a12",
+      "core": "sha256:5ee7a24482be81dd7312e8c4560773aede32ec9f8bc2f6da9593c9f223e1b822",
+      "n8n": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269"
+    },
+    "serving_source": "button-audit/final-live-verification.json"
+  },
+  "button_audit": {
+    "counts": {
+      "NOT_TESTED": 2,
+      "MAIN_UI_PASS": 57,
+      "CLONE_PASS_ONLY": 7,
+      "SAFETY_NOT_EXERCISED": 4
+    },
+    "count_scope": "70source declaration sites, representative binding coverage; final DOM567button instances not individually promoted",
+    "matrix": "button-audit/button-acceptance.csv",
+    "acceptance": "button-audit/ACCEPTANCE.md",
+    "tests": 221,
+    "exact_clone": "button-audit/clone-qualification-caption.json",
+    "browser": "button-audit/browser-uat.json",
+    "main_control": {
+      "mode": "PAUSED",
+      "revision": 44,
+      "queue": 0,
+      "delegation": false
+    },
+    "counters": {
+      "provider_receipts": 531,
+      "coding_runs": 21,
+      "runs": [
+        {
+          "id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+          "status": "succeeded"
+        },
+        {
+          "id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+          "status": "succeeded"
+        }
+      ]
+    },
+    "project5": "button-audit/native-integrity-after.json",
+    "performance": {
+      "gateway_samples": 30,
+      "gateway_p50_seconds": 2.4294000000000002,
+      "gateway_p95_seconds": 5.8609,
+      "browser_paint": "NOT_MEASURED",
+      "initial_usable_gate": "NOT_ACCEPTED",
+      "status": "P0_OPEN"
+    },
+    "openclaw_health": "DOWN",
+    "remaining": [
+      "Performance gate and precise Rails/browser timings",
+      "OpenClaw Gateway readiness",
+      "Authenticated GitHub/n8n browser content",
+      "Two server-rendered toast branches not exercised"
+    ],
+    "scope_exclusions": [
+      "Semantic RAG frozen",
+      "No new coding admission",
+      "No merge/push/MTM change",
+      "No DR",
+      "Project5 read only"
+    ],
+    "automation": "button-audit/automation-one-shot.json",
+    "historical_sections_below": "Other phase sections retained as historical evidence; current serving authority is above.",
+    "authority": "HISTORICAL_UNCHANGED_BINDINGS_BASELINE_NOT_CURRENT_RUNTIME",
+    "reused": true
+  },
+  "demo_ready_scope": "FROZEN_FUNCTIONAL_DEMO_AND_AUTHORIZED_COORDINATED_QLDAPM_RESTART_FALLBACK; NOT_FULL_DESKTOP_COLD_BOOT_OR_FRESH_CODING_E2E",
+  "checks_previous_phase": {
+    "immutable_gateway": {
+      "count": 59,
+      "status": "PASS",
+      "evidence": "autonomous-final/image-regression.json"
+    },
+    "github_regression": {
+      "count": 17,
+      "status": "PASS",
+      "evidence": "autonomous-final/github-regression.json"
+    },
+    "rag_research": {
+      "count": 63,
+      "status": "PASS",
+      "command": "python -m unittest test_source_spans test_readable_spans test_evidence_validation test_native_corpus_candidate test_business_spans test_business_candidate test_business_facts test_fact_candidate",
+      "qualification": false
+    },
+    "native_n8n_clone": {
+      "status": "BUSINESS_PASS_IN_CLONE",
+      "evidence": "autonomous-final/delegated-clone-attempt5.json",
+      "full_file_status": "PARTIAL; Core harness fixed/verified separately"
+    },
+    "core_rails_clone": {
+      "status": "PASS",
+      "human_browser": false,
+      "evidence": "autonomous-final/delegated-core-clone.json"
+    }
+  },
+  "runtime_recovery": {
+    "acceptance": "runtime-recovery/ACCEPTANCE.md",
+    "checklist": "runtime-recovery/DEMO_STARTUP_CHECKLIST.md",
+    "release": "runtime-recovery/host-release.json",
+    "host_source_hashes": {
+      "engineering_worker.py": "0f030025409c9d386a494e77f74b821d6d18dedf641e012e6ec259067af52619",
+      "openclaw_health.py": "85b9ab64acd37e8814141f2034a239cb7cd58f239a5113446743f0679016bc74",
+      "Start-EngineeringDelivery.ps1": "793495ec8976f27c794aa925571dd0af94c8d11cf70e7d9202ac1054767b1eb1"
+    },
+    "tests": {
+      "targeted": 44,
+      "result": "PASS",
+      "modules": [
+        "test_openclaw_startup_recovery",
+        "test_phase31_integration_health",
+        "test_engineering_worker_recovery",
+        "test_engineering_worker_process",
+        "test_engineering_base_import",
+        "test_engineering_fencing"
+      ],
+      "final_focused": {
+        "count": 40,
+        "result": "PASS",
+        "modules": [
+          "test_openclaw_startup_recovery",
+          "test_engineering_fencing",
+          "test_engineering_worker_process",
+          "test_engineering_delivery_recovery"
+        ]
+      },
+      "additional_role_provider_contracts": {
+        "count": 22,
+        "result": "PASS",
+        "modules": [
+          "test_agent_registry",
+          "test_engineering_delivery_recovery",
+          "test_openclaw_provider_gate",
+          "test_provider_gate_http"
+        ]
+      }
+    },
+    "tests_note": "Suites overlap; no sum as unique new test count.221unchanged baseline reused.",
+    "browser": "runtime-recovery/browser-uat.json",
+    "runtime": "runtime-recovery/runtime-final.json",
+    "rollout": "v1 full coordinated containers then v2 host ownership refinement with actual Task restart",
+    "startup_generation_calls": 0,
+    "authorized_isolated_provider_smokes": 1,
+    "provider_tokens": 24,
+    "provider_receipt": "14674050-4230-4ef9-a81a-651ffddc9bba",
+    "legitimate_deltas": {
+      "control_revision": "47→50 by explicit OFF/AUTO_IDLE/PAUSED UAT",
+      "provider_receipts": "533→534: exactly one authorized isolated fixed-public generation",
+      "gemini_usage": "One real shared-limiter reservation/settlement, limits unchanged",
+      "pending_requests": "Original38 byte-for-byte preserved; one new conservative reservation from rejected no-work request62c2... has a durable NO_ELIGIBLE_WORK rejection; no admission/Native effect. No SQLite state was manually completed.",
+      "business": "One read-only Sprint Risk source/event/report+notification and GitHub Sync; no Native writes"
+    },
+    "desktop_restart": "DOCKER_DESKTOP_RESTART_NOT_EXECUTED_BIRDSONG_RUNNING",
+    "wsl": "USER_SERVICE_STOP_START_AND_CRASH_PASS; DISTRO_TERMINATION_NOT_EXECUTED",
+    "not_live_verified": [
+      "fresh per-role coding E2E",
+      "active Resume/Cancel after restart",
+      "crash/checkpoint during active task",
+      "Windows reboot/full Desktop cold boot"
+    ],
+    "unchanged": [
+      "container images",
+      "provider key/config/budget limits",
+      "16n8n published definitions/4credential cipher pins",
+      "Native six RFR/v10",
+      "queue/runs/checkpoints/plans protected hashes",
+      "Project5",
+      "Semantic RAG FAILED/FROZEN"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "status": "RED_REPRODUCED_THEN_GREEN",
+  "red_image": "sha256:9e1d53e6d1d1894e50db3bb22d8ff7fbb6a45d1bde3473437a831e9fe3b5257b",
+  "red_test": "test_cc_background_idle.IdlePollingTests.test_warm_engineering_schema_reads_do_not_wait_for_an_unrelated_writer",
+  "red_failure": "sqlite3.OperationalError: database is locked at engineering.setup INSERT OR IGNORE",
+  "green_evidence": "image-regression-reports.json",
+  "scope": "Two real SQLite connections; unrelated writer held, initialized schema must remain usable"
+}

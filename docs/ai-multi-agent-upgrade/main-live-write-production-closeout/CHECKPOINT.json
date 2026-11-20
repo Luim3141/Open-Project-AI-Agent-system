@@ -1,0 +1,28 @@
+{
+  "phase": "READ_FIX_DEPLOYING",
+  "qualification": {
+    "source_sha256": "4f1e9486d13d1e1a58ca3b877caaddda91c35327fc86d887bc4ddfd8b141cdc2",
+    "gateway_image": "sha256:3f88fd152fe6d06d71b6fb26bf7e58a2e8f4614e1f7c39ec4676a2173f6fff69",
+    "core_image": "sha256:a3214219127e61ff934d33b0c45031df8a315e6a5f44ff9754c7985e2adcbcbb",
+    "phase": "UNIT_SECURITY_PARITY_PASS_CLONE_PENDING",
+    "packaged_gateway_files": 55,
+    "windows_exit": 0,
+    "linux_exit": 0
+  },
+  "serving_unchanged": false,
+  "new_live_runs": 1,
+  "google_http": 4,
+  "native_main_mutations": 0,
+  "owner_authorized": "Gateway+web deployment after clone; one read-only Live run <=6HTTP/3generations; never recreate367",
+  "next": [
+    "Wait deployment-read-fix.json MAIN_DEPLOYED_HEALTH_PASS",
+    "Verify pre-live again using verify_main.py",
+    "One fresh PM UI gemini_read request with same exact Owner prompt; hard1gen2HTTP; never resubmit failed run",
+    "Save live-run.json for new UUID then verify_main.py and UI/receipts",
+    "Four final reports + checkpoints; no more Google beyond total6HTTP/3gen"
+  ],
+  "generations": 2,
+  "remaining_http": 2,
+  "remaining_generations": 1,
+  "failed_run": "41d33283-69dd-4c6a-8cf9-41e5498e28ac"
+}

@@ -1,0 +1,12 @@
+flowchart LR
+  n0["CODE REVIEW"]
+  n1["READY FOR TEST"]
+  n2["IN TESTING"]
+  n3["REVIEW"]
+  n4["READY FOR RELEASE"]
+  n5["Done"]
+  n0 -->|"7  Approve code"| n1
+  n1 -->|"8  Start test"| n2
+  n2 -->|"10  Pass testing"| n3
+  n3 -->|"13  Approve"| n4
+  n4 -->|"14  Deploy"| n5

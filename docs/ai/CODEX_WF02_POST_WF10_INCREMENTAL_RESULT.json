@@ -1,0 +1,199 @@
+{
+  "observed_at": "2026-10-24T13:29:41.603169+00:00",
+  "status": "PASS",
+  "business_status": "PARTIAL",
+  "scope": "Actual automatic Main scans and durable333-ID inventory; positive create/update/hash/withdrawal/retry/restart qualified in isolated component integration only",
+  "checks": {
+    "automatic_own_owner_scan": {
+      "status": "PASS",
+      "evidence": {
+        "actor": 18,
+        "authority": "machine",
+        "changed": 0,
+        "inventory_sha256": "2bbb759dd3608f7db9b52e48e158e9cee3b167926fb40715c3f53fb686d77e71",
+        "jobs": [],
+        "model_calls": 0,
+        "native_writes": 0,
+        "not_visible_retained": 0,
+        "observed_at": 1792848506.1930861,
+        "physical_deletion": "DENIED_WITHOUT_TRUSTED_DELETE_PROOF",
+        "project_id": 5,
+        "state": "OBSERVED",
+        "vector_integrity": "NOT_CHECKED_USE_KNOWLEDGE_INTEGRITY",
+        "visibility_policy": "Fresh Native collection gates retrieval; withdrawn index content is retained",
+        "visibility_withdrawn_ids": [],
+        "visible": 333,
+        "generation": 265
+      }
+    },
+    "automatic_next_generation_without_sync_trigger": {
+      "status": "PASS",
+      "evidence": {
+        "before_generation": 265,
+        "after": {
+          "actor": 18,
+          "authority": "machine",
+          "changed": 0,
+          "inventory_sha256": "2bbb759dd3608f7db9b52e48e158e9cee3b167926fb40715c3f53fb686d77e71",
+          "jobs": [],
+          "model_calls": 0,
+          "native_writes": 0,
+          "not_visible_retained": 0,
+          "observed_at": 1792848568.0529244,
+          "physical_deletion": "DENIED_WITHOUT_TRUSTED_DELETE_PROOF",
+          "project_id": 5,
+          "state": "OBSERVED",
+          "vector_integrity": "NOT_CHECKED_USE_KNOWLEDGE_INTEGRITY",
+          "visibility_policy": "Fresh Native collection gates retrieval; withdrawn index content is retained",
+          "visibility_withdrawn_ids": [],
+          "visible": 333,
+          "generation": 266
+        }
+      }
+    },
+    "pm_manual_scan_preserved": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "result": {
+          "actor": 19,
+          "authority": "actor",
+          "changed": 0,
+          "generation": 1,
+          "inventory_sha256": "2bbb759dd3608f7db9b52e48e158e9cee3b167926fb40715c3f53fb686d77e71",
+          "jobs": [],
+          "model_calls": 0,
+          "native_writes": 0,
+          "not_visible_retained": 0,
+          "observed_at": 1792832783.9975052,
+          "physical_deletion": "DENIED_WITHOUT_TRUSTED_DELETE_PROOF",
+          "project_id": 5,
+          "state": "OBSERVED",
+          "vector_integrity": "NOT_CHECKED_USE_KNOWLEDGE_INTEGRITY",
+          "visibility_policy": "Fresh Native collection gates retrieval; withdrawn index content is retained",
+          "visibility_withdrawn_ids": [],
+          "visible": 333
+        }
+      }
+    },
+    "scan_request_idempotency": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "20_cannot_escalate_scan": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "20_own_status_not_owner_inventory": {
+      "status": "PASS",
+      "evidence": {
+        "state": "NOT_OBSERVED",
+        "generation": 0,
+        "actor": 20,
+        "project_id": 5
+      }
+    },
+    "21_cannot_escalate_scan": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "21_own_status_not_owner_inventory": {
+      "status": "PASS",
+      "evidence": {
+        "state": "NOT_OBSERVED",
+        "generation": 0,
+        "actor": 21,
+        "project_id": 5
+      }
+    },
+    "22_cannot_escalate_scan": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "22_own_status_not_owner_inventory": {
+      "status": "PASS",
+      "evidence": {
+        "state": "NOT_OBSERVED",
+        "generation": 0,
+        "actor": 22,
+        "project_id": 5
+      }
+    },
+    "23_cannot_escalate_scan": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "23_own_status_not_owner_inventory": {
+      "status": "PASS",
+      "evidence": {
+        "state": "NOT_OBSERVED",
+        "generation": 0,
+        "actor": 23,
+        "project_id": 5
+      }
+    },
+    "host_path": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "file_source": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "native_target_in_bulk_operation": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "no_native_refresh_jobs_or_provider_mutation": {
+      "status": "PASS",
+      "evidence": {
+        "inventory": [
+          [
+            18,
+            5,
+            333,
+            333
+          ],
+          [
+            19,
+            5,
+            333,
+            333
+          ]
+        ],
+        "ledger": {
+          "gemini_call_receipts": 123,
+          "gemini_usage": 128,
+          "proposals": 48,
+          "knowledge_sync": 4
+        },
+        "queue_states": [
+          [
+            "verified",
+            4
+          ]
+        ]
+      }
+    }
+  },
+  "native_writes": 0,
+  "model_starts": 0,
+  "physical_delete": "BLOCKED_TRUSTED_DELETE_PROOF_REQUIRED",
+  "positive_main_external_event": "NOT_TESTED_NO_NEW_NATIVE_MUTATION_APPROVAL"
+}

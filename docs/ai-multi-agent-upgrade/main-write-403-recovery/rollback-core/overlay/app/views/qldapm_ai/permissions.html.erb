@@ -1,0 +1,25 @@
+<h2>Role &amp; AI Permissions</h2>
+<% content_for :header_tags do %>
+ <style>
+ .qldapm-permissions{max-width:100%;overflow:auto;margin:20px 0}.qldapm-permissions table{width:100%;border-collapse:collapse}
+ .qldapm-permissions th,.qldapm-permissions td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid #d0d7de;overflow-wrap:anywhere}
+ .qldapm-permissions thead{background:var(--bgColor-muted,#f3f6fa)}.qldapm-permissions caption{text-align:left;font-weight:600;margin:12px 0}
+ </style>
+<% end %>
+<div class="qldapm-permissions">
+<% if @error %><p role="alert"><%= @error %></p><% end %>
+<% if @permissions %>
+ <p>Project <%= @permissions["project_id"] %> · Actor <%= @permissions["actor"] %> · Role <%= @permissions["role"] %>. Chỉ giám sát; không cấp quyền tại trang này.</p>
+ <p>Chỉ PM được ghi nghiệp vụ; workflow, evidence, kiểm tra phiên bản và reviewer độc lập vẫn bắt buộc.</p>
+ <table><caption>Ma trận quyền theo chính sách</caption><thead><tr><th scope="col">Role</th><th scope="col">Quyền tối đa</th></tr></thead><tbody>
+  <% (@permissions.dig("native", "matrix") || {}).each do |role, names| %><tr><th scope="row"><%= role %></th><td><%= role == "PM" ? "Quản lý công việc, Boards, Sprint, Backlog; duyệt đề xuất. Tuân thủ project scope, workflow và confirmation." : "Đọc, tìm kiếm, phân tích, báo cáo, xuất dữ liệu và bình luận. Không sửa công việc hoặc Boards, không duyệt thay PM." %><details><summary>Danh sách quyền native tối đa</summary><%= names.join(", ") %></details></td></tr><% end %>
+ </tbody></table>
+ <table><caption>Gemini / Gateway tools của tài khoản hiện tại</caption><thead><tr><th scope="col">Tool</th><th scope="col">Cho phép</th><th scope="col">Lý do</th></tr></thead><tbody>
+  <% @permissions["tools"].each do |tool| %><tr><th scope="row"><%= tool["name"] %></th><td><%= tool["allowed"] ? "Cho phép theo role" : "Từ chối" %></td><td><%= tool["reason"] || "Vẫn kiểm tra quyền native, chế độ và dữ liệu tại thời điểm thực thi." %></td></tr><% end %>
+ </tbody></table>
+ <details><summary>Quyền native thực tế sau tổng hợp role</summary><pre><%= JSON.pretty_generate(@permissions["native"]) %></pre></details>
+ <table><caption>Audit Log của Gemini trong project</caption><thead><tr><th>Actor</th><th>Action</th><th>Resource</th><th>Time</th><th>Result</th></tr></thead><tbody>
+ <% Array(@history&.fetch("project_audit", [])).each do |event| %><tr><td><%= event["actor"] %></td><td><%= event["action"] %></td><td><%= event["target"] %></td><td><%= Time.at(event["at"]).in_time_zone("Asia/Bangkok") %></td><td><%= event["outcome"] %></td></tr><% end %>
+ </tbody></table>
+<% end %>
+</div>

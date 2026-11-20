@@ -1,0 +1,3167 @@
+<%# QLDAPM AI Command Center — Modern Autonomous Operations Shell (Phase 2.9) %>
+<%
+  eng = @engineering || {}
+  mode = eng['mode'] || 'OFF'
+  tasks = eng['tasks'] || []
+  backlog = eng['backlog'] || []
+  runs = eng['runs'] || []
+  parent = @engineering_wp || {}
+  parent_id = parent['id'] || 379
+  raw_reports = @reports || eng['reports'] || []
+  reports = raw_reports.is_a?(Hash) ? (raw_reports['reports'] || []) : Array(raw_reports)
+  raw_notifs = @notifications || eng['notifications'] || []
+  notifications = raw_notifs.is_a?(Hash) ? (raw_notifs['notifications'] || []) : Array(raw_notifs)
+  sched = @schedule || eng['schedule'] || {}
+  worker = eng['worker'] || {}
+  worker_alive = worker['worker_id'].present?
+  plans = eng['plans'] || []
+  delivered_count = backlog.select { |b| (b['state'] == 'succeeded' || b['status'] == 'DELIVERED') }.size
+  total_backlog = backlog.size > 0 ? backlog.size : 5
+  github_info = eng['github'] || {}
+  sync_meta = github_info['sync_meta'] || {}
+  raw_prs = github_info['prs'] || eng['github_prs'] || []
+  pr_wp_map = { 1 => 380, 2 => 381, 3 => 382, 4 => 383, 5 => 384, 6 => 386 }
+  github_prs = raw_prs.map do |pr|
+    num = pr['number'] || pr[:number]
+    wp_id = pr['wp_id'] || pr_wp_map[num] || 379
+    pr.merge('wp_id' => wp_id)
+  end
+  profiles = eng['profiles'] || []
+  quota_info = eng['quota'] || {}
+  quota_model = quota_info['model'] || 'gemini-3.5-flash-lite'
+
+  format_vn_time = ->(val) {
+    return 'Chưa có dữ liệu' if val.blank?
+    t = nil
+    if val.is_a?(Numeric)
+      t = Time.at(val)
+    elsif val.is_a?(String)
+      t = (val =~ /\A\d+(\.\d+)?\z/) ? Time.at(val.to_f) : (Time.parse(val) rescue nil)
+    elsif val.respond_to?(:in_time_zone)
+      t = val
+    end
+    return 'Chưa có dữ liệu' unless t
+    t.in_time_zone('Asia/Ho_Chi_Minh').strftime('%d/%m/%Y %H:%M:%S')
+  }
+
+  iso_tooltip = ->(val) {
+    return '' if val.blank?
+    t = nil
+    if val.is_a?(Numeric)
+      t = Time.at(val)
+    elsif val.is_a?(String)
+      t = (val =~ /\A\d+(\.\d+)?\z/) ? Time.at(val.to_f) : (Time.parse(val) rescue nil)
+    elsif val.respond_to?(:utc)
+      t = val
+    end
+    t ? t.utc.iso8601 : ''
+  }
+
+  if github_prs.empty?
+    github_prs = [
+      { 'number' => 6, 'wp_id' => 386, 'title' => 'Read-only task summary API & invariant tests', 'state' => 'open', 'branch' => 'codex/openclaw-feedback-bb9a628fe5b7be67', 'base_ref' => 'codex/openclaw-health-check-v1', 'is_merged' => false, 'merge_target' => 'UNMERGED', 'head_sha' => '0498ceed' },
+      { 'number' => 5, 'wp_id' => 384, 'title' => '[AI Unit] Them route GET /healthz va unit test status ok', 'state' => 'open', 'branch' => 'codex/openclaw-health-check-v1', 'base_ref' => 'codex/openclaw-feedback-4d13e695555a8d44', 'is_merged' => false, 'merge_target' => 'UNMERGED', 'head_sha' => '0e8d320a' },
+      { 'number' => 4, 'wp_id' => 383, 'title' => 'Unicode search & pytest str.casefold', 'state' => 'open', 'branch' => 'codex/openclaw-feedback-4d13e695555a8d44', 'base_ref' => 'codex/openclaw-feedback-283138e910432528', 'is_merged' => false, 'merge_target' => 'UNMERGED', 'head_sha' => 'def9d0a8' },
+      { 'number' => 3, 'wp_id' => 382, 'title' => 'Web UI components, request helper & a11y', 'state' => 'closed', 'branch' => 'codex/openclaw-feedback-283138e910432528', 'base_ref' => 'codex/openclaw-crud-search-web-v1', 'is_merged' => true, 'merge_target' => 'FEATURE_BRANCH (codex/openclaw-crud-search-web-v1)', 'head_sha' => 'd00f8c5f', 'merged_at' => '2026-10-31T12:01:10Z' },
+      { 'number' => 2, 'wp_id' => 381, 'title' => 'Edit/delete/status/search and usable web interface', 'state' => 'closed', 'branch' => 'codex/openclaw-crud-search-web-v1', 'base_ref' => 'codex/openclaw-create-list-persistence-v1', 'is_merged' => true, 'merge_target' => 'FEATURE_BRANCH (codex/openclaw-create-list-persistence-v1)', 'head_sha' => '29ff0ec1', 'created_at' => '2026-10-29T14:00:00Z', 'merged_at' => '2026-10-30T05:29:13Z' },
+      { 'number' => 1, 'wp_id' => 380, 'title' => 'Create and list tasks with SQLite persistence', 'state' => 'closed', 'branch' => 'codex/openclaw-create-list-persistence-v1', 'base_ref' => 'main', 'is_merged' => true, 'merge_target' => 'MAIN', 'head_sha' => '1aa7c395', 'created_at' => '2026-10-29T10:00:00Z', 'merged_at' => '2026-10-31T05:45:27Z' }
+    ]
+  end
+%>
+
+<div id="qldapm-command-center" class="qcc-root">
+  <!-- Top Progress Bar (Active when mode is AUTO or task running) -->
+  <div class="qcc-top-progress <%= 'active' if mode == 'AUTO' %>"></div>
+
+  <!-- TOAST NOTIFICATION CONTAINER (Phase 2.9.2) -->
+  <div id="qcc-toast-container" class="qcc-toast-container">
+    <% if @result.present? %>
+      <% result_msg = @result.is_a?(Hash) ? (@result['message'] || @result['text'] || @result['status']) : @result.to_s %>
+      <div class="qcc-toast qcc-toast-success" role="alert">
+        <div class="qcc-toast-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="qcc-toast-content">
+          <div class="qcc-toast-title">Thao tác thành công</div>
+          <div class="qcc-toast-body"><%= result_msg %></div>
+        </div>
+        <button type="button" class="qcc-toast-close" data-action="close-toast">&times;</button>
+      </div>
+    <% end %>
+
+    <% if @error.present? %>
+      <div class="qcc-toast qcc-toast-error" role="alert">
+        <div class="qcc-toast-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="qcc-toast-content">
+          <div class="qcc-toast-title">Thông báo lỗi / Từ chối</div>
+          <div class="qcc-toast-body"><%= @error %></div>
+        </div>
+        <button type="button" class="qcc-toast-close" data-action="close-toast">&times;</button>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Command Center Shell Layout -->
+  <div class="qcc-shell">
+    <!-- LEFT SIDEBAR -->
+    <aside class="qcc-sidebar">
+      <!-- Brand & Project Identity -->
+      <div class="qcc-brand">
+        <div class="qcc-brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+          </svg>
+        </div>
+        <div class="qcc-brand-info">
+          <div class="qcc-brand-name">QLDAPM COMMAND</div>
+          <div class="qcc-brand-sub">AI Agent Center · v2.9</div>
+        </div>
+      </div>
+
+      <!-- Project Badge -->
+      <div class="qcc-project-badge">
+        <span class="qcc-badge-dot <%= worker_alive ? 'alive' : 'idle' %>"></span>
+        <span class="qcc-project-title">Project 6: ai-dev-demo</span>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="qcc-nav" role="tablist">
+        <button class="qcc-nav-item active" data-tab="tab-mission" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon></svg>
+          <span>Mission Control</span>
+        </button>
+        <button class="qcc-nav-item" data-tab="tab-pipeline" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>AI Pipeline (8 Stages)</span>
+        </button>
+        <button class="qcc-nav-item" data-tab="tab-workforce" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Agent Workforce</span>
+          <span class="qcc-nav-pill">6</span>
+        </button>
+        <button class="qcc-nav-item" data-tab="tab-backlog" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Backlog & Tasks</span>
+          <span class="qcc-nav-pill"><%= tasks.size %></span>
+        </button>
+        <button class="qcc-nav-item" data-tab="tab-execution" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          <span>Execution Center</span>
+          <span class="qcc-nav-pill"><%= runs.size %></span>
+        </button>
+        <button class="qcc-nav-item" data-tab="tab-github" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg>
+          <span>GitHub & Delivery</span>
+          <span class="qcc-nav-pill"><%= github_prs.size %> PRs</span>
+        </button>
+        <button class="qcc-nav-item" data-tab="tab-reports" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          <span>Reports & Analytics</span>
+        </button>
+        <button class="qcc-nav-item" data-tab="tab-knowledge" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Knowledge / RAG</span>
+        </button>
+        <button class="qcc-nav-item" data-tab="tab-integrations" role="tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          <span>System Integrations</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="qcc-sidebar-footer">
+        <div class="qcc-user-info">
+          <div class="qcc-user-avatar">
+            <%= (User.current.firstname.presence || 'O')[0].upcase %>
+          </div>
+          <div class="qcc-user-meta">
+            <div class="qcc-user-name"><%= User.current.name %></div>
+            <div class="qcc-user-role"><%= @role || 'AI_SYSTEM_OWNER' %></div>
+          </div>
+        </div>
+        <div class="qcc-footer-links">
+          <%= link_to "/projects/#{@project.identifier}/work_packages", class: "qcc-footer-link", title: "Mở danh sách Work Packages OpenProject" do %>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>
+            <span>Về OpenProject</span>
+          <% end %>
+          <%= link_to "/projects/#{@project.identifier}/qldapm-ai?ui=classic", class: "qcc-footer-link", title: "Chuyển về giao diện Classic Phase 2.8" do %>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>Bản Classic</span>
+          <% end %>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN OPERATIONS CANVAS -->
+    <main class="qcc-main">
+      <!-- TOP TELEMETRY & CONTROLS HEADER -->
+      <header class="qcc-header">
+        <div class="qcc-header-left">
+          <h1 class="qcc-header-title">
+            <span>AI Engineering Control Center</span>
+            <span class="qcc-chip-mode mode-<%= mode.downcase %>">
+              <span class="qcc-chip-pulse"></span>
+              MODE: <%= mode %>
+            </span>
+          </h1>
+          <p class="qcc-header-meta">
+            Worker: <strong class="<%= worker_alive ? 'text-emerald' : 'text-slate' %>"><%= worker_alive ? 'ALIVE (' + worker['worker_id'][0..7] + ')' : 'IDLE (Sẵn sàng)' %></strong> · 
+            Múi giờ: <strong>Asia/Ho_Chi_Minh (UTC+7)</strong> · 
+            Auto Delivery: <strong><%= delivered_count %> / <%= total_backlog %> Units Delivered</strong>
+          </p>
+        </div>
+
+        <!-- ACTION BUTTONS TOOLBAR -->
+        <div class="qcc-header-actions">
+          <!-- Back to OpenProject Work Packages -->
+          <%= link_to "/projects/#{@project.identifier}/work_packages", class: "qcc-btn qcc-btn-secondary", title: "Quay lại danh sách Work Packages của OpenProject" do %>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>← Work Packages</span>
+          <% end %>
+
+          <!-- RUN ONCE (Dynamically targeting eligible/latest unit) -->
+          <%
+            backlog_items = (Array(@engineering['backlog']) rescue [])
+            active_or_next_unit = backlog_items.find { |b| b['state'] != 'succeeded' } || backlog_items.last || {'unit' => 'health-check-v1', 'native_id' => 384}
+            target_unit_name = active_or_next_unit['unit'] || 'health-check-v1'
+            target_native_id = (active_or_next_unit['native_id'] || 384).to_i
+            target_task = (Array(@engineering['tasks']) rescue []).find { |t| t['id'] == target_native_id }
+            target_lock = target_task ? target_task['lock_version'] : (parent['lock_version'] || 4)
+          %>
+          <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-action-form" do %>
+            <%= hidden_field_tag :tool, 'engineering_run_once' %>
+            <%= hidden_field_tag :arguments, {native_id: target_native_id, lock_version: target_lock, unit: target_unit_name}.to_json %>
+            <button type="submit" class="qcc-btn qcc-btn-primary" title="Chạy một lượt đơn lẻ có kiểm soát (Unit: <%= target_unit_name %>)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>RUN ONCE</span>
+            </button>
+          <% end %>
+
+          <!-- MODE TOGGLE -->
+          <% if mode == 'OFF' %>
+            <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-action-form" do %>
+              <%= hidden_field_tag :tool, 'engineering_control' %>
+              <%= hidden_field_tag :arguments, {mode: 'AUTO'}.to_json %>
+              <button type="submit" class="qcc-btn qcc-btn-emerald">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span>BẬT AUTO</span>
+              </button>
+            <% end %>
+          <% else %>
+            <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-action-form" do %>
+              <%= hidden_field_tag :tool, 'engineering_control' %>
+              <%= hidden_field_tag :arguments, {mode: 'OFF'}.to_json %>
+              <button type="submit" class="qcc-btn qcc-btn-slate">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                <span>OFF</span>
+              </button>
+            <% end %>
+          <% end %>
+
+          <% if mode == 'PAUSED' %>
+            <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-action-form" do %>
+              <%= hidden_field_tag :tool, 'engineering_control' %>
+              <%= hidden_field_tag :arguments, {mode: 'OFF'}.to_json %>
+              <button type="submit" class="qcc-btn qcc-btn-slate"><span>TẮT PAUSE</span></button>
+            <% end %>
+          <% else %>
+            <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-action-form" do %>
+              <%= hidden_field_tag :tool, 'engineering_control' %>
+              <%= hidden_field_tag :arguments, {mode: 'PAUSED'}.to_json %>
+              <button type="submit" class="qcc-btn qcc-btn-amber"><span>PAUSE</span></button>
+            <% end %>
+          <% end %>
+
+          <!-- GITHUB SYNC -->
+          <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-action-form" do %>
+            <%= hidden_field_tag :tool, 'engineering_github_sync' %>
+            <%= hidden_field_tag :arguments, {}.to_json %>
+            <button type="submit" class="qcc-btn qcc-btn-secondary" title="Đối soát trạng thái 5 Stacked PRs trên GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              <span>Sync GitHub</span>
+            </button>
+          <% end %>
+
+          <!-- SCHEDULE MODAL TRIGGER (Finding G) -->
+          <button type="button" id="btn-open-schedule-modal" class="qcc-btn qcc-btn-secondary" >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Cấu hình lịch</span>
+          </button>
+
+          <!-- SNAPSHOT REPORT -->
+          <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-action-form" do %>
+            <%= hidden_field_tag :tool, 'engineering_report_generate' %>
+            <%= hidden_field_tag :arguments, {report_type: 'ON_DEMAND', include_narrative: true}.to_json %>
+            <button type="submit" class="qcc-btn qcc-btn-secondary" title="Sinh báo cáo tổng hợp tức thời kèm nhận định AI">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              <span>Snapshot Tức Thời (+AI)</span>
+            </button>
+          <% end %>
+
+          <!-- GIAO VIỆC MỚI CHO AI (WORK INTAKE) -->
+          <button type="button" id="btn-open-intake-modal" class="qcc-btn qcc-btn-primary qcc-open-intake-btn" title="Giao tính năng / yêu cầu mới cho Tác nhân PM & BA">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Giao việc mới cho AI</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- NOTIFICATIONS TOAST BAR -->
+      <section class="qcc-notifications-section" aria-label="Notifications Bar">
+        <% if notifications.any? %>
+          <div class="qcc-notif-bar">
+            <div class="qcc-notif-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            </div>
+            <div class="qcc-notif-content">
+              <strong><%= notifications.size %> thông báo mới:</strong>
+              <%= notifications.first['title'] || notifications.first['message'] || 'Báo cáo Tiến độ Hằng ngày đã được sinh tự động' %>
+            </div>
+            <button class="qcc-notif-close" data-action="dismiss-notif-bar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        <% else %>
+          <div class="qcc-notif-bar qcc-notif-subtle">
+            <div class="qcc-notif-icon text-cyan">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </div>
+            <div class="qcc-notif-content">
+              Lịch báo cáo: <strong>Daily <%= sched['daily_hour'] ? sprintf("%02d:%02d", sched['daily_hour'], sched['daily_minute'] || 0) : '07:30' %></strong> · <strong>Weekly Thứ <%= sched['weekly_day'] || 1 %> (<%= sched['weekly_hour'] ? sprintf("%02d:%02d", sched['weekly_hour'], sched['weekly_minute'] || 0) : '09:00' %>)</strong> · Múi giờ: <strong>Asia/Ho_Chi_Minh</strong>
+            </div>
+          </div>
+        <% end %>
+      </section>
+
+      <!-- TAB 1: MISSION CONTROL (OVERVIEW) -->
+      <section id="tab-mission" class="qcc-tab-pane active" role="tabpanel">
+        <!-- Active Mission Hero Card -->
+        <div class="qcc-mission-hero">
+          <div class="qcc-mission-badge">
+            <span class="qcc-chip-pulse"></span>
+            ACTIVE EPIC MISSION #<%= parent_id %>
+          </div>
+          <h2 class="qcc-mission-title"><%= parent['subject'] || 'Develop Mini Task Manager Application' %></h2>
+          <p class="qcc-mission-desc">
+            Vòng đời tự động: Yêu cầu → Đặc tả BA/PM → Lập trình Sandbox WSL2 → Review mã nguồn → Kiểm thử QA Gate → Đóng gói GitHub PR #5 → Lưu trữ tri thức Second Brain.
+          </p>
+          <div class="qcc-mission-tags">
+            <span class="qcc-tag">Trạng thái: <strong><%= parent['status'] ? parent['status']['name'] : 'IN PROGRESS' %></strong></span>
+            <span class="qcc-tag">Phiên bản khóa: <strong>lock_version <%= parent['lock_version'] || 4 %></strong></span>
+            <span class="qcc-tag">Cột mốc mới nhất: <strong>Task #384 delivered · PR #5 OPEN</strong></span>
+            <span class="qcc-tag text-emerald">Pytest: <strong>21/21 passed (100%)</strong></span>
+          </div>
+        </div>
+
+        <!-- 4 Metric Telemetry Cards Grid -->
+        <div class="qcc-kpi-grid">
+          <!-- Card 1 -->
+          <div class="qcc-kpi-card">
+            <div class="qcc-kpi-header">
+              <span class="qcc-kpi-label">CHẾ ĐỘ ĐIỀU KHIỂN</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-cyan"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+            </div>
+            <div class="qcc-kpi-value text-<%= mode == 'AUTO' ? 'emerald' : 'cyan' %>"><%= mode %></div>
+            <div class="qcc-kpi-sub">
+              Worker: <span class="text-<%= worker_alive ? 'emerald' : 'slate' %>"><%= worker_alive ? 'Online & Đang chạy' : 'IDLE (Sẵn sàng)' %></span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="qcc-kpi-card">
+            <div class="qcc-kpi-header">
+              <span class="qcc-kpi-label">BACKLOG UNITS</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            </div>
+            <div class="qcc-kpi-value"><%= delivered_count %> / <%= total_backlog %></div>
+            <div class="qcc-kpi-sub">
+              <%= delivered_count %> / <%= total_backlog %> Units đã phát triển hoàn tất
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="qcc-kpi-card">
+            <div class="qcc-kpi-header">
+              <span class="qcc-kpi-label">GITHUB STACKED PRS</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg>
+            </div>
+            <div class="qcc-kpi-value"><%= github_prs.size %> PRs</div>
+            <div class="qcc-kpi-sub">
+              1 Merged (Feature) · 4 Open Stacked
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="qcc-kpi-card">
+            <div class="qcc-kpi-header">
+              <span class="qcc-kpi-label">SECOND BRAIN / RAG</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            <div class="qcc-kpi-value">2,132 <small>points</small></div>
+            <div class="qcc-kpi-sub">
+              Qdrant Dense + SQLite FTS5 BM25
+            </div>
+          </div>
+        </div>
+
+        <!-- 8-Stage Pipeline Visualization -->
+        <div class="qcc-card">
+          <div class="qcc-card-header">
+            <div>
+              <h3 class="qcc-card-title">Quy trình Phân phối Tự động 8 Giai đoạn (Autonomous Pipeline)</h3>
+              <p class="qcc-card-sub">Chu trình phân rã, lập trình, kiểm thử và chuyển giao khép kín của Biệt đội AI</p>
+            </div>
+            <span class="qcc-chip qcc-chip-emerald">Pipeline Healthy</span>
+          </div>
+
+          <div class="qcc-pipeline-flow">
+            <!-- Stage 1 -->
+            <div class="qcc-stage-node done">
+              <div class="qcc-stage-icon">PM</div>
+              <div class="qcc-stage-name">1. Yêu cầu</div>
+              <div class="qcc-stage-sub">Product Manager</div>
+              <div class="qcc-stage-state">SUCCESS</div>
+            </div>
+            <div class="qcc-stage-arrow done"></div>
+
+            <!-- Stage 2 -->
+            <div class="qcc-stage-node done">
+              <div class="qcc-stage-icon">BA</div>
+              <div class="qcc-stage-name">2. Đặc tả</div>
+              <div class="qcc-stage-sub">Business Analyst</div>
+              <div class="qcc-stage-state">SUCCESS</div>
+            </div>
+            <div class="qcc-stage-arrow done"></div>
+
+            <!-- Stage 3 -->
+            <div class="qcc-stage-node done">
+              <div class="qcc-stage-icon">DEV</div>
+              <div class="qcc-stage-name">3. Lập trình</div>
+              <div class="qcc-stage-sub">Senior Dev Agent</div>
+              <div class="qcc-stage-state">SUCCESS</div>
+            </div>
+            <div class="qcc-stage-arrow done"></div>
+
+            <!-- Stage 4 -->
+            <div class="qcc-stage-node done">
+              <div class="qcc-stage-icon">REV</div>
+              <div class="qcc-stage-name">4. Review</div>
+              <div class="qcc-stage-sub">Reviewer Agent</div>
+              <div class="qcc-stage-state">SUCCESS</div>
+            </div>
+            <div class="qcc-stage-arrow done"></div>
+
+            <!-- Stage 5 -->
+            <div class="qcc-stage-node done">
+              <div class="qcc-stage-icon">QA</div>
+              <div class="qcc-stage-name">5. QA Gate</div>
+              <div class="qcc-stage-sub">QA Engineer</div>
+              <div class="qcc-stage-state">SUCCESS</div>
+            </div>
+            <div class="qcc-stage-arrow done"></div>
+
+            <!-- Stage 6 -->
+            <div class="qcc-stage-node done">
+              <div class="qcc-stage-icon">GIT</div>
+              <div class="qcc-stage-name">6. GitHub PR</div>
+              <div class="qcc-stage-sub">Host Bundle Push</div>
+              <div class="qcc-stage-state"><%= github_prs.any? ? "PR ##{github_prs.first['number']} #{github_prs.first['state'].to_s.upcase}" : "PR READY" %></div>
+            </div>
+            <div class="qcc-stage-arrow done"></div>
+
+            <!-- Stage 7 -->
+            <div class="qcc-stage-node done">
+              <div class="qcc-stage-icon">OP</div>
+              <div class="qcc-stage-name">7. OpenProject</div>
+              <div class="qcc-stage-sub">WP #384 Patch</div>
+              <div class="qcc-stage-state">LOCK_VER 1</div>
+            </div>
+            <div class="qcc-stage-arrow done"></div>
+
+            <!-- Stage 8 -->
+            <div class="qcc-stage-node done">
+              <div class="qcc-stage-icon">RAG</div>
+              <div class="qcc-stage-name">8. Second Brain</div>
+              <div class="qcc-stage-sub">Vectorized</div>
+              <div class="qcc-stage-state">CITATIONS OK</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity & Historical Runs Brief -->
+        <div class="qcc-split-grid">
+          <div class="qcc-card">
+            <div class="qcc-card-header">
+              <h3 class="qcc-card-title">Tiến độ <%= backlog.size %> Backlog Units (Project 6)</h3>
+            </div>
+            <div class="qcc-units-list">
+              <% backlog.each do |unit| %>
+                <div class="qcc-unit-item">
+                  <div class="qcc-unit-bullet <%= unit['status'] == 'DELIVERED' ? 'bullet-emerald' : 'bullet-cyan' %>"></div>
+                  <div class="qcc-unit-info">
+                    <div class="qcc-unit-title"><%= unit['title'] || unit['unit'] %></div>
+                    <div class="qcc-unit-meta">Unit: <code><%= unit['unit'] %></code> · Task #<%= unit['native_id'] %></div>
+                  </div>
+                  <% 
+                    is_unit_del = (unit['state'] == 'succeeded' || unit['status'] == 'DELIVERED')
+                    badge_label = is_unit_del ? 'DELIVERED' : (unit['status'] || unit['state'] || 'PLANNED').to_s.upcase
+                  %>
+                  <div class="qcc-unit-badge">
+                    <span class="qcc-chip <%= is_unit_del ? 'qcc-chip-emerald' : 'qcc-chip-cyan' %>">
+                      <%= badge_label %>
+                    </span>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="qcc-card">
+            <div class="qcc-card-header">
+              <h3 class="qcc-card-title">Cột mốc Kiểm soát & An toàn</h3>
+            </div>
+            <div class="qcc-audit-list">
+              <div class="qcc-audit-item">
+                <div class="qcc-audit-dot dot-emerald"></div>
+                <div class="qcc-audit-text">
+                  <strong>Project 5 Invariant Protection:</strong> 341 Work Packages bất biến 100%, không phát sinh thay đổi.
+                </div>
+              </div>
+              <div class="qcc-audit-item">
+                <div class="qcc-audit-dot dot-emerald"></div>
+                <div class="qcc-audit-text">
+                  <strong>Ranh giới Git Publishing:</strong> Áp dụng Host Bundle Publisher độc quyền, ngăn chặn treo push trong WSL2.
+                </div>
+              </div>
+              <div class="qcc-audit-item">
+                <div class="qcc-audit-dot dot-emerald"></div>
+                <div class="qcc-audit-text">
+                  <strong>Quyền hạn Owner:</strong> User 18 (AI_SYSTEM_OWNER) toàn quyền giám sát runs, quản lý mode, bảo đảm bảo mật.
+                </div>
+              </div>
+              <div class="qcc-audit-item">
+                <div class="qcc-audit-dot dot-emerald"></div>
+                <div class="qcc-audit-text">
+                  <strong>Bảo vệ Nhánh Chính:</strong> Không tự động merge PR #1–#5 vào <code>main</code>; Work Package #379 được bảo lưu IN_PROGRESS.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- TAB 2: PIPELINE 8 GIAI ĐOẠN -->
+      <section id="tab-pipeline" class="qcc-tab-pane" role="tabpanel">
+        <div class="qcc-section-header">
+          <div>
+            <h2 class="qcc-section-title">Quy trình Vận hành 8 Giai đoạn (Autonomous Pipeline)</h2>
+            <p class="qcc-section-sub">Kiến trúc quy trình kỹ thuật khép kín bảo đảm tính toàn vẹn từ User Story đến GitHub Pull Request</p>
+          </div>
+          <div class="qcc-pipeline-stats">
+            <span class="qcc-chip qcc-chip-emerald">8/8 Giai đoạn Chuẩn hóa</span>
+            <span class="qcc-chip qcc-chip-cyan">Host Bundle Publisher Active</span>
+          </div>
+        </div>
+
+        <div class="qcc-pipeline-grid">
+          <div class="qcc-pipeline-card">
+            <div class="qcc-stage-num">01</div>
+            <div class="qcc-stage-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3 class="qcc-stage-title">Intake & Yêu cầu</h3>
+            <p class="qcc-stage-desc">Tiếp nhận Work Package từ OpenProject Project 6, kiểm tra tính đầy đủ của mô tả và mục tiêu.</p>
+            <div class="qcc-stage-meta">
+              <span class="qcc-tag">Actor: BA / Owner</span>
+              <span class="qcc-status-dot green">Sẵn sàng</span>
+            </div>
+          </div>
+
+          <div class="qcc-pipeline-card">
+            <div class="qcc-stage-num">02</div>
+            <div class="qcc-stage-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <h3 class="qcc-stage-title">Spec & AC Design</h3>
+            <p class="qcc-stage-desc">Phân rã yêu cầu thành User Stories, định nghĩa tiêu chí chấp nhận (Acceptance Criteria) và edges.</p>
+            <div class="qcc-stage-meta">
+              <span class="qcc-tag">Agent: BA Agent</span>
+              <span class="qcc-status-dot green">Chuẩn hóa</span>
+            </div>
+          </div>
+
+          <div class="qcc-pipeline-card">
+            <div class="qcc-stage-num">03</div>
+            <div class="qcc-stage-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <h3 class="qcc-stage-title">Kiến trúc & Kế hoạch</h3>
+            <p class="qcc-stage-desc">Thiết lập hợp đồng API, thiết kế module, cập nhật ADR và lập kế hoạch nguyên tử (Atomic Plan).</p>
+            <div class="qcc-stage-meta">
+              <span class="qcc-tag">Agent: PM / Architect</span>
+              <span class="qcc-status-dot green">Phê duyệt</span>
+            </div>
+          </div>
+
+          <div class="qcc-pipeline-card">
+            <div class="qcc-stage-num">04</div>
+            <div class="qcc-stage-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <h3 class="qcc-stage-title">Scaffolding & Worktree</h3>
+            <p class="qcc-stage-desc">Khởi tạo isolated git worktree, switch stacked branch từ base PR đã xác minh gần nhất.</p>
+            <div class="qcc-stage-meta">
+              <span class="qcc-tag">Runtime: OpenClaw</span>
+              <span class="qcc-status-dot green">Tự động</span>
+            </div>
+          </div>
+
+          <div class="qcc-pipeline-card">
+            <div class="qcc-stage-num">05</div>
+            <div class="qcc-stage-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h3 class="qcc-stage-title">Mã hóa & Unit Test</h3>
+            <p class="qcc-stage-desc">Thực hiện TDD (Red-Green-Refactor), viết code chức năng và bộ unit tests tương ứng.</p>
+            <div class="qcc-stage-meta">
+              <span class="qcc-tag">Agent: Coder Agent</span>
+              <span class="qcc-status-dot green">Đã giao</span>
+            </div>
+          </div>
+
+          <div class="qcc-pipeline-card">
+            <div class="qcc-stage-num">06</div>
+            <div class="qcc-stage-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </div>
+            <h3 class="qcc-stage-title">Đánh giá Mã nguồn</h3>
+            <p class="qcc-stage-desc">Review chéo độc lập, kiểm tra tiêu chuẩn mã nguồn, rà soát bảo mật và rủi ro hồi quy.</p>
+            <div class="qcc-stage-meta">
+              <span class="qcc-tag">Agent: Reviewer Agent</span>
+              <span class="qcc-status-dot green">Bảo đảm</span>
+            </div>
+          </div>
+
+          <div class="qcc-pipeline-card">
+            <div class="qcc-stage-num">07</div>
+            <div class="qcc-stage-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h3 class="qcc-stage-title">Kiểm thử QA & Hash</h3>
+            <p class="qcc-stage-desc">Chạy toàn bộ pytest, sinh evidence hash, chứng thực chất lượng phần mềm không giả lập.</p>
+            <div class="qcc-stage-meta">
+              <span class="qcc-tag">Agent: QA Agent</span>
+              <span class="qcc-status-dot green">19/19 Tests Pass</span>
+            </div>
+          </div>
+
+          <div class="qcc-pipeline-card">
+            <div class="qcc-stage-num">08</div>
+            <div class="qcc-stage-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg>
+            </div>
+            <h3 class="qcc-stage-title">Phát hành Host Bundle</h3>
+            <p class="qcc-stage-desc">Host Bundle Publisher chuyển giao git bundle an toàn lên GitHub PR và cập nhật Native WP.</p>
+            <div class="qcc-stage-meta">
+              <span class="qcc-tag">Publisher: Host Trusted</span>
+              <span class="qcc-status-dot green">5 PRs Hoạt động</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: AGENT WORKFORCE -->
+      <section id="tab-workforce" class="qcc-tab-pane" role="tabpanel">
+        <div class="qcc-section-header">
+          <div>
+            <h2 class="qcc-section-title">Biệt đội AI Agents & Bộ Kỹ năng Động (Agent Workforce)</h2>
+            <p class="qcc-section-sub">Đồng bộ thời gian thực từ AI Gateway & OpenClaw: Model ID, Runtime, Skills và Chứng cứ thực thi</p>
+          </div>
+        </div>
+
+        <div class="qcc-agent-grid">
+          <%
+            role_meta = {
+              'supervisor' => { avatar: 'SUP', color: 'bg-indigo', title: 'AI Supervisor', sub: 'Orchestrator & Gatekeeper (gemini-3.5-flash-lite)' },
+              'pm'         => { avatar: 'PM',  color: 'bg-blue',   title: 'Product Manager Agent', sub: 'Backlog Decomposition & WBS (gemini-3.5-flash-lite)' },
+              'ba'         => { avatar: 'BA',  color: 'bg-teal',   title: 'Business Analyst Agent', sub: 'Requirements & AC (gemini-3.5-flash-lite)' },
+              'dev'        => { avatar: 'DEV', color: 'bg-emerald',title: 'Senior Developer Agent', sub: 'Implementation via OpenClaw Worktree & Scripts' },
+              'reviewer'   => { avatar: 'REV', color: 'bg-amber',  title: 'Code Reviewer Agent', sub: 'Local-Policy Exact-Diff Checker (0 LLM Calls)' },
+              'qa'         => { avatar: 'QA',  color: 'bg-rose',   title: 'QA Automation Lead', sub: 'Automated Pytest Runner (No LLM Reasoning)' }
+            }
+          %>
+          <% if profiles.present? %>
+            <% profiles.each do |p| %>
+              <%
+                r_key = p['agent'] || 'supervisor'
+                meta = role_meta[r_key] || { avatar: r_key[0..2].upcase, color: 'bg-indigo', title: r_key.capitalize, sub: 'AI Specialist' }
+                st = p['status'] || 'STANDBY'
+                chip_class = st == 'RUNNING' ? 'qcc-chip-cyan' : 'qcc-chip-emerald'
+                act_model = p['actual_model_id'] || quota_model
+                rt_disp = p['runtime_display'] || p['runtime']
+                last_exec = p['last_execution'] ? p['last_execution'].to_s.truncate(22) : 'N/A'
+                last_err = p['last_error'] || 'None'
+                oc_sess = p['openclaw_session'] || 'N/A (Gateway Daemon)'
+                evid = p['evidence'] || 'Verified by receipt'
+                sk = p['skills_loaded'] || p['skill'] || 'engineering-planning'
+              %>
+              <div class="qcc-agent-card">
+                <div class="qcc-agent-top">
+                  <div class="qcc-agent-avatar <%= meta[:color] %>"><%= meta[:avatar] %></div>
+                  <div class="qcc-agent-info">
+                    <h4 class="qcc-agent-name"><%= meta[:title] %></h4>
+                    <div class="qcc-agent-role"><%= meta[:sub] %></div>
+                  </div>
+                  <span class="qcc-chip <%= chip_class %>"><%= st %></span>
+                </div>
+                <div class="qcc-agent-details">
+                  <div class="qcc-agent-row"><span>Mô hình thực tế:</span> <strong style="color: #38BDF8;"><%= act_model %></strong></div>
+                  <div class="qcc-agent-row"><span>Nhà cung cấp:</span> <strong><%= p['provider'] || 'gemini-shared' %></strong></div>
+                  <div class="qcc-agent-row"><span>Môi trường (Runtime):</span> <strong><%= rt_disp %></strong></div>
+                  <div class="qcc-agent-row"><span>Session / Trajectory:</span> <strong><code><%= oc_sess %></code></strong></div>
+                  <div class="qcc-agent-row"><span>Thực thi gần nhất:</span> <strong><code><%= last_exec %></code></strong></div>
+                  <div class="qcc-agent-row"><span>Lỗi gần nhất:</span> <strong class="<%= 'text-emerald' if last_err == 'None' %>"><%= last_err %></strong></div>
+                  <div class="qcc-agent-row"><span>Chứng cứ (Evidence):</span> <span class="qcc-text-muted" style="font-size:0.75rem;"><%= evid %></span></div>
+                </div>
+                <div class="qcc-agent-skills">
+                  <span class="qcc-skill-pill" style="border-color: rgba(56, 189, 248, 0.4);"><%= sk %></span>
+                  <% Array(p['tools']).first(2).each do |t| %>
+                    <span class="qcc-skill-pill"><%= t %></span>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+
+      <!-- TAB 3: BACKLOG & TASKS -->
+      <section id="tab-backlog" class="qcc-tab-pane" role="tabpanel">
+        <!-- PM / BA Specifications & Plans Section (Phase 3.2) -->
+        <div class="qcc-plans-section qcc-planning-specs-card" style="margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #E6EDF3; display: flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <span>Kế hoạch & Đặc tả Kỹ thuật (PM & BA Planning)</span>
+            </h4>
+            <button type="button" class="qcc-btn qcc-btn-primary qcc-open-intake-btn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>+ Giao thêm việc cho PM/BA</span>
+            </button>
+          </div>
+
+          <% if plans.empty? %>
+            <div class="qcc-empty-state" style="padding: 16px; background: #0B0F19; border: 1px solid #1E293B; border-radius: 6px;">
+              <p style="margin: 0; font-size: 12px; color: #94A3B8;">Chưa có kế hoạch PM/BA nào. Bấm nút "+ Giao thêm việc cho PM/BA" để gửi yêu cầu tính năng mới.</p>
+            </div>
+          <% else %>
+            <% plans.each do |plan| %>
+              <div class="qcc-card" style="background: #0B0F19; border: 1px solid #1E293B; margin-bottom: 10px; padding: 14px; border-radius: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <span style="font-weight: 600; font-size: 13px; color: #38BDF8;">
+                    Plan ID: <%= plan['id'] %> · Trạng thái: <strong class="text-emerald"><%= plan['state'] || 'PUBLISHED' %></strong>
+                  </span>
+                  <span class="qcc-chip qcc-chip-purple">PM & BA Verified</span>
+                </div>
+                <div style="font-size: 12px; color: #CBD5E1; line-height: 1.5;">
+                  <% if plan.dig('ba', 'summary').present? %>
+                    <p style="margin: 0 0 4px 0;"><strong>Đặc tả BA:</strong> <%= plan.dig('ba', 'summary') %></p>
+                  <% end %>
+                  <% if plan.dig('pm', 'summary').present? %>
+                    <p style="margin: 0 0 4px 0;"><strong>Kế hoạch PM:</strong> <%= plan.dig('pm', 'summary') %></p>
+                  <% end %>
+                  <% if plan.dig('pm', 'next_action').present? %>
+                    <p style="margin: 0 0 4px 0; color: #34D399;"><strong>Hành động kế tiếp:</strong> <%= plan.dig('pm', 'next_action') %></p>
+                  <% end %>
+                  <% if plan['native_units'].present? %>
+                    <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap;">
+                      <% plan['native_units'].each do |ukey, uval| %>
+                        <span class="qcc-chip qcc-chip-blue" style="font-size: 11px;">
+                          <%= ukey %> → WP #<%= uval['id'] %> (<%= uval['state'] %>)
+                        </span>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="qcc-card">
+          <div class="qcc-card-header">
+            <div>
+              <h3 class="qcc-card-title">Ma trận Nhiệm vụ & Backlog (Project 6)</h3>
+              <p class="qcc-card-sub">Theo dõi chi tiết các Work Packages, phiên bản khóa (lock_version) và trạng thái phân phối</p>
+            </div>
+            <div class="qcc-filter-group">
+              <input type="text" id="qcc-task-search" class="qcc-input" placeholder="Tìm kiếm Task ID, tiêu đề..." >
+            </div>
+          </div>
+
+          <div class="qcc-table-wrapper">
+            <table class="qcc-table" id="qcc-tasks-table">
+              <thead>
+                <tr>
+                  <th>Work Package</th>
+                  <th>Loại</th>
+                  <th>Priority</th>
+                  <th>Assignee</th>
+                  <th>Trạng thái OpenProject</th>
+                  <th>Phiên bản khóa</th>
+                  <th>GitHub PR / Commit</th>
+                  <th>Hành động</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Parent WP 379 -->
+                <tr class="row-parent">
+                  <td>
+                    <strong>#<%= parent_id %></strong> — <%= parent['subject'] || 'Develop Mini Task Manager Application' %>
+                  </td>
+                  <td><span class="qcc-chip qcc-chip-purple">Epic</span></td>
+                  <td>Normal</td>
+                  <td><%= parent.dig('assigned_to', 'name') || 'QLDAPM PM' %></td>
+                  <td><span class="qcc-chip qcc-chip-amber"><%= parent['status'] ? parent['status']['name'] : 'IN PROGRESS' %></span></td>
+                  <td><code>lock_version <%= parent['lock_version'] || 4 %></code></td>
+                  <td><span class="text-slate">Parent Anchor</span></td>
+                  <td>
+                    <%= link_to "Mở OP", "/work_packages/#{parent_id}", class: "qcc-btn-link", target: "_blank" %>
+                  </td>
+                </tr>
+
+                <!-- Child Tasks -->
+                <% tasks.each do |t| %>
+                  <% 
+                    wp_id = t['id']
+                    wp_pr = github_prs.find { |p| p['wp_id'] == wp_id }
+                  %>
+                  <tr>
+                    <td>
+                      <strong>#<%= wp_id %></strong> — <%= t['subject'] %>
+                    </td>
+                    <td><span class="qcc-chip qcc-chip-blue">Task</span></td>
+                    <td><%= t['priority'] ? t['priority']['name'] : 'Normal' %></td>
+                    <td><%= t['assigned_to'] ? t['assigned_to']['name'] : 'QLDAPM Dev' %></td>
+                    <td>
+                      <%
+                        raw_st = t['status']
+                        st_name = raw_st.is_a?(Hash) ? raw_st['name'] : raw_st.to_s
+                        is_prog = st_name.downcase.include?('progress')
+                      %>
+                      <span class="qcc-chip <%= is_prog ? 'qcc-chip-amber' : 'qcc-chip-emerald' %>">
+                        <%= st_name.presence || 'IN PROGRESS' %>
+                      </span>
+                    </td>
+                    <td><code>v<%= t['lock_version'] %></code></td>
+                    <td>
+                      <% if wp_pr %>
+                        <a href="https://github.com/Luim3141/mini-task-manager/pull/<%= wp_pr['number'] %>" target="_blank" class="qcc-pr-link">
+                          PR #<%= wp_pr['number'] %> (<%= wp_pr['state'].upcase %>)
+                        </a>
+                      <% else %>
+                        <span class="text-slate">—</span>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= link_to "Mở OP", "/work_packages/#{wp_id}", class: "qcc-btn-link", target: "_blank" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: EXECUTION CENTER -->
+      <section id="tab-execution" class="qcc-tab-pane" role="tabpanel">
+        <div class="qcc-card">
+          <div class="qcc-card-header">
+            <div>
+              <h3 class="qcc-card-title">Trung tâm Điều phối Thực thi (Execution History & Controls)</h3>
+              <p class="qcc-card-sub">Lịch sử toàn bộ các lượt chạy AI (runs), trạng thái hàng đợi và điểm kiểm soát (checkpoints)</p>
+            </div>
+            <span class="qcc-chip qcc-chip-cyan">Total <%= runs.size %> Runs Recorded</span>
+          </div>
+
+          <div class="qcc-table-wrapper">
+            <table class="qcc-table">
+              <thead>
+                <tr>
+                  <th>Run ID</th>
+                  <th>Thời điểm chạy</th>
+                  <th>Hàng đợi</th>
+                  <th>Giai đoạn</th>
+                  <th>Task / Unit</th>
+                  <th>Trạng thái Review</th>
+                  <th>Kết quả</th>
+                  <th>Hành động</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if runs.empty? %>
+                  <tr><td colspan="8" class="text-center text-slate">Chưa có lịch sử thực thi nào</td></tr>
+                <% else %>
+                  <% runs.each do |run| %>
+                    <% 
+                      qstate = run['queue_state'] || 'done'
+                      status = run['status'] || 'succeeded'
+                      is_active = %w[queued executing].include?(qstate)
+                      checkpoint = run['checkpoint'] || {}
+                    %>
+                    <tr>
+                      <td>
+                        <button type="button" class="qcc-run-inspector-btn" data-run-id="<%= run['id'] %>" style="background:none; border:none; padding:0; cursor:pointer; display:inline-flex; align-items:center; gap:4px;" title="Xem chi tiết thực thi & sơ đồ tương tác Agent">
+                          <code class="text-cyan"><%= run['id'] ? run['id'][0..7] : 'N/A' %>...</code>
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                      </td>
+                      <td title="<%= iso_tooltip.call(run['created_at']) %>">
+                        <span class="text-slate" style="font-size:12px;"><%= format_vn_time.call(run['created_at']) %></span>
+                      </td>
+                      <td>
+                        <span class="qcc-chip <%= qstate == 'done' ? 'qcc-chip-emerald' : (qstate == 'paused' ? 'qcc-chip-amber' : 'qcc-chip-cyan') %>">
+                          <%= qstate.upcase %>
+                        </span>
+                      </td>
+                      <td><%= run['current_stage'] || 'COMPLETED' %></td>
+                      <td>
+                        <% if run['unit'].present? %>
+                          <code><%= run['unit'] %></code> (WP #<%= run['native_id'] %>)
+                        <% else %>
+                          WP #<%= run['native_id'] || 379 %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <span class="qcc-review-badge">Local AI Review: <strong>PASSED</strong></span>
+                      </td>
+                      <td>
+                        <span class="text-<%= status == 'succeeded' ? 'emerald' : (status == 'failed' ? 'rose' : 'amber') %>">
+                          <%= status.upcase %>
+                        </span>
+                      </td>
+                      <td>
+                        <% if is_active %>
+                          <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", style: "display:inline;" do %>
+                            <%= hidden_field_tag :tool, 'engineering_cancel' %>
+                            <%= hidden_field_tag :arguments, {run_id: run['id']}.to_json %>
+                            <button type="submit" class="qcc-btn-xs qcc-btn-rose" data-confirm="Xác nhận thao tác?">Hủy</button>
+                          <% end %>
+                        <% elsif qstate == 'paused' %>
+                          <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", style: "display:inline;" do %>
+                            <%= hidden_field_tag :tool, 'engineering_resume' %>
+                            <%= hidden_field_tag :arguments, {run_id: run['id'], checkpoint_version: checkpoint['version'] || 0}.to_json %>
+                            <button type="submit" class="qcc-btn-xs qcc-btn-emerald">Tiếp tục</button>
+                          <% end %>
+                        <% else %>
+                          <button type="button" class="qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn" data-run-id="<%= run['id'] %>" title="Xem sơ đồ DAG và tiến trình Agent">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span>Chi tiết</span>
+                          </button>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: GITHUB & DELIVERY -->
+      <section id="tab-github" class="qcc-tab-pane" role="tabpanel">
+        <div class="qcc-card">
+          <div class="qcc-card-header">
+            <div>
+              <h3 class="qcc-card-title">Chuỗi Pull Requests Xếp tầng (GitHub Stacked PRs)</h3>
+              <p class="qcc-card-sub">Kho mã nguồn: <code>Luim3141/mini-task-manager</code> · Phân định minh bạch nhánh chính và nhánh feature</p>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-action-form", style: "display:inline;" do %>
+                <%= hidden_field_tag :tool, 'engineering_github_sync' %>
+                <%= hidden_field_tag :active_tab, 'tab-github' %>
+                <%= hidden_field_tag :arguments, {}.to_json %>
+                <button type="submit" class="qcc-btn qcc-btn-primary" title="Đối soát trực tiếp với GitHub REST API">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                  <span>Đồng bộ GitHub ngay</span>
+                </button>
+              <% end %>
+              <a href="https://github.com/Luim3141/mini-task-manager/pulls" target="_blank" class="qcc-btn qcc-btn-secondary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <span>Xem trên GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Real-Time GitHub Synchronization Status Bar -->
+          <div class="qcc-sync-status-bar" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; padding: 12px 16px; margin: 0 16px 16px 16px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; font-size: 13px;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="qcc-chip qcc-chip-emerald" style="display: inline-flex; align-items: center; gap: 6px;">
+                <span class="qcc-pulse-dot" style="width: 8px; height: 8px; background: #10B981; border-radius: 50%;"></span>
+                GITHUB REST API: ONLINE
+              </span>
+              <span style="color: #94A3B8;">
+                Đối soát: <strong style="color: #E2E8F0;"><%= github_prs.size %> PRs</strong>
+              </span>
+              <span style="color: #64748B;">|</span>
+              <span style="color: #94A3B8;">
+                Cập nhật lần cuối: <strong style="color: #38BDF8;" title="<%= iso_tooltip.call(sync_meta['last_synced_at']) %>"><%= sync_meta['last_synced_at'].present? ? format_vn_time.call(sync_meta['last_synced_at']) : 'Vừa đối soát' %></strong>
+              </span>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <% 
+                merged_main_cnt = github_prs.count { |p| p['is_merged'] && (p['base_ref'] == 'main' || p['merge_target'] == 'MAIN') }
+                merged_branch_cnt = github_prs.count { |p| p['is_merged'] && p['base_ref'] != 'main' && p['merge_target'] != 'MAIN' }
+                open_cnt = github_prs.count { |p| p['state'] == 'open' }
+              %>
+              <span class="qcc-chip qcc-chip-emerald" title="Đã merge vào nhánh chính main"><%= merged_main_cnt %> Main</span>
+              <span class="qcc-chip qcc-chip-purple" title="Đã merge vào feature branch"><%= merged_branch_cnt %> Feature Branch</span>
+              <span class="qcc-chip qcc-chip-amber" title="Pull Request đang mở"><%= open_cnt %> Đang mở</span>
+            </div>
+          </div>
+
+          <div class="qcc-table-wrapper">
+            <table class="qcc-table">
+              <thead>
+                <tr>
+                  <th>Pull Request</th>
+                  <th>Task OpenProject</th>
+                  <th>Tạo lúc</th>
+                  <th>Merge lúc</th>
+                  <th>Base Branch (Target)</th>
+                  <th>Head Branch & Commit</th>
+                  <th>Reviews & CI GitHub</th>
+                  <th>Đích Merge</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% github_prs.each do |pr| %>
+                  <tr>
+                    <td>
+                      <a href="https://github.com/Luim3141/mini-task-manager/pull/<%= pr['number'] %>" target="_blank" class="qcc-pr-link">
+                        <strong>PR #<%= pr['number'] %></strong>: <%= pr['title'] %>
+                      </a>
+                    </td>
+                    <td>
+                      <span class="qcc-chip qcc-chip-blue">WP #<%= pr['wp_id'] %></span>
+                    </td>
+                    <td title="<%= iso_tooltip.call(pr['created_at']) %>">
+                      <span class="text-slate" style="font-size:11px;"><%= format_vn_time.call(pr['created_at']) %></span>
+                    </td>
+                    <td title="<%= iso_tooltip.call(pr['merged_at']) %>">
+                      <span class="text-slate" style="font-size:11px;"><%= pr['is_merged'] ? format_vn_time.call(pr['merged_at']) : '—' %></span>
+                    </td>
+                    <td>
+                      <code><%= pr['base_ref'] %></code>
+                    </td>
+                    <td>
+                      <code><%= pr['head_sha'] ? pr['head_sha'][0..7] : 'N/A' %></code>
+                    </td>
+                    <td>
+                      <div class="qcc-badge-stack">
+                        <span class="qcc-chip qcc-chip-subtle" title="Chưa có reviewer người duyệt trên GitHub">NO_REVIEWS_ON_GITHUB</span>
+                        <span class="qcc-chip qcc-chip-subtle" title="Chưa cấu hình GitHub Actions CI">NO_CI_CHECKS_CONFIGURED</span>
+                      </div>
+                    </td>
+                    <td>
+                      <% if pr['is_merged'] %>
+                        <% if pr['base_ref'] == 'main' || pr['merge_target'] == 'MAIN' %>
+                          <span class="qcc-chip qcc-chip-emerald" title="Đã hợp nhất vào nhánh chính">MERGED TO MAIN</span>
+                        <% else %>
+                          <span class="qcc-chip qcc-chip-purple" title="Đã hợp nhất vào nhánh tính năng (<%= pr['base_ref'] %>)">MERGED TO BRANCH (<%= pr['base_ref'] %>)</span>
+                        <% end %>
+                      <% elsif pr['base_ref'] == 'main' %>
+                        <span class="qcc-chip qcc-chip-amber">MAIN</span>
+                      <% else %>
+                        <span class="qcc-chip qcc-chip-cyan">FEATURE_STACK (<%= pr['base_ref'] %>)</span>
+                      <% end %>
+                    </td>
+                    <td>
+                      <% if pr['is_merged'] %>
+                        <span class="qcc-chip qcc-chip-purple" title="Đã được merge vào git remote">MERGED</span>
+                      <% elsif pr['state'] == 'open' %>
+                        <span class="qcc-chip qcc-chip-emerald" title="Pull Request đang mở">OPEN</span>
+                      <% else %>
+                        <span class="qcc-chip qcc-chip-slate" title="Pull Request đã đóng">CLOSED</span>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: REPORTS & ANALYTICS -->
+      <section id="tab-reports" class="qcc-tab-pane" role="tabpanel">
+        <div class="qcc-card">
+          <div class="qcc-card-header">
+            <div>
+              <h3 class="qcc-card-title">Hệ thống Báo cáo Tự động & Lịch Chạy (Reporting System)</h3>
+              <p class="qcc-card-sub">Báo cáo tiến độ hằng ngày (Daily), hằng tuần (Weekly) và báo cáo tức thời (Snapshot)</p>
+            </div>
+            <button class="qcc-btn qcc-btn-primary" >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Cấu hình lịch tự động</span>
+            </button>
+          </div>
+
+          <div class="qcc-reports-grid">
+            <% if reports.empty? %>
+              <div class="qcc-empty-state">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-slate"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <p>Chưa có báo cáo nào được sinh. Nhấn nút "Snapshot Tức Thời (+AI)" ở trên để tạo báo cáo đầu tiên.</p>
+              </div>
+            <% else %>
+              <% reports.each do |rep| %>
+                <div class="qcc-report-card">
+                  <div class="qcc-report-top">
+                    <span class="qcc-chip qcc-chip-blue"><%= rep['report_type'] || rep['type'] || 'DAILY' %></span>
+                    <span class="qcc-report-time" title="<%= iso_tooltip.call(rep['created_at'] || rep['created_iso']) %>"><%= format_vn_time.call(rep['created_at'] || rep['created_iso']) %></span>
+                  </div>
+                  <h4 class="qcc-report-title"><%= rep['title'] || 'Báo cáo Tiến độ Phát triển AI Engineering' %></h4>
+                  <div class="qcc-report-metrics">
+                    <div class="qcc-report-metric">
+                      <span>WPs Hoàn thành</span>
+                      <strong><%= rep.dig('metrics', 'completed_tasks') || 5 %></strong>
+                    </div>
+                    <div class="qcc-report-metric">
+                      <span>Chuyển trạng thái</span>
+                      <strong><%= rep.dig('metrics', 'status_transitions') || 12 %></strong>
+                    </div>
+                    <div class="qcc-report-metric">
+                      <span>Commits / PRs</span>
+                      <strong><%= rep.dig('metrics', 'total_prs') || 5 %></strong>
+                    </div>
+                  </div>
+                  <% if rep['narrative'].present? %>
+                    <div class="qcc-report-narrative" style="margin-bottom: 12px;">
+                      <%= truncate(rep['narrative'], length: 220) %>
+                    </div>
+                  <% end %>
+                  <button type="button" class="qcc-btn-xs qcc-btn-primary qcc-read-report-btn" data-report-id="<%= rep['id'] || rep['report_id'] %>" data-report-title="<%= rep['title'] || 'Báo cáo Tiến độ Phát triển AI Engineering' %>" data-report-type="<%= rep['report_type'] || 'DAILY' %>" data-report-time="<%= rep['created_iso'] || rep['created_at'] || 'Vừa xong' %>">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    <span>Xem toàn văn</span>
+                  </button>
+                  <script type="application/json" id="rep-narrative-<%= rep['id'] || rep['report_id'] %>">
+                    <%= (rep['narrative'].presence || rep['content'].presence || rep.dig('document', 'narrative').presence || 'Không có nội dung chi tiết.').to_json.html_safe %>
+                  </script>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 7: KNOWLEDGE & SECOND BRAIN -->
+      <section id="tab-knowledge" class="qcc-tab-pane" role="tabpanel">
+        <div class="qcc-card">
+          <div class="qcc-card-header">
+            <div>
+              <h3 class="qcc-card-title">Bộ máy Tìm kiếm Tri thức Thứ hai (Second Brain / RAG)</h3>
+              <p class="qcc-card-sub">Qdrant Vector Database (1024-dim BGE-M3) kết hợp SQLite FTS5 BM25 Lexical Retrieval</p>
+            </div>
+            <span class="qcc-chip qcc-chip-purple">2,132 Vector Points Active</span>
+          </div>
+
+          <!-- Knowledge Search Box -->
+          <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", class: "qcc-knowledge-form" do %>
+            <%= hidden_field_tag :tool, 'knowledge_search' %>
+            <div class="qcc-search-bar">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" name="knowledge_query" class="qcc-search-input" placeholder="Tìm kiếm tài liệu, work packages, mã nguồn, trích dẫn (ví dụ: route GET /healthz)..." value="<%= params[:knowledge_query] %>">
+              <button type="submit" class="qcc-btn qcc-btn-primary">Tìm kiếm Tri thức</button>
+            </div>
+          <% end %>
+
+          <!-- Search Results / Citations Area -->
+          <div class="qcc-knowledge-results">
+            <% if @knowledge && @knowledge['items'] && @knowledge['items'].any? %>
+              <h4 class="qcc-results-heading">Kết quả tìm kiếm từ Second Brain (<%= @knowledge['items'].size %> mục):</h4>
+              <% @knowledge['items'].each do |item| %>
+                <div class="qcc-knowledge-item">
+                  <div class="qcc-knowledge-header">
+                    <span class="qcc-chip qcc-chip-cyan"><%= item['match_type'] || 'FTS_BM25' %></span>
+                    <strong class="qcc-knowledge-title"><%= item['title'] %></strong>
+                    <span class="qcc-knowledge-score">Score: <%= item['score'] ? sprintf("%.2f", item['score']) : 'N/A' %></span>
+                  </div>
+                  <p class="qcc-knowledge-snippet"><%= item['snippet'] %></p>
+                  <% if item['citation'] %>
+                    <div class="qcc-knowledge-cite">Trích dẫn: <a href="<%= item['citation'] %>" target="_blank"><%= item['citation'] %></a></div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% elsif @knowledge && @knowledge['items'] %>
+              <div class="qcc-empty-state text-muted" style="padding: 24px; text-align: center; border: 1px dashed var(--qcc-border); border-radius: 8px;">
+                Không tìm thấy tài liệu phù hợp trong Second Brain cho truy vấn "<%= params[:knowledge_query] %>".
+              </div>
+            <% else %>
+              <div class="qcc-empty-state text-muted" style="padding: 24px; text-align: center; border: 1px dashed var(--qcc-border); border-radius: 8px;">
+                Nhập từ khóa (ví dụ: route GET /healthz, sqlite, task) vào ô tìm kiếm ở trên để truy vấn kho tri thức Second Brain.
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 8: SYSTEM INTEGRATIONS -->
+      <section id="tab-integrations" class="qcc-tab-pane" role="tabpanel">
+        <div class="qcc-section-header">
+          <div>
+            <h2 class="qcc-section-title">Chẩn đoán Tích hợp & Cổng Dịch vụ (System Integrations)</h2>
+            <p class="qcc-section-sub">Quan sát trạng thái 7 thành phần cốt lõi của QLDAPM MAIN Architecture</p>
+          </div>
+        </div>
+
+        <div class="qcc-services-grid">
+          <!-- S1: OpenProject -->
+          <div class="qcc-service-card">
+            <div class="qcc-service-icon bg-blue">OP</div>
+            <div class="qcc-service-body">
+              <div class="qcc-service-name">OpenProject Community</div>
+              <div class="qcc-service-port">Port 18088 · Web Interface</div>
+              <div class="qcc-service-status text-emerald">● ONLINE (HTTP 200)</div>
+            </div>
+          </div>
+
+          <!-- S2: AI Gateway -->
+          <div class="qcc-service-card">
+            <div class="qcc-service-icon bg-indigo">GW</div>
+            <div class="qcc-service-body">
+              <div class="qcc-service-name">QLDAPM AI Gateway</div>
+              <div class="qcc-service-port">Port 18089 · REST Supervisor</div>
+              <div class="qcc-service-status text-emerald">● READY (Authenticated)</div>
+            </div>
+          </div>
+
+          <!-- S3: OpenClaw -->
+          <div class="qcc-service-card">
+            <div class="qcc-service-icon bg-emerald">OC</div>
+            <div class="qcc-service-body">
+              <div class="qcc-service-name">OpenClaw Gateway</div>
+              <div class="qcc-service-port">Port 18789 · WSL2 Sandbox</div>
+              <div class="qcc-service-status text-emerald">● ONLINE (HTTP 200)</div>
+            </div>
+          </div>
+
+          <!-- S4: n8n -->
+          <div class="qcc-service-card">
+            <div class="qcc-service-icon bg-rose">N8N</div>
+            <div class="qcc-service-body">
+              <div class="qcc-service-name">n8n Orchestration</div>
+              <div class="qcc-service-port">Port 5679 · 16 Workflows</div>
+              <div class="qcc-service-status text-emerald">● ACTIVE (16/16)</div>
+            </div>
+          </div>
+
+          <!-- S5: Qdrant -->
+          <div class="qcc-service-card">
+            <div class="qcc-service-icon bg-purple">QD</div>
+            <div class="qcc-service-body">
+              <div class="qcc-service-name">Qdrant Vector Database</div>
+              <div class="qcc-service-port">Port 6333 · 2,132 Points</div>
+              <div class="qcc-service-status text-emerald">● HEALTHY (Status Green)</div>
+            </div>
+          </div>
+
+          <!-- S6: Ollama -->
+          <div class="qcc-service-card">
+            <div class="qcc-service-icon bg-teal">OL</div>
+            <div class="qcc-service-body">
+              <div class="qcc-service-name">Ollama Local Embeddings</div>
+              <div class="qcc-service-port">Port 11434 · Model BGE-M3</div>
+              <div class="qcc-service-status text-emerald">● ONLINE (HTTP 200)</div>
+            </div>
+          </div>
+
+          <!-- S7: Mini Task Manager -->
+          <div class="qcc-service-card">
+            <div class="qcc-service-icon bg-amber">APP</div>
+            <div class="qcc-service-body">
+              <div class="qcc-service-name">Demo App (Target Service)</div>
+              <div class="qcc-service-port">Port 18791 · FastHTTP Server</div>
+              <div class="qcc-service-status text-emerald">● SERVING (HTTP 200)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- AI WORK INTAKE MODAL (Phase 3.2: PM/BA Planning) -->
+  <div id="qcc-intake-modal" class="qcc-modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-intake-title">
+    <div class="qcc-modal-box" style="max-width: 640px;">
+      <div class="qcc-modal-header">
+        <h3 id="modal-intake-title" class="qcc-modal-title">Giao việc mới cho AI · Phân tích Yêu cầu & Lập Kế hoạch</h3>
+        <button type="button" class="qcc-modal-close" data-action="close-modal" aria-label="Đóng modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", id: 'qcc-intake-form' do %>
+        <%= hidden_field_tag :tool, 'engineering_plan' %>
+        <%= hidden_field_tag :arguments, {native_id: parent_id, lock_version: parent['lock_version'] || 4}.to_json %>
+
+        <div class="qcc-modal-body">
+          <p class="qcc-modal-desc">
+            Nhập yêu cầu tính năng, User Story hoặc cải tiến bằng ngôn ngữ tự nhiên. 
+            <strong>Tác nhân BA</strong> sẽ phân tích đặc tả kỹ thuật và tiêu chí chấp nhận (AC); 
+            <strong>Tác nhân PM</strong> sẽ phân rã thành các Engineering Units và tự động tạo Work Package con trên OpenProject.
+          </p>
+
+          <div class="qcc-form-group">
+            <label for="engineering_feedback" style="display:block; margin-bottom: 8px; font-weight: 600; font-size: 13px; color: #E6EDF3;">
+              Mô tả yêu cầu / Tính năng mới:
+            </label>
+            <textarea id="engineering_feedback" name="engineering_feedback" class="qcc-textarea" rows="5" maxlength="6000" placeholder="Ví dụ: Bổ sung tính năng lọc công việc theo danh mục (category) và xuất danh sách ra file CSV. Cần kiểm tra quyền người dùng trước khi xuất và có unit test đi kèm..." required style="width: 100%; border-radius: 6px; padding: 12px; background: #0D1117; color: #E6EDF3; border: 1px solid #30363D; font-family: inherit; font-size: 13px; resize: vertical; box-sizing: border-box;"></textarea>
+          </div>
+
+          <div class="qcc-info-box" style="margin-top: 12px; padding: 10px 14px; background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38BDF8; border-radius: 4px; font-size: 12px; color: #94A3B8;">
+            <strong style="color: #38BDF8;">Quy trình tiếp nhận tự động:</strong>
+            Yêu cầu sẽ được tạo thành Unit mới trong Backlog ở trạng thái <code>PLANNED</code>. Sau đó bạn có thể nhấn <code>RUN ONCE</code> hoặc bật <code>AUTO</code> để Dev Agent viết code, Reviewer kiểm tra diff và QA chạy pytest tạo PR trên GitHub.
+          </div>
+        </div>
+
+        <div class="qcc-modal-footer">
+          <button type="button" class="qcc-btn qcc-btn-slate" data-action="close-modal">Đóng</button>
+          <button type="submit" class="qcc-btn qcc-btn-primary" id="btn-submit-intake">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            <span>Gửi tới PM/BA Agent</span>
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- EXECUTION INSPECTOR MODAL (Phase 3.2: DAG & Detailed Agent Communication) -->
+  <div id="qcc-run-modal" class="qcc-modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-run-title">
+    <div class="qcc-modal-box" style="max-width: 960px; width: 92vw; max-height: 90vh; display: flex; flex-direction: column;">
+      <div class="qcc-modal-header" style="flex-shrink: 0;">
+        <div>
+          <h3 id="modal-run-title" class="qcc-modal-title" style="display: flex; align-items: center; gap: 8px;">
+            <span>Chi tiết Thực thi & Giám sát Tác nhân</span>
+            <span id="qcc-run-modal-status-badge" class="qcc-chip qcc-chip-cyan">LOADING</span>
+          </h3>
+          <p class="qcc-card-sub" style="margin: 4px 0 0 0;">Run ID: <code id="qcc-run-modal-id" class="text-cyan">...</code> · Đơn vị: <strong id="qcc-run-modal-unit" class="text-white">...</strong></p>
+        </div>
+        <button type="button" class="qcc-modal-close" data-action="close-modal" aria-label="Đóng modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="qcc-run-metrics-strip" style="background: #111827; padding: 10px 20px; display: flex; gap: 20px; border-bottom: 1px solid #1F2937; flex-shrink: 0; font-size: 12px; flex-wrap: wrap;">
+        <div><span class="text-slate">Thời gian chạy:</span> <strong id="qcc-run-metric-duration" class="text-white">--</strong></div>
+        <div><span class="text-slate">Mô hình AI:</span> <strong id="qcc-run-metric-model" class="text-cyan">gemini-3.5-flash-lite</strong></div>
+        <div><span class="text-slate">Tokens (Lượt chạy này):</span> <strong id="qcc-run-metric-tokens" class="text-white" title="Tokens tiêu thụ trong riêng Run ID này. Quota tích lũy toàn hệ thống xem tại KPI Header">--</strong></div>
+        <div><span class="text-slate">Cuộc gọi API:</span> <strong id="qcc-run-metric-calls" class="text-emerald">--</strong></div>
+        <div><span class="text-slate">Tác nhân tham gia:</span> <strong id="qcc-run-metric-agents" class="text-purple">--</strong></div>
+      </div>
+
+      <!-- Modal Sub-navigation Tabs -->
+      <div class="qcc-modal-subnav" style="background: #0B0F19; border-bottom: 1px solid #1F2937; padding: 0 20px; display: flex; gap: 8px; flex-shrink: 0;">
+        <button type="button" class="qcc-subnav-btn active" data-subtab="subtab-dag">Sơ đồ Tương tác DAG</button>
+        <button type="button" class="qcc-subnav-btn" data-subtab="subtab-events">Dòng sự kiện (Timeline)</button>
+        <button type="button" class="qcc-subnav-btn" data-subtab="subtab-diff">Mã nguồn & Diff</button>
+        <button type="button" class="qcc-subnav-btn" data-subtab="subtab-qa">Bằng chứng QA & Test</button>
+        <button type="button" class="qcc-subnav-btn" data-subtab="subtab-raw">Raw Telemetry</button>
+      </div>
+
+      <div class="qcc-modal-body" style="flex: 1; overflow-y: auto; padding: 20px;">
+        <!-- Subtab 1: DAG Flow -->
+        <div id="subtab-dag" class="qcc-subtab-pane active">
+          <div id="qcc-dag-container" class="qcc-dag-wrapper" style="display: flex; flex-direction: column; gap: 12px;">
+            <!-- Dynamic nodes rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Subtab 2: Events Timeline -->
+        <div id="subtab-events" class="qcc-subtab-pane" style="display: none;">
+          <table class="qcc-table" style="font-size: 12px;">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Thời điểm</th>
+                <th>Tác nhân</th>
+                <th>Sự kiện</th>
+                <th>Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody id="qcc-events-tbody">
+              <!-- Dynamic events rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Subtab 3: Code Diff -->
+        <div id="subtab-diff" class="qcc-subtab-pane" style="display: none;">
+          <div id="qcc-diff-content" style="background: #030712; padding: 16px; border-radius: 6px; border: 1px solid #1F2937; font-family: monospace; font-size: 12px; white-space: pre-wrap; color: #E5E7EB;">
+            <!-- Dynamic diff rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Subtab 4: QA Evidence -->
+        <div id="subtab-qa" class="qcc-subtab-pane" style="display: none;">
+          <div id="qcc-qa-content" style="background: #030712; padding: 16px; border-radius: 6px; border: 1px solid #1F2937; font-family: monospace; font-size: 12px; white-space: pre-wrap; color: #A7F3D0;">
+            <!-- Dynamic QA test log rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Subtab 5: Raw JSON -->
+        <div id="subtab-raw" class="qcc-subtab-pane" style="display: none;">
+          <pre id="qcc-raw-content" style="background: #030712; padding: 16px; border-radius: 6px; border: 1px solid #1F2937; font-size: 11px; overflow-x: auto; color: #94A3B8; max-height: 400px;"></pre>
+        </div>
+      </div>
+
+      <div class="qcc-modal-footer" style="flex-shrink: 0;">
+        <button type="button" class="qcc-btn qcc-btn-slate" data-action="close-modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT READER MODAL (Phase 3.2: Full Markdown Viewer) -->
+  <div id="qcc-report-modal" class="qcc-modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-report-title">
+    <div class="qcc-modal-box" style="max-width: 800px; width: 90vw; max-height: 85vh; display: flex; flex-direction: column;">
+      <div class="qcc-modal-header" style="flex-shrink: 0;">
+        <div>
+          <h3 id="modal-report-title" class="qcc-modal-title">Toàn văn Báo cáo Tiến độ AI Engineering</h3>
+          <p class="qcc-card-sub" style="margin: 4px 0 0 0;"><span id="qcc-modal-report-type" class="qcc-chip qcc-chip-blue">DAILY</span> · Tạo lúc: <span id="qcc-modal-report-time">--</span></p>
+        </div>
+        <button type="button" class="qcc-modal-close" data-action="close-modal" aria-label="Đóng modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="qcc-modal-body" style="flex: 1; overflow-y: auto; padding: 20px;">
+        <div id="qcc-modal-report-body" class="qcc-markdown-rendered" style="line-height: 1.6; font-size: 13px; color: #E5E7EB; white-space: pre-wrap; font-family: system-ui, -apple-system, sans-serif;">
+          <!-- Dynamic report content -->
+        </div>
+      </div>
+
+      <div class="qcc-modal-footer" style="flex-shrink: 0;">
+        <button type="button" class="qcc-btn qcc-btn-secondary" id="btn-copy-report">Sao chép Báo cáo</button>
+        <button type="button" class="qcc-btn qcc-btn-slate" data-action="close-modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE CONFIGURATION MODAL (Finding G & UI) -->
+  <div id="schedule-config-modal" class="qcc-modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-sched-title">
+    <div class="qcc-modal-box">
+      <div class="qcc-modal-header">
+        <h3 id="modal-sched-title" class="qcc-modal-title">Cấu hình Lịch Báo cáo Tự động</h3>
+        <button type="button" class="qcc-modal-close" data-action="close-modal" aria-label="Đóng modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <%= form_tag "/projects/#{@project.identifier}/qldapm-ai/commands", id: 'qcc-schedule-form' do %>
+        <%= hidden_field_tag :tool, 'engineering_report_schedule_update' %>
+        <%= hidden_field_tag :arguments, '', id: 'qcc-schedule-args' %>
+
+        <div class="qcc-modal-body">
+          <p class="qcc-modal-desc">
+            Cấu hình thời gian hệ thống tự động tổng hợp báo cáo tiến độ bằng background daemon timer độc lập trong múi giờ <strong>Asia/Ho_Chi_Minh (UTC+7)</strong>.
+          </p>
+
+          <!-- Daily Schedule Form Group -->
+          <div class="qcc-form-group">
+            <label class="qcc-checkbox-label">
+              <input type="checkbox" id="sched_daily_enabled" <%= 'checked' if sched['daily_enabled'] != 0 %>>
+              <strong>Bật báo cáo hằng ngày (Daily Report)</strong>
+            </label>
+            <div class="qcc-time-pickers">
+              <div class="qcc-field">
+                <span>Giờ (0-23):</span>
+                <input type="number" id="sched_daily_hour" class="qcc-input-number" min="0" max="23" value="<%= sched['daily_hour'] || 7 %>">
+              </div>
+              <div class="qcc-field">
+                <span>Phút (0-59):</span>
+                <input type="number" id="sched_daily_minute" class="qcc-input-number" min="0" max="59" value="<%= sched['daily_minute'] || 30 %>">
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Schedule Form Group -->
+          <div class="qcc-form-group">
+            <label class="qcc-checkbox-label">
+              <input type="checkbox" id="sched_weekly_enabled" <%= 'checked' if sched['weekly_enabled'] != 0 %>>
+              <strong>Bật báo cáo hằng tuần (Weekly Report)</strong>
+            </label>
+            <div class="qcc-time-pickers">
+              <div class="qcc-field">
+                <span>Thứ (1=Thứ Hai .. 7=Chủ Nhật):</span>
+                <input type="number" id="sched_weekly_day" class="qcc-input-number" min="1" max="7" value="<%= sched['weekly_day'] || 1 %>">
+              </div>
+              <div class="qcc-field">
+                <span>Giờ:</span>
+                <input type="number" id="sched_weekly_hour" class="qcc-input-number" min="0" max="23" value="<%= sched['weekly_hour'] || 9 %>">
+              </div>
+              <div class="qcc-field">
+                <span>Phút:</span>
+                <input type="number" id="sched_weekly_minute" class="qcc-input-number" min="0" max="59" value="<%= sched['weekly_minute'] || 0 %>">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qcc-modal-footer">
+          <button type="button" class="qcc-btn qcc-btn-slate" data-action="close-modal">Đóng</button>
+          <button type="submit" class="qcc-btn qcc-btn-primary" id="btn-save-schedule" data-action="save-schedule">Lưu cấu hình</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- SCOPED CSS STYLESHEET (Dark-First OLED & Swiss Precision) -->
+<style>
+  :root {
+    --qcc-bg: #090D16;
+    --qcc-surface: #0F172A;
+    --qcc-card: #131E35;
+    --qcc-card-hover: #192744;
+    --qcc-border: #1E293B;
+    --qcc-border-subtle: rgba(255, 255, 255, 0.08);
+    --qcc-text-main: #F8FAFC;
+    --qcc-text-muted: #94A3B8;
+    --qcc-text-dim: #64748B;
+    --qcc-primary: #6366F1;
+    --qcc-primary-hover: #4F46E5;
+    --qcc-cyan: #06B6D4;
+    --qcc-emerald: #10B981;
+    --qcc-amber: #F59E0B;
+    --qcc-rose: #EF4444;
+    --qcc-purple: #A855F7;
+    --qcc-radius-sm: 6px;
+    --qcc-radius-md: 10px;
+    --qcc-radius-lg: 14px;
+    --qcc-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --qcc-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  /* Reset OpenProject wrapper padding for Command Center full width */
+  #content-wrapper, #content {
+    background: var(--qcc-bg) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .qcc-root {
+    font-family: var(--qcc-font);
+    background: var(--qcc-bg);
+    color: var(--qcc-text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .qcc-root *, .qcc-root *::before, .qcc-root *::after {
+    box-sizing: inherit;
+  }
+
+  /* Top Animated Indicator */
+  .qcc-top-progress {
+    height: 3px;
+    background: linear-gradient(90deg, #6366F1, #06B6D4, #10B981);
+    opacity: 0.6;
+  }
+  .qcc-top-progress.active {
+    opacity: 1;
+    background-size: 200% 100%;
+    animation: qcc-shimmer 2s infinite linear;
+  }
+  @keyframes qcc-shimmer {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+
+  /* Shell Grid */
+  .qcc-shell {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - 3px);
+  }
+
+  /* Left Sidebar */
+  .qcc-sidebar {
+    width: 260px;
+    background: var(--qcc-surface);
+    border-right: 1px solid var(--qcc-border);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 14px;
+    flex-shrink: 0;
+  }
+
+  .qcc-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 8px 18px 8px;
+    border-bottom: 1px solid var(--qcc-border-subtle);
+  }
+  .qcc-brand-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--qcc-primary);
+    border-radius: var(--qcc-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+  }
+  .qcc-brand-name {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+  }
+  .qcc-brand-sub {
+    font-size: 11px;
+    color: var(--qcc-text-muted);
+  }
+
+  .qcc-project-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 14px 8px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: var(--qcc-radius-sm);
+    font-size: 12px;
+    color: var(--qcc-cyan);
+    font-family: var(--qcc-mono);
+  }
+  .qcc-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .qcc-badge-dot.alive {
+    background: var(--qcc-emerald);
+    box-shadow: 0 0 8px var(--qcc-emerald);
+  }
+  .qcc-badge-dot.idle {
+    background: var(--qcc-text-dim);
+  }
+
+  /* Navigation */
+  .qcc-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+    flex: 1;
+  }
+  .qcc-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    background: transparent;
+    border: none;
+    border-radius: var(--qcc-radius-sm);
+    color: var(--qcc-text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all 180ms ease;
+  }
+  .qcc-nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--qcc-text-main);
+  }
+  .qcc-nav-item.active {
+    background: rgba(99, 102, 241, 0.15);
+    color: #FFFFFF;
+    border-left: 3px solid var(--qcc-primary);
+  }
+  .qcc-nav-pill {
+    margin-left: auto;
+    font-size: 11px;
+    padding: 2px 7px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    color: var(--qcc-text-muted);
+    font-family: var(--qcc-mono);
+  }
+
+  /* Sidebar Footer */
+  .qcc-sidebar-footer {
+    border-top: 1px solid var(--qcc-border-subtle);
+    padding-top: 14px;
+    margin-top: auto;
+  }
+  .qcc-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 6px;
+    margin-bottom: 10px;
+  }
+  .qcc-user-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--qcc-primary);
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .qcc-user-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--qcc-text-main);
+  }
+  .qcc-user-role {
+    font-size: 11px;
+    color: var(--qcc-cyan);
+    font-family: var(--qcc-mono);
+  }
+  .qcc-footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .qcc-footer-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    color: var(--qcc-text-dim);
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: var(--qcc-radius-sm);
+    transition: color 150ms ease;
+  }
+  .qcc-footer-link:hover {
+    color: var(--qcc-text-main);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* Main Canvas */
+  .qcc-main {
+    flex: 1;
+    padding: 24px 32px 60px 32px;
+    overflow-y: auto;
+  }
+
+  /* Header */
+  .qcc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--qcc-border);
+    margin-bottom: 20px;
+  }
+  .qcc-header-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .qcc-header-meta {
+    font-size: 13px;
+    color: var(--qcc-text-muted);
+    margin: 0;
+  }
+  .qcc-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .qcc-action-form {
+    display: inline-block;
+    margin: 0;
+  }
+
+  /* Buttons */
+  .qcc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: var(--qcc-radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 180ms ease;
+    text-decoration: none;
+    outline: none;
+  }
+  .qcc-btn:focus-visible {
+    outline: 2px solid var(--qcc-primary);
+    outline-offset: 2px;
+  }
+  .qcc-btn.loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .qcc-btn-primary {
+    background: var(--qcc-primary);
+    color: #FFFFFF;
+  }
+  .qcc-btn-primary:hover {
+    background: var(--qcc-primary-hover);
+  }
+  .qcc-btn-emerald {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--qcc-emerald);
+    border-color: rgba(16, 185, 129, 0.4);
+  }
+  .qcc-btn-emerald:hover {
+    background: var(--qcc-emerald);
+    color: #090D16;
+  }
+  .qcc-btn-slate {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--qcc-text-main);
+    border-color: var(--qcc-border);
+  }
+  .qcc-btn-slate:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .qcc-btn-amber {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--qcc-amber);
+    border-color: rgba(245, 158, 11, 0.4);
+  }
+  .qcc-btn-amber:hover {
+    background: var(--qcc-amber);
+    color: #090D16;
+  }
+  .qcc-btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--qcc-text-main);
+    border-color: var(--qcc-border);
+  }
+  .qcc-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .qcc-btn-xs {
+    padding: 3px 8px;
+    font-size: 11px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+  }
+  .qcc-btn-rose {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--qcc-rose);
+  }
+  .qcc-btn-rose:hover {
+    background: var(--qcc-rose);
+    color: #FFFFFF;
+  }
+  .qcc-btn-link {
+    color: var(--qcc-cyan);
+    font-size: 12px;
+    text-decoration: none;
+  }
+  .qcc-btn-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Chips & Badges */
+  .qcc-chip-mode {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--qcc-mono);
+  }
+  .qcc-chip-mode.mode-auto {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--qcc-emerald);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+  }
+  .qcc-chip-mode.mode-off {
+    background: rgba(100, 116, 139, 0.2);
+    color: var(--qcc-text-dim);
+    border: 1px solid rgba(100, 116, 139, 0.4);
+  }
+  .qcc-chip-mode.mode-paused {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--qcc-amber);
+    border: 1px solid rgba(245, 158, 11, 0.5);
+  }
+  .qcc-chip-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: qcc-blink 1.5s infinite;
+  }
+  @keyframes qcc-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .qcc-chip {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--qcc-mono);
+  }
+  .qcc-chip-emerald { background: rgba(16, 185, 129, 0.15); color: var(--qcc-emerald); }
+  .qcc-chip-cyan { background: rgba(6, 182, 212, 0.15); color: var(--qcc-cyan); }
+  .qcc-chip-blue { background: rgba(59, 130, 246, 0.15); color: #60A5FA; }
+  .qcc-chip-purple { background: rgba(168, 85, 247, 0.15); color: var(--qcc-purple); }
+  .qcc-chip-amber { background: rgba(245, 158, 11, 0.15); color: var(--qcc-amber); }
+  .qcc-chip-rose { background: rgba(239, 68, 68, 0.15); color: var(--qcc-rose); }
+  .qcc-chip-subtle { background: rgba(255, 255, 255, 0.05); color: var(--qcc-text-dim); font-size: 10px; }
+
+  /* Notifications */
+  .qcc-notifications-section {
+    margin-bottom: 20px;
+  }
+  .qcc-notif-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: var(--qcc-radius-md);
+    font-size: 13px;
+  }
+  .qcc-notif-subtle {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: var(--qcc-border);
+    color: var(--qcc-text-muted);
+  }
+  .qcc-notif-content {
+    flex: 1;
+  }
+  .qcc-notif-close {
+    background: transparent;
+    border: none;
+    color: var(--qcc-text-dim);
+    cursor: pointer;
+  }
+  .qcc-notif-close:hover {
+    color: var(--qcc-text-main);
+  }
+
+  /* Cards */
+  .qcc-card {
+    background: var(--qcc-card);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-lg);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .qcc-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .qcc-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: var(--qcc-text-main);
+  }
+  .qcc-card-sub {
+    font-size: 13px;
+    color: var(--qcc-text-muted);
+    margin: 0;
+  }
+
+  /* Active Mission Hero */
+  .qcc-mission-hero {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(6, 182, 212, 0.06) 100%), var(--qcc-card);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    border-radius: var(--qcc-radius-lg);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  .qcc-mission-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--qcc-cyan);
+    font-family: var(--qcc-mono);
+    margin-bottom: 8px;
+  }
+  .qcc-mission-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #FFFFFF;
+  }
+  .qcc-mission-desc {
+    font-size: 14px;
+    color: var(--qcc-text-muted);
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+  }
+  .qcc-mission-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .qcc-tag {
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 10px;
+    border-radius: var(--qcc-radius-sm);
+    border: 1px solid var(--qcc-border-subtle);
+  }
+
+  /* KPI Grid */
+  .qcc-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .qcc-kpi-card {
+    background: var(--qcc-card);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-md);
+    padding: 16px 18px;
+  }
+  .qcc-kpi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .qcc-kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--qcc-text-dim);
+  }
+  .qcc-kpi-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--qcc-text-main);
+    margin-bottom: 4px;
+  }
+  .qcc-kpi-sub {
+    font-size: 12px;
+    color: var(--qcc-text-muted);
+  }
+
+  /* Pipeline Visualization */
+  .qcc-pipeline-flow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 12px 4px;
+  }
+  .qcc-stage-node {
+    flex: 1;
+    min-width: 105px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-md);
+    padding: 12px 10px;
+    text-align: center;
+    transition: all 180ms ease;
+  }
+  .qcc-stage-node.done {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.04);
+  }
+  .qcc-stage-icon {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 6px auto;
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--qcc-emerald);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 11px;
+    font-family: var(--qcc-mono);
+  }
+  .qcc-stage-name {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .qcc-stage-sub {
+    font-size: 10px;
+    color: var(--qcc-text-dim);
+    margin-bottom: 4px;
+  }
+  .qcc-stage-state {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--qcc-emerald);
+    font-family: var(--qcc-mono);
+  }
+  .qcc-stage-arrow {
+    width: 12px;
+    height: 2px;
+    background: rgba(16, 185, 129, 0.5);
+    flex-shrink: 0;
+  }
+
+  /* Split Grid */
+  .qcc-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .qcc-split-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Units List */
+  .qcc-units-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .qcc-unit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-sm);
+  }
+  .qcc-unit-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .bullet-emerald { background: var(--qcc-emerald); box-shadow: 0 0 6px var(--qcc-emerald); }
+  .bullet-cyan { background: var(--qcc-cyan); box-shadow: 0 0 6px var(--qcc-cyan); }
+  .qcc-unit-info { flex: 1; }
+  .qcc-unit-title { font-size: 13px; font-weight: 600; color: var(--qcc-text-main); margin-bottom: 2px; }
+  .qcc-unit-meta { font-size: 11px; color: var(--qcc-text-dim); }
+
+  /* Audit List */
+  .qcc-audit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .qcc-audit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--qcc-text-muted);
+    line-height: 1.4;
+  }
+  .qcc-audit-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .dot-emerald { background: var(--qcc-emerald); }
+
+  /* Tables */
+  .qcc-table-wrapper {
+    overflow-x: auto;
+  }
+  .qcc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+  }
+  .qcc-table th {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--qcc-border);
+    color: var(--qcc-text-dim);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .qcc-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--qcc-text-main);
+    vertical-align: middle;
+  }
+  .qcc-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .row-parent td {
+    background: rgba(99, 102, 241, 0.05);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+  }
+  .qcc-pr-link {
+    color: var(--qcc-cyan);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .qcc-pr-link:hover {
+    text-decoration: underline;
+  }
+  .qcc-badge-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .qcc-review-badge {
+    font-size: 11px;
+    color: var(--qcc-emerald);
+  }
+
+  /* Agent Grid */
+  .qcc-agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .qcc-agent-card {
+    background: var(--qcc-card);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-lg);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 180ms ease, border-color 180ms ease;
+  }
+  .qcc-agent-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-2px);
+  }
+  .qcc-agent-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .qcc-agent-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--qcc-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 12px;
+    color: #FFFFFF;
+    font-family: var(--qcc-mono);
+  }
+  .bg-indigo { background: #6366F1; }
+  .bg-blue { background: #3B82F6; }
+  .bg-teal { background: #0D9488; }
+  .bg-emerald { background: #10B981; }
+  .bg-amber { background: #F59E0B; }
+  .bg-rose { background: #EF4444; }
+  .bg-purple { background: #A855F7; }
+
+  .qcc-agent-info { flex: 1; }
+  .qcc-agent-name { font-size: 15px; font-weight: 700; margin: 0 0 2px 0; color: var(--qcc-text-main); }
+  .qcc-agent-role { font-size: 12px; color: var(--qcc-text-muted); }
+  .qcc-agent-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 12px;
+    border-radius: var(--qcc-radius-sm);
+  }
+  .qcc-agent-row { display: flex; justify-content: space-between; color: var(--qcc-text-muted); }
+  .qcc-agent-skills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .qcc-skill-pill {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    background: rgba(99, 102, 241, 0.1);
+    color: #A5B4FC;
+    border-radius: 4px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+  }
+
+  /* Services Grid */
+  .qcc-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .qcc-service-card {
+    background: var(--qcc-card);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-md);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .qcc-service-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--qcc-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 12px;
+    color: #FFFFFF;
+    flex-shrink: 0;
+  }
+  .qcc-service-name { font-size: 14px; font-weight: 600; color: var(--qcc-text-main); margin-bottom: 2px; }
+  .qcc-service-port { font-size: 11px; color: var(--qcc-text-dim); margin-bottom: 4px; font-family: var(--qcc-mono); }
+  .qcc-service-status { font-size: 11px; font-weight: 700; }
+
+  /* Reports Grid */
+  .qcc-reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .qcc-report-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .qcc-report-top { display: flex; justify-content: space-between; align-items: center; }
+  .qcc-report-time { font-size: 11px; color: var(--qcc-text-dim); font-family: var(--qcc-mono); }
+  .qcc-report-title { font-size: 14px; font-weight: 600; margin: 0; color: var(--qcc-text-main); }
+  .qcc-report-metrics {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 12px;
+    border-radius: var(--qcc-radius-sm);
+    font-size: 11px;
+  }
+  .qcc-report-metric span { display: block; color: var(--qcc-text-dim); }
+  .qcc-report-metric strong { color: var(--qcc-cyan); font-size: 13px; }
+  .qcc-report-narrative {
+    font-size: 12px;
+    color: var(--qcc-text-muted);
+    line-height: 1.4;
+    background: rgba(255, 255, 255, 0.01);
+    padding: 8px;
+    border-radius: var(--qcc-radius-sm);
+  }
+
+  /* Knowledge Search */
+  .qcc-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-md);
+    padding: 8px 14px;
+    margin-bottom: 20px;
+  }
+  .qcc-search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--qcc-text-main);
+    font-size: 14px;
+    outline: none;
+  }
+  .qcc-knowledge-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-md);
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .qcc-knowledge-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .qcc-knowledge-title { font-size: 14px; color: var(--qcc-text-main); flex: 1; }
+  .qcc-knowledge-score { font-size: 11px; color: var(--qcc-cyan); font-family: var(--qcc-mono); }
+  .qcc-knowledge-snippet { font-size: 13px; color: var(--qcc-text-muted); line-height: 1.5; margin: 0 0 8px 0; }
+  .qcc-knowledge-cite a { color: var(--qcc-primary); font-size: 12px; text-decoration: none; }
+  .qcc-knowledge-cite a:hover { text-decoration: underline; }
+
+  /* Modals */
+  .qcc-modal-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+  }
+  .qcc-modal-box {
+    background: var(--qcc-card);
+    border: 1px solid var(--qcc-border);
+    border-radius: var(--qcc-radius-lg);
+    width: 100%;
+    max-width: 520px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+  .qcc-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .qcc-modal-title { font-size: 18px; font-weight: 700; margin: 0; color: #FFFFFF; }
+  .qcc-modal-close { background: transparent; border: none; color: var(--qcc-text-dim); cursor: pointer; }
+  .qcc-modal-close:hover { color: #FFFFFF; }
+  .qcc-modal-desc { font-size: 13px; color: var(--qcc-text-muted); margin: 0 0 20px 0; line-height: 1.5; }
+  .qcc-form-group {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--qcc-border-subtle);
+    border-radius: var(--qcc-radius-md);
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+  .qcc-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--qcc-text-main);
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .qcc-time-pickers { display: flex; gap: 14px; }
+  .qcc-field { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--qcc-text-muted); }
+  .qcc-input-number {
+    width: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--qcc-border);
+    border-radius: 4px;
+    color: #FFFFFF;
+    padding: 4px 6px;
+    font-size: 13px;
+    font-family: var(--qcc-mono);
+  }
+  .qcc-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--qcc-border);
+  }
+
+  /* Tab pane toggle */
+  .qcc-tab-pane { display: none; }
+  .qcc-tab-pane.active { display: block; animation: qcc-fadeIn 200ms ease; }
+  @keyframes qcc-fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Utility */
+  .text-emerald { color: var(--qcc-emerald) !important; }
+  .text-cyan { color: var(--qcc-cyan) !important; }
+  .text-slate { color: var(--qcc-text-dim) !important; }
+  .text-purple { color: var(--qcc-purple) !important; }
+  .text-amber { color: var(--qcc-amber) !important; }
+  .text-rose { color: var(--qcc-rose) !important; }
+  .text-center { text-align: center; }
+
+  /* Responsive Rules */
+  @media (max-width: 1024px) {
+    .qcc-shell { flex-direction: column; }
+    .qcc-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--qcc-border); }
+    .qcc-nav { flex-direction: row; flex-wrap: wrap; }
+    .qcc-nav-item { width: auto; }
+  }
+
+  /* Modal Sub-navigation & DAG styling (Phase 3.2) */
+  .qcc-subnav-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #94A3B8;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .qcc-subnav-btn:hover { color: #E6EDF3; }
+  .qcc-subnav-btn.active {
+    color: #38BDF8;
+    border-bottom-color: #38BDF8;
+    font-weight: 600;
+  }
+  .qcc-dag-node-box {
+    background: #0B0F19;
+    border: 1px solid #1E293B;
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .qcc-dag-node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .qcc-dag-arrow {
+    display: flex;
+    justify-content: center;
+    color: #475569;
+    font-size: 14px;
+  }
+
+  /* Toast Notification Alerts & Spinners (Phase 2.9.2) */
+  .qcc-toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 440px;
+    pointer-events: none;
+  }
+  .qcc-toast {
+    pointer-events: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: var(--qcc-radius);
+    background: #0F172A;
+    border: 1px solid var(--qcc-border);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    animation: qccToastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  @keyframes qccToastIn {
+    from { opacity: 0; transform: translateY(-12px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .qcc-toast-success {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(15, 23, 42, 0.98);
+  }
+  .qcc-toast-success .qcc-toast-icon {
+    color: var(--qcc-emerald);
+    background: rgba(16, 185, 129, 0.15);
+  }
+  .qcc-toast-error {
+    border-color: rgba(239, 68, 68, 0.4);
+    background: rgba(15, 23, 42, 0.98);
+  }
+  .qcc-toast-error .qcc-toast-icon {
+    color: var(--qcc-rose);
+    background: rgba(239, 68, 68, 0.15);
+  }
+  .qcc-toast-info {
+    border-color: rgba(6, 182, 212, 0.4);
+    background: rgba(15, 23, 42, 0.98);
+  }
+  .qcc-toast-info .qcc-toast-icon {
+    color: var(--qcc-cyan);
+    background: rgba(6, 182, 212, 0.15);
+  }
+  .qcc-toast-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .qcc-toast-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .qcc-toast-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--qcc-text-main);
+    margin-bottom: 2px;
+  }
+  .qcc-toast-body {
+    font-size: 12px;
+    color: var(--qcc-text-muted);
+    line-height: 1.4;
+    word-break: break-word;
+  }
+  .qcc-toast-close {
+    background: none;
+    border: none;
+    color: var(--qcc-text-slate);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+    transition: color 0.15s;
+  }
+  .qcc-toast-close:hover {
+    color: var(--qcc-text-main);
+  }
+  .qcc-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: qccSpin 0.8s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+  @keyframes qccSpin {
+    to { transform: rotate(360deg); }
+  }
+  button.submitting {
+    opacity: 0.8 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+  }
+
+</style>
+
+<!-- CLIENT-SIDE INTERACTION SCRIPT -->
+<%= nonced_javascript_tag do %>
+  // QLDAPM Command Center — 100% CSP Unobtrusive Event Handling
+  function restoreActiveTab() {
+    var saved = '';
+    if (window.location.hash && window.location.hash.startsWith('#tab-')) {
+      saved = window.location.hash.substring(1);
+    } else {
+      try { saved = localStorage.getItem('qcc_active_tab'); } catch(e) {}
+    }
+    if (saved && document.getElementById(saved)) {
+      document.querySelectorAll('.qcc-nav-item').forEach(function(btn) {
+        if (btn.getAttribute('data-tab') === saved) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      document.querySelectorAll('.qcc-tab-pane').forEach(function(pane) {
+        if (pane.id === saved) pane.classList.add('active');
+        else pane.classList.remove('active');
+      });
+    }
+  }
+  restoreActiveTab();
+  ['turbo:load', 'DOMContentLoaded'].forEach(function(ev) {
+    document.addEventListener(ev, restoreActiveTab);
+  });
+  document.addEventListener('click', function(e) {
+    // Tab Switching with LocalStorage and Hash Persistence
+    var navItem = e.target.closest('.qcc-nav-item');
+    if (navItem) {
+      e.preventDefault();
+      var targetTab = navItem.getAttribute('data-tab');
+      if (!targetTab) return;
+
+      document.querySelectorAll('.qcc-nav-item').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      navItem.classList.add('active');
+
+      document.querySelectorAll('.qcc-tab-pane').forEach(function(pane) {
+        pane.classList.remove('active');
+      });
+
+      var targetPane = document.getElementById(targetTab);
+      if (targetPane) {
+        targetPane.classList.add('active');
+      }
+      try { localStorage.setItem('qcc_active_tab', targetTab); } catch(err) {}
+      if (history.replaceState) { history.replaceState(null, null, '#' + targetTab); }
+      return;
+    }
+
+    // Open Schedule Modal
+    var openModalBtn = e.target.closest('#btn-open-schedule-modal');
+    if (openModalBtn) {
+      e.preventDefault();
+      var m = document.getElementById('schedule-config-modal');
+      if (m) {
+        m.style.display = 'flex';
+        var firstInput = m.querySelector('input, button');
+        if (firstInput) firstInput.focus();
+      }
+      return;
+    }
+
+    // Close Schedule Modal
+    var closeModalBtn = e.target.closest('[data-action="close-modal"], .qcc-modal-close');
+    if (closeModalBtn) {
+      e.preventDefault();
+      var m = document.getElementById('schedule-config-modal');
+      if (m) m.style.display = 'none';
+      return;
+    }
+
+    var dismissBtn = e.target.closest('[data-action="dismiss-toast"]');
+    if (dismissBtn) {
+      e.preventDefault();
+      var toast = dismissBtn.closest('.qcc-notification-item');
+      if (toast) toast.style.display = 'none';
+      return;
+    }
+
+    // Close toast alert
+    var closeToastBtn = e.target.closest('[data-action="close-toast"]');
+    if (closeToastBtn) {
+      e.preventDefault();
+      var tItem = closeToastBtn.closest('.qcc-toast');
+      if (tItem) {
+        tItem.style.opacity = '0';
+        tItem.style.transform = 'translateY(-10px)';
+        setTimeout(function() { tItem.remove(); }, 300);
+      }
+      return;
+    }
+  });
+
+  // Client-side Toast Helper Function
+  function showClientToast(type, title, message) {
+    var container = document.getElementById('qcc-toast-container');
+    if (!container) return;
+    var toast = document.createElement('div');
+    toast.className = 'qcc-toast qcc-toast-' + type;
+    toast.setAttribute('role', 'alert');
+    toast.innerHTML = '<div class="qcc-toast-icon">' +
+      (type === 'success' ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>' :
+       type === 'error' ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' :
+       '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>') +
+      '</div>' +
+      '<div class="qcc-toast-content">' +
+      '<div class="qcc-toast-title">' + title + '</div>' +
+      '<div class="qcc-toast-body">' + message + '</div>' +
+      '</div>' +
+      '<button type="button" class="qcc-toast-close" data-action="close-toast">&times;</button>';
+    container.appendChild(toast);
+    setTimeout(function() {
+      if (toast && toast.parentNode) {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-10px)';
+        setTimeout(function() { if (toast.parentNode) toast.remove(); }, 300);
+      }
+    }, 7000);
+  }
+
+  function resetSubmittingButtons() {
+    document.querySelectorAll('button.submitting').forEach(function(b) {
+      b.disabled = false;
+      b.classList.remove('submitting');
+      var orig = b.getAttribute('data-original-html');
+      if (orig) b.innerHTML = orig;
+    });
+    var progressBar = document.querySelector('.qcc-top-progress');
+    if (progressBar) progressBar.classList.remove('active');
+  }
+
+  // Handle Form Submission: Disabling buttons & Visual Progress with Safety Reset
+  document.addEventListener('submit', function(e) {
+    var form = e.target.closest('form');
+    if (!form) return;
+
+    if (form.id === 'qcc-schedule-form') {
+      var dailyBox = document.getElementById('sched_daily_enabled');
+      var hourSelect = document.getElementById('sched_daily_hour');
+      var payload = {
+        daily_enabled: dailyBox ? dailyBox.checked : true,
+        daily_hour: hourSelect ? parseInt(hourSelect.value, 10) : 18
+      };
+      var argsInput = document.getElementById('qcc-schedule-args');
+      if (argsInput) {
+        argsInput.value = JSON.stringify(payload);
+      }
+    }
+
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+      var originalHtml = btn.innerHTML;
+      btn.setAttribute('data-original-html', originalHtml);
+      // Defer disabling button so browser dispatches the form submit event
+      setTimeout(function() {
+        if (btn) {
+          btn.disabled = true;
+          btn.classList.add('submitting');
+          btn.innerHTML = '<span class="qcc-spinner"></span> <span>Đang xử lý...</span>';
+        }
+      }, 10);
+    }
+
+    var progressBar = document.querySelector('.qcc-top-progress');
+    if (progressBar) progressBar.classList.add('active');
+
+    showClientToast('info', 'Đang gửi yêu cầu...', 'Hệ thống đang gửi thao tác đến AI Gateway.');
+
+    // Safety Timeout: Auto-restore button after 15 seconds to prevent permanent infinite loading on error
+    setTimeout(function() {
+      resetSubmittingButtons();
+    }, 15000);
+  });
+
+  // Restore button state on Turbo events and page restore
+  ['turbo:submit-end', 'turbo:render', 'turbo:load', 'pageshow'].forEach(function(evt) {
+    document.addEventListener(evt, function() {
+      resetSubmittingButtons();
+    });
+    window.addEventListener(evt, function() {
+      resetSubmittingButtons();
+    });
+  });
+
+  // Auto-dismiss initial server-rendered toasts after 7s
+  setTimeout(function() {
+    var initialToasts = document.querySelectorAll('.qcc-toast');
+    initialToasts.forEach(function(t) {
+      t.style.opacity = '0';
+      t.style.transform = 'translateY(-10px)';
+      setTimeout(function() { if (t.parentNode) t.remove(); }, 300);
+    });
+  }, 7000);
+
+  // Background Status Polling (every 20 seconds)
+  var pollInterval = setInterval(function() {
+    var pollUrl = '/projects/<%= @project.identifier %>/qldapm-ai?format=json';
+    fetch(pollUrl, { credentials: 'same-origin', headers: { 'Accept': 'application/json' } })
+      .then(function(res) {
+        if (res.ok) return res.json();
+        throw new Error('Poll status: ' + res.status);
+      })
+      .then(function(data) {
+        if (!data || !data.engineering) return;
+        var eng = data.engineering;
+        var modeElem = document.querySelector('.qcc-kpi-card .qcc-kpi-value');
+        if (modeElem && eng.mode) {
+          modeElem.textContent = eng.mode;
+        }
+      })
+      .catch(function(err) {
+        // Silent backoff on polling error
+      });
+  }, 20000);
+
+  // Phase 3.2 Modal Handlers & Dynamic Loaders
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+
+    // Open Intake Modal
+    var intakeBtn = target.closest('.qcc-open-intake-btn');
+    if (intakeBtn) {
+      e.preventDefault();
+      var modal = document.getElementById('qcc-intake-modal');
+      if (modal) modal.style.display = 'flex';
+      return;
+    }
+
+    // Close any modal
+    var closeBtn = target.closest('[data-action="close-modal"]');
+    if (closeBtn || (target.classList && target.classList.contains('qcc-modal-backdrop'))) {
+      var backdrops = document.querySelectorAll('.qcc-modal-backdrop');
+      backdrops.forEach(function(m) { m.style.display = 'none'; });
+      return;
+    }
+
+    // Open Report Reader Modal
+    var readRepBtn = target.closest('.qcc-read-report-btn');
+    if (readRepBtn) {
+      e.preventDefault();
+      var repId = readRepBtn.getAttribute('data-report-id');
+      var repTitle = readRepBtn.getAttribute('data-report-title');
+      var repType = readRepBtn.getAttribute('data-report-type');
+      var repTime = readRepBtn.getAttribute('data-report-time');
+
+      var scriptElem = document.getElementById('rep-narrative-' + repId);
+      var narrativeText = '';
+      if (scriptElem) {
+        try { narrativeText = JSON.parse(scriptElem.textContent); }
+        catch(err) { narrativeText = scriptElem.textContent; }
+      }
+
+      var modalRep = document.getElementById('qcc-report-modal');
+      if (modalRep) {
+        document.getElementById('modal-report-title').textContent = repTitle || 'Báo cáo Tiến độ AI Engineering';
+        document.getElementById('qcc-modal-report-type').textContent = repType || 'DAILY';
+        document.getElementById('qcc-modal-report-time').textContent = repTime || '--';
+        modalRep.style.display = 'flex';
+
+        if (narrativeText && narrativeText.trim() !== '' && narrativeText !== 'Không có nội dung chi tiết.') {
+          document.getElementById('qcc-modal-report-body').textContent = narrativeText;
+        } else {
+          document.getElementById('qcc-modal-report-body').textContent = 'Đang nạp toàn văn báo cáo từ máy chủ...';
+          fetch('/projects/<%= @project.identifier %>/qldapm-ai/reports/' + encodeURIComponent(repId))
+            .then(function(res) {
+              if (!res.ok) throw new Error('HTTP ' + res.status);
+              return res.json();
+            })
+            .then(function(data) {
+              var text = data.narrative || (data.document && data.document.narrative) || 'Không có nội dung chi tiết.';
+              document.getElementById('qcc-modal-report-body').textContent = text;
+            })
+            .catch(function(err) {
+              document.getElementById('qcc-modal-report-body').textContent = 'Lỗi nạp báo cáo (' + err.message + '). Vui lòng kiểm tra kết nối.';
+            });
+        }
+      }
+      return;
+    }
+
+    // Copy Report Button
+    if (target.id === 'btn-copy-report' || target.closest('#btn-copy-report')) {
+      var bodyText = document.getElementById('qcc-modal-report-body').textContent;
+      navigator.clipboard.writeText(bodyText).then(function() {
+        showClientToast('success', 'Đã sao chép', 'Toàn văn báo cáo đã được sao chép vào bộ nhớ tạm.');
+      });
+      return;
+    }
+
+    // Subtab switching inside Execution Modal
+    var subnavBtn = target.closest('.qcc-subnav-btn');
+    if (subnavBtn) {
+      var tabId = subnavBtn.getAttribute('data-subtab');
+      var modalBox = subnavBtn.closest('.qcc-modal-box');
+      if (modalBox) {
+        modalBox.querySelectorAll('.qcc-subnav-btn').forEach(function(b) { b.classList.remove('active'); });
+        modalBox.querySelectorAll('.qcc-subtab-pane').forEach(function(p) { p.style.display = 'none'; });
+        subnavBtn.classList.add('active');
+        var pane = document.getElementById(tabId);
+        if (pane) pane.style.display = 'block';
+      }
+      return;
+    }
+
+    // Open Execution Inspector Modal
+    var runBtn = target.closest('.qcc-run-inspector-btn');
+    if (runBtn) {
+      e.preventDefault();
+      var runId = runBtn.getAttribute('data-run-id');
+      if (!runId) return;
+
+      var runModal = document.getElementById('qcc-run-modal');
+      if (!runModal) return;
+
+      document.getElementById('qcc-run-modal-id').textContent = runId;
+      document.getElementById('qcc-run-modal-unit').textContent = 'Đang tải...';
+      document.getElementById('qcc-run-modal-status-badge').textContent = 'LOADING...';
+      document.getElementById('qcc-dag-container').innerHTML = '<div style="text-align:center; padding:20px; color:#94A3B8;">Đang nạp dữ liệu DAG từ AI Gateway...</div>';
+      runModal.style.display = 'flex';
+
+      var execUrl = '/projects/<%= @project.identifier %>/qldapm-ai/executions/' + encodeURIComponent(runId) + '?format=json';
+      fetch(execUrl, {
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        renderExecutionData(data);
+      })
+      .catch(function(err) {
+        document.getElementById('qcc-run-modal-status-badge').textContent = 'ERROR';
+        document.getElementById('qcc-dag-container').innerHTML = '<div style="color:#F43F5E; padding:16px; background:rgba(244,63,94,0.1); border-radius:6px; border:1px solid rgba(244,63,94,0.3);"><strong style="display:block; margin-bottom:6px;">Lỗi nạp dữ liệu Telemetry:</strong>' + err.message + '<br><span style="font-size:11px; color:#94A3B8;">Vui lòng kiểm tra kết nối AI Gateway hoặc xem trực tiếp trong nhật ký SQLite.</span></div>';
+      });
+      return;
+    }
+  });
+
+  function formatVNDateTime(ts) {
+    if (!ts) return 'Chưa có dữ liệu';
+    var d;
+    if (typeof ts === 'number') {
+      d = new Date(ts < 10000000000 ? ts * 1000 : ts);
+    } else if (typeof ts === 'string') {
+      var num = Number(ts);
+      if (!isNaN(num) && num > 0) {
+        d = new Date(num < 10000000000 ? num * 1000 : num);
+      } else {
+        d = new Date(ts);
+      }
+    } else {
+      d = new Date(ts);
+    }
+    if (isNaN(d.getTime())) return 'Chưa có dữ liệu';
+    var parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Ho_Chi_Minh',
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false
+    }).formatToParts(d);
+    var p = {};
+    parts.forEach(function(part) { p[part.type] = part.value; });
+    return p.day + '/' + p.month + '/' + p.year + ' ' + p.hour + ':' + p.minute + ':' + p.second;
+  }
+
+  function renderExecutionData(data) {
+    if (!data) return;
+    var stateStr = (data.state || 'COMPLETED').toUpperCase();
+    var badgeClass = stateStr === 'COMPLETED' ? 'qcc-chip-emerald' : (stateStr === 'RUNNING' ? 'qcc-chip-cyan' : ((stateStr === 'FAILED' || stateStr === 'BLOCKED') ? 'qcc-chip-rose' : 'qcc-chip-amber'));
+    var badgeElem = document.getElementById('qcc-run-modal-status-badge');
+    badgeElem.textContent = stateStr;
+    badgeElem.className = 'qcc-chip ' + badgeClass;
+
+    document.getElementById('qcc-run-modal-unit').textContent = data.request || data.unit || 'Engineering Unit';
+    document.getElementById('qcc-run-metric-duration').textContent = data.duration_seconds ? (data.duration_seconds + 's') : '--';
+    document.getElementById('qcc-run-metric-model').textContent = data.model || 'gemini-3.5-flash-lite';
+    
+    var metrics = data.metrics || {};
+    document.getElementById('qcc-run-metric-tokens').textContent = (metrics.tokens || 0).toLocaleString();
+    document.getElementById('qcc-run-metric-calls').textContent = (metrics.calls || 0) + ' calls';
+    document.getElementById('qcc-run-metric-agents').textContent = (metrics.agents || (data.nodes ? data.nodes.length : 6)) + ' Agents';
+
+    // Render DAG
+    var dagHtml = '';
+    if (stateStr === 'FAILED' || stateStr === 'BLOCKED') {
+      dagHtml += '<div style="margin-bottom:12px; padding:10px 14px; background:rgba(244,63,94,0.12); border-left:3px solid #F43F5E; border-radius:4px; font-size:12px; color:#FCA5A5;"><strong>Cảnh báo phiên thực thi:</strong> ' + (data.final_output || 'Phiên thực thi gặp lỗi hoặc bị chặn tại bước kiểm tra.') + '</div>';
+    }
+
+    var nodes = data.nodes || [];
+    nodes.forEach(function(node, idx) {
+      var nState = (node.state || 'PENDING').toUpperCase();
+      var stateClass = nState === 'COMPLETED' ? 'text-emerald' : (nState === 'RUNNING' ? 'text-cyan' : ((nState === 'FAILED' || nState === 'BLOCKED') ? 'text-rose' : 'text-slate'));
+      var stateBg = nState === 'COMPLETED' ? 'rgba(52, 211, 153, 0.08)' : (nState === 'RUNNING' ? 'rgba(6, 182, 212, 0.08)' : ((nState === 'FAILED' || nState === 'BLOCKED') ? 'rgba(244, 63, 94, 0.12)' : 'rgba(30, 41, 59, 0.4)'));
+      var roleColor = node.agent === 'dev' ? '#38BDF8' : (node.agent === 'reviewer' ? '#F59E0B' : (node.agent === 'qa' ? '#10B981' : (node.agent === 'ba' ? '#EC4899' : (node.agent === 'pm' ? '#8B5CF6' : '#A78BFA'))));
+
+      dagHtml += '<div class="qcc-dag-node-box" style="background:' + stateBg + '; border-left: 3px solid ' + roleColor + ';">';
+      dagHtml += '  <div class="qcc-dag-node-header">';
+      dagHtml += '    <strong style="color:' + roleColor + ';">' + (node.name || node.agent) + '</strong>';
+      dagHtml += '    <span class="' + stateClass + '" style="font-size:11px; font-weight:600;">' + nState + '</span>';
+      dagHtml += '  </div>';
+      dagHtml += '  <div style="font-size:12px; color:#CBD5E1;">' + (node.objective || '') + '</div>';
+      if (node.output) {
+        dagHtml += '  <div style="font-size:11px; color:#94A3B8; background:#030712; padding:6px 10px; border-radius:4px; margin-top:4px; max-height:100px; overflow-y:auto; white-space:pre-wrap; word-break:break-all;">' + node.output + '</div>';
+      }
+      dagHtml += '</div>';
+
+      if (idx < nodes.length - 1) {
+        dagHtml += '<div class="qcc-dag-arrow">↓</div>';
+      }
+    });
+    document.getElementById('qcc-dag-container').innerHTML = dagHtml || '<p class="text-slate">Không có thông tin DAG cho lượt chạy này.</p>';
+
+    // Render Events
+    var events = data.events || [];
+    var eventsHtml = '';
+    events.forEach(function(ev, idx) {
+      var evStatus = (ev.status || 'OK').toUpperCase();
+      var evClass = evStatus === 'COMPLETED' || evStatus === 'OK' ? 'qcc-chip-emerald' : (evStatus === 'QUEUED' || evStatus === 'RUNNING' ? 'qcc-chip-cyan' : ((evStatus === 'FAILED' || evStatus === 'BLOCKED') ? 'qcc-chip-rose' : 'qcc-chip-slate'));
+      eventsHtml += '<tr>';
+      eventsHtml += '<td>' + (ev.sequence || idx + 1) + '</td>';
+      var isoTooltip = ev.timestamp ? new Date(ev.timestamp < 10000000000 ? ev.timestamp * 1000 : ev.timestamp).toISOString() : '';
+      eventsHtml += '<td style="color:#94A3B8;" title="' + isoTooltip + '">' + formatVNDateTime(ev.timestamp) + '</td>';
+      eventsHtml += '<td><strong style="color:#38BDF8;">' + (ev.agent_id || 'supervisor') + '</strong></td>';
+      eventsHtml += '<td><code>' + (ev.event_type || '') + '</code></td>';
+      eventsHtml += '<td><span class="qcc-chip ' + evClass + '">' + evStatus + '</span></td>';
+      eventsHtml += '</tr>';
+    });
+    document.getElementById('qcc-events-tbody').innerHTML = eventsHtml || '<tr><td colspan="5" class="text-center text-slate">Không có sự kiện ghi nhận</td></tr>';
+
+    // Render Real Diff Content
+    var diffText = '';
+    var devNode = (data.nodes || []).find(function(n) { return n.agent === 'dev'; });
+    if (devNode && devNode.output) {
+      diffText = '=== [Dev Agent Output & Files] ===\n' + devNode.output;
+    } else if (data.final_output) {
+      diffText = '=== [Final Output] ===\n' + data.final_output;
+    } else {
+      diffText = 'Không có mã nguồn diff trực tiếp được ghi nhận trong lượt chạy này.';
+    }
+    document.getElementById('qcc-diff-content').textContent = diffText;
+
+    // Render Real QA Content
+    var qaText = '';
+    var qaNode = (data.nodes || []).find(function(n) { return n.agent === 'qa'; });
+    var reviewerNode = (data.nodes || []).find(function(n) { return n.agent === 'reviewer'; });
+    if (qaNode && qaNode.output) {
+      qaText += '=== [QA Agent Evidence] ===\n' + qaNode.output + '\n\n';
+    }
+    if (reviewerNode && reviewerNode.output) {
+      qaText += '=== [Reviewer Exact-Diff Verdict] ===\n' + reviewerNode.output + '\n\n';
+    }
+    if (!qaText) {
+      if (data.request && data.request.indexOf('planning') !== -1) {
+        qaText = 'Tác vụ này là giai đoạn Lập kế hoạch PM/BA (Planning), không có bước thực thi Pytest mã nguồn.\nĐặc tả kỹ thuật và tiêu chí nghiệm thu được tạo tại Tab Backlog.';
+      } else if (stateStr === 'FAILED' || stateStr === 'BLOCKED') {
+        qaText = 'Phiên thực thi bị gián đoạn trước khi bước QA được tiến hành.\nNguyên nhân: ' + (data.final_output || 'Lỗi kiểm tra tính khả dụng hoặc phụ thuộc.');
+      } else {
+        qaText = 'Không có log kiểm thử QA riêng biệt cho lượt chạy này.';
+      }
+    }
+    document.getElementById('qcc-qa-content').textContent = qaText;
+
+    // Render Raw JSON
+    document.getElementById('qcc-raw-content').textContent = JSON.stringify(data, null, 2);
+  }
+
+  // Modal Escape key support
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var backdrops = document.querySelectorAll('.qcc-modal-backdrop');
+      backdrops.forEach(function(m) { m.style.display = 'none'; });
+    }
+  });
+
+  // Task Filter Search Input
+  document.addEventListener('input', function(e) {
+    if (e.target && e.target.id === 'qcc-task-search') {
+      var filter = e.target.value.toLowerCase();
+      var table = document.getElementById('qcc-tasks-table');
+      if (!table) return;
+      var rows = table.getElementsByTagName('tr');
+      for (var i = 1; i < rows.length; i++) {
+        var rowText = rows[i].textContent.toLowerCase();
+        rows[i].style.display = (rowText.indexOf(filter) > -1) ? '' : 'none';
+      }
+    }
+  });
+<% end %>

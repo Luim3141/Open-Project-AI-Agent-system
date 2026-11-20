@@ -1,0 +1,213 @@
+{
+  "at": "2026-10-27T04:13:07.595614+00:00",
+  "runtime": {
+    "gateway": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0",
+    "core": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0"
+  },
+  "scope": "Individual PASS is explicitly scoped; not full workflow acceptance or overall GO",
+  "tests": [
+    {
+      "test_id": "AI-01",
+      "status": "PASS",
+      "input_scope": "Typed open counts",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Actual Native30clone checks +10Main own-actor reads; open/closed metadata and authoritative pagination total verified.",
+      "evidence": [
+        "CHATGPT_MAIN_C2_NATIVE_OPEN_COUNT_CLONE_RESULT.json",
+        "CHATGPT_MAIN_C2_OPEN_COUNT_MAIN_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-02",
+      "status": "PASS",
+      "input_scope": "Global RAG API beyond first10",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Main PM19 finds375v0 with no native_ids parameter; default first10 are38..47. Live Supervisor context selection still separate.",
+      "evidence": [
+        "CHATGPT_MAIN_C2_GLOBAL_RAG_READBACK.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-03",
+      "status": "PASS",
+      "input_scope": "Real Gemini multi-agent",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "One fresh PM19 run: real Supervisor model plan, BA and QA SDK generations, localReviewerCOMPLETED, six LIVE_SUCCESS receipts, source375v0, no proposals/Native writes. Earlier timeout preserved, not replayed.",
+      "evidence": [
+        "CHATGPT_MAIN_C3_FRESH_LIVE_MULTI_AGENT_RESULT.json",
+        "CHATGPT_MAIN_C3_POST_LIVE_PRESERVATION_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": true
+    },
+    {
+      "test_id": "AI-04",
+      "status": "PASS",
+      "input_scope": "WBS schema/graph/proposal boundary",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Retained approved real BA375 output and prior actual isolated Native graph qualification remain preserved; current full regression passes. No regeneration or new Main Native WBS write.",
+      "evidence": [
+        "CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json",
+        "CODEX_WF10_MODEL_TO_NATIVE_MAIN_READBACK.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-05",
+      "status": "PASS",
+      "input_scope": "WF03 complete async lifecycle",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Existing WF03 operationplan ACK\u2192status polling\u2192done/succeeded and durable ownactor readback; samekey sameID/no provider delta, alteredbody422, crossactor403. Existing contract uses polling, no final callback endpoint. n8n payload saving intentionallydisabled.",
+      "evidence": [
+        "CHATGPT_MAIN_C3_FRESH_LIVE_MULTI_AGENT_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": true
+    },
+    {
+      "test_id": "AI-06",
+      "status": "PARTIAL",
+      "input_scope": "Callback/timeout/lost ACK",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Actual provider timeout retainedfailed; sameID no replay, changedpayload422, durable error. Isolated lostACK/recovery suites PASS. No callback endpoint in WF03; no invented callback proof. Broader fault qualification remains scoped.",
+      "evidence": [
+        "CHATGPT_MAIN_C2C_WF03_PROVIDER_TIMEOUT_RESULT.json",
+        "CHATGPT_MAIN_TEST_EVIDENCE.md"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-07",
+      "status": "PASS",
+      "input_scope": "Six-role PM-only boundaries",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "73Main own-identity positive/negative checks and preserved QA/phase source read limits.",
+      "evidence": [
+        "CHATGPT_MAIN_C2_ROLE_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-08",
+      "status": "PASS",
+      "input_scope": "Bounded provider429/503 faults",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Offline mocked SDK budget/retry/quota/circuit tests passed; not a live provider fault injection.",
+      "evidence": [
+        "openproject/ai/tests/test_live_agents.py",
+        "CHATGPT_MAIN_TEST_EVIDENCE.md"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-09",
+      "status": "PASS",
+      "input_scope": "Disposable source/RAG version sync",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Existing actual isolated Native WBS and source-phase recovery qualification preserved; serving unrelated Native modules unchanged.",
+      "evidence": [
+        "CODEX_WF10_MODEL_TO_NATIVE_FINAL_RESULT.json",
+        "CODEX_WF09_WF11_SOURCE_PHASE_NATIVE_CLONE_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-10",
+      "status": "PASS",
+      "input_scope": "Current Native/RAG integrity",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Main373documents/1739chunks/1742points, zero registered source/hash/version/FTS drift;3unmatched points retained/excluded.",
+      "evidence": [
+        "CHATGPT_MAIN_C2_OPEN_COUNT_MAIN_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-11",
+      "status": "PASS",
+      "input_scope": "Supervisor selected/project scope",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Main localSupervisor ten IDs and10/338, fresh receipt; actualNativeclone6roles; offline globalRAG priority/ACL and assigned-before-cap tests; live explicit375source remains bound.",
+      "evidence": [
+        "CHATGPT_MAIN_C2C_LOCAL_SCOPE_MAIN_RESULT.json",
+        "CHATGPT_MAIN_C2B_NATIVE_SUPERVISOR_SCOPE_CLONE_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-12",
+      "status": "PASS",
+      "input_scope": "Measured deterministic latency",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Main Task count correct57; representative POST373.72ms + fresh GET338.56ms. Prior22.695s was end-to-end historical, not20\u201350ms. No general benchmark claim.",
+      "evidence": [
+        "CHATGPT_MAIN_C2_OPEN_COUNT_MAIN_RESULT.json",
+        "CHATGPT_MAIN_C1_LATENCY_NATIVE_BASELINE.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-13",
+      "status": "PARTIAL",
+      "input_scope": "Application fix/build/QA/retest chain",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Source/scope/analysis bridge exists; actual admitted application fix/build producer and full Native development/retest/closure are incomplete.375technical QA is not371application proof.",
+      "evidence": [
+        "CODEX_WF09_WF11_PHASE_BRIDGE_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-14",
+      "status": "PARTIAL",
+      "input_scope": "Scheduled duplicate protection",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "16existing workflows active and unchanged; prior isolated scheduler/local-delivery tests retained, no new scheduled duplicate test or recipient configured.",
+      "evidence": [
+        "CHATGPT_MAIN_RUNTIME_CHECKPOINT.json",
+        "CODEX_MAIN_SCHEDULED_DAILY_LOCAL_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-15",
+      "status": "PARTIAL",
+      "input_scope": "Durable recovery",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "Existing process/lease/receipt recovery tests preserved;2old comments remainUNKNOWN_HOLD and full Qdrant restore remains policy-blocked.",
+      "evidence": [
+        "CODEX_WF14_FINAL_RECOVERY_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    },
+    {
+      "test_id": "AI-16",
+      "status": "PASS",
+      "input_scope": "Forgery/stale/project/invalid output",
+      "expected": "Correct authenticated actor/project/source and existing approval boundaries; actual evidence required",
+      "actual": "730Windows suite and30Native read-query clone cases plus Main missing/invalidBearer/forgedactor/project and idempotency checks. Offline/provider cases labelled.",
+      "evidence": [
+        "CHATGPT_MAIN_C2_NATIVE_OPEN_COUNT_CLONE_RESULT.json",
+        "CHATGPT_MAIN_C2_OPEN_COUNT_MAIN_RESULT.json"
+      ],
+      "main_native_side_effects": 0,
+      "new_provider_invocation": false
+    }
+  ],
+  "overall": "PARTIAL_NOT_FULL_GO"
+}

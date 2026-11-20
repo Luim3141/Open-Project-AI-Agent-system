@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-26T04:32:29.479565+00:00",
+  "status": "PASS_PROVENANCE_USER_CONFIRMED_FIRST_LOGIN_SECURITY_CHANGE",
+  "compared_to": "pre-Owner historical archive",
+  "observed_in": "Exact new predeployment PG backup, before application changes",
+  "delta": {
+    "users": {
+      "changed_columns": {
+        "23": [
+          "last_login_on",
+          "updated_at",
+          "first_login",
+          "force_password_change",
+          "last_failed_login_on"
+        ],
+        "18": [
+          "last_login_on",
+          "updated_at",
+          "last_failed_login_on"
+        ],
+        "19": [
+          "last_login_on",
+          "updated_at"
+        ]
+      },
+      "removed_ids": [],
+      "added_ids": [],
+      "new_record_metadata": []
+    },
+    "user_passwords": {
+      "changed_columns": {},
+      "removed_ids": [
+        "20"
+      ],
+      "added_ids": [
+        "25"
+      ],
+      "new_record_metadata": [
+        {
+          "id": "25",
+          "user_id": "23",
+          "created_at": "2026-10-26 04:08:09.14365+00",
+          "type": "UserPassword::Bcrypt"
+        }
+      ]
+    },
+    "two_factor_authentication_devices": {
+      "changed_columns": {
+        "1": [
+          "last_used_at"
+        ],
+        "2": [
+          "last_used_at"
+        ]
+      },
+      "removed_ids": [],
+      "added_ids": [
+        "4"
+      ],
+      "new_record_metadata": [
+        {
+          "id": "4",
+          "user_id": "23",
+          "created_at": "2026-10-26 04:08:32.236815+00",
+          "type": "TwoFactorAuthentication::Device::Totp"
+        }
+      ]
+    }
+  },
+  "all_other_users_passwords_prior_TOTP_secrets_preserved": true,
+  "deployment_security_hashes_before_after_equal": true,
+  "agent_password_or_totp_actions": 0,
+  "user_confirmation": {
+    "at": "2026-10-26T04:33:36.751688+00:00",
+    "source": "Direct human reply in this conversation",
+    "statement": "Có, tôi đã đổi password và đăng ký TOTP cho QA23",
+    "scope": "User23 first-login password change and TOTP enrollment; no agent credential action"
+  },
+  "no_rollback_of_new_user_security_state": true,
+  "no_secrets_in_report": true
+}

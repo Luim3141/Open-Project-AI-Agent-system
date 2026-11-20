@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-27T04:18:39.707142+00:00",
+  "status": "PASS_ACTUAL_NATIVE_FOUR_STATE_DEVELOPMENT_SUBTASK_POLICY",
+  "candidate_images": {
+    "core": "sha256:062282b33276dd2af79ae0d97f8043c482acbafdc14bb19bf83bbc401b02101c",
+    "gateway": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0"
+  },
+  "checks": [
+    "actualCoreServerNativeSnapshot",
+    "missing_all_obligations_denied",
+    "failed_QA_denied",
+    "BE_direct_transition_denied",
+    "Owner_review_exact_isolated_proposal",
+    "PM_completion_exact_isolated_proposal",
+    "original375_native_rows_exact"
+  ],
+  "result": {
+    "child": 377,
+    "parent": 376,
+    "before_version": 0,
+    "review_version": 1,
+    "done_version": 2,
+    "statuses": [
+      "IN PROGRESS",
+      "REVIEW",
+      "DONE"
+    ],
+    "model_calls": 0,
+    "new_main_mutations": 0,
+    "decisions": "SIMULATED_ISOLATED_ONLY_NOT_MAIN_HUMAN_APPROVAL",
+    "rag_of_new_isolated_transition": "NOT_TESTED_THIS_POLICY_QUALIFICATION"
+  },
+  "main_native_mutations": 0,
+  "source_dump_sha256": "bdabf5ef834bd8ab0928703b28872b866db660825e129ccb55a4777b1c52b671",
+  "fixture_setup": "Two new isolated resources via actual Native proposals; explicit synthetic gate facts/status seeded only on the new clone Subtask. This proves policy compatibility, not application producer admission or Main human QA approval."
+}

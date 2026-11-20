@@ -1,0 +1,178 @@
+{
+  "at": "2026-10-26T04:37:10.273221+00:00",
+  "status": "PASS_ACTUAL_NATIVE_RELATION_CRUD_SCHEDULING_ROLE_CEILINGS",
+  "images": {
+    "database": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+    "web": "sha256:26ed4964d63eb48dfe52f4f05776e062d09c51b6972cb142c3c8be1d88e75c82"
+  },
+  "fixture_ids": [
+    376,
+    377
+  ],
+  "deleted_fixture_relation_id": 353,
+  "created": [
+    {
+      "id": 376,
+      "lockVersion": 0,
+      "startDate": "2026-10-26",
+      "dueDate": "2026-10-27",
+      "duration": "P2D",
+      "scheduleManually": true
+    },
+    {
+      "id": 377,
+      "lockVersion": 1,
+      "startDate": "2026-10-28",
+      "dueDate": "2026-10-29",
+      "duration": "P2D",
+      "scheduleManually": false
+    }
+  ],
+  "updated": [
+    {
+      "id": 376,
+      "lockVersion": 0,
+      "startDate": "2026-10-26",
+      "dueDate": "2026-10-27",
+      "duration": "P2D",
+      "scheduleManually": true
+    },
+    {
+      "id": 377,
+      "lockVersion": 2,
+      "startDate": "2026-10-30",
+      "dueDate": "2026-11-02",
+      "duration": "P2D",
+      "scheduleManually": false
+    }
+  ],
+  "after_relation_delete": [
+    {
+      "id": 376,
+      "lockVersion": 0,
+      "startDate": "2026-10-26",
+      "dueDate": "2026-10-27",
+      "duration": "P2D",
+      "scheduleManually": true
+    },
+    {
+      "id": 377,
+      "lockVersion": 3,
+      "startDate": "2026-10-30",
+      "dueDate": "2026-11-02",
+      "duration": "P2D",
+      "scheduleManually": true
+    }
+  ],
+  "checks": [
+    {
+      "actor": 20,
+      "method": "PATCH",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_field_errors": [
+        "from",
+        "to"
+      ],
+      "fresh_manage_permission": false
+    },
+    {
+      "actor": 20,
+      "method": "DELETE",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_field_errors": [
+        "base"
+      ],
+      "fresh_manage_permission": false
+    },
+    {
+      "actor": 21,
+      "method": "PATCH",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_field_errors": [
+        "from",
+        "to"
+      ],
+      "fresh_manage_permission": false
+    },
+    {
+      "actor": 21,
+      "method": "DELETE",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_field_errors": [
+        "base"
+      ],
+      "fresh_manage_permission": false
+    },
+    {
+      "actor": 22,
+      "method": "PATCH",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_field_errors": [
+        "from",
+        "to"
+      ],
+      "fresh_manage_permission": false
+    },
+    {
+      "actor": 22,
+      "method": "DELETE",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_field_errors": [
+        "base"
+      ],
+      "fresh_manage_permission": false
+    },
+    {
+      "actor": 23,
+      "method": "PATCH",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_field_errors": [
+        "from",
+        "to"
+      ],
+      "fresh_manage_permission": false
+    },
+    {
+      "actor": 23,
+      "method": "DELETE",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422,
+      "native_field_errors": [
+        "base"
+      ],
+      "fresh_manage_permission": false
+    },
+    {
+      "operation": "reverse_edge_cycle",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    }
+  ],
+  "fixture_authorization": "EXPLICIT_ISOLATED_NATIVE_TEST_RESOURCES; NOT_MAIN_HUMAN_APPROVAL",
+  "main_writes": 0,
+  "staging_operations": false,
+  "limits": [
+    "Native API capability qualification only; Gateway exact-proposal update/delete commands remain NOT_IMPLEMENTED",
+    "No optimistic relation lock or Gateway idempotency claim for direct Native CRUD",
+    "No vectors indexed and no Main dependency or schedule write",
+    "Only new isolated resources and their relation changed; original375 WP/352 relation rows checked by host"
+  ],
+  "actual_pg_relation_absence_verified": true,
+  "original_data_hashes_preserved": {
+    "relations": "352|8efb5973160c91ae1bb5b8451e5979e2",
+    "work_packages": "375|04ec20a24a553f3cea4deab0015c29ef",
+    "user_passwords": "7|1c8c563bc72ffd2e539f6d7e4c2f7db8",
+    "two_factor_authentication_devices": "4|b967a7f8d325515bfcc415f507f3e075",
+    "tokens": "9|d2504324eea35a15febd4ed0566b1d9c",
+    "members": "7|635e9c9c13bfb9cf0f4d56e42a07e623",
+    "member_roles": "7|a401407caf4c539024415c1944cea659"
+  },
+  "source_dump_sha256": "11c7443aea421b01f401204066b3a4ef3ec621079fc1c2a7bd53a360e51f43dd"
+}

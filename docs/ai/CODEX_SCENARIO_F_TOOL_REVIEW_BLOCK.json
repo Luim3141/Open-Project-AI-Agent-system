@@ -1,0 +1,21 @@
+{
+  "status": "BLOCKED_TOOL_AUTO_REVIEW_BEFORE_EXECUTION",
+  "tool": "exec_command",
+  "action": "Combined WF03 read/replay/permission probes, local typed-plan preparation, and fresh Gemini plan start",
+  "reason": "blocked by policy",
+  "process_created": false,
+  "new_typed_model_run_started": false,
+  "new_scenario_f_proposal_created": false,
+  "new_native_write_performed": false,
+  "retry_through_alternate_route": false,
+  "scope_completed_before_block": "Main Gateway319be468 and WF03version9af87910 source deployment/readback; Linux287PASS3NodeSKIP and Windows60+1PASS. PMMainUI verified separately.",
+  "probe_results": "Not executed; no PASS claimed for probes in the rejected batch",
+  "next_gate": "Fresh typed plan -> actual proposal -> separate human exact-hash approval -> Native test write -> same-trace readback/RAG proof remains unverified",
+  "later_safe_continuation": {
+    "status": "PLAN_ONLY_AND_EXACT_APPROVED_CHAIN_SUCCEEDED",
+    "run_id": "80c74d03-5c9d-4471-9d9a-09c6749c645d",
+    "route": "Same exec_command tool and WF03; separate bounded plan-only scope after read-only verification, followed by a separately human-approved WF06 decision",
+    "original_denial_reason_category": "UNKNOWN_OPAQUE_TOOL_REVIEW_REASON",
+    "application_RBAC_disabled": false
+  }
+}

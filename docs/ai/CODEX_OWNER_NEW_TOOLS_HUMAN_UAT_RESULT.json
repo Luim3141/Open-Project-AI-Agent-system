@@ -1,0 +1,38 @@
+{
+  "observed_at": "2026-10-25T03:17:32.760038+00:00",
+  "status": "PASS",
+  "method": "DIRECT_USER_REPORTED_VISUAL_UAT_NOT_BROWSER_AUTOMATION",
+  "scope": "Owner tool selector only; user was instructed to log in as op-owner, inspect the list and submit no commands",
+  "reported_actor": 18,
+  "reported_login": "op-owner",
+  "project_id": 5,
+  "core_image_under_test": "sha256:1bbe160472068a64d3a965fe2bbbd280c2095d17ce285785a3ad0df40825a61f",
+  "user_confirmation": "chuẩn như bạn nói rồi, có `wbs_from_ba`, `qa_evidence_get`, `qa_transition_prepare`. Owner không có `qa_evidence_capture`.",
+  "expected_visible": [
+    "wbs_from_ba",
+    "qa_evidence_get",
+    "qa_transition_prepare"
+  ],
+  "observed_visible": [
+    "wbs_from_ba",
+    "qa_evidence_get",
+    "qa_transition_prepare"
+  ],
+  "expected_absent": [
+    "qa_evidence_capture"
+  ],
+  "observed_absent": [
+    "qa_evidence_capture"
+  ],
+  "not_tested_by_this_confirmation": [
+    "New tool execution",
+    "QA evidence review or transition",
+    "Native mutation"
+  ],
+  "new_native_approval": false,
+  "native_writes": 0,
+  "model_calls": 0,
+  "deployment_changes": 0,
+  "backend_identity_role_evidence": "CODEX_CORE_AI_TOOLS_OWNER_ACCESS_RESULT.json",
+  "overall_business_release": "PARTIAL"
+}

@@ -1,0 +1,113 @@
+{
+  "at": "2026-10-26T08:02:31.447297+00:00",
+  "status": "PASS_SCOPED_MAIN_DELETE_CONTRACT_REGRESSION_FULL_RELEASE_PARTIAL",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-trusted-delete-candidate-20261026",
+      "image": "sha256:b2f2db5659d5936ea621aae68b0e04a269741b163f2f35276245d15902ddbea6"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-trusted-delete-candidate-20261026",
+      "image": "sha256:e0a840b57fac8031f2d20f8c7bc07e8f618560ec34bf1d81e14608de2d552dfd"
+    }
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/store.py": "027eb69958199e56fb75afa12975ec54fd3a5a653d9c2cd304e414e5b1b79a87",
+    "openproject/ai/gateway/service.py": "40daed21fe4759328f3757f6a39986552b2144fbf3bd81e805770582f3c55ab6",
+    "openproject/ai/gateway/monitoring.py": "1f5eecb223014229093b978f4b887e8429db40082bc89b979adc06800cb2181f",
+    "openproject/ai/gateway/control_center_state.py": "a677f2d1580a10938b132a43cd7d45528729dc0940b2fd519f14918c9d9962ba",
+    "openproject/ai/gateway/notification_delivery.py": "c26307c78a5adbcfdb9c898df4e1dca74fedd938e10b5d09bbb848d947ceaf7b",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_control_center.html.erb": "4d7a5992a117659417a8c40237d2b14f3a5c9985774bac09e9d54597c68087ba",
+    "openproject/ai/core/overlay/app/services/qldapm/gate_actions.rb": "34e2e3b7959d5613cc2c7414217bd54941c545b21de4e8798aa7a59852b85052",
+    "openproject/ai/core/overlay/app/controllers/qldapm_gates_controller.rb": "2d890c2ab18017ddb2132c28acbac10d63cdea62271053eff2fbc97896f0ec1f",
+    "openproject/ai/core/overlay/app/views/qldapm_gates/show.html.erb": "e0ed99f9cded478dde19138c4bb7f135d88411b61f4cfa4272879cb14f582948",
+    "openproject/ai/gateway/native_qa.py": "b81b723a9b2c45788eab49d3c96ee2a60dae63d1933deac8d1687d30e3e10020",
+    "openproject/ai/gateway/native_qa_bridge.py": "e8b7869270efbc451eae9f3d6e83468cf558adb40fe89fd8276c054902957b5d",
+    "openproject/ai/core/overlay/app/services/qldapm/qa_evidence_receipt.rb": "ed06971cc8ddca3cf2d67f4a911b943244e631cfd0c4db0f2c316ed713754627",
+    "openproject/ai/core/overlay/app/services/qldapm/mutations.rb": "efab67f25cb308e87d6d83f9a606a95f27d30a291845c7543194583c4b2867e8",
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": "a9b7d8e0e45153fd6117009b4e2dfffe0bc327e7265bade7d26779b4142f66ad",
+    "openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb": "050e18d2c6578cbee4639ac3d840d6d010a0c96a5bbda97b07bb982eb483a163",
+    "openproject/ai/gateway/supervisor.py": "e9c6d8624877ec02f0795ba3cba5cd667a0f0cfad2d17f633afb5380aca1eef3",
+    "openproject/ai/gateway/qa_agent.py": "6ea0960c8c77960f321f7e29bdbbb3d0ac93b320ae7ecdfbb6bbca055769f617",
+    "openproject/ai/gateway/native_qa_runs.py": "96fefd36103e28be3d92a0373559299e98e8077855afe8b93d7bed3e484d3287",
+    "openproject/ai/gateway/native_dependency.py": "9b781062fc918b2604f02bc8336a57e041cfd849af92cbeff9c3c34915b4b9d2",
+    "openproject/ai/gateway/permissions.py": "b4329952ec146c530785f726fe688306f78f1cd3661cd26d39ca080f58ebf551",
+    "openproject/ai/gateway/catalog.py": "08c03e8ee8fc491972fef82c8efb2cfddd469c72e46bb9baf6197f5fa0734056",
+    "openproject/ai/gateway/presentation.py": "6cd70fb1ee038437bd028893f5ecfdf89d7236b95b859ccf0ca09383f6d948b4",
+    "openproject/ai/core/overlay/app/services/qldapm/dependency_mutation.rb": "35a20a498fefb2351efda3d4821f0d48317479108c817f3cbe35cca180c558f5",
+    "openproject/ai/core/overlay/app/models/concerns/qldapm_relation_write.rb": "a5c0664d737683e578ba35a479d6613026cb316bdb01dfda6b47ab5579bb1863",
+    "openproject/ai/core/overlay/config/initializers/qldapm_gates.rb": "a3859744f1a27cb905605983e6f719d34f550ad93db5098ae9b64b7cfbc7636b",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "65c753319ef5484c4ac68c6b9a85a48a42464d06abdb4f5442e2732c060d5069",
+    "openproject/ai/core/overlay/app/helpers/qldapm_ai_helper.rb": "965563da6f7877782ff05696de0c957d6a3ab644ad564c6fa172b0e46bc0968c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/qa_evidence.html.erb": "79a3830d4ef865cd6350890234a59f3789e2b43b1cf7e16e95ec3dad83b22b9c",
+    "openproject/ai/gateway/native_dependency_change.py": "389d6d636241912e00a111d7a3f6d8e675c63a1933fcd1ce8fb32ee2f953714c",
+    "openproject/ai/core/overlay/app/services/qldapm/dependency_change.rb": "443f7502c20cae3fa755c3d204514ccd3448480527aae85d712615f0996bebee",
+    "openproject/ai/gateway/native_deletion.py": "0b94c8f1953831cb967281cdbd79aaf2ada7103819ee6ea28bb1d5fbff7d3f7a",
+    "openproject/ai/gateway/vector_client.py": "4c496acd4760c8650aac73691e42517b6baed17f1fd79d635ef7eb33621b2fac",
+    "openproject/ai/core/overlay/app/services/qldapm/native_deletion.rb": "1663269c0afdd149dd59bce5b2e700d76ee795abbb28f40a175d0bbb34afd457",
+    "openproject/ai/core/overlay/app/models/qldapm/native_deletion_event.rb": "f934353dfa696fa976ac8442f84b6cf0bb0daaa35b402193556dde4b351d2c1d",
+    "openproject/ai/core/overlay/db/migrate/20261026000000_create_qldapm_native_deletion_events.rb": "14727aabc578a9d0aa9d371fd9e1895b5167919eac941cac90e852e62529947e"
+  },
+  "source_mismatches": [],
+  "native_visible": 338,
+  "native_physical": 375,
+  "existing_native_security_membership_board_relation_journal_receipt_rows_preserved": true,
+  "native_delete_events": 0,
+  "migration_version": "20261026000000",
+  "schema_scope": "One additive empty ledger; existing tables unchanged; populated down prohibited",
+  "ledger": {
+    "qa_evidence": 1,
+    "qa_evidence_reviews": 2,
+    "qa_test_runs": 1,
+    "proposals": 54,
+    "knowledge_sync": 12,
+    "gemini_call_receipts": 127,
+    "gemini_usage": 132
+  },
+  "scenario_f_exact_audit_events": 61,
+  "prior_audit_rows_preserved": true,
+  "new_unknown_requests": 0,
+  "workflows_active_source_matched": 16,
+  "workflows_changed": 0,
+  "unrelated_main_containers_preserved": 8,
+  "main_native_writes": 0,
+  "main_proposals_created": 0,
+  "main_human_decisions_by_agent": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\trusted-delete-deployment",
+  "runtime_regression": {
+    "roles": 73,
+    "contracts": 48,
+    "readonly": 13,
+    "new_delete_contract_checks": 40,
+    "preserved_qa_chain_role_reads": 6
+  },
+  "qualification": {
+    "windows": {
+      "run": 518,
+      "passed": 518
+    },
+    "linux": {
+      "run": 518,
+      "passed": 503,
+      "skipped": 15
+    },
+    "ruby": {
+      "programs": 15,
+      "failed": 0
+    },
+    "actual_native_clone": "CODEX_WF02_TRUSTED_DELETE_CLONE_RESULT.json",
+    "limits": "Synthetic fixture embedding values; no new Ollama/Gemini call or Main Native mutation"
+  },
+  "native_permission_policy": {
+    "Owner18_delete": true,
+    "PM19_delete": false,
+    "BA_BE_FE_QA_delete": false
+  },
+  "limits": [
+    "Successful Native deletion/retry/rollback/vector cleanup was exercised on isolated clones only; Main received no destructive test",
+    "Synthetic isolated vector values do not claim fresh Ollama semantic quality",
+    "No full business QA closure or Qdrant restore claim; browser policy remains blocked"
+  ]
+}

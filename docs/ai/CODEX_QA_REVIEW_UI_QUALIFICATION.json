@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-25T03:43:23.174862+00:00",
+  "status": "PASS_SCOPED_QUALIFICATION",
+  "gateway_image": "sha256:8c91c1c0ae3edf754615b302575d093fa45b5257ffa0b86f84d7872830a3c3ec",
+  "core_image": "sha256:175c337834cabb5e56689432cbb913e5dc4ef622d77b7e3e49d16333cdab85e2",
+  "windows": {
+    "run": 434,
+    "passed": 434,
+    "skipped": 0,
+    "log_sha256": "50027b56f75694bfc0dbdc36aa26cdbffb670c4dcd2862ba079178b188650c72"
+  },
+  "image": {
+    "run": 434,
+    "passed": 422,
+    "skipped": 12,
+    "platform_cases_passed_windows": 12,
+    "log_sha256": "abb1ed538e0a9a84180fe585b8ea5f49ad97478796c2870a3e5dcabba59e134d"
+  },
+  "core": {
+    "programs_passed": 8,
+    "actual_view_render": true,
+    "six_role_navigation": true,
+    "log_sha256": "cd970d2e0a71a86bb9ac8fe03670e7772a18285c80475213bbc58cee50ef7811"
+  },
+  "runtime": {
+    "role_checks": 73,
+    "workflow_contract_checks": 48,
+    "read_only_checks": 13,
+    "signed_bridge_policy_checks": 10,
+    "source_matches_gateway": 67,
+    "core_changed_source_files": 6,
+    "physical_native_rows_preserved": 375,
+    "main_visible_wps": 338
+  },
+  "new_native_writes": 0,
+  "new_model_calls": 0,
+  "main_qa_decisions": 0,
+  "staging_operations": false,
+  "diagnostics": [
+    "Initial HTTP and controller RED reproduced missing human review UI/bridge. Separate RED caught other Admin with PM membership; fixed Gate B guard before deployment.",
+    "ActionView standalone harness initially lacked BigDecimal and request_forgery_protection_token; corrected harness initialization, no product assertion weakened.",
+    "Initial Dockerfile used an image ID as FROM name; build failed. Used existing local parent tags after verifying their exact image IDs, no parent update.",
+    "Test token refresh attempted while Web was starting returned Native503 before issuing actor18 token. Refreshed all own identities after health succeeded.",
+    "docker cp to read-only Gateway rootfs refused; executed read-only verification from stdin without filesystem changes.",
+    "User confirmed QA page and reported entry hard to find. RED ActionView test reproduced missing Control Center entry; two-template Web-only follow-up passed all8Ruby programs.",
+    "Final typed-input RED caught decision array causing TypeError500. Explicit string validation restores409 for invalid signed UI decisions; valid policy and old REST behavior retained.434Windows/422Linux+12platform rerun PASS; separate Gateway-only deployment retained9other Main containers."
+  ],
+  "limits": [
+    "No genuine Main QA Native activity/artifact, independent positive review or valid closing transition created. Isolated fixture PASS is not Main business acceptance.",
+    "Automated trusted QA runner remains NOT_IMPLEMENTED.",
+    "New button is actual-render qualified for six roles; user confirmed QA page, not final button click.",
+    "QA23 currently has addComment but no advertised addAttachment on375. No upload POST tried. V1 remains strict; alternative inline-log contract is a design preview, not implemented or accepted Main QA."
+  ]
+}

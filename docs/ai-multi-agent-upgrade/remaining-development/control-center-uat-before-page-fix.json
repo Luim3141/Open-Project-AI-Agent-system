@@ -1,0 +1,74 @@
+{
+  "images": {
+    "gateway": {
+      "tag": "qldapm-rd-gateway:20261018-b3e4dcef12",
+      "image": "sha256:600b84023bf19eb6041981cd1149e2521ac8cc28360374bf8c05befdbffc1402",
+      "exit_code": 0,
+      "source_sha256": "b3e4dcef12f821e028ed2c1b80a4f6470982d77489adf6fa4c8948daf4972ec9",
+      "base": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233"
+    },
+    "core": {
+      "tag": "qldapm-rd-core:20261018-4594599307",
+      "exit_code": 0,
+      "source_sha256": "459459930736c92a5d3b1ce161e3a8997b357695ce2450169b6b89cdafaa5d2c",
+      "base": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "image": "sha256:5865533ca158586f812554182bc081a7fd5ba4c67db82c41dbc0ebca56d67076"
+    },
+    "quick-tunnel": {
+      "tag": "qldapm-rd-quick-tunnel:20261018-56a6cc1ea0",
+      "exit_code": 0,
+      "source_sha256": null,
+      "base": null,
+      "image": "sha256:eb4cb5b6f52946912fec82300c8a79df44059081d1c99710948fe0ca133d95df"
+    }
+  },
+  "scope": "OWNED_SYNTHETIC_PM_ONLY",
+  "checks": [
+    {
+      "id": "CC-PAGING-FIXTURE",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": {
+        "new_read_only_runs": 10
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "CC-CANCEL-QUEUED-OBSERVED",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "CC-CANCEL-REAL",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": {
+        "http": 200
+      },
+      "exit_code": 0
+    },
+    {
+      "id": "CC-QUEUE-DRAIN",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "CC-CANCEL-RECEIPT",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "PASS",
+      "actual": null,
+      "exit_code": 0
+    },
+    {
+      "id": "CC-PAGE-SIZE",
+      "expected": "Assertion in remaining_control_center_uat.py",
+      "status": "FAIL",
+      "actual": null,
+      "exit_code": 1
+    }
+  ]
+}

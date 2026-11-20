@@ -1,0 +1,128 @@
+{
+  "started_at": "2026-11-02T07:44:39.580199+00:00",
+  "source_commit": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+  "image": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+  "cryptography_version": "50.0.1",
+  "schema": "magic ASCII + nonce12 + AES256GCM(ciphertext || tag16), AAD=magic; JSON payload v1",
+  "code_sha256": {
+    "portable_recovery_kit.py": "67c3b0abd25afe444b7c1e773b584285747cfedde05bc14b2504a63fbdc361d7",
+    "portable_recovery_restore.js": "f5cd2e4e6996796a61fe60d65038e005a248359143fc7dab17f52310d328e388"
+  },
+  "source_manifest": {
+    "archive_plaintext_sha256": "d97ae40987505a8842c101df32e90249eb38009a05b5c21e3adf649714136278",
+    "environment_plaintext_sha256": "e0e40ad38b9ffb472a8548b854647c1fc9ff6ea50cc1956e4f1acda09d437654",
+    "source_archive_dpapi_sha256": "f6ff1446c5da92fb835088b56daa6dbbafb94b76677ed0fc6fdb0d0d0314ffb3",
+    "source_environment_dpapi_sha256": "83a88804fbd0c0f8be11556b37e3a587cabdc6db430f69ee5a217abe569d4f7a",
+    "origin": "existing cold snapshot from 2026-11-01; old key only; not a new MAIN snapshot"
+  },
+  "acls_at_creation": {
+    "kit": {
+      "restricted_to_current_user_and_system": true,
+      "principal_count": 2,
+      "inheritance_protected": true
+    },
+    "ciphertext": {
+      "principal_count": 2,
+      "inheritance_protected": true,
+      "restricted_to_current_user_and_system": true
+    },
+    "recovery_custody": {
+      "principal_count": 2,
+      "restricted_to_current_user_and_system": true,
+      "inheritance_protected": true
+    },
+    "recovery_key_file": {
+      "principal_count": 2,
+      "inheritance_protected": false,
+      "restricted_to_current_user_and_system": true
+    },
+    "ciphertext_file": {
+      "inheritance_protected": false,
+      "restricted_to_current_user_and_system": true,
+      "principal_count": 2
+    }
+  },
+  "host_exact_roundtrip": true,
+  "host_tamper_rejected": true,
+  "acls_at_verify": {
+    "ciphertext": {
+      "principal_count": 2,
+      "restricted_to_current_user_and_system": true,
+      "inheritance_protected": true
+    },
+    "recovery-custody": {
+      "principal_count": 2,
+      "inheritance_protected": true,
+      "restricted_to_current_user_and_system": true
+    },
+    "ciphertext/n8n-recovery-v1.aesgcm": {
+      "restricted_to_current_user_and_system": true,
+      "principal_count": 2,
+      "inheritance_protected": false
+    },
+    "recovery-custody/recovery.key": {
+      "restricted_to_current_user_and_system": true,
+      "inheritance_protected": false,
+      "principal_count": 2
+    }
+  },
+  "docker_command": [
+    "docker",
+    "run",
+    "--rm",
+    "-i",
+    "--pull",
+    "never",
+    "--name",
+    "qldapm-portable-recovery-3b83886f3955",
+    "--network",
+    "none",
+    "--read-only",
+    "--tmpfs",
+    "/tmp:rw,uid=1000,gid=1000,mode=0700,size=512m",
+    "--mount",
+    "type=bind,source=C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\portable-n8n-recovery-8a61c9795ada\\ciphertext,target=/kit,readonly",
+    "--mount",
+    "type=bind,source=D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\CHATGPT_RECOVERY\\phase2-final\\n8n,target=/test,readonly",
+    "--entrypoint",
+    "node",
+    "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+    "/test/portable_recovery_restore.js",
+    "/kit/n8n-recovery-v1.aesgcm"
+  ],
+  "clone_result": {
+    "status": "PORTABLE_LINUX_RESTORE_VERIFIED_OLD_KEY_ONLY",
+    "node_version": "v26.7.0",
+    "schema": "qldapm.n8n.recovery-payload.v1",
+    "original_bytes_match_manifest": true,
+    "aes_gcm_tag_verified": true,
+    "tampered_ciphertext_rejected": true,
+    "wrong_key_rejected": true,
+    "wrong_aad_rejected": true,
+    "recovery_key_transport": "stdin_only_32_raw_bytes",
+    "n8n_key_transport": "original_config_inside_tmpfs_only",
+    "no_dpapi_in_container": true,
+    "decrypted_credentials": 4,
+    "integrity": "ok",
+    "workflows": {
+      "total": 16,
+      "active": 16
+    },
+    "published": 16,
+    "workflow_sharing": 16,
+    "credential_sharing": 4,
+    "owners": 1,
+    "n8n_version": "2.43.6",
+    "n8n_export_command_sha256": "cc7e9940b78ec97bf73e8ecb29ea6edcd03e6c30e5b79441bc77bed4348a058a"
+  },
+  "ciphertext_sha256": "47cab825e5e23a130bcbba298c0b1cbe344375d21c28753a74a3797fddcd4155",
+  "ciphertext_bytes": 26740922,
+  "completed_at": "2026-11-02T07:44:53.430069+00:00",
+  "kit_directory": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\portable-n8n-recovery-8a61c9795ada",
+  "status": "PORTABLE_KIT_LINUX_CLONE_VERIFIED_OLD_KEY_ONLY",
+  "physical_machine_dr": "NOT_TESTED",
+  "off_host_copy": "NOT_CREATED",
+  "owner_recovery_key_custody": "PENDING_OWNER_SEPARATE_SECURE_CUSTODY",
+  "master_key_cutover": "BLOCKED_UNCHANGED",
+  "main_mutation": false
+}

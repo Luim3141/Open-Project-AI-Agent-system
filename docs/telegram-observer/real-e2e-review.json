@@ -1,0 +1,57 @@
+{
+  "task_id": 397,
+  "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+  "plan_run_id": "8f93d0a1-8115-49b5-bc73-2487e778a7cd",
+  "head_sha": "045c95a4f5b73b32b90d65966c19c97c873f8e8f",
+  "pr": {
+    "baseRefName": "codex/openclaw-feedback-e0408cbf553ca0ba",
+    "headRefName": "codex/openclaw-feedback-d8b7006b5cff1bc4",
+    "headRefOid": "045c95a4f5b73b32b90d65966c19c97c873f8e8f",
+    "state": "OPEN",
+    "url": "https://github.com/Luim3141/mini-task-manager/pull/14"
+  },
+  "changed_files": [
+    "tests/test_health_regression.py"
+  ],
+  "candidate_diff_sha256": "8b9a1c4ff5c242db441caa30a65a0063c76b066dcbea1f3f6fe40fe2a9a59ef7",
+  "host_test": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\a3f592fc-b91e-4f57-a812-a930bb20e079\\acceptance-0.xml",
+    "log_sha256": "d9f9ac76c9f52086d44fecbda022a925c540ee70f4c225b5cbe64dcd2582f204"
+  },
+  "review": {
+    "verdict": "PASS",
+    "revision": "ef56c24ec5f116b5081d024d9f22848e6c4b713e0e603c9ef5ae7d40993d43e7",
+    "findings": []
+  },
+  "qa": {
+    "status": "PASS",
+    "exit_code": 0,
+    "command": "cd /home/openclaw/engineering/feedback-d8b7006b5cff1bc4 && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "acceptance": [
+      "AC5",
+      "AC6",
+      "AC7",
+      "AC8",
+      "AC9",
+      "AC10",
+      "AC11",
+      "AC12"
+    ],
+    "failures": []
+  },
+  "test_log_summary": "63 passed, 1 warning in 9.74s",
+  "scope_difference": "Approved wording /health; implementation tests existing /healthz; no application change. Requires Owner scope decision before acceptance.",
+  "native_publication": {
+    "child_id": 397,
+    "child_version": 8,
+    "parent": {
+      "id": 379,
+      "version": 4
+    },
+    "project_id": 6,
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/14"
+  },
+  "owner_approval": "PENDING"
+}

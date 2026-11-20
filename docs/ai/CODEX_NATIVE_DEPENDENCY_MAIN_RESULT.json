@@ -1,0 +1,256 @@
+{
+  "at": "2026-10-26T03:00:57.811547+00:00",
+  "status": "PASS_MAIN_DEPENDENCY_READONLY_SCOPE_AND_AUTHORIZATION",
+  "checks": [
+    {
+      "actor": 18,
+      "test": "dependency_capability",
+      "status": "PASS",
+      "allowed": true
+    },
+    {
+      "actor": 18,
+      "test": "actual_readonly_core_scope_form",
+      "status": "PASS",
+      "http": 200,
+      "elapsed_seconds": 0.351
+    },
+    {
+      "actor": 19,
+      "test": "dependency_capability",
+      "status": "PASS",
+      "allowed": true
+    },
+    {
+      "actor": 19,
+      "test": "actual_readonly_core_scope_form",
+      "status": "PASS",
+      "http": 200,
+      "elapsed_seconds": 0.465
+    },
+    {
+      "actor": 20,
+      "test": "dependency_capability",
+      "status": "PASS",
+      "allowed": false
+    },
+    {
+      "actor": 20,
+      "test": "native_form_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "actor": 20,
+      "test": "gateway_proposal_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 403
+    },
+    {
+      "actor": 21,
+      "test": "dependency_capability",
+      "status": "PASS",
+      "allowed": false
+    },
+    {
+      "actor": 21,
+      "test": "native_form_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "actor": 21,
+      "test": "gateway_proposal_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 403
+    },
+    {
+      "actor": 22,
+      "test": "dependency_capability",
+      "status": "PASS",
+      "allowed": false
+    },
+    {
+      "actor": 22,
+      "test": "native_form_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "actor": 22,
+      "test": "gateway_proposal_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 403
+    },
+    {
+      "actor": 23,
+      "test": "dependency_capability",
+      "status": "PASS",
+      "allowed": false
+    },
+    {
+      "actor": 23,
+      "test": "native_form_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "actor": 23,
+      "test": "gateway_proposal_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 403
+    },
+    {
+      "actor": 18,
+      "test": "caller_actor_id_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "actor": 18,
+      "test": "caller_role_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "actor": 18,
+      "test": "caller_admin_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "actor": 18,
+      "test": "caller_owner_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "actor": 18,
+      "test": "caller_approved_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "actor": 18,
+      "test": "caller_scope_hash_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    {
+      "test": "auto_execute_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 403
+    },
+    {
+      "test": "anonymous_denied",
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 401
+    }
+  ],
+  "plans": {
+    "18": {
+      "project_id": 5,
+      "predecessor_id": 375,
+      "successor_id": 374,
+      "type": "follows",
+      "lag": 2,
+      "scope_hash": "d620e9df81ad656c3280f4610134178d6da0c9e5b35e27db36573e603455a86b",
+      "possible_affected": [
+        {
+          "id": 372,
+          "lockVersion": 1,
+          "startDate": null,
+          "dueDate": null,
+          "scheduleManually": false,
+          "parent_id": null
+        },
+        {
+          "id": 373,
+          "lockVersion": 1,
+          "startDate": null,
+          "dueDate": null,
+          "scheduleManually": false,
+          "parent_id": 372
+        },
+        {
+          "id": 374,
+          "lockVersion": 0,
+          "startDate": null,
+          "dueDate": null,
+          "scheduleManually": true,
+          "parent_id": 373
+        },
+        {
+          "id": 375,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "scheduleManually": true,
+          "parent_id": null
+        }
+      ],
+      "notice": "Possible affected scope, not predicted dates. Native scheduling is authoritative; manual leaves can retain their dates."
+    },
+    "19": {
+      "project_id": 5,
+      "predecessor_id": 375,
+      "successor_id": 374,
+      "type": "follows",
+      "lag": 2,
+      "scope_hash": "d620e9df81ad656c3280f4610134178d6da0c9e5b35e27db36573e603455a86b",
+      "possible_affected": [
+        {
+          "id": 372,
+          "lockVersion": 1,
+          "startDate": null,
+          "dueDate": null,
+          "scheduleManually": false,
+          "parent_id": null
+        },
+        {
+          "id": 373,
+          "lockVersion": 1,
+          "startDate": null,
+          "dueDate": null,
+          "scheduleManually": false,
+          "parent_id": 372
+        },
+        {
+          "id": 374,
+          "lockVersion": 0,
+          "startDate": null,
+          "dueDate": null,
+          "scheduleManually": true,
+          "parent_id": 373
+        },
+        {
+          "id": 375,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "scheduleManually": true,
+          "parent_id": null
+        }
+      ],
+      "notice": "Possible affected scope, not predicted dates. Native scheduling is authoritative; manual leaves can retain their dates."
+    }
+  },
+  "ledger_unchanged": {
+    "proposals": 54,
+    "knowledge_sync": 12,
+    "gemini_call_receipts": 127,
+    "gemini_usage": 132,
+    "qa_evidence_reviews": 0,
+    "unknown": 28
+  },
+  "native_writes": 0,
+  "human_decisions": 0,
+  "new_proposals": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "limits": [
+    "No Main dependency execution without a fresh exact human proposal approval",
+    "Actual execution/rollback/recovery qualified only on disposable Native clones",
+    "Browser UI visual check remains policy-blocked; actual controller/preview fixtures passed"
+  ]
+}

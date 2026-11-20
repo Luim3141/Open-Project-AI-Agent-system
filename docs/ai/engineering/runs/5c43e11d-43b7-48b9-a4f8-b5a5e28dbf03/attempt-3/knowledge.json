@@ -1,0 +1,57 @@
+{
+  "project_id": 6,
+  "ingestion": [
+    {
+      "status": "UPDATED",
+      "document_id": "1a565c6c8ce3fada472c68458ad7bc3d90be2d5416c3e0a676be0679ed28ea82",
+      "source_id": "actor:20:wp:379",
+      "chunks_count": 5,
+      "source_hash": "1a565c6c8ce3fada472c68458ad7bc3d90be2d5416c3e0a676be0679ed28ea82",
+      "vector_indexed": true,
+      "error": null,
+      "native_id": 379,
+      "lock_version": 1
+    },
+    {
+      "status": "CREATED",
+      "document_id": "45e34df7d1b32d0e40a6d663d27671e5d3bf254cea196debc2446cca37cb94fb",
+      "source_id": "actor:20:wp:380",
+      "chunks_count": 4,
+      "source_hash": "45e34df7d1b32d0e40a6d663d27671e5d3bf254cea196debc2446cca37cb94fb",
+      "vector_indexed": true,
+      "error": null,
+      "native_id": 380,
+      "lock_version": 0
+    }
+  ],
+  "retrieval": {
+    "items": [
+      {
+        "title": "[Task] #380 - [AI unit] Create/list tasks + SQLite persistence",
+        "snippet": "Mã công việc: #380\nTiêu đề: [AI unit] Create/list tasks + SQLite persistence\nLoại: Task\nTrạng thái: NEW\nMức độ ưu tiên: Normal\nNgười phụ trách: Chưa phân công\nSprint / Phiên bản: Chưa có Sprint\nCông v...",
+        "native_id": 380,
+        "document_id": "4dfe51ea820917c4475aa42b8beb3ebd962a8611810cca281acdee1f4cb5eaf4",
+        "lock_version": 0,
+        "source_id": "op:wp:380",
+        "score": 0.03279,
+        "citation": "/work_packages/380",
+        "match_type": "HYBRID_RRF"
+      },
+      {
+        "title": "Develop Mini Task Manager Application",
+        "snippet": "utomatically merge or deploy code without authorization.\nBình luận #1041: _Được cập nhật tự động bằng cách thay đổi các giá trị trong gói công việc con #380_\nBình luận #1042: Engineering unit verified...",
+        "native_id": 379,
+        "document_id": "1a565c6c8ce3fada472c68458ad7bc3d90be2d5416c3e0a676be0679ed28ea82",
+        "lock_version": 1,
+        "source_id": "actor:20:wp:379",
+        "score": 0.03226,
+        "citation": "/work_packages/379",
+        "match_type": "HYBRID_RRF"
+      }
+    ],
+    "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+    "dense_state": "READY",
+    "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+    "model_used": false
+  }
+}

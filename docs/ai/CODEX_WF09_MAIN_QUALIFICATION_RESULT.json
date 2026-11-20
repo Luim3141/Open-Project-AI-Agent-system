@@ -1,0 +1,366 @@
+{
+  "status": "PASS",
+  "business_status": "PARTIAL_PENDING_NEW_NATIVE_APPROVAL",
+  "observed_at": "2026-10-24T13:11:55.560806+00:00",
+  "scope": "Main real six-role triage, own Owner/PM Native-validated proposals and rejection; no invented production defect and no Native write",
+  "checks": {
+    "18_identity": {
+      "status": "PASS",
+      "evidence": {
+        "actor": 18,
+        "role": "AI_SYSTEM_OWNER"
+      }
+    },
+    "18_triage": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 18,
+        "qa_verification": "NOT_VERIFIED"
+      }
+    },
+    "18_permission_ceiling": {
+      "status": "PASS",
+      "evidence": {
+        "name": "bug_propose",
+        "allowed": true,
+        "reason": null
+      }
+    },
+    "18_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "18_legacy_context": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": 370,
+        "version": 2
+      }
+    },
+    "19_identity": {
+      "status": "PASS",
+      "evidence": {
+        "actor": 19,
+        "role": "PM"
+      }
+    },
+    "19_triage": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 19,
+        "qa_verification": "NOT_VERIFIED"
+      }
+    },
+    "19_permission_ceiling": {
+      "status": "PASS",
+      "evidence": {
+        "name": "bug_propose",
+        "allowed": true,
+        "reason": null
+      }
+    },
+    "19_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "19_legacy_context": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": 370,
+        "version": 2
+      }
+    },
+    "20_identity": {
+      "status": "PASS",
+      "evidence": {
+        "actor": 20,
+        "role": "BA"
+      }
+    },
+    "20_triage": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 20,
+        "qa_verification": "NOT_VERIFIED"
+      }
+    },
+    "20_permission_ceiling": {
+      "status": "PASS",
+      "evidence": {
+        "name": "bug_propose",
+        "allowed": false,
+        "reason": "PM_REQUIRED"
+      }
+    },
+    "20_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "20_legacy_context": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": 370,
+        "version": 2
+      }
+    },
+    "20_proposal_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "21_identity": {
+      "status": "PASS",
+      "evidence": {
+        "actor": 21,
+        "role": "BE"
+      }
+    },
+    "21_triage": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 21,
+        "qa_verification": "NOT_VERIFIED"
+      }
+    },
+    "21_permission_ceiling": {
+      "status": "PASS",
+      "evidence": {
+        "name": "bug_propose",
+        "allowed": false,
+        "reason": "PM_REQUIRED"
+      }
+    },
+    "21_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "21_legacy_context": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": 370,
+        "version": 2
+      }
+    },
+    "21_proposal_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "22_identity": {
+      "status": "PASS",
+      "evidence": {
+        "actor": 22,
+        "role": "FE"
+      }
+    },
+    "22_triage": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 22,
+        "qa_verification": "NOT_VERIFIED"
+      }
+    },
+    "22_permission_ceiling": {
+      "status": "PASS",
+      "evidence": {
+        "name": "bug_propose",
+        "allowed": false,
+        "reason": "PM_REQUIRED"
+      }
+    },
+    "22_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "22_legacy_context": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": 370,
+        "version": 2
+      }
+    },
+    "22_proposal_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "23_identity": {
+      "status": "PASS",
+      "evidence": {
+        "actor": 23,
+        "role": "QA"
+      }
+    },
+    "23_triage": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "actor": 23,
+        "qa_verification": "NOT_VERIFIED"
+      }
+    },
+    "23_permission_ceiling": {
+      "status": "PASS",
+      "evidence": {
+        "name": "bug_propose",
+        "allowed": false,
+        "reason": "PM_REQUIRED"
+      }
+    },
+    "23_forgery_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "23_legacy_context": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": 370,
+        "version": 2
+      }
+    },
+    "23_proposal_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "18_own_draft": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "proposal_id": "e4ee3a5a-1605-4427-ae05-be946e49250d",
+        "hash": "cb7368d84a7ae9fd0fe6ecda8334d0796e38d6ec660b1cd5ac013e13e730c65d",
+        "state": "pending"
+      }
+    },
+    "18_draft_idempotent": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": "e4ee3a5a-1605-4427-ae05-be946e49250d"
+      }
+    },
+    "18_wrong_hash_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 409
+      }
+    },
+    "18_foreign_manager_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "18_draft_rejected_without_native_write": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "proposal_id": "e4ee3a5a-1605-4427-ae05-be946e49250d"
+      }
+    },
+    "18_persisted_rejection": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "19_own_draft": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "proposal_id": "feef065c-2261-44c8-8c2e-4632f27b02ad",
+        "hash": "302164de80b1b6172180f6d78ba7e721e13e815c2fe474d480558744540ec2e6",
+        "state": "pending"
+      }
+    },
+    "19_draft_idempotent": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "id": "feef065c-2261-44c8-8c2e-4632f27b02ad"
+      }
+    },
+    "19_wrong_hash_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 409
+      }
+    },
+    "19_foreign_manager_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "19_draft_rejected_without_native_write": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "proposal_id": "feef065c-2261-44c8-8c2e-4632f27b02ad"
+      }
+    },
+    "19_persisted_rejection": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "non_bug_domain_target_denied": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 422
+      }
+    },
+    "gateway_runtime_exact_source": {
+      "status": "PASS",
+      "evidence": {
+        "service.py": "a5c5b2f39658784aff2327d56ea66b55672ff18652780602e83eb69bfb4dd0a8",
+        "permissions.py": "6d5b348deebb263e73f6c2d9418840672d969e627fd1f856b6df78c48db7bf9a",
+        "catalog.py": "d9d352b577348875bbebb0a04796d4fab51d3ea4d77b01cd36d5cecf26e6a097",
+        "business_runs.py": "737dcf93808fe09c058c0eccd5d6459af2e166d0841cdc13b7e96bdde90e0e43",
+        "bug_lifecycle.py": "68ac7b52905b95dc4a179d7fda996636aaf1563224f9b0031d3111e61fa993fe"
+      }
+    },
+    "core_runtime_exact_source": {
+      "status": "PASS",
+      "evidence": {
+        "sha256": "79678f9890046b08230a0358e0247a3540e1dc375af256f35b3bb5e62b5502c6"
+      }
+    }
+  },
+  "native_writes": 0,
+  "model_starts": 0,
+  "scenario_f_replayed": false,
+  "new_proposals": 2,
+  "new_proposal_states": "rejected",
+  "actual_native_lifecycle": "NOT_TESTED_NO_NEW_EXACT_APPROVAL",
+  "isolated_lifecycle": "PASS_SEPARATE_EXACT_APPROVALS_AND_DURABLE_OUTBOX",
+  "qa_verification": "NOT_VERIFIED"
+}

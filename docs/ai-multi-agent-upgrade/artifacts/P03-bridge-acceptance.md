@@ -1,0 +1,16 @@
+# P03-09 — signed native bridge and role-safe consent preserved
+
+No new product code/image required: current staging Core1cdd2590.../Gateway6e221f66. P03 runtime changes preserve existing bridge/nonce/preview/consent/readback and native role gates.
+
+Executed evidence:
+
+-Actual Rails Core `Qldapm::AiBridge.call` signs and sends HTTP to the actual Gateway for all5real native actors6BA-PM/7PM/8BE/9FE/10QA. identity/list_agent_runs/get_permissions succeed; new read tools available, PM-only native write ceiling retained. Fifteen read-only bridge commands, no native business mutation. `P03-native-signed-bridge.json`, executable `tests/native_agent_bridge.rb`. This is actual backend signing/HTTP/identity verification, not human browser login.
+-Private cold-clone Gateway + actual native GET-only identities: five signed own-metadata requests and role checks; four non-PM sandbox write proposals denied; PM preview leaves file untouched. Wrong actor/hash, unsigned/Bearer confirmation, stale/expired assertion, reused nonce/tampered signature/wrong project denied. Signed fixture consent writes a temporary sandbox file once with matching SHA/readback/receipt; repeat confirmation denied. Stale file and expired proposal fail without overwrite. No real human approval claimed; all consent fixtures and files are clone/tmp only. `P03-bridge-clone.json`, tests/container_agent_bridge.py.0SDK/native business writes/Google calls; original471usage unchanged.
+-39targeted Windows Gateway/deep-AI/RBAC/context/API regressions PASS32.864s (`P03-bridge-regression.log`). Product remains the exact image already qualified by248Windows/82Linux tests; no redundant rebuild/full run after adding acceptance probes.
+-Actual primary row accounting vs pre-bridge cold snapshot: every prior audit row retained; exactly30new expected read/transport audits and15one-use nonces. Existing routine nonce cleanup pruned9already-expired nonces; overlapping live nonce values unchanged. Every other Gateway table value/column, including471usage/79done11failed receipts/credentials/proposals/taskmetadata, unchanged. `P03-bridge-row-preservation.json`.
+-Read-only runtime comparison PASS: images/mounts/ports/native schemas/roles/counts/legacy states/private metadata unchanged,7stagehealthy/4HTTP200; `P03-bridge-after.json`, `P03-bridge-preservation-check.json`.
+-All18dirty native fork files byte-equal original P00 manifest; Git status/HEAD b4fe82644... unchanged. Root codex/local-multi-agent-upgrade remains unborn. `P03-native-source-preservation.json`. First hash helper stripped the status leading space and failed filename parsing, fixed helper only; no source changed.
+
+P03 gate PASS: contracts/persistence/context/state/executor/trace/read APIs are implemented and qualified. Supervisor/n8n workflows/knowledge/dashboard remain P04 onward. Physical five-browser LAN, real human approval/user acceptance and sleep/final Docker recovery remain P09/P10; these backend tests do not replace them. No main promotion, Desktop/CSDLDPT operation, billing action or new real Google request.
+
+Private pre-bridge snapshot operator/p03-bridge-before-20261016 retained; clone operator/p03-bridge-clone-20261016 retained with synthetic state only. Main and native business data remain intact.

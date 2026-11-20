@@ -1,0 +1,153 @@
+{
+  "at": "2026-10-26T17:26:44.423186+00:00",
+  "status": "PARTIAL_SOURCE_SCOPE_ANALYSIS_DEPLOYED_MAIN_REGRESSION_PASS",
+  "baseline": "CODEX_FINAL_BUSINESS_BASELINE.json",
+  "runtime_identity": {
+    "gateway": {
+      "id": "77d4001d3bcd8989a972f8f1ee3c533970e92accf5e56871aceb8ca4c50546d4",
+      "image": "sha256:3aeb3203bfdb4b91c95f858ee9a948701abea4c572668bb2b87712c2e6327144",
+      "started": "2026-10-26T17:20:00.399008183Z"
+    },
+    "core_web": {
+      "id": "a73624a9cf868a05f00733040fb7e74c3b357e4360cf486331b9c4b92a8c3053",
+      "image": "sha256:81f535ba3f8f37c0523b5e957c31cd14e4dc2a233856a832fd4b432708e135d3",
+      "started": "2026-10-26T17:19:08.106674048Z"
+    },
+    "operator_manifest": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\main-ops-native-source-phase-manifest.json",
+    "source_readback": "CODEX_NATIVE_SOURCE_PHASE_DEPLOYMENT_RESULT.json"
+  },
+  "candidate_images": {
+    "gateway": "sha256:3aeb3203bfdb4b91c95f858ee9a948701abea4c572668bb2b87712c2e6327144",
+    "core": "sha256:81f535ba3f8f37c0523b5e957c31cd14e4dc2a233856a832fd4b432708e135d3"
+  },
+  "candidate_source_hashes": {
+    "openproject/ai/gateway/store.py": "eb16bee6471b92b100ae32b62ccc62dabd296adee1c95304cf28e81b443459f8",
+    "openproject/ai/gateway/service.py": "7806476e276fe2cf60233a0b9c8caea44da7aa38b896898c611ba160defafb21",
+    "openproject/ai/gateway/native_phase.py": "ebe40fdef770fbbe388d84bc8aa1a68c09e44d1be63a216baa97233ea6e77ad8",
+    "openproject/ai/gateway/native_phase_bridge.py": "be9543089eae87c30ffb8fcbbd22ccb0a55f333bee80cef264ff481cb4ab0116",
+    "openproject/ai/gateway/app.py": "4cfb47c98fd9b80ae4ebdf74b016c994d517a14a9d10bf5740e6dabbfb2fe6db",
+    "openproject/ai/gateway/bridge.py": "ca94c22e4e1d80eb57c02175dbc9808d382df9165d850c05766df2ce80e759e3",
+    "openproject/ai/gateway/permissions.py": "948ad80f30799b685d5b5d995580b086b3ceee0f5cfa0afcffc320b682ca7cc8",
+    "openproject/ai/gateway/catalog.py": "7e283814581b7407a893dc9425cf890e99819ef3622a23914f65ba3ad5f95666",
+    "openproject/ai/core/overlay/app/services/qldapm/native_phase_receipt.rb": "b9ad2e9d2078be9476793e1ab015328371c6fab1cd4de0884fb625cc880f29c6",
+    "openproject/ai/core/overlay/app/services/qldapm/mutations.rb": "3b161a0bdb798b179e7d6bd4d41f50ee09d8d65014198b9585aa0cc76dcab864",
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": "ea3035c594f7935e66e1074b6002e65b6e0dbe6856b57d6d30241fe8620b268d",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "09cdf404f18a825e59f2cb237fd3e002a9203215efe1a4ca845ac04cb6bda5fb",
+    "openproject/ai/core/overlay/config/routes.rb": "76b54436ad702b7e80a080db6e4c6e513aa29a578639ad6614c213c7f185f75d",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/phases.html.erb": "837b8af70395e463bec1bb46a379a97036f0f9fc3cf2a5afc5d77fb2e0d070c4",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_control_center.html.erb": "daa9e75fe60bc2658fd3804fc1315dd4e460112feb60af0b1e01967983cdca19"
+  },
+  "checks": [
+    {
+      "case": "Source-phase draft and exact independent review",
+      "input": "Native source39 fixture, six identities, wrong hash/source/role/model/self/rejected/replayed decisions",
+      "expected": "Only current independently reviewed source can export proof; no Native write",
+      "actual": "7 source tests and5 public API tests PASS",
+      "status": "PASS",
+      "evidence": [
+        "openproject/ai/tests/test_native_phase.py",
+        "openproject/ai/tests/test_native_phase_api.py"
+      ]
+    },
+    {
+      "case": "Exact proposal/claim and concurrency",
+      "input": "Phase transition fixture, own exact proposal, two concurrent human decision attempts",
+      "expected": "One Core mutation; altered hash/replay/unclaimed execution denied",
+      "actual": "5 bridge tests PASS including concurrent one-claim qualification",
+      "status": "PASS",
+      "evidence": [
+        "openproject/ai/tests/test_native_phase_bridge.py"
+      ]
+    },
+    {
+      "case": "Actual Native scope then analysis via public draft/review/proposal APIs",
+      "input": "Disposable Main DB clone with own18executor,20producer,19reviewer and simulated isolated decisions",
+      "expected": "Actual configured Native edges only, source-bound receipts/readback/RAG",
+      "actual": {
+        "native_id": 376,
+        "version": 4,
+        "status": "READY FOR DEV",
+        "source_phase": "PASS_ACTUAL_NATIVE_SCOPE_ANALYSIS_WITH_OWN_ROLES_AND_RAG"
+      },
+      "status": "PASS",
+      "evidence": [
+        "CODEX_WF09_WF11_SOURCE_PHASE_NATIVE_CLONE_RESULT.json"
+      ]
+    },
+    {
+      "case": "Lost acknowledgment plus RAG transient and restart",
+      "input": "Response discarded after Native commit, then embedding outage and Service restart",
+      "expected": "One Native POST; authoritative receipt recovery; cache retries alone",
+      "actual": {
+        "native_posts": 1,
+        "rag_recovery_without_replay": true
+      },
+      "status": "PASS",
+      "evidence": [
+        "CODEX_WF09_WF11_SOURCE_PHASE_NATIVE_CLONE_RESULT.json"
+      ]
+    },
+    {
+      "case": "Post-Native receipt-insert transaction failure",
+      "input": "Actual PG trigger raises after gate and Native status saves",
+      "expected": "WP/journals/receipts all rollback; absent receipt never proves failure or permits retry",
+      "actual": {
+        "failure_id": 377,
+        "gateway_state": "UNKNOWN_HOLD_NO_REPLAY",
+        "transaction_hashes": {
+          "work_packages": "377|4a1f9de681388747716a6c3b64d0f7e4",
+          "journals": "1026|4097886b70b4e196de5a0176e8e43424",
+          "work_package_journals": "1007|72d26cf455ff100aaa7db55e9a933d52",
+          "qldapm_mutation_receipts": "2|7dc0ba7a9e33b829fb5c9856801564e0"
+        }
+      },
+      "status": "PASS_POLICY_ENFORCED",
+      "evidence": [
+        "CODEX_WF09_WF11_SOURCE_PHASE_NATIVE_CLONE_RESULT.json"
+      ]
+    },
+    {
+      "case": "Phase UI controller and actual ActionView",
+      "input": "Six roles plus other-admin/revoked Owner, self/stale/revoked review flags, hostile source text",
+      "expected": "Own server-bound actor, CSRF/exact hash/consent, no low-role review or stale proposal",
+      "actual": "19 Core fixture programs PASS, including new phase view/controller and unchanged QA UI",
+      "status": "PASS",
+      "evidence": [
+        "openproject/ai/core/test_native_phase_ui.rb",
+        "openproject/ai/core/test_native_phase_view.rb"
+      ]
+    },
+    {
+      "case": "Current Main371 application fix source",
+      "input": "Actual read-only371v1 technical Native pipeline qualification task",
+      "expected": "Never substitute unrelated RAG/WBS tests for missing application-fix evidence",
+      "actual": "No application defect/code mapping or fix/test proof; unchanged NEW, no Main mutation",
+      "status": "BLOCKED",
+      "evidence": [
+        "CODEX_WF09_WF11_NATIVE_PHASE_READINESS.json"
+      ]
+    },
+    {
+      "case": "Full lifecycle producer/retest/closure",
+      "input": "No admitted application source/build/test producer; actual Native Subtask has4states",
+      "expected": "Preserve complete policy obligations; no invented statuses or fake QA PASS",
+      "actual": "Still incomplete; source/analysis success does not qualify full business closure",
+      "status": "PARTIAL",
+      "evidence": [
+        "CODEX_NATIVE_QA_PHASE_DESIGN_PREVIEW.md"
+      ]
+    }
+  ],
+  "main_native_writes": 0,
+  "main_human_decisions_by_agent": 0,
+  "staging_operations": false,
+  "remaining": [
+    "Final full-image regression and source-phase scoped rollout",
+    "Source-backed application fix/build/test producer and generic admitted source mapping",
+    "Native-compatible development Subtask4state equivalent full policy obligations",
+    "QA/retest/release/closure facts and explicit current reviews",
+    "FreshMain Native mutation only after a new exact human approval"
+  ],
+  "main_deployment": "CODEX_NATIVE_SOURCE_PHASE_DEPLOYMENT_RESULT.json",
+  "main_new_boundaries": "CODEX_NATIVE_SOURCE_PHASE_NEW_BOUNDARIES.json"
+}

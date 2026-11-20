@@ -1,0 +1,6 @@
+# Add only during an approved release; never mount the gateway/operator directory into core.
+services:
+  web:
+    volumes:
+      - ${QLDAPM_UI_KEY_PATH:?Prepare UI signing key locally}:/qldapm-ui/ui.key:ro
+      - ${QLDAPM_TEST_RECEIPT_KEY_PATH:?Prepare test receipt key locally}:/qldapm-ui/test-receipt.key:ro

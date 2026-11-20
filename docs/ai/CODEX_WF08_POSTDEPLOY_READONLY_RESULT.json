@@ -1,0 +1,263 @@
+{
+  "observed_at": "2026-10-24T08:19:15.651975+00:00",
+  "route": "API_CLI",
+  "model_starts": 0,
+  "native_writes": 0,
+  "workflow_changes": 0,
+  "checks": {
+    "gateway_health": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "native_health": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "n8n_health": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "qdrant_health": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    "ollama_health": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "models": [
+          "bge-m3:latest"
+        ]
+      }
+    },
+    "pm_identity": {
+      "status": "PASS",
+      "evidence": {
+        "user_id": 19,
+        "name": "QLDAPM BA-PM",
+        "role": "PM",
+        "project_id": 5
+      }
+    },
+    "task370_persisted_baseline": {
+      "status": "PASS",
+      "evidence": {
+        "id": 370,
+        "lock_version": 2,
+        "project": "/api/v3/projects/5",
+        "author": "/api/v3/users/19",
+        "assignee": "/api/v3/users/19",
+        "status": "NEW",
+        "update_link_visible": true,
+        "description_sha256": "3c385739b454b42bed5f737d04d324df78364296fbe39898b73eee43ca6d53b2"
+      }
+    },
+    "native_collection_baseline": {
+      "status": "PASS",
+      "evidence": {
+        "count": 333,
+        "fingerprint": "49de9ea96d6280a27ed09bc2d83499fc241968f74c32ed0ed6d14a48ced5388c"
+      }
+    },
+    "wf03_stored_run_PM": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 200,
+        "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5",
+        "content_status": "stale"
+      }
+    },
+    "wf03_stored_run_BA": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403,
+        "run_id": "99f1242a-ec81-4558-a8dd-88d0af091cf5"
+      }
+    },
+    "wf03_transport_secret_required": {
+      "status": "PASS",
+      "evidence": {
+        "http_status": 403
+      }
+    },
+    "workflow_inventory": {
+      "status": "PASS",
+      "evidence": {
+        "count": 16,
+        "drift": []
+      }
+    },
+    "no_new_provider_proposals_or_sync_jobs": {
+      "status": "PASS",
+      "evidence": {
+        "before": {
+          "gemini_call_receipts": 123,
+          "gemini_usage": 128,
+          "proposals": 44,
+          "knowledge_sync": 4
+        },
+        "after": {
+          "gemini_call_receipts": 123,
+          "gemini_usage": 128,
+          "proposals": 44,
+          "knowledge_sync": 4
+        }
+      }
+    }
+  },
+  "workflows": {
+    "WF04": {
+      "id": "elfapV5D2PTnLiHW",
+      "version": "4a8ddd7c-763a-45dc-adb1-99633047b62e",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "b59cdfb918f3c1fe2cd2ee801e208c1537fdafbe769884a6e694fca5723e5688",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF05": {
+      "id": "xCZFw45fmDQG5gNq",
+      "version": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "ac4751c50204271f24cda1294e9b39f70398ec6f5fbd8cdf35d19064dd875113",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF06": {
+      "id": "Jq18aFSqfuUybEic",
+      "version": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "a7d74bed5b8cac09714c719c32891964987c54651bb5fc2f780b4b7f740da949",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF15": {
+      "id": "NLugfE3U8dBS88Wg",
+      "version": "3f8520e1-15f5-48d4-b61d-c0df8a19cae9",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "39156d6bedb3511ceee801885b6ccb144deb250da264ee733e206736fef1c761",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF12": {
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "version": "68ced74a-6dcf-46df-92c3-201febb5341a",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "d933e289cde2b3e5e4bf6c486330666857fd489c40134f007bcdd5e72eb101bf",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF14": {
+      "id": "8ycOUQy9gtT60nkN",
+      "version": "e07912bb-c40c-4e18-a016-2f16ff7a38a1",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "a56a6caded89765d2bbf99ef3ec7da7c2ecd302274a0ddf6d15051223eec31b2",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF07": {
+      "id": "BpCQrGR866vg4BqQ",
+      "version": "15216ba8-75a6-43a5-a939-308f6d14b957",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "73f9ac1588902830c2adde7eaf04a3fa7ba5bf9919cc4ddf7ea065e46a1b4ca4",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF16": {
+      "id": "5FRYNPSot18UDpKa",
+      "version": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "5bf55def99915eb372a8bcc7f9c0a9649703caca8e9c40fc2aee2acaf10f50b6",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF03": {
+      "id": "XoP4M520TMG3WgeY",
+      "version": "9af87910-b23c-4bcb-9589-4b09e614d3cf",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "d4ba221ff5a997c8574953669f633f7c9160ee2dfa67028032fc10b2ee8e61e2",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF11": {
+      "id": "LeRVT3LWNBkJ2iz3",
+      "version": "a6c7f2e0-b6c3-47b7-8834-a61c04d01757",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "066ef69d61039f2f65cda9404f440bc6bff21d84e2f9e79b78adbc2fd4c4d8de",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF01": {
+      "id": "X2O2QdPY6QLOrWqL",
+      "version": "50206f98-b5f6-41dc-8ec8-2d2fe76c5eeb",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "d1b4b79e8f4af9fff34c7cbd1be6380555af00ce93ae06d1e5c2984a46daca7a",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF02": {
+      "id": "Anl8LNdN4NNTKRpe",
+      "version": "484bd6c7-697f-45ab-97cf-3935360e0dfe",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "f1a17776f3f181c6498207f42d95dbc1937a4bbc073f972d458d80cbf69133a0",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF09": {
+      "id": "tOyBIPw6sGjgzjtU",
+      "version": "03d33bff-50b7-4951-81e5-1a71d3341c1f",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "cb744df9fcedca78b4cb828ae80414c758a5be505c920ccc8219b36c3437affa",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF10": {
+      "id": "tOY7QUa9SrWPOe9e",
+      "version": "34d1de19-42f8-4144-bcbd-a6ccd1b2d605",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "fc320cc562ab03931a78dda065005f8b2ca42c86a2591b56fd8b468b51dbc170",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF13": {
+      "id": "2tr0jpqaaAiq9IOU",
+      "version": "1a24ece8-a6d3-4076-a38f-c924ed17ba06",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "6fc2b0a91d59f4d9146042769073de3d3267c5f91c86e0e67be9d42e0819f1fd",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    },
+    "WF08": {
+      "id": "RXWjVUL8ozqhjY4w",
+      "version": "830871f2-9ac5-487f-b4de-b2e0922e9e36",
+      "active": true,
+      "source_hardening_matches": true,
+      "drift_fields": [],
+      "sha256": "7628373ef865c4ae1bb2ab6c1f173877a654fbe0a2308d3a5cbcf55a73311639",
+      "business_e2e": "NOT_TESTED_BY_THIS_READONLY_RUN"
+    }
+  },
+  "status": "PASS"
+}

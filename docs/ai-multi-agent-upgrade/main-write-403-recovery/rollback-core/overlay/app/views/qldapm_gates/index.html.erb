@@ -1,0 +1,7 @@
+<h2>QLDAPM Workflow gates</h2>
+<p>Server-side gates apply to UI, native API and AI. No automatic approval or completion.</p>
+<ul>
+  <% @items.each do |item| %>
+    <li><%= link_to "##{item.id} #{item.subject} — #{item.status.name}", qldapm_gate_path(item.id) %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,53 @@
+{
+  "status": "succeeded",
+  "text": "Edit/delete/status/search and usable web interface verified; WP379 awaits review/UAT.",
+  "base_sha": "726f9738fd1af08bb19502227df886e075c0259b",
+  "head_sha": "29ff0ec1e531d917ce96737d768c8e16dad895c5",
+  "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/2",
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\54edcb3a-51c4-4bd0-b7e8-ea797ab51ccb\\attempt-2\\acceptance-final.xml",
+    "log_sha256": "6d820391d6cceaf53e2001282b00056fe9617e22231210c079d43424910023b8"
+  },
+  "review_evidence": {
+    "revision": "41eb382a31ec56319f95e4c10fa025350cd377f25891c84249983076607c3842",
+    "verdict": "PASS",
+    "qa": {
+      "status": "PASS",
+      "command": "cd /home/openclaw/engineering/crud-search-web-v1 && .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "exit_code": 0,
+      "acceptance": [
+        "AC1",
+        "AC2",
+        "AC3",
+        "AC4",
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9"
+      ]
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\54edcb3a-51c4-4bd0-b7e8-ea797ab51ccb\\attempt-2",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_tasks.py"
+  ],
+  "native_readback": {
+    "child_id": 381,
+    "child_version": 0,
+    "parent": {
+      "id": 379,
+      "version": 1
+    },
+    "project_id": 6,
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/2"
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "child_id": 381,
+    "retrieval_count": 2
+  }
+}

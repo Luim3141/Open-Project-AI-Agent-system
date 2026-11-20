@@ -1,0 +1,254 @@
+{
+  "at": "2026-10-27T04:07:27.658024+00:00",
+  "status": "PASS_REAL_GEMINI_SUPERVISOR_BA_QA_LOCAL_REVIEWER_WF03_DURABLE_LIFECYCLE",
+  "wf03_failure_lifecycle": null,
+  "actor": 19,
+  "project": 5,
+  "run_id": "bcebcbcb-35c2-496d-a7d0-af7d82ba3c51",
+  "request_id": "5c0fb802-4876-410f-b939-a7144ac8b29d",
+  "runtime_image": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0",
+  "durable_state": "done",
+  "elapsed_seconds": 34.395,
+  "provider_calls": {
+    "successful_count_tokens": 3,
+    "generation_attempts": 3,
+    "successful_generations": 3,
+    "http_attempts": 6,
+    "retry": 0,
+    "receipts": [
+      {
+        "id": "65881bbe-7a7c-4d8f-ac36-295941a41d5b",
+        "actor": 19,
+        "run_id": "bcebcbcb-35c2-496d-a7d0-af7d82ba3c51",
+        "agent": "supervisor",
+        "phase": "countTokens",
+        "model": "gemini-3.5-flash-lite",
+        "state": "LIVE_SUCCESS",
+        "http_status": 200,
+        "error": null,
+        "request_sha256": "c9f287883d3449f071f68df488d6b32b7805c697c139cb89f748990fc068141a",
+        "duration_seconds": 0.419
+      },
+      {
+        "id": "3be76bb4-81d5-495c-be42-7f4b04a48253",
+        "actor": 19,
+        "run_id": "bcebcbcb-35c2-496d-a7d0-af7d82ba3c51",
+        "agent": "supervisor",
+        "phase": "generateContent",
+        "model": "gemini-3.5-flash-lite",
+        "state": "LIVE_SUCCESS",
+        "http_status": 200,
+        "error": null,
+        "request_sha256": "648d0c9e28f20e85cf56ae093e344262c1a9eeb3252a88692412c6d8a2ba6732",
+        "duration_seconds": 3.612
+      },
+      {
+        "id": "b65f0004-4757-4ab6-810e-6c46f1535e19",
+        "actor": 19,
+        "run_id": "bcebcbcb-35c2-496d-a7d0-af7d82ba3c51",
+        "agent": "ba",
+        "phase": "countTokens",
+        "model": "gemini-3.5-flash-lite",
+        "state": "LIVE_SUCCESS",
+        "http_status": 200,
+        "error": null,
+        "request_sha256": "6bc024221b0de2fcb182ffa113fe92f708b515ab3ad1c2f4c0d442f3f77fcaa9",
+        "duration_seconds": 0.335
+      },
+      {
+        "id": "7ed50b9e-cabd-48b2-aa61-fb0591ae6f22",
+        "actor": 19,
+        "run_id": "bcebcbcb-35c2-496d-a7d0-af7d82ba3c51",
+        "agent": "ba",
+        "phase": "generateContent",
+        "model": "gemini-3.5-flash-lite",
+        "state": "LIVE_SUCCESS",
+        "http_status": 200,
+        "error": null,
+        "request_sha256": "a37c22b55e37f486f6e7df67cc517f2df56efd7041e9e4ab57d64bb7bf6d7022",
+        "duration_seconds": 4.012
+      },
+      {
+        "id": "6a69ae39-aa47-461f-b20b-55ded2056ba3",
+        "actor": 19,
+        "run_id": "bcebcbcb-35c2-496d-a7d0-af7d82ba3c51",
+        "agent": "qa",
+        "phase": "countTokens",
+        "model": "gemini-3.5-flash-lite",
+        "state": "LIVE_SUCCESS",
+        "http_status": 200,
+        "error": null,
+        "request_sha256": "4f2287466210e991808e8bc006eeac76f0b57f1f99f85040b3bc877a41eb4fbc",
+        "duration_seconds": 0.316
+      },
+      {
+        "id": "77a53812-6333-4bf4-9369-c48515e73d89",
+        "actor": 19,
+        "run_id": "bcebcbcb-35c2-496d-a7d0-af7d82ba3c51",
+        "agent": "qa",
+        "phase": "generateContent",
+        "model": "gemini-3.5-flash-lite",
+        "state": "LIVE_SUCCESS",
+        "http_status": 200,
+        "error": null,
+        "request_sha256": "ac243e8b81de3009567de51070af2d9ad022043b953b18b328462976bd8fcf7b",
+        "duration_seconds": 4.991
+      }
+    ],
+    "usage_rows_delta": 6
+  },
+  "actual_google_generation_outcome": "Three successful provider generations; no retry or Native write",
+  "receipt_limitation": null,
+  "context_provenance": {
+    "base_context_sha256": "a8cd3eb663e87478f35d4bd0aa8d916fd7c414c8188d91e64a143ee77e68c7f6",
+    "native_references": [
+      {
+        "lock_version": 0,
+        "native_id": 375
+      }
+    ],
+    "rag_hits": [
+      {
+        "document_id": "5bd7c9754050b6b4aa9dac97b80c98c643afa4ff1ef38fd120e2c218472bddbc",
+        "lock_version": 0,
+        "native_id": 375,
+        "snippet_sha256": "982495e771470b4cb60d534cbe12af4d34aae2c59604d7ba80e154f43509c1e9",
+        "source_id": "op:wp:375"
+      }
+    ],
+    "rag_state": "HITS"
+  },
+  "polls": [
+    {
+      "at": "2026-10-27T04:05:44.055068+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T04:05:47.479035+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T04:05:50.899322+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T04:05:56.309138+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T04:06:00.975824+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T04:06:04.443775+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T04:06:08.022835+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T04:06:12.231786+00:00",
+      "state": "running",
+      "http": 200
+    },
+    {
+      "at": "2026-10-27T04:06:16.867097+00:00",
+      "state": "done",
+      "http": 200
+    }
+  ],
+  "same_key": {
+    "http": 200,
+    "same_run_id": true
+  },
+  "altered_payload_http": 422,
+  "negative_checks": [
+    {
+      "name": "foreign_actor",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "name": "missing_transport_secret",
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "name": "invalid_bearer",
+      "http": 401,
+      "status": "PASS_POLICY_ENFORCED"
+    }
+  ],
+  "trace_endpoint_http": 200,
+  "n8n_recent_execution_metadata": [],
+  "existing_provider_receipts_preserved": true,
+  "native_writes": 0,
+  "proposal_delta": 0,
+  "human_decisions": 0,
+  "staging_operations": false,
+  "wf03_lifecycle": "PASS_ACK_POLL_TERMINAL_DURABLE_FRESH_READBACK_IDEMPOTENCY_ACL",
+  "n8n_execution_history": "Not persisted by existing none/none save policy; HTTP transcript and Gateway durable audit correlate exact request/run. No workflow settings changed.",
+  "agent_outputs": [
+    {
+      "agent": "ba",
+      "state": "COMPLETED",
+      "model_used": true,
+      "references": [
+        {
+          "lock_version": 0,
+          "schema_version": 1,
+          "work_package_id": 375
+        }
+      ],
+      "output_sha256": "ae9c7a7d2024cacf9752c0871a4457116e82cb1537f686076c0a5a0326a32a66"
+    },
+    {
+      "agent": "qa",
+      "state": "COMPLETED",
+      "model_used": true,
+      "references": [
+        {
+          "lock_version": 0,
+          "schema_version": 1,
+          "work_package_id": 375
+        }
+      ],
+      "output_sha256": "0799fe9c37d01ffb95d3aa4ec825d1b4117884b1efe8964900266d2fcefaa592"
+    },
+    {
+      "agent": "reviewer",
+      "state": "COMPLETED",
+      "model_used": false,
+      "references": [
+        {
+          "lock_version": 0,
+          "schema_version": 1,
+          "work_package_id": 375
+        }
+      ],
+      "output_sha256": "b228d35584439fb14d51f14c8406a295979b34674f93dba544f8cd0091bcf8df"
+    }
+  ],
+  "gemini_plan": {
+    "agents": [
+      {
+        "agent": "ba",
+        "objective": "Ph\u00e2n t\u00edch ti\u00eau ch\u00ed v\u00e0 gi\u1edbi h\u1ea1n b\u1eb1ng ch\u1ee9ng k\u1ef9 thu\u1eadt c\u1ee7a #375, ghi nh\u1eadn hai r\u1ee7i ro ti\u1ec1m \u1ea9n d\u01b0\u1edbi d\u1ea1ng g\u1ee3i \u00fd d\u1ef1a tr\u00ean d\u1eef li\u1ec7u hi\u1ec7n c\u00f3."
+      },
+      {
+        "agent": "qa",
+        "objective": "X\u00e2y d\u1ef1ng ba tr\u01b0\u1eddng h\u1ee3p ki\u1ec3m th\u1eed d\u01b0\u1edbi d\u1ea1ng g\u1ee3i \u00fd cho #375 m\u00e0 kh\u00f4ng th\u1ef1c thi ki\u1ec3m th\u1eed hay t\u1ea1o proposal."
+      }
+    ],
+    "reasoning_summary": "Y\u00eau c\u1ea7u ch\u1ec9 \u0111\u1ecbnh BA v\u00e0 QA ph\u00e2n t\u00edch ti\u00eau ch\u00ed c\u1ee7a #375 \u1edf ch\u1ebf \u0111\u1ed9 ch\u1ec9 \u0111\u1ecdc. Hai r\u1ee7i ro \u0111\u01b0\u1ee3c n\u00eau ra (v\u00ed d\u1ee5: thi\u1ebfu th\u00f4ng tin sprint v\u00e0 ng\u00e0y b\u1eaft \u0111\u1ea7u/k\u1ebft th\u00fac l\u1ecbch tr\u00ecnh l\u1ecbch s\u1eed). Ba tr\u01b0\u1eddng h\u1ee3p ki\u1ec3m th\u1eed \u0111\u01b0\u1ee3c \u0111\u1ec1 xu\u1ea5t thu\u1ed9c d\u1ea1ng g\u1ee3i \u00fd (ki\u1ec3m tra startDate AC1, ki\u1ec3m tra \u01b0u ti\u00ean/ph\u00e2n c\u00f4ng AC2, v\u00e0 ki\u1ec3m tra t\u00ednh to\u00e0n v\u1eb9n d\u1eef li\u1ec7u). Kh\u00f4ng c\u00f3 thao t\u00e1c ghi hay ph\u00ea duy\u1ec7t n\u00e0o \u0111\u01b0\u1ee3c th\u1ef1c hi\u1ec7n."
+  },
+  "scope_notice": "Read-only analysis suggestions, not executed application tests, QA approval or Native proposal"
+}

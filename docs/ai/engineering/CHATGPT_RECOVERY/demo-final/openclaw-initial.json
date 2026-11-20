@@ -1,0 +1,81 @@
+[
+  {
+    "command": [
+      "openclaw",
+      "health",
+      "--json",
+      "--timeout",
+      "3000"
+    ],
+    "exit_code": 1,
+    "latency_ms": 4802,
+    "top_level_fields": [
+      "ok",
+      "error",
+      "gateway"
+    ],
+    "ok": false,
+    "private_raw": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\demo-final-openclaw-probe\\health-json.stdout"
+  },
+  {
+    "command": [
+      "openclaw",
+      "gateway",
+      "status",
+      "--json"
+    ],
+    "exit_code": 0,
+    "latency_ms": 4038,
+    "top_level_fields": [
+      "cli",
+      "logFile",
+      "service",
+      "config",
+      "gateway",
+      "hostDesktop",
+      "port",
+      "rpc",
+      "health",
+      "extraServices",
+      "pluginVersionDrift"
+    ],
+    "ok": null,
+    "private_raw": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\demo-final-openclaw-probe\\gateway-status.stdout"
+  },
+  {
+    "command": [
+      "openclaw",
+      "status",
+      "--deep",
+      "--json"
+    ],
+    "exit_code": 0,
+    "latency_ms": 24801,
+    "top_level_fields": [
+      "runtimeVersion",
+      "hostDesktop",
+      "heartbeat",
+      "channelSummary",
+      "queuedSystemEvents",
+      "degradedSecretOwners",
+      "degradedPlugins",
+      "sessions",
+      "os",
+      "update",
+      "updateChannel",
+      "updateChannelSource",
+      "memory",
+      "memoryPlugin",
+      "gateway",
+      "gatewayService",
+      "nodeService",
+      "agents",
+      "secretDiagnostics",
+      "securityAudit",
+      "health",
+      "lastHeartbeat"
+    ],
+    "ok": null,
+    "private_raw": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\demo-final-openclaw-probe\\status-deep.stdout"
+  }
+]

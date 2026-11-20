@@ -1,0 +1,5 @@
+flowchart LR
+  a0["Bấm Pass testing"] -->|"Sai người hoặc thiếu bằng chứng"| b0["Vẫn ở IN TESTING"]
+  a1["Bấm Pass testing"] -->|"Đúng người và đủ bằng chứng"| b1["REVIEW"]
+  a2["Bấm Approve hoặc Deploy"] -->|"Một điều kiện chưa đạt"| b2["Giữ trạng thái cũ"]
+  a3["Bấm Approve hoặc Deploy"] -->|"TẤT CẢ điều kiện đã đạt"| b3["ĐƯỢC ĐI TIẾP"]

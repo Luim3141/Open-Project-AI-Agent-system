@@ -1,0 +1,10 @@
+flowchart LR
+  n0["JIRA"]
+  n1["RUNNER LOCAL"]
+  n2["STATE VÀ EVENTS"]
+  n3["HEARTBEAT CHAT"]
+  n4["BÁO CÁO RIÊNG"]
+  n0 -->|"Đọc đủ dữ liệu"| n1
+  n1 -->|"Lưu chu kỳ hoàn tất"| n2
+  n2 -->|"Kiểm process và dữ liệu mới"| n3
+  n3 -->|"Chỉ báo thay đổi có ý nghĩa"| n4

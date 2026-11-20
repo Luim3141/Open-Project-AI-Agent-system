@@ -1,0 +1,851 @@
+<% html_title 'AI Engineering Control Center — Project 6' %>
+
+<style>
+  .qldapm-control-center {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1e293b;
+    margin-bottom: 40px;
+  }
+  .qldapm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .qldapm-title-group h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .qldapm-subtitle {
+    color: #64748b;
+    font-size: 14px;
+    margin: 0;
+  }
+  .qldapm-mode-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
+  .qldapm-mode-RUN_ONCE { background-color: #dcfce7; color: #166534; border: 1px solid #86efac; }
+  .qldapm-mode-AUTO { background-color: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+  .qldapm-mode-PAUSED { background-color: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+  .qldapm-mode-OFF { background-color: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+
+  /* Overview Cards Grid */
+  .qldapm-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .qldapm-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  .qldapm-card-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .qldapm-card-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .qldapm-card-sub {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 4px;
+  }
+
+  /* Control Panel */
+  .qldapm-control-panel {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  .qldapm-control-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-top: 14px;
+  }
+  .qldapm-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: all 150ms ease-in-out;
+  }
+  .qldapm-btn:hover { text-decoration: none; opacity: 0.95; }
+  .qldapm-btn-primary { background: #22c55e; color: #ffffff; border-color: #16a34a; }
+  .qldapm-btn-primary:hover { background: #16a34a; }
+  .qldapm-btn-secondary { background: #ffffff; color: #334155; border-color: #cbd5e1; }
+  .qldapm-btn-secondary:hover { background: #f1f5f9; border-color: #94a3b8; }
+  .qldapm-btn-danger { background: #ef4444; color: #ffffff; border-color: #dc2626; }
+  .qldapm-btn-danger:hover { background: #dc2626; }
+  .qldapm-btn-warning { background: #f59e0b; color: #ffffff; border-color: #d97706; }
+  .qldapm-btn-warning:hover { background: #d97706; }
+
+  /* Sections & Tables */
+  .qldapm-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .qldapm-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 12px;
+  }
+  .qldapm-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .qldapm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .qldapm-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  .qldapm-table td {
+    padding: 12px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+  }
+  .qldapm-table tr:hover { background: #f8fafc; }
+
+  /* Status Badges */
+  .qldapm-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .qldapm-badge-success { background: #dcfce7; color: #166534; }
+  .qldapm-badge-info { background: #e0f2fe; color: #075985; }
+  .qldapm-badge-warning { background: #fef3c7; color: #92400e; }
+  .qldapm-badge-neutral { background: #f1f5f9; color: #475569; }
+  .qldapm-badge-danger { background: #fee2e2; color: #991b1b; }
+
+  .qldapm-code-tag {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    border: 1px solid #e2e8f0;
+  }
+  .qldapm-progress-bar-bg {
+    background: #e2e8f0;
+    border-radius: 9999px;
+    height: 8px;
+    overflow: hidden;
+    margin: 8px 0;
+  }
+  .qldapm-progress-bar-fill {
+    background: #22c55e;
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 300ms ease;
+  }
+</style>
+
+<div class="qldapm-control-center">
+  <%# Alerts and Notifications %>
+  <% if @error %>
+    <div role="alert" class="notification-box -error" style="margin-bottom: 20px;">
+      <strong>Lỗi thao tác:</strong> <%= @error %>
+    </div>
+  <% end %>
+
+  <% if @result&.dig('result', 'requires_reconciliation') %>
+    <div role="alert" class="notification-box -warning" style="margin-bottom: 20px;">
+      <strong>Yêu cầu đối soát:</strong> Run trước cần đối soát checkpoint trước khi tiếp tục. Không dispatch hoặc phát lại thao tác đã thực thi.
+    </div>
+  <% elsif @result&.dig('result', 'deduplicated') %>
+    <div role="status" class="notification-box -info" style="margin-bottom: 20px;">
+      <strong>Đã ghi nhận:</strong> Unit đã tồn tại trong hàng đợi; kết quả và artifacts đã được bảo toàn.
+    </div>
+  <% end %>
+
+  <% if @engineering %>
+    <% 
+      mode = @engineering['mode'] || 'OFF'
+      worker_state = @engineering.dig('delivery_worker', 'state') || 'UNKNOWN'
+      backlog = Array(@engineering['backlog'])
+      tasks = Array(@engineering['tasks'])
+      runs = Array(@engineering['runs'])
+      github_info = @engineering['github'] || {}
+      prs = Array(github_info['prs'])
+      delivered_count = backlog.count { |u| u['state'] == 'succeeded' || u['state'] == 'DELIVERED' }
+      total_count = backlog.length
+      progress_pct = total_count > 0 ? ((delivered_count.to_f / total_count) * 100).round : 0
+    %>
+
+    <%# Header %>
+    <div class="qldapm-header">
+      <div class="qldapm-title-group">
+        <h1>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          AI Engineering Control Center
+        </h1>
+        <p class="qldapm-subtitle">Project 6 (ai-dev-demo) · WP #379 Develop Mini Task Manager Application</p>
+      </div>
+      <div>
+        <span class="qldapm-mode-badge qldapm-mode-<%= mode %>">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          Chế độ: <%= mode %>
+        </span>
+      </div>
+    </div>
+
+    <%# Notifications Bar %>
+    <% notifications = Array(@engineering['notifications']) %>
+    <% if notifications.present? %>
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <div>
+            <strong style="color: #1e40af;"><%= notifications.first['title'] %>:</strong>
+            <span style="color: #1e3a8a; font-size: 13px; margin-left: 6px;"><%= notifications.first['message'] %></span>
+          </div>
+        </div>
+        <span style="font-size: 11px; color: #64748b;"><%= notifications.length %> thông báo mới</span>
+      </div>
+    <% end %>
+
+    <%# System Overview Cards %>
+    <div class="qldapm-overview-grid">
+      <div class="qldapm-card">
+        <div class="qldapm-card-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          Gateway Runtime
+        </div>
+        <div class="qldapm-card-value" style="color: #166534;">ACTIVE (18089)</div>
+        <div class="qldapm-card-sub">Supervisor & Delivery Engine</div>
+      </div>
+
+      <div class="qldapm-card">
+        <div class="qldapm-card-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Delivery Worker
+        </div>
+        <div class="qldapm-card-value" style="<%= worker_state == 'ALIVE' ? 'color: #166534;' : 'color: #92400e;' %>">
+          <%= worker_state %>
+        </div>
+        <div class="qldapm-card-sub">Scheduled Task / Background</div>
+      </div>
+
+      <div class="qldapm-card">
+        <div class="qldapm-card-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub Delivery
+        </div>
+        <div class="qldapm-card-value" style="color: #0369a1;">
+          <%= prs.length %> PRs Synced
+        </div>
+        <div class="qldapm-card-sub">Luim3141/mini-task-manager</div>
+      </div>
+
+      <div class="qldapm-card">
+        <div class="qldapm-card-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Second Brain & n8n
+        </div>
+        <div class="qldapm-card-value" style="color: #166534;">
+          16 WF / Qdrant OK
+        </div>
+        <div class="qldapm-card-sub">5 WPs Indexed & Isolated</div>
+      </div>
+    </div>
+
+    <%# Engineering Controls Box %>
+    <div class="qldapm-control-panel">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <h2 style="font-size: 16px; font-weight: 700; margin: 0; color: #0f172a;">Điều khiển thực thi & Tác vụ</h2>
+          <p style="font-size: 13px; color: #64748b; margin: 4px 0 0 0;">
+            Tiến độ chuyển giao: <strong><%= delivered_count %>/<%= total_count %> units (<%= progress_pct %>%)</strong>. Parent Task #379 giữ mở cho đến khi PRs được merge.
+          </p>
+        </div>
+        <div style="min-width: 200px;">
+          <div class="qldapm-progress-bar-bg">
+            <div class="qldapm-progress-bar-fill" style="width: <%= progress_pct %>%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="qldapm-control-actions">
+        <% version = @engineering_wp && (@engineering_wp['lockVersion'] || @engineering_wp.dig('work_package', 'lockVersion')) %>
+        <% if version %>
+          <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: flex; gap: 8px; flex-wrap: wrap; align-items: center;' do %>
+            <%= hidden_field_tag :tool, 'engineering_run_once' %>
+            <%= hidden_field_tag :arguments, {native_id: 379, lock_version: version, unit: 'create-list-persistence-v1'}.to_json %>
+            
+            <label for="engineering_task" class="sr-only">Task</label>
+            <%= select_tag :engineering_task, options_for_select(tasks.map { |t| ["##{t['id']} — #{t['subject']}", t['id']] }), id: 'engineering_task', class: 'form--select', style: 'max-width: 240px; font-size: 13px;' %>
+            
+            <label for="engineering_unit" class="sr-only">Unit</label>
+            <%= select_tag :engineering_unit, options_for_select(backlog.map { |u| ["##{u['native_id']} · #{u['title']} (#{u['state']})", u['unit']] }), id: 'engineering_unit', class: 'form--select', style: 'max-width: 300px; font-size: 13px;' %>
+            
+            <button type="submit" class="qldapm-btn qldapm-btn-primary" onclick="return confirm('Xác nhận kích hoạt RUN ONCE cho unit đã chọn?');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              RUN ONCE
+            </button>
+          <% end %>
+        <% end %>
+
+        <%# Mode Controls %>
+        <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+          <%= hidden_field_tag :tool, 'engineering_control' %>
+          <%= hidden_field_tag :arguments, {mode: 'PAUSED'}.to_json %>
+          <button type="submit" class="qldapm-btn qldapm-btn-warning">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            PAUSE
+          </button>
+        <% end %>
+
+        <% if mode == 'AUTO' %>
+          <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+            <%= hidden_field_tag :tool, 'engineering_control' %>
+            <%= hidden_field_tag :arguments, {mode: 'OFF'}.to_json %>
+            <button type="submit" class="qldapm-btn" style="background-color: #7c3aed; color: #fff; border: 1px solid #6d28d9;" onclick="return confirm('Tắt chế độ tự động AUTO?');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+              TẮT AUTO
+            </button>
+          <% end %>
+        <% else %>
+          <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+            <%= hidden_field_tag :tool, 'engineering_control' %>
+            <%= hidden_field_tag :arguments, {mode: 'AUTO'}.to_json %>
+            <button type="submit" class="qldapm-btn qldapm-btn-secondary" style="border: 1px solid #8b5cf6; color: #6d28d9;" onclick="return confirm('Kích hoạt Controlled Auto Mode cho Project 6? Hệ thống sẽ tuần tự điều phối các unit đủ điều kiện.');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+              BẬT AUTO
+            </button>
+          <% end %>
+        <% end %>
+
+        <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+          <%= hidden_field_tag :tool, 'engineering_control' %>
+          <%= hidden_field_tag :arguments, {mode: 'OFF'}.to_json %>
+          <button type="submit" class="qldapm-btn qldapm-btn-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            OFF
+          </button>
+        <% end %>
+
+        <%# Two-Way GitHub Sync %>
+        <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+          <%= hidden_field_tag :tool, 'engineering_github_sync' %>
+          <%= hidden_field_tag :arguments, {}.to_json %>
+          <button type="submit" class="qldapm-btn qldapm-btn-secondary" title="Đồng bộ trạng thái PR và Commit từ GitHub REST API">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            Đồng bộ GitHub
+          </button>
+        <% end %>
+
+        <%= link_to project_qldapm_ai_path(@project.identifier), class: 'qldapm-btn qldapm-btn-secondary' do %>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Làm mới
+        <% end %>
+
+        <%= link_to project_qldapm_ai_executions_path(@project.identifier), class: 'qldapm-btn qldapm-btn-secondary' do %>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Execution Monitor
+        <% end %>
+      </div>
+    </div>
+
+    <%# Backlog & Delivery Matrix %>
+    <div class="qldapm-section">
+      <div class="qldapm-section-header">
+        <h2 class="qldapm-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Engineering Backlog & Ma trận phụ thuộc
+        </h2>
+        <span style="font-size: 13px; color: #64748b;">4/4 Units Đã Chuyển Giao</span>
+      </div>
+
+      <table class="qldapm-table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 35%;">Task / Feature Unit</th>
+            <th scope="col" style="width: 25%;">Phụ thuộc (Dependency)</th>
+            <th scope="col" style="width: 20%;">Trạng thái Delivery</th>
+            <th scope="col" style="width: 20%;">Run ID liên kết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% backlog.each do |unit| %>
+            <tr>
+              <td>
+                <%= link_to "##{unit['native_id']}", "/work_packages/#{unit['native_id']}", style: 'font-weight: 700; color: #0284c7;' %>
+                <strong><%= unit['title'] %></strong>
+                <div style="margin-top: 4px;">
+                  <span class="qldapm-code-tag"><%= unit['unit'] %></span>
+                </div>
+              </td>
+              <td>
+                <% if unit['dependency'] %>
+                  <span class="qldapm-code-tag"><%= unit['dependency'] %></span>
+                  <div style="margin-top: 4px;">
+                    <span class="qldapm-badge <%= unit['dependency_ready'] ? 'qldapm-badge-success' : 'qldapm-badge-warning' %>">
+                      <%= unit['dependency_ready'] ? 'READY' : 'WAITING' %>
+                    </span>
+                  </div>
+                <% else %>
+                  <span style="color: #94a3b8;">(Gốc - Không phụ thuộc)</span>
+                <% end %>
+              </td>
+              <td>
+                <% if unit['state'] == 'succeeded' || unit['state'] == 'DELIVERED' %>
+                  <span class="qldapm-badge qldapm-badge-success">DELIVERED</span>
+                <% elsif unit['state'] == 'PLANNED' %>
+                  <span class="qldapm-badge qldapm-badge-info">PLANNED</span>
+                <% else %>
+                  <span class="qldapm-badge qldapm-badge-neutral"><%= unit['state'] %></span>
+                <% end %>
+              </td>
+              <td>
+                <% if unit['run_id'] %>
+                  <span class="qldapm-code-tag"><%= unit['run_id'][0..7] %>...</span>
+                  <div style="margin-top: 4px;">
+                    <%= link_to 'Chi tiết run', project_qldapm_ai_execution_path(@project.identifier, unit['run_id']), style: 'font-size: 12px; color: #0284c7;' %>
+                  </div>
+                <% else %>
+                  <span style="color: #94a3b8;">Chưa chạy</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%# GitHub Pull Requests Panel %>
+    <div class="qldapm-section">
+      <div class="qldapm-section-header">
+        <h2 class="qldapm-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+          GitHub Pull Requests (Luim3141/mini-task-manager)
+        </h2>
+        <span style="font-size: 12px; color: #64748b;">Trạng thái: <strong><%= github_info['status'] || 'ONLINE' %></strong> (Chờ Human Review & Merge)</span>
+      </div>
+
+      <table class="qldapm-table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 8%;">PR</th>
+            <th scope="col" style="width: 37%;">Tiêu đề Pull Request</th>
+            <th scope="col" style="width: 12%;">Head Commit</th>
+            <th scope="col" style="width: 13%;">Base Branch</th>
+            <th scope="col" style="width: 15%;">Trạng thái GitHub</th>
+            <th scope="col" style="width: 15%;">Reviews & CI GitHub</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if prs.empty? %>
+            <tr><td colspan="5" style="text-align: center; color: #94a3b8; padding: 20px;">Chưa có dữ liệu PR. Nhấn "Đồng bộ GitHub" để cập nhật.</td></tr>
+          <% else %>
+            <% prs.each do |pr| %>
+              <tr>
+                <td>
+                  <strong><%= link_to "##{pr['number']}", pr['html_url'], target: '_blank', rel: 'noopener noreferrer', style: 'color: #0284c7;' %></strong>
+                </td>
+                <td>
+                  <%= link_to pr['title'], pr['html_url'], target: '_blank', rel: 'noopener noreferrer', style: 'font-weight: 600; color: #1e293b;' %>
+                  <div style="font-size: 11px; color: #64748b; margin-top: 2px;">
+                    <%= link_to 'Xem files changed', "#{pr['html_url']}/files", target: '_blank', rel: 'noopener noreferrer' %>
+                  </div>
+                </td>
+                <td><span class="qldapm-code-tag"><%= pr['head_sha'].to_s[0..7] %></span></td>
+                <td><span class="qldapm-code-tag"><%= pr['base_ref'] %></span></td>
+                <td>
+                  <% if pr['is_merged'] %>
+                    <span class="qldapm-badge" style="background: #f3e8ff; color: #6b21a8;">MERGED</span>
+                  <% elsif pr['state'] == 'open' %>
+                    <span class="qldapm-badge qldapm-badge-success">OPEN</span>
+                  <% else %>
+                    <span class="qldapm-badge qldapm-badge-neutral"><%= pr['state'].to_s.upcase %></span>
+                  <% end %>
+                </td>
+                <td>
+                  <span class="qldapm-badge qldapm-badge-neutral" title="Chưa có human review trên GitHub"><%= pr['reviews_state'] || 'NO_REVIEWS_ON_GITHUB' %></span>
+                  <div style="margin-top: 3px;">
+                    <span class="qldapm-badge qldapm-badge-neutral" title="Không có workflow CI trên GitHub"><%= pr['checks_state'] || 'NO_CI_CHECKS' %></span>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%# PM / BA Specification & Planning %>
+    <div class="qldapm-section">
+      <div class="qldapm-section-header">
+        <h2 class="qldapm-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          PM / BA · Đặc tả & Quản lý Kế hoạch
+        </h2>
+      </div>
+
+      <% parent = tasks.find { |t| t['id'] == 379 } %>
+      <% if parent %>
+        <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'margin-bottom: 20px;' do %>
+          <%= hidden_field_tag :tool, 'engineering_plan' %>
+          <%= hidden_field_tag :arguments, {native_id: 379, lock_version: parent['lock_version']}.to_json %>
+          <div style="margin-bottom: 10px;">
+            <label for="engineering_feedback" style="display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px;">
+              Góp ý / Yêu cầu bổ sung trong phạm vi Mini Task Manager (không tạo lại unit đã hoàn thành):
+            </label>
+            <%= text_area_tag :engineering_feedback, '', id: 'engineering_feedback', maxlength: 6000, rows: 2, class: 'form--text-area', style: 'width: 100%; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px;' %>
+          </div>
+          <button type="submit" class="qldapm-btn qldapm-btn-secondary" onclick="return confirm('Gửi yêu cầu phân tích tới PM/BA Agent?');">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            PM/BA → Tạo đặc tả & backlog
+          </button>
+        <% end %>
+      <% end %>
+
+      <% Array(@engineering['plans']).each do |plan| %>
+        <details style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; margin-bottom: 10px;">
+          <summary style="font-weight: 600; cursor: pointer; color: #0f172a;">
+            Plan <%= plan['id'] %> · Trạng thái: <strong><%= plan['state'] %></strong>
+          </summary>
+          <div style="margin-top: 10px; font-size: 13px;">
+            <p style="margin: 0 0 6px 0;"><strong>Tóm tắt PM:</strong> <%= plan.dig('pm', 'summary') %></p>
+            <p style="margin: 0 0 6px 0;"><strong>Hành động kế tiếp:</strong> <%= plan.dig('pm', 'next_action') %></p>
+            <% if plan.dig('pm', 'blockers').present? %>
+              <p style="margin: 0 0 6px 0; color: #b91c1c;"><strong>Vướng mắc:</strong> <%= Array(plan.dig('pm', 'blockers')).join('; ') %></p>
+            <% end %>
+          </div>
+        </details>
+      <% end %>
+    </div>
+
+    <%# Engineering Progress Reports Section (Milestone 7 & Phase 2.8 Finding B/G) %>
+    <% sched = @engineering&.dig('reporting_schedule') || {} %>
+    <% weekly_days = {1 => 'Thứ 2 (Thứ Hai)', 2 => 'Thứ 3', 3 => 'Thứ 4', 4 => 'Thứ 5', 5 => 'Thứ 6', 6 => 'Thứ 7', 7 => 'Chủ Nhật'} %>
+    <div class="qldapm-section">
+      <div class="qldapm-section-header">
+        <h2 class="qldapm-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Báo cáo tiến độ kỹ thuật (Automated Reporting System)
+        </h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button type="button" class="qldapm-btn qldapm-btn-secondary" style="padding: 4px 10px; font-size: 12px; cursor: pointer;" onclick="document.getElementById('qldapm-schedule-modal').style.display='flex';">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Cấu hình Lịch
+          </button>
+
+          <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+            <%= hidden_field_tag :tool, 'engineering_report_generate' %>
+            <%= hidden_field_tag :arguments, {report_type: 'DAILY', include_narrative: false}.to_json %>
+            <button type="submit" class="qldapm-btn qldapm-btn-secondary" style="padding: 4px 10px; font-size: 12px; cursor: pointer;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+              Tạo Daily Report
+            </button>
+          <% end %>
+
+          <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+            <%= hidden_field_tag :tool, 'engineering_report_generate' %>
+            <%= hidden_field_tag :arguments, {report_type: 'WEEKLY', include_narrative: false}.to_json %>
+            <button type="submit" class="qldapm-btn qldapm-btn-secondary" style="padding: 4px 10px; font-size: 12px; cursor: pointer;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Tạo Weekly Report
+            </button>
+          <% end %>
+
+          <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+            <%= hidden_field_tag :tool, 'engineering_report_generate' %>
+            <%= hidden_field_tag :arguments, {report_type: 'ON_DEMAND', include_narrative: true}.to_json %>
+            <button type="submit" class="qldapm-btn qldapm-btn-primary" style="padding: 4px 10px; font-size: 12px; cursor: pointer;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              Snapshot Tức Thời (+AI)
+            </button>
+          <% end %>
+        </div>
+      </div>
+
+      <%# Dynamic Schedule Status Banner (Finding G) %>
+      <div style="font-size: 12px; color: #334155; margin: 0 0 14px 0; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px 14px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div>
+          <span style="font-weight: 600; color: #0f172a;">Lịch Tự Động Định Kỳ (<%= sched['timezone'] || 'Asia/Ho_Chi_Minh' %>):</span>
+          <span style="margin-left: 8px;">
+            Daily: <strong><%= sched['daily_enabled'] != false ? sprintf('%02d:%02d', sched['daily_hour'] || 8, sched['daily_minute'] || 0) : 'TẮT' %></strong>
+            <% if sched['last_daily_run_iso'].present? %><span style="color: #64748b;">(gần nhất: <%= sched['last_daily_run_iso'] %>)</span><% end %>
+          </span>
+          <span style="margin: 0 6px; color: #cbd5e1;">|</span>
+          <span>
+            Weekly: <strong><%= sched['weekly_enabled'] != false ? "#{weekly_days[sched['weekly_day'] || 1]}, #{sprintf('%02d:%02d', sched['weekly_hour'] || 9, sched['weekly_minute'] || 0)}" : 'TẮT' %></strong>
+            <% if sched['last_weekly_run_iso'].present? %><span style="color: #64748b;">(gần nhất: <%= sched['last_weekly_run_iso'] %>)</span><% end %>
+          </span>
+        </div>
+        <div style="font-size: 11px; color: #64748b; font-style: italic;">
+          Background Worker tự động kích hoạt độc lập với Engineering AUTO
+        </div>
+      </div>
+
+      <%# Modal Cấu hình Lịch Báo Cáo %>
+      <div id="qldapm-schedule-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.45); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="background: #ffffff; border-radius: 8px; width: 480px; max-width: 90vw; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); overflow: hidden; border: 1px solid #cbd5e1;">
+          <div style="padding: 14px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #0f172a;">Cấu hình Lịch Báo cáo Tiến độ (Project 6)</h3>
+            <button type="button" style="background: none; border: none; font-size: 18px; cursor: pointer; color: #64748b;" onclick="document.getElementById('qldapm-schedule-modal').style.display='none';">&times;</button>
+          </div>
+          <div style="padding: 20px;">
+            <%= form_tag project_qldapm_ai_command_path(@project.identifier), id: 'qldapm-schedule-form' do %>
+              <%= hidden_field_tag :tool, 'engineering_report_schedule_update' %>
+              <%= hidden_field_tag :arguments, '', id: 'qldapm-schedule-args' %>
+
+              <div style="margin-bottom: 16px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; color: #1e293b; cursor: pointer;">
+                  <input type="checkbox" id="cfg-daily-en" <%= 'checked' if sched['daily_enabled'] != false %>>
+                  Bật Báo Cáo Daily Tự Động
+                </label>
+                <div style="margin-top: 8px; margin-left: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                  <span>Giờ chạy (Giờ:Phút):</span>
+                  <input type="number" id="cfg-daily-h" min="0" max="23" value="<%= sched['daily_hour'] || 8 %>" style="width: 60px; padding: 4px 6px; border: 1px solid #cbd5e1; border-radius: 4px;"> :
+                  <input type="number" id="cfg-daily-m" min="0" max="59" value="<%= sched['daily_minute'] || 0 %>" style="width: 60px; padding: 4px 6px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                </div>
+              </div>
+
+              <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 16px 0;">
+
+              <div style="margin-bottom: 16px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; color: #1e293b; cursor: pointer;">
+                  <input type="checkbox" id="cfg-weekly-en" <%= 'checked' if sched['weekly_enabled'] != false %>>
+                  Bật Báo Cáo Weekly Tự Động
+                </label>
+                <div style="margin-top: 8px; margin-left: 24px; display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span>Ngày trong tuần:</span>
+                    <select id="cfg-weekly-d" style="padding: 4px 8px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                      <% weekly_days.each do |day_idx, day_label| %>
+                        <option value="<%= day_idx %>" <%= 'selected' if (sched['weekly_day'] || 1) == day_idx %>><%= day_label %></option>
+                      <% end %>
+                    </select>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span>Giờ chạy (Giờ:Phút):</span>
+                    <input type="number" id="cfg-weekly-h" min="0" max="23" value="<%= sched['weekly_hour'] || 9 %>" style="width: 60px; padding: 4px 6px; border: 1px solid #cbd5e1; border-radius: 4px;"> :
+                    <input type="number" id="cfg-weekly-m" min="0" max="59" value="<%= sched['weekly_minute'] || 0 %>" style="width: 60px; padding: 4px 6px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                  </div>
+                </div>
+              </div>
+
+              <div style="font-size: 12px; color: #64748b; background: #f1f5f9; padding: 8px; border-radius: 4px; margin-bottom: 16px;">
+                Múi giờ thực thi: <strong>Asia/Ho_Chi_Minh (UTC+7)</strong>.
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button type="button" class="qldapm-btn qldapm-btn-secondary" style="padding: 6px 14px; cursor: pointer;" onclick="document.getElementById('qldapm-schedule-modal').style.display='none';">Hủy</button>
+                <button type="button" class="qldapm-btn qldapm-btn-primary" style="padding: 6px 14px; cursor: pointer;" onclick="saveScheduleConfig();">Lưu Lịch Trình</button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <script>
+        function saveScheduleConfig() {
+          var payload = {
+            daily_enabled: document.getElementById('cfg-daily-en').checked,
+            daily_hour: parseInt(document.getElementById('cfg-daily-h').value, 10) || 0,
+            daily_minute: parseInt(document.getElementById('cfg-daily-m').value, 10) || 0,
+            weekly_enabled: document.getElementById('cfg-weekly-en').checked,
+            weekly_day: parseInt(document.getElementById('cfg-weekly-d').value, 10) || 1,
+            weekly_hour: parseInt(document.getElementById('cfg-weekly-h').value, 10) || 0,
+            weekly_minute: parseInt(document.getElementById('cfg-weekly-m').value, 10) || 0,
+            timezone: 'Asia/Ho_Chi_Minh'
+          };
+          document.getElementById('qldapm-schedule-args').value = JSON.stringify(payload);
+          document.getElementById('qldapm-schedule-form').submit();
+        }
+      </script>
+
+      <% report_list = Array(@reports&.dig('reports')) %>
+      <% if report_list.empty? %>
+        <div style="text-align: center; color: #64748b; padding: 24px; background: #f8fafc; border-radius: 6px; border: 1px dashed #cbd5e1; font-size: 13px;">
+          Chưa có báo cáo tiến độ nào được lưu. Bấm <strong>Tạo Daily Report</strong> hoặc <strong>Snapshot Tức Thời</strong> để sinh báo cáo mới nhất.
+        </div>
+      <% else %>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <% report_list.each do |rep| %>
+            <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px 16px; background: #fafafa; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <span class="qldapm-badge <%= rep['report_type'] == 'WEEKLY' ? 'qldapm-badge-purple' : (rep['report_type'] == 'DAILY' ? 'qldapm-badge-info' : 'qldapm-badge-success') %>">
+                  <%= rep['report_type'] %>
+                </span>
+                <span style="font-weight: 600; color: #1e293b; margin-left: 8px;"><%= rep['title'] %></span>
+                <span style="font-size: 12px; color: #64748b; margin-left: 8px;">(<%= rep['created_iso'] %>)</span>
+              </div>
+              <div>
+                <span class="qldapm-code-tag"><%= rep['id'][0..7] %></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <%# Recent Execution Runs %>
+    <div class="qldapm-section">
+      <div class="qldapm-section-header">
+        <h2 class="qldapm-section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+          Lịch sử Execution Runs
+        </h2>
+        <span style="font-size: 12px; color: #64748b;">Gần nhất 10 lượt</span>
+      </div>
+
+      <table class="qldapm-table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 25%;">Run & Unit</th>
+            <th scope="col" style="width: 15%;">Queue State</th>
+            <th scope="col" style="width: 35%;">Kết quả kiểm thử & Review</th>
+            <th scope="col" style="width: 25%;">Hành động & Điều khiển</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if runs.empty? %>
+            <tr><td colspan="4" style="text-align: center; color: #94a3b8; padding: 20px;">Chưa có execution run nào được ghi nhận.</td></tr>
+          <% else %>
+            <% runs.each do |run| %>
+              <% 
+                result = run['result'] || {}
+                checkpoint = run['checkpoint'] || {}
+                test_exit = result.dig('test_evidence', 'exit_code')
+                review_verdict = result.dig('review_evidence', 'verdict')
+              %>
+              <tr>
+                <td>
+                  <span class="qldapm-code-tag"><%= run['id'][0..7] %></span>
+                  <div style="font-weight: 600; margin-top: 4px;"><%= run['unit'] %></div>
+                  <div style="font-size: 11px; color: #64748b; margin-top: 2px;">WP: #<%= run['native_id'] %></div>
+                </td>
+                <td>
+                  <% if run['queue_state'] == 'finished' %>
+                    <span class="qldapm-badge qldapm-badge-success">FINISHED</span>
+                  <% elsif run['queue_state'] == 'executing' %>
+                    <span class="qldapm-badge qldapm-badge-warning">EXECUTING</span>
+                  <% else %>
+                    <span class="qldapm-badge qldapm-badge-neutral"><%= run['queue_state'].to_s.upcase %></span>
+                  <% end %>
+                  <% if result['agent'].present? %>
+                    <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Agent: <%= result['agent'] %></div>
+                  <% end %>
+                </td>
+                <td>
+                  <div>
+                    Kiểm thử: 
+                    <% if test_exit == 0 %>
+                      <span class="qldapm-badge qldapm-badge-success">PASS (Exit 0)</span>
+                    <% elsif test_exit.present? %>
+                      <span class="qldapm-badge qldapm-badge-danger">FAIL (<%= test_exit %>)</span>
+                    <% else %>
+                      <span style="color: #94a3b8;">N/A</span>
+                    <% end %>
+                    
+                    <span style="font-weight: 500; color: #475569;">Local AI Review:</span> 
+                    <% if review_verdict == 'PASS' %>
+                      <span class="qldapm-badge qldapm-badge-success">PASS</span>
+                    <% elsif review_verdict.present? %>
+                      <span class="qldapm-badge qldapm-badge-warning"><%= review_verdict %></span>
+                    <% else %>
+                      <span style="color: #94a3b8;">N/A</span>
+                    <% end %>
+                  </div>
+                  <% if result['head_sha'].present? %>
+                    <div style="font-size: 11px; color: #64748b; margin-top: 4px;">
+                      Commit: <span class="qldapm-code-tag"><%= result['head_sha'][0..7] %></span>
+                    </div>
+                  <% end %>
+                </td>
+                <td>
+                  <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                    <%= link_to 'Timeline', project_qldapm_ai_execution_path(@project.identifier, run['id']), class: 'qldapm-btn qldapm-btn-secondary', style: 'padding: 4px 8px; font-size: 11px;' %>
+
+                    <% if run['queue_state'] != 'finished' %>
+                      <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+                        <%= hidden_field_tag :tool, 'engineering_cancel' %>
+                        <%= hidden_field_tag :arguments, {run_id: run['id']}.to_json %>
+                        <button type="submit" class="qldapm-btn qldapm-btn-danger" style="padding: 4px 8px; font-size: 11px;">CANCEL</button>
+                      <% end %>
+                    <% end %>
+
+                    <% if (run['queue_state'] == 'finished' && checkpoint['resumable'] && checkpoint['terminal_known'] && result['status'] != 'succeeded') || (run['queue_state'] == 'queued' && @engineering['mode'] == 'PAUSED') %>
+                      <%= form_tag project_qldapm_ai_command_path(@project.identifier), style: 'display: inline;' do %>
+                        <%= hidden_field_tag :tool, 'engineering_resume' %>
+                        <%= hidden_field_tag :arguments, {run_id: run['id'], checkpoint_version: checkpoint['version'] || 0}.to_json %>
+                        <button type="submit" class="qldapm-btn qldapm-btn-warning" style="padding: 4px 8px; font-size: 11px;">RESUME</button>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <% end %>
+</div>

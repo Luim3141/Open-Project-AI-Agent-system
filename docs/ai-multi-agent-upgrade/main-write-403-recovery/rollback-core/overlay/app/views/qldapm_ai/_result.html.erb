@@ -1,0 +1,67 @@
+<% if @error %>
+ <section class="qldapm-ai-result -failed" role="alert" tabindex="-1"><h3>Chưa thực hiện được</h3><p><%= @error %></p></section>
+<% end %>
+<% if @run %>
+ <% result = @run["result"] || {} %>
+ <% state = @run["state"] == "running" ? "running" : result["status"] || (@run["state"] == "done" ? "answered" : "failed") %>
+ <section class="qldapm-ai-result -<%= state %>" role="<%= %w[failed partial].include?(state) ? 'alert' : 'status' %>" aria-live="polite">
+  <% if result["plan"] || %w[gemini_supervisor local_supervisor].include?(result["engine"]) || @run["agent_task_id"] %><p><%= link_to "Xem quá trình AI xử lý", project_qldapm_ai_execution_path(@project.identifier, @run["id"]), class: "button -primary" %></p><% end %>
+  <h3><%= state == "running" ? "Đang xử lý yêu cầu…" : result["heading"] || "Kết quả yêu cầu" %></h3>
+  <% if state == "running" %>
+   <% content_for :header_tags do %><%= tag.meta("http-equiv": "refresh", content: "2;url=#{project_qldapm_ai_path(@project.identifier, run_id: @run['id'])}") %><% end %>
+   <p>Trang sẽ tự cập nhật. Các thao tác đã có receipt được giữ; không gửi lại yêu cầu đang chạy.</p>
+  <% end %>
+  <% if state != "running" && result["text"].present? && !Array(result["outcomes"]).any? { |row| %w[create_work_package update_work_package comment transition].include?(row["action"]) } %><div class="qldapm-ai-answer"><%= simple_format(h(result["text"])) %></div><% end %>
+  <% if result["message"].present? %><p><strong><%= result["message"] %></strong></p><% end %>
+  <% if Array(result.dig("agent_result", "references")).any? %><p>Nguồn đầu vào đã kiểm tra quyền và phiên bản:
+   <% result["agent_result"]["references"].each do |reference| %><%= link_to "##{reference['work_package_id']} · v#{reference['lock_version']}", "/work_packages/#{Integer(reference['work_package_id'])}" %> <% end %>
+  </p><% end %>
+  <% if result["plan"] %><details open><summary>Execution plan · <%= result["completed_steps"] || 0 %>/<%= Array(result.dig("plan", "steps")).size %> bước</summary>
+   <ol><% Array(result.dig("plan", "steps")).each do |step| %><li><strong><%= step["agent"] %></strong> — <%= step["action"] %> · phụ thuộc: <%= Array(step["dependencies"]).join(", ") %></li><% end %></ol>
+  </details><% end %>
+  <% Array(result["outcomes"]).each do |outcome| %>
+   <p class="qldapm-ai-outcome"><strong><%= outcome["action"] == "identity" ? "Xác minh quyền tài khoản" : outcome["title"] %></strong> — <%= outcome["detail"] %>
+    <% if outcome["work_package_id"].is_a?(Integer) %><%= link_to "Mở công việc ##{outcome['work_package_id']}", "/work_packages/#{outcome['work_package_id']}" %><% end %>
+    <% if outcome["proposal_id"].is_a?(String) && outcome["proposal_id"].match?(/\A[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}\z/) %><%= link_to "Xem thay đổi và duyệt", project_qldapm_ai_path(@project.identifier, proposal_id: outcome["proposal_id"]), class: "button -primary" %><% end %>
+   </p>
+  <% end %>
+  <% if result["outcomes"].nil? %>
+   <% Array(result["tools"]).each do |tool| %>
+    <% proposal = tool.dig("result", "result") %>
+    <% if proposal.is_a?(Hash) && proposal["human_confirmation_required"] == true && proposal["id"].is_a?(String) && proposal["id"].match?(/\A[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}\z/) %><p><%= link_to "Xem trước đề xuất — chưa thực hiện", project_qldapm_ai_path(@project.identifier, proposal_id: proposal["id"]), class: "qldapm-ai-proposal" %></p><% end %>
+   <% end %>
+  <% end %>
+  <details><summary>Chi tiết kỹ thuật / receipt</summary><pre><%= JSON.pretty_generate(@run) %></pre></details>
+  <%= link_to "Cập nhật kết quả", project_qldapm_ai_path(@project.identifier, run_id: @run["id"]) %>
+ </section>
+<% end %>
+<% if @proposal %>
+ <% preview = qldapm_preview(@proposal) %>
+ <% expired = @proposal["expires"].is_a?(Numeric) && @proposal["expires"] <= Time.current.to_f %>
+ <section class="qldapm-ai-result -proposed" aria-labelledby="ai-preview-title">
+  <h3 id="ai-preview-title">Xem thay đổi trước khi duyệt</h3>
+  <p><strong><%= preview[:title] %></strong><% if preview[:subject].present? %> — <%= preview[:subject] %><% end %></p>
+  <p>Thay đổi dưới đây chỉ được ghi khi bạn xác nhận. OpenProject sẽ kiểm tra lại quyền, workflow và phiên bản hiện tại.</p>
+  <div class="qldapm-ai-wrap"><table class="qldapm-ai-preview"><caption>Nội dung thay đổi</caption><thead><tr><th scope="col">Thông tin</th><th scope="col">Hiện tại</th><th scope="col">Sau khi duyệt</th></tr></thead><tbody>
+   <% preview[:rows].each do |row| %><tr><th scope="row"><%= row[:label] %></th><td><%= row[:before] %></td><td><%= row[:after] %></td></tr><% end %>
+  </tbody></table></div>
+  <% if @proposal["state"] == "pending" && !expired %>
+   <div class="qldapm-ai-actions"><%= form_tag project_qldapm_ai_confirm_path(@project.identifier), data: {turbo: false} do %>
+    <%= hidden_field_tag :proposal_id, @proposal["id"] %><%= hidden_field_tag :hash, @proposal["hash"] %>
+    <%= submit_tag "Duyệt và thực hiện thay đổi trên", class: "button -primary" %>
+   <% end %><%= form_tag project_qldapm_ai_reject_path(@project.identifier), data: {turbo: false} do %>
+    <%= hidden_field_tag :proposal_id, @proposal["id"] %><%= hidden_field_tag :hash, @proposal["hash"] %>
+    <%= submit_tag "Từ chối đề xuất", class: "button" %>
+   <% end %></div>
+  <% elsif expired && @proposal["state"] == "pending" %><p role="status"><strong>Đề xuất đã hết hạn.</strong> Gửi lại yêu cầu để tạo preview mới theo dữ liệu hiện tại. Thay đổi này chưa được ghi.</p>
+  <% else %><p><strong><%= qldapm_state(@proposal["state"]) %></strong>. Không gửi lại thao tác đã xử lý.</p><% end %>
+  <details><summary>Chi tiết kỹ thuật / phiên bản / hash</summary><pre><%= JSON.pretty_generate(@proposal) %></pre></details>
+ </section>
+<% end %>
+<% if @result && !@proposal && !@run %>
+ <section class="qldapm-ai-result -succeeded" role="status"><h3>Đã nhận kết quả từ OpenProject</h3>
+  <p><%= @completed_action || "Đã xử lý yêu cầu. Kết quả xác nhận nằm trong receipt dưới đây." %></p>
+  <% if @result.dig("result", "id").is_a?(Integer) && @result.dig("result", "_type") == "WorkPackage" %><%= link_to "Mở công việc", "/work_packages/#{@result.dig('result', 'id')}" %><% end %>
+  <details><summary>Chi tiết kỹ thuật / receipt</summary><pre><%= JSON.pretty_generate(@result) %></pre></details>
+ </section>
+<% end %>

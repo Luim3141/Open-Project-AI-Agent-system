@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "recordType": "automation-rollout-evidence",
+  "projectKey": "QAG3",
+  "projectId": "10002",
+  "site": "https://luimjiraqldapm.atlassian.net",
+  "cloudId": "560ef0cc-d24b-4613-98d3-d541afe8f32b",
+  "recordedAtUtc": "2026-10-13T03:45:15Z",
+  "simulation": true,
+  "result": "A01-A05 ENABLED; A02-A05 QAG3 project scope no longer requires qag3-test; targeted native qualification passed, not complete project acceptance",
+  "routes": {
+    "issues": "official Atlassian MCP",
+    "automationWrite": "in-app browser native UI",
+    "configurationReadback": "fixed supplementary integration calling official Atlassian API",
+    "gateWrite": "guarded CLI from local MCP source with exact approved preview"
+  },
+  "rules": [
+    {
+      "key": "A01",
+      "uuid": "01a1216a-82a7-7a79-9f26-8102e7f6a942",
+      "state": "ENABLED",
+      "changed": false
+    },
+    {
+      "key": "A02",
+      "uuid": "01a12eca-5f11-7ef3-9c33-3898c7b1e9f2",
+      "state": "ENABLED",
+      "testLabelRequired": false,
+      "eventToStatus": [
+        {
+          "type": "NAME",
+          "value": "Done"
+        }
+      ],
+      "actor": "Automation for Jira"
+    },
+    {
+      "key": "A03",
+      "uuid": "01a12ee4-1276-76b4-ba01-49bdeda52f9d",
+      "state": "ENABLED",
+      "testLabelRequired": false,
+      "businessScopeLabelRequired": "qag3-scope-approved",
+      "actor": "EVENT_INITIATOR"
+    },
+    {
+      "key": "A04",
+      "uuid": "01a13075-71e9-7e0f-b65f-006ec2a4b83b",
+      "state": "ENABLED",
+      "testLabelRequired": false,
+      "businessScopeLabelRequired": "qag3-scope-approved",
+      "actor": "EVENT_INITIATOR"
+    },
+    {
+      "key": "A05",
+      "uuid": "01a13075-71e9-750f-9913-5e43ba4adaf0",
+      "state": "ENABLED",
+      "testLabelRequired": false,
+      "actor": "Automation for Jira",
+      "commentActions": 2,
+      "emailActions": 0,
+      "addCommentOnce": false,
+      "eventAttemptDedupGuard": true,
+      "descriptionReadback": "full QAG3 simulation scope"
+    }
+  ],
+  "configVerification": {
+    "readComplete": true,
+    "rolloutVerifierExitCode": 0,
+    "qualificationVerifierExitCode": 0,
+    "projectScopeOnly": true,
+    "actorsAndComponentsPreserved": true,
+    "otherRuleTriggerAllowed": false
+  },
+  "app": {
+    "environment": "development",
+    "version": "2.21.0",
+    "moduleCount": 12,
+    "manifestSha256": "b8e9648dc25dc7f2c420612a2fbede46dd47837e50f12a2bcf4003fff6c645f7",
+    "stageManifestSha256": "73e07c827783c6471237ddce83d84bd5315367c1a854761f6e40bc0437a07f3a",
+    "scopesFunctionsStorageEgressBillingChanged": false,
+    "unchangedOtherModules": 10
+  },
+  "subtaskGate": {
+    "workflowId": "7512e21c-34cd-4fc8-baf4-9398f36f3e37",
+    "versionNumber": 9,
+    "versionId": "d9c8e3c0-0697-459c-aed8-c45924f8c6c7",
+    "transitionId": "4",
+    "validators": [
+      "qag3-subtask-acceptance",
+      "qag3-qa-freshness",
+      "qag3-subtask-history"
+    ],
+    "screenId": "10010",
+    "resolutionActionPreserved": true,
+    "graphPreserved": true,
+    "approvedPreviewId": "67fad996-051e-4871-a0c3-1c2065f3f940",
+    "approvedPreviewSha256": "da7c55436b262ca7b064057521727bff19c020e2fbd91fa6939d675caad9316f",
+    "jiraValidationErrors": [],
+    "applyReadback": "VERIFIED"
+  },
+  "nativeTests": {
+    "actor": "actual owner/admin under simulation exception, no tester impersonation",
+    "fixtures": [
+      "QAG3-331",
+      "QAG3-332",
+      "QAG3-333",
+      "QAG3-335",
+      "QAG3-336"
+    ],
+    "positivePassed": [
+      "BE Subtask Approve work to Done",
+      "FE Subtask code/QA/review/Done routing",
+      "BA/PM fresh business review to Done",
+      "fresh reason reopen and Resolution clear",
+      "fresh QA and retest",
+      "Task QA/Approve/Deploy to Done",
+      "A02 Epic ready for acceptance",
+      "A03 reopen Epic",
+      "A04 old/new Parent reconciliation",
+      "A05 independent PM coordination comment"
+    ],
+    "expectedRejections": [
+      "reopen without fresh reason",
+      "reused QA evidence",
+      "summary changed after QA",
+      "business approval without fresh review"
+    ],
+    "scopeTestLabelTemporarilyRemovedFrom": "QAG3-332",
+    "fixture332Final": {
+      "status": "Done",
+      "parent": "QAG3-331",
+      "testLabelRestored": true,
+      "markersPreserved": true
+    },
+    "fixture335FinalStatus": "Done",
+    "fixture336Final": {
+      "status": "Done",
+      "originalBEAssigneeRestored": true
+    }
+  },
+  "evidence": {
+    "a03EpicChangelogId": "12147",
+    "a02InitialEpicChangelogId": "12155",
+    "a04EpicChangelogId": "12159",
+    "a04SuccessAuditIds": [
+      "c1982c55-e972-4df3-ace0-fd01bb993c3b",
+      "2b4dd41e-20b5-4b21-b6dd-7b10ad6e2e6f"
+    ],
+    "a05": {
+      "commentId": "10012",
+      "issueKey": "QAG3-332",
+      "createdJira": "2026-10-13T03:35:07.363+0700",
+      "eventKey": "qag3-a05-10012-20261012203501197",
+      "author": "Automation for Jira",
+      "correctPMMentionVerified": true,
+      "inboxDeliveryVerified": false
+    },
+    "a02OverlapBeforeFix": {
+      "successAuditId": "68b66dce-454c-4a50-a689-b313d4d776f2",
+      "someErrorsAuditId": "8399244f-98bd-4006-8b5d-963fb3ed19d9",
+      "historyRetained": true
+    },
+    "a02AfterToDoneFix": {
+      "configChangeAuditId": "8976fcbc-1697-4e2b-8f6c-1e5792af1f9e",
+      "successAuditId": "2baff71f-5c8a-45a8-8396-344846e5748a",
+      "displayedJiraTime": "2026-10-13 03:48:56 +07",
+      "durationSeconds": 4.8,
+      "executionsObservedSinceConfigChange": 1,
+      "exactlyOnceProven": false
+    },
+    "screenshot": "jira-bot/QAG3-A02-A05-enabled-fullscope-2026-10-13.png",
+    "report": "JIRA_AUTOMATION_FULLSCOPE_2026-10-13.md"
+  },
+  "checks": {
+    "pythonJiraTestsPassed": 106,
+    "additionalTargetedTestsPassed": 3,
+    "nodePredicateConjunctionFreshness": "PASS",
+    "forgeLint": "PASS",
+    "jiraBooleanTypeValidModules": 12
+  },
+  "preserved": {
+    "wbs329": true,
+    "timelines": true,
+    "firstThreeEpicsDone": true,
+    "otherProjects": true,
+    "monitorPolicy": "PAUSED, not resumed in this turn",
+    "billingUnchanged": true
+  },
+  "limits": [
+    "Targeted native tests only, not full T01-T23",
+    "Non-PM identity native tests not performed",
+    "Multi-Task concurrency and extreme history size not stress tested",
+    "Not atomic exactly-once or atomic child scope",
+    "Linked Bug/reviewer/Lead/BA and product QA not fully verified",
+    "Legacy literal backslash-n evidence parsing limitation remains",
+    "Simulation is not personnel performance evidence",
+    "Enabled rules do not backfill historical issues"
+  ],
+  "rollback": {
+    "rules": "Restore qag3-test scope or disable affected rule; preserve history, actor, actions and project scope",
+    "appAndGate": "Restore 2.19 manifest first, then remove only added history gate through a fresh approved preview; do not uninstall or remove partner gate while lighter acceptance deployed"
+  }
+}

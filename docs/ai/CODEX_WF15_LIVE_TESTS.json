@@ -1,0 +1,33 @@
+{
+  "results": [
+    {
+      "role": "PM",
+      "http_status": 200,
+      "reconciliation_status": "PARTIAL_UNMATCHED_POINTS",
+      "documents": 360,
+      "chunks": 1709,
+      "points_in_project": 1712,
+      "unmatched_points": 3
+    },
+    {
+      "role": "BA",
+      "http_status": 403,
+      "reconciliation_status": null,
+      "documents": null,
+      "chunks": null,
+      "points_in_project": null,
+      "unmatched_points": null
+    }
+  ],
+  "initial_failures": [
+    {
+      "cause": "Invalid unnecessary n8n expression for constant JSON body",
+      "fix": "Plain JSON body; six source/Node tests passed"
+    },
+    {
+      "cause": "Transient webhook registration 404 immediately after reactivation",
+      "verification": "Later read-only probe returned 200; no Native mutation request retried"
+    }
+  ],
+  "persisted_report": "PENDING_NEXT_CHANGE"
+}

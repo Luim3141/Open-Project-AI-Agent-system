@@ -1,0 +1,120 @@
+{
+  "at": "2026-10-26T12:20:31.544637+00:00",
+  "status": "PASS_ACTUAL_NATIVE_WBS_TREE_EXPLICIT_RELATION_RAG_AND_RESTART",
+  "checks": [
+    {
+      "case": "Exact historical real BA V1 tree on actual Native",
+      "state": "VERIFIED_COMPLETED",
+      "run_id": "486bb5f1-4413-4374-b2f1-c212cf5da0eb",
+      "output_hash": "b6c0628033cf0bd73361d9101a00368596784edd11959f2dce4c7099a870657f",
+      "plan_hash": "20cd15bdee03edd417ffd44a5b950ba3197eb4a36a98144473cce760df7590dc",
+      "native_ids": [
+        376,
+        377,
+        378
+      ],
+      "new_generation_calls": 0
+    },
+    {
+      "case": "Explicit four-node Native tree and follows relation",
+      "state": "VERIFIED_COMPLETED",
+      "native_ids": [
+        379,
+        380,
+        381,
+        382
+      ],
+      "native_relation_id": 353,
+      "lost_ack_recovered_one_post": true,
+      "state_after_reply_loss": "UNKNOWN_HOLD",
+      "source_projection_and_rag_verified": true,
+      "lag": 0,
+      "schedule_dates": "NOT_PREDICTED_NO_FIXTURE_DATES",
+      "lower_role_denials": 4,
+      "private_baseline_denied": true,
+      "retry_did_not_replay": true
+    }
+  ],
+  "fixture_native_ids": [
+    376,
+    377,
+    378,
+    379,
+    380,
+    381,
+    382
+  ],
+  "fixture_decisions": [
+    {
+      "id": "6affcaf9-91e2-42e8-9ead-04e729bb238f",
+      "hash": "c99295cd51632ad8d476045fe05a45fb2151496c012cde924916d4279809c92c",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "id": "af0c2566-10b5-4d08-b4a1-23b8dfb95f26",
+      "hash": "5307482f2a7aa21a1d239b142060fcc476bc0a3bd43dd3d149d8c0de4404101a",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "id": "d11b530f-3d5b-455f-9beb-239e512f7d69",
+      "hash": "760549032f20a2415b38c93f10de51993eb0546bb3b5e3052aa37ecf9457349d",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "id": "4ce0aca0-a272-471c-9367-f211e5466ee7",
+      "hash": "13471ae6cb5408bdb04e3721842cc40922517c9ee2e410227d721afc0b03b1ac",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "id": "b87a4853-41f6-4b8a-8acc-a6aec83cf682",
+      "hash": "d4efd44e462842cd18e1657af26e7d8ad5dac9ba4fd5f49d8346b3453a864bbc",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "id": "8eb535c2-3a73-449e-b835-1b6a3c553a52",
+      "hash": "ede6ba91798d829eaa13aa267cee4a52b2dbbb8b0958a088067789acae969e8b",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "id": "facce026-bd7c-4765-b3b2-e6da703639cf",
+      "hash": "a0221aba09a29075df4a44575ac5b4645572b4f2796936bb462232087ceeb6f7",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    },
+    {
+      "id": "3cb53954-7e2e-4bc2-9c01-7a34bd58935f",
+      "hash": "0ac956ac3802fab1b9bc2a665b81d38f8fd3ab015988d74feb020b53821819f1",
+      "authorization_kind": "SIMULATED_ISOLATED_FIXTURE_NOT_MAIN_HUMAN_APPROVAL"
+    }
+  ],
+  "candidate_images": {
+    "database": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+    "web": "sha256:545e498a70a7d61103f6356cc726d12defab7df90da2c41bb9a2d97f6982e22c"
+  },
+  "gateway_image": "sha256:ffe20cad40e7506b6accfae22665f4e543aa627b6da5f2272a1177206e7edd6b",
+  "target_documents": 14,
+  "target_points": 14,
+  "main_native_writes": 0,
+  "new_model_calls": 0,
+  "main_human_decisions_by_agent": 0,
+  "staging_operations": false,
+  "limits": [
+    "Historical BA V1 is a real retained model output; it was not regenerated or re-executed on Main",
+    "All new approvals are SIMULATED_ISOLATED_FIXTURE",
+    "Explicit relation fixture is supplied test data, not claimed as a new live BA V2 generation",
+    "Original metadata is an immutable online SQLite snapshot; no original/Main Qdrant vectors were restored",
+    "Fresh target vectors use synthetic1024values; no new BGE-M3 semantic quality claim",
+    "No Main Native write or complete business QA closure claim"
+  ],
+  "original_data_hashes_preserved": {
+    "work_packages": "375|04ec20a24a553f3cea4deab0015c29ef",
+    "relations": "352|8efb5973160c91ae1bb5b8451e5979e2",
+    "users": "10|10ca3b3f6ef1144f733cb777da6cbae0",
+    "user_passwords": "7|1c8c563bc72ffd2e539f6d7e4c2f7db8",
+    "two_factor_authentication_devices": "4|b967a7f8d325515bfcc415f507f3e075",
+    "tokens": "9|d2504324eea35a15febd4ed0566b1d9c",
+    "members": "7|635e9c9c13bfb9cf0f4d56e42a07e623",
+    "member_roles": "7|a401407caf4c539024415c1944cea659",
+    "qldapm_native_deletion_events": "0|"
+  },
+  "source_dump_sha256": "08a32ef1d194d4c13bba78c720ebb8a621a003cda51679c2eb2f8ae3b28047e2"
+}

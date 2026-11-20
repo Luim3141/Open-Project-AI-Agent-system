@@ -1,0 +1,671 @@
+{
+  "at": "2026-10-26T10:31:58.142709+07:00",
+  "status": "IN_PROGRESS",
+  "project_id": 5,
+  "scope": "QLDAPM Main only; latest evidence replaces older referenced runtime snapshots",
+  "baseline_gateway": "sha256:8c91c1c0ae3edf754615b302575d093fa45b5257ffa0b86f84d7872830a3c3ec",
+  "baseline_core": "sha256:175c337834cabb5e56689432cbb913e5dc4ef622d77b7e3e49d16333cdab85e2",
+  "counts": {
+    "COMPLETE_VERIFIED": 23,
+    "PARTIAL": 13,
+    "MISSING": 1,
+    "BLOCKED_EXTERNAL_DEPENDENCY": 4,
+    "NOT_APPLICABLE": 1
+  },
+  "items": [
+    {
+      "id": "WF01",
+      "feature": "n8n WF01 — WF01",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF01_BUSINESS_E2E_RESULT.json"
+      ],
+      "known_limitations": "Actual allowlisted Markdown parse, Ollama BGE-M3 embedding, Qdrant/SQLite verification, six-role citation/readback and denied path/content inputs. Native explicit ingestion retained. Arbitrary uploads/PDF are NOT_IMPLEMENTED.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF02",
+      "feature": "n8n WF02 — WF02",
+      "status": "PARTIAL",
+      "implemented": "PARTIAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF02_DELETE_SYNC_QUALIFICATION.json"
+      ],
+      "known_limitations": "Durable incremental/withdrawal/retry9 isolated cases PASS; real machine parent events retained. Physical deletion blocked without trusted producer and recovery.",
+      "next_action": "Finish exact documented business gap with isolated E2E before any controlled Main writes",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF03",
+      "feature": "n8n WF03 — WF03",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_MAIN_WORKFLOW_ACCEPTANCE_MATRIX.json"
+      ],
+      "known_limitations": "Real scoped Supervisor/BA/FE/BE/QA plus local Reviewer plan; exact own proposal and persisted run. Historicalv1 analysis is hidden after sourcev2.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF04",
+      "feature": "n8n WF04 — WF04",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_MAIN_WORKFLOW_ACCEPTANCE_MATRIX.json"
+      ],
+      "known_limitations": "Caller-bound persisted trace read; same-trace live audit evidence, no execution replay.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF05",
+      "feature": "n8n WF05 — WF05",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_MAIN_WORKFLOW_ACCEPTANCE_MATRIX.json"
+      ],
+      "known_limitations": "Own exact proposal state/hash preview; no caller-supplied approval authority.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF06",
+      "feature": "n8n WF06 — WF06",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_MAIN_WORKFLOW_ACCEPTANCE_MATRIX.json"
+      ],
+      "known_limitations": "Exact human-approved PM decision, one Native update, readback and durable RAG verification; consumed replay409.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF07",
+      "feature": "n8n WF07 — WF07",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_MAIN_WORKFLOW_ACCEPTANCE_MATRIX.json"
+      ],
+      "known_limitations": "Existing real scheduled daily receipt and five actor snapshots; external notification not configured.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF08",
+      "feature": "n8n WF08 — WF08",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF08_POST_WF10_BUSINESS_RESULT.json"
+      ],
+      "known_limitations": "Native Sprint 11 selected exactly from the caller project; 12 visible WPs, six-role report persistence/readback and old project snapshot preserved. No predictive capacity without a baseline.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF09",
+      "feature": "n8n WF09 — WF09",
+      "status": "PARTIAL",
+      "implemented": "PARTIAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF09_FULL_BUG_LIFECYCLE_RESULT.json"
+      ],
+      "known_limitations": "Main371 creation/assignment preserved; fixed Native375 QA artifact pending_qa,0human reviews. Full business fix/retest/review/closure needs independent reviews and existing Native prerequisites; fixed-field producer is not application QA.",
+      "next_action": "Finish exact documented business gap with isolated E2E before any controlled Main writes",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF10",
+      "feature": "n8n WF10 — WF10",
+      "status": "PARTIAL",
+      "implemented": "PARTIAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF10_WBS_SCHEDULING_RESULT.json"
+      ],
+      "known_limitations": "Dependency/scheduling bridge deployed; actual Native clone execution/rollback/recovery and Main24forms/policy PASS. Fresh human approval required for Main dependency/new model tree writes. Full business closure/semantic relation source unqualified.",
+      "next_action": "Finish exact documented business gap with isolated E2E before any controlled Main writes",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF11",
+      "feature": "n8n WF11 — WF11",
+      "status": "PARTIAL",
+      "implemented": "AUTOMATED_NATIVE_PROOF_AND_ATOMIC_TRANSITION_BRIDGE",
+      "deployed": "CURRENT_MAIN_SOURCE_IMAGE_VERIFIED",
+      "runtime": "MAIN_POLICY_PASS_ACTUAL_NATIVE_TRANSITION_CLONE_ONLY",
+      "evidence": [
+        "CODEX_WF11_FINAL_QA_EVIDENCE_RESULT.json",
+        "CODEX_ATOMIC_QA_NATIVE_CLONE_RESULT.json",
+        "CODEX_ATOMIC_QA_DEPLOYMENT_RESULT.json"
+      ],
+      "known_limitations": "No genuine Main independent reviews or Native transition; only fixed Native readback predicates. Full Bug/retest/release/child completion remain unqualified.",
+      "next_action": "Complete independent reviews and Native-supported business gate integration; isolated fixture decisions are not human Main approvals",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF12",
+      "feature": "n8n WF12 — WF12",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_MAIN_WORKFLOW_ACCEPTANCE_MATRIX.json"
+      ],
+      "known_limitations": "Persisted seven-day Native summary; closure throughput null where transition history is unavailable.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF13",
+      "feature": "n8n WF13 — WF13",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF13_BUSINESS_E2E_RESULT.json"
+      ],
+      "known_limitations": "Actual independently approved Owner18 decisions for two exact source-bound feedback hashes, controlled guide/Native39 reindex, persisted applied readback, duplicate409 and no note promotion. Scoped RAG363/1715/1718 verified; source-content edits are not supported by this contract.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF14",
+      "feature": "n8n WF14 — WF14",
+      "status": "PARTIAL",
+      "implemented": "PARTIAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF14_RECOVERY_QUALIFICATION.json",
+        "CODEX_N8N_RESTORED_SERVER_RESULT.json",
+        "CODEX_MAIN_STORAGE_IO_INCIDENT_RESULT.json"
+      ],
+      "known_limitations": "Isolated durable process/retry/DLQ/response-loss holds retained in433 suite. Two historical unknown comments remain held. Full Qdrant restore previously automatic-tool-review blocked. Isolated restored n8n server readiness/auth/data PASS; copied automations disabled. No restored workflow execution/Main outage/atomic vector DR. Query live SQLite inside owning Linux container.",
+      "next_action": "Finish exact documented business gap with isolated E2E before any controlled Main writes",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF15",
+      "feature": "n8n WF15 — WF15",
+      "status": "PARTIAL",
+      "implemented": "PARTIAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF15_LEGACY_POINT_OWNERSHIP.json"
+      ],
+      "known_limitations": "Current338Native IDs, document/chunk/version/payload/FTS integrity PASS. Three legacy points retained/excluded; producer ownership NOT_PROVEN and deletion/recovery not authorized.",
+      "next_action": "Finish exact documented business gap with isolated E2E before any controlled Main writes",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WF16",
+      "feature": "n8n WF16 — WF16",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_MAIN_WORKFLOW_ACCEPTANCE_MATRIX.json"
+      ],
+      "known_limitations": "Existing real scheduled fixed Main health receipt; no host-wide GPU/CPU or external notification claim.",
+      "next_action": "Preserve; external delivery separately scoped",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "AUTH",
+      "feature": "OpenProject session/login/TOTP/logout and Owner access",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_AI_SYSTEM_OWNER_REGRESSION_MATRIX.json"
+      ],
+      "known_limitations": "Human session UAT retained; current browser automation policy-blocked",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "RBAC",
+      "feature": "Six actors and authorization boundaries",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_QA_REVIEW_UI_ROLE_RESULT.json"
+      ],
+      "known_limitations": "73checks scoped; no account/membership changes",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "USERS",
+      "feature": "Upstream full account administration",
+      "status": "PARTIAL",
+      "implemented": "YES",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "PASS_ACTUAL_ISOLATED_NATIVE_USER_CREATE_UPDATE_LOCK_UNLOCK_AND_ROLE_DENIALS",
+      "evidence": [
+        "CODEX_QA_REVIEW_UI_SECURITY_PRESERVATION.json",
+        "CODEX_NATIVE_ADMIN_CLONE_QUALIFICATION.json"
+      ],
+      "known_limitations": "Synthetic nonadmin user lifecycle on clone only; original credentials/TOTP/security unchanged. Main account writes, invitations/email, deletion, TOTP enrolment, browser and AI user-admin tools unqualified.",
+      "next_action": "Preserve controls; Main account changes need explicit approved scope.",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "CORE_READ",
+      "feature": "Native WP read/forms/version and exact approved schedule writes",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_NATIVE_SCHEDULE_E2E_RESULT.json"
+      ],
+      "known_limitations": "Only previously exact-approved technical writes; not full lifecycle",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "PROJECT_ADMIN",
+      "feature": "Upstream project/board/sprint mutations",
+      "status": "PARTIAL",
+      "implemented": "YES",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "PASS_ACTUAL_ISOLATED_PROJECT_METADATA_AND_NATIVE_VERSION_LIFECYCLE",
+      "evidence": [
+        "CODEX_AI_SYSTEM_OWNER_REGRESSION_MATRIX.json",
+        "CODEX_NATIVE_PROJECT_VERSION_CLONE_RESULT.json",
+        "CODEX_NATIVE_ADMIN_SUPPORTED_SURFACE.json"
+      ],
+      "known_limitations": "Clone project create/update and version create/dates/lock/close/readback PASS; five nonmember reads denied. Old project lft/rgt/updated_at reorder exactly verified with forest integrity. No Main project write/board UI/module E2E. GET/api/v3/boards404; browser policy blocked.",
+      "next_action": "Preserve Main; Native board UI requires permitted browser access, legitimate auth and approved write scope.",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "ASSISTANT",
+      "feature": "Assistant and own persisted execution/history",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_QA_REVIEW_UI_ROLE_RESULT.json"
+      ],
+      "known_limitations": "Current human UI confirmations retained; no new Gemini run",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "SUPERVISOR",
+      "feature": "Supervisor routing and real BA typed WBS draft",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF10_WBS_SCHEDULING_RESULT.json",
+        "CODEX_SUPERVISOR_QA_MAIN_RESULT.json",
+        "CODEX_SUPERVISOR_QA_QUALIFICATION.json"
+      ],
+      "known_limitations": "Existing routing and typed BA/WBS retained. Local QA now reads only current signed Native artifacts with own actor binding; no model/test/review/write automatically started. Gemini/provider route unchanged; full business QA/closure is not implied.",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "GEMINI",
+      "feature": "Existing FREE_ONLY provider integration and actual receipts",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_QA_REVIEW_UI_PRESERVED_PROVIDER_READBACK.json"
+      ],
+      "known_limitations": "Persisted real run readback, not a new generation; no billing/quota changes",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "PROVIDER_ADMIN",
+      "feature": "Provider/agent configuration administration beyond supported interface",
+      "status": "PARTIAL",
+      "implemented": "PARTIAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "PASS_20_MAIN_READ_POLICY_CHECKS_MUTATORS_NOT_IMPLEMENTED",
+      "evidence": [
+        "CODEX_AI_SYSTEM_OWNER_RBAC_REPORT.md",
+        "CODEX_PROVIDER_AGENT_ADMIN_CAPABILITY_RESULT.json"
+      ],
+      "known_limitations": "Six-role monitoring/Manager configuration read verified. FREE_ONLY/key/config and127receipts/132reservations unchanged. Provider/model/quota/key and mutable Agent editor APIs NOT_IMPLEMENTED; unknown actions422.",
+      "next_action": "Preserve monitoring/FREE_ONLY; do not invent an unsupported configuration editor.",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "APPROVAL",
+      "feature": "Own exact proposal approval/replay/locking",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_MAIN_APPROVAL_CONSUMPTION_LEDGER.json"
+      ],
+      "known_limitations": "All old approvals consumed; no delegated operator principal exists",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "DELEGATION",
+      "feature": "Pre-authorized technical operator approval",
+      "status": "MISSING",
+      "implemented": "NO_OR_EXTERNAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_MAIN_APPROVAL_CONSUMPTION_LEDGER.json"
+      ],
+      "known_limitations": "Standing instruction is not an authenticated Owner/PM signature",
+      "next_action": "Do not impersonate; qualify isolated E2E and keep live write stage blocked unless legitimate delegation is established",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "RAG",
+      "feature": "Native ACL/version/hash/hybrid retrieval and citations",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_QA_REVIEW_UI_RAG_RESULT.json"
+      ],
+      "known_limitations": "373docs/1728chunks/1731points; historical points retained/excluded",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "OLLAMA",
+      "feature": "BGE-M3 integration",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_QA_REVIEW_UI_READONLY_RESULT.json"
+      ],
+      "known_limitations": "Manual listener only; no autostart/health Scheduled Task change",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "QA_REVIEW_UI",
+      "feature": "Separate human QA review and navigation",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_QA_REVIEW_UI_QUALIFICATION.json"
+      ],
+      "known_limitations": "Manual ledger/UI qualified; automated producer separate; final button click not independently automated",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "QA_PRODUCER",
+      "feature": "Trusted automated business-bound evidence producer",
+      "status": "PARTIAL",
+      "implemented": "YES_FIXED_NATIVE_READBACK_PRODUCER",
+      "deployed": "MAIN_VERIFIED",
+      "runtime": "One actual six-case signed375/v0 Native run and pending_qa evidence; local Supervisor reads it. Zero human reviews.",
+      "evidence": [
+        "CODEX_WF11_NATIVE_ATTACHMENT_CLONE_RESULT.json",
+        "CODEX_SUPERVISOR_QA_MAIN_RESULT.json"
+      ],
+      "known_limitations": "Producer is fixed Native field-readback, not arbitrary application QA. Independent QA23 then PM19 review required; retest/release/full Bug closure remain partial.",
+      "next_action": "Preserve pending evidence; design/qualify remaining Native retest/release contract independently; no fabricated human review.",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "NATIVE_ATTACHMENTS",
+      "feature": "Attachment upload/association/content and permission E2E",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "EXISTING_CORE_RUNTIME_IMAGE_IN_ISOLATED_CLONE",
+      "runtime": "REAL_ISOLATED_NATIVE_HTTP; no Main upload",
+      "evidence": [
+        "CODEX_WF11_NATIVE_ATTACHMENT_CLONE_RESULT.json"
+      ],
+      "known_limitations": "Owner upload/retrieval/content/hash/association and QA/anonymous denial verified on disposable clone; Main data untouched",
+      "next_action": "Qualify actual OpenProject API in isolated Main clone",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "WBS_MODEL",
+      "feature": "BA output to strict source-bound draft",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "YES",
+      "deployed": "CURRENT_MAIN_VERIFIED_SCOPE",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF10_WBS_SCHEDULING_RESULT.json"
+      ],
+      "known_limitations": "Real generation conversion retained; no duplicate model call needed",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "NATIVE_RELATIONS",
+      "feature": "Versioned Native dependency and derived scheduling",
+      "status": "PARTIAL",
+      "implemented": "YES_EXACT_VERSIONED_SCOPE_BRIDGE",
+      "deployed": "MAIN_VERIFIED_READONLY_AND_POLICY",
+      "runtime": "Actual Native clone execution/derived dates/one-POST recovery/atomic rollback PASS; Main24 readonly/policy PASS",
+      "evidence": [
+        "CODEX_NATIVE_DEPENDENCY_DEPLOYMENT_RESULT.json",
+        "CODEX_NATIVE_DEPENDENCY_CORE_CLONE_RESULT.json",
+        "CODEX_NATIVE_DEPENDENCY_GATEWAY_CLONE_RESULT.json"
+      ],
+      "known_limitations": "Fresh exact human approval required for Main write. Native graph readback, not a new semantic relation source. Explicit separate dependency proposal; WBS depends_on remains sequencing.",
+      "next_action": "Preserve old tree. Complete remaining independent qualification; no Main write without a fresh exact human decision.",
+      "rollback_reference": "CODEX_NATIVE_DEPENDENCY_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "DELETE_SYNC",
+      "feature": "Trusted deletion/tombstone and ACL handling",
+      "status": "PARTIAL",
+      "implemented": "PARTIAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF02_DELETE_SYNC_QUALIFICATION.json"
+      ],
+      "known_limitations": "404/visibility is never physical-delete proof",
+      "next_action": "Qualify source-owned explicit tombstone and isolated physical delete without live deletion",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "UNKNOWN_RECOVERY",
+      "feature": "Historical unknown outcomes",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "implemented": "NO_OR_EXTERNAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF14_RECOVERY_QUALIFICATION.json"
+      ],
+      "known_limitations": "Native readback cannot currently prove execution/non-execution; no replay",
+      "next_action": "Keep UNKNOWN_HOLD; obtain verifiable historical receipts, do not rewrite history",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "QDRANT_DR",
+      "feature": "Full vector backup/restore",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "implemented": "NO_OR_EXTERNAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF14_RECOVERY_QUALIFICATION.json"
+      ],
+      "known_limitations": "Previous automatic tool review blocked restore; do not switch tool or target to evade it",
+      "next_action": "Retain BLOCKED_RESTORE_POLICY and qualify independent recovery behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "LEGACY_PROVENANCE",
+      "feature": "Legacy unmatched point producer ownership",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "implemented": "NO_OR_EXTERNAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_WF15_LEGACY_POINT_OWNERSHIP.json"
+      ],
+      "known_limitations": "Producer NOT_PROVEN; no deletion",
+      "next_action": "Retain/exclude/quarantine and preserve exact payload hashes",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "NOTIFY_LOCAL",
+      "feature": "Durable local delivery sink integrated with report scheduling",
+      "status": "COMPLETE_VERIFIED",
+      "implemented": "DURABLE_METADATA_QUEUE_RETRY_DLQ_AND_SCOPED_COUNTS",
+      "deployed": "CURRENT_MAIN_SOURCE_IMAGE_VERIFIED",
+      "runtime": "PASS_ACTUAL_MAIN_08_00_FIVE_ROLE_DAILY_AND_LOCAL_BYTES_HASH",
+      "evidence": [
+        "CODEX_LOCAL_DELIVERY_MAIN_RESULT.json",
+        "CODEX_NOTIFICATION_DELIVERY_QUALIFICATION.json",
+        "CODEX_LOCAL_DELIVERY_FINAL_READBACK.json",
+        "CODEX_OWNER_NATIVE_GATE_CLONE_RESULT.json",
+        "CODEX_MAIN_SCHEDULED_DAILY_LOCAL_RESULT.json"
+      ],
+      "known_limitations": "26Oct08:00 machine receipt, five READY snapshots and five exact local metadata receipts/source hashes/actor/project/trace verified. No external recipient. n8n execution saving off; Gateway receipt is durable evidence.",
+      "next_action": "Preserve actual schedule/local sink and retain external BLOCKED_CONFIGURATION.",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "NOTIFY_EXTERNAL",
+      "feature": "External notification delivery",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "implemented": "NO_OR_EXTERNAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_NOTIFICATION_DELIVERY_QUALIFICATION.json"
+      ],
+      "known_limitations": "No authorized destination/recipient",
+      "next_action": "Validate configuration and templates; never invent recipients or send external tests",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "OPERATIONS",
+      "feature": "Main-only startup/shutdown/backup/health/rollback",
+      "status": "PARTIAL",
+      "implemented": "FIXED_MAIN_OPERATOR_AND_BACKUP_IMPLEMENTED",
+      "deployed": "HOST_CLI_AVAILABLE",
+      "runtime": "ACTUAL_STATUS_AND_PRIVATE_PG_SQLITE_BACKUP_PASS",
+      "evidence": [
+        "CODEX_MAIN_OPERATIONS_RESULT.json",
+        "CODEX_N8N_ASSETS_RECOVERY_RESULT.json",
+        "CODEX_N8N_RESTORED_SERVER_RESULT.json",
+        "CODEX_MAIN_STORAGE_IO_INCIDENT_RESULT.json"
+      ],
+      "known_limitations": "New pinned current Main manifest after dependency rollout; actual PG/SQLite snapshots, n8n CLI restore/decryption16workflows4credentials and private2asset restore qualified. No Main outage/cold-start or full Qdrant restore. Isolated restored n8n server readiness/auth/data PASS; copied automations disabled. No restored workflow execution/Main outage/atomic vector DR. Query live SQLite inside owning Linux container.",
+      "next_action": "Keep strict Main manifest current after deploy; retain blocked vector restore and qualify remaining recovery independently",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    },
+    {
+      "id": "JIRA",
+      "feature": "External Jira Cloud changes",
+      "status": "NOT_APPLICABLE",
+      "implemented": "NO_OR_EXTERNAL",
+      "deployed": "SEE_EVIDENCE_AND_LIMITS",
+      "runtime": "SEE_EXACT_EVIDENCE_SCOPE",
+      "evidence": [
+        "CODEX_FINAL_RELEASE_GATE.md"
+      ],
+      "known_limitations": "This task is Main project5 only; no Jira write authority or requirement",
+      "next_action": "Preserve verified behavior",
+      "rollback_reference": "CODEX_QA_REVIEW_UI_DEPLOYMENT_RESULT.json",
+      "tests": "Actual counts/semantics in referenced artifact; no synthetic Main PASS inferred"
+    }
+  ],
+  "next_action": "Remaining Main QA decisions/writes require authenticated human scope. Native board browser path policy-blocked. Preserve held unknowns/legacy points; qualify new Native release/delete contracts independently before deployment.",
+  "full_release": "PARTIAL",
+  "current_gateway": "sha256:89777ef1ddf5c84f1758756bca620599fb49b906ae77cf961249bf1f2726f0fa",
+  "current_core": "sha256:4495d944cd6ea5ab7a1fb50173310a787793f4398118f6b858333ac62a80a6a2"
+}

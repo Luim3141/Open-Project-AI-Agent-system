@@ -1,0 +1,492 @@
+[
+  {
+    "epicId": "01",
+    "name": "Tài khoản & Role",
+    "stories": [
+      {
+        "id": "AUTH-01",
+        "story": "Là người dùng mới, tôi muốn đăng ký bằng email và mật khẩu để có tài khoản truy cập hệ thống.",
+        "ac": [
+          "Email phải đúng định dạng, chưa tồn tại và mật khẩu/xác nhận mật khẩu phải hợp lệ trước khi tạo tài khoản.",
+          "Đăng ký thành công tạo tài khoản chưa thuộc Project nào; không cấp quyền dữ liệu Project mặc định."
+        ]
+      },
+      {
+        "id": "AUTH-02",
+        "story": "Là người dùng đã có tài khoản, tôi muốn đăng nhập để truy cập các Project được cấp quyền.",
+        "ac": [
+          "Thông tin hợp lệ mở đúng danh sách Project mà người dùng tham gia; không hợp lệ không tạo phiên đăng nhập.",
+          "Thông báo lỗi không tiết lộ email có tồn tại hay không và hệ thống bảo vệ trước các lần đăng nhập sai lặp lại."
+        ]
+      },
+      {
+        "id": "AUTH-03",
+        "story": "Là người dùng đã đăng nhập, tôi muốn đăng xuất để bảo vệ tài khoản khi rời khỏi thiết bị.",
+        "ac": [
+          "Đăng xuất kết thúc phiên hiện tại và đưa người dùng về màn hình đăng nhập.",
+          "Mở lại URL nội bộ hoặc dùng nút Back không hiển thị dữ liệu yêu cầu đăng nhập."
+        ]
+      },
+      {
+        "id": "AUTH-04",
+        "story": "Là PM, tôi muốn gán hoặc thay đổi Role của thành viên để kiểm soát phạm vi thao tác trong Project.",
+        "ac": [
+          "PM chỉ chọn được một Role hợp lệ: PM, BA, Tester, Dev BE hoặc Dev FE; một thành viên không bị thêm trùng trong cùng Project.",
+          "Thay đổi Role chỉ có hiệu lực trong Project đó và được áp dụng ở lần kiểm tra quyền tiếp theo."
+        ]
+      },
+      {
+        "id": "AUTH-05",
+        "story": "Là thành viên Project, tôi muốn chỉ thấy menu, dữ liệu và hành động đúng Role để thao tác trong phạm vi được phép.",
+        "ac": [
+          "Giao diện và hành động phù hợp với Role; một tài khoản có thể có quyền khác nhau ở các Project khác nhau.",
+          "Truy cập URL hoặc gửi thao tác không được phép bị từ chối và không làm lộ dữ liệu Project."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "02",
+    "name": "Quản lý Project",
+    "stories": [
+      {
+        "id": "PRJ-01",
+        "story": "Là PM, tôi muốn tạo Project với tên, mô tả và thời gian dự kiến để bắt đầu quản lý công việc.",
+        "ac": [
+          "Tên và ngày bắt đầu là bắt buộc; ngày kết thúc không được sớm hơn ngày bắt đầu.",
+          "Project tạo thành công đưa người tạo vào vai trò PM và xuất hiện trong danh sách Project của họ."
+        ]
+      },
+      {
+        "id": "PRJ-02",
+        "story": "Là thành viên, tôi muốn xem danh sách và chi tiết Project để biết dự án mình đang tham gia.",
+        "ac": [
+          "Chỉ hiển thị Project mà người dùng là thành viên; chi tiết gồm mô tả, thời gian, trạng thái và thành viên.",
+          "Khi chưa có Project hoặc không có quyền, hệ thống hiển thị trạng thái phù hợp thay vì dữ liệu rỗng không giải thích."
+        ]
+      },
+      {
+        "id": "PRJ-03",
+        "story": "Là PM, tôi muốn chỉnh sửa thông tin Project để phản ánh kế hoạch mới nhất.",
+        "ac": [
+          "PM cập nhật được các trường cho phép; dữ liệu mới đồng bộ ở các màn hình liên quan.",
+          "Không lưu dữ liệu ngày tháng hoặc tên không hợp lệ; Backlog, Sprint, Task và Issue hiện có không bị mất."
+        ]
+      },
+      {
+        "id": "PRJ-04",
+        "story": "Là PM, tôi muốn thêm thành viên vào Project để mở quyền tham gia cho đúng người.",
+        "ac": [
+          "Chỉ thêm được tài khoản đã đăng ký, chọn kèm Role hợp lệ và không tạo thành viên trùng.",
+          "Thành viên mới chỉ thấy dữ liệu Project sau khi được thêm và nhận thông báo theo cấu hình."
+        ]
+      },
+      {
+        "id": "PRJ-05",
+        "story": "Là PM, tôi muốn gỡ thành viên khỏi Project để thu hồi quyền khi họ không còn tham gia.",
+        "ac": [
+          "Hệ thống yêu cầu xác nhận; sau khi gỡ, thành viên không còn xem hoặc thao tác dữ liệu Project.",
+          "Nếu còn Task/Issue đang gán, hệ thống cảnh báo để PM gán lại; không cho gỡ PM duy nhất."
+        ]
+      },
+      {
+        "id": "PRJ-06",
+        "story": "Là PM, tôi muốn xóa Project không còn sử dụng để loại bỏ dữ liệu khỏi danh sách làm việc.",
+        "ac": [
+          "Hệ thống yêu cầu xác nhận rõ Project cần xóa và cảnh báo khi có Sprint hoặc dữ liệu đang hoạt động.",
+          "Sau khi xóa, Project không còn truy cập được bởi các thành viên và URL cũ không trả dữ liệu."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "03",
+    "name": "Backlog",
+    "stories": [
+      {
+        "id": "BLG-01",
+        "story": "Là PM hoặc BA, tôi muốn xem Backlog để biết các User Story/Task chưa vào Sprint.",
+        "ac": [
+          "Backlog chỉ gồm item thuộc Project và chưa nằm trong Sprint, kèm loại, ưu tiên, assignee và Story Point nếu có.",
+          "Backlog rỗng hiển thị hướng dẫn tạo item; người ngoài Project không xem được danh sách."
+        ]
+      },
+      {
+        "id": "BLG-02",
+        "story": "Là BA, tôi muốn tạo User Story hoặc Task trực tiếp trong Backlog để ghi nhận nhu cầu mới.",
+        "ac": [
+          "Form yêu cầu tối thiểu loại item và tiêu đề; cho phép mô tả, ưu tiên và Story Point.",
+          "Item được tạo có mã duy nhất, ở Backlog và không bị nhân đôi khi thao tác lưu được gửi lặp."
+        ]
+      },
+      {
+        "id": "BLG-03",
+        "story": "Là PM, tôi muốn sắp xếp thứ tự Backlog để thể hiện ưu tiên thực hiện.",
+        "ac": [
+          "PM có thể đổi vị trí item và thứ tự mới được lưu cho mọi người dùng trong Project.",
+          "Item đã vào Sprint hoặc thay đổi xung đột không bị ghi đè âm thầm; hệ thống yêu cầu tải lại khi cần."
+        ]
+      },
+      {
+        "id": "BLG-04",
+        "story": "Là thành viên Project, tôi muốn tìm kiếm và lọc Backlog để nhanh chóng tìm item cần xử lý.",
+        "ac": [
+          "Có thể lọc theo từ khóa, loại, ưu tiên và assignee; các điều kiện kết hợp theo cùng một phạm vi Project.",
+          "Khi không có kết quả, hiển thị trạng thái rõ ràng và cho phép xóa bộ lọc."
+        ]
+      },
+      {
+        "id": "BLG-05",
+        "story": "Là PM, tôi muốn đưa item từ Backlog vào Sprint lập kế hoạch để chốt phạm vi Sprint.",
+        "ac": [
+          "Chỉ chọn được Sprint lập kế hoạch trong cùng Project; sau khi lưu, item chuyển khỏi Backlog và xuất hiện đúng Sprint.",
+          "Không đưa được item đã thuộc Sprint khác hoặc Sprint đã đóng; thao tác lặp không tạo bản ghi trùng."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "04",
+    "name": "Sprint",
+    "stories": [
+      {
+        "id": "SPR-01",
+        "story": "Là PM, tôi muốn tạo Sprint với tên, thời gian và mục tiêu để lập kế hoạch theo chu kỳ.",
+        "ac": [
+          "Tên Sprint, ngày bắt đầu và ngày kết thúc là bắt buộc; ngày kết thúc không được sớm hơn ngày bắt đầu.",
+          "Sprint mới ở trạng thái Lập kế hoạch và có thể nhận item từ Backlog."
+        ]
+      },
+      {
+        "id": "SPR-02",
+        "story": "Là PM, tôi muốn chỉnh sửa Sprint đang lập kế hoạch để điều chỉnh mục tiêu hoặc thời gian.",
+        "ac": [
+          "PM có thể sửa tên, mục tiêu và ngày của Sprint chưa bắt đầu; thay đổi được hiển thị ngay khi lưu.",
+          "Không lưu thay đổi tạo lịch không hợp lệ hoặc vi phạm quy tắc một Sprint đang chạy của Project."
+        ]
+      },
+      {
+        "id": "SPR-03",
+        "story": "Là PM, tôi muốn bắt đầu Sprint để đưa phạm vi đã chốt vào trạng thái thực hiện.",
+        "ac": [
+          "Bắt đầu Sprint chuyển trạng thái sang Đang chạy và Kanban/Dashboard sử dụng Sprint này.",
+          "Không cho bắt đầu Sprint thứ hai nếu Project chỉ cho phép một Sprint active; thao tác lặp không tạo trạng thái mới."
+        ]
+      },
+      {
+        "id": "SPR-04",
+        "story": "Là thành viên Project, tôi muốn xem thông tin Sprint để theo dõi mục tiêu, phạm vi và tiến độ.",
+        "ac": [
+          "Chi tiết Sprint hiển thị mục tiêu, thời gian, trạng thái, số item và tổng Story Point theo trạng thái.",
+          "Số liệu chỉ tính item hiện còn trong Sprint và cập nhật khi Task thay đổi."
+        ]
+      },
+      {
+        "id": "SPR-05",
+        "story": "Là PM, tôi muốn đóng Sprint để ghi nhận kết quả và xử lý item chưa hoàn thành.",
+        "ac": [
+          "Trước khi đóng, PM phải chọn đưa item chưa hoàn thành về Backlog hoặc Sprint kế tiếp; item Done được giữ ở Sprint cũ.",
+          "Sprint đã đóng không thể đóng lại; kết quả cuối cùng dùng cho báo cáo và lịch sử."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "05",
+    "name": "Task / User Story",
+    "stories": [
+      {
+        "id": "TSK-01",
+        "story": "Là BA hoặc PM, tôi muốn tạo Task/User Story để ghi nhận một đơn vị công việc trong Project.",
+        "ac": [
+          "Tiêu đề và loại là bắt buộc; có thể nhập mô tả, ưu tiên, Story Point, assignee và ngày dự kiến.",
+          "Item tạo thành công thuộc đúng Project, có mã duy nhất và trạng thái ban đầu To Do."
+        ]
+      },
+      {
+        "id": "TSK-02",
+        "story": "Là thành viên Project, tôi muốn xem chi tiết Task/User Story để hiểu phạm vi và trách nhiệm.",
+        "ac": [
+          "Chi tiết hiển thị mã, loại, mô tả, trạng thái, ưu tiên, assignee, Story Point, ngày và Sprint liên quan.",
+          "Người không thuộc Project không xem được; trường chưa thiết lập hiển thị rõ là Chưa thiết lập."
+        ]
+      },
+      {
+        "id": "TSK-03",
+        "story": "Là PM hoặc BA, tôi muốn chỉnh sửa Task/User Story để cập nhật yêu cầu và kế hoạch.",
+        "ac": [
+          "Các trường được phép sửa đồng bộ ở Backlog, Sprint, Kanban và chi tiết item.",
+          "Không lưu dữ liệu không hợp lệ; lịch sử thay đổi giữ được người sửa và thời điểm theo chính sách."
+        ]
+      },
+      {
+        "id": "TSK-04",
+        "story": "Là PM hoặc BA, tôi muốn gán Task/User Story cho thành viên để xác định người chịu trách nhiệm.",
+        "ac": [
+          "Chỉ chọn được thành viên đang thuộc cùng Project; có thể bỏ gán để đưa item về trạng thái chưa có owner.",
+          "Thay đổi assignee được ghi lại và kích hoạt Notification cho người nhận theo cấu hình."
+        ]
+      },
+      {
+        "id": "TSK-05",
+        "story": "Là PM, tôi muốn xóa Task/User Story không còn giá trị để giữ dữ liệu làm việc chính xác.",
+        "ac": [
+          "Hệ thống yêu cầu xác nhận kèm mã/tiêu đề item trước khi xóa.",
+          "Item bị xóa không còn xuất hiện ở Backlog, Sprint, Kanban, Gantt hay Dashboard; URL cũ hiển thị trạng thái không tồn tại."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "06",
+    "name": "Kanban",
+    "stories": [
+      {
+        "id": "KAN-01",
+        "story": "Là thành viên Project, tôi muốn xem Kanban board của Sprint để biết công việc đang ở trạng thái nào.",
+        "ac": [
+          "Board hiển thị bốn cột To Do, In Progress, Review, Done và card có mã, tiêu đề, ưu tiên, assignee, Story Point.",
+          "Board dùng đúng Sprint đang chọn; Sprint rỗng hoặc không có quyền xem có trạng thái giải thích rõ."
+        ]
+      },
+      {
+        "id": "KAN-02",
+        "story": "Là thành viên được phép, tôi muốn kéo-thả card giữa các cột để cập nhật trạng thái nhanh.",
+        "ac": [
+          "Thả card vào cột hợp lệ cập nhật trạng thái và lưu lại cho các thành viên khác.",
+          "Nếu mất quyền, item bị khóa hoặc có xung đột, card quay về trạng thái xác nhận gần nhất và hiển thị lý do."
+        ]
+      },
+      {
+        "id": "KAN-03",
+        "story": "Là thành viên Project, tôi muốn lọc Kanban board để tập trung vào công việc liên quan.",
+        "ac": [
+          "Có thể lọc theo assignee, ưu tiên hoặc loại item mà không làm thay đổi dữ liệu Task.",
+          "Số card mỗi cột phản ánh bộ lọc đang áp dụng; có thể xóa bộ lọc để quay lại toàn bộ board."
+        ]
+      },
+      {
+        "id": "KAN-04",
+        "story": "Là thành viên được phép, tôi muốn tạo nhanh item từ Kanban board để ghi nhận công việc phát sinh.",
+        "ac": [
+          "Tạo nhanh yêu cầu tiêu đề, tự gán đúng Project/Sprint và trạng thái của cột đang thao tác.",
+          "Lưu thành công tạo card đúng cột; lưu thất bại không tạo card giả hoặc item trùng."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "07",
+    "name": "Gantt / Timeline",
+    "stories": [
+      {
+        "id": "GNT-01",
+        "story": "Là PM, tôi muốn xem Gantt/Timeline của Project để hiểu lịch thực hiện tổng thể.",
+        "ac": [
+          "Biểu đồ hiển thị Task/User Story theo ngày bắt đầu/kết thúc, trạng thái và assignee.",
+          "Item chưa có lịch hoặc Project chưa có Task có cách hiển thị riêng, không làm sai trục thời gian."
+        ]
+      },
+      {
+        "id": "GNT-02",
+        "story": "Là PM hoặc BA, tôi muốn đặt ngày bắt đầu và ngày kết thúc cho Task để lập lịch thực hiện.",
+        "ac": [
+          "Ngày kết thúc không được sớm hơn ngày bắt đầu và được đồng bộ với chi tiết Task và Gantt.",
+          "Hệ thống cảnh báo khi ngày Task nằm ngoài thời gian Project/Sprint nhưng không tự ý thay đổi dữ liệu nhập."
+        ]
+      },
+      {
+        "id": "GNT-03",
+        "story": "Là PM, tôi muốn tạo quan hệ trước-sau giữa các Task để thể hiện phụ thuộc công việc.",
+        "ac": [
+          "Chỉ tạo quan hệ giữa Task cùng Project và hiển thị đường nối tiền nhiệm - kế nhiệm trên Timeline.",
+          "Không cho tạo quan hệ với chính item, tạo trùng hoặc tạo vòng lặp phụ thuộc."
+        ]
+      },
+      {
+        "id": "GNT-04",
+        "story": "Là PM, tôi muốn nhận diện Task trễ hạn hoặc xung đột lịch để điều chỉnh kế hoạch sớm.",
+        "ac": [
+          "Task chưa Done sau ngày kết thúc được đánh dấu quá hạn theo múi giờ Project.",
+          "Lịch kế nhiệm sớm hơn tiền nhiệm được đánh dấu xung đột và liên kết tới các Task liên quan."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "08",
+    "name": "Issue / Bug",
+    "stories": [
+      {
+        "id": "BUG-01",
+        "story": "Là Tester, tôi muốn tạo Bug với thông tin tái hiện để Dev có thể sửa lỗi.",
+        "ac": [
+          "Bug yêu cầu tiêu đề, mô tả, bước tái hiện, kết quả mong đợi và kết quả thực tế; có thể liên kết Task/User Story.",
+          "Bug tạo thành công ở trạng thái Open, có mã duy nhất và ghi nhận người báo cùng thời điểm."
+        ]
+      },
+      {
+        "id": "BUG-02",
+        "story": "Là Tester hoặc PM, tôi muốn tìm kiếm và lọc Bug để ưu tiên xử lý lỗi quan trọng.",
+        "ac": [
+          "Có thể lọc theo trạng thái, severity, priority, assignee, Sprint và từ khóa mã/tiêu đề.",
+          "Kết quả chỉ thuộc Project đang xem; không có kết quả hiển thị trạng thái rõ và không sửa dữ liệu Bug."
+        ]
+      },
+      {
+        "id": "BUG-03",
+        "story": "Là PM hoặc Tester, tôi muốn phân loại Severity và Priority của Bug để thống nhất thứ tự xử lý.",
+        "ac": [
+          "Severity và Priority dùng tập giá trị thống nhất của Project; thay đổi hiển thị ở danh sách và chi tiết.",
+          "Chỉ Role được phép mới thay đổi được; lịch sử giữ giá trị cũ và người thực hiện."
+        ]
+      },
+      {
+        "id": "BUG-04",
+        "story": "Là PM hoặc Tester, tôi muốn gán Bug cho Dev phụ trách để xác định owner xử lý.",
+        "ac": [
+          "Chỉ gán được cho thành viên Dev phù hợp thuộc cùng Project; có thể bỏ gán để triage lại.",
+          "Thay đổi assignee tạo Notification cho người nhận và không làm mất severity/priority."
+        ]
+      },
+      {
+        "id": "BUG-05",
+        "story": "Là Dev hoặc Tester được phép, tôi muốn cập nhật trạng thái Bug để phản ánh vòng đời xử lý.",
+        "ac": [
+          "Bug hỗ trợ Open, In Progress, Fixed, Closed, Reopened; chuyển trạng thái hiển thị nhất quán trên danh sách và chi tiết.",
+          "Đóng Bug cần kết quả xử lý hoặc xác nhận theo chính sách; Tester/PM có thể Reopen với lý do."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "09",
+    "name": "Comment",
+    "stories": [
+      {
+        "id": "CMT-01",
+        "story": "Là thành viên Project, tôi muốn thêm comment trên Task/Issue để trao đổi ngữ cảnh xử lý.",
+        "ac": [
+          "Comment không được rỗng, hiển thị đúng item, người viết và thời điểm sau khi lưu.",
+          "Không tạo comment khi item đã bị xóa hoặc người dùng mất quyền xem item."
+        ]
+      },
+      {
+        "id": "CMT-02",
+        "story": "Là thành viên Project, tôi muốn xem lịch sử comment để nắm toàn bộ trao đổi.",
+        "ac": [
+          "Comment được sắp xếp nhất quán theo thời gian và gắn đúng Task/Issue.",
+          "Item chưa có comment hoặc danh sách tải lỗi có trạng thái riêng, không tạo comment trùng khi thử lại."
+        ]
+      },
+      {
+        "id": "CMT-03",
+        "story": "Là người viết, tôi muốn chỉnh sửa comment của mình để sửa hoặc bổ sung thông tin.",
+        "ac": [
+          "Chỉ người viết hoặc Role được cấp quyền mới chỉnh sửa; nội dung mới hiển thị đúng vị trí.",
+          "Không lưu comment rỗng; hủy chỉnh sửa giữ nguyên nội dung cũ."
+        ]
+      },
+      {
+        "id": "CMT-04",
+        "story": "Là người viết, tôi muốn xóa comment không còn phù hợp để tránh gây hiểu nhầm.",
+        "ac": [
+          "Hệ thống yêu cầu xác nhận và chỉ cho người có quyền xóa thực hiện thao tác.",
+          "Comment bị xóa không còn hiển thị như nội dung đang dùng; audit tối thiểu được giữ theo chính sách."
+        ]
+      },
+      {
+        "id": "CMT-05",
+        "story": "Là thành viên, tôi muốn mention đồng đội trong comment để mời đúng người vào trao đổi.",
+        "ac": [
+          "Danh sách gợi ý chỉ gồm thành viên hiện thuộc Project; mention hiển thị rõ trong comment.",
+          "Người được mention nhận Notification theo cấu hình và người ngoài Project không thể bị mention."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "10",
+    "name": "Dashboard",
+    "stories": [
+      {
+        "id": "DSH-01",
+        "story": "Là PM hoặc BA, tôi muốn xem tỷ lệ hoàn thành Project để đánh giá tiến độ tổng thể.",
+        "ac": [
+          "Dashboard hiển thị tỷ lệ hoàn thành theo công thức thống nhất và cập nhật khi Task đổi trạng thái hoặc phạm vi.",
+          "Project chưa có item hiển thị 0% kèm trạng thái chưa có dữ liệu, không chia cho 0."
+        ]
+      },
+      {
+        "id": "DSH-02",
+        "story": "Là PM, tôi muốn xem số Task theo từng trạng thái để biết dòng công việc đang tắc ở đâu.",
+        "ac": [
+          "Hiển thị số lượng To Do, In Progress, Review, Done và tổng số khớp với tập Task được chọn.",
+          "Có thể mở danh sách chi tiết từ một trạng thái nếu người dùng có quyền xem các item đó."
+        ]
+      },
+      {
+        "id": "DSH-03",
+        "story": "Là PM, tôi muốn xem khối lượng Task theo từng thành viên để cân bằng phân công.",
+        "ac": [
+          "Dashboard hiển thị số Task của từng thành viên và nhóm Task chưa gán.",
+          "Số liệu cập nhật theo thay đổi assignee và không đếm trùng cùng một Task."
+        ]
+      },
+      {
+        "id": "DSH-04",
+        "story": "Là PM, tôi muốn lọc Dashboard theo Sprint hoặc trạng thái để phân tích đúng phạm vi.",
+        "ac": [
+          "Bộ lọc được áp dụng nhất quán cho các widget liên quan và hiển thị rõ ngữ cảnh đang xem.",
+          "Không có dữ liệu hiển thị trạng thái rỗng, không giữ số liệu cũ gây hiểu nhầm."
+        ]
+      }
+    ]
+  },
+  {
+    "epicId": "12",
+    "name": "Notification",
+    "stories": [
+      {
+        "id": "NOT-01",
+        "story": "Là thành viên, tôi muốn nhận thông báo khi được gán Task/User Story để biết công việc cần nhận.",
+        "ac": [
+          "Thông báo nêu Project, item, người gán và thời điểm; chỉ gửi khi thao tác gán thành công.",
+          "Thông báo trong app được tạo theo thời gian hợp lý; email chỉ gửi khi người dùng bật kênh email."
+        ]
+      },
+      {
+        "id": "NOT-02",
+        "story": "Là thành viên liên quan, tôi muốn nhận thông báo khi trạng thái Task hoặc Bug thay đổi để cập nhật tiến độ.",
+        "ac": [
+          "Thông báo nêu item, trạng thái mới và người thay đổi, kèm liên kết đúng tới màn hình chi tiết.",
+          "Chỉ người vẫn có quyền xem item tại thời điểm gửi mới nhận nội dung chi tiết."
+        ]
+      },
+      {
+        "id": "NOT-03",
+        "story": "Là thành viên, tôi muốn nhận thông báo khi được mention hoặc có comment liên quan để tham gia trao đổi kịp thời.",
+        "ac": [
+          "Mention gửi thông báo đúng người; comment mới chỉ gửi theo quy tắc theo dõi/quyền đã định nghĩa.",
+          "Thông báo không làm lộ nội dung Task/Issue cho người không có quyền xem."
+        ]
+      },
+      {
+        "id": "NOT-04",
+        "story": "Là người dùng, tôi muốn xem trung tâm Notification để quản lý các việc cần chú ý.",
+        "ac": [
+          "Danh sách hiển thị thông báo mới/cũ, thời điểm và trạng thái chưa đọc; bấm vào mở đúng tài nguyên nếu còn tồn tại.",
+          "Thông báo trỏ tới item đã xóa hoặc Project mất quyền hiển thị trạng thái an toàn, không lộ dữ liệu cũ."
+        ]
+      },
+      {
+        "id": "NOT-05",
+        "story": "Là người dùng, tôi muốn cấu hình kênh và loại Notification để phù hợp cách làm việc.",
+        "ac": [
+          "Có thể bật/tắt các sự kiện và kênh In-app/Email mà sản phẩm hỗ trợ; cấu hình được lưu theo tài khoản.",
+          "Cấu hình mới chỉ áp dụng cho sự kiện phát sinh sau khi lưu, không gửi hồi tố thông báo cũ."
+        ]
+      }
+    ]
+  }
+]

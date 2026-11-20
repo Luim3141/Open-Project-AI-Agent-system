@@ -1,0 +1,86 @@
+{
+  "started_at": "2026-10-18T03:39:12.190906+00:00",
+  "url": "https://off-call-bus-indices.trycloudflare.com",
+  "accounts": [
+    {
+      "login": "pm",
+      "expected_id": 7,
+      "checks": [
+        {
+          "name": "login_form",
+          "status": "PASS",
+          "actual": {}
+        },
+        {
+          "name": "totp_challenge",
+          "status": "PASS",
+          "actual": {}
+        },
+        {
+          "name": "authenticated_identity",
+          "status": "PASS",
+          "actual": {
+            "status": 200,
+            "user_id": 7,
+            "login": "pm"
+          }
+        },
+        {
+          "name": "native_work_packages",
+          "status": "PASS",
+          "actual": {
+            "http": 200,
+            "api_status": 200,
+            "total": 335,
+            "visible_link_count": 14
+          }
+        },
+        {
+          "name": "admin_denied",
+          "status": "PASS",
+          "actual": {
+            "http": 403
+          }
+        },
+        {
+          "name": "assistant_page",
+          "status": "PASS",
+          "actual": {
+            "http": 200
+          }
+        },
+        {
+          "name": "control_center_live",
+          "status": "FAIL",
+          "actual": {
+            "containers": 0
+          }
+        },
+        {
+          "name": "assistant_has_no_operator_tools",
+          "status": "PASS",
+          "actual": {}
+        },
+        {
+          "name": "logout_invalidates_session",
+          "status": "PASS",
+          "actual": {
+            "http": 401
+          }
+        }
+      ],
+      "console_error_count": 5,
+      "page_error_count": 2,
+      "page_errors": [
+        "You need to be authenticated to access this resource.",
+        "Bạn cần phải được xác thực để truy cập tài nguyên này."
+      ],
+      "daily_card_present": false,
+      "assistant_shows_error": false,
+      "mobile_horizontal_overflow": false
+    }
+  ],
+  "provider_calls_requested": 0,
+  "business_mutations_requested": 0,
+  "finished_at": "2026-10-18T03:39:47.171399+00:00"
+}

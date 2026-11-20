@@ -1,0 +1,142 @@
+{
+  "matrix_version": "1.3.0",
+  "evaluated_at": "2026-10-28T14:30:00+07:00",
+  "project": "QLDAPM MAIN",
+  "project_id": 5,
+  "project_identifier": "qldapm-local",
+  "target_mode": "CORRECTIVE_ENGINEERING_AND_OPERATOR_UAT_RELEASE",
+  "release_decision": "READY_FOR_OPERATOR_UAT",
+  "executive_summary": "Toàn bộ 6 trụ cột kỹ thuật của QLDAPM MAIN đã hoàn thành kiểm định thực tế toàn diện (Evidence-Based). Toàn bộ lỗ hổng bảo mật P0 (leak webhook secret) đã được khắc phục triệt để: token webhook đã xoay vòng mật mã và mã hóa trong n8n, token PM được tự động hóa xoay vòng an toàn; Diễn tập phục hồi thảm họa Full-Stack bao gồm PostgreSQL (safe_postgres_restore.py kiểm định cô lập 376 WPs trên op_restore_isolated_test), SQLite (VACUUM INTO), n8n (DB + Encryption Key) và Qdrant (Cold Volume Archive kiểm định trên container clone port 6335 với 1,745 points) đạt chuẩn thành công; Ranh giới dữ liệu Second Brain được chứng minh 100% không rò rỉ chéo (340 WORK_PACKAGE, 25 ARCHITECTURE, 7 SPRINT_REPORT, 4 ADR = 376 docs); 16/16 workflows n8n phân loại rõ ràng nghiệp vụ. Hệ thống đạt chuẩn kỹ thuật bàn giao cho Quản trị viên tiến hành kiểm thử UAT.",
+  "pillars": {
+    "1_core_infrastructure": {
+      "status": "PASS",
+      "details": "Tất cả 5 hệ thống con đều healthy, kết nối ổn định",
+      "services": {
+        "openproject_web": { "port": 18088, "status": "UP", "readback_code": 200, "visible_packages": 339, "physical_packages": 376 },
+        "ai_gateway": { "port": 18089, "status": "HEALTHY", "image": "qldapm-ai:chatgpt-application-bridge-20261027", "mode": "native" },
+        "n8n_automation": { "port": 5679, "status": "UP", "active_workflows": 16, "credentials_configured": 4 },
+        "qdrant_vector_store": { "port": 6333, "status": "UP", "collection": "qldapm_knowledge_dense", "points": 1745 },
+        "ollama_embedding": { "port": 11434, "status": "UP", "model": "bge-m3:latest", "vector_dimension": 1024 }
+      }
+    },
+    "2_n8n_16_workflows_qualification": {
+      "status": "PASS",
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "evidence_source": "docs/ai/GEMINI_16_WORKFLOW_QUALIFICATION_REPORT.md",
+      "taxonomy": {
+        "business_happy_path": ["WF02", "WF03", "WF04", "WF07", "WF08", "WF09", "WF10", "WF12", "WF13", "WF14", "WF15", "WF16"],
+        "fail_closed_security_and_data_safety": ["WF01", "WF05", "WF06", "WF11"]
+      },
+      "workflows": {
+        "WF01": { "name": "Local Document Ingestion", "result": "PASS", "execution_id": 2487, "http_status": 200, "boundary_status": 403 },
+        "WF02": { "name": "OpenProject Event Sync", "result": "PASS", "execution_id": 2489, "http_status": 200 },
+        "WF03": { "name": "Natural Language Request Orchestrator", "result": "PASS", "execution_id": 2490, "http_status": 200 },
+        "WF04": { "name": "Multi-Agent Execution Tracking", "result": "PASS", "execution_id": 2491, "http_status": 200 },
+        "WF05": { "name": "Native API Approval Workflow", "result": "PASS", "execution_id": 2493, "http_status": 200, "boundary_status": 400 },
+        "WF06": { "name": "Native API Execution & Verification", "result": "PASS", "execution_id": 2533, "http_status": 409, "nature": "Fail-Closed Data Safety" },
+        "WF07": { "name": "Daily Project Brief", "result": "PASS", "execution_id": 2496, "http_status": 200 },
+        "WF08": { "name": "Sprint Risk Analysis", "result": "PASS", "execution_id": 2497, "http_status": 200 },
+        "WF09": { "name": "Bug Lifecycle Automation", "result": "PASS", "execution_id": 2499, "http_status": 200 },
+        "WF10": { "name": "Task Orchestration & Decomposition", "result": "PASS", "execution_id": 2500, "http_status": 200 },
+        "WF11": { "name": "QA Gate Transition", "result": "PASS", "execution_id": 2536, "http_status": 200, "boundary_status": 422 },
+        "WF12": { "name": "Weekly Summary", "result": "PASS", "execution_id": 2502, "http_status": 200 },
+        "WF13": { "name": "Second Brain RAG Re-indexing", "result": "PASS", "execution_id": 2503, "http_status": 200 },
+        "WF14": { "name": "Durable RAG Recovery", "result": "PASS", "execution_id": 2504, "http_status": 200 },
+        "WF15": { "name": "Reconciliation & Drift Detection", "result": "PASS", "execution_id": 2537, "http_status": 200 },
+        "WF16": { "name": "Main Health Monitoring", "result": "PASS", "execution_id": 2506, "http_status": 200 }
+      }
+    },
+    "3_second_brain_automation": {
+      "status": "PASS",
+      "details": "Đồng bộ tự động gia tăng (Native incremental scan mỗi 60s) -> Enqueue knowledge_sync -> Ollama BGE-M3 (1024D) -> Qdrant dense + SQLite FTS5 hybrid indexing.",
+      "proven_scope": {
+        "physical_work_packages_total": 376,
+        "project_1_wps": 14,
+        "project_2_wps": 23,
+        "project_5_wps": 339,
+        "indexed_wps_in_second_brain": 339,
+        "cross_project_leakage": "NONE (Verified 0 documents from Project 1 or 2)",
+        "total_knowledge_documents": 376,
+        "breakdown_by_doc_type": {
+          "WORK_PACKAGE": 340,
+          "ARCHITECTURE": 25,
+          "SPRINT_REPORT": 7,
+          "ADR": 4,
+          "formula": "340 + 25 + 7 + 4 = 376"
+        },
+        "breakdown_by_source_id": {
+          "op_wp_project5": 339,
+          "actor_snapshots_project5": 13,
+          "file_adr_and_arch": 17,
+          "op_sprint_project5": 7,
+          "formula": "339 + 13 + 17 + 7 = 376"
+        },
+        "total_knowledge_chunks": 1742,
+        "total_qdrant_points": 1745,
+        "legacy_unique_sources": 3,
+        "legacy_vector_points": 6,
+        "legacy_sources_detail": {
+          "op_wp_42": 4,
+          "test_local_adr_0001": 1,
+          "test_wp_999": 1
+        }
+      }
+    },
+    "4_security_credentials_governance": {
+      "status": "PASS",
+      "details": "Bảo vệ thông tin đăng nhập đa lớp, xoay vòng bí mật mật mã an toàn",
+      "checks": {
+        "webhook_secret_rotated": true,
+        "webhook_secret_n8n_re_encrypted": true,
+        "old_webhook_token_rejected_403": true,
+        "zero_plaintext_tokens_in_docs": true,
+        "pm_token_hash_stored_only": true,
+        "pm_token_rotation_automated": true,
+        "old_pm_token_revoked_401": true,
+        "windows_ntfs_acl_restricted": true,
+        "rbac_enforcement": "Role-based action guard active (PM, BA, BE, FE, QA, AI_SYSTEM_OWNER)",
+        "replay_prevention": "Strict idempotency key + mutation proposal hash check (HTTP 409 fail-closed)",
+        "file_source_allowlist": "Chỉ cho phép main-workflow-contract; chặn truy cập tệp tùy ý (HTTP 403)"
+      }
+    },
+    "5_reliability_backup_restore": {
+      "status": "PASS",
+      "details": "Diễn tập sao lưu và phục hồi độc lập Full-Stack đạt READY_FOR_OPERATOR_UAT",
+      "evidence_source": "docs/ai/RELIABILITY_AND_BACKUP_DRILL_REPORT.json",
+      "metrics": {
+        "openproject_postgres_backup": "SUCCESS (2,076,590 bytes)",
+        "openproject_postgres_isolated_restore": "VERIFIED (376 WPs total, 339 Project 5 WPs in temporary database op_restore_isolated_test via safe_postgres_restore.py)",
+        "gateway_backup_status": "SUCCESS (9,699,328 bytes, VACUUM INTO)",
+        "knowledge_backup_status": "SUCCESS (5,107,712 bytes, VACUUM INTO)",
+        "n8n_backup_status": "SUCCESS (12,574,720 bytes, VACUUM INTO)",
+        "n8n_encryption_key_backup": "SUCCESS (Preserved and verified)",
+        "qdrant_cold_volume_backup": "SUCCESS (16,126,826 bytes compressed, verified on clone container port 6335 with 1,745 points and 3 legacy sources / 6 vector points)",
+        "qdrant_rest_snapshot_limitation": "API snapshot recovery blocked by VirtioFS syncfs syscall; Cold Volume Restore verified as official DR route via test_qdrant_isolated_restore.py",
+        "isolated_integrity_checks": "ALL OK",
+        "n8n_retention_eval": "ACTIVE (EXECUTIONS_DATA_PRUNE=true, EXECUTIONS_DATA_MAX_AGE=336h, EXECUTIONS_DATA_PRUNE_MAX_COUNT=1000, 275 executions recorded)",
+        "disk_free_d_gb": 582.54,
+        "disk_free_c_gb": 81.6
+      }
+    },
+    "6_control_center_and_ui": {
+      "status": "PASS",
+      "details": "API /api/v1/control-center/state trả về 200 OK; đầy đủ 8 agent statuses, task timeline, quota panel, live Gemini provider integration",
+      "agents": ["supervisor", "pm", "ba", "fe", "be", "dev", "qa", "reviewer"],
+      "live_model": "gemini-3.5-flash-lite",
+      "ui_web_status": 200
+    }
+  },
+  "inviolable_constraints_audit": {
+    "wp_376_subtask_test2_preserved": true,
+    "wp_376_lock_version": 0,
+    "wp_371_bug_in_analysis_preserved": true,
+    "wp_371_lock_version": 4,
+    "qa_evidence_uuid": "fc0479a8-b30a-5e88-9e4a-10748cb30415",
+    "qa_evidence_fc0479a8_pending_qa_preserved": true,
+    "legacy_qdrant_points_preserved": 3,
+    "staging_environment_untouched": true,
+    "zero_plaintext_tokens_in_logs_and_docs": true
+  }
+}

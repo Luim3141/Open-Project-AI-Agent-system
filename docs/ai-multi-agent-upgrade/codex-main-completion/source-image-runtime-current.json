@@ -1,0 +1,57 @@
+{
+  "at": "2026-10-21T08:38:42+0700",
+  "core": {
+    "main": {
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "source_files": 47,
+      "matched": 47,
+      "differing_files": []
+    },
+    "staging": {
+      "image": "sha256:79a90c2083727e3355bb7957a0c704bcc51973f3711d3599970690eafac1eff2",
+      "source_files": 47,
+      "matched": 44,
+      "differing_files": [
+        "app/controllers/qldapm_ai_controller.rb",
+        "app/views/qldapm_ai/show.html.erb",
+        "app/views/qldapm_work_packages/_navigation.html.erb"
+      ]
+    }
+  },
+  "gateway": {
+    "main": {
+      "image": "sha256:456c38f6a9a936048892bdb2d97fd855eb63c6321fbaceab88de6f8aa56fe70b",
+      "matched_active_files": 51,
+      "missing_historical_modules": [
+        "gateway/e2e_demo.py",
+        "gateway/intent_evals.py",
+        "gateway/n8n_indexing_hook.py",
+        "gateway/proposal_aggregation.py",
+        "gateway/proposal_ux.py",
+        "gateway/scheduler_registry.py",
+        "gateway/supervisor_isolation.py"
+      ],
+      "modified_active_modules": [],
+      "source_files": 58
+    },
+    "staging": {
+      "image": "sha256:456c38f6a9a936048892bdb2d97fd855eb63c6321fbaceab88de6f8aa56fe70b",
+      "matched_active_files": 51,
+      "missing_historical_modules": [
+        "gateway/e2e_demo.py",
+        "gateway/intent_evals.py",
+        "gateway/n8n_indexing_hook.py",
+        "gateway/proposal_aggregation.py",
+        "gateway/proposal_ux.py",
+        "gateway/scheduler_registry.py",
+        "gateway/supervisor_isolation.py"
+      ],
+      "modified_active_modules": [],
+      "source_files": 58
+    }
+  },
+  "isolation": {
+    "postgres_distinct": true,
+    "gateway_state_distinct": true
+  }
+}

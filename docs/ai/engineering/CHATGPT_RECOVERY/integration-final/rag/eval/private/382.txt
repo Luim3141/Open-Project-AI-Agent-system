@@ -1,0 +1,109 @@
+[AI backlog] Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.
+QLDAPM PM/BA engineering plan c2d7047d-566d-417c-8a6e-a56bbd2e08b0
+Unit: feedback-283138e910432528
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["crud-search-web-v1"],"objective":"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.","priority":1,"unit":"feedback-283138e910432528"},"functional_specification":{"acceptance":["Web UI xử lý lỗi mạng/HTTP, hiển thị thông báo rõ ràng với aria-live và role=alert","Giao diện hiển thị đúng trạng thái loading, empty và có nút retry","Lọc/tìm kiếm nhanh tự động loại bỏ response cũ, chỉ nhận response mới nhất","Form chặn double submit và tự khôi phục controls khi xảy ra lỗi","Các API CRUD, status, search, SQLite và test cũ tiếp tục pass hoàn toàn"],"api_behavior":["Giữ nguyên toàn bộ endpoints CRUD, status, search/filter và SQLite persistence hiện tại","Client xử lý cấu trúc lỗi trả về từ FastAPI theo chuẩn validation"],"citations":[379],"edge_cases":["Mất kết nối mạng hoặc lỗi HTTP khi gọi API từ UI","FastAPI trả về mảng chi tiết lỗi validation phức tạp","Gửi nhiều request tìm kiếm liên tiếp phản hồi lệch thứ tự (stale response)","Người dùng nhấn nút submit liên tục (double submit)"],"limitations":["Không thêm dependency ngoài hoặc dịch vụ SaaS","Không sử dụng kiểm thử trình duyệt hay UAT thủ công"],"scope":["Cập nhật request helper và xử lý lỗi mạng trên Web UI","Hiển thị thông báo lỗi chi tiết kèm aria-live và role=alert","Thêm trạng thái loading, empty và retry","Chống stale list responses khi thay đổi search/filter nhanh","Ngăn chặn double submit và khôi phục controls sau lỗi","Viết automated checks kiểm tra hành vi mới"],"summary":"Hoàn thiện Web UI của Mini Task Manager: bổ sung request helper xử lý HTTP và network errors, hiển thị thông báo lỗi chi tiết (kể cả FastAPI validation detail arrays), hỗ trợ aria-live/role=alert, loading/empty/retry states. Ngăn chặn stale list responses khi filter nhanh và double submit, khôi phục controls sau lỗi. Giữ nguyên CRUD/status/search/SQLite API hiện có, không thêm dependency mới."},"reviewers":["reviewer","qa"],"virtual_executor":"dev"}
+
+Engineering unit feedback-283138e910432528
+
+{
+  "status": "succeeded",
+  "text": "Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "29ff0ec1e531d917ce96737d768c8e16dad895c5",
+  "head_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+  "pr_url": "[Native-reference:ac353d43d0368763]",
+  "delivery": {
+    "baseRefName": "codex/openclaw-crud-search-web-v1",
+    "headRefName": "codex/openclaw-feedback-283138e910432528",
+    "headRefOid": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+    "state": "OPEN",
+    "url": "[Native-reference:ac353d43d0368763]"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\a43376cf-e70a-478d-a28e-067964a5a218\\acceptance-0.xml",
+    "log_sha256": "cf0a252fa9b1067ae11cb496f73ee5670e6656695f4708a55810f137fe4ba52d"
+  },
+  "review_evidence": {
+    "revision": "e77bdd84c4fea006085db3ae3fcd4d87c09e20b542035ade2b573cdb7dc38d2b",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-283138e910432528 && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC1",
+        "AC2",
+        "AC3",
+        "AC4",
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\a43376cf-e70a-478d-a28e-067964a5a218",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_web_ui.py"
+  ]
+}
+Bình luận #1057: QLDAPM PM/BA engineering plan 85b9307a-bd36-4a39-a3b5-30f4a3e5a832
+Unit: feedback-283138e910432528
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["crud-search-web-v1"],"objective":"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)","priority":3,"unit":"feedback-283138e910432528"},"functional_specification":{"acceptance":["Testcase pytest mới kiểm tra thành công Unicode search cho 'đi chợ' và 'Straße'","Toàn bộ regression test cũ từ AC1 đến AC9 vượt qua hoàn toàn"],"api_behavior":["GET /tasks?q=đi%20chợ tìm thấy tiêu đề 'ĐI CHỢ' thông qua str.casefold","Kết hợp tìm ki
+Bình luận #1066: **[QLDAPM State Sync]** Đồng bộ trạng thái từ Engineering Delivery:
+- Unit: `feedback-283138e910432528`
+- Run ID: `a43376cf-e70a-478d-a28e-067964a5a218`
+- Commit: `d00f8c5ff9c6159787517dc90e23d6de5bb55b8a`
+- PR: [[Native-reference:ac353d43d0368763]]([Native-reference:ac353d43d0368763])
+- Automated Tests: PASS
+- Trạng thái mới: **REVIEW** (chờ review và merge PR trên GitHub)
+Bình luận #1070: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#3 Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.]([Native-reference:ac353d43d0368763])
+- Trạng thái GitHub: `OPEN`
+- Base: `codex/openclaw-crud-search-web-v1` | Head: `d00f8c5f`
+Bình luận #1082: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#3 Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.]([Native-reference:ac353d43d0368763])
+- Trạng thái GitHub: **`OPEN`**
+- Base Branch: `codex/openclaw-crud-search-web-v1` | Head Commit: `d00f8c5f`
+- Phân loại nhánh: `UNMERGED`
+Bình luận #1088: QLDAPM PM/BA engineering plan b1cca031-81f5-4df1-870b-cbeb23d51e66
+Unit: feedback-283138e910432528
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["crud-search-web-v1"],"objective":"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)","priority":3,"unit":"feedback-283138e910432528"},"functional_specification":{"acceptance":["AC10: POST va PATCH ho tro luu tru, tra ve chinh xac truong category.","AC11: GET /tasks?category=... loc dung danh sach theo danh muc.","AC12: GET /tasks/export/csv tra ve HTTP 200, dinh dang MIME text/csv kem noi dung dung chuan."],"api_behavior":
+Bình luận #1100: QLDAPM PM/BA engineering plan d14bcb2d-9b53-4424-8160-2a18f769f4b5
+Unit: feedback-283138e910432528
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["crud-search-web-v1"],"objective":"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)","priority":3,"unit":"feedback-283138e910432528"},"functional_specification":{"acceptance":["AC13: GET /tasks/summary trả về JSON đúng cấu trúc {\"total\": int, \"active\": int, \"completed\": int}.","AC14: Logic tính toán total là tổng, active là todo/in_progress, completed là done, luôn thỏa mãn total == active + completed.","AC15: Trả về
+Bình luận #1108: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#3 Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.]([Native-reference:ac353d43d0368763])
+- Trạng thái GitHub: **`ĐÃ MERGE VÀO FEATURE BRANCH (`codex/openclaw-crud-search-web-v1`) — CHƯA VÀO MAIN`**
+- Base Branch: `codex/openclaw-crud-search-web-v1` | Head Commit: `d00f8c5f`
+- Phân loại nhánh: `FEATURE_BRANCH (codex/openclaw-crud-search-web-v1)`
+Bình luận #1112: QLDAPM PM/BA engineering plan 3376cdf8-94e0-4587-b656-dfadc61d4071
+Unit: feedback-283138e910432528
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["crud-search-web-v1"],"objective":"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)","priority":3,"unit":"feedback-283138e910432528"},"functional_specification":{"acceptance":["AC1: GET /tasks/{id} tra ve HTTP 200 va thong tin task gom id, title, status khi ID ton tai","AC2: GET /tasks/{id} tra ve HTTP 404 khi ID khong ton tai trong CSDL","AC3: GET /tasks/{id} tra ve HTTP 422 khi ID khong phai la kieu so nguyen hop le","AC
+Bình luận #1125: QLDAPM PM/BA engineering plan 4e3626a4-7af2-47ff-b1e7-c2bf38f602f1
+Unit: feedback-283138e910432528
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["crud-search-web-v1"],"objective":"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)","priority":3,"unit":"feedback-283138e910432528"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/exists với task_id tồn tại trả về HTTP 200 và {\"exists\": true}.","AC2: GET /tasks/{task_id}/exists với task_id không tồn tại trả về HTTP 200 và {\"exists\": false}.","AC3: GET /tasks/{task_id}/exists với task_id không phả
+Bình luận #1137: QLDAPM PM/BA engineering plan 8751d17a-4c6c-4f5f-b00c-6e1239f5353c
+Unit: feedback-283138e910432528
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["crud-search-web-v1"],"objective":"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)","priority":3,"unit":"feedback-283138e910432528"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/title với ID hợp lệ trả về HTTP 200 và payload {\"id\": id, \"title\": title}.","AC2: GET /tasks/{task_id}/title với ID không tồn tại trả về HTTP 404.","AC3: GET /tasks/{task_id}/title với ID không phải số nguyên trả về HTT
+Bình luận #1151: QLDAPM PM/BA engineering plan 2f7cba6e-666f-4e94-b7f2-124dd7e153e8
+Unit: feedback-283138e910432528
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["crud-search-web-v1"],"objective":"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)","priority":3,"unit":"feedback-283138e910432528"},"functional_specification":{"acceptance":["AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.","AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.","AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; st

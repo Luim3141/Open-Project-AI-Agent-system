@@ -1,0 +1,15 @@
+# QLDAPM Main — release gate 2026-10-26T08:04:33.762688+00:00
+
+**PARTIAL — chưa FULL GO.** Gateway `sha256:b2f2db5659d5936ea621aae68b0e04a269741b163f2f35276245d15902ddbea6`; Core Web `sha256:e0a840b57fac8031f2d20f8c7bc07e8f618560ec34bf1d81e14608de2d552dfd`. Signed Native delete ledger và exact cache-only cleanup đã deploy. Main ledger rỗng; không tạo proposal, Native mutation, human decision hoặc model call mới. Rollout chỉ thay Web/Gateway; tám container Main khác và16workflows giữ nguyên.
+
+Fresh qualification:518Windows PASS,503Linux PASS/15platform skips,15Ruby programs PASS. Main73role/48contract/13readonly/40new delete policy checks và6accepted-QA-chain reads PASS. Actual isolated Native/PG/Qdrant kiểm chứng xóa đúng một Task NEW độc lập, signed event transaction, lost acknowledgment/GET reconciliation, cache restart, exact vector/SQLite/FTS removal, unrelated/legacy preservation, replay, actual PG rollback và old-image compatibility trên ledger có dữ liệu. Embeddings trong fixture là fixed synthetic values, không coi là fresh Ollama semantic test.
+
+338visible/375physicalWP,original332,#370v2,cây#371–#375,352relations,security,boards,journals/receipts vàScenarioF61audit được giữ. QA23/PM19 đã accepted/current exact technical evidence375v0; đó không phải full application QA hay Native approval. RAG373docs/1728chunks/1731points không scoped drift; ba legacy points giữ/exclude. Provider127receipts/132reservations,54proposals,12syncjobs và28historical pending requests giữ nguyên.
+
+Owner18 có Native delete permission; PM19 không có và được giữ nguyên. Native xóa chỉ qua own fresh authorization và một exact human proposal decision mới; model không được yêu cầu destructive proposal. Scope đầu tiên chỉ Task NEW độc lập, không parent/children/relations/receipt references/activity/attachment/time entry; không cascade. Schema rollback không được xóa ledger có lịch sử.
+
+Ma trận vẫn10PASS/6PARTIAL. Còn full source-backed bug/fix/retest/BA-PM release/closure, full WBS Native dependency phase/semantic project impact và Main business E2E cần authorization riêng. Board Grids API và fixture create/update đã kiểm chứng; browser UAT giữ BLOCKED. Full Qdrant restore giữ BLOCKED_RESTORE_POLICY; hai comment outcomes UNKNOWN_HOLD; ba legacy producers NOT_PROVEN. Local scheduled delivery VERIFIED; external BLOCKED_CONFIGURATION. Mutable provider/Agent editors ngoài supported API vẫn NOT_IMPLEMENTED.
+
+Rollback chỉ hai app selectors về Gateway `sha256:b8355ce3ca610e58defd38f2c7632bb7c3d71fcb6e4524ea80d823e6436fa1b1` và Core `sha256:e5ec2d6426fd2fdc523a64b5d867140d63fd4265f3a8766cac5f728caac9c2a8`; giữ ledger/migration/history hiện hành, không restore DB cũ. Private artifacts: `C:\Users\LUIM\AppData\Local\QLDAPM\openproject-ai\operator\codex-autonomous-20261025\completion-20261026\trusted-delete-deployment`.
+
+Bằng chứng: `CODEX_WF02_TRUSTED_DELETE_FINAL_READBACK.json`, `CODEX_WF02_TRUSTED_DELETE_CLONE_RESULT.json`, `CODEX_WF02_TRUSTED_DELETE_RESULT.json`, `CODEX_WF09_WF11_FINAL_QUALIFICATION.md`, `CODEX_WF10_FINAL_DEPENDENCY_RESULT.json`, `CODEX_N8N_SCHEDULED_REPORT_FINAL_RESULT.json`, canonical checkpoint schema v2.

@@ -1,0 +1,58 @@
+[
+  {
+    "kind": "gateway",
+    "compose_validation": "PASS",
+    "before_image": "qldapm-ai:engineering-continuation-r24-20261031",
+    "after_image": "qldapm-ai:chatgpt-recovery-20261101-r2",
+    "changes": [
+      {
+        "service": "gateway",
+        "changed_keys": [
+          "pull_policy",
+          "image"
+        ]
+      }
+    ],
+    "command_prefix": [
+      "docker",
+      "compose",
+      "-p",
+      "qldapm-ai",
+      "--env-file",
+      "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\.env",
+      "-f",
+      "D:\\AI project\\QLDAPM chat\\openproject\\ai\\compose.yml",
+      "-f",
+      "D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.main.yml"
+    ],
+    "candidate_override": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\CHATGPT_RECOVERY\\compose.gateway.candidate.json"
+  },
+  {
+    "kind": "core",
+    "compose_validation": "PASS",
+    "before_image": "qldapm-core:engineering-continuation-r24-20261031",
+    "after_image": "qldapm-core:chatgpt-recovery-20261101-r1",
+    "changes": [
+      {
+        "service": "web",
+        "changed_keys": [
+          "pull_policy",
+          "image"
+        ]
+      }
+    ],
+    "command_prefix": [
+      "docker",
+      "compose",
+      "-p",
+      "qldapm-openproject",
+      "--env-file",
+      "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject\\.env",
+      "-f",
+      "D:\\AI project\\QLDAPM chat\\openproject\\compose.yml",
+      "-f",
+      "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject\\ui-bridge.yml"
+    ],
+    "candidate_override": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\CHATGPT_RECOVERY\\compose.core.candidate.json"
+  }
+]

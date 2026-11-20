@@ -1,0 +1,70 @@
+{
+  "status": "succeeded",
+  "text": "PM/BA specification, Native backlog và dependencies đã đồng bộ. UAT deferred.",
+  "plan_id": "d14bcb2d-9b53-4424-8160-2a18f769f4b5",
+  "native_readback": {
+    "create-list-persistence-v1": {
+      "agent": "dev",
+      "dependencies": [],
+      "id": 380,
+      "lock_version": 8,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "crud-search-web-v1": {
+      "agent": "dev",
+      "dependencies": [
+        "create-list-persistence-v1"
+      ],
+      "id": 381,
+      "lock_version": 9,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-283138e910432528": {
+      "agent": "dev",
+      "dependencies": [
+        "crud-search-web-v1"
+      ],
+      "id": 382,
+      "lock_version": 9,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-4d13e695555a8d44": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-283138e910432528"
+      ],
+      "id": 383,
+      "lock_version": 9,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-bb9a628fe5b7be67": {
+      "agent": "dev",
+      "dependencies": [
+        "health-check-v1"
+      ],
+      "id": 386,
+      "lock_version": 0,
+      "priority": 1,
+      "state": "PLANNED"
+    },
+    "health-check-v1": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-4d13e695555a8d44"
+      ],
+      "id": 384,
+      "lock_version": 2,
+      "priority": 3,
+      "state": "DELIVERED"
+    }
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "retrieval_count": 2
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\d14bcb2d-9b53-4424-8160-2a18f769f4b5"
+}

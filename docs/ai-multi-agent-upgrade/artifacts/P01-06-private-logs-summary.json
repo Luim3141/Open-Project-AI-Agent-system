@@ -1,0 +1,64 @@
+{
+  "private_logs": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\local-runtime\\logs-1792079644209485200",
+  "raw_logs_not_printed": true,
+  "status": {
+    "target": "staging",
+    "services": [
+      {
+        "service": "db",
+        "running": true,
+        "status": "running",
+        "exit_code": 0,
+        "oom_killed": false,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "stopped_requires_repair": false
+      },
+      {
+        "service": "staging-web",
+        "running": true,
+        "status": "running",
+        "exit_code": 0,
+        "oom_killed": false,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "stopped_requires_repair": false
+      },
+      {
+        "service": "staging-gateway",
+        "running": true,
+        "status": "running",
+        "exit_code": 0,
+        "oom_killed": false,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "stopped_requires_repair": false
+      },
+      {
+        "service": "n8n",
+        "running": true,
+        "status": "running",
+        "exit_code": 0,
+        "oom_killed": false,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "stopped_requires_repair": false
+      },
+      {
+        "service": "n8n-editor",
+        "running": true,
+        "status": "running",
+        "exit_code": 0,
+        "oom_killed": false,
+        "health": "healthy",
+        "restart": "unless-stopped",
+        "stopped_requires_repair": false
+      }
+    ],
+    "all_healthy": true,
+    "provider": "CONFIGURED_DISABLED",
+    "key_present": true,
+    "provider_network_checked": false,
+    "stopped_note": "Docker cannot distinguish every operator stop from an exit; use exit/OOM and private logs. Repair explicitly restores stopped containers."
+  }
+}

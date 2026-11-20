@@ -1,0 +1,125 @@
+{
+  "method": "PLAYWRIGHT_REAL_STAGING_UI_AND_VISIBLE_RECEIPTS",
+  "checks": [
+    {
+      "id": "LIVE-D",
+      "status": "PASS",
+      "execution_id": "7d528511-c957-40b1-bd1e-c6fe7dd28650",
+      "actor": 7,
+      "role": "PM",
+      "agents": [
+        "ba",
+        "dev",
+        "qa",
+        "reviewer"
+      ],
+      "provider": "Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "at": "2026-10-19T00:09:48.330218+00:00",
+      "provider_status": "LIVE_SUCCESS",
+      "model_calls": 4,
+      "usage": [
+        {
+          "candidatesTokenCount": 261,
+          "promptTokenCount": 1450,
+          "totalTokenCount": 1711
+        },
+        {
+          "candidatesTokenCount": 376,
+          "promptTokenCount": 1502,
+          "thoughtsTokenCount": 1335,
+          "totalTokenCount": 3213
+        },
+        {
+          "candidatesTokenCount": 350,
+          "promptTokenCount": 1727,
+          "totalTokenCount": 2077
+        },
+        {
+          "candidatesTokenCount": 376,
+          "promptTokenCount": 1947,
+          "totalTokenCount": 2323
+        }
+      ],
+      "response_summary": "BA/Developer/QA tổng hợp phân tích chéo; reviewer Native",
+      "response_characters": 3525,
+      "native_source_ids": [
+        38
+      ],
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "receipt_ids": [
+        "9501eb13-5df8-4e5a-b29e-07f33091fe6d",
+        "df83228f-96ea-4f0f-8be5-7eb7a3a2b234",
+        "5a98c0fa-f38a-4b01-86c0-2d4e56a46733",
+        "a71bf309-e2ef-47ab-b43f-e384d9ffe549"
+      ],
+      "duration_seconds": 13.877,
+      "evidence": "final-live-D-visible-result.png (private)"
+    },
+    {
+      "id": "LIVE-BE",
+      "status": "PASS",
+      "execution_id": "94473b2c-5eb8-4373-94ef-fe6e6d03375e",
+      "actor": 8,
+      "role": "BE",
+      "agents": [
+        "dev",
+        "reviewer"
+      ],
+      "provider": "Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "at": "2026-10-19T00:10:33.063207+00:00",
+      "provider_status": "LIVE_SUCCESS",
+      "model_calls": 1,
+      "usage": [
+        {
+          "candidatesTokenCount": 313,
+          "promptTokenCount": 760,
+          "totalTokenCount": 1073
+        }
+      ],
+      "response_summary": "BE nhận phân tích Developer từ Gemini thật, không sửa dữ liệu",
+      "response_characters": 1206,
+      "native_source_ids": [
+        38
+      ],
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "receipt_ids": [
+        "36781ff6-bb09-4800-9021-6ccc2abab6f0"
+      ],
+      "duration_seconds": 3.355,
+      "evidence": "final-live-BE-visible-result.png (private)"
+    },
+    {
+      "id": "LIVE-E",
+      "status": "PASS",
+      "actor": 9,
+      "role": "FE",
+      "at": "2026-10-19T00:10:58.318735+00:00",
+      "provider_status": "POLICY_DENIED_BEFORE_PROVIDER",
+      "model_calls": 0,
+      "usage": null,
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "evidence": "final-live-E-permission-denied.png (private)"
+    },
+    {
+      "id": "LIVE-FBA",
+      "status": "PASS",
+      "actor": 6,
+      "role": "BA-PM",
+      "at": "2026-10-19T00:11:21.301537+00:00",
+      "provider_status": "POLICY_DENIED_BEFORE_PROVIDER",
+      "model_calls": 0,
+      "usage": null,
+      "ui_confirmed": true,
+      "native_version_unchanged": true,
+      "evidence": "final-live-FBA-permission-denied.png (private)"
+    }
+  ],
+  "serving_native_business_mutations": 0,
+  "provider": "Gemini",
+  "model": "gemini-3.5-flash-lite"
+}

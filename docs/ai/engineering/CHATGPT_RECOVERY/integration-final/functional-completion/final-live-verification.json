@@ -1,0 +1,94 @@
+{
+  "utc": "2026-11-04T04:11:22.728669+00:00",
+  "status": "SERVING_SOURCE_IMAGES_PINS_IDLE_GATE_VERIFIED",
+  "containers": {
+    "gateway": {
+      "image": "sha256:a6fe1d61982db84447f45eb35a56809ae4ab16d854012bec59db1f58d890b2be",
+      "state": "running",
+      "health": "healthy"
+    },
+    "core": {
+      "image": "sha256:91afae9c6855417dcc14828d0bd16b3a5b780439d7d1fbbfede64c64241d83d4",
+      "state": "running",
+      "health": "healthy"
+    },
+    "n8n": {
+      "image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+      "state": "running",
+      "health": "NOT_CONFIGURED"
+    }
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/app.py": "9246a3f8985c40b55bda737b66d4b7d936b8eea890bb4cf3afc28315b3eae408",
+    "openproject/ai/gateway/service.py": "4f220058c6654716b7cb74bf9cbe14a80e09293c573df74d7ed6eba571a681db",
+    "openproject/ai/gateway/monitoring.py": "9af5ab36c7daaf64aa86fa5ec11ca3c23b5073498352ace80bf99cff37521957",
+    "openproject/ai/gateway/integration_events.py": "79d7ed013d1ce4d2ed70b64506adf59dc4ed9a9d3399ff69184aa7aa06c22f79",
+    "openproject/ai/gateway/engineering_github_poll.py": "2bc8ab36f3eb5a4c45d2f88cf0aa9cb48e5329b6dd9e6ad26be5528ef999f8cd",
+    "openproject/ai/gateway/engineering_github_details.py": "823bd0ca9a45ec37f4b0ef18838b7c8c1248e6869e1617cb6cf850b31d6b2789",
+    "openproject/ai/gateway/engineering_github_sync.py": "08075df59ea0f62db358c8ae945a3c0fb408fc05935eacf476bc80a7a33dec46",
+    "openproject/ai/gateway/engineering.py": "7c8664ae2bbd10ce0e9494725553a0d0eb877c38dca5d656a9a551366fddf7c9",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "28dd95be7ac18b7c4ae84cfb92488ebfa7527563c1754f407ac05b565316c0ca",
+    "openproject/ai/gateway/workflow_status.py": "f27bf8ad1e1371356f2c3ebe5a2b6b87837e4fe8750ffdea2fe21693d4502455",
+    "openproject/ai/gateway/workflow_commands.py": "7e404f0c3dc288532088a3dd16a64779b87cdb6151f74dd99845b83bce67d24b",
+    "openproject/ai/gateway/knowledge_answer.py": "a77c760fea779d4797a1af80a8dcfd1523ef153bc1fe12da23005dd9e26d8402",
+    "openproject/ai/gateway/bug_lifecycle.py": "4890e5420bb0c48451ae3eb84b37591243d508d5a7cfedd46703bafccc227679",
+    "openproject/ai/gateway/native_wbs.py": "15ded424623b2dd8773087dc905c63cb13e367f0ca9a9414d06af38cea8d2e5e",
+    "openproject/ai/gateway/engineering_planning.py": "b517c772a7948b63226da2f07715813ee13a8a048b9775fc7cecaaef010e7075",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "46b49c9dc4647e2873e57f2f64f34565c3075c5598f37d4c8b3d99c3d73d9424",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_workflows.html.erb": "25cba57bbfd1c8580f1afcc5f6f8481f3b87560d78457080abcbd376e087ef42",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_knowledge_results.html.erb": "11ca4ed2a606ea56ca7bd88cde76c7f1cda258c19eb084c66152754ec15ff68a"
+  },
+  "host_source_hashes": {
+    "engineering_worker.py": "f36a488f835bbfbd4926d47417c07bc6280f52abe161e290ce0df73dfa9b3c31",
+    "workflow_status_snapshot.py": "1bc0d66486f7f99630c032fe803e6af69a69a76f8d756cd5bb01f1f43afcb6b7",
+    "openclaw_health.py": "1bd51e02bf6e848aa90332f9e9095d17783a426b45e0dc77d474554001600f30",
+    "openclaw_provider_gate.py": "3937350e202f9609579676ac61937806ea4ff5d0fd43b52efccef0d96c504093"
+  },
+  "engineering": {
+    "mode": "OFF",
+    "active": 0,
+    "worker_age_seconds": 3.818293571472168,
+    "worker_run_id": null,
+    "provider_receipts": 531,
+    "runs": {
+      "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6": {
+        "queue_state": "finished",
+        "result_status": "succeeded",
+        "error": null,
+        "recovery_count": 3,
+        "head_sha": "1914f10d3bd0b2b05459914100c53549f63d0bc5",
+        "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/10",
+        "provider_calls": 45
+      },
+      "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795": {
+        "queue_state": "finished",
+        "result_status": "succeeded",
+        "error": null,
+        "recovery_count": 5,
+        "head_sha": "1ece6705ead14a250c05726e9217aeec94f33f2b",
+        "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/12",
+        "provider_calls": 43
+      }
+    }
+  },
+  "provider_gate_active": false,
+  "github_sync_enabled": true,
+  "n8n_integration_enabled": true,
+  "openclaw": {
+    "http_ready": true,
+    "core_ready": true,
+    "cli": {
+      "checked_at": 1793765428.3891711,
+      "check_type": "WSL OpenClaw health --json + gateway status --json",
+      "health": "READY",
+      "wsl_distro": "OpenClawGateway",
+      "wsl_running": true,
+      "gateway_rpc_ok": true,
+      "process_state": "running",
+      "child_runtime_available": true,
+      "last_error": null,
+      "latency_ms": 9830.1
+    }
+  },
+  "browser_uat": "NOT_PERFORMED"
+}

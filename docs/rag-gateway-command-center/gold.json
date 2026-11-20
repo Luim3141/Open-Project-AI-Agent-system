@@ -1,0 +1,831 @@
+{
+  "source": "Actual MAIN authorized Native snapshots + currently registered file source contents; synthetic adversarial questions have no invented positive source",
+  "source_pins": {
+    "op:wp:383": {
+      "project": "6",
+      "document_id": "e4db9ed3610d353380f2b68d1212bfd8aaec79f3c4303bdc8cc1a1d81bcc5287"
+    },
+    "op:wp:379": {
+      "project": "6",
+      "document_id": "43ea8c41a9f1776f273e5bb66efc9b9dc083a590c93a62faff4f72716904c2a4"
+    },
+    "op:wp:382": {
+      "project": "6",
+      "document_id": "63e8c9e4a98170b20e7e2dc395ca9ff4b9b2e758a86cbee05c5e670ce1ee710a"
+    },
+    "op:wp:384": {
+      "project": "6",
+      "document_id": "568f113db3b642666fc8256cde7c7dc30aff906d803afc68c297c00fdbece97f"
+    },
+    "op:wp:390": {
+      "project": "6",
+      "document_id": "4be04720642140a66ff2c44b91ec507b008a2b11895f018dd00291596ee8b224"
+    },
+    "op:wp:386": {
+      "project": "6",
+      "document_id": "26a836f54bd4b44a1a9e459bacb4f88c1ae19c27eb2c6700988593b09c4bfa92"
+    },
+    "op:wp:391": {
+      "project": "6",
+      "document_id": "aa2e88770f01a1d97c210214d4591910806217ac80ee28ad49f81e6654037790"
+    },
+    "op:wp:389": {
+      "project": "6",
+      "document_id": "547204deeff22da80ddcd09603902b99d86b6b3a3c804ed7dc82e8fb09125cd9"
+    },
+    "op:wp:394": {
+      "project": "6",
+      "document_id": "238f42155efb53f96707642b8c05a46ab5d373c52dbff234900c1fbd32baae62"
+    },
+    "op:wp:396": {
+      "project": "6",
+      "document_id": "9c884cb29b4d5c64c09e18f9923fa02239ed9af8d4d73271b8f440b0519f7685"
+    },
+    "actor:20:wp:398": {
+      "project": "6",
+      "document_id": "ffdd7a9b7846b4fd2fbba50b101bfe893a62510f711b1e78d349a9622a1fc654"
+    },
+    "file:main-workflow-contract": {
+      "project": "5",
+      "document_id": "3c1f58ffd56f3c48f71b9378a6c96b85a005a1a5b097daeed4633b85122aa6dc"
+    },
+    "file:project6-integration-qualification": {
+      "project": "6",
+      "document_id": "b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74"
+    }
+  },
+  "cases": [
+    {
+      "id": "G01",
+      "question": "WF01 supports which explicit sources?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "an authorized Native Work Package ID"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "exact",
+      "partition": "calibration"
+    },
+    {
+      "id": "G02",
+      "question": "Muốn nạp tài liệu thì có thể đưa tên đường dẫn từ máy mình trực tiếp cho server không?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "A source key never means a filesystem path."
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "calibration"
+    },
+    {
+      "id": "G03",
+      "question": "Nếu sửa file sau khi đăng ký mà chưa cập nhật dấu vân tay thì hệ thống làm gì?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "A changed file is refused"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "calibration"
+    },
+    {
+      "id": "G04",
+      "question": "Tại sao vector ghi thất bại vẫn có thể repair mà không mất bản nguồn?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "A failed vector commit is reported as pending"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "calibration"
+    },
+    {
+      "id": "G05",
+      "question": "Định dạng file nào được nạp tại boundary local knowledge?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "UTF-8 TXT, Markdown, CSV, JSON"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "exact",
+      "partition": "holdout"
+    },
+    {
+      "id": "G06",
+      "question": "File PDF dạng ảnh có được nhận diện chữ tự động không?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "OCR and arbitrary uploads are not implemented here."
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G07",
+      "question": "Bộ đọc PDF được chặn ở bao nhiêu trang và bao lâu?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "15 seconds, 64 pages, 256 KiB"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "section",
+      "partition": "holdout"
+    },
+    {
+      "id": "G08",
+      "question": "Có thể dùng citation cũ sau khi source checksum thay đổi không?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "stale citations and unregistered or unmatched points do not become evidence."
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G09",
+      "question": "WF01 file operations gồm những thao tác nào?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "`ingest`, `reindex`, `search` and `read`"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "mixed",
+      "partition": "holdout"
+    },
+    {
+      "id": "G10",
+      "question": "Việc nạp file có đổi công việc trong OpenProject không?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "Native Work Packages are never mutated by these operations."
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G11",
+      "question": "Hệ thống tạo embeddings và lưu các đoạn nội dung ở đâu?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "persists document/chunk metadata in SQLite, embeds through local Ollama BGE-M3"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "multifact",
+      "partition": "holdout"
+    },
+    {
+      "id": "G12",
+      "question": "Citation cho file lưu những định danh nào?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "logical source key, document identity and original file SHA256"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "citation",
+      "partition": "holdout"
+    },
+    {
+      "id": "G13",
+      "question": "Phản hồi chưa kiểm chứng của người dùng có tự đổi registry được không?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "Unverified user feedback cannot change the registry or promote content."
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G14",
+      "question": "Ai có thể yêu cầu indexing theo hợp đồng local?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "PM and AI System Owner can request indexing."
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "exact",
+      "partition": "holdout"
+    },
+    {
+      "id": "G15",
+      "question": "Search/readback có kiểm tra lại danh tính và vai trò không?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "fresh authenticated identity and the current server role, project and checksum policy"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G16",
+      "question": "Tài liệu hợp đồng này có phải bằng chứng thực thi QA không?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:main-workflow-contract"
+      ],
+      "expected_answer_facts": [
+        "not a QA test execution attestation"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "historical",
+      "partition": "holdout"
+    },
+    {
+      "id": "G17",
+      "question": "Theo tài liệu dự án, backend và nơi lưu công việc dùng công nghệ gì?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:379"
+      ],
+      "expected_answer_facts": [
+        "Python FastAPI"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "calibration"
+    },
+    {
+      "id": "G18",
+      "question": "Ứng dụng quản lý việc này lưu thông tin bằng cơ sở dữ liệu nào?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:379"
+      ],
+      "expected_answer_facts": [
+        "SQLite"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "calibration"
+    },
+    {
+      "id": "G19",
+      "question": "API nào đếm tổng số việc và số đang hoạt động, số hoàn thành?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:386"
+      ],
+      "expected_answer_facts": [
+        "GET /tasks/summary"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "calibration"
+    },
+    {
+      "id": "G20",
+      "question": "Muốn tải danh sách công việc ra bảng CSV thì dùng API nào?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:391"
+      ],
+      "expected_answer_facts": [
+        "GET /tasks/export.csv"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G21",
+      "question": "API kiểm tra có một công việc theo id hay không được mô tả ở đâu?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:389"
+      ],
+      "expected_answer_facts": [
+        "GET /tasks/{task_id}/exists"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G22",
+      "question": "Chỉ đọc tên của một việc mà không cần lấy toàn bộ thông tin thì dùng gì?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:390"
+      ],
+      "expected_answer_facts": [
+        "GET /tasks/{task_id}/title"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G23",
+      "question": "Endpoint GET /tasks/{task_id}/status yêu cầu kiểm tra lỗi nào?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:396"
+      ],
+      "expected_answer_facts": [
+        "422"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "mixed",
+      "partition": "holdout"
+    },
+    {
+      "id": "G24",
+      "question": "Tài liệu nào yêu cầu chống gửi form hai lần và tránh response cũ ghi đè?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:382"
+      ],
+      "expected_answer_facts": [
+        "double submit protection"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G25",
+      "question": "Để tìm kiếm chữ Unicode, SQLite đăng ký hàm gì?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:383"
+      ],
+      "expected_answer_facts": [
+        "qldapm_casefold"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G26",
+      "question": "Tài liệu bổ sung route sức khỏe trả status ok nằm ở đâu?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:384"
+      ],
+      "expected_answer_facts": [
+        "GET /healthz"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G27",
+      "question": "Trong yêu cầu #398, được sửa mã ứng dụng hay chỉ thêm regression tests?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "actor:20:wp:398"
+      ],
+      "expected_answer_facts": [
+        "khong sua code ung dung"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "citation",
+      "partition": "holdout"
+    },
+    {
+      "id": "G28",
+      "question": "Nguồn nào mô tả count với hai bộ lọc áp dụng đồng thời?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:394"
+      ],
+      "expected_answer_facts": [
+        "logic AND"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "semantic",
+      "partition": "holdout"
+    },
+    {
+      "id": "G29",
+      "question": "So sánh API lấy title với API chỉ đọc status theo tài liệu",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:390",
+        "op:wp:396"
+      ],
+      "expected_answer_facts": [
+        "GET /tasks/{task_id}/title",
+        "GET /tasks/{task_id}/status"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "multi_source",
+      "partition": "holdout"
+    },
+    {
+      "id": "G30",
+      "question": "Có API xuất CSV và API kiểm tra sự tồn tại của việc không?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "op:wp:391",
+        "op:wp:389"
+      ],
+      "expected_answer_facts": [
+        "GET /tasks/export.csv",
+        "GET /tasks/{task_id}/exists"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "multi_source",
+      "partition": "holdout"
+    },
+    {
+      "id": "G31",
+      "question": "Tổng thống sao Hỏa uống cà phê giá bao nhiêu?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [],
+      "expected_answer_facts": [],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "abstain",
+      "group": "no_answer",
+      "partition": "calibration"
+    },
+    {
+      "id": "G32",
+      "question": "Mật khẩu ngân hàng của chủ dự án là gì?",
+      "project_scope": 5,
+      "authorized_actor": 18,
+      "expected_source_ids": [],
+      "expected_answer_facts": [],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "abstain",
+      "group": "no_answer",
+      "partition": "holdout"
+    },
+    {
+      "id": "G33",
+      "question": "Dự án dùng máy phản ứng hạt nhân loại nào?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [],
+      "expected_answer_facts": [],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "abstain",
+      "group": "no_answer",
+      "partition": "holdout"
+    },
+    {
+      "id": "G34",
+      "question": "Hợp đồng WF01 của Project5 có được tiết lộ trong Project6 không?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [],
+      "expected_answer_facts": [],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "abstain",
+      "group": "wrong_project",
+      "partition": "holdout"
+    },
+    {
+      "id": "G35",
+      "question": "Task #398 hiện đang RUNNING hay đã DONE?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [],
+      "expected_answer_facts": [],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "runtime_tool",
+      "group": "historical_vs_live",
+      "partition": "holdout"
+    },
+    {
+      "id": "G36",
+      "question": "Agent nào hiện đang chạy trong dự án?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [],
+      "expected_answer_facts": [],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "runtime_tool",
+      "group": "historical_vs_live",
+      "partition": "holdout"
+    },
+    {
+      "id": "G37",
+      "question": "Task #398 đã được Owner nghiệm thu chưa?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [],
+      "expected_answer_facts": [],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "runtime_tool",
+      "group": "historical_vs_live",
+      "partition": "holdout"
+    },
+    {
+      "id": "G38",
+      "question": "ORBIT-RECEIPT-20261103",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:project6-integration-qualification"
+      ],
+      "expected_answer_facts": [
+        "ORBIT-RECEIPT-20261103"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "exact",
+      "partition": "holdout"
+    },
+    {
+      "id": "G39",
+      "question": "Tài liệu WF01 có chứng minh Owner đã nghiệm thu không?",
+      "project_scope": 6,
+      "authorized_actor": 18,
+      "expected_source_ids": [
+        "file:project6-integration-qualification"
+      ],
+      "expected_answer_facts": [
+        "does not certify semantic retrieval quality or Owner acceptance"
+      ],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "sources",
+      "group": "historical",
+      "partition": "holdout"
+    },
+    {
+      "id": "G40",
+      "question": "Tìm knowledge của Project6",
+      "project_scope": 6,
+      "authorized_actor": 999999,
+      "expected_source_ids": [],
+      "expected_answer_facts": [],
+      "forbidden_claims": [
+        "Tài liệu chứng minh trạng thái runtime hiện tại",
+        "Owner đã nghiệm thu #398",
+        "Remote CI đã PASS"
+      ],
+      "expected_behavior": "deny",
+      "group": "unauthorized",
+      "partition": "holdout"
+    }
+  ]
+}

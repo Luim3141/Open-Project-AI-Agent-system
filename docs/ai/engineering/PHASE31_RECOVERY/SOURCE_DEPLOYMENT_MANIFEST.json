@@ -1,0 +1,88 @@
+{
+  "manifest_version": "3.1.0",
+  "project_name": "QLDAPM MAIN",
+  "phase": "PHASE 3.1 EMERGENCY FUNCTIONAL RECOVERY & REAL ACCEPTANCE",
+  "generated_at": "2026-10-31T12:21:00+07:00",
+  "deployment_environment": "Docker Compose + WSL2 Ubuntu",
+  "containers": {
+    "web": {
+      "name": "qldapm-openproject-web-1",
+      "image": "qldapm-core:engineering-continuation-r20-20261031",
+      "image_manifest_sha256": "sha256:c15c5bb7a8370b39c70df077d2e2987a5b5fd0a66789a7c10daa2e9a3c3fc173",
+      "status": "Up (healthy)",
+      "ports": "127.0.0.1:18088->8080/tcp"
+    },
+    "gateway": {
+      "name": "qldapm-ai-gateway-1",
+      "image": "qldapm-ai:engineering-continuation-r19-20261030",
+      "status": "Up (healthy)",
+      "ports": "127.0.0.1:18089->8090/tcp"
+    },
+    "db": {
+      "name": "qldapm-openproject-db-1",
+      "status": "Up (healthy)",
+      "database": "openproject (PostgreSQL 17)"
+    },
+    "openclaw": {
+      "name": "OpenClaw WSL2 Daemon",
+      "status": "Active (Localhost)",
+      "ports": "127.0.0.1:18789",
+      "runtime": "Node.js v24.22.2"
+    }
+  },
+  "source_files": [
+    {
+      "path": "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb",
+      "sha256": "7a3ccfaacdcb57e5240193d57cec2fddae9de7b718023ed834a21d56402fd266",
+      "container_path": "/app/app/controllers/qldapm_ai_controller.rb",
+      "container_match": true,
+      "purpose": "Role RBAC initialization, Turbo stream error handling, dynamic unit lookup, arguments normalization"
+    },
+    {
+      "path": "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb",
+      "sha256": "667a21b651e288ad0bcb8b3dd1661f3d90912ff1f6c31c2707d60d174b3edc24",
+      "container_path": "/app/app/views/qldapm_ai/_engineering_command_center.html.erb",
+      "container_match": true,
+      "purpose": "Command Center modern UI layout, deferred button disable, Turbo event listeners, dynamic RUN ONCE form"
+    },
+    {
+      "path": "openproject/ai/gateway/service.py",
+      "sha256": "2b79bad9a4663d11c4330318f31add497bd97291a110a5b41962bf2ea1b634fc",
+      "container_path": "/app/service.py",
+      "purpose": "Gateway RPC router, argument keys validation, command dispatching"
+    },
+    {
+      "path": "openproject/ai/gateway/engineering_github_sync.py",
+      "sha256": "a5b028dfc4cafbbf6bf8f2735dce6ac3dc9504aa3327b73989ba7ea7de5dfed9",
+      "container_path": "/app/engineering_github_sync.py",
+      "purpose": "GitHub REST API reconciliation, stacked branch detection, persistent sync cache"
+    }
+  ],
+  "invariants_verification": {
+    "project5_work_packages_count": 341,
+    "project5_max_lock_version": 4,
+    "project5_writes_occurred": 0,
+    "gemini_api_cost_usd": 0.0,
+    "gemini_model_configured": "gemini-3.5-flash-lite",
+    "gemini_call_receipts_count": 325,
+    "gemini_call_receipts_model_breakdown": {
+      "gemini-3.5-flash-lite": 325
+    },
+    "github_prs_auto_merged": 0,
+    "wp_379_status": "IN PROGRESS"
+  },
+  "automated_tests": {
+    "playwright_runner": "tools/verify_phase31_real_e2e.js",
+    "status": "ALL_PASS",
+    "passed_steps": [
+      "page_load",
+      "workforce_transparency",
+      "sync_github",
+      "snapshot_report",
+      "run_once",
+      "infinite_spinner_eliminated",
+      "project5_invariants_post_check"
+    ],
+    "screenshots_count": 5
+  }
+}

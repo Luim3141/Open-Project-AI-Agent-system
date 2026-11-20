@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/core/overlay/app/services/qldapm/observer_acceptance.rb": "6d618507081f3d764efb26a2feda4cb1c5ea503728f369a9b8bd803857df3270"
+  },
+  "checks": {
+    "observer": true,
+    "notifications": true,
+    "core": true,
+    "security": true
+  },
+  "evidence": {
+    "scope": "Replace default ASC journal association ordering with exact DESC before bounded chronological projection; no gate weakening",
+    "ruby_regression": {
+      "tests": 3,
+      "assertions": 7,
+      "red_before": true,
+      "green_after": true
+    },
+    "real_native_readonly": {
+      "status": "PASS",
+      "before": {
+        "task_id": 397,
+        "project_id": 6,
+        "lock_version": 11,
+        "status_id": 35,
+        "status_name": "DONE",
+        "is_closed": true,
+        "verified": false,
+        "status_change": null,
+        "gate_errors": [],
+        "gate_policy": "ENGINEERING_RUNTIME_GATES_REQUIRED",
+        "source_hash": "1ee6dc95754a0a7e1b68cf850c88b5d73ad4a6ab2f974ac4ad53a8018367cf74",
+        "history_truncated": false,
+        "observed_at": 1793908981.1809952
+      },
+      "after": {
+        "task_id": 397,
+        "project_id": 6,
+        "lock_version": 11,
+        "status_id": 35,
+        "status_name": "DONE",
+        "is_closed": true,
+        "verified": true,
+        "status_change": {
+          "journal_id": 1251,
+          "journal_version": 5,
+          "actor_id": 18,
+          "current_actor_role": "AI_SYSTEM_OWNER",
+          "at": 1793908481.881058,
+          "from_status_id": 41,
+          "to_status_id": 35,
+          "provenance": "NATIVE_JOURNAL_AUTHOR_CURRENT_ROLE_RECHECKED"
+        },
+        "gate_errors": [],
+        "gate_policy": "ENGINEERING_RUNTIME_GATES_REQUIRED",
+        "source_hash": "ea2f92910b111780f505cb2acebef7924e8e6c8906168607077658dd8590cb6a",
+        "history_truncated": false,
+        "observed_at": 1793908981.3276014
+      },
+      "business_writes": 0,
+      "model_calls": 0,
+      "serving_class_changed": false
+    },
+    "gateway_notifications": "Source unchanged; prior immutable and 103host regression apply"
+  }
+}

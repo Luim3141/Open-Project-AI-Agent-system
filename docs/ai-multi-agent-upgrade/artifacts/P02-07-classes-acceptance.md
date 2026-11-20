@@ -1,0 +1,13 @@
+# P02-07 class allocation acceptance —16Oct2026
+
+Staging Gateway48a81a56aa34a1bda4e7340ddb7af58e63fa86abcbcb9e6c37bb0d3797d0b08b implements authenticated run_class interactive/agent/report/system, shared project hard quota and model-round ceilings32/8/4/1. No class locks unused quota; all can use the entire idle project budget. Priority is interactive, requested agents, reports, system; actor fairness stays within priority. Scheduling class never grants role, native permission or write consent. It persists in SQLite and worker reads it by actor/run ID. Existing scoped write/process protocol remains compatible; a round is a model turn, not a fixed count of native operations.
+
+- P02-classes-regression-final.log:201/201 PASS158.533s, no skips. Published openapi.json/mcp-tools.json match shared API/catalog source.
+- P02-classes-linux-final.log:34/34 PASS1.372s, final image/network none. Includes5class tests: authenticated REST5roles×4classes, exact idempotent replay, cross-actor polling denial, non-PM business write denial, each class borrows full13RPM until shared hard cap, worker reads persisted class/round limits without extra consent, loop stops before another provider call and retains receipts.
+- P02-classes-stage-deploy.json: operator image/base/policy validation/private snapshot and staging provision PASS; prior2415image/private before-provision-1792123121136561700 retained.
+- P02-classes-live-check.json:7source files match image; advertised schema and ceilings match; all5native identities read335each, PM-only ceiling preserved, original471ledger rows/current admission unblocked/cachedREADY retained. No new provider calls.
+- P02-classes-preservation-check.json:19selected container images unchanged except candidate Gateway; mounts/ports/private config/native schema/roles/counts/prior jobs/runs/proposals/ledger unchanged, all selected stage services healthy and4HTTP ports200. Full validated9ed968backup/restore from P02-06 retained; no business data migration in this task.
+
+Disclosed execution error: agent dispatched staging before reading the first201regression exit code. That run failed the static published API export check. Exports were regenerated and final201regression passed; no native data/roles/key changed. P02-07 stayed IN_PROGRESS until this final acceptance. Initial Linux test harness also needed QLDAPM_AI_RUNTIME empty to avoid importing production ASGI state on a network-none read-only fixture; product configuration unchanged.
+
+No claim of live Google load, physical5clients, current billing verification or full system release. n8n/Supervisor integration remains later phases; clients now have the documented shared API class field. No main promotion/Desktop/CSDLDPT changes. P02-08/10 remain open.

@@ -1,0 +1,56 @@
+{
+  "utc": "2026-11-03T13:27:11.486547+00:00",
+  "status": "SERVING_SOURCE_IMAGES_PINS_WORKER_GATE_VERIFIED",
+  "containers": {
+    "gateway": {
+      "image": "sha256:e9af9565b3af52d2b2184bef144aa22cbdab019ecae15f2ccb0b48526f060ed7",
+      "state": "running",
+      "health": "healthy"
+    },
+    "core": {
+      "image": "sha256:b5f3913ae8a74e4d37aaba9a5a6a12c14ddbe6d75d885359175a0a5d1f6a3db7",
+      "state": "running",
+      "health": "healthy"
+    },
+    "n8n": {
+      "image": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269",
+      "state": "running",
+      "health": "NOT_CONFIGURED"
+    }
+  },
+  "runtime_source_sha256": {
+    "openproject/ai/gateway/app.py": "9246a3f8985c40b55bda737b66d4b7d936b8eea890bb4cf3afc28315b3eae408",
+    "openproject/ai/gateway/service.py": "32b94f54c5984bd9ad7384172185a16134b78863b3d8139e69e1d0ce81697196",
+    "openproject/ai/gateway/monitoring.py": "9af5ab36c7daaf64aa86fa5ec11ca3c23b5073498352ace80bf99cff37521957",
+    "openproject/ai/gateway/integration_events.py": "b8bd0594b6a9d021b357c844c0b8e0dfa422bfd0a04c6021c0ca6cbfac4dc52a",
+    "openproject/ai/gateway/engineering_github_poll.py": "2bc8ab36f3eb5a4c45d2f88cf0aa9cb48e5329b6dd9e6ad26be5528ef999f8cd",
+    "openproject/ai/gateway/engineering_github_details.py": "823bd0ca9a45ec37f4b0ef18838b7c8c1248e6869e1617cb6cf850b31d6b2789",
+    "openproject/ai/gateway/engineering_github_sync.py": "08075df59ea0f62db358c8ae945a3c0fb408fc05935eacf476bc80a7a33dec46",
+    "openproject/ai/gateway/engineering.py": "65ae24a23dad3c8e4f1dfea689d34b70e2b39977cbe83fc21ccc2a1d3c38737c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "144f2748375374c02c908d03b1555aa77a065c81e5108cee647af2e13e81450e"
+  },
+  "host_source_sha256": {
+    "openproject/ai/automation/engineering_worker.py": "4e2faa37019b3682cc94c5b8a438be070718bb872f700c03580196d1be13cad4",
+    "openproject/ai/automation/openclaw_health.py": "1bd51e02bf6e848aa90332f9e9095d17783a426b45e0dc77d474554001600f30",
+    "openproject/ai/automation/openclaw_provider_gate.py": "3937350e202f9609579676ac61937806ea4ff5d0fd43b52efccef0d96c504093"
+  },
+  "engineering": {
+    "mode": "OFF",
+    "active": 0,
+    "worker_age_seconds": 2.429098129272461,
+    "worker_run_id": null,
+    "provider_receipts": 484,
+    "wp391": {
+      "queue_state": "finished",
+      "recovery_count": 3,
+      "checkpoint_version": 39,
+      "generation_calls": 45
+    }
+  },
+  "provider_gate": {
+    "active": false,
+    "sha256": "3937350e202f9609579676ac61937806ea4ff5d0fd43b52efccef0d96c504093"
+  },
+  "owner_uat": "PENDING OWNER",
+  "ui_uat": "UI UAT BLOCKED BY TOOL AVAILABILITY"
+}

@@ -1,0 +1,130 @@
+{
+  "status": "succeeded",
+  "text": "PM/BA specification, Native backlog và dependencies đã đồng bộ. UAT deferred.",
+  "plan_id": "e2db6811-44fe-418c-b7dc-12fb9d52d330",
+  "native_readback": {
+    "create-list-persistence-v1": {
+      "agent": "dev",
+      "dependencies": [],
+      "id": 380,
+      "lock_version": 8,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "crud-search-web-v1": {
+      "agent": "dev",
+      "dependencies": [
+        "create-list-persistence-v1"
+      ],
+      "id": 381,
+      "lock_version": 9,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-20c2a94109f4e78f": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-bb9a628fe5b7be67"
+      ],
+      "id": 387,
+      "lock_version": 10,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-283138e910432528": {
+      "agent": "dev",
+      "dependencies": [
+        "crud-search-web-v1"
+      ],
+      "id": 382,
+      "lock_version": 9,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-2ec52f6742aa972f": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-9d0ff35386a63183"
+      ],
+      "id": 391,
+      "lock_version": 10,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-4d13e695555a8d44": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-283138e910432528"
+      ],
+      "id": 383,
+      "lock_version": 9,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-9d0ff35386a63183": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-e44b47e2e8610c4f"
+      ],
+      "id": 390,
+      "lock_version": 10,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-a51b2f686861716c": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-2ec52f6742aa972f"
+      ],
+      "id": 394,
+      "lock_version": 10,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-bb9a628fe5b7be67": {
+      "agent": "dev",
+      "dependencies": [
+        "health-check-v1"
+      ],
+      "id": 386,
+      "lock_version": 10,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "feedback-e0408cbf553ca0ba": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-a51b2f686861716c"
+      ],
+      "id": 396,
+      "lock_version": 0,
+      "priority": 1,
+      "state": "PLANNED"
+    },
+    "feedback-e44b47e2e8610c4f": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-20c2a94109f4e78f"
+      ],
+      "id": 389,
+      "lock_version": 10,
+      "priority": 3,
+      "state": "DELIVERED"
+    },
+    "health-check-v1": {
+      "agent": "dev",
+      "dependencies": [
+        "feedback-4d13e695555a8d44"
+      ],
+      "id": 384,
+      "lock_version": 2,
+      "priority": 3,
+      "state": "DELIVERED"
+    }
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "retrieval_count": 1
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\e2db6811-44fe-418c-b7dc-12fb9d52d330"
+}

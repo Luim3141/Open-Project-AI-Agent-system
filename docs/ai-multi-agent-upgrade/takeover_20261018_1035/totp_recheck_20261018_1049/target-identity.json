@@ -1,0 +1,264 @@
+{
+  "at": "2026-10-18T03:50:13.741825+00:00",
+  "docker_context": "desktop-linux",
+  "containers": [
+    {
+      "name": "qldapm-ai-stage-db-1",
+      "id": "0775f1163e682dea6e1df59f306ae89dfbe7ba0a8c38031d09604501b0ca3505",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "image_ref": "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "compose_project": "qldapm-ai-stage",
+      "compose_service": "db",
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml",
+      "compose_workdir": "D:\\AI project\\QLDAPM chat\\openproject\\ai",
+      "state": "running",
+      "health": "healthy",
+      "started_at": "2026-10-17T19:19:29.711372486Z",
+      "restart_count": 0,
+      "networks": {
+        "qldapm-ai-stage_stage": {
+          "ip": "172.27.0.2",
+          "aliases": [
+            "qldapm-ai-stage-db-1",
+            "db"
+          ]
+        }
+      },
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "qldapm-ai-stage_stage-db",
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-db/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "RW": true
+        }
+      ],
+      "database_endpoint": null
+    },
+    {
+      "name": "qldapm-ai-stage-staging-web-1",
+      "id": "0422a1d53442545ec4159ee57270e68f0cfcf18ebcef01ce5c585635758c4cf8",
+      "image": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "image_ref": "sha256:8a42c7efe65d799dd2b4a259a8cacc567149a336a4dc366a830eb7c0f48bdfe8",
+      "compose_project": "qldapm-ai-stage",
+      "compose_service": "staging-web",
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "compose_workdir": "D:\\AI project\\QLDAPM chat\\openproject\\ai",
+      "state": "running",
+      "health": "healthy",
+      "started_at": "2026-10-17T20:54:40.682536936Z",
+      "restart_count": 0,
+      "networks": {
+        "qldapm-ai-stage_stage": {
+          "ip": "172.27.0.3",
+          "aliases": [
+            "qldapm-ai-stage-staging-web-1",
+            "staging-web"
+          ]
+        },
+        "qldapm-ai-stage_stage-front": {
+          "ip": "172.29.0.3",
+          "aliases": [
+            "qldapm-ai-stage-staging-web-1",
+            "staging-web"
+          ]
+        }
+      },
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "qldapm-ai-stage_stage-assets",
+          "Source": "/var/lib/docker/volumes/qldapm-ai-stage_stage-assets/_data",
+          "Destination": "/var/openproject/assets",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage",
+          "Destination": "/private",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+          "Destination": "/qldapm",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "Destination": "/qldapm-access",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/ai/core",
+          "Destination": "/qldapm-core",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\quick_tunnel_web.rb",
+          "Destination": "/qldapm-operator/quick_tunnel_web.rb",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage/deep-test-receipt.key",
+          "Destination": "/qldapm-ui/test-receipt.key",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/run/desktop/mnt/host/c/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai/ui.key",
+          "Destination": "/qldapm-ui/ui.key",
+          "RW": false
+        }
+      ],
+      "database_endpoint": {
+        "hostname": "db",
+        "port": 5432,
+        "database": "openproject"
+      }
+    },
+    {
+      "name": "qldapm-ai-stage-staging-gateway-1",
+      "id": "d948c74b9d3936209ac4581c6811f15ba3834ce6f828ee5f0666f5ba7bbdad84",
+      "image": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233",
+      "image_ref": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233",
+      "compose_project": "qldapm-ai-stage",
+      "compose_service": "staging-gateway",
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "compose_workdir": "D:\\AI project\\QLDAPM chat\\openproject\\ai",
+      "state": "running",
+      "health": "healthy",
+      "started_at": "2026-10-17T22:47:55.606704854Z",
+      "restart_count": 0,
+      "networks": {
+        "qldapm-ai-stage_automation": {
+          "ip": "192.168.208.3",
+          "aliases": [
+            "qldapm-ai-stage-staging-gateway-1",
+            "staging-gateway",
+            "gateway"
+          ]
+        },
+        "qldapm-ai-stage_stage": {
+          "ip": "172.27.0.5",
+          "aliases": []
+        },
+        "qldapm-ai-stage_stage-front": {
+          "ip": "172.29.0.4",
+          "aliases": [
+            "qldapm-ai-stage-staging-gateway-1",
+            "staging-gateway",
+            "gateway"
+          ]
+        }
+      },
+      "mounts": [
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai-workspaces",
+          "Destination": "/workspaces",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-free/free-tier-proof.json",
+          "Destination": "/qldapm-policy/free-tier-proof.json",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/stage-ai",
+          "Destination": "/state",
+          "RW": true
+        }
+      ],
+      "database_endpoint": null
+    },
+    {
+      "name": "qldapm-ai-stage-quick-tunnel-1",
+      "id": "bed480316b467816d3dd4c1ebe09e14bdca9f77b7efad52f5aa0670a4c33bde6",
+      "image": "sha256:a80f54e29918ec66c82cdc7ad8fd9a65e3082e59825c0356d5737916959884c6",
+      "image_ref": "qldapm-quick-tunnel:candidate",
+      "compose_project": "qldapm-ai-stage",
+      "compose_service": "quick-tunnel",
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "compose_workdir": "D:\\AI project\\QLDAPM chat\\openproject\\ai",
+      "state": "running",
+      "health": "healthy",
+      "started_at": "2026-10-17T22:21:39.439456555Z",
+      "restart_count": 1,
+      "networks": {
+        "qldapm-ai-stage_stage-front": {
+          "ip": "172.29.0.2",
+          "aliases": [
+            "qldapm-ai-stage-quick-tunnel-1",
+            "quick-tunnel"
+          ]
+        }
+      },
+      "mounts": [],
+      "database_endpoint": null
+    },
+    {
+      "name": "qldapm-ai-stage-n8n-editor-1",
+      "id": "fbc052639a323dc346cc1d6ace98bee9d1303db73ac5673ff040fe7aa8f334a4",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "image_ref": "caddy@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "compose_project": "qldapm-ai-stage",
+      "compose_service": "n8n-editor",
+      "compose_files": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\deep-ai.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\gemini-free.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\local-runtime.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\quick.stage.yml,D:\\AI project\\QLDAPM chat\\openproject\\ai\\backup.stage.yml",
+      "compose_workdir": "D:\\AI project\\QLDAPM chat\\openproject\\ai",
+      "state": "running",
+      "health": "healthy",
+      "started_at": "2026-10-17T19:19:29.849982099Z",
+      "restart_count": 0,
+      "networks": {
+        "qldapm-ai-stage_automation": {
+          "ip": "192.168.208.4",
+          "aliases": [
+            "qldapm-ai-stage-n8n-editor-1",
+            "n8n-editor"
+          ]
+        },
+        "qldapm-ai-stage_editor": {
+          "ip": "192.168.224.2",
+          "aliases": [
+            "qldapm-ai-stage-n8n-editor-1",
+            "n8n-editor"
+          ]
+        }
+      },
+      "mounts": [
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "D:\\AI project\\QLDAPM chat\\openproject\\ai\\automation\\Quick.Caddyfile",
+          "Destination": "/etc/caddy/Caddyfile",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/access",
+          "Destination": "/qldapm-access",
+          "RW": false
+        }
+      ],
+      "database_endpoint": null
+    }
+  ]
+}

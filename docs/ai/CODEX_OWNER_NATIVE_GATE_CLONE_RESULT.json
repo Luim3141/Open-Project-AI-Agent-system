@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-25T12:54:53.453680+00:00",
+  "status": "PASS_ACTUAL_NATIVE_OWNER_PM_GATE_PARITY_AND_FIVE_ROLE_DAILY_DELIVERY",
+  "core_image": "sha256:8f5e1a83aeb04953d692f47d0655f593d226e87be5931619b2714e6566101ff9",
+  "gateway_image": "sha256:8aed99f096aca8b2a8176b5c68b5a256bf095a6e2b03ab3d26bcb135015c71bd",
+  "identities": {
+    "18": "AI_SYSTEM_OWNER",
+    "19": "PM",
+    "20": "BA",
+    "21": "BE",
+    "22": "FE",
+    "23": "QA"
+  },
+  "checks": {
+    "18": {
+      "status": "PASS",
+      "native_id": 376,
+      "reviewer": 19,
+      "gate_operations": 5,
+      "source_actor_ids": [
+        18
+      ]
+    },
+    "19": {
+      "status": "PASS",
+      "native_id": 377,
+      "reviewer": 18,
+      "gate_operations": 5,
+      "source_actor_ids": [
+        19
+      ]
+    },
+    "20": {
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    "21": {
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    "22": {
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    },
+    "23": {
+      "status": "PASS_POLICY_ENFORCED",
+      "http": 422
+    }
+  },
+  "clone_created_ids": [
+    376,
+    377
+  ],
+  "idempotency": "Same exact request/hash does not advance lockVersion; altered hash422",
+  "daily_local_delivery": {
+    "actual_native_http_roles": 5,
+    "ready": 5,
+    "delivered_local_metadata": 5,
+    "model_calls": 0,
+    "external_sends": 0
+  },
+  "scope": "Actual isolated Native clone; fixture approval decisions are simulated, not human Main approval",
+  "main_native_writes": 0,
+  "staging_operations": false,
+  "limitations": [
+    "Main gate mutations not performed",
+    "No claim of full QA/bug closure",
+    "Complete vector restore not attempted"
+  ]
+}

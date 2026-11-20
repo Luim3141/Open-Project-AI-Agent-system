@@ -1,0 +1,15 @@
+# Checkpoint UAT — 2026-10-18T22:52:55.637123+07:00
+
+Resume đúng workspace D:\AI project\QLDAPM chat. **UAT-01 đã deploy và verified**, không chạy lại rollout hoặc xin lại approval. Owner approval af53a2f8… (Gateway-only); apply22:42:39–22:42:49+07 thành công, Core/tunnel/n8n/DB/backup/Main giữ ID/start/restarts.
+
+Serving Gatewaysha256:47751dc25b5d8a091946a5371452a07f599f02f15357d2a8ba40626a8b452219/Coresha256:3b09393d123464a7baf4726daf69806de4754a0b1911173e6dbe58ecb3ac2f99,48packaged Gateway modules+7Core files parity PASS.18serving running,4owned fixtures stopped/data retained. Public URL https://therapeutic-price-various-marking.trycloudflare.com; host landing http://localhost:18090. Quick URL có thể đổi bình thường sau restart.
+
+Đã thực thi75serving+64clonebrowser+29cloneAPI+9fixturechain;5DailyUI+1n8nAPI+1n8nUI+2realworkflowCLI;2clone fix regressions+7post-fix serving checks. Tổng195functional assertions, tách60Windows/41Linux/58mock tests. Full64/29 trên6afb trước sửa, regression2+7 trên477, không khẳng định rerun full suite trên477.5role Backlog/Sprint dữ liệu PASS. Canonical PM create/reject/approve/audit có thật trên fixture451; Supervisor draft chuyển qua explicit PM tool form, chưa auto conversion. LiveGemini0calls, ledger471.
+
+Prebackup f5ceb95d-90a1-4e07-89e7-9b4ae7788b5a; postbackup 31b07c1e-d4fc-45ba-8401-503d44965d8c;3SQLite cold restore cả2PASS. Native372WP/217business fingerprints retained; sessions/users/TOTP.last_used/sequences expected deltas. User last_failed_login_on changed from earlier diagnostic, all nonaccess fields, passwords/tokens/RBAC/active/default/secrets retained. Old gateway/knowledge rows preserved. Raw logs/screens/credentials private tại C:\Users\LUIM\AppData\Local\QLDAPM\openproject-ai\operator\post-uat-20261018_2200; không in secret hoặc mở live WAL bằng Windows.
+
+6deliverables đã lưu trong run này. Xem UAT_EXECUTION_REPORT.md, UAT_TEST_RESULTS.csv, FUNCTIONAL_GAPS.md, OPEN_BUGS.md, FINAL_RELEASE_READINESS.md, NEXT_ACTION_PLAN.md. Các attempts Backlog/n8n FAIL do timing/hiddenDOM/PM-edit selector được giữ, không xóa hoặc biến thành product bug. G2_BLOCKED_OWNER_VERIFICATION;20-user deferred; Main chưapromote; TOTP_NOT_APPROVED_DO_NOT_ROTATE.
+
+Tiếp theo: human UAT local; owner G2 verification rồi xin1minimal live Gemini smoke riêng; đề xuất/sửa safe formatting hoặc draft-to-preview nếu owner ưu tiên, qualify clone trước. Không còn apply/job nền đang chạy do phiên này. Không prepare/resume lại fixture seeder; inspect trước mọi hành động.
+
+Final handoff validation PASS: 52public text/source files scanned,0saved-secret matches;269CSV rows have existing evidence;6deliverables nonempty. Original113task objects unchanged; registry validate PASS and113historical checklist entries synced with current UAT banner.18running containers exactly match serving set,0extra fixture running. Branch codex/local-multi-agent-upgrade/HEADde7fe8f10ed23bb392b6661b0c7ccf9967524b4e; pre-existing broadly untracked workspace preserved, no commit/reset. Source archives before/after/final saved privately; source-bundle.json records hashes.

@@ -1,0 +1,144 @@
+<% content_for :header_tags do %><%= render "execution_style" %><% end %>
+<section class="execution-monitor">
+  <nav class="em-breadcrumb" aria-label="Điều hướng">
+    <%= link_to "AI Assistant", project_qldapm_ai_path(@project.identifier) %>
+    <span class="em-breadcrumb-sep">/</span>
+    <span>Lịch sử xử lý Execution Monitor</span>
+  </nav>
+
+  <header class="em-header">
+    <div class="em-header-left">
+      <div class="em-eyebrow">
+        <span class="em-eyebrow-dot"></span>
+        <span>AI Multi-Agent Execution Monitor</span>
+      </div>
+      <h2>Lịch sử xử lý AI Multi-Agent</h2>
+      <p class="em-section-subtitle">Danh sách các phiên điều phối Multi-Agent của bạn · Mở sơ đồ chi tiết và phát lại không gọi thêm Gemini API.</p>
+    </div>
+  </header>
+
+  <% if @error %>
+    <p role="alert" class="em-warning"><%= @error %></p>
+  <% end %>
+
+  <section class="em-card">
+    <%= form_tag project_qldapm_ai_executions_path(@project.identifier), method: :get, class: "em-history-form" do %>
+      <div style="flex: 2; min-width: 240px;">
+        <%= label_tag :search, "Tìm trong yêu cầu của tôi" %>
+        <%= search_field_tag :search, params[:search], maxlength: 160, placeholder: "Nhập từ khóa cần tìm..." %>
+      </div>
+      <div>
+        <%= label_tag :state, "Trạng thái" %>
+        <%= select_tag :state, options_for_select([
+          ["Tất cả trạng thái", "ALL"],
+          ["Hoàn thành (COMPLETED)", "COMPLETED"],
+          ["Đang xử lý (RUNNING)", "RUNNING"],
+          ["Đang chờ (QUEUED)", "QUEUED"],
+          ["Thất bại (FAILED)", "FAILED"],
+          ["Chờ duyệt (REVIEW)", "REVIEW"],
+          ["Chờ quota (WAITING_QUOTA)", "WAITING_QUOTA"],
+          ["Chờ provider (WAITING_PROVIDER)", "WAITING_PROVIDER"],
+          ["Chặn key/model (BLOCKED)", "BLOCKED_KEY_OR_MODEL"]
+        ], params[:state]) %>
+      </div>
+      <div>
+        <%= label_tag :order, "Sắp xếp" %>
+        <%= select_tag :order, options_for_select([["Mới nhất trước", "desc"], ["Cũ nhất trước", "asc"]], params[:order]) %>
+      </div>
+      <div>
+        <%= submit_tag "Lọc lịch sử", class: "button -primary" %>
+      </div>
+    <% end %>
+  </section>
+
+  <% if @executions %>
+    <section class="em-card">
+      <div class="em-section-head">
+        <div>
+          <h3><%= @executions["total"] %> execution phù hợp</h3>
+          <p class="em-section-subtitle">Vai trò hiện tại: <%= @role || "Thành viên dự án" %> · Mỗi trang 10 execution · Dữ liệu bảo đảm quyền hạn theo phiên OpenProject.</p>
+        </div>
+      </div>
+
+      <% if @executions["items"].empty? %>
+        <p role="status" style="padding: 24px; text-align: center; color: var(--em-muted); background: var(--em-soft); border-radius: var(--em-radius-md);">
+          Chưa có execution phù hợp. Thay đổi bộ lọc hoặc gửi yêu cầu từ AI Assistant.
+        </p>
+      <% else %>
+        <div class="em-table-wrap">
+          <table>
+            <caption>Danh sách execution Multi-Agent của tài khoản</caption>
+            <thead>
+              <tr>
+                <th style="min-width: 280px;">Thời gian / Yêu cầu</th>
+                <th>Agent / Chế độ</th>
+                <th>Trạng thái</th>
+                <th>Thời gian / Usage</th>
+                <th style="text-align: right; min-width: 170px;">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @executions["items"].each do |run| %>
+                <tr>
+                  <td class="em-history-request">
+                    <time><%= Time.at(run["created_at"]).in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M:%S") %></time>
+                    <p title="<%= run["request"] %>"><%= run["request"] %></p>
+                  </td>
+                  <td>
+                    <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:4px;">
+                      <% run["agents"].each do |ag| %>
+                        <span class="em-mode-pill" style="font-size:11px;padding:2px 7px;"><%= ag.upcase %></span>
+                      <% end %>
+                    </div>
+                    <span class="em-mode-pill <%= 'mode-live' if run['mode'] == 'LIVE_GEMINI' %>" style="font-size:11px;">
+                      <%= run["mode"] || "Chưa xác nhận provider" %>
+                    </span>
+                  </td>
+                  <td>
+                    <% state_cls = case run["state"]
+                      when "COMPLETED" then "status-completed"
+                      when "FAILED" then "status-failed"
+                      when "RUNNING" then "status-running"
+                      else "status-default"
+                      end %>
+                    <span class="em-status-badge <%= state_cls %>">
+                      <%= run["state"] %>
+                    </span>
+                  </td>
+                  <td>
+                    <div style="font-weight:600;font-variant-numeric:tabular-nums;">
+                      <%= run["duration_seconds"] ? "#{run['duration_seconds']}s" : "Chưa có duration" %>
+                    </div>
+                    <div style="font-size:11.5px;color:var(--em-muted);margin-top:2px;">
+                      <%= run["calls"] %> calls · <%= run["tokens"] || "Chưa có dữ liệu" %> token
+                    </div>
+                  </td>
+                  <td style="text-align: right;">
+                    <div class="em-history-action">
+                      <%= link_to project_qldapm_ai_execution_path(@project.identifier, run["run_id"]), class: "em-btn-action" do %>
+                        <span>Xem quá trình AI xử lý</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                      <% end %>
+                      <p class="em-muted" style="margin:4px 0 0;font-size:11px;font-family:ui-monospace,monospace" title="<%= run["run_id"] %>">
+                        <%= run["run_id"] %>
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+
+      <nav class="em-history-links" aria-label="Phân trang execution">
+        <% if @executions["offset"] > 0 %>
+          <%= link_to "Trang trước", project_qldapm_ai_executions_path(@project.identifier, @filters.merge(offset: [@executions['offset']-10, 0].max)) %>
+        <% end %>
+        <% if @executions["next_offset"] %>
+          <%= link_to "Trang sau", project_qldapm_ai_executions_path(@project.identifier, @filters.merge(offset: @executions['next_offset'])) %>
+        <% end %>
+      </nav>
+    </section>
+  <% end %>
+</section>

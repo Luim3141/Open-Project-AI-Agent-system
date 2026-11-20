@@ -1,0 +1,2 @@
+FROM qldapm-gateway:demo-final-base
+COPY gateway/app.py gateway/service.py gateway/store.py gateway/engineering.py gateway/engineering_auto.py gateway/engineering_lifecycle.py gateway/engineering_operator.py gateway/engineering_observability.py gateway/engineering_health.py gateway/engineering_provider.py gateway/automation_targets.py gateway/daily_brief.py gateway/weekly_report.py gateway/n8n_lifecycle_outbox.py /app/gateway/

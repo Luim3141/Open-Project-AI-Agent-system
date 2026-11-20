@@ -1,0 +1,98 @@
+{
+  "other_daily_workflows": [],
+  "machine_status_http": 200,
+  "existing_machine_credentials": [
+    {
+      "id": "qldapmMachineStatus",
+      "name": "QLDAPM Gateway status read only",
+      "type": "httpHeaderAuth"
+    },
+    {
+      "id": "qldapmCommandHmac",
+      "name": "QLDAPM status command HMAC",
+      "type": "crypto"
+    }
+  ],
+  "native_summary_by_actor": [
+    {
+      "actor": 19,
+      "role": "PM",
+      "status": "PASS",
+      "count": 333
+    },
+    {
+      "actor": 20,
+      "role": "BA",
+      "status": "PASS",
+      "count": 333
+    },
+    {
+      "actor": 21,
+      "role": "BE",
+      "status": "PASS",
+      "count": 333
+    },
+    {
+      "actor": 22,
+      "role": "FE",
+      "status": "PASS",
+      "count": 333
+    },
+    {
+      "actor": 23,
+      "role": "QA",
+      "status": "PASS",
+      "count": 333
+    }
+  ],
+  "workflows": [
+    {
+      "id": "BpCQrGR866vg4BqQ",
+      "version": "0325527a-a37d-4996-859e-45003bd7fc80",
+      "name": "WF07: Daily Project Brief",
+      "active": true,
+      "schedules": [
+        {
+          "name": "Daily Schedule 08:00",
+          "disabled": true,
+          "parameters": {
+            "rule": {
+              "interval": [
+                {
+                  "expression": "0 8 * * *",
+                  "field": "cronExpression"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "5FRYNPSot18UDpKa",
+      "version": "e9a106fe-b6d6-4f8a-9df7-b779bd175444",
+      "name": "WF16: Executive Summary Generator",
+      "active": true,
+      "schedules": [
+        {
+          "name": "Periodic Health Schedule",
+          "disabled": true,
+          "parameters": {
+            "rule": {
+              "interval": [
+                {
+                  "field": "minutes",
+                  "minutesInterval": 15
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "native_mutations": 0,
+  "credential_changes": false,
+  "staging_operations": false,
+  "existing_daily_runs": []
+}

@@ -1,0 +1,1151 @@
+{
+  "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+  "steps": {
+    "context": {
+      "state": "done",
+      "at": 1793617564.7093146,
+      "value": {
+        "contract": {
+          "allow_routine_writes": false,
+          "base_sha": "4a794e2b3d62247881fef4c0908eeeee9f043ba2",
+          "claim_generation": 135,
+          "claim_token": "f66c14c2-60e2-4cd0-b8bc-2979ed15c725",
+          "deadline": 1793619336.9506848,
+          "definition": {
+            "acceptance": {
+              "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+              "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+              "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+              "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+              "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+              "F1": "AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.",
+              "F2": "AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.",
+              "F3": "AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.",
+              "F4": "AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.",
+              "F5": "AC5: Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title.",
+              "F6": "AC6: Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm.",
+              "F7": "AC7: Thêm tests bao phủ dữ liệu thường, Unicode, bộ lọc, danh sách rỗng, status không hợp lệ và regression tests."
+            },
+            "acceptance_file": "test_crud_web.py",
+            "base_branch": "codex/openclaw-feedback-9d0ff35386a63183",
+            "base_unit": "feedback-9d0ff35386a63183",
+            "feedback": "Mã yêu cầu: OWNER-TEST-CSV-20261102-01\r\n\r\nTrong Mini Task Manager của Project 6, bổ sung tính năng xuất danh sách công việc ra CSV qua:\r\n\r\nGET /tasks/export.csv\r\n\r\nGiữ phạm vi một engineering unit và một Pull Request.\r\n\r\nAcceptance criteria:\r\n1. Trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\r\n2. CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\r\n3. Hỗ trợ q và status với cùng hành vi lọc của GET /tasks hiện có. Status không hợp lệ trả HTTP 422.\r\n4. Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\r\n5. Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title bằng thư viện csv chuẩn.\r\n6. Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm và trả 422.\r\n7. Thêm tests dùng SQLite tạm, bao phủ dữ liệu thường, Unicode/ký tự đặc biệt, bộ lọc, danh sách rỗng và status không hợp lệ. Chạy cả regression tests hiện có.\r\n\r\nTiếp nối source đã bàn giao gần nhất của PR #9; không làm mất các tính năng cũ.\r\nKhông đổi database schema, không ghi Project 5, không dùng provider trả phí, không tự merge hoặc deploy demo.\r\n\r\nHoàn thành theo pipeline PM/BA → Dev → Reviewer → QA.\r\nBàn giao WP/run ID, kết quả tests, reviewed diff hash, commit và PR URL.",
+            "kind": "development",
+            "native_id": 391,
+            "plan_id": "2f7cba6e-666f-4e94-b7f2-124dd7e153e8",
+            "title": "Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện"
+          },
+          "engine": "openclaw",
+          "kind": "development",
+          "native_id": 391,
+          "project_id": 6,
+          "repository": "Luim3141/mini-task-manager",
+          "request_key": "auto-feedback-2ec52f6742aa972f-1793617535",
+          "source_version": 1,
+          "spec": "QLDAPM PM/BA engineering plan 2f7cba6e-666f-4e94-b7f2-124dd7e153e8\nUnit: feedback-2ec52f6742aa972f\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-9d0ff35386a63183\"],\"objective\":\"Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện csv), sắp xếp theo id tăng dần, xử lý đúng thứ tự route tĩnh trước route tham số, và viết test đầy đủ.\",\"priority\":1,\"unit\":\"feedback-2ec52f6742aa972f\"},\"functional_specification\":{\"acceptance\":[\"AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\",\"AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\",\"AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.\",\"AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\",\"AC5: Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title.\",\"AC6: Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm.\",\"AC7: Thêm tests bao phủ dữ liệu thường, Unicode, bộ lọc, danh sách rỗng, status không hợp lệ và regression tests.\"],\"api_behavior\":[\"GET /tasks/export.csv trả về HTTP 200, Content-Type text/csv; charset=utf-8 và Content-Disposition attachment; filename=tasks.csv.\",\"Nội dung CSV chứa các cột id, title, status, dữ liệu sắp xếp theo id tăng dần.\",\"Hỗ trợ bộ lọc q (tìm kiếm theo tiêu đề) và status (todo, in_progress, done).\",\"Trường hợp status không hợp lệ, trả về HTTP 422.\",\"Danh sách rỗng vẫn trả về file CSV chỉ có dòng tiêu đề.\"],\"citations\":[379],\"edge_cases\":[\"Tiêu đề chứa dấu phẩy, dấu ngoặc kép hoặc xuống dòng được chuẩn hóa chính xác bằng thư viện csv.\",\"Route /tasks/export.csv bị nhầm thành {task_id} nếu đặt sai thứ tự định tuyến.\",\"Danh sách công việc hoàn toàn trống.\",\"Tham số status chứa giá trị ngoài các trạng thái hợp lệ.\"],\"limitations\":[\"Không thay đổi database schema hiện tại.\",\"Không tự động merge hoặc deploy demo.\"],\"scope\":[\"Thêm endpoint GET /tasks/export.csv xuất danh sách công việc ra định dạng CSV.\",\"Hỗ trợ các tham số truy vấn q và status tương tự GET /tasks.\",\"Đảm bảo thứ tự định tuyến tĩnh /tasks/export.csv trước /tasks/{task_id}.\",\"Bổ sung test tự động kiểm thử tính năng xuất CSV và các trường hợp biên.\"],\"summary\":\"Bổ sung tính năng xuất danh sách công việc ra file CSV qua endpoint GET /tasks/export.csv với hỗ trợ bộ lọc q và status, bảo toàn Unicode và định dạng chuẩn.\"},\"reviewers\":[\"reviewer\",\"qa\"],\"virtual_executor\":\"dev\"}",
+          "spec_sha256": "eb33906e2027e4e49cf1bcf861db4926ec8369c0892b4b82d85b570872898aab",
+          "stage": "ADMITTED",
+          "unit": "feedback-2ec52f6742aa972f",
+          "worker_id": "8b7a6302-fb7f-4eb3-8e39-ed69c92c97de",
+          "write_scope_ids": []
+        },
+        "plan": {
+          "unit": "feedback-2ec52f6742aa972f",
+          "title": "Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện",
+          "spec_sha256": "eb33906e2027e4e49cf1bcf861db4926ec8369c0892b4b82d85b570872898aab",
+          "steps": [
+            "Define AC/API",
+            "Implement one feature in isolated worktree",
+            "Independent review",
+            "Independent tests",
+            "Publish PR and progress",
+            "Reindex authorized Native evidence"
+          ],
+          "acceptance": {
+            "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+            "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+            "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+            "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+            "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+            "F1": "AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.",
+            "F2": "AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.",
+            "F3": "AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.",
+            "F4": "AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.",
+            "F5": "AC5: Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title.",
+            "F6": "AC6: Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm.",
+            "F7": "AC7: Thêm tests bao phủ dữ liệu thường, Unicode, bộ lọc, danh sách rỗng, status không hợp lệ và regression tests."
+          },
+          "interface": "task_manager.app.create_app(database_path); pytest; Python FastAPI + stdlib sqlite3",
+          "permission": "demo repository and Project6 only; no merge/deploy; completion of unit is not WP379 DONE",
+          "verification": "trusted external acceptance + repo pytest on exact tree; independent reviewer session",
+          "functional_specification": {
+            "acceptance": [
+              "AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.",
+              "AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.",
+              "AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.",
+              "AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.",
+              "AC5: Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title.",
+              "AC6: Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm.",
+              "AC7: Thêm tests bao phủ dữ liệu thường, Unicode, bộ lọc, danh sách rỗng, status không hợp lệ và regression tests."
+            ],
+            "api_behavior": [
+              "GET /tasks/export.csv trả về HTTP 200, Content-Type text/csv; charset=utf-8 và Content-Disposition attachment; filename=tasks.csv.",
+              "Nội dung CSV chứa các cột id, title, status, dữ liệu sắp xếp theo id tăng dần.",
+              "Hỗ trợ bộ lọc q (tìm kiếm theo tiêu đề) và status (todo, in_progress, done).",
+              "Trường hợp status không hợp lệ, trả về HTTP 422.",
+              "Danh sách rỗng vẫn trả về file CSV chỉ có dòng tiêu đề."
+            ],
+            "citations": [
+              379
+            ],
+            "edge_cases": [
+              "Tiêu đề chứa dấu phẩy, dấu ngoặc kép hoặc xuống dòng được chuẩn hóa chính xác bằng thư viện csv.",
+              "Route /tasks/export.csv bị nhầm thành {task_id} nếu đặt sai thứ tự định tuyến.",
+              "Danh sách công việc hoàn toàn trống.",
+              "Tham số status chứa giá trị ngoài các trạng thái hợp lệ."
+            ],
+            "limitations": [
+              "Không thay đổi database schema hiện tại.",
+              "Không tự động merge hoặc deploy demo."
+            ],
+            "scope": [
+              "Thêm endpoint GET /tasks/export.csv xuất danh sách công việc ra định dạng CSV.",
+              "Hỗ trợ các tham số truy vấn q và status tương tự GET /tasks.",
+              "Đảm bảo thứ tự định tuyến tĩnh /tasks/export.csv trước /tasks/{task_id}.",
+              "Bổ sung test tự động kiểm thử tính năng xuất CSV và các trường hợp biên."
+            ],
+            "summary": "Bổ sung tính năng xuất danh sách công việc ra file CSV qua endpoint GET /tasks/export.csv với hỗ trợ bộ lọc q và status, bảo toàn Unicode và định dạng chuẩn."
+          },
+          "pm_plan": {
+            "assignments": [
+              {
+                "dependencies": [],
+                "objective": "Create/list tasks + SQLite persistence (verified delivery reused)",
+                "priority": 3,
+                "unit": "create-list-persistence-v1"
+              },
+              {
+                "dependencies": [
+                  "create-list-persistence-v1"
+                ],
+                "objective": "Edit/delete/status/search and usable web interface (verified delivery reused)",
+                "priority": 3,
+                "unit": "crud-search-web-v1"
+              },
+              {
+                "dependencies": [
+                  "crud-search-web-v1"
+                ],
+                "objective": "Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)",
+                "priority": 3,
+                "unit": "feedback-283138e910432528"
+              },
+              {
+                "dependencies": [
+                  "feedback-283138e910432528"
+                ],
+                "objective": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)",
+                "priority": 3,
+                "unit": "feedback-4d13e695555a8d44"
+              },
+              {
+                "dependencies": [
+                  "feedback-4d13e695555a8d44"
+                ],
+                "objective": "Them route GET /healthz va unit test status ok (verified delivery reused)",
+                "priority": 3,
+                "unit": "health-check-v1"
+              },
+              {
+                "dependencies": [
+                  "health-check-v1"
+                ],
+                "objective": "Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)",
+                "priority": 3,
+                "unit": "feedback-bb9a628fe5b7be67"
+              },
+              {
+                "dependencies": [
+                  "feedback-bb9a628fe5b7be67"
+                ],
+                "objective": "Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu  (verified delivery reused)",
+                "priority": 3,
+                "unit": "feedback-20c2a94109f4e78f"
+              },
+              {
+                "dependencies": [
+                  "feedback-20c2a94109f4e78f"
+                ],
+                "objective": "Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và (verified delivery reused)",
+                "priority": 3,
+                "unit": "feedback-e44b47e2e8610c4f"
+              },
+              {
+                "dependencies": [
+                  "feedback-e44b47e2e8610c4f"
+                ],
+                "objective": "Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit (verified delivery reused)",
+                "priority": 3,
+                "unit": "feedback-9d0ff35386a63183"
+              },
+              {
+                "dependencies": [
+                  "feedback-9d0ff35386a63183"
+                ],
+                "objective": "Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện csv), sắp xếp theo id tăng dần, xử lý đúng thứ tự route tĩnh trước route tham số, và viết test đầy đủ.",
+                "priority": 1,
+                "unit": "feedback-2ec52f6742aa972f"
+              }
+            ],
+            "blockers": [],
+            "next_action": "Tiến hành thực hiện unit feedback-2ec52f6742aa972f thông qua Dev và Reviewer/QA theo pipeline đã định nghĩa.",
+            "summary": "Phân tích và lập kế hoạch kỹ thuật cho tính năng xuất danh sách công việc ra file CSV qua endpoint GET /tasks/export.csv tại repository Luim3141/mini-task-manager với đầy đủ hỗ trợ bộ lọc, Unicode và kiểm thử tự động."
+          },
+          "feedback": "Mã yêu cầu: OWNER-TEST-CSV-20261102-01\r\n\r\nTrong Mini Task Manager của Project 6, bổ sung tính năng xuất danh sách công việc ra CSV qua:\r\n\r\nGET /tasks/export.csv\r\n\r\nGiữ phạm vi một engineering unit và một Pull Request.\r\n\r\nAcceptance criteria:\r\n1. Trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\r\n2. CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\r\n3. Hỗ trợ q và status với cùng hành vi lọc của GET /tasks hiện có. Status không hợp lệ trả HTTP 422.\r\n4. Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\r\n5. Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title bằng thư viện csv chuẩn.\r\n6. Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm và trả 422.\r\n7. Thêm tests dùng SQLite tạm, bao phủ dữ liệu thường, Unicode/ký tự đặc biệt, bộ lọc, danh sách rỗng và status không hợp lệ. Chạy cả regression tests hiện có.\r\n\r\nTiếp nối source đã bàn giao gần nhất của PR #9; không làm mất các tính năng cũ.\r\nKhông đổi database schema, không ghi Project 5, không dùng provider trả phí, không tự merge hoặc deploy demo.\r\n\r\nHoàn thành theo pipeline PM/BA → Dev → Reviewer → QA.\r\nBàn giao WP/run ID, kết quả tests, reviewed diff hash, commit và PR URL."
+        },
+        "agent_outputs": {
+          "pm": {
+            "schema_version": 1,
+            "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+            "task_id": "a995839f-8ceb-443d-a8cd-23395ccf0e40",
+            "actor_id": 20,
+            "project_id": 6,
+            "trace_id": "434d99da-3998-4c94-91f3-1e50a367ceb5",
+            "state": "COMPLETED",
+            "summary": "### ĐÁNH GIÁ TỔNG THỂ RỦI RO SPRINT (Mức độ: THẤP)\n- **Tổng số công việc:** 1 (Hoàn thành: 0, Đang mở: 1)\n- **Công việc quá hạn:** 0\n- **Công việc bị chặn (Blocker):** 0\n\n#### Chi tiết rủi ro và bằng chứng:\n\n#### Khuyến nghị hành động:\n1. Ưu tiên giải tỏa blocker cho các công việc có mức độ ưu tiên cao.\n2. Điều chỉnh phân bổ nguồn lực hoặc đàm phán phạm vi cho các mục trễ hạn.",
+            "references": [],
+            "receipt_ids": [],
+            "model_used": false,
+            "error_code": null
+          },
+          "ba": {
+            "schema_version": 1,
+            "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+            "task_id": "a995839f-8ceb-443d-a8cd-23395ccf0e40",
+            "actor_id": 20,
+            "project_id": 6,
+            "trace_id": "434d99da-3998-4c94-91f3-1e50a367ceb5",
+            "state": "COMPLETED",
+            "summary": "Không tìm thấy công việc mục tiêu để soạn thảo tiêu chí chấp nhận.",
+            "references": [],
+            "receipt_ids": [],
+            "model_used": false,
+            "error_code": null
+          }
+        },
+        "knowledge": {
+          "items": [
+            {
+              "title": "Develop Mini Task Manager Application",
+              "snippet": "Develop Mini Task Manager Application\n**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n...",
+              "native_id": 379,
+              "document_id": "d945999cf17f11e5cccfda014dffd74fe5d4b1cdadb3982598adf8700df70eea",
+              "lock_version": 4,
+              "source_id": "actor:20:wp:379",
+              "score": 0.03279,
+              "citation": "/work_packages/379",
+              "match_type": "HYBRID_RRF"
+            }
+          ],
+          "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+          "dense_state": "READY",
+          "scope": "native visibility/version before retrieval + fresh native ACL/version after retrieval",
+          "model_used": false
+        },
+        "profiles": {
+          "supervisor": {
+            "agent": "supervisor",
+            "runtime": "qldapm-supervisor",
+            "skill": "engineering-planning",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "claim",
+              "dependencies",
+              "stage handoff",
+              "bounded rework",
+              "publication and OFF"
+            ],
+            "tools": [
+              "existing queue",
+              "Native scoped publisher",
+              "SecondBrain"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "durable stage receipt + completion/publication readback",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "bounded ownership/claim/handoff; Paperclip/NEXUS principles"
+          },
+          "pm": {
+            "agent": "pm",
+            "runtime": "qldapm-gemini",
+            "skill": "engineering-planning",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "prioritize verified scope",
+              "Native backlog/dependencies",
+              "assign virtual Dev",
+              "blockers and next action"
+            ],
+            "tools": [
+              "shared Gemini structured analysis",
+              "Native reads",
+              "loaded planning skill"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "ordered assignments, dependencies, priorities, blockers, next action + Native backlog readback",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Senior Project Manager / Sprint Prioritizer"
+          },
+          "ba": {
+            "agent": "ba",
+            "runtime": "qldapm-gemini",
+            "skill": "engineering-planning",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "functional scope",
+              "API behavior",
+              "edge cases",
+              "acceptance and feedback specification"
+            ],
+            "tools": [
+              "shared Gemini structured analysis",
+              "Native reads",
+              "loaded planning skill"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "functional specification, API behavior, edge cases, acceptance, source citations",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Requirements Analyst"
+          },
+          "dev": {
+            "agent": "dev",
+            "runtime": "openclaw",
+            "skill": "engineering-development",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "actual source edits",
+              "terminal/dependencies",
+              "TDD and debugging",
+              "receiving feedback"
+            ],
+            "tools": [
+              "read",
+              "exec"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "filesystem diff + command/exit/test artifacts",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Senior Developer / Debugging Specialist"
+          },
+          "reviewer": {
+            "agent": "reviewer",
+            "runtime": "openclaw",
+            "skill": "engineering-review",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "independent exact-diff review",
+              "actionable findings",
+              "re-review"
+            ],
+            "tools": [
+              "read"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "JSON verdict/findings with exact revision and file/line",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "Code Reviewer / Reality Checker"
+          },
+          "qa": {
+            "agent": "qa",
+            "runtime": "openclaw",
+            "skill": "engineering-qa",
+            "version": "1.0.0",
+            "project_id": 6,
+            "responsibilities": [
+              "execute tests",
+              "capture real exit/artifacts",
+              "defect handoff and retest"
+            ],
+            "tools": [
+              "read",
+              "exec"
+            ],
+            "permissions": "Project6/#379 authorized delivery only; host validates Native writes; no MAIN source, merge, credentials or paid fallback",
+            "input_contract": "run/task/actor/project + immutable unit + fresh Native version + specification/AC + scoped citations + budget",
+            "output_contract": "executed command, exit code, acceptance mapping, actual failures",
+            "handoff_condition": "Validated output and checkpoint persisted; errors propagate to bounded rework or OFF; unknown writes require reconciliation",
+            "persona": "API Tester / Evidence Collector"
+          }
+        }
+      }
+    },
+    "prepare": {
+      "state": "done",
+      "at": 1793617717.3035824,
+      "value": "4a794e2b3d62247881fef4c0908eeeee9f043ba2"
+    },
+    "dev-0": {
+      "state": "done",
+      "at": 1793655434.7201035,
+      "value": {
+        "runId": "dedbcec8-2159-4cb3-802d-7cb9562db4f1",
+        "status": "ok",
+        "summary": "completed",
+        "result": {
+          "payloads": [
+            {
+              "text": "Hoàn thành xuất sắc việc bổ sung endpoint `GET /tasks/export.csv` theo đúng các Acceptance Criteria (AC1-AC7) trong mã yêu cầu `OWNER-TEST-CSV-20261102-01`.\n\n### Tóm tắt công việc đã thực hiện:\n1. **Endpoint mới `GET /tasks/export.csv`**:\n   - Trả về HTTP 200, `Content-Type: text/csv; charset=utf-8` và `Content-Disposition: attachment; filename=tasks.csv`.\n   - Cấu trúc CSV gồm 3 cột `id`, `title`, `status`, sắp xếp theo `id` tăng dần.\n   - Hỗ trợ đầy đủ bộ lọc `q` và `status` (với cơ chế `qldapm_casefold` và validation `status` hợp lệ, trả HTTP 422 khi `status` sai).\n   - Xử lý chính xác danh sách rỗng (vẫn trả về dòng tiêu đề).\n   - Bảo toàn Unicode / tiếng Việt và xử lý chuẩn các ký tự đặc biệt (dấu phẩy, ngoặc kép, xuống dòng trong `title`) nhờ thư viện chuẩn `csv` kết hợp `io.StringIO`.\n   - Đảm bảo định tuyến tĩnh (`/tasks/export.csv`) được khai báo trước route động (`/tasks/{task_id}`) để tránh bị bắt nhầm.\n2. **Kiểm thử tự động (Pytest)**:\n   - Thêm bộ test `tests/test_export_csv.py` bao phủ dữ liệu thông thường, Unicode, ký tự đặc biệt, bộ lọc `q`/`status`, danh sách rỗng, trạng thái không hợp lệ (422) và kiểm tra thứ tự route.\n   - Chạy toàn bộ regression test suite (`test_export_csv.py`, `test_tasks.py`, `test_web_ui.py`) thành công 100% (29/29 tests passed).\n\n### Kết quả chạy tests:\n```\n============================== test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0\nrootdir: /home/openclaw/engineering/feedback-2ec52f6742aa972f\nplugins: anyio-4.16.0\ncollected 29 items\n\ntests/test_export_csv.py .....                                           [ 17%]\ntests/test_tasks.py ......................                               [ 93%]\ntests/test_web_ui.py ..                                                  [100%]\n\n======================== 29 passed, 1 warning in 2.11s =========================\n```",
+              "mediaUrl": null
+            }
+          ],
+          "meta": {
+            "durationMs": 29033,
+            "agentMeta": {
+              "sessionId": "2c5e56da-e1bc-4982-97d6-72d0d799dd3b",
+              "sessionFile": "agent:dev:explicit:2c5e56da-e1bc-4982-97d6-72d0d799dd3b",
+              "provider": "google",
+              "model": "gemini-3.5-flash-lite",
+              "contextTokens": 1048576,
+              "contextTokensSource": "resolved",
+              "agentHarnessId": "openclaw",
+              "credentialSource": {
+                "kind": "direct",
+                "evidence": "environment",
+                "authorization": "ambient"
+              },
+              "usage": {
+                "input": 25632,
+                "output": 841,
+                "cacheRead": 46943,
+                "cacheWrite": 0,
+                "total": 73416,
+                "cost": {
+                  "total": 0
+                }
+              },
+              "lastCallUsage": {
+                "input": 3539,
+                "output": 604,
+                "cacheRead": 12236,
+                "cacheWrite": 0,
+                "cost": {
+                  "total": 0
+                },
+                "total": 16379
+              },
+              "promptTokens": 15775,
+              "contextBudgetStatus": {
+                "schemaVersion": 1,
+                "source": "pre-prompt-estimate",
+                "updatedAt": 1793655384212,
+                "provider": "google",
+                "model": "gemini-3.5-flash-lite",
+                "route": "fits",
+                "shouldCompact": false,
+                "estimatedPromptTokens": 14504,
+                "contextTokenBudget": 1048576,
+                "promptBudgetBeforeReserve": 1028576,
+                "reserveTokens": 20000,
+                "effectiveReserveTokens": 20000,
+                "remainingPromptBudgetTokens": 1014072,
+                "overflowTokens": 0,
+                "toolResultReducibleChars": 0,
+                "messageCount": 0,
+                "unwindowedMessageCount": 0,
+                "sessionId": "2c5e56da-e1bc-4982-97d6-72d0d799dd3b"
+              },
+              "codeModeEngaged": false,
+              "assistantTurns": 5,
+              "terminalReceipt": {
+                "runId": "dedbcec8-2159-4cb3-802d-7cb9562db4f1",
+                "sessionId": "2c5e56da-e1bc-4982-97d6-72d0d799dd3b",
+                "turnId": "dedbcec8-2159-4cb3-802d-7cb9562db4f1",
+                "requested": {
+                  "provider": "google",
+                  "model": "gemini-3.5-flash-lite"
+                },
+                "effective": {
+                  "provider": "google",
+                  "model": "gemini-3.5-flash-lite",
+                  "responseModel": "gemini-3.5-flash-lite"
+                },
+                "successfulToolNames": [
+                  "exec"
+                ],
+                "rerouted": false,
+                "terminalDisposition": "visible"
+              }
+            },
+            "aborted": false,
+            "systemPromptReport": {
+              "source": "run",
+              "generatedAt": 1793655382088,
+              "sessionId": "2c5e56da-e1bc-4982-97d6-72d0d799dd3b",
+              "sessionKey": "agent:dev:explicit:2c5e56da-e1bc-4982-97d6-72d0d799dd3b",
+              "provider": "google",
+              "model": "gemini-3.5-flash-lite",
+              "workspaceDir": "/home/openclaw/engineering/feedback-2ec52f6742aa972f",
+              "bootstrapMaxChars": 20000,
+              "bootstrapTotalMaxChars": 60000,
+              "bootstrapTruncation": {
+                "warningMode": "always",
+                "warningShown": false,
+                "truncatedFiles": 0,
+                "nearLimitFiles": 0,
+                "totalNearLimit": false
+              },
+              "sandbox": {
+                "mode": "off",
+                "sandboxed": false
+              },
+              "systemPrompt": {
+                "chars": 14107,
+                "hash": "2da9b2fa70a09296d771dfbd904e3017940bd69d57bb7877f4c6c347a791202f",
+                "projectContextChars": 7652,
+                "nonProjectContextChars": 6455
+              },
+              "injectedWorkspaceFiles": [
+                {
+                  "name": "AGENTS.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/AGENTS.md",
+                  "missing": false,
+                  "rawChars": 3325,
+                  "injectedChars": 3325,
+                  "truncated": false
+                },
+                {
+                  "name": "SOUL.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/SOUL.md",
+                  "missing": false,
+                  "rawChars": 1358,
+                  "injectedChars": 1358,
+                  "truncated": false
+                },
+                {
+                  "name": "IDENTITY.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/IDENTITY.md",
+                  "missing": true,
+                  "rawChars": 0,
+                  "injectedChars": 87,
+                  "truncated": false
+                },
+                {
+                  "name": "BOOTSTRAP.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/BOOTSTRAP.md",
+                  "missing": true,
+                  "rawChars": 0,
+                  "injectedChars": 0,
+                  "truncated": false
+                }
+              ],
+              "skills": {
+                "promptChars": 694,
+                "hash": "65052f6d9ef296526fe6b73e9b469b728fe0d67cf4ede2a13837f0fdd5d7473c",
+                "entries": [
+                  {
+                    "name": "engineering-development",
+                    "blockChars": 323
+                  }
+                ]
+              },
+              "tools": {
+                "listChars": 0,
+                "schemaChars": 3098,
+                "entries": [
+                  {
+                    "name": "read",
+                    "summaryChars": 164,
+                    "summaryHash": "d136f5b09e28d671addad4ca800b75b8aa6a36002bc739ead964f618d3e34829",
+                    "schemaChars": 460,
+                    "schemaHash": "6cbbd52fc1ec26fec668c24fc08c8ea42240d163d061109d07886707dfa8d428",
+                    "propertiesCount": 5
+                  },
+                  {
+                    "name": "exec",
+                    "summaryChars": 493,
+                    "summaryHash": "6ced4f9742c096180a3fd48c7af2c85e3594ca3e2ed355206fdc4204644902c8",
+                    "schemaChars": 1409,
+                    "schemaHash": "a4874168f0bc8f0c427ec81f3405ff7d363a78b04436752db578b60a9df5c9c2",
+                    "propertiesCount": 13
+                  },
+                  {
+                    "name": "process",
+                    "summaryChars": 190,
+                    "summaryHash": "75fd9c7b8d560599081ab2621e4f897babc118254cf439bd8329a60a905a9ef1",
+                    "schemaChars": 1152,
+                    "schemaHash": "f7090359705e53d1aca6a4721244c5a6d868fe3acb85ebdfb21c8f261a0446c0",
+                    "propertiesCount": 12
+                  },
+                  {
+                    "name": "skills_read",
+                    "summaryChars": 192,
+                    "summaryHash": "22e1821dfbc26bdfaba43eaa0f6d8ae20e3784560feb6a163a067fa5cefff353",
+                    "schemaChars": 77,
+                    "schemaHash": "2c1504684515db5ece179c4c776e308d55ea99fd9d7c7a8ffa87da40675dfe29",
+                    "propertiesCount": 1
+                  }
+                ]
+              },
+              "currentTurn": {
+                "promptChars": 28316,
+                "runtimeContextChars": 0,
+                "modelOnlyPromptChars": 0
+              }
+            },
+            "finalPromptText": "Trusted engineering envelope: {\"run_id\": \"b7fd6aec-3357-495f-b9e5-f7ba04d67ad6\", \"project_id\": 6, \"native_id\": 391, \"actor_id\": 20, \"agent_role\": \"dev\", \"repository\": \"Luim3141/mini-task-manager\", \"session_id\": \"2c5e56da-e1bc-4982-97d6-72d0d799dd3b\", \"workspace\": \"/home/openclaw/engineering/feedback-2ec52f6742aa972f\", \"skills_version\": \"1.0.0\", \"request_allowance\": 12, \"timeout_seconds\": 420}\nCurrent missing behavior to implement NOW: Mã yêu cầu: OWNER-TEST-CSV-20261102-01\r\n\r\nTrong Mini Task Manager của Project 6, bổ sung tính năng xuất danh sách công việc ra CSV qua:\r\n\r\nGET /tasks/export.csv\r\n\r\nGiữ phạm vi một engineering unit và một Pull Request.\r\n\r\nAcceptance criteria:\r\n1. Trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\r\n2. CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\r\n3. Hỗ trợ q và status với cùng hành vi lọc của GET /tasks hiện có. Status không hợp lệ trả HTTP 422.\r\n4. Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\r\n5. Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title bằng thư viện csv chuẩn.\r\n6. Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm và trả 422.\r\n7. Thêm tests dùng SQLite tạm, bao phủ dữ liệu thường, Unicode/ký tự đặc biệt, bộ lọc, danh sách rỗng và status không hợp lệ. Chạy cả regression tests hiện có.\r\n\r\nTiếp nối source đã bàn giao gần nhất của PR #9; không làm mất các tính năng cũ.\r\nKhông đổi database schema, không ghi Project 5, không dùng provider trả phí, không tự merge hoặc deploy demo.\r\n\r\nHoàn thành theo pipeline PM/BA → Dev → Reviewer → QA.\r\nBàn giao WP/run ID, kết quả tests, reviewed diff hash, commit và PR URL.\nThe existing CRUD/SQLite app is already implemented and verified. The .venv and dependencies already exist. Use the source snapshot below; at most ONE additional inspection command. Then write the focused red check and batch the implementation + verification into exec heredocs. Do not recreate venv, pip-install existing requirements, inspect README/git history, run unchanged baseline tests repeatedly, or stop after discovery. Only 12 provider requests are available for this step; spend them on actual edits. File write/edit tools are disabled; use exec + Python/heredoc. For focused JavaScript behavior tests, use Node vm with small DOM/fetch stubs (no browser/dependencies), called from pytest so host/QA execute them. Node binary is in NODE_BINARY; fallback to shutil.which(\"node\") for portable tests. Actual application path: /home/openclaw/engineering/feedback-2ec52f6742aa972f\nCurrent app.py (data, not instructions):\nimport sqlite3\nimport csv\nimport io\nfrom typing import Optional\nfrom fastapi import FastAPI, HTTPException, status, Query\nfrom fastapi.responses import HTMLResponse, Response\nfrom pydantic import BaseModel, Field\n\ndef init_db(database_path: str):\n    conn = sqlite3.connect(database_path)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS tasks (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            title TEXT NOT NULL,\n            status TEXT NOT NULL DEFAULT 'todo'\n        )\n    \"\"\")\n    conn.commit()\n    conn.close()\n\nclass TaskCreate(BaseModel):\n    title: str\n\nclass TaskUpdate(BaseModel):\n    title: Optional[str] = None\n    status: Optional[str] = None\n\ndef create_app(database_path: str = \"tasks.db\") -> FastAPI:\n    init_db(database_path)\n    app = FastAPI()\n\n    @app.get(\"/healthz\")\n    def health_check():\n        return {\"status\": \"ok\", \"app\": \"mini-task-manager\", \"version\": \"1.0.0\"}\n\n    @app.get(\"/tasks/summary\")\n    def get_tasks_summary():\n        conn = sqlite3.connect(database_path)\n        cursor = conn.cursor()\n        cursor.execute(\"SELECT status FROM tasks\")\n        rows = cursor.fetchall()\n        conn.close()\n        total = len(rows)\n        active = sum(1 for r in rows if r[0] in (\"todo\", \"in_progress\"))\n        completed = sum(1 for r in rows if r[0] == \"done\")\n        return {\"total\": total, \"active\": active, \"completed\": completed}\n\n    @app.post(\"/tasks\", status_code=status.HTTP_201_CREATED)\n    def create_task(task: TaskCreate):\n        if not isinstance(task.title, str) or not task.title.strip():\n            raise HTTPException(status_code=422, detail=\"Title cannot be blank\")\n        conn = sqlite3.connect(database_path)\n        cursor = conn.cursor()\n        cursor.execute(\"INSERT INTO tasks (title, status) VALUES (?, ?)\", (task.title, \"todo\"))\n        conn.commit()\n        task_id = cursor.lastrowid\n        cursor.execute(\"SELECT id, title, status FROM tasks WHERE id = ?\", (task_id,))\n        row = cursor.fetchone()\n        conn.close()\n        return {\"id\": row[0], \"title\": row[1], \"status\": row[2]}\n\n    @app.get(\"/tasks/export.csv\")\n    def export_tasks_csv(\n        q: Optional[str] = Query(None),\n        status: Optional[str] = Query(None)\n    ):\n        conn = sqlite3.connect(database_path)\n        conn.create_function(\"qldapm_casefold\", 1, lambda s: s.casefold() if s is not None else \"\")\n        cursor = conn.cursor()\n        query = \"SELECT id, title, status FROM tasks WHERE 1=1\"\n        params = []\n        \n        if q is not None:\n            query += \" AND qldapm_casefold(title) LIKE ? ESCAPE '\\\\'\"\n            escaped_q = q.casefold().replace('\\\\', '\\\\\\\\').replace('%', '\\\\%').replace('_', '\\\\_')\n            params.append(f\"%{escaped_q}%\")\n            \n        if status is not None:\n            if status not in (\"todo\", \"in_progress\", \"done\"):\n                conn.close()\n                raise HTTPException(status_code=422, detail=\"Invalid status\")\n            query += \" AND status = ?\"\n            params.append(status)\n            \n        query += \" ORDER BY id ASC\"\n        cursor.execute(query, params)\n        rows = cursor.fetchall()\n        conn.close()\n\n        output = io.StringIO()\n        writer = csv.writer(output)\n        writer.writerow([\"id\", \"title\", \"status\"])\n        for r in rows:\n            writer.writerow([r[0], r[1], r[2]])\n        csv_content = output.getvalue()\n        \n        return Response(\n            content=csv_content,\n            media_type=\"text/csv; charset=utf-8\",\n            headers={\"Content-Disposition\": \"attachment; filename=tasks.csv\"}\n        )\n\n    @app.get(\"/tasks/{task_id}\")\n    def get_task(task_id: int):\n        conn = sqlite3.connect(database_path)\n        cursor = conn.cursor()\n        cursor.execute(\"SELECT id, title, status FROM tasks WHERE id = ?\", (task_id,))\n        row = cursor.fetchone()\n        conn.close()\n        if not row:\n            raise HTTPException(status_code=404, detail=\"Task not found\")\n        return {\"id\": row[0], \"title\": row[1], \"status\": row[2]}\n\n    @app.get(\"/tasks/{task_id}/exists\")\n    def task_exists(task_id: int):\n        conn = sqlite3.connect(database_path)\n        cursor = conn.cursor()\n        cursor.execute(\"SELECT id FROM tasks WHERE id = ?\", (task_id,))\n        row = cursor.fetchone()\n        conn.close()\n        return {\"exists\": bool(row)}\n\n    @app.get(\"/tasks/{task_id}/title\")\n    def get_task_title(task_id: int):\n        conn = sqlite3.connect(database_path)\n        cursor = conn.cursor()\n        cursor.execute(\"SELECT id, title FROM tasks WHERE id = ?\", (task_id,))\n        row = cursor.fetchone()\n        conn.close()\n        if not row:\n            raise HTTPException(status_code=404, detail=\"Task not found\")\n        return {\"id\": row[0], \"title\": row[1]}\n\n    @app.get(\"/tasks\")\n    def list_tasks(\n        q: Optional[str] = Query(None),\n        status: Optional[str] = Query(None)\n    ):\n        conn = sqlite3.connect(database_path)\n        conn.create_function(\"qldapm_casefold\", 1, lambda s: s.casefold() if s is not None else \"\")\n        cursor = conn.cursor()\n        query = \"SELECT id, title, status FROM tasks WHERE 1=1\"\n        params = []\n        \n        if q is not None:\n            query += \" AND qldapm_casefold(title) LIKE ? ESCAPE '\\\\'\"\n            escaped_q = q.casefold().replace('\\\\', '\\\\\\\\').replace('%', '\\\\%').replace('_', '\\\\_')\n            params.append(f\"%{escaped_q}%\")\n            \n        if status is not None:\n            if status not in (\"todo\", \"in_progress\", \"done\"):\n                conn.close()\n                raise HTTPException(status_code=422, detail=\"Invalid status\")\n            query += \" AND status = ?\"\n            params.append(status)\n            \n        query += \" ORDER BY id ASC\"\n        cursor.execute(query, params)\n        rows = cursor.fetchall()\n        conn.close()\n        return [{\"id\": r[0], \"title\": r[1], \"status\": r[2]} for r in rows]\n\n    @app.patch(\"/tasks/{task_id}\")\n    def update_task(task_id: int, task_update: TaskUpdate):\n        if task_update.title is None and task_update.status is None:\n            raise HTTPException(status_code=422, detail=\"Empty update\")\n            \n        if task_update.title is not None:\n            if not isinstance(task_update.title, str) or not task_update.title.strip():\n                raise HTTPException(status_code=422, detail=\"Title cannot be blank\")\n                \n        if task_update.status is not None:\n            if task_update.status not in (\"todo\", \"in_progress\", \"done\"):\n                raise HTTPException(status_code=422, detail=\"Invalid status\")\n\n        conn = sqlite3.connect(database_path)\n        cursor = conn.cursor()\n        cursor.execute(\"SELECT id, title, status FROM tasks WHERE id = ?\", (task_id,))\n        row = cursor.fetchone()\n        if not row:\n            conn.close()\n            raise HTTPException(status_code=404, detail=\"Task not found\")\n\n        current_title, current_status = row[1], row[2]\n        new_title = task_update.title if task_update.title is not None else current_title\n        new_status = task_update.status if task_update.status is not None else current_status\n\n        cursor.execute(\"UPDATE tasks SET title = ?, status = ? WHERE id = ?\", (new_title, new_status, task_id))\n        conn.commit()\n        cursor.execute(\"SELECT id, title, status FROM tasks WHERE id = ?\", (task_id,))\n        updated_row = cursor.fetchone()\n        conn.close()\n        return {\"id\": updated_row[0], \"title\": updated_row[1], \"status\": updated_row[2]}\n\n    @app.delete(\"/tasks/{task_id}\", status_code=status.HTTP_204_NO_CONTENT)\n    def delete_task(task_id: int):\n        conn = sqlite3.connect(database_path)\n        cursor = conn.cursor()\n        cursor.execute(\"SELECT id FROM tasks WHERE id = ?\", (task_id,))\n        row = cursor.fetchone()\n        if not row:\n            conn.close()\n            raise HTTPException(status_code=404, detail=\"Task not found\")\n        cursor.execute(\"DELETE FROM tasks WHERE id = ?\", (task_id,))\n        conn.commit()\n        conn.close()\n        return None\n\n    @app.get(\"/\", response_class=HTMLResponse)\n    def web_interface():\n        return HTMLResponse(content=r\"\"\"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Mini Task Manager</title>\n  <style>\n    body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }\n    .controls, .task-item, .task-actions { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }\n    .controls { margin: 1rem 0; }\n    .task-item { justify-content: space-between; padding: .6rem 0; border-bottom: 1px solid #ddd; }\n    .task-title { overflow-wrap: anywhere; }\n    button, input, select { padding: .5rem; }\n    .error { color: #a01010; min-height: 1.4em; }\n    button:disabled { opacity: .6; }\n  </style>\n</head>\n<body>\n  <main>\n    <h1>Mini Task Manager</h1>\n    <div id=\"error-box\" class=\"error\" role=\"alert\" aria-live=\"assertive\"></div>\n    <form id=\"create-form\">\n      <label for=\"new-title\">New Task</label>\n      <input id=\"new-title\" type=\"text\" placeholder=\"New task title...\" required>\n      <button id=\"create-submit\" type=\"submit\">Add Task</button>\n    </form>\n    <div class=\"controls\">\n      <label for=\"search-q\">Search</label><input id=\"search-q\" type=\"search\" placeholder=\"Search tasks...\">\n      <label for=\"filter-status\">Status</label>\n      <select id=\"filter-status\">\n        <option value=\"\">All Statuses</option><option value=\"todo\">Todo</option>\n        <option value=\"in_progress\">In Progress</option><option value=\"done\">Done</option>\n      </select>\n      <button id=\"search-btn\" type=\"button\">Filter</button>\n      <button id=\"retry-btn\" type=\"button\" hidden>Retry loading tasks</button>\n    </div>\n    <p id=\"list-status\" role=\"status\" aria-live=\"polite\"></p>\n    <div id=\"task-list\" aria-busy=\"false\"></div>\n  </main>\n  <script>\n    const byId = id => document.getElementById(id);\n    let listSequence = 0;\n    let listController = null;\n\n    function errorMessage(data, fallback) {\n      if (typeof data === 'string') return data || fallback;\n      if (typeof data?.detail === 'string') return data.detail;\n      if (Array.isArray(data?.detail)) {\n        return data.detail.map(item => {\n          const field = Array.isArray(item.loc) ? item.loc.filter(part => part !== 'body').join('.') : '';\n          return (field ? field + ': ' : '') + (item.msg || 'Invalid value');\n        }).join('; ');\n      }\n      return fallback;\n    }\n\n    async function requestJson(url, options = {}) {\n      let response;\n      try { response = await fetch(url, options); }\n      catch (error) {\n        if (error.name === 'AbortError') throw error;\n        throw new Error('Network error. Check the connection and retry. Your input has been kept.');\n      }\n      if (!response.ok) {\n        let data = null;\n        try { data = await response.json(); } catch (_) { /* HTTP error may be HTML. */ }\n        throw new Error(errorMessage(data, 'Request failed (HTTP ' + response.status + '). Please retry.'));\n      }\n      if (response.status === 204) return null;\n      try { return await response.json(); }\n      catch (_) { throw new Error('The server returned an invalid response. Please retry.'); }\n    }\n\n    function showError(message) { byId('error-box').textContent = message || ''; }\n\n    async function withBusy(control, action) {\n      if (control.disabled) return;\n      control.disabled = true;\n      showError('');\n      try { await action(); await fetchTasks(); }\n      catch (error) { showError(error.message); }\n      finally { control.disabled = false; }\n    }\n\n    function renderTasks(tasks) {\n      const list = byId('task-list');\n      list.textContent = '';\n      tasks.forEach(task => {\n        const row = document.createElement('div'); row.className = 'task-item';\n        const title = document.createElement('span'); title.className = 'task-title';\n        title.textContent = task.title + ' (' + task.status + ')'; row.appendChild(title);\n        const actions = document.createElement('div'); actions.className = 'task-actions';\n        const status = document.createElement('select');\n        status.setAttribute('aria-label', 'Task Status: ' + task.title);\n        ['todo', 'in_progress', 'done'].forEach(value => {\n          const option = document.createElement('option'); option.value = value; option.textContent = value;\n          option.selected = value === task.status; status.appendChild(option);\n        });\n        status.value = task.status;\n        status.onchange = () => withBusy(status, async () => {\n          try {\n            await requestJson('/tasks/' + task.id, {method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({status: status.value})});\n          } catch (error) { status.value = task.status; throw error; }\n        });\n        actions.appendChild(status);\n        const edit = document.createElement('button'); edit.type = 'button'; edit.textContent = 'Edit';\n        edit.onclick = () => {\n          const title = prompt('Edit task title:', task.title);\n          if (title !== null) return withBusy(edit, () => requestJson('/tasks/' + task.id, {method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({title})}));\n        };\n        actions.appendChild(edit);\n        const remove = document.createElement('button'); remove.type = 'button'; remove.textContent = 'Delete';\n        remove.onclick = () => withBusy(remove, () => requestJson('/tasks/' + task.id, {method: 'DELETE'}));\n        actions.appendChild(remove); row.appendChild(actions); list.appendChild(row);\n      });\n    }\n\n    async function fetchTasks() {\n      const sequence = ++listSequence;\n      if (listController) listController.abort();\n      listController = new AbortController();\n      const signal = listController.signal;\n      const query = new URLSearchParams();\n      if (byId('search-q').value) query.set('q', byId('search-q').value);\n      if (byId('filter-status').value) query.set('status', byId('filter-status').value);\n      byId('task-list').setAttribute('aria-busy', 'true');\n      byId('list-status').textContent = 'Loading tasks...';\n      byId('retry-btn').hidden = true;\n      showError('');\n      try {\n        const tasks = await requestJson('/tasks?' + query.toString(), {signal});\n        if (sequence !== listSequence) return;\n        if (!Array.isArray(tasks)) throw new Error('The task list response is invalid. Please retry.');\n        renderTasks(tasks);\n        byId('list-status').textContent = tasks.length ? tasks.length + ' task(s)' : 'No tasks match your filters.';\n      } catch (error) {\n        if (sequence !== listSequence || error.name === 'AbortError') return;\n        showError(error.message);\n        byId('list-status').textContent = 'Unable to refresh tasks. Previously loaded data is kept.';\n        byId('retry-btn').hidden = false;\n      } finally {\n        if (sequence === listSequence) byId('task-list').setAttribute('aria-busy', 'false');\n      }\n    }\n\n    byId('create-form').onsubmit = event => {\n      event.preventDefault();\n      return withBusy(byId('create-submit'), async () => {\n        await requestJson('/tasks', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({title: byId('new-title').value})});\n        byId('new-title').value = '';\n      });\n    };\n    byId('search-btn').onclick = fetchTasks;\n    byId('retry-btn').onclick = fetchTasks;\n    byId('search-q').oninput = fetchTasks;\n    byId('filter-status').onchange = fetchTasks;\n    fetchTasks();\n  </script>\n</body>\n</html>\n\"\"\")\n\n    return app\n\n\nAssigned Project6 engineering unit. Scope only this repository/worktree. Read skills/engineering-development/SKILL.md. Follow TDD/systematic debugging and receiving-review-feedback, use real terminal/file tools. Do not alter config/skills, scheduler, credentials or outside paths. No commit/push; host owns finishing branch. Preserve all existing code and completed work; inspect current tree, implement only missing assigned behavior. Use .venv/bin/python -m pytest, keep dependencies pinned. Batch edits/verification; finish concise JSON evidence. Specification/AC: {\"unit\": \"feedback-2ec52f6742aa972f\", \"title\": \"Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện\", \"spec_sha256\": \"eb33906e2027e4e49cf1bcf861db4926ec8369c0892b4b82d85b570872898aab\", \"steps\": [\"Define AC/API\", \"Implement one feature in isolated worktree\", \"Independent review\", \"Independent tests\", \"Publish PR and progress\", \"Reindex authorized Native evidence\"], \"acceptance\": {\"AC5\": \"PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening\", \"AC6\": \"DELETE /tasks/{id} returns204; missing edit/delete returns404\", \"AC7\": \"GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids\", \"AC8\": \"GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors\", \"AC9\": \"Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes\", \"F1\": \"AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\", \"F2\": \"AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\", \"F3\": \"AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.\", \"F4\": \"AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\", \"F5\": \"AC5: Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title.\", \"F6\": \"AC6: Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm.\", \"F7\": \"AC7: Thêm tests bao phủ dữ liệu thường, Unicode, bộ lọc, danh sách rỗng, status không hợp lệ và regression tests.\"}, \"interface\": \"task_manager.app.create_app(database_path); pytest; Python FastAPI + stdlib sqlite3\", \"permission\": \"demo repository and Project6 only; no merge/deploy; completion of unit is not WP379 DONE\", \"verification\": \"trusted external acceptance + repo pytest on exact tree; independent reviewer session\", \"functional_specification\": {\"acceptance\": [\"AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\", \"AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\", \"AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.\", \"AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\", \"AC5: Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title.\", \"AC6: Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm.\", \"AC7: Thêm tests bao phủ dữ liệu thường, Unicode, bộ lọc, danh sách rỗng, status không hợp lệ và regression tests.\"], \"api_behavior\": [\"GET /tasks/export.csv trả về HTTP 200, Content-Type text/csv; charset=utf-8 và Content-Disposition attachment; filename=tasks.csv.\", \"Nội dung CSV chứa các cột id, title, status, dữ liệu sắp xếp theo id tăng dần.\", \"Hỗ trợ bộ lọc q (tìm kiếm theo tiêu đề) và status (todo, in_progress, done).\", \"Trường hợp status không hợp lệ, trả về HTTP 422.\", \"Danh sách rỗng vẫn trả về file CSV chỉ có dòng tiêu đề.\"], \"citations\": [379], \"edge_cases\": [\"Tiêu đề chứa dấu phẩy, dấu ngoặc kép hoặc xuống dòng được chuẩn hóa chính xác bằng thư viện csv.\", \"Route /tasks/export.csv bị nhầm thành {task_id} nếu đặt sai thứ tự định tuyến.\", \"Danh sách công việc hoàn toàn trống.\", \"Tham số status chứa giá trị ngoài các trạng thái hợp lệ.\"], \"limitations\": [\"Không thay đổi database schema hiện tại.\", \"Không tự động merge hoặc deploy demo.\"], \"scope\": [\"Thêm endpoint GET /tasks/export.csv xuất danh sách công việc ra định dạng CSV.\", \"Hỗ trợ các tham số truy vấn q và status tương tự GET /tasks.\", \"Đảm bảo thứ tự định tuyến tĩnh /tasks/export.csv trước /tasks/{task_id}.\", \"Bổ sung test tự động kiểm thử tính năng xuất CSV và các trường hợp biên.\"], \"summary\": \"Bổ sung tính năng xuất danh sách công việc ra file CSV qua endpoint GET /tasks/export.csv với hỗ trợ bộ lọc q và status, bảo toàn Unicode và định dạng chuẩn.\"}, \"pm_plan\": {\"assignments\": [{\"dependencies\": [], \"objective\": \"Create/list tasks + SQLite persistence (verified delivery reused)\", \"priority\": 3, \"unit\": \"create-list-persistence-v1\"}, {\"dependencies\": [\"create-list-persistence-v1\"], \"objective\": \"Edit/delete/status/search and usable web interface (verified delivery reused)\", \"priority\": 3, \"unit\": \"crud-search-web-v1\"}, {\"dependencies\": [\"crud-search-web-v1\"], \"objective\": \"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-283138e910432528\"}, {\"dependencies\": [\"feedback-283138e910432528\"], \"objective\": \"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-4d13e695555a8d44\"}, {\"dependencies\": [\"feedback-4d13e695555a8d44\"], \"objective\": \"Them route GET /healthz va unit test status ok (verified delivery reused)\", \"priority\": 3, \"unit\": \"health-check-v1\"}, {\"dependencies\": [\"health-check-v1\"], \"objective\": \"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-bb9a628fe5b7be67\"}, {\"dependencies\": [\"feedback-bb9a628fe5b7be67\"], \"objective\": \"Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu  (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-20c2a94109f4e78f\"}, {\"dependencies\": [\"feedback-20c2a94109f4e78f\"], \"objective\": \"Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\\\"exists\\\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-e44b47e2e8610c4f\"}, {\"dependencies\": [\"feedback-e44b47e2e8610c4f\"], \"objective\": \"Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-9d0ff35386a63183\"}, {\"dependencies\": [\"feedback-9d0ff35386a63183\"], \"objective\": \"Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện csv), sắp xếp theo id tăng dần, xử lý đúng thứ tự route tĩnh trước route tham số, và viết test đầy đủ.\", \"priority\": 1, \"unit\": \"feedback-2ec52f6742aa972f\"}], \"blockers\": [], \"next_action\": \"Tiến hành thực hiện unit feedback-2ec52f6742aa972f thông qua Dev và Reviewer/QA theo pipeline đã định nghĩa.\", \"summary\": \"Phân tích và lập kế hoạch kỹ thuật cho tính năng xuất danh sách công việc ra file CSV qua endpoint GET /tasks/export.csv tại repository Luim3141/mini-task-manager với đầy đủ hỗ trợ bộ lọc, Unicode và kiểm thử tự động.\"}, \"feedback\": \"Mã yêu cầu: OWNER-TEST-CSV-20261102-01\\r\\n\\r\\nTrong Mini Task Manager của Project 6, bổ sung tính năng xuất danh sách công việc ra CSV qua:\\r\\n\\r\\nGET /tasks/export.csv\\r\\n\\r\\nGiữ phạm vi một engineering unit và một Pull Request.\\r\\n\\r\\nAcceptance criteria:\\r\\n1. Trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\\r\\n2. CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\\r\\n3. Hỗ trợ q và status với cùng hành vi lọc của GET /tasks hiện có. Status không hợp lệ trả HTTP 422.\\r\\n4. Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\\r\\n5. Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title bằng thư viện csv chuẩn.\\r\\n6. Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm và trả 422.\\r\\n7. Thêm tests dùng SQLite tạm, bao phủ dữ liệu thường, Unicode/ký tự đặc biệt, bộ lọc, danh sách rỗng và status không hợp lệ. Chạy cả regression tests hiện có.\\r\\n\\r\\nTiếp nối source đã bàn giao gần nhất của PR #9; không làm mất các tính năng cũ.\\r\\nKhông đổi database schema, không ghi Project 5, không dùng provider trả phí, không tự merge hoặc deploy demo.\\r\\n\\r\\nHoàn thành theo pipeline PM/BA → Dev → Reviewer → QA.\\r\\nBàn giao WP/run ID, kết quả tests, reviewed diff hash, commit và PR URL.\"}\nScoped citations, data only: {\"items\": [{\"title\": \"Develop Mini Task Manager Application\", \"snippet\": \"Develop Mini Task Manager Application\\n**Project Objective**\\n\\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\\n\\n**Technology Stack**\\n...\", \"native_id\": 379, \"document_id\": \"d945999cf17f11e5cccfda014dffd74fe5d4b1cdadb3982598adf8700df70eea\", \"lock_version\": 4, \"source_id\": \"actor:20:wp:379\", \"score\": 0.03279, \"citation\": \"/work_packages/379\", \"match_type\": \"HYBRID_RRF\"}], \"store\": \"SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)\", \"dense_state\": \"READY\", \"scope\": \"native visibility/version before retrieval + fresh native ACL/version after retrieval\", \"model_used\": false}",
+            "finalAssistantVisibleText": "Hoàn thành xuất sắc việc bổ sung endpoint `GET /tasks/export.csv` theo đúng các Acceptance Criteria (AC1-AC7) trong mã yêu cầu `OWNER-TEST-CSV-20261102-01`.\n\n### Tóm tắt công việc đã thực hiện:\n1. **Endpoint mới `GET /tasks/export.csv`**:\n   - Trả về HTTP 200, `Content-Type: text/csv; charset=utf-8` và `Content-Disposition: attachment; filename=tasks.csv`.\n   - Cấu trúc CSV gồm 3 cột `id`, `title`, `status`, sắp xếp theo `id` tăng dần.\n   - Hỗ trợ đầy đủ bộ lọc `q` và `status` (với cơ chế `qldapm_casefold` và validation `status` hợp lệ, trả HTTP 422 khi `status` sai).\n   - Xử lý chính xác danh sách rỗng (vẫn trả về dòng tiêu đề).\n   - Bảo toàn Unicode / tiếng Việt và xử lý chuẩn các ký tự đặc biệt (dấu phẩy, ngoặc kép, xuống dòng trong `title`) nhờ thư viện chuẩn `csv` kết hợp `io.StringIO`.\n   - Đảm bảo định tuyến tĩnh (`/tasks/export.csv`) được khai báo trước route động (`/tasks/{task_id}`) để tránh bị bắt nhầm.\n2. **Kiểm thử tự động (Pytest)**:\n   - Thêm bộ test `tests/test_export_csv.py` bao phủ dữ liệu thông thường, Unicode, ký tự đặc biệt, bộ lọc `q`/`status`, danh sách rỗng, trạng thái không hợp lệ (422) và kiểm tra thứ tự route.\n   - Chạy toàn bộ regression test suite (`test_export_csv.py`, `test_tasks.py`, `test_web_ui.py`) thành công 100% (29/29 tests passed).\n\n### Kết quả chạy tests:\n```\n============================== test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0\nrootdir: /home/openclaw/engineering/feedback-2ec52f6742aa972f\nplugins: anyio-4.16.0\ncollected 29 items\n\ntests/test_export_csv.py .....                                           [ 17%]\ntests/test_tasks.py ......................                               [ 93%]\ntests/test_web_ui.py ..                                                  [100%]\n\n======================== 29 passed, 1 warning in 2.11s =========================\n```",
+            "finalAssistantRawText": "Hoàn thành xuất sắc việc bổ sung endpoint `GET /tasks/export.csv` theo đúng các Acceptance Criteria (AC1-AC7) trong mã yêu cầu `OWNER-TEST-CSV-20261102-01`.\n\n### Tóm tắt công việc đã thực hiện:\n1. **Endpoint mới `GET /tasks/export.csv`**:\n   - Trả về HTTP 200, `Content-Type: text/csv; charset=utf-8` và `Content-Disposition: attachment; filename=tasks.csv`.\n   - Cấu trúc CSV gồm 3 cột `id`, `title`, `status`, sắp xếp theo `id` tăng dần.\n   - Hỗ trợ đầy đủ bộ lọc `q` và `status` (với cơ chế `qldapm_casefold` và validation `status` hợp lệ, trả HTTP 422 khi `status` sai).\n   - Xử lý chính xác danh sách rỗng (vẫn trả về dòng tiêu đề).\n   - Bảo toàn Unicode / tiếng Việt và xử lý chuẩn các ký tự đặc biệt (dấu phẩy, ngoặc kép, xuống dòng trong `title`) nhờ thư viện chuẩn `csv` kết hợp `io.StringIO`.\n   - Đảm bảo định tuyến tĩnh (`/tasks/export.csv`) được khai báo trước route động (`/tasks/{task_id}`) để tránh bị bắt nhầm.\n2. **Kiểm thử tự động (Pytest)**:\n   - Thêm bộ test `tests/test_export_csv.py` bao phủ dữ liệu thông thường, Unicode, ký tự đặc biệt, bộ lọc `q`/`status`, danh sách rỗng, trạng thái không hợp lệ (422) và kiểm tra thứ tự route.\n   - Chạy toàn bộ regression test suite (`test_export_csv.py`, `test_tasks.py`, `test_web_ui.py`) thành công 100% (29/29 tests passed).\n\n### Kết quả chạy tests:\n```\n============================== test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0\nrootdir: /home/openclaw/engineering/feedback-2ec52f6742aa972f\nplugins: anyio-4.16.0\ncollected 29 items\n\ntests/test_export_csv.py .....                                           [ 17%]\ntests/test_tasks.py ......................                               [ 93%]\ntests/test_web_ui.py ..                                                  [100%]\n\n======================== 29 passed, 1 warning in 2.11s =========================\n```",
+            "replayInvalid": true,
+            "livenessState": "working",
+            "stopReason": "stop",
+            "executionTrace": {
+              "winnerProvider": "google",
+              "winnerModel": "gemini-3.5-flash-lite",
+              "attempts": [
+                {
+                  "provider": "google",
+                  "model": "gemini-3.5-flash-lite",
+                  "result": "success",
+                  "stage": "assistant"
+                }
+              ],
+              "fallbackUsed": false,
+              "runner": "embedded"
+            },
+            "requestShaping": {
+              "thinking": "off"
+            },
+            "completion": {
+              "stopReason": "stop",
+              "finishReason": "stop"
+            },
+            "toolSummary": {
+              "calls": 4,
+              "tools": [
+                "exec"
+              ],
+              "failures": 0
+            },
+            "terminalReply": {
+              "disposition": "visible",
+              "text": "Hoàn thành xuất sắc việc bổ sung endpoint `GET /tasks/export.csv` theo đúng các Acceptance Criteria (AC1-AC7) trong mã yêu cầu `OWNER-TEST-CSV-20261102-01`.\n\n### Tóm tắt công việc đã thực hiện:\n1. **Endpoint mới `GET /tasks/export.csv`**:\n   - Trả về HTTP 200, `Content-Type: text/csv; charset=utf-8` và `Content-Disposition: attachment; filename=tasks.csv`.\n   - Cấu trúc CSV gồm 3 cột `id`, `title`, `status`, sắp xếp theo `id` tăng dần.\n   - Hỗ trợ đầy đủ bộ lọc `q` và `status` (với cơ chế `qldapm_casefold` và validation `status` hợp lệ, trả HTTP 422 khi `status` sai).\n   - Xử lý chính xác danh sách rỗng (vẫn trả về dòng tiêu đề).\n   - Bảo toàn Unicode / tiếng Việt và xử lý chuẩn các ký tự đặc biệt (dấu phẩy, ngoặc kép, xuống dòng trong `title`) nhờ thư viện chuẩn `csv` kết hợp `io.StringIO`.\n   - Đảm bảo định tuyến tĩnh (`/tasks/export.csv`) được khai báo trước route động (`/tasks/{task_id}`) để tránh bị bắt nhầm.\n2. **Kiểm thử tự động (Pytest)**:\n   - Thêm bộ test `tests/test_export_csv.py` bao phủ dữ liệu thông thường, Unicode, ký tự đặc biệt, bộ lọc `q`/`status`, danh sách rỗng, trạng thái không hợp lệ (422) và kiểm tra thứ tự route.\n   - Chạy toàn bộ regression test suite (`test_export_csv.py`, `test_tasks.py`, `test_web_ui.py`) thành công 100% (29/29 tests passed).\n\n### Kết quả chạy tests:\n```\n============================== test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0\nrootdir: /home/openclaw/engineering/feedback-2ec52f6742aa972f\nplugins: anyio-4.16.0\ncollected 29 items\n\ntests/test_export_csv.py .....                                           [ 17%]\ntests/test_tasks.py ......................                               [ 93%]\ntests/test_web_ui.py ..                                                  [100%]\n\n======================== 29 passed, 1 warning in 2.11s =========================\n```"
+            }
+          },
+          "sourceReplyDeliveryState": "missing"
+        }
+      }
+    },
+    "review-0": {
+      "state": "done",
+      "at": 1793655479.2820997,
+      "value": {
+        "runId": "a97018a6-1118-4055-a998-5079abaccfec",
+        "status": "ok",
+        "summary": "completed",
+        "result": {
+          "payloads": [
+            {
+              "text": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"5e374fac2943826ec9f9287fa42c53ab0c8e997c4d8303152c1fbbcf780f714e\",\n  \"findings\": []\n}\n```",
+              "mediaUrl": null
+            }
+          ],
+          "meta": {
+            "durationMs": 3987,
+            "agentMeta": {
+              "sessionId": "7a76a72f-5a67-48f4-aafd-8a8267370bc8",
+              "sessionFile": "agent:reviewer:explicit:7a76a72f-5a67-48f4-aafd-8a8267370bc8",
+              "provider": "google",
+              "model": "gemini-3.5-flash-lite",
+              "contextTokens": 1048576,
+              "contextTokensSource": "resolved",
+              "agentHarnessId": "openclaw",
+              "credentialSource": {
+                "kind": "direct",
+                "evidence": "environment",
+                "authorization": "ambient"
+              },
+              "usage": {
+                "input": 10102,
+                "output": 105,
+                "cacheRead": 6103,
+                "cacheWrite": 0,
+                "total": 16310,
+                "cost": {
+                  "total": 0
+                }
+              },
+              "lastCallUsage": {
+                "input": 2156,
+                "output": 87,
+                "cacheRead": 6103,
+                "cacheWrite": 0,
+                "cost": {
+                  "total": 0
+                },
+                "total": 8346
+              },
+              "promptTokens": 8259,
+              "contextBudgetStatus": {
+                "schemaVersion": 1,
+                "source": "pre-prompt-estimate",
+                "updatedAt": 1793655464527,
+                "provider": "google",
+                "model": "gemini-3.5-flash-lite",
+                "route": "fits",
+                "shouldCompact": false,
+                "estimatedPromptTokens": 8525,
+                "contextTokenBudget": 1048576,
+                "promptBudgetBeforeReserve": 1028576,
+                "reserveTokens": 20000,
+                "effectiveReserveTokens": 20000,
+                "remainingPromptBudgetTokens": 1020051,
+                "overflowTokens": 0,
+                "toolResultReducibleChars": 0,
+                "messageCount": 0,
+                "unwindowedMessageCount": 0,
+                "sessionId": "7a76a72f-5a67-48f4-aafd-8a8267370bc8"
+              },
+              "codeModeEngaged": false,
+              "assistantTurns": 2,
+              "terminalReceipt": {
+                "runId": "a97018a6-1118-4055-a998-5079abaccfec",
+                "sessionId": "7a76a72f-5a67-48f4-aafd-8a8267370bc8",
+                "turnId": "a97018a6-1118-4055-a998-5079abaccfec",
+                "requested": {
+                  "provider": "google",
+                  "model": "gemini-3.5-flash-lite"
+                },
+                "effective": {
+                  "provider": "google",
+                  "model": "gemini-3.5-flash-lite",
+                  "responseModel": "gemini-3.5-flash-lite"
+                },
+                "successfulToolNames": [
+                  "skills_read"
+                ],
+                "rerouted": false,
+                "terminalDisposition": "visible"
+              }
+            },
+            "aborted": false,
+            "systemPromptReport": {
+              "source": "run",
+              "generatedAt": 1793655464267,
+              "sessionId": "7a76a72f-5a67-48f4-aafd-8a8267370bc8",
+              "sessionKey": "agent:reviewer:explicit:7a76a72f-5a67-48f4-aafd-8a8267370bc8",
+              "provider": "google",
+              "model": "gemini-3.5-flash-lite",
+              "workspaceDir": "/home/openclaw/engineering/feedback-2ec52f6742aa972f",
+              "bootstrapMaxChars": 20000,
+              "bootstrapTotalMaxChars": 60000,
+              "bootstrapTruncation": {
+                "warningMode": "always",
+                "warningShown": false,
+                "truncatedFiles": 0,
+                "nearLimitFiles": 0,
+                "totalNearLimit": false
+              },
+              "sandbox": {
+                "mode": "off",
+                "sandboxed": false
+              },
+              "systemPrompt": {
+                "chars": 12547,
+                "hash": "ea3383ea1040d89d40130dc1ab6eb438c99a6debf1c1ca9def3bd06cdf93a3d8",
+                "projectContextChars": 6504,
+                "nonProjectContextChars": 6043
+              },
+              "injectedWorkspaceFiles": [
+                {
+                  "name": "AGENTS.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/AGENTS.md",
+                  "missing": false,
+                  "rawChars": 2533,
+                  "injectedChars": 2533,
+                  "truncated": false
+                },
+                {
+                  "name": "SOUL.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/SOUL.md",
+                  "missing": false,
+                  "rawChars": 1350,
+                  "injectedChars": 1350,
+                  "truncated": false
+                },
+                {
+                  "name": "IDENTITY.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/IDENTITY.md",
+                  "missing": true,
+                  "rawChars": 0,
+                  "injectedChars": 87,
+                  "truncated": false
+                },
+                {
+                  "name": "BOOTSTRAP.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/BOOTSTRAP.md",
+                  "missing": true,
+                  "rawChars": 0,
+                  "injectedChars": 0,
+                  "truncated": false
+                }
+              ],
+              "skills": {
+                "promptChars": 683,
+                "hash": "baae3974c872daecfa92a398f707148c9b11a2225bf16171304f29c4d8f51b6d",
+                "entries": [
+                  {
+                    "name": "engineering-review",
+                    "blockChars": 312
+                  }
+                ]
+              },
+              "tools": {
+                "listChars": 0,
+                "schemaChars": 537,
+                "entries": [
+                  {
+                    "name": "read",
+                    "summaryChars": 164,
+                    "summaryHash": "d136f5b09e28d671addad4ca800b75b8aa6a36002bc739ead964f618d3e34829",
+                    "schemaChars": 460,
+                    "schemaHash": "6cbbd52fc1ec26fec668c24fc08c8ea42240d163d061109d07886707dfa8d428",
+                    "propertiesCount": 5
+                  },
+                  {
+                    "name": "skills_read",
+                    "summaryChars": 192,
+                    "summaryHash": "22e1821dfbc26bdfaba43eaa0f6d8ae20e3784560feb6a163a067fa5cefff353",
+                    "schemaChars": 77,
+                    "schemaHash": "2c1504684515db5ece179c4c776e308d55ea99fd9d7c7a8ffa87da40675dfe29",
+                    "propertiesCount": 1
+                  }
+                ]
+              },
+              "currentTurn": {
+                "promptChars": 14403,
+                "runtimeContextChars": 0,
+                "modelOnlyPromptChars": 0
+              }
+            },
+            "finalPromptText": "Trusted engineering envelope: {\"run_id\": \"b7fd6aec-3357-495f-b9e5-f7ba04d67ad6\", \"project_id\": 6, \"native_id\": 391, \"actor_id\": 20, \"agent_role\": \"reviewer\", \"repository\": \"Luim3141/mini-task-manager\", \"session_id\": \"7a76a72f-5a67-48f4-aafd-8a8267370bc8\", \"workspace\": \"/home/openclaw/engineering/feedback-2ec52f6742aa972f\", \"skills_version\": \"1.0.0\", \"request_allowance\": 5, \"timeout_seconds\": 420}\nIndependent reviewer. Read skills/engineering-review/SKILL.md and actual files. No edits/exec. Return only JSON {\"verdict\":\"PASS\" or \"FAIL\",\"revision\":\"5e374fac2943826ec9f9287fa42c53ab0c8e997c4d8303152c1fbbcf780f714e\",\"findings\":[]}; actionable findings include file/line/reason. Map each AC to actual code/tests. Spec {\"unit\": \"feedback-2ec52f6742aa972f\", \"title\": \"Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện\", \"spec_sha256\": \"eb33906e2027e4e49cf1bcf861db4926ec8369c0892b4b82d85b570872898aab\", \"steps\": [\"Define AC/API\", \"Implement one feature in isolated worktree\", \"Independent review\", \"Independent tests\", \"Publish PR and progress\", \"Reindex authorized Native evidence\"], \"acceptance\": {\"AC5\": \"PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening\", \"AC6\": \"DELETE /tasks/{id} returns204; missing edit/delete returns404\", \"AC7\": \"GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids\", \"AC8\": \"GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors\", \"AC9\": \"Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes\", \"F1\": \"AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\", \"F2\": \"AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\", \"F3\": \"AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.\", \"F4\": \"AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\", \"F5\": \"AC5: Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title.\", \"F6\": \"AC6: Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm.\", \"F7\": \"AC7: Thêm tests bao phủ dữ liệu thường, Unicode, bộ lọc, danh sách rỗng, status không hợp lệ và regression tests.\"}, \"interface\": \"task_manager.app.create_app(database_path); pytest; Python FastAPI + stdlib sqlite3\", \"permission\": \"demo repository and Project6 only; no merge/deploy; completion of unit is not WP379 DONE\", \"verification\": \"trusted external acceptance + repo pytest on exact tree; independent reviewer session\", \"functional_specification\": {\"acceptance\": [\"AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\", \"AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\", \"AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.\", \"AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\", \"AC5: Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title.\", \"AC6: Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm.\", \"AC7: Thêm tests bao phủ dữ liệu thường, Unicode, bộ lọc, danh sách rỗng, status không hợp lệ và regression tests.\"], \"api_behavior\": [\"GET /tasks/export.csv trả về HTTP 200, Content-Type text/csv; charset=utf-8 và Content-Disposition attachment; filename=tasks.csv.\", \"Nội dung CSV chứa các cột id, title, status, dữ liệu sắp xếp theo id tăng dần.\", \"Hỗ trợ bộ lọc q (tìm kiếm theo tiêu đề) và status (todo, in_progress, done).\", \"Trường hợp status không hợp lệ, trả về HTTP 422.\", \"Danh sách rỗng vẫn trả về file CSV chỉ có dòng tiêu đề.\"], \"citations\": [379], \"edge_cases\": [\"Tiêu đề chứa dấu phẩy, dấu ngoặc kép hoặc xuống dòng được chuẩn hóa chính xác bằng thư viện csv.\", \"Route /tasks/export.csv bị nhầm thành {task_id} nếu đặt sai thứ tự định tuyến.\", \"Danh sách công việc hoàn toàn trống.\", \"Tham số status chứa giá trị ngoài các trạng thái hợp lệ.\"], \"limitations\": [\"Không thay đổi database schema hiện tại.\", \"Không tự động merge hoặc deploy demo.\"], \"scope\": [\"Thêm endpoint GET /tasks/export.csv xuất danh sách công việc ra định dạng CSV.\", \"Hỗ trợ các tham số truy vấn q và status tương tự GET /tasks.\", \"Đảm bảo thứ tự định tuyến tĩnh /tasks/export.csv trước /tasks/{task_id}.\", \"Bổ sung test tự động kiểm thử tính năng xuất CSV và các trường hợp biên.\"], \"summary\": \"Bổ sung tính năng xuất danh sách công việc ra file CSV qua endpoint GET /tasks/export.csv với hỗ trợ bộ lọc q và status, bảo toàn Unicode và định dạng chuẩn.\"}, \"pm_plan\": {\"assignments\": [{\"dependencies\": [], \"objective\": \"Create/list tasks + SQLite persistence (verified delivery reused)\", \"priority\": 3, \"unit\": \"create-list-persistence-v1\"}, {\"dependencies\": [\"create-list-persistence-v1\"], \"objective\": \"Edit/delete/status/search and usable web interface (verified delivery reused)\", \"priority\": 3, \"unit\": \"crud-search-web-v1\"}, {\"dependencies\": [\"crud-search-web-v1\"], \"objective\": \"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-283138e910432528\"}, {\"dependencies\": [\"feedback-283138e910432528\"], \"objective\": \"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-4d13e695555a8d44\"}, {\"dependencies\": [\"feedback-4d13e695555a8d44\"], \"objective\": \"Them route GET /healthz va unit test status ok (verified delivery reused)\", \"priority\": 3, \"unit\": \"health-check-v1\"}, {\"dependencies\": [\"health-check-v1\"], \"objective\": \"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-bb9a628fe5b7be67\"}, {\"dependencies\": [\"feedback-bb9a628fe5b7be67\"], \"objective\": \"Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu  (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-20c2a94109f4e78f\"}, {\"dependencies\": [\"feedback-20c2a94109f4e78f\"], \"objective\": \"Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\\\"exists\\\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-e44b47e2e8610c4f\"}, {\"dependencies\": [\"feedback-e44b47e2e8610c4f\"], \"objective\": \"Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-9d0ff35386a63183\"}, {\"dependencies\": [\"feedback-9d0ff35386a63183\"], \"objective\": \"Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện csv), sắp xếp theo id tăng dần, xử lý đúng thứ tự route tĩnh trước route tham số, và viết test đầy đủ.\", \"priority\": 1, \"unit\": \"feedback-2ec52f6742aa972f\"}], \"blockers\": [], \"next_action\": \"Tiến hành thực hiện unit feedback-2ec52f6742aa972f thông qua Dev và Reviewer/QA theo pipeline đã định nghĩa.\", \"summary\": \"Phân tích và lập kế hoạch kỹ thuật cho tính năng xuất danh sách công việc ra file CSV qua endpoint GET /tasks/export.csv tại repository Luim3141/mini-task-manager với đầy đủ hỗ trợ bộ lọc, Unicode và kiểm thử tự động.\"}, \"feedback\": \"Mã yêu cầu: OWNER-TEST-CSV-20261102-01\\r\\n\\r\\nTrong Mini Task Manager của Project 6, bổ sung tính năng xuất danh sách công việc ra CSV qua:\\r\\n\\r\\nGET /tasks/export.csv\\r\\n\\r\\nGiữ phạm vi một engineering unit và một Pull Request.\\r\\n\\r\\nAcceptance criteria:\\r\\n1. Trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\\r\\n2. CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\\r\\n3. Hỗ trợ q và status với cùng hành vi lọc của GET /tasks hiện có. Status không hợp lệ trả HTTP 422.\\r\\n4. Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\\r\\n5. Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title bằng thư viện csv chuẩn.\\r\\n6. Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm và trả 422.\\r\\n7. Thêm tests dùng SQLite tạm, bao phủ dữ liệu thường, Unicode/ký tự đặc biệt, bộ lọc, danh sách rỗng và status không hợp lệ. Chạy cả regression tests hiện có.\\r\\n\\r\\nTiếp nối source đã bàn giao gần nhất của PR #9; không làm mất các tính năng cũ.\\r\\nKhông đổi database schema, không ghi Project 5, không dùng provider trả phí, không tự merge hoặc deploy demo.\\r\\n\\r\\nHoàn thành theo pipeline PM/BA → Dev → Reviewer → QA.\\r\\nBàn giao WP/run ID, kết quả tests, reviewed diff hash, commit và PR URL.\"}\nDiff:\ndiff --git a/task_manager/app.py b/task_manager/app.py\nindex 8e2a4f6..8351951 100644\n--- a/task_manager/app.py\n+++ b/task_manager/app.py\n@@ -1,7 +1,9 @@\n import sqlite3\n+import csv\n+import io\n from typing import Optional\n from fastapi import FastAPI, HTTPException, status, Query\n-from fastapi.responses import HTMLResponse\n+from fastapi.responses import HTMLResponse, Response\n from pydantic import BaseModel, Field\n \n def init_db(database_path: str):\n@@ -58,6 +60,47 @@ def create_app(database_path: str = \"tasks.db\") -> FastAPI:\n         conn.close()\n         return {\"id\": row[0], \"title\": row[1], \"status\": row[2]}\n \n+    @app.get(\"/tasks/export.csv\")\n+    def export_tasks_csv(\n+        q: Optional[str] = Query(None),\n+        status: Optional[str] = Query(None)\n+    ):\n+        conn = sqlite3.connect(database_path)\n+        conn.create_function(\"qldapm_casefold\", 1, lambda s: s.casefold() if s is not None else \"\")\n+        cursor = conn.cursor()\n+        query = \"SELECT id, title, status FROM tasks WHERE 1=1\"\n+        params = []\n+        \n+        if q is not None:\n+            query += \" AND qldapm_casefold(title) LIKE ? ESCAPE '\\\\'\"\n+            escaped_q = q.casefold().replace('\\\\', '\\\\\\\\').replace('%', '\\\\%').replace('_', '\\\\_')\n+            params.append(f\"%{escaped_q}%\")\n+            \n+        if status is not None:\n+            if status not in (\"todo\", \"in_progress\", \"done\"):\n+                conn.close()\n+                raise HTTPException(status_code=422, detail=\"Invalid status\")\n+            query += \" AND status = ?\"\n+            params.append(status)\n+            \n+        query += \" ORDER BY id ASC\"\n+        cursor.execute(query, params)\n+        rows = cursor.fetchall()\n+        conn.close()\n+\n+        output = io.StringIO()\n+        writer = csv.writer(output)\n+        writer.writerow([\"id\", \"title\", \"status\"])\n+        for r in rows:\n+            writer.writerow([r[0], r[1], r[2]])\n+        csv_content = output.getvalue()\n+        \n+        return Response(\n+            content=csv_content,\n+            media_type=\"text/csv; charset=utf-8\",\n+            headers={\"Content-Disposition\": \"attachment; filename=tasks.csv\"}\n+        )\n+\n     @app.get(\"/tasks/{task_id}\")\n     def get_task(task_id: int):\n         conn = sqlite3.connect(database_path)\ndiff --git a/tests/test_export_csv.py b/tests/test_export_csv.py\nnew file mode 100644\nindex 0000000..03d6e92\n--- /dev/null\n+++ b/tests/test_export_csv.py\n@@ -0,0 +1,61 @@\n+import pytest\n+from fastapi.testclient import TestClient\n+from task_manager.app import create_app\n+\n+@pytest.fixture\n+def client(tmp_path):\n+    db_path = tmp_path / \"test_csv.db\"\n+    app = create_app(str(db_path))\n+    return TestClient(app)\n+\n+def test_export_csv_headers_and_empty(client):\n+    response = client.get(\"/tasks/export.csv\")\n+    assert response.status_code == 200\n+    assert response.headers[\"content-type\"] == \"text/csv; charset=utf-8\"\n+    assert response.headers[\"content-disposition\"] == \"attachment; filename=tasks.csv\"\n+    assert response.text == \"id,title,status\\r\\n\"\n+\n+def test_export_csv_data_and_sorting(client):\n+    client.post(\"/tasks\", json={\"title\": \"Beta Task\"})\n+    client.post(\"/tasks\", json={\"title\": \"Alpha Task\"})\n+    \n+    response = client.get(\"/tasks/export.csv\")\n+    assert response.status_code == 200\n+    lines = response.text.strip().split(\"\\r\\n\")\n+    assert len(lines) == 3\n+    assert lines[0] == \"id,title,status\"\n+    assert lines[1].startswith(\"1,Beta Task,\")\n+    assert lines[2].startswith(\"2,Alpha Task,\")\n+\n+def test_export_csv_unicode_and_special_chars(client):\n+    client.post(\"/tasks\", json={\"title\": \"ĐI CHỢ, mua \\\"sữa\\\" \\nvà bánh\"})\n+    response = client.get(\"/tasks/export.csv\")\n+    assert response.status_code == 200\n+    assert \"ĐI CHỢ, mua \\\"sữa\\\" \\nvà bánh\" in response.text or '\"ĐI CHỢ, mua \"\"sữa\"\" \\nvà bánh\"' in response.text\n+\n+def test_export_csv_filters_and_invalid_status(client):\n+    client.post(\"/tasks\", json={\"title\": \"Apple Buy\"})\n+    t2 = client.post(\"/tasks\", json={\"title\": \"Banana Shop\"}).json()[\"id\"]\n+    client.patch(f\"/tasks/{t2}\", json={\"status\": \"in_progress\"})\n+\n+    # Test q filter\n+    res_q = client.get(\"/tasks/export.csv?q=apple\")\n+    assert res_q.status_code == 200\n+    assert \"Apple Buy\" in res_q.text\n+    assert \"Banana Shop\" not in res_q.text\n+\n+    # Test status filter\n+    res_status = client.get(\"/tasks/export.csv?status=in_progress\")\n+    assert res_status.status_code == 200\n+    assert \"Banana Shop\" in res_status.text\n+    assert \"Apple Buy\" not in res_status.text\n+\n+    # Test invalid status -> 422\n+    res_invalid = client.get(\"/tasks/export.csv?status=unknown\")\n+    assert res_invalid.status_code == 422\n+\n+def test_export_csv_route_precedence(client):\n+    # Ensure /tasks/export.csv is not captured by /tasks/{task_id} (which would expect int and return 422 or 404)\n+    response = client.get(\"/tasks/export.csv\")\n+    assert response.status_code == 200\n+    assert response.headers[\"content-type\"] == \"text/csv; charset=utf-8\"",
+            "finalAssistantVisibleText": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"5e374fac2943826ec9f9287fa42c53ab0c8e997c4d8303152c1fbbcf780f714e\",\n  \"findings\": []\n}\n```",
+            "finalAssistantRawText": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"5e374fac2943826ec9f9287fa42c53ab0c8e997c4d8303152c1fbbcf780f714e\",\n  \"findings\": []\n}\n```",
+            "replayInvalid": false,
+            "livenessState": "working",
+            "stopReason": "stop",
+            "executionTrace": {
+              "winnerProvider": "google",
+              "winnerModel": "gemini-3.5-flash-lite",
+              "attempts": [
+                {
+                  "provider": "google",
+                  "model": "gemini-3.5-flash-lite",
+                  "result": "success",
+                  "stage": "assistant"
+                }
+              ],
+              "fallbackUsed": false,
+              "runner": "embedded"
+            },
+            "requestShaping": {
+              "thinking": "off"
+            },
+            "completion": {
+              "stopReason": "stop",
+              "finishReason": "stop"
+            },
+            "toolSummary": {
+              "calls": 1,
+              "tools": [
+                "skills_read"
+              ],
+              "failures": 0
+            },
+            "terminalReply": {
+              "disposition": "visible",
+              "text": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"5e374fac2943826ec9f9287fa42c53ab0c8e997c4d8303152c1fbbcf780f714e\",\n  \"findings\": []\n}\n```"
+            }
+          },
+          "sourceReplyDeliveryState": "missing"
+        }
+      }
+    },
+    "acceptance-0": {
+      "state": "done",
+      "at": 1793655495.6574748,
+      "value": {
+        "exit_code": 0,
+        "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+        "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\b7fd6aec-3357-495f-b9e5-f7ba04d67ad6\\acceptance-0.xml",
+        "log_sha256": "434262ec4c878266c125ef162e9344b1530e50539be369b6e69d38f6a7ff80e1"
+      }
+    },
+    "qa-0": {
+      "state": "done",
+      "at": 1793655554.2667766,
+      "value": {
+        "runId": "4f784e5b-99a2-4dba-9fca-71d2bf9e34c3",
+        "status": "ok",
+        "summary": "completed",
+        "result": {
+          "payloads": [
+            {
+              "text": "```json\n{\n  \"status\": \"PASS\",\n  \"exit_code\": 0,\n  \"command\": \"cd /home/openclaw/engineering/feedback-2ec52f6742aa972f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py\",\n  \"acceptance\": [\n    \"AC5\",\n    \"AC6\",\n    \"AC7\",\n    \"AC8\",\n    \"AC9\",\n    \"F1\",\n    \"F2\",\n    \"F3\",\n    \"F4\",\n    \"F5\",\n    \"F6\",\n    \"F7\"\n  ],\n  \"failures\": []\n}\n```",
+              "mediaUrl": null
+            }
+          ],
+          "meta": {
+            "durationMs": 10092,
+            "agentMeta": {
+              "sessionId": "8ed928e7-da51-4815-b788-e15b1dc3cfef",
+              "sessionFile": "agent:qa:explicit:8ed928e7-da51-4815-b788-e15b1dc3cfef",
+              "provider": "google",
+              "model": "gemini-3.5-flash-lite",
+              "contextTokens": 1048576,
+              "contextTokensSource": "resolved",
+              "agentHarnessId": "openclaw",
+              "credentialSource": {
+                "kind": "direct",
+                "evidence": "environment",
+                "authorization": "ambient"
+              },
+              "usage": {
+                "input": 8611,
+                "output": 359,
+                "cacheRead": 2025,
+                "cacheWrite": 0,
+                "total": 10995,
+                "cost": {
+                  "total": 0
+                }
+              },
+              "lastCallUsage": {
+                "input": 3536,
+                "output": 218,
+                "cacheRead": 2025,
+                "cacheWrite": 0,
+                "cost": {
+                  "total": 0
+                },
+                "total": 5779
+              },
+              "promptTokens": 5561,
+              "contextBudgetStatus": {
+                "schemaVersion": 1,
+                "source": "pre-prompt-estimate",
+                "updatedAt": 1793655531328,
+                "provider": "google",
+                "model": "gemini-3.5-flash-lite",
+                "route": "fits",
+                "shouldCompact": false,
+                "estimatedPromptTokens": 6418,
+                "contextTokenBudget": 1048576,
+                "promptBudgetBeforeReserve": 1028576,
+                "reserveTokens": 20000,
+                "effectiveReserveTokens": 20000,
+                "remainingPromptBudgetTokens": 1022158,
+                "overflowTokens": 0,
+                "toolResultReducibleChars": 0,
+                "messageCount": 0,
+                "unwindowedMessageCount": 0,
+                "sessionId": "8ed928e7-da51-4815-b788-e15b1dc3cfef"
+              },
+              "codeModeEngaged": false,
+              "assistantTurns": 2,
+              "terminalReceipt": {
+                "runId": "4f784e5b-99a2-4dba-9fca-71d2bf9e34c3",
+                "sessionId": "8ed928e7-da51-4815-b788-e15b1dc3cfef",
+                "turnId": "4f784e5b-99a2-4dba-9fca-71d2bf9e34c3",
+                "requested": {
+                  "provider": "google",
+                  "model": "gemini-3.5-flash-lite"
+                },
+                "effective": {
+                  "provider": "google",
+                  "model": "gemini-3.5-flash-lite",
+                  "responseModel": "gemini-3.5-flash-lite"
+                },
+                "successfulToolNames": [
+                  "exec"
+                ],
+                "rerouted": false,
+                "terminalDisposition": "visible"
+              }
+            },
+            "aborted": false,
+            "systemPromptReport": {
+              "source": "run",
+              "generatedAt": 1793655531071,
+              "sessionId": "8ed928e7-da51-4815-b788-e15b1dc3cfef",
+              "sessionKey": "agent:qa:explicit:8ed928e7-da51-4815-b788-e15b1dc3cfef",
+              "provider": "google",
+              "model": "gemini-3.5-flash-lite",
+              "workspaceDir": "/home/openclaw/engineering/feedback-2ec52f6742aa972f",
+              "bootstrapMaxChars": 20000,
+              "bootstrapTotalMaxChars": 60000,
+              "bootstrapTruncation": {
+                "warningMode": "always",
+                "warningShown": false,
+                "truncatedFiles": 0,
+                "nearLimitFiles": 0,
+                "totalNearLimit": false
+              },
+              "sandbox": {
+                "mode": "off",
+                "sandboxed": false
+              },
+              "systemPrompt": {
+                "chars": 13256,
+                "hash": "29e40ae02fe39d8bae2e4bf06762372f9e2b686d3eafcf73e6af65b1725cb012",
+                "projectContextChars": 6821,
+                "nonProjectContextChars": 6435
+              },
+              "injectedWorkspaceFiles": [
+                {
+                  "name": "AGENTS.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/AGENTS.md",
+                  "missing": false,
+                  "rawChars": 2499,
+                  "injectedChars": 2499,
+                  "truncated": false
+                },
+                {
+                  "name": "SOUL.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/SOUL.md",
+                  "missing": false,
+                  "rawChars": 1355,
+                  "injectedChars": 1355,
+                  "truncated": false
+                },
+                {
+                  "name": "IDENTITY.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/IDENTITY.md",
+                  "missing": true,
+                  "rawChars": 0,
+                  "injectedChars": 87,
+                  "truncated": false
+                },
+                {
+                  "name": "BOOTSTRAP.md",
+                  "path": "/home/openclaw/engineering/feedback-2ec52f6742aa972f/BOOTSTRAP.md",
+                  "missing": true,
+                  "rawChars": 0,
+                  "injectedChars": 0,
+                  "truncated": false
+                }
+              ],
+              "skills": {
+                "promptChars": 674,
+                "hash": "5c588510f00d393c2a6fc6444e44f41d982586c9588a9e35d5a0cb0efaa5fd32",
+                "entries": [
+                  {
+                    "name": "engineering-qa",
+                    "blockChars": 303
+                  }
+                ]
+              },
+              "tools": {
+                "listChars": 0,
+                "schemaChars": 3098,
+                "entries": [
+                  {
+                    "name": "read",
+                    "summaryChars": 164,
+                    "summaryHash": "d136f5b09e28d671addad4ca800b75b8aa6a36002bc739ead964f618d3e34829",
+                    "schemaChars": 460,
+                    "schemaHash": "6cbbd52fc1ec26fec668c24fc08c8ea42240d163d061109d07886707dfa8d428",
+                    "propertiesCount": 5
+                  },
+                  {
+                    "name": "exec",
+                    "summaryChars": 493,
+                    "summaryHash": "6ced4f9742c096180a3fd48c7af2c85e3594ca3e2ed355206fdc4204644902c8",
+                    "schemaChars": 1409,
+                    "schemaHash": "a4874168f0bc8f0c427ec81f3405ff7d363a78b04436752db578b60a9df5c9c2",
+                    "propertiesCount": 13
+                  },
+                  {
+                    "name": "process",
+                    "summaryChars": 190,
+                    "summaryHash": "75fd9c7b8d560599081ab2621e4f897babc118254cf439bd8329a60a905a9ef1",
+                    "schemaChars": 1152,
+                    "schemaHash": "f7090359705e53d1aca6a4721244c5a6d868fe3acb85ebdfb21c8f261a0446c0",
+                    "propertiesCount": 12
+                  },
+                  {
+                    "name": "skills_read",
+                    "summaryChars": 192,
+                    "summaryHash": "22e1821dfbc26bdfaba43eaa0f6d8ae20e3784560feb6a163a067fa5cefff353",
+                    "schemaChars": 77,
+                    "schemaHash": "2c1504684515db5ece179c4c776e308d55ea99fd9d7c7a8ffa87da40675dfe29",
+                    "propertiesCount": 1
+                  }
+                ]
+              },
+              "currentTurn": {
+                "promptChars": 2215,
+                "runtimeContextChars": 0,
+                "modelOnlyPromptChars": 0
+              }
+            },
+            "finalPromptText": "Trusted engineering envelope: {\"run_id\": \"b7fd6aec-3357-495f-b9e5-f7ba04d67ad6\", \"project_id\": 6, \"native_id\": 391, \"actor_id\": 20, \"agent_role\": \"qa\", \"repository\": \"Luim3141/mini-task-manager\", \"session_id\": \"8ed928e7-da51-4815-b788-e15b1dc3cfef\", \"workspace\": \"/home/openclaw/engineering/feedback-2ec52f6742aa972f\", \"skills_version\": \"1.0.0\", \"request_allowance\": 5, \"timeout_seconds\": 420}\nIndependent QA. Read skills/engineering-qa/SKILL.md. Execute supplied command, inspect exit code. No edits/config/publication. Return JSON {\"status\":\"PASS\" or \"FAIL\",\"exit_code\":0,\"command\":\"...\",\"acceptance\":[],\"failures\":[]}. Command: cd /home/openclaw/engineering/feedback-2ec52f6742aa972f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py\nAC {\"AC5\": \"PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening\", \"AC6\": \"DELETE /tasks/{id} returns204; missing edit/delete returns404\", \"AC7\": \"GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids\", \"AC8\": \"GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors\", \"AC9\": \"Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes\", \"F1\": \"AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.\", \"F2\": \"AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.\", \"F3\": \"AC3: Hỗ trợ q và status với cùng hành vi lọc của GET /tasks; status không hợp lệ trả HTTP 422.\", \"F4\": \"AC4: Danh sách rỗng vẫn trả CSV có dòng tiêu đề.\", \"F5\": \"AC5: Bảo toàn tiếng Việt/Unicode; xử lý đúng dấu phẩy, dấu ngoặc kép và xuống dòng trong title.\", \"F6\": \"AC6: Route tĩnh /tasks/export.csv không bị route /tasks/{task_id} bắt nhầm.\", \"F7\": \"AC7: Thêm tests bao phủ dữ liệu thường, Unicode, bộ lọc, danh sách rỗng, status không hợp lệ và regression tests.\"}",
+            "finalAssistantVisibleText": "```json\n{\n  \"status\": \"PASS\",\n  \"exit_code\": 0,\n  \"command\": \"cd /home/openclaw/engineering/feedback-2ec52f6742aa972f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py\",\n  \"acceptance\": [\n    \"AC5\",\n    \"AC6\",\n    \"AC7\",\n    \"AC8\",\n    \"AC9\",\n    \"F1\",\n    \"F2\",\n    \"F3\",\n    \"F4\",\n    \"F5\",\n    \"F6\",\n    \"F7\"\n  ],\n  \"failures\": []\n}\n```",
+            "finalAssistantRawText": "```json\n{\n  \"status\": \"PASS\",\n  \"exit_code\": 0,\n  \"command\": \"cd /home/openclaw/engineering/feedback-2ec52f6742aa972f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py\",\n  \"acceptance\": [\n    \"AC5\",\n    \"AC6\",\n    \"AC7\",\n    \"AC8\",\n    \"AC9\",\n    \"F1\",\n    \"F2\",\n    \"F3\",\n    \"F4\",\n    \"F5\",\n    \"F6\",\n    \"F7\"\n  ],\n  \"failures\": []\n}\n```",
+            "replayInvalid": true,
+            "livenessState": "working",
+            "stopReason": "stop",
+            "executionTrace": {
+              "winnerProvider": "google",
+              "winnerModel": "gemini-3.5-flash-lite",
+              "attempts": [
+                {
+                  "provider": "google",
+                  "model": "gemini-3.5-flash-lite",
+                  "result": "success",
+                  "stage": "assistant"
+                }
+              ],
+              "fallbackUsed": false,
+              "runner": "embedded"
+            },
+            "requestShaping": {
+              "thinking": "off"
+            },
+            "completion": {
+              "stopReason": "stop",
+              "finishReason": "stop"
+            },
+            "toolSummary": {
+              "calls": 1,
+              "tools": [
+                "exec"
+              ],
+              "failures": 0
+            },
+            "terminalReply": {
+              "disposition": "visible",
+              "text": "```json\n{\n  \"status\": \"PASS\",\n  \"exit_code\": 0,\n  \"command\": \"cd /home/openclaw/engineering/feedback-2ec52f6742aa972f && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py\",\n  \"acceptance\": [\n    \"AC5\",\n    \"AC6\",\n    \"AC7\",\n    \"AC8\",\n    \"AC9\",\n    \"F1\",\n    \"F2\",\n    \"F3\",\n    \"F4\",\n    \"F5\",\n    \"F6\",\n    \"F7\"\n  ],\n  \"failures\": []\n}\n```"
+            }
+          },
+          "sourceReplyDeliveryState": "missing"
+        }
+      }
+    },
+    "commit": {
+      "state": "started",
+      "at": 1793655569.4707386
+    }
+  },
+  "revision": "5e374fac2943826ec9f9287fa42c53ab0c8e997c4d8303152c1fbbcf780f714e",
+  "base_sha": "4a794e2b3d62247881fef4c0908eeeee9f043ba2"
+}

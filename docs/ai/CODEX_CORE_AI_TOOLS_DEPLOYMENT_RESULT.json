@@ -1,0 +1,40 @@
+{
+  "observed_at": "2026-10-25T03:10:02.407738+00:00",
+  "status": "DEPLOYED_REGRESSION_AND_OWNER_SELECTOR_HUMAN_UAT_PASS",
+  "core_image": "sha256:1bbe160472068a64d3a965fe2bbbd280c2095d17ce285785a3ad0df40825a61f",
+  "gateway_image": "sha256:c0f328216654478cb58dc01dad737958416882f0352c450a0ae5a80438ca6372",
+  "changed_files": [
+    "app/controllers/qldapm_ai_controller.rb"
+  ],
+  "controller_sha256": "0e75b33890e655aa25e78bd90ebd6b65b9eed915f6d521bfb13633f2db952e51",
+  "pure_ruby_programs_passed": 6,
+  "role_selector_matrix": "PASS_SIX_ROLES_ACTUAL_CONTROLLER_METHODS_ISOLATED_FRAMEWORK",
+  "policy_edges": {
+    "valid": 42,
+    "wrong_role_denied": 42
+  },
+  "other_main_containers_preserved": 9,
+  "credentials_and_environment_preserved": true,
+  "gateway_or_workflow_changes": 0,
+  "native_writes": 0,
+  "model_calls": 0,
+  "native_count": 338,
+  "native_fingerprint": "c6f4373b58951e17e0d8b766b393dc8358fa99337d724be4e5826ff82787108b",
+  "schema_changes": false,
+  "staging_operations": false,
+  "rollback_image": "sha256:dcb6018226280bde73fb8812e463bdcb5ef6896cbe9a1c65be7516d993f4a3d4",
+  "rollback_tag": "qldapm-core:codex-wbs-controls-20261024",
+  "rollback_config": "private:pre-core-ai-tools-core-ui-bridge.yml",
+  "browser_uat": "PASS_DIRECT_HUMAN_CONFIRMATION_NO_BROWSER_AUTOMATION",
+  "native_approval_policy": "UNCHANGED; no QA review AI command or automatic Native write",
+  "verified_at": "2026-10-25T03:13:28.471356+00:00",
+  "postchecks": [
+    "48 API contracts",
+    "73 own-actor role checks",
+    "13 read-only checks",
+    "375 Native readback, old tree, scoped RAG integrity",
+    "full old Native rows/security preservation"
+  ],
+  "human_uat_verified_at": "2026-10-25T03:17:32.760038+00:00",
+  "human_uat_artifact": "CODEX_OWNER_NEW_TOOLS_HUMAN_UAT_RESULT.json"
+}

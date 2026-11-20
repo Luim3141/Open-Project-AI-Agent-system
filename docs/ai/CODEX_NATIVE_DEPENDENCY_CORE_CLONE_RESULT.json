@@ -1,0 +1,218 @@
+{
+  "at": "2026-10-25T20:02:25.606533+00:00",
+  "status": "PASS_ACTUAL_ISOLATED_CORE_DEPENDENCY_BRIDGE",
+  "scope": "Real cloned Native/Core HTTP and PostgreSQL; fixture-signed decisions only, not human Main approvals; Gateway relation action not yet implemented",
+  "images": {
+    "database": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+    "web": "sha256:fb89c6a8adc3aa1c2d012005b00690fee29e6f437ec9012d75637a64c9abe6c2"
+  },
+  "created_ids": [
+    376,
+    377,
+    378,
+    379,
+    380,
+    381,
+    382,
+    383,
+    384
+  ],
+  "checks": [
+    {
+      "test": "forged_signature",
+      "http": 422
+    },
+    {
+      "test": "plan_denied",
+      "actor": 20,
+      "http": 422
+    },
+    {
+      "test": "write_denied",
+      "actor": 20,
+      "http": 422
+    },
+    {
+      "test": "plan_denied",
+      "actor": 21,
+      "http": 422
+    },
+    {
+      "test": "write_denied",
+      "actor": 21,
+      "http": 422
+    },
+    {
+      "test": "plan_denied",
+      "actor": 22,
+      "http": 422
+    },
+    {
+      "test": "write_denied",
+      "actor": 22,
+      "http": 422
+    },
+    {
+      "test": "plan_denied",
+      "actor": 23,
+      "http": 422
+    },
+    {
+      "test": "write_denied",
+      "actor": 23,
+      "http": 422
+    },
+    {
+      "test": "stale_scope",
+      "http": 409
+    },
+    {
+      "test": "concurrent_exact_receipt_and_lost_reply_get",
+      "status": "PASS",
+      "relation_id": 353
+    },
+    {
+      "test": "duplicate_or_cycle",
+      "http": 422
+    },
+    {
+      "test": "duplicate_or_cycle",
+      "http": 422
+    }
+  ],
+  "receipts": [
+    {
+      "id": 377,
+      "lockVersion": 1,
+      "request_id": "QLDAPM-request-d3b18691fe791b9ff4f634b4edba5288fd8001e961e9e3266de15ddac7d7326a",
+      "provenance": "ai_gateway",
+      "proposal_id": "4cd6ea08-6b7e-4944-9018-5a8109e68c01",
+      "proposal_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "scope_hash": "73b4d1f325c6a7d693a8a2cc90e3aa98f7f2350caa07cc29628975d7e090dad6",
+      "relation": {
+        "id": 353,
+        "type": "follows",
+        "predecessor_id": 376,
+        "successor_id": 377,
+        "lag": 0
+      },
+      "changed_ids": [
+        377
+      ],
+      "readback": [
+        {
+          "id": 376,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "scheduleManually": true
+        },
+        {
+          "id": 377,
+          "lockVersion": 1,
+          "startDate": "2026-10-28",
+          "dueDate": "2026-10-29",
+          "scheduleManually": false
+        }
+      ]
+    },
+    {
+      "id": 379,
+      "lockVersion": 1,
+      "request_id": "QLDAPM-request-f5b4c4b0966cad2f3504c994becbe8cec5667aaad02061007833105253af38e0",
+      "provenance": "ai_gateway",
+      "proposal_id": "4bdf806e-248b-40de-82f6-74c37bf5d2ed",
+      "proposal_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "scope_hash": "987f7ee4773a36ad04764ed97bb573fbec1feeda4096dc10df77f7ce7bde874a",
+      "relation": {
+        "id": 355,
+        "type": "follows",
+        "predecessor_id": 378,
+        "successor_id": 379,
+        "lag": 2
+      },
+      "changed_ids": [
+        379
+      ],
+      "readback": [
+        {
+          "id": 378,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "scheduleManually": true
+        },
+        {
+          "id": 379,
+          "lockVersion": 1,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "scheduleManually": false
+        }
+      ]
+    },
+    {
+      "id": 384,
+      "lockVersion": 1,
+      "request_id": "QLDAPM-request-a3b147f883fc4d8aa1de1a0d914d8966115307be17b2515e15aae4d770a41b56",
+      "provenance": "ai_gateway",
+      "proposal_id": "d54bc191-e9ce-4d85-aa92-029c691e2e5f",
+      "proposal_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "scope_hash": "17325e9b6ae6086948aaa8f5038627d57b13099f8829cb0f60b0f0a627ddd7bf",
+      "relation": {
+        "id": 356,
+        "type": "follows",
+        "predecessor_id": 383,
+        "successor_id": 384,
+        "lag": 2
+      },
+      "changed_ids": [
+        380,
+        382,
+        384
+      ],
+      "readback": [
+        {
+          "id": 380,
+          "lockVersion": 2,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-11-02",
+          "scheduleManually": false
+        },
+        {
+          "id": 382,
+          "lockVersion": 2,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "scheduleManually": false
+        },
+        {
+          "id": 383,
+          "lockVersion": 0,
+          "startDate": "2026-10-26",
+          "dueDate": "2026-10-27",
+          "scheduleManually": true
+        },
+        {
+          "id": 384,
+          "lockVersion": 1,
+          "startDate": "2026-10-30",
+          "dueDate": "2026-11-02",
+          "scheduleManually": false
+        }
+      ]
+    }
+  ],
+  "main_native_writes": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "limits": [
+    "No Gateway relation action/proposal integration yet",
+    "No relation-specific RAG outbox/indexing qualification",
+    "No Main dependency approval/write",
+    "No full business WBS closure"
+  ],
+  "actual_pg_relation_schedule_journal_receipt_rollback": "PASS",
+  "original375_wp_rows_preserved": true,
+  "source_dump_sha256": "4d522808bbd926e26805f4ad50f9d9a785c2eff1fffe42714756dac3081cb402"
+}

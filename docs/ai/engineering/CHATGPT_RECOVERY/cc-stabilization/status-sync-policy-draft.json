@@ -1,0 +1,139 @@
+{
+  "enabled": true,
+  "principal_id": 25,
+  "project_id": 6,
+  "type_id": 1,
+  "role_id": 22,
+  "owner_grant": "3e6ec9ea98c1fe7d2e39f0cee5ca8b526dccdcc374cc1b0f5c494a87356fc457",
+  "states": {
+    "intake": {
+      "id": 1,
+      "name": "NEW",
+      "is_closed": false,
+      "is_default": true,
+      "position": 1
+    },
+    "analysis": {
+      "id": 37,
+      "name": "IN ANALYSIS",
+      "is_closed": false,
+      "is_default": false,
+      "position": 19
+    },
+    "ready": {
+      "id": 38,
+      "name": "READY FOR DEV",
+      "is_closed": false,
+      "is_default": false,
+      "position": 20
+    },
+    "development": {
+      "id": 7,
+      "name": "IN PROGRESS",
+      "is_closed": false,
+      "is_default": false,
+      "position": 7
+    },
+    "review": {
+      "id": 39,
+      "name": "CODE REVIEW",
+      "is_closed": false,
+      "is_default": false,
+      "position": 21
+    },
+    "ready_test": {
+      "id": 40,
+      "name": "READY FOR TEST",
+      "is_closed": false,
+      "is_default": false,
+      "position": 22
+    },
+    "testing": {
+      "id": 9,
+      "name": "IN TESTING",
+      "is_closed": false,
+      "is_default": false,
+      "position": 9
+    },
+    "verification": {
+      "id": 34,
+      "name": "REVIEW",
+      "is_closed": false,
+      "is_default": false,
+      "position": 16
+    },
+    "release": {
+      "id": 41,
+      "name": "READY FOR RELEASE",
+      "is_closed": false,
+      "is_default": false,
+      "position": 23
+    }
+  },
+  "edges": [
+    [
+      1,
+      37
+    ],
+    [
+      7,
+      39
+    ],
+    [
+      9,
+      7
+    ],
+    [
+      9,
+      34
+    ],
+    [
+      34,
+      7
+    ],
+    [
+      34,
+      9
+    ],
+    [
+      34,
+      41
+    ],
+    [
+      35,
+      7
+    ],
+    [
+      37,
+      38
+    ],
+    [
+      38,
+      7
+    ],
+    [
+      39,
+      7
+    ],
+    [
+      39,
+      40
+    ],
+    [
+      40,
+      9
+    ],
+    [
+      41,
+      35
+    ]
+  ],
+  "workflow_sha256": "5209481b98d4ebf989abbb06ffd561237fa36addf3571a6603f1afa2b5e2faff",
+  "historical_native_ids": [
+    387,
+    389,
+    390,
+    391,
+    394
+  ]
+}

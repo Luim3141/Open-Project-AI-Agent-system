@@ -1,0 +1,81 @@
+{
+  "started_utc": "2026-11-03T13:32:05.758596+00:00",
+  "environment": "MAIN",
+  "route": "one isolated local job process; actual durable knowledge worker and normal 5-second integration outbox",
+  "status": "RECOVERY_VERIFIED_WF14_SUPERSEDED",
+  "native_id": 392,
+  "native_version": 0,
+  "job_id": "3b695fdb-06f1-55a9-bab0-ddc62985ae1c",
+  "marker": "RECOVERY-P6-129e06908220",
+  "failed_state": {
+    "state": "retry",
+    "attempts": 1,
+    "next_at": 1793712741.4776406,
+    "error": "KNOWLEDGE_SYNC_FAILED"
+  },
+  "fault": "own process-local Service.sync_canonical_native only",
+  "production_worker_unchanged": true,
+  "retry_policy_unchanged": true,
+  "native_deletes": 0,
+  "coding_tasks_created": 0,
+  "readback": {
+    "job": {
+      "id": "3b695fdb-06f1-55a9-bab0-ddc62985ae1c",
+      "native_id": 392,
+      "state": "verified",
+      "attempts": 2,
+      "next_at": 1793712759.3940482,
+      "error": null,
+      "result": {
+        "canonical": {
+          "chunks_count": 1,
+          "document_id": "6b95908ac27cd2d481f615704ada5f0e1c3b5cc9bc2eeb8774cce0b9e185b4b4",
+          "error": null,
+          "lock_version": 0,
+          "native_id": 392,
+          "source_hash": "6b95908ac27cd2d481f615704ada5f0e1c3b5cc9bc2eeb8774cce0b9e185b4b4",
+          "source_id": "op:wp:392",
+          "status": "SKIPPED_UNCHANGED",
+          "vector_indexed": true
+        },
+        "chunks_count": 1,
+        "document_id": "91af2c73890f6b6ec44fe5ec18f3b8e3a7cde47959f1589c11c90d50581ac135",
+        "error": null,
+        "lock_version": 0,
+        "native_id": 392,
+        "source_hash": "91af2c73890f6b6ec44fe5ec18f3b8e3a7cde47959f1589c11c90d50581ac135",
+        "source_id": "actor:20:wp:392",
+        "status": "SKIPPED_UNCHANGED",
+        "vector_indexed": true
+      }
+    },
+    "events": [
+      {
+        "event_id": "825f3f2b-d681-5135-9f27-16d0ac5e0179",
+        "kind": "INDEX_FAILED",
+        "state": "ACKED",
+        "attempts": 1,
+        "execution_id": "3389",
+        "business_result": {
+          "current_index_state": "verified",
+          "job_id": "3b695fdb-06f1-55a9-bab0-ddc62985ae1c",
+          "state": "SUPERSEDED"
+        }
+      },
+      {
+        "event_id": "e8ac59fc-971c-57a0-8e10-238587774d7e",
+        "kind": "INDEX_VERIFIED",
+        "state": "ACKED",
+        "attempts": 1,
+        "execution_id": "3391",
+        "business_result": {
+          "citation": "/work_packages/392",
+          "job_id": "3b695fdb-06f1-55a9-bab0-ddc62985ae1c",
+          "native_id": 392,
+          "source_version": 0,
+          "state": "INDEX_VERIFIED"
+        }
+      }
+    ]
+  }
+}

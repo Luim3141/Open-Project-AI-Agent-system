@@ -1,0 +1,139 @@
+{
+  "files": [
+    {
+      "source_id": "file:main-workflow-contract",
+      "project": "5",
+      "content": "# Main local knowledge ingestion contract\n\nRevision: 2026-10-28. Source key and existing permitted roles are retained.\n\nMain WF01 supports two explicit sources: an authorized Native Work Package ID, or a server-registered local `source_key`. A source key never means a filesystem path. Native ingestion retains its original authorization and version checks.\n\nThe local file registry binds the Main project, an allowlisted root, one file, its SHA256 and permitted business roles. PM and AI System Owner can request indexing. Search and indexed readback require a fresh authenticated identity and the current server role, project and checksum policy. A changed file is refused until the operator verifies and updates its pinned checksum; indexing a new revision requires a new request UUID.\n\nWF01 file operations are `ingest`, `reindex`, `search` and `read`. Ingestion parses bounded text, DOCX or text-layer PDF, persists document/chunk metadata in SQLite, embeds through local Ollama BGE-M3, then verifies Qdrant points. A failed vector commit is reported as pending, and the same ingestion key may safely repair it. Native Work Packages are never mutated by these operations.\n\nSearch uses the existing hybrid retrieval engine restricted to the current registered document ID. Citations contain the logical source key, document identity and original file SHA256. Readback checks these identities again; stale citations and unregistered or unmatched points do not become evidence. Client file paths, raw content, actor/project claims and deletion requests cannot authorize source access.\n\nSupported formats at this boundary: UTF-8 TXT, Markdown, CSV, JSON, bounded DOCX and text-layer PDF. PDF parsing runs in a bounded child process (15 seconds, 64 pages, 256 KiB input and text output; Linux memory/CPU limits). Encrypted, malformed, oversized or image-only pages fail the whole ingestion; OCR and arbitrary uploads are not implemented here. Unverified user feedback cannot change the registry or promote content. This document is operational project documentation, not a QA test execution attestation.\n\nRetrieval reference: `QLDAPM_LOCAL_KNOWLEDGE_CONTRACT_20261028`."
+    },
+    {
+      "source_id": "file:project6-integration-qualification",
+      "project": "6",
+      "content": "# Project6 controlled integration qualification fixture\nThis local test document verifies pinned source ingestion, search and citation through WF01.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance."
+    }
+  ],
+  "queries": [
+    {
+      "question": "Agent bị dừng giữa chừng thì có chạy tiếp được không?",
+      "seconds": 11.097533886000008,
+      "raw_dense": [
+        {
+          "source_id": "actor:20:wp:379",
+          "title": "Develop Mini Task Manager Application",
+          "score": 0.52281505,
+          "chunk_index": 10,
+          "text": ":{\"agent\":\"dev\",\"dependencies\":[\"feedback-bb9a628fe5b7be67\"],\"id\":387,\"lock_version\":2,\"priority\":3,\"state\":\"DELIVERED\"},\"feedback-283138e910432528\":{\"agent\":\"dev\",\"dependencies\":[\"crud-search-web-v1\"],\"id\":382,\"lock_version\":9,\"priority\":3,\"state\":\"DELIVERED\"},\"feedback-2ec52f6742aa972f\":{\"agent\":\"dev\",\"dependencies\":[\"feedback-9d0ff35386a63183\"],\"id\":391,\"lock_version\":0,\"priority\":1,\"state\"\nBình luận #1160: Engineering checkpoint: OPENCLAW_STEP_NOT_COMPLETED. Run b7fd6aec-3357-495f-b9e5-f7ba04d67ad6; artifacts giữ nguyên, cần resume/reconcile theo checkpoint. Không đánh dấu Done.\nBình luận"
+        },
+        {
+          "source_id": "actor:20:wp:396",
+          "title": "[AI backlog] Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest.",
+          "score": 0.49797928,
+          "chunk_index": 7,
+          "text": "\"F1\",\n        \"F2\",\n        \"F3\",\n        \"F4\"\n      ],\n      \"failures\": []\n    }\n  },\n  \"run_artifacts\": \"D:\\\\AI project\\\\QLDAPM chat\\\\docs\\\\ai\\\\engineering\\\\runs\\\\20de715d-52be-4b32-961d-309fba95ff56\",\n  \"files_changed\": [\n    \"task_manager/app.py\",\n    \"tests/test_tasks.py\"\n  ]\n}\nBình luận #1225: WP #396 — Engineering checkpoint: OPENCLAW_STEP_NOT_COMPLETED. Run 20de715d-52be-4b32-961d-309fba95ff56; artifacts giữ nguyên, cần resume/reconcile theo checkpoint. Không đánh dấu Done.\nBình luận #1230: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:\n- PR: [#13 Them endpoint GET /tasks"
+        },
+        {
+          "source_id": "op:wp:379",
+          "title": "[Task] #379 - Develop Mini Task Manager Application",
+          "score": 0.48894495,
+          "chunk_index": 3,
+          "text": "he application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization."
+        },
+        {
+          "source_id": "actor:20:wp:379",
+          "title": "Develop Mini Task Manager Application",
+          "score": 0.47982377,
+          "chunk_index": 2,
+          "text": "lementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[[Native-reference:1376ff1e68e387d8]]([Native-reference:1376ff1e68e387d8])\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.\nBình luận #1131: PM/BA plan và backlog đã đ"
+        },
+        {
+          "source_id": "actor:20:wp:394",
+          "title": "[AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da",
+          "score": 0.47970277,
+          "chunk_index": 9,
+          "text": "DELIVERY_FAILED. Run 301dbdd8-6f6f-4df4-b6c6-b5ca3f073795; artifacts giữ nguyên, cần resume/reconcile theo checkpoint. Không đánh dấu Done.\nBình luận #1196: WP #394 — Engineering checkpoint: OPENCLAW_STEP_NOT_COMPLETED. Run 301dbdd8-6f6f-4df4-b6c6-b5ca3f073795; artifacts giữ nguyên, cần resume/reconcile theo checkpoint. Không đánh dấu Done.\nBình luận #1197: WP #394 — Engineering checkpoint: OPENCLAW_STEP_NOT_COMPLETED. Run 301dbdd8-6f6f-4df4-b6c6-b5ca3f073795; artifacts giữ nguyên, cần resume/reconcile theo checkpoint. Không đánh dấu Done.\nBình luận #1198: WP #394 — Engineering checkpoint: OPE"
+        }
+      ]
+    },
+    {
+      "question": "Quy trình kiểm tra chất lượng trước khi công việc được chủ dự án chấp nhận là gì?",
+      "seconds": 0.7166832390000195,
+      "raw_dense": [
+        {
+          "source_id": "op:wp:396",
+          "title": "[Task] #396 - [AI backlog] Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest.",
+          "score": 0.53438,
+          "chunk_index": 7,
+          "text": "pt/qldapm/acceptance/test_crud_web.py\",\n      \"acceptance\": [\n        \"AC1\",\n        \"AC2\",\n        \"AC3\",\n        \"AC4\",\n        \"AC5\",\n        \"AC6\",\n        \"AC7\",\n        \"AC8\",\n        \"AC9\",\n        \"F1\",\n        \"F2\",\n        \"F3\",\n        \"F4\"\n      ],\n      \"failures\": []\n    }\n  },\n  \"run_artifacts\": \"D:\\\\AI project\\\\QLDAPM chat\\\\docs\\\\ai\\\\engineering\\\\runs\\\\20de715d-52be-4b32-961d-309fba95ff56\",\n  \"files_changed\": [\n    \"task_manager/app.py\",\n    \"tests/test_tasks.py\"\n  ]\n}"
+        },
+        {
+          "source_id": "actor:20:wp:381",
+          "title": "[AI unit] Edit/delete/status/search and usable web interface",
+          "score": 0.52899545,
+          "chunk_index": 1,
+          "text": "t_create_list.py /opt/qldapm/acceptance/test_crud_web.py\",\n    \"artifact\": \"D:\\\\AI project\\\\QLDAPM chat\\\\docs\\\\ai\\\\engineering\\\\runs\\\\54edcb3a-51c4-4bd0-b7e8-ea797ab51ccb\\\\attempt-2\\\\acceptance-final.xml\",\n    \"log_sha256\": \"6d820391d6cceaf53e2001282b00056fe9617e22231210c079d43424910023b8\"\n  },\n  \"review_evidence\": {\n    \"revision\": \"41eb382a31ec56319f95e4c10fa025350cd377f25891c84249983076607c3842\",\n    \"verdict\": \"PASS\",\n    \"qa\": {\n      \"status\": \"PASS\",\n      \"command\": \"cd /home/openclaw/engineering/crud-search-web-v1 && .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_crea"
+        },
+        {
+          "source_id": "actor:20:wp:379",
+          "title": "Develop Mini Task Manager Application",
+          "score": 0.52866834,
+          "chunk_index": 18,
+          "text": "\":{\"agent\":\"dev\",\"dependencies\":[\"crud-search-web-v1\"],\"id\":382,\"lock_version\":9,\"priority\":3,\"state\":\"DELIVERED\"},\"feedback-2ec52f6742aa972f\":{\"agent\":\"dev\",\"dependencies\":[\"feedback-9d0ff35386a63183\"],\"id\":391,\"lock_version\":10,\"priority\":3,\"stat\nBình luận #1228: Engineering unit verified; parent WP remains incomplete.\nEngineering unit feedback-e0408cbf553ca0ba\n\n{\n  \"status\": \"succeeded\",\n  \"text\": \"Them endpoint GET /tasks/{task_id}/status chi doc du lieu, tra ve id va status, xu ly 404 cho id khong ton tai va 422 cho id sai kieu, kem theo test pytest. delivered; WP379 chưa Done. UAT deferr"
+        },
+        {
+          "source_id": "file:project6-integration-qualification",
+          "title": "Project6 Integration Qualification",
+          "score": 0.52677405,
+          "chunk_index": 0,
+          "text": "# Project6 controlled integration qualification fixture\nThis local test document verifies pinned source ingestion, search and citation through WF01.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance."
+        },
+        {
+          "source_id": "actor:20:wp:379",
+          "title": "Develop Mini Task Manager Application",
+          "score": 0.526318,
+          "chunk_index": 14,
+          "text": "reate-list-persistence-v1\"],\"id\":381,\"lock_version\":9,\"priority\":3,\"state\":\"DELIVERED\"},\"feedback-20c2a94109f4e78f\":{\"agent\":\"dev\",\"dependencies\":[\"feedback-bb9a628fe5b7be67\"],\"id\":387,\"lock_version\":2,\"priority\":3,\"state\":\"DELIVERED\"},\"feedback-283138e910432528\":{\"agent\":\"dev\",\"dependencies\":[\"crud-search-web-v1\"],\"id\":382,\"lock_version\":9,\"priority\":3,\"state\":\"DELIVERED\"},\"feedback-2ec52f6742aa972f\":{\"agent\":\"dev\",\"dependencies\":[\"feedback-9d0ff35386a63183\"],\"id\":391,\"lock_version\":2,\"priority\":3,\"state\"\nBình luận #1200: Engineering unit verified; parent WP remains incomplete.\nEngineering un"
+        }
+      ]
+    },
+    {
+      "question": "Tổng thống sao Hỏa uống cà phê giá bao nhiêu?",
+      "seconds": 0.21408446200001663,
+      "raw_dense": [
+        {
+          "source_id": "actor:20:wp:383",
+          "title": "[AI backlog] Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.",
+          "score": 0.33138847,
+          "chunk_index": 26,
+          "text": ",\"unit\":\"feedback-4d13e695555a8d44\"},\"functional_specification\":{\"acceptance\":[\"AC10: GET /health tra ve dung HTTP status va schema chuan hien co\",\"AC11: Goi lap GET /health khong lam thay doi hoac anh huong du lieu Task\",\"AC12: Bo test moi va regression tests cu (AC1-9) pass hoan toan qua pytest\"],\"api\nBình luận #1257: QLDAPM PM/BA engineering plan 76f13288-6055-400b-a615-e3f7600a3344\nUnit: feedback-4d13e695555a8d44\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-283138e910432528\"],\"objective\":\"Dang ky ham SQLite ql"
+        },
+        {
+          "source_id": "actor:20:wp:384",
+          "title": "[AI backlog] Them route GET /healthz va unit test status ok",
+          "score": 0.3286174,
+          "chunk_index": 9,
+          "text": "D khong phai la kieu so nguyen hop le\",\"AC4: Tat ca cac tinh nang cu nhu GET /tasks/summary, /healthz, CRUD, search va schema SQLite giu ng\nBình luận #1127: QLDAPM PM/BA engineering plan 4e3626a4-7af2-47ff-b1e7-c2bf38f602f1\nUnit: health-check-v1\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-4d13e695555a8d44\"],\"objective\":\"Them route GET /healthz va unit test status ok (verified delivery reused)\",\"priority\":3,\"unit\":\"health-check-v1\"},\"functional_specification\":{\"acceptance\":[\"AC1: GET /tasks/{task_id}/exists với ta"
+        },
+        {
+          "source_id": "actor:20:wp:381",
+          "title": "[AI unit] Edit/delete/status/search and usable web interface",
+          "score": 0.32790884,
+          "chunk_index": 23,
+          "text": "ealth khong lam thay doi hoac anh huong du lieu Task\",\"AC12: Bo test moi va regression tests cu (AC1-9) pass hoan toan qua pytest\"],\"api_behavior\":[\"GET /health tra ve HTTP status hien hanh dung theo implementation\",\"GET /health tra ve body hoac s\nBình luận #1255: QLDAPM PM/BA engineering plan 76f13288-6055-400b-a615-e3f7600a3344\nUnit: crud-search-web-v1\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"create-list-persistence-v1\"],\"objective\":\"Edit/delete/status/search and usable web interface (verified delivery reused)\",\"prio"
+        },
+        {
+          "source_id": "actor:20:wp:384",
+          "title": "[AI backlog] Them route GET /healthz va unit test status ok",
+          "score": 0.3268174,
+          "chunk_index": 20,
+          "text": ":\"health-check-v1\"},\"functional_specification\":{\"acceptance\":[\"AC10: GET /health tra ve dung HTTP status va schema chuan hien co\",\"AC11: Goi lap GET /health khong lam thay doi hoac anh huong du lieu Task\",\"AC12: Bo test moi va regression tests cu (AC1-9) pass hoan toan qua pytest\"],\"api_behavior\":[\"GET /health tra ve HTTP status hien hanh dung theo implementation\",\"GET /health tra ve body hoac schema dung \nBình luận #1258: QLDAPM PM/BA engineering plan 76f13288-6055-400b-a615-e3f7600a3344\nUnit: health-check-v1\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity"
+        },
+        {
+          "source_id": "actor:20:wp:387",
+          "title": "[AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu",
+          "score": 0.32625273,
+          "chunk_index": 2,
+          "text": "e\",\"AC4: Tat ca cac tinh nang cu nhu GET /tasks/summary, /healthz, CRUD, search va schema SQLite giu nguyen khong thay doi\"],\"api_behavior\":[\"GET /tasks/{task_id} tra ve ma 200 kem JSON chua id, title va status neu task ton tai\",\"GET /tasks/{task_id} tra ve ma 404 neu task_id khong ton tai trong CSDL\",\"GET /tasks/{task_id} tra ve ma 422 neu task_id khong phai la so hop le\"],\"citations\":[379],\"edge_cases\":[\"Truy van voi task_id la chuoi chu cai hoac ky tu dac biet tra ve ma loi 422\",\"Truy van task_id co gia tri so am hoac qua lon khong co trong CSDL tra ve ma loi 404\"],\"limitations\":[\"Khong tha"
+        }
+      ]
+    }
+  ]
+}

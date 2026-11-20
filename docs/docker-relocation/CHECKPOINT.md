@@ -1,0 +1,50 @@
+# Docker relocation checkpoint —16/10/2026
+
+User paused the QLDAPM upgrade and authorized Docker/WSL relocation to D:\Docker. Upgrade remains paused at29/113DONE. Resume from docs/ai-multi-agent-upgrade/CHECKPOINT_2026-10-16_P02.md, OWNER PAUSE and post-relocation sections. No reset, format, prune, data deletion or WSL unregister was performed.
+
+Current result: physical storage relocation VERIFIED; Docker is running from D. First full recovery strict inventory PASS. Second normal Desktop stop/start restored all18running workloads and all original health checks; all seven staging services healthy and Gemini cachedREADY with key retained/no Google call. Second-cycle strict39-ID assertion failed because Birdsong API was recreated; this is explicitly disclosed in second-start-verification.json, not silently marked identical. All39names/66images/123volumes/31networks and original runtime configuration remain. Upgrade remains paused.
+
+## Active physical layout
+
+- Engine distro: D:\Docker\wsl\main\ext4.vhdx; real Windows Lxss BasePath=\\?\D:\Docker\wsl\main.
+- Containers/images/volumes: D:\Docker\wsl\disk\docker_data.vhdx. Docker CustomWslDistroDir=D:\Docker\wsl; original UseContainerdSnapshotter=true preserved.
+- Active logs/tasks: D:\Docker\log and D:\Docker\tasks, exposed through child junctions beneath real C:\Users\LUIM\AppData\Local\Docker.
+- Real C LocalDocker root is a small compatibility/control directory with newly created IPC sockets and lock/metadata files. Its wsl/log/tasks children point to D. Program binaries, Roaming preferences, .docker credentials and QLDAPM external bind-mounted configuration remain at their original paths. No claim that every Docker-related byte is absent from C.
+- Both active D VHDX are held by the running engine. The source VHDX under D:\AI project\CSDLDPT\.docker-runtime\wsl are retained and no longer in use; see disk-use-evidence.json.
+
+## Retained originals — do not delete during this paused session
+
+The original physical WSL dataset is D:\AI project\CSDLDPT\.docker-runtime\wsl. The initial control-directory snapshot resolves physically to C:\Users\LUIM\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\Docker.retained-20261016-012335. Real Windows log/tasks/run originals are C:\Users\LUIM\AppData\Local\Docker\{log,tasks,run}.retained-20261016-015043. Additional redirect/empty-engine diagnostic snapshots were retained; no old directory has been removed. The real-host-switch.json receipt at D:\Docker records exact real-host changes. Do not recursively delete a junction: it may lead into another retained dataset.
+
+A stopped copy of71persistent files/45,211,850,896bytes, including both full VHDX, passed SHA256 comparison; copy-verification.json.14historical socket reparse entries were retained rather than copied as ordinary data. Source-checkpoint470files/manifest and full before/after Docker inventory are private at %LOCALAPPDATA%\QLDAPM\openproject-ai\operator\docker-relocation-20261016 (owner/SYSTEM ACL).
+
+## Root causes resolved
+
+Codex is an MSIX app: some AppData file operations and HKCU registry changes from its children were redirected into package-local storage. Thus a path that looked correct inside Codex differed from what Docker/WSL services read. Initial root-junction/registry/move attempts were not accepted as proof and all originals were retained. Real Windows changes and inspection used temporary manually triggered Task Scheduler processes outside MSIX; no recurring/startup trigger was installed. Ordinary Docker Desktop startup requires none of these helpers. All four temporary task definitions were removed after final verification; Docker remained running. No recurring/startup trigger exists.
+
+PowerShell5 UTF-8 BOM made the settings JSON fail parsing; corrected to UTF-8 without BOM. Docker briefly used its classic image store (overlay2), hiding its containerd containers/images while volumes and engine ID remained intact. Restoring the original containerd preference returned all39containers/66images. No containers/images were recreated or imported. The rebuilt built-in bridge ID changed from3a45da94f70c to5294c5ba45e0; all custom network IDs and all container network memberships survived. The verifier permits only that built-in bridge ID variation and its self-check rejects custom network replacement, image/volume loss and unexpectedly stopped workloads.
+
+## Acceptance evidence
+
+runtime-first-start.json: same engine ID,39containers/18previously running/66images/123volumes/31network names; original image IDs/tags, mounts, ports, restart policies and previously stopped states preserved. Native before-native.json and after-native-ready.json comparison PASS: schemas/migrations/project counts/memberships/gateway jobs/runs/proposals/usage471/private metadata unchanged. Seven staging services healthy; real five native roles each read335work packages. Actual public Quick Tunnel TLS/native login/secure cookie/anonymous API401 PASS, no Google call. Main8088/8090 remain the pre-existing Windows excluded-port issue.
+
+Second-cycle details:38/39container IDs and every QLDAPM ID unchanged; birdsong-retrieval-api-1 changed b21417c91981→4ec809594cda at2026-10-15T19:00:16Z while retaining the same image/mounts/ports/restart/network configuration and becoming healthy. No recreate/remove operation was issued by this relocation; cause is not identified. The first strict all-container comparison had already passed. Do not claim strict ID preservation for the second cycle. n8n took about4minutes to become healthy without repair/config changes. Final native-recovery-verification.json, final-provider-status.json, final-native-five-roles.json, final-public-https.json and final-real-host-state.json record independent checks; source-preservation.json confirms296AI files unchanged against the470-file pause archive.
+
+## Rollback and upgrade continuation
+
+Do not restart the upgrade automatically. P02-05 has planning only; P02-12 remains unfinished because the pre-existing local backup sidecar cannot open WAL-mode SQLite on its RO mount when no SHM exists. Existing valid backup and previous isolated restores remain; health alone does not prove a fresh backup. Physical Windows reboot/sleep and five remote browsers are not claimed.
+
+D data has resumed writes, so the old VHDX is now stale. Before any rollback stop Desktop/WSL, capture the CURRENT D dataset and source hashes, retain every copy, then configure paths from an unpackaged Windows process. Never silently substitute the old pre-migration VHDX for newer application data.
+
+Primary references: [Docker backup/restore](https://docs.docker.com/desktop/settings-and-maintenance/backup-and-restore/), [WSL backend](https://docs.docker.com/desktop/features/wsl/), [image stores hide inactive data](https://docs.docker.com/desktop/features/containerd/), [WSL commands](https://learn.microsoft.com/en-us/windows/wsl/basic-commands). This record distinguishes observed physical paths from MSIX logical views.
+
+
+## OWNER-APPROVED C WSL CLEANUP —16/10/2026,10:13ICT
+
+Supersedes the earlier instruction to retain physical C copies: owner explicitly requested deletion after verifying Docker/CSDLDPT and checking exact paths. The running engine is still951027a8-f9dd-4fda-a24f-1e9847cfcd8d, overlayfs/containerd, using both active VHDX under D:\Docker\wsl. Fresh unpackaged Windows inspection again confirmed BasePath and CustomWslDistroDir on D, and real C LocalDocker\wsl remains a junction to D. No restart was performed during deletion.
+
+Only three physical obsolete VHDX in the Codex MSIX cache on C were removed: Docker\wsl\main\ext4.vhdx and Docker.redirect-retained-20261016-014024\wsl\{main\ext4.vhdx,disk\docker_data.vhdx}, beneath C:\Users\LUIM\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local. Combined logical size1,843,396,608bytes (~1.72GiB). Before removal all three were archived under D:\Docker\retained-c-wsl-20261016-1012 and SHA256 matched; after removal hashes were checked again. Exact source/target/hashes are in c-old-wsl-cleanup.json. The cleanup rejected any reparse point in each source's ancestor chain, rejected the active C junction and all D paths as deletion targets, obtained non-writing source locks, and used file-only literal deletion without recursion. Only now-empty physical WSL directories were removed. No WSL unregister, format, data-volume deletion, active-VHDX replacement or API-key change.
+
+Verification c-cleanup-runtime-verification.json PASS: all39container IDs/images/tags/mounts/ports/restart/running states,66images,123volumes and networks exactly unchanged against the immediate pre-cleanup snapshot;18running workloads and prior health checks preserved. CSDLDPT localhost18773 /, /health and /api/v1/auth/me return200; anonymous dataset request401. c-cleanup-filesystem-verification.json confirms all three C sources absent, D archived hashes match, and real C junction/WSL registry still pointD. Other retained junctions into D:\Docker and D:\AI project\CSDLDPT\.docker-runtime\wsl were explicitly skipped. Those D originals and the new D archive remain; this authorization was only for old physical C WSL copies. All three temporary start/inspection tasks from this follow-up were removed.
+
+Follow-up also found the historical2am API recreation cause in persisted Docker init logs: compose/v5.5.1 issued containers/create, stop, DELETE, rename and start at2026-10-15T19:00:16–22Z. It was a Compose lifecycle operation, not an automatic consequence of copying VHDX; initiating caller not identified. CSDLDPT PROJECT_DOCUMENTATION.md checkpoints46/47 separately record owner-requested post-reboot dataset/BYTEA/features/cache/browser/local/tunnel acceptance; those tests were not rerun here. The Docker4.90 stale host-socket startup error observed earlier in this follow-up is retained as history; owner rebooted and current runtime is healthy. QLDAPM upgrade remains paused29/113, with the known RO SQLite backup defect unchanged.

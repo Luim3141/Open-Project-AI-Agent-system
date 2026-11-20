@@ -1,0 +1,128 @@
+- generic: Mở liên kết trong tab mới
+- banner:
+  - link "Nhấn vào đây để bỏ qua menu và đi tới nội dung":
+    - /url: ""
+    - text: Chuyển đến nội dung
+  - navigation "Trình đơn trên cùng":
+    - button "Mô-đun toàn cầu":
+    - link "Trang chủ":
+      - /url: http://localhost:8088/
+  - search "Tìm kiếm trong OpenProject":
+    - button "tìm kiếm":
+      - generic: 
+    - generic: Tìm kiếm trong OpenProject
+    - combobox "Tìm kiếm trong OpenProject"
+    - status
+  - button "Thêm vào…":
+    - img "Thêm vào…"
+  - link "thông báo":
+    - /url: /notifications
+  - button "Trợ giúp":
+  - button "Trình đơn người dùng":
+    - img "Trình đơn người dùng": QB
+- navigation "Menu bên":
+  - button "Thu gọn menu dự án" [expanded]:
+  - button "QLDAPM — Local Community":
+    - generic: QLDAPM — Local Community
+  - button "Thu gọn menu dự án" [expanded]:
+  - separator
+  - list:
+    - link "dự án nhà":
+      - /url: http://localhost:8088/projects/qldapm-local
+      - generic: dự án nhà
+    - link "hoạt động":
+      - /url: http://localhost:8088/projects/qldapm-local/activity
+      - generic: hoạt động
+    - button "Mở menu phụ hoạt động":
+    - link "Work Packages":
+      - /url: http://localhost:8088/projects/qldapm-local/work_packages
+      - generic: Work Packages
+    - button "Mở menu phụ Work Packages":
+    - link "AI Assistant":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-ai
+      - generic: AI Assistant
+    - link "Insights":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-insights
+      - generic: Insights
+    - link "biểu đồ Gantt":
+      - /url: http://localhost:8088/projects/qldapm-local/gantt
+      - generic: biểu đồ Gantt
+    - button "Mở menu phụ biểu đồ Gantt":
+    - link "bảng":
+      - /url: http://localhost:8088/projects/qldapm-local/boards
+      - generic: bảng
+    - button "Mở menu phụ bảng":
+    - link "Backlog":
+      - /url: http://localhost:8088/projects/qldapm-local/backlogs/backlog
+      - generic: Backlog
+    - button "Mở menu phụ Backlog":
+    - link "thành viên":
+      - /url: http://localhost:8088/projects/qldapm-local/members
+      - generic: thành viên
+    - button "Mở menu phụ thành viên":
+    - link "Workflow gates":
+      - /url: http://localhost:8088/projects/qldapm-local/qldapm-gates
+      - generic: Workflow gates
+    - link "Thiết lập dự án":
+      - /url: http://localhost:8088/projects/qldapm-local/settings/versions
+      - generic: Thiết lập dự án
+    - button "Mở menu phụ Thiết lập dự án":
+- main:
+  - heading "Nội dung" [level=1]
+  - navigation "Điều hướng":
+    - link "AI Assistant":
+      - /url: /projects/qldapm-local/qldapm-ai
+    - generic: /
+    - generic: Lịch sử xử lý Execution Monitor
+  - generic: AI Multi-Agent Execution Monitor
+  - heading "Lịch sử xử lý AI Multi-Agent" [level=2]
+  - paragraph: Danh sách các phiên điều phối Multi-Agent của bạn · Mở sơ đồ chi tiết và phát lại không gọi thêm Gemini API.
+  - generic: Tìm trong yêu cầu của tôi
+  - searchbox "Tìm trong yêu cầu của tôi": UAT Main 2026-10-21
+  - generic: Trạng thái
+  - combobox "Trạng thái":
+    - option "Tất cả trạng thái"
+    - option "Hoàn thành (COMPLETED)" [selected]
+    - option "Đang xử lý (RUNNING)"
+    - option "Đang chờ (QUEUED)"
+    - option "Thất bại (FAILED)"
+    - option "Chờ duyệt (REVIEW)"
+    - option "Chờ quota (WAITING_QUOTA)"
+    - option "Chờ provider (WAITING_PROVIDER)"
+    - option "Chặn key/model (BLOCKED)"
+  - generic: Sắp xếp
+  - combobox "Sắp xếp":
+    - option "Mới nhất trước"
+    - option "Cũ nhất trước" [selected]
+  - button "Lọc lịch sử"
+  - heading "1 execution phù hợp" [level=3]
+  - paragraph: "Vai trò hiện tại: PM · Mỗi trang 10 execution · Dữ liệu bảo đảm quyền hạn theo phiên OpenProject."
+  - table "Danh sách execution Multi-Agent của tài khoản":
+    - caption: Danh sách execution Multi-Agent của tài khoản
+    - rowgroup:
+      - row "Thời gian / Yêu cầu Agent / Chế độ Trạng thái Thời gian / Usage Thao tác":
+        - columnheader "Thời gian / Yêu cầu"
+        - columnheader "Agent / Chế độ"
+        - columnheader "Trạng thái"
+        - columnheader "Thời gian / Usage"
+        - columnheader "Thao tác"
+    - rowgroup:
+      - 'row "21/10/2026 02:32:27 UAT Main 2026-10-21: chỉ đọc; không ghi thay đổi. Phân tích tiến độ và rủi ro dự án theo dữ liệu hiện có, tổng hợp kết quả trên giao diện. PM REVIEWER LOCAL_DETERMINISTIC COMPLETED 11.16s 0 calls · Chưa có dữ liệu token Xem quá trình AI xử lý 87803ca8-72a1-4643-b00f-8fda05a06266"':
+        - 'cell "21/10/2026 02:32:27 UAT Main 2026-10-21: chỉ đọc; không ghi thay đổi. Phân tích tiến độ và rủi ro dự án theo dữ liệu hiện có, tổng hợp kết quả trên giao diện."':
+          - time: 21/10/2026 02:32:27
+          - paragraph: "UAT Main 2026-10-21: chỉ đọc; không ghi thay đổi. Phân tích tiến độ và rủi ro dự án theo dữ liệu hiện có, tổng hợp kết quả trên giao diện."
+        - cell "PM REVIEWER LOCAL_DETERMINISTIC":
+          - generic: PM
+          - generic: REVIEWER
+          - generic: LOCAL_DETERMINISTIC
+        - cell "COMPLETED":
+          - generic: COMPLETED
+        - cell "11.16s 0 calls · Chưa có dữ liệu token":
+          - generic: 11.16s
+          - generic: 0 calls · Chưa có dữ liệu token
+        - cell "Xem quá trình AI xử lý 87803ca8-72a1-4643-b00f-8fda05a06266":
+          - link "Xem quá trình AI xử lý":
+            - /url: /projects/qldapm-local/qldapm-ai/executions/87803ca8-72a1-4643-b00f-8fda05a06266
+            - generic: Xem quá trình AI xử lý
+          - paragraph: 87803ca8-72a1-4643-b00f-8fda05a06266
+  - navigation "Phân trang execution"

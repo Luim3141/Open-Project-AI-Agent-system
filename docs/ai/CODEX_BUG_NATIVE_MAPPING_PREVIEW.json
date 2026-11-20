@@ -1,0 +1,43 @@
+{
+  "scope": "QLDAPM Main project5; design decision only, no Native writes",
+  "observed_native_types": [
+    {
+      "id": 1,
+      "name": "Task"
+    },
+    {
+      "id": 5,
+      "name": "Epic"
+    },
+    {
+      "id": 10,
+      "name": "Subtask"
+    }
+  ],
+  "problem": "No Bug work package type is enabled in Main",
+  "proposed_mapping": {
+    "native_type_id": 1,
+    "native_type_name": "Task",
+    "classification": "Bug report",
+    "subject_prefix": "[Bug]",
+    "initial_status_id": 1,
+    "initial_status_name": "NEW",
+    "structured_description_sections": [
+      "Report and reproduction",
+      "Expected/actual behavior",
+      "Severity and source evidence",
+      "Duplicate references",
+      "Fix tracking",
+      "QA retest evidence",
+      "Review"
+    ]
+  },
+  "approval_policy": "All Native create/update/assignment/status changes remain own exact-hash proposals; this preview authorizes no Native mutation",
+  "alternatives": [
+    "Explicitly approve using existing Task type with transparent Bug report classification",
+    "Keep WF09 BLOCKED_CONFIGURATION pending an approved real Bug type/policy"
+  ],
+  "native_schema_changes": false,
+  "native_mutations": 0,
+  "preview_sha256": "02bae765000c1c152179db1d357519898fc923445d4e31392ff00029fddb9e40"
+}

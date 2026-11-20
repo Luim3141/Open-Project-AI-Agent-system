@@ -1,0 +1,45 @@
+<%
+  work_rows = Array(eng['backlog']).map do |u|
+    native = Array(eng['tasks']).find { |t| t['id'].to_s == u['native_id'].to_s } || {}
+    run = Array(eng.dig('telemetry','runs')).find { |r| r['id'] == u['run_id'] } || Array(eng.dig('telemetry','runs')).find { |r| r['native_id'].to_s == u['native_id'].to_s } || {}
+    u.merge('subject' => u['title'] || native['subject'] || u['subject'] || u['unit'], 'native_status' => native['status'], 'status_sync' => native['status_sync'], 'run' => run, 'created_at' => u['created_at'] || native['created_at'], 'updated_at' => u['updated_at'] || native['updated_at'] || run['updated_at'])
+  end
+  work_rows.sort_by! { |u| -(Time.parse(u['updated_at'].to_s).to_f rescue u['updated_at'].to_f) }
+%>
+<div class="qcc-card">
+  <div class="qcc-card-header"><div><h3 class="qcc-card-title">Công việc · mới cập nhật trước</h3><p class="qcc-card-sub">Project <%= eng['project_id'] %> · Asia/Ho_Chi_Minh · WP là công việc; unit và run là các bản ghi liên kết.</p></div></div>
+  <% if filters %><div class="qcc-work-filters">
+    <label>Tìm WP / title / run <input id="qcc-task-search" data-qcc-preserve class="qcc-input" type="search" placeholder="#391, tiêu đề hoặc run reference"></label>
+    <label>Trạng thái <select id="qcc-task-state" data-qcc-preserve class="qcc-input"><% %w[ALL ACTIVE READY BLOCKED COMPLETED].each do |value| %><option value="<%= value %>"><%= value %></option><% end %></select></label>
+  </div><% end %>
+  <div class="qcc-work-list" id="<%= filters ? 'qcc-tasks-table' : 'qcc-pipeline-work' %>">
+    <% work_rows.each do |u| %>
+      <%
+        r = u['run']; resume = u['resume'] || r['resume'] || {}; failure = u['failure'] || r['failure'] || {}; budget = u['budget'] || r['budget'] || {}
+        business = u['task_status'] || u['status'] || u['state'] || 'UNKNOWN'
+        active = r['queue_state'] == 'executing'
+        category = active ? 'ACTIVE' : (business.to_s.upcase == 'BLOCKED' || u['blocked_reason'].present? ? 'BLOCKED' : (%w[DELIVERED COMPLETED DONE SUCCEEDED].include?(business.to_s.upcase) ? 'COMPLETED' : (u['eligible'] && u['dependency_ready'] ? 'READY' : 'ALL')))
+        run_id = u['run_id'] || r['id']
+      %>
+      <article data-work-row data-wp-id="<%= u['native_id'] %>" data-state="<%= category %>" data-search="<%= [u['native_id'],u['subject'],run_id,u['unit']].join(' ') %>" class="qcc-work-row qcc-work-<%= category.downcase %>">
+        <div class="qcc-work-heading"><a href="/work_packages/<%= u['native_id'] %>" target="_blank" rel="noopener"><strong>WP #<%= u['native_id'] %></strong> · <%= u['subject'] %></a><span class="qcc-chip <%= category == 'BLOCKED' ? 'qcc-chip-rose' : (category == 'ACTIVE' ? 'qcc-chip-cyan' : 'qcc-chip-slate') %>"><%= business %></span></div>
+        <dl class="qcc-summary-grid">
+          <div><dt>Tạo lúc</dt><dd><%= format_vn_time.call(u['created_at']) %></dd></div><div><dt>Cập nhật</dt><dd><%= format_vn_time.call(u['updated_at']) %></dd></div>
+          <div><dt>Current / last Agent</dt><dd><%= u['agent'] || r['agent'] || r['last_agent'] || 'UNKNOWN' %> · <%= u['stage'] || r['stage'] || 'UNKNOWN' %></dd></div>
+          <div><dt>Native business status</dt><dd><%= u['native_status'] || 'UNKNOWN' %> · Engineering: <%= business %></dd></div>
+          <% if u['status_sync'].present? %><div><dt>Native sync / Delivery</dt><dd><%= u['status_sync']['state'] %> · <%= u['status_sync']['reason'] %> · <%= u['status_sync']['delivery_state'] %><br>Read-back <%= format_vn_time.call(u['status_sync']['checked_at']) %></dd></div><% end %>
+          <div><dt>Dependencies</dt><dd><%= u['dependency_ready'] == true ? 'READY' : (u['dependency_ready'] == false ? 'Chờ phụ thuộc' : 'UNKNOWN') %></dd></div>
+        </dl>
+        <% if category == 'BLOCKED' || failure['message'].present? %><p class="text-rose"><strong>Blocked:</strong> <%= failure['message'] || u['blocked_reason'] || r['blocked_reason'] %></p><% end %>
+        <% if budget['calls_used'] %><p>Budget <strong><%= budget['calls_used'] %> / <%= budget['call_cap'] || '?' %></strong> calls · Provider responses <%= budget['provider_response_count'] || 'UNKNOWN' %> · Resume <%= resume['eligible'] == true ? 'có thể yêu cầu' : 'chưa đủ điều kiện' %> · <%= resume['reason'] %></p><% end %>
+        <div class="qcc-work-actions"><% if run_id.present? %><button type="button" class="qcc-btn-xs qcc-btn-secondary qcc-run-inspector-btn" data-run-id="<%= run_id %>">Run <%= run_id.to_s.first(8) %> · Xem chi tiết</button><% end %>
+          <% if u['pr_url'].to_s.match?(%r{\Ahttps://github\.com/}) %><a href="<%= u['pr_url'] %>" target="_blank" rel="noopener">GitHub PR</a><% end %>
+          <details data-preserve-key="unit-<%= u['unit'] %>"><summary>Technical details</summary><p>Unit <code><%= u['unit'] %></code> · Project <%= u['project'] || eng['project_id'] %></p><p>Run <code><%= run_id %></code> <button type="button" class="qcc-btn-xs qcc-btn-secondary" data-qcc-copy="<%= run_id %>" <%= 'disabled' if run_id.blank? %>>Copy Full ID</button><% if run_id.blank? %> Chưa có Run ID được xác minh.<% end %></p><pre><%= JSON.pretty_generate(u.except('run')) %></pre></details>
+        </div>
+      </article>
+    <% end %>
+    <% if work_rows.empty? %><p class="qcc-text-muted">Chưa có engineering unit. Intake thành công sẽ xuất hiện sau live refresh.</p><% end %>
+    <% if filters %><p id="qcc-task-filter-empty" hidden>Không có công việc khớp bộ lọc.</p><% end %>
+  </div>
+  <% if filters && parent.present? %><details data-preserve-key="parent-anchor"><summary>Project anchor · WP cha #<%= parent_id %></summary><p><a href="/work_packages/<%= parent_id %>"><%= parent['subject'] %></a> · <%= parent.dig('_links','status','title') || parent['status'] %></p><p>Đây là parent representation, không suy luận loại Epic. Các engineering units có identity riêng và có thể cùng tham chiếu WP cha; không tạo thêm Native Task.</p></details><% end %>
+</div>

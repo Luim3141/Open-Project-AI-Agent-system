@@ -1,0 +1,110 @@
+{
+  "repository": "onnx-community/xlm-roberta-base-finetuned-squad2-ONNX",
+  "revision": "00e1042302c6444d04fea71f5785a539b599ad73",
+  "null_margin": 0,
+  "max_answer_tokens": 64,
+  "max_context_tokens": 384,
+  "model_load_seconds": 5.980607675999636,
+  "total_seconds": 6.314930569991702,
+  "cgroup_memory_peak": 830070784,
+  "input_sha256": "3abb7ec68fa405b9b29979e839890ac9354d169819849615e34ea342338947ee",
+  "network": "none",
+  "cpu_threads": 1,
+  "checks": {
+    "en-duration": false,
+    "vi-duration": false,
+    "en-absent": true,
+    "vi-absent": true,
+    "en-technical-negative": true,
+    "vi-technical-negative": true,
+    "en-condition": true,
+    "vi-condition": true
+  },
+  "status": "SYNTHETIC_ONLY_NOT_ACCEPTANCE",
+  "rows": [
+    {
+      "id": "en-duration",
+      "answer": {
+        "start": 31,
+        "end": 33,
+        "text": "14",
+        "score": 5.112384796142578,
+        "null_score": 0.6945663392543793,
+        "margin": 4.417818456888199
+      },
+      "seconds": 0.06492455798434094,
+      "truncated": false,
+      "tokens": 26
+    },
+    {
+      "id": "vi-duration",
+      "answer": {
+        "start": 29,
+        "end": 31,
+        "text": "14",
+        "score": 6.091552495956421,
+        "null_score": 0.3517446219921112,
+        "margin": 5.73980787396431
+      },
+      "seconds": 0.035942320013418794,
+      "truncated": false,
+      "tokens": 26
+    },
+    {
+      "id": "en-absent",
+      "answer": null,
+      "seconds": 0.039683532988419756,
+      "truncated": false,
+      "tokens": 27
+    },
+    {
+      "id": "vi-absent",
+      "answer": null,
+      "seconds": 0.034858794999308884,
+      "truncated": false,
+      "tokens": 27
+    },
+    {
+      "id": "en-technical-negative",
+      "answer": null,
+      "seconds": 0.03628801298327744,
+      "truncated": false,
+      "tokens": 27
+    },
+    {
+      "id": "vi-technical-negative",
+      "answer": null,
+      "seconds": 0.03824769999482669,
+      "truncated": false,
+      "tokens": 27
+    },
+    {
+      "id": "en-condition",
+      "answer": {
+        "start": 17,
+        "end": 45,
+        "text": "when pressure exceeds 80 psi",
+        "score": 8.339032411575317,
+        "null_score": 0.22333194315433502,
+        "margin": 8.115700468420982
+      },
+      "seconds": 0.047645938990172,
+      "truncated": false,
+      "tokens": 23
+    },
+    {
+      "id": "vi-condition",
+      "answer": {
+        "start": 13,
+        "end": 36,
+        "text": "áp suất vượt quá 80 psi",
+        "score": 7.471590042114258,
+        "null_score": 0.6586858034133911,
+        "margin": 6.812904238700867
+      },
+      "seconds": 0.03234882798278704,
+      "truncated": false,
+      "tokens": 19
+    }
+  ]
+}

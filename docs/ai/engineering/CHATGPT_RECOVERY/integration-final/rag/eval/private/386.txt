@@ -1,0 +1,76 @@
+[AI backlog] Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,
+QLDAPM PM/BA engineering plan d14bcb2d-9b53-4424-8160-2a18f769f4b5
+Unit: feedback-bb9a628fe5b7be67
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["health-check-v1"],"objective":"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14, AC15, AC16 ma khong lam dut gãy cac tests hien co.","priority":1,"unit":"feedback-bb9a628fe5b7be67"},"functional_specification":{"acceptance":["AC13: GET /tasks/summary trả về JSON đúng cấu trúc {\"total\": int, \"active\": int, \"completed\": int}.","AC14: Logic tính toán total là tổng, active là todo/in_progress, completed là done, luôn thỏa mãn total == active + completed.","AC15: Trả về {\"total\": 0, \"active\": 0, \"completed\": 0} khi database chưa có dữ liệu.","AC16: Focused pytest trong tests/test_tasks.py bao phủ AC13, AC14, AC15 và không làm đứt gãy 13 tests hiện có."],"api_behavior":["GET /tasks/summary trả về mã 200 OK với định dạng JSON {\"total\": int, \"active\": int, \"completed\": int}.","Trường total là tổng số lượng công việc trong cơ sở dữ liệu.","Trường active là tổng số công việc có trạng thái thuộc ('todo', 'in_progress').","Trường completed là tổng số công việc có trạng thái là 'done'.","Luôn bảo đảm đẳng thức total == active + completed."],"citations":[379],"edge_cases":["Database chưa có dữ liệu: trả về {\"total\": 0, \"active\": 0, \"completed\": 0}.","Trường hợp bảng tasks trống hoặc chưa khởi tạo bảng, xử lý trả về giá trị 0 an toàn không gây lỗi 500."],"limitations":["Endpoint summary không hỗ trợ các tham số bộ lọc phức tạp như theo từ khóa hoặc ngày tháng.","Chỉ áp dụng cho cơ sở dữ liệu SQLite và backend FastAPI hiện tại."],"scope":["Triển khai endpoint GET /tasks/summary trong ứng dụng FastAPI.","Thực hiện truy vấn SQLite để tính toán số lượng total, active ('todo', 'in_progress'), completed ('done').","Viết focused pytest trong tests/test_tasks.py bao phủ AC13, AC14, AC15 và bảo đảm không làm đứt gãy các tests hiện có."],"summary":"Bổ sung endpoint GET /tasks/summary để trả về tổng hợp số lượng công việc (total, active, completed) từ cơ sở dữ liệu SQLite theo yêu cầu QLDAPM-E2E-20261031-FRESH-FEATURE và AC13-AC16."},"reviewers":["reviewer","qa"],"virtual_executor":"dev"}
+
+Engineering unit feedback-bb9a628fe5b7be67
+
+{
+  "status": "succeeded",
+  "text": "Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "0e8d320a3459f26d01c88a3e8d4cb861e09808dd",
+  "head_sha": "0498ceeda97cd3e856a975129129e71f6c94a3dd",
+  "pr_url": "[Native-reference:6fa5eb06ad00eff9]",
+  "delivery": {
+    "baseRefName": "codex/openclaw-health-check-v1",
+    "headRefName": "codex/openclaw-feedback-bb9a628fe5b7be67",
+    "headRefOid": "0498ceeda97cd3e856a975129129e71f6c94a3dd",
+    "state": "OPEN",
+    "url": "[Native-reference:6fa5eb06ad00eff9]"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\72a36697-da92-45ca-b549-2cb8e7c780b3\\acceptance-0.xml",
+    "log_sha256": "5d42445a7cac89d032654a00b877607b444e5ebd27f2a10ca2decbbb803869cd"
+  },
+  "review_evidence": {
+    "revision": "864733a291cb132bb44199b6c2356261d22c8262fb2732d72242f1c7eeb2a7d1",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-bb9a628fe5b7be67 && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\72a36697-da92-45ca-b549-2cb8e7c780b3",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_tasks.py"
+  ]
+}
+Bình luận #1109: **[QLDAPM GitHub Sync]** Đồng bộ trạng thái Pull Request:
+- PR: [#6 Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14, ]([Native-reference:6fa5eb06ad00eff9])
+- Trạng thái GitHub: **`OPEN`**
+- Base Branch: `codex/openclaw-health-check-v1` | Head Commit: `0498ceed`
+- Phân loại nhánh: `UNMERGED`
+Bình luận #1115: QLDAPM PM/BA engineering plan 3376cdf8-94e0-4587-b656-dfadc61d4071
+Unit: feedback-bb9a628fe5b7be67
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["health-check-v1"],"objective":"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)","priority":3,"unit":"feedback-bb9a628fe5b7be67"},"functional_specification":{"acceptance":["AC1: GET /tasks/{id} tra ve HTTP 200 va thong tin task gom id, title, status khi ID ton tai","AC2: GET /tasks/{id} tra ve HTTP 404 khi ID khong ton tai trong CSDL","AC3: GET /tasks/{id} tra ve HTTP 422 
+Bình luận #1128: QLDAPM PM/BA engineering plan 4e3626a4-7af2-47ff-b1e7-c2bf38f602f1
+Unit: feedback-bb9a628fe5b7be67
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["health-check-v1"],"objective":"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)","priority":3,"unit":"feedback-bb9a628fe5b7be67"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/exists với task_id tồn tại trả về HTTP 200 và {\"exists\": true}.","AC2: GET /tasks/{task_id}/exists với task_id không tồn tại trả về HTTP 200 và {\"exists\": false}.","AC3: GE
+Bình luận #1140: QLDAPM PM/BA engineering plan 8751d17a-4c6c-4f5f-b00c-6e1239f5353c
+Unit: feedback-bb9a628fe5b7be67
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["health-check-v1"],"objective":"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)","priority":3,"unit":"feedback-bb9a628fe5b7be67"},"functional_specification":{"acceptance":["AC1: GET /tasks/{task_id}/title với ID hợp lệ trả về HTTP 200 và payload {\"id\": id, \"title\": title}.","AC2: GET /tasks/{task_id}/title với ID không tồn tại trả về HTTP 404.","AC3: GET /tasks/{task_i
+Bình luận #1154: QLDAPM PM/BA engineering plan 2f7cba6e-666f-4e94-b7f2-124dd7e153e8
+Unit: feedback-bb9a628fe5b7be67
+
+{"Native_assignee":"PM20 accountable coordinator; not a separate human Dev identity","assignment":{"dependencies":["health-check-v1"],"objective":"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14,  (verified delivery reused)","priority":3,"unit":"feedback-bb9a628fe5b7be67"},"functional_specification":{"acceptance":["AC1: GET /tasks/export.csv trả HTTP 200, Content-Type text/csv với UTF-8 và Content-Disposition tải file tasks.csv.","AC2: CSV có ba cột id,title,status; dữ liệu sắp theo id tăng dần.","AC3: Hỗ trợ q và

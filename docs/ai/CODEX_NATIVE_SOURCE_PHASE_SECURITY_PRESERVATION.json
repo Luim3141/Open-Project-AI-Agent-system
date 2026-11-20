@@ -1,0 +1,84 @@
+{
+  "at": "2026-10-26T17:26:20.317171+00:00",
+  "status": "PASS",
+  "scope": "Exact fresh predeployment backup versus current Main security and all375WP rows; no state write",
+  "results": {
+    "member_roles": {
+      "status": "PASS",
+      "before_count": 7,
+      "after_count": 7,
+      "all_columns_exact": true,
+      "row_sha256": "7e86bdf2396f5482b859587e4d163d2939e307298b7b85e5f6297529f7fc0823"
+    },
+    "members": {
+      "status": "PASS",
+      "before_count": 7,
+      "after_count": 7,
+      "all_columns_exact": true,
+      "row_sha256": "32eb8e9402ec0bc7ad98e75f42cd3db249278346064eaf93390b1acd3e8c9021"
+    },
+    "tokens": {
+      "status": "PASS",
+      "before_count": 9,
+      "after_count": 9,
+      "all_columns_exact": true,
+      "row_sha256": "db981e2fe3cf799575207a67e6b157b5c8f0f65c1e437dcadd0ce6b5b79fd520"
+    },
+    "two_factor_authentication_devices": {
+      "status": "PASS",
+      "before_count": 4,
+      "after_count": 4,
+      "all_columns_exact": true,
+      "row_sha256": "8269abeb6440cac648c91a745d2d5125ddd58bfbaff08d9bf22d500a419166de"
+    },
+    "user_passwords": {
+      "status": "PASS",
+      "before_count": 7,
+      "after_count": 7,
+      "all_columns_exact": true,
+      "row_sha256": "5a076235eab3a130d76112613fdb256b7e020ad4fd3f7c1e0e25b132c753352f"
+    },
+    "users": {
+      "status": "PASS",
+      "before_count": 10,
+      "after_count": 10,
+      "all_columns_exact": true,
+      "row_sha256": "71245d8e1d509e256c75214ce5c9b3947018228c728ca305d799bd30d51493af"
+    },
+    "work_packages": {
+      "status": "PASS",
+      "before_count": 375,
+      "after_count": 375,
+      "all_columns_exact": true,
+      "row_sha256": "5b1ffc83e8d5397f3bad131983624d05a54ed19b179b26814965efcafb30a164"
+    }
+  },
+  "original332_historical_comparison": {
+    "status": "PASS",
+    "before_count": 370,
+    "after_count": 375,
+    "main_before_count": 333,
+    "main_after_count": 338,
+    "all_previous_instance_rows_unchanged": true,
+    "original332_changed_columns": {},
+    "test370_changed_columns": [],
+    "added_ids": [
+      "371",
+      "372",
+      "373",
+      "374",
+      "375"
+    ],
+    "removed_ids": [],
+    "original332_full_row_sha256": "be39b7dcaf1433ecd01c12b095286fbe23938b55cc85b74dd73fe18e175d62ac"
+  },
+  "baseline_private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\native-source-phase-deployment-v3",
+  "historical_qa23_difference": {
+    "artifact": "CODEX_QA23_HUMAN_LOGIN_SECURITY_PROVENANCE.json",
+    "origin": "Human confirmed first-login password/TOTP change before this deployment",
+    "superseded_archive": "Pre-Owner archive predates the confirmed human change; retained comparison privately, not current deployment baseline"
+  },
+  "raw_secrets_exported_to_public": false,
+  "main_native_writes": 0,
+  "staging_operations": false
+}

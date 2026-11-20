@@ -1,0 +1,183 @@
+{
+  "at": "2026-11-01T10:47:37.668089+00:00",
+  "route": "read-only SQL/SQLite/HTTP/Docker inspect",
+  "probes": [
+    {
+      "service": "gateway",
+      "status": 200
+    },
+    {
+      "service": "n8n",
+      "status": 200
+    },
+    {
+      "service": "qdrant",
+      "status": 200
+    },
+    {
+      "service": "ollama",
+      "status": 200
+    },
+    {
+      "service": "demo-health",
+      "status": 404
+    },
+    {
+      "service": "demo-summary",
+      "status": 405
+    }
+  ],
+  "sql": "BEGIN\n5|341|4|2026-10-29 10:08:56.897949+00\n6|7|9|2026-10-31 12:48:30.776682+00\n379|7|4\n386|1|2\n0\nCOMMIT",
+  "queue": {
+    "mode": "OFF",
+    "active": 0,
+    "provider_receipts": 358
+  },
+  "containers": [
+    {
+      "name": "qldapm-openproject-web-1",
+      "id": "7bdf5d2eff8c8c3e1dcd72fef4058252789ccc8668930f59984b46c500adebea",
+      "image": "sha256:a4fa8150728bc5fc50f8afed22fce898cc52065a55ff0fdb53b803a81d9e1c6b",
+      "started": "2026-11-01T09:48:18.756113651Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-ai-gateway-1",
+      "id": "b3a46ef39a6e6453e768d806a7246f9e2ed58e295955779a46c71c2208557a70",
+      "image": "sha256:fcb44c49afb99efd85b4a00297a58e7c5a59d36ab2f2b78e15a6a6d135f5e93e",
+      "started": "2026-11-01T09:48:18.726089285Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-n8n-main",
+      "id": "cbcbcf0c01e33bb7e02b1c2fd5d0af873b945b131606509a718726fae2542d46",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "started": "2026-11-01T09:48:18.587810105Z",
+      "status": "running",
+      "health": null
+    },
+    {
+      "name": "qldapm-openproject-proxy-1",
+      "id": "575c0693814f0f5463e7b07d58e965a7225452ca09e76c87ac70091ebad2a21f",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started": "2026-11-01T09:48:18.013951506Z",
+      "status": "running",
+      "health": null
+    },
+    {
+      "name": "qldapm-openproject-cron-1",
+      "id": "c7171eb92f9a34d2f7b50b7e1894cbfd3dd92207ca41105fd152060eb86de2b7",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started": "2026-11-01T09:48:18.390833843Z",
+      "status": "running",
+      "health": null
+    },
+    {
+      "name": "qldapm-openproject-worker-1",
+      "id": "90c2405c94731fcdb46e6e802f265d95b2614d26787c7be24b686b8111c60d25",
+      "image": "sha256:95da6c8eed2e9cae1bc023b7f29451433bec3e1c68480421be1c4629542ef53f",
+      "started": "2026-11-01T09:48:18.42337242Z",
+      "status": "running",
+      "health": null
+    },
+    {
+      "name": "qldapm-ai-stage-staging-gateway-1",
+      "id": "9305fed11832a0271905c050f57c4e18d30e127b0a138eb3a3eb4d7d0ee91969",
+      "image": "sha256:02353a807a2491e946cdcb41eecaa79d2566221b6018cddca4d7f1578ec593fe",
+      "started": "2026-11-01T09:48:18.483270588Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-ai-stage-staging-web-1",
+      "id": "9531e43e01fdb148ba43f683e292bcadd5f28f7baf267f72d876c15f17816d3c",
+      "image": "sha256:665eb48b71e11991d385076eefd7ee768177e1c0f1079cdfe9b011cc0279d50b",
+      "started": "2026-11-01T09:48:18.642044032Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-ai-stage-radmin-proxy-1",
+      "id": "2721f35fcd2997887b1f453847175d9e4a4a6948fbbe4cc9e75928486eb84ac6",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started": "2026-11-01T09:48:18.326337576Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-ai-stage-local-backup-1",
+      "id": "fb26710cda0efaaab2f2655d79f77789192b095b9da2528df07947aff61b9fb8",
+      "image": "sha256:9713d54aad003b084e58035965156902f86c0ba7a638e41ab880d119ba9cbba8",
+      "started": "2026-11-01T09:48:18.726238401Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-ai-stage-n8n-editor-1",
+      "id": "b6e9224aa5f1f8deb17e7fec5b34b37f7bf8ce5c187ff1b8900ce50b2bb1dd6f",
+      "image": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "started": "2026-11-01T09:48:17.972746172Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-qdrant",
+      "id": "6cacb6b0f1b07f061bab32497bd92d2e31a01a639da747cab17d7be689ccca8f",
+      "image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "started": "2026-11-01T09:48:18.683903053Z",
+      "status": "running",
+      "health": null
+    },
+    {
+      "name": "qldapm-ai-stage-quick-tunnel-1",
+      "id": "18e3960e896abecfbbff2cdaabc4ea3242ba477cc577d7f27269b96cf5531b84",
+      "image": "sha256:a80f54e29918ec66c82cdc7ad8fd9a65e3082e59825c0356d5737916959884c6",
+      "started": "2026-11-01T09:48:18.005482902Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-ai-stage-n8n-1",
+      "id": "5729a0af261d458d8c83f0a7eb6c6287c1280ce5bce3fe20bb04d0abbf616326",
+      "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+      "started": "2026-11-01T09:48:18.603665403Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-ai-stage-db-1",
+      "id": "0775f1163e682dea6e1df59f306ae89dfbe7ba0a8c38031d09604501b0ca3505",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started": "2026-11-01T09:48:18.510242285Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-openproject-hocuspocus-1",
+      "id": "a9e13d59ae711266f599d5a1d1d7ed33345c2450e3457003684625fb3b39a584",
+      "image": "sha256:2fb02a59609f5f197c7cedea1654d4cbcfc4e679e6fbc630f374d77e3448758e",
+      "started": "2026-11-01T09:48:18.692260165Z",
+      "status": "running",
+      "health": null
+    },
+    {
+      "name": "qldapm-openproject-db-1",
+      "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+      "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "started": "2026-11-01T09:48:18.543609561Z",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "qldapm-openproject-cache-1",
+      "id": "ac27388285fbadbf7a0f81f2f1d6c141d9fb79483d186d469d5bb324a0818115",
+      "image": "sha256:9e4de012dc607573052061c0bcb38abc775e1dd59b24e7ac38d1892842094aaf",
+      "started": "2026-11-01T09:48:17.953674518Z",
+      "status": "running",
+      "health": null
+    }
+  ],
+  "baseline_container_identity_image_unchanged": true
+}

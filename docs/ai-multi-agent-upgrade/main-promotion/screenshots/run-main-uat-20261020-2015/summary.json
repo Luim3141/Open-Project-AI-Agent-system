@@ -1,0 +1,84 @@
+{
+  "run_id": "main-uat-20261020-2015",
+  "start_time": "2026-10-20T20:18:24+0700",
+  "end_time": "2026-10-20T20:19:11+0700",
+  "runtime_images": {
+    "web": "qldapm-openproject:main-candidate (sha256:bfda82ceec573e5104a797b517e497ec6d6b68a25e3f29a322c3879e1320754c)",
+    "gateway": "sha256:456c38f6a9a936048892bdb2d97fd855eb63c6321fbaceab88de6f8aa56fe70b",
+    "db": "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3"
+  },
+  "results": {
+    "admin_login": "BLOCKED (Password mismatch: op-owner active password was rotated in DB on 2026-10-10 09:35:21; plain credential not present in repo; zero-mutation rule strictly prevents password reset)",
+    "member_login_bapm": "PASS (Password accepted; OpenProject successfully enforced mandatory first-login password change)",
+    "member_authenticated_session": "BLOCKED (Account requires first-time password change & TOTP enrollment per OpenProject policy; zero-mutation rule strictly prevents changing password or auto-enrolling seeds)",
+    "unauth_gantt_protection": "PASS (Unauthenticated access redirected to login with back_url, HTTP 200)",
+    "viewport_1920x1080": "PASS (Clean rendering at 1920x1080)",
+    "viewport_1366x768": "PASS (Clean rendering at 1366x768)",
+    "viewport_375x812": "PASS (Responsive mobile layout rendered without overflow)",
+    "saved_query_37": "NOT_APPLICABLE (Query #37 'QLDAPM \u2014 Scrum Roadmap theo Epic' exists only on Staging database; business queries were not imported to Main per Gate C data freeze)",
+    "saved_query_29": "PASS (Query #29 'QLDAPM \u2014 Imported backlog' verified in Main DB for Project 5)",
+    "board_8": "PASS (Board #8 'QLDAPM Basic \u2014 manual status' verified in Main DB for Project 5)",
+    "boards_19_to_22": "NOT_APPLICABLE (Boards #19..#22 exist only on Staging database; not migrated to Main per Gate C policy pending Version data approval)",
+    "gate_b_zero_impersonation": "PASS (Admin User 18 without project member role is strictly denied access via deny_access; zero impersonation confirmed)",
+    "gateway_health": "PASS (HTTP 200, status: ok)",
+    "gateway_auth_boundary": "PASS (HTTP 401 Unauthorized; machine auth boundary active)",
+    "wbs_count_main": "PASS (329 WPs in Project 5: 11 Epics 38..48, 53 Tasks, 265 Subtasks Type 10)",
+    "wbs_difference_identified": "PASS (Exactly 6 non-WBS test tickets identified in Staging: ID 436: pm review, ID 441: Test, ID 442: gemini test, ID 443: gemini test, ID 446: gemini test 2, ID 447: gemini test 3)",
+    "execution_monitor": "BLOCKED_USER_ONBOARDING (Awaiting native user first-login and TOTP setup)",
+    "interactive_ui_flows": "BLOCKED_USER_ONBOARDING (Graph Drag & Drop, Auto Layout, Replay, Presentation Mode require authenticated session)",
+    "zero_provider_calls": "PASS (0 provider calls generated; receipts before=0, after=0)"
+  },
+  "diff_items": [
+    [
+      "436",
+      "pm review",
+      "8",
+      "49"
+    ],
+    [
+      "441",
+      "Test",
+      "8",
+      "49"
+    ],
+    [
+      "442",
+      "gemini test",
+      "8",
+      "50"
+    ],
+    [
+      "443",
+      "gemini test",
+      "8",
+      "51"
+    ],
+    [
+      "446",
+      "gemini test 2",
+      "8",
+      "51"
+    ],
+    [
+      "447",
+      "gemini test 3",
+      "1",
+      "39"
+    ]
+  ],
+  "console_errors": [
+    "You need to be authenticated to access this resource.",
+    "You need to be authenticated to access this resource.",
+    "You need to be authenticated to access this resource.",
+    "You need to be authenticated to access this resource.",
+    "You need to be authenticated to access this resource.",
+    "You need to be authenticated to access this resource.",
+    "You need to be authenticated to access this resource.",
+    "You need to be authenticated to access this resource."
+  ],
+  "network_errors": [],
+  "receipts": {
+    "before": 0,
+    "after": 0
+  }
+}

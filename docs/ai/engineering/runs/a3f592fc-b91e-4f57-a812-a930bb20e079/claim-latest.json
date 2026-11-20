@@ -1,0 +1,49 @@
+{
+  "id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": "75d2c33fbca20a0d2829cec77e4fa2fc38b0807e",
+  "budget": {
+    "attempt_calls": 12,
+    "auto_continue": false,
+    "cooldown_seconds": 60,
+    "max_continuations": 5,
+    "task_calls": 72
+  },
+  "deadline": 1793909554.0544243,
+  "definition": {
+    "acceptance": {
+      "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+      "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+      "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+      "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+      "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+      "F1": "AC10: GET /health tra ve dung HTTP status va schema chuan hien co",
+      "F2": "AC11: Goi lap GET /health khong lam thay doi hoac anh huong du lieu Task",
+      "F3": "AC12: Bo test moi va regression tests cu (AC1-9) pass hoan toan qua pytest"
+    },
+    "acceptance_file": "test_crud_web.py",
+    "base_branch": "codex/openclaw-feedback-e0408cbf553ca0ba",
+    "base_unit": "feedback-e0408cbf553ca0ba",
+    "feedback": "Owner-approved Telegram/Observer E2E: bổ sung regression tests cho endpoint GET /health của mini-task-manager.\nChỉ bổ sung tests và ghi chú test cần thiết, không đổi hành vi ứng dụng hoặc thêm endpoint.\nKiểm tra status HTTP hiện hành, schema/body thực tế và việc gọi lặp không làm thay đổi dữ liệu Task.\nBA phải đọc nguồn và mô tả đúng contract hiện có trước khi giao Dev. Dev viết tests trên code thật;\nReviewer độc lập review diff; QA chạy bộ tests liên quan và báo exit code/bằng chứng.\nKhông replay unit cũ, không merge hoặc deploy ứng dụng. Tạo đúng một unit mới cho phạm vi này.\nGiữ One Task—Multiple Agent Runs, dùng runner/provider/budget/RBAC/approval hiện có.\nRuntime thành công chỉ READY FOR RELEASE; Owner sẽ nghiệm thu riêng sau khi xem bằng chứng.",
+    "kind": "development",
+    "native_id": 397,
+    "plan_id": "8f93d0a1-8115-49b5-bc73-2487e778a7cd",
+    "title": "Bo sung regression tests cho GET /health dam bảo kiem tra status HTTP hien hanh, schema thuc te, goi lap khong anh huong du lieu Task va tat ca pytest pass."
+  },
+  "engine": "openclaw",
+  "kind": "development",
+  "native_id": 397,
+  "project_id": 6,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "telegram-health-regression-dev-20261105",
+  "source_version": 1,
+  "spec": "QLDAPM PM/BA engineering plan 8f93d0a1-8115-49b5-bc73-2487e778a7cd\nUnit: feedback-d8b7006b5cff1bc4\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-e0408cbf553ca0ba\"],\"objective\":\"Bo sung regression tests cho GET /health dam bảo kiem tra status HTTP hien hanh, schema thuc te, goi lap khong anh huong du lieu Task va tat ca pytest pass.\",\"priority\":1,\"unit\":\"feedback-d8b7006b5cff1bc4\"},\"functional_specification\":{\"acceptance\":[\"AC10: GET /health tra ve dung HTTP status va schema chuan hien co\",\"AC11: Goi lap GET /health khong lam thay doi hoac anh huong du lieu Task\",\"AC12: Bo test moi va regression tests cu (AC1-9) pass hoan toan qua pytest\"],\"api_behavior\":[\"GET /health tra ve HTTP status hien hanh dung theo implementation\",\"GET /health tra ve body hoac schema dung cau truc hien tai\",\"GET /health hoan toan doc lap va khong gay tac dong phu len du lieu Task\"],\"citations\":[379],\"edge_cases\":[\"Goi lap lai GET /health nhieu lan lien tiep khong lam thay doi state\",\"Phan hoi on dinh khi he thong dang hoat dong binh thuong\"],\"limitations\":[\"Khong thay doi logic nghiep vu hoac them endpoint moi\",\"Khong tu dong merge hoac deploy ung dung\"],\"scope\":[\"Bo sung regression tests cho GET /health\",\"Kiem tra HTTP status hien hanh va schema thuc te cua /health\",\"Xac thuc viec goi lap GET /health khong lam thay doi du lieu Task\",\"Dam bao khong sua doi ma nguon logic ung dung hoac them endpoint moi\"],\"summary\":\"Bo sung regression tests cho endpoint GET /health cua mini-task-manager theo feedback cua Owner ma khong thay doi hanh vi hay them endpoint moi.\"},\"reviewers\":[\"reviewer\",\"qa\"],\"virtual_executor\":\"dev\"}",
+  "spec_sha256": "ad7df558e7d284458a8d6999885bddea5b8976981c144a9c5d5a541d3016cd64",
+  "stage": "ADMITTED",
+  "unit": "feedback-d8b7006b5cff1bc4",
+  "write_scope_ids": [],
+  "worker_id": "57337b5e-ba68-4099-bde8-6685ce6aa048",
+  "claim_token": "aa2e8b0b-f5b6-41e9-9058-796b3dfa6443",
+  "claim_generation": 153
+}

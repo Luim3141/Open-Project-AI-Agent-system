@@ -1,0 +1,15 @@
+{
+  "target": "qldapm-ai-stage",
+  "up_services": [
+    "staging-gateway"
+  ],
+  "image": "sha256:0d46ba40dc575864f9f6ce3c55ea9dfc2a05e33432f02bf72f3fb73be1399092",
+  "previous": "sha256:47751dc25b5d8a091946a5371452a07f599f02f15357d2a8ba40626a8b452219",
+  "owner_request_sha256": "dbfab6c22b749b73bf4c117bf41ac3f44ce35fae90b6b814c8b3e3a364255e78",
+  "owner_approved": true,
+  "approval": "User attachment explicitly approves live existing-model Gemini and Gateway-only Staging recreate after backup/preflight; no re-approval required",
+  "billing": "BILLING_CONFIGURATION_UNCHANGED — OWNER_ATTESTED",
+  "core_db_n8n_tunnel_main_restart": false,
+  "credentials_roles_changed": false,
+  "configuration_change": "persist multi_agent.enabled=true and bounded defaults in existing private gemini.json; existing key/model/provider policy unchanged"
+}

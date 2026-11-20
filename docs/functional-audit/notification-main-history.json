@@ -1,0 +1,145 @@
+{
+  "scope": "REAL durable outbox/context read-only; no send/replay",
+  "at": 1794474079.793789,
+  "outbox": [
+    {
+      "event_id": "delivery-test:e5409459fc804f9ba613bb9e9c46d68e",
+      "task_id": 391,
+      "type": "DELIVERY_TEST",
+      "project_id": 6,
+      "workflow_run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "status": "SENT",
+      "attempts": 1,
+      "message_id": 8,
+      "created_at": 1793894421.5735338
+    },
+    {
+      "event_id": "eb29be2c5417d1c1b0035bf8b148a5654fcde6b0f8be1bdc178d134d77e353f1",
+      "task_id": 379,
+      "type": "TASK_BLOCKED",
+      "project_id": 6,
+      "workflow_run_id": "8f93d0a1-8115-49b5-bc73-2487e778a7cd",
+      "status": "SENT",
+      "attempts": 1,
+      "message_id": 13,
+      "created_at": 1793898103.1169465
+    },
+    {
+      "event_id": "ef3b1173d1dfecbc2f373c2a5a7e5b6778458f97d23f6614ab7d41740db5934e",
+      "task_id": 397,
+      "type": "AWAITING_APPROVAL",
+      "project_id": 6,
+      "workflow_run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "status": "SENT",
+      "attempts": 1,
+      "message_id": 14,
+      "created_at": 1793908459.92664
+    },
+    {
+      "event_id": "b41aae14b1704b8792076706a77117539e0f6cb20d6d017efd609cdbcc7bb953",
+      "task_id": 397,
+      "type": "PR_CREATED",
+      "project_id": 6,
+      "workflow_run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "status": "SENT",
+      "attempts": 1,
+      "message_id": 15,
+      "created_at": 1793908459.9699557
+    },
+    {
+      "event_id": "e5b463f815bf18b41ed5d2f21f552721ff9f527fc9f7e3266ba64e4e4ac0df93",
+      "task_id": 397,
+      "type": "TASK_COMPLETED",
+      "project_id": 6,
+      "workflow_run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+      "status": "SENT",
+      "attempts": 1,
+      "message_id": 16,
+      "created_at": 1793909174.6145852
+    },
+    {
+      "event_id": "c9089dc9f6616596ce5b2ba4136bb16ac4050f29b71387cefc8412995ede00c6",
+      "task_id": 398,
+      "type": "PR_CREATED",
+      "project_id": 6,
+      "workflow_run_id": "de391b2f-e5f2-4bc3-be10-54ab11d73099",
+      "status": "SENT",
+      "attempts": 1,
+      "message_id": 21,
+      "created_at": 1793964871.5267768
+    },
+    {
+      "event_id": "95efc69bcf3fe2d28cc1cbd25796b164d6b2be0055a3b1a79ebcf85162453867",
+      "task_id": 398,
+      "type": "AWAITING_APPROVAL",
+      "project_id": 6,
+      "workflow_run_id": "de391b2f-e5f2-4bc3-be10-54ab11d73099",
+      "status": "SENT",
+      "attempts": 1,
+      "message_id": 22,
+      "created_at": 1793964917.6752963
+    }
+  ],
+  "contexts": [
+    {
+      "message_id": 8,
+      "context": {
+        "project_id": 6,
+        "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+        "task_id": 391
+      }
+    },
+    {
+      "message_id": 13,
+      "context": {
+        "project_id": 6,
+        "run_id": "8f93d0a1-8115-49b5-bc73-2487e778a7cd",
+        "task_id": 379
+      }
+    },
+    {
+      "message_id": 14,
+      "context": {
+        "project_id": 6,
+        "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+        "task_id": 397
+      }
+    },
+    {
+      "message_id": 15,
+      "context": {
+        "project_id": 6,
+        "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+        "task_id": 397
+      }
+    },
+    {
+      "message_id": 16,
+      "context": {
+        "project_id": 6,
+        "run_id": "a3f592fc-b91e-4f57-a812-a930bb20e079",
+        "task_id": 397
+      }
+    },
+    {
+      "message_id": 21,
+      "context": {
+        "project_id": 6,
+        "run_id": "de391b2f-e5f2-4bc3-be10-54ab11d73099",
+        "task_id": 398
+      }
+    },
+    {
+      "message_id": 22,
+      "context": {
+        "project_id": 6,
+        "run_id": "de391b2f-e5f2-4bc3-be10-54ab11d73099",
+        "task_id": 398
+      }
+    }
+  ],
+  "checks": {
+    "397_completed_sent": true,
+    "398_no_completed": true
+  }
+}

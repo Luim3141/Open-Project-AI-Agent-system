@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-26T04:28:15.540789+00:00",
+  "status": "DEPLOYED_HEALTHY_EXACT_SOURCE_DATA_PRESERVED_REGRESSION_PENDING",
+  "services": {
+    "web": {
+      "tag": "qldapm-core:codex-qa-review-20261026",
+      "image": "sha256:26ed4964d63eb48dfe52f4f05776e062d09c51b6972cb142c3c8be1d88e75c82"
+    },
+    "gateway": {
+      "tag": "qldapm-ai:codex-qa-review-20261026",
+      "image": "sha256:7e1df78efa229e5c0d97bb92714e5dd81ae8a3ca23ed71b0be741cc218fadcc7"
+    }
+  },
+  "files": {
+    "openproject/ai/gateway/store.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/store.py",
+      "sha256": "34c0038f80b1a89bff691a95e818413f1867ddadefd2e2ce99cc9ae5d909dbb2"
+    },
+    "openproject/ai/gateway/native_qa.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_qa.py",
+      "sha256": "b81b723a9b2c45788eab49d3c96ee2a60dae63d1933deac8d1687d30e3e10020"
+    },
+    "openproject/ai/gateway/native_qa_runs.py": {
+      "kind": "gateway",
+      "target": "/app/gateway/native_qa_runs.py",
+      "sha256": "96fefd36103e28be3d92a0373559299e98e8077855afe8b93d7bed3e484d3287"
+    },
+    "openproject/ai/core/overlay/app/views/qldapm_ai/qa_evidence.html.erb": {
+      "kind": "core",
+      "target": "/app/app/views/qldapm_ai/qa_evidence.html.erb",
+      "sha256": "79a3830d4ef865cd6350890234a59f3789e2b43b1cf7e16e95ec3dad83b22b9c"
+    }
+  },
+  "rollback": {
+    "gateway": "sha256:89777ef1ddf5c84f1758756bca620599fb49b906ae77cf961249bf1f2726f0fa",
+    "web": "sha256:4495d944cd6ea5ab7a1fb50173310a787793f4398118f6b858333ac62a80a6a2"
+  },
+  "private_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\completion-20261026\\qa-review-deployment-attempt2",
+  "qualification": {
+    "windows_passed": 499,
+    "linux_passed": 485,
+    "linux_platform_skips": 14,
+    "ruby_programs": 13,
+    "actual_native_clone": "CODEX_WF11_QA_REVIEW_NATIVE_CLONE_RESULT.json"
+  },
+  "human_reviews_preserved": 2,
+  "main_native_writes": 0,
+  "workflow_changes": 0,
+  "schema_changes": 0,
+  "staging_operations": false,
+  "rollback_policy": "Revert image selectors only; preserve current databases and newer human review history",
+  "unrelated_containers_preserved": 8,
+  "active_unchanged_workflows": 16,
+  "native_security_board_relation_hashes_unchanged": true,
+  "prior_audit_rows_preserved": true,
+  "two_signed_human_reviews_exactly_preserved": true
+}

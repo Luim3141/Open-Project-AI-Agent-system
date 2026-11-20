@@ -1,0 +1,86 @@
+{
+  "started_utc": "2026-11-03T13:34:30.827153+00:00",
+  "environment": "MAIN",
+  "route": "one isolated local job process; actual durable knowledge worker and normal 5-second integration outbox",
+  "status": "MAIN_WF14_FAILURE_AND_WORKER_RECOVERY_VERIFIED",
+  "native_id": 392,
+  "native_version": 0,
+  "job_id": "2d819eda-11d5-5152-8270-832ab9c58a9f",
+  "marker": "RECOVERY-P6-4412647692bf",
+  "failed_state": {
+    "state": "retry",
+    "attempts": 1,
+    "next_at": 1793712908.0743809,
+    "error": "KNOWLEDGE_SYNC_FAILED"
+  },
+  "fault": "own process-local Service.sync_canonical_native only",
+  "production_worker_unchanged": true,
+  "global_retry_policy_unchanged": true,
+  "own_fixture_observation_hold_seconds": 30,
+  "native_creates": 0,
+  "native_deletes": 0,
+  "coding_tasks_created": 0,
+  "readback": {
+    "job": {
+      "id": "2d819eda-11d5-5152-8270-832ab9c58a9f",
+      "native_id": 392,
+      "state": "verified",
+      "attempts": 2,
+      "next_at": 1793712916.075707,
+      "error": null,
+      "result": {
+        "canonical": {
+          "chunks_count": 1,
+          "document_id": "6b95908ac27cd2d481f615704ada5f0e1c3b5cc9bc2eeb8774cce0b9e185b4b4",
+          "error": null,
+          "lock_version": 0,
+          "native_id": 392,
+          "source_hash": "6b95908ac27cd2d481f615704ada5f0e1c3b5cc9bc2eeb8774cce0b9e185b4b4",
+          "source_id": "op:wp:392",
+          "status": "SKIPPED_UNCHANGED",
+          "vector_indexed": true
+        },
+        "chunks_count": 1,
+        "document_id": "91af2c73890f6b6ec44fe5ec18f3b8e3a7cde47959f1589c11c90d50581ac135",
+        "error": null,
+        "lock_version": 0,
+        "native_id": 392,
+        "source_hash": "91af2c73890f6b6ec44fe5ec18f3b8e3a7cde47959f1589c11c90d50581ac135",
+        "source_id": "actor:20:wp:392",
+        "status": "SKIPPED_UNCHANGED",
+        "vector_indexed": true
+      }
+    },
+    "events": [
+      {
+        "event_id": "2efe3999-c35e-5da5-9b68-960a11b8de8d",
+        "kind": "INDEX_FAILED",
+        "state": "ACKED",
+        "attempts": 1,
+        "execution_id": "3393",
+        "business_result": {
+          "attempts": 1,
+          "job_id": "2d819eda-11d5-5152-8270-832ab9c58a9f",
+          "next_at": 1793712908.0743809,
+          "retry_owner": "GATEWAY_DURABLE_KNOWLEDGE_WORKER",
+          "state": "WAITING_RETRY"
+        }
+      },
+      {
+        "event_id": "0be79afd-4b87-51d4-bdc6-8a1f4769fe72",
+        "kind": "INDEX_VERIFIED",
+        "state": "ACKED",
+        "attempts": 1,
+        "execution_id": "3394",
+        "business_result": {
+          "citation": "/work_packages/392",
+          "job_id": "2d819eda-11d5-5152-8270-832ab9c58a9f",
+          "native_id": 392,
+          "source_version": 0,
+          "state": "INDEX_VERIFIED"
+        }
+      }
+    ]
+  },
+  "finished_utc": "2026-11-03T13:35:28.659359+00:00"
+}

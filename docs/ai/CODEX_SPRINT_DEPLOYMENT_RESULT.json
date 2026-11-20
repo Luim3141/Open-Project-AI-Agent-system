@@ -1,0 +1,105 @@
+{
+  "gateway_image": "sha256:9dcba73f1f2535d819ee9e5466994837c2046b3833a0525dc04edbec74458b9b",
+  "workflow_id": "RXWjVUL8ozqhjY4w",
+  "workflow_version": "91eb9003-9f65-4081-967c-50326add7845",
+  "workflow_name": "WF08: Sprint Risk",
+  "active": true,
+  "live_tests": [
+    {
+      "role": "PM",
+      "actor_id": 19,
+      "http_status": 200,
+      "report_id": "d91128ca-656c-5ca4-aef6-6026766b4272",
+      "report_sha256": "a8d013dbcadb157c94430f56ae5f24c7d3319dd86e83054d61bfdf126a16086d",
+      "report_persisted_readback_verified": true,
+      "summary": {
+        "total_packages": 332,
+        "closed_packages": 0,
+        "open_packages": 332,
+        "progress_percent": 0,
+        "by_status": {
+          "NEW": 332
+        },
+        "by_type": {
+          "Epic": 11,
+          "Task": 53,
+          "Subtask": 268
+        },
+        "unassigned_open_count": 0,
+        "missing_deadline_open_count": 0
+      },
+      "sprint_health": {
+        "status": "CRITICAL",
+        "reasons": [
+          "Có 22 công việc quá hạn cần xử lý."
+        ]
+      },
+      "visible_blocked": 0,
+      "visible_overdue": 22,
+      "visible_dependencies": 264,
+      "scope": "CURRENT_VISIBLE_PROJECT_WORK_PACKAGES",
+      "dependency_data_quality": "NATIVE_RELATIONS_READ",
+      "model_used": false
+    },
+    {
+      "role": "BA",
+      "actor_id": 20,
+      "http_status": 200,
+      "report_id": "d9c0d538-c1d3-545d-a9ec-4ea97eb42c01",
+      "report_sha256": "b39f81dc8af0b34b84b079b9ec05a7458637fa0f2d92cab7f65883a19a537afb",
+      "report_persisted_readback_verified": true,
+      "summary": {
+        "total_packages": 332,
+        "closed_packages": 0,
+        "open_packages": 332,
+        "progress_percent": 0,
+        "by_status": {
+          "NEW": 332
+        },
+        "by_type": {
+          "Epic": 11,
+          "Task": 53,
+          "Subtask": 268
+        },
+        "unassigned_open_count": 0,
+        "missing_deadline_open_count": 0
+      },
+      "sprint_health": {
+        "status": "CRITICAL",
+        "reasons": [
+          "Có 22 công việc quá hạn cần xử lý."
+        ]
+      },
+      "visible_blocked": 0,
+      "visible_overdue": 4,
+      "visible_dependencies": 105,
+      "scope": "CURRENT_VISIBLE_PROJECT_WORK_PACKAGES",
+      "dependency_data_quality": "NATIVE_RELATIONS_READ",
+      "model_used": false
+    },
+    {
+      "test": "missing_bearer",
+      "http_status": 401
+    },
+    {
+      "test": "missing_transport",
+      "http_status": 403
+    },
+    {
+      "test": "malformed_date",
+      "http_status": 422
+    },
+    {
+      "test": "BA_read_PM_report",
+      "http_status": 403
+    }
+  ],
+  "native_fingerprint": "57d64095ee75637a873e5d2b337c5d51d03ca82e2eb3bf2e4f2cf947cfa3c863",
+  "native_mutations_performed": false,
+  "staging_operations": false,
+  "limitations": [
+    "Project snapshot without Native sprint selection",
+    "Heuristic thresholds, not forecast",
+    "Stored relation snapshots historical; get_report does not revalidate relations"
+  ]
+}

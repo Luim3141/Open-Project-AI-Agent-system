@@ -1,0 +1,39 @@
+{
+  "id": "bc3d5fc6-f306-48ed-ba44-5a193c661824",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": "0e8d320a3459f26d01c88a3e8d4cb861e09808dd",
+  "deadline": 1793443598.328664,
+  "definition": {
+    "acceptance": {
+      "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+      "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+      "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+      "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+      "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+      "F1": "AC10: POST va PATCH ho tro luu tru, tra ve chinh xac truong category.",
+      "F2": "AC11: GET /tasks?category=... loc dung danh sach theo danh muc.",
+      "F3": "AC12: GET /tasks/export/csv tra ve HTTP 200, dinh dang MIME text/csv kem noi dung dung chuan."
+    },
+    "acceptance_file": "test_crud_web.py",
+    "base_branch": "codex/openclaw-health-check-v1",
+    "base_unit": "health-check-v1",
+    "feedback": "Bổ sung tính năng phân loại công việc theo danh mục và xuất CSV báo cáo tiến độ tự động.",
+    "kind": "development",
+    "native_id": 385,
+    "plan_id": "b1cca031-81f5-4df1-870b-cbeb23d51e66",
+    "title": "Thêm trường danh mục, hỗ trợ lọc API/giao diện và endpoint xuất CSV theo AC10, AC11, AC12."
+  },
+  "engine": "openclaw",
+  "kind": "development",
+  "native_id": 385,
+  "project_id": 6,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "auto-feedback-b1c22888cba835bb-1793441797",
+  "source_version": 1,
+  "spec": "QLDAPM PM/BA engineering plan b1cca031-81f5-4df1-870b-cbeb23d51e66\nUnit: feedback-b1c22888cba835bb\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"health-check-v1\"],\"objective\":\"Thêm trường danh mục, hỗ trợ lọc API/giao diện và endpoint xuất CSV theo AC10, AC11, AC12.\",\"priority\":1,\"unit\":\"feedback-b1c22888cba835bb\"},\"functional_specification\":{\"acceptance\":[\"AC10: POST va PATCH ho tro luu tru, tra ve chinh xac truong category.\",\"AC11: GET /tasks?category=... loc dung danh sach theo danh muc.\",\"AC12: GET /tasks/export/csv tra ve HTTP 200, dinh dang MIME text/csv kem noi dung dung chuan.\"],\"api_behavior\":[\"POST /tasks chap nhan them truong category tuy chon khi tao cong viec.\",\"PATCH /tasks/{id} ho tro cap nhat truong category cua cong viec.\",\"GET /tasks ho tro tham so loc theo category. GET /tasks/export/csv tra ve tep CSV chua danh sach va thong ke tien do.\"],\"citations\":[379],\"edge_cases\":[\"Truong category trong hoac chua ky tu dac biet duoc xuat va luu tru an toan tranh loi SQL Injection hoac loi CSV parsing.\",\"Yeu cau xuat CSV khi danh sach cong viec trong tra ve tep CSV chi co dong tieu de.\"],\"limitations\":[\"Khong ho tro quan ly bang danh muc rieng biet phuc tap.\",\"Xuat CSV ho tro dinh dang tieu chuẩnUTF-8 va phan tach dau phay.\"],\"scope\":[\"Them truong danh muc (category) vao model du lieu va co so du lieu SQLite.\",\"Ho tro loc va quan ly cong viec theo danh muc tren API va giao dien web.\",\"Trien khai endpoint xuat bao cao tien do cong viec duoi dang file CSV.\"],\"summary\":\"Bo sung tinh nang phan loai cong viec theo danh muc va xuat CSV bao cao tien do tu dong cho Mini Task Manager dua tren phan hoi nguoi dung.\"},\"reviewers\":[\"reviewer\",\"qa\"],\"virtual_executor\":\"dev\"}",
+  "spec_sha256": "592e60298805dbf23fb060532870a2fa903e3875c01bba40c6c56b0ca14c0c19",
+  "stage": "ADMITTED",
+  "unit": "feedback-b1c22888cba835bb",
+  "write_scope_ids": []
+}

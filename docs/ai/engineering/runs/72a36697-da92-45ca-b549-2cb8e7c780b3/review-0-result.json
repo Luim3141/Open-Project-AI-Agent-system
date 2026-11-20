@@ -1,0 +1,222 @@
+{
+  "runId": "a12e085b-0854-43a8-914d-23fa3d1e6c51",
+  "status": "ok",
+  "summary": "completed",
+  "result": {
+    "payloads": [
+      {
+        "text": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"864733a291cb132bb44199b6c2356261d22c8262fb2732d72242f1c7eeb2a7d1\",\n  \"findings\": []\n}\n```",
+        "mediaUrl": null
+      }
+    ],
+    "meta": {
+      "durationMs": 2029,
+      "agentMeta": {
+        "sessionId": "58a68f3f-8d13-467f-801e-d9b3e02f88a7",
+        "sessionFile": "agent:reviewer:explicit:58a68f3f-8d13-467f-801e-d9b3e02f88a7",
+        "provider": "google",
+        "model": "gemini-3.5-flash-lite",
+        "contextTokens": 1048576,
+        "contextTokensSource": "resolved",
+        "agentHarnessId": "openclaw",
+        "credentialSource": {
+          "kind": "direct",
+          "evidence": "environment",
+          "authorization": "PUBLICATION_REDACTED"
+        },
+        "usage": {
+          "input": 6346,
+          "output": 90,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "total": 6436,
+          "cost": {
+            "total": 0
+          }
+        },
+        "lastCallUsage": {
+          "input": 6346,
+          "output": 90,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "cost": {
+            "total": 0
+          },
+          "total": 6436
+        },
+        "promptTokens": 6346,
+        "contextBudgetStatus": {
+          "schemaVersion": 1,
+          "source": "pre-prompt-estimate",
+          "updatedAt": 1793447220340,
+          "provider": "google",
+          "model": "gemini-3.5-flash-lite",
+          "route": "fits",
+          "shouldCompact": false,
+          "estimatedPromptTokens": 6993,
+          "contextTokenBudget": 1048576,
+          "promptBudgetBeforeReserve": 1028576,
+          "reserveTokens": 20000,
+          "effectiveReserveTokens": 20000,
+          "remainingPromptBudgetTokens": 1021583,
+          "overflowTokens": 0,
+          "toolResultReducibleChars": 0,
+          "messageCount": 0,
+          "unwindowedMessageCount": 0,
+          "sessionId": "58a68f3f-8d13-467f-801e-d9b3e02f88a7"
+        },
+        "codeModeEngaged": false,
+        "assistantTurns": 1,
+        "terminalReceipt": {
+          "runId": "a12e085b-0854-43a8-914d-23fa3d1e6c51",
+          "sessionId": "58a68f3f-8d13-467f-801e-d9b3e02f88a7",
+          "turnId": "a12e085b-0854-43a8-914d-23fa3d1e6c51",
+          "requested": {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite"
+          },
+          "effective": {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite",
+            "responseModel": "gemini-3.5-flash-lite"
+          },
+          "successfulToolNames": [],
+          "rerouted": false,
+          "terminalDisposition": "visible"
+        }
+      },
+      "aborted": false,
+      "systemPromptReport": {
+        "source": "run",
+        "generatedAt": 1793447220140,
+        "sessionId": "58a68f3f-8d13-467f-801e-d9b3e02f88a7",
+        "sessionKey": "agent:reviewer:explicit:58a68f3f-8d13-467f-801e-d9b3e02f88a7",
+        "provider": "google",
+        "model": "gemini-3.5-flash-lite",
+        "workspaceDir": "/home/openclaw/engineering/feedback-bb9a628fe5b7be67",
+        "bootstrapMaxChars": 20000,
+        "bootstrapTotalMaxChars": 60000,
+        "bootstrapTruncation": {
+          "warningMode": "always",
+          "warningShown": false,
+          "truncatedFiles": 0,
+          "nearLimitFiles": 0,
+          "totalNearLimit": false
+        },
+        "sandbox": {
+          "mode": "off",
+          "sandboxed": false
+        },
+        "systemPrompt": {
+          "chars": 12547,
+          "hash": "a44259094fb854a1bd5712080facbe4337352a9dec2998812d90852a177fbd74",
+          "projectContextChars": 6504,
+          "nonProjectContextChars": 6043
+        },
+        "injectedWorkspaceFiles": [
+          {
+            "name": "AGENTS.md",
+            "path": "/home/openclaw/engineering/feedback-bb9a628fe5b7be67/AGENTS.md",
+            "missing": false,
+            "rawChars": 2533,
+            "injectedChars": 2533,
+            "truncated": false
+          },
+          {
+            "name": "SOUL.md",
+            "path": "/home/openclaw/engineering/feedback-bb9a628fe5b7be67/SOUL.md",
+            "missing": false,
+            "rawChars": 1350,
+            "injectedChars": 1350,
+            "truncated": false
+          },
+          {
+            "name": "IDENTITY.md",
+            "path": "/home/openclaw/engineering/feedback-bb9a628fe5b7be67/IDENTITY.md",
+            "missing": true,
+            "rawChars": 0,
+            "injectedChars": 87,
+            "truncated": false
+          },
+          {
+            "name": "BOOTSTRAP.md",
+            "path": "/home/openclaw/engineering/feedback-bb9a628fe5b7be67/BOOTSTRAP.md",
+            "missing": true,
+            "rawChars": 0,
+            "injectedChars": 0,
+            "truncated": false
+          }
+        ],
+        "skills": {
+          "promptChars": 683,
+          "hash": "203c62775edbcc3d44d1e9a97ee22b617892139869cfdce61baa8ccaa45e5a55",
+          "entries": [
+            {
+              "name": "engineering-review",
+              "blockChars": 312
+            }
+          ]
+        },
+        "tools": {
+          "listChars": 0,
+          "schemaChars": 537,
+          "entries": [
+            {
+              "name": "read",
+              "summaryChars": 164,
+              "summaryHash": "d136f5b09e28d671addad4ca800b75b8aa6a36002bc739ead964f618d3e34829",
+              "schemaChars": 460,
+              "schemaHash": "6cbbd52fc1ec26fec668c24fc08c8ea42240d163d061109d07886707dfa8d428",
+              "propertiesCount": 5
+            },
+            {
+              "name": "skills_read",
+              "summaryChars": 192,
+              "summaryHash": "22e1821dfbc26bdfaba43eaa0f6d8ae20e3784560feb6a163a067fa5cefff353",
+              "schemaChars": 77,
+              "schemaHash": "2c1504684515db5ece179c4c776e308d55ea99fd9d7c7a8ffa87da40675dfe29",
+              "propertiesCount": 1
+            }
+          ]
+        },
+        "currentTurn": {
+          "promptChars": 9297,
+          "runtimeContextChars": 0,
+          "modelOnlyPromptChars": 0
+        }
+      },
+      "finalPromptText": "Trusted engineering envelope: {\"run_id\": \"72a36697-da92-45ca-b549-2cb8e7c780b3\", \"project_id\": 6, \"native_id\": 386, \"actor_id\": 20, \"agent_role\": \"reviewer\", \"repository\": \"Luim3141/mini-task-manager\", \"session_id\": \"58a68f3f-8d13-467f-801e-d9b3e02f88a7\", \"workspace\": \"/home/openclaw/engineering/feedback-bb9a628fe5b7be67\", \"skills_version\": \"1.0.0\", \"request_allowance\": 5, \"timeout_seconds\": 420}\nIndependent reviewer. Read skills/engineering-review/SKILL.md and actual files. No edits/exec. Return only JSON {\"verdict\":\"PASS\" or \"FAIL\",\"revision\":\"864733a291cb132bb44199b6c2356261d22c8262fb2732d72242f1c7eeb2a7d1\",\"findings\":[]}; actionable findings include file/line/reason. Map each AC to actual code/tests. Spec {\"unit\": \"feedback-bb9a628fe5b7be67\", \"title\": \"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14, \", \"spec_sha256\": \"248e870a8e45844b49023d6a5676c2752429cb66b5899472d5229c0c9f6b41d6\", \"steps\": [\"Define AC/API\", \"Implement one feature in isolated worktree\", \"Independent review\", \"Independent tests\", \"Publish PR and progress\", \"Reindex authorized Native evidence\"], \"acceptance\": {\"AC5\": \"PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening\", \"AC6\": \"DELETE /tasks/{id} returns204; missing edit/delete returns404\", \"AC7\": \"GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids\", \"AC8\": \"GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors\", \"AC9\": \"Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes\", \"F1\": \"AC13: GET /tasks/summary trả về JSON đúng cấu trúc {\\\"total\\\": int, \\\"active\\\": int, \\\"completed\\\": int}.\", \"F2\": \"AC14: Logic tính toán total là tổng, active là todo/in_progress, completed là done, luôn thỏa mãn total == active + completed.\", \"F3\": \"AC15: Trả về {\\\"total\\\": 0, \\\"active\\\": 0, \\\"completed\\\": 0} khi database chưa có dữ liệu.\", \"F4\": \"AC16: Focused pytest trong tests/test_tasks.py bao phủ AC13, AC14, AC15 và không làm đứt gãy 13 tests hiện có.\"}, \"interface\": \"task_manager.app.create_app(database_path); pytest; Python FastAPI + stdlib sqlite3\", \"permission\": \"demo repository and Project6 only; no merge/deploy; completion of unit is not WP379 DONE\", \"verification\": \"trusted external acceptance + repo pytest on exact tree; independent reviewer session\", \"functional_specification\": {\"acceptance\": [\"AC13: GET /tasks/summary trả về JSON đúng cấu trúc {\\\"total\\\": int, \\\"active\\\": int, \\\"completed\\\": int}.\", \"AC14: Logic tính toán total là tổng, active là todo/in_progress, completed là done, luôn thỏa mãn total == active + completed.\", \"AC15: Trả về {\\\"total\\\": 0, \\\"active\\\": 0, \\\"completed\\\": 0} khi database chưa có dữ liệu.\", \"AC16: Focused pytest trong tests/test_tasks.py bao phủ AC13, AC14, AC15 và không làm đứt gãy 13 tests hiện có.\"], \"api_behavior\": [\"GET /tasks/summary trả về mã 200 OK với định dạng JSON {\\\"total\\\": int, \\\"active\\\": int, \\\"completed\\\": int}.\", \"Trường total là tổng số lượng công việc trong cơ sở dữ liệu.\", \"Trường active là tổng số công việc có trạng thái thuộc ('todo', 'in_progress').\", \"Trường completed là tổng số công việc có trạng thái là 'done'.\", \"Luôn bảo đảm đẳng thức total == active + completed.\"], \"citations\": [379], \"edge_cases\": [\"Database chưa có dữ liệu: trả về {\\\"total\\\": 0, \\\"active\\\": 0, \\\"completed\\\": 0}.\", \"Trường hợp bảng tasks trống hoặc chưa khởi tạo bảng, xử lý trả về giá trị 0 an toàn không gây lỗi 500.\"], \"limitations\": [\"Endpoint summary không hỗ trợ các tham số bộ lọc phức tạp như theo từ khóa hoặc ngày tháng.\", \"Chỉ áp dụng cho cơ sở dữ liệu SQLite và backend FastAPI hiện tại.\"], \"scope\": [\"Triển khai endpoint GET /tasks/summary trong ứng dụng FastAPI.\", \"Thực hiện truy vấn SQLite để tính toán số lượng total, active ('todo', 'in_progress'), completed ('done').\", \"Viết focused pytest trong tests/test_tasks.py bao phủ AC13, AC14, AC15 và bảo đảm không làm đứt gãy các tests hiện có.\"], \"summary\": \"Bổ sung endpoint GET /tasks/summary để trả về tổng hợp số lượng công việc (total, active, completed) từ cơ sở dữ liệu SQLite theo yêu cầu QLDAPM-E2E-20261031-FRESH-FEATURE và AC13-AC16.\"}, \"pm_plan\": {\"assignments\": [{\"dependencies\": [], \"objective\": \"Create/list tasks + SQLite persistence (verified delivery reused)\", \"priority\": 3, \"unit\": \"create-list-persistence-v1\"}, {\"dependencies\": [\"create-list-persistence-v1\"], \"objective\": \"Edit/delete/status/search and usable web interface (verified delivery reused)\", \"priority\": 3, \"unit\": \"crud-search-web-v1\"}, {\"dependencies\": [\"crud-search-web-v1\"], \"objective\": \"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-283138e910432528\"}, {\"dependencies\": [\"feedback-283138e910432528\"], \"objective\": \"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode. (verified delivery reused)\", \"priority\": 3, \"unit\": \"feedback-4d13e695555a8d44\"}, {\"dependencies\": [\"feedback-4d13e695555a8d44\"], \"objective\": \"Them route GET /healthz va unit test status ok (verified delivery reused)\", \"priority\": 3, \"unit\": \"health-check-v1\"}, {\"dependencies\": [\"health-check-v1\"], \"objective\": \"Bo sung endpoint GET /tasks/summary de tra ve tong hop so luong cong viec (total, active, completed) tu SQLite va viet focused pytest trong tests/test_tasks.py bao phu AC13, AC14, AC15, AC16 ma khong lam dut gãy cac tests hien co.\", \"priority\": 1, \"unit\": \"feedback-bb9a628fe5b7be67\"}], \"blockers\": [], \"next_action\": \"Thuc hien trien khai unit feedback-bb9a628fe5b7be67 theo ke hoach da lap.\", \"summary\": \"Trien khai endpoint GET /tasks/summary trong FastAPI va viet pytest bao phu AC13-AC16 theo yeu cau QLDAPM-E2E-20261031-FRESH-FEATURE.\"}, \"feedback\": \"Thêm endpoint GET /tasks/summary trả về tổng hợp số lượng công việc (total, active, completed) từ SQLite database theo thẻ QLDAPM-E2E-20261031-FRESH-FEATURE.\\nYêu cầu AC:\\n- AC13: GET /tasks/summary trả về JSON: {\\\"total\\\": int, \\\"active\\\": int, \\\"completed\\\": int}.\\n- AC14: Logic: total là tổng số tasks; active là số tasks có status in ('todo', 'in_progress'); completed là số tasks có status == 'done'. Luôn bảo đảm total == active + completed.\\n- AC15: Trả về {\\\"total\\\": 0, \\\"active\\\": 0, \\\"completed\\\": 0} khi database chưa có dữ liệu.\\n- AC16: Focused pytest trong tests/test_tasks.py bao phủ AC13, AC14, AC15 và không làm đứt gãy 13 tests hiện có.\"}\nDiff:\ndiff --git a/task_manager/app.py b/task_manager/app.py\nindex 1511f20..deeec0a 100644\n--- a/task_manager/app.py\n+++ b/task_manager/app.py\n@@ -32,6 +32,18 @@ def create_app(database_path: str = \"tasks.db\") -> FastAPI:\n     def health_check():\n         return {\"status\": \"ok\", \"app\": \"mini-task-manager\", \"version\": \"1.0.0\"}\n \n+    @app.get(\"/tasks/summary\")\n+    def get_tasks_summary():\n+        conn = sqlite3.connect(database_path)\n+        cursor = conn.cursor()\n+        cursor.execute(\"SELECT status FROM tasks\")\n+        rows = cursor.fetchall()\n+        conn.close()\n+        total = len(rows)\n+        active = sum(1 for r in rows if r[0] in (\"todo\", \"in_progress\"))\n+        completed = sum(1 for r in rows if r[0] == \"done\")\n+        return {\"total\": total, \"active\": active, \"completed\": completed}\n+\n     @app.post(\"/tasks\", status_code=status.HTTP_201_CREATED)\n     def create_task(task: TaskCreate):\n         if not isinstance(task.title, str) or not task.title.strip():\ndiff --git a/tests/test_tasks.py b/tests/test_tasks.py\nindex ff447ec..c2fad7c 100644\n--- a/tests/test_tasks.py\n+++ b/tests/test_tasks.py\n@@ -141,3 +141,27 @@ def test_h1_healthz_endpoint(client):\n     response = client.get(\"/healthz\")\n     assert response.status_code == 200\n     assert response.json() == {\"status\": \"ok\", \"app\": \"mini-task-manager\", \"version\": \"1.0.0\"}\n+\n+def test_ac13_summary_schema_and_empty(client):\n+    response = client.get(\"/tasks/summary\")\n+    assert response.status_code == 200\n+    data = response.json()\n+    assert set(data.keys()) == {\"total\", \"active\", \"completed\"}\n+    assert data == {\"total\": 0, \"active\": 0, \"completed\": 0}\n+\n+def test_ac14_summary_counts_invariant(client):\n+    client.post(\"/tasks\", json={\"title\": \"Task 1\"})\n+    t2 = client.post(\"/tasks\", json={\"title\": \"Task 2\"}).json()[\"id\"]\n+    client.patch(f\"/tasks/{t2}\", json={\"status\": \"in_progress\"})\n+    t3 = client.post(\"/tasks\", json={\"title\": \"Task 3\"}).json()[\"id\"]\n+    client.patch(f\"/tasks/{t3}\", json={\"status\": \"done\"})\n+    t4 = client.post(\"/tasks\", json={\"title\": \"Task 4\"}).json()[\"id\"]\n+    client.patch(f\"/tasks/{t4}\", json={\"status\": \"done\"})\n+\n+    response = client.get(\"/tasks/summary\")\n+    assert response.status_code == 200\n+    data = response.json()\n+    assert data[\"total\"] == 4\n+    assert data[\"active\"] == 2\n+    assert data[\"completed\"] == 2\n+    assert data[\"total\"] == data[\"active\"] + data[\"completed\"]",
+      "finalAssistantVisibleText": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"864733a291cb132bb44199b6c2356261d22c8262fb2732d72242f1c7eeb2a7d1\",\n  \"findings\": []\n}\n```",
+      "finalAssistantRawText": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"864733a291cb132bb44199b6c2356261d22c8262fb2732d72242f1c7eeb2a7d1\",\n  \"findings\": []\n}\n```",
+      "replayInvalid": false,
+      "livenessState": "working",
+      "stopReason": "stop",
+      "executionTrace": {
+        "winnerProvider": "google",
+        "winnerModel": "gemini-3.5-flash-lite",
+        "attempts": [
+          {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite",
+            "result": "success",
+            "stage": "assistant"
+          }
+        ],
+        "fallbackUsed": false,
+        "runner": "embedded"
+      },
+      "requestShaping": {
+        "thinking": "off"
+      },
+      "completion": {
+        "stopReason": "stop",
+        "finishReason": "stop"
+      },
+      "terminalReply": {
+        "disposition": "visible",
+        "text": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"864733a291cb132bb44199b6c2356261d22c8262fb2732d72242f1c7eeb2a7d1\",\n  \"findings\": []\n}\n```"
+      }
+    },
+    "sourceReplyDeliveryState": "missing"
+  }
+}

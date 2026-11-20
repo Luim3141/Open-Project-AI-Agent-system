@@ -1,0 +1,630 @@
+{
+  "utc": "2026-11-04T14:42:30.838391+00:00",
+  "images": {
+    "gateway": "sha256:016115071c25fc3f1aa0c595e8add80228df5d47c92807dc35537fef8780ec28",
+    "core": "sha256:06aeb74a42763aa0026b5ee55538ee36da62fc51db5db64948ff638356dfc880"
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/store.py": "c83575171c72b2b0b9e93d8463e04ac99bcd8ba67e8bd98c0df4e254be6cbb91",
+    "openproject/ai/gateway/service.py": "d7f551806ae8ccba0b02cf6a299fc646097b01adfc9c7392a07ab84039a418b3",
+    "openproject/ai/gateway/engineering.py": "64c840c158386fe8d125ac73b7ea156ca3867eb82c8b5e6fcf48a590f888d248",
+    "openproject/ai/gateway/engineering_operator.py": "ce72e13a3caa1cebbc7f054041da9dc5136407200aef20d9086ab89180227947",
+    "openproject/ai/gateway/engineering_lifecycle.py": "575d2c27df5e1816a133e501c53adf94947bca55affdf66d9c3761f467d79c4c",
+    "openproject/ai/gateway/engineering_health.py": "7fee86280e4d1ccdcfb54be8fbecb35d27ba1e17bed2fb0333bf808741051589",
+    "openproject/ai/gateway/engineering_observability.py": "aa1b3f9840ddb4ac2e9dc031e2f78731c3b4987ea7becc302bf19d9241a6c36a",
+    "openproject/ai/gateway/engineering_owner_control.py": "3c8140376ecf9bc784784a5b105defe063688a870c4c4a5d49f5767c8c1c6c28",
+    "openproject/ai/gateway/engineering_reporting.py": "da4ff85a1b61783316b6601c9e1eaeaf13cc4199b835616124f7a7185c7cc868",
+    "openproject/ai/gateway/workflow_status.py": "644e522760137f71d0cbe24bd36efcbf8d91adb4a69ce57ce03d579eee97083a",
+    "openproject/ai/gateway/delegated_approval.py": "c75218fbcd3c88bd3d8d0b836f756665ebac27865ed8e7d161eca6ef994724eb",
+    "openproject/ai/gateway/engineering_github_sync.py": "1fe18136c051e5a0a728231e05777eca0326c0c3fb481620a1656c74684a3050",
+    "openproject/ai/gateway/engineering_github_operations.py": "74c108ab5f43b50f1516312be39aa90ba24147778f893dbe9f2e439284945dbb",
+    "openproject/ai/gateway/engineering_github_poll.py": "48bab0af6366df642d2f414fde1e8e126e24a833ee361faed3203f2e6efd35a4",
+    "openproject/ai/gateway/engineering_status_sync.py": "4a05c94c1f4ac44e72c50395b3e6ed255dca629f9f3c96243732782102aa8acd",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "994bebc93004f60e23b93c4afeccd0add591169c10f6414bfd84f371145a61ae",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "85c6d2b380d43d8708401ad7c6056fb136ca0eb1d8e12caf1af74c22feba1b9a",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": "e0ec90f28ca17d26f9cfb5139f8a6bae1405496d153dee05c20288501254aa2c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": "c8e5a45838c4757271b10855a31b151fb06dfbd02e12b3f451a801516a53a72a"
+  },
+  "performance": {
+    "scope": "Actual Main Gateway HTTP; separate from Core/browser timings",
+    "rows": [
+      {
+        "index": 0,
+        "seconds": 8.8029,
+        "http": 200,
+        "bytes": 641087
+      },
+      {
+        "index": 1,
+        "seconds": 5.1132,
+        "http": 200,
+        "bytes": 641086
+      },
+      {
+        "index": 2,
+        "seconds": 15.303,
+        "http": 200,
+        "bytes": 640452
+      },
+      {
+        "index": 3,
+        "seconds": 8.6,
+        "http": 200,
+        "bytes": 640452
+      },
+      {
+        "index": 4,
+        "seconds": 14.4128,
+        "http": 200,
+        "bytes": 640451
+      }
+    ],
+    "p50_seconds": 8.8029,
+    "p95_seconds": 15.303,
+    "sample_count": 5
+  },
+  "control": {
+    "desired_mode": "PAUSED",
+    "effective_state": "PAUSED",
+    "state_revision": 34,
+    "last_command": {
+      "accepted": false,
+      "affected_run_id": null,
+      "command_id": "575b1edf-ab98-4873-8cdf-c67bcd15d16a",
+      "current_state": "PAUSED",
+      "desired_state": "PAUSED",
+      "reason_code": "NO_ELIGIBLE_WORK",
+      "request_id": "bd3c10bd-79f2-43e4-9e2e-7d6c3937c95d",
+      "requested_action": "RUN_ONCE",
+      "server_timestamp": 1793803372.3558276,
+      "state_revision": 34
+    },
+    "recent_commands": [
+      {
+        "accepted": false,
+        "affected_run_id": null,
+        "command_id": "575b1edf-ab98-4873-8cdf-c67bcd15d16a",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "NO_ELIGIBLE_WORK",
+        "request_id": "bd3c10bd-79f2-43e4-9e2e-7d6c3937c95d",
+        "requested_action": "RUN_ONCE",
+        "server_timestamp": 1793803372.3558276,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "98589d81-bfe1-438a-9adb-5f50388f77a2",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "operation_id": "59817618-8750-5543-aeaa-46402ff80e3c",
+        "operation_state": "QUEUED",
+        "reason_code": "QUEUED",
+        "request_id": "d0ee671b-2d52-42d8-8fe2-8b1fdb92a19b",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793803316.272855,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "4b30ec2e-8cb4-4e72-8a1f-acdc199cf8e7",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "operation_id": "f9273f4d-02f9-5ebf-9ce1-d105ae1d1978",
+        "operation_state": "QUEUED",
+        "reason_code": "QUEUED",
+        "request_id": "4ea70717-9be7-45f2-a446-0b45b6b50a8b",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793794506.7784016,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "a892d914-fdbb-4d53-af5a-3027b6f95827",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "SUCCESS",
+        "request_id": "40418146-5a87-4106-8fc8-02ff47f686c7",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793775757.1125324,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "6718ac78-5993-470b-a839-5f118fd6a551",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "SUCCESS",
+        "request_id": "7c2b97df-27a0-4f39-8776-903f6227b207",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793775720.683058,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "d4c1b236-3b69-4909-b634-4f8faad137d9",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "SUCCESS",
+        "request_id": "b5587d9f-832f-4cf0-bbaf-25d7a51c9a25",
+        "requested_action": "GITHUB_SYNC",
+        "server_timestamp": 1793775554.876894,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "3f4c36d2-b7f5-4143-9742-1bc843f40bbf",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "8e552188-3dd9-4aa4-aa98-3a075344de6d",
+        "requested_action": "PAUSED",
+        "server_timestamp": 1793775548.1367638,
+        "state_revision": 34
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "f1264e37-9c3a-482f-b09d-fa9018e7ff84",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "e27aaf0f-ce6b-47ad-801a-65b320f47271",
+        "requested_action": "PAUSED",
+        "server_timestamp": 1793775542.2026303,
+        "state_revision": 33
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "2481d205-3438-4823-bca2-1596420a5e35",
+        "current_state": "AUTO_IDLE",
+        "desired_state": "AUTO",
+        "reason_code": "ALL_DELIVERED",
+        "request_id": "fe1d1f49-28ab-48e3-a8c6-478bc5fe781f",
+        "requested_action": "AUTO",
+        "server_timestamp": 1793775505.0823462,
+        "state_revision": 32
+      },
+      {
+        "accepted": true,
+        "affected_run_id": null,
+        "command_id": "7476cc2b-9010-4abe-aa72-0595f9ba325f",
+        "current_state": "PAUSED",
+        "desired_state": "PAUSED",
+        "reason_code": "COMMAND_ACCEPTED",
+        "request_id": "e8c8d016-cba4-42e5-84e7-ce634922e240",
+        "requested_action": "PAUSED",
+        "server_timestamp": 1793775453.8451843,
+        "state_revision": 31
+      }
+    ],
+    "active_run_id": null,
+    "server_timestamp": 1793803399.5976717,
+    "blocked_reason": "NO_ELIGIBLE_WORK",
+    "scheduler_policy": {
+      "blocked_default": "STOP_AUTO_REQUIRE_OWNER",
+      "auto_continuation_enabled": false
+    }
+  },
+  "queue": {
+    "state": "EMPTY",
+    "ready": 0,
+    "active": 0,
+    "blocked": 0,
+    "eligible_unit": null,
+    "reason_code": "NO_ELIGIBLE_WORK"
+  },
+  "worker": {
+    "worker_id": "83fde9ac-3e34-4c4c-bce1-902e36d1d4e7",
+    "seen": 1793803391.8799222,
+    "run_id": null,
+    "state": "ALIVE",
+    "heartbeat_age_seconds": 7.71774959564209
+  },
+  "native": [
+    {
+      "id": 387,
+      "lock_version": 10,
+      "subject": "[AI backlog] Bo sung endpoint GET /tasks/{task_id} de truy xuat thong tin chi tiet mot cong viec theo ID so, tra ve id, title, status hoac HTTP 404 neu khong ton tai, kem theo cac bai kiem thu ",
+      "created_at": "2026-11-01T15:39:01.942Z",
+      "updated_at": "2026-11-04T12:16:55.147Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+        "engineering_state": "succeeded",
+        "native_id": 387,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "f136866a-b7e4-4ad8-bbd7-d846343163d0",
+        "source_event_id": "1c4b37af65e156449771bfc9949a57c135970785a2d6d515f2a91bcf51a38a92",
+        "source_sequence": 1793547615423384,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793794631.79337
+      }
+    },
+    {
+      "id": 389,
+      "lock_version": 10,
+      "subject": "[AI backlog] Triển khai endpoint GET /tasks/{task_id}/exists, cấu hình kiểm tra tồn tại task theo ID số nguyên, trả về HTTP 200 với {\"exists\": true|false}, xử lý HTTP 422 khi ID không hợp lệ và",
+      "created_at": "2026-11-01T20:50:35.423Z",
+      "updated_at": "2026-11-04T12:16:50.597Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+        "engineering_state": "succeeded",
+        "native_id": 389,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "814f7a28-6c1a-4d2e-82d6-f0d118e2081c",
+        "source_event_id": "83b53122b558414c9cd7162e76596c8714d9bece3cd75f3ec57d796e4b22bd93",
+        "source_sequence": 1793566293829776,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793794631.4483697
+      }
+    },
+    {
+      "id": 390,
+      "lock_version": 10,
+      "subject": "[AI backlog] Thêm route GET /tasks/{task_id}/title trả về JSON gồm id và title chính xác, xử lý HTTP 404 và HTTP 422, bảo toàn tiêu đề Unicode và giữ nguyên các route hiện có mà không đổi SQLit",
+      "created_at": "2026-11-02T04:43:57.954Z",
+      "updated_at": "2026-11-04T12:16:48.723Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+        "engineering_state": "succeeded",
+        "native_id": 390,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "447d4fd9-fd03-4a41-9468-09bad8629d48",
+        "source_event_id": "2870d856e1e715a52be9211082791f69bca60ddbb033bac6af19d31341bb581d",
+        "source_sequence": 1793594783397099,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793794631.142165
+      }
+    },
+    {
+      "id": 391,
+      "lock_version": 10,
+      "subject": "[AI backlog] Bổ sung endpoint GET /tasks/export.csv trong mini-task-manager để xuất dữ liệu task ra định dạng CSV (hỗ trợ q và status, bảo toàn Unicode, xử lý ký tự đặc biệt theo chuẩn thư viện",
+      "created_at": "2026-11-02T11:04:41.250Z",
+      "updated_at": "2026-11-04T12:16:45.029Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+        "engineering_state": "succeeded",
+        "native_id": 391,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+        "source_event_id": "186a2760a34ae875120d867f083b8f75260fc6f3bde15a38e8d03e8675d60cef",
+        "source_sequence": 1793617536952737,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793794630.8380144
+      }
+    },
+    {
+      "id": 394,
+      "lock_version": 10,
+      "subject": "[AI backlog] Hien thuc hoa GET /tasks/count voi ket qua {count: integer}, ho tro bo loc q va status theo logic AND, dat truoc tuyen /tasks/{id}, khong doi trang thai CSDL va bo sung kiem thu da",
+      "created_at": "2026-11-03T14:07:42.573Z",
+      "updated_at": "2026-11-04T12:16:43.684Z",
+      "project": 6,
+      "status": "READY FOR RELEASE",
+      "status_sync": {
+        "delivery_state": "PR_OPEN",
+        "engineering_state": "succeeded",
+        "native_id": 394,
+        "native_status_id": 41,
+        "native_version": 10,
+        "reason": "NATIVE_READBACK_VERIFIED",
+        "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+        "source_event_id": "4206eed331de2884c4a156c7660bb9980945b7a7b4c0a2e169875a617c95de98",
+        "source_sequence": 1793731824604237,
+        "state": "STATUS_SYNC_VERIFIED",
+        "target_status_id": 41,
+        "checked_at": 1793794630.3600893
+      }
+    }
+  ],
+  "native_status_sync": [
+    {
+      "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+      "engineering_state": "succeeded",
+      "native_id": 382,
+      "reason": "HUMAN_OR_SOURCE_CHANGED",
+      "run_id": "a43376cf-e70a-478d-a28e-067964a5a218",
+      "source_event_id": "d70ff941bce7d38dcdac971102f15d9401d6e719bf857c704aa133b080d15f94",
+      "source_sequence": 1793332248576451,
+      "state": "STATUS_SYNC_BLOCKED",
+      "checked_at": 1793794486.6537573
+    },
+    {
+      "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+      "engineering_state": "succeeded",
+      "native_id": 383,
+      "reason": "HUMAN_OR_SOURCE_CHANGED",
+      "run_id": "3066ed0b-fadb-47c8-8d31-349590b3301b",
+      "source_event_id": "0c1f4487ee66b9430eafb1d20e248cd4cbc794c80204a15e05723103cbf59189",
+      "source_sequence": 1793335504036957,
+      "state": "STATUS_SYNC_BLOCKED",
+      "checked_at": 1793794484.4563375
+    },
+    {
+      "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+      "engineering_state": "succeeded",
+      "native_id": 384,
+      "reason": "HUMAN_OR_SOURCE_CHANGED",
+      "run_id": "99dd5576-afff-47b3-b5d1-f80eb3a3eb2d",
+      "source_event_id": "72b8cec64761b574464ba6138881e8e93e0e69764da3de19537dea9d503537bf",
+      "source_sequence": 1793366502312319,
+      "state": "STATUS_SYNC_BLOCKED",
+      "checked_at": 1793794484.0599988
+    },
+    {
+      "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+      "engineering_state": "succeeded",
+      "native_id": 386,
+      "native_status_id": 41,
+      "native_version": 10,
+      "reason": "NATIVE_READBACK_VERIFIED",
+      "run_id": "72a36697-da92-45ca-b549-2cb8e7c780b3",
+      "source_event_id": "cf78ad038ff9d67ba024dc5e91bda7924a002e0a27aad44a953721168c08e483",
+      "source_sequence": 1793445908656756,
+      "state": "STATUS_SYNC_VERIFIED",
+      "target_status_id": 41,
+      "checked_at": 1793794632.2353303
+    },
+    {
+      "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+      "engineering_state": "succeeded",
+      "native_id": 387,
+      "native_status_id": 41,
+      "native_version": 10,
+      "reason": "NATIVE_READBACK_VERIFIED",
+      "run_id": "f136866a-b7e4-4ad8-bbd7-d846343163d0",
+      "source_event_id": "1c4b37af65e156449771bfc9949a57c135970785a2d6d515f2a91bcf51a38a92",
+      "source_sequence": 1793547615423384,
+      "state": "STATUS_SYNC_VERIFIED",
+      "target_status_id": 41,
+      "checked_at": 1793794631.79337
+    },
+    {
+      "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+      "engineering_state": "succeeded",
+      "native_id": 389,
+      "native_status_id": 41,
+      "native_version": 10,
+      "reason": "NATIVE_READBACK_VERIFIED",
+      "run_id": "814f7a28-6c1a-4d2e-82d6-f0d118e2081c",
+      "source_event_id": "83b53122b558414c9cd7162e76596c8714d9bece3cd75f3ec57d796e4b22bd93",
+      "source_sequence": 1793566293829776,
+      "state": "STATUS_SYNC_VERIFIED",
+      "target_status_id": 41,
+      "checked_at": 1793794631.4483697
+    },
+    {
+      "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+      "engineering_state": "succeeded",
+      "native_id": 390,
+      "native_status_id": 41,
+      "native_version": 10,
+      "reason": "NATIVE_READBACK_VERIFIED",
+      "run_id": "447d4fd9-fd03-4a41-9468-09bad8629d48",
+      "source_event_id": "2870d856e1e715a52be9211082791f69bca60ddbb033bac6af19d31341bb581d",
+      "source_sequence": 1793594783397099,
+      "state": "STATUS_SYNC_VERIFIED",
+      "target_status_id": 41,
+      "checked_at": 1793794631.142165
+    },
+    {
+      "delivery_state": "MERGED_PENDING_DEPLOYMENT",
+      "engineering_state": "succeeded",
+      "native_id": 391,
+      "native_status_id": 41,
+      "native_version": 10,
+      "reason": "NATIVE_READBACK_VERIFIED",
+      "run_id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "source_event_id": "186a2760a34ae875120d867f083b8f75260fc6f3bde15a38e8d03e8675d60cef",
+      "source_sequence": 1793617536952737,
+      "state": "STATUS_SYNC_VERIFIED",
+      "target_status_id": 41,
+      "checked_at": 1793794630.8380144
+    },
+    {
+      "delivery_state": "PR_OPEN",
+      "engineering_state": "succeeded",
+      "native_id": 394,
+      "native_status_id": 41,
+      "native_version": 10,
+      "reason": "NATIVE_READBACK_VERIFIED",
+      "run_id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "source_event_id": "4206eed331de2884c4a156c7660bb9980945b7a7b4c0a2e169875a617c95de98",
+      "source_sequence": 1793731824604237,
+      "state": "STATUS_SYNC_VERIFIED",
+      "target_status_id": 41,
+      "checked_at": 1793794630.3600893
+    }
+  ],
+  "github": {
+    "status": "ONLINE",
+    "checked_at": 1793803317.1787832,
+    "release": {
+      "head_sha": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+      "branch": "codex/demo-integration-20261103",
+      "included_prs": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "deployed_at": 1793671992.20804,
+      "source": "UNMERGED_INTEGRATION",
+      "main_merged": false,
+      "state": "DEPLOYED_TO_DEMO",
+      "release_type": "UNMERGED_INTEGRATION_TEST_RELEASE",
+      "checked_at": 1793803326.5864036,
+      "evidence": "ACTUAL_LOOPBACK_RELEASE_JSON_AND_HEADERS"
+    },
+    "sync_meta": {
+      "last_synced_at": 1793803330.4088182,
+      "total_checked": 12,
+      "total_changed": 0,
+      "status": "SUCCESS",
+      "error": null,
+      "correlation_id": "433fb85c-cd5f-4740-a314-077bc57ff109",
+      "started_at": 1793803317.1787832,
+      "last_success_at": 1793803330.4088182,
+      "request_id": "d0ee671b-2d52-42d8-8fe2-8b1fdb92a19b"
+    }
+  },
+  "prs": [
+    {
+      "number": 12,
+      "state": "open",
+      "is_merged": false,
+      "merge_target": "UNMERGED",
+      "head_sha": "1ece6705ead14a250c05726e9217aeec94f33f2b",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/12",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 11,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "MAIN",
+      "head_sha": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/11",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 10,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-9d0ff35386a63183)",
+      "head_sha": "1914f10d3bd0b2b05459914100c53549f63d0bc5",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/10",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 9,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-e44b47e2e8610c4f)",
+      "head_sha": "4a794e2b3d62247881fef4c0908eeeee9f043ba2",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/9",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 8,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-20c2a94109f4e78f)",
+      "head_sha": "b20fb554cb0b45f2938ac11ba9e736708dcb1bf0",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/8",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 7,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-bb9a628fe5b7be67)",
+      "head_sha": "a150f3d690288ff95451c2667954f09661aa9604",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/7",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 6,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-health-check-v1)",
+      "head_sha": "0498ceeda97cd3e856a975129129e71f6c94a3dd",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/6",
+      "deployment_state": "DEPLOYED_TO_DEMO"
+    },
+    {
+      "number": 5,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-4d13e695555a8d44)",
+      "head_sha": "0e8d320a3459f26d01c88a3e8d4cb861e09808dd",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/5",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 4,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-feedback-283138e910432528)",
+      "head_sha": "def9d0a8852af42a407bd42fb0051615a2de9331",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/4",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 3,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-crud-search-web-v1)",
+      "head_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/3",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 2,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "FEATURE_BRANCH (codex/openclaw-create-list-persistence-v1)",
+      "head_sha": "29ff0ec1e531d917ce96737d768c8e16dad895c5",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/2",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    },
+    {
+      "number": 1,
+      "state": "closed",
+      "is_merged": true,
+      "merge_target": "MAIN",
+      "head_sha": "1aa7c395afd4c067c298cc03cf7b661177d0bb1c",
+      "html_url": "https://github.com/Luim3141/mini-task-manager/pull/1",
+      "deployment_state": "NOT_VERIFIED_DEPLOYED"
+    }
+  ],
+  "github_operations": [],
+  "delegation": false,
+  "runs": [
+    {
+      "id": "301dbdd8-6f6f-4df4-b6c6-b5ca3f073795",
+      "state": "succeeded",
+      "native_id": 394
+    },
+    {
+      "id": "b7fd6aec-3357-495f-b9e5-f7ba04d67ad6",
+      "state": "succeeded",
+      "native_id": 391
+    }
+  ],
+  "counters": {
+    "provider_receipts": 531,
+    "coding_runs": 21,
+    "delegation_enabled": 0
+  },
+  "n8n": "sha256:05376355cd63186ba9b61c1e2a0f659105253cc1d37b36391a1771951c008269"
+}

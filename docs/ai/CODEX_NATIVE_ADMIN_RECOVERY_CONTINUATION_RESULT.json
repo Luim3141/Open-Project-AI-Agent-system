@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-26T10:31:58.142709+07:00",
+  "status": "PASS_SCOPED_ADMIN_RECOVERY_CONTINUATION_OVERALL_PARTIAL",
+  "application_images_unchanged": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-dependency-v2-20261026",
+      "image": "sha256:89777ef1ddf5c84f1758756bca620599fb49b906ae77cf961249bf1f2726f0fa"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-dependency-20261026",
+      "image": "sha256:4495d944cd6ea5ab7a1fb50173310a787793f4398118f6b858333ac62a80a6a2"
+    }
+  },
+  "host_code_changes": [
+    "openproject/ai/automation/main_auxiliary_backup.py",
+    "openproject/ai/tests/test_main_auxiliary_backup.py"
+  ],
+  "host_source_sha256": {
+    "openproject/ai/automation/main_auxiliary_backup.py": "c15026be6eb54b5a193bcbe9f018e525887bc208dcf8be1673a1c5e9436bccc0",
+    "openproject/ai/tests/test_main_auxiliary_backup.py": "9d4c9c11ee97c346621ed4118fdaaeacf527dac7199c43de4c9dfb6016e67747"
+  },
+  "actual_clone_checks": {
+    "admin": 21,
+    "extended_admin_plus_version": 29,
+    "relationship": "Extended29 includes admin21; do not add them as distinct cases"
+  },
+  "actual_n8n_restore": "16workflow bodies/4credential rows/users/history retained; readiness200 and anonymous401; copied automations disabled",
+  "actual_main_schedule": "26Oct08:00 Bangkok ->5READY snapshots ->5exact local metadata receipts; no forced run",
+  "main_api": {
+    "roles": 73,
+    "contracts": 48,
+    "readonly": 13,
+    "provider_agent_surface": 20
+  },
+  "host_unit_tests": {
+    "run": 9,
+    "passed": 9,
+    "failed": 0,
+    "new_test_methods": 1
+  },
+  "baseline_full_suite_not_repeated_for_host_only_change": {
+    "windows": 489,
+    "linux_passed": 475,
+    "linux_skips": 14,
+    "ruby_programs": 13
+  },
+  "main_native_writes": 0,
+  "new_main_proposals": 0,
+  "new_main_human_decisions": 0,
+  "new_model_calls": 0,
+  "staging_operations": false,
+  "evidence": [
+    "CODEX_NATIVE_ADMIN_CLONE_QUALIFICATION.json",
+    "CODEX_NATIVE_PROJECT_VERSION_CLONE_RESULT.json",
+    "CODEX_NATIVE_ADMIN_SUPPORTED_SURFACE.json",
+    "CODEX_N8N_RESTORED_SERVER_RESULT.json",
+    "CODEX_MAIN_SCHEDULED_DAILY_LOCAL_RESULT.json",
+    "CODEX_PROVIDER_AGENT_ADMIN_CAPABILITY_RESULT.json",
+    "CODEX_MAIN_STORAGE_IO_INCIDENT_RESULT.json"
+  ],
+  "host_rollback": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\n8n-server-source-before",
+  "limits": [
+    "Native Admin qualification is clone-only, not Main account/project writes or AI admin tools",
+    "Boards current public GET404; browser route unqualified",
+    "Provider/Agent mutable editors NOT_IMPLEMENTED",
+    "No Main QA review or new write authorization; full business closure partial",
+    "Full Qdrant restore BLOCKED_RESTORE_POLICY; no alternate attempt"
+  ]
+}

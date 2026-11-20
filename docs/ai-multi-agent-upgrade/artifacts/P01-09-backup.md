@@ -1,0 +1,16 @@
+# P01-09 — Docker-only private backup schedule and actual restore
+
+Operator image sha256:9713d54aad003b084e58035965156902f86c0ba7a638e41ab880d119ba9cbba8 built from exact installed core layers, adding free Debian Python3. Initial FROM sha256 syntax failed without changing runtime; build via verified existing local tag succeeded and layer-prefix/label checks enforce source parity before provisioning. Core/Gateway/main images not rebuilt or promoted. Build logs retained; image is pinned by immutable ID in private manifest/Compose.
+
+local-backup is separate from n8n/business runtime. No ports, Docker socket, native admin identity or shell tool API. All inputs read-only, PG sessions default_transaction_read_only=on, only output private folder writable. Named assets/n8n volumes, Gateway/native config/keys and Caddy CA are local; no cloud transfer. Linux SQLite backup API captures WAL-consistent snapshots and converts completed destination to DELETE journal; no live Windows SQLite access/WAL deletion. Active/unknown jobs or DB/assets changing during capture fail sealing; no claim of a global cross-application distributed transaction or production release qualification.
+
+Schedule: wait120seconds after startup, check hourly, one backup if last success>=24hours old; no historical catch-up loop or business-write replay. Full missed-day clock test PASS; actual sidecar is running/healthy with persistent last-success. No24hour elapsed wall-clock run claimed.5GiB free-space minimum; old backups/partial attempts retained, no automatic deletion. Admin monitors disk/private health; schedule only runs while Docker is running.
+
+Actual private outputs under %LOCALAPPDATA%/QLDAPM/openproject-ai/operator/local-backups:
+
+- f70457b7-35b3-4666-ae88-976a86ddfd37:221native fingerprints (220tables+sequences), DB dump/assets/config/key/private archives/Gateway+n8n SQLite. Metadata hash94726e42c1251f8d1ee1feb628a12027413c2191274ec068d6507fc56069f0f1.
+- 86dbbd60-c426-4b5f-92fe-0b5db222ca9d: second actual backup after portable destination journal/key-pair checks; PASS.
+
+Actual first DB/assets/config restore into UUID isolated DB+new asset volume PASS,221fingerprints equal; disposable resources cleaned only by ownership label. Existing parent helper data-only purpose remains excluded from import/release qualification. Both SQLite snapshots restored through backup API in network-none Linux tmpfs, quick_check and complete logical hashes equal; private n8n/native/Caddy archives extracted with data filter. Initial read-only snapshot restore needed immutable mode because older completed cold backup retained WAL journal header; fixed checker uses immutable ONLY for verified cold archive, never live runtime. Second snapshots use DELETE journal and restore PASS. No credentials/key values exported to artifacts.
+
+Evidence P01-09-first-backup.json/second-backup.json/restore.json/sqlite-restore-fixed.json/second-sqlite-restore.json/scheduler-tests.log. Full161Windows units PASS90.619s before final snapshot journal fix; targeted4backup tests and actual second backup/restore cover final fix. Backup health currently healthy; no Windows startup/power/firewall change. Future AI memory is not deployed; its live stores must be added when P03/P06 implement them, not falsely backed up now.

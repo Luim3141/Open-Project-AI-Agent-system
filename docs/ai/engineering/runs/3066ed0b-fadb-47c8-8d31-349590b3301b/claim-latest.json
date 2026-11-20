@@ -1,0 +1,40 @@
+{
+  "id": "3066ed0b-fadb-47c8-8d31-349590b3301b",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+  "cancel_requested": false,
+  "deadline": 1793338417.465367,
+  "definition": {
+    "acceptance": {
+      "AC5": "PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening",
+      "AC6": "DELETE /tasks/{id} returns204; missing edit/delete returns404",
+      "AC7": "GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids",
+      "AC8": "GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors",
+      "AC9": "Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes",
+      "F1": "Testcase pytest mới kiểm tra thành công Unicode search cho 'đi chợ' và 'Straße'",
+      "F2": "Toàn bộ regression test cũ từ AC1 đến AC9 vượt qua hoàn toàn"
+    },
+    "acceptance_file": "test_crud_web.py",
+    "base_branch": "codex/openclaw-feedback-283138e910432528",
+    "base_unit": "feedback-283138e910432528",
+    "feedback": "Sua bug da tai hien trong search hien co: title \"ĐI CHỢ\" nhung q=\"đi chợ\" tra [] vi SQLite lower chi ASCII. Giu tat ca CRUD/Web error/retry/stale/double-submit da delivery. Chi thay search case-insensitive bang Unicode casefold: register deterministic SQLite function qldapm_casefold voi Python str.casefold trong GET /tasks connection, dung qldapm_casefold(title) LIKE ? va q.casefold() truoc escape literal %, _, backslash. Them focused pytest that fails truocfix cho ĐI CHỢ vs đi chợ va Straße vs STRASSE, giu literal wildcard/status AND. Fix chi vai dong backend; khong sua HTML, khong cai lai venv/deps, khong baseline rediscovery. Use explicit cd application cwd and .venv/bin/python -m pytest; .venv is ready. One batch exec to add red test, capture red, edit lines, capture green. No browser/UAT. Existing actual checks PASS except this demonstrated Unicode bug.",
+    "kind": "development",
+    "native_id": 383,
+    "plan_id": "85b9307a-bd36-4a39-a3b5-30f4a3e5a832",
+    "title": "Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode."
+  },
+  "engine": "openclaw",
+  "kind": "development",
+  "native_id": 383,
+  "project_id": 6,
+  "recovery_count": 2,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "continuation-unicode-search-delivery-v1",
+  "source_version": 1,
+  "spec": "QLDAPM PM/BA engineering plan 85b9307a-bd36-4a39-a3b5-30f4a3e5a832\nUnit: feedback-4d13e695555a8d44\n\n{\"Native_assignee\":\"PM20 accountable coordinator; not a separate human Dev identity\",\"assignment\":{\"dependencies\":[\"feedback-283138e910432528\"],\"objective\":\"Dang ky ham SQLite qldapm_casefold su dung Python str.casefold trong GET /tasks, cap nhat truy van LIKE va them focused pytest cho tim kiem Unicode.\",\"priority\":1,\"unit\":\"feedback-4d13e695555a8d44\"},\"functional_specification\":{\"acceptance\":[\"Testcase pytest mới kiểm tra thành công Unicode search cho 'đi chợ' và 'Straße'\",\"Toàn bộ regression test cũ từ AC1 đến AC9 vượt qua hoàn toàn\"],\"api_behavior\":[\"GET /tasks?q=đi%20chợ tìm thấy tiêu đề 'ĐI CHỢ' thông qua str.casefold\",\"Kết hợp tìm kiếm chuỗi Unicode và bộ lọc trạng thái (status) theo logic AND chính xác\"],\"citations\":[379],\"edge_cases\":[\"Chuỗi tìm kiếm chứa %, _, backslash được escape an toàn trước khi thêm ký tự đại diện\",\"Hỗ trợ các ký tự Unicode đặc biệt (ví dụ ß, Đ) thông qua quy tắc casefold mở rộng\"],\"limitations\":[\"Chỉ sửa đổi mã nguồn backend Python\",\"Không thay đổi giao diện HTML/frontend\",\"Không cài đặt lại môi trường ảo hay thư viện\"],\"scope\":[\"Đăng ký hàm SQLite tùy chỉnh qldapm_casefold sử dụng str.casefold trong kết nối GET /tasks\",\"Cập nhật truy vấn tìm kiếm sang qldapm_casefold(title) LIKE ? với q.casefold() đã escape ký tự đặc biệt\",\"Thêm focused pytest kiểm tra tìm kiếm Unicode case-insensitive\"],\"summary\":\"Khắc phục lỗi tìm kiếm không phân biệt chữ hoa/thường với ký tự Unicode (ví dụ 'đi chợ' không khớp 'ĐI CHỢ' do SQLite lower() chỉ hỗ trợ ASCII) bằng cách đăng ký hàm SQLite tùy chỉnh qldapm_casefold sử dụng Python str.casefold trong GET /tasks.\"},\"reviewers\":[\"reviewer\",\"qa\"],\"virtual_executor\":\"dev\"}",
+  "spec_sha256": "517a56c83e98b92eccd87a6f0f1021fd4ccf29ebe403d938a0152adb18dd810a",
+  "stage": "ADMITTED",
+  "unit": "feedback-4d13e695555a8d44",
+  "write_scope_ids": []
+}

@@ -1,0 +1,44 @@
+<script nonce="<%= content_security_policy_nonce %>">
+(() => {
+  const root=document.getElementById('qldapm-agent-studio'); if(!root)return;
+  if(root.dataset.bound==='true')return;root.dataset.bound='true';
+  const $=id=>document.getElementById('qobs-'+id), endpoint=root.dataset.endpoint;
+  let selected=null,snapshot=null,timer=null,controller=null,stopped=false,delay=10000,generation=0;
+  const el=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;return node;};
+  const format=value=>typeof value==='number'?new Date(value*1000).toLocaleString('vi-VN',{timeZone:'Asia/Bangkok',hour12:false}):'NOT_RECORDED';
+  const json=value=>JSON.stringify(value,null,2);
+  function render(data){
+    snapshot=data;$('title').textContent='#'+data.task_id+' · '+data.task_title;
+    $('summary').textContent='Business: '+data.business_status+' · Runtime: '+data.workflow_status+' · Agent: '+(data.current_agent||'Không có Agent RUNNING được xác minh')+' · Nghiệm thu: '+data.acceptance_status;
+    const fresh=data.freshness||{};$('freshness').textContent='Snapshot: '+format(fresh.observed_at)+' · Nguồn cập nhật: '+format(fresh.source_updated_at)+' · '+fresh.freshness_status;
+    $('warnings').textContent=[...(data.warnings||[]),...(data.source_conflicts||[]).map(c=>c.reason),data.truncated?'Kết quả giới hạn; một số lịch sử chưa được tải.':''].filter(Boolean).join(' ');
+    $('graph').replaceChildren();
+    for(const stage of data.stages||[]){const card=el('details');card.className='qobs-stage';card.append(el('summary',stage.agent_role+' · '+stage.status));card.append(el('p','Run: '+stage.latest_run_id+' · Attempts: '+stage.attempts));card.append(el('pre',json(stage)));$('graph').append(card);}
+    if(!(data.stages||[]).length)$('graph').append(el('p','NOT_RECORDED — chưa có execution plan hoặc stage telemetry.'));
+    const prior=$('run').value;$('run').replaceChildren(el('option','Chọn Run'));
+    $('run').firstChild.value='';for(const run of data.runs||[]){const option=el('option',run.run_id+' · '+run.state);option.value=run.run_id;$('run').append(option);}
+    if((data.runs||[]).some(r=>r.run_id===prior))$('run').value=prior;else $('run').value=data.latest_run_id||'';
+    $('run-detail').textContent=json((data.runs||[]).find(r=>r.run_id===$('run').value)||'NOT_RECORDED');
+    $('events').replaceChildren();for(const event of data.events||[]){const row=el('tr');row.append(el('td',format(event.timestamp)),el('td',(event.agent_id||'')+' · '+event.event_type),el('td',event.source_system+' · '+event.source_record_id));$('events').append(row);}
+    $('artifacts').replaceChildren();for(const artifact of data.artifacts||[]){const item=el('details');item.append(el('summary',artifact.title+' · '+artifact.verification_status));if(artifact.content)item.append(el('pre',artifact.content));if(artifact.uri){try{const url=new URL(artifact.uri,location.origin);if(url.protocol==='https:'&&url.hostname==='github.com'){const link=el('a','Mở GitHub evidence');link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';item.append(link);}}catch{}}$('artifacts').append(item);}
+    if(!(data.artifacts||[]).length)$('artifacts').append(el('p','NOT_RECORDED'));
+  }
+  function list(data){$('tasks').replaceChildren();for(const task of data.items||[]){const button=el('button','#'+task.task_id+' · '+task.task_title+' · '+task.workflow_status);button.type='button';button.addEventListener('click',()=>{selected=task.task_id;$('task-id').value=selected;render(task);refresh();});$('tasks').append(button);}if(!(data.items||[]).length)$('tasks').append(el('p','Không có Task phù hợp trong phạm vi đã xác minh.'));if(data.truncated)$('tasks').append(el('p','Danh sách đã giới hạn; dùng Task ID để đọc chính xác.'));}
+  async function refresh(){
+    clearTimeout(timer);if(stopped||document.hidden)return;controller?.abort();controller=new AbortController();const token=++generation;
+    const timeout=setTimeout(()=>controller.abort(),60000);
+    try{const url=new URL(endpoint,location.origin);if(selected)url.searchParams.set('task_id',selected);else{url.searchParams.set('query',$('query').value);url.searchParams.set('state',$('state').value);}
+      const response=await fetch(url,{credentials:'same-origin',headers:{Accept:'application/json'},cache:'no-store',signal:controller.signal});
+      if(!response.ok)throw new Error('HTTP '+response.status);const data=await response.json();if(stopped||token!==generation)return;
+      if(selected)render(data);else list(data);delay=10000;$('connection').classList.remove('qobs-warning');$('connection').textContent='Đã đồng bộ '+new Date().toLocaleTimeString('vi-VN')+' · Polling 10 giây';
+    }catch(error){if(stopped||token!==generation)return;delay=Math.min(delay*2,60000);$('connection').textContent='Chưa xác minh được dữ liệu mới ('+error.message+'). Dữ liệu cũ cần đối chiếu; thử lại sau '+delay/1000+' giây.';$('connection').classList.add('qobs-warning');}
+    finally{clearTimeout(timeout);if(!stopped&&!document.hidden&&token===generation)timer=setTimeout(refresh,delay);}
+  }
+  $('filter').addEventListener('submit',event=>{event.preventDefault();selected=$('task-id').value||null;refresh();});
+  $('reset').addEventListener('click',()=>{selected=null;$('task-id').value='';refresh();});
+  $('run').addEventListener('change',()=>{$('run-detail').textContent=json((snapshot?.runs||[]).find(run=>run.run_id===$('run').value)||'NOT_RECORDED');});
+  const visibility=()=>{clearTimeout(timer);if(document.hidden){generation++;controller?.abort();$('connection').textContent='Tạm dừng đồng bộ khi tab ẩn.';}else refresh();};document.addEventListener('visibilitychange',visibility);
+  const stop=()=>{stopped=true;generation++;clearTimeout(timer);controller?.abort();delete root.dataset.bound;document.removeEventListener('visibilitychange',visibility);};document.addEventListener('turbo:before-cache',stop,{once:true});window.addEventListener('pagehide',stop,{once:true});
+  refresh();
+})();
+</script>

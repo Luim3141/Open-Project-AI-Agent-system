@@ -1,0 +1,86 @@
+{
+  "status": "MAIN_READ_ONLY_AND_ISOLATED_HTTP_BUSINESS_PASS",
+  "utc": "2026-11-03T02:14:45.916240+00:00",
+  "source_revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+  "main_checks": [
+    {
+      "path": "/healthz",
+      "http_status": 200,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/release",
+      "http_status": 200,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/tasks/summary",
+      "http_status": 200,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/tasks",
+      "http_status": 200,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/tasks/export.csv",
+      "http_status": 200,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/tasks/999999999",
+      "http_status": 404,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/tasks/999999999/exists",
+      "http_status": 200,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/tasks/999999999/title",
+      "http_status": 404,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/tasks/not-an-id/title",
+      "http_status": 422,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/tasks?status=invalid",
+      "http_status": 422,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    },
+    {
+      "path": "/tasks/export.csv?status=invalid",
+      "http_status": 422,
+      "revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a"
+    }
+  ],
+  "isolated_http": {
+    "status": "PASS",
+    "source_revision": "01d765c01d62a0d636e276f72bdc5cdc62db8c5a",
+    "port": 18792,
+    "scope": "isolated temporary SQLite, actual uvicorn HTTP; not MAIN task writes",
+    "checks": [
+      "create",
+      "detail",
+      "exists",
+      "title",
+      "edit",
+      "delete",
+      "summary",
+      "q/status AND filter",
+      "Vietnamese casefold",
+      "Unicode/comma/quote/newline CSV roundtrip",
+      "quoted tab formula mitigation",
+      "JSON title unchanged",
+      "invalidstatus422"
+    ]
+  },
+  "main_task_writes": 0,
+  "sqlite_preservation": "deployment.json exact logical schema/task/sequence hash identical",
+  "browser_uat": "PENDING ROOT FINAL PHASE"
+}

@@ -1,0 +1,77 @@
+{
+  "status": "succeeded",
+  "text": "Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection. delivered; WP379 chưa Done. UAT deferred.",
+  "base_sha": "29ff0ec1e531d917ce96737d768c8e16dad895c5",
+  "head_sha": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+  "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/3",
+  "delivery": {
+    "baseRefName": "codex/openclaw-crud-search-web-v1",
+    "headRefName": "codex/openclaw-feedback-283138e910432528",
+    "headRefOid": "d00f8c5ff9c6159787517dc90e23d6de5bb55b8a",
+    "state": "OPEN",
+    "url": "https://github.com/Luim3141/mini-task-manager/pull/3"
+  },
+  "test_evidence": {
+    "exit_code": 0,
+    "command": "python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+    "artifact": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\a43376cf-e70a-478d-a28e-067964a5a218\\acceptance-0.xml",
+    "log_sha256": "cf0a252fa9b1067ae11cb496f73ee5670e6656695f4708a55810f137fe4ba52d"
+  },
+  "review_evidence": {
+    "revision": "e77bdd84c4fea006085db3ae3fcd4d87c09e20b542035ade2b573cdb7dc38d2b",
+    "verdict": "PASS",
+    "findings": [],
+    "qa": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": "cd /home/openclaw/engineering/feedback-283138e910432528 && NODE_BINARY=/home/openclaw/.openclaw/tools/node-v24.22.2/bin/node .venv/bin/python -m pytest -q tests /opt/qldapm/acceptance/test_create_list.py /opt/qldapm/acceptance/test_crud_web.py",
+      "acceptance": [
+        "AC1",
+        "AC2",
+        "AC3",
+        "AC4",
+        "AC5",
+        "AC6",
+        "AC7",
+        "AC8",
+        "AC9",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "failures": []
+    }
+  },
+  "run_artifacts": "D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\runs\\a43376cf-e70a-478d-a28e-067964a5a218",
+  "files_changed": [
+    "task_manager/app.py",
+    "tests/test_web_ui.py"
+  ],
+  "native_readback": {
+    "child_id": 382,
+    "child_version": 2,
+    "parent": {
+      "id": 379,
+      "version": 1
+    },
+    "project_id": 6,
+    "pr_url": "https://github.com/Luim3141/mini-task-manager/pull/3"
+  },
+  "knowledge_readback": {
+    "project_id": 6,
+    "child_id": 382,
+    "retrieval_count": 2,
+    "references": [
+      {
+        "native_id": 379,
+        "citation": "/work_packages/379"
+      },
+      {
+        "native_id": 382,
+        "citation": "/work_packages/382"
+      }
+    ]
+  }
+}

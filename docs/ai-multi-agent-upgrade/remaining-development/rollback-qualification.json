@@ -1,0 +1,60 @@
+{
+  "scope": "RESTORED_CANDIDATE_THEN_OLD_GATEWAY_PRIVATE_COPY_ONLY",
+  "image": "sha256:006b9c6cd8cec7f5e41cf7ae4fe9abae762475b7fd685d8dde66191f10554233",
+  "restored_candidate": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea",
+  "checks": [
+    {
+      "id": "RESTORE-KNOWLEDGE-PM",
+      "status": "PASS",
+      "http": 200,
+      "results": 1
+    },
+    {
+      "id": "RESTORE-KNOWLEDGE-BA-PM",
+      "status": "PASS",
+      "http": 200,
+      "results": 1
+    },
+    {
+      "id": "RESTORE-KNOWLEDGE-BE",
+      "status": "PASS",
+      "http": 200,
+      "results": 1
+    },
+    {
+      "id": "RESTORE-KNOWLEDGE-FE",
+      "status": "PASS",
+      "http": 200,
+      "results": 1
+    },
+    {
+      "id": "RESTORE-KNOWLEDGE-QA",
+      "status": "PASS",
+      "http": 200,
+      "results": 1
+    },
+    {
+      "id": "ROLLBACK-get_work_package",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "id": "ROLLBACK-get_action_history",
+      "http": 200,
+      "status": "PASS"
+    },
+    {
+      "id": "ROLLBACK-SCHEMA",
+      "status": "PASS",
+      "actual": {
+        "integrity": "ok",
+        "runs": 72,
+        "provider_usage": 0
+      }
+    }
+  ],
+  "passed": true,
+  "core_rollback": "Not boot-tested as a pair; candidate Core adds no migration, original image retained",
+  "original_state_changed": false,
+  "private_snapshot_retained": true
+}

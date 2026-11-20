@@ -1,0 +1,62 @@
+{
+  "native_mutations_performed": false,
+  "no_real_WP_used_as_mutation_fixture": true,
+  "results": [
+    {
+      "test": "WF04-PM",
+      "status": 200,
+      "expected_status": 200,
+      "events_returned": 10,
+      "error": null,
+      "pass": true
+    },
+    {
+      "test": "WF04-BA",
+      "status": 403,
+      "expected_status": 403,
+      "events_returned": 0,
+      "error": "AGENT_RUN_NOT_FOUND",
+      "pass": true
+    },
+    {
+      "test": "WF04-no-bearer",
+      "status": 401,
+      "expected_status": 401,
+      "events_returned": 0,
+      "error": "INVALID_OR_EXPIRED_TOKEN",
+      "pass": true
+    },
+    {
+      "test": "WF04-no-webhook-secret",
+      "status": 403,
+      "expected_status": 403,
+      "events_returned": 0,
+      "error": null,
+      "pass": true
+    },
+    {
+      "test": "WF05-missing-proposal",
+      "status": 403,
+      "expected_status": 403,
+      "events_returned": 0,
+      "error": "PROPOSAL_NOT_FOUND",
+      "pass": true
+    },
+    {
+      "test": "WF06-missing-proposal",
+      "status": 403,
+      "expected_status": 403,
+      "events_returned": 0,
+      "error": "PROPOSAL_NOT_FOUND",
+      "pass": true
+    },
+    {
+      "test": "WF06-forged-PM",
+      "status": 403,
+      "expected_status": 403,
+      "events_returned": 0,
+      "error": "PM_APPROVAL_REQUIRED",
+      "pass": true
+    }
+  ]
+}

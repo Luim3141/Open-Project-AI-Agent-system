@@ -1,0 +1,40 @@
+{
+  "utc": "2026-11-05T04:27:53.777759+00:00",
+  "route": "CUA_IAB_AUTHENTICATED_OWNER18",
+  "source_unchanged": true,
+  "baseline": "button-audit/browser-uat.json; 57/70 declaration sites MAIN_UI_PASS reused, not all instances",
+  "after_restart": {
+    "stack_outage": "DISCONNECTED/STALE observed, auto reconnected without F5",
+    "run_once": "MAIN_UI_PASS: HTTP422 NO_ELIGIBLE_WORK, request62c2ecdc-6f47-4000-9eed-79f21e9e9350",
+    "modes": "MAIN_UI_PASS: OFF/AUTO_IDLE/PAUSED persisted47-to-50",
+    "github_sync": "MAIN_UI_PASS: operationa37137a6-18ea-51a9-a96b-1466fd3e0b65 COMPLETED/NO CHANGES 12checked/0changed",
+    "report": {
+      "daily_id": "9318fd99-1476-4e06-8ed3-b7e46e2eaabf",
+      "reader": "MAIN_UI_PASS: loading disabled controls then stored document/provenance",
+      "raw_chars": 6834,
+      "copy": "MAIN_UI_PASS: after Promise completion clipboard6834chars and actual paste into unsent textarea6834chars, then cleared/closed",
+      "export_bytes": 7310,
+      "export_path": "D:/Download/engineering-report (3).md",
+      "export_sha256": "83d1e527b4349754bf79c9b8b6916558dac3beb615a68775b199e9dea7526ea0",
+      "early_copy_observation": "Initial read during asynchronous clipboard Promise saw old36char content; read after visible success and paste proved6834. No source change."
+    },
+    "schedule": "MAIN_UI_PASS read/close; Daily08:00/WeeklyMonday09:00. No save in this phase; prior Save/restore MAIN proof reused.",
+    "notifications": "128unread visible; prior Read/Dismiss persistence proof reused",
+    "navigation": "F5 Reports eventually loaded despite one CUA CDP timeout; no infinite spinner. Reports->Mission->Back Reports->Forward Mission verified after DOM snapshot.",
+    "raw_navigation_race": "Immediate evaluate after history traversal initially read old state; stable DOM snapshots verified correct history.",
+    "screenshots": [
+      "final-main-ui.png",
+      "coordinated-down-ui.png",
+      "coordinated-recovered-ui.png",
+      "openclaw-during-restart-ui.png"
+    ]
+  },
+  "not_repeated": [
+    "70button audit",
+    "all9tab F5",
+    "zoom200% and narrow viewport (baseline unchanged)",
+    "active Resume/Cancel",
+    "fresh per-role coding",
+    "provider smoke beyond one authorized attempt"
+  ]
+}

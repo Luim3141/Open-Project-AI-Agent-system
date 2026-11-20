@@ -1,0 +1,11 @@
+# WF10 Native hierarchy — implemented progressive proposal contract
+
+Durable immutable drafts/own plans and progressive executor are deployed; overall business status remains PARTIAL. `CODEX_WF10_MAIN_QUALIFICATION_RESULT.json` records49 actual Main metadata/proposal checks; Native create forms for all three types were independently inspected without persistence in `CODEX_WF10_NATIVE_FORM_QUALIFICATION.json`.
+
+Structured BA decomposition includes requirements, covered node references, Epic/Task/Subtask parent kinds, enabled status, dependency ordering and optional duplicate disposition. A draft is non-executable. Only explicit shared drafts may be adopted by Manager as their own immutable plan/hash; source author/hash remain provenance, not authority.
+
+One ready node becomes an ordinary own create proposal. Parent IDs resolve only from verified receipts in that plan. Each concrete proposal needs its own exact human approval; fresh Native forms/permissions, source markers, readback, author/fields/version checks and RAG verification gate subsequent nodes. Dependencies are validated sequencing; Native relation writes are NOT_IMPLEMENTED. Automatic conversion of every live BA output schema is not qualified.
+
+Partial failures retain confirmed parents and receipts. Unknown POST causes UNKNOWN_HOLD; restart never replays it. Existing exact-source/author/field reconciliation can recover a proven receipt, followed by RAG verification. Changed Native version/source holds the plan. Rejected/expired/known-failed nodes only redraft with exact prior proposal hash; new proposal still needs new human approval. Concurrent next calls share one proposal or return retriable lease contention.
+
+Qualification: isolated3-node tree with separate decisions/readback/outbox; unknown reply/restart/reconcile with no second POST; coverage/cycles/type/status/parent/duplicate failures; shared scope, tamper, role revocation; lost metadata/proposal receipt; concurrency. Main qualification created6technical drafts/2own plans and rejected2root proposals without creating any WP. Actual approved Native tree remains NOT_TESTED. No test370 mutation, schema change or successful-parent deletion is authorized by this implementation.

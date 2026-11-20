@@ -1,0 +1,5380 @@
+{
+  "site": "https://luimjiraqldapm.atlassian.net",
+  "cloudId": "560ef0cc-d24b-4613-98d3-d541afe8f32b",
+  "projectId": 10002,
+  "boardId": 3,
+  "userRequest": "đưa các epic vào backlog,sau đó tạo 5 sprint phân chia các epic vào hợp lí từng sprint",
+  "existingSprints": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "reuseExistingEmptyFutureSprints": true,
+  "plan": [
+    {
+      "number": 1,
+      "name": "Nền tảng tài khoản và dự án",
+      "epicKeys": [
+        "QAG3-1",
+        "QAG3-32"
+      ],
+      "taskKeys": [
+        "QAG3-2",
+        "QAG3-8",
+        "QAG3-14",
+        "QAG3-20",
+        "QAG3-26",
+        "QAG3-33",
+        "QAG3-39",
+        "QAG3-45",
+        "QAG3-51",
+        "QAG3-57",
+        "QAG3-63"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Backlog và Sprint",
+      "epicKeys": [
+        "QAG3-69",
+        "QAG3-100"
+      ],
+      "taskKeys": [
+        "QAG3-70",
+        "QAG3-76",
+        "QAG3-82",
+        "QAG3-88",
+        "QAG3-94",
+        "QAG3-101",
+        "QAG3-107",
+        "QAG3-113",
+        "QAG3-119",
+        "QAG3-125"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Task và Kanban",
+      "epicKeys": [
+        "QAG3-131",
+        "QAG3-162"
+      ],
+      "taskKeys": [
+        "QAG3-132",
+        "QAG3-138",
+        "QAG3-144",
+        "QAG3-150",
+        "QAG3-156",
+        "QAG3-163",
+        "QAG3-169",
+        "QAG3-175",
+        "QAG3-181"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Timeline và Issue Bug",
+      "epicKeys": [
+        "QAG3-187",
+        "QAG3-212"
+      ],
+      "taskKeys": [
+        "QAG3-188",
+        "QAG3-194",
+        "QAG3-200",
+        "QAG3-206",
+        "QAG3-213",
+        "QAG3-219",
+        "QAG3-225",
+        "QAG3-231",
+        "QAG3-237"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "Comment Dashboard Notification",
+      "epicKeys": [
+        "QAG3-243",
+        "QAG3-274",
+        "QAG3-299"
+      ],
+      "taskKeys": [
+        "QAG3-244",
+        "QAG3-250",
+        "QAG3-256",
+        "QAG3-262",
+        "QAG3-268",
+        "QAG3-275",
+        "QAG3-281",
+        "QAG3-287",
+        "QAG3-293",
+        "QAG3-300",
+        "QAG3-306",
+        "QAG3-312",
+        "QAG3-318",
+        "QAG3-324"
+      ]
+    }
+  ],
+  "dates": "Preserve empty sprint dates; do not rewrite April-December issue timeline or fabricate sprint execution",
+  "state": "PREVIEW_BEFORE_WRITE",
+  "changes": "Rename/goal 5 empty future sprints; assign all 53 WBS Tasks by Epic group, no workflow transition. Epics remain hierarchy; Subtasks follow parent sprint. Fix missing board status mappings so NEW work is visible.",
+  "rollback": "Restore saved sprint metadata and previous Task Sprint values; restore board column mapping; no issue deletion.",
+  "before": {
+    "issues": [
+      {
+        "id": "10078",
+        "key": "QAG3-1",
+        "fields": {
+          "summary": "Tài khoản & Role",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-04-30",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-04-03"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10079",
+        "key": "QAG3-2",
+        "fields": {
+          "summary": "AUTH-01 — Đăng ký bằng email và mật khẩu",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10078",
+            "key": "QAG3-1",
+            "fields": {
+              "summary": "Tài khoản & Role",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-04-13",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-AUTH-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-04-03"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10085",
+        "key": "QAG3-8",
+        "fields": {
+          "summary": "AUTH-02 — Đăng nhập",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10078",
+            "key": "QAG3-1",
+            "fields": {
+              "summary": "Tài khoản & Role",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-04-16",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-AUTH-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-04-08"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10091",
+        "key": "QAG3-14",
+        "fields": {
+          "summary": "AUTH-03 — Đăng xuất",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10078",
+            "key": "QAG3-1",
+            "fields": {
+              "summary": "Tài khoản & Role",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-04-17",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-AUTH-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-04-13"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10097",
+        "key": "QAG3-20",
+        "fields": {
+          "summary": "AUTH-04 — Gán hoặc thay đổi Role của thành viên",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10078",
+            "key": "QAG3-1",
+            "fields": {
+              "summary": "Tài khoản & Role",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-04-23",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-AUTH-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-04-15"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10103",
+        "key": "QAG3-26",
+        "fields": {
+          "summary": "AUTH-05 — Chỉ thấy menu, dữ liệu và hành động đúng Role",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10078",
+            "key": "QAG3-1",
+            "fields": {
+              "summary": "Tài khoản & Role",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-04-30",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-AUTH-05",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-04-20"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10109",
+        "key": "QAG3-32",
+        "fields": {
+          "summary": "Quản lý Project",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-05-27",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-05-01"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10110",
+        "key": "QAG3-33",
+        "fields": {
+          "summary": "PRJ-01 — Tạo Project với tên, mô tả và thời gian dự kiến",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10109",
+            "key": "QAG3-32",
+            "fields": {
+              "summary": "Quản lý Project",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-05-11",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-PRJ-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-05-01"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10116",
+        "key": "QAG3-39",
+        "fields": {
+          "summary": "PRJ-02 — Xem danh sách và chi tiết Project",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10109",
+            "key": "QAG3-32",
+            "fields": {
+              "summary": "Quản lý Project",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-05-12",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-PRJ-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-05-06"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10122",
+        "key": "QAG3-45",
+        "fields": {
+          "summary": "PRJ-03 — Chỉnh sửa thông tin Project",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10109",
+            "key": "QAG3-32",
+            "fields": {
+              "summary": "Quản lý Project",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-05-15",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-PRJ-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-05-08"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10128",
+        "key": "QAG3-51",
+        "fields": {
+          "summary": "PRJ-04 — Thêm thành viên vào Project",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10109",
+            "key": "QAG3-32",
+            "fields": {
+              "summary": "Quản lý Project",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-05-19",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-PRJ-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-05-12"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10134",
+        "key": "QAG3-57",
+        "fields": {
+          "summary": "PRJ-05 — Gỡ thành viên khỏi Project",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10109",
+            "key": "QAG3-32",
+            "fields": {
+              "summary": "Quản lý Project",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-05-21",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-PRJ-05",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-05-14"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10140",
+        "key": "QAG3-63",
+        "fields": {
+          "summary": "PRJ-06 — Xóa Project không còn sử dụng",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10109",
+            "key": "QAG3-32",
+            "fields": {
+              "summary": "Quản lý Project",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-05-27",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-PRJ-06",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-05-18"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10146",
+        "key": "QAG3-69",
+        "fields": {
+          "summary": "Backlog",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-06-22",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-05-28"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10147",
+        "key": "QAG3-70",
+        "fields": {
+          "summary": "BLG-01 — Xem Backlog",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10146",
+            "key": "QAG3-69",
+            "fields": {
+              "summary": "Backlog",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-06-03",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BLG-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-05-28"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10153",
+        "key": "QAG3-76",
+        "fields": {
+          "summary": "BLG-02 — Tạo User Story hoặc Task trực tiếp trong Backlog",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10146",
+            "key": "QAG3-69",
+            "fields": {
+              "summary": "Backlog",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-06-09",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BLG-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-06-01"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10159",
+        "key": "QAG3-82",
+        "fields": {
+          "summary": "BLG-03 — Sắp xếp thứ tự Backlog",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10146",
+            "key": "QAG3-69",
+            "fields": {
+              "summary": "Backlog",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-06-11",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BLG-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-06-04"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10165",
+        "key": "QAG3-88",
+        "fields": {
+          "summary": "BLG-04 — Tìm kiếm và lọc Backlog",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10146",
+            "key": "QAG3-69",
+            "fields": {
+              "summary": "Backlog",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-06-12",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BLG-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-06-08"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10171",
+        "key": "QAG3-94",
+        "fields": {
+          "summary": "BLG-05 — Đưa item từ Backlog vào Sprint lập kế hoạch",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10146",
+            "key": "QAG3-69",
+            "fields": {
+              "summary": "Backlog",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-06-22",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BLG-05",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-06-10"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10177",
+        "key": "QAG3-100",
+        "fields": {
+          "summary": "Sprint",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-07-21",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-06-23"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10178",
+        "key": "QAG3-101",
+        "fields": {
+          "summary": "SPR-01 — Tạo Sprint với tên, thời gian và mục tiêu",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10177",
+            "key": "QAG3-100",
+            "fields": {
+              "summary": "Sprint",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-07-01",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-SPR-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-06-23"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10184",
+        "key": "QAG3-107",
+        "fields": {
+          "summary": "SPR-02 — Chỉnh sửa Sprint đang lập kế hoạch",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10177",
+            "key": "QAG3-100",
+            "fields": {
+              "summary": "Sprint",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-07-06",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-SPR-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-06-26"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10190",
+        "key": "QAG3-113",
+        "fields": {
+          "summary": "SPR-03 — Bắt đầu Sprint",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10177",
+            "key": "QAG3-100",
+            "fields": {
+              "summary": "Sprint",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-07-09",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-SPR-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-07-01"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10196",
+        "key": "QAG3-119",
+        "fields": {
+          "summary": "SPR-04 — Xem thông tin Sprint",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10177",
+            "key": "QAG3-100",
+            "fields": {
+              "summary": "Sprint",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-07-14",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-SPR-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-07-06"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10202",
+        "key": "QAG3-125",
+        "fields": {
+          "summary": "SPR-05 — Đóng Sprint",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10177",
+            "key": "QAG3-100",
+            "fields": {
+              "summary": "Sprint",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-07-21",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-SPR-05",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-07-09"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10208",
+        "key": "QAG3-131",
+        "fields": {
+          "summary": "Task / User Story",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-08-13",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E05",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-07-22"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10209",
+        "key": "QAG3-132",
+        "fields": {
+          "summary": "TSK-01 — Tạo Task/User Story",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10208",
+            "key": "QAG3-131",
+            "fields": {
+              "summary": "Task / User Story",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-07-30",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-TSK-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-07-22"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10215",
+        "key": "QAG3-138",
+        "fields": {
+          "summary": "TSK-02 — Xem chi tiết Task/User Story",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10208",
+            "key": "QAG3-131",
+            "fields": {
+              "summary": "Task / User Story",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-07-31",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-TSK-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-07-27"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10221",
+        "key": "QAG3-144",
+        "fields": {
+          "summary": "TSK-03 — Chỉnh sửa Task/User Story",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10208",
+            "key": "QAG3-131",
+            "fields": {
+              "summary": "Task / User Story",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-08-05",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-TSK-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-07-29"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10227",
+        "key": "QAG3-150",
+        "fields": {
+          "summary": "TSK-04 — Gán Task/User Story cho thành viên",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10208",
+            "key": "QAG3-131",
+            "fields": {
+              "summary": "Task / User Story",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-08-07",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-TSK-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-07-31"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10233",
+        "key": "QAG3-156",
+        "fields": {
+          "summary": "TSK-05 — Xóa Task/User Story không còn giá trị",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10208",
+            "key": "QAG3-131",
+            "fields": {
+              "summary": "Task / User Story",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-08-13",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-TSK-05",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-08-04"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10239",
+        "key": "QAG3-162",
+        "fields": {
+          "summary": "Kanban",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-09-08",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E06",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-08-14"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10240",
+        "key": "QAG3-163",
+        "fields": {
+          "summary": "KAN-01 — Xem Kanban board của Sprint",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10239",
+            "key": "QAG3-162",
+            "fields": {
+              "summary": "Kanban",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-08-24",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-KAN-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-08-14"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10246",
+        "key": "QAG3-169",
+        "fields": {
+          "summary": "KAN-02 — Kéo-thả card giữa các cột",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10239",
+            "key": "QAG3-162",
+            "fields": {
+              "summary": "Kanban",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-08-27",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-KAN-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-08-19"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10252",
+        "key": "QAG3-175",
+        "fields": {
+          "summary": "KAN-03 — Lọc Kanban board",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10239",
+            "key": "QAG3-162",
+            "fields": {
+              "summary": "Kanban",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-09-01",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-KAN-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-08-24"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10258",
+        "key": "QAG3-181",
+        "fields": {
+          "summary": "KAN-04 — Tạo nhanh item từ Kanban board",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10239",
+            "key": "QAG3-162",
+            "fields": {
+              "summary": "Kanban",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-09-08",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-KAN-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-08-27"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10264",
+        "key": "QAG3-187",
+        "fields": {
+          "summary": "Gantt / Timeline",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-09-30",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E07",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-09-09"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10265",
+        "key": "QAG3-188",
+        "fields": {
+          "summary": "GNT-01 — Xem Gantt/Timeline của Project",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10264",
+            "key": "QAG3-187",
+            "fields": {
+              "summary": "Gantt / Timeline",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-09-17",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-GNT-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-09-09"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10271",
+        "key": "QAG3-194",
+        "fields": {
+          "summary": "GNT-02 — Đặt ngày bắt đầu và ngày kết thúc cho Task",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10264",
+            "key": "QAG3-187",
+            "fields": {
+              "summary": "Gantt / Timeline",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-09-21",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-GNT-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-09-14"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10277",
+        "key": "QAG3-200",
+        "fields": {
+          "summary": "GNT-03 — Tạo quan hệ trước-sau giữa các Task",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10264",
+            "key": "QAG3-187",
+            "fields": {
+              "summary": "Gantt / Timeline",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-09-24",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-GNT-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-09-16"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10283",
+        "key": "QAG3-206",
+        "fields": {
+          "summary": "GNT-04 — Nhận diện Task trễ hạn hoặc xung đột lịch",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10264",
+            "key": "QAG3-187",
+            "fields": {
+              "summary": "Gantt / Timeline",
+              "status": {
+                "description": "",
+                "name": "Done",
+                "id": "10009",
+                "statusCategory": {
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-09-30",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-GNT-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-09-21"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10289",
+        "key": "QAG3-212",
+        "fields": {
+          "summary": "Issue / Bug",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-10-23",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "This work item is being actively worked on at the moment by the assignee.",
+            "name": "In Progress",
+            "id": "3",
+            "statusCategory": {
+              "id": 4,
+              "key": "indeterminate",
+              "colorName": "yellow",
+              "name": "In Progress"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E08",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-01"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10290",
+        "key": "QAG3-213",
+        "fields": {
+          "summary": "BUG-01 — Tạo Bug với thông tin tái hiện",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10289",
+            "key": "QAG3-212",
+            "fields": {
+              "summary": "Issue / Bug",
+              "status": {
+                "description": "This work item is being actively worked on at the moment by the assignee.",
+                "name": "In Progress",
+                "id": "3",
+                "statusCategory": {
+                  "id": 4,
+                  "key": "indeterminate",
+                  "colorName": "yellow",
+                  "name": "In Progress"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-10-09",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BUG-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-01"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10296",
+        "key": "QAG3-219",
+        "fields": {
+          "summary": "BUG-02 — Tìm kiếm và lọc Bug",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10289",
+            "key": "QAG3-212",
+            "fields": {
+              "summary": "Issue / Bug",
+              "status": {
+                "description": "This work item is being actively worked on at the moment by the assignee.",
+                "name": "In Progress",
+                "id": "3",
+                "statusCategory": {
+                  "id": 4,
+                  "key": "indeterminate",
+                  "colorName": "yellow",
+                  "name": "In Progress"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-10-12",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BUG-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-06"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10302",
+        "key": "QAG3-225",
+        "fields": {
+          "summary": "BUG-03 — Phân loại Severity và Priority của Bug",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10289",
+            "key": "QAG3-212",
+            "fields": {
+              "summary": "Issue / Bug",
+              "status": {
+                "description": "This work item is being actively worked on at the moment by the assignee.",
+                "name": "In Progress",
+                "id": "3",
+                "statusCategory": {
+                  "id": 4,
+                  "key": "indeterminate",
+                  "colorName": "yellow",
+                  "name": "In Progress"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-10-15",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BUG-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-08"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10308",
+        "key": "QAG3-231",
+        "fields": {
+          "summary": "BUG-04 — Gán Bug cho Dev phụ trách",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10289",
+            "key": "QAG3-212",
+            "fields": {
+              "summary": "Issue / Bug",
+              "status": {
+                "description": "This work item is being actively worked on at the moment by the assignee.",
+                "name": "In Progress",
+                "id": "3",
+                "statusCategory": {
+                  "id": 4,
+                  "key": "indeterminate",
+                  "colorName": "yellow",
+                  "name": "In Progress"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-10-19",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BUG-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-12"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10314",
+        "key": "QAG3-237",
+        "fields": {
+          "summary": "BUG-05 — Cập nhật trạng thái Bug",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10289",
+            "key": "QAG3-212",
+            "fields": {
+              "summary": "Issue / Bug",
+              "status": {
+                "description": "This work item is being actively worked on at the moment by the assignee.",
+                "name": "In Progress",
+                "id": "3",
+                "statusCategory": {
+                  "id": 4,
+                  "key": "indeterminate",
+                  "colorName": "yellow",
+                  "name": "In Progress"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-10-23",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "Done",
+            "id": "10009",
+            "statusCategory": {
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Done"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-BUG-05",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-14"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10320",
+        "key": "QAG3-243",
+        "fields": {
+          "summary": "Comment",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-11-16",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E09",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-26"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10321",
+        "key": "QAG3-244",
+        "fields": {
+          "summary": "CMT-01 — Thêm comment trên Task/Issue",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10320",
+            "key": "QAG3-243",
+            "fields": {
+              "summary": "Comment",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-11-02",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-CMT-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-26"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10327",
+        "key": "QAG3-250",
+        "fields": {
+          "summary": "CMT-02 — Xem lịch sử comment",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10320",
+            "key": "QAG3-243",
+            "fields": {
+              "summary": "Comment",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-11-03",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-CMT-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-28"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10333",
+        "key": "QAG3-256",
+        "fields": {
+          "summary": "CMT-03 — Chỉnh sửa comment của mình",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10320",
+            "key": "QAG3-243",
+            "fields": {
+              "summary": "Comment",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-11-06",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-CMT-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-10-30"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10339",
+        "key": "QAG3-262",
+        "fields": {
+          "summary": "CMT-04 — Xóa comment không còn phù hợp",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10320",
+            "key": "QAG3-243",
+            "fields": {
+              "summary": "Comment",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-11-10",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-CMT-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-11-03"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10345",
+        "key": "QAG3-268",
+        "fields": {
+          "summary": "CMT-05 — Mention đồng đội trong comment",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10320",
+            "key": "QAG3-243",
+            "fields": {
+              "summary": "Comment",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-11-16",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-CMT-05",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-11-05"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10351",
+        "key": "QAG3-274",
+        "fields": {
+          "summary": "Dashboard",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-12-07",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E10",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-11-17"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10352",
+        "key": "QAG3-275",
+        "fields": {
+          "summary": "DSH-01 — Xem tỷ lệ hoàn thành Project",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10351",
+            "key": "QAG3-274",
+            "fields": {
+              "summary": "Dashboard",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-11-23",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-DSH-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-11-17"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10358",
+        "key": "QAG3-281",
+        "fields": {
+          "summary": "DSH-02 — Xem số Task theo từng trạng thái",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10351",
+            "key": "QAG3-274",
+            "fields": {
+              "summary": "Dashboard",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-11-25",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-DSH-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-11-19"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10364",
+        "key": "QAG3-287",
+        "fields": {
+          "summary": "DSH-03 — Xem khối lượng Task theo từng thành viên",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10351",
+            "key": "QAG3-274",
+            "fields": {
+              "summary": "Dashboard",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-11-27",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-DSH-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-11-23"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10370",
+        "key": "QAG3-293",
+        "fields": {
+          "summary": "DSH-04 — Lọc Dashboard theo Sprint hoặc trạng thái",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10351",
+            "key": "QAG3-274",
+            "fields": {
+              "summary": "Dashboard",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-12-07",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-DSH-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-11-25"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10376",
+        "key": "QAG3-299",
+        "fields": {
+          "summary": "Notification",
+          "issuetype": {
+            "id": "10000",
+            "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+            "name": "Epic",
+            "subtask": false,
+            "hierarchyLevel": 1
+          },
+          "duedate": "2026-12-31",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-E12",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-12-08"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10377",
+        "key": "QAG3-300",
+        "fields": {
+          "summary": "NOT-01 — Nhận thông báo khi được gán Task/User Story",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10376",
+            "key": "QAG3-299",
+            "fields": {
+              "summary": "Notification",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-12-15",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-NOT-01",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-12-08"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10383",
+        "key": "QAG3-306",
+        "fields": {
+          "summary": "NOT-02 — Nhận thông báo khi trạng thái Task hoặc Bug thay đổi",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10376",
+            "key": "QAG3-299",
+            "fields": {
+              "summary": "Notification",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-12-18",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-NOT-02",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-12-10"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10389",
+        "key": "QAG3-312",
+        "fields": {
+          "summary": "NOT-03 — Nhận thông báo khi được mention hoặc có comment liên quan",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10376",
+            "key": "QAG3-299",
+            "fields": {
+              "summary": "Notification",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-12-22",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-NOT-03",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-12-15"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10395",
+        "key": "QAG3-318",
+        "fields": {
+          "summary": "NOT-04 — Xem trung tâm Notification",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10376",
+            "key": "QAG3-299",
+            "fields": {
+              "summary": "Notification",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-12-23",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-NOT-04",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-12-17"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      },
+      {
+        "id": "10401",
+        "key": "QAG3-324",
+        "fields": {
+          "summary": "NOT-05 — Cấu hình kênh và loại Notification",
+          "issuetype": {
+            "id": "10011",
+            "description": "",
+            "name": "Task",
+            "subtask": false,
+            "hierarchyLevel": 0
+          },
+          "parent": {
+            "id": "10376",
+            "key": "QAG3-299",
+            "fields": {
+              "summary": "Notification",
+              "status": {
+                "description": "",
+                "name": "NEW",
+                "id": "10010",
+                "statusCategory": {
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "id": "10000",
+                "description": "A big user story that needs to be broken down. Created by Jira Software - do not edit or delete.",
+                "name": "Epic",
+                "subtask": false,
+                "hierarchyLevel": 1
+              }
+            }
+          },
+          "duedate": "2026-12-31",
+          "project": {
+            "id": "10002",
+            "key": "QAG3",
+            "name": "QLDAPM Agile Practice 3",
+            "projectTypeKey": "software",
+            "simplified": false
+          },
+          "assignee": {
+            "accountId": "712020:47b24428-aa71-4363-b68f-29ed2285aad8",
+            "displayName": "Khai Dương",
+            "active": true,
+            "timeZone": "Asia/Bangkok",
+            "accountType": "atlassian"
+          },
+          "status": {
+            "description": "",
+            "name": "NEW",
+            "id": "10010",
+            "statusCategory": {
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "labels": [
+            "academic-scenario-2026-10-11",
+            "backlog-draft",
+            "qag3-simulation",
+            "qag3-wbs",
+            "simulated-timeline-2026",
+            "source-NOT-05",
+            "wbs-v7"
+          ],
+          "customFields": {
+            "Start date": {
+              "id": "customfield_10015",
+              "value": "2026-12-21"
+            },
+            "Sprint": {
+              "id": "customfield_10020"
+            }
+          }
+        }
+      }
+    ],
+    "isLast": true,
+    "appliedContentFormat": "markdown"
+  }
+}

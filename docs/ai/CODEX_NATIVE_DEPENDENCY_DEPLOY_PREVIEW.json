@@ -1,0 +1,121 @@
+{
+  "at": "2026-10-25T20:18:39.117850+00:00",
+  "status": "QUALIFIED_MAIN_READONLY_PREFLIGHT_AND_PRIVATE_BACKUP",
+  "services": {
+    "gateway": {
+      "tag": "qldapm-ai:codex-dependency-v2-20261026",
+      "image": "sha256:89777ef1ddf5c84f1758756bca620599fb49b906ae77cf961249bf1f2726f0fa"
+    },
+    "web": {
+      "tag": "qldapm-core:codex-dependency-20261026",
+      "image": "sha256:4495d944cd6ea5ab7a1fb50173310a787793f4398118f6b858333ac62a80a6a2"
+    }
+  },
+  "files": {
+    "openproject/ai/gateway/native_dependency.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/native_dependency.py",
+      "sha256": "9b781062fc918b2604f02bc8336a57e041cfd849af92cbeff9c3c34915b4b9d2"
+    },
+    "openproject/ai/gateway/service.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/service.py",
+      "sha256": "85f268a3d8f96406f3285281098fb0e3baae12dc5558effcfd3b95034055d288"
+    },
+    "openproject/ai/gateway/store.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/store.py",
+      "sha256": "e4198efc1a21900f3b6e88e9d97d71df610e2a52ec053bfaa84e1ab7da158d84"
+    },
+    "openproject/ai/gateway/permissions.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/permissions.py",
+      "sha256": "19f88d0c1f095d84c91a995cb798a1ef99f6b08647f034fead92a07e1e4769cd"
+    },
+    "openproject/ai/gateway/catalog.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/catalog.py",
+      "sha256": "06f769ad6e0585bfd9afc45b749dd9373d543a505acca71bf861ca450b34be00"
+    },
+    "openproject/ai/gateway/presentation.py": {
+      "kind": "gateway",
+      "runtime_path": "/app/gateway/presentation.py",
+      "sha256": "40e8db1c8934a3f7c235bf6286473072cfd9ba99939f9a051aa8f23baee1f3bc"
+    },
+    "openproject/ai/core/overlay/app/services/qldapm/dependency_mutation.rb": {
+      "kind": "core",
+      "runtime_path": "/app/app/services/qldapm/dependency_mutation.rb",
+      "sha256": "35a20a498fefb2351efda3d4821f0d48317479108c817f3cbe35cca180c558f5"
+    },
+    "openproject/ai/core/overlay/app/models/concerns/qldapm_relation_write.rb": {
+      "kind": "core",
+      "runtime_path": "/app/app/models/concerns/qldapm_relation_write.rb",
+      "sha256": "a5c0664d737683e578ba35a479d6613026cb316bdb01dfda6b47ab5579bb1863"
+    },
+    "openproject/ai/core/overlay/config/initializers/qldapm_gates.rb": {
+      "kind": "core",
+      "runtime_path": "/app/config/initializers/qldapm_gates.rb",
+      "sha256": "a3859744f1a27cb905605983e6f719d34f550ad93db5098ae9b64b7cfbc7636b"
+    },
+    "openproject/ai/core/overlay/lib/api/v3/qldapm/gates_api.rb": {
+      "kind": "core",
+      "runtime_path": "/app/lib/api/v3/qldapm/gates_api.rb",
+      "sha256": "0d25b31b29fe2d2908885946c734374bf18f01f371007c73a1d6944910917849"
+    },
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": {
+      "kind": "core",
+      "runtime_path": "/app/app/controllers/qldapm_ai_controller.rb",
+      "sha256": "c42126dc9d5e9ea8ca1db20947efcc7dfcc3d481e70ae17893308d96f97d2ce2"
+    },
+    "openproject/ai/core/overlay/app/helpers/qldapm_ai_helper.rb": {
+      "kind": "core",
+      "runtime_path": "/app/app/helpers/qldapm_ai_helper.rb",
+      "sha256": "169e8bee4a2bf5e037280fe92072e71ca6638eaa18f6818ab7a4a6d64ca5740d"
+    }
+  },
+  "windows": {
+    "run": 489,
+    "passed": 489,
+    "skipped": 0,
+    "errors": 0,
+    "failures": 0
+  },
+  "linux": {
+    "run": 489,
+    "passed": 475,
+    "skipped": 14,
+    "errors": 0,
+    "failures": 0
+  },
+  "ruby": {
+    "programs": 13,
+    "failed": 0
+  },
+  "core_clone": "CODEX_NATIVE_DEPENDENCY_CORE_CLONE_RESULT.json",
+  "gateway_clone": "CODEX_NATIVE_DEPENDENCY_GATEWAY_CLONE_RESULT.json",
+  "main_deployed": false,
+  "main_native_writes": 0,
+  "model_calls": 0,
+  "staging_operations": false,
+  "limits": [
+    "Vector indexing not run in this clone; six durable pending WP/canonical-sync jobs, not RAG completion",
+    "Native relation graph is read from Native API, not added as a new semantic corpus source",
+    "No Main dependency approval/write",
+    "WBS depends_on remains sequencing; dependency proposals are explicit separate operations",
+    "No full business WBS closure"
+  ],
+  "authorization": "PUBLICATION_REDACTED",
+  "workflow": "WF10 only",
+  "workflow_id": "tOY7QUa9SrWPOe9e",
+  "workflow_before": "c35d6ae0-b67a-43c8-983e-57ceed1e6664",
+  "workflow_changes": 1,
+  "unrelated_workflows": 15,
+  "unrelated_containers": 8,
+  "historical_unknowns_preserved": 28,
+  "native_count": 338,
+  "rollback_gateway": "sha256:f442384ebf72b23667032cff2bf3865016ee4f04f96fae6e5aabe7e2560ed32a",
+  "rollback_web": "sha256:edc9f2b23db00a25fa73acbbd3dafb1f609b17d37ea0790fde9db9778b37e8fa",
+  "backups": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-autonomous-20261025\\dependency-deployment",
+  "rollback": "Restore only prior image selectors and exact prior WF10 definition; never overwrite newer database histories",
+  "n8n_assets_backup": "CODEX_N8N_ASSETS_RECOVERY_RESULT.json"
+}

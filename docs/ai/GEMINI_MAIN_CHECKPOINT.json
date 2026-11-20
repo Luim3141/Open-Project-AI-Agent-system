@@ -1,0 +1,195 @@
+{
+  "checkpoint_version": "2026-10-28T14:30:00+07:00",
+  "agent": "GEMINI_FINAL_GO_LIVE_CORRECTIVE_ENGINEERING",
+  "project_target": {
+    "project_id": 5,
+    "identifier": "qldapm-local",
+    "environment": "MAIN ONLY",
+    "staging_isolation": "STRICTLY ENFORCED; no staging access"
+  },
+  "current_state": {
+    "timestamp": "2026-10-28T14:30:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh (+07:00)",
+    "release_decision": "READY_FOR_OPERATOR_UAT",
+    "git": {
+      "branch": "codex/local-multi-agent-upgrade",
+      "commit": "3c5180017e88942354e63f538ee5904fc7b2d585",
+      "dirty_tracked_files": [
+        "architecture.md"
+      ],
+      "untracked_new_files": [
+        "docs/ai/GO_LIVE_READINESS_MATRIX.json",
+        "docs/ai/GO_LIVE_READINESS_MATRIX.md",
+        "docs/ai/OPERATOR_RUNBOOK_GO_LIVE.md",
+        "docs/ai/OPERATOR_UAT_SPECIFICATION_AND_CHECKLIST.md",
+        "docs/ai/GEMINI_16_WORKFLOW_QUALIFICATION_EVIDENCE.json",
+        "docs/ai/GEMINI_16_WORKFLOW_QUALIFICATION_REPORT.md",
+        "docs/ai/RELIABILITY_AND_BACKUP_DRILL_REPORT.json",
+        "docs/ai/RELIABILITY_AND_BACKUP_DRILL_REPORT.md",
+        "docs/ai/GEMINI_MAIN_CHECKPOINT.json",
+        "openproject/ai/automation/gemini_16_workflow_qualification.py",
+        "openproject/ai/automation/gemini_backup_recovery_drill.py",
+        "openproject/ai/automation/rotate_pm_token.py",
+        "openproject/ai/automation/safe_postgres_restore.py",
+        "openproject/ai/automation/operator_uat_preflight.py",
+        "openproject/ai/test_qdrant_isolated_restore.py",
+        "openproject/ai/inspect_second_brain_inventory.py",
+        "openproject/ai/tests/test_safe_postgres_restore.py"
+      ]
+    },
+    "runtime_images": {
+      "gateway": {
+        "tag": "qldapm-ai:chatgpt-application-bridge-20261027",
+        "digest": "sha256:7264e0f0855905cc96dde72ccb8b07d09e033f65d8dda44697dfc61d9e1a805e",
+        "port": "127.0.0.1:18089->8090/tcp",
+        "status": "HEALTHY"
+      },
+      "core": {
+        "tag": "qldapm-core:chatgpt-application-bridge-20261027",
+        "digest": "sha256:08df5e2bda4042209217453a051671965b553e983001b76ebbb2e1a4d7ede9d3",
+        "port": "127.0.0.1:18088->80/tcp",
+        "status": "HEALTHY"
+      },
+      "n8n": {
+        "container": "qldapm-n8n-main",
+        "port": "127.0.0.1:5679->5678/tcp",
+        "active_workflows": 16,
+        "executions_recorded": 275,
+        "pruning_status": "ACTIVE (EXECUTIONS_DATA_PRUNE=true, EXECUTIONS_DATA_MAX_AGE=336h, EXECUTIONS_DATA_PRUNE_MAX_COUNT=1000)",
+        "status": "HEALTHY",
+        "qualification_status": "16/16_WORKFLOWS_QUALIFIED_READY_FOR_OPERATOR_UAT"
+      },
+      "qdrant": {
+        "container": "qldapm-qdrant",
+        "port": "127.0.0.1:6333->6333/tcp",
+        "collection": "qldapm_knowledge_dense",
+        "points_count": 1745,
+        "status": "HEALTHY"
+      },
+      "ollama": {
+        "host_process": "ollama.exe serve (PID background task 1466)",
+        "port": "http://127.0.0.1:11434",
+        "model": "bge-m3:latest",
+        "dimensions": 1024,
+        "status": "HEALTHY"
+      }
+    },
+    "data_baseline": {
+      "physical_work_packages": 376,
+      "visible_work_packages": 339,
+      "relations": 352,
+      "work_package_376": {
+        "id": 376,
+        "type": "Subtask",
+        "subject": "test2",
+        "parent_id": 49,
+        "lock_version": 0,
+        "actor": 18,
+        "status": "NEW",
+        "human_verified": true
+      },
+      "qa_evidence_pending": {
+        "id": "fc0479a8-b30a-5e88-9e4a-10748cb30415",
+        "state": "pending_qa",
+        "bug_id": 371,
+        "bug_version": 4,
+        "bug_status": "IN ANALYSIS"
+      },
+      "second_brain": {
+        "knowledge_documents": 376,
+        "breakdown_by_doc_type": {
+          "WORK_PACKAGE": 340,
+          "ARCHITECTURE": 25,
+          "SPRINT_REPORT": 7,
+          "ADR": 4,
+          "total": 376
+        },
+        "breakdown_by_source_id": {
+          "op_wp": 339,
+          "actor_snapshots": 13,
+          "file_adr_and_arch": 17,
+          "op_sprint": 7,
+          "total": 376
+        },
+        "knowledge_chunks": 1742,
+        "qdrant_points": 1745,
+        "legacy_unique_sources": 3,
+        "legacy_vector_points": 6,
+        "legacy_sources_detail": {
+          "op_wp_42": 4,
+          "test_local_adr_0001": 1,
+          "test_wp_999": 1
+        },
+        "fts5_sqlite": "HEALTHY_OK",
+        "hybrid_search": "ACTIVE_RRF"
+      },
+      "sqlite_ledgers": {
+        "audit": 19624,
+        "ai_runs": 191,
+        "proposals": 57,
+        "tokens": 199,
+        "qa_evidence": 2
+      }
+    }
+  },
+  "acceptance_suite_summary": {
+    "total_tests": 16,
+    "passed": 16,
+    "failed": 0,
+    "partial": 0,
+    "evidence_file": "docs/ai/GEMINI_16_WORKFLOW_QUALIFICATION_EVIDENCE.json",
+    "report_file": "docs/ai/GEMINI_16_WORKFLOW_QUALIFICATION_REPORT.md",
+    "verified_workflows": [
+      "WF01", "WF02", "WF03", "WF04", "WF05", "WF06", "WF07", "WF08",
+      "WF09", "WF10", "WF11", "WF12", "WF13", "WF14", "WF15", "WF16"
+    ]
+  },
+  "reliability_and_backup_drill": {
+    "status": "READY_FOR_OPERATOR_UAT",
+    "evidence_file": "docs/ai/RELIABILITY_AND_BACKUP_DRILL_REPORT.json",
+    "report_file": "docs/ai/RELIABILITY_AND_BACKUP_DRILL_REPORT.md",
+    "openproject_postgres_verified": true,
+    "safe_postgres_restore_verified": true,
+    "gateway_snapshot_verified": true,
+    "knowledge_snapshot_verified": true,
+    "n8n_snapshot_and_key_verified": true,
+    "qdrant_cold_volume_verified": true,
+    "qdrant_isolated_clone_verified": true,
+    "integrity_check": "ok",
+    "n8n_retention_policy": "ACTIVE_14_DAY_PRUNING_ENFORCED"
+  },
+  "next_agent_handoff": {
+    "current_status": "CORRECTIVE_ENGINEERING_COMPLETE",
+    "release_readiness": "READY_FOR_OPERATOR_UAT",
+    "last_successful_step": "Permanently removed automated production cutover mechanism and static confirmation string from safe_postgres_restore.py (fail-closed verified by unit tests), activated n8n pruning daemon in runtime container (EXECUTIONS_DATA_PRUNE=true, EXECUTIONS_DATA_MAX_AGE=336h, EXECUTIONS_DATA_PRUNE_MAX_COUNT=1000) with 16/16 workflows active and pre-prune backup secured, reconciled Qdrant legacy count (3 unique source docs vs 6 physical vector points), built and verified operator_uat_preflight.py (100% PASS on all 8 check categories), updated UAT specification UAT-03 with live Project 5 work package counts (339 total, 57 Tasks, 12 Epics, 270 Subtasks), and synced all runtime metrics as of 2026-10-28T14:30:00+07:00.",
+    "next_safe_action": "Operator uses OPERATOR_UAT_SPECIFICATION_AND_CHECKLIST.md and OPERATOR_RUNBOOK_GO_LIVE.md to execute manual browser UAT (UAT-01 to UAT-14) and sign off release. Bug #371 closure and QA Evidence approval remain pending operator decision.",
+    "what_must_not_be_repeated": [
+      "DO NOT revert ports to 8088/8090 (remain on 18088/18089).",
+      "DO NOT delete or rollback Work Package #376 (valid human-created Subtask, lockVersion 0).",
+      "DO NOT auto-approve QA Evidence fc0479a8-b30a-5e88-9e4a-10748cb30415 or close Bug #371 without human review.",
+      "DO NOT delete the 3 legacy points in Qdrant (retained and excluded from retrieval).",
+      "DO NOT touch Staging containers on ports 18091/18092/15678."
+    ]
+  },
+  "security_governance": {
+    "active_pm_token": {
+      "actor": 19,
+      "role": "PM",
+      "masked": "OFSO...3d27",
+      "sha256": "1212c96317bc32f9136ca3206fb576efeb89c6295ee6bb7f5a898a9c394ea5df",
+      "days_remaining": 30.0,
+      "secret_file": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\test_pm_token.secret",
+      "file_permissions": "NTFS ACL Restricted to SYSTEM & LUIM",
+      "n8n_credential_entity": "DBWkxwb2izrbu17C"
+    },
+    "webhook_secret": {
+      "masked": "qldapm_wh_...c5fa",
+      "secret_file": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\webhook_secret.json",
+      "file_permissions": "NTFS ACL Restricted to SYSTEM & LUIM",
+      "n8n_credential_entity": "2w9dSdmYbywZDuMB"
+    },
+    "tokens_table_plaintext_storage": "NONE — SHA-256 HASH ONLY",
+    "rbac_status": "ENFORCED",
+    "replay_prevention": "ENFORCED"
+  }
+}

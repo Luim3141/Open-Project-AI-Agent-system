@@ -1,0 +1,51 @@
+{
+  "utc": "2026-11-03T12:59:03.050066+00:00",
+  "trigger": "actual current-period human-authenticated webhook; production weekly cron unchanged",
+  "actor": 18,
+  "http": 200,
+  "result_keys": [
+    "state",
+    "project_id",
+    "actor_id",
+    "actor_role",
+    "as_of_date",
+    "window_start",
+    "upcoming_window_end",
+    "data_quality",
+    "model_used",
+    "weekly_summary",
+    "member_breakdown",
+    "ai_summary",
+    "limitations",
+    "report_id",
+    "report_sha256",
+    "last_observed_at"
+  ],
+  "summary": {
+    "report_id": "53f52bf2-b146-5a3d-a26d-2e178597b887",
+    "snapshot_id": null,
+    "kind": null,
+    "type": null,
+    "state": "READY",
+    "status": null,
+    "project_id": 5,
+    "model_used": false,
+    "generated_at": null,
+    "period_start": null,
+    "period_end": null,
+    "run_id": null
+  },
+  "limits": [
+    "human webhook does not exercise the four-reader weekly cron branch",
+    "initial no-bearer request returned401 as required; no permission bypass"
+  ],
+  "persisted_readback": {
+    "report_id": "53f52bf2-b146-5a3d-a26d-2e178597b887",
+    "actor": 18,
+    "project": 5,
+    "kind": "weekly_summary",
+    "sha256": "b0710c3e435279c47b1a08dca692096947b92337c1dad3b7c926c9965528a355",
+    "state": "READY",
+    "model_used": false
+  }
+}

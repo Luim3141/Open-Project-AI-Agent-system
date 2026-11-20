@@ -1,0 +1,71 @@
+{
+  "checkpoint": "PHASE_P0_RECOVERY_BASELINE",
+  "timestamp": "2026-10-31T17:10:00+07:00",
+  "git": {
+    "qldapm": {
+      "path": "D:\\AI project\\QLDAPM chat",
+      "branch": "codex/local-multi-agent-upgrade",
+      "head": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e"
+    },
+    "demo": {
+      "path": "D:\\AI project\\QLDAPM-demo\\mini-task-manager",
+      "branch": "codex/mini-task-manager-ready",
+      "head": "def9d0a8852af42a407bd42fb0051615a2de9331"
+    }
+  },
+  "docker": {
+    "web_container": "qldapm-openproject-web-1",
+    "web_image": "qldapm-core:engineering-continuation-r23-20261030",
+    "gateway_container": "qldapm-ai-gateway-1",
+    "gateway_image": "qldapm-ai:engineering-continuation-r23-20261030",
+    "n8n_container": "qldapm-n8n-main",
+    "n8n_port": 5679,
+    "qdrant_port": 6333,
+    "ollama_port": 11434
+  },
+  "wsl2": {
+    "distro": "OpenClawGateway",
+    "port": 18789,
+    "node_version": "24.22.2"
+  },
+  "postgres": {
+    "project_5": {
+      "count": 341,
+      "max_lock_version": 4,
+      "max_updated_at": "2026-10-29 10:08:56.897949+00",
+      "writes_observed": 0,
+      "status": "PROTECTED_INTACT"
+    },
+    "project_6": {
+      "count": 7,
+      "max_lock_version": 9,
+      "parent_wp": 379,
+      "work_packages": [
+        {"id": 379, "status_id": 7, "lock_version": 4, "subject": "Develop Mini Task Manager Application"},
+        {"id": 380, "status_id": 34, "lock_version": 8, "subject": "[AI unit] Create/list tasks + SQLite persistence"},
+        {"id": 381, "status_id": 34, "lock_version": 9, "subject": "[AI unit] Edit/delete/status/search and usable web interface"},
+        {"id": 382, "status_id": 34, "lock_version": 9, "subject": "[AI backlog] Bo sung request helper..."},
+        {"id": 383, "status_id": 34, "lock_version": 9, "subject": "[AI backlog] Dang ky ham SQLite qldapm_casefold..."},
+        {"id": 384, "status_id": 7, "lock_version": 2, "subject": "[AI backlog] Them route GET /healthz..."},
+        {"id": 385, "status_id": 1, "lock_version": 1, "subject": "[AI backlog] Thêm trường danh mục, hỗ trợ lọc API/giao diện và endpoint xuất CSV..."}
+      ]
+    }
+  },
+  "github_prs": {
+    "pr_1": {"number": 1, "state": "MERGED", "base": "main"},
+    "pr_2": {"number": 2, "state": "MERGED", "base": "feature/openclaw-create-list-persistence-v1"},
+    "pr_3": {"number": 3, "state": "OPEN", "base": "codex/openclaw-crud-search-web-v1"},
+    "pr_4": {"number": 4, "state": "OPEN", "base": "codex/openclaw-feedback-283138e910432528"},
+    "pr_5": {"number": 5, "state": "OPEN", "base": "codex/openclaw-feedback-4d13e695555a8d44"}
+  },
+  "defects_baseline": {
+    "DEF-P0-01": "CONFIRMED: app.py returned 409 for all ValueErrors; concurrency lock and slow Puma sync caused hang and 409.",
+    "DEF-P0-02": "CONFIRMED: No dedicated /reports/:id route; script tag narrative evaluated falsy in Ruby ERB.",
+    "DEF-P0-03": "CONFIRMED: _dense_search checked _mock_tables instead of knowledge.sqlite; DENSE_MIN_COSINE 0.5 let unrelated vector match pass for 'email'.",
+    "DEF-P0-04": "CONFIRMED: 6 units registered; unit 6 (WP #385) blocked on knowledge sync of b1cca031; UI hardcoded '5/5 units'.",
+    "DEF-P0-05": "CONFIRMED: Run b1cca031 queried actor=18 instead of actor=20 in engineering_monitor; missing complete telemetry projection.",
+    "DEF-P1-06": "CONFIRMED: Backlog projections conflated PLANNED and DELIVERED states.",
+    "DEF-P1-07": "CONFIRMED: Force sync lacked non-blocking cache reload and direct UI feedback.",
+    "DEF-P1-08": "CONFIRMED: Docs listed wrong n8n port (15678 instead of 5679) and relative paths."
+  }
+}

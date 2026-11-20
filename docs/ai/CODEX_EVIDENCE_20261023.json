@@ -1,0 +1,278 @@
+{
+  "snapshot_at": "2026-10-23T04:20:58.532680+07:00",
+  "verdict": "NO_GO_PENDING_P0_RUNTIME_APPROVAL",
+  "tests": {
+    "image": "sha256:0923f9cc6d2cf895f12433da16f2ce52c1429afa39e2e0febb4668eaefdffa0a",
+    "linux": {
+      "exit_code": 0,
+      "count": 76,
+      "network": "none"
+    },
+    "windows": {
+      "exit_code": 0,
+      "count": 90
+    },
+    "modules": [
+      "tests.test_takeover_security",
+      "tests.test_takeover_workflows",
+      "tests.test_gateway",
+      "tests.test_level2",
+      "tests.test_business_lifecycle",
+      "tests.test_supervisor",
+      "tests.test_native_create_recovery",
+      "tests.test_business_acceptance"
+    ]
+  },
+  "rag": {
+    "project_id": 5,
+    "native_actor": 19,
+    "native_role": "PM",
+    "native_packages": 332,
+    "sqlite_documents": 360,
+    "sqlite_chunks": 1713,
+    "sqlite_quick_check": "ok",
+    "types": {
+      "WORK_PACKAGE": 326,
+      "ARCHITECTURE": 23,
+      "SPRINT_REPORT": 7,
+      "ADR": 4
+    },
+    "indexed_native_ids_all_doc_types": 332,
+    "missing_native_ids_all_doc_types": [],
+    "stale_versions": 4,
+    "namespace_duplicates": {
+      "49": [
+        "actor:19:wp:49",
+        "op:wp:49"
+      ],
+      "53": [
+        "actor:19:wp:53",
+        "op:wp:53"
+      ],
+      "50": [
+        "actor:19:wp:50",
+        "op:wp:50"
+      ],
+      "75": [
+        "actor:19:wp:75",
+        "op:wp:75"
+      ],
+      "38": [
+        "op:wp:38",
+        "actor:19:wp:38"
+      ]
+    },
+    "qdrant_points": 1693,
+    "missing_exact_point_ids": [
+      "05cf2f53-38ff-59a0-ad11-d0dc21ad889c",
+      "183d286c-9c2a-53ab-8f19-67ce98aca9d0",
+      "259f00bd-0628-5eab-9fad-b714eac3f48c",
+      "295f1caa-2a7a-507e-8eba-36a5bfcc8709",
+      "39667241-868a-50ee-bfc4-2e9de1ab4a97",
+      "41dff979-bff2-5458-9e0f-6013c8cfe527",
+      "5143fb93-6f8c-5794-af3c-50dbc9c96c9a",
+      "53e60ddd-84d3-55fd-ba9f-f4838520861c",
+      "62900ca6-35d9-576d-b664-560cd19fe50e",
+      "78280754-d43e-590e-954e-bae620d82c24",
+      "7fc0fa99-ec9a-59bb-82fc-c3669f140755",
+      "83a1db6e-4e3e-549d-8ed1-27a373359294",
+      "967f78fc-eae3-5089-9a13-41b8fd288e48",
+      "97f52ff9-8a12-508e-8280-cd1fcc2697c9",
+      "9a5d3244-a13d-55c9-8d48-2f57da71a77c",
+      "a1261141-3a17-5a5d-a22c-c664d9401ffc",
+      "a8411a95-9783-521a-8b74-9656d85c7b9e",
+      "abe75d3b-aa95-5868-9628-5ff0872dcff6",
+      "b1ad0262-a34c-5c92-af56-e706172b93c2",
+      "b8a86510-b8b9-5e0d-8cc5-33426de8fde4",
+      "bfa15ee9-98a9-5c94-920f-a755e0655213",
+      "d7377406-152a-501b-b609-3e1f1f5c9b9e",
+      "f4175760-4182-5af7-8c7b-5a0ece2daf9a"
+    ],
+    "orphan_point_ids": [
+      "2d5e7bdf-b4e0-52c6-b360-f45c1fbd74bf",
+      "59e1f1a4-b659-5c3d-ab23-ebb309481dc7",
+      "b838195a-5afd-5f40-a70d-23c2ca9007bc"
+    ],
+    "orphan_payload_source_ids": {
+      "2d5e7bdf-b4e0-52c6-b360-f45c1fbd74bf": "op:wp:42",
+      "59e1f1a4-b659-5c3d-ab23-ebb309481dc7": "test:local:adr:0001",
+      "b838195a-5afd-5f40-a70d-23c2ca9007bc": "test:wp:999"
+    },
+    "point_payload_mismatches": [],
+    "queue": [
+      {
+        "state": "finished",
+        "n": 55
+      }
+    ],
+    "provider_receipt_states": {
+      "HTTP_SUCCESS": 10,
+      "LIVE_SUCCESS": 85,
+      "PROVIDER_ERROR": 1
+    }
+  },
+  "retrieval": [
+    {
+      "query": "Tài khoản Role #38",
+      "expected_native_id": 38,
+      "returned_native_ids": [
+        38
+      ],
+      "match_types": [
+        "FTS_KEYWORD"
+      ],
+      "citations": [
+        "/work_packages/38"
+      ],
+      "hit_at_5": true,
+      "no_answer_correct": null,
+      "seconds": 1.529
+    },
+    {
+      "query": "đăng nhập AUTH-02 #50",
+      "expected_native_id": 50,
+      "returned_native_ids": [
+        38
+      ],
+      "match_types": [
+        "FTS_KEYWORD"
+      ],
+      "citations": [
+        "/work_packages/38"
+      ],
+      "hit_at_5": false,
+      "no_answer_correct": null,
+      "seconds": 1.728
+    },
+    {
+      "query": "Task User Story Epic #42",
+      "expected_native_id": 42,
+      "returned_native_ids": [
+        38
+      ],
+      "match_types": [
+        "FTS_KEYWORD"
+      ],
+      "citations": [
+        "/work_packages/38"
+      ],
+      "hit_at_5": false,
+      "no_answer_correct": null,
+      "seconds": 1.028
+    },
+    {
+      "query": "mật mã tàu sao Hỏa zebra-absent-902178",
+      "expected_native_id": null,
+      "returned_native_ids": [],
+      "match_types": [],
+      "citations": [],
+      "hit_at_5": null,
+      "no_answer_correct": true,
+      "seconds": 0.626
+    }
+  ],
+  "actor_escalation_readonly": {
+    "target_pm_run": "9492b7f7-0fa4-449d-a122-5e6af4119bcd",
+    "calling_actor": 20,
+    "native_business_mutation": false,
+    "direct_ba_gateway": {
+      "http_status": 403
+    },
+    "ba_through_n8n": {
+      "http_status": 200,
+      "pm_trace_events_exposed": 10
+    }
+  },
+  "webhook_negative": [
+    {
+      "test": "missing",
+      "http_status": 403,
+      "ingress_auth_error": true,
+      "body_bytes": 28
+    },
+    {
+      "test": "configured_compromised",
+      "http_status": 500,
+      "ingress_auth_error": false,
+      "body_bytes": 31
+    }
+  ],
+  "n8n_credential_metadata": {
+    "credential_export_exit": 0,
+    "credential_id": "DBWkxwb2izrbu17C",
+    "header_name": "Authorization",
+    "shared_credential_equals_exposed_pm_bearer": true,
+    "exposed_n8n_owner_session_read_statuses": [
+      200
+    ]
+  },
+  "known_secret_history_log_scan": {
+    "sanitized_files": [
+      "docs\\ai\\FINAL_BEHAVIORAL_RELEASE_GATE_REPORT.md",
+      "openproject\\ai\\automation\\check_errors.py",
+      "openproject\\ai\\automation\\deploy_real_n8n_workflows.py",
+      "openproject\\ai\\automation\\patch_single_wf11.py",
+      "openproject\\ai\\automation\\patch_wf03.py",
+      "openproject\\ai\\automation\\run_full_e2e_acceptance.py",
+      "openproject\\ai\\automation\\test_n8n_patch.py",
+      "openproject\\ai\\tests\\test_human_approval_lifecycle.py",
+      "openproject\\ai\\tests\\test_master_e2e_suite.py",
+      "openproject\\ai\\tests\\test_p0_multi_agent_execution.py",
+      "openproject\\ai\\tests\\test_p0_real_n8n_workflows.py"
+    ],
+    "git_history_matching_paths": [],
+    "logs": {
+      "qldapm-ai-gateway-1": {
+        "matched_credentials": 0,
+        "scope": "last 10000 log lines"
+      },
+      "qldapm-n8n-main": {
+        "matched_credentials": 0,
+        "scope": "last 10000 log lines"
+      }
+    }
+  },
+  "quarantined_tests": [
+    {
+      "path": "openproject\\ai\\tests\\test_master_e2e_suite.py",
+      "tests_blocked": 20
+    },
+    {
+      "path": "openproject\\ai\\tests\\test_human_approval_lifecycle.py",
+      "tests_blocked": 8
+    },
+    {
+      "path": "openproject\\ai\\tests\\test_native_write_engine.py",
+      "tests_blocked": 6
+    },
+    {
+      "path": "openproject\\ai\\tests\\test_p0_security_containment.py",
+      "tests_blocked": 12
+    },
+    {
+      "path": "openproject\\ai\\tests\\test_p0_real_rag_corpus.py",
+      "tests_blocked": 7
+    },
+    {
+      "path": "openproject\\ai\\tests\\test_p0_multi_agent_execution.py",
+      "tests_blocked": 5
+    },
+    {
+      "path": "openproject\\ai\\tests\\test_p0_real_n8n_workflows.py",
+      "tests_blocked": 18
+    },
+    {
+      "path": "openproject\\ai\\tests\\test_vector_rag_ingestion.py",
+      "tests_blocked": 4
+    },
+    {
+      "path": "openproject\\ai\\tests\\test_ui_and_observability_suite.py",
+      "tests_blocked": 5
+    },
+    {
+      "path": "openproject\\ai\\tests\\test_n8n_main_suite.py",
+      "tests_blocked": 5
+    }
+  ],
+  "private_snapshot": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\codex-takeover-20261023-035922"
+}

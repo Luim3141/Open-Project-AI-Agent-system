@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-26T04:05:38.032662+00:00",
+  "status": "PASS_EXISTING_EVIDENCE_VALID_HUMAN_DECISIONS_PENDING",
+  "evidence": {
+    "id": "d4d5aa97-a716-550d-88e9-de04b9caf9c9",
+    "hash": "311a3b76ebda820a6383a393d393a86ed9bb041a5dfdbe9d5c8216ec4928a034",
+    "actor": 18,
+    "state": "pending_qa",
+    "source_current": true,
+    "ready": false,
+    "verification_kind": "AUTOMATED_NATIVE_READBACK",
+    "producer": {
+      "code_sha256": "6e60788143e3006893b54db0f3f119cd018faa176fcb986424f720ad521b90d8",
+      "id": "qldapm-native-readback-v1"
+    },
+    "run_id": "274e6251-a4db-54fa-a413-e02df77a2385"
+  },
+  "source_version": 0,
+  "native_status": "NEW",
+  "test_cases": 6,
+  "reviews": [],
+  "reviewer_eligibility": [
+    {
+      "actor": 23,
+      "current_role": "QA",
+      "independent": true
+    },
+    {
+      "actor": 19,
+      "current_role": "PM",
+      "independent": true
+    },
+    {
+      "actor": 18,
+      "current_role": "AI_SYSTEM_OWNER",
+      "independent": false
+    }
+  ],
+  "freshness_policy": "Current exact source/criteria/assignee-role binding; no invented time expiry",
+  "core_prerequisites": {
+    "id": 375,
+    "lockVersion": 0,
+    "transitions": [
+      {
+        "to": "IN ANALYSIS",
+        "errors": [
+          "EVIDENCE_STORY_REQUIRED",
+          "AC_REQUIRED",
+          "EVIDENCE_SCOPE_REQUIRED",
+          "APPROVAL_SCOPE_REQUIRED"
+        ]
+      }
+    ]
+  },
+  "native_gate_data": {
+    "evidence": {},
+    "revision": 0,
+    "approvals": {},
+    "checklist": [],
+    "source_id": "codex_schedule_20261025_once"
+  },
+  "new_evidence_created": 0,
+  "human_decisions_written": 0,
+  "main_native_writes": 0,
+  "limits": [
+    "Six tests verify fixed Native fields, not application/business fix proof",
+    "Human review does not authorize a business transition",
+    "No NEW -> REVIEW shortcut; Native story/AC/scope/development/review prerequisites remain required"
+  ]
+}

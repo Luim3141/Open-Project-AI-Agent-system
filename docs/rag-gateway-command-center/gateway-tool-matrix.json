@@ -1,0 +1,598 @@
+[
+  {
+    "tool": "list_projects",
+    "gateway": "identity (mỗi project đã pair)",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "ea33e15a-67df-4f6f-9264-d4db1990baa0",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "search_tasks",
+    "gateway": "list_work_packages",
+    "input": {
+      "properties": {
+        "query": {
+          "default": "",
+          "maxLength": 200,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "26ff57a6-fb50-4f88-a489-8df635746bbe",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_task_details",
+    "gateway": "get_work_package",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "d95dffdc-388f-48d8-a337-7704bede81e8",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_project_options",
+    "gateway": "get_project_options",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "05c3551b-4d01-4907-9eac-ae9d08c13364",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_task_progress",
+    "gateway": "observer_task_progress",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "0202fcb0-5e33-479a-a10b-a59d02957019",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_task_agent_runs",
+    "gateway": "observer_task_progress",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "22e05cff-dbf2-4c5b-a307-cb5823867aa5",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_current_agent",
+    "gateway": "observer_task_progress",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "23c38f7c-1003-40ef-a730-ae0b703e28c8",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_run_details",
+    "gateway": "observer_run_details",
+    "input": {
+      "properties": {
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "cb5b7909-00af-4cdc-ae2c-1fe8c02d5e0b",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_run_errors",
+    "gateway": "observer_run_details",
+    "input": {
+      "properties": {
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "a60ce254-ad84-4a2a-97ef-fcbf54432434",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_checkpoint_status",
+    "gateway": "observer_run_details",
+    "input": {
+      "properties": {
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "a34e7c47-c590-432c-80bb-c114802abec0",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_task_artifacts",
+    "gateway": "observer_task_progress",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "7ec0ad04-2f68-420b-bf1a-0e1b19d0b5da",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_github_prs",
+    "gateway": "observer_task_progress",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "49a59aca-7ff9-4d5c-8dc8-e5d868c4be16",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_review_results",
+    "gateway": "observer_task_progress",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "43ba31b4-3899-4abc-b294-176f49da209b",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_qa_results",
+    "gateway": "observer_task_progress",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "c9ee9084-9b08-496e-b9ce-5ecc7c3e98fb",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "search_knowledge",
+    "gateway": "knowledge_search; mode answer → extract, không inference Gateway",
+    "input": {
+      "properties": {
+        "query": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        },
+        "mode": {
+          "default": "search",
+          "enum": [
+            "search",
+            "answer"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "3ffd0f3f-ab5f-4a0e-93b5-02e138210771",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_worker_status",
+    "gateway": "observer_active(summary_only)",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "1fd38d04-fd25-4bae-bf1c-6c9d91ac7d58",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_queue_status",
+    "gateway": "observer_active(summary_only)",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "8a39cd5d-515f-4036-b82e-9fe816c2cffe",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_system_health",
+    "gateway": "observer_active(summary_only)",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "4eb97a9b-2dd4-4940-8bfc-2cff78ca22fd",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_n8n_status",
+    "gateway": "observer_active(summary_only)",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "df7749cd-4b57-429d-a7c5-e4a392e49ff4",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_active_agents",
+    "gateway": "observer_active(state/limit=50)",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "8fd95e6b-5a43-4303-818a-aeb24aa2747a",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_blocked_tasks",
+    "gateway": "observer_active(state/limit=50)",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "cd0a7f89-27e2-40ac-a448-3c25b94890f9",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "get_pending_approvals",
+    "gateway": "observer_active(state/limit=50)",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "READ_RETURNED",
+    "contract_status": "PASS strict arguments/adapter contracts",
+    "correlation_id": "d634accd-71d1-4ab1-9294-d22393dfaa87",
+    "evidence": "main-integrations.json",
+    "effect": "Read DTO; observation freshness, source bounds and historical vs current semantics retained"
+  },
+  {
+    "tool": "create_task",
+    "gateway": "create_work_package → exact Gateway proposal approval",
+    "input": {
+      "properties": {
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 6000,
+          "type": "string"
+        },
+        "type_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "title",
+        "type_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "BLOCKED BY AUTHORIZATION",
+    "contract_status": "PASS isolated 67 Bot tests; Gateway relevant auth/approval/idempotency/fencing tests in 466 suite",
+    "correlation_id": null,
+    "evidence": "bot-candidate-tests.log; gateway-regression.log",
+    "effect": "Preview/confirmation only until explicit scoped approval; receipt is not execution"
+  },
+  {
+    "tool": "update_task",
+    "gateway": "update_work_package → exact proposal approval",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "title"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "BLOCKED BY AUTHORIZATION",
+    "contract_status": "PASS isolated 67 Bot tests; Gateway relevant auth/approval/idempotency/fencing tests in 466 suite",
+    "correlation_id": null,
+    "evidence": "bot-candidate-tests.log; gateway-regression.log",
+    "effect": "Preview/confirmation only until explicit scoped approval; receipt is not execution"
+  },
+  {
+    "tool": "request_task_execution",
+    "gateway": "engineering_run_once",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "BLOCKED BY AUTHORIZATION",
+    "contract_status": "PASS isolated 67 Bot tests; Gateway relevant auth/approval/idempotency/fencing tests in 466 suite",
+    "correlation_id": null,
+    "evidence": "bot-candidate-tests.log; gateway-regression.log",
+    "effect": "Preview/confirmation only until explicit scoped approval; receipt is not execution"
+  },
+  {
+    "tool": "resume_task",
+    "gateway": "engineering_resume",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        "run_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "run_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "BLOCKED BY AUTHORIZATION",
+    "contract_status": "PASS isolated 67 Bot tests; Gateway relevant auth/approval/idempotency/fencing tests in 466 suite",
+    "correlation_id": null,
+    "evidence": "bot-candidate-tests.log; gateway-regression.log",
+    "effect": "Preview/confirmation only until explicit scoped approval; receipt is not execution"
+  },
+  {
+    "tool": "pause_task",
+    "gateway": "engineering_control(PAUSED)",
+    "input": {
+      "properties": {
+        "task_id": {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "BLOCKED BY AUTHORIZATION",
+    "contract_status": "PASS isolated 67 Bot tests; Gateway relevant auth/approval/idempotency/fencing tests in 466 suite",
+    "correlation_id": null,
+    "evidence": "bot-candidate-tests.log; gateway-regression.log",
+    "effect": "Preview/confirmation only until explicit scoped approval; receipt is not execution"
+  },
+  {
+    "tool": "set_execution_mode",
+    "gateway": "engineering_control",
+    "input": {
+      "properties": {
+        "mode": {
+          "enum": [
+            "OFF",
+            "AUTO",
+            "PAUSED",
+            "RUN_ONCE"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode"
+      ],
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "BLOCKED BY AUTHORIZATION",
+    "contract_status": "PASS isolated 67 Bot tests; Gateway relevant auth/approval/idempotency/fencing tests in 466 suite",
+    "correlation_id": null,
+    "evidence": "bot-candidate-tests.log; gateway-regression.log",
+    "effect": "Preview/confirmation only until explicit scoped approval; receipt is not execution"
+  },
+  {
+    "tool": "request_github_sync",
+    "gateway": "engineering_github_sync",
+    "input": {
+      "properties": {},
+      "type": "object"
+    },
+    "permission": "Paired numeric Owner + allowed project → Gateway fresh Native role/ACL; actor/project arguments forbidden",
+    "main_status": "BLOCKED BY AUTHORIZATION",
+    "contract_status": "PASS isolated 67 Bot tests; Gateway relevant auth/approval/idempotency/fencing tests in 466 suite",
+    "correlation_id": null,
+    "evidence": "bot-candidate-tests.log; gateway-regression.log",
+    "effect": "Preview/confirmation only until explicit scoped approval; receipt is not execution"
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-26T19:24:00+00:00",
+  "agent": "Claude Sonnet 5.5 (Antigravity)",
+  "status": "PREFLIGHT_PASS_NO_CONFLICTING_WRITER_SNAPSHOT_TAKEN",
+  "reference_checkpoint": "docs/ai/CODEX_MAIN_CONTINUATION_CHECKPOINT.json (written 2026-10-26T19:02:26Z)",
+  "user_confirmations": {
+    "codex_stopped_by_quota": true,
+    "argon_no_main_development": true,
+    "sonnet_no_prior_main_change": true,
+    "read_only_preflight_authorized": true,
+    "standing_safe_main_technical_deployment_authorized": true,
+    "native_write_authorized": false
+  },
+  "runtime_at_preflight": {
+    "gateway": {"id": "52fabf0dceb9db6b4c48b7608a3a6d39c52d1587833e0cf3c5edf9390e6765d7", "image": "sha256:7d7e39b3200908a6c5ff29bccdf4876c169a367bc2274115c9b17d36fbeab28d", "tag": "qldapm-ai:codex-ba-phase-read-v1-20261027", "restarts": 0, "health": "healthy"},
+    "core_web": {"id": "6907ce9e40655da12026a490cc13cfae25b40aba295b94443b36decc57f68890", "image": "sha256:46bf443035d63d58f3bb5d0a90d303c52b64a28ff2a84045dd56283fcd9b7bb0", "restarts": 0, "health": "healthy"},
+    "n8n_main_image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+    "qdrant_image": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+    "ollama": "HTTP 200, model bge-m3:latest",
+    "matches_codex_checkpoint": true
+  },
+  "background_jobs": {
+    "main_mutating_or_test_or_deploy_jobs_found": 0,
+    "note": "Remaining codex.exe app-server and Jira admin MCP processes are not Main writers; no docker exec/cp/build/pytest/unittest observed."
+  },
+  "git": {
+    "branch": "codex/local-multi-agent-upgrade",
+    "head": "de7fe8f",
+    "porcelain_entries": 230,
+    "note": "Almost everything is untracked; Git diff cannot isolate agent changes. No Git write operation performed."
+  },
+  "uncommitted_source_difference_vs_runtime": {
+    "only_file": "openproject/ai/gateway/native_phase.py",
+    "runtime_sha256": "336d874ddab4291ccc69645a6dffc399a6ad83d9c49d9d6c06cd72018741e4ba",
+    "host_sha256": "468c967a718916ffed95ef907a6eb0b493d654e9fa81a194d00b14197849b656",
+    "diff": "phase_get: Manager calls Native /form only when document['source_current'] is true (fixes HTTP 409 on stale source version)",
+    "identical_files": ["native_phase_bridge.py", "service.py", "app.py"]
+  },
+  "snapshot": {
+    "path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\sonnet-takeover-20261027\\pre-edit-snapshot",
+    "contents": "openproject/ai gateway, tests, core/overlay, automation + architecture.md + git_status.txt + MANIFEST_SHA256.json",
+    "files": 469
+  },
+  "fix_qualification_found": {
+    "candidate_gateway_image": "sha256:e76038d43e98d2be5e12a85476b0901854210e63cdbf64c0e2ca4e9dfb66c4d8",
+    "tag": "qldapm-ai:codex-phase-stale-read-v1-20261027",
+    "image_native_phase_sha256_matches_host": true,
+    "windows_full": {"run": 606, "passed": 606, "skipped": 0, "errors": 0, "failures": 0},
+    "linux_full": {"run": 606, "passed": 591, "skipped": 15, "errors": 0, "failures": 0},
+    "logs": "operator/codex-autonomous-20261025/completion-20261026/phase-stale-read-{windows,linux}-v1.log",
+    "sonnet_independent_recheck": "19 targeted tests (test_native_phase_api, test_native_phase, test_native_phase_bridge) OK, in-process TestClient only"
+  },
+  "do_not": [
+    "Do not re-run Native transition #371 or replay any consumed approval/model call",
+    "Do not restore old checkpoints or old DB over current history",
+    "Do not touch Staging"
+  ],
+  "main_native_writes_by_sonnet": 0,
+  "new_model_calls_by_sonnet": 0
+}

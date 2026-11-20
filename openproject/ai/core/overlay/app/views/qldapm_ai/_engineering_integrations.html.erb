@@ -1,0 +1,41 @@
+<% checks = Array((@engineering || {})['integration_health']) %>
+<div class="qcc-section-header"><div><h2 class="qcc-section-title">System Integrations</h2><p class="qcc-section-sub">Readiness qua HTTP, không gọi model. UP không chứng minh Agent đang chạy hoặc business workflow đã PASS.</p></div></div>
+<% provider=(@engineering || {})['provider_health'] || {} %>
+<% observed=(@engineering || {})['demo_observability'] || {}; n8n=observed['n8n'] || {}; rag=observed['rag'] || {}; dr=observed['dr'] || {} %>
+<div class="qcc-services-grid qcc-health-grid">
+  <article class="qcc-card"><h3>n8n lifecycle executions</h3><p><%= n8n['state'] || 'NOT_OBSERVED' %> · Execution <%= n8n['execution_id'] || 'chưa có' %></p><p><%= format_vn_time.call(n8n['observed_at']) %></p><p>Outbox: <%= (n8n['outbox'] || {}).map{|k,v| "#{k}: #{v}"}.join(' · ') %></p><p>Correlation không thay thế kiểm chứng 16 workflow hay retention.</p></article>
+  <article class="qcc-card"><h3>RAG indexing observations</h3><p><%= rag['state'] || 'NOT_OBSERVED' %></p><% Array(rag['scans']).each do |scan| %><p>Actor <%= scan['actor'] %> · generation <%= scan['generation'] %> · <%= scan['visible'] %> nguồn · <%= format_vn_time.call(scan['observed_at']) %></p><% end %><p>Thời gian quan sát inventory; không chứng minh semantic quality hay vector integrity.</p></article>
+  <article class="qcc-card"><h3>Demo backup / restore</h3><p><%= dr['state'] || 'NOT_OBSERVED' %></p><p>Backup: <%= format_vn_time.call(dr['backup_at']) %> · Kiểm tra restore: <%= format_vn_time.call(dr['checked_at']) %></p><p><%= dr['off_host'] || 'OFF_HOST_COPY_PENDING_OWNER' %></p><p><%= dr['scope'] %></p></article>
+</div>
+<div class="qcc-card"><h3>Gemini Provider · <%= provider['state'] || 'UNKNOWN' %></h3><p><%= provider['model'] %> · Limits theo Project: <%= (provider['project_limits'] || {}).map{|k,v| "#{k.upcase} #{v}"}.join(' · ') %></p><p>Last successful probe: <%= format_vn_time.call(provider['last_successful_probe']) %> · Retry sau: <%= format_vn_time.call(provider['retry_at']) %></p><p>Worker ALIVE, OpenClaw READY và Provider AVAILABLE là ba trạng thái riêng. RATE_LIMITED nghĩa là coding chưa thể gọi model ngay; health view không phát inference.</p></div>
+<div class="qcc-services-grid qcc-health-grid">
+  <% if checks.empty? %><p class="qcc-card-sub">UNKNOWN — Chưa nhận được health aggregation từ Gateway.</p><% end %>
+  <% checks.each do |check| %>
+    <% state = %w[UP READY DEGRADED DOWN UNKNOWN].include?(check['health']) ? check['health'] : 'UNKNOWN' %>
+    <article class="qcc-service-card qcc-health-card">
+      <div class="qcc-service-body">
+        <h3 class="qcc-service-name"><%= check['name'] %></h3>
+        <span class="qcc-chip <%= %w[UP READY].include?(state) ? 'qcc-chip-green' : state == 'DOWN' ? 'qcc-chip-red' : state == 'DEGRADED' ? 'qcc-chip-amber' : 'qcc-chip-slate' %>"><%= state %></span>
+        <p class="qcc-card-sub"><%= check['url'].presence || 'URL: chưa cấu hình safe endpoint' %></p>
+        <dl class="qcc-health-details">
+          <dt>Kiểm tra lúc</dt><dd><%= check['checked_at'] ? Time.at(check['checked_at'].to_f).in_time_zone('Asia/Ho_Chi_Minh').strftime('%d/%m/%Y %H:%M:%S') : 'NOT CHECKED' %> · Asia/Ho_Chi_Minh</dd>
+          <dt>Check type</dt><dd><%= check['check_type'] || 'NOT CHECKED' %></dd>
+          <dt>Latency</dt><dd><%= check['latency_ms'] ? "#{check['latency_ms']} ms" : 'UNKNOWN' %></dd>
+          <dt>API readiness</dt><dd><%= check['api_readiness'] || 'UNKNOWN' %></dd>
+          <dt>Process/container</dt><dd><%= check['process_health'] || 'NOT CHECKED' %></dd>
+          <% if check['key']=='openclaw' %>
+            <% cli=check['cli_status'] || {} %>
+            <dt>WSL / CLI probe</dt><dd><%= cli.empty? ? 'Chưa có snapshot CLI mới (TTL 150 giây)' : "#{cli['wsl_distro']} · WSL #{cli['wsl_running'] ? 'RUNNING' : 'UNKNOWN'} · RPC #{cli['gateway_rpc_ok'] ? 'READY' : 'DOWN'}" %></dd>
+            <dt>CLI checked / latency</dt><dd><%= format_vn_time.call(cli['checked_at']) %> · <%= cli['latency_ms'] || 'UNKNOWN' %> ms</dd>
+          <% end %>
+          <dt>Authentication</dt><dd><%= check['authentication'] || 'NOT CHECKED' %></dd>
+          <dt>Business integration</dt><dd><%= check['business_status'] || 'NOT CHECKED' %></dd>
+        </dl>
+        <% if check['last_error'].present? %><p class="qcc-health-error">Last error: <%= check['last_error'] %></p><% end %>
+      </div>
+    </article>
+  <% end %>
+</div>
+<style>
+.qcc-health-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.qcc-health-card,.qcc-health-card .qcc-service-body{min-width:0;overflow-wrap:anywhere}.qcc-health-card .qcc-service-name{font-size:17px;margin:0 0 12px}.qcc-health-details{font-size:14px;line-height:1.6;display:grid;grid-template-columns:minmax(0,1fr);margin-top:16px}.qcc-health-details dt{color:#94a3b8}.qcc-health-details dd{margin:0 0 10px;color:#e2e8f0}.qcc-health-error{color:#fda4af;font-size:14px;overflow-wrap:anywhere}@media(max-width:1100px){.qcc-health-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.qcc-health-grid{grid-template-columns:minmax(0,1fr)}}
+</style>

@@ -1,0 +1,754 @@
+{
+  "scope": "SERVING_STAGING_FIVE_EXISTING_USERS",
+  "method": "PLAYWRIGHT_CHROMIUM_EDGE_AND_SESSION_NATIVE_API",
+  "images": {
+    "gateway": "sha256:6afb78c4576c1c5a319fb522a460465d4d7e8cc1daa41988efdb6401f0d56fea",
+    "core": "sha256:3b09393d123464a7baf4726daf69806de4754a0b1911173e6dbe58ecb3ac2f99"
+  },
+  "checks": [
+    {
+      "id": "PM-LOGIN-TOTP",
+      "expected": "Existing Native actor authenticated",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "actor": 7,
+        "http": 200
+      }
+    },
+    {
+      "id": "PM-DASHBOARD",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Mô-đun toàn cầu\n      ",
+          "\n        Trình đơn người dùng\n      ",
+          "Nội dung",
+          "\n      QLDAPM — Local Community\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "PM-WORK-PACKAGES",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Mô-đun toàn cầu\n      ",
+          "\n        Trình đơn người dùng\n      ",
+          "Nội dung",
+          "Work Packages"
+        ],
+        "native_item_links": 335,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "PM-BACKLOG",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Mô-đun toàn cầu\n      ",
+          "\n        Trình đơn người dùng\n      ",
+          "Nội dung",
+          "\n      Backlog and sprints\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "PM-ASSISTANT",
+      "expected": "Actual Assistant loads",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "PM-CONTROL-CENTER",
+      "expected": "Control Center reads runtime state",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "PM-BUSINESS-NO-OPERATOR",
+      "expected": "Business tool selector has no operator/shell tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "forbidden_present": []
+      }
+    },
+    {
+      "id": "PM-PM-WRITE-UI",
+      "expected": "Only PM sees Native business write tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "role": "PM"
+      }
+    },
+    {
+      "id": "PM-SECOND-BRAIN-UI",
+      "expected": "Knowledge search/index form is visible",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "PM-NATIVE-READ",
+      "expected": "Existing input is visible through real session API",
+      "status": "PASS",
+      "method": "API_REAL_SESSION",
+      "actual": {
+        "http": 200
+      }
+    },
+    {
+      "id": "PM-SUPERVISOR-VISIBLE-RESULT",
+      "expected": "Browser submission finishes with visible report and plan",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "run_id": "a239545b-2e9d-4c18-aeb6-9b0a9ab72c11"
+      }
+    },
+    {
+      "id": "PM-SOURCE-CITATION",
+      "expected": "Result includes clickable Native input provenance",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "PM-LOCAL-NO-MODEL-RECEIPT",
+      "expected": "Actual visible receipt states model_used=false",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "PM-LOGOUT",
+      "expected": "Logout revokes browser session",
+      "status": "PASS",
+      "method": "UI_AND_API_REAL",
+      "actual": {
+        "http": 401
+      }
+    },
+    {
+      "id": "PM-SESSION-DENIED",
+      "expected": "Assistant redirects logged-out actor to login",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BA-LOGIN-TOTP",
+      "expected": "Existing Native actor authenticated",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "actor": 6,
+        "http": 200
+      }
+    },
+    {
+      "id": "BA-DASHBOARD",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Global modules\n      ",
+          "\n        User menu\n      ",
+          "Content",
+          "\n      QLDAPM — Local Community\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "BA-WORK-PACKAGES",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Global modules\n      ",
+          "\n        User menu\n      ",
+          "Content",
+          "Work Packages"
+        ],
+        "native_item_links": 335,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "BA-BACKLOG",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Global modules\n      ",
+          "\n        User menu\n      ",
+          "Content",
+          "\n      Backlog and sprints\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "BA-ASSISTANT",
+      "expected": "Actual Assistant loads",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BA-CONTROL-CENTER",
+      "expected": "Control Center reads runtime state",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BA-BUSINESS-NO-OPERATOR",
+      "expected": "Business tool selector has no operator/shell tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "forbidden_present": []
+      }
+    },
+    {
+      "id": "BA-PM-WRITE-UI",
+      "expected": "Only PM sees Native business write tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "role": "BA"
+      }
+    },
+    {
+      "id": "BA-SECOND-BRAIN-UI",
+      "expected": "Knowledge search/index form is visible",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BA-NATIVE-READ",
+      "expected": "Existing input is visible through real session API",
+      "status": "PASS",
+      "method": "API_REAL_SESSION",
+      "actual": {
+        "http": 200
+      }
+    },
+    {
+      "id": "BA-SUPERVISOR-VISIBLE-RESULT",
+      "expected": "Browser submission finishes with visible report and plan",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "run_id": "d387645d-4eec-46d3-96c8-405c1ce684ab"
+      }
+    },
+    {
+      "id": "BA-SOURCE-CITATION",
+      "expected": "Result includes clickable Native input provenance",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BA-LOCAL-NO-MODEL-RECEIPT",
+      "expected": "Actual visible receipt states model_used=false",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BA-LOGOUT",
+      "expected": "Logout revokes browser session",
+      "status": "PASS",
+      "method": "UI_AND_API_REAL",
+      "actual": {
+        "http": 401
+      }
+    },
+    {
+      "id": "BA-SESSION-DENIED",
+      "expected": "Assistant redirects logged-out actor to login",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "FE-LOGIN-TOTP",
+      "expected": "Existing Native actor authenticated",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "actor": 9,
+        "http": 200
+      }
+    },
+    {
+      "id": "FE-DASHBOARD",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Global modules\n      ",
+          "\n        User menu\n      ",
+          "Content",
+          "\n      QLDAPM — Local Community\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "FE-WORK-PACKAGES",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Global modules\n      ",
+          "\n        User menu\n      ",
+          "Content",
+          "Work Packages"
+        ],
+        "native_item_links": 335,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "FE-BACKLOG",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Global modules\n      ",
+          "\n        User menu\n      ",
+          "Content",
+          "\n      Backlog and sprints\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "FE-ASSISTANT",
+      "expected": "Actual Assistant loads",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "FE-CONTROL-CENTER",
+      "expected": "Control Center reads runtime state",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "FE-BUSINESS-NO-OPERATOR",
+      "expected": "Business tool selector has no operator/shell tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "forbidden_present": []
+      }
+    },
+    {
+      "id": "FE-PM-WRITE-UI",
+      "expected": "Only PM sees Native business write tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "role": "FE"
+      }
+    },
+    {
+      "id": "FE-SECOND-BRAIN-UI",
+      "expected": "Knowledge search/index form is visible",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "FE-NATIVE-READ",
+      "expected": "Existing input is visible through real session API",
+      "status": "PASS",
+      "method": "API_REAL_SESSION",
+      "actual": {
+        "http": 200
+      }
+    },
+    {
+      "id": "FE-SUPERVISOR-VISIBLE-RESULT",
+      "expected": "Browser submission finishes with visible report and plan",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "run_id": "70b29efb-aa0a-4af8-a500-6f0d64072f7c"
+      }
+    },
+    {
+      "id": "FE-SOURCE-CITATION",
+      "expected": "Result includes clickable Native input provenance",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "FE-LOCAL-NO-MODEL-RECEIPT",
+      "expected": "Actual visible receipt states model_used=false",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "FE-LOGOUT",
+      "expected": "Logout revokes browser session",
+      "status": "PASS",
+      "method": "UI_AND_API_REAL",
+      "actual": {
+        "http": 401
+      }
+    },
+    {
+      "id": "FE-SESSION-DENIED",
+      "expected": "Assistant redirects logged-out actor to login",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BE-LOGIN-TOTP",
+      "expected": "Existing Native actor authenticated",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "actor": 8,
+        "http": 200
+      }
+    },
+    {
+      "id": "BE-DASHBOARD",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Mô-đun toàn cầu\n      ",
+          "\n        Trình đơn người dùng\n      ",
+          "Nội dung",
+          "\n      QLDAPM — Local Community\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "BE-WORK-PACKAGES",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Mô-đun toàn cầu\n      ",
+          "\n        Trình đơn người dùng\n      ",
+          "Nội dung",
+          "Work Packages"
+        ],
+        "native_item_links": 335,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "BE-BACKLOG",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Mô-đun toàn cầu\n      ",
+          "\n        Trình đơn người dùng\n      ",
+          "Nội dung",
+          "\n      Backlog and sprints\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "BE-ASSISTANT",
+      "expected": "Actual Assistant loads",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BE-CONTROL-CENTER",
+      "expected": "Control Center reads runtime state",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BE-BUSINESS-NO-OPERATOR",
+      "expected": "Business tool selector has no operator/shell tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "forbidden_present": []
+      }
+    },
+    {
+      "id": "BE-PM-WRITE-UI",
+      "expected": "Only PM sees Native business write tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "role": "BE"
+      }
+    },
+    {
+      "id": "BE-SECOND-BRAIN-UI",
+      "expected": "Knowledge search/index form is visible",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BE-NATIVE-READ",
+      "expected": "Existing input is visible through real session API",
+      "status": "PASS",
+      "method": "API_REAL_SESSION",
+      "actual": {
+        "http": 200
+      }
+    },
+    {
+      "id": "BE-SUPERVISOR-VISIBLE-RESULT",
+      "expected": "Browser submission finishes with visible report and plan",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "run_id": "5405b1b7-11b8-490b-bb77-e1fb34b1b0a2"
+      }
+    },
+    {
+      "id": "BE-SOURCE-CITATION",
+      "expected": "Result includes clickable Native input provenance",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BE-LOCAL-NO-MODEL-RECEIPT",
+      "expected": "Actual visible receipt states model_used=false",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "BE-LOGOUT",
+      "expected": "Logout revokes browser session",
+      "status": "PASS",
+      "method": "UI_AND_API_REAL",
+      "actual": {
+        "http": 401
+      }
+    },
+    {
+      "id": "BE-SESSION-DENIED",
+      "expected": "Assistant redirects logged-out actor to login",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "QA-LOGIN-TOTP",
+      "expected": "Existing Native actor authenticated",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "actor": 10,
+        "http": 200
+      }
+    },
+    {
+      "id": "QA-DASHBOARD",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Global modules\n      ",
+          "\n        User menu\n      ",
+          "Content",
+          "\n      QLDAPM — Local Community\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "QA-WORK-PACKAGES",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Global modules\n      ",
+          "\n        User menu\n      ",
+          "Content",
+          "Work Packages"
+        ],
+        "native_item_links": 335,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "QA-BACKLOG",
+      "expected": "Native page is accessible with visible content",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "http": 200,
+        "headings": [
+          "\n        Global modules\n      ",
+          "\n        User menu\n      ",
+          "Content",
+          "\n      Backlog and sprints\n"
+        ],
+        "native_item_links": 0,
+        "empty_sprint_notice": false
+      }
+    },
+    {
+      "id": "QA-ASSISTANT",
+      "expected": "Actual Assistant loads",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "QA-CONTROL-CENTER",
+      "expected": "Control Center reads runtime state",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "QA-BUSINESS-NO-OPERATOR",
+      "expected": "Business tool selector has no operator/shell tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "forbidden_present": []
+      }
+    },
+    {
+      "id": "QA-PM-WRITE-UI",
+      "expected": "Only PM sees Native business write tools",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "role": "QA"
+      }
+    },
+    {
+      "id": "QA-SECOND-BRAIN-UI",
+      "expected": "Knowledge search/index form is visible",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "QA-NATIVE-READ",
+      "expected": "Existing input is visible through real session API",
+      "status": "PASS",
+      "method": "API_REAL_SESSION",
+      "actual": {
+        "http": 200
+      }
+    },
+    {
+      "id": "QA-SUPERVISOR-VISIBLE-RESULT",
+      "expected": "Browser submission finishes with visible report and plan",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": {
+        "run_id": "96a3ae85-d5c2-4e53-b044-e8b4289d2b1b"
+      }
+    },
+    {
+      "id": "QA-SOURCE-CITATION",
+      "expected": "Result includes clickable Native input provenance",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "QA-LOCAL-NO-MODEL-RECEIPT",
+      "expected": "Actual visible receipt states model_used=false",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    },
+    {
+      "id": "QA-LOGOUT",
+      "expected": "Logout revokes browser session",
+      "status": "PASS",
+      "method": "UI_AND_API_REAL",
+      "actual": {
+        "http": 401
+      }
+    },
+    {
+      "id": "QA-SESSION-DENIED",
+      "expected": "Assistant redirects logged-out actor to login",
+      "status": "PASS",
+      "method": "UI_REAL",
+      "actual": null
+    }
+  ],
+  "native_business_mutations": 0,
+  "provider_calls": 0,
+  "finished_at": "2026-10-18T15:08:48.727970+00:00",
+  "passed": true
+}

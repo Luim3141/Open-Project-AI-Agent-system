@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "images": {
+    "gateway": "sha256:8a86413762dcf09615f673dae2ad9a37d0c631f67fb2b09d7aa05f31c6c08199",
+    "core": "sha256:3fd0c48a54585d63bbe49a89ab712f4162dbae5388f17159143cf7449a63680a"
+  },
+  "source_hashes": {
+    "openproject/ai/gateway/store.py": "c83575171c72b2b0b9e93d8463e04ac99bcd8ba67e8bd98c0df4e254be6cbb91",
+    "openproject/ai/gateway/service.py": "d7f551806ae8ccba0b02cf6a299fc646097b01adfc9c7392a07ab84039a418b3",
+    "openproject/ai/gateway/engineering.py": "b478ad26cfd00c141c2eeaa37bc497a427d291f2f4c1e22753139e9066dfcbb1",
+    "openproject/ai/gateway/engineering_operator.py": "ce72e13a3caa1cebbc7f054041da9dc5136407200aef20d9086ab89180227947",
+    "openproject/ai/gateway/engineering_lifecycle.py": "575d2c27df5e1816a133e501c53adf94947bca55affdf66d9c3761f467d79c4c",
+    "openproject/ai/gateway/engineering_health.py": "7fee86280e4d1ccdcfb54be8fbecb35d27ba1e17bed2fb0333bf808741051589",
+    "openproject/ai/gateway/engineering_observability.py": "7178dcea64e67260b98c99f7f4263cae688a47cdada221928a9ea0473c9743d4",
+    "openproject/ai/gateway/engineering_owner_control.py": "3c8140376ecf9bc784784a5b105defe063688a870c4c4a5d49f5767c8c1c6c28",
+    "openproject/ai/gateway/engineering_reporting.py": "da4ff85a1b61783316b6601c9e1eaeaf13cc4199b835616124f7a7185c7cc868",
+    "openproject/ai/gateway/workflow_status.py": "644e522760137f71d0cbe24bd36efcbf8d91adb4a69ce57ce03d579eee97083a",
+    "openproject/ai/gateway/delegated_approval.py": "c75218fbcd3c88bd3d8d0b836f756665ebac27865ed8e7d161eca6ef994724eb",
+    "openproject/ai/gateway/engineering_github_sync.py": "1fe18136c051e5a0a728231e05777eca0326c0c3fb481620a1656c74684a3050",
+    "openproject/ai/gateway/engineering_github_operations.py": "74c108ab5f43b50f1516312be39aa90ba24147778f893dbe9f2e439284945dbb",
+    "openproject/ai/gateway/engineering_github_poll.py": "48bab0af6366df642d2f414fde1e8e126e24a833ee361faed3203f2e6efd35a4",
+    "openproject/ai/gateway/engineering_status_sync.py": "22b015fb3b7cb1b3727e2f926fc8cad0627f575335730b2b1dc14ba6cc681d47",
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "994bebc93004f60e23b93c4afeccd0add591169c10f6414bfd84f371145a61ae",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_command_center.html.erb": "a614fb06d8ee63e8347aaac171dff51550ab784333ce1192f02d77f28483687f",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_notifications.html.erb": "e0ec90f28ca17d26f9cfb5139f8a6bae1405496d153dee05c20288501254aa2c",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_work_list.html.erb": "c8e5a45838c4757271b10855a31b151fb06dfbd02e12b3f451a801516a53a72a",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_report_reader.html.erb": "b2a1700dbebfcd81f49d4a6e82db78db68f97ed856f746bde106c870f3cda11b",
+    "openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb": "bfd087ed4cfafba6db9e3b4224f57452761cf4ccc4840916e62a4c1a689df29f"
+  },
+  "checks": {
+    "github": true,
+    "events": true,
+    "core": true
+  },
+  "evidence": {
+    "immutable_gateway_image": "image-regression-polish.json",
+    "actual_native_and_rails_clone": "clone-qualification-polish.json",
+    "navigation_transport": {
+      "test_cc_navigation.js": "PASS canonical route/query, reload URL, tab back/forward and ARIA state",
+      "test_owner_live_transport.js": "PASS Owner JSON POST/CSRF, single sync, fresh PR/report fragments, denied/unknown, stale ordering, bounded visibility/reconnect, navigation cleanup; OWNER UAT PENDING",
+      "test_report_reader.js": "PASS report reader: sanitized HTML, exact raw/copy, source/AI provenance, factual summary, timestamp, errors, no-store, stale success/error, closed/hidden guards; OWNER UAT PENDING"
+    },
+    "main_native_read_only_preview": "native-dry-run.json"
+  },
+  "scope": "157 immutable-image regression tests including GitHub/outbox; actual Native forms/PATCH/readback/controls; actual Rails login/CSRF/render/fast receipt; deterministic browser-handler regression. Actual Main browser/GitHub/n8n readback follows rollout.",
+  "generation_calls": 0,
+  "main_writes": 0
+}

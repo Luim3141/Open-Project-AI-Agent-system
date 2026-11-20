@@ -1,0 +1,38 @@
+{
+  "utc": "2026-11-02T07:32:34.851146+00:00",
+  "report_id": "be099f56-cc9a-403c-96c2-9c958d4672dc",
+  "api_readback": 200,
+  "source_state": "CURRENT",
+  "narrative_label": "chưa xác minh",
+  "receipts": [
+    {
+      "id": "002033ec-53a1-4f00-a655-a2a774550055",
+      "run_id": "be099f56-cc9a-403c-96c2-9c958d4672dc",
+      "phase": "countTokens",
+      "state": "LIVE_SUCCESS",
+      "agent": "supervisor",
+      "provider": null,
+      "model": "gemini-3.5-flash-lite",
+      "http_status": 200,
+      "usage": null
+    },
+    {
+      "id": "e7c4c155-227b-4a4b-9fc3-44a4c2a74362",
+      "run_id": "be099f56-cc9a-403c-96c2-9c958d4672dc",
+      "phase": "generateContent",
+      "state": "LIVE_SUCCESS",
+      "agent": "supervisor",
+      "provider": null,
+      "model": "gemini-3.5-flash-lite",
+      "http_status": 200,
+      "usage": {
+        "candidatesTokenCount": 71,
+        "promptTokenCount": 48,
+        "thoughtsTokenCount": 728,
+        "totalTokenCount": 847
+      }
+    }
+  ],
+  "image": "sha256:8359e250512b0a68a6e92892feb539d6f392b94aa39b91e670db42f49c411e8a",
+  "historical_report_156c": "GENERATED label read back, old receipts not report-ID linked; not retroactively repaired"
+}

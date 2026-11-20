@@ -1,0 +1,688 @@
+{
+  "schema_version": 3,
+  "snapshot_utc": "2026-11-02T08:05:14.592092+00:00",
+  "status": "PARTIAL_WITH_EXPLICIT_FAILED_OR_BLOCKED_GATES",
+  "current_images": {
+    "gateway": "sha256:8359e250512b0a68a6e92892feb539d6f392b94aa39b91e670db42f49c411e8a",
+    "core": "sha256:a6a61b685014039049f46d1d93a90340d4108265dccbed93cc6d04fbe3f027fd",
+    "n8n": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795"
+  },
+  "current_source_manifest": "phase2-final/handoff-source.json",
+  "source_git_head_note": "Historical HEAD does not identify untracked/uncommitted source; use per-file SHA256 manifests.",
+  "aggregation_policy": "Never sum overlapping suites or revisions. Host checks, image checks, live APIs, clone adapters and coding E2E have separate scope.",
+  "checks": [
+    {
+      "record": "phase2-final/checks/candidate-gateway-20261102T041913772990Z.json",
+      "record_sha256": "a18a06f523c2c616bc0a9b1a90ba5fe7d5496f90fc0dc9b32472a5026e364c8d",
+      "outcome": "FAIL",
+      "exit_code": 1,
+      "started_utc": "2026-11-02T04:19:19.036439+00:00",
+      "finished_utc": "2026-11-02T04:19:29.980431+00:00",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--tmpfs",
+        "/tmp:rw,size=256m",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai,target=/qualification,readonly",
+        "-e",
+        "PYTHONPATH=/app:/qualification:/qualification/tests",
+        "--entrypoint",
+        "python",
+        "qldapm-gateway:phase2-final",
+        "-m",
+        "unittest",
+        "test_engineering_fencing",
+        "test_engineering_reporting",
+        "test_engineering_knowledge_child",
+        "-q"
+      ],
+      "environment": "candidate-network-none-synthetic-store-and-native-host-adapter-mounted-readonly",
+      "tested_images": [
+        "sha256:d41391a4aed645f576cee4d993ea2e18ef6214b1b1aecab55a1c1df90292d70d"
+      ],
+      "source_manifest_sha256": "436749ea8675c0deacfd00c5f0fdb938ceb20e458bfa6004171db675d612d95a",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": false,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/candidate-gateway-20261102T041913772990Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/candidate-gateway-final-20261102T042052731481Z.json",
+      "record_sha256": "5948d8f95dc7c0590e755240670ba49109a017edde23996ab717e77caf484964",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T04:20:59.757147+00:00",
+      "finished_utc": "2026-11-02T04:21:21.290812+00:00",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--tmpfs",
+        "/tmp:rw,size=256m",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai,target=/qualification/openproject/ai,readonly",
+        "-e",
+        "PYTHONPATH=/app:/qualification/openproject/ai:/qualification/openproject/ai/tests",
+        "--entrypoint",
+        "python",
+        "qldapm-gateway:phase2-final",
+        "-m",
+        "unittest",
+        "test_engineering_fencing",
+        "test_engineering_reporting",
+        "test_engineering_knowledge_child",
+        "-q"
+      ],
+      "environment": "candidate-network-none-synthetic-store-native-and-readonly-host-adapter",
+      "tested_images": [
+        "sha256:d41391a4aed645f576cee4d993ea2e18ef6214b1b1aecab55a1c1df90292d70d"
+      ],
+      "source_manifest_sha256": "e8d96ef6d54c0c267c572155ca4e64df5248f1bd188a03a7a9d3607fb78dec7e",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": false,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/candidate-gateway-final-20261102T042052731481Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/control-rag-operational-20261102T041710660485Z.json",
+      "record_sha256": "d13c27c43d0e514063911821d7ffa259a431595c89b68cffc4568eb949bec42f",
+      "outcome": "FAIL",
+      "exit_code": 1,
+      "started_utc": "2026-11-02T04:17:11.892408+00:00",
+      "finished_utc": "2026-11-02T04:17:57.920227+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "test_command_center_state_contract",
+        "test_rag_recovery",
+        "test_knowledge_scope_recovery",
+        "test_takeover_workflows",
+        "test_daily_workflow_finalization",
+        "test_scheduled_weekly_summary",
+        "test_operational_reports",
+        "test_weekly_accuracy",
+        "test_n8n_lifecycle_adapter",
+        "test_n8n_lifecycle_outbox",
+        "-q"
+      ],
+      "environment": "host-sqlite-native-and-provider-fixtures",
+      "tested_images": [],
+      "source_manifest_sha256": "1e66ee716de56589192a39a1711c6ba9dff0360cebc23d71b5904f31d00f2971",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": false,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/control-rag-operational-20261102T041710660485Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/control-rag-operational-final-20261102T041913681684Z.json",
+      "record_sha256": "14c210577b51ea85723fe384af43b2ede8cd8851409a7c31044b9311fe4e02d6",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T04:19:19.033404+00:00",
+      "finished_utc": "2026-11-02T04:19:50.928733+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "test_command_center_state_contract",
+        "test_rag_recovery",
+        "test_knowledge_search",
+        "test_knowledge_ingestion",
+        "test_takeover_workflows",
+        "test_daily_workflow_finalization",
+        "test_scheduled_weekly_summary",
+        "test_operational_reports",
+        "test_weekly_accuracy",
+        "test_n8n_lifecycle_adapter",
+        "test_n8n_lifecycle_outbox",
+        "-q"
+      ],
+      "environment": "host-isolated-sqlite-and-http-fixtures",
+      "tested_images": [],
+      "source_manifest_sha256": "436749ea8675c0deacfd00c5f0fdb938ceb20e458bfa6004171db675d612d95a",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": false,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/control-rag-operational-final-20261102T041913681684Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/engineering-after-reporting-20261102T051424181460Z.json",
+      "record_sha256": "514253728e12b6af751d8da1d05991f1ecbd353fd79d09ecec1d83ca8e2eb4cf",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T05:14:24.842017+00:00",
+      "finished_utc": "2026-11-02T05:15:38.173804+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "environment": "host-source-8cd-reporting-and-existing-integrity-fixtures",
+      "tested_images": [],
+      "source_manifest_sha256": "de32b645778ba95a30488ff0445b9147fd43ef438337ac5f3a3b838bf434eee2",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": true,
+        "core_view": true
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/engineering-after-reporting-20261102T051424181460Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/engineering-final-20261102T041446197649Z.json",
+      "record_sha256": "497d0a744241023647a57e5a4df8ce7c640ce94aaf7d5f846f43481ede76cd9b",
+      "outcome": "FAIL",
+      "exit_code": 1,
+      "started_utc": "2026-11-02T04:14:47.626157+00:00",
+      "finished_utc": "2026-11-02T04:16:01.107655+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "environment": "host-fixture-no-provider-no-main-writes",
+      "tested_images": [],
+      "source_manifest_sha256": "5fc1126370f62f54c4f410f57d8e5542aea175afbe7f732168cfec63e23b90ff",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": false,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/engineering-final-20261102T041446197649Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/engineering-final-fixed-fixtures-20261102T041827254056Z.json",
+      "record_sha256": "bfccc89c265c120781928025d354623af33b61e4c3aef65e7d8c6673f9aed1b3",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T04:18:31.612900+00:00",
+      "finished_utc": "2026-11-02T04:20:28.030776+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "environment": "host-isolated-fixtures",
+      "tested_images": [
+        "sha256:d41391a4aed645f576cee4d993ea2e18ef6214b1b1aecab55a1c1df90292d70d"
+      ],
+      "source_manifest_sha256": "1e66ee716de56589192a39a1711c6ba9dff0360cebc23d71b5904f31d00f2971",
+      "source_changed_during_check": true,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": false,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/engineering-final-fixed-fixtures-20261102T041827254056Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/engineering-host-20261102T034325195545Z.json",
+      "record_sha256": "9502f4ed2ec8274e498427043421f8bf088a7a15f1346bcef8c1cb038544d596",
+      "outcome": "FAIL",
+      "exit_code": 1,
+      "started_utc": "2026-11-02T03:43:26.633483+00:00",
+      "finished_utc": "2026-11-02T03:45:02.066047+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "environment": "host-fixture-no-provider-no-main-writes",
+      "tested_images": [],
+      "source_manifest_sha256": "2bdbf0e1a070253b09bdabb1b71555dc912dfb7081264633755aad7d56789cd4",
+      "source_changed_during_check": true,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": false,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/engineering-host-20261102T034325195545Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/final-engineering-stable-20261102T043222137558Z.json",
+      "record_sha256": "8e0c40d2e983459413bb3b45a122d3bea5aea23b27296bacb11bb7b97b60e74f",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T04:32:25.859321+00:00",
+      "finished_utc": "2026-11-02T04:34:46.795525+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "environment": "host-final-source-fixtures",
+      "tested_images": [],
+      "source_manifest_sha256": "a2f4b72fd6aa9045afd6555d2e32564aa1fb0848d29159200e80d44bef04fc13",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": true,
+        "core_view": true
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/final-engineering-stable-20261102T043222137558Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/final-regression-report8359-20261102T074457774266Z.json",
+      "record_sha256": "007cea7ebd6389056feca6659a6da70fe43abf9fb40def4b453024b259bcd103",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T07:44:58.508904+00:00",
+      "finished_utc": "2026-11-02T07:46:25.204483+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "environment": "host-frozen-current-source-all-engineering-fixtures",
+      "tested_images": [
+        "sha256:8359e250512b0a68a6e92892feb539d6f392b94aa39b91e670db42f49c411e8a"
+      ],
+      "source_manifest_sha256": "04d88e89e8c917a766d7e9b69570be2f0f27e10bf4377d3477c82b5f26878e34",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": true,
+      "component_source_matches": {
+        "gateway": true,
+        "host_worker": true,
+        "core_view": true
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/final-regression-report8359-20261102T074457774266Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/final-ui-js-20261102T043935107604Z.json",
+      "record_sha256": "56dabef54e14b8217d7e902b49ea0cf563c40211597efb45da50b5444e8ccf8f",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T04:39:39.580133+00:00",
+      "finished_utc": "2026-11-02T04:39:44.344167+00:00",
+      "command": [
+        "python",
+        "-c",
+        "import subprocess;tests=['test_execution_inspector_render.js','test_command_center_interactions.js','test_report_reader.js'];[subprocess.run(['node','openproject/ai/tests/'+t],check=True) for t in tests]"
+      ],
+      "environment": "host-node-vm-actual-template-not-browser",
+      "tested_images": [
+        "sha256:a6a61b685014039049f46d1d93a90340d4108265dccbed93cc6d04fbe3f027fd"
+      ],
+      "source_manifest_sha256": "a2f4b72fd6aa9045afd6555d2e32564aa1fb0848d29159200e80d44bef04fc13",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": true,
+        "core_view": true
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/final-ui-js-20261102T043935107604Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/frozen-candidate-gateway-20261102T042646500294Z.json",
+      "record_sha256": "a3a7e40f5676fe8f96617fe2cb870048f2b75b6b6af6bff31b437cd85eca144d",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T04:27:26.514566+00:00",
+      "finished_utc": "2026-11-02T04:28:45.409140+00:00",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--tmpfs",
+        "/tmp:rw,size=256m",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai,target=/qualification/openproject/ai,readonly",
+        "-e",
+        "PYTHONPATH=/app:/qualification/openproject/ai:/qualification/openproject/ai/tests",
+        "--entrypoint",
+        "python",
+        "qldapm-gateway:phase2-final",
+        "-m",
+        "unittest",
+        "test_engineering_fencing",
+        "test_engineering_reporting",
+        "test_engineering_knowledge_child",
+        "test_rag_recovery",
+        "test_rag_registered_pruning",
+        "-q"
+      ],
+      "environment": "candidate-network-none-synthetic-store-native-readonly-host-adapter",
+      "tested_images": [
+        "sha256:21f1d62d46a95e91c1e1625fec5fe7d95b5f4b6db44792f11c161943daee9642"
+      ],
+      "source_manifest_sha256": "98cc538e67b2c3c0815603703707d76050e2ddb84578141065bde5d2c99927cf",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": true,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/frozen-candidate-gateway-20261102T042646500294Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/frozen-engineering-20261102T042646516912Z.json",
+      "record_sha256": "c88437288c2762d86c27556a15b7cb679eb39a640dcda435fe19b9840d3471f5",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T04:27:26.837333+00:00",
+      "finished_utc": "2026-11-02T04:31:37.865986+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "openproject/ai/tests",
+        "-p",
+        "test_engineering*.py"
+      ],
+      "environment": "host-fixtures-final-source-after-independent-review",
+      "tested_images": [],
+      "source_manifest_sha256": "98cc538e67b2c3c0815603703707d76050e2ddb84578141065bde5d2c99927cf",
+      "source_changed_during_check": true,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": true,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/frozen-engineering-20261102T042646516912Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/rag-actual-qdrant-contracts-20261102T034804692372Z.json",
+      "record_sha256": "e9458a56c6a67e02fc6bba601f25f73b66fadda5404d3bae237a1ad9b42bade9",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T03:48:07.297999+00:00",
+      "finished_utc": "2026-11-02T03:48:11.541679+00:00",
+      "command": [
+        ".\\openproject\\ai\\.venv\\Scripts\\python.exe",
+        "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/rag/integration_checks.py"
+      ],
+      "environment": "Isolated Qdrant 16334; host Python3.14; real local Ollama; synthetic contracts; no Main mutation",
+      "tested_images": [
+        "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2"
+      ],
+      "source_manifest_sha256": "1bbab040d2f550429b5b29c0ccdde92572e7ce01f2a8cc033b01e24b7f1b0ed3",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": false,
+        "core_view": false
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/rag-actual-qdrant-contracts-20261102T034804692372Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/release-candidate-gateway-20261102T043309602335Z.json",
+      "record_sha256": "e95500edd6d60be21d97fe25f5790d07c40ba2f80ab5fdc1607d916edcc91941",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T04:33:15.017857+00:00",
+      "finished_utc": "2026-11-02T04:33:38.934283+00:00",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--tmpfs",
+        "/tmp:rw,size=256m",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai,target=/qualification/openproject/ai,readonly",
+        "-e",
+        "PYTHONPATH=/app:/qualification/openproject/ai:/qualification/openproject/ai/tests",
+        "--entrypoint",
+        "python",
+        "qldapm-gateway:phase2-final",
+        "-m",
+        "unittest",
+        "test_engineering_fencing",
+        "test_engineering_reporting",
+        "test_engineering_knowledge_child",
+        "test_engineering_schedule_contract",
+        "test_rag_recovery",
+        "test_rag_registered_pruning",
+        "-q"
+      ],
+      "environment": "final-candidate-network-none",
+      "tested_images": [
+        "sha256:bca2ff25a344a67995e3c6003d970b8a0e24f49b269bf477ba9319c92318c07d"
+      ],
+      "source_manifest_sha256": "a2f4b72fd6aa9045afd6555d2e32564aa1fb0848d29159200e80d44bef04fc13",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": true,
+        "core_view": true
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/release-candidate-gateway-20261102T043309602335Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/reporting-latest-candidate-20261102T050757706696Z.json",
+      "record_sha256": "2cc1cc62a7affb11968d5cffc3f85a9c96cdc1d15f6a4ce7afe15387e35abef8",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T05:07:58.852813+00:00",
+      "finished_utc": "2026-11-02T05:08:04.020671+00:00",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--tmpfs",
+        "/tmp:rw,size=128m",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai,target=/qualification/openproject/ai,readonly",
+        "-e",
+        "PYTHONPATH=/app:/qualification/openproject/ai:/qualification/openproject/ai/tests",
+        "--entrypoint",
+        "python",
+        "qldapm-gateway:phase2-reporting",
+        "-m",
+        "unittest",
+        "test_engineering_reporting",
+        "test_engineering_reporting_contract",
+        "test_engineering_schedule_contract",
+        "test_engineering_fencing",
+        "-q"
+      ],
+      "environment": "candidate-network-none",
+      "tested_images": [
+        "sha256:8cd363f12fb9e732dfd7753300ab3d6e041b1c1457f41dc05ad8e8b8be4adacb"
+      ],
+      "source_manifest_sha256": "de32b645778ba95a30488ff0445b9147fd43ef438337ac5f3a3b838bf434eee2",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": true,
+        "core_view": true
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/reporting-latest-candidate-20261102T050757706696Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/reporting-provenance-candidate-20261102T073001716885Z.json",
+      "record_sha256": "b5808e7d2685b5ea6d4bf97bbef8e9f67d468c1b6a5bb0d5553fd0a65ae763d4",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T07:30:02.431661+00:00",
+      "finished_utc": "2026-11-02T07:30:07.748945+00:00",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--tmpfs",
+        "/tmp:rw,size=128m",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai,target=/qualification/openproject/ai,readonly",
+        "-e",
+        "PYTHONPATH=/app:/qualification/openproject/ai:/qualification/openproject/ai/tests",
+        "--entrypoint",
+        "python",
+        "qldapm-gateway:phase2-reporting-provenance",
+        "-m",
+        "unittest",
+        "test_engineering_reporting",
+        "test_engineering_reporting_contract",
+        "test_engineering_schedule_contract",
+        "-q"
+      ],
+      "environment": "network-none-candidate-actual-provider-interface-fixture",
+      "tested_images": [
+        "sha256:8359e250512b0a68a6e92892feb539d6f392b94aa39b91e670db42f49c411e8a"
+      ],
+      "source_manifest_sha256": "04d88e89e8c917a766d7e9b69570be2f0f27e10bf4377d3477c82b5f26878e34",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": true,
+      "component_source_matches": {
+        "gateway": true,
+        "host_worker": true,
+        "core_view": true
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/reporting-provenance-candidate-20261102T073001716885Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    },
+    {
+      "record": "phase2-final/checks/strict-lifecycle-contract-20261102T072434544552Z.json",
+      "record_sha256": "ab7a97e48655dd16d31353eb102645be31c2902e46ca706988299d5173978f72",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-02T07:24:38.324309+00:00",
+      "finished_utc": "2026-11-02T07:24:48.229867+00:00",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "test_n8n_lifecycle_outbox",
+        "-q"
+      ],
+      "environment": "isolated-sqlite-no-n8n-runtime-mutation",
+      "tested_images": [
+        "sha256:8cd363f12fb9e732dfd7753300ab3d6e041b1c1457f41dc05ad8e8b8be4adacb"
+      ],
+      "source_manifest_sha256": "0ad008a211eec7a8f698782e6612d205adb6c388de032e109f72eb32be5f2171",
+      "source_changed_during_check": false,
+      "matches_current_complete_manifest": false,
+      "component_source_matches": {
+        "gateway": false,
+        "host_worker": true,
+        "core_view": true
+      },
+      "evidence": "docs/ai/engineering/CHATGPT_RECOVERY/phase2-final/checks/strict-lifecycle-contract-20261102T072434544552Z.log",
+      "scope_note": "PASS applies only to actual command/environment. Component match does not imply exercised coverage or whole-image E2E."
+    }
+  ],
+  "authoritative_evidence": {
+    "engineering_current_source_146": "phase2-final/checks/final-regression-report8359-20261102T074457774266Z.json",
+    "reporting_current_image_21": "phase2-final/checks/reporting-provenance-candidate-20261102T073001716885Z.json",
+    "strict_lifecycle_schema_10": "phase2-final/checks/strict-lifecycle-contract-20261102T072434544552Z.json",
+    "core_actual_template_node_contracts": "phase2-final/checks/final-ui-js-20261102T043935107604Z.json",
+    "core_clone_native_and_full_render": "phase2-final/core-clone-result.json",
+    "n8n_actual_published_adapters_49": "phase2-final/workflows/clone-result.json",
+    "fresh_coding_e2e_bca_image_only": "phase2-final/e2e/coding-result.json",
+    "github_independent_readback": "phase2-final/e2e/github-readback.json",
+    "report_live_current8359": "phase2-final/e2e/ai-provenance-result.json",
+    "portable_old_key_restore_independent_root": "phase2-final/n8n/portable-root-verify.json",
+    "project5_row_comparison": "phase2-final/native-post-e2e.json",
+    "runtime_images_pins_source_idle": "phase2-final/final-live-verification.json",
+    "semantic_chunk_holdout_rejected": "phase2-final/rag/RESULT.md",
+    "semantic_reranker_holdout_rejected": "phase2-final/rag/RERANKER_RESULT.md",
+    "semantic_clause_dev_failed_holdout_unused": "phase2-final/rag/CLAUSE_RESULT.md",
+    "rag_root_hash_and_selfcheck": "phase2-final/rag/root-verification.json"
+  },
+  "remaining_gates": {
+    "semantic_rag": "FAILED/PARTIAL; no candidate deployed",
+    "n8n_master_key_cutover": "BLOCKED; vendor DEK wrappers not migrated",
+    "arbitrary_n8n_payload_history": "OPEN; WF04 retention OFF",
+    "WF07_WF12": "PARTIAL; privileged admin actor19 denied, no RBAC weakening",
+    "human_ui_uat": "PENDING OWNER",
+    "offhost_recovery_custody_and_physical_dr": "NOT TESTED"
+  },
+  "final_mode": "OFF",
+  "final_queue_active": 0
+}

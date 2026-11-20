@@ -1,0 +1,479 @@
+{
+  "at": "2026-10-26T17:21:54.671340+00:00",
+  "status": "PARTIAL_UNKNOWN_OUTCOMES_RETAINED",
+  "historical_proposals": [
+    {
+      "proposal_id": "38042a6e-2f2a-48d2-b238-05ad666c3d7b",
+      "actor": 19,
+      "native_id": 38,
+      "recorded_state": "executing",
+      "exact_marker_matches": [],
+      "exact_own_text_matches": [],
+      "receipt_lookup": "NOT_FOUND_NOT_PROOF_OF_NONEXECUTION",
+      "comment_sha256": "c041e48f8013cd55ab01395bd664d039236c779f54eb4009857291c4696a7d33",
+      "classification": "UNKNOWN_HOLD",
+      "state_changed": false,
+      "native_replay": false
+    },
+    {
+      "proposal_id": "74fc3c8d-1633-4487-b653-2cc96c1f25b3",
+      "actor": 19,
+      "native_id": 38,
+      "recorded_state": "executing",
+      "exact_marker_matches": [],
+      "exact_own_text_matches": [],
+      "receipt_lookup": "NOT_FOUND_NOT_PROOF_OF_NONEXECUTION",
+      "comment_sha256": "c041e48f8013cd55ab01395bd664d039236c779f54eb4009857291c4696a7d33",
+      "classification": "UNKNOWN_HOLD",
+      "state_changed": false,
+      "native_replay": false
+    }
+  ],
+  "native_activities_read": 23,
+  "main_native_writes": 0,
+  "gateway_history_changes": 0,
+  "qdrant_restore": "BLOCKED_RESTORE_POLICY_NO_RETRY_OR_ALTERNATE",
+  "current_recovery_qualification": [
+    "CODEX_WF02_DELETE_LIFECYCLE_RESULT.json",
+    "CODEX_WF09_WF11_SOURCE_PHASE_NATIVE_CLONE_RESULT.json",
+    "CODEX_NATIVE_SOURCE_PHASE_DEPLOYMENT_RESULT.json"
+  ],
+  "actual_crash_recovery": {
+    "observed_at": "2026-10-26T17:06:41.150130+00:00",
+    "status": "PASS_ISOLATED_EXTERNAL_HTTP_NATIVE_DELETE_LIFECYCLE",
+    "checks": [
+      {
+        "case": "Independent Native HTTP create/update -> durable scan -> actual Qdrant/SQLite/FTS",
+        "expected": "Two different verified source-version jobs, then no refresh",
+        "actual": {
+          "native_id": 376,
+          "version": 1,
+          "first_job": {
+            "id": "8b39d625-a5ca-5ba0-bc83-745ec088fbfc",
+            "lock_version": 0,
+            "native_id": 376,
+            "source_hash": "6c7411fcdfc7ea070b786dfcd0ced67faa6ee55b5e4c75027b2451774f9af166"
+          },
+          "second_job": {
+            "id": "5f2cf4e3-1ada-56ed-88bb-7236b03b1307",
+            "lock_version": 1,
+            "native_id": 376,
+            "source_hash": "0859b9df50f35bf5a126898c49aa9b31ecd6bfdb98845032f962646fbb8db7c3"
+          }
+        },
+        "status": "PASS"
+      },
+      {
+        "case": "Independent HTTP exact proposal/approval -> signed delete -> lost Native reply -> ledger readback -> vector ack loss -> process kill/restart",
+        "expected": "One Native delete, exact registered cache cleanup, three unknown vectors and foreign project retained",
+        "actual": {
+          "native_id": 377,
+          "native_delete_posts": 1,
+          "fts_deleted_sources_absent": 2,
+          "fts_updated_source_searchable": true,
+          "rate_limit_policy_preserved": true,
+          "actual_crashed_worker_lease_until": 1793034391.38632,
+          "lease_expired_before_reclaim": true,
+          "sync": {
+            "id": "8ea0afbc-7053-59cb-8c98-57f461872731",
+            "native_id": 377,
+            "state": "verified",
+            "attempts": 2,
+            "next_at": 1793034395.7801573,
+            "error": null,
+            "result": {
+              "documents_removed": 2,
+              "event_id": "4b4b2768-526d-4299-8373-114a317f4c98",
+              "native_deleted": true,
+              "native_writes": 0,
+              "points_removed": 2,
+              "scope": "exact registered Native documents/chunks only",
+              "vector_indexed": true
+            }
+          },
+          "legacy_retained": 3,
+          "foreign_project_retained": true,
+          "original_updated_resource_retained": 1
+        },
+        "status": "PASS"
+      }
+    ],
+    "fixture_native_ids": [
+      376,
+      377
+    ],
+    "simulated_decisions": [
+      {
+        "id": "ccfb91a5-22d9-4f96-92cd-f60fbf8a750e",
+        "hash": "9a395cff8b9623f4fc7613d0294c37fc03bb184b17dc6f22a73df0522ab60f70",
+        "authorization_kind": "SIMULATED_ISOLATED_EXTERNAL_HTTP_DECISION_NOT_MAIN"
+      }
+    ],
+    "main_native_writes": 0,
+    "model_calls": 0,
+    "staging_operations": false,
+    "limits": [
+      "Only eligible NEW orphan Task deletion; updated/history-bearing sources remain protected",
+      "Actual Native, HTTP transport, Qdrant, SQLite and FTS; synthetic1024embeddings only",
+      "Three test-only legacy equivalents, not Main vector restore",
+      "Original Main remains unchanged; no actual human Main approval claimed"
+    ],
+    "original_data_hashes_preserved": {
+      "work_packages": "375|04ec20a24a553f3cea4deab0015c29ef",
+      "relations": "352|8efb5973160c91ae1bb5b8451e5979e2",
+      "users": "10|10ca3b3f6ef1144f733cb777da6cbae0",
+      "user_passwords": "7|1c8c563bc72ffd2e539f6d7e4c2f7db8",
+      "two_factor_authentication_devices": "4|b967a7f8d325515bfcc415f507f3e075",
+      "tokens": "9|d2504324eea35a15febd4ed0566b1d9c",
+      "members": "7|635e9c9c13bfb9cf0f4d56e42a07e623",
+      "member_roles": "7|a401407caf4c539024415c1944cea659"
+    },
+    "candidate_images": {
+      "gateway": "sha256:3aeb3203bfdb4b91c95f858ee9a948701abea4c572668bb2b87712c2e6327144",
+      "core": "sha256:81f535ba3f8f37c0523b5e957c31cd14e4dc2a233856a832fd4b432708e135d3"
+    },
+    "source_dump_sha256": "93c30b3e7ec2b674e46af963204fbb400dcf59ab94b3481ddab4a72b45730600"
+  },
+  "source_phase_atomic_recovery": {
+    "positive_id": 376,
+    "positive_version": 4,
+    "positive_status": "READY FOR DEV",
+    "one_commit_after_lost_ack": 1,
+    "rag_transient_then_restart_without_native_replay": true,
+    "failure_id": 377,
+    "failure_proposal": {
+      "id": "a48f4a23-8c87-4770-b4de-1ccaec068b5c",
+      "hash": "8f266bca99682e58aa4edd86cf5466ce247f91feb775892993ae723f7cf753fc",
+      "expires": 1793032479.4039629,
+      "state": "pending",
+      "command": {
+        "_gateway_mode": "native",
+        "action": "transition",
+        "arguments": {
+          "id": 377,
+          "lock_version": 0,
+          "phase_hash": "dca68092637eae932064b74474f26cc6d5ed2c8d30cfad58f47f4148ecb33ca7",
+          "phase_id": "db89766a-0347-5c16-a5a7-03ccc2934de4",
+          "status_id": 37
+        },
+        "auto_execute": false,
+        "idempotency_key": "phase-transition-phase-fa71bc88083a4e55a65441e74f37f135",
+        "preview": {
+          "before": {
+            "_links": {
+              "activities": {
+                "href": "/api/v3/work_packages/377/activities"
+              },
+              "addAttachment": {
+                "href": "/api/v3/work_packages/377/attachments",
+                "method": "post"
+              },
+              "addChild": {
+                "href": "/api/v3/workspaces/qldapm-local/work_packages",
+                "method": "post",
+                "title": "Add child of [CODEX TEST] isolated phase transaction-fault"
+              },
+              "addComment": {
+                "href": "/api/v3/work_packages/377/activities",
+                "method": "post",
+                "title": "Add comment"
+              },
+              "addFileLink": {
+                "href": "/api/v3/work_packages/377/file_links",
+                "method": "post"
+              },
+              "addRelation": {
+                "href": "/api/v3/work_packages/377/relations",
+                "method": "post",
+                "title": "Add relation"
+              },
+              "addWatcher": {
+                "href": "/api/v3/work_packages/377/watchers",
+                "method": "post",
+                "payload": {
+                  "user": {
+                    "href": "/api/v3/users/{user_id}"
+                  }
+                },
+                "templated": true
+              },
+              "ancestors": [],
+              "assignee": {
+                "href": "/api/v3/users/21",
+                "title": "QLDAPM BE"
+              },
+              "atom": {
+                "href": "/work_packages/377.atom",
+                "title": "Atom feed",
+                "type": "application/rss+xml"
+              },
+              "attachments": {
+                "href": "/api/v3/work_packages/377/attachments"
+              },
+              "author": {
+                "href": "/api/v3/users/18",
+                "title": "System Owner"
+              },
+              "availableRelationCandidates": {
+                "href": "/api/v3/work_packages/377/available_relation_candidates",
+                "title": "Potential work packages to relate to"
+              },
+              "availableWatchers": {
+                "href": "/api/v3/work_packages/377/available_watchers"
+              },
+              "backlogBucket": {
+                "href": null
+              },
+              "category": {
+                "href": null
+              },
+              "changeParent": {
+                "href": "/api/v3/work_packages/377",
+                "method": "patch",
+                "title": "Change parent of [CODEX TEST] isolated phase transaction-fault"
+              },
+              "configureForm": {
+                "href": "/types/1/form_configuration/edit",
+                "title": "Configure form",
+                "type": "text/html"
+              },
+              "copy": {
+                "href": "/work_packages/377/copy",
+                "title": "Copy work package '[CODEX TEST] isolated phase transaction-fault'",
+                "type": "text/html"
+              },
+              "customActions": [],
+              "customField12": {
+                "href": null,
+                "title": null
+              },
+              "customFields": {
+                "href": "/projects/qldapm-local/settings/custom_fields",
+                "title": "Custom fields",
+                "type": "text/html"
+              },
+              "delete": {
+                "href": "/api/v3/work_packages/377",
+                "method": "delete"
+              },
+              "fileLinks": {
+                "href": "/api/v3/work_packages/377/file_links"
+              },
+              "generate_pdf": {
+                "href": "/work_packages/377/generate_pdf_dialog",
+                "title": "Generate PDF",
+                "type": "text/vnd.turbo-stream.html"
+              },
+              "github_pull_requests": {
+                "href": "/api/v3/work_packages/377/github_pull_requests",
+                "title": "GitHub pull requests"
+              },
+              "gitlab_issues": {
+                "href": "/api/v3/work_packages/377/gitlab_issues",
+                "title": "Gitlab Issues"
+              },
+              "gitlab_merge_requests": {
+                "href": "/api/v3/work_packages/377/gitlab_merge_requests",
+                "title": "Gitlab merge requests"
+              },
+              "meetings": {
+                "href": "/work_packages/377/tabs/meetings",
+                "title": "meetings"
+              },
+              "move": {
+                "href": "/work_packages/377/move/new",
+                "title": "Move work package '[CODEX TEST] isolated phase transaction-fault'",
+                "type": "text/html"
+              },
+              "observedInVersions": [],
+              "parent": {
+                "href": null
+              },
+              "pdf": {
+                "href": "/work_packages/377.pdf",
+                "title": "Export as PDF",
+                "type": "application/pdf"
+              },
+              "previewMarkup": {
+                "href": "/api/v3/render/markdown?context=/api/v3/work_packages/377",
+                "method": "post"
+              },
+              "priority": {
+                "href": "/api/v3/priorities/8",
+                "title": "Normal"
+              },
+              "project": {
+                "href": "/api/v3/projects/5",
+                "title": "QLDAPM \u2014 Local Community"
+              },
+              "projectPhaseDefinition": {
+                "href": null
+              },
+              "relations": {
+                "href": "/api/v3/work_packages/377/relations"
+              },
+              "removeWatcher": {
+                "href": "/api/v3/work_packages/377/watchers/{user_id}",
+                "method": "delete",
+                "templated": true
+              },
+              "responsible": {
+                "href": null
+              },
+              "schema": {
+                "href": "/api/v3/work_packages/schemas/5-1"
+              },
+              "self": {
+                "href": "/api/v3/work_packages/377",
+                "title": "[CODEX TEST] isolated phase transaction-fault"
+              },
+              "sprint": {
+                "href": null
+              },
+              "status": {
+                "href": "/api/v3/statuses/1",
+                "title": "NEW"
+              },
+              "targetVersions": [],
+              "type": {
+                "href": "/api/v3/types/1",
+                "title": "Task"
+              },
+              "unwatch": {
+                "href": "/api/v3/work_packages/377/watchers/18",
+                "method": "delete"
+              },
+              "update": {
+                "href": "/api/v3/work_packages/377/form",
+                "method": "post"
+              },
+              "updateImmediately": {
+                "href": "/api/v3/work_packages/377",
+                "method": "patch"
+              },
+              "watchers": {
+                "href": "/api/v3/work_packages/377/watchers"
+              }
+            },
+            "description": {
+              "format": "markdown",
+              "html": "<p class=\"op-uc-p\">Story: Validate Native phase proof without weakening existing gates.<br>\nAC1: Exact source and independent scope review are required.<br>\nScope: This isolated Task only; no Main mutation.<br>\nAnalysis: Use signed Native source and an independently accepted artifact.</p>",
+              "raw": "Story: Validate Native phase proof without weakening existing gates.\r\nAC1: Exact source and independent scope review are required.\r\nScope: This isolated Task only; no Main mutation.\r\nAnalysis: Use signed Native source and an independently accepted artifact.\r\n"
+            },
+            "dueDate": null,
+            "id": 377,
+            "lockVersion": 0,
+            "startDate": null,
+            "subject": "[CODEX TEST] isolated phase transaction-fault"
+          },
+          "changes": {
+            "id": 377,
+            "lock_version": 0,
+            "phase_hash": "dca68092637eae932064b74474f26cc6d5ed2c8d30cfad58f47f4148ecb33ca7",
+            "phase_id": "db89766a-0347-5c16-a5a7-03ccc2934de4",
+            "status_id": 37
+          },
+          "date_adjustments": {},
+          "validation": "Native permission and gate checks run again at confirmation."
+        }
+      },
+      "result": null,
+      "human_confirmation_required": true
+    },
+    "decisions": [
+      {
+        "id": "58e3b9ee-42af-4240-be62-30a0130c5193",
+        "hash": "29357e59a5273eafd16318bddfc3f167a36db7000829fcdc2682568a85f185ff",
+        "kind": "SIMULATED_ISOLATED_NATIVE_PROPOSAL_DECISION_NOT_MAIN"
+      },
+      {
+        "artifact": "58339c9d-ec58-57e1-b7d1-40639dd38f9f",
+        "hash": "96198873052233330adff4954932e2b854d399fef36948b22f53fe296b116a05",
+        "actor": 19,
+        "approvals": [
+          "scope"
+        ],
+        "kind": "SIMULATED_ISOLATED_PHASE_REVIEW_NOT_MAIN"
+      },
+      {
+        "id": "93c4b37f-04d5-4542-bac1-aa6f5457a4b8",
+        "hash": "b761a6cd64fd7044199099b86ec6e80d67b184980a6090554854bbee4908bae9",
+        "kind": "SIMULATED_ISOLATED_NATIVE_PROPOSAL_DECISION_NOT_MAIN"
+      },
+      {
+        "artifact": "e730ba60-719e-58ea-8dd5-fb3d7bd32285",
+        "hash": "c988c2d055a56b630fc86668990eeb215d7c75328edc48bbb46a67532f4a083e",
+        "actor": 19,
+        "approvals": [
+          "scope",
+          "analysis"
+        ],
+        "kind": "SIMULATED_ISOLATED_PHASE_REVIEW_NOT_MAIN"
+      },
+      {
+        "id": "46f04838-660e-405a-976d-37e3d52ce2d2",
+        "hash": "aad1e8af530bc596048f807756df892228f544edb06643dab9a99e94cb47dd1f",
+        "kind": "SIMULATED_ISOLATED_NATIVE_PROPOSAL_DECISION_NOT_MAIN"
+      },
+      {
+        "id": "e436f88d-37db-4778-a45b-23fb23491d68",
+        "hash": "2906b981e3dda6f85b0d63fb2ffe3398d37cd85357c18300a8bba2cbf89115d4",
+        "kind": "SIMULATED_ISOLATED_NATIVE_PROPOSAL_DECISION_NOT_MAIN"
+      },
+      {
+        "artifact": "db89766a-0347-5c16-a5a7-03ccc2934de4",
+        "hash": "dca68092637eae932064b74474f26cc6d5ed2c8d30cfad58f47f4148ecb33ca7",
+        "actor": 19,
+        "approvals": [
+          "scope"
+        ],
+        "kind": "SIMULATED_ISOLATED_PHASE_REVIEW_NOT_MAIN"
+      }
+    ],
+    "candidate_images": {
+      "database": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+      "web": "sha256:81f535ba3f8f37c0523b5e957c31cd14e4dc2a233856a832fd4b432708e135d3"
+    },
+    "gateway_image": "sha256:3aeb3203bfdb4b91c95f858ee9a948701abea4c572668bb2b87712c2e6327144",
+    "failure_decision": [
+      {
+        "id": "a48f4a23-8c87-4770-b4de-1ccaec068b5c",
+        "hash": "8f266bca99682e58aa4edd86cf5466ce247f91feb775892993ae723f7cf753fc",
+        "kind": "SIMULATED_ISOLATED_NATIVE_PROPOSAL_DECISION_NOT_MAIN"
+      }
+    ],
+    "failure_outcome": "UNKNOWN_HOLD_NO_REPLAY",
+    "actual_source_analysis_status": "PASS_ACTUAL_NATIVE_SCOPE_ANALYSIS_WITH_OWN_ROLES_AND_RAG",
+    "main_native_writes": 0,
+    "main_human_decisions_by_agent": 0,
+    "staging_operations": false,
+    "new_model_calls": 0,
+    "limits": [
+      "Scope/analysis only; not full fix/build/QA/retest/closure",
+      "All phase and mutation decisions are explicitly simulated isolated fixtures",
+      "Fresh empty Qdrant with synthetic embeddings; no Main vectors restore or semantic quality claim",
+      "Actual PG insertion fault rolls back Native; Gateway retains unknown until authoritative receipt, no 404 inference"
+    ],
+    "transaction_rollback_hashes": {
+      "work_packages": "377|4a1f9de681388747716a6c3b64d0f7e4",
+      "journals": "1026|4097886b70b4e196de5a0176e8e43424",
+      "work_package_journals": "1007|72d26cf455ff100aaa7db55e9a933d52",
+      "qldapm_mutation_receipts": "2|7dc0ba7a9e33b829fb5c9856801564e0"
+    },
+    "original_data_hashes_preserved": {
+      "work_packages": "375|04ec20a24a553f3cea4deab0015c29ef",
+      "relations": "352|8efb5973160c91ae1bb5b8451e5979e2",
+      "users": "10|10ca3b3f6ef1144f733cb777da6cbae0",
+      "user_passwords": "7|1c8c563bc72ffd2e539f6d7e4c2f7db8",
+      "two_factor_authentication_devices": "4|b967a7f8d325515bfcc415f507f3e075",
+      "tokens": "9|d2504324eea35a15febd4ed0566b1d9c",
+      "members": "7|635e9c9c13bfb9cf0f4d56e42a07e623",
+      "member_roles": "7|a401407caf4c539024415c1944cea659",
+      "qldapm_native_deletion_events": "0|"
+    },
+    "source_dump_sha256": "98adc26c2c3f8dc2b4f4d9ad0e0f6426dcdcb1fdb1146969e9a3e1f6348c9239"
+  },
+  "n8n_restore": "CODEX_N8N_RESTORED_SERVER_RESULT.json",
+  "receipt_rule": "Absent current activities or receipt does not prove historical write failure; never replay",
+  "staging_operations": false
+}

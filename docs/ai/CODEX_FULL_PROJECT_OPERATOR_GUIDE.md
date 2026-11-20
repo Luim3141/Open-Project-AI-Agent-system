@@ -1,0 +1,70 @@
+## Final stabilization — 29/10/2026, khoảng05:05ICT
+
+[Kết quả mới và ma trận21gate](CODEX_FINAL_STABILIZATION_20261029.json): fresh Owner UI Main live run `c5d44a1d-7440-48a5-be4c-f90fc88dda61` có PM Gemini/RAG376v0/localReviewer/final/citation/18events,1generation/1936tokens, không Native write; khác với continuous clone gate còn thiếu TEST key/proof. Xem [Monitor của run](http://127.0.0.1:18088/projects/qldapm-local/qldapm-ai/executions/c5d44a1d-7440-48a5-be4c-f90fc88dda61). Automated UI acceptance chưa là human sign-off; fresh browser coverage dùng Owner, không5roles hoặc inducedprovideroutage.
+
+Hai task backup/observer đã bỏ battery-start/battery-stop blocks mặc định: `AllowStartIfOnBatteries` và `DontStopIfGoingOnBatteries`; exact2flags/task, real launcher smoke0/NOT_DUE. XML/source before/after ở private `operator/final-stabilization-20261029/`. Rollback chỉ2flags vềtrue trên đúng2tasks, giữ phần còn lại. Không nâng SYSTEM, đổi power policy hoặc tạo task mới. Vẫn cần LUIM interactive, máy thức và Docker; chưa physical battery/login/reboot qualification.
+
+WF16 latest2633/05:00 HEALTHY;2631/04:30 có DEGRADED do embedding probe timeout,2632/04:45 hồi phục. n8n Success chỉ là trạng thái kỹ thuật. Khoảng WF16 không có execution02:30/02:45/03:00 quanh user Docker restart không được replay; timestamp bắt đầu outage chưa đo độc lập. Daily08:00/weeklyFriday17:00 vẫn pending, đọc private observer outputs khi đến lịch. Khi Operator có lần login/reboot tự chọn sau này, ghi boot/login time và đối chiếu task results, Main health/IDs, single Ollama, scanner freshness, receipt tự chạy kế tiếp; không cần reboot lúc này.
+
+## Final gate observations — 29/10/2026
+
+[Current gate snapshot](CODEX_FINAL_AUTOMATION_GATES_20261029.json). Hai read-only one-shot checks đã đặt:29/10 08:05 cho WF07 và30/10 17:05 cho WF12. Cần LUIM interactive session +Docker; task QLDAPM-NaturalSchedule-Observation chỉ đọc rồi thoát, không trigger/replay/repair workflow hoặc gửi external notification. Kết quả thực ở `%LOCALAPPDATA%/QLDAPM/openproject-ai/operator/natural-schedule-observations/*-latest.json`; failed/blocked states không tự nâng readiness. Task smoke trước giờ chỉ kiểm tra launcher, không là natural schedule PASS.
+
+Test Gemini vẫn OFF/khôngkey. Private `%LOCALAPPDATA%/QLDAPM/openproject-ai/operator/gemini-isolated-test/LOCAL_INPUT.md` hướng dẫn hidden local entry cho authorized TEST key và proof/quota/data-scope của test project riêng. Không dùng production/Staging key hoặc chạy hardcoded Staging CLI. Chưa cần reboot hoặc chạy workflow bằng tay. Rollback addition chỉ unregister đúng observation task và giữ result files, không restore MAIN.
+
+## Automation hiện hành — 29/10/2026
+
+Đọc [automation result](CODEX_AUTOMATION_STABILITY_20261029_RESULT.md), [evidence](CODEX_AUTOMATION_STABILITY_20261029_EVIDENCE.json) và [checkpoint duy nhất](CODEX_TAKEOVER_CHECKPOINT_20261028_RUNTIME.md). Verdict AUTOMATION_CORE_E2E_PASS_WITH_LIMITATIONS, human UAT pending. MAIN Gatewayeaaa/Core08df/n8ndd580 giữ nguyên. WF07 hiện6nodes/versionc2a7a82c-9af8-479e-8156-c1d07f64a533, thêm guard từ chối PARTIAL trước success. Cron08:00Bangkok, auth/retention và15workflow khác không đổi. Không manual Execute MAIN để tạo bằng chứng schedule; không dọn legacy/history/QA.
+
+Clone13phút đã kiểm tra9cycles mỗi WF07/WF12/WF16, Ollama proxy503/Qdrant pause và actual Gateway300slease/n8n restart. Live clone Gemini trả503 do thiếu configuration riêng: đó là dependency BLOCKED, không PASS. Không copy key hoặc rotate credentials. User Docker restart có bằng chứng MAIN auth/scheduler phục hồi; physical Windows reboot chưa qualified. Cron không replay missed runs; daily/weekly receipts là snapshot được dedupe. Dùng Native/RAG version hiện hành cho analysis, không coi report READY là nguồn không bao giờ stale.
+
+Rollback WF07 chỉ PATCH name/nodes/connections/settings từ private operator/automation-hardening-20261029/deployment-WF07/WF07-before.json rồi publish và readback. Không restore DB/image. Predeploy PG/SQLite+n8n/assets backups giữ riêng, không gọi full Qdrant DR. Không service restart trong patch này. Các mốc28/10 phía dưới là baseline/history; automation result29/10 có ưu tiên hiện hành.
+
+## Serving state và UAT — 28/10/2026 23:45 ICT
+
+Current authority: [kết quả16workflow/28subsystem](CODEX_TAKEOVER_20261028_RESULT.md), [sanitized evidence](CODEX_TAKEOVER_20261028_EVIDENCE.json), [single checkpoint](CODEX_TAKEOVER_CHECKPOINT_20261028_RUNTIME.md), [human UAT checklist](OPERATOR_UAT_SPECIFICATION_AND_CHECKLIST.md). READY_FOR_OPERATOR_UAT có giới hạn, human sign-off PENDING. Các mục lịch sử bên dưới không ghi đè snapshot này.
+
+Final Gateway eaaa1217ac79cfac4747e0fa71af40bf0d3c1a447f39e6cc24dc20e55a268fc4; Core08df5e2b/n8ndd580fe1 giữ nguyên. WF11 chỉqa_target→scopedqa_evidence_list(native_id), WF12signedFriday17:00Bangkok đãpublish;14otherworkflowdefinitionsunchanged. Registeredmain-workflow-contract SHA0283711d.../5chunks mới đãingest/read/replayPASS. Rollback phải ghép Gatewayimage,WF11/WF12compatibility vàfilebytes/registryhash tương ứng; khôngrestoređèDB. Các câu “thisdeploymentchangednoworkflow” bên dưới chỉ nói deployment lịch sử của riêng chúng.
+
+Finalreadback:376physical/339visibleWPs,352relations,376test2v0NEW,371v4IN ANALYSIS,QAfcpending,29oldunknownrequests retained.441docs/2027chunks/2030points,86verified/active0; no registereddrift. PARTIAL_UNMATCHED_POINTS doexact3protectedlegacyIDs, khôngxóa. TOTP4devices/secretsgiữ, last_used_atdevice1đổi dohumanlogin. NoNativebusinesswrite/humanQAdecision/Stagingoperation.
+
+UATpreflight đã sửa để đọcSQLite trongLinuxowningcontainer vàcheckdynamicprovenance/exactlegacyIDs/tokenexpiry, khônghardcodecorpuscounts. Từrepo root: set `$env:PYTHONPATH='openproject/ai'`, chạy `& 'openproject/ai/.venv/Scripts/python.exe' -m automation.operator_uat_preflight`. Actual16checksPASS; PMrowremaining29.56days tại23:38ICT. Khôngmởlivegateway/knowledgeSQLite bằngWindows, không dùngoldGeminiqualifierscóMainwrites.
+
+Ollama/mainbackuptasksReady/result0; backupPG/SQLite/n8n/assets/configPASS, recordactivework/noqueuestarvation, perstoreconsistent/noQdrant/noatomiccrossserviceDR. Physicalreboot, humanUAT, fullQdrantDR vàfreshclone-change→liveGemini mộtchainliêntụcchưaqualify. Externalnotificationschưaconfigured, khônggửi. Giới hạncomments20/750/sweep11min vàpinnedPDF64pages256KiB/noOCR giữtrongreport. Userưu tiênterminal/source; chỉCUAkhi cóUIbugcầnxácminh.
+
+## Tiếp quản MAIN hiện hành — 28/10/2026
+
+Đọc `CODEX_TAKEOVER_CHECKPOINT_20261028_RUNTIME.md` và evidence tiếp quản hiện hành trước các mốc lịch sử dưới đây. MAIN dùng Core18088, Gateway18089, n8n5679, Qdrant6333, Ollama11434, đều loopback. Không dùng wrapper Staging cho MAIN.
+
+`QLDAPM-Main-Daily-Backup` đã được cài bằng `openproject/ai/Schedule-MainBackup.ps1`. Task dùng limited interactive LUIM, hidden PowerShell, hourly/logon; tạo snapshot sau24h thành công gần nhất, ghi active-work metadata nhưng không để pending/DLQ làm backup bị đói, không replay ngày bỏ lỡ và không xóa backup cũ. Private output: `%LOCALAPPDATA%/QLDAPM/openproject-ai/operator/main-scheduled-backups/`; xem last-success.json và last-attempt.json cùng Get-ScheduledTaskInfo. First real PG/SQLite/n8n/assets/config snapshot PASS; task invocation result0/NOT_DUE. Không gọi đây là full Qdrant DR hoặc reboot qualification. Cài lại task đang tồn tại phải inspect trước; script không tự overwrite.
+
+PDF đã hỗ trợ cho nguồn server-pinned qua knowledge_file_ingest/search/read và WF01: source_key, root/path, SHA256, role phải do operator cấu hình. Giới hạn256KiB/64trang/text-layer; file mã hóa, trang không có text hoặc quá giới hạn fail toàn bộ, không ghi PASS cho bản đọc thiếu. Không có arbitrary upload/OCR/auto-download attachment trong source contract này. DOCX, Markdown và PDF đã được chạy trên isolated Native+n8n+Qdrant/BGE-M3.
+
+Rollback Gateway chỉ thay AI_IMAGE về image đã backup rồi compose đúng hai file compose.yml/gemini-free.main.yml với --no-deps --pull never gateway; không restore đè SQLite/Native. Nếu rollback về image cũ chưa hỗ trợ weekly_summary, rollback branch WF12 từ private WF12-predeploy.json và publish lại trước. Private deployment directories chứa original env/image-lock và source hashes. Không lấy CORE_IMAGE trong AI sandbox image-lock làm serving Main proof; Core Main hiện được xác minh từ container/compose riêng.
+
+# QLDAPM Main — current operator guide
+
+Use Main http://127.0.0.1:18088, project qldapm-local(5). Existing credentials and TOTP are unchanged. AI Assistant → AI Control Center → Bằng chứng QA / Kiểm duyệt opens the QA page.
+
+The read-only runner supports explicit Native field assertions only; unsupported prose is blocked. A result is automated evidence, never human QA. Owner18 has created a six-case artifact for375/v0; its inbox entry is pending_qa. QA23 reviews the exact source/test/artifact/hash using its own login. The distinct PM19 reviews only after QA accepts; Owner18 cannot review its own artifact. These decisions do not execute a Native mutation. Native transition still needs valid prerequisites, a fresh exact proposal/hash and legitimate approval. Never replay ScenarioF or prior consumed packages.
+
+Use CODEX_TAKEOVER_CHECKPOINT_20261028_RUNTIME.md and a fresh main_operations capture for current images; CODEX_MAIN_CONTINUATION_CHECKPOINT.json and older reports record history. See exact rollback_gateway/rollback_web in CODEX_ATOMIC_QA_DEPLOYMENT_RESULT.json and private backups. Restore only affected image selectors; this deployment changed no workflow definition. Never restore old databases over current data.
+
+The older Start/Stop/Status-QLDAPM-Local.ps1 wrappers target Staging and must not be used for Main. The dedicated Main-only operator below has actual status/backup evidence and isolated start/stop command tests; no Main outage test is claimed. On 28 October, the user authorized operations repair: QLDAPM-Ollama-Health was enabled with Windows PowerShell, its existing script and limited interactive-user principal. Actual task invocation preserved the listener PID and returned 0; physical reboot recovery remains untested. Do not restart Docker/WSL globally for a service health check.
+
+
+Current local delivery is deployed: Control Center shows LOCAL_METADATA_ONLY queue counts, own scope for business roles and Main aggregate counts for Managers. Receipt files contain IDs/hash only under the private Gateway state/local-notifications directory. DLQ is held for inspection; do not overwrite a mismatched receipt, mutate SQLite by hand or replay a Native write. External recipients remain unconfigured.
+
+Dedicated Main operator: run openproject/ai/.venv/Scripts/python.exe openproject/ai/automation/main_operations.py. Use capture --output <new-private-manifest.json>, then status --manifest <private-manifest.json>, plan-start or plan-stop to inspect order. start/stop reuse exact existing container IDs/images and stop rejects active/new unknown work. Never reuse a stale manifest after deployment or change its expected identities to hide drift. backup --manifest <manifest> --output <new-private-directory> writes PG and SQLite snapshots only; it does not claim full vector/n8n/assets DR. Current actual status/backup evidence is CODEX_MAIN_OPERATIONS_RESULT.json.
+
+For the separately qualified n8n/assets backup, from the repository root set `$env:PYTHONPATH='openproject/ai'`, then run `& 'openproject/ai/.venv/Scripts/python.exe' -m automation.main_auxiliary_backup --manifest <current-private-manifest.json> --output <new-private-directory>`. The output must be a new directory under `%LOCALAPPDATA%/QLDAPM/openproject-ai/operator`. It contains the existing encryption key/config and must remain private. The command performs online SQLite backup, exact-image isolated CLI export/decryption and a private assets restore with content checks; it never starts a restored n8n server or runs its workflows. Actual Main qualification exported16 workflows/4 credentials and restored2 assets; see CODEX_N8N_ASSETS_RECOVERY_RESULT.json. Do not restore this older snapshot over current Main data or describe it as full cross-service DR.
+
+Dependency Native: Manager18/19 thấy `create_dependency` trong Tool nâng cao của AI Assistant. JSON `{"predecessor_id":375,"successor_id":374,"lag":2}` là ví dụ cấu trúc, không phải lệnh được duyệt để ghi. Lần gọi đầu chỉ chuẩn bị proposal và scope/version có thể đổi lịch; xem tất cả endpoint/ancestor/descendant và exact hash trước quyết định riêng. WF10 nhận operation `dependency` với các field đó cùng request_id UUID, cũng chỉ tạo proposal. Không gửi role/admin/approved/scope_hash/proposal_id từ client. Không replay proposal đã dùng hoặc dùng ScenarioF/#370 để test. Main execution mới vẫn cần human approval hợp lệ; không có delegation grant. WBS depends_on không tự tạo Native relation.
+
+## SQLite và restore n8n sau qualification26/10
+
+Không mở trực tiếp gateway.sqlite/knowledge.sqlite đang sống bằng Windows SQLite trong khi container Linux sử dụng WAL. Dùng automation.main_operations backup hoặc query trong container sở hữu DB; Windows chỉ mở completed private snapshot với mode=ro&immutable=1. Không sửa header SQLite, xóa WAL/SHM hoặc restart Main để né lỗi.
+
+CLI auxiliary backup hiện thực hiện thêm restored-server gate sau export/decrypt: network none/no ports, copied workflows tắt, readiness200 và anonymous401; workflow body/credential/user/history nguyên vẹn. Cache writable dùng tmpfs96MiB vì server cần khoảng46MiB frontend cache; root/source vẫn read-only.9targeted tests và actual restore PASS. Đây là diễn tập server auth/data, chưa phải restored workflow execution hoặc full cross-service DR. Xem CODEX_N8N_RESTORED_SERVER_RESULT.json.
+
+Native user/project/version administration đã test trên clone riêng. Không dùng clone fixture decisions/credentials làm approval Main. Board UI chưa qualified do browser policy; không gọi đó là public REST capability. Provider/Agent monitoring đã verify20checks; không có API editor cho key/model/quota/Agent registry.

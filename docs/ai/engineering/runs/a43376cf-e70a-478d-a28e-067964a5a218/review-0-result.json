@@ -1,0 +1,222 @@
+{
+  "runId": "617615f7-6bc8-4109-98c0-1298b59d077d",
+  "status": "ok",
+  "summary": "completed",
+  "result": {
+    "payloads": [
+      {
+        "text": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"e77bdd84c4fea006085db3ae3fcd4d87c09e20b542035ade2b573cdb7dc38d2b\",\n  \"findings\": []\n}\n```",
+        "mediaUrl": null
+      }
+    ],
+    "meta": {
+      "durationMs": 2504,
+      "agentMeta": {
+        "sessionId": "623de335-aa01-4340-b01b-404b4f8ec4d0",
+        "sessionFile": "agent:reviewer:explicit:623de335-aa01-4340-b01b-404b4f8ec4d0",
+        "provider": "google",
+        "model": "gemini-3.5-flash-lite",
+        "contextTokens": 1048576,
+        "contextTokensSource": "resolved",
+        "agentHarnessId": "openclaw",
+        "credentialSource": {
+          "kind": "direct",
+          "evidence": "environment",
+          "authorization": "PUBLICATION_REDACTED"
+        },
+        "usage": {
+          "input": 10651,
+          "output": 83,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "total": 10734,
+          "cost": {
+            "total": 0
+          }
+        },
+        "lastCallUsage": {
+          "input": 10651,
+          "output": 83,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "cost": {
+            "total": 0
+          },
+          "total": 10734
+        },
+        "promptTokens": 10651,
+        "contextBudgetStatus": {
+          "schemaVersion": 1,
+          "source": "pre-prompt-estimate",
+          "updatedAt": 1793333301132,
+          "provider": "google",
+          "model": "gemini-3.5-flash-lite",
+          "route": "fits",
+          "shouldCompact": false,
+          "estimatedPromptTokens": 11885,
+          "contextTokenBudget": 1048576,
+          "promptBudgetBeforeReserve": 1028576,
+          "reserveTokens": 20000,
+          "effectiveReserveTokens": 20000,
+          "remainingPromptBudgetTokens": 1016691,
+          "overflowTokens": 0,
+          "toolResultReducibleChars": 0,
+          "messageCount": 0,
+          "unwindowedMessageCount": 0,
+          "sessionId": "623de335-aa01-4340-b01b-404b4f8ec4d0"
+        },
+        "codeModeEngaged": false,
+        "assistantTurns": 1,
+        "terminalReceipt": {
+          "runId": "617615f7-6bc8-4109-98c0-1298b59d077d",
+          "sessionId": "623de335-aa01-4340-b01b-404b4f8ec4d0",
+          "turnId": "617615f7-6bc8-4109-98c0-1298b59d077d",
+          "requested": {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite"
+          },
+          "effective": {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite",
+            "responseModel": "gemini-3.5-flash-lite"
+          },
+          "successfulToolNames": [],
+          "rerouted": false,
+          "terminalDisposition": "visible"
+        }
+      },
+      "aborted": false,
+      "systemPromptReport": {
+        "source": "run",
+        "generatedAt": 1793333300951,
+        "sessionId": "623de335-aa01-4340-b01b-404b4f8ec4d0",
+        "sessionKey": "agent:reviewer:explicit:623de335-aa01-4340-b01b-404b4f8ec4d0",
+        "provider": "google",
+        "model": "gemini-3.5-flash-lite",
+        "workspaceDir": "/home/openclaw/engineering/feedback-283138e910432528",
+        "bootstrapMaxChars": 20000,
+        "bootstrapTotalMaxChars": 60000,
+        "bootstrapTruncation": {
+          "warningMode": "always",
+          "warningShown": false,
+          "truncatedFiles": 0,
+          "nearLimitFiles": 0,
+          "totalNearLimit": false
+        },
+        "sandbox": {
+          "mode": "off",
+          "sandboxed": false
+        },
+        "systemPrompt": {
+          "chars": 12547,
+          "hash": "5ece827f57e1945423fc93367e52b124332392e7420d6b13e187f61962fafd0a",
+          "projectContextChars": 6504,
+          "nonProjectContextChars": 6043
+        },
+        "injectedWorkspaceFiles": [
+          {
+            "name": "AGENTS.md",
+            "path": "/home/openclaw/engineering/feedback-283138e910432528/AGENTS.md",
+            "missing": false,
+            "rawChars": 2533,
+            "injectedChars": 2533,
+            "truncated": false
+          },
+          {
+            "name": "SOUL.md",
+            "path": "/home/openclaw/engineering/feedback-283138e910432528/SOUL.md",
+            "missing": false,
+            "rawChars": 1350,
+            "injectedChars": 1350,
+            "truncated": false
+          },
+          {
+            "name": "IDENTITY.md",
+            "path": "/home/openclaw/engineering/feedback-283138e910432528/IDENTITY.md",
+            "missing": true,
+            "rawChars": 0,
+            "injectedChars": 87,
+            "truncated": false
+          },
+          {
+            "name": "BOOTSTRAP.md",
+            "path": "/home/openclaw/engineering/feedback-283138e910432528/BOOTSTRAP.md",
+            "missing": true,
+            "rawChars": 0,
+            "injectedChars": 0,
+            "truncated": false
+          }
+        ],
+        "skills": {
+          "promptChars": 683,
+          "hash": "127da1e6e2086e1c057af287e940cf41b97c16590e4a20474298f1b45ba04026",
+          "entries": [
+            {
+              "name": "engineering-review",
+              "blockChars": 312
+            }
+          ]
+        },
+        "tools": {
+          "listChars": 0,
+          "schemaChars": 537,
+          "entries": [
+            {
+              "name": "read",
+              "summaryChars": 164,
+              "summaryHash": "d136f5b09e28d671addad4ca800b75b8aa6a36002bc739ead964f618d3e34829",
+              "schemaChars": 460,
+              "schemaHash": "6cbbd52fc1ec26fec668c24fc08c8ea42240d163d061109d07886707dfa8d428",
+              "propertiesCount": 5
+            },
+            {
+              "name": "skills_read",
+              "summaryChars": 192,
+              "summaryHash": "22e1821dfbc26bdfaba43eaa0f6d8ae20e3784560feb6a163a067fa5cefff353",
+              "schemaChars": 77,
+              "schemaHash": "2c1504684515db5ece179c4c776e308d55ea99fd9d7c7a8ffa87da40675dfe29",
+              "propertiesCount": 1
+            }
+          ]
+        },
+        "currentTurn": {
+          "promptChars": 25603,
+          "runtimeContextChars": 0,
+          "modelOnlyPromptChars": 0
+        }
+      },
+      "finalPromptText": "Trusted engineering envelope: {\"run_id\": \"a43376cf-e70a-478d-a28e-067964a5a218\", \"project_id\": 6, \"native_id\": 382, \"actor_id\": 20, \"agent_role\": \"reviewer\", \"repository\": \"Luim3141/mini-task-manager\", \"session_id\": \"623de335-aa01-4340-b01b-404b4f8ec4d0\", \"workspace\": \"/home/openclaw/engineering/feedback-283138e910432528\", \"skills_version\": \"1.0.0\", \"request_allowance\": 5, \"timeout_seconds\": 420}\nIndependent reviewer. Read skills/engineering-review/SKILL.md and actual files. No edits/exec. Return only JSON {\"verdict\":\"PASS\" or \"FAIL\",\"revision\":\"e77bdd84c4fea006085db3ae3fcd4d87c09e20b542035ade2b573cdb7dc38d2b\",\"findings\":[]}; actionable findings include file/line/reason. Map each AC to actual code/tests. Spec {\"unit\": \"feedback-283138e910432528\", \"title\": \"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.\", \"spec_sha256\": \"4ef13879b0c1df3088b235bbed61bcaa15a03da9da295d672b9b14ff9064d2bc\", \"steps\": [\"Define AC/API\", \"Implement one feature in isolated worktree\", \"Independent review\", \"Independent tests\", \"Publish PR and progress\", \"Reindex authorized Native evidence\"], \"acceptance\": {\"AC5\": \"PATCH /tasks/{id} edits title or status: todo,in_progress,done; persists after reopening\", \"AC6\": \"DELETE /tasks/{id} returns204; missing edit/delete returns404\", \"AC7\": \"GET /tasks?q=...&status=... filters by case-insensitive literal title substring and valid status; combined filters use AND; ordered ids\", \"AC8\": \"GET / returns self-contained HTML (inline CSS/JS) web UI: create/list/edit/delete/status/search/filter; viewport, main, labels, DOM textContent for task titles, keyboard controls and visible errors\", \"AC9\": \"Blank edit, empty PATCH, invalid status and malformed input return422; SQL text remains data; original AC1-4 regression passes\", \"F1\": \"Web UI xử lý lỗi mạng/HTTP, hiển thị thông báo rõ ràng với aria-live và role=alert\", \"F2\": \"Giao diện hiển thị đúng trạng thái loading, empty và có nút retry\", \"F3\": \"Lọc/tìm kiếm nhanh tự động loại bỏ response cũ, chỉ nhận response mới nhất\", \"F4\": \"Form chặn double submit và tự khôi phục controls khi xảy ra lỗi\", \"F5\": \"Các API CRUD, status, search, SQLite và test cũ tiếp tục pass hoàn toàn\"}, \"interface\": \"task_manager.app.create_app(database_path); pytest; Python FastAPI + stdlib sqlite3\", \"permission\": \"demo repository and Project6 only; no merge/deploy; completion of unit is not WP379 DONE\", \"verification\": \"trusted external acceptance + repo pytest on exact tree; independent reviewer session\", \"functional_specification\": {\"acceptance\": [\"Web UI xử lý lỗi mạng/HTTP, hiển thị thông báo rõ ràng với aria-live và role=alert\", \"Giao diện hiển thị đúng trạng thái loading, empty và có nút retry\", \"Lọc/tìm kiếm nhanh tự động loại bỏ response cũ, chỉ nhận response mới nhất\", \"Form chặn double submit và tự khôi phục controls khi xảy ra lỗi\", \"Các API CRUD, status, search, SQLite và test cũ tiếp tục pass hoàn toàn\"], \"api_behavior\": [\"Giữ nguyên toàn bộ endpoints CRUD, status, search/filter và SQLite persistence hiện tại\", \"Client xử lý cấu trúc lỗi trả về từ FastAPI theo chuẩn validation\"], \"citations\": [379], \"edge_cases\": [\"Mất kết nối mạng hoặc lỗi HTTP khi gọi API từ UI\", \"FastAPI trả về mảng chi tiết lỗi validation phức tạp\", \"Gửi nhiều request tìm kiếm liên tiếp phản hồi lệch thứ tự (stale response)\", \"Người dùng nhấn nút submit liên tục (double submit)\"], \"limitations\": [\"Không thêm dependency ngoài hoặc dịch vụ SaaS\", \"Không sử dụng kiểm thử trình duyệt hay UAT thủ công\"], \"scope\": [\"Cập nhật request helper và xử lý lỗi mạng trên Web UI\", \"Hiển thị thông báo lỗi chi tiết kèm aria-live và role=alert\", \"Thêm trạng thái loading, empty và retry\", \"Chống stale list responses khi thay đổi search/filter nhanh\", \"Ngăn chặn double submit và khôi phục controls sau lỗi\", \"Viết automated checks kiểm tra hành vi mới\"], \"summary\": \"Hoàn thiện Web UI của Mini Task Manager: bổ sung request helper xử lý HTTP và network errors, hiển thị thông báo lỗi chi tiết (kể cả FastAPI validation detail arrays), hỗ trợ aria-live/role=alert, loading/empty/retry states. Ngăn chặn stale list responses khi filter nhanh và double submit, khôi phục controls sau lỗi. Giữ nguyên CRUD/status/search/SQLite API hiện có, không thêm dependency mới.\"}, \"pm_plan\": {\"assignments\": [{\"dependencies\": [], \"objective\": \"Create/list tasks + SQLite persistence (verified delivery reused)\", \"priority\": 3, \"unit\": \"create-list-persistence-v1\"}, {\"dependencies\": [\"create-list-persistence-v1\"], \"objective\": \"Edit/delete/status/search and usable web interface (verified delivery reused)\", \"priority\": 3, \"unit\": \"crud-search-web-v1\"}, {\"dependencies\": [\"crud-search-web-v1\"], \"objective\": \"Bo sung request helper, xu ly loi mang/HTTP, aria-live, loading/empty/retry, stale response avoidance va double submit protection.\", \"priority\": 1, \"unit\": \"feedback-283138e910432528\"}], \"blockers\": [], \"next_action\": \"Supervisor xac nhan va trien khai unit feedback-283138e910432528.\", \"summary\": \"Hoan thien Web UI cho Mini Task Manager: request helper, xu ly loi mang/HTTP, aria-live/role=alert, loading/empty/retry, chong stale response va double submit.\"}, \"feedback\": \"Hoan thien luong Web UI dang co cua Mini Task Manager: gom fetch vao request helper xu ly HTTP va network errors, hien thi thong bao loi de hieu (ke ca FastAPI validation detail arrays), aria-live/role=alert, loading/empty/retry states. Chan stale list responses khi doi search/filter nhanh; chi ap dung response moi nhat. Chan double submit va khoi phuc controls sau loi; giu filters/task data. Giu CRUD/status/search/SQLite API va UI hien co; khong them SaaS/dependencies. Viet focused automated checks bang code/terminal, khong browser/UAT. Neu dung Node tests thi dung private Node da co; pipeline QA phai chay cac checks nay. Preserve existing passing tests; doc exact app source, chi sua hanh vi con thieu.\"}\nDiff:\ndiff --git a/task_manager/app.py b/task_manager/app.py\nindex 6a0a44e..9291c9e 100644\n--- a/task_manager/app.py\n+++ b/task_manager/app.py\n@@ -118,149 +118,166 @@ def create_app(database_path: str = \"tasks.db\") -> FastAPI:\n \n     @app.get(\"/\", response_class=HTMLResponse)\n     def web_interface():\n-        html_content = \"\"\"<!DOCTYPE html>\n+        return HTMLResponse(content=r\"\"\"<!DOCTYPE html>\n <html lang=\"en\">\n <head>\n-    <meta charset=\"UTF-8\">\n-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n-    <title>Mini Task Manager</title>\n-    <style>\n-        body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }\n-        .error { color: red; margin-bottom: 1rem; }\n-        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid #ddd; }\n-        .task-actions button { margin-left: 0.5rem; }\n-        .controls { display: flex; gap: 1rem; margin-bottom: 1rem; }\n-    </style>\n+  <meta charset=\"UTF-8\">\n+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n+  <title>Mini Task Manager</title>\n+  <style>\n+    body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }\n+    .controls, .task-item, .task-actions { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }\n+    .controls { margin: 1rem 0; }\n+    .task-item { justify-content: space-between; padding: .6rem 0; border-bottom: 1px solid #ddd; }\n+    .task-title { overflow-wrap: anywhere; }\n+    button, input, select { padding: .5rem; }\n+    .error { color: #a01010; min-height: 1.4em; }\n+    button:disabled { opacity: .6; }\n+  </style>\n </head>\n <body>\n-    <main>\n-        <h1>Mini Task Manager</h1>\n-        <div id=\"error-box\" class=\"error\"></div>\n-        <form id=\"create-form\">\n-            <label for=\"new-title\">New Task</label>\n-            <input type=\"text\" id=\"new-title\" placeholder=\"New task title...\" required>\n-            <button type=\"submit\">Add Task</button>\n-        </form>\n-        <div class=\"controls\" style=\"margin-top: 1rem;\">\n-            <label for=\"search-q\">Search</label>\n-            <input type=\"text\" id=\"search-q\" placeholder=\"Search tasks...\">\n-            <label for=\"filter-status\">Status</label>\n-            <select id=\"filter-status\">\n-                <option value=\"\">All Statuses</option>\n-                <option value=\"todo\">Todo</option>\n-                <option value=\"in_progress\">In Progress</option>\n-                <option value=\"done\">Done</option>\n-            </select>\n-            <button id=\"search-btn\">Filter</button>\n-        </div>\n-        <div id=\"task-list\"></div>\n-    </main>\n-    <script>\n-        async function fetchTasks() {\n-            const q = document.getElementById('search-q').value;\n-            const status = document.getElementById('filter-status').value;\n-            let url = '/tasks?';\n-            if (q) url += `q=${encodeURIComponent(q)}&`;\n-            if (status) url += `status=${encodeURIComponent(status)}`;\n-            \n-            const res = await fetch(url);\n-            const tasks = await res.json();\n-            const listEl = document.getElementById('task-list');\n-            listEl.innerHTML = '';\n-            tasks.forEach(task => {\n-                const div = document.createElement('div');\n-                div.className = 'task-item';\n-                \n-                const label = document.createElement('label');\n-                label.className = 'task-title';\n-                label.textContent = task.title + ' (' + task.status + ')';\n-                div.appendChild(label);\n-\n-                const actions = document.createElement('div');\n-                actions.className = 'task-actions';\n+  <main>\n+    <h1>Mini Task Manager</h1>\n+    <div id=\"error-box\" class=\"error\" role=\"alert\" aria-live=\"assertive\"></div>\n+    <form id=\"create-form\">\n+      <label for=\"new-title\">New Task</label>\n+      <input id=\"new-title\" type=\"text\" placeholder=\"New task title...\" required>\n+      <button id=\"create-submit\" type=\"submit\">Add Task</button>\n+    </form>\n+    <div class=\"controls\">\n+      <label for=\"search-q\">Search</label><input id=\"search-q\" type=\"search\" placeholder=\"Search tasks...\">\n+      <label for=\"filter-status\">Status</label>\n+      <select id=\"filter-status\">\n+        <option value=\"\">All Statuses</option><option value=\"todo\">Todo</option>\n+        <option value=\"in_progress\">In Progress</option><option value=\"done\">Done</option>\n+      </select>\n+      <button id=\"search-btn\" type=\"button\">Filter</button>\n+      <button id=\"retry-btn\" type=\"button\" hidden>Retry loading tasks</button>\n+    </div>\n+    <p id=\"list-status\" role=\"status\" aria-live=\"polite\"></p>\n+    <div id=\"task-list\" aria-busy=\"false\"></div>\n+  </main>\n+  <script>\n+    const byId = id => document.getElementById(id);\n+    let listSequence = 0;\n+    let listController = null;\n \n-                const statusSelect = document.createElement('select');\n-                statusSelect.setAttribute('aria-label', 'Task Status');\n-                ['todo', 'in_progress', 'done'].forEach(st => {\n-                    const opt = document.createElement('option');\n-                    opt.value = st;\n-                    opt.textContent = st;\n-                    if (st === task.status) opt.selected = true;\n-                    statusSelect.appendChild(opt);\n-                });\n-                statusSelect.onchange = async () => {\n-                    const r = await fetch(`/tasks/${task.id}`, {\n-                        method: 'PATCH',\n-                        headers: {'Content-Type': 'application/json'},\n-                        body: JSON.stringify({status: statusSelect.value})\n-                    });\n-                    if (!r.ok) showError('Failed to update status');\n-                    else fetchTasks();\n-                };\n-                actions.appendChild(statusSelect);\n+    function errorMessage(data, fallback) {\n+      if (typeof data === 'string') return data || fallback;\n+      if (typeof data?.detail === 'string') return data.detail;\n+      if (Array.isArray(data?.detail)) {\n+        return data.detail.map(item => {\n+          const field = Array.isArray(item.loc) ? item.loc.filter(part => part !== 'body').join('.') : '';\n+          return (field ? field + ': ' : '') + (item.msg || 'Invalid value');\n+        }).join('; ');\n+      }\n+      return fallback;\n+    }\n \n-                const editBtn = document.createElement('button');\n-                editBtn.textContent = 'Edit';\n-                editBtn.onclick = async () => {\n-                    const newTitle = prompt('Edit task title:', task.title);\n-                    if (newTitle !== null) {\n-                        const r = await fetch(`/tasks/${task.id}`, {\n-                            method: 'PATCH',\n-                            headers: {'Content-Type': 'application/json'},\n-                            body: JSON.stringify({title: newTitle})\n-                        });\n-                        if (!r.ok) {\n-                            const err = await r.json();\n-                            showError(err.detail || 'Failed to edit');\n-                        } else {\n-                            fetchTasks();\n-                        }\n-                    }\n-                };\n-                actions.appendChild(editBtn);\n+    async function requestJson(url, options = {}) {\n+      let response;\n+      try { response = await fetch(url, options); }\n+      catch (error) {\n+        if (error.name === 'AbortError') throw error;\n+        throw new Error('Network error. Check the connection and retry. Your input has been kept.');\n+      }\n+      if (!response.ok) {\n+        let data = null;\n+        try { data = await response.json(); } catch (_) { /* HTTP error may be HTML. */ }\n+        throw new Error(errorMessage(data, 'Request failed (HTTP ' + response.status + '). Please retry.'));\n+      }\n+      if (response.status === 204) return null;\n+      try { return await response.json(); }\n+      catch (_) { throw new Error('The server returned an invalid response. Please retry.'); }\n+    }\n \n-                const delBtn = document.createElement('button');\n-                delBtn.textContent = 'Delete';\n-                delBtn.onclick = async () => {\n-                    const r = await fetch(`/tasks/${task.id}`, {method: 'DELETE'});\n-                    if (!r.ok) showError('Failed to delete');\n-                    else fetchTasks();\n-                };\n-                actions.appendChild(delBtn);\n+    function showError(message) { byId('error-box').textContent = message || ''; }\n \n-                div.appendChild(actions);\n-                listEl.appendChild(div);\n-            });\n-        }\n+    async function withBusy(control, action) {\n+      if (control.disabled) return;\n+      control.disabled = true;\n+      showError('');\n+      try { await action(); await fetchTasks(); }\n+      catch (error) { showError(error.message); }\n+      finally { control.disabled = false; }\n+    }\n \n-        function showError(msg) {\n-            document.getElementById('error-box').textContent = msg;\n-        }\n-\n-        document.getElementById('create-form').onsubmit = async (e) => {\n-            e.preventDefault();\n-            showError('');\n-            const title = document.getElementById('new-title').value;\n-            const r = await fetch('/tasks', {\n-                method: 'POST',\n-                headers: {'Content-Type': 'application/json'},\n-                body: JSON.stringify({title})\n-            });\n-            if (!r.ok) {\n-                const err = await r.json();\n-                showError(err.detail || 'Failed to create');\n-            } else {\n-                document.getElementById('new-title').value = '';\n-                fetchTasks();\n-            }\n+    function renderTasks(tasks) {\n+      const list = byId('task-list');\n+      list.textContent = '';\n+      tasks.forEach(task => {\n+        const row = document.createElement('div'); row.className = 'task-item';\n+        const title = document.createElement('span'); title.className = 'task-title';\n+        title.textContent = task.title + ' (' + task.status + ')'; row.appendChild(title);\n+        const actions = document.createElement('div'); actions.className = 'task-actions';\n+        const status = document.createElement('select');\n+        status.setAttribute('aria-label', 'Task Status: ' + task.title);\n+        ['todo', 'in_progress', 'done'].forEach(value => {\n+          const option = document.createElement('option'); option.value = value; option.textContent = value;\n+          option.selected = value === task.status; status.appendChild(option);\n+        });\n+        status.value = task.status;\n+        status.onchange = () => withBusy(status, async () => {\n+          try {\n+            await requestJson('/tasks/' + task.id, {method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({status: status.value})});\n+          } catch (error) { status.value = task.status; throw error; }\n+        });\n+        actions.appendChild(status);\n+        const edit = document.createElement('button'); edit.type = 'button'; edit.textContent = 'Edit';\n+        edit.onclick = () => {\n+          const title = prompt('Edit task title:', task.title);\n+          if (title !== null) return withBusy(edit, () => requestJson('/tasks/' + task.id, {method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({title})}));\n         };\n+        actions.appendChild(edit);\n+        const remove = document.createElement('button'); remove.type = 'button'; remove.textContent = 'Delete';\n+        remove.onclick = () => withBusy(remove, () => requestJson('/tasks/' + task.id, {method: 'DELETE'}));\n+        actions.appendChild(remove); row.appendChild(actions); list.appendChild(row);\n+      });\n+    }\n+\n+    async function fetchTasks() {\n+      const sequence = ++listSequence;\n+      if (listController) listController.abort();\n+      listController = new AbortController();\n+      const signal = listController.signal;\n+      const query = new URLSearchParams();\n+      if (byId('search-q').value) query.set('q', byId('search-q').value);\n+      if (byId('filter-status').value) query.set('status', byId('filter-status').value);\n+      byId('task-list').setAttribute('aria-busy', 'true');\n+      byId('list-status').textContent = 'Loading tasks...';\n+      byId('retry-btn').hidden = true;\n+      showError('');\n+      try {\n+        const tasks = await requestJson('/tasks?' + query.toString(), {signal});\n+        if (sequence !== listSequence) return;\n+        if (!Array.isArray(tasks)) throw new Error('The task list response is invalid. Please retry.');\n+        renderTasks(tasks);\n+        byId('list-status').textContent = tasks.length ? tasks.length + ' task(s)' : 'No tasks match your filters.';\n+      } catch (error) {\n+        if (sequence !== listSequence || error.name === 'AbortError') return;\n+        showError(error.message);\n+        byId('list-status').textContent = 'Unable to refresh tasks. Previously loaded data is kept.';\n+        byId('retry-btn').hidden = false;\n+      } finally {\n+        if (sequence === listSequence) byId('task-list').setAttribute('aria-busy', 'false');\n+      }\n+    }\n \n-        document.getElementById('search-btn').onclick = fetchTasks;\n-        fetchTasks();\n-    </script>\n+    byId('create-form').onsubmit = event => {\n+      event.preventDefault();\n+      return withBusy(byId('create-submit'), async () => {\n+        await requestJson('/tasks', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({title: byId('new-title').value})});\n+        byId('new-title').value = '';\n+      });\n+    };\n+    byId('search-btn').onclick = fetchTasks;\n+    byId('retry-btn').onclick = fetchTasks;\n+    byId('search-q').oninput = fetchTasks;\n+    byId('filter-status').onchange = fetchTasks;\n+    fetchTasks();\n+  </script>\n </body>\n </html>\n-\"\"\"\n-        return HTMLResponse(content=html_content)\n+\"\"\")\n \n     return app\ndiff --git a/tests/test_web_ui.py b/tests/test_web_ui.py\nnew file mode 100644\nindex 0000000..15d368b\n--- /dev/null\n+++ b/tests/test_web_ui.py\n@@ -0,0 +1,95 @@\n+\"\"\"Exercise the actual served script with Node's VM; no browser or extra packages.\"\"\"\n+import json\n+import os\n+import re\n+import shutil\n+import subprocess\n+\n+import pytest\n+from fastapi.testclient import TestClient\n+from task_manager.app import create_app\n+\n+\n+def html(tmp_path):\n+    with TestClient(create_app(str(tmp_path / 'web.sqlite'))) as client:\n+        return client.get('/').text\n+\n+\n+def test_web_ui_html_structure(tmp_path):\n+    content=html(tmp_path)\n+    assert '<main>' in content\n+    assert 'role=\"alert\"' in content and 'aria-live=\"polite\"' in content\n+    assert 'aria-busy=' in content and 'id=\"retry-btn\"' in content\n+    assert 'for=\"new-title\"' in content\n+\n+\n+def test_actual_web_script_async_behaviors(tmp_path):\n+    node=os.environ.get('NODE_BINARY') or shutil.which('node')\n+    if not node:pytest.skip('Node needed for JavaScript-only unit checks')\n+    script=re.search(r'<script>(.*?)</script>',html(tmp_path),re.S).group(1)\n+    harness=r'''\n+const vm=require('node:vm'), assert=require('node:assert/strict');\n+const input=JSON.parse(require('node:fs').readFileSync(0,'utf8'));\n+class Element {\n+  constructor(){this.value='';this.children=[];this.disabled=false;this.hidden=false;this.attrs={};this._text='';}\n+  set textContent(value){this._text=value;this.children=[];}\n+  get textContent(){return this._text+this.children.map(c=>c.textContent).join('');}\n+  appendChild(child){this.children.push(child);return child;}\n+  setAttribute(key,value){this.attrs[key]=value;}\n+}\n+const elements=new Map();\n+const document={getElementById(id){if(!elements.has(id))elements.set(id,new Element());return elements.get(id);},createElement(){return new Element();}};\n+const response=(data,status=200)=>({ok:status>=200&&status<300,status,json:async()=>data});\n+const context=vm.createContext({document,AbortController,URLSearchParams,fetch:async()=>response([]),prompt:()=>null});\n+const flush=()=>new Promise(resolve=>setImmediate(resolve));\n+(async()=>{\n+  vm.runInContext(input.script,context);await flush();await flush();\n+  assert.equal(typeof context.requestJson,'function');\n+  assert.match(document.getElementById('list-status').textContent,/No tasks/);\n+  context.fetch=async()=>{throw Error('offline');};\n+  await context.fetchTasks();\n+  assert.match(document.getElementById('error-box').textContent,/Network/);\n+  assert.equal(document.getElementById('retry-btn').hidden,false);\n+  assert.equal(document.getElementById('task-list').attrs['aria-busy'],'false');\n+  context.fetch=async()=>response({detail:[{loc:['body','title'],msg:'field required'}]},422);\n+  await assert.rejects(context.requestJson('/tasks'),/title: field required/);\n+  context.fetch=async()=>({ok:false,status:500,json:async()=>{throw Error('html');}});\n+  await assert.rejects(context.requestJson('/tasks'),/HTTP 500/);\n+  context.fetch=async()=>({ok:true,status:204,json:async()=>{throw Error('must not parse');}});\n+  assert.equal(await context.requestJson('/tasks/1',{method:'DELETE'}),null);\n+  let pending=[];\n+  context.fetch=()=>new Promise(resolve=>pending.push(resolve));\n+  document.getElementById('search-q').value='old';const old=context.fetchTasks();\n+  document.getElementById('search-q').value='new';const newest=context.fetchTasks();\n+  pending[1](response([{id:2,title:'Newest',status:'todo'}]));await newest;\n+  pending[0](response([{id:1,title:'Obsolete',status:'todo'}]));await old;\n+  assert.match(document.getElementById('task-list').textContent,/Newest/);\n+  assert.doesNotMatch(document.getElementById('task-list').textContent,/Obsolete/);\n+  let posted=0,resolvePost;\n+  context.fetch=async(url,options={})=>{\n+    if(options.method==='POST'){posted++;return new Promise(resolve=>resolvePost=resolve);}\n+    return response([]);\n+  };\n+  document.getElementById('new-title').value='Saved once';\n+  const event={preventDefault(){}};\n+  const first=document.getElementById('create-form').onsubmit(event);\n+  const duplicate=document.getElementById('create-form').onsubmit(event);\n+  assert.equal(posted,1);assert.equal(document.getElementById('create-submit').disabled,true);\n+  resolvePost(response({id:3,title:'Saved once',status:'todo'},201));await first;await duplicate;\n+  assert.equal(document.getElementById('create-submit').disabled,false);\n+  assert.equal(document.getElementById('new-title').value,'');\n+  document.getElementById('new-title').value='Keep my input';\n+  context.fetch=async()=>{throw Error('offline');};\n+  await document.getElementById('create-form').onsubmit(event);\n+  assert.equal(document.getElementById('new-title').value,'Keep my input');\n+  assert.equal(document.getElementById('create-submit').disabled,false);\n+  assert.match(document.getElementById('error-box').textContent,/Network/);\n+  context.fetch=async()=>response([{id:4,title:'<img src=x onerror=evil()>',status:'todo'}]);\n+  await context.fetchTasks();\n+  assert.match(document.getElementById('task-list').textContent,/<img/);\n+  console.log('actual script: network/HTTP/validation/204/stale/double-submit/recovery/textContent PASS');\n+})().catch(error=>{console.error(error);process.exitCode=1;});\n+'''\n+    result=subprocess.run([node,'-e',harness],input=json.dumps({'script':script}),text=True,capture_output=True,timeout=20)\n+    assert result.returncode==0,result.stdout+result.stderr\n+    assert 'actual script:' in result.stdout",
+      "finalAssistantVisibleText": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"e77bdd84c4fea006085db3ae3fcd4d87c09e20b542035ade2b573cdb7dc38d2b\",\n  \"findings\": []\n}\n```",
+      "finalAssistantRawText": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"e77bdd84c4fea006085db3ae3fcd4d87c09e20b542035ade2b573cdb7dc38d2b\",\n  \"findings\": []\n}\n```",
+      "replayInvalid": false,
+      "livenessState": "working",
+      "stopReason": "stop",
+      "executionTrace": {
+        "winnerProvider": "google",
+        "winnerModel": "gemini-3.5-flash-lite",
+        "attempts": [
+          {
+            "provider": "google",
+            "model": "gemini-3.5-flash-lite",
+            "result": "success",
+            "stage": "assistant"
+          }
+        ],
+        "fallbackUsed": false,
+        "runner": "embedded"
+      },
+      "requestShaping": {
+        "thinking": "off"
+      },
+      "completion": {
+        "stopReason": "stop",
+        "finishReason": "stop"
+      },
+      "terminalReply": {
+        "disposition": "visible",
+        "text": "```json\n{\n  \"verdict\": \"PASS\",\n  \"revision\": \"e77bdd84c4fea006085db3ae3fcd4d87c09e20b542035ade2b573cdb7dc38d2b\",\n  \"findings\": []\n}\n```"
+      }
+    },
+    "sourceReplyDeliveryState": "missing"
+  }
+}

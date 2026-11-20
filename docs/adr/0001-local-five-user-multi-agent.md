@@ -1,0 +1,13 @@
+# ADR-0001 — Local single-host Multi-Agent cho năm người
+
+**Cập nhật scope đã được owner chốt15Oct:** Quick Tunnel được phép public HTTPS chỉ OpenProject native login; Gateway/DB/n8n vẫn private, link hiện tại tại localhost18090. Điều này thay giới hạn no-tunnel cũ bên dưới, không thay free-only/native gates/main approval.16Oct P00–P03gatesPASS; n8n owner/workflow quyết định riêng tại ADR-0002. Các mô tả runtime/LAN thiếu kiểm chứng bên dưới là trạng thái lịch sử khi lập ADR.
+
+Ngày 15/10/2026, theo scope được chủ dự án yêu cầu: mở rộng OpenProject/Gateway hiện có trên Windows/Docker Desktop/WSL2 cho đúng năm business identities PM/BA/BE/FE/QA trong cùng trusted LAN. Giữ Postgres nghiệp vụ và SQLite gateway, triển khai Supervisor/role agents tối giản, n8n Community một owner editor localhost và FTS/ACL nội bộ; lựa chọn này giảm vận hành và chi phí so với cloud/distributed stack.
+
+Sau provision, thao tác hằng ngày là người dùng **mở Docker Desktop thủ công**, các container trước đó đang chạy tự phục hồi bằng `unless-stopped` và persistent volumes/private credentials. Container dừng thủ công có repair riêng; Google outage/quota không được báo READY giả. Không tạo Windows boot/logon autorun hoặc Task Scheduler. Google AI Pro không tăng quota API; chỉ Gemini API Free Tier đã kiểm chứng, zero incremental spend, không billing/credit/prepay/paid fallback. Không VPS/WAN/tunnel, GitHub Research, HA/Kubernetes hoặc code-deploy business agent.
+
+Giữ nguyên năm tài khoản, dữ liệu, signed bridge, native RBAC PM-only-write, reviewer independence, consent/proposals, idempotency/readback và private audit. Main project5 và staging project3 là hai deployment riêng; promotion chỉ sau qualification/restore và owner approval. n8n machine chỉ đọc, không nhận PM/admin token hoặc Docker socket. Nội dung mật/PII chỉ được gửi provider sau privacy review; khi chưa đủ điều kiện dùng deterministic local.
+
+P00 đã chứng minh backup/restore dữ liệu cách ly, source-image parity và native role matrix; chưa chứng minh hệ thống multi-agent hoàn chỉnh. License n8n phải giữ đúng internal-use/Sustainable Use; eligibility Docker Desktop theo tổ chức cần chủ máy xác nhận (cá nhân/học tập hoặc doanh nghiệp thỏa cả hai ngưỡng). Chỉ triển khai component miễn phí đủ điều kiện; xác nhận license còn thiếu không được suy từ số năm người dùng. LAN hiện Public profile, HTTPS/trust năm thiết bị chưa sẵn sàng. Evidence và blockers ở `docs/ai-multi-agent-upgrade/PROJECT_STATE.md`.
+
+Chủ máy đã xác nhận **Cá nhân / học tập** trong chat ngày15/10/2026, đóng phần Docker Desktop free eligibility. ADR accepted trong scope này; các gate runtime/LAN/provider/privacy/release vẫn phải kiểm thử riêng.

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "source_hashes": {
+    "openproject/ai/core/overlay/app/controllers/qldapm_ai_controller.rb": "9d4213ecd4eae296148cf0c7fad76a5c045ed3c2097384d30850ba3c2cbb0b3a",
+    "openproject/ai/core/overlay/app/services/qldapm/ai_bridge.rb": "d08ba7d74bdb844deabc5c32204b02e10fea7340c5c5cfa3260d7807ff5b42d2"
+  },
+  "checks": {
+    "adapter": true,
+    "fixture_browser": true,
+    "regressions": true,
+    "immutable_core": true
+  },
+  "evidence": {
+    "scope": "Only bridge/controller admission+RetryAfter; UI/Gateway same qualified serving bases",
+    "contracts": {
+      "admission-unit": "Run options: --seed 50713\n\n# Running:\n\n.\n\nFinished in 0.314977s, 3.1748 runs/s, 12.6994 assertions/s.\n\n1 runs, 4 assertions, 0 failures, 0 errors, 0 skips",
+      "puma-callback": "{\"scope\":\"ISOLATED PUMA CALLBACK COMPONENT, NO MAIN DATA\",\"threads\":4,\"concurrent_bridge_requests\":4,\"statuses\":[200,200,429,429],\"total_ms\":203.25}",
+      "cc-ack": "PASS actual Core renderer: immediate command receipt independent of slow full-status refresh\nPASS partial render handles absent/invalid index timestamps with controller constant shadowing",
+      "report-contract": "PASS report controller success, forbidden and unavailable status contracts; no GUI"
+    },
+    "prior_ui": "candidate-browser.json; actual Main host/API; final asset image16c472 deployed",
+    "puma_baseline": "4 bridge requests /4threads ->4HTTP503 in1222ms on prior16c472; candidate2HTTP200+2HTTP429 in~181ms"
+  }
+}

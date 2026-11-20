@@ -1,0 +1,87 @@
+[
+  {
+    "name": "/qldapm-ai-gateway-1",
+    "id": "b3a46ef39a6e6453e768d806a7246f9e2ed58e295955779a46c71c2208557a70",
+    "image": "sha256:fcb44c49afb99efd85b4a00297a58e7c5a59d36ab2f2b78e15a6a6d135f5e93e",
+    "tag": "qldapm-ai:engineering-continuation-r24-20261031",
+    "started": "2026-11-01T03:52:41.817613493Z",
+    "health": "healthy",
+    "mounts": [
+      {
+        "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/workspaces",
+        "destination": "/workspaces",
+        "rw": true
+      },
+      {
+        "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/gemini-main/free-tier-proof.json",
+        "destination": "/qldapm-policy/free-tier-proof.json",
+        "rw": false
+      },
+      {
+        "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway",
+        "destination": "/state",
+        "rw": true
+      }
+    ]
+  },
+  {
+    "name": "/qldapm-openproject-web-1",
+    "id": "7bdf5d2eff8c8c3e1dcd72fef4058252789ccc8668930f59984b46c500adebea",
+    "image": "sha256:a4fa8150728bc5fc50f8afed22fce898cc52065a55ff0fdb53b803a81d9e1c6b",
+    "tag": "qldapm-core:engineering-continuation-r24-20261031",
+    "started": "2026-11-01T03:52:41.838758628Z",
+    "health": "healthy",
+    "mounts": [
+      {
+        "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/operator/test-receipt.key",
+        "destination": "/qldapm-ui/test-receipt.key",
+        "rw": false
+      },
+      {
+        "source": "C:/Users/LUIM/AppData/Local/QLDAPM/openproject-ai/gateway/ui.key",
+        "destination": "/qldapm-ui/ui.key",
+        "rw": false
+      },
+      {
+        "source": "/var/lib/docker/volumes/qldapm-openproject_opdata/_data",
+        "destination": "/var/openproject/assets",
+        "rw": true
+      },
+      {
+        "source": "/run/desktop/mnt/host/d/AI project/QLDAPM chat/openproject/scripts",
+        "destination": "/qldapm",
+        "rw": false
+      }
+    ]
+  },
+  {
+    "name": "/qldapm-n8n-main",
+    "id": "cbcbcf0c01e33bb7e02b1c2fd5d0af873b945b131606509a718726fae2542d46",
+    "image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+    "tag": "docker.n8n.io/n8nio/n8n:2.43.6",
+    "started": "2026-11-01T03:52:41.280344047Z",
+    "health": null,
+    "mounts": [
+      {
+        "source": "/var/lib/docker/volumes/qldapm-n8n-main-data/_data",
+        "destination": "/home/node/.n8n",
+        "rw": true
+      }
+    ]
+  },
+  {
+    "name": "/qldapm-openproject-db-1",
+    "id": "7a46baa501f1555b1e6ea0601245ed195f802f24b2e8289f8913d8397cbe7c71",
+    "image": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+    "tag": "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+    "started": "2026-11-01T03:52:41.755553414Z",
+    "health": "healthy",
+    "mounts": [
+      {
+        "source": "/var/lib/docker/volumes/qldapm-openproject_pgdata/_data",
+        "destination": "/var/lib/postgresql/data",
+        "rw": true
+      }
+    ]
+  }
+]

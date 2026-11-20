@@ -1,0 +1,418 @@
+{
+  "observed_utc": "2026-11-03T13:28:22.087943+00:00",
+  "environment": "MAIN",
+  "source": "published workflow_history activeVersionId, read-only SQLite",
+  "workflow_count": 16,
+  "workflows": [
+    {
+      "id": "X2O2QdPY6QLOrWqL",
+      "name": "WF01: Local Document Ingestion",
+      "active": 1,
+      "activeVersionId": "d06adbd1-3587-424a-bffd-69f999bc9555",
+      "nodes_sha256": "c05424654e97f336e37236a6a20a8aaad87844a232885bae198d952d8a97ece7",
+      "connections_sha256": "c69195a6eec583201cb4a14dde071e8540d4ee2616fe2b8062e0772b48f96cff",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-ingest",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+      ],
+      "human_project6_scope_in_source": true
+    },
+    {
+      "id": "Anl8LNdN4NNTKRpe",
+      "name": "WF02: OpenProject Event Sync",
+      "active": 1,
+      "activeVersionId": "a6590c2d-23fe-49fc-bdb0-49179cecd309",
+      "nodes_sha256": "144e6999ee4050e783e214d599d79e533964fecfb88813a6b48dbacd5457e034",
+      "connections_sha256": "4d24df971c365cd4fae61dfd5d055ace2b81203b7713ec66da889b045801205c",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-op-sync",
+          "rule": null
+        },
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-integration-wf02",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "XoP4M520TMG3WgeY",
+      "name": "WF03: Natural Language Request Orchestrator",
+      "active": 1,
+      "activeVersionId": "9af87910-b23c-4bcb-9589-4b09e614d3cf",
+      "nodes_sha256": "6a6c102a37418da168525a594c694bd0bd9acc2968f6b27673e5fefc2c3d91eb",
+      "connections_sha256": "7109c3d9f0ad8297cd641e8a8a7f7c551950d4cc810a06c79bdecaf81a9e57aa",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-agent-request",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "elfapV5D2PTnLiHW",
+      "name": "WF04: Multi-Agent Execution Tracking",
+      "active": 1,
+      "activeVersionId": "7b409c28-5271-4d69-98f9-c55100b3c871",
+      "nodes_sha256": "c84589874651f5c503cd15961fe9d444a00bcd5ef49a1ff8348ff3186dc3ddad",
+      "connections_sha256": "7d69a4ece162181c439b724a74b31a7057d19a9eff4d3f049e27a9c1a7f280dc",
+      "settings_sha256": "303254b9c9ed389dc159601243eff4f40f968adb1fc66a687f2d02259935ca64",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-lifecycle",
+          "rule": null
+        },
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-integration-wf04",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event",
+        "http://qldapm-ai-gateway-1:8090/internal/automation/lifecycle-observation"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "xCZFw45fmDQG5gNq",
+      "name": "WF05: Native API Approval Workflow",
+      "active": 1,
+      "activeVersionId": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8",
+      "nodes_sha256": "9a75d377551b820105b5ab75d11afe4a3e8d4e13af931e655b5ba6b4e1e07f96",
+      "connections_sha256": "e1d7d19bfa4a50a36b96e5ca4c625ab0e9d93ad27183eab6bde5bed99f5f5f02",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-approval",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "=http://qldapm-ai-gateway-1:8090/api/v1/proposals/{{ ($json.body && $json.body.proposal_id) || $json.proposal_id }}"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "Jq18aFSqfuUybEic",
+      "name": "WF06: Native API Execution & Verification",
+      "active": 1,
+      "activeVersionId": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c",
+      "nodes_sha256": "9cb678bd181bca1ee4dcd0d2f18615bebff04e0881bf08aa2d3c3de26322099c",
+      "connections_sha256": "76b567c84d6a30dc520e2a6589a2890c1973e3af7bc253b0fdb1dfe2b5c57ce5",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-execute-mutation",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "=http://qldapm-ai-gateway-1:8090/api/v1/proposals/{{ /^[0-9a-f-]{36}$/i.test($json.body?.proposal_id || '') ? $json.body.proposal_id : 'invalid' }}/decision"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "BpCQrGR866vg4BqQ",
+      "name": "WF07: Daily Project Brief",
+      "active": 1,
+      "activeVersionId": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+      "nodes_sha256": "e6befd6a14fb879dc61996aa9fb592dc2f037469cc2e49cc9fcb8a66fa9daeda",
+      "connections_sha256": "956edf8b2b5a1e9adbf163431cd5573d03808fb3ac66948aceb38c0eb09e457c",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-daily-brief",
+          "rule": null
+        },
+        {
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "path": null,
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 0 8 * * *"
+              }
+            ]
+          }
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/internal/automation/commands"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "RXWjVUL8ozqhjY4w",
+      "name": "WF08: Sprint Risk",
+      "active": 1,
+      "activeVersionId": "830871f2-9ac5-487f-b4de-b2e0922e9e36",
+      "nodes_sha256": "f1dd57e62ae5ecd282887d79fbbbfc065b376db3245a4a4ec3ad727a1e4e4fa3",
+      "connections_sha256": "ae6a0c4abe2a8a8a8f5f4e610d1bdd0bd31a7d82c11d482f6a7d6f08e299a716",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-sprint-risk",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "tOyBIPw6sGjgzjtU",
+      "name": "WF09: Bug Lifecycle Automation",
+      "active": 1,
+      "activeVersionId": "56995a8f-14dd-41be-835f-24045297c7ea",
+      "nodes_sha256": "b00f71adfff7e3e3e3c2f5397150c21927d31573ebb1f8bde94ec48c0c33232e",
+      "connections_sha256": "5993aefb12a32668e5d0b216f775090f8ee286399d6dcda6f88561a27e91a288",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-bug-lifecycle",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "tOY7QUa9SrWPOe9e",
+      "name": "WF10: Task Orchestration & Decomposition",
+      "active": 1,
+      "activeVersionId": "142d0a0d-0c12-4b6d-b1f5-c91033fc854e",
+      "nodes_sha256": "b48338b9cb123e39640bfe2c6219e1d15c82480fa9b3bc0a3aa55d999387065f",
+      "connections_sha256": "6130dd0e54c52400d840643fc5fedfe6db07269ce064a16a90eb77226aa377c8",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-task-orchestration",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "LeRVT3LWNBkJ2iz3",
+      "name": "WF11: QA Gate Transition",
+      "active": 1,
+      "activeVersionId": "cf9b7590-f6b1-44ea-8740-0bb48049c261",
+      "nodes_sha256": "28b7a6ecf4a1101c0f5b7940711c64517c2669d6fe9d123775110de47c9efcb2",
+      "connections_sha256": "b972f0be34cbf04d417fe289556ffcafa0bf176f138708189f6c593481da850f",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-qa-gate",
+          "rule": null
+        },
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-integration-wf11",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "={{ $json.qa_decision ? \"http://qldapm-ai-gateway-1:8090/api/v1/qa-evidence/\" + $json.evidence_id + '/decision' : \"http://qldapm-ai-gateway-1:8090/api/v1/commands\" }}",
+        "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "name": "WF12: Weekly Summary",
+      "active": 1,
+      "activeVersionId": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+      "nodes_sha256": "00f588d90551ba9f7a70f145ee28a60dfcb4c1bc6c5d3687d7bac443fae751e4",
+      "connections_sha256": "640015adef69ebb380ca27cba5ded9b6c56ecb1b7d5f141e0665a60d16ce4054",
+      "settings_sha256": "d9abcc76fabf282808f9af6f2d95c8d11b752e5018aeda3443fc458b383bd0ee",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-weekly-summary",
+          "rule": null
+        },
+        {
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "path": null,
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 0 17 * * 5"
+              }
+            ]
+          }
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "http://qldapm-ai-gateway-1:8090/internal/automation/commands"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "2tr0jpqaaAiq9IOU",
+      "name": "WF13: Second Brain RAG Re-indexing",
+      "active": 1,
+      "activeVersionId": "0243c9f0-b9d4-465b-b90b-c0f27efd9ebe",
+      "nodes_sha256": "3886acb3329c344c8680b30d299fa29ff663ea8e74ff9738a1a9b161d30741ed",
+      "connections_sha256": "b07d7e0b6960b0cb3e5dc9341d8fe4ab3317578f7085858334f1fc7bd60237f9",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-rag-reindex",
+          "rule": null
+        },
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-integration-wf13",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "={{ $json.feedback_decision ? \"http://qldapm-ai-gateway-1:8090/api/v1/knowledge-feedback/\" + $json.feedback_id + '/decision' : \"http://qldapm-ai-gateway-1:8090/api/v1/commands\" }}",
+        "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "8ycOUQy9gtT60nkN",
+      "name": "WF14: Durable RAG Recovery",
+      "active": 1,
+      "activeVersionId": "cfa65447-b5b9-48fb-8d51-a8469820a650",
+      "nodes_sha256": "74a2a88eccdc6b33d48bd7efe5366d3ae08ab9d1f18734d77dac99eef77b567b",
+      "connections_sha256": "34cbd339ec1e9c7856de4c942080149528bc6893162475f6718ab51b1de54148",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-error-handler",
+          "rule": null
+        },
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-integration-wf14",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "NLugfE3U8dBS88Wg",
+      "name": "WF15: Reconciliation & Drift Detection",
+      "active": 1,
+      "activeVersionId": "dde4ea90-39ea-4e8b-803c-a968b4766c39",
+      "nodes_sha256": "2fc539dee741b24fffeafc16e8c0b5e27eba5850f7ab65b3806e1f515cf274c9",
+      "connections_sha256": "f079c1c56af61f5324b93bcb3515b3a7e442e5b43fafb9a8bff31420163d7668",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-reconciliation",
+          "rule": null
+        },
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-integration-wf15",
+          "rule": null
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/api/v1/commands",
+        "http://qldapm-ai-gateway-1:8090/internal/automation/integration-event"
+      ],
+      "human_project6_scope_in_source": false
+    },
+    {
+      "id": "5FRYNPSot18UDpKa",
+      "name": "WF16: Main Health Monitoring",
+      "active": 1,
+      "activeVersionId": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "nodes_sha256": "c284a438e2ba1d1e448221bd6920822f0176955bda24a5286455a1f651f9ecfb",
+      "connections_sha256": "93f6a6893cf9a6640c8598e061f0ed0f1114f72ee91ac75286de961fefb3382d",
+      "settings_sha256": "e32f7d4cdacf072822e1933e7d8934e3545c07b0c68cca58465133d6c77c0777",
+      "timezone": "Asia/Bangkok",
+      "triggers": [
+        {
+          "type": "n8n-nodes-base.webhook",
+          "path": "qldapm-monitoring",
+          "rule": null
+        },
+        {
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "path": null,
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 */15 * * * *"
+              }
+            ]
+          }
+        }
+      ],
+      "gateway_endpoints": [
+        "http://qldapm-ai-gateway-1:8090/internal/automation/monitor"
+      ],
+      "human_project6_scope_in_source": false
+    }
+  ],
+  "private_published_backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\final-completion-n8n\\published-before.json"
+}

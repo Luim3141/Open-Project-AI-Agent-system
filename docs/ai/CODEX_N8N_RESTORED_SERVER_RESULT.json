@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-26T03:28:27.468621+00:00",
+  "status": "PASS_ACTUAL_ISOLATED_N8N_RESTORED_SERVER_AUTH_AND_DATA",
+  "restored_server": {
+    "workflow_ids": [
+      "2tr0jpqaaAiq9IOU",
+      "5FRYNPSot18UDpKa",
+      "8ycOUQy9gtT60nkN",
+      "Anl8LNdN4NNTKRpe",
+      "BpCQrGR866vg4BqQ",
+      "Jq18aFSqfuUybEic",
+      "LeRVT3LWNBkJ2iz3",
+      "NLugfE3U8dBS88Wg",
+      "RXWjVUL8ozqhjY4w",
+      "X2O2QdPY6QLOrWqL",
+      "XoP4M520TMG3WgeY",
+      "ZkgS8RZbPRA2zbhQ",
+      "elfapV5D2PTnLiHW",
+      "tOY7QUa9SrWPOe9e",
+      "tOyBIPw6sGjgzjtU",
+      "xCZFw45fmDQG5gNq"
+    ],
+    "credential_ids": [
+      "2w9dSdmYbywZDuMB",
+      "DBWkxwb2izrbu17C",
+      "qldapmCommandHmac",
+      "qldapmMachineStatus"
+    ],
+    "active_workflows": 0,
+    "health_http": 200,
+    "readiness_http": 200,
+    "unauthenticated_workflows_http": 401,
+    "workflow_rows_unchanged": true,
+    "execution_rows_unchanged": true,
+    "users_unchanged": true,
+    "credential_rows_unchanged": true
+  },
+  "n8n_image": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+  "backup_files_unchanged": {
+    "n8n.sqlite": "ca19d3646b9781c7b19ff58fab1da9ae7a1426d57f947838deb6e812ea313f9a",
+    "n8n-config": "daa27645048a0d777dd327fbdc8e5c2106686dacba1e30787a6b6575f94fcb15",
+    "n8n-key.json": "37454c36d59fb99bc032cd697bf1df346d16faf63464c1f5bdcb9f1e2554d5ca",
+    "assets.tar": "b8f140d3cc4fd164bc600f92dbdbe865b5b333248fa50c6777e873661f960071"
+  },
+  "main_ten_container_identity_image_start_unchanged": true,
+  "main_native_writes": 0,
+  "main_workflow_changes": 0,
+  "external_sends": 0,
+  "staging_operations": false,
+  "tests": "9 host-only operations/auxiliary checks PASS",
+  "official_source": "https://docs.n8n.io/hosting/logging-monitoring/monitoring/",
+  "limits": [
+    "Network none, no ports, no Main volume mounted; all copied workflow active/activeVersionId fields suppressed before start",
+    "Restores exact backup workflow/credential IDs, not claiming current Main workflow versions",
+    "Auth boundary is unauthenticated401; no owner cookie/password login attempted",
+    "No restored workflow execution, Main outage/cold-start, cross-service atomic DR or Qdrant restore"
+  ]
+}

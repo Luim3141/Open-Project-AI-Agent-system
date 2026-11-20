@@ -1,0 +1,49 @@
+{
+  "query": "What exact coffee budget on Mars is documented by ORBIT-RECEIPT-20261103?",
+  "checks": {
+    "http": true,
+    "actual_model_abstention": false,
+    "exact_model": false
+  },
+  "packet": {
+    "result": {
+      "answerability": {
+        "state": "ABSTAIN_PROVIDER",
+        "reason": "Chưa tạo được câu trả lời trong policy/quota hiện hành; các nguồn truy hồi không tự chứng minh câu trả lời."
+      },
+      "answer": null,
+      "reason_code": "GEMINI_UPSTREAM_REJECTED",
+      "retrieval_state": "READY",
+      "search_status": "RESULTS",
+      "mode": "answer",
+      "model_used": true,
+      "generation": {
+        "model_calls": 1,
+        "http_attempts": 2
+      },
+      "items": [
+        {
+          "title": "Project6 Integration Qualification",
+          "snippet": "...# Project6 controlled integration qualification fixture\nThis local test document verifies pinned source ingestion, search and citati...",
+          "document_id": "b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74",
+          "source_id": "file:project6-integration-qualification",
+          "score": 27.067283634863934,
+          "match_type": "FTS_BM25",
+          "project_id": 6,
+          "passage": "# Project6 controlled integration qualification fixture\nThis local test document verifies pinned source ingestion, search and citation through WF01.\nThe Project6 qualification marker is ORBIT-RECEIPT-20261103.\nThis fixture does not certify semantic retrieval quality or Owner acceptance.",
+          "chunk_index": 0,
+          "chunk_hash": "bbb9bee3cf07bc7f6e73c670ccca8add51f8f6f3ceaf16be3587fac725ff42c7",
+          "retrieval_reference": "b1942a877fdf104e754ab393e2c5aa045b132726d91a58b6e0719055b5a80f74:0:bbb9bee3cf07bc7f6e73c670ccca8add51f8f6f3ceaf16be3587fac725ff42c7",
+          "source_sha256": "c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901",
+          "file_name": "project6-integration-qualification.md",
+          "citation": "file:project6-integration-qualification#sha256=c48bfa4826cdf746703c64aab06177146a7ed7ade1aa59d767554a3e40388901"
+        }
+      ],
+      "store": "SQLite FTS5 + Qdrant/BGE-M3 (lexical fallback)",
+      "dense_state": "READY",
+      "source_errors": [],
+      "scope": "native visibility/version + registered source pins before retrieval, fresh ACL/version after retrieval and generation"
+    },
+    "correlation_id": "98cd8220-91df-44c1-93f6-7772eae27b46"
+  }
+}

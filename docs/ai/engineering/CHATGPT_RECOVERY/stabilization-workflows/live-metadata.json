@@ -1,0 +1,827 @@
+{
+  "snapshotUtc": "2026-11-01T16:43:42.768Z",
+  "route": "SQLite OPEN_READONLY; metadata and allowlisted published node fields only",
+  "workflows": [
+    {
+      "id": "X2O2QdPY6QLOrWqL",
+      "name": "WF01: Local Document Ingestion",
+      "active": 1,
+      "activeVersionId": "c7409a2f-c90b-4715-a24f-66ee3234af28",
+      "versionId": "c7409a2f-c90b-4715-a24f-66ee3234af28",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2612,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 16:16:30.422",
+        "stoppedAt": "2026-10-28 16:16:31.540",
+        "workflowVersionId": "c7409a2f-c90b-4715-a24f-66ee3234af28"
+      },
+      "nodes": [
+        {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-ingest"
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "Anl8LNdN4NNTKRpe",
+      "name": "WF02: OpenProject Event Sync",
+      "active": 1,
+      "activeVersionId": "95f5fbd7-f849-4a4a-9467-4fe8348b6387",
+      "versionId": "95f5fbd7-f849-4a4a-9467-4fe8348b6387",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2541,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 05:01:47.909",
+        "stoppedAt": "2026-10-28 05:01:52.107",
+        "workflowVersionId": "95f5fbd7-f849-4a4a-9467-4fe8348b6387"
+      },
+      "nodes": [
+        {
+          "name": "WP Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-op-sync"
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "XoP4M520TMG3WgeY",
+      "name": "WF03: Natural Language Request Orchestrator",
+      "active": 1,
+      "activeVersionId": "9af87910-b23c-4bcb-9589-4b09e614d3cf",
+      "versionId": "9af87910-b23c-4bcb-9589-4b09e614d3cf",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2604,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 15:35:03.869",
+        "stoppedAt": "2026-10-28 15:35:04.574",
+        "workflowVersionId": "9af87910-b23c-4bcb-9589-4b09e614d3cf"
+      },
+      "nodes": [
+        {
+          "name": "User Request Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-agent-request"
+        },
+        {
+          "name": "Prepare Stable Orchestration Request",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Start Or Poll Persisted Caller Run",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "elfapV5D2PTnLiHW",
+      "name": "WF04: Multi-Agent Execution Tracking",
+      "active": 1,
+      "activeVersionId": "b79f33b6-97d1-4340-b844-32b1cc2d030c",
+      "versionId": "b79f33b6-97d1-4340-b844-32b1cc2d030c",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2701,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-29 22:11:21.646",
+        "stoppedAt": "2026-10-29 22:11:22.849",
+        "workflowVersionId": "4a8ddd7c-763a-45dc-adb1-99633047b62e"
+      },
+      "nodes": [
+        {
+          "name": "Agent Trace Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-agent-trace"
+        },
+        {
+          "name": "Fetch Gateway Agent Trace",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "=http://qldapm-ai-gateway-1:8090/api/v1/agent-runs/{{ ($json.body && $json.body.run_id) || $json.run_id }}/trace"
+        },
+        {
+          "name": "Format Trace Summary",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Lifecycle Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [],
+          "path": "qldapm-lifecycle"
+        },
+        {
+          "name": "Retrieve Source Trace And Observe",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://host.docker.internal:18089/internal/automation/lifecycle-observation"
+        },
+        {
+          "name": "Require Business Observation",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Reply Lifecycle ACK",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "xCZFw45fmDQG5gNq",
+      "name": "WF05: Native API Approval Workflow",
+      "active": 1,
+      "activeVersionId": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8",
+      "versionId": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2545,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 05:01:56.419",
+        "stoppedAt": "2026-10-28 05:01:56.795",
+        "workflowVersionId": "adeec41d-dbf4-4f76-8728-8e7d8ced95c8"
+      },
+      "nodes": [
+        {
+          "name": "Approval Request Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-approval"
+        },
+        {
+          "name": "Fetch Gateway Proposal",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "=http://qldapm-ai-gateway-1:8090/api/v1/proposals/{{ ($json.body && $json.body.proposal_id) || $json.proposal_id }}"
+        },
+        {
+          "name": "Process PM Approval Decision",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "Jq18aFSqfuUybEic",
+      "name": "WF06: Native API Execution & Verification",
+      "active": 1,
+      "activeVersionId": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c",
+      "versionId": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2547,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 05:01:57.473",
+        "stoppedAt": "2026-10-28 05:01:57.599",
+        "workflowVersionId": "77ba6e68-c75a-40de-bbf1-8b13f2efc01c"
+      },
+      "nodes": [
+        {
+          "name": "Execute Mutation Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-execute-mutation"
+        },
+        {
+          "name": "Authenticated Gateway PM Decision",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "=http://qldapm-ai-gateway-1:8090/api/v1/proposals/{{ /^[0-9a-f-]{36}$/i.test($json.body?.proposal_id || '') ? $json.body.proposal_id : 'invalid' }}/decision"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "BpCQrGR866vg4BqQ",
+      "name": "WF07: Daily Project Brief",
+      "active": 1,
+      "activeVersionId": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+      "versionId": "c2a7a82c-9af8-479e-8156-c1d07f64a533",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2812,
+        "status": "error",
+        "mode": "trigger",
+        "startedAt": "2026-10-31 01:00:00.045",
+        "stoppedAt": "2026-10-31 01:00:01.547",
+        "workflowVersionId": "c2a7a82c-9af8-479e-8156-c1d07f64a533"
+      },
+      "nodes": [
+        {
+          "name": "Daily Trigger Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-daily-brief"
+        },
+        {
+          "name": "Daily Schedule 08:00",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "disabled": false,
+          "credentialTypes": [],
+          "schedule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 0 8 * * *"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Command metadata",
+          "type": "n8n-nodes-base.set",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Sign command",
+          "type": "n8n-nodes-base.crypto",
+          "disabled": false,
+          "credentialTypes": [
+            "crypto"
+          ]
+        },
+        {
+          "name": "Gateway status",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "url": "http://qldapm-ai-gateway-1:8090/internal/automation/commands"
+        },
+        {
+          "name": "Require Completed Daily Reports",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "RXWjVUL8ozqhjY4w",
+      "name": "WF08: Sprint Risk",
+      "active": 1,
+      "activeVersionId": "830871f2-9ac5-487f-b4de-b2e0922e9e36",
+      "versionId": "830871f2-9ac5-487f-b4de-b2e0922e9e36",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2549,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 05:01:58.140",
+        "stoppedAt": "2026-10-28 05:02:02.841",
+        "workflowVersionId": "830871f2-9ac5-487f-b4de-b2e0922e9e36"
+      },
+      "nodes": [
+        {
+          "name": "Sprint Risk Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-sprint-risk"
+        },
+        {
+          "name": "Prepare Sprint Risk Parameters",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Analyze Native Relations And Persist Risk Snapshot",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "tOyBIPw6sGjgzjtU",
+      "name": "WF09: Bug Lifecycle Automation",
+      "active": 1,
+      "activeVersionId": "56995a8f-14dd-41be-835f-24045297c7ea",
+      "versionId": "56995a8f-14dd-41be-835f-24045297c7ea",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2551,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 05:02:03.781",
+        "stoppedAt": "2026-10-28 05:02:08.714",
+        "workflowVersionId": "56995a8f-14dd-41be-835f-24045297c7ea"
+      },
+      "nodes": [
+        {
+          "name": "Bug Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-bug-lifecycle"
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "tOY7QUa9SrWPOe9e",
+      "name": "WF10: Task Orchestration & Decomposition",
+      "active": 1,
+      "activeVersionId": "142d0a0d-0c12-4b6d-b1f5-c91033fc854e",
+      "versionId": "142d0a0d-0c12-4b6d-b1f5-c91033fc854e",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2552,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 05:02:08.908",
+        "stoppedAt": "2026-10-28 05:02:09.271",
+        "workflowVersionId": "142d0a0d-0c12-4b6d-b1f5-c91033fc854e"
+      },
+      "nodes": [
+        {
+          "name": "Task Event Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-task-orchestration"
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "LeRVT3LWNBkJ2iz3",
+      "name": "WF11: QA Gate Transition",
+      "active": 1,
+      "activeVersionId": "65f31f4c-186a-4950-8178-f50204bc261c",
+      "versionId": "65f31f4c-186a-4950-8178-f50204bc261c",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2613,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 16:16:31.665",
+        "stoppedAt": "2026-10-28 16:16:33.514",
+        "workflowVersionId": "65f31f4c-186a-4950-8178-f50204bc261c"
+      },
+      "nodes": [
+        {
+          "name": "QA Gate Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-qa-gate"
+        },
+        {
+          "name": "Require Explicit QA Target",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Read Native Evidence And Transition Errors",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "={{ $json.qa_decision ? \"http://qldapm-ai-gateway-1:8090/api/v1/qa-evidence/\" + $json.evidence_id + '/decision' : \"http://qldapm-ai-gateway-1:8090/api/v1/commands\" }}"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "ZkgS8RZbPRA2zbhQ",
+      "name": "WF12: Weekly Summary",
+      "active": 1,
+      "activeVersionId": "0adeacb0-8751-4603-9136-d8feeb2542b8",
+      "versionId": "d753e6f3-e941-4fe6-afe3-8452f0bc59b4",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2750,
+        "status": "error",
+        "mode": "trigger",
+        "startedAt": "2026-10-30 10:00:00.198",
+        "stoppedAt": "2026-10-30 10:01:02.958",
+        "workflowVersionId": "0adeacb0-8751-4603-9136-d8feeb2542b8"
+      },
+      "nodes": [
+        {
+          "name": "Weekly Summary Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-weekly-summary"
+        },
+        {
+          "name": "Prepare Weekly Parameters",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Generate And Persist Native Weekly Summary",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        },
+        {
+          "name": "Weekly Friday 17:00",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "disabled": false,
+          "credentialTypes": [],
+          "schedule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 0 17 * * 5"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Weekly Command metadata",
+          "type": "n8n-nodes-base.set",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Weekly Sign command",
+          "type": "n8n-nodes-base.crypto",
+          "disabled": false,
+          "credentialTypes": [
+            "crypto"
+          ]
+        },
+        {
+          "name": "Weekly Gateway status",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "url": "http://qldapm-ai-gateway-1:8090/internal/automation/commands"
+        },
+        {
+          "name": "Verify weekly business completion",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "2tr0jpqaaAiq9IOU",
+      "name": "WF13: Second Brain RAG Re-indexing",
+      "active": 1,
+      "activeVersionId": "bf7f89b1-07a4-42a9-b6e2-98fa3c15d694",
+      "versionId": "bf7f89b1-07a4-42a9-b6e2-98fa3c15d694",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2557,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 05:02:17.532",
+        "stoppedAt": "2026-10-28 05:02:18.912",
+        "workflowVersionId": "bf7f89b1-07a4-42a9-b6e2-98fa3c15d694"
+      },
+      "nodes": [
+        {
+          "name": "Reindex Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-rag-reindex"
+        },
+        {
+          "name": "Prepare Explicit Caller Request",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Return Actual Gateway Result",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "={{ $json.feedback_decision ? \"http://qldapm-ai-gateway-1:8090/api/v1/knowledge-feedback/\" + $json.feedback_id + '/decision' : \"http://qldapm-ai-gateway-1:8090/api/v1/commands\" }}"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "8ycOUQy9gtT60nkN",
+      "name": "WF14: Durable RAG Recovery",
+      "active": 1,
+      "activeVersionId": "e07912bb-c40c-4e18-a016-2f16ff7a38a1",
+      "versionId": "e07912bb-c40c-4e18-a016-2f16ff7a38a1",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2558,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 05:02:19.124",
+        "stoppedAt": "2026-10-28 05:02:19.443",
+        "workflowVersionId": "e07912bb-c40c-4e18-a016-2f16ff7a38a1"
+      },
+      "nodes": [
+        {
+          "name": "Error Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-error-handler"
+        },
+        {
+          "name": "Prepare Durable RAG Recovery Request",
+          "type": "n8n-nodes-base.code",
+          "disabled": false,
+          "credentialTypes": []
+        },
+        {
+          "name": "Read Or Requeue Own Persisted RAG Job",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "NLugfE3U8dBS88Wg",
+      "name": "WF15: Reconciliation & Drift Detection",
+      "active": 1,
+      "activeVersionId": "3f8520e1-15f5-48d4-b61d-c0df8a19cae9",
+      "versionId": "3f8520e1-15f5-48d4-b61d-c0df8a19cae9",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2559,
+        "status": "success",
+        "mode": "webhook",
+        "startedAt": "2026-10-28 05:02:19.671",
+        "stoppedAt": "2026-10-28 05:02:28.369",
+        "workflowVersionId": "3f8520e1-15f5-48d4-b61d-c0df8a19cae9"
+      },
+      "nodes": [
+        {
+          "name": "Reconciliation Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-reconciliation"
+        },
+        {
+          "name": "Reconcile Exact Native SQLite Qdrant Identity",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [],
+          "url": "http://qldapm-ai-gateway-1:8090/api/v1/commands"
+        },
+        {
+          "name": "Reply With Gateway Status",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "disabled": false,
+          "credentialTypes": []
+        }
+      ]
+    },
+    {
+      "id": "5FRYNPSot18UDpKa",
+      "name": "WF16: Main Health Monitoring",
+      "active": 1,
+      "activeVersionId": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "versionId": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f",
+      "publishedHistory": true,
+      "latest": {
+        "id": 2920,
+        "status": "success",
+        "mode": "trigger",
+        "startedAt": "2026-11-01 16:30:00.041",
+        "stoppedAt": "2026-11-01 16:30:09.352",
+        "workflowVersionId": "032ac4d3-a65b-4610-adcf-9ff8841f7e9f"
+      },
+      "nodes": [
+        {
+          "name": "Summary Webhook",
+          "type": "n8n-nodes-base.webhook",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "path": "qldapm-monitoring"
+        },
+        {
+          "name": "Periodic Health Schedule",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "disabled": false,
+          "credentialTypes": [],
+          "schedule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 */15 * * * *"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Probe And Persist Main Health",
+          "type": "n8n-nodes-base.httpRequest",
+          "disabled": false,
+          "credentialTypes": [
+            "httpHeaderAuth"
+          ],
+          "url": "http://qldapm-ai-gateway-1:8090/internal/automation/monitor"
+        }
+      ]
+    }
+  ]
+}

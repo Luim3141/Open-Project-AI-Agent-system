@@ -1,0 +1,967 @@
+[
+  {
+    "source": "openproject/ai/gateway/agent_models.py",
+    "container": "/app/gateway/agent_models.py",
+    "module": "agent_models",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "DIFFERENT",
+    "original_source_sha256": "24395f70459837d2f4eb4a7b96c4a3dd3fc580bcd27d18e1080391e8ac08ea0f",
+    "original_runtime_sha256": "10b1868f96c7750c37ca41851a36928e86071a68abeb28167f3b937fbf9a2ed6",
+    "current_source_sha256": "24395f70459837d2f4eb4a7b96c4a3dd3fc580bcd27d18e1080391e8ac08ea0f",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "24395f70459837d2f4eb4a7b96c4a3dd3fc580bcd27d18e1080391e8ac08ea0f",
+      "qldapm-ai-stage-staging-gateway-1": "24395f70459837d2f4eb4a7b96c4a3dd3fc580bcd27d18e1080391e8ac08ea0f"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "agent_registry",
+      "agent_trace",
+      "app",
+      "ba_agent",
+      "control_center_state",
+      "dev_agent",
+      "execution_monitor",
+      "intent_evals",
+      "live_agents",
+      "planner",
+      "pm_agent",
+      "qa_agent",
+      "reviewer_agent",
+      "service",
+      "store",
+      "supervisor",
+      "supervisor_isolation"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Strict bounded Pydantic contracts; terminal result/scope/transition invariants; no native authority from IDs.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/agent_registry.py",
+    "container": "/app/gateway/agent_registry.py",
+    "module": "agent_registry",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "e8d67681f61d5deaac54fd411fc37c3a513df380b38e7a6cae334aabceb161d5",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "9f595d89c7c17271a73a592576ef3fdb5bd4463a5b8c59d4698f654e916f1143",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "9f595d89c7c17271a73a592576ef3fdb5bd4463a5b8c59d4698f654e916f1143",
+      "qldapm-ai-stage-staging-gateway-1": "9f595d89c7c17271a73a592576ef3fdb5bd4463a5b8c59d4698f654e916f1143"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "control_center_state",
+      "service",
+      "supervisor"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Registered handlers are local deterministic templates/rules. Historical Gemini provider metadata is not execution proof; runtime API projects local engine explicitly.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/agent_status.py",
+    "container": "/app/gateway/agent_status.py",
+    "module": "agent_status",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "70a77ff0da8170b0e937d3f040a904f8f1b829d875b44a0ea0e92c029259e4f2",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "dd9ff89689d206f77df70127219ac07b5b6a216824e83a7aa417d6dfb83cf678",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "dd9ff89689d206f77df70127219ac07b5b6a216824e83a7aa417d6dfb83cf678",
+      "qldapm-ai-stage-staging-gateway-1": "dd9ff89689d206f77df70127219ac07b5b6a216824e83a7aa417d6dfb83cf678"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Fixed actor-scoped status and separate local status from provider circuit; database availability is not provider health.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/app.py",
+    "container": "/app/gateway/app.py",
+    "module": "app",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "DIFFERENT",
+    "original_source_sha256": "14fa517fb315c9769270cfbcce3285618eae64168283b62604a464dbbb90aece",
+    "original_runtime_sha256": "5ca4964a78b4d802fe1f1b5578cd295bb3dc738c7d6252b2f15296016b174c4d",
+    "current_source_sha256": "7bfc353724733d0176d64e6c99c6310ba32aafa14b0013ffbe8d2945f5cbaf94",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "7bfc353724733d0176d64e6c99c6310ba32aafa14b0013ffbe8d2945f5cbaf94",
+      "qldapm-ai-stage-staging-gateway-1": "7bfc353724733d0176d64e6c99c6310ba32aafa14b0013ffbe8d2945f5cbaf94"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Authenticated shared REST/MCP/HMAC bridge. New actions use same middleware; engine documented; published schemas must be regenerated.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/ba_agent.py",
+    "container": "/app/gateway/ba_agent.py",
+    "module": "ba_agent",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "1b54c2482d7943f100ccb8bebba451330c28a71e055c31082e366dbc38a32990",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "bf79889ece1feca597574a137892a3fdc613b5bacb44cff27122bdb636e623a1",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "bf79889ece1feca597574a137892a3fdc613b5bacb44cff27122bdb636e623a1",
+      "qldapm-ai-stage-staging-gateway-1": "bf79889ece1feca597574a137892a3fdc613b5bacb44cff27122bdb636e623a1"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "agent_registry"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Local draft templates; removed invented1.5s SLA. Citation verifies source ID/version, not business acceptance.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/control_center_state.py",
+    "container": "/app/gateway/control_center_state.py",
+    "module": "control_center_state",
+    "category": "Control Center",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "da87e6f12b3646d2417cf9a25478e9346d41aa2a8d1bc80103ce3edfae57c0a9",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "0102d87bdc72ceb29018a1d8b366eb0460557f21dfa6548ddf156caa1f222c8a",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "0102d87bdc72ceb29018a1d8b366eb0460557f21dfa6548ddf156caa1f222c8a",
+      "qldapm-ai-stage-staging-gateway-1": "0102d87bdc72ceb29018a1d8b366eb0460557f21dfa6548ddf156caa1f222c8a"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Actor/project SQL pagination; registry actual local execution metadata, no role supplied by browser.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/conversation_memory.py",
+    "container": "/app/gateway/conversation_memory.py",
+    "module": "conversation_memory",
+    "category": "Knowledge",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e",
+      "qldapm-ai-stage-staging-gateway-1": "f4de9f058de8a06851a1dbf29f13b9bbe59b08c0c893b9dcb7ae59b19755d51e"
+    },
+    "reachable_from_app": false,
+    "direct_callers": [
+      "intent_evals"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "In-memory convenience library, not authoritative durable context. Product continues stored AgentTask references with fresh ACL/version.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/daily_brief.py",
+    "container": "/app/gateway/daily_brief.py",
+    "module": "daily_brief",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "DIFFERENT",
+    "original_source_sha256": "8a9193c11af6343d152a7b1d6014ff6d3af497e6a90adba1a499dd0debd3dc33",
+    "original_runtime_sha256": "5509cf6be10c5a52d2c136d4af9da8e02b4f7e013d07fc7a7daeea43ed615b77",
+    "current_source_sha256": "8a9193c11af6343d152a7b1d6014ff6d3af497e6a90adba1a499dd0debd3dc33",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "8a9193c11af6343d152a7b1d6014ff6d3af497e6a90adba1a499dd0debd3dc33",
+      "qldapm-ai-stage-staging-gateway-1": "8a9193c11af6343d152a7b1d6014ff6d3af497e6a90adba1a499dd0debd3dc33"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Existing signed durable automation retained; five configured actors, no provider or native mutation. Extended capacity is not accepted.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/decision_memory.py",
+    "container": "/app/gateway/decision_memory.py",
+    "module": "decision_memory",
+    "category": "Knowledge",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df",
+      "qldapm-ai-stage-staging-gateway-1": "87b39e4917af59bb525a5c0df5b6b62c64be166e0fa28829abd7f8fa5e3053df"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "knowledge_ui_answer",
+      "sprint_readiness"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "In-memory role/project library; not durable audit and not public API. Product audit remains Gateway SQLite.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/dev_agent.py",
+    "container": "/app/gateway/dev_agent.py",
+    "module": "dev_agent",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "9c37469a28a4a743a63672d1d615f7309c352ec1749a2118d4ead46df372fce7",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "aeb7e6b512399f157858b2e2e4f4b4d70f95b2509a8e406a7f8e3fe823b15227",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "aeb7e6b512399f157858b2e2e4f4b4d70f95b2509a8e406a7f8e3fe823b15227",
+      "qldapm-ai-stage-staging-gateway-1": "aeb7e6b512399f157858b2e2e4f4b4d70f95b2509a8e406a7f8e3fe823b15227"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "agent_registry"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Local technical draft only; no shell/file/operator tools. Input package scope and size bounded by Supervisor.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/e2e_demo.py",
+    "container": "/app/gateway/e2e_demo.py",
+    "module": "e2e_demo",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "cd62b2e172f5fc7e3673ed60519ca1fcdf79a115d431d7dcaddc6674a673c59d",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "0e9fb36ce68a26df3a2a4f9213b2af92d4d820686b0433082c8f1c29090c366c",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": null,
+      "qldapm-ai-stage-staging-gateway-1": null
+    },
+    "reachable_from_app": false,
+    "direct_callers": [],
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "previous_review_notes": "Legacy cross-actor mock demonstration; excluded from runtime. Direct executor now denied. Replaced as acceptance by actual authenticated queue/native clone UAT.",
+    "unchanged_since_review": true,
+    "current_parity": "INTENTIONALLY_EXCLUDED"
+  },
+  {
+    "source": "openproject/ai/gateway/intent_evals.py",
+    "container": "/app/gateway/intent_evals.py",
+    "module": "intent_evals",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "19f534aab5dc8f77755b01388670549485cddd651b2536290dbb1ff9a579d03c",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "19f534aab5dc8f77755b01388670549485cddd651b2536290dbb1ff9a579d03c",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": null,
+      "qldapm-ai-stage-staging-gateway-1": null
+    },
+    "reachable_from_app": false,
+    "direct_callers": [],
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "previous_review_notes": "Golden evaluation harness; not runtime intent enforcement, not throughput proof; excluded from image.",
+    "unchanged_since_review": true,
+    "current_parity": "INTENTIONALLY_EXCLUDED"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_classifier.py",
+    "container": "/app/gateway/knowledge_classifier.py",
+    "module": "knowledge_classifier",
+    "category": "Knowledge",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "fd49fbe155bf5bdb3e88e648c3b2b3c1db261daa8168b3c306877c027515b95a",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "6c22928025a430f76451e2a26f72c3a6ddbcdc3425a2a6d4933fbf96e8358e8e",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "6c22928025a430f76451e2a26f72c3a6ddbcdc3425a2a6d4933fbf96e8358e8e",
+      "qldapm-ai-stage-staging-gateway-1": "6c22928025a430f76451e2a26f72c3a6ddbcdc3425a2a6d4933fbf96e8358e8e"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "decision_memory",
+      "knowledge_ingestion",
+      "knowledge_search",
+      "knowledge_storage",
+      "n8n_indexing_hook",
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Fixed project in source hash; positive numeric Native project IDs supported, but classification is never authorization. Product fetches native content itself.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_ingestion.py",
+    "container": "/app/gateway/knowledge_ingestion.py",
+    "module": "knowledge_ingestion",
+    "category": "Knowledge",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "4218a35247238164e9cbcde54831198426724b96b7ed1612fba4abfb1679889d",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "6a839c8e92230a4117e877624c4910355711ab6970df3169b7e1899c221a0efb",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "6a839c8e92230a4117e877624c4910355711ab6970df3169b7e1899c221a0efb",
+      "qldapm-ai-stage-staging-gateway-1": "6a839c8e92230a4117e877624c4910355711ab6970df3169b7e1899c221a0efb"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "knowledge_search",
+      "knowledge_storage",
+      "n8n_indexing_hook",
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Fixed false success, scoped dedup/update, metadata revision and chunk bounds; persistent chunks transact with document.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_retrieval.py",
+    "container": "/app/gateway/knowledge_retrieval.py",
+    "module": "knowledge_retrieval",
+    "category": "Knowledge",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d",
+      "qldapm-ai-stage-staging-gateway-1": "762bcb4a456b0427d3b88edc4b0882af2fd303c05dfa2905793fc640b0cfd57d"
+    },
+    "reachable_from_app": false,
+    "direct_callers": [
+      "knowledge_ui_answer"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Role/project library context formatter; product does not expose it directly because it lacks fresh Native user ACL.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_search.py",
+    "container": "/app/gateway/knowledge_search.py",
+    "module": "knowledge_search",
+    "category": "Knowledge",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "dc128ffa15ee4619d01a367938b9191af448d6bbfcb7c8ba84f431ed0ad66143",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "50266a9a23c96310912cb1e6b071e4805304e18ad2c9421358da338625543c60",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "50266a9a23c96310912cb1e6b071e4805304e18ad2c9421358da338625543c60",
+      "qldapm-ai-stage-staging-gateway-1": "50266a9a23c96310912cb1e6b071e4805304e18ad2c9421358da338625543c60"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "knowledge_retrieval",
+      "knowledge_storage",
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Real SQLite FTS5 MATCH prefilter with project/role; query normalization, limits. Product adds actor metadata and native checks before disclosure.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_storage.py",
+    "container": "/app/gateway/knowledge_storage.py",
+    "module": "knowledge_storage",
+    "category": "Knowledge",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "d8d6afa7f49d53432989aa3172b2cf2e87f75e03fa30a609d434a766f83e4f32",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "d53204f6ff7ab0abf6807a285a625810c548c2b5f10454e220623dc51d96501e",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "d53204f6ff7ab0abf6807a285a625810c548c2b5f10454e220623dc51d96501e",
+      "qldapm-ai-stage-staging-gateway-1": "d53204f6ff7ab0abf6807a285a625810c548c2b5f10454e220623dc51d96501e"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "knowledge_ingestion",
+      "knowledge_search",
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "SQLite WAL runtime; pgvector unavailable; chunks/FTS/revisions transactional, fresh reads and empty isolated restore. No public PostgreSQL writes.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/knowledge_ui_answer.py",
+    "container": "/app/gateway/knowledge_ui_answer.py",
+    "module": "knowledge_ui_answer",
+    "category": "Knowledge",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08",
+      "qldapm-ai-stage-staging-gateway-1": "cff5a99b0fa774ba8fdb7e4cb8c0a6adda5ecae7204c37778242d86d666f1e08"
+    },
+    "reachable_from_app": false,
+    "direct_callers": [],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Local snippet formatter library, not authoritative semantic verification. Product uses scoped Native citation API/UI.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/local_operator.py",
+    "container": "/app/gateway/local_operator.py",
+    "module": "local_operator",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "DIFFERENT",
+    "original_source_sha256": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18",
+    "original_runtime_sha256": "bd7f12fc6e6e8d028072687b44294a50a9e431e865bd0c5d86f97ab4866fe421",
+    "current_source_sha256": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18",
+      "qldapm-ai-stage-staging-gateway-1": "642c0b40a02f682e6a8cebc35c651b14c3718b9f36d9233bbfb99535b06a2c18"
+    },
+    "reachable_from_app": false,
+    "direct_callers": [],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Fixed private stdin protocol, not MCP/HTTP; enrollment fresh Native role and maintenance checks. Not granted to specialists.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/local_queries.py",
+    "container": "/app/gateway/local_queries.py",
+    "module": "local_queries",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "DIFFERENT",
+    "original_source_sha256": "2a1b3df6e5201e13e7be56c1a32145816a971fb2cf94b11f55c982bf81cbb417",
+    "original_runtime_sha256": "33f35793f6eccf939642c80fa46aa3857b6524010f0c5130a52c060145493169",
+    "current_source_sha256": "2a1b3df6e5201e13e7be56c1a32145816a971fb2cf94b11f55c982bf81cbb417",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "2a1b3df6e5201e13e7be56c1a32145816a971fb2cf94b11f55c982bf81cbb417",
+      "qldapm-ai-stage-staging-gateway-1": "2a1b3df6e5201e13e7be56c1a32145816a971fb2cf94b11f55c982bf81cbb417"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Exact read-only intents; mixed instructions stay bounded assistant path, receipts revalidate source/actor. Existing behavior retained.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/n8n_indexing_hook.py",
+    "container": "/app/gateway/n8n_indexing_hook.py",
+    "module": "n8n_indexing_hook",
+    "category": "Knowledge",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "b52d2453c27cf93beb9142e31d206015f62e8ed72485fd8b6cb06fb5b3056852",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "d81cf39420981f8b2f29b8a6e0c0259688a649ebeb0fe882613538cfe5b7edae",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": null,
+      "qldapm-ai-stage-staging-gateway-1": null
+    },
+    "reachable_from_app": false,
+    "direct_callers": [],
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "previous_review_notes": "Prototype raw-content webhook with wrong non-existent endpoint, excluded/not activated. Default key removed, buffer bounded/redacted, export inactive. Production uses signed fixed automation, no new public ingestion webhook.",
+    "unchanged_since_review": true,
+    "current_parity": "INTENTIONALLY_EXCLUDED"
+  },
+  {
+    "source": "openproject/ai/gateway/planner.py",
+    "container": "/app/gateway/planner.py",
+    "module": "planner",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "a336227405af85f8273bdb41a3d79c09d1833de3914a0009617d1494cbb12ca0",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "fa6591c525b016aa28ef400c59ae09bbe3a29560be7d211b1715642fe2b04d77",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "fa6591c525b016aa28ef400c59ae09bbe3a29560be7d211b1715642fe2b04d77",
+      "qldapm-ai-stage-staging-gateway-1": "fa6591c525b016aa28ef400c59ae09bbe3a29560be7d211b1715642fe2b04d77"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "agent_registry",
+      "ba_agent",
+      "dev_agent",
+      "intent_evals",
+      "live_agents",
+      "pm_agent",
+      "qa_agent",
+      "service",
+      "supervisor"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Bounded sequential specialist/reviewer/aggregation DAG. Library model estimate was aspirational; actual local Supervisor budget is explicitly zero.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/pm_agent.py",
+    "container": "/app/gateway/pm_agent.py",
+    "module": "pm_agent",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "9d12ecd1f01a42407ebf6d2a815e9145c16b901df75340748efe5fbd3fbf7ccc",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "f931dde15fa6c5833c9bbc3ed31d16d7532fc5b0f02a0390e7213349ba57795f",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "f931dde15fa6c5833c9bbc3ed31d16d7532fc5b0f02a0390e7213349ba57795f",
+      "qldapm-ai-stage-staging-gateway-1": "f931dde15fa6c5833c9bbc3ed31d16d7532fc5b0f02a0390e7213349ba57795f"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "agent_registry"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Local risks/workload evidence; fixed Bangkok date and inject current config users instead of historical hardcoded5 IDs in product path.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/proposal_aggregation.py",
+    "container": "/app/gateway/proposal_aggregation.py",
+    "module": "proposal_aggregation",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "97f36007fa6b47e621be9f17a88966ad5bd535b5bbd6a8cd9a871d9ae3b886d5",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "dc89e3a1ee3a95817c0e56ef2e08694de66a502a4bd1a8fd9ffb7f16a766af26",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": null,
+      "qldapm-ai-stage-staging-gateway-1": null
+    },
+    "reachable_from_app": false,
+    "direct_callers": [],
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "previous_review_notes": "Superseded duplicate proposal/executor prototype excluded. Executor closed because supplied PM string/ID and raw PATCH bypassed canonical confirmation, ownership and native gates.",
+    "unchanged_since_review": true,
+    "current_parity": "INTENTIONALLY_EXCLUDED"
+  },
+  {
+    "source": "openproject/ai/gateway/proposal_ux.py",
+    "container": "/app/gateway/proposal_ux.py",
+    "module": "proposal_ux",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "4eee1a2ad99ae417b5dc94b00e69c341a6efaaf5c20c1374f85ee4052fe5c720",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "ddeae8ccc94a11361c7b93d8acdc6c03f0c4ec98242f738580fc0b2ba8d595f0",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": null,
+      "qldapm-ai-stage-staging-gateway-1": null
+    },
+    "reachable_from_app": false,
+    "direct_callers": [],
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "previous_review_notes": "Prototype formatter excluded. Removed false safe-to-execute/evidence flags; no authority from a role string or boolean.",
+    "unchanged_since_review": true,
+    "current_parity": "INTENTIONALLY_EXCLUDED"
+  },
+  {
+    "source": "openproject/ai/gateway/qa_agent.py",
+    "container": "/app/gateway/qa_agent.py",
+    "module": "qa_agent",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "c89f6fd9e2d0e387e395f8e0ce412a5527838c1184b80616c4c863d70b6f5a2a",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "94554a829358051a8fb8e84c8606aba479d0b95bd3115d586f1b5b15745b2363",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "94554a829358051a8fb8e84c8606aba479d0b95bd3115d586f1b5b15745b2363",
+      "qldapm-ai-stage-staging-gateway-1": "94554a829358051a8fb8e84c8606aba479d0b95bd3115d586f1b5b15745b2363"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "agent_registry"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Local draft tests/triage only; NOT_RUN without runner evidence. Arbitrary attestation objects are not accepted from product request.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/qa_change_workflow.py",
+    "container": "/app/gateway/qa_change_workflow.py",
+    "module": "qa_change_workflow",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd",
+      "qldapm-ai-stage-staging-gateway-1": "2fbadd0fbe75a443b51caa0dcdc3854219954071ad9393f6150c5a7cb73258fd"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Advisory in-process library, event fingerprint/cache not durable workflow receipt; not external event ingress. Notification objects do not send messages.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/quota_panel.py",
+    "container": "/app/gateway/quota_panel.py",
+    "module": "quota_panel",
+    "category": "Control Center",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "b64dca28d162b20513559a4e3ec6c5f5d579f03e1662a7fb13ac4d028fe0324d",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "8965f532a58a250ed93f2629a0f88a84a0b6b89ff3274d119b1f29af0dca0071",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "8965f532a58a250ed93f2629a0f88a84a0b6b89ff3274d119b1f29af0dca0071",
+      "qldapm-ai-stage-staging-gateway-1": "8965f532a58a250ed93f2629a0f88a84a0b6b89ff3274d119b1f29af0dca0071"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Rewritten with validated provider project and reservation ledger, separate60s/day, unknown total tokens/billing/actor API count. No guessed model or20-user share.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/reviewer_agent.py",
+    "container": "/app/gateway/reviewer_agent.py",
+    "module": "reviewer_agent",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "3a23526b4f78867ca86cfd4dace573d161845cdc2945ba77a611646687664493",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "3614f7423dd639be83bd546a55a255cc078e042736f5d6bb12bc49266a3243aa",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "3614f7423dd639be83bd546a55a255cc078e042736f5d6bb12bc49266a3243aa",
+      "qldapm-ai-stage-staging-gateway-1": "3614f7423dd639be83bd546a55a255cc078e042736f5d6bb12bc49266a3243aa"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "agent_registry"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Checks references against bounded authorized native snapshot. Fixed FAILED propagation, ordinal reference confusion and explicit draft/semantic-review limits; scope checks actor/project/task/trace.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/role_alerts.py",
+    "container": "/app/gateway/role_alerts.py",
+    "module": "role_alerts",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "110a7b8972d95112d6c66e94db982b22c68c9e86ca36e672a8d83b34a5398eb3",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "110a7b8972d95112d6c66e94db982b22c68c9e86ca36e672a8d83b34a5398eb3",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "110a7b8972d95112d6c66e94db982b22c68c9e86ca36e672a8d83b34a5398eb3",
+      "qldapm-ai-stage-staging-gateway-1": "110a7b8972d95112d6c66e94db982b22c68c9e86ca36e672a8d83b34a5398eb3"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Advisory heuristics over authorized packages. In-memory dedup only; no sender/scheduler and no delivery acceptance claim.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/scheduler_registry.py",
+    "container": "/app/gateway/scheduler_registry.py",
+    "module": "scheduler_registry",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "be7c2efd59ec41f734dab9e278f3c37f36eab153184ef8f5d2c6e7c05eac0d42",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "be7c2efd59ec41f734dab9e278f3c37f36eab153184ef8f5d2c6e7c05eac0d42",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": null,
+      "qldapm-ai-stage-staging-gateway-1": null
+    },
+    "reachable_from_app": false,
+    "direct_callers": [],
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "previous_review_notes": "Declaration/simulation, not actual OpenProject cron or n8n inventory. Excluded; installed n8n ownership remains separate existing contracts.",
+    "unchanged_since_review": true,
+    "current_parity": "INTENTIONALLY_EXCLUDED"
+  },
+  {
+    "source": "openproject/ai/gateway/service.py",
+    "container": "/app/gateway/service.py",
+    "module": "service",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "DIFFERENT",
+    "original_source_sha256": "d47570b2872e64e44cfb51e5054591441bbe7d631de3252dbc7f2c2a7a21d31c",
+    "original_runtime_sha256": "d542c756bb486bce67cbfb19a2314efd3eacaece9c60d5dfc286efbb4dbc941d",
+    "current_source_sha256": "c0664c7e89ff72e36374e27ab4f3ebf1abb23820cc5a6f3bc10299e4940d47c9",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "c0664c7e89ff72e36374e27ab4f3ebf1abb23820cc5a6f3bc10299e4940d47c9",
+      "qldapm-ai-stage-staging-gateway-1": "c0664c7e89ff72e36374e27ab4f3ebf1abb23820cc5a6f3bc10299e4940d47c9"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "ai_worker",
+      "app",
+      "local_operator",
+      "stdio"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Fresh native identity before every command/CC/worker/poll. Wired local Supervisor and scoped knowledge actions, same canonical write preview/confirm. Fixed analyze query args accidentally passed to CC.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/sprint_readiness.py",
+    "container": "/app/gateway/sprint_readiness.py",
+    "module": "sprint_readiness",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "52add5c504915e66a8a1988c2396bdb9aab0ebf861ed6a329cc2fd59d71661cb",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "c13140db2266009a99971fdee8513b744a9bb6e306857b6d3fbe9e013f6c2a41",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "c13140db2266009a99971fdee8513b744a9bb6e306857b6d3fbe9e013f6c2a41",
+      "qldapm-ai-stage-staging-gateway-1": "c13140db2266009a99971fdee8513b744a9bb6e306857b6d3fbe9e013f6c2a41"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Advisory text heuristics (AC/test markers), not native transition gate; optional DecisionMemory remains library only. Existing native gates remain authoritative.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/sprint_report.py",
+    "container": "/app/gateway/sprint_report.py",
+    "module": "sprint_report",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "1bd88c73a1b84606deec4b755e2ef92743a413c00f170acccc3e54be7c5d3119",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "b14659101813af8f53673a0a982e9ef192cf457bec62a099650d9d41bb670387",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "b14659101813af8f53673a0a982e9ef192cf457bec62a099650d9d41bb670387",
+      "qldapm-ai-stage-staging-gateway-1": "b14659101813af8f53673a0a982e9ef192cf457bec62a099650d9d41bb670387"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "qa_change_workflow",
+      "role_alerts",
+      "service",
+      "sprint_readiness",
+      "weekly_report",
+      "workload_detector"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Deterministic snapshot/advisory over freshly authorized Native packages; status-based heuristic and current workload, not actual Sprint velocity/performance rating.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/store.py",
+    "container": "/app/gateway/store.py",
+    "module": "store",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "DIFFERENT",
+    "original_source_sha256": "1339018dfd9e3167742eef336098c52d9d86f46a399bb7341ea5c4291c295f1b",
+    "original_runtime_sha256": "bac8e8c47032c6b35503b4bcde29c7dd649e46bdc3340afc16f215a8bbf612a3",
+    "current_source_sha256": "5c282af3a7db4d24d3acc3583c11ce82f84cd3ffe196a3beb710cc55ce4ee6ac",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "5c282af3a7db4d24d3acc3583c11ce82f84cd3ffe196a3beb710cc55ce4ee6ac",
+      "qldapm-ai-stage-staging-gateway-1": "5c282af3a7db4d24d3acc3583c11ce82f84cd3ffe196a3beb710cc55ce4ee6ac"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "ai_worker",
+      "app",
+      "bridge",
+      "daily_brief",
+      "gemini",
+      "local_operator",
+      "local_queries",
+      "proposal_aggregation",
+      "qa_change_workflow",
+      "quota_panel",
+      "role_alerts",
+      "service",
+      "sprint_report",
+      "supervisor_isolation"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Existing WAL queue, leases/idempotency/actor scope retained; local-only claims bypass provider blocks, durable contract result and cooperative cancel, no schema migration added.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/supervisor.py",
+    "container": "/app/gateway/supervisor.py",
+    "module": "supervisor",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "bacdfc3706ab5f7b83ff1225d0fbaa9589ac0496b24c08ce81953e08dc21baca",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "6d248aa09c35060a79c3881b541f693b4a51436bfaafe96f5df6f13e698e63e4",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "6d248aa09c35060a79c3881b541f693b4a51436bfaafe96f5df6f13e698e63e4",
+      "qldapm-ai-stage-staging-gateway-1": "6d248aa09c35060a79c3881b541f693b4a51436bfaafe96f5df6f13e698e63e4"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service",
+      "supervisor_isolation"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Source now used by real private worker. Scope/TTL/reference/version checks, bounded10-item context and output, ordered dependencies, aggregation and failed review, progress/audit. Local drafts, zero model calls.",
+    "unchanged_since_review": false,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/supervisor_isolation.py",
+    "container": "/app/gateway/supervisor_isolation.py",
+    "module": "supervisor_isolation",
+    "category": "Supervisor/Agent",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "a3cfb03a49c66b4d396472bd9d983e2efc04b7a5fd3c30b28a5c7093f9b47fdf",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "a3cfb03a49c66b4d396472bd9d983e2efc04b7a5fd3c30b28a5c7093f9b47fdf",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": null,
+      "qldapm-ai-stage-staging-gateway-1": null
+    },
+    "reachable_from_app": false,
+    "direct_callers": [],
+    "decision": "DEVELOPMENT_ONLY_EXCLUDED",
+    "previous_review_notes": "Simulation harness, not a production dispatcher or20-user benchmark; excluded from image. Actual store isolation covered by application contract/UAT.",
+    "unchanged_since_review": true,
+    "current_parity": "INTENTIONALLY_EXCLUDED"
+  },
+  {
+    "source": "openproject/ai/gateway/tasks_progress.py",
+    "container": "/app/gateway/tasks_progress.py",
+    "module": "tasks_progress",
+    "category": "Control Center",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "ea2f411e93332133593c45e15a148a5ab0aa318bf1c31ca1fb3ff20f40387834",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "aa0363e4611b7a8f3785598a1fe4df35f6f143334c39bcd6468331f99a841b5a",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "aa0363e4611b7a8f3785598a1fe4df35f6f143334c39bcd6468331f99a841b5a",
+      "qldapm-ai-stage-staging-gateway-1": "aa0363e4611b7a8f3785598a1fe4df35f6f143334c39bcd6468331f99a841b5a"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Historical checklist only; removed host-specificD path/raw parser exceptions. UI no longer treats oldDONE percentage as runtime acceptance.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/weekly_report.py",
+    "container": "/app/gateway/weekly_report.py",
+    "module": "weekly_report",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "c067a9f869e55f7b7812ee4393e9f888904f22116023cc1894ea7f200b4310ff",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "c067a9f869e55f7b7812ee4393e9f888904f22116023cc1894ea7f200b4310ff",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "c067a9f869e55f7b7812ee4393e9f888904f22116023cc1894ea7f200b4310ff",
+      "qldapm-ai-stage-staging-gateway-1": "c067a9f869e55f7b7812ee4393e9f888904f22116023cc1894ea7f200b4310ff"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Advisory CLOSED+updatedAt proxy is not historical closing timestamp; optional direct AI helper is not routed/qualified. Deterministic product report only; no LLM calls from analyze.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/workflow_pause.py",
+    "container": "/app/gateway/workflow_pause.py",
+    "module": "workflow_pause",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "e5898fcfc720d2734ef980b731fd027426ebfd9bf53958e0e4906cd8f4f505cd",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "5b1753c2b0262d008ef3f7409ea64df14d981e3500e8bfc58283f86f55988b20",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "5b1753c2b0262d008ef3f7409ea64df14d981e3500e8bfc58283f86f55988b20",
+      "qldapm-ai-stage-staging-gateway-1": "5b1753c2b0262d008ef3f7409ea64df14d981e3500e8bfc58283f86f55988b20"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "In-memory advisory pause, not provider durable circuit. Exponent capped/raw details removed; actual durable circuit remains Store/Gemini.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/workflow_timeline.py",
+    "container": "/app/gateway/workflow_timeline.py",
+    "module": "workflow_timeline",
+    "category": "Control Center",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "b11dfcc20d7d21e393887274e5f20b994c3e8a4a9df7229df7ad0bf5b38394bb",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "3786d94d32cb54874a2d234fb274a0dbc5c0c32b8f8df22f73fcffbcac0c30f3",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "3786d94d32cb54874a2d234fb274a0dbc5c0c32b8f8df22f73fcffbcac0c30f3",
+      "qldapm-ai-stage-staging-gateway-1": "3786d94d32cb54874a2d234fb274a0dbc5c0c32b8f8df22f73fcffbcac0c30f3"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Fixed real workflow_id/observed_at/error_code mapping, bounded task timeline, no raw store errors or fabricated current timestamps.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  },
+  {
+    "source": "openproject/ai/gateway/workload_detector.py",
+    "container": "/app/gateway/workload_detector.py",
+    "module": "workload_detector",
+    "category": "Gateway/Reports/Automation",
+    "original_mismatch": "MISSING",
+    "original_source_sha256": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5",
+    "original_runtime_sha256": null,
+    "current_source_sha256": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5",
+    "runtime_hashes": {
+      "qldapm-ai-gateway-1": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5",
+      "qldapm-ai-stage-staging-gateway-1": "f5c0ef68eebafd63b21240468fe808865ed845690003febb0cbb528be58070e5"
+    },
+    "reachable_from_app": true,
+    "direct_callers": [
+      "service"
+    ],
+    "decision": "REQUIRED_RUNTIME_OR_INTERNAL_LIBRARY",
+    "previous_review_notes": "Authorized package-count advice, not capacity/productivity measure and no automatic reassignment. No write/sender exposed.",
+    "unchanged_since_review": true,
+    "current_parity": "PASS"
+  }
+]

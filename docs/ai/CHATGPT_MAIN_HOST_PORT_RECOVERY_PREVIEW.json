@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-27T07:56:06.107386+00:00",
+  "status": "PREFLIGHT_PRIVATE_BACKUP_COMPLETE",
+  "observed_external_runtime_restart": "Docker Backend and Main container StartedAt changed around07:47UTC; no global restart performed by this agent",
+  "targets": [
+    "qldapm-ai-gateway-1",
+    "qldapm-openproject-proxy-1"
+  ],
+  "scope": "Restart only the two existing same-image Main gateway/proxy containers first, preserving IDs/config/volumes; recreate only if required after diagnosis. Restore127.0.0.1ports8090/8088. No globalDocker/WSLrestart, Staging, Native writes or credentials changes.",
+  "images": {
+    "qldapm-ai-gateway-1": "sha256:e9eb18e348337a3b0aeddbc0799ec23f8a672619876a85855c7aebf72e7b60d0",
+    "qldapm-openproject-proxy-1": "sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f"
+  },
+  "rollback": "Retain exact image/config/state references. No database restore. If publisher still broken, hold rather than globalDocker/WSLrestart.",
+  "backup": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\post-gemini-20261027\\host-port-recovery-20261027",
+  "unknowns": {
+    "active": 0,
+    "historical_pending": 28,
+    "unknown_sha256": "fa25db4bbb7f1da569a15a8a1c1e3cc1c2e436408b5ef5032e3043c9e2d7ebf3"
+  }
+}

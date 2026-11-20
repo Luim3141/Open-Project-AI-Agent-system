@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "image": "sha256:bccd1d2c3de9c1a500133103a376f5b179fe2cd1bcb2cfd0b6e0595c4129e412",
+  "gateway_readonly_root": true,
+  "cap_drop_all": true,
+  "no_new_privileges": true,
+  "docker_socket_mounted": false,
+  "operator_approval_key_mounted": false,
+  "ports_loopback_only": true,
+  "mounts": [
+    {
+      "target": "/workspaces",
+      "rw": true
+    },
+    {
+      "target": "/state",
+      "rw": true
+    },
+    {
+      "target": "/qldapm-policy/free-tier-proof.json",
+      "rw": false
+    }
+  ]
+}

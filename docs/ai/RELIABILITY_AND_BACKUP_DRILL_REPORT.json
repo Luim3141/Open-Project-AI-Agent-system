@@ -1,0 +1,146 @@
+{
+  "drill": "PRODUCTION_LOCAL_RELIABILITY_AND_BACKUP_RESTORE",
+  "timestamp": "2026-10-28T06:54:58.005679+00:00",
+  "environment": "QLDAPM MAIN (Project 5, Self-Hosted)",
+  "storage_health": {
+    "drive_D": {
+      "total_gb": 1514.27,
+      "used_gb": 931.73,
+      "free_gb": 582.54,
+      "free_pct": 38.47
+    },
+    "drive_C": {
+      "total_gb": 348.73,
+      "used_gb": 266.94,
+      "free_gb": 81.79,
+      "free_pct": 23.45
+    },
+    "disk_safety_threshold": "FREE > 10 GB (Compliant)"
+  },
+  "backups": {
+    "openproject_postgres": {
+      "status": "SUCCESS",
+      "backup_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\backups\\drill\\openproject_backup_1793170498.dump",
+      "duration_seconds": 1.002,
+      "size_bytes": 2076872,
+      "sha256": "0bb697a8181bb12051cfb9c40536fbef27d57d783c9e1ca4b8f6cb1375bee972",
+      "mechanism": "pg_dump -Fc (Custom Archive with Compression)"
+    },
+    "gateway_sqlite": {
+      "status": "SUCCESS",
+      "backup_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\backups\\drill\\gateway_backup_1793170499.sqlite",
+      "duration_seconds": 0.063,
+      "size_bytes": 9707520,
+      "sha256": "c8c1a85497f79372485cc99a7dd4884f34287d6e4342757675d3f7a01961f769",
+      "mechanism": "VACUUM INTO (Consistent point-in-time snapshot)"
+    },
+    "knowledge_sqlite": {
+      "status": "SUCCESS",
+      "backup_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\backups\\drill\\knowledge_backup_1793170499.sqlite",
+      "duration_seconds": 0.054,
+      "size_bytes": 5107712,
+      "sha256": "107b7ac0c8197b52ff9d7584a4ca8f398cf0f82e57d96c9280de9f84c0c0d8da",
+      "mechanism": "VACUUM INTO (Consistent point-in-time snapshot)"
+    },
+    "n8n_sqlite_and_key": {
+      "status": "SUCCESS",
+      "db_backup_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\backups\\drill\\n8n_backup_1793170499.sqlite",
+      "key_backup_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\backups\\drill\\n8n_config_backup_1793170499.json",
+      "duration_seconds": 0.999,
+      "db_size_bytes": 12587008,
+      "db_sha256": "4f4c384acf5de18cf51c00e539adaeeabb9e1113102a7442038f8afdcc3f1813",
+      "key_sha256": "daa27645048a0d777dd327fbdc8e5c2106686dacba1e30787a6b6575f94fcb15",
+      "mechanism": "n8n VACUUM INTO + /home/node/.n8n/config encryption key backup"
+    },
+    "qdrant_cold_volume": {
+      "status": "SUCCESS",
+      "backup_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\gateway\\backups\\drill\\qdrant_collection_backup_1793170500.tar.gz",
+      "duration_seconds": 2.818,
+      "size_bytes": 16126826,
+      "sha256": "8dd911f022efa1e3edff47c2f2fad97bce12a0d81749b216a1ebb6660e07b8e9",
+      "mechanism": "Direct Collection Volume Gzip Archive (Verified Cold Recovery Route)"
+    }
+  },
+  "restore_verifications": {
+    "openproject_postgres": {
+      "verified": true,
+      "total_work_packages_restored": 376,
+      "project_5_work_packages_restored": 339,
+      "evidence": "Restored 376 WPs (Project 5: 339) into temporary isolated DB 'op_drill_temp' successfully."
+    },
+    "gateway_sqlite": {
+      "integrity_check": "ok",
+      "record_counts": {
+        "audit": 19591,
+        "ai_runs": 191,
+        "proposals": 57,
+        "active_tokens": 196,
+        "qa_evidence": 2
+      },
+      "verified": true
+    },
+    "knowledge_sqlite": {
+      "integrity_check": "ok",
+      "record_counts": {
+        "knowledge_documents": 376,
+        "knowledge_chunks": 1742
+      },
+      "verified": true
+    },
+    "n8n_sqlite_and_key": {
+      "integrity_check": "ok",
+      "record_counts": {
+        "active_workflows": 16,
+        "credentials": 4,
+        "total_executions": 273
+      },
+      "encryption_key_preserved": true,
+      "verified": true
+    },
+    "qdrant_cold_volume": {
+      "verified": true,
+      "isolated_instance_port": 6335,
+      "restored_status": "green",
+      "restored_points_count": 1745,
+      "vector_dimension": 1024,
+      "vector_distance": "Cosine",
+      "legacy_points_verified": 6,
+      "sample_search_results_count": 3,
+      "archive_size_bytes": 16126826,
+      "extraction_duration_seconds": 1.302
+    }
+  },
+  "n8n_retention_policy": {
+    "current_state": {
+      "total_executions": 273,
+      "oldest_execution": "2026-10-22 15:40:22.023",
+      "newest_execution": "2026-10-28 06:45:00.044",
+      "success_executions": {
+        "count": 246,
+        "bytes": 8873785
+      },
+      "failed_executions": {
+        "count": 27,
+        "bytes": 565381
+      },
+      "average_bytes_per_execution": 34575.7
+    },
+    "recommended_production_env": {
+      "EXECUTIONS_DATA_PRUNE": "true",
+      "EXECUTIONS_DATA_MAX_AGE": "336",
+      "EXECUTIONS_DATA_PRUNE_MAX_COUNT": "1000",
+      "EXECUTIONS_DATA_SAVE_ON_ERROR": "all",
+      "EXECUTIONS_DATA_SAVE_ON_SUCCESS": "all"
+    },
+    "retention_evaluation": "Currently safe: <20 MB SQLite footprint; 14-day auto-prune policy documented in operator runbook."
+  },
+  "qdrant_snapshot_audit": {
+    "cold_volume_restore_verified": true,
+    "rest_api_snapshot_limitation": {
+      "root_cause": "On Windows VirtioFS mounts, nix::sys::statfs::syncfs returns EIO during unpack, and open WAL file archiving leads to zero-padded first-index metadata in tar archives.",
+      "status": "API_SNAPSHOT_BLOCKED_BY_VIRTIOFS",
+      "supported_dr_route": "Cold Volume / Directory-level restore with container restart (Fully Verified in Isolation)"
+    }
+  },
+  "verdict": "READY_FOR_OPERATOR_UAT"
+}

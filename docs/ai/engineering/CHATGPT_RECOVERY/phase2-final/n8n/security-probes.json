@@ -1,0 +1,107 @@
+{
+  "source_commit": "de7fe8f10ed23bb392b6661b0c7ccf9967524b4e",
+  "image": "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+  "environment": "network-none disposable containers; current synthetic tests readonly bind",
+  "tests": [
+    {
+      "test": "openproject/ai/tests/test_n8n_storage_redaction.js",
+      "test_source_sha256": "de55a023228b0c42b1978db5c6e5de6224e27ec8008c64a51bb8b77c2ebf6324",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai\\tests,target=/tests,readonly",
+        "--entrypoint",
+        "node",
+        "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+        "/tests/test_n8n_storage_redaction.js"
+      ],
+      "started_at": "2026-11-02T03:43:10.649692+00:00",
+      "completed_at": "2026-11-02T03:43:12.318288+00:00",
+      "exit": 0,
+      "outcome": "PASS",
+      "stdout": "PASS storage-only redaction: headers/signature, cycles, metadata, original immutable, malformed fail-closed",
+      "stderr": ""
+    },
+    {
+      "test": "openproject/ai/tests/test_n8n_persistence_overwrite.js",
+      "test_source_sha256": "28141ea96b84b51d06e7462951bb43627d25223e047f8b06c6cddc60e9addf56",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai\\tests,target=/tests,readonly",
+        "--entrypoint",
+        "node",
+        "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+        "/tests/test_n8n_persistence_overwrite.js"
+      ],
+      "started_at": "2026-11-02T03:43:12.318419+00:00",
+      "completed_at": "2026-11-02T03:43:15.454948+00:00",
+      "exit": 0,
+      "outcome": "PASS",
+      "stdout": "PASS execution full overwrite redacts database and filesystem storage copies",
+      "stderr": ""
+    },
+    {
+      "test": "docs/ai/engineering/CHATGPT_RECOVERY/stabilization-n8n/wf04_arbitrary_payload_canary.js",
+      "test_source_sha256": "b135ad45f2f24696f0687e8bb8cb9cb1d5c2be5da2c4c9dfab5ba5285d277934",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\CHATGPT_RECOVERY\\stabilization-n8n,target=/tests,readonly",
+        "--entrypoint",
+        "node",
+        "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+        "/tests/wf04_arbitrary_payload_canary.js"
+      ],
+      "started_at": "2026-11-02T03:43:15.455048+00:00",
+      "completed_at": "2026-11-02T03:43:16.212152+00:00",
+      "exit": 0,
+      "outcome": "EXPECTED_DIAGNOSTIC_LEAK",
+      "stdout": "{\"marker_source\":\"synthetic\",\"leaked\":{\"header\":false,\"nested\":true,\"free_text\":true}}",
+      "stderr": ""
+    },
+    {
+      "test": "docs/ai/engineering/CHATGPT_RECOVERY/stabilization-n8n/wf04_metadata_retry_probe.js",
+      "test_source_sha256": "0a183c43b0dff42f44096a58e0890dc0c63b2837a2d0153a00e2d550af25e856",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--pull",
+        "never",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=D:\\AI project\\QLDAPM chat\\docs\\ai\\engineering\\CHATGPT_RECOVERY\\stabilization-n8n,target=/tests,readonly",
+        "--entrypoint",
+        "node",
+        "sha256:39299c2133d148edb9cabfe7e6ef1137a8f1ac179e9f86b0ca2351526abd1795",
+        "/tests/wf04_metadata_retry_probe.js"
+      ],
+      "started_at": "2026-11-02T03:43:16.212248+00:00",
+      "completed_at": "2026-11-02T03:43:19.265658+00:00",
+      "exit": 0,
+      "outcome": "PASS",
+      "stdout": "{\"metadata_only\":{\"abortedRetry\":true,\"runnerStopped\":false,\"runnerReceivedInput\":false},\"payload_control\":{\"abortedRetry\":false,\"runnerStopped\":true,\"runnerReceivedInput\":true}}",
+      "stderr": ""
+    }
+  ]
+}

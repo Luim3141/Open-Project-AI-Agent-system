@@ -1,0 +1,14 @@
+{
+  "candidate_image": "sha256:d006b57e21b88cbba291ff7144ecb9a26c024f20dd1630ad2977e415c22ca9f6",
+  "old_image": "sha256:99769ead31eff11959b6f297a60632163fd78df7b3e969f29f7b56adbf0eb46d",
+  "gateway_backup_sha256": "193c46f5d9ad9b4c492548842785f93bb04c17f57b4811f93e50eb7f335b5170",
+  "scope": "Main Gateway read-only PM reconciliation API; no Native writes, no Staging, credentials unchanged",
+  "candidate_tests": {
+    "run": 130,
+    "passed": 129,
+    "skipped": 1,
+    "skip_reason": "Node.js unavailable in Python image; formatter test passed on Windows"
+  },
+  "read_only_real_corpus_probe": "PARTIAL_UNMATCHED_POINTS: 3 preserved; no missing/payload/hash/version/FTS drift",
+  "rollback": "Restore old AI_IMAGE and compose up gateway only; preserve all data"
+}

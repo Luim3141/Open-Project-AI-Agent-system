@@ -1,0 +1,43 @@
+{
+  "utc": "2026-11-02T21:22:19.634350+00:00",
+  "scope": "Independent bounded connected code review, one local worker and Project6 provider transport; no production or Google calls",
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "MEDIUM",
+      "problem": "Gate rollback failure skipped independent image restore and restarted worker",
+      "status": "FIXED_BY_ROOT_REVIEWED",
+      "verification": "Separate try per rollback; worker stays stopped on rollback errors; static assertions only, no real failure injection"
+    },
+    {
+      "id": "R2",
+      "severity": "LOW",
+      "problem": "One-shot probe intent used non-atomic check/create",
+      "status": "FIXED_BY_ROOT_REVIEWED",
+      "verification": "Exclusive intent.open(x) precedes outbound child process"
+    }
+  ],
+  "remaining_critical_high_findings": 0,
+  "tests": {
+    "command": "PYTHONPATH=openproject/ai;openproject/ai/tests python -m unittest test_demo_provider test_provider_gate_http test_phase31_integration_health",
+    "count": 23,
+    "seconds": 13.961,
+    "outcome": "PASS",
+    "environment": "Host Windows unit/TestClient + actual loopback HTTP gate, synthetic upstream"
+  },
+  "source_sha256": {
+    "openproject/ai/gateway/engineering_provider.py": "07262694869c9628a86a35edb4999e96edadcb64ea1f29a4732e62662aae02f2",
+    "openproject/ai/gateway/app.py": "6b3db59e378decb0371e0dacaf98f82f1fd0384d59539783c9863559fa0368c6",
+    "openproject/ai/automation/openclaw_provider_gate.py": "3937350e202f9609579676ac61937806ea4ff5d0fd43b52efccef0d96c504093",
+    "openproject/ai/automation/engineering_worker.py": "4e2faa37019b3682cc94c5b8a438be070718bb872f700c03580196d1be13cad4",
+    "openproject/ai/gateway/engineering_health.py": "3171e77fbd4cc67797b731d7a2667bd166f1c65269389eca110b5ac330b97599",
+    "openproject/ai/core/overlay/app/views/qldapm_ai/_engineering_integrations.html.erb": "54265b3bb970e7f9937f0f03f03b7cedd4bcf9cebc8d204359e6246369df727a",
+    "docs/ai/engineering/CHATGPT_RECOVERY/demo-final/deploy_main.py": "cc335dddce6314fe6f09dc640ce7e1434c3ca9d2febbcce207fd89aeeef76ddd",
+    "docs/ai/engineering/CHATGPT_RECOVERY/demo-final/provider_probe.py": "99097fa32a47271560fbe2057b79ff25c304cdd2fa0f8c9815402d2cc5e0141e"
+  },
+  "limitations": [
+    "No Google probe or WP391 continuation executed by reviewer",
+    "No Main rollout, injected rollback failure, actual coding E2E, browser/GUI or physical DR in review",
+    "AUTO429 waits for a fresh verified readiness receipt; elapsed cooldown alone cannot prove recovery"
+  ]
+}

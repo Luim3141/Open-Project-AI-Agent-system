@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "serving_containers_healthy": 18,
+  "changed_containers_exact_approved_scope": [
+    "qldapm-ai-stage-staging-gateway-1",
+    "qldapm-ai-stage-staging-web-1",
+    "qldapm-ai-stage-local-backup-1"
+  ],
+  "protected_private_files_unchanged": 9,
+  "native_tables_total": 221,
+  "unchanged_native_fingerprints": 217,
+  "changed_native_tables": [
+    "sessions",
+    "two_factor_authentication_devices",
+    "users",
+    "$sequences"
+  ],
+  "security_attribute_comparison": {
+    "users": {
+      "rows": 12,
+      "changed_field_names": [
+        "last_login_on",
+        "updated_at"
+      ]
+    },
+    "two_factor_authentication_devices": {
+      "rows": 28,
+      "changed_field_names": [
+        "last_used_at"
+      ]
+    }
+  },
+  "native_work_packages": 372,
+  "native_business_writes": 0,
+  "ledger_before": 517,
+  "ledger_after": 517,
+  "new_google_calls": 0,
+  "active_runs": 0,
+  "gateway_sqlite_integrity": "ok",
+  "old_runs_events_not_backfilled": true
+}

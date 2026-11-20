@@ -1,0 +1,40 @@
+{
+  "id": "96b4cee5-a13b-4397-bc7f-aa6f7b866b00",
+  "actor": 20,
+  "allow_routine_writes": false,
+  "base_sha": null,
+  "budget": {
+    "attempt_calls": 12,
+    "auto_continue": false,
+    "cooldown_seconds": 60,
+    "max_continuations": 5,
+    "task_calls": 72
+  },
+  "deadline": 1793716585.5252328,
+  "definition": {
+    "acceptance": {},
+    "acceptance_file": null,
+    "base_branch": "main",
+    "base_unit": null,
+    "feedback": "FINAL-E2E-27FB-1da0d2f7 — Create exactly one small feature unit on the verified unmerged Demo integration base. Implement GET /tasks/count returning JSON {count: nonnegative integer}. Reuse the same optional q and status filters as GET /tasks; combined filters use AND and invalid status must have the same validation contract. Define the static /tasks/count route before any dynamic task-id route. Preserve current task CRUD, summary, detail, exists, title, CSV, Unicode and release identity behavior. Add meaningful tests for empty/count after create, q/status combined filters, Unicode/literal SQL characters, and ensure GET count never changes stored tasks. No schema migration, external service or extra feature; no PR merge or Demo deployment. Keep one coding unit, BA acceptance and PM dependencies explicit; reuse already delivered units without redoing their work.",
+    "kind": "planning",
+    "native_id": 379,
+    "source_hash": "a51b2f686861716cbb840ce396d2f8d6f8fd9d8ba1623ce28a38881688b3930b",
+    "title": "PM/BA requirements and engineering backlog"
+  },
+  "engine": "openclaw",
+  "kind": "planning",
+  "native_id": 379,
+  "project_id": 6,
+  "repository": "Luim3141/mini-task-manager",
+  "request_key": "ee3cb7ab-5360-46e5-bd53-af33ceaa04d1",
+  "source_version": 4,
+  "spec": "**Project Objective**\n\nDevelop a functional Mini Task Manager web application using an automated multi-agent software development workflow.\n\n**Technology Stack**\n\n*   Backend: Python FastAPI\n    \n*   Database: SQLite\n    \n*   Frontend: HTML, CSS, JavaScript\n    \n*   Testing: pytest\n    \n*   Version Control: Git and GitHub\n    \n\n**Functional Requirements**\n\n1.  Create new tasks.\n    \n2.  View a list of tasks.\n    \n3.  Edit task information.\n    \n4.  Delete tasks.\n    \n5.  Update task status.\n    \n6.  Search and filter tasks.\n    \n7.  Persist data in SQLite.\n    \n8.  Provide a usable web interface.\n    \n\n**AI Development Workflow**\n\nThe AI team should:\n\n1.  Analyze requirements and define acceptance criteria.\n    \n2.  Break down the project into development tasks.\n    \n3.  Establish dependencies and propose a development schedule.\n    \n4.  Implement source code in the Git repository.\n    \n5.  Build and execute automated tests.\n    \n6.  Review the implementation and identify defects.\n    \n7.  Fix defects and rerun tests.\n    \n8.  Create Git commits and a Pull Request.\n    \n9.  Report development progress and verification evidence in OpenProject.\n    \n\n**GitHub Repository**\n\n[https://github.com/Luim3141/mini-task-manager](https://github.com/Luim3141/mini-task-manager)\n\n**Completion Criteria**\n\nThe application must run locally, support the required operations, pass automated tests, and have verifiable source code and development history.\n\nThe AI agents must not automatically merge or deploy code without authorization.",
+  "spec_sha256": "67d818f45a5e752efe2a2ae93fdd173fa7a1c8e3b9da5f6da5e1523ae4182ff9",
+  "stage": "ADMITTED",
+  "unit": "requirements-planning-v1-a51b2f686861716c",
+  "write_scope_ids": [],
+  "worker_id": "b0b870a6-4d67-4fd6-b9bb-b40677899bb1",
+  "claim_token": "31b6a744-8f3c-47b0-aea8-babdea46dd4f",
+  "claim_generation": 139
+}

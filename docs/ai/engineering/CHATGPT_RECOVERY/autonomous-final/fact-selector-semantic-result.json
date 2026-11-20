@@ -1,0 +1,178 @@
+{
+  "status": "DIAGNOSTIC_COMPLETE_PENDING_SOURCE_REVIEW",
+  "rows": [
+    {
+      "case": "dev:preserved_failure:vi",
+      "kind": "positive",
+      "seconds": 16.406,
+      "model_load_seconds": 13.2490429,
+      "prompt_tokens": 308,
+      "output_tokens": 23,
+      "done_reason": "stop",
+      "answer_emitted": true,
+      "selected_fact_ids": [
+        0,
+        1,
+        2
+      ],
+      "citation_native_ids": [
+        380,
+        380,
+        380
+      ],
+      "semantic_support": "PENDING_SOURCE_REVIEW"
+    },
+    {
+      "case": "dev:crud_unit:en",
+      "kind": "positive",
+      "seconds": 2.827,
+      "model_load_seconds": 0.0287046,
+      "prompt_tokens": 347,
+      "output_tokens": 16,
+      "done_reason": "stop",
+      "answer_emitted": true,
+      "selected_fact_ids": [
+        1,
+        4
+      ],
+      "citation_native_ids": [
+        381,
+        379
+      ],
+      "semantic_support": "PENDING_SOURCE_REVIEW"
+    },
+    {
+      "case": "dev:recovery_history:vi",
+      "kind": "positive",
+      "seconds": 2.07,
+      "model_load_seconds": 0.0335151,
+      "prompt_tokens": 289,
+      "output_tokens": 11,
+      "done_reason": "stop",
+      "answer_emitted": true,
+      "selected_fact_ids": [
+        0
+      ],
+      "citation_native_ids": [
+        388
+      ],
+      "semantic_support": "PENDING_SOURCE_REVIEW"
+    },
+    {
+      "case": "human-intent392:en",
+      "kind": "positive",
+      "seconds": 2.758,
+      "model_load_seconds": 0.0186254,
+      "prompt_tokens": 293,
+      "output_tokens": 14,
+      "done_reason": "stop",
+      "answer_emitted": true,
+      "selected_fact_ids": [
+        0,
+        2
+      ],
+      "citation_native_ids": [
+        392,
+        392
+      ],
+      "semantic_support": "PENDING_SOURCE_REVIEW"
+    },
+    {
+      "case": "dev:pagination:vi",
+      "kind": "negative",
+      "seconds": 1.424,
+      "model_load_seconds": 0.0263132,
+      "prompt_tokens": 393,
+      "output_tokens": 9,
+      "done_reason": "stop",
+      "answer_emitted": false,
+      "selected_fact_ids": [],
+      "citation_native_ids": [],
+      "semantic_support": "PENDING_SOURCE_REVIEW"
+    },
+    {
+      "case": "dev:pagination:en",
+      "kind": "negative",
+      "seconds": 1.577,
+      "model_load_seconds": 0.0085907,
+      "prompt_tokens": 377,
+      "output_tokens": 9,
+      "done_reason": "stop",
+      "answer_emitted": false,
+      "selected_fact_ids": [],
+      "citation_native_ids": [],
+      "semantic_support": "PENDING_SOURCE_REVIEW"
+    }
+  ],
+  "holdout_access": false,
+  "main_rag_changed": false,
+  "embedding_seconds": 36.574,
+  "qdrant_points_verified": 906,
+  "retrieval": [
+    {
+      "case": "dev:preserved_failure:vi",
+      "ids": [
+        380,
+        379,
+        394,
+        387,
+        386
+      ],
+      "hit": true,
+      "context_chars": 503
+    },
+    {
+      "case": "dev:crud_unit:en",
+      "ids": [
+        381,
+        379,
+        382,
+        392,
+        384
+      ],
+      "hit": true,
+      "context_chars": 696
+    },
+    {
+      "case": "dev:recovery_history:vi",
+      "ids": [
+        388
+      ],
+      "hit": true,
+      "context_chars": 450
+    },
+    {
+      "case": "human-intent392:en",
+      "ids": [
+        392
+      ],
+      "hit": true,
+      "context_chars": 487
+    },
+    {
+      "case": "dev:pagination:vi",
+      "ids": [
+        379,
+        387,
+        386,
+        391,
+        394
+      ],
+      "hit": null,
+      "context_chars": 792
+    },
+    {
+      "case": "dev:pagination:en",
+      "ids": [
+        379,
+        387,
+        386,
+        392,
+        380
+      ],
+      "hit": null,
+      "context_chars": 736
+    }
+  ],
+  "elapsed_seconds": 64.057
+}

@@ -1,0 +1,30 @@
+{
+  "started_utc": "2026-11-02T09:34:54.211888+00:00",
+  "finished_utc": "2026-11-02T09:37:22.299250+00:00",
+  "image": "sha256:701dfea73d525ab986f54d2cd122352df9c2debaebab82bbd7f052227544a094",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--memory",
+    "384m",
+    "--cpus",
+    "1",
+    "--mount",
+    "type=bind,source=D:\\AI project\\QLDAPM chat\\openproject\\ai\\tests,target=/app/tests,readonly",
+    "sha256:701dfea73d525ab986f54d2cd122352df9c2debaebab82bbd7f052227544a094",
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "/app/tests",
+    "-p",
+    "test_engineering*.py"
+  ],
+  "environment": "network-none immutable Gateway + readonly synthetic tests; host/WSL fixture adapter imports may require mount",
+  "exit_code": 1,
+  "evidence": "gateway-candidate-tests.log"
+}

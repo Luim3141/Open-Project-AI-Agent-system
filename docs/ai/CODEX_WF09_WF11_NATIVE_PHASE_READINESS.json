@@ -1,0 +1,131 @@
+{
+  "at": "2026-10-26T12:28:59.294861+00:00",
+  "status": "PASS_FRESH_NATIVE_READONLY_DISCOVERY_BUSINESS_PHASES_BLOCKED",
+  "checks": [
+    {
+      "actor": 18,
+      "role": "AI_SYSTEM_OWNER",
+      "native_id": 371,
+      "version": 1,
+      "status": "NEW",
+      "policy_transitions": [
+        {
+          "to": "IN ANALYSIS",
+          "errors": [
+            "EVIDENCE_STORY_REQUIRED",
+            "AC_REQUIRED",
+            "EVIDENCE_SCOPE_REQUIRED",
+            "APPROVAL_SCOPE_REQUIRED"
+          ]
+        }
+      ],
+      "gate_revision": 1,
+      "evidence_keys": [],
+      "approval_keys": []
+    },
+    {
+      "actor": 19,
+      "role": "PM",
+      "native_id": 371,
+      "version": 1,
+      "status": "NEW",
+      "policy_transitions": [
+        {
+          "to": "IN ANALYSIS",
+          "errors": [
+            "EVIDENCE_STORY_REQUIRED",
+            "AC_REQUIRED",
+            "EVIDENCE_SCOPE_REQUIRED",
+            "APPROVAL_SCOPE_REQUIRED"
+          ]
+        }
+      ],
+      "gate_revision": 1,
+      "evidence_keys": [],
+      "approval_keys": []
+    },
+    {
+      "actor": 20,
+      "role": "BA",
+      "native_id": 371,
+      "version": 1,
+      "status": "NEW",
+      "policy_transitions": [
+        {
+          "to": "IN ANALYSIS",
+          "errors": [
+            "TRANSITION_DENIED"
+          ]
+        }
+      ],
+      "gate_revision": 1,
+      "evidence_keys": [],
+      "approval_keys": []
+    },
+    {
+      "actor": 21,
+      "role": "BE",
+      "native_id": 371,
+      "version": 1,
+      "status": "NEW",
+      "policy_transitions": [
+        {
+          "to": "IN ANALYSIS",
+          "errors": [
+            "TRANSITION_DENIED"
+          ]
+        }
+      ],
+      "gate_revision": 1,
+      "evidence_keys": [],
+      "approval_keys": []
+    },
+    {
+      "actor": 22,
+      "role": "FE",
+      "native_id": 371,
+      "version": 1,
+      "status": "NEW",
+      "policy_transitions": [
+        {
+          "to": "IN ANALYSIS",
+          "errors": [
+            "TRANSITION_DENIED"
+          ]
+        }
+      ],
+      "gate_revision": 1,
+      "evidence_keys": [],
+      "approval_keys": []
+    },
+    {
+      "actor": 23,
+      "role": "QA",
+      "native_id": 371,
+      "version": 1,
+      "status": "NEW",
+      "policy_transitions": [
+        {
+          "to": "IN ANALYSIS",
+          "errors": [
+            "TRANSITION_DENIED"
+          ]
+        }
+      ],
+      "gate_revision": 1,
+      "evidence_keys": [],
+      "approval_keys": []
+    }
+  ],
+  "main_native_writes": 0,
+  "main_gate_posts": 0,
+  "human_decisions_by_agent": 0,
+  "existing_375_qa_evidence_does_not_authorize_371_transition": true,
+  "scope": "Fresh own Native identities; diagnostic GET only, no legacy GateActions writes or Gateway get_gate/change_gate bypass",
+  "blockers": [
+    "Task371 has no story/AC/scope evidence or independent scope approval for its first legal phase",
+    "No admitted source/fix/build artifact producer proving this bug is fixed; unrelated technical375 readback cannot substitute",
+    "Native-compatible earlier-phase signed evidence bridge is not implemented; legacy custom gate writes must remain unavailable through Native Gateway",
+    "Any subsequent Main Native update/transition needs a new valid exact proposal and authenticated human decision"
+  ]
+}

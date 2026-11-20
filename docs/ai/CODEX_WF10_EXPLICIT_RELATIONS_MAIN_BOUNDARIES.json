@@ -1,0 +1,262 @@
+{
+  "at": "2026-10-26T12:03:47.471732+00:00",
+  "status": "PASS_MAIN_AUTHENTICATED_HIERARCHY_CAPABILITY_AND_ROLE_BOUNDARIES",
+  "checks": [
+    {
+      "case": "capability",
+      "actor": 18,
+      "status": "PASS",
+      "role": "AI_SYSTEM_OWNER"
+    },
+    {
+      "case": "own_native_model_read",
+      "actor": 18,
+      "http": 200,
+      "status": "PASS",
+      "snapshot_sha256": "d243d2eed80ce426916480b778057589b77d221cfcceecc9ebe79a880b0edc1f"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 18,
+      "selector": "?actor_id",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 18,
+      "selector": "?role",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 18,
+      "selector": "?admin",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 18,
+      "selector": "?owner",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "capability",
+      "actor": 19,
+      "status": "PASS",
+      "role": "PM"
+    },
+    {
+      "case": "own_native_model_read",
+      "actor": 19,
+      "http": 200,
+      "status": "PASS",
+      "snapshot_sha256": "d243d2eed80ce426916480b778057589b77d221cfcceecc9ebe79a880b0edc1f"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 19,
+      "selector": "?actor_id",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 19,
+      "selector": "?role",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 19,
+      "selector": "?admin",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 19,
+      "selector": "?owner",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "capability",
+      "actor": 20,
+      "status": "PASS",
+      "role": "BA"
+    },
+    {
+      "case": "low_role_model_denied",
+      "actor": 20,
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 20,
+      "selector": "?actor_id",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 20,
+      "selector": "?role",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 20,
+      "selector": "?admin",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 20,
+      "selector": "?owner",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "capability",
+      "actor": 21,
+      "status": "PASS",
+      "role": "BE"
+    },
+    {
+      "case": "low_role_model_denied",
+      "actor": 21,
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 21,
+      "selector": "?actor_id",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 21,
+      "selector": "?role",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 21,
+      "selector": "?admin",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 21,
+      "selector": "?owner",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "capability",
+      "actor": 22,
+      "status": "PASS",
+      "role": "FE"
+    },
+    {
+      "case": "low_role_model_denied",
+      "actor": 22,
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 22,
+      "selector": "?actor_id",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 22,
+      "selector": "?role",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 22,
+      "selector": "?admin",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 22,
+      "selector": "?owner",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "capability",
+      "actor": 23,
+      "status": "PASS",
+      "role": "QA"
+    },
+    {
+      "case": "low_role_model_denied",
+      "actor": 23,
+      "http": 403,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 23,
+      "selector": "?actor_id",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 23,
+      "selector": "?role",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 23,
+      "selector": "?admin",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "query_selector_denied",
+      "actor": 23,
+      "selector": "?owner",
+      "http": 422,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "anonymous",
+      "http": 401,
+      "status": "PASS_POLICY_ENFORCED"
+    },
+    {
+      "case": "invalid_native_key",
+      "http": 401,
+      "status": "PASS_POLICY_ENFORCED"
+    }
+  ],
+  "main_native_writes": 0,
+  "new_model_calls": 0,
+  "human_decisions_by_agent": 0,
+  "scope": "Native API reads of existing #375v0 under six own credentials; no WBS draft/proposal/create or Scenario F replay"
+}

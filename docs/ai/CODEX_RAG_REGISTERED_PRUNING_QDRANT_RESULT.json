@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-26T12:15:37.763331+00:00",
+  "status": "PASS_ACTUAL_ISOLATED_QDRANT_REGISTERED_PRUNING_AND_SQLITE_RECOVERY",
+  "checks": [
+    "Unchanged ingestion preserves exact same-source unregistered point",
+    "Embedding/vector outage retains old proofs across full SQLite reopen; known stale IDs removed only after verified replacement",
+    "Actual Qdrant delete commit with lost acknowledgement: pending receipt survives restart and retries absent IDs idempotently",
+    "Historical registered payload variants handle failed same-hash title/version update followed by later content",
+    "Chunk geometry update prunes only registered surplus indexes",
+    "Exact deindex with actual vector deletion then SQLite fault: restart finishes metadata cleanup and leaves unregistered vector untouched"
+  ],
+  "fixture_legacy_points_preserved": 1,
+  "fixture_registered_documents_after_explicit_deindex": 0,
+  "fixture_pending_cleanup_rows": 0,
+  "main_native_writes": 0,
+  "main_vector_writes": 0,
+  "staging_operations": false,
+  "new_model_calls": 0,
+  "limits": [
+    "Fresh empty isolated Qdrant, no Main snapshot/restore",
+    "Synthetic1024 embeddings qualify persistence and payload contracts only",
+    "All source IDs/content are isolated fixture data; no Main Native resource was created"
+  ],
+  "gateway_image": "sha256:ffe20cad40e7506b6accfae22665f4e543aa627b6da5f2272a1177206e7edd6b"
+}

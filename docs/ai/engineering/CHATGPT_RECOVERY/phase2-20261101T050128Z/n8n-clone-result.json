@@ -1,0 +1,54 @@
+{
+  "status": "CLONE_EVENT_AND_RETENTION_VERIFIED",
+  "private_path": "C:\\Users\\LUIM\\AppData\\Local\\QLDAPM\\openproject-ai\\operator\\qldapm-recovery-p2-6869ad0d",
+  "network": "qldapm-recovery-p2-6869ad0d-net",
+  "n8n_image": "qldapm-n8n:recovery-phase2-redacted-r2",
+  "automatic_event_delivery": {
+    "outbox": [
+      [
+        "ACKED",
+        3
+      ]
+    ],
+    "observations": 1,
+    "executions": [
+      "1"
+    ]
+  },
+  "gateway_runtime": "actual ASGI lifespan + Service background publisher + signed observation route",
+  "canary_http": {
+    "success": 200,
+    "error": 500
+  },
+  "manual_exit_code": 0,
+  "retention": {
+    "tables": [
+      {
+        "table": "execution_data",
+        "rows": 4,
+        "leaked": false
+      },
+      {
+        "table": "execution_metadata",
+        "rows": 0,
+        "leaked": false
+      },
+      {
+        "table": "execution_annotations",
+        "rows": 0,
+        "leaked": false
+      },
+      {
+        "table": "execution_annotation_tags",
+        "rows": 0,
+        "leaked": false
+      },
+      {
+        "table": "execution_entity",
+        "rows": 4,
+        "leaked": false
+      }
+    ],
+    "log_leaked": false
+  }
+}

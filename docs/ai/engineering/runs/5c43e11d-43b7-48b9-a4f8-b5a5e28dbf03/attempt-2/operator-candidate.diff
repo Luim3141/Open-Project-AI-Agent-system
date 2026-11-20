@@ -1,0 +1,149 @@
+diff --git a/README.md b/README.md
+index b6a721f..df7f45b 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,18 @@
+-# mini-task-manager
+\ No newline at end of file
++# Mini Task Manager
++
++A minimal FastAPI and SQLite task manager application implementing core persistence and REST endpoints.
++
++## API Endpoints
++- `POST /tasks`: Create a task with a non-blank title. Returns `201 Created` with `id`, `title`, and `status`.
++- `GET /tasks`: Retrieve all stored tasks in stable ID order.
++
++## Requirements
++- FastAPI 0.162.0
++- Pytest 9.2.0
++- Httpx 0.28.1
++- Uvicorn 0.54.0
++
++## Running Tests
++```bash
++PYTHONPATH=. .venv/bin/pytest -v
++```
+diff --git a/requirements.txt b/requirements.txt
+new file mode 100644
+index 0000000..e6070cb
+--- /dev/null
++++ b/requirements.txt
+@@ -0,0 +1,4 @@
++fastapi==0.162.0
++pytest==9.2.0
++httpx==0.28.1
++uvicorn==0.54.0
+diff --git a/task_manager/__init__.py b/task_manager/__init__.py
+new file mode 100644
+index 0000000..e69de29
+diff --git a/task_manager/app.py b/task_manager/app.py
+new file mode 100644
+index 0000000..f5da549
+--- /dev/null
++++ b/task_manager/app.py
+@@ -0,0 +1,49 @@
++import sqlite3
++from contextlib import contextmanager
++from fastapi import FastAPI, HTTPException, status
++from pydantic import BaseModel, Field
++
++def init_db(database_path: str):
++    conn = sqlite3.connect(database_path)
++    cursor = conn.cursor()
++    cursor.execute("""
++        CREATE TABLE IF NOT EXISTS tasks (
++            id INTEGER PRIMARY KEY AUTOINCREMENT,
++            title TEXT NOT NULL,
++            status TEXT NOT NULL DEFAULT 'todo'
++        )
++    """)
++    conn.commit()
++    conn.close()
++
++class TaskCreate(BaseModel):
++    title: str
++
++def create_app(database_path: str = "tasks.db") -> FastAPI:
++    init_db(database_path)
++    app = FastAPI()
++
++    @app.post("/tasks", status_code=status.HTTP_201_CREATED)
++    def create_task(task: TaskCreate):
++        if not task.title or not task.title.strip():
++            raise HTTPException(status_code=422, detail="Title cannot be blank")
++        conn = sqlite3.connect(database_path)
++        cursor = conn.cursor()
++        cursor.execute("INSERT INTO tasks (title, status) VALUES (?, ?)", (task.title, "todo"))
++        conn.commit()
++        task_id = cursor.lastrowid
++        cursor.execute("SELECT id, title, status FROM tasks WHERE id = ?", (task_id,))
++        row = cursor.fetchone()
++        conn.close()
++        return {"id": row[0], "title": row[1], "status": row[2]}
++
++    @app.get("/tasks")
++    def list_tasks():
++        conn = sqlite3.connect(database_path)
++        cursor = conn.cursor()
++        cursor.execute("SELECT id, title, status FROM tasks ORDER BY id ASC")
++        rows = cursor.fetchall()
++        conn.close()
++        return [{"id": r[0], "title": r[1], "status": r[2]} for r in rows]
++
++    return app
+diff --git a/tests/test_tasks.py b/tests/test_tasks.py
+new file mode 100644
+index 0000000..6a141ef
+--- /dev/null
++++ b/tests/test_tasks.py
+@@ -0,0 +1,50 @@
++import os
++import pytest
++from fastapi.testclient import TestClient
++from task_manager.app import create_app
++
++@pytest.fixture
++def client(tmp_path):
++    db_path = tmp_path / "test.db"
++    app = create_app(str(db_path))
++    return TestClient(app)
++
++def test_ac1_post_task_success(client):
++    response = client.post("/tasks", json={"title": "Buy milk"})
++    assert response.status_code == 201
++    data = response.json()
++    assert data["title"] == "Buy milk"
++    assert data["status"] == "todo"
++    assert isinstance(data["id"], int)
++
++def test_ac2_get_tasks_order(client):
++    client.post("/tasks", json={"title": "Task One"})
++    client.post("/tasks", json={"title": "Task Two"})
++    response = client.get("/tasks")
++    assert response.status_code == 200
++    tasks = response.json()
++    assert len(tasks) == 2
++    assert tasks[0]["title"] == "Task One"
++    assert tasks[1]["title"] == "Task Two"
++    assert tasks[0]["id"] < tasks[1]["id"]
++
++def test_ac3_persistence(tmp_path):
++    db_path = tmp_path / "persistent.db"
++    app1 = create_app(str(db_path))
++    client1 = TestClient(app1)
++    client1.post("/tasks", json={"title": "Persistent Task"})
++
++    # Reopen app with same db file
++    app2 = create_app(str(db_path))
++    client2 = TestClient(app2)
++    response = client2.get("/tasks")
++    assert response.status_code == 200
++    tasks = response.json()
++    assert len(tasks) == 1
++    assert tasks[0]["title"] == "Persistent Task"
++
++def test_ac4_blank_title_rejected(client):
++    response = client.post("/tasks", json={"title": "   "})
++    assert response.status_code == 422
++    response2 = client.post("/tasks", json={"title": ""})
++    assert response2.status_code == 422

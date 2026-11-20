@@ -1,0 +1,6 @@
+<span class="qldapm-tree-row">
+  <span class="qldapm-tree-title"><span class="qldapm-tree-id">#<%= item.id %></span><%= item.subject %></span>
+  <span class="qldapm-tree-type"><%= item.type.name %></span>
+  <span><%= item.status.name %></span>
+  <%= link_to "Mở", work_package_path(item.id), aria: {label: "Mở chi tiết #{item.type.name} ##{item.id}"} %>
+</span>
